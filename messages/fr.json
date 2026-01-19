@@ -511,6 +511,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "Ajouter aux favoris",
+      "remove": "Retirer des favoris",
+      "saved": "Enregistré",
+      "title": "Outils favoris",
+      "empty": "Pas encore d'outils favoris",
+      "hint": "Cliquez sur l'icône étoile sur n'importe quel outil pour l'enregistrer ici pour un accès rapide."
+    },
     "quality": {
       "title": "Qualité de sortie",
       "low": "Basse",
@@ -1662,6 +1670,93 @@
       "uploadDescription": "Glissez-déposez des fichiers FB2 de livres électroniques ici ou cliquez pour sélectionner. Prend en charge plusieurs fichiers.",
       "convertButton": "Convertir en PDF",
       "successMessage": "Votre/Vos fichier(s) FB2 a/ont été converti(s) en PDF avec succès !"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "Télécharger un fichier DJVU",
+      "uploadDescription": "Glissez-déposez un fichier DJVU ici ou cliquez.",
+      "optionsTitle": "Options de conversion",
+      "dpiLabel": "DPI de sortie",
+      "dpiHint": "DPI plus élevé = fichier plus grand, meilleure qualité",
+      "qualityLabel": "Qualité d'image",
+      "qualityHint": "Qualité de compression JPEG pour les pages",
+      "convertButton": "Convertir en PDF",
+      "successTitle": "Conversion réussie !",
+      "successMessage": "Votre fichier DJVU a été converti en PDF avec succès !"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }

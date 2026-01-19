@@ -511,6 +511,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "お気に入りに追加",
+      "remove": "お気に入りから削除",
+      "saved": "保存済み",
+      "title": "お気に入りツール",
+      "empty": "お気に入りのツールはまだありません",
+      "hint": "ツールの星アイコンをクリックすると、ここに保存してすぐにアクセスできます。"
+    },
     "quality": {
       "title": "出力品質",
       "low": "低",
@@ -1662,6 +1670,93 @@
       "uploadDescription": "FB2電子書籍ファイルをここにドラッグ＆ドロップするか、クリックして選択してください。複数ファイル対応。",
       "convertButton": "PDFに変換",
       "successMessage": "FB2ファイルがPDFに正常に変換されました！"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "DJVUファイルをアップロード",
+      "uploadDescription": "DJVUファイルをここにドラッグ＆ドロップしてください。",
+      "optionsTitle": "変換オプション",
+      "dpiLabel": "出力DPI",
+      "dpiHint": "高DPI = ファイルサイズ大、品質向上",
+      "qualityLabel": "画像品質",
+      "qualityHint": "ページのJPEG圧縮品質",
+      "convertButton": "PDFに変換",
+      "successTitle": "変換成功！",
+      "successMessage": "DJVUファイルがPDFに正常に変換されました！"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }

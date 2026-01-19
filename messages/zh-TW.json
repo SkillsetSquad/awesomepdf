@@ -511,6 +511,14 @@
     "useCases": "使用場景",
     "faq": "常見問題",
     "comingSoon": "此工具即將推出。",
+    "favorite": {
+      "add": "加入收藏",
+      "remove": "取消收藏",
+      "saved": "已收藏",
+      "title": "收藏工具",
+      "empty": "尚未收藏任何工具",
+      "hint": "點擊任意工具上的星形圖示可將其加入收藏，方便快速存取。"
+    },
     "quality": {
       "title": "輸出質量",
       "low": "低",
@@ -1661,6 +1669,93 @@
       "uploadDescription": "拖放FB2電子書檔案到此處，或點選瀏覽。支援多個檔案。",
       "convertButton": "轉換為PDF",
       "successMessage": "您的FB2檔案已成功轉換為PDF！"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "上傳DJVU檔案",
+      "uploadDescription": "拖放DJVU檔案到此處，或點選瀏覽。",
+      "optionsTitle": "轉換選項",
+      "dpiLabel": "輸出DPI",
+      "dpiHint": "DPI越高，檔案越大，品質越好",
+      "qualityLabel": "影像品質",
+      "qualityHint": "頁面的JPEG壓縮品質",
+      "convertButton": "轉換為PDF",
+      "successTitle": "轉換成功！",
+      "successMessage": "您的DJVU檔案已成功轉換為PDF！"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }

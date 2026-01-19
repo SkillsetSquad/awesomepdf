@@ -511,6 +511,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "Zu Favoriten hinzufügen",
+      "remove": "Aus Favoriten entfernen",
+      "saved": "Gespeichert",
+      "title": "Favoriten-Werkzeuge",
+      "empty": "Noch keine Favoriten-Werkzeuge",
+      "hint": "Klicken Sie auf das Stern-Symbol bei einem Werkzeug, um es hier für schnellen Zugriff zu speichern."
+    },
     "quality": {
       "title": "Ausgabequalität",
       "low": "Niedrig",
@@ -1662,6 +1670,93 @@
       "uploadDescription": "FB2-E-Book-Dateien hierher ziehen oder klicken zum Auswählen. Unterstützt mehrere Dateien.",
       "convertButton": "In PDF konvertieren",
       "successMessage": "Ihre FB2-Datei(en) wurde(n) erfolgreich in PDF konvertiert!"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "DJVU-Datei hochladen",
+      "uploadDescription": "DJVU-Datei hierher ziehen oder klicken.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "dpiLabel": "Ausgabe-DPI",
+      "dpiHint": "Höhere DPI = größere Datei, bessere Qualität",
+      "qualityLabel": "Bildqualität",
+      "qualityHint": "JPEG-Komprimierungsqualität für Seiten",
+      "convertButton": "In PDF konvertieren",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Ihre DJVU-Datei wurde erfolgreich in PDF konvertiert!"
+    },
+    "deskewPdf": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF-Dateien zum Begradigen hierher ziehen.",
+      "optionsTitle": "Begradigen-Optionen",
+      "processButton": "PDF begradigen",
+      "successMessage": "PDF erfolgreich begradigt!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF für Broschüren-Layout hochladen.",
+      "optionsTitle": "Broschüren-Optionen",
+      "createButton": "Broschüre erstellen",
+      "successMessage": "Broschüre erfolgreich erstellt!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF zum Rastern hochladen.",
+      "optionsTitle": "Raster-Optionen",
+      "rasterizeButton": "PDF rastern",
+      "successMessage": "PDF erfolgreich gerastert!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Markdown-Datei hochladen",
+      "uploadDescription": "Markdown-Datei für PDF-Konvertierung hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "Markdown erfolgreich in PDF konvertiert!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "E-Mail-Datei hochladen",
+      "uploadDescription": "EML-Datei für PDF-Konvertierung hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "E-Mail erfolgreich in PDF konvertiert!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "CBZ-Datei hochladen",
+      "uploadDescription": "CBZ-Comic-Archiv hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "CBZ erfolgreich in PDF konvertiert!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF für PDF/A-Konvertierung hochladen.",
+      "optionsTitle": "PDF/A-Optionen",
+      "convertButton": "In PDF/A konvertieren",
+      "successMessage": "PDF/A erfolgreich erstellt!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF zum Konvertieren von Schriften in Pfade hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "Schriften konvertieren",
+      "successMessage": "Schriften erfolgreich in Pfade konvertiert!"
+    },
+    "extractTables": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF für Tabellenextraktion hochladen.",
+      "optionsTitle": "Extraktionsoptionen",
+      "extractButton": "Tabellen extrahieren",
+      "successMessage": "Tabellen erfolgreich extrahiert!"
+    },
+    "ocgManager": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF zum Verwalten von Ebenen hochladen.",
+      "layersTitle": "PDF-Ebenen",
+      "noLayers": "Dieses PDF hat keine Ebenen.",
+      "addLayerLabel": "Neue Ebene hinzufügen",
+      "successMessage": "Ebenenänderungen gespeichert!"
+    },
+    "pdfReader": {
+      "uploadLabel": "PDF-Datei öffnen",
+      "uploadDescription": "PDF zum Lesen öffnen."
     }
   }
 }
