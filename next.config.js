@@ -24,21 +24,30 @@ const nextConfig = {
         module: false,
         url: false,
         worker_threads: false,
-        canvas: false,
+        canvas: false,  // Required for pdfjs-dist-legacy
       };
+    } else {
+      // Mark canvas as external for server-side builds
+      config.externals = config.externals || [];
+      config.externals.push({
+        canvas: 'commonjs canvas',
+      });
     }
 
     // Also add module and canvas to alias for some packages that use it
     config.resolve.alias = {
       ...config.resolve.alias,
       'module': false,
-      'canvas': path.resolve(__dirname, './src/lib/mocks/canvas.js'),
     };
 
-    // Ignore the dynamic import of 'module' in gs-wasm
+    // Ignore problematic modules that are not needed in browser
     config.plugins.push(
       new webpack.IgnorePlugin({
         resourceRegExp: /^module$/
+      }),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^canvas$/,
+        contextRegExp: /pdfjs-dist-legacy/
       })
     );
 
