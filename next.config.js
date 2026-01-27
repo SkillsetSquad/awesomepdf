@@ -19,6 +19,7 @@ const nextConfig = {
         module: false,
         url: false,
         worker_threads: false,
+        canvas: false,  // Required for pdfjs-dist-legacy
       };
     }
 
