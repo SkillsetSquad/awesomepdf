@@ -73,6 +73,7 @@ export class WatermarkProcessor extends BasePDFProcessor {
           const text = wmOptions.text;
           const fontSize = wmOptions.fontSize || 48;
           const textWidth = font.widthOfTextAtSize(text, fontSize);
+          const textHeight = font.heightAtSize(fontSize);
 
           let x = 0, y = 0;
           const rotation = wmOptions.position === 'diagonal' ? -45 : (wmOptions.rotation || 0);
@@ -90,8 +91,12 @@ export class WatermarkProcessor extends BasePDFProcessor {
             case 'bottom-right':
               x = width - textWidth - 50; y = 50;
               break;
-            case 'diagonal':
             case 'center':
+              const position = computeTextWatermarkPosition(width, height,textWidth, textHeight, rotation)
+              x = position.x;
+              y = position.y;
+              break;
+            case 'diagonal':
             default:
               x = width / 2; y = height / 2;
           }
@@ -161,6 +166,44 @@ function getPageIndices(pages: WatermarkOptions['pages'], totalPages: number): n
     default:
       return Array.from({ length: totalPages }, (_, i) => i);
   }
+}
+
+function computeTextWatermarkPosition(
+    pageWidth: number,
+    pageHeight: number,
+    textWidth: number,
+    textHeight: number,
+    rotation: number
+): { x: number; y: number } {
+
+  // Calculate the center coordinates of the PDF page
+  const centerX = pageWidth / 2;
+  const centerY = pageHeight / 2;
+
+  // Half of text width/height, baseline offset for text drawing
+  const textWidthHalf = textWidth / 2;
+  const textHeightHalf = textHeight / 2;
+  const baselineOffset = textHeight * 0.25; // 基线向下调整的偏移值
+
+  // Basic unrotated coordinates for text center alignment (with baseline offset)
+  const baseX = centerX - textWidthHalf;
+  const baseY = centerY - (textHeightHalf + baselineOffset);
+
+  // Convert rotation angle from degrees to radians (take absolute value for calculation)
+  const rotationRad = (Math.abs(rotation) * Math.PI) / 180;
+  const cosRad = Math.cos(rotationRad);
+  const sinRad = Math.sin(rotationRad);
+
+  // Get rotation direction sign: 1=counterclockwise, -1=clockwise, 0=no rotation
+  const rotationSign = Math.sign(rotation);
+  // Calculate final rotated origin coordinates for text
+  let rotatedOriginX = baseX + textWidthHalf * (1 - cosRad) + rotationSign * baselineOffset;
+  let rotatedOriginY = baseY - rotationSign * (textWidthHalf * sinRad) + baselineOffset*Math.abs(rotationSign);
+
+  return {
+    x: rotatedOriginX,
+    y: rotatedOriginY,
+  };
 }
 
 export function createWatermarkProcessor(): WatermarkProcessor {
