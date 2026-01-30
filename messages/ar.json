@@ -620,12 +620,13 @@
             "placeholder": "البحث عن الأدوات...",
             "noResults": "لم يتم العثور على أدوات لـ \"{query}\""
         },
-        "relatedTools": "قد يعجبك أيضًا",
+        "relatedTools": "أدوات ذات صلة",
         "about": "حول هذه الأداة",
-        "howToUse": "طريقة الاستخدام",
+        "howToUse": "كيفية الاستخدام",
         "useCases": "حالات الاستخدام",
         "faq": "الأسئلة الشائعة",
-        "comingSoon": "هذه الأداة قادمة قريبًا.",
+        "comingSoon": "هذه الأداة ستكون متاحة قريباً.",
+        "successTitle": "تم التحويل بنجاح!",
         "favorite": {
             "add": "إضافة إلى المفضلة",
             "remove": "إزالة من المفضلة",
@@ -1385,6 +1386,225 @@
             "colorPicker": "اختيار اللون",
             "applyButton": "تطبيق لون النص",
             "successMessage": "تم تغيير لون النص بنجاح!"
+        },
+        "pdfToDocx": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى DOCX",
+            "successMessage": "تم تحويل ملف PDF الخاص بك إلى DOCX بنجاح! انقر على زر التحميل لحفظ ملفك."
+        },
+        "pdfToExcel": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF هنا، أو انقر للتصفح.",
+            "extractNote": "سيتم استخراج الجداول في كل صفحة إلى أوراق منفصلة في ملف الإكسل.",
+            "convertButton": "تحويل إلى Excel",
+            "successTitle": "تم التحويل بنجاح!",
+            "successMessage": "تم استخراج الجداول من ملف PDF الخاص بك إلى ملف إكسل."
+        },
+        "pdfToPptx": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF هنا، أو انقر للتصفح.",
+            "optionsTitle": "خيارات التحويل",
+            "dpiLabel": "جودة الصورة (DPI)",
+            "dpiHint": "كلما ارتفع الـ DPI زادت جودة الشرائح ولكن حجم الملف سيكون أكبر.",
+            "lowSet": "منخفض (72 DPI - ملف صغير)",
+            "mediumSet": "متوسط (150 DPI - قياسي)",
+            "highSet": "عالي (200 DPI - جودة عالية)",
+            "veryHighSet": "عالي جداً (300 DPI - أعلى جودة)",
+            "convertButton": "تحويل إلى PowerPoint",
+            "successTitle": "تم التحويل بنجاح!",
+            "successMessage": "تم تحويل ملف PDF الخاص بك إلى عرض تقديمي PowerPoint بنجاح."
+        },
+        "wordToPdf": {
+            "uploadLabel": "رفع مستند Word",
+            "uploadDescription": "اسحب وأفلت مستند Word (.docx) هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل مستند Word الخاص بك إلى PDF بنجاح!"
+        },
+        "psdToPdf": {
+            "uploadLabel": "رفع ملف PSD",
+            "uploadDescription": "اسحب وأفلت ملف PSD (Photoshop) هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل PSD إلى PDF بنجاح! انقر على زر التحميل لحفظ ملفك."
+        },
+        "excelToPdf": {
+            "uploadLabel": "رفع ملف إكسل",
+            "uploadDescription": "اسحب وأفلت ملف إكسل (.xlsx) هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف الإكسل الخاص بك إلى PDF بنجاح!"
+        },
+        "pptxToPdf": {
+            "uploadLabel": "رفع ملف PowerPoint",
+            "uploadDescription": "اسحب وأفلت ملف PowerPoint (.pptx) هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف PowerPoint الخاص بك إلى PDF بنجاح!"
+        },
+        "xpsToPdf": {
+            "uploadLabel": "رفع ملف XPS",
+            "uploadDescription": "اسحب وأفلت ملف XPS هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف XPS الخاص بك إلى PDF بنجاح!"
+        },
+        "rtfToPdf": {
+            "uploadLabel": "رفع ملف RTF",
+            "uploadDescription": "اسحب وأفلت ملف RTF هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف RTF الخاص بك إلى PDF بنجاح!"
+        },
+        "epubToPdf": {
+            "uploadLabel": "رفع ملف EPUB",
+            "uploadDescription": "اسحب وأفلت ملف EPUB الخاص بك هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف EPUB الخاص بك إلى PDF بنجاح!"
+        },
+        "mobiToPdf": {
+            "uploadLabel": "رفع ملف MOBI",
+            "uploadDescription": "اسحب وأفلت ملف MOBI/AZW الخاص بك هنا، أو انقر للتصفح.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف MOBI الخاص بك إلى PDF بنجاح!"
+        },
+        "fb2ToPdf": {
+            "uploadLabel": "رفع ملفات FB2",
+            "uploadDescription": "اسحب وأفلت ملفات FB2 هنا، أو انقر للتصفح. يدعم ملفات متعددة.",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل ملف(ات) FB2 الخاصة بك إلى PDF بنجاح!"
+        },
+        "djvuToPdf": {
+            "uploadLabel": "رفع ملف DJVU",
+            "uploadDescription": "اسحب وأفلت ملف DJVU هنا، أو انقر للتصفح.",
+            "optionsTitle": "خيارات التحويل",
+            "dpiLabel": "DPI المخرجات",
+            "dpiHint": "كلما ارتفع الـ DPI زاد حجم الملف وجودته",
+            "qualityLabel": "جودة الصورة",
+            "qualityHint": "جودة ضغط JPEG للصفحات",
+            "convertButton": "تحويل إلى PDF",
+            "successTitle": "تم التحويل بنجاح!",
+            "successMessage": "تم تحويل ملف DJVU الخاص بك إلى PDF بنجاح!"
+        },
+        "deskewPdf": {
+            "uploadLabel": "رفع ملفات PDF الممسوحة ضوئياً",
+            "uploadDescription": "اسحب وأفلت ملفات PDF هنا. يمكنك معالجة ما يصل إلى 10 ملفات في وقت واحد.",
+            "filesTitle": "الملفات المراد تعديل ميلها",
+            "optionsTitle": "خيارات تعديل الميل",
+            "thresholdLabel": "عتبة الكشف",
+            "thresholdDesc": "القيم الأعلى تكتشف زوايا ميل أكثر دقة. الافتراضي: 10",
+            "dpiLabel": "DPI للتحليل",
+            "dpiDesc": "يوفر الـ DPI الأعلى كشفاً أكثر دقة ولكنه يستغرق وقتاً أطول.",
+            "processButton": "تعديل ميل ملفات PDF",
+            "downloadAllZip": "تحميل الكل كملف ZIP",
+            "successMessage": "تم تعديل ميل ملف(ات) PDF بنجاح!"
+        },
+        "pdfBooklet": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF لإنشاء تخطيط كتيب.",
+            "optionsTitle": "خيارات الكتيب",
+            "gridModeLabel": "وضع الشبكة",
+            "gridModeDesc": "1x2 هو المعيار للكتيبات. استخدم شبكات أكبر لتوفير الورق.",
+            "paperSizeLabel": "حجم الورق",
+            "orientationLabel": "الاتجاه",
+            "rotationLabel": "تدوير الصفحة",
+            "paddingLabel": "الهوامش",
+            "previewLabel": "معاينة التخطيط",
+            "previewDesc": "تُظهر هذه المعاينة كيفية ترتيب الصفحات في كل ورقة.",
+            "createButton": "إنشاء كتيب",
+            "successMessage": "تم إنشاء الكتيب بنجاح! انقر على تحميل للحفظ."
+        },
+        "rasterizePdf": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF لتحويله إلى صور.",
+            "optionsTitle": "خيارات المخرجات",
+            "dpiLabel": "الدقة (DPI)",
+            "formatLabel": "تنسيق المخرجات",
+            "qualityLabel": "الجودة",
+            "pageRangeLabel": "نطاق الصفحات (اختياري)",
+            "pageRangeDesc": "اتركه فارغاً لتحويل جميع الصفحات.",
+            "bgColorLabel": "لون الخلفية",
+            "convertButton": "تحويل إلى صور",
+            "successMessage": "تم إنشاء الصور بنجاح! انقر على تحميل للحفظ."
+        },
+        "markdownToPdf": {
+            "uploadLabel": "رفع ملف Markdown",
+            "uploadDescription": "اسحب وأفلت ملف .md أو .markdown لتحويله إلى PDF.",
+            "manualInput": "كتابة Markdown",
+            "uploadFile": "رفع ملف",
+            "editorLabel": "محرر Markdown",
+            "previewLabel": "معاينة",
+            "showPreview": "إظهار المعاينة",
+            "hidePreview": "إخفاء المعاينة",
+            "optionsTitle": "خيارات التحويل",
+            "themeLabel": "الثيم",
+            "pageSizeLabel": "حجم الصفحة",
+            "gfmLabel": "تمكين GitHub Flavored Markdown (جداول، قوائم مهام، إلخ.)",
+            "syntaxHighlightLabel": "تمكين تمييز بناء الجملة لمجموعات الأكواد",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم إنشاء ملف PDF بنجاح! انقر على تحميل للحفظ."
+        },
+        "emailToPdf": {
+            "uploadLabel": "رفع ملف بريد إلكتروني",
+            "uploadDescription": "اسحب وأفلت ملف بريد إلكتروني (.eml) لتحويله إلى PDF.",
+            "optionsTitle": "خيارات التحويل",
+            "pageSizeLabel": "حجم الصفحة",
+            "includeCcBccLabel": "تضمين حقول CC/BCC",
+            "includeAttachmentsLabel": "تضمين قائمة المرفقات",
+            "timezoneLabel": "المنطقة الزمنية",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل البريد الإلكتروني بنجاح!"
+        },
+        "cbzToPdf": {
+            "uploadLabel": "رفع ملف CBZ",
+            "uploadDescription": "اسحب وأفلت أرشيف قصص مصورة (.cbz) لتحويله إلى PDF.",
+            "optionsTitle": "خيارات التحويل",
+            "pageSizeLabel": "حجم الصفحة",
+            "qualityLabel": "جودة الصورة",
+            "preserveAspectLabel": "الحفاظ على نسبة العرض إلى الارتفاع",
+            "convertButton": "تحويل إلى PDF",
+            "successMessage": "تم تحويل القصة المصورة بنجاح!"
+        },
+        "pdfToPdfa": {
+            "uploadLabel": "رفع ملفات PDF",
+            "uploadDescription": "اسحب وأفلت ملفات PDF لتحويلها إلى تنسيق PDF/A.",
+            "filesTitle": "الملفات المراد تحويلها",
+            "optionsTitle": "خيارات PDF/A",
+            "levelLabel": "مستوى PDF/A",
+            "embedFontsLabel": "تضمين جميع الخطوط",
+            "flattenTransparencyLabel": "تسطيح الشفافية (مطلوب لـ PDF/A-1b)",
+            "convertButton": "تحويل إلى PDF/A",
+            "downloadAllZip": "تحميل الكل كملف ZIP",
+            "successMessage": "تم تحويل ملف(ات) PDF إلى PDF/A بنجاح!"
+        },
+        "fontToOutline": {
+            "uploadLabel": "رفع ملفات PDF",
+            "uploadDescription": "اسحب وأفلت ملفات PDF لتحويل الخطوط إلى خطوط خارجية (Outlines).",
+            "filesTitle": "الملفات",
+            "optionsTitle": "الخيارات",
+            "dpiLabel": "DPI للتنقيط",
+            "convertButton": "تحويل الخطوط إلى خطوط خارجية",
+            "downloadAllZip": "تحميل الكل كملف ZIP",
+            "successMessage": "تم تحويل ملف(ات) PDF بنجاح!"
+        },
+        "extractTables": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF لاستخراج الجداول منه.",
+            "optionsTitle": "خيارات الاستخراج",
+            "formatLabel": "تنسيق المخرجات",
+            "pageRangeLabel": "نطاق الصفحات (اختياري)",
+            "minColumnsLabel": "أقل عدد من الأعمدة",
+            "minRowsLabel": "أقل عدد من الصفوف",
+            "includePageNumbersLabel": "تضمين أرقام الصفحات في المخرجات",
+            "extractButton": "استخراج الجداول",
+            "successMessage": "تم استخراج الجداول بنجاح! انقر على تحميل للحفظ."
+        },
+        "ocgManager": {
+            "uploadLabel": "رفع ملف PDF",
+            "uploadDescription": "اسحب وأفلت ملف PDF لإدارة طبقاته (OCG).",
+            "layersTitle": "طبقات PDF",
+            "noLayers": "لا يحتوي هذا الملف على طبقات (OCG).",
+            "addLayerLabel": "إضافة طبقة جديدة",
+            "successMessage": "تم حفظ تغييرات الطبقات بنجاح!"
+        },
+        "pdfReader": {
+            "uploadLabel": "فتح ملف PDF",
+            "uploadDescription": "افتح ملف PDF للقراءة والمعاينة."
         }
     }
 }

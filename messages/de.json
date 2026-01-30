@@ -544,12 +544,13 @@
       "placeholder": "Werkzeuge suchen...",
       "noResults": "Keine Werkzeuge für \"{query}\" gefunden"
     },
-    "relatedTools": "Das könnte Ihnen auch gefallen",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "relatedTools": "Passende Tools",
+    "about": "Über dieses Tool",
+    "howToUse": "Bedienungsanleitung",
+    "useCases": "Anwendungsfälle",
+    "faq": "Häufig gestellte Fragen",
+    "comingSoon": "Dieses Tool wird bald verfügbar sein.",
+    "successTitle": "Konvertierung erfolgreich!",
     "favorite": {
       "add": "Zu Favoriten hinzufügen",
       "remove": "Aus Favoriten entfernen",
@@ -1680,10 +1681,32 @@
       "success": "Table of contents generated successfully!"
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "convertButton": "In DOCX umwandeln",
+      "successMessage": "Ihr PDF wurde erfolgreich in DOCX umgewandelt! Klicken Sie auf die Schaltfläche Download, um Ihre Datei zu speichern."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "extractNote": "Die Tabellen auf jeder Seite werden in separate Blätter der Excel-Datei extrahiert.",
+      "convertButton": "In Excel umwandeln",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Die Tabellen in Ihrem PDF wurden nach Excel extrahiert."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "dpiLabel": "Bildqualität (DPI)",
+      "dpiHint": "Höhere DPI bedeuten bessere Qualität, aber größere Dateigröße.",
+      "lowSet": "Niedrig (72 DPI - kleine Datei)",
+      "mediumSet": "Mittel (150 DPI - Standard)",
+      "highSet": "Hoch (200 DPI - hohe Qualität)",
+      "veryHighSet": "Sehr hoch (300 DPI - Druckqualität)",
+      "convertButton": "In PowerPoint umwandeln",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Ihr PDF wurde in eine PowerPoint-Präsentation umgewandelt."
     },
     "wordToPdf": {
       "uploadLabel": "Word-Dokument hochladen",
@@ -1752,79 +1775,129 @@
       "successMessage": "Ihre DJVU-Datei wurde erfolgreich in PDF konvertiert!"
     },
     "deskewPdf": {
-      "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF-Dateien zum Begradigen hierher ziehen.",
-      "optionsTitle": "Begradigen-Optionen",
-      "processButton": "PDF begradigen",
-      "successMessage": "PDF erfolgreich begradigt!"
+      "uploadLabel": "Gescannte PDF-Dateien hochladen",
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher. Sie können bis zu 10 Dateien gleichzeitig verarbeiten.",
+      "filesTitle": "Zu begradigende Dateien",
+      "optionsTitle": "Begradigungsoptionen",
+      "thresholdLabel": "Erkennungsschwelle",
+      "thresholdDesc": "Höhere Werte erkennen subtilere Schräglagen. Standard: 10",
+      "dpiLabel": "Analyse-DPI",
+      "dpiDesc": "Höhere DPI ermöglichen eine genauere Erkennung, dauern aber länger.",
+      "processButton": "PDFs begradigen",
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "PDF-Datei(en) erfolgreich begradigt!"
     },
     "pdfBooklet": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF für Broschüren-Layout hochladen.",
-      "optionsTitle": "Broschüren-Optionen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um ein Broschüren-Layout zu erstellen.",
+      "optionsTitle": "Broschürenoptionen",
+      "gridModeLabel": "Gittermodus",
+      "gridModeDesc": "1x2 ist der Standard für Broschüren. Verwenden Sie größere Gitter, um Papier zu sparen.",
+      "paperSizeLabel": "Papierformat",
+      "orientationLabel": "Ausrichtung",
+      "rotationLabel": "Seitenrotation",
+      "paddingLabel": "Polsterung",
+      "previewLabel": "Layout-Vorschau",
+      "previewDesc": "Diese Vorschau zeigt, wie die Seiten auf jedem Blatt angeordnet werden.",
       "createButton": "Broschüre erstellen",
-      "successMessage": "Broschüre erfolgreich erstellt!"
+      "successMessage": "Broschüre erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "rasterizePdf": {
-      "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF zum Rastern hochladen.",
-      "optionsTitle": "Raster-Optionen",
-      "rasterizeButton": "PDF rastern",
-      "successMessage": "PDF erfolgreich gerastert!"
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um sie in Bilder umzuwandeln.",
+      "optionsTitle": "Ausgabeoptionen",
+      "dpiLabel": "Auflösung (DPI)",
+      "formatLabel": "Ausgabeformat",
+      "qualityLabel": "Qualität",
+      "pageRangeLabel": "Seitenbereich (optional)",
+      "pageRangeDesc": "Leer lassen, um alle Seiten zu konvertieren.",
+      "bgColorLabel": "Hintergrundfarbe",
+      "convertButton": "In Bilder konvertieren",
+      "successMessage": "Bilder erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "markdownToPdf": {
       "uploadLabel": "Markdown-Datei hochladen",
-      "uploadDescription": "Markdown-Datei für PDF-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie eine .md- oder .markdown-Datei hierher, um sie in PDF umzuwandeln.",
+      "manualInput": "Markdown schreiben",
+      "uploadFile": "Datei hochladen",
+      "editorLabel": "Markdown-Editor",
+      "previewLabel": "Vorschau",
+      "showPreview": "Vorschau anzeigen",
+      "hidePreview": "Vorschau ausblenden",
       "optionsTitle": "Konvertierungsoptionen",
+      "themeLabel": "Thema",
+      "pageSizeLabel": "Seitenformat",
+      "gfmLabel": "GitHub Flavored Markdown aktivieren (Tabellen, Aufgabenlisten usw.)",
+      "syntaxHighlightLabel": "Syntax-Highlighting für Codeblöcke aktivieren",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "Markdown erfolgreich in PDF konvertiert!"
+      "successMessage": "PDF erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "emailToPdf": {
       "uploadLabel": "E-Mail-Datei hochladen",
-      "uploadDescription": "EML-Datei für PDF-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie eine E-Mail-Datei (.eml) hierher, um sie in PDF umzuwandeln.",
       "optionsTitle": "Konvertierungsoptionen",
+      "pageSizeLabel": "Seitenformat",
+      "includeCcBccLabel": "CC/BCC-Felder einschließen",
+      "includeAttachmentsLabel": "Anhangsliste einschließen",
+      "timezoneLabel": "Zeitzone",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "E-Mail erfolgreich in PDF konvertiert!"
+      "successMessage": "E-Mail erfolgreich konvertiert!"
     },
     "cbzToPdf": {
       "uploadLabel": "CBZ-Datei hochladen",
-      "uploadDescription": "CBZ-Comic-Archiv hochladen.",
+      "uploadDescription": "Ziehen Sie ein Comic-Archiv (.cbz) hierher, um es in PDF umzuwandeln.",
       "optionsTitle": "Konvertierungsoptionen",
+      "pageSizeLabel": "Seitenformat",
+      "qualityLabel": "Bildqualität",
+      "preserveAspectLabel": "Seitenverhältnis beibehalten",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "CBZ erfolgreich in PDF konvertiert!"
+      "successMessage": "Comic erfolgreich konvertiert!"
     },
     "pdfToPdfa": {
       "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF für PDF/A-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher, um sie in das PDF/A-Format zu konvertieren.",
+      "filesTitle": "Zu konvertierende Dateien",
       "optionsTitle": "PDF/A-Optionen",
+      "levelLabel": "PDF/A-Level",
+      "embedFontsLabel": "Alle Schriftarten einbetten",
+      "flattenTransparencyLabel": "Transparenz reduzieren (für PDF/A-1b erforderlich)",
       "convertButton": "In PDF/A konvertieren",
-      "successMessage": "PDF/A erfolgreich erstellt!"
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "Datei(en) erfolgreich in PDF/A konvertiert!"
     },
     "fontToOutline": {
       "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF zum Konvertieren von Schriften in Pfade hochladen.",
-      "optionsTitle": "Konvertierungsoptionen",
-      "convertButton": "Schriften konvertieren",
-      "successMessage": "Schriften erfolgreich in Pfade konvertiert!"
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher, um Schriftarten in Pfade umzuwandeln.",
+      "filesTitle": "Dateien",
+      "optionsTitle": "Optionen",
+      "dpiLabel": "Rasterisierungs-DPI",
+      "convertButton": "Schriftarten in Pfade umwandeln",
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "Datei(en) erfolgreich konvertiert!"
     },
     "extractTables": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF für Tabellenextraktion hochladen.",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um Tabellen zu extrahieren.",
       "optionsTitle": "Extraktionsoptionen",
+      "formatLabel": "Ausgabeformat",
+      "pageRangeLabel": "Seitenbereich (optional)",
+      "minColumnsLabel": "Min. Spalten",
+      "minRowsLabel": "Min. Zeilen",
+      "includePageNumbersLabel": "Seitenzahlen in Ausgabe einschließen",
       "extractButton": "Tabellen extrahieren",
-      "successMessage": "Tabellen erfolgreich extrahiert!"
+      "successMessage": "Tabellen erfolgreich extrahiert! Klicken Sie auf Download zum Speichern."
     },
     "ocgManager": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF zum Verwalten von Ebenen hochladen.",
-      "layersTitle": "PDF-Ebenen",
-      "noLayers": "Dieses PDF hat keine Ebenen.",
-      "addLayerLabel": "Neue Ebene hinzufügen",
-      "successMessage": "Ebenenänderungen gespeichert!"
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um Layer (OCG) zu verwalten.",
+      "layersTitle": "PDF-Layer",
+      "noLayers": "Dieses PDF hat keine Layer (OCG).",
+      "addLayerLabel": "Neuen Layer hinzufügen",
+      "successMessage": "Layer-Änderungen erfolgreich gespeichert!"
     },
     "pdfReader": {
       "uploadLabel": "PDF-Datei öffnen",
-      "uploadDescription": "PDF zum Lesen öffnen."
+      "uploadDescription": "Öffnen Sie eine PDF-Datei zum Lesen und Anzeigen."
     }
   }
 }

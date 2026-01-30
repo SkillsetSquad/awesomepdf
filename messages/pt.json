@@ -527,29 +527,30 @@
     "library": "Biblioteca"
   },
   "toolsPage": {
-    "title": "Professional PDF Tools",
-    "subtitle": "{count}+ free, secure, and easy-to-use tools for all your PDF needs.",
-    "filters": "Filters",
-    "allTools": "All Tools",
-    "clearAll": "Clear all",
-    "clearFilters": "Clear filters",
-    "showingAll": "Showing all {count} tools",
-    "showingFiltered": "Showing {filtered} of {total} tools",
-    "forQuery": "for \"{query}\"",
-    "inCategory": "in {category}",
-    "noToolsFound": "No tools found"
+    "title": "Ferramentas PDF Profissionais",
+    "subtitle": "Mais de {count} ferramentas gratuitas, seguras e fáceis de usar para todas as suas necessidades de PDF.",
+    "filters": "Filtros",
+    "allTools": "Todas as Ferramentas",
+    "clearAll": "Limpar tudo",
+    "clearFilters": "Limpar filtros",
+    "showingAll": "Mostrando todas as {count} ferramentas",
+    "showingFiltered": "Mostrando {filtered} de {total} ferramentas",
+    "forQuery": "para \"{query}\"",
+    "inCategory": "em {category}",
+    "noToolsFound": "Nenhuma ferramenta encontrada"
   },
   "tools": {
     "search": {
       "placeholder": "Pesquisar ferramentas...",
       "noResults": "Nenhuma ferramenta encontrada para \"{query}\""
     },
-    "relatedTools": "Você Também Pode Gostar",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "relatedTools": "Ferramentas relacionadas",
+    "about": "Sobre esta ferramenta",
+    "howToUse": "Como usar",
+    "useCases": "Casos de uso",
+    "faq": "Perguntas frequentes",
+    "comingSoon": "Esta ferramenta estará disponível em breve.",
+    "successTitle": "Conversão concluída com sucesso!",
     "favorite": {
       "add": "Adicionar aos favoritos",
       "remove": "Remover dos favoritos",
@@ -566,14 +567,14 @@
       "hint": "Qualidade mais alta produz arquivos maiores e leva mais tempo para converter."
     },
     "mergePdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Drag and drop PDF files here, or click to browse. You can add multiple files.",
-      "filesTitle": "Files to Merge",
-      "reorderHint": "Drag and drop to reorder files. Files will be merged in the order shown.",
-      "optionsTitle": "Merge Options",
-      "preserveBookmarks": "Preserve bookmarks (create bookmark for each file)",
-      "mergeButton": "Merge PDFs",
-      "successMessage": "PDFs merged successfully! Click the download button to save your file."
+      "uploadLabel": "Enviar arquivos PDF",
+      "uploadDescription": "Arraste e solte arquivos PDF aqui, ou clique para procurar. Você pode adicionar vários arquivos.",
+      "filesTitle": "Arquivos para mesclar",
+      "reorderHint": "Arraste e solte para reordenar os arquivos. Os arquivos serão mesclados na ordem mostrada.",
+      "optionsTitle": "Opções de mesclagem",
+      "preserveBookmarks": "Preservar marcadores (criar marcador para cada arquivo)",
+      "mergeButton": "Mesclar PDFs",
+      "successMessage": "PDFs mesclados com sucesso! Clique no botão de download para salvar seu arquivo."
     },
     "splitPdf": {
       "uploadLabel": "Enviar arquivo PDF",
@@ -618,12 +619,12 @@
       "successMessage": "Pages deleted successfully! Click the download button to save your file."
     },
     "extractPages": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "selectTitle": "Select Pages to Extract",
-      "selectHint": "Click pages to select them, or enter page numbers/ranges above.",
-      "extractButton": "Extract Pages",
-      "successMessage": "Pages extracted successfully! Click the download button to save your file."
+      "uploadLabel": "Enviar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF aqui, ou clique para procurar.",
+      "selectTitle": "Selecionar páginas para extrair",
+      "selectHint": "Clique nas páginas para selecioná-las, ou insira os números/intervalos das páginas acima.",
+      "extractButton": "Extrair páginas",
+      "successMessage": "Páginas extraídas com sucesso! Clique no botão de download para salvar seu arquivo."
     },
     "posterizePdf": {
       "uploadLabel": "Upload PDF File",
@@ -1680,10 +1681,32 @@
       "success": "Table of contents generated successfully!"
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF aqui, ou clique para procurar.",
+      "convertButton": "Converter para DOCX",
+      "successMessage": "Seu PDF foi convertido para DOCX com sucesso! Clique no botão de download para salvar seu arquivo."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF aqui, ou clique para procurar.",
+      "extractNote": "As tabelas de cada página serão extraídas para planilhas individuais no arquivo Excel.",
+      "convertButton": "Converter para Excel",
+      "successTitle": "Conversão concluída com sucesso!",
+      "successMessage": "As tabelas do seu PDF foram extraídas para o Excel."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF aqui, ou clique para procurar.",
+      "optionsTitle": "Opções de conversão",
+      "dpiLabel": "Qualidade da imagem (DPI)",
+      "dpiHint": "DPI mais alto significa melhor qualidade, mas um arquivo maior.",
+      "lowSet": "Baixa (72 DPI - arquivo leve)",
+      "mediumSet": "Média (150 DPI - padrão)",
+      "highSet": "Alta (200 DPI - alta qualidade)",
+      "veryHighSet": "Muito alta (300 DPI - qualidade de impressão)",
+      "convertButton": "Converter para PowerPoint",
+      "successTitle": "Conversão concluída com sucesso!",
+      "successMessage": "Seu PDF foi convertido em uma apresentação do PowerPoint."
     },
     "wordToPdf": {
       "uploadLabel": "Carregar documento Word",
@@ -1752,79 +1775,129 @@
       "successMessage": "Seu arquivo DJVU foi convertido para PDF com sucesso!"
     },
     "deskewPdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Upload PDFs to straighten.",
-      "optionsTitle": "Options",
-      "processButton": "Deskew PDF",
-      "successMessage": "PDF deskewed!"
+      "uploadLabel": "Carregar arquivos PDF digitalizados",
+      "uploadDescription": "Arraste e solte arquivos PDF aqui. Você pode processar até 10 arquivos por vez.",
+      "filesTitle": "Arquivos para alinhar",
+      "optionsTitle": "Opções de alinhamento",
+      "thresholdLabel": "Limiar de detecção",
+      "thresholdDesc": "Valores mais altos detectam ângulos de inclinação mais sutis. Padrão: 10",
+      "dpiLabel": "DPI de análise",
+      "dpiDesc": "Um DPI mais alto fornece uma detecção mais precisa, mas leva mais tempo.",
+      "processButton": "Alinhar PDFs",
+      "downloadAllZip": "Baixar tudo como ZIP",
+      "successMessage": "Arquivo(s) PDF alinhado(s) com sucesso!"
     },
     "pdfBooklet": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload PDF for booklet.",
-      "optionsTitle": "Options",
-      "createButton": "Create",
-      "successMessage": "Booklet created!"
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF para criar um layout de livreto.",
+      "optionsTitle": "Opções de livreto",
+      "gridModeLabel": "Modo de grade",
+      "gridModeDesc": "1x2 é o padrão para livretos. Use grades maiores para economizar papel.",
+      "paperSizeLabel": "Tamanho do papel",
+      "orientationLabel": "Orientação",
+      "rotationLabel": "Rotação da página",
+      "paddingLabel": "Preenchimento",
+      "previewLabel": "Visualização do layout",
+      "previewDesc": "Esta visualização mostra como as páginas serão organizadas em cada folha.",
+      "createButton": "Criar livreto",
+      "successMessage": "Livreto criado com sucesso! Clique em baixar para salvar."
     },
     "rasterizePdf": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to rasterize.",
-      "optionsTitle": "Options",
-      "rasterizeButton": "Rasterize",
-      "successMessage": "Rasterized!"
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF para converter em imagens.",
+      "optionsTitle": "Opções de saída",
+      "dpiLabel": "Resolução (DPI)",
+      "formatLabel": "Formato de saída",
+      "qualityLabel": "Qualidade",
+      "pageRangeLabel": "Intervalo de páginas (opcional)",
+      "pageRangeDesc": "Deixe vazio para converter todas as páginas.",
+      "bgColorLabel": "Cor de fundo",
+      "convertButton": "Converter em imagens",
+      "successMessage": "Imagens criadas com sucesso! Clique em baixar para salvar."
     },
     "markdownToPdf": {
-      "uploadLabel": "Upload Markdown",
-      "uploadDescription": "Upload .md file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Carregar arquivo Markdown",
+      "uploadDescription": "Arraste e solte um arquivo .md ou .markdown para converter em PDF.",
+      "manualInput": "Escrever Markdown",
+      "uploadFile": "Carregar arquivo",
+      "editorLabel": "Editor Markdown",
+      "previewLabel": "Pré-visualização",
+      "showPreview": "Mostrar pré-visualização",
+      "hidePreview": "Ocultar pré-visualização",
+      "optionsTitle": "Opções de conversão",
+      "themeLabel": "Tema",
+      "pageSizeLabel": "Tamanho da página",
+      "gfmLabel": "Ativar GitHub Flavored Markdown (tabelas, listas de tarefas, etc.)",
+      "syntaxHighlightLabel": "Ativar realce de sintaxe para blocos de código",
+      "convertButton": "Converter em PDF",
+      "successMessage": "PDF criado com sucesso! Clique em baixar para salvar."
     },
     "emailToPdf": {
-      "uploadLabel": "Upload Email",
-      "uploadDescription": "Upload .eml file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Carregar arquivo de e-mail",
+      "uploadDescription": "Arraste e solte um arquivo de e-mail (.eml) para converter em PDF.",
+      "optionsTitle": "Opções de conversão",
+      "pageSizeLabel": "Tamanho da página",
+      "includeCcBccLabel": "Incluir campos CC/BCC",
+      "includeAttachmentsLabel": "Incluir lista de anexos",
+      "timezoneLabel": "Fuso horário",
+      "convertButton": "Converter em PDF",
+      "successMessage": "E-mail convertido com sucesso!"
     },
     "cbzToPdf": {
-      "uploadLabel": "Upload CBZ",
-      "uploadDescription": "Upload comic.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Carregar arquivo CBZ",
+      "uploadDescription": "Arraste e solte um arquivo de quadrinhos (.cbz) para converter em PDF.",
+      "optionsTitle": "Opções de conversão",
+      "pageSizeLabel": "Tamanho da página",
+      "qualityLabel": "Qualidade da imagem",
+      "preserveAspectLabel": "Preservar proporção",
+      "convertButton": "Converter em PDF",
+      "successMessage": "Quadrinhos convertidos com sucesso!"
     },
     "pdfToPdfa": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload for PDF/A.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "PDF/A created!"
+      "uploadLabel": "Carregar arquivos PDF",
+      "uploadDescription": "Arraste e solte arquivos PDF para converter para o formato PDF/A.",
+      "filesTitle": "Arquivos para converter",
+      "optionsTitle": "Opções de PDF/A",
+      "levelLabel": "Nível PDF/A",
+      "embedFontsLabel": "Incorporar todas as fontes",
+      "flattenTransparencyLabel": "Achatar transparência (necessário para PDF/A-1b)",
+      "convertButton": "Converter em PDF/A",
+      "downloadAllZip": "Baixar tudo como ZIP",
+      "successMessage": "Arquivo(s) convertido(s) para PDF/A com sucesso!"
     },
     "fontToOutline": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to outline fonts.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Fonts outlined!"
+      "uploadLabel": "Carregar arquivos PDF",
+      "uploadDescription": "Arraste e solte arquivos PDF para converter fontes em contornos.",
+      "filesTitle": "Arquivos",
+      "optionsTitle": "Opções",
+      "dpiLabel": "DPI de rasterização",
+      "convertButton": "Converter fontes em contornos",
+      "downloadAllZip": "Baixar tudo como ZIP",
+      "successMessage": "Arquivo(s) convertido(s) com sucesso!"
     },
     "extractTables": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to extract tables.",
-      "optionsTitle": "Options",
-      "extractButton": "Extract",
-      "successMessage": "Extracted!"
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um arquivo PDF para extrair tabelas.",
+      "optionsTitle": "Opções de extração",
+      "formatLabel": "Formato de saída",
+      "pageRangeLabel": "Intervalo de páginas (opcional)",
+      "minColumnsLabel": "Colunas mín.",
+      "minRowsLabel": "Linhas mín.",
+      "includePageNumbersLabel": "Incluir números de página na saída",
+      "extractButton": "Extrair tabelas",
+      "successMessage": "Tabelas extraídas com sucesso! Clique em baixar para salvar."
     },
     "ocgManager": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to manage layers.",
-      "layersTitle": "Layers",
-      "noLayers": "No layers.",
-      "addLayerLabel": "Add Layer",
-      "successMessage": "Saved!"
+      "uploadLabel": "Carregar arquivo PDF",
+      "uploadDescription": "Arraste e solte um PDF para gerenciar suas camadas (OCG).",
+      "layersTitle": "Camadas do PDF",
+      "noLayers": "Este PDF não possui camadas (OCG).",
+      "addLayerLabel": "Adicionar nova camada",
+      "successMessage": "Alterações nas camadas salvas com sucesso!"
     },
     "pdfReader": {
-      "uploadLabel": "Open PDF",
-      "uploadDescription": "Open PDF to read."
+      "uploadLabel": "Abrir arquivo PDF",
+      "uploadDescription": "Abra um arquivo PDF para ler e visualizar."
     }
   }
 }

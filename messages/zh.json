@@ -665,6 +665,7 @@
     "useCases": "使用场景",
     "faq": "常见问题",
     "comingSoon": "此工具即将推出。",
+    "successTitle": "转换成功！",
     "favorite": {
       "add": "添加收藏",
       "remove": "取消收藏",
@@ -1901,6 +1902,28 @@
       "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
       "convertButton": "转换为DOCX",
       "successMessage": "您的PDF已成功转换为DOCX！点击下载按钮保存文件。"
+    },
+    "pdfToExcel": {
+      "uploadLabel": "上传 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到这里，或点击浏览选择文件。",
+      "extractNote": "每一页的表格都将提取到 Excel 文件中的独立工作表中。",
+      "convertButton": "转换为 Excel",
+      "successTitle": "转换成功！",
+      "successMessage": "您的 PDF 表格已提取到 Excel。"
+    },
+    "pdfToPptx": {
+      "uploadLabel": "上传 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到这里，或点击浏览选择文件。",
+      "optionsTitle": "转换选项",
+      "dpiLabel": "图像质量 (DPI)",
+      "dpiHint": "较高的 DPI 会产生质量更好的幻灯片，但文件体积也会更大。",
+      "lowSet": "低 (72 DPI - 文件较小)",
+      "mediumSet": "中 (150 DPI - 平衡)",
+      "highSet": "高 (200 DPI - 质量更好)",
+      "veryHighSet": "极高 (300 DPI - 最佳质量)",
+      "convertButton": "转换为 PowerPoint",
+      "successTitle": "转换成功！",
+      "successMessage": "您的 PDF 已成功转换为 PowerPoint。每一页现在都是具有高质量图像的幻灯片。"
     },
     "wordToPdf": {
       "uploadLabel": "上传Word文档",

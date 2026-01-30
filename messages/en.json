@@ -665,6 +665,7 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "successTitle": "Conversion Successful!",
     "favorite": {
       "add": "Add to Favorites",
       "remove": "Remove from Favorites",
@@ -1910,6 +1911,28 @@
       "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
       "convertButton": "Convert to DOCX",
       "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "extractNote": "Each page's tables will be extracted to separate sheets in the Excel file.",
+      "convertButton": "Convert to Excel",
+      "successTitle": "Conversion Successful!",
+      "successMessage": "Your PDF tables have been extracted to Excel."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "optionsTitle": "Conversion Options",
+      "dpiLabel": "Image Quality (DPI)",
+      "dpiHint": "Higher DPI produces better quality slides but larger file sizes.",
+      "lowSet": "Low (72 DPI - smaller file)",
+      "mediumSet": "Medium (150 DPI - balanced)",
+      "highSet": "High (200 DPI - better quality)",
+      "veryHighSet": "Very High (300 DPI - best quality)",
+      "convertButton": "Convert to PowerPoint",
+      "successTitle": "Conversion Successful!",
+      "successMessage": "Your PDF has been converted to PowerPoint. Each page is now a slide with full-quality images."
     },
     "wordToPdf": {
       "uploadLabel": "Upload Word Document",

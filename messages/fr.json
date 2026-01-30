@@ -544,12 +544,13 @@
       "placeholder": "Rechercher des outils...",
       "noResults": "Aucun outil trouvé pour \"{query}\""
     },
-    "relatedTools": "Vous Aimerez Aussi",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "relatedTools": "Vous aimerez aussi",
+    "about": "À propos de cet outil",
+    "howToUse": "Comment utiliser",
+    "useCases": "Cas d'utilisation",
+    "faq": "Foire aux questions",
+    "comingSoon": "Cet outil sera bientôt disponible.",
+    "successTitle": "Conversion réussie !",
     "favorite": {
       "add": "Ajouter aux favoris",
       "remove": "Retirer des favoris",
@@ -1680,10 +1681,32 @@
       "success": "Table of contents generated successfully!"
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF ici, ou cliquez pour parcourir.",
+      "convertButton": "Convertir en DOCX",
+      "successMessage": "Votre PDF a été converti en DOCX avec succès ! Cliquez sur le bouton de téléchargement pour enregistrer votre fichier."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF ici, ou cliquez pour parcourir.",
+      "extractNote": "Les tableaux de chaque page seront extraits dans des feuilles séparées du fichier Excel.",
+      "convertButton": "Convertir en Excel",
+      "successTitle": "Conversion réussie !",
+      "successMessage": "Les tableaux de votre PDF ont été extraits vers Excel."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF ici, ou cliquez pour parcourir.",
+      "optionsTitle": "Options de conversion",
+      "dpiLabel": "Qualité d'image (DPI)",
+      "dpiHint": "Un DPI plus élevé signifie une meilleure qualité mais une taille de fichier plus importante.",
+      "lowSet": "Basse (72 DPI - fichier léger)",
+      "mediumSet": "Moyenne (150 DPI - standard)",
+      "highSet": "Haute (200 DPI - haute qualité)",
+      "veryHighSet": "Très haute (300 DPI - qualité impression)",
+      "convertButton": "Convertir en PowerPoint",
+      "successTitle": "Conversion réussie !",
+      "successMessage": "Votre PDF a été converti en présentation PowerPoint."
     },
     "wordToPdf": {
       "uploadLabel": "Télécharger un document Word",
@@ -1752,79 +1775,129 @@
       "successMessage": "Votre fichier DJVU a été converti en PDF avec succès !"
     },
     "deskewPdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Upload PDFs to straighten.",
-      "optionsTitle": "Options",
-      "processButton": "Deskew PDF",
-      "successMessage": "PDF deskewed!"
+      "uploadLabel": "Charger des fichiers PDF scannés",
+      "uploadDescription": "Glissez-déposez des fichiers PDF ici. Vous pouvez traiter jusqu'à 10 fichiers à la fois.",
+      "filesTitle": "Fichiers à redresser",
+      "optionsTitle": "Options de redressement",
+      "thresholdLabel": "Seuil de détection",
+      "thresholdDesc": "Des valeurs plus élevées détectent des angles d'inclinaison plus subtils. Par défaut : 10",
+      "dpiLabel": "DPI d'analyse",
+      "dpiDesc": "Un DPI plus élevé permet une détection plus précise mais prend plus de temps.",
+      "processButton": "Redresser les PDF",
+      "downloadAllZip": "Tout télécharger en ZIP",
+      "successMessage": "Fichier(s) PDF redressé(s) avec succès !"
     },
     "pdfBooklet": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload PDF for booklet.",
-      "optionsTitle": "Options",
-      "createButton": "Create",
-      "successMessage": "Booklet created!"
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF pour créer une mise en page de livret.",
+      "optionsTitle": "Options de livret",
+      "gridModeLabel": "Mode grille",
+      "gridModeDesc": "1x2 est le standard pour les livrets. Utilisez des grilles plus grandes pour économiser du papier.",
+      "paperSizeLabel": "Taille du papier",
+      "orientationLabel": "Orientation",
+      "rotationLabel": "Rotation des pages",
+      "paddingLabel": "Marge interne",
+      "previewLabel": "Aperçu de la mise en page",
+      "previewDesc": "Cet aperçu montre comment les pages seront disposées sur chaque feuille.",
+      "createButton": "Créer le livret",
+      "successMessage": "Livret créé avec succès ! Cliquez sur télécharger pour enregistrer."
     },
     "rasterizePdf": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to rasterize.",
-      "optionsTitle": "Options",
-      "rasterizeButton": "Rasterize",
-      "successMessage": "Rasterized!"
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF pour le convertir en images.",
+      "optionsTitle": "Options de sortie",
+      "dpiLabel": "Résolution (DPI)",
+      "formatLabel": "Format des images",
+      "qualityLabel": "Qualité",
+      "pageRangeLabel": "Plage de pages (optionnel)",
+      "pageRangeDesc": "Laissez vide pour convertir toutes les pages.",
+      "bgColorLabel": "Couleur de fond",
+      "convertButton": "Convertir en images",
+      "successMessage": "Images créées avec succès ! Cliquez sur télécharger pour enregistrer."
     },
     "markdownToPdf": {
-      "uploadLabel": "Upload Markdown",
-      "uploadDescription": "Upload .md file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Charger un fichier Markdown",
+      "uploadDescription": "Glissez-déposez un fichier .md ou .markdown pour le convertir en PDF.",
+      "manualInput": "Écrire du Markdown",
+      "uploadFile": "Charger un fichier",
+      "editorLabel": "Éditeur Markdown",
+      "previewLabel": "Aperçu",
+      "showPreview": "Afficher l'aperçu",
+      "hidePreview": "Masquer l'aperçu",
+      "optionsTitle": "Options de conversion",
+      "themeLabel": "Thème",
+      "pageSizeLabel": "Taille de page",
+      "gfmLabel": "Activer le GitHub Flavored Markdown (tableaux, listes de tâches, etc.)",
+      "syntaxHighlightLabel": "Activer la coloration syntaxique pour les blocs de code",
+      "convertButton": "Convertir en PDF",
+      "successMessage": "PDF créé avec succès ! Cliquez sur télécharger pour enregistrer."
     },
     "emailToPdf": {
-      "uploadLabel": "Upload Email",
-      "uploadDescription": "Upload .eml file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Charger un e-mail",
+      "uploadDescription": "Glissez-déposez un fichier d'e-mail (.eml) pour le convertir en PDF.",
+      "optionsTitle": "Options de conversion",
+      "pageSizeLabel": "Taille de page",
+      "includeCcBccLabel": "Incluer les champs CC/BCC",
+      "includeAttachmentsLabel": "Inclure la liste des pièces jointes",
+      "timezoneLabel": "Fuseau horaire",
+      "convertButton": "Convertir en PDF",
+      "successMessage": "E-mail converti avec succès !"
     },
     "cbzToPdf": {
-      "uploadLabel": "Upload CBZ",
-      "uploadDescription": "Upload comic.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Charger un fichier CBZ",
+      "uploadDescription": "Glissez-déposez une archive de bande dessinée (.cbz) pour la convertir en PDF.",
+      "optionsTitle": "Options de conversion",
+      "pageSizeLabel": "Taille de page",
+      "qualityLabel": "Qualité d'image",
+      "preserveAspectLabel": "Préserver le ratio d'aspect",
+      "convertButton": "Convertir en PDF",
+      "successMessage": "Bande dessinée convertie avec succès !"
     },
     "pdfToPdfa": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload for PDF/A.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "PDF/A created!"
+      "uploadLabel": "Charger des fichiers PDF",
+      "uploadDescription": "Glissez-déposez des fichiers PDF pour les convertir au format PDF/A.",
+      "filesTitle": "Fichiers à convertir",
+      "optionsTitle": "Options PDF/A",
+      "levelLabel": "Niveau PDF/A",
+      "embedFontsLabel": "Incorporer toutes les polices",
+      "flattenTransparencyLabel": "Aplatir la transparence (requis pour PDF/A-1b)",
+      "convertButton": "Convertir en PDF/A",
+      "downloadAllZip": "Tout télécharger en ZIP",
+      "successMessage": "Fichier(s) converti(s) en PDF/A avec succès !"
     },
     "fontToOutline": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to outline fonts.",
+      "uploadLabel": "Charger des fichiers PDF",
+      "uploadDescription": "Glissez-déposez des fichiers PDF pour convertir les polices en tracés.",
+      "filesTitle": "Fichiers",
       "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Fonts outlined!"
+      "dpiLabel": "DPI de rastérisation",
+      "convertButton": "Convertir les polices en tracés",
+      "downloadAllZip": "Tout télécharger en ZIP",
+      "successMessage": "Fichier(s) converti(s) avec succès !"
     },
     "extractTables": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to extract tables.",
-      "optionsTitle": "Options",
-      "extractButton": "Extract",
-      "successMessage": "Extracted!"
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un fichier PDF pour en extraire les tableaux.",
+      "optionsTitle": "Options d'extraction",
+      "formatLabel": "Format de sortie",
+      "pageRangeLabel": "Plage de pages (optionnel)",
+      "minColumnsLabel": "Colonnes min",
+      "minRowsLabel": "Lignes min",
+      "includePageNumbersLabel": "Inclure les numéros de page dans la sortie",
+      "extractButton": "Extraire les tableaux",
+      "successMessage": "Tableaux extraits avec succès ! Cliquez sur télécharger pour enregistrer."
     },
     "ocgManager": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to manage layers.",
-      "layersTitle": "Layers",
-      "noLayers": "No layers.",
-      "addLayerLabel": "Add Layer",
-      "successMessage": "Saved!"
+      "uploadLabel": "Charger un fichier PDF",
+      "uploadDescription": "Glissez-déposez un PDF pour gérer ses calques (OCG).",
+      "layersTitle": "Calques PDF",
+      "noLayers": "Ce PDF n'a pas de calques (OCG).",
+      "addLayerLabel": "Ajouter un nouveau calque",
+      "successMessage": "Modifications des calques enregistrées avec succès !"
     },
     "pdfReader": {
-      "uploadLabel": "Open PDF",
-      "uploadDescription": "Open PDF to read."
+      "uploadLabel": "Ouvrir un fichier PDF",
+      "uploadDescription": "Ouvrez un fichier PDF pour le lire et le consulter."
     }
   }
 }

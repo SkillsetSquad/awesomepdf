@@ -544,12 +544,13 @@
       "placeholder": "搜尋工具...",
       "noResults": "未找到\"{query}\"相關的工具"
     },
-    "relatedTools": "您可能還喜歡",
+    "relatedTools": "相關工具",
     "about": "關於此工具",
-    "howToUse": "如何使用",
+    "howToUse": "使用方法",
     "useCases": "使用場景",
     "faq": "常見問題",
     "comingSoon": "此工具即將推出。",
+    "successTitle": "轉換成功！",
     "favorite": {
       "add": "加入收藏",
       "remove": "取消收藏",
@@ -1679,10 +1680,32 @@
       "removedItems": "已移除："
     },
     "pdfToDocx": {
-      "uploadLabel": "上傳PDF檔案",
-      "uploadDescription": "拖放PDF檔案到此處，或點選瀏覽。",
-      "convertButton": "轉換為DOCX",
-      "successMessage": "您的PDF已成功轉換為DOCX！點選下載按鈕儲存檔案。"
+      "uploadLabel": "上傳 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到這裡，或點擊瀏覽選擇文件。",
+      "convertButton": "轉換為 DOCX",
+      "successMessage": "您的 PDF 已成功轉換為 DOCX！請點擊下載按鈕保存文件。"
+    },
+    "pdfToExcel": {
+      "uploadLabel": "上傳 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到這裡，或點擊瀏覽選擇文件。",
+      "extractNote": "每一頁的表格都將提取到 Excel 文件中的獨立工作表中。",
+      "convertButton": "轉換為 Excel",
+      "successTitle": "轉換成功！",
+      "successMessage": "您的 PDF 表格已提取到 Excel。"
+    },
+    "pdfToPptx": {
+      "uploadLabel": "上傳 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到這裡，或點擊瀏覽選擇文件。",
+      "optionsTitle": "轉換選項",
+      "dpiLabel": "圖像質量 (DPI)",
+      "dpiHint": "DPI 越高，幻燈片質量越好，但文件體積也會越大。",
+      "lowSet": "低 (72 DPI - 文件最小)",
+      "mediumSet": "中 (150 DPI - 標準)",
+      "highSet": "高 (200 DPI - 高清)",
+      "veryHighSet": "最高 (300 DPI - 打印級別)",
+      "convertButton": "轉換為 PowerPoint",
+      "successTitle": "轉換成功！",
+      "successMessage": "您的 PDF 已成功轉換為 PowerPoint 演示文稿。"
     },
     "wordToPdf": {
       "uploadLabel": "上傳Word文件",
@@ -1751,79 +1774,129 @@
       "successMessage": "您的DJVU檔案已成功轉換為PDF！"
     },
     "deskewPdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Upload PDFs to straighten.",
-      "optionsTitle": "Options",
-      "processButton": "Deskew PDF",
-      "successMessage": "PDF deskewed!"
+      "uploadLabel": "上傳掃描的 PDF 檔案",
+      "uploadDescription": "將 PDF 檔案拖放到這裡。您可以一次處理多達 10 個檔案。",
+      "filesTitle": "待校正傾斜的檔案",
+      "optionsTitle": "傾斜校正選項",
+      "thresholdLabel": "檢測閾值",
+      "thresholdDesc": "數值越高，越能檢測到細微的傾斜角度。預設值：10",
+      "dpiLabel": "分析 DPI",
+      "dpiDesc": "DPI 越高，檢測越精確，但耗時也越長。",
+      "processButton": "校正 PDF 傾斜",
+      "downloadAllZip": "全部下載為 ZIP",
+      "successMessage": "已成功校正 PDF 檔案的傾斜！"
     },
     "pdfBooklet": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload PDF for booklet.",
-      "optionsTitle": "Options",
-      "createButton": "Create",
-      "successMessage": "Booklet created!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 檔案以建立小冊子版面。",
+      "optionsTitle": "小冊子選項",
+      "gridModeLabel": "網格模式",
+      "gridModeDesc": "1x2 是小冊子的標準格式。使用更大的網格以節省紙張。",
+      "paperSizeLabel": "紙張大小",
+      "orientationLabel": "方向",
+      "rotationLabel": "頁面旋轉",
+      "paddingLabel": "邊距",
+      "previewLabel": "版面預覽",
+      "previewDesc": "此預覽顯示每一張紙上頁面的排列方式。",
+      "createButton": "建立小冊子",
+      "successMessage": "小冊子建立成功！按一下下載儲存檔案。"
     },
     "rasterizePdf": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to rasterize.",
-      "optionsTitle": "Options",
-      "rasterizeButton": "Rasterize",
-      "successMessage": "Rasterized!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 檔案以轉換為圖片。",
+      "optionsTitle": "輸出選項",
+      "dpiLabel": "解析度 (DPI)",
+      "formatLabel": "輸出格式",
+      "qualityLabel": "品質",
+      "pageRangeLabel": "頁面範圍 (可選)",
+      "pageRangeDesc": "留空則轉換所有頁面。",
+      "bgColorLabel": "背景顏色",
+      "convertButton": "轉換為圖片",
+      "successMessage": "圖片建立成功！按一下下載儲存檔案。"
     },
     "markdownToPdf": {
-      "uploadLabel": "Upload Markdown",
-      "uploadDescription": "Upload .md file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "上傳 Markdown 檔案",
+      "uploadDescription": "拖放 .md 或 .markdown 檔案以轉換為 PDF。",
+      "manualInput": "編寫 Markdown",
+      "uploadFile": "上傳檔案",
+      "editorLabel": "Markdown 編輯器",
+      "previewLabel": "預覽",
+      "showPreview": "顯示預覽",
+      "hidePreview": "隱藏預覽",
+      "optionsTitle": "轉換選項",
+      "themeLabel": "主題",
+      "pageSizeLabel": "頁面大小",
+      "gfmLabel": "啟用 GitHub Flavored Markdown (表格、任務列表等)",
+      "syntaxHighlightLabel": "啟用代碼塊語法高亮",
+      "convertButton": "轉換為 PDF",
+      "successMessage": "PDF 建立成功！按一下下載儲存檔案。"
     },
     "emailToPdf": {
-      "uploadLabel": "Upload Email",
-      "uploadDescription": "Upload .eml file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "上傳電子郵件檔案",
+      "uploadDescription": "拖放電子郵件檔案 (.eml) 以轉換為 PDF。",
+      "optionsTitle": "轉換選項",
+      "pageSizeLabel": "頁面大小",
+      "includeCcBccLabel": "包含抄送/密送欄位",
+      "includeAttachmentsLabel": "包含附件清單",
+      "timezoneLabel": "時區",
+      "convertButton": "轉換為 PDF",
+      "successMessage": "電子郵件轉換成功！"
     },
     "cbzToPdf": {
-      "uploadLabel": "Upload CBZ",
-      "uploadDescription": "Upload comic.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "上傳 CBZ 檔案",
+      "uploadDescription": "拖放漫畫存檔 (.cbz) 以轉換為 PDF。",
+      "optionsTitle": "轉換選項",
+      "pageSizeLabel": "頁面大小",
+      "qualityLabel": "圖片品質",
+      "preserveAspectLabel": "保持長寬比",
+      "convertButton": "轉換為 PDF",
+      "successMessage": "漫畫轉換成功！"
     },
     "pdfToPdfa": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload for PDF/A.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "PDF/A created!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 檔案以轉換為 PDF/A 格式。",
+      "filesTitle": "待轉換檔案",
+      "optionsTitle": "PDF/A 選項",
+      "levelLabel": "PDF/A 級別",
+      "embedFontsLabel": "內嵌所有字體",
+      "flattenTransparencyLabel": "平面化透明度 (PDF/A-1b 必需)",
+      "convertButton": "轉換為 PDF/A",
+      "downloadAllZip": "全部下載為 ZIP",
+      "successMessage": "已成功將檔案轉換為 PDF/A！"
     },
     "fontToOutline": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to outline fonts.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Fonts outlined!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 檔案以將字體轉換為輪廓。",
+      "filesTitle": "檔案",
+      "optionsTitle": "選項",
+      "dpiLabel": "點陣化 DPI",
+      "convertButton": "將字體轉換為輪廓",
+      "downloadAllZip": "全部下載為 ZIP",
+      "successMessage": "檔案轉換成功！"
     },
     "extractTables": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to extract tables.",
-      "optionsTitle": "Options",
-      "extractButton": "Extract",
-      "successMessage": "Extracted!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 檔案以提取表格。",
+      "optionsTitle": "提取選項",
+      "formatLabel": "輸出格式",
+      "pageRangeLabel": "頁面範圍 (可選)",
+      "minColumnsLabel": "最小列數",
+      "minRowsLabel": "最小行數",
+      "includePageNumbersLabel": "在輸出中包含頁碼",
+      "extractButton": "提取表格",
+      "successMessage": "表格提取成功！按一下下載儲存檔案。"
     },
     "ocgManager": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to manage layers.",
-      "layersTitle": "Layers",
-      "noLayers": "No layers.",
-      "addLayerLabel": "Add Layer",
-      "successMessage": "Saved!"
+      "uploadLabel": "上傳 PDF 檔案",
+      "uploadDescription": "拖放 PDF 以管理其圖層 (OCG)。",
+      "layersTitle": "PDF 圖層",
+      "noLayers": "此 PDF 沒有圖層 (OCG)。",
+      "addLayerLabel": "添加新圖層",
+      "successMessage": "圖層更改已成功儲存！"
     },
     "pdfReader": {
-      "uploadLabel": "Open PDF",
-      "uploadDescription": "Open PDF to read."
+      "uploadLabel": "開啟 PDF 檔案",
+      "uploadDescription": "開啟 PDF 檔案進行閱讀和查看。"
     }
   }
 }

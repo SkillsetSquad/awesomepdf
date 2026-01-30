@@ -545,11 +545,12 @@
       "noResults": "「{query}」に一致するツールが見つかりません"
     },
     "relatedTools": "関連ツール",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "about": "このツールについて",
+    "howToUse": "使い方",
+    "useCases": "活用シーン",
+    "faq": "よくある質問",
+    "comingSoon": "このツールは間もなく公開されます。",
+    "successTitle": "変換成功！",
     "favorite": {
       "add": "お気に入りに追加",
       "remove": "お気に入りから削除",
@@ -1680,10 +1681,32 @@
       "success": "Table of contents generated successfully!"
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをここにドラッグ＆ドロップするか、クリックして参照してください。",
+      "convertButton": "DOCXに変換",
+      "successMessage": "PDFが正常にDOCXに変換されました！ダウンロードボタンをクリックして保存してください。"
+    },
+    "pdfToExcel": {
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをここにドラッグ＆ドロップするか、クリックして参照してください。",
+      "extractNote": "各ページの表はExcelファイルの個別のシートに抽出されます。",
+      "convertButton": "Excelに変換",
+      "successTitle": "変換成功！",
+      "successMessage": "PDFの表がExcelに抽出されました。"
+    },
+    "pdfToPptx": {
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをここにドラッグ＆ドロップするか、クリックして参照してください。",
+      "optionsTitle": "変換オプション",
+      "dpiLabel": "画像品質 (DPI)",
+      "dpiHint": "DPIが高いほどスライドの解像度は上がりますが、ファイルサイズは大きくなります。",
+      "lowSet": "低 (72 DPI - 軽量)",
+      "mediumSet": "中 (150 DPI - 標準)",
+      "highSet": "高 (200 DPI - 高画質)",
+      "veryHighSet": "最高 (300 DPI - 最高品質)",
+      "convertButton": "PowerPointに変換",
+      "successTitle": "変換成功！",
+      "successMessage": "PDFがPowerPointプレゼンテーションに変換されました。"
     },
     "wordToPdf": {
       "uploadLabel": "Word文書をアップロード",
@@ -1752,79 +1775,129 @@
       "successMessage": "DJVUファイルがPDFに正常に変換されました！"
     },
     "deskewPdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Upload PDFs to straighten.",
-      "optionsTitle": "Options",
-      "processButton": "Deskew PDF",
-      "successMessage": "PDF deskewed!"
+      "uploadLabel": "スキャンされたPDFファイルをアップロード",
+      "uploadDescription": "ここにPDFファイルをドラッグ＆ドロップしてください。一度に最大10ファイルまで処理できます。",
+      "filesTitle": "傾き補正するファイル",
+      "optionsTitle": "傾き補正オプション",
+      "thresholdLabel": "検出しきい値",
+      "thresholdDesc": "値が高いほど、より微妙な傾き角度を検出します。デフォルト：10",
+      "dpiLabel": "分析DPI",
+      "dpiDesc": "DPIが高いほど正確な検出が可能になりますが、時間がかかります。",
+      "processButton": "PDFの傾きを補正",
+      "downloadAllZip": "すべてをZIPでダウンロード",
+      "successMessage": "PDFファイルの傾き補正が正常に完了しました！"
     },
     "pdfBooklet": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload PDF for booklet.",
-      "optionsTitle": "Options",
-      "createButton": "Create",
-      "successMessage": "Booklet created!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップして小冊子レイアウトを作成します。",
+      "optionsTitle": "小冊子オプション",
+      "gridModeLabel": "グリッドモード",
+      "gridModeDesc": "小冊子の標準は1x2です。用紙を節約するには、より大きなグリッドを使用してください。",
+      "paperSizeLabel": "用紙サイズ",
+      "orientationLabel": "向き",
+      "rotationLabel": "ページの回転",
+      "paddingLabel": "パディング",
+      "previewLabel": "レイアウトプレビュー",
+      "previewDesc": "このプレビューは、各シートにページがどのように配置されるかを示します。",
+      "createButton": "小冊子を作成",
+      "successMessage": "小冊子が正常に作成されました！ダウンロードをクリックして保存してください。"
     },
     "rasterizePdf": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to rasterize.",
-      "optionsTitle": "Options",
-      "rasterizeButton": "Rasterize",
-      "successMessage": "Rasterized!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップして画像に変換します。",
+      "optionsTitle": "出力オプション",
+      "dpiLabel": "解像度 (DPI)",
+      "formatLabel": "出力形式",
+      "qualityLabel": "品質",
+      "pageRangeLabel": "ページ範囲 (任意)",
+      "pageRangeDesc": "すべてのページを変換する場合は空のままにしてください。",
+      "bgColorLabel": "背景色",
+      "convertButton": "画像に変換",
+      "successMessage": "画像が正常に作成されました！ダウンロードをクリックして保存してください。"
     },
     "markdownToPdf": {
-      "uploadLabel": "Upload Markdown",
-      "uploadDescription": "Upload .md file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Markdownファイルをアップロード",
+      "uploadDescription": ".mdまたは.markdownファイルをドラッグ＆ドロップしてPDFに変換します。",
+      "manualInput": "Markdownを書く",
+      "uploadFile": "ファイルをアップロード",
+      "editorLabel": "Markdownエディタ",
+      "previewLabel": "プレビュー",
+      "showPreview": "プレビューを表示",
+      "hidePreview": "プレビューを非表示",
+      "optionsTitle": "変換オプション",
+      "themeLabel": "テーマ",
+      "pageSizeLabel": "ページサイズ",
+      "gfmLabel": "GitHub Flavored Markdownを有効にする（テーブル、タスクリストなど）",
+      "syntaxHighlightLabel": "コードブロックの構文ハイライトを有効にする",
+      "convertButton": "PDFに変換",
+      "successMessage": "PDFが正常に作成されました！ダウンロードをクリックして保存してください。"
     },
     "emailToPdf": {
-      "uploadLabel": "Upload Email",
-      "uploadDescription": "Upload .eml file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "メールファイルをアップロード",
+      "uploadDescription": "メールファイル (.eml) をドラッグ＆ドロップしてPDFに変換します。",
+      "optionsTitle": "変換オプション",
+      "pageSizeLabel": "ページサイズ",
+      "includeCcBccLabel": "CC/BCCフィールドを含める",
+      "includeAttachmentsLabel": "添付ファイルリストを含める",
+      "timezoneLabel": "タイムゾーン",
+      "convertButton": "PDFに変換",
+      "successMessage": "メールが正常に変換されました！"
     },
     "cbzToPdf": {
-      "uploadLabel": "Upload CBZ",
-      "uploadDescription": "Upload comic.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "CBZファイルをアップロード",
+      "uploadDescription": "コミックアーカイブ (.cbz) をドラッグ＆ドロップしてPDFに変換します。",
+      "optionsTitle": "変換オプション",
+      "pageSizeLabel": "ページサイズ",
+      "qualityLabel": "画像品質",
+      "preserveAspectLabel": "アスペクト比を維持",
+      "convertButton": "PDFに変換",
+      "successMessage": "コミックが正常に変換されました！"
     },
     "pdfToPdfa": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload for PDF/A.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "PDF/A created!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップしてPDF/A形式に変換します。",
+      "filesTitle": "変換するファイル",
+      "optionsTitle": "PDF/Aオプション",
+      "levelLabel": "PDF/Aレベル",
+      "embedFontsLabel": "すべてのフォントを埋め込む",
+      "flattenTransparencyLabel": "透明度をフラット化（PDF/A-1bに必要）",
+      "convertButton": "PDF/Aに変換",
+      "downloadAllZip": "すべてをZIPでダウンロード",
+      "successMessage": "ファイルを正常にPDF/Aに変換しました！"
     },
     "fontToOutline": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to outline fonts.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Fonts outlined!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップしてフォントをアウトラインに変換します。",
+      "filesTitle": "ファイル",
+      "optionsTitle": "オプション",
+      "dpiLabel": "ラスタライズDPI",
+      "convertButton": "フォントをアウトラインに変換",
+      "downloadAllZip": "すべてをZIPでダウンロード",
+      "successMessage": "ファイルを正常に変換しました！"
     },
     "extractTables": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to extract tables.",
-      "optionsTitle": "Options",
-      "extractButton": "Extract",
-      "successMessage": "Extracted!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップしてテーブルを抽出します。",
+      "optionsTitle": "抽出オプション",
+      "formatLabel": "出力形式",
+      "pageRangeLabel": "ページ範囲 (任意)",
+      "minColumnsLabel": "最小列数",
+      "minRowsLabel": "最小行数",
+      "includePageNumbersLabel": "出力にページ番号を含める",
+      "extractButton": "テーブルを抽出",
+      "successMessage": "テーブルが正常に抽出されました！ダウンロードをクリックして保存してください。"
     },
     "ocgManager": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to manage layers.",
-      "layersTitle": "Layers",
-      "noLayers": "No layers.",
-      "addLayerLabel": "Add Layer",
-      "successMessage": "Saved!"
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFをドラッグ＆ドロップしてレイヤー (OCG) を管理します。",
+      "layersTitle": "PDFレイヤー",
+      "noLayers": "このPDFにはレイヤー (OCG) がありません。",
+      "addLayerLabel": "新しいレイヤーを追加",
+      "successMessage": "レイヤーの変更が正常に保存されました！"
     },
     "pdfReader": {
-      "uploadLabel": "Open PDF",
-      "uploadDescription": "Open PDF to read."
+      "uploadLabel": "PDFファイルを開く",
+      "uploadDescription": "PDFファイルを開いて閲覧します。"
     }
   }
 }

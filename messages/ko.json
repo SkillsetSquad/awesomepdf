@@ -545,11 +545,12 @@
       "noResults": "\"{query}\"에 대한 도구를 찾을 수 없습니다"
     },
     "relatedTools": "관련 도구",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "about": "이 도구에 대하여",
+    "howToUse": "사용 방법",
+    "useCases": "활용 사례",
+    "faq": "자주 묻는 질문",
+    "comingSoon": "이 도구는 곧 공개될 예정입니다.",
+    "successTitle": "변환 성공!",
     "favorite": {
       "add": "즐겨찾기에 추가",
       "remove": "즐겨찾기에서 제거",
@@ -1680,10 +1681,32 @@
       "success": "Table of contents generated successfully!"
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "여기에 PDF 파일을 드래그 앤 드롭하거나 클릭하여 찾아보세요.",
+      "convertButton": "DOCX로 변환",
+      "successMessage": "PDF가 성공적으로 DOCX로 변환되었습니다! 다운로드 버튼을 클릭하여 파일을 저장하세요."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "여기에 PDF 파일을 드래그 앤 드롭하거나 클릭하여 찾아보세요.",
+      "extractNote": "각 페이지의 표가 Excel 파일의 별도 시트로 추출됩니다.",
+      "convertButton": "Excel로 변환",
+      "successTitle": "변환 성공!",
+      "successMessage": "PDF 표가 Excel로 추출되었습니다."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "여기에 PDF 파일을 드래그 앤 드롭하거나 클릭하여 찾아보세요.",
+      "optionsTitle": "변환 옵션",
+      "dpiLabel": "이미지 품질 (DPI)",
+      "dpiHint": "DPI가 높을수록 슬라이드 품질은 좋아지지만 파일 크기가 커집니다.",
+      "lowSet": "낮음 (72 DPI - 파일 최소)",
+      "mediumSet": "중간 (150 DPI - 표준)",
+      "highSet": "높음 (200 DPI - 고화질)",
+      "veryHighSet": "최고 (300 DPI - 인쇄 품질)",
+      "convertButton": "PowerPoint로 변환",
+      "successTitle": "변환 성공!",
+      "successMessage": "PDF가 PowerPoint 프레젠테이션으로 변환되었습니다."
     },
     "wordToPdf": {
       "uploadLabel": "Word 문서 업로드",
@@ -1752,79 +1775,129 @@
       "successMessage": "DJVU 파일이 PDF로 성공적으로 변환되었습니다!"
     },
     "deskewPdf": {
-      "uploadLabel": "Upload PDF Files",
-      "uploadDescription": "Upload PDFs to straighten.",
-      "optionsTitle": "Options",
-      "processButton": "Deskew PDF",
-      "successMessage": "PDF deskewed!"
+      "uploadLabel": "스캔된 PDF 파일 업로드",
+      "uploadDescription": "여기에 PDF 파일을 드래그 앤 드롭하세요. 한 번에 최대 10개의 파일을 처리할 수 있습니다.",
+      "filesTitle": "기울기 보정할 파일",
+      "optionsTitle": "기울기 보정 옵션",
+      "thresholdLabel": "감지 임계값",
+      "thresholdDesc": "값이 높을수록 더 미세한 기울기 각도를 감지합니다. 기본값: 10",
+      "dpiLabel": "분석 DPI",
+      "dpiDesc": "DPI가 높을수록 더 정확한 감지가 가능하지만 시간이 더 오래 걸립니다.",
+      "processButton": "PDF 기울기 보정",
+      "downloadAllZip": "모두 ZIP으로 다운로드",
+      "successMessage": "PDF 파일의 기울기 보정이 성공적으로 완료되었습니다!"
     },
     "pdfBooklet": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload PDF for booklet.",
-      "optionsTitle": "Options",
-      "createButton": "Create",
-      "successMessage": "Booklet created!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "소책자 레이아웃을 만들려면 PDF 파일을 드래그 앤 드롭하세요.",
+      "optionsTitle": "소책자 옵션",
+      "gridModeLabel": "그리드 모드",
+      "gridModeDesc": "1x2가 소책자의 표준입니다. 종이를 절약하려면 더 큰 그리드를 사용하세요.",
+      "paperSizeLabel": "용지 크기",
+      "orientationLabel": "방향",
+      "rotationLabel": "페이지 회전",
+      "paddingLabel": "여백",
+      "previewLabel": "레이아웃 미리보기",
+      "previewDesc": "이 미리보기는 각 시트에 페이지가 어떻게 배치되는지 보여줍니다.",
+      "createButton": "소책자 만들기",
+      "successMessage": "소책자가 성공적으로 생성되었습니다! 저장하려면 다운로드를 클릭하세요."
     },
     "rasterizePdf": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to rasterize.",
-      "optionsTitle": "Options",
-      "rasterizeButton": "Rasterize",
-      "successMessage": "Rasterized!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "이미지로 변환할 PDF 파일을 드래그 앤 드롭하세요.",
+      "optionsTitle": "출력 옵션",
+      "dpiLabel": "해상도 (DPI)",
+      "formatLabel": "출력 형식",
+      "qualityLabel": "품질",
+      "pageRangeLabel": "페이지 범위 (선택 사항)",
+      "pageRangeDesc": "모든 페이지를 변환하려면 비워 두세요.",
+      "bgColorLabel": "배경색",
+      "convertButton": "이미지로 변환",
+      "successMessage": "이미지가 성공적으로 생성되었습니다! 저장하려면 다운로드를 클릭하세요."
     },
     "markdownToPdf": {
-      "uploadLabel": "Upload Markdown",
-      "uploadDescription": "Upload .md file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "Markdown 파일 업로드",
+      "uploadDescription": ".md 또는 .markdown 파일을 드래그 앤 드롭하여 PDF로 변환하세요.",
+      "manualInput": "Markdown 작성",
+      "uploadFile": "파일 업로드",
+      "editorLabel": "Markdown 에디터",
+      "previewLabel": "미리보기",
+      "showPreview": "미리보기 표시",
+      "hidePreview": "미리보기 숨기기",
+      "optionsTitle": "변환 옵션",
+      "themeLabel": "테마",
+      "pageSizeLabel": "페이지 크기",
+      "gfmLabel": "GitHub Flavored Markdown 활성화 (표, 작업 목록 등)",
+      "syntaxHighlightLabel": "코드 블록에 대한 구문 강조 활성화",
+      "convertButton": "PDF로 변환",
+      "successMessage": "PDF가 성공적으로 생성되었습니다! 저장하려면 다운로드를 클릭하세요."
     },
     "emailToPdf": {
-      "uploadLabel": "Upload Email",
-      "uploadDescription": "Upload .eml file.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "이메일 파일 업로드",
+      "uploadDescription": "이메일 파일(.eml)을 드래그 앤 드롭하여 PDF로 변환하세요.",
+      "optionsTitle": "변환 옵션",
+      "pageSizeLabel": "페이지 크기",
+      "includeCcBccLabel": "CC/BCC 필드 포함",
+      "includeAttachmentsLabel": "첨부 파일 목록 포함",
+      "timezoneLabel": "시간대",
+      "convertButton": "PDF로 변환",
+      "successMessage": "이메일이 성공적으로 변환되었습니다!"
     },
     "cbzToPdf": {
-      "uploadLabel": "Upload CBZ",
-      "uploadDescription": "Upload comic.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Converted!"
+      "uploadLabel": "CBZ 파일 업로드",
+      "uploadDescription": "만화책 아카이브(.cbz)를 드래그 앤 드롭하여 PDF로 변환하세요.",
+      "optionsTitle": "변환 옵션",
+      "pageSizeLabel": "페이지 크기",
+      "qualityLabel": "이미지 품질",
+      "preserveAspectLabel": "가로세로 비율 유지",
+      "convertButton": "PDF로 변환",
+      "successMessage": "만화책이 성공적으로 변환되었습니다!"
     },
     "pdfToPdfa": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload for PDF/A.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "PDF/A created!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "PDF 파일을 드래그 앤 드롭하여 PDF/A 형식으로 변환하세요.",
+      "filesTitle": "변환할 파일",
+      "optionsTitle": "PDF/A 옵션",
+      "levelLabel": "PDF/A 레벨",
+      "embedFontsLabel": "모든 글꼴 포함",
+      "flattenTransparencyLabel": "투명도 병합 (PDF/A-1b에 필요)",
+      "convertButton": "PDF/A로 변환",
+      "downloadAllZip": "모두 ZIP으로 다운로드",
+      "successMessage": "파일을 성공적으로 PDF/A로 변환했습니다!"
     },
     "fontToOutline": {
-      "uploadLabel": "Upload PDFs",
-      "uploadDescription": "Upload to outline fonts.",
-      "optionsTitle": "Options",
-      "convertButton": "Convert",
-      "successMessage": "Fonts outlined!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "PDF 파일을 드래그 앤 드롭하여 글꼴을 윤곽선으로 변환하세요.",
+      "filesTitle": "파일",
+      "optionsTitle": "옵션",
+      "dpiLabel": "래스터화 DPI",
+      "convertButton": "글꼴을 윤곽선으로 변환",
+      "downloadAllZip": "모두 ZIP으로 다운로드",
+      "successMessage": "파일이 성공적으로 변환되었습니다!"
     },
     "extractTables": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to extract tables.",
-      "optionsTitle": "Options",
-      "extractButton": "Extract",
-      "successMessage": "Extracted!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "표를 추출할 PDF 파일을 드래그 앤 드롭하세요.",
+      "optionsTitle": "추출 옵션",
+      "formatLabel": "출력 형식",
+      "pageRangeLabel": "페이지 범위 (선택 사항)",
+      "minColumnsLabel": "최소 열 수",
+      "minRowsLabel": "최소 행 수",
+      "includePageNumbersLabel": "출력에 페이지 번호 포함",
+      "extractButton": "표 추출",
+      "successMessage": "표가 성공적으로 추출되었습니다! 저장하려면 다운로드를 클릭하세요."
     },
     "ocgManager": {
-      "uploadLabel": "Upload PDF",
-      "uploadDescription": "Upload to manage layers.",
-      "layersTitle": "Layers",
-      "noLayers": "No layers.",
-      "addLayerLabel": "Add Layer",
-      "successMessage": "Saved!"
+      "uploadLabel": "PDF 파일 업로드",
+      "uploadDescription": "PDF를 드래그 앤 드롭하여 레이어(OCG)를 관리하세요.",
+      "layersTitle": "PDF 레이어",
+      "noLayers": "이 PDF에는 레이어(OCG)가 없습니다.",
+      "addLayerLabel": "새 레이어 추가",
+      "successMessage": "레이어 변경 사항이 성공적으로 저장되었습니다!"
     },
     "pdfReader": {
-      "uploadLabel": "Open PDF",
-      "uploadDescription": "Open PDF to read."
+      "uploadLabel": "PDF 파일 열기",
+      "uploadDescription": "PDF 파일을 열어서 읽고 봅니다."
     }
   }
 }
