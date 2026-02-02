@@ -66,6 +66,7 @@ export { OCRPDFTool, type OCRPDFToolProps } from './ocr';
 export { PDFToPptxTool, type PDFToPptxToolProps } from './pdf-to-pptx';
 export { PDFToExcelTool, type PDFToExcelToolProps } from './pdf-to-excel';
 export { PDFToSVGTool, type PDFToSVGToolProps } from './pdf-to-svg';
+export { PDFToMarkdownTool, type PDFToMarkdownToolProps } from './pdf-to-markdown';
 
 // Optimize & Repair Tools
 export { CompressPDFTool, type CompressPDFToolProps } from './compress';

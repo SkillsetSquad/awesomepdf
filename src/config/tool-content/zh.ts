@@ -2544,6 +2544,32 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
 
+  'pdf-to-markdown': {
+    title: 'PDF转Markdown',
+    metaDescription: '将PDF转换为Markdown格式。提取文本并保留标题和列表等格式。',
+    keywords: ['pdf转markdown', 'pdf转md', 'pdf文本提取', 'markdown转换器', 'pdf转文本'],
+    description: `
+      <p>PDF转Markdown将您的PDF文档转换为干净、结构良好的Markdown文件。该工具智能提取文本内容，并尝试保留标题、列表和段落等格式。</p>
+      <p>非常适合将PDF文档转换为可编辑格式，用于文档编写、笔记记录或支持Markdown的内容管理系统。</p>
+      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '拖放您的PDF文件或点击选择。' },
+      { step: 2, title: '配置选项', description: '设置页面范围，选择是否包含页码，并调整换行设置。' },
+      { step: 3, title: '转换并下载', description: '点击转换生成Markdown文件并下载。' },
+    ],
+    useCases: [
+      { title: '文档编写', description: '将PDF手册和指南转换为Markdown，用于版本控制的文档。', icon: 'file-text' },
+      { title: '笔记记录', description: '从PDF文章和书籍中提取内容到您的笔记系统。', icon: 'edit-3' },
+      { title: '内容迁移', description: '将PDF内容迁移到支持Markdown的CMS平台。', icon: 'copy' },
+    ],
+    faq: [
+      { question: '格式会保留吗？', answer: '该工具会根据字体大小检测标题，以及项目符号/编号列表。复杂布局可能需要手动调整。' },
+      { question: '可以转换特定页面吗？', answer: '是的，您可以指定页面范围如"1-3, 5, 7"以仅转换这些页面。' },
+      { question: '扫描的PDF能用吗？', answer: '扫描的PDF包含图像而非文本。请先使用我们的OCR工具提取文本，然后再转换为Markdown。' },
+    ],
+  },
+
   'extract-tables': {
     title: '从PDF提取表格',
     metaDescription: '检测并从PDF文档中提取表格。导出为JSON、Markdown或CSV格式。',

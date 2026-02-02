@@ -1903,6 +1903,21 @@
       "convertButton": "转换为DOCX",
       "successMessage": "您的PDF已成功转换为DOCX！点击下载按钮保存文件。"
     },
+    "pdfToMarkdown": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
+      "optionsTitle": "转换选项",
+      "pageRange": "页面范围",
+      "pageRangePlaceholder": "例如：1-3, 5, 7",
+      "pageRangeHint": "留空表示所有页面",
+      "includePageNumbers": "将页码作为标题包含",
+      "preserveLineBreaks": "保留换行符",
+      "convertButton": "转换为Markdown",
+      "previewTab": "预览",
+      "sourceTab": "Markdown 源码",
+      "successMessage": "您的PDF已成功转换为Markdown！点击下载按钮保存文件。",
+      "failed": "PDF转换为Markdown失败。"
+    },
     "pdfToExcel": {
       "uploadLabel": "上传 PDF 文件",
       "uploadDescription": "拖放 PDF 文件到这里，或点击浏览选择文件。",

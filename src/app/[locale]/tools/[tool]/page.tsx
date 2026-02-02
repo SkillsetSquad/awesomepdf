@@ -76,6 +76,7 @@ import { MOBIToPDFTool } from '@/components/tools/mobi-to-pdf';
 import { FB2ToPDFTool } from '@/components/tools/fb2-to-pdf';
 import { DJVUToPDFTool } from '@/components/tools/djvu-to-pdf';
 import { PDFToSVGTool } from '@/components/tools/pdf-to-svg';
+import { PDFToMarkdownTool } from '@/components/tools/pdf-to-markdown';
 import { DeskewPDFTool } from '@/components/tools/deskew';
 import { PDFBookletTool } from '@/components/tools/pdf-booklet';
 import { RasterizePDFTool } from '@/components/tools/rasterize';
@@ -340,6 +341,8 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <PDFToPptxTool />;
       case 'pdf-to-excel':
         return <PDFToExcelTool />;
+      case 'pdf-to-markdown':
+        return <PDFToMarkdownTool />;
       case 'ocr-pdf':
         return <OCRPDFTool />;
       case 'linearize-pdf':

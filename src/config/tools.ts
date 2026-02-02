@@ -679,6 +679,18 @@ export const tools: Tool[] = [
     features: ['extract-tables', 'multiple-sheets', 'preserve-data'],
     relatedTools: ['pdf-to-json', 'pdf-to-docx', 'ocr-pdf'],
   },
+  {
+    id: 'pdf-to-markdown',
+    slug: 'pdf-to-markdown',
+    icon: 'file-code-2',
+    category: 'convert-from-pdf',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'md',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['extract-text', 'preserve-headings', 'detect-lists', 'page-range'],
+    relatedTools: ['pdf-to-json', 'pdf-to-docx', 'ocr-pdf'],
+  },
 
 
   // ==================== ORGANIZE & MANAGE ====================
