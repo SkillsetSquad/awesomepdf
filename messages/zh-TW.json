@@ -43,7 +43,8 @@
       "about": "關於",
       "faq": "常見問題",
       "privacy": "隱私",
-      "contact": "聯絡我們"
+      "contact": "聯絡我們",
+      "workflow": "工作流"
     },
     "buttons": {
       "upload": "上傳檔案",
@@ -537,7 +538,121 @@
     "confirm": "確認",
     "collapseSidebar": "收起側邊欄",
     "expandSidebar": "展開側邊欄",
-    "library": "範本庫"
+    "library": "範本庫",
+    "connections": "連接",
+    "history": "歷史記錄",
+    "executionHistory": "執行歷史",
+    "totalExecutions": "總執行次數",
+    "successRate": "成功率",
+    "avgDuration": "平均耗時",
+    "noHistory": "暫無執行歷史",
+    "noHistoryHint": "執行工作流後這裡將顯示歷史記錄",
+    "confirmDelete": "確定要刪除這條歷史記錄嗎？",
+    "confirmClearAllHistory": "確定要清除所有歷史記錄嗎？此操作不可撤銷。",
+    "unnamedWorkflow": "未命名工作流",
+    "nodesSuccess": "個節點成功",
+    "nodesFailed": "個節點失敗",
+    "loadWorkflow": "加載工作流",
+    "viewDetails": "查看詳情",
+    "detailsInConsole": "詳情已輸出到控制台 (F12)",
+    "workflowTemplates": {
+      "mergeCompress": {
+        "name": "合併並壓縮",
+        "description": "合併多個 PDF 文件並壓縮結果以減小文件大小"
+      },
+      "imagesToWatermarkedPdf": {
+        "name": "圖片轉帶浮水印 PDF",
+        "description": "將圖片轉換為 PDF 並添加自定義浮水印"
+      },
+      "pdfToImages": {
+        "name": "PDF 轉壓縮圖片",
+        "description": "將 PDF 頁面轉換為 JPG 圖片"
+      },
+      "securePdf": {
+        "name": "創建安全 PDF",
+        "description": "合併 PDF、添加浮水印並使用密碼加密"
+      },
+      "documentPrep": {
+        "name": "文檔準備",
+        "description": "合併 PDF、添加頁碼並添加頁首/頁尾"
+      },
+      "optimizeForWeb": {
+        "name": "網頁優化",
+        "description": "壓縮並線性化 PDF 以實現快速網頁瀏覽"
+      },
+      "splitAndWatermark": {
+        "name": "拆分並添加浮水印",
+        "description": "將 PDF 拆分為單頁並為每頁添加浮水印"
+      },
+      "officeToMergedPdf": {
+        "name": "Office 文件轉合併 PDF",
+        "description": "將 Word 文檔轉換為 PDF 並合併它們"
+      },
+      "rotateAndNumber": {
+        "name": "旋轉並添加頁碼",
+        "description": "旋轉 PDF 頁面並添加頁碼"
+      },
+      "printReady": {
+        "name": "打印就緒文檔",
+        "description": "準備用於打印的 PDF，添加頁碼並扁平化"
+      },
+      "grayscaleCompress": {
+        "name": "灰階並壓縮",
+        "description": "轉換為灰階並壓縮以減小大小"
+      },
+      "extractAndMerge": {
+        "name": "提取並合併頁面",
+        "description": "提取特定頁面並將其合併為新文檔"
+      },
+      "confidentialDocument": {
+        "name": "機密文檔",
+        "description": "添加機密浮水印並加密 PDF"
+      },
+      "pdfToEditableDoc": {
+        "name": "PDF 轉可編輯文檔",
+        "description": "將 PDF 轉換為 Word 文檔以便編輯"
+      },
+      "fullOptimization": {
+        "name": "完整文檔優化",
+        "description": "壓縮、扁平化並線性化以獲得最佳性能"
+      },
+      "pdfToPresentation": {
+        "name": "PDF 轉 PowerPoint",
+        "description": "將 PDF 轉換為可編輯的 PowerPoint 簡報"
+      },
+      "unlockAndEdit": {
+        "name": "解鎖並編輯 PDF",
+        "description": "解密受保護的 PDF 以便編輯"
+      },
+      "ebookConvert": {
+        "name": "電子書轉 PDF",
+        "description": "將 EPUB 電子書轉換為 PDF 格式"
+      },
+      "batchWatermark": {
+        "name": "批量添加浮水印",
+        "description": "一次為多個 PDF 文件添加浮水印"
+      },
+      "archivePrep": {
+        "name": "存檔準備",
+        "description": "刪除元數據、扁平化並壓縮以便長期存儲"
+      },
+      "reportAssembly": {
+        "name": "報告組裝",
+        "description": "合併文檔、添加頁碼、頁首/頁尾和目錄"
+      },
+      "invoiceProcessing": {
+        "name": "發票處理",
+        "description": "提取頁面、添加浮水印並壓縮以便發送電子郵件"
+      },
+      "photoAlbum": {
+        "name": "相簿創建器",
+        "description": "將圖片轉換為帶頁碼的 PDF"
+      },
+      "cropAndResize": {
+        "name": "裁剪並調整大小",
+        "description": "裁剪 PDF 頁面並調整頁面尺寸"
+      }
+    }
   },
   "tools": {
     "search": {
@@ -684,7 +799,9 @@
       "warning": "警告",
       "warningText": "選中的頁面將從PDF中永久刪除。至少需要保留一頁。",
       "deleteButton": "刪除頁面",
-      "successMessage": "頁面刪除成功！點選下載按鈕儲存檔案。"
+      "successMessage": "頁面刪除成功！點選下載按鈕儲存檔案。",
+      "pageRange": "頁面範圍",
+      "pageRangePlaceholder": "例如：1, 3-5, 8"
     },
     "extractPages": {
       "uploadLabel": "上傳PDF檔案",
@@ -692,7 +809,9 @@
       "selectTitle": "選擇要提取的頁面",
       "selectHint": "點選頁面選擇，或在上方輸入頁碼/範圍。",
       "extractButton": "提取頁面",
-      "successMessage": "頁面提取成功！點選下載按鈕儲存檔案。"
+      "successMessage": "頁面提取成功！點選下載按鈕儲存檔案。",
+      "pageRange": "頁面範圍",
+      "pageRangePlaceholder": "例如：1-5, 8, 10-12"
     },
     "posterizePdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -852,7 +971,8 @@
       "imagesPerPdf": "每個PDF的圖片數",
       "batchModeHint": "將創建 {pdfCount} 個PDF檔案，打包為ZIP壓縮檔。",
       "batchSuccessMessage": "已成功從 {imageCount} 張圖片創建 {pdfCount} 個PDF檔案！點擊下載按鈕保存ZIP壓縮檔。",
-      "successMessage": "圖片已成功轉換為PDF！點選下載按鈕儲存檔案。"
+      "successMessage": "圖片已成功轉換為PDF！點選下載按鈕儲存檔案。",
+      "fitToImage": "適應圖片尺寸"
     },
     "compressPdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -877,7 +997,17 @@
       "downloadAllZip": "全部下載為ZIP",
       "originalSize": "原始：",
       "compressedSize": "壓縮後：",
-      "saved": "節省："
+      "saved": "節省：",
+      "algorithmLabel": "壓縮算法",
+      "algorithmStandard": "標準",
+      "algorithmCondense": "深度壓縮",
+      "algorithmPhoton": "Photon 极速",
+      "algorithmStandardDesc": "使用對象流的通用壓縮",
+      "algorithmCondenseDesc": "優化結構，同時保留交互性",
+      "algorithmPhotonDesc": "柵格化頁面 —— 最適合圖片較多的 PDF",
+      "photonWarning": "注意：Photon 會將頁面轉換為圖片，這可能會降低文字質量並丟失交互性（如連結、表單）。",
+      "photonDpiLabel": "輸出 DPI",
+      "photonDpiDesc": "更高的 DPI = 更好的質量，更大的文件大小"
     },
     "signPdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -967,7 +1097,10 @@
       "downloadAll": "全部下載",
       "downloadZip": "下載為ZIP",
       "page": "頁面",
-      "successMessage": "圖片提取成功！點選下載單個圖片或使用\"下載為ZIP\"。"
+      "successMessage": "圖片提取成功！點選下載單個圖片或使用\"下載為ZIP\"。",
+      "optionsTitle": "設置",
+      "format": "輸出格式",
+      "minSize": "最小尺寸 (px)"
     },
     "encryptPdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -1030,7 +1163,11 @@
       "position": "位置",
       "pageSize": "頁面大小",
       "addButton": "新增空白頁",
-      "successMessage": "空白頁新增成功！點選下載按鈕儲存檔案。"
+      "successMessage": "空白頁新增成功！點選下載按鈕儲存檔案。",
+      "positionStart": "文檔開頭",
+      "positionEnd": "文檔結尾",
+      "positionAfterEach": "每頁之後",
+      "matchSource": "匹配源文件"
     },
     "reversePages": {
       "uploadLabel": "上傳PDF檔案",
@@ -1181,7 +1318,10 @@
       "uploadLabel": "上傳PDF檔案",
       "uploadDescription": "拖放PDF檔案到此處進行扁平化。",
       "flattenButton": "扁平化PDF",
-      "successMessage": "PDF扁平化成功！"
+      "successMessage": "PDF扁平化成功！",
+      "optionsTitle": "扁平化選項",
+      "flattenForms": "扁平化表單字段",
+      "flattenAnnotations": "扁平化註釋"
     },
     "bookmark": {
       "uploadLabel": "上傳PDF檔案",
@@ -1258,7 +1398,16 @@
       "unsupportedImage": "不支援的圖片格式，請使用 PNG 或 JPG。",
       "failed": "新增水印失敗。",
       "addButton": "新增水印",
-      "successMessage": "水印新增成功！"
+      "successMessage": "水印新增成功！",
+      "type": "類型",
+      "position": "位置",
+      "posCenter": "居中",
+      "posDiagonal": "對角線",
+      "posTopLeft": "左上",
+      "posTopRight": "右上",
+      "posBottomLeft": "左下",
+      "posBottomRight": "右下",
+      "textPlaceholder": "例如：CONFIDENTIAL"
     },
     "invertColors": {
       "uploadLabel": "上傳PDF檔案",
@@ -1367,7 +1516,61 @@
       "fieldLabelPlaceholder": "輸入標籤文字...",
       "labelPosition": "位置",
       "labelAbove": "上方",
-      "labelLeft": "左側"
+      "labelLeft": "左側",
+      "formOptions": "表單選項",
+      "flattenForm": "扁平化表單",
+      "flattenFormHint": "使表單字段不可編輯（轉換為靜態內容）",
+      "projectManagement": "項目管理",
+      "saveProject": "保存項目",
+      "savedProjects": "已保存項目",
+      "loadProject": "加載",
+      "deleteProject": "刪除",
+      "saveProjectTitle": "保存項目",
+      "projectName": "項目名稱",
+      "projectNamePlaceholder": "輸入項目名稱...",
+      "saveInfo": "將保存 {fields} 個表單字段。",
+      "saveNote": "項目會本地保存在您的瀏覽器中。",
+      "undo": "撤銷 (Ctrl+Z)",
+      "redo": "重做 (Ctrl+Y)",
+      "duplicate": "復制 (Ctrl+D)",
+      "align": "對齊",
+      "alignLeft": "左對齊",
+      "alignCenter": "居中對齊",
+      "alignRight": "右對齊",
+      "alignTop": "頂部對齊",
+      "alignMiddle": "垂直居中",
+      "alignBottom": "底部對齊",
+      "defaultValue": "默認值",
+      "defaultValuePlaceholder": "輸入默認文字...",
+      "defaultChecked": "默認選中",
+      "defaultSelection": "默認選擇",
+      "noDefault": "-- 無 --",
+      "required": "必填字段",
+      "shortcutsHint": "快捷鍵：Ctrl+Z (撤銷) | Ctrl+Y (重做) | Ctrl+D (復制) | Ctrl+A (全選) | Delete (移除)",
+      "buttonTool": "按鈕",
+      "signatureTool": "簽名",
+      "dateTool": "日期",
+      "listboxTool": "列表框",
+      "buttonLabel": "按鈕標籤",
+      "buttonLabelPlaceholder": "提交",
+      "signatureLabel": "簽名標籤",
+      "signatureLabelPlaceholder": "在此簽名",
+      "dateFormat": "日期格式",
+      "defaultDate": "默認日期",
+      "multiSelect": "允許複選",
+      "basicTools": "基本",
+      "advancedTools": "更多",
+      "properties": "屬性",
+      "fieldsTab": "字段",
+      "optionsTab": "選項",
+      "addField": "添加",
+      "clickToAdd": "點擊 PDF 添加字段",
+      "pages": "頁",
+      "processingButton": "處理中...",
+      "cancelButton": "取消",
+      "saveButton": "保存",
+      "orCreateBlank": "或",
+      "createBlankPdf": "創建空白 PDF"
     },
     "removeBlankPages": {
       "uploadLabel": "上傳PDF檔案",
@@ -1389,7 +1592,8 @@
       "addBookmark": "將目錄新增到書籤",
       "bookmarkRequired": "此工具從現有PDF書籤生成可點選的目錄。請確保您的PDF已有書籤。您可以使用「編輯書籤」工具新增書籤。",
       "generate": "生成目錄",
-      "success": "目錄生成成功！"
+      "success": "目錄生成成功！",
+      "tocTitlePlaceholder": "輸入目錄標題..."
     },
     "ocrPdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -1472,7 +1676,13 @@
       "preview": "預覽",
       "previewHint": "輸入頁首或頁尾文字以檢視預覽",
       "addButton": "新增頁首頁尾",
-      "successMessage": "頁首頁尾新增成功！"
+      "successMessage": "頁首頁尾新增成功！",
+      "headerText": "頁首文字",
+      "headerTextPlaceholder": "輸入頁首文字...",
+      "footerText": "頁尾文字",
+      "footerTextPlaceholder": "輸入頁尾文字...",
+      "fontSize": "字體大小",
+      "fontColor": "字體顏色"
     },
     "removeMetadata": {
       "uploadLabel": "上傳PDF檔案",
@@ -1897,6 +2107,21 @@
     "pdfReader": {
       "uploadLabel": "開啟 PDF 檔案",
       "uploadDescription": "開啟 PDF 檔案進行閱讀和查看。"
+    },
+    "pdfToMarkdown": {
+      "uploadLabel": "上傳 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到此處，或點擊瀏覽。",
+      "optionsTitle": "轉換選項",
+      "pageRange": "頁面範圍",
+      "pageRangePlaceholder": "例如：1-3, 5, 7",
+      "pageRangeHint": "留空則導出所有頁面",
+      "includePageNumbers": "包含頁碼作為標題",
+      "preserveLineBreaks": "保留換行符",
+      "convertButton": "轉換為 Markdown",
+      "previewTab": "預覽",
+      "sourceTab": "Markdown 原始碼",
+      "successMessage": "您的 PDF 已成功轉換為 Markdown！點擊下載按鈕保存文件。",
+      "failed": "將 PDF 轉換為 Markdown 失敗。"
     }
   }
 }

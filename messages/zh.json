@@ -997,7 +997,17 @@
       "downloadAllZip": "全部下载为ZIP",
       "originalSize": "原始：",
       "compressedSize": "压缩后：",
-      "saved": "节省："
+      "saved": "节省：",
+      "algorithmLabel": "压缩算法",
+      "algorithmStandard": "标准",
+      "algorithmCondense": "深度压缩",
+      "algorithmPhoton": "Photon 极速",
+      "algorithmStandardDesc": "通用压缩。平衡文件大小和质量。",
+      "algorithmCondenseDesc": "强力压缩。可能会显著降低图像质量。",
+      "algorithmPhotonDesc": "将页面转换为高质量图像。最适合减小超大文件。",
+      "photonWarning": "注意：Photon 压缩会将页面转换为图像，这可能会降低文字质量并丢失交互性（如链接、表单）。",
+      "photonDpiLabel": "输出 DPI",
+      "photonDpiDesc": "DPI 越高，质量越好，文件越大"
     },
     "signPdf": {
       "uploadLabel": "上传PDF文件",
