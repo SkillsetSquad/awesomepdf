@@ -169,6 +169,21 @@ export class WatermarkProcessor extends BasePDFProcessor {
 
       const pagesToProcess = getPageIndices(wmOptions.pages, totalPages);
 
+      // Pre-embed image if using image watermark (do this once, outside the loop)
+      let embeddedImage: Awaited<ReturnType<typeof pdf.embedPng>> | null = null;
+      if (wmOptions.type === 'image' && wmOptions.imageData) {
+        try {
+          if (wmOptions.imageType === 'jpg') {
+            embeddedImage = await pdf.embedJpg(wmOptions.imageData);
+          } else {
+            embeddedImage = await pdf.embedPng(wmOptions.imageData);
+          }
+        } catch (embedError) {
+          const errorMessage = embedError instanceof Error ? embedError.message : 'Unknown error';
+          return this.createErrorOutput(PDFErrorCode.PROCESSING_FAILED, `Failed to embed image: ${errorMessage}`);
+        }
+      }
+
       for (let i = 0; i < pagesToProcess.length; i++) {
         if (this.checkCancelled()) {
           return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
@@ -201,7 +216,7 @@ export class WatermarkProcessor extends BasePDFProcessor {
               x = width - textWidth - 50; y = 50;
               break;
             case 'center':
-              const position = computeTextWatermarkPosition(width, height,textWidth, textHeight, rotation)
+              const position = computeTextWatermarkPosition(width, height, textWidth, textHeight, rotation)
               x = position.x;
               y = position.y;
               break;
@@ -219,21 +234,15 @@ export class WatermarkProcessor extends BasePDFProcessor {
             opacity: wmOptions.opacity || 0.3,
             rotate: pdfLib.degrees(rotation),
           });
-        } else if (wmOptions.type === 'image' && wmOptions.imageData) {
-          let image;
-          if (wmOptions.imageType === 'jpg') {
-            image = await pdf.embedJpg(wmOptions.imageData);
-          } else {
-            image = await pdf.embedPng(wmOptions.imageData);
-          }
+        } else if (wmOptions.type === 'image' && embeddedImage) {
           const scale = 0.5;
-          const imgWidth = image.width * scale;
-          const imgHeight = image.height * scale;
+          const imgWidth = embeddedImage.width * scale;
+          const imgHeight = embeddedImage.height * scale;
 
           const x = (width - imgWidth) / 2;
           const y = (height - imgHeight) / 2;
 
-          page.drawImage(image, {
+          page.drawImage(embeddedImage, {
             x,
             y,
             width: imgWidth,
@@ -278,11 +287,11 @@ function getPageIndices(pages: WatermarkOptions['pages'], totalPages: number): n
 }
 
 function computeTextWatermarkPosition(
-    pageWidth: number,
-    pageHeight: number,
-    textWidth: number,
-    textHeight: number,
-    rotation: number
+  pageWidth: number,
+  pageHeight: number,
+  textWidth: number,
+  textHeight: number,
+  rotation: number
 ): { x: number; y: number } {
 
   // Calculate the center coordinates of the PDF page
@@ -307,7 +316,7 @@ function computeTextWatermarkPosition(
   const rotationSign = Math.sign(rotation);
   // Calculate final rotated origin coordinates for text
   let rotatedOriginX = baseX + textWidthHalf * (1 - cosRad) + rotationSign * baselineOffset;
-  let rotatedOriginY = baseY - rotationSign * (textWidthHalf * sinRad) + baselineOffset*Math.abs(rotationSign);
+  let rotatedOriginY = baseY - rotationSign * (textWidthHalf * sinRad) + baselineOffset * Math.abs(rotationSign);
 
   return {
     x: rotatedOriginX,
