@@ -51,7 +51,7 @@ EXPOSE 80
 
 # Health check - verify nginx is responding
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget -q --spider http://localhost/ || exit 1
+    CMD wget -q -O /dev/null http://localhost/index.html || exit 1
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
