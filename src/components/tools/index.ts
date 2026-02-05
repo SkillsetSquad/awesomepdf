@@ -83,6 +83,7 @@ export { SanitizePDFTool, type SanitizePDFToolProps } from './sanitize';
 export { FlattenPDFTool, type FlattenPDFToolProps } from './flatten';
 export { RemoveMetadataTool, type RemoveMetadataToolProps } from './remove-metadata';
 export { ChangePermissionsTool, type ChangePermissionsToolProps } from './change-permissions';
+export { FindAndRedactTool, type FindAndRedactToolProps } from './find-and-redact';
 
 // New Tools - Phase 1
 export { DeskewPDFTool, type DeskewPDFToolProps } from './deskew';

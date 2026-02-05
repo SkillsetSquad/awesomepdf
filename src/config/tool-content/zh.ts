@@ -2054,6 +2054,35 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
 
+  'find-and-redact': {
+    title: '查找并遮盖',
+    metaDescription: '搜索并批量遮盖PDF中的敏感文本。支持正则表达式匹配账号、姓名等敏感信息。',
+    keywords: ['遮盖pdf', '查找并遮盖', '批量遮盖', '删除文本', 'pdf脱敏', '隐藏敏感数据'],
+    description: `
+      <p>查找并遮盖允许您在PDF的所有页面中搜索特定文本、数字或模式，并一次性遮盖所有匹配项。非常适合删除敏感信息，如账号、姓名、地址或任何机密数据。</p>
+      <p>在应用遮盖前预览所有匹配项，并选择性地选择要遮盖的出现次数。支持区分大小写搜索、全词匹配和正则表达式以进行高级模式匹配。</p>
+      <p>所有处理都在您的浏览器中进行，确保您的文档保持私密和安全。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '拖放您的PDF文件或点击选择。' },
+      { step: 2, title: '搜索文本', description: '输入要查找和遮盖的文本、数字或正则表达式模式。' },
+      { step: 3, title: '审查并选择', description: '预览所有匹配项并选择要遮盖的项目。' },
+      { step: 4, title: '应用遮盖', description: '自定义遮盖外观并应用于所选匹配项。' },
+    ],
+    useCases: [
+      { title: '隐私合规', description: '遮盖个人信息以符合GDPR、HIPAA或其他法规。', icon: 'shield' },
+      { title: '法律文档', description: '在共享前从法律文档中删除机密数据。', icon: 'scale' },
+      { title: '财务记录', description: '从报表中遮盖账号、社保号或财务数据。', icon: 'credit-card' },
+    ],
+    faq: [
+      { question: '遮盖是永久的吗？', answer: '是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。' },
+      { question: '可以遮盖图像或扫描文本吗？', answer: '此工具适用于基于文本的PDF。对于扫描文档，您需要使用基于区域的手动遮盖。' },
+      { question: '可以自定义遮盖外观吗？', answer: '是的，您可以设置遮盖颜色、添加边框，并可选择包含替换文本如"[已遮盖]"。' },
+      { question: '正则表达式搜索如何工作？', answer: '启用"使用正则表达式"以使用正则模式搜索。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡号。' },
+    ],
+  },
+
+
   'decrypt-pdf': {
     title: '解密PDF',
     metaDescription: '从PDF文件中删除密码。解锁受密码保护的文档。',

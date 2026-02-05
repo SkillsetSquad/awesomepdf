@@ -134,7 +134,7 @@
       "helpButton": "Tour guida"
     },
     "search": {
-          "placeholder": "Cerca strumenti…",
+      "placeholder": "Cerca strumenti…",
       "hint": "Premi Invio per selezionare, ↑↓ per navigare",
       "noResults": "Nessuno strumento trovato"
     },
@@ -1706,27 +1706,31 @@
     "invertColors": {
       "uploadLabel": "Carica file PDF",
       "uploadDescription": "Trascina e rilascia un file PDF.",
-      "optionsTitle": "Opzioni filigrana",
-      "type": "Tipo",
-      "textWatermark": "Filigrana di testo",
-      "imageWatermark": "Filigrana immagine",
-      "watermarkText": "Testo filigrana",
-      "watermarkImage": "Immagine filigrana (PNG/JPG)",
-      "position": "Posizione",
+      "invertButton": "Inverti colori",
+      "successMessage": "Colori invertiti con successo!"
+    },
+    "backgroundColor": {
+      "uploadLabel": "Carica file PDF",
+      "uploadDescription": "Trascina e rilascia un file PDF.",
+      "optionsTitle": "Colore dello sfondo",
+      "colorPicker": "Selettore colore",
       "applyButton": "Applica sfondo",
-      "posDiagonal": "Diagonale",
-      "posTopLeft": "In alto a sinistra",
-      "posTopRight": "In alto a destra",
-      "posBottomLeft": "In basso a sinistra",
-      "posBottomRight": "In basso a destra",
+      "successMessage": "Colore di sfondo applicato con successo!",
+      "colorLabel": "Colore di sfondo"
+    },
+    "textColor": {
+      "uploadLabel": "Carica file PDF",
+      "uploadDescription": "Trascina e rilascia un file PDF.",
+      "optionsTitle": "Colore del testo",
+      "colorPicker": "Selettore colore",
+      "applyButton": "Applica colore del testo",
+      "successMessage": "Colore del testo applicato con successo!",
       "colorLabel": "Colore del testo",
       "modeLabel": "Tipo di testo",
       "modeDark": "Testo scuro (sfondo chiaro)",
       "modeLight": "Testo chiaro (sfondo scuro)",
       "thresholdLabel": "Soglia di luminosità",
-      "thresholdHint": "Regola per controllare quali pixel sono interessati",
-      "applyButton": "Applica colore del testo",
-      "successMessage": "Colore del testo applicato con successo!"
+      "thresholdHint": "Regola per controllare quali pixel sono interessati"
     },
     "stamps": {
       "uploadLabel": "Carica file PDF",
@@ -2122,6 +2126,46 @@
     "pdfReader": {
       "uploadLabel": "Apri file PDF",
       "uploadDescription": "Apri un file PDF per leggere e visualizzare."
+    },
+    "findAndRedact": {
+      "uploadLabel": "Carica file PDF",
+      "uploadDescription": "Trascina e rilascia un file PDF per cercare e oscurare il testo.",
+      "searchTitle": "Cerca Testo",
+      "searchTermLabel": "Termini di ricerca",
+      "searchTermPlaceholder": "Inserisci il testo da cercare (es. numero conto, nome)...",
+      "searchInputPlaceholder": "Inserisci termini di ricerca, separati da virgole...",
+      "searchInputHelp": "Suggerimento: Separa più termini con le virgole (,)",
+      "multipleTermsPlaceholder": "Inserisci termini di ricerca (uno per riga o separati da virgole)...\nEsempio:\nMario Rossi\nconto123\n555-1234",
+      "termsCount": "{count} termine(i) di ricerca",
+      "searchButton": "Cerca",
+      "searching": "Ricerca in corso...",
+      "caseSensitive": "Maiuscole/minuscole",
+      "wholeWord": "Solo parola intera",
+      "useRegex": "Usa espressioni regolari",
+      "enterSearchTerm": "Inserisci almeno un termine di ricerca.",
+      "noMatchesFound": "Nessuna corrispondenza trovata per i termini di ricerca.",
+      "searchFailed": "Ricerca nel PDF fallita.",
+      "matchesFound": "{count} corrispondenze trovate",
+      "filterByPage": "Filtra per pagina",
+      "allPages": "Tutte le pagine",
+      "pageNumber": "Pagina {page}",
+      "pageInfo": "Pagina {page}",
+      "selectedCount": "{selected} su {total} selezionati",
+      "selectMatchesToRedact": "Seleziona almeno una corrispondenza da oscurare.",
+      "redactionOptions": "Opzioni di Oscuramento",
+      "redactionColor": "Colore di Oscuramento",
+      "replacementText": "Testo sostitutivo (opzionale)",
+      "replacementTextPlaceholder": "es., [OSCURATO]",
+      "addBorder": "Aggiungi bordo alle aree oscurate",
+      "warningTitle": "Attenzione",
+      "warningText": "L'oscuramento è permanente. Una volta applicato, il contenuto originale non può essere recuperato.",
+      "redactButton": "Oscura {count} Selezionati",
+      "redactFailed": "Applicazione oscuramento fallita.",
+      "successMessage": "Testo selezionato oscurato con successo! Clicca su download per salvare.",
+      "previewTitle": "Anteprima",
+      "pagesWithMatches": "Pagine con corrispondenze:",
+      "selectedMatch": "Selezionato",
+      "unselectedMatch": "Non selezionato"
     }
   }
 }

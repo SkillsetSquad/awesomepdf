@@ -56,6 +56,7 @@ import { RemoveRestrictionsTool } from '@/components/tools/remove-restrictions';
 import { EncryptPDFTool } from '@/components/tools/encrypt';
 import { DecryptPDFTool } from '@/components/tools/decrypt';
 import { SanitizePDFTool } from '@/components/tools/sanitize';
+import { FindAndRedactTool } from '@/components/tools/find-and-redact';
 import { FlattenPDFTool } from '@/components/tools/flatten';
 import { RemoveMetadataTool } from '@/components/tools/remove-metadata';
 import { ChangePermissionsTool } from '@/components/tools/change-permissions';
@@ -359,6 +360,8 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <DecryptPDFTool />;
       case 'sanitize-pdf':
         return <SanitizePDFTool />;
+      case 'find-and-redact':
+        return <FindAndRedactTool />;
       case 'flatten-pdf':
         return <FlattenPDFTool />;
       case 'remove-metadata':
