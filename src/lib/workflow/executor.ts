@@ -785,7 +785,7 @@ export async function executeNode(
                             contactInfo: String(settings.contactInfo || '') || undefined,
                         },
                     });
-                    results.push(new Blob([signedBytes], { type: 'application/pdf' }));
+                    results.push(new Blob([new Uint8Array(signedBytes)], { type: 'application/pdf' }));
                     filenames.push(file.name.replace(/\.pdf$/i, '_signed.pdf'));
                 }
 
