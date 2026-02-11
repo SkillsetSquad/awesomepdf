@@ -3,19 +3,20 @@
  * 
  * Uses @matbee/libreoffice-converter for document conversion.
  * 
- * Uses BrowserConverter (main-thread mode) instead of WorkerBrowserConverter
- * because the worker mode has a hardcoded 10-second timeout for the worker
- * to load and send a "loaded" message. On slower connections or CDN-proxied
- * deployments, the large browser.worker.global.js file often fails to load
- * within this window, causing "Worker load timeout" errors.
- * 
- * BrowserConverter loads directly on the main thread with a 60-second timeout,
- * which is more reliable for production deployments.
+ * Key customizations:
+ * 1. Overrides loadModule() to increase timeout from 60s to 5 minutes
+ *    (soffice.wasm ~48MB + soffice.data ~28MB compressed need time to download)
+ * 2. Adds data-cfasync="false" to script tag to bypass Cloudflare Rocket Loader
+ *    which intercepts/defers JS and breaks WASM initialization
+ * 3. Injects CJK fonts into WASM virtual filesystem for Chinese support
  */
 
 import { BrowserConverter } from '@matbee/libreoffice-converter/browser';
 
 const LIBREOFFICE_PATH = '/libreoffice-wasm/';
+
+/** Timeout for WASM loading: 5 minutes (soffice.wasm + soffice.data are ~77MB compressed) */
+const WASM_LOAD_TIMEOUT_MS = 5 * 60 * 1000;
 
 /**
  * CJK font files to inject into LibreOffice WASM virtual filesystem.
@@ -86,6 +87,9 @@ export class LibreOfficeConverter {
                 },
             });
 
+            // Override loadModule to increase timeout and bypass Cloudflare Rocket Loader
+            this.patchLoadModule(this.converter);
+
             await this.converter.initialize();
 
             // Install CJK fonts into the WASM virtual filesystem
@@ -98,6 +102,56 @@ export class LibreOfficeConverter {
         } finally {
             this.initializing = false;
         }
+    }
+
+    /**
+     * Monkey-patch BrowserConverter.loadModule() to:
+     * 1. Increase timeout from 60s to 5 minutes
+     * 2. Add data-cfasync="false" to bypass Cloudflare Rocket Loader
+     */
+    private patchLoadModule(converter: BrowserConverter): void {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const instance = converter as any;
+        const options = instance.options;
+
+        instance.loadModule = () => {
+            const { sofficeJs, sofficeWasm, sofficeData, sofficeWorkerJs } = options;
+            const w = window as any;
+
+            return new Promise((resolve, reject) => {
+                w.Module = {
+                    locateFile: (path: string) => {
+                        if (path.endsWith('.wasm')) return sofficeWasm;
+                        if (path.endsWith('.data')) return sofficeData;
+                        if (path.endsWith('.worker.js') || path.endsWith('.worker.cjs')) return sofficeWorkerJs;
+                        return `${sofficeJs.substring(0, sofficeJs.lastIndexOf('/') + 1)}${path}`;
+                    },
+                    print: options.verbose ? console.log : () => { },
+                    printErr: options.verbose ? console.error : () => { },
+                    onRuntimeInitialized: () => {
+                        console.log('[LibreOffice] WASM runtime initialized');
+                        resolve(w.Module);
+                    },
+                    onAbort: (reason: string) => {
+                        reject(new Error(`WASM abort: ${reason}`));
+                    },
+                };
+
+                const script = document.createElement('script');
+                script.src = sofficeJs;
+
+                // Bypass Cloudflare Rocket Loader - prevents it from deferring this script
+                script.setAttribute('data-cfasync', 'false');
+
+                script.onerror = () => reject(new Error(`Failed to load ${sofficeJs}`));
+                document.head.appendChild(script);
+
+                // Extended timeout: 5 minutes instead of default 60 seconds
+                setTimeout(() => {
+                    reject(new Error('WASM load timeout (5 min)'));
+                }, WASM_LOAD_TIMEOUT_MS);
+            });
+        };
     }
 
     /**
