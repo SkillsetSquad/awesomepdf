@@ -67,12 +67,26 @@ export class LibreOfficeConverter {
 
             progressCallback?.({ phase: 'loading', percent: 5, message: 'Loading conversion engine...' });
 
+            // Pre-fetch the Worker script and create a Blob URL.
+            // This works around issues where the dev server (Turbopack) or static
+            // hosting prevents the Worker constructor from loading the script
+            // directly via its URL (e.g., wrong MIME type, transformation, or
+            // cross-origin isolation enforcement on sub-resources).
+            const workerBlobUrl = await this.createWorkerBlobUrl();
+
+            // Use full URLs (with origin) for all WASM paths.
+            // Because the Worker runs from a blob: URL, absolute paths like
+            // "/libreoffice-wasm/soffice.js" cannot be resolved correctly by
+            // importScripts — the blob: URL scheme has no HTTP origin to resolve
+            // against. Full URLs (e.g., "http://localhost:3000/...") work everywhere.
+            const origin = typeof window !== 'undefined' ? window.location.origin : '';
+
             this.converter = new WorkerBrowserConverter({
-                sofficeJs: `${this.basePath}soffice.js`,
-                sofficeWasm: `${this.basePath}soffice.wasm`,
-                sofficeData: `${this.basePath}soffice.data`,
-                sofficeWorkerJs: `${this.basePath}soffice.worker.js`,
-                browserWorkerJs: `${this.basePath}browser.worker.global.js`,
+                sofficeJs: `${origin}${this.basePath}soffice.js`,
+                sofficeWasm: `${origin}${this.basePath}soffice.wasm`,
+                sofficeData: `${origin}${this.basePath}soffice.data`,
+                sofficeWorkerJs: `${origin}${this.basePath}soffice.worker.js`,
+                browserWorkerJs: workerBlobUrl,
                 verbose: false,
                 onProgress: (info: { phase: string; percent: number; message: string }) => {
                     if (progressCallback && !this.initialized) {
@@ -100,6 +114,9 @@ export class LibreOfficeConverter {
 
             this.initialized = true;
 
+            // Clean up Blob URL after successful initialization
+            URL.revokeObjectURL(workerBlobUrl);
+
             // Signal completion
             progressCallback?.({ phase: 'ready', percent: 100, message: 'Conversion engine ready!' });
 
@@ -108,6 +125,34 @@ export class LibreOfficeConverter {
         } finally {
             this.initializing = false;
         }
+    }
+
+    /**
+     * Pre-fetch the Worker script and return a Blob URL.
+     *
+     * Why: The `new Worker(url)` call in WorkerBrowserConverter can fail in
+     * certain environments (Next.js Turbopack dev server, some static hosts)
+     * because the response lacks required headers, has wrong MIME type, or
+     * the bundler transforms the Worker URL. By fetching the script ourselves
+     * (which the environment check already proved works) and converting it to
+     * a same-origin Blob URL, we guarantee the Worker can load the script.
+     */
+    private async createWorkerBlobUrl(): Promise<string> {
+        const workerScriptUrl = `${this.basePath}browser.worker.global.js`;
+        console.log(`[LibreOffice] Pre-fetching Worker script: ${workerScriptUrl}`);
+
+        const response = await fetch(workerScriptUrl);
+        if (!response.ok) {
+            throw new Error(
+                `Failed to fetch Worker script: HTTP ${response.status} ${response.statusText}`
+            );
+        }
+
+        const scriptText = await response.text();
+        const blob = new Blob([scriptText], { type: 'application/javascript' });
+        const blobUrl = URL.createObjectURL(blob);
+        console.log(`[LibreOffice] Worker Blob URL created (${scriptText.length} bytes)`);
+        return blobUrl;
     }
 
     /**
