@@ -21,29 +21,51 @@ export interface RTFToPDFOptions {
     /** Reserved for future options */
 }
 
-let loadModulePromise: Promise<any> | null = null;
+let converterPromise: Promise<any> | null = null;
 let converterInstance: any = null;
 
 async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
-    // 1. Ensure module is loaded
-    if (!loadModulePromise) {
-        loadModulePromise = import('@/lib/libreoffice');
+    if (converterInstance?.isReady()) return converterInstance;
+
+    if (converterPromise) {
+        await converterPromise;
+        return converterInstance;
     }
-    const { getLibreOfficeConverter } = await loadModulePromise;
 
-    // 2. Get singleton instance
-    converterInstance = getLibreOfficeConverter();
+    converterPromise = (async () => {
+        const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+        converterInstance = getLibreOfficeConverter();
+        await converterInstance.initialize((progress: any) => {
+            onProgress?.(progress.percent, progress.message);
+        });
+    })();
 
-    // 3. Always call initialize to attach/update the progress callback.
-    await converterInstance.initialize((progress: any) => {
-        onProgress?.(progress.percent, progress.message);
-    });
-
+    await converterPromise;
     return converterInstance;
 }
 
 export class RTFToPDFProcessor extends BasePDFProcessor {
+    private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;
+
+    private startConversionProgress(message: string): void {
+        this.stopConversionProgress();
+        // LibreOffice convert() does not expose granular runtime progress.
+        // Keep UI responsive by advancing a bounded pseudo-progress while waiting.
+        this.conversionProgressTimer = setInterval(() => {
+            if (this.progress >= 98) return;
+            this.updateProgress(this.progress + 1, message);
+        }, 800);
+    }
+
+    private stopConversionProgress(): void {
+        if (this.conversionProgressTimer) {
+            clearInterval(this.conversionProgressTimer);
+            this.conversionProgressTimer = null;
+        }
+    }
+
     protected reset(): void {
+        this.stopConversionProgress();
         super.reset();
     }
 
@@ -96,6 +118,7 @@ export class RTFToPDFProcessor extends BasePDFProcessor {
             }
 
             this.updateProgress(85, 'Converting RTF to PDF...');
+            this.startConversionProgress('Converting RTF to PDF...');
 
             // Convert with timeout protection
             const pdfBlob = await Promise.race([
@@ -106,6 +129,7 @@ export class RTFToPDFProcessor extends BasePDFProcessor {
                     )), CONVERT_TIMEOUT_MS)
                 ),
             ]);
+            this.stopConversionProgress();
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
@@ -117,6 +141,7 @@ export class RTFToPDFProcessor extends BasePDFProcessor {
             return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf' });
 
         } catch (error) {
+            this.stopConversionProgress();
             console.error('Conversion error:', error);
             return this.createErrorOutput(
                 PDFErrorCode.PROCESSING_FAILED,

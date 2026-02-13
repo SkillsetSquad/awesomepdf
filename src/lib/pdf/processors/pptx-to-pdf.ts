@@ -45,7 +45,27 @@ async function getConverter(onProgress?: (percent: number, message: string) => v
 }
 
 export class PPTXToPDFProcessor extends BasePDFProcessor {
+    private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;
+
+    private startConversionProgress(message: string): void {
+        this.stopConversionProgress();
+        // LibreOffice convert() does not expose granular runtime progress.
+        // Keep UI responsive by advancing a bounded pseudo-progress while waiting.
+        this.conversionProgressTimer = setInterval(() => {
+            if (this.progress >= 98) return;
+            this.updateProgress(this.progress + 1, message);
+        }, 800);
+    }
+
+    private stopConversionProgress(): void {
+        if (this.conversionProgressTimer) {
+            clearInterval(this.conversionProgressTimer);
+            this.conversionProgressTimer = null;
+        }
+    }
+
     protected reset(): void {
+        this.stopConversionProgress();
         super.reset();
     }
 
@@ -99,6 +119,7 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
             }
 
             this.updateProgress(85, 'Converting PowerPoint to PDF...');
+            this.startConversionProgress('Converting PowerPoint to PDF...');
 
             // Convert with timeout protection
             const pdfBlob = await Promise.race([
@@ -109,6 +130,7 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
                     )), CONVERT_TIMEOUT_MS)
                 ),
             ]);
+            this.stopConversionProgress();
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
@@ -120,6 +142,7 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
             return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf' });
 
         } catch (error) {
+            this.stopConversionProgress();
             console.error('Conversion error:', error);
             return this.createErrorOutput(
                 PDFErrorCode.PROCESSING_FAILED,
