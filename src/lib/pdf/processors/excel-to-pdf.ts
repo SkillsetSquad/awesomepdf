@@ -12,8 +12,33 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
-import { getLibreOfficeConverter } from '@/lib/libreoffice';
 
+/** Maximum file size: 50 MB */
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+/** Conversion timeout: 5 minutes */
+const CONVERT_TIMEOUT_MS = 5 * 60 * 1000;
+
+let loadModulePromise: Promise<any> | null = null;
+let converterInstance: any = null;
+
+async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
+    // 1. Ensure module is loaded
+    if (!loadModulePromise) {
+        loadModulePromise = import('@/lib/libreoffice');
+    }
+    const { getLibreOfficeConverter } = await loadModulePromise;
+
+    // 2. Get singleton instance
+    converterInstance = getLibreOfficeConverter();
+
+    // 3. Always call initialize to attach/update the progress callback.
+    // The converter handles re-entrancy internally.
+    await converterInstance.initialize((progress: any) => {
+        onProgress?.(progress.percent, progress.message);
+    });
+
+    return converterInstance;
+}
 export interface ExcelToPDFOptions {
     /** Reserved for future options */
 }
@@ -52,13 +77,20 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
             );
         }
 
+        // File size guard
+        if (file.size > MAX_FILE_SIZE) {
+            return this.createErrorOutput(
+                PDFErrorCode.INVALID_OPTIONS,
+                `File is too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Maximum supported size is ${MAX_FILE_SIZE / 1024 / 1024} MB.`,
+                `File size: ${file.size} bytes, limit: ${MAX_FILE_SIZE} bytes`
+            );
+        }
+
         try {
             this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
 
-            const converter = getLibreOfficeConverter();
-
-            await converter.initialize((progress) => {
-                this.updateProgress(Math.min(progress.percent * 0.8, 80), progress.message);
+            const converter = await getConverter((percent, message) => {
+                this.updateProgress(Math.min(percent * 0.8, 80), message);
             });
 
             if (this.checkCancelled()) {
@@ -67,7 +99,15 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
 
             this.updateProgress(85, 'Converting Excel to PDF...');
 
-            const pdfBlob = await converter.convertToPdf(file);
+            // Convert with timeout protection
+            const pdfBlob = await Promise.race([
+                converter.convertToPdf(file),
+                new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error(
+                        `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
+                    )), CONVERT_TIMEOUT_MS)
+                ),
+            ]);
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');

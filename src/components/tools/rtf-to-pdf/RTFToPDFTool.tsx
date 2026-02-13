@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileType, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FileUploader } from '../FileUploader';
@@ -30,6 +30,22 @@ export function RTFToPDFTool({ className = '' }: RTFToPDFToolProps) {
     const [result, setResult] = useState<Blob | Blob[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const cancelledRef = useRef(false);
+
+    // Preload LibreOffice WASM when the component mounts
+    useEffect(() => {
+        let cancelled = false;
+        (async () => {
+            try {
+                const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+                if (cancelled) return;
+                const converter = getLibreOfficeConverter();
+                await converter.initialize();
+            } catch {
+                // Silent preload — errors will surface when user clicks convert
+            }
+        })();
+        return () => { cancelled = true; };
+    }, []);
 
     const handleFilesSelected = useCallback((newFiles: File[]) => {
         if (newFiles.length > 0) {

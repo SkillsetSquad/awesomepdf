@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileText, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FileUploader } from '../FileUploader';
@@ -42,6 +42,22 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
 
     // Ref for cancellation
     const cancelledRef = useRef(false);
+
+    // Preload LibreOffice WASM when the component mounts
+    useEffect(() => {
+        let cancelled = false;
+        (async () => {
+            try {
+                const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+                if (cancelled) return;
+                const converter = getLibreOfficeConverter();
+                await converter.initialize();
+            } catch {
+                // Silent preload — errors will surface when user clicks convert
+            }
+        })();
+        return () => { cancelled = true; };
+    }, []);
 
     /**
      * Handle file selected from uploader
@@ -151,7 +167,12 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
         <div className={`space-y-8 ${className}`.trim()}>
             {/* File Upload Area */}
             <FileUploader
-                accept={['.docx', '.doc', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']}
+                accept={[
+                    '.docx', '.doc', '.odt',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/msword',
+                    'application/vnd.oasis.opendocument.text',
+                ]}
                 multiple={false}
                 maxFiles={1}
                 onFilesSelected={handleFilesSelected}

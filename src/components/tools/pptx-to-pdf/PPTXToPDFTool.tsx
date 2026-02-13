@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Presentation, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FileUploader } from '../FileUploader';
@@ -30,6 +30,22 @@ export function PPTXToPDFTool({ className = '' }: PPTXToPDFToolProps) {
     const [result, setResult] = useState<Blob | Blob[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const cancelledRef = useRef(false);
+
+    // Preload LibreOffice WASM when the component mounts
+    useEffect(() => {
+        let cancelled = false;
+        (async () => {
+            try {
+                const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+                if (cancelled) return;
+                const converter = getLibreOfficeConverter();
+                await converter.initialize();
+            } catch {
+                // Silent preload — errors will surface when user clicks convert
+            }
+        })();
+        return () => { cancelled = true; };
+    }, []);
 
     const handleFilesSelected = useCallback((newFiles: File[]) => {
         if (newFiles.length > 0) {
@@ -120,7 +136,12 @@ export function PPTXToPDFTool({ className = '' }: PPTXToPDFToolProps) {
     return (
         <div className={`space-y-8 ${className}`.trim()}>
             <FileUploader
-                accept={['.pptx', '.ppt', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.ms-powerpoint']}
+                accept={[
+                    '.pptx', '.ppt', '.odp',
+                    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                    'application/vnd.ms-powerpoint',
+                    'application/vnd.oasis.opendocument.presentation',
+                ]}
                 multiple={false}
                 maxFiles={1}
                 onFilesSelected={handleFilesSelected}
