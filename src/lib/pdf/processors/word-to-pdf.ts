@@ -21,24 +21,26 @@ export interface WordToPDFOptions {
     /** Reserved for future options */
 }
 
-let loadModulePromise: Promise<any> | null = null;
+let converterPromise: Promise<any> | null = null;
 let converterInstance: any = null;
 
 async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
-    // 1. Ensure module is loaded
-    if (!loadModulePromise) {
-        loadModulePromise = import('@/lib/libreoffice');
+    if (converterInstance?.isReady()) return converterInstance;
+
+    if (converterPromise) {
+        await converterPromise;
+        return converterInstance;
     }
-    const { getLibreOfficeConverter } = await loadModulePromise;
 
-    // 2. Get singleton instance
-    converterInstance = getLibreOfficeConverter();
+    converterPromise = (async () => {
+        const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+        converterInstance = getLibreOfficeConverter();
+        await converterInstance.initialize((progress: any) => {
+            onProgress?.(progress.percent, progress.message);
+        });
+    })();
 
-    // 3. Always call initialize to attach/update the progress callback.
-    await converterInstance.initialize((progress: any) => {
-        onProgress?.(progress.percent, progress.message);
-    });
-
+    await converterPromise;
     return converterInstance;
 }
 
