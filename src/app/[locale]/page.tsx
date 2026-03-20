@@ -7,11 +7,11 @@ export function generateStaticParams() {
 }
 
 interface HomePageProps {
-  params: Promise<{ locale: string }>;
+  params: { locale: string }>;
 }
 
 export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
+  const { locale } = params;
 
   // Enable static rendering
   setRequestLocale(locale);
