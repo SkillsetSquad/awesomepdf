@@ -7,7 +7,7 @@ export function generateStaticParams() {
 }
 
 interface HomePageProps {
-  params: { locale: string }>;
+  params: { locale: string };
 }
 
 export default async function HomePage({ params }: HomePageProps) {
