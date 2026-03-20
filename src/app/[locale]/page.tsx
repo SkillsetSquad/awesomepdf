@@ -7,11 +7,11 @@ export function generateStaticParams() {
 }
 
 interface HomePageProps {
-  params: { locale: string };
+  params: Promise<{ locale: Locale }>;
 }
 
 export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   // Enable static rendering
   setRequestLocale(locale);
@@ -21,7 +21,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const { getToolContent } = await import('@/config/tool-content');
 
   const localizedToolContent = tools.reduce((acc, tool) => {
-    const content = getToolContent(locale as Locale, tool.id);
+    const content = getToolContent(locale, tool.id);
     // Use metaDescription for the card description as it's short and summary-like
     // Use title from the content
     if (content) {
