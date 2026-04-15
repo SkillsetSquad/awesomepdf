@@ -174,7 +174,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
           {/* Logo and Brand */}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-1 items-center gap-2">
             <Link
               href={`/${locale}`}
               className="group flex items-center gap-2.5 text-xl font-bold text-[hsl(var(--color-foreground))] hover:opacity-90 transition-opacity"
@@ -219,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-1 items-center justify-end gap-3">
             {/* Search */}
             {showSearch && (
               <div className="relative" ref={searchContainerRef}>
