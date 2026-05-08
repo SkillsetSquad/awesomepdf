@@ -70,7 +70,6 @@ jobs:
           echo "📊 Package size: $(du -h pdfcraft-${{ steps.version.outputs.version }}.zip | cut -f1)"
 
       # Create GitHub Release with auto-generated notes from commits
-      # Create GitHub Release with auto-generated notes from commits
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
