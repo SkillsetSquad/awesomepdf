@@ -65,8 +65,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: tauri-${{ github.sha }}
-          name: Tauri Desktop ${{ github.sha }}
+          tag_name: tauri-${{ github.run_number }}
+          name: Tauri Desktop Build ${{ github.run_number }}
           draft: false
           prerelease: false
           files: |
