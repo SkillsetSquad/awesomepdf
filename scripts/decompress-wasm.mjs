@@ -28,6 +28,11 @@ async function decompressFile(gzPath, outPath) {
 }
 
 async function main() {
+    if (process.env.DOCKER_BUILD === 'true') {
+        console.log('[postbuild] DOCKER_BUILD detected, skipping decompression.');
+        return;
+    }
+
     if (!existsSync(WASM_DIR)) {
         console.log('[postbuild] No libreoffice-wasm directory found in out/, skipping.');
         return;
