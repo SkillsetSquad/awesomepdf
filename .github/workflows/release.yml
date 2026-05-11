@@ -5,9 +5,6 @@
 name: Build and Release
 
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows: ["Build Tauri"]
     types:
@@ -77,18 +74,27 @@ jobs:
         with:
           name: tauri-macos-latest
           path: tauri-bundles/macos
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: Download Tauri Windows build
         uses: actions/download-artifact@v4
         with:
           name: tauri-windows-latest
           path: tauri-bundles/windows
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: Download Tauri Linux build
         uses: actions/download-artifact@v4
         with:
           name: tauri-ubuntu-latest
           path: tauri-bundles/linux
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       # Create GitHub Release with auto-generated notes from commits
       - name: Create Release
