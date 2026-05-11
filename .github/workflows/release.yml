@@ -69,6 +69,28 @@ jobs:
           echo "📦 Release package created: pdfcraft-${{ steps.version.outputs.version }}.zip"
           echo "📊 Package size: $(du -h pdfcraft-${{ steps.version.outputs.version }}.zip | cut -f1)"
 
+      # Wait for and download Tauri desktop builds from other workflow
+      - name: Download Tauri macOS build
+        uses: actions/download-artifact@v4
+        with:
+          name: tauri-macos-latest
+          path: tauri-bundles/macos
+        continue-on-error: true
+
+      - name: Download Tauri Windows build
+        uses: actions/download-artifact@v4
+        with:
+          name: tauri-windows-latest
+          path: tauri-bundles/windows
+        continue-on-error: true
+
+      - name: Download Tauri Linux build
+        uses: actions/download-artifact@v4
+        with:
+          name: tauri-ubuntu-latest
+          path: tauri-bundles/linux
+        continue-on-error: true
+
       # Create GitHub Release with auto-generated notes from commits
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -91,6 +113,7 @@ jobs:
             **Build Time:** ${{ steps.version.outputs.build_time }}
           files: |
             pdfcraft-${{ steps.version.outputs.version }}.zip
+            tauri-bundles/**/*
           draft: false
           prerelease: false
           generate_release_notes: true
