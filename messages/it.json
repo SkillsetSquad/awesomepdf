@@ -1689,7 +1689,9 @@
       "repeatTitle": "Ripeti filigrana",
       "repeatEnable": "Ripeti la filigrana su tutta la pagina",
       "repeatSpacingX": "Spaziatura orizzontale",
-      "repeatSpacingY": "Spaziatura verticale"
+      "repeatSpacingY": "Spaziatura verticale",
+      "staggerTitle": "Layout sfalsato",
+      "staggerDescription": "Sfalsa le righe alternate per un aspetto più professionale"
     },
     "headerFooter": {
       "uploadLabel": "Carica file PDF",

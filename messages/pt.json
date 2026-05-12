@@ -1682,6 +1682,8 @@
       "repeatEnable": "Mosaico de marca d'água em toda a página",
       "repeatSpacingX": "Espaçamento horizontal",
       "repeatSpacingY": "Espaçamento vertical",
+      "staggerTitle": "Layout escalonado",
+      "staggerDescription": "Desloque as linhas alternadas para uma aparência mais profissional",
       "type": "Tipo",
       "position": "Posição",
       "posCenter": "Centro",

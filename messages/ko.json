@@ -1682,6 +1682,8 @@
       "repeatEnable": "전체 페이지에 워터마크 타일 배치",
       "repeatSpacingX": "가로 간격",
       "repeatSpacingY": "세로 간격",
+      "staggerTitle": "지그재그 배치",
+      "staggerDescription": "행을 번갈아 가며 오프셋하여 더 전문적인 느낌을 줍니다",
       "type": "유형",
       "position": "위치",
       "posCenter": "중앙",

@@ -1665,7 +1665,13 @@
     "unsupportedImage": "Định dạng hình ảnh không hỗ trợ. Vui lòng dùng PNG hoặc JPG.",
     "failed": "Thêm dấu mờ thất bại.",
     "addButton": "Thêm Dấu mờ",
-    "successMessage": "Thêm dấu mờ thành công!"
+    "successMessage": "Thêm dấu mờ thành công!",
+    "repeatTitle": "Lặp lại Dấu mờ",
+    "repeatEnable": "Lát dấu mờ trên toàn bộ trang",
+    "repeatSpacingX": "Khoảng cách Ngang",
+    "repeatSpacingY": "Khoảng cách Dọc",
+    "staggerTitle": "Bố cục so le",
+    "staggerDescription": "Làm lệch các hàng xen kẽ để có giao diện chuyên nghiệp hơn"
   },
   "headerFooter": {
     "uploadLabel": "Tải lên Tệp PDF",

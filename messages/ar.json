@@ -1518,6 +1518,8 @@
       "repeatEnable": "تبليط العلامة المائية عبر الصفحة بأكملها",
       "repeatSpacingX": "التباعد الأفقي",
       "repeatSpacingY": "التباعد الرأسي",
+      "staggerTitle": "تخطيط متداخل",
+      "staggerDescription": "إزاحة الصفوف المتبادلة لمظهر أكثر احترافية",
       "posCenter": "وسط",
       "posDiagonal": "قطري",
       "posTopLeft": "أعلى اليسار",

@@ -1018,7 +1018,9 @@
       "repeatTitle": "Ulangi Watermark",
       "repeatEnable": "Ulangi watermark di seluruh halaman",
       "repeatSpacingX": "Jarak Horizontal",
-      "repeatSpacingY": "Jarak Vertikal"
+      "repeatSpacingY": "Jarak Vertikal",
+      "staggerTitle": "Tata Letak Berjenjang",
+      "staggerDescription": "Geser baris bergantian untuk tampilan yang lebih profesional"
     },
     "headerFooter": {
       "uploadLabel": "Unggah File PDF",

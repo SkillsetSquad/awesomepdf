@@ -1783,7 +1783,18 @@
       "repeatTitle": "Repeat Watermark",
       "repeatEnable": "Tile watermark across the entire page",
       "repeatSpacingX": "Horizontal Spacing",
-      "repeatSpacingY": "Vertical Spacing"
+      "repeatSpacingY": "Vertical Spacing",
+      "staggerTitle": "Staggered Layout",
+      "staggerDescription": "Offset alternating rows for a more professional look",
+      "rangeTitle": "Page Range",
+      "rangeAll": "All Pages",
+      "rangeOdd": "Odd Pages",
+      "rangeEven": "Even Pages",
+      "rangeCustom": "Custom Range",
+      "rangePlaceholder": "e.g., 1, 3, 5-10",
+      "previewTitle": "Preview",
+      "previewNote": "Showing first page only for better performance",
+      "previewGenerating": "Generating preview..."
     },
     "headerFooter": {
       "uploadLabel": "Upload PDF File",
