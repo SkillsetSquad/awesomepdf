@@ -1,7 +1,4 @@
-/**
- * PyMuPDF Loader
- * Dynamically loads PyMuPDF WASM module using ES module import
- */
+import { withBasePath } from '../utils/path';
 
 // Singleton instance
 let pymupdfInstance: any = null;
@@ -9,6 +6,10 @@ let loadingPromise: Promise<any> | null = null;
 
 function resolvePublicAssetPath(assetPath: string): string {
   if (typeof window === 'undefined') return assetPath;
+
+  // Prefer the explicitly configured withBasePath helper
+  const resolvedPath = withBasePath(assetPath);
+  if (resolvedPath !== assetPath) return resolvedPath;
 
   const normalizedAssetPath = assetPath.startsWith('/') ? assetPath : `/${assetPath}`;
   const scripts = Array.from(document.querySelectorAll('script[src]')) as HTMLScriptElement[];

@@ -1752,11 +1752,12 @@
       "uploadLabel": "Enviar arquivo PDF",
       "uploadDescription": "Arraste e solte um arquivo PDF.",
       "optionsTitle": "Opções de remoção",
-      "removeButton": "Remover anotações",
       "successMessage": "Anotações removidas com sucesso!",
       "removeComments": "Remover Comentários",
       "removeHighlights": "Remover Destaques",
-      "removeLinks": "Remover Links"
+      "removeLinks": "Remover Links",
+      "removeAllLabel": "Remover todas as anotações (comentários, destaques, links, etc.)",
+      "processButton": "Remover anotações"
     },
     "formFiller": {
       "uploadLabel": "Enviar arquivo PDF",

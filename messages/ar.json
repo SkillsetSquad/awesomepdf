@@ -2338,11 +2338,12 @@
       "uploadLabel": "تحميل ملف PDF",
       "uploadDescription": "إزالة جميع التعليقات التوضيحية من ملف PDF.",
       "optionsTitle": "خيارات الإزالة",
-      "removeButton": "إزالة التعليقات",
       "successMessage": "تمت إزالة التعليقات بنجاح!",
       "removeComments": "إزالة التعليقات النصية",
       "removeHighlights": "إزالة التظليلات",
-      "removeLinks": "إزالة الروابط"
+      "removeLinks": "إزالة الروابط",
+      "removeAllLabel": "إزالة جميع التعليقات التوضيحية (التعليقات ، التمييزات ، الروابط ، إلخ)",
+      "processButton": "إزالة التعليقات التوضيحية"
     },
     "formFiller": {
       "uploadLabel": "تحميل ملف PDF",

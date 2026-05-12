@@ -2204,6 +2204,17 @@
       "uploadLabel": "打开PDF文件",
       "uploadDescription": "打开PDF文件进行阅读和查看。"
     },
+    "removeAnnotations": {
+      "uploadLabel": "上传 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到此处。",
+      "optionsTitle": "删除选项",
+      "removeAllLabel": "删除所有注释（评论、高亮、链接等）",
+      "processButton": "删除注释",
+      "successMessage": "注释删除成功！",
+      "removeComments": "删除评论",
+      "removeHighlights": "删除高亮",
+      "removeLinks": "删除链接"
+    },
     "findAndRedact": {
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处以搜索并遮盖文本。",

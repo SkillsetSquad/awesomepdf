@@ -1752,11 +1752,12 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
-      "removeButton": "Remove Annotations",
       "successMessage": "Annotations removed successfully!",
       "removeComments": "Kommentare entfernen",
       "removeHighlights": "Hervorhebungen entfernen",
-      "removeLinks": "Links entfernen"
+      "removeLinks": "Links entfernen",
+      "removeAllLabel": "Alle Anmerkungen entfernen (Kommentare, Hervorhebungen, Links usw.)",
+      "processButton": "Anmerkungen entfernen"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

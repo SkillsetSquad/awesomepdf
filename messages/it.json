@@ -1755,11 +1755,12 @@
       "uploadLabel": "Carica file PDF",
       "uploadDescription": "Trascina e rilascia un file PDF.",
       "optionsTitle": "Opzioni di rimozione",
-      "removeButton": "Rimuovi annotazioni",
       "successMessage": "Annotazioni rimosse con successo!",
       "removeComments": "Rimuovi commenti",
       "removeHighlights": "Rimuovi evidenziazioni",
-      "removeLinks": "Rimuovi link"
+      "removeLinks": "Rimuovi link",
+      "removeAllLabel": "Rimuovi tutte le annotazioni (commenti, evidenziazioni, collegamenti, ecc.)",
+      "processButton": "Rimuovi annotazioni"
     },
     "formFiller": {
       "uploadLabel": "Carica file PDF",

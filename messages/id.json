@@ -1080,11 +1080,12 @@
       "uploadLabel": "Unggah File PDF",
       "uploadDescription": "Seret dan letakkan file PDF.",
       "optionsTitle": "Opsi Penghapusan",
-      "removeButton": "Hapus Anotasi",
       "successMessage": "Anotasi berhasil dihapus!",
       "removeComments": "Hapus Komentar",
       "removeHighlights": "Hapus Sorotan",
-      "removeLinks": "Hapus Tautan"
+      "removeLinks": "Hapus Tautan",
+      "removeAllLabel": "Hapus semua anotasi (komentar, highlight, tautan, dll.)",
+      "processButton": "Hapus Anotasi"
     },
     "formFiller": {
       "uploadLabel": "Unggah File PDF",
@@ -1511,4 +1512,3 @@
     }
   }
 }
-

@@ -1752,11 +1752,12 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
-      "removeButton": "Remove Annotations",
       "successMessage": "Annotations removed successfully!",
       "removeComments": "댓글 제거",
       "removeHighlights": "하이라이트 제거",
-      "removeLinks": "링크 제거"
+      "removeLinks": "링크 제거",
+      "removeAllLabel": "모든 주석 제거 (댓글, 강조 표시, 링크 등)",
+      "processButton": "주석 제거"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

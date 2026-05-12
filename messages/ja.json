@@ -1752,11 +1752,12 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
-      "removeButton": "Remove Annotations",
       "successMessage": "Annotations removed successfully!",
       "removeComments": "コメントを削除",
       "removeHighlights": "ハイライトを削除",
-      "removeLinks": "リンクを削除"
+      "removeLinks": "リンクを削除",
+      "removeAllLabel": "すべての注釈を削除（コメント、ハイライト、リンクなど）",
+      "processButton": "注釈を削除"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

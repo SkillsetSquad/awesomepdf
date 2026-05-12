@@ -24,6 +24,8 @@ COPY . .
 
 # Build the static export
 # Use BuildKit cache mount for Next.js cache to speed up rebuilds
+ARG BASE_PATH=""
+ENV BASE_PATH=$BASE_PATH
 ENV DOCKER_BUILD=true
 RUN --mount=type=cache,target=/root/.npm \
     --mount=type=cache,target=/app/.next/cache \
