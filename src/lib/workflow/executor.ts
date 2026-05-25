@@ -28,7 +28,7 @@ import { ReversePagesPDFProcessor } from '@/lib/pdf/processors/reverse';
 import { NUpPDFProcessor } from '@/lib/pdf/processors/n-up';
 import { CombineSinglePagePDFProcessor } from '@/lib/pdf/processors/combine-single-page';
 import { PosterizePDFProcessor } from '@/lib/pdf/processors/posterize';
-import { EditMetadataPDFProcessor } from '@/lib/pdf/processors/edit-metadata';
+import { EditMetadataPDFProcessor, type EditableMetadata } from '@/lib/pdf/processors/edit-metadata';
 import { TableOfContentsProcessor } from '@/lib/pdf/processors/table-of-contents';
 import { PageNumbersProcessor } from '@/lib/pdf/processors/page-numbers';
 import { WatermarkProcessor } from '@/lib/pdf/processors/watermark';
@@ -295,11 +295,37 @@ export async function executeNode(
             case 'edit-metadata': {
                 if (files.length === 0) throw new Error('No input file');
                 const processor = new EditMetadataPDFProcessor();
-                const options: Record<string, unknown> = {};
-                if (settings.title) options.title = String(settings.title);
-                if (settings.author) options.author = String(settings.author);
-                if (settings.subject) options.subject = String(settings.subject);
-                if (settings.keywords) options.keywords = [String(settings.keywords)];
+
+                const metadata: EditableMetadata = {};
+                if (settings.title !== undefined && String(settings.title).trim() !== '') {
+                    metadata.title = String(settings.title);
+                }
+                if (settings.author !== undefined && String(settings.author).trim() !== '') {
+                    metadata.author = String(settings.author);
+                }
+                if (settings.subject !== undefined && String(settings.subject).trim() !== '') {
+                    metadata.subject = String(settings.subject);
+                }
+                if (settings.keywords !== undefined && String(settings.keywords).trim() !== '') {
+                    metadata.keywords = String(settings.keywords)
+                        .split(',')
+                        .map((k) => k.trim())
+                        .filter((k) => k.length > 0);
+                }
+                if (settings.creator !== undefined && String(settings.creator).trim() !== '') {
+                    metadata.creator = String(settings.creator);
+                }
+                if (settings.producer !== undefined && String(settings.producer).trim() !== '') {
+                    metadata.producer = String(settings.producer);
+                }
+
+                const options = {
+                    metadata,
+                    updateModificationDate:
+                        settings.updateModificationDate !== undefined
+                            ? Boolean(settings.updateModificationDate)
+                            : true,
+                };
                 return await processor.process(createProcessInput(files, options), onProgress);
             }
 
