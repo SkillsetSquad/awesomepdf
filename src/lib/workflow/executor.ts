@@ -9,6 +9,7 @@
  */
 
 import { WorkflowNode, WorkflowEdge, WorkflowOutputFile } from '@/types/workflow';
+import { fileMatchesAcceptedFormats } from '@/lib/workflow/engine';
 import type { ProcessOutput, ProgressCallback, ProcessInput } from '@/types/pdf';
 import { PDFErrorCode, ErrorCategory } from '@/types/pdf';
 import { logger } from '@/lib/utils/logger';
@@ -28,7 +29,7 @@ import { ReversePagesPDFProcessor } from '@/lib/pdf/processors/reverse';
 import { NUpPDFProcessor } from '@/lib/pdf/processors/n-up';
 import { CombineSinglePagePDFProcessor } from '@/lib/pdf/processors/combine-single-page';
 import { PosterizePDFProcessor } from '@/lib/pdf/processors/posterize';
-import { EditMetadataPDFProcessor } from '@/lib/pdf/processors/edit-metadata';
+import { EditMetadataPDFProcessor, type EditableMetadata } from '@/lib/pdf/processors/edit-metadata';
 import { TableOfContentsProcessor } from '@/lib/pdf/processors/table-of-contents';
 import { PageNumbersProcessor } from '@/lib/pdf/processors/page-numbers';
 import { WatermarkProcessor } from '@/lib/pdf/processors/watermark';
@@ -167,9 +168,14 @@ export async function executeNode(
     const settings = node.data.settings || {};
 
     // Convert all inputs to File objects with proper metadata
-    const files: File[] = inputFiles.map((f, i) =>
+    const allFiles: File[] = inputFiles.map((f, i) =>
         convertToFile(f, i, `workflow_${toolId}`, toolId)
     );
+
+    const acceptedFormats = node.data.acceptedFormats ?? [];
+    const files: File[] = acceptedFormats.length > 0
+        ? allFiles.filter((f) => fileMatchesAcceptedFormats(f.name, acceptedFormats))
+        : allFiles;
 
     try {
         switch (toolId) {
@@ -331,11 +337,37 @@ export async function executeNode(
             case 'edit-metadata': {
                 if (files.length === 0) throw new Error('No input file');
                 const processor = new EditMetadataPDFProcessor();
-                const options: Record<string, unknown> = {};
-                if (settings.title) options.title = String(settings.title);
-                if (settings.author) options.author = String(settings.author);
-                if (settings.subject) options.subject = String(settings.subject);
-                if (settings.keywords) options.keywords = [String(settings.keywords)];
+
+                const metadata: EditableMetadata = {};
+                if (settings.title !== undefined && String(settings.title).trim() !== '') {
+                    metadata.title = String(settings.title);
+                }
+                if (settings.author !== undefined && String(settings.author).trim() !== '') {
+                    metadata.author = String(settings.author);
+                }
+                if (settings.subject !== undefined && String(settings.subject).trim() !== '') {
+                    metadata.subject = String(settings.subject);
+                }
+                if (settings.keywords !== undefined && String(settings.keywords).trim() !== '') {
+                    metadata.keywords = String(settings.keywords)
+                        .split(',')
+                        .map((k) => k.trim())
+                        .filter((k) => k.length > 0);
+                }
+                if (settings.creator !== undefined && String(settings.creator).trim() !== '') {
+                    metadata.creator = String(settings.creator);
+                }
+                if (settings.producer !== undefined && String(settings.producer).trim() !== '') {
+                    metadata.producer = String(settings.producer);
+                }
+
+                const options = {
+                    metadata,
+                    updateModificationDate:
+                        settings.updateModificationDate !== undefined
+                            ? Boolean(settings.updateModificationDate)
+                            : true,
+                };
                 return await processor.process(createProcessInput(files, options), onProgress);
             }
 
@@ -1037,11 +1069,15 @@ export function collectInputFiles(
     nodeId: string,
     nodes: WorkflowNode[],
     edges: WorkflowEdge[],
-    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>
+    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>,
+    inputAssignments?: Map<string, File[]>
 ): (Blob | WorkflowOutputFile)[] {
     const parentEdges = edges.filter(e => e.target === nodeId);
 
     if (parentEdges.length === 0) {
+        if (inputAssignments?.has(nodeId)) {
+            return inputAssignments.get(nodeId)!;
+        }
         const node = nodes.find(n => n.id === nodeId);
         if (node?.data.inputFiles) {
             return node.data.inputFiles;
