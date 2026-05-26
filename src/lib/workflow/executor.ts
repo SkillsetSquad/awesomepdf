@@ -9,6 +9,7 @@
  */
 
 import { WorkflowNode, WorkflowEdge, WorkflowOutputFile } from '@/types/workflow';
+import { fileMatchesAcceptedFormats } from '@/lib/workflow/engine';
 import type { ProcessOutput, ProgressCallback, ProcessInput } from '@/types/pdf';
 import { PDFErrorCode, ErrorCategory } from '@/types/pdf';
 import { logger } from '@/lib/utils/logger';
@@ -131,9 +132,14 @@ export async function executeNode(
     const settings = node.data.settings || {};
 
     // Convert all inputs to File objects with proper metadata
-    const files: File[] = inputFiles.map((f, i) => 
+    const allFiles: File[] = inputFiles.map((f, i) =>
         convertToFile(f, i, `workflow_${toolId}`)
     );
+
+    const acceptedFormats = node.data.acceptedFormats ?? [];
+    const files: File[] = acceptedFormats.length > 0
+        ? allFiles.filter((f) => fileMatchesAcceptedFormats(f.name, acceptedFormats))
+        : allFiles;
 
     try {
         switch (toolId) {
@@ -1001,11 +1007,15 @@ export function collectInputFiles(
     nodeId: string,
     nodes: WorkflowNode[],
     edges: WorkflowEdge[],
-    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>
+    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>,
+    inputAssignments?: Map<string, File[]>
 ): (Blob | WorkflowOutputFile)[] {
     const parentEdges = edges.filter(e => e.target === nodeId);
 
     if (parentEdges.length === 0) {
+        if (inputAssignments?.has(nodeId)) {
+            return inputAssignments.get(nodeId)!;
+        }
         const node = nodes.find(n => n.id === nodeId);
         if (node?.data.inputFiles) {
             return node.data.inputFiles;

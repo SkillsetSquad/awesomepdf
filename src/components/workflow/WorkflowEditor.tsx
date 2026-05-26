@@ -24,7 +24,7 @@ import 'reactflow/dist/style.css';
 import { useTranslations } from 'next-intl';
 import { logger } from '@/lib/utils/logger';
 import { WorkflowNode, WorkflowEdge, ToolNodeData, WorkflowExecutionState, SavedWorkflow, WorkflowTemplate, WorkflowOutputFile } from '@/types/workflow';
-import { validateWorkflow, validateConnection, topologicalSort, findInputNodes } from '@/lib/workflow/engine';
+import { validateWorkflow, validateConnection, topologicalSort, findInputNodes, distributeFilesToInputNodes } from '@/lib/workflow/engine';
 import { executeNode, collectInputFiles } from '@/lib/workflow/executor';
 import { buildNodeOutputsFromResult, deriveWorkflowFailureContext } from '@/lib/workflow/execution-utils';
 import { saveWorkflow, getSavedWorkflows, deleteWorkflow, duplicateWorkflow, exportWorkflow, importWorkflow } from '@/lib/workflow/storage';
@@ -387,13 +387,14 @@ function WorkflowEditorContent() {
                 `for ${inputNodes.length} input node(s): ${inputNodes.map(n => n.data.label).join(', ')}`
             );
 
-            // Assign input files to all input nodes
-            // Note: All input nodes receive ALL files
+            const inputFileAssignments = distributeFilesToInputNodes(inputFiles, inputNodes);
+
             setNodes((nds) => nds.map(node => {
-                if (inputNodes.some(n => n.id === node.id)) {
+                const assigned = inputFileAssignments.get(node.id);
+                if (assigned !== undefined) {
                     return {
                         ...node,
-                        data: { ...node.data, inputFiles },
+                        data: { ...node.data, inputFiles: assigned },
                     };
                 }
                 return node;
@@ -449,11 +450,19 @@ function WorkflowEditorContent() {
                     nodeId,
                     nodes as WorkflowNode[],
                     edges as WorkflowEdge[],
-                    nodeOutputs
+                    nodeOutputs,
+                    inputFileAssignments
                 );
 
-                // If this is an input node without parent outputs, use the selected files
-                const filesToProcess = nodeInputFiles.length > 0 ? nodeInputFiles : inputFiles;
+                const isInputNode = inputNodes.some((n) => n.id === nodeId);
+                const filesToProcess =
+                    nodeInputFiles.length > 0
+                        ? nodeInputFiles
+                        : isInputNode
+                          ? []
+                          : inputNodes.length === 1
+                            ? inputFiles
+                            : [];
 
                 // Log input sizes for debugging data flow
                 const inputSizes = filesToProcess.map((f, idx) => {
