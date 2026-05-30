@@ -42,7 +42,12 @@ async function main() {
 
     for (const gzFile of files) {
         const gzPath = join(WASM_DIR, gzFile);
-        const outFile = gzFile.replace(/\.gz$/, '');
+        let outFile = gzFile.replace(/\.gz$/, '');
+        if (outFile === 'soffice.wasm') {
+            outFile = 'soffice.wasm.bin';
+        } else if (outFile === 'soffice.data') {
+            outFile = 'soffice.data.bin';
+        }
         const outPath = join(WASM_DIR, outFile);
 
         // Skip if already decompressed and larger than gz (valid decompression)
