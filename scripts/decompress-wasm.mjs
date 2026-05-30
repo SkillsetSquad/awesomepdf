@@ -2,13 +2,13 @@
  * Post-build script: Decompress LibreOffice WASM .gz files
  * 
  * Problem: soffice.wasm (~147MB) and soffice.data (~100MB) exceed GitHub's 
- * 100MB file size limit, so only .gz compressed versions are committed to Git.
- * However, browsers request the uncompressed filenames (soffice.wasm, soffice.data).
+ * 100MB file size limit, so only .bin.gz compressed versions are committed to Git.
+ * However, browsers request the uncompressed filenames (soffice.wasm.bin, soffice.data.bin).
  * 
  * Solution: After `next build` generates the `out/` directory, this script
- * decompresses all .gz files in out/libreoffice-wasm/ so both versions exist.
+ * decompresses all .bin.gz files in out/libreoffice-wasm/ so both versions exist.
  * This ensures compatibility across all deployment platforms:
- * - Docker/Nginx: Uses gzip_static to serve .gz efficiently
+ * - Docker/Nginx: Uses gzip_static to serve .bin.gz efficiently
  * - Vercel/Netlify/Cloudflare Pages: Serves the decompressed originals
  * - GitHub Pages: Serves decompressed originals (but lacks COOP/COEP headers)
  */
