@@ -1051,6 +1051,10 @@ for page_num in range(len(doc)):
             # Create pixmap from image data
             pix = pymupdf.Pixmap(image_bytes)
             
+            # Skip images with alpha channel (transparency) to prevent icon/vector markup corruption
+            if pix.alpha:
+                continue
+            
             # Check if we need to reduce quality
             if pix.width > 100 and pix.height > 100:
                 # Calculate scale factor if image is too large
