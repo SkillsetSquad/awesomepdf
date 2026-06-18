@@ -275,9 +275,17 @@ function WorkflowEditorContent() {
      * Handle drag over for dropping new nodes
      */
     const onDragOver = useCallback((event: React.DragEvent) => {
-        event.preventDefault();
-        if (event.dataTransfer) {
-            event.dataTransfer.dropEffect = 'move';
+        const isToolDrag = globalDragData !== null || 
+            (event.dataTransfer && (
+                event.dataTransfer.types.includes('application/reactflow') || 
+                event.dataTransfer.types.includes('text/plain')
+            ));
+        
+        if (isToolDrag) {
+            event.preventDefault();
+            if (event.dataTransfer) {
+                event.dataTransfer.dropEffect = 'move';
+            }
         }
     }, []);
 
@@ -996,7 +1004,12 @@ function WorkflowEditorContent() {
                 </div>
 
                 {/* Canvas */}
-                <div className="flex-1 relative" ref={reactFlowWrapper}>
+                <div 
+                    className="flex-1 relative" 
+                    ref={reactFlowWrapper}
+                    onDragOver={onDragOver}
+                    onDrop={onDrop}
+                >
                     {/* Undo/Redo buttons */}
                     <div className="absolute top-2 left-2 z-10 flex gap-1">
                         <button
