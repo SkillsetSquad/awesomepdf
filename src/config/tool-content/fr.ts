@@ -180,7 +180,7 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   'compress-pdf': {
     title: 'Compresser PDF',
-    metaDescription: `Compressez un PDF gratuitement en ligne – sans inscription ni inscription. `,
+    metaDescription: 'Compressez un PDF gratuitement en ligne – sans inscription ni inscription.  Utilisez notre outil en ligne gratuit pour compress pdf rapidement et en t',
     keywords: [
       'compress pdf free online',
       'compress pdf no registration',
@@ -947,7 +947,7 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   'unlock-pdf': {
     title: 'Unlock Pdf',
-    metaDescription: `Débloquez des PDF gratuitement en ligne – sans inscription ni inscription. `,
+    metaDescription: 'Débloquez des PDF gratuitement en ligne – sans inscription ni inscription.  Utilisez notre outil en ligne gratuit pour unlock pdf rapidement et en tou',
     keywords: [
       'unlock pdf free online',
       'unlock pdf no registration',
@@ -2540,7 +2540,7 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'Redact Pdf',
-    metaDescription: `Rédigez un PDF gratuitement en ligne – sans inscription ni inscription. `,
+    metaDescription: 'Rédigez un PDF gratuitement en ligne – sans inscription ni inscription.  Utilisez notre outil en ligne gratuit pour redact pdf rapidement et en toute ',
     keywords: [
       'redact pdf free online',
       'redact pdf no registration',

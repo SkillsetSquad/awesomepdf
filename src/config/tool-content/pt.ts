@@ -3,7 +3,7 @@ import { ToolContent } from '@/types/tool';
 export const toolContentPt: Record<string, ToolContent> = {
   'pdf-multi-tool': {
     title: 'Multi-Ferramenta PDF',
-    metaDescription: `PDF Multi Tool grátis online - sem registro, sem inscrição. `,
+    metaDescription: 'PDF Multi Tool grátis online - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf multi tool rápida e seguramente. Nenhum reg',
     keywords: [
       'pdf multi tool free online',
       'pdf multi tool no registration',
@@ -62,7 +62,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'merge-pdf': {
     title: 'Juntar PDF',
-    metaDescription: `Mesclar PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Mesclar PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para merge pdf rápida e seguramente. Nenhum regi',
     keywords: [
       'merge pdf free online',
       'merge pdf no registration',
@@ -121,7 +121,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'split-pdf': {
     title: 'Dividir PDF',
-    metaDescription: `Dividir PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Dividir PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para split pdf rápida e seguramente. Nenhum regi',
     keywords: [
       'split pdf free online',
       'split pdf no registration',
@@ -180,7 +180,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'compress-pdf': {
     title: 'Comprimir PDF',
-    metaDescription: `Compactar PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Compactar PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para compress pdf rápida e seguramente. Nenhum',
     keywords: [
       'compress pdf free online',
       'compress pdf no registration',
@@ -239,7 +239,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-word': {
     title: 'Pdf To Word',
-    metaDescription: `Pdf To Word online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Word online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to word rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to word free online',
       'pdf to word no registration',
@@ -298,7 +298,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-jpg': {
     title: 'PDF para JPG',
-    metaDescription: `Pdf To Jpg online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Jpg online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to jpg rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to jpg free online',
       'pdf to jpg no registration',
@@ -357,7 +357,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-excel': {
     title: 'Pdf To Excel',
-    metaDescription: `PDF para Excel online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'PDF para Excel online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to excel rápida e seguramente. Nenhum regis',
     keywords: [
       'pdf to excel free online',
       'pdf to excel no registration',
@@ -416,7 +416,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-powerpoint': {
     title: 'Pdf To Powerpoint',
-    metaDescription: `PDF para Powerpoint online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'PDF para Powerpoint online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to powerpoint rápida e seguramente. Ne',
     keywords: [
       'pdf to powerpoint free online',
       'pdf to powerpoint no registration',
@@ -475,7 +475,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-text': {
     title: 'Pdf To Text',
-    metaDescription: `Pdf To Text online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Text online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to text rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to text free online',
       'pdf to text no registration',
@@ -534,7 +534,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'word-to-pdf': {
     title: 'Word To Pdf',
-    metaDescription: `Word To PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Word To PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para word to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'word to pdf free online',
       'word to pdf no registration',
@@ -593,7 +593,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'jpg-to-pdf': {
     title: 'Jpg To Pdf',
-    metaDescription: `Jpg para PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Jpg para PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para jpg to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'jpg to pdf free online',
       'jpg to pdf no registration',
@@ -652,7 +652,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'excel-to-pdf': {
     title: 'Excel To Pdf',
-    metaDescription: `Excel para PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Excel para PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para excel to pdf rápida e seguramente. Nenhum regis',
     keywords: [
       'excel to pdf free online',
       'excel to pdf no registration',
@@ -711,7 +711,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'powerpoint-to-pdf': {
     title: 'Powerpoint To Pdf',
-    metaDescription: `Powerpoint para PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Powerpoint para PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para powerpoint to pdf rápida e seguramente. Ne',
     keywords: [
       'powerpoint to pdf free online',
       'powerpoint to pdf no registration',
@@ -770,7 +770,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'text-to-pdf': {
     title: 'Text To Pdf',
-    metaDescription: `Text To PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Text To PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para text to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'text to pdf free online',
       'text to pdf no registration',
@@ -829,7 +829,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'html-to-pdf': {
     title: 'Html To Pdf',
-    metaDescription: `Html To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Html To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para html to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'html to pdf free online',
       'html to pdf no registration',
@@ -888,7 +888,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'rotate-pdf': {
     title: 'Rotate Pdf',
-    metaDescription: `Girar PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Girar PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para rotate pdf rápida e seguramente. Nenhum regis',
     keywords: [
       'rotate pdf free online',
       'rotate pdf no registration',
@@ -947,7 +947,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'unlock-pdf': {
     title: 'Unlock Pdf',
-    metaDescription: `Desbloqueie PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Desbloqueie PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para unlock pdf rápida e seguramente. Nenhum',
     keywords: [
       'unlock pdf free online',
       'unlock pdf no registration',
@@ -1006,7 +1006,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'protect-pdf': {
     title: 'Protect Pdf',
-    metaDescription: `Proteja PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Proteja PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para protect pdf rápida e seguramente. Nenhum re',
     keywords: [
       'protect pdf free online',
       'protect pdf no registration',
@@ -1183,7 +1183,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'add-page-numbers': {
     title: 'Add Page Numbers',
-    metaDescription: `Adicione números de página online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Adicione números de página online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para add page numbers rápida e se',
     keywords: [
       'add page numbers free online',
       'add page numbers no registration',
@@ -1242,7 +1242,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'remove-pages': {
     title: 'Remove Pages',
-    metaDescription: `Remova páginas online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Remova páginas online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para remove pages rápida e seguramente. Nenhu',
     keywords: [
       'remove pages free online',
       'remove pages no registration',
@@ -1301,7 +1301,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'extract-pages': {
     title: 'Extract Pages',
-    metaDescription: `Extraia páginas online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Extraia páginas online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para extract pages rápida e seguramente. Nen',
     keywords: [
       'extract pages free online',
       'extract pages no registration',
@@ -1360,7 +1360,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'reorganize-pdf': {
     title: 'Reorganize Pdf',
-    metaDescription: `Reorganize PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Reorganize PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para reorganize pdf rápida e seguramente. Nen',
     keywords: [
       'reorganize pdf free online',
       'reorganize pdf no registration',
@@ -1419,7 +1419,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'insert-pdf': {
     title: 'Insert Pdf',
-    metaDescription: `Insira PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Insira PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para insert pdf rápida e seguramente. Nenhum regi',
     keywords: [
       'insert pdf free online',
       'insert pdf no registration',
@@ -1478,7 +1478,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'replace-pdf': {
     title: 'Replace Pdf',
-    metaDescription: `Substitua o PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Substitua o PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para replace pdf rápida e seguramente. Nenhu',
     keywords: [
       'replace pdf free online',
       'replace pdf no registration',
@@ -1537,7 +1537,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'crop-pdf': {
     title: 'Crop Pdf',
-    metaDescription: `Cortar PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Cortar PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para crop pdf rápida e seguramente. Nenhum regist',
     keywords: [
       'crop pdf free online',
       'crop pdf no registration',
@@ -1596,7 +1596,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'resize-pdf': {
     title: 'Resize Pdf',
-    metaDescription: `Redimensione PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Redimensione PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para resize pdf rápida e seguramente. Nenhu',
     keywords: [
       'resize pdf free online',
       'resize pdf no registration',
@@ -1655,7 +1655,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-svg': {
     title: 'Pdf To Svg',
-    metaDescription: `Pdf To Svg online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Svg online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to svg rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to svg free online',
       'pdf to svg no registration',
@@ -1714,7 +1714,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-png': {
     title: 'PDF para PNG',
-    metaDescription: `Pdf To Png online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Png online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to png rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to png free online',
       'pdf to png no registration',
@@ -1773,7 +1773,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-webp': {
     title: 'PDF para WebP',
-    metaDescription: `Pdf To Webp online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Webp online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to webp rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to webp free online',
       'pdf to webp no registration',
@@ -1832,7 +1832,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'heic-to-pdf': {
     title: 'HEIC para PDF',
-    metaDescription: `Heic To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Heic To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para heic to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'heic to pdf free online',
       'heic to pdf no registration',
@@ -1891,7 +1891,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'raw-to-pdf': {
     title: 'Raw To Pdf',
-    metaDescription: `Raw To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Raw To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para raw to pdf rápida e seguramente. Nenhum registro ne',
     keywords: [
       'raw to pdf free online',
       'raw to pdf no registration',
@@ -1950,7 +1950,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'tiff-to-pdf': {
     title: 'Tiff To Pdf',
-    metaDescription: `Tiff To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Tiff To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para tiff to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'tiff to pdf free online',
       'tiff to pdf no registration',
@@ -2009,7 +2009,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'svg-to-pdf': {
     title: 'SVG para PDF',
-    metaDescription: `Svg To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Svg To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para svg to pdf rápida e seguramente. Nenhum registro ne',
     keywords: [
       'svg to pdf free online',
       'svg to pdf no registration',
@@ -2068,7 +2068,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'png-to-pdf': {
     title: 'PNG para PDF',
-    metaDescription: `Png To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Png To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para png to pdf rápida e seguramente. Nenhum registro ne',
     keywords: [
       'png to pdf free online',
       'png to pdf no registration',
@@ -2127,7 +2127,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'webp-to-pdf': {
     title: 'WebP para PDF',
-    metaDescription: `Webp To Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Webp To Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para webp to pdf rápida e seguramente. Nenhum registro ',
     keywords: [
       'webp to pdf free online',
       'webp to pdf no registration',
@@ -2186,7 +2186,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'repair-pdf': {
     title: 'Reparar PDF',
-    metaDescription: `Reparar PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Reparar PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para repair pdf rápida e seguramente. Nenhum reg',
     keywords: [
       'repair pdf free online',
       'repair pdf no registration',
@@ -2245,7 +2245,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'ocr-pdf': {
     title: 'Ocr Pdf',
-    metaDescription: `Ocr Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Ocr Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para ocr pdf rápida e seguramente. Nenhum registro necessár',
     keywords: [
       'ocr pdf free online',
       'ocr pdf no registration',
@@ -2304,7 +2304,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'flaten-pdf': {
     title: 'Flaten Pdf',
-    metaDescription: `Flaten Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Flaten Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para flaten pdf rápida e seguramente. Nenhum registro ne',
     keywords: [
       'flaten pdf free online',
       'flaten pdf no registration',
@@ -2363,7 +2363,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-pdfa': {
     title: 'PDF para PDF/A',
-    metaDescription: `Pdf To Pdfa online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Pdfa online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to pdfa rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to pdfa free online',
       'pdf to pdfa no registration',
@@ -2422,7 +2422,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'sign-pdf': {
     title: 'Sign Pdf',
-    metaDescription: `Assine PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Assine PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para sign pdf rápida e seguramente. Nenhum regist',
     keywords: [
       'sign pdf free online',
       'sign pdf no registration',
@@ -2481,7 +2481,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'annotate-pdf': {
     title: 'Annotate Pdf',
-    metaDescription: `Anote PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Anote PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para annotate pdf rápida e seguramente. Nenhum reg',
     keywords: [
       'annotate pdf free online',
       'annotate pdf no registration',
@@ -2540,7 +2540,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'Redact Pdf',
-    metaDescription: `Redact PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Redact PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para redact pdf rápida e seguramente. Nenhum regi',
     keywords: [
       'redact pdf free online',
       'redact pdf no registration',
@@ -2599,7 +2599,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'compare-pdf': {
     title: 'Compare Pdf',
-    metaDescription: `Compare PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Compare PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para compare pdf rápida e seguramente. Nenhum re',
     keywords: [
       'compare pdf free online',
       'compare pdf no registration',
@@ -2658,7 +2658,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'bookmark-pdf': {
     title: 'Bookmark Pdf',
-    metaDescription: `Bookmark PDF grátis online - sem registro, sem inscrição. `,
+    metaDescription: 'Bookmark PDF grátis online - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para bookmark pdf rápida e seguramente. Nenhum registr',
     keywords: [
       'bookmark pdf free online',
       'bookmark pdf no registration',
@@ -2717,7 +2717,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'header-footer-pdf': {
     title: 'Header Footer Pdf',
-    metaDescription: `Cabeçalho Rodapé Pdf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Cabeçalho Rodapé Pdf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para header footer pdf rápida e seguramente. N',
     keywords: [
       'header footer pdf free online',
       'header footer pdf no registration',
@@ -2776,7 +2776,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'background-pdf': {
     title: 'Background Pdf',
-    metaDescription: `Pdf de plano de fundo online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf de plano de fundo online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para background pdf rápida e seguramente. Nen',
     keywords: [
       'background pdf free online',
       'background pdf no registration',
@@ -2835,7 +2835,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'bates-numbering': {
     title: 'Bates Numbering',
-    metaDescription: `Numeração Bates online gratuita - sem registro, sem inscrição. `,
+    metaDescription: 'Numeração Bates online gratuita - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para bates numbering rápida e seguramente. Nenhum',
     keywords: [
       'bates numbering free online',
       'bates numbering no registration',
@@ -2894,7 +2894,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-grayscale': {
     title: 'Pdf To Grayscale',
-    metaDescription: `Pdf To Grayscale online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Grayscale online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to grayscale rápida e seguramente. Nenhum',
     keywords: [
       'pdf to grayscale free online',
       'pdf to grayscale no registration',
@@ -2953,7 +2953,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'optimize-pdf': {
     title: 'Optimize Pdf',
-    metaDescription: `Otimize PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Otimize PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para optimize pdf rápida e seguramente. Nenhum r',
     keywords: [
       'optimize pdf free online',
       'optimize pdf no registration',
@@ -3012,7 +3012,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'form-filler': {
     title: 'Form Filler',
-    metaDescription: `Preenchimento de formulários online gratuito - sem registro, sem inscrição. `,
+    metaDescription: 'Preenchimento de formulários online gratuito - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para form filler rápida e segurament',
     keywords: [
       'form filler free online',
       'form filler no registration',
@@ -3071,7 +3071,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'create-pdf': {
     title: 'Create Pdf',
-    metaDescription: `Crie PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Crie PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para create pdf rápida e seguramente. Nenhum regist',
     keywords: [
       'create pdf free online',
       'create pdf no registration',
@@ -3130,7 +3130,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'merge-pdf-template': {
     title: 'Merge Pdf Template',
-    metaDescription: `Mesclar modelo PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Mesclar modelo PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para merge pdf template rápida e segurame',
     keywords: [
       'merge pdf template free online',
       'merge pdf template no registration',
@@ -3189,7 +3189,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'split-pdf-template': {
     title: 'Split Pdf Template',
-    metaDescription: `Dividir modelo de PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Dividir modelo de PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para split pdf template rápida e segur',
     keywords: [
       'split pdf template free online',
       'split pdf template no registration',
@@ -3248,7 +3248,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'encrypt-pdf': {
     title: 'Criptografar PDF',
-    metaDescription: `Criptografe PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Criptografe PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para encrypt pdf rápida e seguramente. Nenhu',
     keywords: [
       'encrypt pdf free online',
       'encrypt pdf no registration',
@@ -3307,7 +3307,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'decrypt-pdf': {
     title: 'Descriptografar PDF',
-    metaDescription: `Descriptografe PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Descriptografe PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para decrypt pdf rápida e seguramente. Ne',
     keywords: [
       'decrypt pdf free online',
       'decrypt pdf no registration',
@@ -3366,7 +3366,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'metadata-pdf': {
     title: 'Metadata Pdf',
-    metaDescription: `Metadados PDF online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Metadados PDF online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para metadata pdf rápida e seguramente. Nenhum regist',
     keywords: [
       'metadata pdf free online',
       'metadata pdf no registration',
@@ -3425,7 +3425,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-viewer': {
     title: 'Pdf Viewer',
-    metaDescription: `Visualizador de PDF online gratuito - sem registro, sem inscrição. `,
+    metaDescription: 'Visualizador de PDF online gratuito - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf viewer rápida e seguramente. Nenhum ',
     keywords: [
       'pdf viewer free online',
       'pdf viewer no registration',
@@ -3484,7 +3484,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-html': {
     title: 'Pdf To Html',
-    metaDescription: `Pdf To Html online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Html online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to html rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to html free online',
       'pdf to html no registration',
@@ -3543,7 +3543,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-xml': {
     title: 'Pdf To Xml',
-    metaDescription: `Pdf To Xml online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Xml online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to xml rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to xml free online',
       'pdf to xml no registration',
@@ -3602,7 +3602,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-csv': {
     title: 'Pdf To Csv',
-    metaDescription: `Pdf To Csv online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Csv online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to csv rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to csv free online',
       'pdf to csv no registration',
@@ -3661,7 +3661,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-rtf': {
     title: 'Pdf To Rtf',
-    metaDescription: `Pdf To Rtf online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Rtf online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to rtf rápida e seguramente. Nenhum registro ne',
     keywords: [
       'pdf to rtf free online',
       'pdf to rtf no registration',
@@ -3720,7 +3720,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-epub': {
     title: 'Pdf To Epub',
-    metaDescription: `Pdf To Epub online grátis - sem registro, sem inscrição. `,
+    metaDescription: 'Pdf To Epub online grátis - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para pdf to epub rápida e seguramente. Nenhum registro ',
     keywords: [
       'pdf to epub free online',
       'pdf to epub no registration',
@@ -3779,7 +3779,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-compare-text': {
     title: 'Pdf Compare Text',
-    metaDescription: 'Pdf Compare Text grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。',
+    metaDescription: 'Pdf Compare Text grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。 Use nossa ferramenta online gra',
     keywords: [
       'pdf compare text free online',
       'pdf compare text no registration',
@@ -3838,7 +3838,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-redact-all': {
     title: 'Pdf Redact All',
-    metaDescription: 'Pdf Redact All grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。',
+    metaDescription: 'Pdf Redact All grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。 Use nossa ferramenta online gratu',
     keywords: [
       'pdf redact all free online',
       'pdf redact all no registration',
@@ -3897,7 +3897,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-find-replace': {
     title: 'Pdf Find Replace',
-    metaDescription: 'Pdf Find Replace grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。',
+    metaDescription: 'Pdf Find Replace grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。 Use nossa ferramenta online gra',
     keywords: [
       'pdf find replace free online',
       'pdf find replace no registration',
@@ -3956,7 +3956,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'pdf-to-images': {
     title: 'Pdf To Images',
-    metaDescription: 'Pdf To Images grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。',
+    metaDescription: 'Pdf To Images grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。 Use nossa ferramenta online gratui',
     keywords: [
       'pdf to images free online',
       'pdf to images no registration',
@@ -4015,7 +4015,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'extract-images': {
     title: 'Extract Images',
-    metaDescription: 'Extract Images grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。',
+    metaDescription: 'Extract Images grátis online - sem registro, sem cadastro。Processe seus arquivos PDF com segurança em seu navegador。 Use nossa ferramenta online gratu',
     keywords: [
       'extract images free online',
       'extract images no registration',
@@ -4074,7 +4074,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'compress-images': {
     title: 'Compress Images',
-    metaDescription: `Compactar imagens online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Compactar imagens online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para compress images rápida e seguramente.',
     keywords: [
       'compress images free online',
       'compress images no registration',
@@ -4133,7 +4133,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'remove-blank-pages': {
     title: 'Remover Páginas Brancas',
-    metaDescription: `Remova páginas em branco online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Remova páginas em branco online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para remove blank pages rápida e se',
     keywords: [
       'remove blank pages free online',
       'remove blank pages no registration',
@@ -4192,7 +4192,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   'detect-pdf-scanners': {
     title: 'Detect Pdf Scanners',
-    metaDescription: `Detecte scanners de PDF online gratuitamente - sem registro, sem inscrição. `,
+    metaDescription: 'Detecte scanners de PDF online gratuitamente - sem registro, sem inscrição.  Use nossa ferramenta online gratuita para detect pdf scanners rápida e se',
     keywords: [
       'detect pdf scanners free online',
       'detect pdf scanners no registration',

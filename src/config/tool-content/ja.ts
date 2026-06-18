@@ -3,7 +3,7 @@ import { ToolContent } from '@/types/tool';
 export const toolContentJa: Record<string, ToolContent> = {
   'pdf-multi-tool': {
     title: 'PDFマルチツール',
-    metaDescription: `オンラインで無料の PDF マルチツール - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料の PDF マルチツール - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf multi tool free online',
       'pdf multi tool no registration',
@@ -62,7 +62,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'merge-pdf': {
     title: 'PDF結合',
-    metaDescription: `PDF をオンラインで無料で結合 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で結合 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'merge pdf free online',
       'merge pdf no registration',
@@ -121,7 +121,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'split-pdf': {
     title: 'PDF分割',
-    metaDescription: `PDF をオンラインで無料で分割 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で分割 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'split pdf free online',
       'split pdf no registration',
@@ -180,7 +180,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'compress-pdf': {
     title: 'PDF圧縮',
-    metaDescription: `オンラインで PDF を無料で圧縮 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで PDF を無料で圧縮 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'compress pdf free online',
       'compress pdf no registration',
@@ -239,7 +239,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-word': {
     title: 'Pdf To Word',
-    metaDescription: `オンラインで PDF To Word を無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで PDF To Word を無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to word free online',
       'pdf to word no registration',
@@ -298,7 +298,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-jpg': {
     title: 'PDFからJPG',
-    metaDescription: `オンラインでPDFからJPGへ無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインでPDFからJPGへ無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to jpg free online',
       'pdf to jpg no registration',
@@ -357,7 +357,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-excel': {
     title: 'PDFをExcelに変換',
-    metaDescription: `PDF To Excel をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF To Excel をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to excel free online',
       'pdf to excel no registration',
@@ -416,7 +416,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-powerpoint': {
     title: 'Pdf To Powerpoint',
-    metaDescription: `Pdf To Powerpoint をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Pdf To Powerpoint をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to powerpoint free online',
       'pdf to powerpoint no registration',
@@ -475,7 +475,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-text': {
     title: 'Pdf To Text',
-    metaDescription: `オンラインで無料で PDF To Text - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料で PDF To Text - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to text free online',
       'pdf to text no registration',
@@ -534,7 +534,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'word-to-pdf': {
     title: 'WordをPDFに変換',
-    metaDescription: `オンラインで Word To Pdf を無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで Word To Pdf を無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'word to pdf free online',
       'word to pdf no registration',
@@ -593,7 +593,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'jpg-to-pdf': {
     title: 'JPGからPDF',
-    metaDescription: `Jpg To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Jpg To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'jpg to pdf free online',
       'jpg to pdf no registration',
@@ -652,7 +652,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'excel-to-pdf': {
     title: 'ExcelをPDFに変換',
-    metaDescription: 'Excel To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Excel To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'excel to pdf free online',
       'excel to pdf no registration',
@@ -711,7 +711,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'powerpoint-to-pdf': {
     title: 'Powerpoint To Pdf',
-    metaDescription: 'Powerpoint To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Powerpoint To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できま',
     keywords: [
       'powerpoint to pdf free online',
       'powerpoint to pdf no registration',
@@ -770,7 +770,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'text-to-pdf': {
     title: 'Text To Pdf',
-    metaDescription: 'Text To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Text To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'text to pdf free online',
       'text to pdf no registration',
@@ -829,7 +829,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'html-to-pdf': {
     title: 'Html To Pdf',
-    metaDescription: 'Html To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Html To Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'html to pdf free online',
       'html to pdf no registration',
@@ -888,7 +888,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'rotate-pdf': {
     title: 'PDF回転',
-    metaDescription: 'Rotate Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Rotate Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'rotate pdf free online',
       'rotate pdf no registration',
@@ -947,7 +947,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'unlock-pdf': {
     title: 'Unlock Pdf',
-    metaDescription: 'Unlock Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Unlock Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'unlock pdf free online',
       'unlock pdf no registration',
@@ -1006,7 +1006,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'protect-pdf': {
     title: 'Protect Pdf',
-    metaDescription: `PDF をオンラインで無料で保護 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で保護 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'protect pdf free online',
       'protect pdf no registration',
@@ -1065,7 +1065,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'add-watermark': {
     title: '透かし追加',
-    metaDescription: 'Add Watermark 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Add Watermark 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'add watermark free online',
       'add watermark no registration',
@@ -1124,7 +1124,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'remove-watermark': {
     title: 'Remove Watermark',
-    metaDescription: `ウォーターマークはオンラインで無料で削除できます - 登録やサインアップは必要ありません。`,
+    metaDescription: 'ウォーターマークはオンラインで無料で削除できます - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'remove watermark free online',
       'remove watermark no registration',
@@ -1183,7 +1183,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'add-page-numbers': {
     title: 'Add Page Numbers',
-    metaDescription: `オンラインでページ番号を無料で追加できます - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインでページ番号を無料で追加できます - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'add page numbers free online',
       'add page numbers no registration',
@@ -1242,7 +1242,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'remove-pages': {
     title: 'Remove Pages',
-    metaDescription: `ページをオンラインで無料で削除 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'ページをオンラインで無料で削除 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'remove pages free online',
       'remove pages no registration',
@@ -1301,7 +1301,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'extract-pages': {
     title: 'ページ抽出',
-    metaDescription: `ページをオンラインで無料で抽出 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'ページをオンラインで無料で抽出 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'extract pages free online',
       'extract pages no registration',
@@ -1360,7 +1360,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'reorganize-pdf': {
     title: 'Reorganize Pdf',
-    metaDescription: `PDF をオンラインで無料で再編成 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で再編成 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'reorganize pdf free online',
       'reorganize pdf no registration',
@@ -1419,7 +1419,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'insert-pdf': {
     title: 'Insert Pdf',
-    metaDescription: `PDF をオンラインで無料で挿入 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で挿入 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'insert pdf free online',
       'insert pdf no registration',
@@ -1478,7 +1478,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'replace-pdf': {
     title: 'Replace Pdf',
-    metaDescription: `PDF をオンラインで無料で置き換えます - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で置き換えます - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'replace pdf free online',
       'replace pdf no registration',
@@ -1537,7 +1537,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'crop-pdf': {
     title: 'PDFトリミング',
-    metaDescription: `PDF をオンラインで無料でトリミング - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料でトリミング - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'crop pdf free online',
       'crop pdf no registration',
@@ -1596,7 +1596,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'resize-pdf': {
     title: 'Resize Pdf',
-    metaDescription: `PDF のサイズをオンラインで無料で変更 - 登録やサインアップは不要です。`,
+    metaDescription: 'PDF のサイズをオンラインで無料で変更 - 登録やサインアップは不要です。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'resize pdf free online',
       'resize pdf no registration',
@@ -1655,7 +1655,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-svg': {
     title: 'PDFをSVGに変換',
-    metaDescription: `オンラインで無料で Pdf To Svg - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料で Pdf To Svg - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to svg free online',
       'pdf to svg no registration',
@@ -1714,7 +1714,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-png': {
     title: 'PDFからPNG',
-    metaDescription: `Pdf To Png はオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Pdf To Png はオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to png free online',
       'pdf to png no registration',
@@ -1773,7 +1773,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-webp': {
     title: 'PDFからWebP',
-    metaDescription: `オンラインで無料で PDF To Webp - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料で PDF To Webp - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to webp free online',
       'pdf to webp no registration',
@@ -1832,7 +1832,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'heic-to-pdf': {
     title: 'HEICからPDF',
-    metaDescription: `Heic To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Heic To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'heic to pdf free online',
       'heic to pdf no registration',
@@ -1891,7 +1891,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'raw-to-pdf': {
     title: 'Raw To Pdf',
-    metaDescription: `Raw To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Raw To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'raw to pdf free online',
       'raw to pdf no registration',
@@ -1950,7 +1950,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'tiff-to-pdf': {
     title: 'TIFFからPDF',
-    metaDescription: `Tiff To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Tiff To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'tiff to pdf free online',
       'tiff to pdf no registration',
@@ -2009,7 +2009,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'svg-to-pdf': {
     title: 'SVGからPDF',
-    metaDescription: `Svg To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Svg To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'svg to pdf free online',
       'svg to pdf no registration',
@@ -2068,7 +2068,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'png-to-pdf': {
     title: 'PNGからPDF',
-    metaDescription: `Png To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Png To Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'png to pdf free online',
       'png to pdf no registration',
@@ -2127,7 +2127,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'webp-to-pdf': {
     title: 'WebPからPDF',
-    metaDescription: `オンラインで無料の Webp To Pdf - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料の Webp To Pdf - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'webp to pdf free online',
       'webp to pdf no registration',
@@ -2186,7 +2186,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'repair-pdf': {
     title: 'PDF修復',
-    metaDescription: `無料でオンラインで PDF を修復 - 登録やサインアップは必要ありません。`,
+    metaDescription: '無料でオンラインで PDF を修復 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'repair pdf free online',
       'repair pdf no registration',
@@ -2245,7 +2245,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'ocr-pdf': {
     title: 'OCR PDF',
-    metaDescription: `Ocr Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Ocr Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'ocr pdf free online',
       'ocr pdf no registration',
@@ -2304,7 +2304,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'flaten-pdf': {
     title: 'Flaten Pdf',
-    metaDescription: `Flaten Pdf をオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'Flaten Pdf をオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'flaten pdf free online',
       'flaten pdf no registration',
@@ -2363,7 +2363,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-pdfa': {
     title: 'PDFをPDF/Aに変換',
-    metaDescription: `オンラインで PDF To Pdfa を無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで PDF To Pdfa を無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to pdfa free online',
       'pdf to pdfa no registration',
@@ -2422,7 +2422,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'sign-pdf': {
     title: 'PDF署名',
-    metaDescription: `オンラインで無料で PDF に署名 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインで無料で PDF に署名 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'sign pdf free online',
       'sign pdf no registration',
@@ -2481,7 +2481,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'annotate-pdf': {
     title: 'Annotate Pdf',
-    metaDescription: `PDF にオンラインで無料で注釈を付けることができます - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF にオンラインで無料で注釈を付けることができます - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'annotate pdf free online',
       'annotate pdf no registration',
@@ -2540,7 +2540,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'Redact Pdf',
-    metaDescription: `Redact Pdf をオンラインで無料 - 登録やサインアップは不要です。`,
+    metaDescription: 'Redact Pdf をオンラインで無料 - 登録やサインアップは不要です。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'redact pdf free online',
       'redact pdf no registration',
@@ -2599,7 +2599,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'compare-pdf': {
     title: 'Compare Pdf',
-    metaDescription: `PDF をオンラインで無料で比較 - 登録やサインアップは不要です。`,
+    metaDescription: 'PDF をオンラインで無料で比較 - 登録やサインアップは不要です。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'compare pdf free online',
       'compare pdf no registration',
@@ -2658,7 +2658,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'bookmark-pdf': {
     title: 'Bookmark Pdf',
-    metaDescription: `PDF をオンラインで無料でブックマーク - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料でブックマーク - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'bookmark pdf free online',
       'bookmark pdf no registration',
@@ -2717,7 +2717,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'header-footer-pdf': {
     title: 'Header Footer Pdf',
-    metaDescription: `ヘッダー フッター PDF をオンラインで無料 - 登録やサインアップは不要です。`,
+    metaDescription: 'ヘッダー フッター PDF をオンラインで無料 - 登録やサインアップは不要です。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'header footer pdf free online',
       'header footer pdf no registration',
@@ -2776,7 +2776,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'background-pdf': {
     title: 'Background Pdf',
-    metaDescription: `背景PDFをオンラインで無料 - 登録やサインアップは不要です。`,
+    metaDescription: '背景PDFをオンラインで無料 - 登録やサインアップは不要です。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'background pdf free online',
       'background pdf no registration',
@@ -2835,7 +2835,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'bates-numbering': {
     title: 'Bates Numbering',
-    metaDescription: `ベイツ ナンバリングはオンラインで無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'ベイツ ナンバリングはオンラインで無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'bates numbering free online',
       'bates numbering no registration',
@@ -2894,7 +2894,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-grayscale': {
     title: 'Pdf To Grayscale',
-    metaDescription: `オンラインでPDFをグレースケールに無料 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'オンラインでPDFをグレースケールに無料 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to grayscale free online',
       'pdf to grayscale no registration',
@@ -2953,7 +2953,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'optimize-pdf': {
     title: 'Optimize Pdf',
-    metaDescription: `PDF をオンラインで無料で最適化 - 登録やサインアップは必要ありません。`,
+    metaDescription: 'PDF をオンラインで無料で最適化 - 登録やサインアップは必要ありません。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'optimize pdf free online',
       'optimize pdf no registration',
@@ -3012,7 +3012,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'form-filler': {
     title: 'フォーム記入',
-    metaDescription: 'Form Filler 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Form Filler 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'form filler free online',
       'form filler no registration',
@@ -3071,7 +3071,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'create-pdf': {
     title: 'Create Pdf',
-    metaDescription: 'Create Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Create Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'create pdf free online',
       'create pdf no registration',
@@ -3130,7 +3130,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'merge-pdf-template': {
     title: 'Merge Pdf Template',
-    metaDescription: 'Merge Pdf Template 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Merge Pdf Template 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得でき',
     keywords: [
       'merge pdf template free online',
       'merge pdf template no registration',
@@ -3189,7 +3189,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'split-pdf-template': {
     title: 'Split Pdf Template',
-    metaDescription: 'Split Pdf Template 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Split Pdf Template 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得でき',
     keywords: [
       'split pdf template free online',
       'split pdf template no registration',
@@ -3248,7 +3248,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'encrypt-pdf': {
     title: 'PDF暗号化',
-    metaDescription: 'Encrypt Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Encrypt Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'encrypt pdf free online',
       'encrypt pdf no registration',
@@ -3307,7 +3307,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'decrypt-pdf': {
     title: 'PDF復号化',
-    metaDescription: 'Decrypt Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Decrypt Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'decrypt pdf free online',
       'decrypt pdf no registration',
@@ -3366,7 +3366,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'metadata-pdf': {
     title: 'Metadata Pdf',
-    metaDescription: 'Metadata Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Metadata Pdf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'metadata pdf free online',
       'metadata pdf no registration',
@@ -3425,7 +3425,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-viewer': {
     title: 'Pdf Viewer',
-    metaDescription: 'Pdf Viewer 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf Viewer 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf viewer free online',
       'pdf viewer no registration',
@@ -3484,7 +3484,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-html': {
     title: 'Pdf To Html',
-    metaDescription: 'Pdf To Html 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Html 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to html free online',
       'pdf to html no registration',
@@ -3543,7 +3543,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-xml': {
     title: 'Pdf To Xml',
-    metaDescription: 'Pdf To Xml 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Xml 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to xml free online',
       'pdf to xml no registration',
@@ -3602,7 +3602,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-csv': {
     title: 'Pdf To Csv',
-    metaDescription: 'Pdf To Csv 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Csv 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to csv free online',
       'pdf to csv no registration',
@@ -3661,7 +3661,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-rtf': {
     title: 'Pdf To Rtf',
-    metaDescription: 'Pdf To Rtf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Rtf 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to rtf free online',
       'pdf to rtf no registration',
@@ -3720,7 +3720,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-epub': {
     title: 'Pdf To Epub',
-    metaDescription: 'Pdf To Epub 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Epub 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to epub free online',
       'pdf to epub no registration',
@@ -3779,7 +3779,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-compare-text': {
     title: 'Pdf Compare Text',
-    metaDescription: 'Pdf Compare Text 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf Compare Text 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます',
     keywords: [
       'pdf compare text free online',
       'pdf compare text no registration',
@@ -3838,7 +3838,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-redact-all': {
     title: 'Pdf Redact All',
-    metaDescription: 'Pdf Redact All 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf Redact All 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf redact all free online',
       'pdf redact all no registration',
@@ -3897,7 +3897,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-find-replace': {
     title: 'Pdf Find Replace',
-    metaDescription: 'Pdf Find Replace 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf Find Replace 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます',
     keywords: [
       'pdf find replace free online',
       'pdf find replace no registration',
@@ -3956,7 +3956,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'pdf-to-images': {
     title: 'Pdf To Images',
-    metaDescription: 'Pdf To Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Pdf To Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'pdf to images free online',
       'pdf to images no registration',
@@ -4015,7 +4015,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'extract-images': {
     title: 'PDFから画像を抽出',
-    metaDescription: 'Extract Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Extract Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'extract images free online',
       'extract images no registration',
@@ -4074,7 +4074,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'compress-images': {
     title: 'Compress Images',
-    metaDescription: 'Compress Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Compress Images 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得できます。',
     keywords: [
       'compress images free online',
       'compress images no registration',
@@ -4133,7 +4133,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'remove-blank-pages': {
     title: '空白ページ削除',
-    metaDescription: 'Remove Blank Pages 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Remove Blank Pages 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得でき',
     keywords: [
       'remove blank pages free online',
       'remove blank pages no registration',
@@ -4192,7 +4192,7 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   'detect-pdf-scanners': {
     title: 'Detect Pdf Scanners',
-    metaDescription: 'Detect Pdf Scanners 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。',
+    metaDescription: 'Detect Pdf Scanners 無料オンライン - 登録不要、サインアップ不要。ブラウザでPDFファイルを安全に処理します。 無料のオンラインツールを使用して、PDFファイルを簡単に安全に処理します。登録不要、ソフトウェアのインストール不要。ブラウザベースのツールで数秒で高品質な結果を取得で',
     keywords: [
       'detect pdf scanners free online',
       'detect pdf scanners no registration',

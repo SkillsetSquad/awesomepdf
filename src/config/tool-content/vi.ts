@@ -3,7 +3,7 @@ import { ToolContent } from '@/types/tool';
 export const toolContentVn: Record<string, ToolContent> = {
   'pdf-multi-tool': {
     title: 'Công cụ đa năng PDF',
-    metaDescription: `Pdf Multi Tool trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf Multi Tool trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf multi tool nhanh ',
     keywords: [
       'pdf multi tool free online',
       'pdf multi tool no registration',
@@ -62,7 +62,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'merge-pdf': {
     title: 'Hợp nhất PDF',
-    metaDescription: `Hợp nhất Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Hợp nhất Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để merge pdf nhanh chóng v',
     keywords: [
       'merge pdf free online',
       'merge pdf no registration',
@@ -121,7 +121,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'split-pdf': {
     title: 'Tách PDF',
-    metaDescription: `Tách Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Tách Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để split pdf nhanh chóng và an',
     keywords: [
       'split pdf free online',
       'split pdf no registration',
@@ -239,7 +239,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-word': {
     title: 'Pdf To Word',
-    metaDescription: `Pdf To Word trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Word trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to word nhanh chóng ',
     keywords: [
       'pdf to word free online',
       'pdf to word no registration',
@@ -298,7 +298,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-jpg': {
     title: 'PDF sang JPG',
-    metaDescription: `Pdf To Jpg trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Jpg trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to jpg nhanh chóng và',
     keywords: [
       'pdf to jpg free online',
       'pdf to jpg no registration',
@@ -357,7 +357,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-excel': {
     title: 'PDF sang Excel',
-    metaDescription: `Pdf sang Excel trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf sang Excel trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to excel nhanh ch',
     keywords: [
       'pdf to excel free online',
       'pdf to excel no registration',
@@ -416,7 +416,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-powerpoint': {
     title: 'Pdf To Powerpoint',
-    metaDescription: `Pdf sang Powerpoint trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf sang Powerpoint trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to powerpoin',
     keywords: [
       'pdf to powerpoint free online',
       'pdf to powerpoint no registration',
@@ -888,7 +888,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'rotate-pdf': {
     title: 'Xoay PDF',
-    metaDescription: `Xoay Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Xoay Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để rotate pdf nhanh chóng và a',
     keywords: [
       'rotate pdf free online',
       'rotate pdf no registration',
@@ -947,7 +947,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'unlock-pdf': {
     title: 'Unlock Pdf',
-    metaDescription: `Mở khóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Mở khóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để unlock pdf nhanh chóng v',
     keywords: [
       'unlock pdf free online',
       'unlock pdf no registration',
@@ -1006,7 +1006,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'protect-pdf': {
     title: 'Protect Pdf',
-    metaDescription: `Bảo vệ Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Bảo vệ Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để protect pdf nhanh chóng v',
     keywords: [
       'protect pdf free online',
       'protect pdf no registration',
@@ -1065,7 +1065,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'add-watermark': {
     title: 'Thêm hình mờ',
-    metaDescription: `Thêm Hình mờ trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Thêm Hình mờ trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để add watermark nhanh chó',
     keywords: [
       'add watermark free online',
       'add watermark no registration',
@@ -1124,7 +1124,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'remove-watermark': {
     title: 'Remove Watermark',
-    metaDescription: `Xóa Watermark trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Xóa Watermark trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để remove watermark nhanh',
     keywords: [
       'remove watermark free online',
       'remove watermark no registration',
@@ -1183,7 +1183,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'add-page-numbers': {
     title: 'Add Page Numbers',
-    metaDescription: `Thêm số trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Thêm số trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để add page numbers nhanh',
     keywords: [
       'add page numbers free online',
       'add page numbers no registration',
@@ -1242,7 +1242,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'remove-pages': {
     title: 'Remove Pages',
-    metaDescription: `Xóa Trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Xóa Trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để remove pages nhanh chóng v',
     keywords: [
       'remove pages free online',
       'remove pages no registration',
@@ -1301,7 +1301,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'extract-pages': {
     title: 'Trích xuất trang',
-    metaDescription: `Trích xuất trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Trích xuất trang trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để extract pages nhanh',
     keywords: [
       'extract pages free online',
       'extract pages no registration',
@@ -1360,7 +1360,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'reorganize-pdf': {
     title: 'Reorganize Pdf',
-    metaDescription: `Sắp xếp lại Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Sắp xếp lại Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để reorganize pdf nhanh',
     keywords: [
       'reorganize pdf free online',
       'reorganize pdf no registration',
@@ -1419,7 +1419,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'insert-pdf': {
     title: 'Insert Pdf',
-    metaDescription: `Chèn Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Chèn Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để insert pdf nhanh chóng và a',
     keywords: [
       'insert pdf free online',
       'insert pdf no registration',
@@ -1478,7 +1478,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'replace-pdf': {
     title: 'Replace Pdf',
-    metaDescription: `Thay thế Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Thay thế Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để replace pdf nhanh chóng',
     keywords: [
       'replace pdf free online',
       'replace pdf no registration',
@@ -1537,7 +1537,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'crop-pdf': {
     title: 'Cắt PDF',
-    metaDescription: `Cắt Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Cắt Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để crop pdf nhanh chóng và an t',
     keywords: [
       'crop pdf free online',
       'crop pdf no registration',
@@ -1596,7 +1596,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'resize-pdf': {
     title: 'Resize Pdf',
-    metaDescription: `Thay đổi kích thước Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Thay đổi kích thước Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để resize pdf n',
     keywords: [
       'resize pdf free online',
       'resize pdf no registration',
@@ -1655,7 +1655,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-svg': {
     title: 'PDF sang SVG',
-    metaDescription: `Pdf To Svg trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Svg trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to svg nhanh chóng và',
     keywords: [
       'pdf to svg free online',
       'pdf to svg no registration',
@@ -1714,7 +1714,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-png': {
     title: 'PDF sang PNG',
-    metaDescription: `Pdf To PNG trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To PNG trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to png nhanh chóng và',
     keywords: [
       'pdf to png free online',
       'pdf to png no registration',
@@ -1773,7 +1773,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-webp': {
     title: 'PDF sang WebP',
-    metaDescription: `Pdf To Webp trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Webp trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to webp nhanh chóng ',
     keywords: [
       'pdf to webp free online',
       'pdf to webp no registration',
@@ -1832,7 +1832,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'heic-to-pdf': {
     title: 'HEIC sang PDF',
-    metaDescription: `Heic To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Heic To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để heic to pdf nhanh chóng ',
     keywords: [
       'heic to pdf free online',
       'heic to pdf no registration',
@@ -1891,7 +1891,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'raw-to-pdf': {
     title: 'Raw To Pdf',
-    metaDescription: `Raw To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Raw To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để raw to pdf nhanh chóng và',
     keywords: [
       'raw to pdf free online',
       'raw to pdf no registration',
@@ -1950,7 +1950,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'tiff-to-pdf': {
     title: 'TIFF sang PDF',
-    metaDescription: `Tiff To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Tiff To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để tiff to pdf nhanh chóng ',
     keywords: [
       'tiff to pdf free online',
       'tiff to pdf no registration',
@@ -2009,7 +2009,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'svg-to-pdf': {
     title: 'SVG sang PDF',
-    metaDescription: `Svg To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Svg To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để svg to pdf nhanh chóng và',
     keywords: [
       'svg to pdf free online',
       'svg to pdf no registration',
@@ -2068,7 +2068,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'png-to-pdf': {
     title: 'PNG sang PDF',
-    metaDescription: `PNG To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'PNG To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để png to pdf nhanh chóng và',
     keywords: [
       'png to pdf free online',
       'png to pdf no registration',
@@ -2127,7 +2127,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'webp-to-pdf': {
     title: 'WebP sang PDF',
-    metaDescription: `Webp To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Webp To Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để webp to pdf nhanh chóng ',
     keywords: [
       'webp to pdf free online',
       'webp to pdf no registration',
@@ -2186,7 +2186,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'repair-pdf': {
     title: 'Sửa chữa PDF',
-    metaDescription: `Sửa chữa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Sửa chữa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để repair pdf nhanh chóng ',
     keywords: [
       'repair pdf free online',
       'repair pdf no registration',
@@ -2245,7 +2245,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'ocr-pdf': {
     title: 'OCR PDF',
-    metaDescription: `Ocr Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Ocr Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để ocr pdf nhanh chóng và an to',
     keywords: [
       'ocr pdf free online',
       'ocr pdf no registration',
@@ -2304,7 +2304,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'flaten-pdf': {
     title: 'Flaten Pdf',
-    metaDescription: `Làm phẳng Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Làm phẳng Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để flaten pdf nhanh chóng',
     keywords: [
       'flaten pdf free online',
       'flaten pdf no registration',
@@ -2363,7 +2363,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-pdfa': {
     title: 'PDF sang PDF/A',
-    metaDescription: `Pdf To Pdfa trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Pdfa trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to pdfa nhanh chóng ',
     keywords: [
       'pdf to pdfa free online',
       'pdf to pdfa no registration',
@@ -2422,7 +2422,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'sign-pdf': {
     title: 'Ký PDF',
-    metaDescription: `Ký Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Ký Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để sign pdf nhanh chóng và an to',
     keywords: [
       'sign pdf free online',
       'sign pdf no registration',
@@ -2481,7 +2481,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'annotate-pdf': {
     title: 'Annotate Pdf',
-    metaDescription: `Chú thích Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Chú thích Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để annotate pdf nhanh chó',
     keywords: [
       'annotate pdf free online',
       'annotate pdf no registration',
@@ -2540,7 +2540,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'Redact Pdf',
-    metaDescription: `Biên tập lại Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Biên tập lại Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để redact pdf nhanh ch',
     keywords: [
       'redact pdf free online',
       'redact pdf no registration',
@@ -2599,7 +2599,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'compare-pdf': {
     title: 'Compare Pdf',
-    metaDescription: `So sánh Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'So sánh Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để compare pdf nhanh chóng ',
     keywords: [
       'compare pdf free online',
       'compare pdf no registration',
@@ -2658,7 +2658,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'bookmark-pdf': {
     title: 'Bookmark Pdf',
-    metaDescription: `Đánh dấu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Đánh dấu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để bookmark pdf nhanh chón',
     keywords: [
       'bookmark pdf free online',
       'bookmark pdf no registration',
@@ -2717,7 +2717,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'header-footer-pdf': {
     title: 'Header Footer Pdf',
-    metaDescription: `Header Footer Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Header Footer Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để header footer pdf ',
     keywords: [
       'header footer pdf free online',
       'header footer pdf no registration',
@@ -2776,7 +2776,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'background-pdf': {
     title: 'Background Pdf',
-    metaDescription: `Nền Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Nền Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để background pdf nhanh chóng v',
     keywords: [
       'background pdf free online',
       'background pdf no registration',
@@ -2835,7 +2835,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'bates-numbering': {
     title: 'Bates Numbering',
-    metaDescription: `Đánh số Bates trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Đánh số Bates trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để bates numbering nhanh ',
     keywords: [
       'bates numbering free online',
       'bates numbering no registration',
@@ -2894,7 +2894,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-grayscale': {
     title: 'Pdf To Grayscale',
-    metaDescription: `Pdf To Grayscale trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Grayscale trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to grayscale nh',
     keywords: [
       'pdf to grayscale free online',
       'pdf to grayscale no registration',
@@ -2953,7 +2953,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'optimize-pdf': {
     title: 'Optimize Pdf',
-    metaDescription: `Tối ưu hóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Tối ưu hóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để optimize pdf nhanh ch',
     keywords: [
       'optimize pdf free online',
       'optimize pdf no registration',
@@ -3012,7 +3012,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'form-filler': {
     title: 'Điền biểu mẫu',
-    metaDescription: `Form Filler trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Form Filler trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để form filler nhanh chóng ',
     keywords: [
       'form filler free online',
       'form filler no registration',
@@ -3071,7 +3071,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'create-pdf': {
     title: 'Create Pdf',
-    metaDescription: `Tạo Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Tạo Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để create pdf nhanh chóng và an',
     keywords: [
       'create pdf free online',
       'create pdf no registration',
@@ -3130,7 +3130,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'merge-pdf-template': {
     title: 'Merge Pdf Template',
-    metaDescription: `Hợp nhất Mẫu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Hợp nhất Mẫu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để merge pdf template ',
     keywords: [
       'merge pdf template free online',
       'merge pdf template no registration',
@@ -3189,7 +3189,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'split-pdf-template': {
     title: 'Split Pdf Template',
-    metaDescription: `Tách mẫu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Tách mẫu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để split pdf template nhan',
     keywords: [
       'split pdf template free online',
       'split pdf template no registration',
@@ -3248,7 +3248,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'encrypt-pdf': {
     title: 'Mã hóa PDF',
-    metaDescription: `Mã hóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Mã hóa Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để encrypt pdf nhanh chóng v',
     keywords: [
       'encrypt pdf free online',
       'encrypt pdf no registration',
@@ -3307,7 +3307,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'decrypt-pdf': {
     title: 'Giải mã PDF',
-    metaDescription: `Giải mã Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Giải mã Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để decrypt pdf nhanh chóng ',
     keywords: [
       'decrypt pdf free online',
       'decrypt pdf no registration',
@@ -3366,7 +3366,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'metadata-pdf': {
     title: 'Metadata Pdf',
-    metaDescription: `Siêu dữ liệu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Siêu dữ liệu Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để metadata pdf nhanh ',
     keywords: [
       'metadata pdf free online',
       'metadata pdf no registration',
@@ -3425,7 +3425,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-viewer': {
     title: 'Pdf Viewer',
-    metaDescription: `Trình xem Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Trình xem Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf viewer nhanh chóng',
     keywords: [
       'pdf viewer free online',
       'pdf viewer no registration',
@@ -3484,7 +3484,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-html': {
     title: 'Pdf To Html',
-    metaDescription: `Pdf sang Html trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf sang Html trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to html nhanh chón',
     keywords: [
       'pdf to html free online',
       'pdf to html no registration',
@@ -3543,7 +3543,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-xml': {
     title: 'Pdf To Xml',
-    metaDescription: `Pdf sang Xml trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf sang Xml trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to xml nhanh chóng ',
     keywords: [
       'pdf to xml free online',
       'pdf to xml no registration',
@@ -3602,7 +3602,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-csv': {
     title: 'Pdf To Csv',
-    metaDescription: `Pdf To Csv trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Csv trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to csv nhanh chóng và',
     keywords: [
       'pdf to csv free online',
       'pdf to csv no registration',
@@ -3661,7 +3661,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-rtf': {
     title: 'Pdf To Rtf',
-    metaDescription: `Pdf To Rtf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Rtf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to rtf nhanh chóng và',
     keywords: [
       'pdf to rtf free online',
       'pdf to rtf no registration',
@@ -3720,7 +3720,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-epub': {
     title: 'Pdf To Epub',
-    metaDescription: `Pdf To Epub trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Epub trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to epub nhanh chóng ',
     keywords: [
       'pdf to epub free online',
       'pdf to epub no registration',
@@ -3779,7 +3779,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-compare-text': {
     title: 'Pdf Compare Text',
-    metaDescription: `Pdf So sánh Văn bản trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf So sánh Văn bản trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf compare text',
     keywords: [
       'pdf compare text free online',
       'pdf compare text no registration',
@@ -3838,7 +3838,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-redact-all': {
     title: 'Pdf Redact All',
-    metaDescription: `Pdf Redact Tất cả trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf Redact Tất cả trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf redact all nha',
     keywords: [
       'pdf redact all free online',
       'pdf redact all no registration',
@@ -3897,7 +3897,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-find-replace': {
     title: 'Pdf Find Replace',
-    metaDescription: `Pdf Tìm Thay thế trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf Tìm Thay thế trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf find replace nh',
     keywords: [
       'pdf find replace free online',
       'pdf find replace no registration',
@@ -3956,7 +3956,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'pdf-to-images': {
     title: 'Pdf To Images',
-    metaDescription: `Pdf To Images trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Pdf To Images trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để pdf to images nhanh ch',
     keywords: [
       'pdf to images free online',
       'pdf to images no registration',
@@ -4015,7 +4015,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'extract-images': {
     title: 'Trích xuất hình ảnh từ PDF',
-    metaDescription: `Trích xuất hình ảnh trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Trích xuất hình ảnh trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để extract images n',
     keywords: [
       'extract images free online',
       'extract images no registration',
@@ -4074,7 +4074,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'compress-images': {
     title: 'Compress Images',
-    metaDescription: `Nén hình ảnh trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Nén hình ảnh trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để compress images nhanh c',
     keywords: [
       'compress images free online',
       'compress images no registration',
@@ -4133,7 +4133,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'remove-blank-pages': {
     title: 'Loại bỏ trang trống',
-    metaDescription: `Xóa Trang Trống trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Xóa Trang Trống trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để remove blank pages n',
     keywords: [
       'remove blank pages free online',
       'remove blank pages no registration',
@@ -4192,7 +4192,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   'detect-pdf-scanners': {
     title: 'Detect Pdf Scanners',
-    metaDescription: `Phát hiện máy quét Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký. `,
+    metaDescription: 'Phát hiện máy quét Pdf trực tuyến miễn phí - không cần đăng ký, không cần đăng ký.  Sử dụng công cụ trực tuyến miễn phí của chúng tôi để detect pdf sc',
     keywords: [
       'detect pdf scanners free online',
       'detect pdf scanners no registration',

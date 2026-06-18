@@ -3,7 +3,7 @@ import { ToolContent } from '@/types/tool';
 export const toolContentAr: Record<string, ToolContent> = {
   'pdf-multi-tool': {
     title: 'أداة PDF المتعددة',
-    metaDescription: `أداة Pdf Multi Tool مجانية على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'أداة Pdf Multi Tool مجانية على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf Multi Tool بسرعة وأمان. لا يتطلب تس',
     keywords: [
       'pdf multi tool free online',
       'pdf multi tool no registration',
@@ -62,7 +62,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'merge-pdf': {
     title: 'دمج PDF',
-    metaDescription: `دمج ملفات PDF مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'دمج ملفات PDF مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Merge Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'merge pdf free online',
       'merge pdf no registration',
@@ -121,7 +121,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'split-pdf': {
     title: 'تقسيم PDF',
-    metaDescription: `تقسيم ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تقسيم ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Split Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'split pdf free online',
       'split pdf no registration',
@@ -180,7 +180,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'compress-pdf': {
     title: 'ضغط PDF',
-    metaDescription: `ضغط ملفات PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'ضغط ملفات PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Compress Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتط',
     keywords: [
       'compress pdf free online',
       'compress pdf no registration',
@@ -239,7 +239,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-word': {
     title: 'Pdf To Word',
-    metaDescription: `تحويل ملف PDF إلى Word مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل ملف PDF إلى Word مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Word بسرعة وأمان. لا يتطلب تسجيل',
     keywords: [
       'pdf to word free online',
       'pdf to word no registration',
@@ -298,7 +298,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-jpg': {
     title: 'تحويل PDF إلى JPG',
-    metaDescription: `Pdf To Jpg مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Jpg مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Jpg بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'pdf to jpg free online',
       'pdf to jpg no registration',
@@ -357,7 +357,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-excel': {
     title: 'تحويل PDF إلى Excel',
-    metaDescription: `PDF To Excel مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF To Excel مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Excel بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'pdf to excel free online',
       'pdf to excel no registration',
@@ -416,7 +416,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-powerpoint': {
     title: 'Pdf To Powerpoint',
-    metaDescription: `تحويل PDF إلى Powerpoint مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل PDF إلى Powerpoint مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Powerpoint بسرعة وأمان. لا يتط',
     keywords: [
       'pdf to powerpoint free online',
       'pdf to powerpoint no registration',
@@ -475,7 +475,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-text': {
     title: 'Pdf To Text',
-    metaDescription: `تحويل ملف PDF إلى نص مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل ملف PDF إلى نص مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Text بسرعة وأمان. لا يتطلب تسجيل، ',
     keywords: [
       'pdf to text free online',
       'pdf to text no registration',
@@ -534,7 +534,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'word-to-pdf': {
     title: 'تحويل Word إلى PDF',
-    metaDescription: `Word To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Word To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Word To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'word to pdf free online',
       'word to pdf no registration',
@@ -593,7 +593,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'jpg-to-pdf': {
     title: 'تحويل JPG إلى PDF',
-    metaDescription: `Jpg To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Jpg To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Jpg To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'jpg to pdf free online',
       'jpg to pdf no registration',
@@ -652,7 +652,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'excel-to-pdf': {
     title: 'تحويل Excel إلى PDF',
-    metaDescription: `Excel To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Excel To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Excel To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'excel to pdf free online',
       'excel to pdf no registration',
@@ -711,7 +711,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'powerpoint-to-pdf': {
     title: 'Powerpoint To Pdf',
-    metaDescription: `Powerpoint To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Powerpoint To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Powerpoint To Pdf بسرعة وأمان. لا يتطلب تس',
     keywords: [
       'powerpoint to pdf free online',
       'powerpoint to pdf no registration',
@@ -770,7 +770,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'text-to-pdf': {
     title: 'Text To Pdf',
-    metaDescription: `تحويل النص إلى ملف Pdf مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'تحويل النص إلى ملف Pdf مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Text To Pdf بسرعة وأمان. لا يتطلب تس',
     keywords: [
       'text to pdf free online',
       'text to pdf no registration',
@@ -829,7 +829,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'html-to-pdf': {
     title: 'Html To Pdf',
-    metaDescription: `Html To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Html To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Html To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'html to pdf free online',
       'html to pdf no registration',
@@ -888,7 +888,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'rotate-pdf': {
     title: 'تدوير PDF',
-    metaDescription: `تدوير ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'تدوير ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Rotate Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'rotate pdf free online',
       'rotate pdf no registration',
@@ -947,7 +947,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'unlock-pdf': {
     title: 'Unlock Pdf',
-    metaDescription: `فتح ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'فتح ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Unlock Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'unlock pdf free online',
       'unlock pdf no registration',
@@ -1006,7 +1006,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'protect-pdf': {
     title: 'Protect Pdf',
-    metaDescription: `حماية ملفات PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'حماية ملفات PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Protect Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'protect pdf free online',
       'protect pdf no registration',
@@ -1065,7 +1065,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'add-watermark': {
     title: 'إضافة علامة مائية',
-    metaDescription: `أضف علامة مائية مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'أضف علامة مائية مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Add Watermark بسرعة وأمان. لا يتطلب تسجيل، لا ',
     keywords: [
       'add watermark free online',
       'add watermark no registration',
@@ -1124,7 +1124,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'remove-watermark': {
     title: 'Remove Watermark',
-    metaDescription: `إزالة العلامة المائية مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'إزالة العلامة المائية مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Remove Watermark بسرعة وأمان. لا يتطلب ت',
     keywords: [
       'remove watermark free online',
       'remove watermark no registration',
@@ -1183,7 +1183,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'add-page-numbers': {
     title: 'Add Page Numbers',
-    metaDescription: `أضف أرقام الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'أضف أرقام الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Add Page Numbers بسرعة وأمان. لا يتطلب تسجيل',
     keywords: [
       'add page numbers free online',
       'add page numbers no registration',
@@ -1242,7 +1242,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'remove-pages': {
     title: 'Remove Pages',
-    metaDescription: `قم بإزالة الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'قم بإزالة الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Remove Pages بسرعة وأمان. لا يتطلب تسجيل، لا',
     keywords: [
       'remove pages free online',
       'remove pages no registration',
@@ -1301,7 +1301,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'extract-pages': {
     title: 'استخراج الصفحات',
-    metaDescription: `استخراج الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'استخراج الصفحات مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Extract Pages بسرعة وأمان. لا يتطلب تسجيل، لا ',
     keywords: [
       'extract pages free online',
       'extract pages no registration',
@@ -1360,7 +1360,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'reorganize-pdf': {
     title: 'Reorganize Pdf',
-    metaDescription: `إعادة تنظيم ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'إعادة تنظيم ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Reorganize Pdf بسرعة وأمان. لا يتطلب تس',
     keywords: [
       'reorganize pdf free online',
       'reorganize pdf no registration',
@@ -1419,7 +1419,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'insert-pdf': {
     title: 'Insert Pdf',
-    metaDescription: `أدخل ملف Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'أدخل ملف Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Insert Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'insert pdf free online',
       'insert pdf no registration',
@@ -1478,7 +1478,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'replace-pdf': {
     title: 'Replace Pdf',
-    metaDescription: `استبدال ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'استبدال ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Replace Pdf بسرعة وأمان. لا يتطلب تسجيل، لا ',
     keywords: [
       'replace pdf free online',
       'replace pdf no registration',
@@ -1537,7 +1537,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'crop-pdf': {
     title: 'قص PDF',
-    metaDescription: `قص ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'قص ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Crop Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ت',
     keywords: [
       'crop pdf free online',
       'crop pdf no registration',
@@ -1596,7 +1596,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'resize-pdf': {
     title: 'Resize Pdf',
-    metaDescription: `تغيير حجم ملف PDF مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'تغيير حجم ملف PDF مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Resize Pdf بسرعة وأمان. لا يتطلب تسجيل، ل',
     keywords: [
       'resize pdf free online',
       'resize pdf no registration',
@@ -1655,7 +1655,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-svg': {
     title: 'تحويل PDF إلى SVG',
-    metaDescription: `Pdf To Svg مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Svg مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Svg بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'pdf to svg free online',
       'pdf to svg no registration',
@@ -1714,7 +1714,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-png': {
     title: 'تحويل PDF إلى PNG',
-    metaDescription: `Pdf To Png مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Png مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Png بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'pdf to png free online',
       'pdf to png no registration',
@@ -1773,7 +1773,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-webp': {
     title: 'تحويل PDF إلى WebP',
-    metaDescription: `PDF To Webp مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF To Webp مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Webp بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'pdf to webp free online',
       'pdf to webp no registration',
@@ -1832,7 +1832,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'heic-to-pdf': {
     title: 'تحويل HEIC إلى PDF',
-    metaDescription: `Heic To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Heic To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Heic To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'heic to pdf free online',
       'heic to pdf no registration',
@@ -1891,7 +1891,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'raw-to-pdf': {
     title: 'Raw To Pdf',
-    metaDescription: `Raw To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Raw To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Raw To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'raw to pdf free online',
       'raw to pdf no registration',
@@ -1950,7 +1950,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'tiff-to-pdf': {
     title: 'تحويل TIFF إلى PDF',
-    metaDescription: `Tiff To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Tiff To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Tiff To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'tiff to pdf free online',
       'tiff to pdf no registration',
@@ -2009,7 +2009,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'svg-to-pdf': {
     title: 'تحويل SVG إلى PDF',
-    metaDescription: `Svg To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Svg To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Svg To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'svg to pdf free online',
       'svg to pdf no registration',
@@ -2068,7 +2068,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'png-to-pdf': {
     title: 'تحويل PNG إلى PDF',
-    metaDescription: `Png To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Png To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Png To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'png to pdf free online',
       'png to pdf no registration',
@@ -2127,7 +2127,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'webp-to-pdf': {
     title: 'تحويل WebP إلى PDF',
-    metaDescription: `Webp To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Webp To Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Webp To Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'webp to pdf free online',
       'webp to pdf no registration',
@@ -2186,7 +2186,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'repair-pdf': {
     title: 'إصلاح PDF',
-    metaDescription: `إصلاح ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'إصلاح ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Repair Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتط',
     keywords: [
       'repair pdf free online',
       'repair pdf no registration',
@@ -2245,7 +2245,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'ocr-pdf': {
     title: 'التعرف الضوئي (OCR PDF)',
-    metaDescription: `Ocr Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Ocr Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Ocr Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب تثبيت ',
     keywords: [
       'ocr pdf free online',
       'ocr pdf no registration',
@@ -2304,7 +2304,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'flaten-pdf': {
     title: 'Flaten Pdf',
-    metaDescription: `Flaten PDF مجاني على الإنترنت – لا تسجيل، لا اشتراك. `,
+    metaDescription: 'Flaten PDF مجاني على الإنترنت – لا تسجيل، لا اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Flaten Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب تثبي',
     keywords: [
       'flaten pdf free online',
       'flaten pdf no registration',
@@ -2363,7 +2363,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-pdfa': {
     title: 'تحويل PDF إلى PDF/A',
-    metaDescription: `Pdf To Pdfa مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Pdfa مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Pdfa بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'pdf to pdfa free online',
       'pdf to pdfa no registration',
@@ -2422,7 +2422,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'sign-pdf': {
     title: 'توقيع PDF',
-    metaDescription: `قم بالتوقيع على ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'قم بالتوقيع على ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Sign Pdf بسرعة وأمان. لا يتطلب تسجيل، ',
     keywords: [
       'sign pdf free online',
       'sign pdf no registration',
@@ -2481,7 +2481,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'annotate-pdf': {
     title: 'Annotate Pdf',
-    metaDescription: `قم بالتعليق على ملف Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'قم بالتعليق على ملف Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Annotate Pdf بسرعة وأمان. لا يتطلب تسج',
     keywords: [
       'annotate pdf free online',
       'annotate pdf no registration',
@@ -2540,7 +2540,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'Redact Pdf',
-    metaDescription: `Redact Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Redact Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Redact Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'redact pdf free online',
       'redact pdf no registration',
@@ -2599,7 +2599,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'compare-pdf': {
     title: 'Compare Pdf',
-    metaDescription: `قارن ملفات PDF مجاناً على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'قارن ملفات PDF مجاناً على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Compare Pdf بسرعة وأمان. لا يتطلب تسجيل، لا ',
     keywords: [
       'compare pdf free online',
       'compare pdf no registration',
@@ -2658,7 +2658,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'bookmark-pdf': {
     title: 'Bookmark Pdf',
-    metaDescription: `إشارة مرجعية لملف Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'إشارة مرجعية لملف Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Bookmark Pdf بسرعة وأمان. لا يتطلب تسجيل',
     keywords: [
       'bookmark pdf free online',
       'bookmark pdf no registration',
@@ -2717,7 +2717,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'header-footer-pdf': {
     title: 'Header Footer Pdf',
-    metaDescription: `رأس وتذييل الصفحة PDF مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'رأس وتذييل الصفحة PDF مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Header Footer Pdf بسرعة وأمان. لا يتطل',
     keywords: [
       'header footer pdf free online',
       'header footer pdf no registration',
@@ -2776,7 +2776,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'background-pdf': {
     title: 'Background Pdf',
-    metaDescription: `الخلفية بصيغة PDF مجاناً على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'الخلفية بصيغة PDF مجاناً على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Background Pdf بسرعة وأمان. لا يتطلب تسجي',
     keywords: [
       'background pdf free online',
       'background pdf no registration',
@@ -2835,7 +2835,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'bates-numbering': {
     title: 'Bates Numbering',
-    metaDescription: `ترقيم بيتس مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'ترقيم بيتس مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Bates Numbering بسرعة وأمان. لا يتطلب تسجيل، لا ي',
     keywords: [
       'bates numbering free online',
       'bates numbering no registration',
@@ -2894,7 +2894,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-grayscale': {
     title: 'Pdf To Grayscale',
-    metaDescription: `PDF To Grayscale مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF To Grayscale مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Grayscale بسرعة وأمان. لا يتطلب تسجي',
     keywords: [
       'pdf to grayscale free online',
       'pdf to grayscale no registration',
@@ -2953,7 +2953,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'optimize-pdf': {
     title: 'Optimize Pdf',
-    metaDescription: `تحسين ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'تحسين ملف PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Optimize Pdf بسرعة وأمان. لا يتطلب تسجيل، لا ',
     keywords: [
       'optimize pdf free online',
       'optimize pdf no registration',
@@ -3012,7 +3012,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'form-filler': {
     title: 'تعبئة النماذج',
-    metaDescription: `حشو النموذج مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'حشو النموذج مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Form Filler بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'form filler free online',
       'form filler no registration',
@@ -3071,7 +3071,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'create-pdf': {
     title: 'Create Pdf',
-    metaDescription: `أنشئ ملف PDF مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'أنشئ ملف PDF مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Create Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'create pdf free online',
       'create pdf no registration',
@@ -3130,7 +3130,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'merge-pdf-template': {
     title: 'Merge Pdf Template',
-    metaDescription: `دمج قالب Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'دمج قالب Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Merge Pdf Template بسرعة وأمان. لا يتطلب تسجيل، ل',
     keywords: [
       'merge pdf template free online',
       'merge pdf template no registration',
@@ -3189,7 +3189,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'split-pdf-template': {
     title: 'Split Pdf Template',
-    metaDescription: `قالب تقسيم Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'قالب تقسيم Pdf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Split Pdf Template بسرعة وأمان. لا يتطلب تسجي',
     keywords: [
       'split pdf template free online',
       'split pdf template no registration',
@@ -3248,7 +3248,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'encrypt-pdf': {
     title: 'تشفير PDF',
-    metaDescription: `تشفير ملفات Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تشفير ملفات Pdf مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Encrypt Pdf بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'encrypt pdf free online',
       'encrypt pdf no registration',
@@ -3307,7 +3307,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'decrypt-pdf': {
     title: 'فك تشفير PDF',
-    metaDescription: `فك تشفير ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'فك تشفير ملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Decrypt Pdf بسرعة وأمان. لا يتطلب تسجيل، لا',
     keywords: [
       'decrypt pdf free online',
       'decrypt pdf no registration',
@@ -3366,7 +3366,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'metadata-pdf': {
     title: 'Metadata Pdf',
-    metaDescription: `البيانات الوصفية PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'البيانات الوصفية PDF مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Metadata Pdf بسرعة وأمان. لا يتطلب تسج',
     keywords: [
       'metadata pdf free online',
       'metadata pdf no registration',
@@ -3425,7 +3425,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-viewer': {
     title: 'Pdf Viewer',
-    metaDescription: `عارض Pdf مجاني على الإنترنت - لا تسجيل ولا اشتراك. `,
+    metaDescription: 'عارض Pdf مجاني على الإنترنت - لا تسجيل ولا اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf Viewer بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب تثبيت ',
     keywords: [
       'pdf viewer free online',
       'pdf viewer no registration',
@@ -3484,7 +3484,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-html': {
     title: 'Pdf To Html',
-    metaDescription: `تحويل ملف Pdf إلى Html مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل ملف Pdf إلى Html مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Html بسرعة وأمان. لا يتطلب تسجيل',
     keywords: [
       'pdf to html free online',
       'pdf to html no registration',
@@ -3543,7 +3543,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-xml': {
     title: 'Pdf To Xml',
-    metaDescription: `تحويل Pdf إلى Xml مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل Pdf إلى Xml مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Xml بسرعة وأمان. لا يتطلب تسجيل، لا ي',
     keywords: [
       'pdf to xml free online',
       'pdf to xml no registration',
@@ -3602,7 +3602,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-csv': {
     title: 'Pdf To Csv',
-    metaDescription: `Pdf To Csv مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Csv مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Csv بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'pdf to csv free online',
       'pdf to csv no registration',
@@ -3661,7 +3661,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-rtf': {
     title: 'Pdf To Rtf',
-    metaDescription: `Pdf To Rtf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'Pdf To Rtf مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Rtf بسرعة وأمان. لا يتطلب تسجيل، لا يتطلب ',
     keywords: [
       'pdf to rtf free online',
       'pdf to rtf no registration',
@@ -3720,7 +3720,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-epub': {
     title: 'Pdf To Epub',
-    metaDescription: `PDF إلى Epub مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF إلى Epub مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Epub بسرعة وأمان. لا يتطلب تسجيل، لا يت',
     keywords: [
       'pdf to epub free online',
       'pdf to epub no registration',
@@ -3779,7 +3779,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-compare-text': {
     title: 'Pdf Compare Text',
-    metaDescription: `PDF مقارنة النص مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF مقارنة النص مجانًا على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf Compare Text بسرعة وأمان. لا يتطلب تسجي',
     keywords: [
       'pdf compare text free online',
       'pdf compare text no registration',
@@ -3838,7 +3838,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-redact-all': {
     title: 'Pdf Redact All',
-    metaDescription: `PDF Redact كل هذا مجاني على الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF Redact كل هذا مجاني على الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf Redact All بسرعة وأمان. لا يتطلب تسجيل',
     keywords: [
       'pdf redact all free online',
       'pdf redact all no registration',
@@ -3897,7 +3897,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-find-replace': {
     title: 'Pdf Find Replace',
-    metaDescription: `PDF Find Replace مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'PDF Find Replace مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf Find Replace بسرعة وأمان. لا يتطلب تسج',
     keywords: [
       'pdf find replace free online',
       'pdf find replace no registration',
@@ -3956,7 +3956,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'pdf-to-images': {
     title: 'Pdf To Images',
-    metaDescription: `تحويل الصور إلى ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'تحويل الصور إلى ملف PDF مجانًا على الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Pdf To Images بسرعة وأمان. لا يتطلب تس',
     keywords: [
       'pdf to images free online',
       'pdf to images no registration',
@@ -4015,7 +4015,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'extract-images': {
     title: 'استخراج الصور من PDF',
-    metaDescription: `استخراج الصور مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك. `,
+    metaDescription: 'استخراج الصور مجانًا عبر الإنترنت - بدون تسجيل، بدون اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Extract Images بسرعة وأمان. لا يتطلب تسجيل، ل',
     keywords: [
       'extract images free online',
       'extract images no registration',
@@ -4074,7 +4074,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'compress-images': {
     title: 'Compress Images',
-    metaDescription: `ضغط الصور مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'ضغط الصور مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Compress Images بسرعة وأمان. لا يتطلب تسجيل، لا يتطل',
     keywords: [
       'compress images free online',
       'compress images no registration',
@@ -4133,7 +4133,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'remove-blank-pages': {
     title: 'إزالة الصفحات الفارغة',
-    metaDescription: `قم بإزالة الصفحات الفارغة مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'قم بإزالة الصفحات الفارغة مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Remove Blank Pages بسرعة وأمان. لا ي',
     keywords: [
       'remove blank pages free online',
       'remove blank pages no registration',
@@ -4192,7 +4192,7 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   'detect-pdf-scanners': {
     title: 'Detect Pdf Scanners',
-    metaDescription: `كشف الماسحات الضوئية لملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك. `,
+    metaDescription: 'كشف الماسحات الضوئية لملفات Pdf مجانًا عبر الإنترنت - بدون تسجيل أو اشتراك.  استخدم أداتنا المجانية عبر الإنترنت لتنفيذ Detect Pdf Scanners بسرعة وأما',
     keywords: [
       'detect pdf scanners free online',
       'detect pdf scanners no registration',
