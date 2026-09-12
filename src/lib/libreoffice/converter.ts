@@ -122,8 +122,18 @@ export class LibreOfficeConverter {
             let sofficeDataUrl: string;
             let fontArrayBuffer: ArrayBuffer;
 
+            let useDirectStreaming = false;
             if (isTauri()) {
-                console.log('[LibreOffice] Running in Tauri environment: using direct asset URLs for zero-copy streaming');
+                try {
+                    const testRes = await fetch(`${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`, { method: 'HEAD' });
+                    useDirectStreaming = testRes.ok;
+                } catch {
+                    useDirectStreaming = false;
+                }
+            }
+
+            if (useDirectStreaming) {
+                console.log('[LibreOffice] Running in Tauri environment with unchunked assets: using direct asset URLs for zero-copy streaming');
                 sofficeWasmUrl = `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`;
                 sofficeDataUrl = `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`;
 

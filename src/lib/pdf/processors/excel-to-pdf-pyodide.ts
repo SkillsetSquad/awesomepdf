@@ -73,6 +73,12 @@ async function ensureWorkerReady(
   await initPromise;
 }
 
+export async function preloadExcelPyodide(
+  onStatus?: (message: string) => void
+): Promise<void> {
+  await ensureWorkerReady(onStatus);
+}
+
 export async function convertExcelToPdfPyodide(
   file: File,
   onStatus?: (message: string) => void

@@ -52,8 +52,6 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
     }
 
     private async convertWithLibreOffice(file: File): Promise<Blob> {
-        this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
-
         const converter = await getSharedLibreOfficeConverter((percent, message) => {
             this.updateProgress(Math.min(percent * 0.8, 80), message);
         });
