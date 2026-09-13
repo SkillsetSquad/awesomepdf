@@ -940,7 +940,11 @@
       "viewOnGithub": "GitHub で表示",
       "skipVersion": "このバージョンをスキップ",
       "remindLater": "後で通知",
-      "close": "閉じる"
+      "close": "閉じる",
+      "newVersionBadge": "新バージョン",
+      "toastPrompt": "新しいバージョンがリリースされました。安定性と機能が向上しています。今すぐ更新することをお勧めします。",
+      "viewDetails": "今すぐ更新 / 詳細を表示",
+      "mirrorDownload": "⚡ 高速ミラーダウンロード"
     }
   },
   "toolsPage": {

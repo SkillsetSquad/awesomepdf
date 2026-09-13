@@ -30,15 +30,25 @@ export const UpdateCheckButton: React.FC<UpdateCheckButtonProps> = ({ className 
 
   const getMsg = (key: string, fallback: string): string => {
     try {
-      const msg = t(`updater.${key}` as any);
-      if (msg && !msg.startsWith('updater.')) return msg;
+      const fullKey = `updater.${key}`;
+      const msg = t(fullKey as any);
+      if (
+        msg &&
+        !msg.startsWith('common.') &&
+        !msg.startsWith('updater.') &&
+        !msg.includes(`.${key}`) &&
+        msg !== fullKey &&
+        msg !== key
+      ) {
+        return msg;
+      }
     } catch {
       // fallback
     }
     return fallback;
   };
 
-  const checkBtnLabel = getMsg('checkBtn', 'Check for updates');
+  const checkBtnLabel = getMsg('checkBtn', '检查更新');
 
   // Background auto-check on mount
   useEffect(() => {

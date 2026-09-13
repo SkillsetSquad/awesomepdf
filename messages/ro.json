@@ -940,7 +940,11 @@
       "viewOnGithub": "Vizualizați pe GitHub",
       "skipVersion": "Omiteți această versiune",
       "remindLater": "Amintește-mi mai târziu",
-      "close": "Închide"
+      "close": "Închide",
+      "newVersionBadge": "Versiune nouă",
+      "toastPrompt": "O nouă versiune este disponibilă cu stabilitate și performanță îmbunătățite. Actualizați acum pentru o experiență optimă.",
+      "viewDetails": "Actualizează acum / Vezi detalii",
+      "mirrorDownload": "⚡ Descărcare rapidă mirror"
     }
   },
   "toolsPage": {

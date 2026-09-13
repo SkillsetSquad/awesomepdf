@@ -44,7 +44,16 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
     try {
       const fullKey = `updater.${key}`;
       const msg = t(fullKey as any, values as any);
-      if (msg && !msg.startsWith('updater.')) return msg;
+      if (
+        msg &&
+        !msg.startsWith('common.') &&
+        !msg.startsWith('updater.') &&
+        !msg.includes(`.${key}`) &&
+        msg !== fullKey &&
+        msg !== key
+      ) {
+        return msg;
+      }
     } catch {
       // fallback
     }
@@ -255,7 +264,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
                     onClick={() => handleDownload(result.matchedAssets.primary!, true)}
                     className="text-[11px] text-[hsl(var(--color-primary))] hover:underline inline-flex items-center gap-1 font-medium py-1 px-2 rounded hover:bg-[hsl(var(--color-primary))/0.08] transition-colors"
                   >
-                    <span>⚡ 国内高速镜像通道下载</span>
+                    <span>{getMsg('mirrorDownload', '⚡ 国内高速镜像通道下载')}</span>
                   </button>
                 </div>
               )}

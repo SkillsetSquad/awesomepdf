@@ -940,7 +940,11 @@
       "viewOnGithub": "Auf GitHub ansehen",
       "skipVersion": "Diese Version überspringen",
       "remindLater": "Später erinnern",
-      "close": "Schließen"
+      "close": "Schließen",
+      "newVersionBadge": "Neue Version",
+      "toastPrompt": "Eine neue Version ist verfügbar mit verbesserter Stabilität und Leistung. Aktualisieren Sie jetzt für das beste Erlebnis.",
+      "viewDetails": "Jetzt aktualisieren / Details anzeigen",
+      "mirrorDownload": "⚡ Schneller Mirror-Download"
     }
   },
   "toolsPage": {

@@ -954,7 +954,11 @@
       "viewOnGithub": "前往 GitHub 查看",
       "skipVersion": "跳过此版本",
       "remindLater": "稍后提醒",
-      "close": "关闭"
+      "close": "关闭",
+      "newVersionBadge": "新版本",
+      "toastPrompt": "新版本已发布，已优化应用稳定性与多项核心功能，推荐立即更新体验。",
+      "viewDetails": "立即更新 / 查看详情",
+      "mirrorDownload": "⚡ 国内高速镜像通道下载"
     }
   },
   "toolsPage": {

@@ -35,7 +35,16 @@ export const UpdateNotificationToast: React.FC<UpdateNotificationToastProps> = (
     try {
       const fullKey = `updater.${key}`;
       const msg = t(fullKey as any, values as any);
-      if (msg && !msg.startsWith('updater.')) return msg;
+      if (
+        msg &&
+        !msg.startsWith('common.') &&
+        !msg.startsWith('updater.') &&
+        !msg.includes(`.${key}`) &&
+        msg !== fullKey &&
+        msg !== key
+      ) {
+        return msg;
+      }
     } catch {
       // fallback
     }

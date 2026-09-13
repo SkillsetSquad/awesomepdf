@@ -940,7 +940,11 @@
       "viewOnGithub": "GitHub에서 보기",
       "skipVersion": "이 버전 건너뛰기",
       "remindLater": "나중에 알림",
-      "close": "닫기"
+      "close": "닫기",
+      "newVersionBadge": "새 버전",
+      "toastPrompt": "새 버전이 출시되었습니다. 안정성과 핵심 기능이 최적화되었습니다. 지금 업데이트하여 최상의 환경을 경험해보세요.",
+      "viewDetails": "지금 업데이트 / 자세히 보기",
+      "mirrorDownload": "⚡ 고속 미러 다운로드"
     }
   },
   "toolsPage": {

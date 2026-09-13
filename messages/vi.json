@@ -940,7 +940,11 @@
       "viewOnGithub": "Xem trên GitHub",
       "skipVersion": "Bỏ qua phiên bản này",
       "remindLater": "Nhắc tôi sau",
-      "close": "Đóng"
+      "close": "Đóng",
+      "newVersionBadge": "Phiên bản mới",
+      "toastPrompt": "Phiên bản mới đã ra mắt, tối ưu hóa độ ổn định và các tính năng chính. Khuyến nghị cập nhật ngay để trải nghiệm.",
+      "viewDetails": "Cập nhật ngay / Xem chi tiết",
+      "mirrorDownload": "⚡ Tải xuống qua máy chủ phản chiếu nhanh"
     }
   },
   "toolsPage": {
