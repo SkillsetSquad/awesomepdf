@@ -944,7 +944,13 @@
       "newVersionBadge": "Phiên bản mới",
       "toastPrompt": "Phiên bản mới đã ra mắt, tối ưu hóa độ ổn định và các tính năng chính. Khuyến nghị cập nhật ngay để trải nghiệm.",
       "viewDetails": "Cập nhật ngay / Xem chi tiết",
-      "mirrorDownload": "⚡ Tải xuống qua máy chủ phản chiếu nhanh"
+      "mirrorDownload": "⚡ Tải xuống qua máy chủ phản chiếu nhanh",
+      "copyLink": "Sao chép liên kết",
+      "copyMirrorLink": "Sao chép link mirror",
+      "openingBrowser": "Đang mở trình duyệt...",
+      "downloadStartedNotice": "Đã mở tải xuống trong trình duyệt! Nếu không tự động tải, hãy sao chép link và dán vào trình duyệt.",
+      "downloadFailedNotice": "Không thể tự động mở trình duyệt. Vui lòng sao chép liên kết và tải thủ công.",
+      "linkCopied": "Đã sao chép liên kết tải xuống!"
     }
   },
   "toolsPage": {

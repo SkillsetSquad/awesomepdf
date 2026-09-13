@@ -944,7 +944,13 @@
       "newVersionBadge": "Versiune nouă",
       "toastPrompt": "O nouă versiune este disponibilă cu stabilitate și performanță îmbunătățite. Actualizați acum pentru o experiență optimă.",
       "viewDetails": "Actualizează acum / Vezi detalii",
-      "mirrorDownload": "⚡ Descărcare rapidă mirror"
+      "mirrorDownload": "⚡ Descărcare rapidă mirror",
+      "copyLink": "Copiază linkul",
+      "copyMirrorLink": "Copiază linkul mirror",
+      "openingBrowser": "Se deschide browserul...",
+      "downloadStartedNotice": "Descărcarea a început în browser! Dacă nu începe, copiați linkul și inserați-l în browser.",
+      "downloadFailedNotice": "Nu s-a putut deschide browserul. Copiați linkul și descărcați manual.",
+      "linkCopied": "Linkul de descărcare a fost copiat în clipboard!"
     }
   },
   "toolsPage": {

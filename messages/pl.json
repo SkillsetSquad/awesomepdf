@@ -958,7 +958,13 @@
       "newVersionBadge": "Nowa wersja",
       "toastPrompt": "Dostępna jest nowa wersja z ulepszoną stabilnością i kluczowymi funkcjami. Zalecamy aktualizację już teraz.",
       "viewDetails": "Zaktualizuj teraz / Zobacz szczegóły",
-      "mirrorDownload": "⚡ Szybkie pobieranie mirror"
+      "mirrorDownload": "⚡ Szybkie pobieranie mirror",
+      "copyLink": "Kopiuj link",
+      "copyMirrorLink": "Kopiuj link mirror",
+      "openingBrowser": "Otwieranie przeglądarki...",
+      "downloadStartedNotice": "Pobieranie rozpoczęte w przeglądarce! Jeśli nie ruszyło, skopiuj link i wklej w przeglądarce.",
+      "downloadFailedNotice": "Nie udało się otworzyć przeglądarki. Skopiuj link i wklej ręcznie w przeglądarce.",
+      "linkCopied": "Link do pobrania skopiowany do schowka!"
     }
   },
   "toolsPage": {

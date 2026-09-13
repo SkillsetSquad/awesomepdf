@@ -944,7 +944,13 @@
       "newVersionBadge": "Nuova versione",
       "toastPrompt": "È disponibile una nuova versione con stabilità e prestazioni migliorate. Aggiorna ora per un'esperienza ottimale.",
       "viewDetails": "Aggiorna ora / Visualizza dettagli",
-      "mirrorDownload": "⚡ Download mirror veloce"
+      "mirrorDownload": "⚡ Download mirror veloce",
+      "copyLink": "Copia link",
+      "copyMirrorLink": "Copia link mirror",
+      "openingBrowser": "Apertura del browser in corso...",
+      "downloadStartedNotice": "Download avviato nel browser! Se non si avvia, copia il link e incollalo nel tuo browser.",
+      "downloadFailedNotice": "Impossibile aprire il browser. Copia il link e incollalo manualmente nel browser.",
+      "linkCopied": "Link di download copiato negli appunti!"
     }
   },
   "toolsPage": {

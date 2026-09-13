@@ -944,7 +944,13 @@
       "newVersionBadge": "新版本",
       "toastPrompt": "新版本已發布，已優化應用穩定性與多項核心功能，建議立即更新體驗。",
       "viewDetails": "立即更新 / 查看詳情",
-      "mirrorDownload": "⚡ 高速鏡像通道下載"
+      "mirrorDownload": "⚡ 高速鏡像通道下載",
+      "copyLink": "複製鏈接",
+      "copyMirrorLink": "複製鏡像直鏈",
+      "openingBrowser": "正在開啟系統瀏覽器...",
+      "downloadStartedNotice": "已喚起瀏覽器開始下載！若未自動彈出，可點擊右側按鈕複製直鏈並在瀏覽器中貼上。",
+      "downloadFailedNotice": "無法自動開啟瀏覽器，請點擊複製按鈕手動在瀏覽器中貼上下載。",
+      "linkCopied": "下載鏈接已複製到剪貼板！"
     }
   },
   "toolsPage": {

@@ -944,7 +944,13 @@
       "newVersionBadge": "Nouvelle version",
       "toastPrompt": "Une nouvelle version est disponible avec une stabilité et des performances améliorées. Mettez à jour maintenant pour profiter de la meilleure expérience.",
       "viewDetails": "Mettre à jour maintenant / Voir les détails",
-      "mirrorDownload": "⚡ Téléchargement miroir rapide"
+      "mirrorDownload": "⚡ Téléchargement miroir rapide",
+      "copyLink": "Copier le lien",
+      "copyMirrorLink": "Copier le lien miroir",
+      "openingBrowser": "Ouverture du navigateur...",
+      "downloadStartedNotice": "Téléchargement lancé dans le navigateur ! Sinon, copiez le lien et collez-le dans votre navigateur.",
+      "downloadFailedNotice": "Impossible d'ouvrir le navigateur. Veuillez copier le lien et le coller manuellement.",
+      "linkCopied": "Lien de téléchargement copié dans le presse-papiers !"
     }
   },
   "toolsPage": {

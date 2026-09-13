@@ -944,7 +944,13 @@
       "newVersionBadge": "Versi Baru",
       "toastPrompt": "Versi baru telah tersedia dengan peningkatan stabilitas dan fitur inti. Perbarui sekarang untuk pengalaman terbaik.",
       "viewDetails": "Perbarui Sekarang / Lihat Detail",
-      "mirrorDownload": "⚡ Unduhan Mirror Cepat"
+      "mirrorDownload": "⚡ Unduhan Mirror Cepat",
+      "copyLink": "Salin tautan",
+      "copyMirrorLink": "Salin tautan mirror",
+      "openingBrowser": "Membuka peramban...",
+      "downloadStartedNotice": "Unduhan dimulai di browser! Jika belum mulai, salin tautan dan tempel di peramban Anda.",
+      "downloadFailedNotice": "Tidak dapat membuka browser secara otomatis. Silakan salin tautan dan unduh secara manual.",
+      "linkCopied": "Tautan unduhan berhasil disalin!"
     }
   },
   "toolsPage": {

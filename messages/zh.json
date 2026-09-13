@@ -958,7 +958,13 @@
       "newVersionBadge": "新版本",
       "toastPrompt": "新版本已发布，已优化应用稳定性与多项核心功能，推荐立即更新体验。",
       "viewDetails": "立即更新 / 查看详情",
-      "mirrorDownload": "⚡ 国内高速镜像通道下载"
+      "mirrorDownload": "⚡ 国内高速镜像通道下载",
+      "copyLink": "复制链接",
+      "copyMirrorLink": "复制镜像直链",
+      "openingBrowser": "正在打开系统浏览器...",
+      "downloadStartedNotice": "已唤起浏览器开始下载！若未自动弹出，可点击右侧按钮复制直链并在浏览器中粘贴。",
+      "downloadFailedNotice": "无法自动打开浏览器，请点击复制按钮手动在浏览器中粘贴下载。",
+      "linkCopied": "下载链接已复制到剪贴板！"
     }
   },
   "toolsPage": {
