@@ -3,225 +3,49 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { ChevronDown, ChevronUp, Search, ArrowRight } from 'lucide-react';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
+import { Search, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
 import { type Locale } from '@/lib/i18n/config';
 
-interface FAQPageClientProps {
-  locale: Locale;
-}
-
-interface FAQItem {
-  question: string;
-  answer: string;
-  category: string;
-  categoryLabel: string; // Display label
-}
-
-export default function FAQPageClient({ locale }: FAQPageClientProps) {
+const categoryItems = {
+  general: ['whatIs', 'isFree', 'account'], privacy: ['uploaded', 'safe', 'storage'],
+  features: ['operations', 'merge', 'images', 'edit'], technical: ['browsers', 'sizeLimit', 'slow', 'offline'],
+  languages: ['supported', 'change'],
+};
+export default function FAQPageClient({ locale }: { locale: Locale }) {
   const t = useTranslations('faqPage');
-  const tCommon = useTranslations('common');
+  const common = useTranslations('common');
   const [searchQuery, setSearchQuery] = useState('');
-  const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-
-  // Helper to get FAQs for a category
-  const getCategoryFaqs = (categoryKey: string, categoryLabel: string): FAQItem[] => {
-    const items = ['whatIs', 'isFree', 'account', 'uploaded', 'safe', 'storage', 'operations', 'merge', 'images', 'edit', 'browsers', 'sizeLimit', 'slow', 'offline', 'supported', 'change'];
-    const categoryMapping: Record<string, string[]> = {
-      'general': ['whatIs', 'isFree', 'account'],
-      'privacy': ['uploaded', 'safe', 'storage'],
-      'features': ['operations', 'merge', 'images', 'edit'],
-      'technical': ['browsers', 'sizeLimit', 'slow', 'offline'],
-      'languages': ['supported', 'change']
-    };
-
-    const keys = categoryMapping[categoryKey] || [];
-
-    return keys.map(key => ({
-      category: categoryKey,
-      categoryLabel: categoryLabel,
-      question: t(`sections.${categoryKey}.${key}.question`),
-      answer: t(`sections.${categoryKey}.${key}.answer`)
-    }));
-  };
-
-  // Construct FAQ data dynamically
-  const faqs: FAQItem[] = [
-    ...getCategoryFaqs('general', t('categories.general')),
-    ...getCategoryFaqs('privacy', t('categories.privacy')),
-    ...getCategoryFaqs('features', t('categories.features')),
-    ...getCategoryFaqs('technical', t('categories.technical')),
-    ...getCategoryFaqs('languages', t('categories.languages')),
-  ];
-
-  // Get unique categories for filter buttons
-  const categories = [
-    { key: 'all', label: t('categories.all') },
-    { key: 'general', label: t('categories.general') },
-    { key: 'privacy', label: t('categories.privacy') },
-    { key: 'features', label: t('categories.features') },
-    { key: 'technical', label: t('categories.technical') },
-    { key: 'languages', label: t('categories.languages') },
-  ];
-
-  // Filter FAQs
-  const filteredFaqs = faqs.filter(faq => {
-    const matchesSearch = searchQuery === '' ||
-      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || faq.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
-
-  const toggleItem = (index: number) => {
-    const newExpanded = new Set(expandedItems);
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index);
-    } else {
-      newExpanded.add(index);
-    }
-    setExpandedItems(newExpanded);
-  };
-
-  const expandAll = () => {
-    setExpandedItems(new Set(filteredFaqs.map((_, i) => i)));
-  };
-
-  const collapseAll = () => {
-    setExpandedItems(new Set());
-  };
-
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const faqs = Object.entries(categoryItems).flatMap(([category, keys]) => keys.map(key => ({
+    id: `${category}-${key}`, category, categoryLabel: t(`categories.${category}`),
+    question: t(`sections.${category}.${key}.question`), answer: t(`sections.${category}.${key}.answer`),
+  })));
+  const query = searchQuery.trim().toLocaleLowerCase(locale);
+  const filteredFaqs = faqs.filter(faq => (selectedCategory === 'all' || faq.category === selectedCategory) && (!query || `${faq.question} ${faq.answer}`.toLocaleLowerCase(locale).includes(query)));
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header locale={locale} />
-
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-muted/30 pt-20 pb-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                {t('title')}
-              </h1>
-              <p className="text-muted-foreground mb-8">
-                {t('subtitle', { brand: tCommon('brand') })}
-              </p>
-
-              {/* Search Bar */}
-              <div className="relative max-w-xl mx-auto">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t('searchPlaceholder')}
-                  className="w-full pl-12 pr-4 py-3 text-base rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  aria-label="Search FAQs"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Content */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              {/* Category Filters */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {categories.map((cat) => (
-                  <Button
-                    key={cat.key}
-                    variant={selectedCategory === cat.key ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setSelectedCategory(cat.key)}
-                  >
-                    {cat.label}
-                  </Button>
-                ))}
-              </div>
-
-              {/* Expand/Collapse Controls */}
-              <div className="flex justify-end gap-2 mb-4">
-                <Button variant="ghost" size="sm" onClick={expandAll}>
-                  {t('expandAll')}
-                </Button>
-                <Button variant="ghost" size="sm" onClick={collapseAll}>
-                  {t('collapseAll')}
-                </Button>
-              </div>
-
-              {/* FAQ List */}
-              {filteredFaqs.length > 0 ? (
-                <div className="space-y-4">
-                  {filteredFaqs.map((faq, index) => (
-                    <Card key={index} className="overflow-hidden">
-                      <button
-                        className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-muted/50 transition-colors"
-                        onClick={() => toggleItem(index)}
-                        aria-expanded={expandedItems.has(index)}
-                      >
-                        <div className="flex-1">
-                          <span className="text-xs text-primary font-medium mb-1 block">
-                            {faq.categoryLabel}
-                          </span>
-                          <span className="font-medium text-foreground">
-                            {faq.question}
-                          </span>
-                        </div>
-                        {expandedItems.has(index) ? (
-                          <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                        )}
-                      </button>
-                      {expandedItems.has(index) && (
-                        <div className="px-6 pb-4">
-                          <p className="text-muted-foreground leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      )}
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <Card className="p-12 text-center">
-                  <p className="text-muted-foreground">
-                    {t('noResults')}
-                  </p>
-                </Card>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact CTA */}
-        <section className="py-12 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                {t('cta.title')}
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                {t('cta.description')}
-              </p>
-              <Link href={`/${locale}/contact`}>
-                <Button variant="default">
-                  {t('cta.button')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer locale={locale} />
-    </div>
+    <main id="main-content" className="mx-auto w-full max-w-3xl flex-1 space-y-8 px-4 pt-24 pb-12 sm:px-6">
+      <div className="space-y-3"><h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t('title')}</h1><p className="text-muted-foreground">{t('subtitle', { brand: common('brand') })}</p></div>
+      <Card><CardContent className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-2"><Label htmlFor="faq-search">{t('searchPlaceholder')}</Label><div className="relative"><Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" /><Input id="faq-search" type="search" value={searchQuery} onChange={event => setSearchQuery(event.target.value)} placeholder={t('searchPlaceholder')} className="ps-9" /></div></div>
+        <div className="space-y-2 [&>[data-slot=native-select-wrapper]]:w-full"><Label htmlFor="faq-category">{common('navigation.faq')}</Label><NativeSelect id="faq-category" value={selectedCategory} onChange={event => setSelectedCategory(event.target.value)}>{['all', ...Object.keys(categoryItems)].map(key => <NativeSelectOption key={key} value={key}>{t(`categories.${key}`)}</NativeSelectOption>)}</NativeSelect></div>
+      </CardContent></Card>
+      <div className="flex flex-wrap gap-2"><Button variant="outline" size="sm" onClick={() => setExpandedItems(filteredFaqs.map(faq => faq.id))}>{t('expandAll')}</Button><Button variant="ghost" size="sm" onClick={() => setExpandedItems([])}>{t('collapseAll')}</Button></div>
+      {filteredFaqs.length ? <Accordion type="multiple" value={expandedItems} onValueChange={setExpandedItems}>
+        {filteredFaqs.map(faq => <AccordionItem key={faq.id} value={faq.id} className="[&>[data-slot=accordion-content][data-state=closed]]:hidden">
+          <AccordionTrigger><span className="space-y-1 text-start"><span className="block text-xs text-muted-foreground">{faq.categoryLabel}</span><span className="block">{faq.question}</span></span></AccordionTrigger>
+          <AccordionContent forceMount className="text-muted-foreground">{faq.answer}</AccordionContent>
+        </AccordionItem>)}
+      </Accordion> : <Card><CardContent role="status" className="text-center text-muted-foreground">{t('noResults')}</CardContent></Card>}
+      <Separator />
+      <section className="space-y-4"><h2 className="text-2xl font-semibold tracking-tight">{t('cta.title')}</h2><p className="text-muted-foreground">{t('cta.description')}</p><Button asChild><Link href={`/${locale}/contact`}>{t('cta.button')}<ArrowRight aria-hidden="true" className="rtl:rotate-180" /></Link></Button></section>
+    </main>
   );
 }

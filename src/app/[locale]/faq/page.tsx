@@ -3,6 +3,8 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { generateFaqMetadata } from '@/lib/seo';
 import FAQPageClient from './FAQPageClient';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -33,5 +35,5 @@ export default async function FAQPage({ params }: FAQPageProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  return <FAQPageClient locale={locale as Locale} />;
+  return <div className="flex min-h-screen flex-col bg-background"><Header locale={locale as Locale} /><FAQPageClient locale={locale as Locale} /><Footer locale={locale as Locale} /></div>;
 }
