@@ -30,11 +30,12 @@ interface ViewerControl {
   action: HTMLElement;
 }
 
-export function LegacyEditorControls({ iframe, locale, undo, redo, exportError = 'Export failed. Please try again.' }: {
+export function LegacyEditorControls({ iframe, locale, undo, redo, labels, exportError = 'Export failed. Please try again.' }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   undo: string;
   redo: string;
+  labels?: Record<string, string>;
   exportError?: string;
 }) {
   const [controls, setControls] = useState<ViewerControl[]>([]);
@@ -113,7 +114,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, exportError =
         if (!Icon || !action || !name || name.parentElement !== action) continue;
         // Mount inside the actual popover anchor so its geometry and handlers remain intact.
         const color = icon.querySelector<HTMLElement>('[style]')?.style.color || undefined;
-        const label = name.textContent?.trim() || item.title;
+        const label = labels?.[tool] ?? (name.textContent?.trim() || item.title);
         const mount = mountControl(item, action);
         const exportAction = (item as HTMLElement & { awesomepdfExport?: AnnotationExportAction }).awesomepdfExport;
         const exportFormats = (['pdf', 'excel'] as const).filter(format => item.dataset[format === 'pdf' ? 'exportPdf' : 'exportExcel'] === 'true');
@@ -137,7 +138,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, exportError =
       style.remove();
       sheets.forEach(sheet => sheet.remove());
     };
-  }, [iframe, locale, undo, redo]);
+  }, [iframe, locale, undo, redo, labels]);
 
   return controls.map(control => createPortal(control.kind === 'hint'
     ? <Alert className="pointer-events-none fixed top-20 left-1/2 z-[100000] w-[calc(100%-2rem)] max-w-md -translate-x-1/2" role="status" dir={locale === 'ar' ? 'rtl' : 'ltr'}><Info aria-hidden="true" /><AlertDescription>{control.label}</AlertDescription></Alert>

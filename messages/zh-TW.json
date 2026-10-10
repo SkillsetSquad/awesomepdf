@@ -651,7 +651,8 @@
       "unnamedUser": "不具名使用者",
       "undo": "撤銷",
       "redo": "重做",
-      "annDefault": "註釋"
+      "annDefault": "註釋",
+      "comments": "註解"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu 閾值偏移)",

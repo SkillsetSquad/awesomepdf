@@ -651,7 +651,8 @@
       "unnamedUser": "مستخدم ضيف",
       "undo": "تراجع",
       "redo": "إعادة",
-      "annDefault": "تعليق توضيحي"
+      "annDefault": "تعليق توضيحي",
+      "comments": "التعليقات"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (إزاحة أوتسو)",

@@ -651,7 +651,8 @@
       "unnamedUser": "Người dùng khách",
       "undo": "Hoàn tác",
       "redo": "Làm lại",
-      "annDefault": "Chú thích"
+      "annDefault": "Chú thích",
+      "comments": "Nhận xét"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Độ lệch Otsu)",

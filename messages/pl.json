@@ -651,7 +651,8 @@
       "unnamedUser": "Użytkownik-Gość",
       "undo": "Cofnij",
       "redo": "Powtórz",
-      "annDefault": "Adnotacja"
+      "annDefault": "Adnotacja",
+      "comments": "Komentarze"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Przesunięcie Otsu)",

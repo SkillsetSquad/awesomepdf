@@ -21,10 +21,11 @@ export type AnnotationExportWindow = Window & {
 };
 
 /** The engine keeps its local export routines; only its status dialog is hosted here. */
-export function AnnotationExportDialog({ iframe, locale, closeLabel }: {
+export function AnnotationExportDialog({ iframe, locale, closeLabel, labels }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   closeLabel: string;
+  labels?: { title: string; processing: string; complete: string };
 }) {
   const [notice, setNotice] = useState<(AnnotationExportNotice & { id: number }) | null>(null);
   const content = useRef<HTMLDivElement>(null);
@@ -64,9 +65,9 @@ export function AnnotationExportDialog({ iframe, locale, closeLabel }: {
       onEscapeKeyDown={event => { if (loading) event.preventDefault(); }}
       onInteractOutside={event => { if (loading) event.preventDefault(); }}>
       <DialogHeader>
-        <DialogTitle>{notice?.title}</DialogTitle>
+        <DialogTitle>{labels?.title ?? notice?.title}</DialogTitle>
         <DialogDescription role="status" aria-live="polite" aria-atomic="true">
-          {loading && <Loader2 aria-hidden="true" className="me-2 inline size-4 animate-spin" />}{notice?.content}
+          {loading && <Loader2 aria-hidden="true" className="me-2 inline size-4 animate-spin" />}{labels ? loading ? labels.processing : labels.complete : notice?.content}
         </DialogDescription>
       </DialogHeader>
       <DialogFooter><Button loading={loading} onClick={() => setNotice(null)}>{closeLabel}</Button></DialogFooter>

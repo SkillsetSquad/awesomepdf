@@ -651,7 +651,8 @@
       "unnamedUser": "Pengguna tamu",
       "undo": "Batal",
       "redo": "Ulangi",
-      "annDefault": "Anotasi"
+      "annDefault": "Anotasi",
+      "comments": "Komentar"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

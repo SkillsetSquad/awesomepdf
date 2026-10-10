@@ -651,7 +651,8 @@
       "unnamedUser": "ゲストユーザー",
       "undo": "元に戻す",
       "redo": "やり直す",
-      "annDefault": "注釈"
+      "annDefault": "注釈",
+      "comments": "コメント"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津しきい値オフセット)",

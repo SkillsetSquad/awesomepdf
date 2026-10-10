@@ -7,6 +7,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { toast } from 'sonner';
 import { AnnotationExportDialog, type AnnotationExportWindow } from '@/components/tools/edit-pdf/AnnotationExportDialog';
 import { AnnotationExportMenu } from '@/components/tools/edit-pdf/AnnotationExportMenu';
+import ar from '../../../../messages/ar.json';
 
 vi.mock('sonner', () => ({ toast: { error: vi.fn() } }));
 
@@ -41,7 +42,7 @@ function nativeExports(viewer: Window) {
   return { onExport, exportPdf, exportExcel, nativeModal, annotations, application };
 }
 
-function setup() {
+function setup(labels?: { title: string; processing: string; complete: string }) {
   const iframe = document.createElement('iframe');
   document.body.append(iframe);
   const viewer = iframe.contentWindow as AnnotationExportWindow;
@@ -52,12 +53,28 @@ function setup() {
   const engine = nativeExports(viewer);
   const view = render(<>
     {createPortal(<AnnotationExportMenu container={doc.body} label="Export" formats={['pdf', 'excel']} onExport={engine.onExport} direction="rtl" errorMessage="Export failed" />, toolbar)}
-    <AnnotationExportDialog iframe={iframe} locale="ar" closeLabel="Close" />
+    <AnnotationExportDialog iframe={iframe} locale="ar" closeLabel="Close" labels={labels} />
   </>);
   return { ...engine, viewer, doc, user: userEvent.setup({ document: doc }), cleanup: () => { view.unmount(); iframe.remove(); } };
 }
 
 describe('Native annotation export status integration', () => {
+  it('uses the app’s Arabic progress and completion strings when the engine uses an English fallback', async () => {
+    const labels = { title: ar.common.buttons.download, processing: ar.common.status.processing, complete: ar.common.status.complete };
+    const { doc, user, exportPdf, cleanup } = setup(labels);
+    let finish!: () => void;
+    exportPdf.mockImplementationOnce(() => new Promise<void>(resolve => { finish = resolve; }));
+    try {
+      within(doc.body).getByRole('button', { name: 'Export' }).focus();
+      await user.keyboard('{Enter}{Enter}');
+      await screen.findByRole('dialog', { name: labels.title });
+      expect(screen.getByRole('status')).toHaveTextContent(labels.processing);
+      await act(async () => finish());
+      await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent(labels.complete));
+      expect(screen.queryByText('PDF generated successfully')).toBeNull();
+    } finally { cleanup(); }
+  });
+
   it('keeps PDF parameters and processing intact while reporting progress and completion in a standard dialog', async () => {
     const { exportPdf, nativeModal, annotations, application, doc, user, cleanup } = setup();
     let finish!: () => void;

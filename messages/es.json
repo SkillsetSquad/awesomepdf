@@ -651,7 +651,8 @@
       "unnamedUser": "Usuario invitado",
       "undo": "Deshacer",
       "redo": "Rehacer",
-      "annDefault": "Anotación"
+      "annDefault": "Anotación",
+      "comments": "Comentarios"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desviación Otsu)",

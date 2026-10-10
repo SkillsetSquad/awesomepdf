@@ -651,7 +651,8 @@
       "unnamedUser": "Gastbenutzer",
       "undo": "Rückgängig",
       "redo": "Wiederholen",
-      "annDefault": "Anmerkung"
+      "annDefault": "Anmerkung",
+      "comments": "Kommentare"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu-Offset)",

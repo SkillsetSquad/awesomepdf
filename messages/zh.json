@@ -651,7 +651,8 @@
       "unnamedUser": "不具名用户",
       "undo": "撤销",
       "redo": "重做",
-      "annDefault": "注释"
+      "annDefault": "注释",
+      "comments": "批注"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津偏置)",

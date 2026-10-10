@@ -651,7 +651,8 @@
       "unnamedUser": "Guest User",
       "undo": "Undo",
       "redo": "Redo",
-      "annDefault": "Annotation"
+      "annDefault": "Annotation",
+      "comments": "Comments"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu Offset)",

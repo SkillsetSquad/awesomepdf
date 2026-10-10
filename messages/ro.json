@@ -651,7 +651,8 @@
       "unnamedUser": "Utilizator invitat",
       "undo": "Anulează",
       "redo": "Refă",
-      "annDefault": "Adnotare"
+      "annDefault": "Adnotare",
+      "comments": "Comentarii"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

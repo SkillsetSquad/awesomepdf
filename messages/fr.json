@@ -651,7 +651,8 @@
       "unnamedUser": "Utilisateur invité",
       "undo": "Annuler",
       "redo": "Rétablir",
-      "annDefault": "Annotation"
+      "annDefault": "Annotation",
+      "comments": "Commentaires"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Décalage d'Otsu)",

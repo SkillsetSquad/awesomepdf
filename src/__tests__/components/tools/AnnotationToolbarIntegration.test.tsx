@@ -9,6 +9,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { LegacyEditorControls } from '@/components/tools/edit-pdf/LegacyEditorControls';
 import { toast } from 'sonner';
+import ar from '../../../../messages/ar.json';
 
 vi.mock('sonner', () => ({ toast: { error: vi.fn() } }));
 
@@ -17,7 +18,7 @@ type ToolbarProps = { defaultSidebarOpen: boolean; onChange: (annotation: Annota
 type GraphicProps = { annotation: Annotation; onAdd: (image: string) => void };
 
 /** Execute the shipped toolbar's state/handlers with small popover fixtures; no PDF is opened. */
-function setup(exportPdf = true, exportExcel = true) {
+function setup(exportPdf = true, exportExcel = true, controlLabels?: Record<string, string>) {
   const iframe = document.createElement('iframe');
   document.body.append(iframe);
   const doc = iframe.contentDocument!;
@@ -65,11 +66,31 @@ function setup(exportPdf = true, exportExcel = true) {
   ) as React.ComponentType<ToolbarProps>;
   let root!: Root;
   act(() => { root = createRoot(host); root.render(<Toolbar defaultSidebarOpen={false} onChange={onChange} onSidebarOpen={onSidebarOpen} onExport={onExport} />); });
-  const view = render(<LegacyEditorControls iframe={iframe} locale="ar" undo="Undo" redo="Redo" />);
+  const view = render(<LegacyEditorControls iframe={iframe} locale="ar" undo="Undo" redo="Redo" labels={controlLabels} />);
   return { doc, tools, onChange, onSidebarOpen, onExport, notices, cleanup: () => { view.unmount(); act(() => root.unmount()); iframe.remove(); } };
 }
 
 describe('Shipped annotation toolbar integration', () => {
+  it('uses application translations while preserving the native selection and export callbacks', async () => {
+    const labels = { rectangle: ar.common.editPdf.annRectangle, color: ar.tools.bookmark.color, comments: ar.common.editPdf.comments, export: ar.common.buttons.download };
+    const { doc, tools, onChange, onSidebarOpen, onExport, cleanup } = setup(true, false, labels);
+    try {
+      const user = userEvent.setup({ document: doc });
+      const ui = within(doc.body);
+      const rectangle = ui.getByRole('button', { name: labels.rectangle });
+      rectangle.focus();
+      await user.keyboard('{Enter}');
+      expect(onChange).toHaveBeenLastCalledWith(tools[1], null);
+      expect(ui.getByRole('button', { name: labels.color })).toBeEnabled();
+      ui.getByRole('button', { name: labels.comments }).focus();
+      await user.keyboard(' ');
+      expect(onSidebarOpen).toHaveBeenCalledWith(true);
+      ui.getByRole('button', { name: labels.export }).focus();
+      await user.keyboard('{Enter}{Enter}');
+      expect(onExport).toHaveBeenCalledWith('pdf');
+    } finally { cleanup(); }
+  });
+
   it('preserves tool/color/comment engine changes, selected state and native cleanup through keyboard controls', async () => {
     const { doc, tools, onChange, onSidebarOpen, cleanup } = setup();
     try {

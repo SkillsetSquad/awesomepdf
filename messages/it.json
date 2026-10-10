@@ -651,7 +651,8 @@
       "unnamedUser": "Utente ospite",
       "undo": "Annulla",
       "redo": "Ripristina",
-      "annDefault": "Annotazione"
+      "annDefault": "Annotazione",
+      "comments": "Commenti"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",
