@@ -1,35 +1,22 @@
 'use client';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
-
-import { Ban as UIBan } from 'lucide-react';
-
 import { Slider } from '@/components/ui/slider';
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import React, { useState, useCallback, useId, useRef } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { removeBlankPages } from '@/lib/pdf/processors/remove-blank-pages';
 import type { ProcessOutput } from '@/types/pdf';
-import {
-  Trash2,
-  RefreshCw,
-  Check,
-  Loader2,
-  X,
-  Sliders,
-  FileText,
-  Eye,
-  Settings2,
-  Undo2,
-  FileCheck
-} from 'lucide-react';
+import { Check, CircleAlert, Eye, FileCheck, FileText, Info, Loader2, Trash2, Undo2 } from 'lucide-react';
 
 interface PageInfo {
   pageNumber: number;
@@ -45,6 +32,9 @@ export interface RemoveBlankPagesToolProps {
 export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
+  const tErrors = useTranslations('errors');
+  const locale = useLocale();
+  const thresholdId = useId();
 
   // File states
   const [file, setFile] = useState<File | null>(null);
@@ -161,19 +151,19 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
       }
     } catch (err) {
       console.error(err);
-      setError(err instanceof Error ? err.message : 'Failed to analyze PDF pages.');
+      setError(err instanceof Error ? err.message : tErrors('processingFailed'));
     } finally {
       setIsAnalyzing(false);
     }
   };
 
-  const handleFileSelected = useCallback((files: File[]) => {
+  const handleFileSelected = (files: File[]) => {
     if (files.length > 0) {
       const selectedFile = files[0];
       setFile(selectedFile);
       loadAndAnalyzePdf(selectedFile);
     }
-  }, []);
+  };
 
   const handleTogglePage = (pageNumber: number) => {
     const page = pages.find(p => p.pageNumber === pageNumber);
@@ -182,12 +172,12 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
     const autoIsBlank = isPageBlankAuto(page.entropy, threshold);
     const currentlyRemoved = isPageRemoved(page);
 
-    setUserOverrides(prev => ({
-      ...prev,
-      // If toggle flips it from normal state, we mark the opposite as override.
-      // If toggle returns it to auto state, we clear override.
-      [pageNumber]: !currentlyRemoved === autoIsBlank ? undefined : !currentlyRemoved
-    } as Record<number, boolean>));
+    setUserOverrides(prev => {
+      const next = { ...prev };
+      if (!currentlyRemoved === autoIsBlank) delete next[pageNumber];
+      else next[pageNumber] = !currentlyRemoved;
+      return next;
+    });
   };
 
   const handleResetOverrides = () => {
@@ -225,7 +215,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
       .map(p => p.pageNumber);
 
     if (explicitPagesToRemove.length === pages.length) {
-      setError('Cannot remove all pages from PDF. Keep at least 1 page.');
+      setError(t('removeBlankPages.keepAtLeastOne'));
       setStatus('error');
       return;
     }
@@ -249,14 +239,14 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         setRemovedCount(explicitPagesToRemove.length);
         setStatus('complete');
       } else {
-        setError(output.error?.message || 'Failed to apply blank page filter.');
+        setError(output.error?.message || tErrors('processingFailed'));
         setStatus('error');
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error processing PDF');
+      setError(err instanceof Error ? err.message : tErrors('processingFailed'));
       setStatus('error');
     }
-  }, [file, pages, isPageRemoved]);
+  }, [file, pages, isPageRemoved, t, tErrors]);
 
   const handleClear = () => {
     setFile(null);
@@ -283,382 +273,125 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
+      {!file && <FileUploader accept={['application/pdf', '.pdf']} multiple={false} maxFiles={1}
+        onFilesSelected={handleFileSelected} onError={setError} disabled={isProcessing}
+        label={tTools('removeBlankPages.uploadLabel')} description={tTools('removeBlankPages.uploadDescription')} />}
 
-      {/* Upload Zone */}
-      {!file && (
-        <FileUploader
-          accept={['application/pdf', '.pdf']}
-          multiple={false}
-          maxFiles={1}
-          onFilesSelected={handleFileSelected}
-          onError={setError}
-          disabled={isProcessing}
-          label={tTools('removeBlankPages.uploadLabel')}
-          description={tTools('removeBlankPages.uploadDescription')}
-        />
-      )}
+      {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
 
-      {/* Error message */}
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-                    <p className="text-sm">{error}</p>
-        </AlertDescription></Alert>
-      )}
+      {isAnalyzing && <Card className="p-6">
+        <div role="status" className="flex items-center gap-2 text-sm"><Loader2 aria-hidden="true" className="size-4 animate-spin" />{tTools('removeBlankPages.analyzingPages')}</div>
+        <Progress value={analyzingProgress} aria-label={tTools('removeBlankPages.analyzingPages')} />
+        <p className="text-sm tabular-nums text-muted-foreground">{analyzingProgress}%</p>
+      </Card>}
 
-      {/* Analyzing Phase */}
-      {isAnalyzing && (
-        <Card  className="p-8 border text-center gap-4">
-          <Loader2 aria-hidden="true" className="mx-auto size-8 animate-spin text-primary" />
-          <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-sm font-semibold text-foreground tracking-wider">
-              {tTools('removeBlankPages.analyzingPages')}
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              {analyzingProgress}% Completed
-            </p>
-            <Progress value={analyzingProgress} aria-label={tTools('removeBlankPages.analyzingPages')} />
+      {file && !isAnalyzing && status !== 'complete' && <div className="space-y-6">
+        <Card className="flex flex-row items-center justify-between gap-4 p-4">
+          <div className="flex min-w-0 items-center gap-3"><FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />
+            <div className="min-w-0"><p className="truncate text-sm font-medium" title={file.name}>{file.name}</p>
+              <p className="text-sm text-muted-foreground">{t('removeBlankPages.pagesCount', { count: pages.length, size: (file.size / (1024 * 1024)).toFixed(2) })}</p>
+            </div>
           </div>
+          <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing}>{t('buttons.remove')}</Button>
         </Card>
-      )}
 
-      {/* Main Workspace (After file loaded and analyzed) */}
-      {file && !isAnalyzing && status !== 'complete' && (
-        <div className="space-y-6">
-
-          {/* File Header Bar */}
-          <Card  className="p-4 flex flex-wrap items-center justify-between border gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-red-100 dark:bg-red-950/20 text-red-500">
-                <FileText className="w-6 h-6" />
+        <Card className="p-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="space-y-3">
+              <Label id={`${thresholdId}-label`}>{tTools('removeBlankPages.sensitivity')}<span className="ms-auto tabular-nums">{threshold}%</span></Label>
+              <Slider value={[threshold]} onValueChange={([value]) => setThreshold(value)} min={90} max={100} step={1}
+                disabled={isProcessing} dir={locale === 'ar' ? 'rtl' : 'ltr'} aria-labelledby={`${thresholdId}-label`} aria-describedby={`${thresholdId}-hint`} />
+              <p id={`${thresholdId}-hint`} className="text-sm text-muted-foreground">{tTools('removeBlankPages.sensitivityHint')}</p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-sm font-medium">{t('removeBlankPages.summaryTitle')}</h3>
+              <div className="flex flex-wrap gap-2" aria-live="polite">
+                <Badge variant="outline">{t('removeBlankPages.totalLabel', { count: pages.length })}</Badge>
+                <Badge variant="destructive">{t('removeBlankPages.blankLabel', { count: blankPagesCount })}</Badge>
+                <Badge variant="secondary">{t('removeBlankPages.keepLabel', { count: keepPagesCount })}</Badge>
               </div>
-              <div>
-                <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
-                  {file.name}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {t('removeBlankPages.pagesCount', { count: pages.length, size: (file.size / (1024 * 1024)).toFixed(2) })}
-                </p>
+              <div className="flex flex-wrap gap-2">
+                <Button variant="outline" size="sm" onClick={handleResetOverrides} disabled={isProcessing || Object.keys(userOverrides).length === 0}><Undo2 aria-hidden="true" />{t('removeBlankPages.resetBtn')}</Button>
+                <Button variant="outline" size="sm" onClick={handleKeepAll} disabled={isProcessing || pages.length === 0}>{t('removeBlankPages.keepAllBtn')}</Button>
+                <Button variant="outline" size="sm" onClick={handleSelectAllAsBlank} disabled={isProcessing || pages.length === 0}>{t('removeBlankPages.deleteAllBtn')}</Button>
               </div>
             </div>
+          </div>
+          {pages.length > 0 && keepPagesCount === 0 && <Alert><Info aria-hidden="true" /><AlertDescription>{t('removeBlankPages.keepAtLeastOne')}</AlertDescription></Alert>}
+          <Button onClick={handleProcess} disabled={isProcessing || keepPagesCount === 0 || pages.length === 0} loading={isProcessing} className="w-full whitespace-normal sm:w-fit">
+            <Trash2 aria-hidden="true" />{isProcessing ? t('status.processing') : tTools('removeBlankPages.removeButton')}
+          </Button>
+        </Card>
 
-            <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing} className="">
-              {t('buttons.remove') || 'Remove'}
-            </Button>
-          </Card>
+        <Tabs value={filterMode} onValueChange={value => { if (value === 'all' || value === 'blanks' || value === 'keeps') setFilterMode(value); }} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+          <TabsList className="grid h-auto w-full grid-cols-3">
+            <TabsTrigger className="h-auto whitespace-normal py-2" value="all" disabled={isProcessing}>{t('removeBlankPages.allTab', { count: pages.length })}</TabsTrigger>
+            <TabsTrigger className="h-auto whitespace-normal py-2" value="blanks" disabled={isProcessing}>{t('removeBlankPages.blankTab', { count: blankPagesCount })}</TabsTrigger>
+            <TabsTrigger className="h-auto whitespace-normal py-2" value="keeps" disabled={isProcessing}>{t('removeBlankPages.keepTab', { count: keepPagesCount })}</TabsTrigger>
+          </TabsList>
+          {(['all', 'blanks', 'keeps'] as const).map(mode => <TabsContent key={mode} value={mode} className="pt-4">
+            {displayedPages.length === 0 ? <Card className="items-center p-6 text-center">
+              <Eye aria-hidden="true" className="size-6 text-muted-foreground" /><p className="text-sm text-muted-foreground">{t('removeBlankPages.emptyState')}</p>
+            </Card> : <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {displayedPages.map(page => <PageCard key={page.pageNumber} page={page} isRemoved={isPageRemoved(page)} isAutoBlank={isPageBlankAuto(page.entropy, threshold)}
+                isManualKeep={userOverrides[page.pageNumber] === false} isManualRemove={userOverrides[page.pageNumber] === true} disabled={isProcessing}
+                onToggle={() => handleTogglePage(page.pageNumber)} />)}
+            </div>}
+          </TabsContent>)}
+        </Tabs>
+      </div>}
 
-          {/* Control Workshop Controls */}
-          <Card  className="p-6 border gap-6">
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-
-              {/* Left Column: Sensitivity Threshold Slider */}
-              <div className="md:col-span-7 space-y-3.5">
-                <h4 className="text-sm font-bold text-foreground flex items-center gap-2">
-                  <Sliders className="w-4 h-4 text-primary" />
-                  {tTools('removeBlankPages.sensitivity')}
-                </h4>
-
-                <div className="flex items-center gap-4">
-                  <Slider
-                    value={[threshold]}
-                    onValueChange={(values) => setThreshold(parseInt(String(values[0])))}
-                    min={90}
-                    max={100}
-                    className="flex-1 cursor-pointer"
-                    disabled={isProcessing} aria-label={tTools('removeBlankPages.sensitivity')}
-                  />
-                  <span className="font-mono text-sm px-2.5 py-1 bg-muted rounded-md font-bold text-primary">
-                    {threshold}%
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-muted-foreground leading-relaxed">
-                  {tTools('removeBlankPages.sensitivityHint')}
-                </p>
-              </div>
-
-              {/* Right Column: Summaries & Quick Action buttons */}
-              <div className="md:col-span-5 flex flex-col justify-between border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0 md:pl-6 space-y-4">
-                <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                    {t('removeBlankPages.summaryTitle')}
-                  </h4>
-                  <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                    <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-muted text-foreground">
-                      {t('removeBlankPages.totalLabel', { count: pages.length })}
-                    </span>
-                    <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
-                      {t('removeBlankPages.blankLabel', { count: blankPagesCount })}
-                    </span>
-                    <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-100 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400">
-                      {t('removeBlankPages.keepLabel', { count: keepPagesCount })}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Batch Actions */}
-                <div className="flex flex-wrap gap-2">
-                  <Button variant="ghost" size="sm" onClick={handleResetOverrides} disabled={Object.keys(userOverrides).length === 0} className="text-xs flex items-center gap-1">
-                    <Undo2 className="w-3 h-3" /> {t('removeBlankPages.resetBtn')}
-                  </Button>
-                  <Button variant="ghost" size="sm" onClick={handleKeepAll} className="text-xs">
-                    {t('removeBlankPages.keepAllBtn')}
-                  </Button>
-                  <Button variant="ghost" size="sm" onClick={handleSelectAllAsBlank} className="text-xs">
-                    {t('removeBlankPages.deleteAllBtn')}
-                  </Button>
-                </div>
-              </div>
-
-            </div>
-
-            {/* View filter mode tabs */}
-            <div className="border-t border-border pt-4 flex items-center justify-between flex-wrap gap-4">
-              <div className="flex rounded-xl bg-muted p-1">
-                <Button size="sm" variant={filterMode === 'all' ? 'default' : 'outline'} aria-pressed={filterMode === 'all'}
-                  onClick={() => setFilterMode('all')}
-
-                >
-                  {t('removeBlankPages.tabAll', { count: pages.length })}
-                </Button>
-                <Button size="sm" variant={filterMode === 'blanks' ? 'default' : 'outline'} aria-pressed={filterMode === 'blanks'}
-                  onClick={() => setFilterMode('blanks')}
-
-                >
-                  {t('removeBlankPages.tabBlanks', { count: blankPagesCount })}
-                </Button>
-                <Button size="sm" variant={filterMode === 'keeps' ? 'default' : 'outline'} aria-pressed={filterMode === 'keeps'}
-                  onClick={() => setFilterMode('keeps')}
-
-                >
-                  {t('removeBlankPages.tabKeeps', { count: keepPagesCount })}
-                </Button>
-              </div>
-
-              {/* Apply action triggers */}
-              <div className="flex gap-2">
-                <Button
-                  variant="default"
-                  size="default"
-                  onClick={handleProcess}
-                  disabled={isProcessing || keepPagesCount === 0}
-                  loading={isProcessing}
-                  className="flex items-center gap-1.5"
-                >
-                  <Trash2 className="w-4 h-4" />
-                  {isProcessing ? t('status.processing') : tTools('removeBlankPages.removeButton')}
-                </Button>
-              </div>
-            </div>
-
-          </Card>
-
-          {/* 3D Pages Queue Grid */}
-          {displayedPages.length === 0 ? (
-            <Card  className="p-12 text-center border-dashed">
-              <Eye className="w-10 h-10 text-foreground mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground font-bold">
-                {t('removeBlankPages.noPagesToDisplay') || 'No pages to display'}
-              </p>
-            </Card>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 [perspective:1000px] py-4">
-              {displayedPages.map((page) => {
-                const autoIsBlank = isPageBlankAuto(page.entropy, threshold);
-                const removed = isPageRemoved(page);
-                const override = userOverrides[page.pageNumber];
-
-                const isManualKeep = override === false;
-                const isManualRemove = override === true;
-
-                return (
-                  <PageCard
-                    key={page.pageNumber}
-                    page={page}
-                    isRemoved={removed}
-                    isAutoBlank={autoIsBlank}
-                    isManualKeep={isManualKeep}
-                    isManualRemove={isManualRemove}
-                    onToggle={() => handleTogglePage(page.pageNumber)}
-                  />
-                );
-              })}
-            </div>
-          )}
-
+      {status === 'complete' && result && <Card className="items-center p-6 text-center">
+        <FileCheck aria-hidden="true" className="size-6 text-primary" />
+        <div role="status" className="space-y-2"><h3 className="text-base font-semibold">{tTools('removeBlankPages.successMessage')}</h3>
+          <p className="text-sm text-muted-foreground">{removedCount > 0 ? t('removeBlankPages.successRemoved', { count: removedCount }) : t('removeBlankPages.successNoChange')}</p>
         </div>
-      )}
+        <div className="flex flex-wrap justify-center gap-3">
+          <DownloadButton file={result} filename={file?.name.replace(/\.pdf$/i, '_no_blanks.pdf') || 'cleaned_document.pdf'} showFileSize />
+          <Button variant="outline" onClick={handleClear}>{t('removeBlankPages.processNew')}</Button>
+        </div>
+      </Card>}
 
-      {/* Complete State Screen */}
-      {status === 'complete' && result && (
-        <Card  className="p-8 border text-center gap-6">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
-            <FileCheck className="w-10 h-10" />
-          </div>
-
-          <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-base font-semibold text-foreground">
-              {tTools('removeBlankPages.successMessage')}
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              {removedCount > 0
-                ? t('removeBlankPages.successPurged', { count: removedCount })
-                : t('removeBlankPages.successNoChange')
-              }
-            </p>
-          </div>
-
-          <div className="flex gap-3 justify-center max-w-xs mx-auto">
-            <DownloadButton
-              file={result}
-              filename={file?.name.replace('.pdf', '_no_blanks.pdf') || 'cleaned_document.pdf'}
-              variant="default"
-              size="lg"
-              className="flex-1"
-              showFileSize
-            />
-            <Button variant="ghost" size="lg" onClick={handleClear} className="border">
-              {t('removeBlankPages.processNewFile') || 'Process New File'}
-            </Button>
-          </div>
-        </Card>
-      )}
-
-      {/* In-processing spinner overlay */}
-      {isProcessing && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
-          showPercentage
-        />
-      )}
-
+      {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
     </div>
   );
 }
 
-/**
- * 3D Page Card Component with physical tilting micro-animation
- */
 interface PageCardProps {
-  key?: number;
   page: PageInfo;
   isRemoved: boolean;
   isAutoBlank: boolean;
   isManualKeep: boolean;
   isManualRemove: boolean;
+  disabled: boolean;
   onToggle: () => void;
 }
 
-function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, onToggle }: PageCardProps) {
-  const t = useTranslations('common');
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    // Physical spring factor: tilt up to 25deg
-    const rX = -(y / rect.height) * 25;
-    const rY = (x / rect.width) * 25;
-
-    card.style.transform = `perspective(1000px) rotateX(${rX}deg) rotateY(${rY}deg) scale3d(1.05, 1.05, 1.05) translateZ(10px)`;
-  };
-
-  const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (!card) return;
-    // High-damping rebound
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0)';
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={onToggle}
-      className={`relative group cursor-pointer transition-all duration-300 ease-out rounded-2xl overflow-hidden select-none bg-white border ${
-        isRemoved
-          ? 'border-red-500/40 shadow-inner ring-2 ring-red-500/25'
-          : 'border-border shadow-sm hover:shadow-xl hover:border-border'
-      }`}
-      style={{
-        transformStyle: 'preserve-3d',
-      }}
-    >
-      {/* Aspect Ratio Box */}
-      <div
-        className="w-full relative overflow-hidden bg-muted flex items-center justify-center p-3"
-        style={{ aspectRatio: page.aspectRatio ? `${page.aspectRatio}` : '0.707' }}
-      >
-        <img
-          src={page.dataUrl}
-          alt={`Page ${page.pageNumber}`}
-          className={`w-full h-auto object-contain rounded shadow-sm select-none pointer-events-none transition-transform duration-500 ${
-            isRemoved ? 'filter grayscale opacity-30 scale-[0.98]' : 'group-hover:scale-[1.02]'
-          }`}
-        />
-
-        {/* Gray blur overlay for removed pages */}
-        {isRemoved && (
-          <div className="absolute inset-0 bg-muted flex flex-col items-center justify-center text-center p-2 z-10 transition-all duration-300">
-            {/* Shaking red diagonal bar symbol */}
-            <div className="p-2.5 rounded-full bg-red-500/10 text-red-500 animate-[bounce_1.5s_infinite] border border-red-500/25 shadow-lg">
-              <UIBan className="w-6 h-6" aria-hidden="true" />
-            </div>
-          </div>
-        )}
-
-        {/* Hover action overlay indicator */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 z-20 pointer-events-none">
-          <span className="text-[10px] font-bold text-white bg-black/60 px-2.5 py-1 rounded-full shadow-md border border-white/10 uppercase tracking-wider">
-            {isRemoved ? t('removeBlankPages.clickToKeep') : t('removeBlankPages.clickToDelete')}
-          </span>
-        </div>
+function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, disabled, onToggle }: PageCardProps) {
+  const t = useTranslations('common.removeBlankPages');
+  const pageLabel = t('pageNumber', { page: page.pageNumber });
+  const action = isRemoved ? t('clickToKeep') : t('clickToDelete');
+  return <Card className="gap-0 overflow-hidden py-0">
+    <Button variant="ghost" disabled={disabled} aria-pressed={isRemoved} aria-label={`${pageLabel}: ${action}`}
+      className="h-auto min-w-0 w-full flex-col items-stretch gap-0 rounded-none p-0 whitespace-normal" onClick={event => {
+        const button = event.currentTarget;
+        const panel = button.closest<HTMLElement>('[role="tabpanel"]');
+        onToggle();
+        setTimeout(() => { if (!button.isConnected && document.activeElement === document.body) panel?.focus(); }, 0);
+      }}>
+      <div className="relative flex w-full items-center justify-center bg-muted p-3" style={{ aspectRatio: page.aspectRatio || 0.707 }}>
+        <img src={page.dataUrl} alt="" className={`h-full w-full object-contain ${isRemoved ? 'opacity-40 grayscale' : ''}`} />
+        {(isManualRemove || isManualKeep || isAutoBlank) && <Badge className="absolute top-2 end-2" variant={isRemoved ? 'destructive' : 'secondary'}>
+          {isManualRemove ? t('forceDelete') : isManualKeep ? t('forceKeep') : t('blankBadge')}
+        </Badge>}
       </div>
-
-      {/* Card Header & Page Number Indicator */}
-      <div className={`p-2 flex items-center justify-between text-[11px] font-bold border-t ${
-        isRemoved
-          ? 'bg-red-50/50 dark:bg-red-950/10 border-red-100 dark:border-red-950/40'
-          : 'bg-muted border-border'
-      }`}>
-        <span className={isRemoved ? 'text-red-500' : 'text-muted-foreground'}>
-          {t('removeBlankPages.pageNumberLabel', { num: page.pageNumber })}
-        </span>
-
-        {/* Entropy Tag */}
-        <span className="text-[9px] font-medium text-muted-foreground font-mono tracking-tighter" title={`Shannon Entropy: ${page.entropy.toFixed(4)}`}>
-          {t('removeBlankPages.entropyLabel', { val: page.entropy.toFixed(3) })}
-        </span>
+      <div className="space-y-2 border-t p-3 text-start">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-sm"><span>{pageLabel}</span>{isRemoved ? <Trash2 aria-hidden="true" className="size-4 text-destructive" /> : <Check aria-hidden="true" className="size-4 text-muted-foreground" />}</div>
+        <p className="text-xs tabular-nums text-muted-foreground">{t('entropyLabel', { entropy: page.entropy.toFixed(3) })}</p>
+        <p className="text-xs text-muted-foreground">{action}</p>
       </div>
-
-      {/* Floating Badge Indicator (Top Right) */}
-      <div className="absolute top-2.5 right-2.5 z-20 pointer-events-none">
-        {isManualRemove && (
-          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-red-500 text-white border border-red-600 tracking-wider">
-            {t('removeBlankPages.badgeForceDelete')}
-          </span>
-        )}
-        {isManualKeep && (
-          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-emerald-500 text-white border border-emerald-600 tracking-wider animate-pulse">
-            {t('removeBlankPages.badgeForceKeep')}
-          </span>
-        )}
-        {!isManualKeep && !isManualRemove && isAutoBlank && (
-          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-red-600/90 text-white border border-red-700 tracking-wider">
-            {t('removeBlankPages.badgeEmptyPage')}
-          </span>
-        )}
-      </div>
-
-    </div>
-  );
+    </Button>
+  </Card>;
 }
 
 export default RemoveBlankPagesTool;
