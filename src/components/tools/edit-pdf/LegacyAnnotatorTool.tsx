@@ -157,16 +157,16 @@ export function LegacyAnnotatorTool({
               let isDoingUndoRedo = false;
 
               const toolNameTranslations = {
-                'cloud': '${t('editPdf.annCloud')}',
-                'rectangle': '${t('editPdf.annRectangle')}',
-                'circle': '${t('editPdf.annCircle')}',
-                'arrow': '${t('editPdf.annArrow')}',
-                'freehand': '${t('editPdf.annFreehand')}',
-                'freeText': '${t('editPdf.annFreeText')}',
-                'freeHighlight': '${t('editPdf.annFreeHighlight')}',
-                'note': '${t('editPdf.annNote')}',
-                'signature': '${t('editPdf.annSignature')}',
-                'stamp': '${t('editPdf.annStamp')}'
+                'cloud': ${JSON.stringify(t('editPdf.annCloud'))},
+                'rectangle': ${JSON.stringify(t('editPdf.annRectangle'))},
+                'circle': ${JSON.stringify(t('editPdf.annCircle'))},
+                'arrow': ${JSON.stringify(t('editPdf.annArrow'))},
+                'freehand': ${JSON.stringify(t('editPdf.annFreehand'))},
+                'freeText': ${JSON.stringify(t('editPdf.annFreeText'))},
+                'freeHighlight': ${JSON.stringify(t('editPdf.annFreeHighlight'))},
+                'note': ${JSON.stringify(t('editPdf.annNote'))},
+                'signature': ${JSON.stringify(t('editPdf.annSignature'))},
+                'stamp': ${JSON.stringify(t('editPdf.annStamp'))}
               };
 
               const initInterval = setInterval(() => {
@@ -730,8 +730,8 @@ export function LegacyAnnotatorTool({
                   if (store && store.annotations) {
                     store.annotations.forEach(ann => {
                       const transName = toolNameTranslations[ann.name] || 'Annotation';
-                      const targetAuthor = transName + ' (${t('editPdf.unnamedUser')})';
-                      if (ann.author !== targetAuthor && ann.author === '${t('editPdf.unnamedUser')}') {
+                      const targetAuthor = transName + ' (' + ${JSON.stringify(t('editPdf.unnamedUser'))} + ')';
+                      if (ann.author !== targetAuthor && ann.author === ${JSON.stringify(t('editPdf.unnamedUser'))}) {
                         ann.author = targetAuthor;
                         authorUpdated = true;
                       }
@@ -808,7 +808,8 @@ export function LegacyAnnotatorTool({
 
                   const undoBtn = document.createElement('button');
                   undoBtn.type = 'button';
-                  undoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↩</span>${t('editPdf.undo')}';
+                  undoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↩</span>';
+                  undoBtn.append(document.createTextNode(${JSON.stringify(t('editPdf.undo'))}));
                   undoBtn.className = 'toolbarButton';
                   undoBtn.style.cssText = 'padding:4px 8px; font-size:12px; cursor:pointer; border-radius:4px; opacity:0.5; border:1px solid var(--toolbar-border-color, #ccc); background-color:var(--toolbar-bg-color, #f5f5f5); color:var(--toolbar-fg-color, #333); font-family:inherit;';
                   undoBtn.disabled = true;
@@ -821,7 +822,8 @@ export function LegacyAnnotatorTool({
 
                   const redoBtn = document.createElement('button');
                   redoBtn.type = 'button';
-                  redoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↪</span>${t('editPdf.redo')}';
+                  redoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↪</span>';
+                  redoBtn.append(document.createTextNode(${JSON.stringify(t('editPdf.redo'))}));
                   redoBtn.className = 'toolbarButton';
                   redoBtn.style.cssText = 'padding:4px 8px; font-size:12px; cursor:pointer; border-radius:4px; opacity:0.5; border:1px solid var(--toolbar-border-color, #ccc); background-color:var(--toolbar-bg-color, #f5f5f5); color:var(--toolbar-fg-color, #333); font-family:inherit;';
                   redoBtn.disabled = true;
