@@ -10,6 +10,7 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { ALargeSmall, AlignCenter, AlignCenterHorizontal, AlignCenterVertical, AlignEndVertical, AlignJustify, AlignLeft, AlignRight, AlignStartVertical, ArrowDownToLine, ArrowLeft, ArrowUpToLine, Bold, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, ChevronsDown, ChevronsUp, CircleMinus, CirclePlus, Clipboard, Columns2, Copy, Download, ExternalLink, FlipHorizontal, FlipVertical, FolderOpen, Image as ImageIcon, IndentDecrease, IndentIncrease, Info, Italic, List, ListOrdered, PanelRight, Pencil, Redo2, RotateCcw, RotateCw, Rows2, Scan, Search, SlidersHorizontal, Strikethrough, Subscript, Superscript, Tag, TextCursorInput, Trash2, Underline, Undo2, X } from 'lucide-react';
 import { EditorEditMenu, EditorZoomMenu, EditorDocumentDialog } from './EditorMenus';
 import { EditorNotifications } from './EditorNotifications';
+import { EditorPanelToggle } from './EditorPanelToggle';
 import { withBasePath } from '@/lib/utils/path';
 
 // Keep native input IDs and change events for the existing browser-only editor engine.
@@ -160,9 +161,9 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
           </Button>
           <span className="sep">
           </span>
-          <Button id="toggleInspector" className="btn icon" title={label("tools:editPdfText.tipShowOrHideTheFormatPanel","Show or hide the format panel")} data-i18n-title="tools:editPdfText.tipShowOrHideTheFormatPanel" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipShowOrHideTheFormatPanel","Show or hide the format panel")}>
+          <EditorPanelToggle><Button id="toggleInspector" className="btn icon" title={label("tools:editPdfText.tipShowOrHideTheFormatPanel","Show or hide the format panel")} data-i18n-title="tools:editPdfText.tipShowOrHideTheFormatPanel" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipShowOrHideTheFormatPanel","Show or hide the format panel")}>
             <PanelRight aria-hidden="true" className="size-4" />
-          </Button>
+          </Button></EditorPanelToggle>
         </div>
       </div>
       <div id="spellbar" hidden={true}>
@@ -324,7 +325,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
             </Button>
           </div>
         </div>
-        <aside id="inspector" hidden={true}>
+        <Card id="inspector" hidden={true}>
           <h2>
             <SlidersHorizontal aria-hidden="true" className="size-4" />
             {"Format"}
@@ -333,7 +334,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
             {label("tools:editPdfText.font","Font")}
           </h3>
           <div className="row">
-            <NativeSelect id="fFamily">
+            <NativeSelect id="fFamily" aria-label={label("tools:editPdfText.font","Font")}>
             </NativeSelect>
             <Input id="fSize" type="number" min="1" max="400" step="1" className="num" title={label("tools:editPdfText.tipFontSize","Font size")} data-i18n-title="tools:editPdfText.tipFontSize" aria-label={label("tools:editPdfText.tipFontSize","Font size")} />
           </div>
@@ -494,7 +495,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
             <Input id="pStrokeColor" type="color" defaultValue="#000000" title={label("tools:editPdfText.tipStrokeColor","Stroke color")} data-i18n-title="tools:editPdfText.tipStrokeColor" aria-label={label("tools:editPdfText.tipStrokeColor","Stroke color")} />
             <Input id="pStrokeW" type="number" min="0" max="40" step="0.5" className="num" title={label("tools:editPdfText.tipStrokeWidth","Stroke width")} data-i18n-title="tools:editPdfText.tipStrokeWidth" aria-label={label("tools:editPdfText.tipStrokeWidth","Stroke width")} />
           </div>
-        </aside>
+        </Card>
       </div>
       <div id="viewbar">
         <div className="vbzoom">

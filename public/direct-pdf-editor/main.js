@@ -1,7 +1,5 @@
 // Direct PDF Editor Controller
-import { createEditorIcon } from './icons.js';
 import * as appModule from './app.js';
-import { setupFormatDock, setupFindSheet } from './dock.js';
 window.appModule = appModule;
 
 // URL params and locale setup
@@ -125,8 +123,8 @@ function relocateAddText() {
   const editBtn = document.querySelector('#tools [data-tool="edit"]');
   const findBtn = document.getElementById('find');
   if (!addTextBtn || !editBtn || !findBtn?.parentElement) return;
-  const icon = addTextBtn.querySelector('svg') || createEditorIcon('Type');
-  addTextBtn.replaceChildren(icon);
+  const icon = addTextBtn.querySelector('svg');
+  if (icon) addTextBtn.replaceChildren(icon);
   addTextBtn.classList.add('btn', 'icon');
   addTextBtn.title = t.addText;
   findBtn.parentElement.insertBefore(addTextBtn, findBtn);
@@ -137,26 +135,6 @@ function relocateAddText() {
     attributeFilter: ['class'],
   });
   sync();
-}
-
-function setupInspectorToggle() {
-  const inspector = document.getElementById('inspector');
-  const toggleInspector = document.getElementById('toggleInspector');
-  if (inspector && toggleInspector) {
-    toggleInspector.classList.add('on');
-    toggleInspector.addEventListener('click', () => {
-      inspector.classList.toggle('collapsed');
-      toggleInspector.classList.toggle(
-        'on',
-        !inspector.classList.contains('collapsed')
-      );
-    });
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      toggleInspector.classList.remove('on');
-      setupFormatDock();
-      setupFindSheet();
-    }
-  }
 }
 
 function setupFindToggle() {
@@ -361,7 +339,6 @@ async function init() {
   applyI18n();
   relocateAddText();
   setupBarCollapse();
-  setupInspectorToggle();
   setupFindToggle();
   setupExitAndFileInput();
   setupSaveCallback();

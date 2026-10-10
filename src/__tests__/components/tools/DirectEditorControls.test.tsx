@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { render, fireEvent, screen, waitFor, within } from '@testing-library/react';
+import { act, render, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DirectEditorControls } from '@/components/editor/DirectEditorControls';
 import ids from '../../fixtures/direct-editor-dom-contract.json';
@@ -71,6 +71,24 @@ describe('Direct editor engine controls', () => {
     expect(setZoom).toHaveBeenCalledOnce();
     expect(setZoom).toHaveBeenCalledWith(1.5);
     await waitFor(() => expect(trigger).toHaveFocus());
+  });
+
+  it('toggles the format panel and tracks whether the engine has a selection', async () => {
+    render(<DirectEditorControls labels={{}} locale="en" />);
+    const trigger = screen.getByRole('button', { name: 'Show or hide the format panel' });
+    const inspector = document.getElementById('inspector')!;
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    await userEvent.click(trigger);
+    expect(inspector).toHaveClass('collapsed');
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    await userEvent.click(trigger);
+    expect(inspector).not.toHaveClass('collapsed');
+    act(() => inspector.setAttribute('disabled', ''));
+    await waitFor(() => expect(trigger).toBeDisabled());
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    act(() => inspector.removeAttribute('disabled'));
+    await waitFor(() => expect(trigger).toBeEnabled());
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('displays local document properties in a dialog and returns focus on Escape', async () => {
