@@ -22,13 +22,14 @@ import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2 } from 'lucide-react';
+import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
 import { createForm, FormField } from '@/lib/pdf/processors/form-creator';
@@ -252,8 +253,6 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   const [isAddingPage, setIsAddingPage] = useState(false);
 
   // Add page menu state (for delayed hide)
-  const [showAddPageMenu, setShowAddPageMenu] = useState(false);
-  const addPageMenuTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Drag state
   const [isDragging, setIsDragging] = useState(false);
@@ -1134,74 +1133,57 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               </div>
 
               {/* Page Navigation */}
-              <div className="flex items-center gap-1 ml-auto">
-                <Button size="icon-sm" variant="ghost"
+              <div className="flex items-center gap-1 ms-auto">
+                <Button size="icon-sm" variant="ghost" aria-label={t('buttons.previous')}
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage <= 1}
 
                 >
-                  ←
+                  <ChevronLeft aria-hidden="true" className="rtl:rotate-180" />
                 </Button>
                 <span className="text-sm text-gray-600 px-2">
                   {currentPage} / {totalPages}
                 </span>
-                <Button size="icon-sm" variant="ghost"
+                <Button size="icon-sm" variant="ghost" aria-label={t('buttons.next')}
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage >= totalPages}
 
                 >
-                  →
+                  <ChevronRight aria-hidden="true" className="rtl:rotate-180" />
                 </Button>
 
                 {/* Add Blank Page dropdown */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => {
-                    if (addPageMenuTimerRef.current) {
-                      clearTimeout(addPageMenuTimerRef.current);
-                      addPageMenuTimerRef.current = null;
-                    }
-                    if (!isAddingPage) {
-                      setShowAddPageMenu(true);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    addPageMenuTimerRef.current = setTimeout(() => {
-                      setShowAddPageMenu(false);
-                    }, 300); // 300ms delay before hiding
-                  }}
-                >
+                <DropdownMenu dir={direction}>
+                  <DropdownMenuTrigger asChild>
                   <Button size="icon-sm" variant="ghost" aria-label={tTools('formCreator.addBlankPage') || 'Add Blank Page'}
 
                     title={tTools('formCreator.addBlankPage') || 'Add Blank Page'}
                     disabled={isAddingPage}
                   >
-                    <FilePlus2 className="w-4 h-4" />
+                    <FilePlus2 aria-hidden="true" />
                   </Button>
-                  <div className={`absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[140px] z-10 transition-opacity duration-150 ${showAddPageMenu && !isAddingPage ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                    <Button variant="ghost" size="sm"
-                      onClick={() => { addBlankPage('before'); setShowAddPageMenu(false); }}
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem
+                      onSelect={() => { void addBlankPage('before'); }}
                       disabled={isAddingPage}
-                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageBefore') || 'Before current'}
-                    </Button>
-                    <Button variant="ghost" size="sm"
-                      onClick={() => { addBlankPage('after'); setShowAddPageMenu(false); }}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onSelect={() => { void addBlankPage('after'); }}
                       disabled={isAddingPage}
-                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageAfter') || 'After current'}
-                    </Button>
-                    <Button variant="ghost" size="sm"
-                      onClick={() => { addBlankPage('end'); setShowAddPageMenu(false); }}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onSelect={() => { void addBlankPage('end'); }}
                       disabled={isAddingPage}
-                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageEnd') || 'At end'}
-                    </Button>
-                  </div>
-                </div>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
 

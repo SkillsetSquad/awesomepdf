@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen, within, waitFor } from '@testing-library/react';
+import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import { PDFDocument, PageSizes } from 'pdf-lib';
@@ -58,5 +58,46 @@ describe('Form creator dialogs', () => {
     expect(document.getPages().every(page => page.getWidth() === PageSizes.Letter[0] && page.getHeight() === PageSizes.Letter[1])).toBe(true);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     await waitFor(() => expect(container.firstElementChild).toHaveFocus());
+  });
+
+  it.each([
+    ['Before current', 1],
+    ['After current', 2],
+    ['At end', 4],
+  ])('inserts a page with the keyboard using "%s"', async (label, currentPage) => {
+    getDocument.mockImplementation(({ data }: { data: ArrayBuffer }) => ({
+      promise: PDFDocument.load(data).then(document => ({
+        numPages: document.getPageCount(),
+        getPage: async () => ({ getViewport: () => ({ width: 612, height: 792 }) }),
+      })),
+    }));
+    view();
+    await userEvent.click(screen.getByRole('button', { name: 'Create Blank PDF' }));
+    const dialog = screen.getByRole('dialog');
+    await userEvent.selectOptions(within(dialog).getByLabelText('Page Size'), 'Letter');
+    await userEvent.click(within(dialog).getByLabelText('Number of Pages'));
+    await userEvent.keyboard('{Control>}a{/Control}3');
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Create Form' }));
+    await screen.findByText('1 / 3');
+
+    const trigger = screen.getByRole('button', { name: 'Add Blank Page' });
+    act(() => trigger.focus());
+    await userEvent.keyboard('{Enter}');
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => expect(trigger).toHaveFocus());
+    expect(getDocument).toHaveBeenCalledOnce();
+
+    await userEvent.keyboard('{Enter}');
+    const items = screen.getAllByRole('menuitem');
+    await waitFor(() => expect(items[0]).toHaveFocus());
+    const itemIndex = items.indexOf(screen.getByRole('menuitem', { name: label }));
+    if (itemIndex > 0) await userEvent.keyboard('{ArrowDown}'.repeat(itemIndex));
+    await userEvent.keyboard('{Enter}');
+    await screen.findByText(`${currentPage} / 4`);
+    const document = await PDFDocument.load(getDocument.mock.calls[1][0].data);
+    expect(document.getPageCount()).toBe(4);
+    expect(document.getPages().every(page => page.getWidth() === 612 && page.getHeight() === 792)).toBe(true);
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 });
