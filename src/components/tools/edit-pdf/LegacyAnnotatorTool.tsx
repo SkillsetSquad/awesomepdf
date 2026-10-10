@@ -1,6 +1,6 @@
 'use client';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
+import { CircleAlert as UICircleAlert, Info, CircleCheck, Undo2, Redo2, Loader2 } from 'lucide-react';
 
 import { File as UIFile } from 'lucide-react';
 
@@ -1090,7 +1090,7 @@ export function LegacyAnnotatorTool({
             <Card className="p-6"  >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
+                  <UIFile className="size-8 text-muted-foreground" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium text-foreground">{file.name}</p>
                     <p className="text-xs text-muted-foreground">
@@ -1106,9 +1106,7 @@ export function LegacyAnnotatorTool({
           )}
 
           {replacementNotice && (
-            <div className="rounded-md border border-green-200 bg-green-50 p-3">
-              <p className="text-sm text-green-800">{replacementNotice}</p>
-            </div>
+            <Alert role="status"><CircleCheck aria-hidden="true" /><AlertDescription>{replacementNotice}</AlertDescription></Alert>
           )}
 
           <div
@@ -1124,7 +1122,7 @@ export function LegacyAnnotatorTool({
               onClick={handleTextUndo}
               disabled={textUndoCount === 0 || isTextReplacing}
             >
-              ↩ {tTools('textUndo')}
+              <Undo2 aria-hidden="true" />{tTools('textUndo')}
             </Button>
             <Button
               variant="ghost"
@@ -1132,20 +1130,16 @@ export function LegacyAnnotatorTool({
               onClick={handleTextRedo}
               disabled={textRedoCount === 0 || isTextReplacing}
             >
-              ↪ {tTools('textRedo')}
+              <Redo2 aria-hidden="true" />{tTools('textRedo')}
             </Button>
           </div>
 
           {replacementDiagnostics?.overflowDetected && (
-            <div className="rounded-md border border-amber-200 bg-amber-50 p-3" role="status">
-              <p className="text-sm text-amber-900">{tTools('overflowAppliedWarning')}</p>
-            </div>
+            <Alert role="status"><Info aria-hidden="true" /><AlertDescription>{tTools('overflowAppliedWarning')}</AlertDescription></Alert>
           )}
 
           {replacementDiagnostics?.usedFallbackFont && (
-            <div className="rounded-md border border-amber-200 bg-amber-50 p-3" role="status">
-              <p className="text-sm text-amber-900">{tTools('fallbackFontWarning')}</p>
-            </div>
+            <Alert role="status"><Info aria-hidden="true" /><AlertDescription>{tTools('fallbackFontWarning')}</AlertDescription></Alert>
           )}
 
           {replacementDiagnostics?.hasDigitalSignatures && (
@@ -1165,17 +1159,17 @@ export function LegacyAnnotatorTool({
               onLoad={handleIframeLoad}
             />
             {!isEditorReady && (
-              <div className="absolute inset-0 flex items-center justify-center bg-background">
+              <div className="absolute inset-0 flex items-center justify-center bg-background" role="status">
                 <div className="text-center">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+                  <Loader2 aria-hidden="true" className="mx-auto mb-2 size-8 animate-spin text-primary" />
                   <p className="text-sm text-muted-foreground">{t('status.loading') || 'Loading...'}</p>
                 </div>
               </div>
             )}
             {isTextReplacing && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-background">
-                <div className="rounded-lg bg-background px-5 py-4 text-center shadow-lg">
-                  <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-primary" />
+              <div className="absolute inset-0 z-20 flex items-center justify-center bg-background" role="status">
+                <div className="px-5 py-4 text-center">
+                  <Loader2 aria-hidden="true" className="mx-auto mb-2 size-8 animate-spin text-primary" />
                   <p className="text-sm font-medium">Updating PDF text…</p>
                 </div>
               </div>
