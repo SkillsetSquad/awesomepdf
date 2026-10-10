@@ -347,7 +347,7 @@ export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    className="h-9 w-9 rounded-r-none border-r-0"
+                                    className="h-9 w-9 border-r-0"
                                     onClick={() => setBatchAngle((prev) => (parseFloat(prev) - 1).toString())}
                                 >
                                     -
@@ -361,7 +361,7 @@ export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    className="h-9 w-9 rounded-l-none border-l-0"
+                                    className="h-9 w-9 border-l-0"
                                     onClick={() => setBatchAngle((prev) => (parseFloat(prev) + 1).toString())}
                                 >
                                     +

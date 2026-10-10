@@ -109,13 +109,13 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 bg-amber-950/5 dark:bg-amber-950/10 relative overflow-hidden rounded-[2rem] min-h-[380px] flex flex-col justify-between border-2 border-amber-900/10 shadow-inner">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
               <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 pointer-events-none">
                 <span className="text-xs font-bold text-amber-800 dark:text-amber-600 flex items-center gap-1.5">
                   <Layout className="w-4 h-4 text-amber-700 animate-pulse" />
                   {t('photoTilingPrepress.previewTitle')}
                 </span>
-                <Button variant="ghost" size="sm" className="text-amber-800 dark:text-amber-600 hover:bg-amber-900/5" onClick={handleClear} disabled={status === 'processing'}>
+                <Button variant="ghost" size="sm" className="" onClick={handleClear} disabled={status === 'processing'}>
                   {t('photoTilingPrepress.clearButton')}
                 </Button>
               </div>
@@ -150,7 +150,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <Card  className="p-6 bg-white/40 dark:bg-black/30 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 rounded-[2rem] shadow-xl flex flex-col justify-between min-h-[380px]">
+            <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
@@ -205,14 +205,14 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                     filename="prepress_photos_matrix.pdf"
                     variant="default"
                     size="lg"
-                    className="w-full py-4 font-bold shadow-lg shadow-primary/25 rounded-2xl"
+                    className="w-full py-4"
                     showFileSize
                   />
                 ) : (
                   <Button
                     variant="default"
                     size="lg"
-                    className="w-full py-4 font-bold rounded-2xl flex items-center justify-center gap-2"
+                    className="w-full py-4 flex items-center justify-center gap-2"
                     onClick={handlePrepress}
                     disabled={status === 'processing'}
                   >

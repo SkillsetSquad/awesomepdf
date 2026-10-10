@@ -212,7 +212,7 @@ export function ExcelToPDFTool({ className = '' }: ExcelToPDFToolProps) {
                                 <p className="text-sm text-muted-foreground">{formatSize(file.file.size)}</p>
                             </div>
                         </div>
-                        <Button variant="ghost" size="sm" onClick={handleRemoveFile} disabled={isProcessing} className="text-muted-foreground hover:text-red-500 hover:bg-red-50">
+                        <Button variant="ghost" size="sm" onClick={handleRemoveFile} disabled={isProcessing} className="">
                             <Trash2 className="w-5 h-5" />
                         </Button>
                     </div>
@@ -234,13 +234,13 @@ export function ExcelToPDFTool({ className = '' }: ExcelToPDFToolProps) {
             )}
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing} className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5">
+                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing} className="min-w-[200px] transition-all hover:-translate-y-0.5">
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing ? (t('status.processing') || 'Converting...') : (tTools('excelToPdf.convertButton') || 'Convert to PDF')}
                 </Button>
 
                 {result && !Array.isArray(result) && (
-                    <DownloadButton file={result as Blob} filename={`${file?.file.name.replace(/\.xlsx?$/i, '')}.pdf`} variant="secondary" size="lg" showFileSize className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5" />
+                    <DownloadButton file={result as Blob} filename={`${file?.file.name.replace(/\.xlsx?$/i, '')}.pdf`} variant="secondary" size="lg" showFileSize className="min-w-[200px] transition-all hover:-translate-y-0.5" />
                 )}
             </div>
 

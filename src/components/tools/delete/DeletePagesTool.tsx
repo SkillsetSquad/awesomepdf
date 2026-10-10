@@ -458,7 +458,7 @@ export function DeletePagesTool({ className = '' }: DeletePagesToolProps) {
             onClick={handleDelete}
             disabled={!canDelete}
             loading={isProcessing}
-            className="bg-red-600 hover:bg-red-700"
+            className=""
           >
             {isProcessing
               ? (t('status.processing') || 'Processing...')

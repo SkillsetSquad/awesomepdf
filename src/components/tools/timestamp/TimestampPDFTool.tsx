@@ -175,7 +175,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
       {/* File Metadata Overview */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -208,7 +208,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
           
           {/* LEFT: TSA Authority Selection Hub */}
           <div className="lg:col-span-6 flex flex-col">
-            <Card  className="flex-1 p-6 rounded-[2rem] space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40 flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 gap-6 border flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
@@ -286,7 +286,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                   size="lg"
                   onClick={handleTimestampProcess}
                   disabled={isProcessing}
-                  className="w-full py-4 font-bold shadow-lg shadow-primary/15 flex items-center justify-center gap-2"
+                  className="w-full py-4 flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -299,7 +299,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
           {/* RIGHT: Dynamic Audit & Validation Certificate Panel */}
           <div className="lg:col-span-6 flex flex-col">
-            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center shadow-inner relative overflow-hidden">
+            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden">
               
               {!auditLog ? (
                 // Awaiting signing state
@@ -388,7 +388,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                         filename={file.name.replace('.pdf', '_timestamped.pdf')}
                         variant="secondary"
                         size="default"
-                        className="flex-1 font-bold"
+                        className="flex-1"
                         showFileSize
                       />
                     </div>

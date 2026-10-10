@@ -194,7 +194,7 @@ export function FormLogicDesignerTool() {
   };
 
   return (
-    <Card className="p-6 max-w-5xl mx-auto shadow-2xl bg-neutral-950 border-neutral-850 text-white">
+    <Card className="p-6 max-w-5xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 rounded-lg bg-violet-600/20 text-violet-400">
           <Workflow className="w-6 h-6" />
@@ -230,7 +230,7 @@ export function FormLogicDesignerTool() {
               variant="outline"
               size="sm"
               onClick={handleReset}
-              className="text-xs border-neutral-800 text-neutral-300 hover:bg-neutral-800"
+              className="text-xs"
             >
               {t('buttons.reset')}
             </Button>
@@ -255,7 +255,7 @@ export function FormLogicDesignerTool() {
               {status === 'idle' && (
                 <Button
                   onClick={handleProcess}
-                  className="w-full bg-violet-600 hover:bg-violet-700 font-bold flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
                   {tTools('processButton')}
@@ -274,7 +274,7 @@ export function FormLogicDesignerTool() {
                   <DownloadButton
                     file={result}
                     filename={file.name.replace(/\.pdf$/i, '_smart.pdf')}
-                    className="w-full bg-green-600 hover:bg-green-700 font-bold"
+                    className="w-full"
                   />
                 </div>
               )}

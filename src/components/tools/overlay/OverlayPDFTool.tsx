@@ -169,7 +169,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
             {t('overlayPdf.uploadBaseLabel')}
           </Label>
           {baseFile ? (
-            <Card  className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl">
+            <Card  className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15">
               <div className="flex items-center gap-3">
                 <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -215,7 +215,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
             {t('overlayPdf.uploadLayerLabel')}
           </Label>
           {layerFile ? (
-            <Card  className="relative group p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
+            <Card  className="relative group p-4 flex items-center justify-between border-2">
               <div className="flex items-center gap-3">
                 <svg className="w-10 h-10 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -269,7 +269,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
           {/* LEFT: 3D Visualization layer layout preview (Pure CSS awesome show) */}
           <div className="lg:col-span-5 space-y-4">
-            <Card  className="p-6 bg-card rounded-2xl flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
+            <Card  className="p-6 bg-card flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
               <span className="text-xs font-bold text-muted-foreground mb-8">
                 {t('overlayPdf.previewTitle')}
               </span>
@@ -330,7 +330,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
           {/* RIGHT: Parameter adjustments */}
           <div className="lg:col-span-7 space-y-6">
-            <Card  className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40">
+            <Card  className="p-6 gap-6 border">
               <h3 className="text-md font-bold text-foreground border-b border-border pb-3">
                 {t('overlayPdf.optionsTitle')}
               </h3>
@@ -406,7 +406,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}
-                className="w-full py-4 font-bold shadow-lg shadow-primary/15"
+                className="w-full py-4"
               >
                 {isProcessing ? (t('overlayPdf.processing') || 'Processing...') : t('overlayPdf.processButton')}
               </Button>

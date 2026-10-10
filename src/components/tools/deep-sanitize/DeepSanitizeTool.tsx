@@ -315,7 +315,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
       {/* Metadata Overview */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -343,7 +343,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
           {/* LEFT: Sanitizer Controls */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
+            <Card  className="flex-1 p-6 border flex flex-col justify-between gap-6">
 
               <div className="space-y-4 flex-1">
                 <div className="border-b border-border pb-3">
@@ -418,7 +418,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                   variant="default"
                   size="lg"
                   disabled={isProcessing}
-                  className="w-full py-4 font-bold shadow-lg shadow-purple-500/15 flex items-center justify-center gap-2"
+                  className="w-full py-4 flex items-center justify-center gap-2"
                   onClick={handleSanitizeProcess}
                 >
                   <EyeOff className="w-5 h-5" />
@@ -431,7 +431,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
           {/* RIGHT: 3D Particle Chamber visual box */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
+            <Card  className="flex-1 p-6 border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[420px]">
 
               {/* Particle chamber canvas */}
               <div className="relative w-60 h-60 flex items-center justify-center z-10">
@@ -478,7 +478,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
       {/* Finished Stage (Success screen) */}
       {status === 'complete' && result && (
-        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 border text-center gap-6">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -496,7 +496,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
               filename={file?.name.replace('.pdf', '_sanitized.pdf') || 'sanitized_document.pdf'}
               variant="default"
               size="lg"
-              className="flex-1 font-bold shadow-lg"
+              className="flex-1"
               showFileSize
             />
           </div>

@@ -155,7 +155,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
         {file ? (
           <Card
 
-            className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl"
+            className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15"
           >
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="currentColor">
@@ -215,7 +215,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
           {/* LEFT: 3D Pixel Grid Interactive Widget */}
           <div className="lg:col-span-5 space-y-4">
-            <Card  className="p-6 bg-card rounded-2xl flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
+            <Card  className="p-6 bg-card flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
               <span className="text-xs font-bold text-muted-foreground mb-8 flex items-center gap-1.5">
                 <Cpu className="w-4 h-4 text-primary" />
                 {t('pdfToTiff.previewTitle')}
@@ -284,7 +284,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
           <div className="lg:col-span-7 space-y-6">
             <Card
 
-              className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40"
+              className="p-6 gap-6 border"
             >
               <h3 className="text-sm font-bold text-foreground border-b border-border pb-3 flex items-center gap-1.5">
                 <Printer className="w-4.5 h-4.5 text-primary" />
@@ -385,7 +385,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}
-                className="w-full py-4 font-bold shadow-lg shadow-primary/15 flex items-center justify-center gap-2"
+                className="w-full py-4 flex items-center justify-center gap-2"
               >
                 <Printer className="w-5 h-5" />
                 {isProcessing ? (t('pdfToTiff.processing') || 'Processing...') : t('pdfToTiff.processButton')}

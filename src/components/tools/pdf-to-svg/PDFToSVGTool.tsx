@@ -413,7 +413,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                                             e.stopPropagation();
                                             openPreview(index);
                                         }}
-                                        className="bg-black/50 text-white hover:bg-black/70"
+                                        className=""
                                     >
                                         👁
                                     </Button>
@@ -422,7 +422,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                                         filename={`${file?.file.name.replace(/\.pdf$/i, '')}_page_${svgResult.pageNumber}.svg`}
                                         variant="ghost"
                                         size="sm"
-                                        className="bg-black/50 text-white hover:bg-black/70"
+                                        className=""
                                     />
                                 </div>
                             </div>

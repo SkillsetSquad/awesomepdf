@@ -571,7 +571,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
           <div className="lg:col-span-4 space-y-6">
             <Card
 
-              className="backdrop-blur-md border border-white/20 dark:border-zinc-800/40 shadow-xl overflow-hidden"
+              className="border overflow-hidden"
             >
               {/* Header */}
               <div className="p-5 border-b border-border">
@@ -858,7 +858,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                 onClick={handleRotate}
                 disabled={!canRotate}
                 loading={isProcessing}
-                className="w-full py-4 font-bold shadow-lg shadow-primary/15 flex gap-2 items-center justify-center"
+                className="w-full py-4 flex gap-2 items-center justify-center"
               >
                 {!isProcessing && (
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

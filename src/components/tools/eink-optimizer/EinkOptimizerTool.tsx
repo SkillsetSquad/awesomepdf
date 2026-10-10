@@ -112,7 +112,7 @@ export function EinkOptimizerTool() {
   }, []);
 
   return (
-    <Card className="p-6 max-w-4xl mx-auto shadow-2xl bg-neutral-950 border-neutral-850 text-white">
+    <Card className="p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 rounded-lg bg-teal-600/20 text-teal-400">
           <SunMoon className="w-6 h-6" />
@@ -145,7 +145,7 @@ export function EinkOptimizerTool() {
               variant="outline"
               size="sm"
               onClick={handleReset}
-              className="text-xs border-neutral-800 text-neutral-300 hover:bg-neutral-800"
+              className="text-xs"
             >
               {t('buttons.reset')}
             </Button>
@@ -203,7 +203,7 @@ export function EinkOptimizerTool() {
               {status === 'idle' && (
                 <Button
                   onClick={handleProcess}
-                  className="w-full bg-teal-600 hover:bg-teal-700 font-bold flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
                   {tTools('processButton')}
@@ -222,7 +222,7 @@ export function EinkOptimizerTool() {
                   <DownloadButton
                     file={result}
                     filename={file.name.replace(/\.pdf$/i, '_eink.pdf')}
-                    className="w-full bg-green-600 hover:bg-green-700 font-bold"
+                    className="w-full"
                   />
                 </div>
               )}

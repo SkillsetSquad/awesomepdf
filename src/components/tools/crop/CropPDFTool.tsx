@@ -435,7 +435,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
           </Card>
 
           {/* Visual Cropper */}
-          <Card  className="p-0 overflow-hidden bg-gray-100">
+          <Card  className="p-0 overflow-hidden">
             <div
               ref={cropperContainerRef}
               className={`relative ${isFullscreen ? 'bg-gray-900 flex flex-col' : ''}`}

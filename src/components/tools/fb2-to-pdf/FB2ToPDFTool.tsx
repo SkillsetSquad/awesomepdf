@@ -168,7 +168,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                                         size="sm"
                                         onClick={() => handleRemoveFile(file.id)}
                                         disabled={isProcessing}
-                                        className="text-muted-foreground hover:text-red-500 hover:bg-red-50 flex-shrink-0"
+                                        className="flex-shrink-0"
                                     >
                                         <Trash2 className="w-4 h-4" />
                                     </Button>
@@ -190,7 +190,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                     onClick={handleConvert}
                     disabled={!canConvert}
                     loading={isProcessing}
-                    className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"
+                    className="min-w-[200px] transition-all hover:-translate-y-0.5"
                 >
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing ? (t('status.processing') || 'Converting...') : (tTools('fb2ToPdf.convertButton') || 'Convert to PDF')}
@@ -203,7 +203,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                         variant="secondary"
                         size="lg"
                         showFileSize
-                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5"
+                        className="min-w-[200px] transition-all hover:-translate-y-0.5"
                     />
                 )}
                 {result && Array.isArray(result) && result.map((blob, index) => (
@@ -214,7 +214,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                         variant="secondary"
                         size="lg"
                         showFileSize
-                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5"
+                        className="min-w-[200px] transition-all hover:-translate-y-0.5"
                     />
                 ))}
             </div>

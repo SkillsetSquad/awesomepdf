@@ -95,7 +95,7 @@ export function PDFToSlideTool() {
   };
 
   return (
-    <Card className="p-6 max-w-4xl mx-auto shadow-2xl bg-neutral-950 border-neutral-800 text-white">
+    <Card className="p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 rounded-lg bg-indigo-600/20 text-indigo-400">
           <Presentation className="w-6 h-6" />
@@ -128,7 +128,7 @@ export function PDFToSlideTool() {
               variant="outline"
               size="sm"
               onClick={handleReset}
-              className="text-xs border-neutral-800 text-neutral-300 hover:bg-neutral-800"
+              className="text-xs"
             >
               {t('buttons.reset')}
             </Button>
@@ -156,7 +156,7 @@ export function PDFToSlideTool() {
               {status === 'idle' && (
                 <Button
                   onClick={handleProcess}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 font-bold flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
                   {tTools('processButton')}
@@ -175,7 +175,7 @@ export function PDFToSlideTool() {
                   <DownloadButton
                     file={result}
                     filename={file.name.replace(/\.pdf$/i, '.pptx')}
-                    className="w-full bg-green-600 hover:bg-green-700 font-bold"
+                    className="w-full"
                   />
                 </div>
               )}
@@ -259,7 +259,7 @@ export function PDFToSlideTool() {
                         size="sm"
                         disabled={activeSlideIdx === 0}
                         onClick={() => setActiveSlideIdx(p => p - 1)}
-                        className="text-xs border-neutral-800 bg-transparent text-neutral-300 hover:bg-neutral-800"
+                        className="text-xs"
                       >
                         {t('pdfToSlide.prevPage')}
                       </Button>
@@ -268,7 +268,7 @@ export function PDFToSlideTool() {
                         size="sm"
                         disabled={activeSlideIdx === slides.length - 1}
                         onClick={() => setActiveSlideIdx(p => p + 1)}
-                        className="text-xs border-neutral-800 bg-transparent text-neutral-300 hover:bg-neutral-800"
+                        className="text-xs"
                       >
                         {t('pdfToSlide.nextPage')}
                       </Button>

@@ -141,7 +141,7 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                                         type="button"
                                         onClick={() => setPageSize(size)}
                                         disabled={isProcessing}
-                                        className="uppercase"
+                                        className=""
                                     >
                                         {size}
                                     </Button>

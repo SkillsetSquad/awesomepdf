@@ -1432,7 +1432,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
     <div className={`w-full max-w-7xl mx-auto p-4 space-y-6 ${className}`}>
       {/* Upload Screen */}
       {!file && (
-        <Card className="p-8 text-center bg-card border border-border shadow-sm rounded-xl">
+        <Card className="p-8 text-center bg-card border border-border">
           <div className="max-w-xl mx-auto space-y-6">
             <FileUploader
               accept={['application/pdf', '.pdf']}
@@ -1471,7 +1471,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
       {file && (
         <div className="space-y-4">
           {/* Top Control Bar */}
-          <Card className="p-3 sm:p-3.5 bg-card border border-border rounded-xl shadow-sm">
+          <Card className="p-3 sm:p-3.5 bg-card border border-border">
             {/* ROW 1: Tool Mode, Redaction Style & Main Actions */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               {/* Left: Tools & Styles */}
@@ -1561,7 +1561,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     variant="ghost"
                     onClick={handleUndo}
                     disabled={historyIndex <= 0}
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
+                    className="h-8 w-8 p-0"
                     title="撤销 (Ctrl+Z)"
                   >
                     <Undo2 className="w-4 h-4" />
@@ -1571,7 +1571,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     variant="ghost"
                     onClick={handleRedo}
                     disabled={historyIndex >= history.length - 1}
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
+                    className="h-8 w-8 p-0"
                     title="重做 (Ctrl+Y)"
                   >
                     <Redo2 className="w-4 h-4" />
@@ -1583,7 +1583,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     size="sm"
                     variant="outline"
                     onClick={handleRemoveSelected}
-                    className="gap-1 text-xs text-destructive hover:bg-destructive/10 h-8 border-destructive/30"
+                    className="gap-1 text-xs h-8"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     删除选中
@@ -1595,7 +1595,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   variant="ghost"
                   onClick={handleClearCurrentPage}
                   disabled={(redactions[currentPage] || []).length === 0}
-                  className="text-xs text-muted-foreground hover:text-foreground h-8"
+                  className="text-xs h-8"
                 >
                   清空本页
                 </Button>
@@ -1725,7 +1725,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
             {/* Left Sidebar: Page List & Security Settings */}
             <div className="space-y-4 lg:col-span-1">
               {/* 1. Page Navigator Card */}
-              <Card className="p-3 bg-card border border-border rounded-xl space-y-2.5">
+              <Card className="p-3 bg-card border border-border gap-2.5">
                 <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-1.5">
                     <span className="text-xs font-semibold text-foreground">页面导航</span>
@@ -1838,7 +1838,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
               </Card>
 
               {/* 2. Redaction Statistics & Action */}
-              <Card className="p-4 bg-card border border-border rounded-xl space-y-3">
+              <Card className="p-4 bg-card border border-border gap-3">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-muted-foreground">当前页面脱敏区:</span>
                   <span className="font-bold text-foreground">{(redactions[currentPage] || []).length} 处</span>
@@ -1892,7 +1892,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       variant="outline"
                       size="sm"
                       onClick={handleProcess}
-                      className="w-full text-xs text-muted-foreground"
+                      className="w-full text-xs"
                     >
                       重新生成脱敏 PDF
                     </Button>
@@ -1921,14 +1921,14 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   variant="ghost"
                   size="sm"
                   onClick={handleClear}
-                  className="w-full text-xs text-muted-foreground hover:text-foreground"
+                  className="w-full text-xs"
                 >
                   更换其他文件
                 </Button>
               </Card>
 
               {/* 3. Security Configuration Panel */}
-              <Card className="p-4 bg-card border border-border rounded-xl space-y-3">
+              <Card className="p-4 bg-card border border-border gap-3">
                 <div className="flex items-center gap-2 pb-2 border-b border-border">
                   <Shield className="w-4 h-4 text-emerald-500" />
                   <span className="text-xs font-bold uppercase tracking-wider">安全与隐私加固</span>
@@ -2158,7 +2158,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       type="button"
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage <= 1}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 z-30 backdrop-blur opacity-40 group-hover:opacity-90 active:scale-95"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-30 opacity-40 group-hover:opacity-90 active:scale-95"
                       title="上一页 (PageUp / ←)"
                     >
                       <ChevronLeft className="w-5 h-5" />
@@ -2168,7 +2168,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       type="button"
                       onClick={() => setCurrentPage((p) => Math.min(numPages, p + 1))}
                       disabled={currentPage >= numPages}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 z-30 backdrop-blur opacity-40 group-hover:opacity-90 active:scale-95"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-30 opacity-40 group-hover:opacity-90 active:scale-95"
                       title="下一页 (PageDown / →)"
                     >
                       <ChevronRight className="w-5 h-5" />
@@ -2199,7 +2199,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
 
       {/* Processing Progress & Download */}
       {status === 'processing' && (
-        <Card className="p-6 bg-card border border-border shadow-sm rounded-xl">
+        <Card className="p-6 bg-card border border-border">
           <ProcessingProgress
             status={status}
             progress={progress}
@@ -2209,7 +2209,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
       )}
 
       {status === 'complete' && result && (
-        <Card className="p-6 bg-card border border-border shadow-sm rounded-xl text-center space-y-4">
+        <Card className="p-6 bg-card border border-border text-center gap-4">
           <div className="inline-flex p-3 bg-emerald-500/10 text-emerald-500 rounded-full">
             <CheckCircle2 className="w-8 h-8" />
           </div>

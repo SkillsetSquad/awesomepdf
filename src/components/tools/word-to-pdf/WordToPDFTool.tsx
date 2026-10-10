@@ -261,7 +261,7 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
                             size="sm"
                             onClick={handleRemoveFile}
                             disabled={isProcessing}
-                            className="text-muted-foreground hover:text-red-500 hover:bg-red-50"
+                            className=""
                         >
                             <Trash2 className="w-5 h-5" />
                             <span className="sr-only">{t('buttons.remove') || 'Remove'}</span>
@@ -299,7 +299,7 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
                     onClick={handleConvert}
                     disabled={!canConvert}
                     loading={isProcessing}
-                    className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"
+                    className="min-w-[200px] transition-all hover:-translate-y-0.5"
                 >
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing
@@ -315,7 +315,7 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
                         variant="secondary"
                         size="lg"
                         showFileSize
-                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5"
+                        className="min-w-[200px] transition-all hover:-translate-y-0.5"
                     />
                 )}
             </div>

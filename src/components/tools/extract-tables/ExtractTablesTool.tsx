@@ -181,7 +181,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                         type="button"
                                         onClick={() => setFormat(fmt)}
                                         disabled={isProcessing}
-                                        className="uppercase"
+                                        className=""
                                     >
                                         {fmt}
                                     </Button>

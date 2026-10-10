@@ -303,7 +303,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* Analyzing Phase */}
       {isAnalyzing && (
-        <Card  className="p-8 border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md rounded-3xl text-center space-y-4">
+        <Card  className="p-8 border text-center gap-4">
           <div className="flex justify-center">
             <div className="relative w-16 h-16 flex items-center justify-center">
               <Loader2 className="w-10 h-10 text-primary animate-spin" />
@@ -332,7 +332,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         <div className="space-y-6">
 
           {/* File Header Bar */}
-          <Card  className="p-4 flex flex-wrap items-center justify-between border border-zinc-200 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-950/20 backdrop-blur-sm rounded-2xl gap-4">
+          <Card  className="p-4 flex flex-wrap items-center justify-between border gap-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-red-100 dark:bg-red-950/20 text-red-500">
                 <FileText className="w-6 h-6" />
@@ -347,13 +347,13 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               </div>
             </div>
 
-            <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing} className="hover:bg-red-500/10 hover:text-red-500">
+            <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing} className="">
               {t('buttons.remove') || 'Remove'}
             </Button>
           </Card>
 
           {/* Control Workshop Controls */}
-          <Card  className="p-6 border border-zinc-200/60 dark:border-zinc-800/40 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md rounded-[2rem] shadow-xl space-y-6">
+          <Card  className="p-6 border gap-6">
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
@@ -410,7 +410,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                   <Button variant="ghost" size="sm" onClick={handleKeepAll} className="text-xs">
                     {t('removeBlankPages.keepAllBtn')}
                   </Button>
-                  <Button variant="ghost" size="sm" onClick={handleSelectAllAsBlank} className="text-xs text-red-500 hover:text-red-600">
+                  <Button variant="ghost" size="sm" onClick={handleSelectAllAsBlank} className="text-xs">
                     {t('removeBlankPages.deleteAllBtn')}
                   </Button>
                 </div>
@@ -449,7 +449,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                   onClick={handleProcess}
                   disabled={isProcessing || keepPagesCount === 0}
                   loading={isProcessing}
-                  className="font-bold shadow-lg shadow-primary-500/10 flex items-center gap-1.5"
+                  className="flex items-center gap-1.5"
                 >
                   <Trash2 className="w-4 h-4" />
                   {isProcessing ? t('status.processing') : tTools('removeBlankPages.removeButton')}
@@ -461,7 +461,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
           {/* 3D Pages Queue Grid */}
           {displayedPages.length === 0 ? (
-            <Card  className="p-12 text-center rounded-[2rem] border-dashed border-zinc-200 dark:border-zinc-800">
+            <Card  className="p-12 text-center border-dashed">
               <Eye className="w-10 h-10 text-zinc-300 dark:text-zinc-700 mx-auto mb-3" />
               <p className="text-sm text-muted-foreground font-bold">
                 {t('removeBlankPages.noPagesToDisplay') || 'No pages to display'}
@@ -497,7 +497,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* Complete State Screen */}
       {status === 'complete' && result && (
-        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 border text-center gap-6">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <FileCheck className="w-10 h-10" />
           </div>
@@ -520,10 +520,10 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               filename={file?.name.replace('.pdf', '_no_blanks.pdf') || 'cleaned_document.pdf'}
               variant="default"
               size="lg"
-              className="flex-1 font-bold shadow-lg"
+              className="flex-1"
               showFileSize
             />
-            <Button variant="ghost" size="lg" onClick={handleClear} className="border border-zinc-200 dark:border-zinc-800">
+            <Button variant="ghost" size="lg" onClick={handleClear} className="border">
               {t('removeBlankPages.processNewFile') || 'Process New File'}
             </Button>
           </div>

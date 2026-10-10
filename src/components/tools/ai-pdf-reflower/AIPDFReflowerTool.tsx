@@ -256,7 +256,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* File metadata status block */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -289,7 +289,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
           {/* LEFT: Controls Panel */}
           <div className="lg:col-span-5 space-y-6">
-            <Card  className="p-6 rounded-[2rem] shadow-xl border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md space-y-6">
+            <Card  className="p-6 border gap-6">
               <div className="border-b border-border pb-3">
                 <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                   <Settings2 className="w-5 h-5 text-primary" />
@@ -334,7 +334,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                   <Button
                     variant="secondary"
                     size="sm"
-                    className="flex-1 font-bold"
+                    className="flex-1"
                     onClick={() => setFontSize(Math.max(12, fontSize - 1))}
                   >
                     A-
@@ -349,7 +349,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                   <Button
                     variant="secondary"
                     size="sm"
-                    className="flex-1 font-bold"
+                    className="flex-1"
                     onClick={() => setFontSize(Math.min(28, fontSize + 1))}
                   >
                     A+
@@ -365,15 +365,15 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                 </Label>
 
                 <div className="grid grid-cols-3 gap-2">
-                  <Button variant="secondary" className="text-xs font-bold flex flex-col gap-1 py-4" onClick={() => handleExportFormat('markdown')}>
+                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('markdown')}>
                     <FileText className="w-4 h-4 text-emerald-500" />
                     Markdown
                   </Button>
-                  <Button variant="secondary" className="text-xs font-bold flex flex-col gap-1 py-4" onClick={() => handleExportFormat('epub')}>
+                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('epub')}>
                     <BookOpen className="w-4 h-4 text-amber-500" />
                     EPUB Ebook
                   </Button>
-                  <Button variant="secondary" className="text-xs font-bold flex flex-col gap-1 py-4" onClick={() => handleExportFormat('json')}>
+                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('json')}>
                     <AlignLeft className="w-4 h-4 text-blue-500" />
                     Structured JSON
                   </Button>

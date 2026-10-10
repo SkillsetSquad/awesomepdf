@@ -80,7 +80,7 @@ export function BookletFoldingSimulatorTool() {
   };
 
   return (
-    <Card className="p-6 max-w-4xl mx-auto shadow-2xl bg-neutral-900 border-neutral-800 text-white">
+    <Card className="p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 rounded-lg bg-violet-600/20 text-violet-400">
           <BookOpen className="w-6 h-6" />
@@ -113,7 +113,7 @@ export function BookletFoldingSimulatorTool() {
               variant="outline"
               size="sm"
               onClick={handleReset}
-              className="text-xs border-neutral-700 text-neutral-300 hover:bg-neutral-700"
+              className="text-xs"
             >
               {t('buttons.reset')}
             </Button>
@@ -171,7 +171,7 @@ export function BookletFoldingSimulatorTool() {
               {status === 'idle' && (
                 <Button
                   onClick={handleProcess}
-                  className="w-full bg-violet-600 hover:bg-violet-700 font-bold"
+                  className="w-full"
                 >
                   {tTools('processButton')}
                 </Button>
@@ -189,7 +189,7 @@ export function BookletFoldingSimulatorTool() {
                   <DownloadButton
                     file={result}
                     filename={file.name.replace(/\.pdf$/i, '_imposed.pdf')}
-                    className="w-full bg-green-600 hover:bg-green-700 font-bold"
+                    className="w-full"
                   />
                 </div>
               )}

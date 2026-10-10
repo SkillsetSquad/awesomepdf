@@ -118,7 +118,7 @@ export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToo
         <div className="lg:col-span-8 space-y-4">
           <Card
 
-            className="p-6 bg-zinc-50 dark:bg-zinc-950/40 relative overflow-hidden rounded-[2rem] min-h-[400px] flex flex-col justify-between border-2 border-dashed border-zinc-200 dark:border-zinc-800 select-none"
+            className="p-6 relative overflow-hidden min-h-[400px] flex flex-col justify-between border-2 border-dashed select-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -181,7 +181,7 @@ export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToo
         </div>
 
         <div className="lg:col-span-4 space-y-6">
-          <Card  className="p-6 bg-white/40 dark:bg-black/30 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 rounded-[2rem] shadow-xl flex flex-col justify-between min-h-[400px]">
+          <Card  className="p-6 border flex flex-col justify-between min-h-[400px]">
             <div className="space-y-6">
               <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
                 <Sliders className="w-5 h-5 text-primary" />
@@ -238,14 +238,14 @@ export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToo
                   filename="spine_cover_binding_crease.pdf"
                   variant="default"
                   size="lg"
-                  className="w-full py-4 font-bold shadow-lg shadow-primary/25 rounded-2xl"
+                  className="w-full py-4"
                   showFileSize
                 />
               ) : (
                 <Button
                   variant="default"
                   size="lg"
-                  className="w-full py-4 font-bold rounded-2xl flex items-center justify-center gap-2"
+                  className="w-full py-4 flex items-center justify-center gap-2"
                   onClick={handleDesign}
                   disabled={status === 'processing'}
                 >

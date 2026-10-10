@@ -328,7 +328,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
             </div>
           </Card>
 
-          <Card  className="bg-blue-50 border-blue-200">
+          <Card  className="">
             <div className="flex gap-3">
               <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -269,7 +269,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* File Metadata Overview */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -297,7 +297,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
           {/* LEFT: Citation Configuration & List */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 border flex flex-col justify-between">
 
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
@@ -398,7 +398,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                 <Button
                   variant="default"
                   size="lg"
-                  className="w-full py-4 font-bold shadow-lg flex items-center justify-center gap-2"
+                  className="w-full py-4 flex items-center justify-center gap-2"
                   onClick={handleApplyLinks}
                 >
                   <GitBranch className="w-5 h-5" />
@@ -410,7 +410,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
           {/* RIGHT: Interactive Glassmorphism Citation Star Map */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
+            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[420px]">
 
               {/* Star Topology SVG Map */}
               <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
@@ -532,7 +532,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* Processing State (Rotating gear dynamic panel) */}
       {isProcessing && (
-        <Card  className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 flex flex-col items-center justify-center space-y-6 shadow-2xl">
+        <Card  className="p-10 border flex flex-col items-center justify-center gap-6">
           {/* 3D Gear rotate animation */}
           <div className="relative w-24 h-24 flex items-center justify-center">
             <div
@@ -566,7 +566,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* Finished Stage (Success screen) */}
       {status === 'complete' && result && (
-        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 border text-center gap-6">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -584,7 +584,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               filename={file?.name.replace('.pdf', '_linked.pdf') || 'citations_linked.pdf'}
               variant="default"
               size="lg"
-              className="flex-1 font-bold shadow-lg"
+              className="flex-1"
               showFileSize
             />
           </div>

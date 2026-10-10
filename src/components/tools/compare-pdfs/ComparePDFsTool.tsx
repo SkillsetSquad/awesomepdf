@@ -416,7 +416,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               {t('comparePdfs.originalPdfTitle')}
             </Label>
             {file1 ? (
-              <Card  className="p-4 flex items-center justify-between border-2 border-primary/35 bg-muted/15 rounded-2xl">
+              <Card  className="p-4 flex items-center justify-between border-2 border-primary/35 bg-muted/15">
                 <div className="flex items-center gap-3">
                   <FileText className="w-10 h-10 text-primary" />
                   <div>
@@ -446,7 +446,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               {t('comparePdfs.modifiedPdfTitle')}
             </Label>
             {file2 ? (
-              <Card  className="p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
+              <Card  className="p-4 flex items-center justify-between border-2">
                 <div className="flex items-center gap-3">
                   <FileText className="w-10 h-10 text-emerald-500" />
                   <div>
@@ -479,7 +479,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
             variant="default"
             size="lg"
             onClick={handleCompare}
-            className="px-12 py-4 font-bold shadow-lg shadow-primary/15 flex items-center gap-2"
+            className="px-12 py-4 flex items-center gap-2"
           >
             <Shuffle className="w-5 h-5 animate-pulse" />
             {t('comparePdfs.startCompare')}
@@ -505,7 +505,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
           {/* Header Panel */}
           <Card
 
-            className="p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40"
+            className="p-5 flex flex-wrap items-center justify-between gap-4 border"
           >
             <div>
               <h3 className="text-md font-bold text-foreground">

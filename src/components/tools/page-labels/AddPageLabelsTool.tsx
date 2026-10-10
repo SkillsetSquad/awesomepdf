@@ -256,7 +256,7 @@ export function AddPageLabelsTool() {
         {file ? (
           <Card
 
-            className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl"
+            className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15"
           >
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="currentColor">
@@ -325,7 +325,7 @@ export function AddPageLabelsTool() {
                 size="sm"
                 onClick={handleAddRule}
                 disabled={isProcessing}
-                className="flex items-center gap-1 text-xs border border-primary/35 hover:bg-primary/8 py-1.5"
+                className="flex items-center gap-1 text-xs border py-1.5"
               >
                 <Plus className="w-3.5 h-3.5" />
                 {t('pageLabels.addRuleButton')}
@@ -337,7 +337,7 @@ export function AddPageLabelsTool() {
                 <Card
                   key={idx}
 
-                  className="p-5 rounded-2xl relative space-y-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300"
+                  className="p-5 relative gap-4 border animate-in fade-in slide-in-from-bottom-2 duration-300"
                 >
                   <div className="flex justify-between items-center border-b border-border pb-3">
                     <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-md">
@@ -433,7 +433,7 @@ export function AddPageLabelsTool() {
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}
-                className="w-full py-4 font-bold shadow-lg shadow-primary/15 flex items-center justify-center gap-2"
+                className="w-full py-4 flex items-center justify-center gap-2"
               >
                 <Tag className="w-5 h-5" />
                 {isProcessing ? t('pageLabels.processing') : t('pageLabels.processButton')}
@@ -470,7 +470,7 @@ export function AddPageLabelsTool() {
 
             <Card
 
-              className="p-6 bg-card rounded-2xl min-h-[460px] flex flex-col border border-border shadow-inner"
+              className="p-6 bg-card min-h-[460px] flex flex-col border border-border"
             >
               {/* Informative tips */}
               <div className="mb-4 p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/10 border border-emerald-100/35 text-[11px] text-muted-foreground leading-normal flex gap-2">
@@ -506,7 +506,7 @@ export function AddPageLabelsTool() {
                       variant="outline"
                       size="sm"
                       onClick={() => setShowAllPreview(true)}
-                      className="text-[10px] py-1 px-3 rounded-xl"
+                      className="text-[10px] py-1 px-3"
                     >
                       {t('pageLabels.previewLoadAll', { total: totalPages })}
                     </Button>

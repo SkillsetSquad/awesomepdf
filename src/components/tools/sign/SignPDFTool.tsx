@@ -338,7 +338,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           <Dialog open={isLibraryOpen} onOpenChange={setIsLibraryOpen}><DialogTrigger asChild><Button
             variant="outline"
             size="sm"
-            className="text-xs bg-white hover:bg-gray-50 flex items-center gap-1.5"
+            className="text-xs flex items-center gap-1.5"
           >
             <span>📂 签名库</span>
             {savedSignatureCount > 0 && (
@@ -357,7 +357,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             variant="outline"
             size="sm"
             onClick={() => imageInputRef.current?.click()}
-            className="text-xs bg-white hover:bg-gray-50 flex items-center gap-1.5 border-blue-300 text-blue-700"
+            className="text-xs flex items-center gap-1.5"
           >
             <span>🖼️ 导入图片签名</span>
           </Button>
@@ -365,7 +365,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           <Dialog open={isExtractorOpen} onOpenChange={setIsExtractorOpen}><DialogTrigger asChild><Button
             variant="default"
             size="sm"
-            className="text-xs flex items-center gap-1.5 shadow-sm bg-blue-600 hover:bg-blue-700"
+            className="text-xs flex items-center gap-1.5"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
@@ -455,7 +455,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           </Card>
 
           {/* Instructions */}
-          <Card  className="bg-blue-50 border-blue-200">
+          <Card  className="">
             <div className="flex gap-3">
               <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

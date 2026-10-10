@@ -340,7 +340,7 @@ Enjoy converting your Markdown to PDF!
                                     type="button"
                                     onClick={() => setPageSize(size)}
                                     disabled={isProcessing}
-                                    className="uppercase"
+                                    className=""
                                 >
                                     {size}
                                 </Button>

@@ -417,7 +417,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* File metadata bar */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -442,7 +442,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
           {/* LEFT: OCR Options */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
+            <Card  className="flex-1 p-6 border flex flex-col justify-between gap-6">
 
               <div className="space-y-4 flex-1">
                 <div className="border-b border-border pb-3">
@@ -553,7 +553,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                 <Button
                   variant="default"
                   size="lg"
-                  className="w-full py-4 font-bold shadow-lg flex items-center justify-center gap-2"
+                  className="w-full py-4 flex items-center justify-center gap-2"
                   onClick={handleOCR}
                   disabled={!canProcess}
                 >
@@ -567,7 +567,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
           {/* RIGHT: 3D Holographic Wireframe Scan visualizer */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[380px]">
+            <Card  className="flex-1 p-6 border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[380px]">
 
               {/* Scan grid canvas */}
               <div className="relative w-full aspect-video flex items-center justify-center z-10">
@@ -614,7 +614,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* Complete Outcomes screen */}
       {status === 'complete' && result && (
-        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 border text-center gap-6">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -660,7 +660,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               }`}
               variant="default"
               size="lg"
-              className="flex-1 font-bold shadow-lg min-w-[140px]"
+              className="flex-1 min-w-[140px]"
               showFileSize
             />
 
@@ -669,7 +669,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                 variant="secondary"
                 size="lg"
                 onClick={handleOpenInEditor}
-                className="flex-1 font-bold border-2 border-primary/40 text-primary hover:bg-primary/8 flex items-center justify-center gap-2 min-w-[160px]"
+                className="flex-1 border-2 flex items-center justify-center gap-2 min-w-[160px]"
               >
                 <ExternalLink className="w-4 h-4" />
                 {t('ocr.openInEditor')}
@@ -681,7 +681,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                 variant="outline"
                 size="lg"
                 onClick={handleCopy}
-                className="font-bold flex items-center justify-center gap-2"
+                className="flex items-center justify-center gap-2"
               >
                 {copied ? <CheckCheck className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
                 {copied ? t('ocr.copied') : t('ocr.copyText')}
@@ -693,7 +693,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* Pure text/JSON preview box */}
       {textPreview && (
-        <Card   className="rounded-3xl shadow-sm space-y-3">
+        <Card   className="gap-3">
           <div className="flex items-center justify-between border-b border-border pb-3">
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-primary" />
@@ -709,7 +709,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               variant="ghost"
               size="sm"
               onClick={handleCopy}
-              className="text-xs font-semibold flex items-center gap-1.5 h-8 px-2.5 text-primary"
+              className="text-xs font-semibold flex items-center gap-1.5 h-8 px-2.5"
             >
               {copied ? <CheckCheck className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
               {copied ? t('ocr.copied') : t('ocr.copyText')}

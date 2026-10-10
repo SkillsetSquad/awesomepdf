@@ -196,7 +196,7 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                                         type="button"
                                         onClick={() => setPaperSize(size)}
                                         disabled={isProcessing}
-                                        className="uppercase"
+                                        className=""
                                     >
                                         {size}
                                     </Button>

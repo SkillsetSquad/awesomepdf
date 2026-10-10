@@ -1666,7 +1666,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       {/* Save Project Dialog */}
       {showSaveDialog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card   className="w-full max-w-md mx-4 bg-white shadow-xl">
+          <Card   className="w-full max-w-md mx-4">
             <h3 className="text-lg font-medium mb-4">{tTools('formCreator.saveProjectTitle') || 'Save Project'}</h3>
             <div className="space-y-4">
               <div>
@@ -1712,7 +1712,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       {/* Create Blank PDF Dialog */}
       {showBlankPdfDialog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card   className="w-full max-w-md mx-4 bg-white shadow-xl">
+          <Card   className="w-full max-w-md mx-4">
             <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
               <FilePlus2 className="w-5 h-5 text-blue-500" />
               {tTools('formCreator.createBlankPdfTitle') || 'Create Blank PDF'}

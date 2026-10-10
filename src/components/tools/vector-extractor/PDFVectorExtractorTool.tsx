@@ -270,7 +270,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
       {/* Metadata bar */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -321,7 +321,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
           {/* LEFT: SVG Display Canvas */}
           <div className="lg:col-span-8 flex flex-col space-y-4">
-            <Card  className="p-4 bg-zinc-100 dark:bg-zinc-950 flex-1 flex flex-col justify-between rounded-[2rem] border-2 shadow-inner min-h-[480px]">
+            <Card  className="p-4 flex-1 flex flex-col justify-between border-2 min-h-[480px]">
 
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
@@ -353,7 +353,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
           <div className="lg:col-span-4 flex flex-col space-y-6">
 
             {/* Inspector Panel */}
-            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 border flex flex-col justify-between">
 
               <div className="space-y-6">
                 <div className="border-b border-border pb-3">
@@ -436,7 +436,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                     filename={file.name.replace(/\.pdf$/i, `_page_${targetPage}.svg`)}
                     variant="default"
                     size="lg"
-                    className="w-full py-4 font-bold shadow-lg"
+                    className="w-full py-4"
                     showFileSize
                   />
                 )}
