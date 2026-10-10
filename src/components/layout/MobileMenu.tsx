@@ -60,7 +60,7 @@ export function MobileMenu({ locale }: MobileMenuProps) {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            {(['workflow', 'about', 'faq', 'privacy', 'contact'] as const).map((item) => (
+            {(['about', 'faq', 'privacy', 'contact'] as const).map((item) => (
               <SheetClose asChild key={item}><Button variant="ghost" className="justify-start" asChild>
                 <Link href={`/${locale}/${item}`}>{tCommon(`navigation.${item}`)}</Link>
               </Button></SheetClose>

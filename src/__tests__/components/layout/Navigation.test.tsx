@@ -42,6 +42,7 @@ describe('Shared navigation', () => {
 
   it('includes all category destinations and restores focus after Escape', async () => {
     wrap(<Navigation locale="en" currentPath="/en/tools/merge-pdf" />);
+    expect(screen.queryByRole('link', { name: 'Workflow' })).not.toBeInTheDocument();
     const trigger = screen.getByRole('button', { name: 'Tools' });
     trigger.focus();
     await userEvent.keyboard('{ArrowDown}');
@@ -57,6 +58,7 @@ describe('Shared navigation', () => {
     const trigger = screen.getByRole('button', { name: 'Open menu' });
     await userEvent.click(trigger);
     const dialog = await screen.findByRole('dialog', { name: 'Main navigation' });
+    expect(within(dialog).queryByRole('link', { name: 'Workflow' })).not.toBeInTheDocument();
     expect(dialog).toHaveAttribute('dir', 'rtl');
     await userEvent.click(within(dialog).getByRole('button', { name: 'Tools' }));
     const category = within(dialog).getByRole('link', { name: 'Organize & Manage' });

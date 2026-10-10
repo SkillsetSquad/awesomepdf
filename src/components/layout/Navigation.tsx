@@ -30,7 +30,7 @@ export function Navigation({ locale, currentPath }: NavigationProps) {
   const isActive = (href: string) => href === `/${locale}`
     ? currentPath === href || currentPath === `${href}/`
     : currentPath.startsWith(href);
-  const items = ['home', 'tools', 'workflow', 'about', 'faq'] as const;
+  const items = ['home', 'tools', 'about', 'faq'] as const;
 
   return (
     <nav className="hidden items-center gap-1 xl:flex" aria-label={tCommon('navigation.mainMenu')}>
