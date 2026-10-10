@@ -1,10 +1,30 @@
 /**
+ * Resolve the public origin of the deployment (no trailing slash).
+ *
+ * The site is a static export, so the host is only known at build time. Order:
+ * explicit NEXT_PUBLIC_SITE_URL, then the host's own build variables
+ * (Vercel, Netlify, Cloudflare Pages), then localhost for local development.
+ */
+function resolveSiteUrl(): string {
+  const candidate =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
+    process.env.URL?.trim() || // Netlify primary site URL
+    process.env.CF_PAGES_URL?.trim() ||
+    process.env.VERCEL_URL?.trim() ||
+    'http://localhost:3000';
+
+  const withProtocol = /^https?:\/\//i.test(candidate) ? candidate : `https://${candidate}`;
+  return withProtocol.replace(/\/+$/, '');
+}
+
+/**
  * Site configuration
  */
 export const siteConfig = {
   name: 'AwesomePDF',
   description: 'Professional PDF Tools - Free, Private & Browser-Based. Merge, split, compress, convert, and edit PDF files online without uploading to servers.',
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://pdfcraft.devtoolcafe.com').replace(/\/+$/, ''),
+  url: resolveSiteUrl(),
   ogImage: '/images/og-image.png',
   links: {
     github: 'https://github.com/SkillsetSquad/awesomepdf',

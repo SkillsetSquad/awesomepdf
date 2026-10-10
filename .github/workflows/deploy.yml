@@ -46,6 +46,7 @@ jobs:
 
       # Setup GitHub Pages
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
 
       # Restore cache for faster builds
@@ -71,6 +72,8 @@ jobs:
         env:
           # Add any required environment variables here
           NODE_ENV: production
+          # Host domain of the Pages site (custom domain if configured); used for sitemap/canonical URLs
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || steps.pages.outputs.origin }}
 
       # Upload artifact for deployment
       - name: Upload artifact
