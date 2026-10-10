@@ -4,12 +4,14 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
@@ -43,6 +45,7 @@ interface HistoryState {
 export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
+  const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
 
   // State
   const [sourceFiles, setSourceFiles] = useState<SourceFile[]>([]);
@@ -495,6 +498,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
   const totalPages = pagePreviews.length;
 
   return (
+    <Dialog open={showAddBlankModal} onOpenChange={setShowAddBlankModal}>
     <div className={`space-y-6 ${className}`.trim()}>
       {/* File Upload Area */}
       <FileUploader
@@ -604,17 +608,16 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 </svg>
                 {tTools('pdfMultiTool.duplicate') || 'Duplicate'}
               </Button>
-              <Button
+              <DialogTrigger asChild><Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setShowAddBlankModal(true)}
                 disabled={isProcessing}
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 {tTools('pdfMultiTool.addBlank') || 'Add Blank'}
-              </Button>
+              </Button></DialogTrigger>
             </div>
 
             <div className="w-px h-6 bg-border" />
@@ -838,16 +841,11 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       )}
 
       {/* Add Blank Page Modal */}
-      {showAddBlankModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowAddBlankModal(false)}>
-          <Card
-
-            className="max-w-sm w-full mx-4"
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
-          >
-            <h3 className="text-lg font-semibold mb-4">
+      <DialogContent dir={direction} showCloseButton={false}>
+            <DialogHeader><DialogTitle className="pe-8">
               {tTools('pdfMultiTool.addBlankPageTitle') || 'Add Blank Pages'}
-            </h3>
+            </DialogTitle><DialogDescription>{tTools('pdfMultiTool.insertPosition')}</DialogDescription></DialogHeader>
+            <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={t('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
             <div className="space-y-4">
               <div>
                 <Label className="block mb-2 text-muted-foreground" htmlFor="pdfmultitool-field-1">
@@ -875,18 +873,16 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   className="w-full" id="pdfmultitool-field-2" aria-label={tTools('pdfMultiTool.insertPosition') || 'Insert at position'}
                 />
               </div>
-              <div className="flex gap-3 mt-6">
+              <DialogFooter>
                 <Button variant="outline" onClick={() => setShowAddBlankModal(false)} className="flex-1">
                   {t('buttons.cancel') || 'Cancel'}
                 </Button>
                 <Button variant="default" onClick={handleAddBlankPage} className="flex-1">
                   {t('buttons.add') || 'Add'}
                 </Button>
-              </div>
+              </DialogFooter>
             </div>
-          </Card>
-        </div>
-      )}
+      </DialogContent>
 
       {/* Processing Progress */}
       {isProcessing && (
@@ -908,6 +904,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
         </Card>
       )}
     </div>
+    </Dialog>
   );
 }
 
