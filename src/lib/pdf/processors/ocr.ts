@@ -191,7 +191,7 @@ export function generateJsonOutput(
     languages: string[];
     totalWords: number;
     totalChars: number;
-    avgConfidence: number;
+    avgConfidence?: number;
   }
 ): string {
   return JSON.stringify(
@@ -454,13 +454,13 @@ export class OCRProcessor extends BasePDFProcessor {
         for (const w of p.words) {
           totalWords++;
           totalChars += (w.text || '').length;
-          if (typeof w.confidence === 'number') {
+          if (typeof w.confidence === 'number' && Number.isFinite(w.confidence)) {
             confidenceSum += w.confidence;
             confidenceCount++;
           }
         }
       }
-      const avgConfidence = confidenceCount > 0 ? Math.round(confidenceSum / confidenceCount) : 92;
+      const avgConfidence = confidenceCount > 0 ? Math.round(confidenceSum / confidenceCount) : undefined;
 
       // Generate output based on format
       let blob: Blob;
@@ -682,7 +682,7 @@ export class OCRProcessor extends BasePDFProcessor {
 
       return {
         text: w.text,
-        confidence: typeof w.confidence === 'number' ? Math.round(w.confidence) : 90,
+        confidence: typeof w.confidence === 'number' && Number.isFinite(w.confidence) ? Math.round(w.confidence) : undefined,
         x: pdfX,
         y: pdfY,
         width: pdfWidth,

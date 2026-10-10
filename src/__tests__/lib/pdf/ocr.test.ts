@@ -15,9 +15,9 @@ const mockRecognize = vi.fn().mockResolvedValue({
   data: {
     text: 'Hello World 测试中文',
     words: [
-      { text: 'Hello', bbox: { x0: 10, y0: 10, x1: 50, y1: 25 } },
-      { text: 'World', bbox: { x0: 55, y0: 10, x1: 95, y1: 25 } },
-      { text: '测试中文', bbox: { x0: 100, y0: 10, x1: 150, y1: 25 } },
+      { text: 'Hello', confidence: 95, bbox: { x0: 10, y0: 10, x1: 50, y1: 25 } },
+      { text: 'World', confidence: 90, bbox: { x0: 55, y0: 10, x1: 95, y1: 25 } },
+      { text: '测试中文', confidence: 100, bbox: { x0: 100, y0: 10, x1: 150, y1: 25 } },
     ],
   },
 });
@@ -322,6 +322,34 @@ describe('OCRProcessor', () => {
   });
 
   describe('Pre-processing and output generators', () => {
+    it.each([
+      { label: 'missing and non-finite confidence', scores: [undefined, NaN, Infinity], expected: undefined },
+      { label: 'zero and measured confidence', scores: [0, 100, undefined], expected: 50 },
+      { label: 'no recognized words', scores: [], expected: undefined },
+    ])('reports only measured confidence for $label', async ({ scores, expected }) => {
+      mockRecognize.mockResolvedValueOnce({ data: {
+        text: 'Recognition fixture',
+        words: scores.map((confidence, index) => ({ text: `Word${index}`, confidence, bbox: { x0: index * 20, y0: 10, x1: index * 20 + 15, y1: 25 } })),
+      } });
+      const file = new File(['%PDF-1.4'], 'confidence.pdf', { type: 'application/pdf' });
+      const result = await processor.process({ files: [file], options: { outputFormat: 'json' } });
+      expect(result.success).toBe(true);
+      expect(result.metadata?.avgConfidence).toBe(expected);
+      const text = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsText(result.result as Blob);
+      });
+      const json = JSON.parse(text);
+      expect(json.metadata.avgConfidence).toBe(expected);
+      expect(json.metadata.totalWords).toBe(scores.length);
+      scores.forEach((score, index) => {
+        if (typeof score === 'number' && Number.isFinite(score)) expect(json.pages[0].words[index].confidence).toBe(score);
+        else expect(json.pages[0].words[index]).not.toHaveProperty('confidence');
+      });
+    });
+
     it('preprocessCanvas gracefully handles canvas without error', () => {
       const canvas = document.createElement('canvas');
       canvas.width = 100;
