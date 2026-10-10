@@ -6,12 +6,16 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
+import { Eye, X, FileText, CircleAlert, CheckCircle2 } from 'lucide-react';
 import { pdfToSVG, type PDFToSVGOptions, type SVGResult } from '@/lib/pdf/processors/pdf-to-svg';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
@@ -48,6 +52,8 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
     const [svgResults, setSvgResults] = useState<SVGResult[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+    const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
+    const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
 
     // Options state
     const [scale, setScale] = useState(2);
@@ -218,7 +224,8 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
     /**
      * Open preview modal
      */
-    const openPreview = (index: number) => {
+    const openPreview = (index: number, trigger: HTMLButtonElement) => {
+        previewTriggerRef.current = trigger;
         setPreviewIndex(index);
     };
 
@@ -249,12 +256,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
 
             {/* Error Message */}
             {error && (
-                <div
-                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-                    role="alert"
-                >
-                    <p className="text-sm">{error}</p>
-                </div>
+                <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>
             )}
 
             {/* File Info */}
@@ -263,10 +265,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-                                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                    <polyline points="14 2 14 8 20 8" />
-                                </svg>
+                                <FileText className="size-5" aria-hidden="true" />
                             </div>
                             <div>
                                 <p className="font-medium text-foreground">{file.file.name}</p>
@@ -391,39 +390,13 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                         {svgResults.map((svgResult, index) => (
                             <div key={index} className="relative group">
-                                <div
-                                    className="aspect-[3/4] rounded-md border border-border overflow-hidden bg-muted/30 cursor-pointer hover:border-primary transition-colors"
-                                    onClick={() => openPreview(index)}
-                                >
-                                    <div
-                                        className="w-full h-full flex items-center justify-center"
-                                        dangerouslySetInnerHTML={{
-                                            __html: svgResult.svg.replace(/<\?xml[^>]*\?>/, '').replace(/width="[^"]*"/, 'width="100%"').replace(/height="[^"]*"/, 'height="100%"')
-                                        }}
-                                    />
-                                </div>
-                                <span className="absolute top-2 left-2 px-2 py-1 rounded bg-black/50 text-white text-xs">
-                                    {svgResult.pageNumber}
-                                </span>
-                                <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            openPreview(index);
-                                        }}
-                                        className=""
-                                    >
-                                        👁
-                                    </Button>
-                                    <DownloadButton
-                                        file={svgResult.blob}
-                                        filename={`${file?.file.name.replace(/\.pdf$/i, '')}_page_${svgResult.pageNumber}.svg`}
-                                        variant="ghost"
-                                        size="sm"
-                                        className=""
-                                    />
+                                <Button variant="outline" aria-label={`${tTools('pdfToSvg.previewTitle')}: ${svgResult.pageNumber}`} className="aspect-[3/4] h-auto w-full overflow-hidden p-0" onClick={event => openPreview(index, event.currentTarget)}>
+                                    <div aria-hidden="true" className="flex h-full w-full items-center justify-center" dangerouslySetInnerHTML={{ __html: svgResult.svg.replace(/<\?xml[^>]*\?>/, '').replace(/width="[^"]*"/, 'width="100%"').replace(/height="[^"]*"/, 'height="100%"') }} />
+                                </Button>
+                                <Badge variant="secondary" className="pointer-events-none absolute start-2 top-2">{svgResult.pageNumber}</Badge>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                    <Button variant="outline" size="icon-sm" aria-label={`${tTools('pdfToSvg.previewPage')}: ${svgResult.pageNumber}`} onClick={event => openPreview(index, event.currentTarget)}><Eye aria-hidden="true" /></Button>
+                                    <DownloadButton file={svgResult.blob} filename={`${file?.file.name.replace(/\.pdf$/i, '')}_page_${svgResult.pageNumber}.svg`} variant="outline" size="sm" aria-label={`${t('buttons.download')}: ${svgResult.pageNumber}`} />
                                 </div>
                             </div>
                         ))}
@@ -431,54 +404,20 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                 </Card>
             )}
 
-            {/* Preview Modal */}
-            {previewIndex !== null && svgResults[previewIndex] && (
-                <div
-                    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-                    onClick={closePreview}
-                >
-                    <div
-                        className="relative max-w-[90vw] max-h-[90vh] bg-white rounded-lg overflow-auto"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-                            <h4 className="font-medium">
-                                {tTools('pdfToSvg.previewPage') || 'Page'} {svgResults[previewIndex].pageNumber}
-                            </h4>
-                            <div className="flex items-center gap-2">
-                                <DownloadButton
-                                    file={svgResults[previewIndex].blob}
-                                    filename={`${file?.file.name.replace(/\.pdf$/i, '')}_page_${svgResults[previewIndex].pageNumber}.svg`}
-                                    variant="secondary"
-                                    size="sm"
-                                />
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={closePreview}
-                                >
-                                    ✕
-                                </Button>
-                            </div>
-                        </div>
-                        <div
-                            className="p-4"
-                            dangerouslySetInnerHTML={{ __html: svgResults[previewIndex].svg.replace(/<\?xml[^>]*\?>/, '') }}
-                        />
-                    </div>
-                </div>
-            )}
+            <Dialog open={previewIndex !== null} onOpenChange={open => { if (!open) closePreview(); }}>
+                <DialogContent dir={direction} showCloseButton={false} className="sm:max-w-4xl" onCloseAutoFocus={event => { event.preventDefault(); previewTriggerRef.current?.focus(); }}>
+                    <DialogHeader><DialogTitle className="pe-8">{tTools('pdfToSvg.previewPage')} {previewIndex !== null && svgResults[previewIndex]?.pageNumber}</DialogTitle><DialogDescription>{file?.file.name}</DialogDescription></DialogHeader>
+                    <DialogClose asChild><Button variant="ghost" size="icon-sm" aria-label={t('buttons.close')} className="absolute end-3 top-3"><X aria-hidden="true" /></Button></DialogClose>
+                    {previewIndex !== null && svgResults[previewIndex] && <>
+                        <div className="max-h-[65dvh] overflow-auto rounded-md border bg-white p-4 text-black" dangerouslySetInnerHTML={{ __html: svgResults[previewIndex].svg.replace(/<\?xml[^>]*\?>/, '') }} />
+                        <DownloadButton file={svgResults[previewIndex].blob} filename={`${file?.file.name.replace(/\.pdf$/i, '')}_page_${svgResults[previewIndex].pageNumber}.svg`} variant="secondary" size="sm" />
+                    </>}
+                </DialogContent>
+            </Dialog>
 
             {/* Success Message */}
             {status === 'complete' && result && (
-                <div
-                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-                    role="status"
-                >
-                    <p className="text-sm font-medium">
-                        {tTools('pdfToSvg.successMessage') || 'PDF converted to SVG successfully! Click on thumbnails to preview or download individual files.'}
-                    </p>
-                </div>
+                <Alert role="status"><CheckCircle2 aria-hidden="true" /><AlertTitle>{t('status.complete')}</AlertTitle><AlertDescription>{tTools('pdfToSvg.successMessage')}</AlertDescription></Alert>
             )}
         </div>
     );
