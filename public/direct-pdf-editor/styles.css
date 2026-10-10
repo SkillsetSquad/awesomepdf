@@ -8,27 +8,6 @@
 :root,
 #text-editor-app {
   /* Default: Modern Clean Light Theme */
-  --ecbg: #f8fafc;
-  --ecpanel: #ffffff;
-  --ecpanel2: #f1f5f9;
-  --ecpanel-hover: #e2e8f0;
-  --ecline: #e2e8f0;
-  --ectext: #0f172a;
-  --ecmuted: #64748b;
-  --ecaccent: #2563eb;
-  --ecaccent-hover: #1d4ed8;
-  --ecaccent-light: rgba(37, 99, 235, 0.08);
-  --ecaccent-border: rgba(37, 99, 235, 0.35);
-  --ecstage: #f1f5f9;
-  --ecborder: #e2e8f0;
-  --ecshadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --ecshadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --ecshadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-  --ecshadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --ecradius-sm: 6px;
-  --ecradius-md: 8px;
-  --ecradius-lg: 12px;
-  --ecradius-full: 9999px;
   
   position: fixed;
   inset: 0;
@@ -49,23 +28,6 @@
 html.dark #text-editor-app,
 #text-editor-app.dark {
   color-scheme: dark;
-  --ecbg: #090d16;
-  --ecpanel: #0f172a;
-  --ecpanel2: #1e293b;
-  --ecpanel-hover: #334155;
-  --ecline: #334155;
-  --ectext: #f8fafc;
-  --ecmuted: #94a3b8;
-  --ecaccent: #3b82f6;
-  --ecaccent-hover: #60a5fa;
-  --ecaccent-light: rgba(59, 130, 246, 0.15);
-  --ecaccent-border: rgba(59, 130, 246, 0.4);
-  --ecstage: #020617;
-  --ecborder: #334155;
-  --ecshadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --ecshadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --ecshadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --ecshadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
 }
 #text-editor-app[hidden] {
   display: none;
@@ -83,27 +45,6 @@ html.dark #text-editor-app,
   border-bottom: 1px solid var(--ecline);
   flex: 0 0 auto;
   flex-wrap: wrap;
-}
-#text-editor-app .btn {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  user-select: none;
-}
-#text-editor-app .btn:hover { background: var(--ecpanel-hover); }
-#text-editor-app .btn:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-#text-editor-app .btn.big {
-  padding: 10px 20px;
-  font-size: 15px;
-  background: var(--ecaccent);
-  border-color: var(--ecaccent);
 }
 #text-editor-app .sep {
   width: 1px;
@@ -131,39 +72,6 @@ html.dark #text-editor-app,
   border-radius: 6px;
   overflow: hidden;
 }
-#text-editor-app .segmented button {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: none;
-  border-right: 1px solid var(--ecline);
-  padding: 4px 10px;
-  cursor: pointer;
-  font-size: 12px;
-}
-#text-editor-app .segmented button:last-child {
-  border-right: none;
-}
-#text-editor-app .segmented select {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: none;
-  border-right: 1px solid var(--ecline);
-  padding: 0 6px;
-  font: inherit;
-  cursor: pointer;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-#text-editor-app .segmented select:hover {
-  background: var(--ecpanel);
-}
-#text-editor-app .segmented button.on {
-  background: var(--ecaccent);
-}
-#text-editor-app .segmented.small button {
-  padding: 3px 8px;
-}
 
 #text-editor-app #findbar[hidden],
 #text-editor-app #spellbar[hidden] {
@@ -177,14 +85,6 @@ html.dark #text-editor-app,
   padding: 6px 10px;
   background: var(--ecpanel);
   border-bottom: 1px solid var(--ecline);
-}
-#text-editor-app #spellbar input {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  padding: 4px 8px;
-  width: 200px;
 }
 #text-editor-app #spellWord {
   font-weight: 600;
@@ -204,19 +104,6 @@ html.dark #text-editor-app,
   padding: 6px 10px;
   background: var(--ecpanel);
   border-bottom: 1px solid var(--ecline);
-}
-#text-editor-app #findbar input[type='text'],
-#text-editor-app #findbar input:not([type]) {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  padding: 4px 8px;
-  width: 200px;
-}
-#text-editor-app .chk {
-  color: var(--ecmuted);
-  font-size: 12px;
 }
 
 #text-editor-app #main {
@@ -391,14 +278,6 @@ html.dark #text-editor-app,
   align-items: center;
   margin-bottom: 10px;
 }
-#text-editor-app #inspector select {
-  flex: 1;
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  padding: 4px;
-}
 #text-editor-app .num {
   width: 56px;
   background: var(--ecpanel2);
@@ -425,18 +304,6 @@ html.dark #text-editor-app,
   border: 1px solid var(--ecline);
   border-radius: 6px;
   background: none;
-}
-#text-editor-app .toggles button {
-  width: 34px;
-  height: 28px;
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  cursor: pointer;
-}
-#text-editor-app .toggles button.on {
-  background: var(--ecaccent);
 }
 #text-editor-app #inspector hr {
   border: none;
@@ -469,28 +336,6 @@ html.dark #text-editor-app,
   z-index: 50;
 }
 
-#text-editor-app .docname {
-  margin-left: 10px;
-  padding: 3px 10px;
-  max-width: 320px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  background: transparent;
-  border: 1px solid rgba(156, 163, 175, 0.4);
-  border-radius: 999px;
-  font:
-    12px/1.4 -apple-system,
-    system-ui,
-    sans-serif;
-  color: inherit;
-  opacity: 0.85;
-  cursor: pointer;
-}
-#text-editor-app .docname:hover {
-  opacity: 1;
-}
-
 #text-editor-app .textsel {
   position: absolute;
   background: var(--ecaccent-light);
@@ -520,45 +365,10 @@ html.dark #text-editor-app,
   align-items: center;
   gap: 4px;
 }
-#text-editor-app .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 30px;
-  padding: 0 10px;
-}
-#text-editor-app .btn.icon {
-  width: 30px;
-  padding: 0;
-}
-#text-editor-app .btn:focus-visible,
-#text-editor-app .segmented button:focus-visible {
-  outline: 2px solid var(--ecaccent);
-  outline-offset: 1px;
-}
-#text-editor-app .btn.dirty::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f59e0b;
-  flex: 0 0 auto;
-}
 #text-editor-app #toolbar {
   padding: 8px 12px;
   gap: 6px;
   row-gap: 6px;
-}
-#text-editor-app .segmented button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 30px;
-}
-#text-editor-app .segmented.small button {
-  height: 26px;
-  padding: 0 8px;
 }
 #text-editor-app .barlead {
   color: var(--ecmuted);
@@ -567,27 +377,6 @@ html.dark #text-editor-app,
 #text-editor-app #findbar,
 #text-editor-app #spellbar {
   padding: 8px 12px;
-}
-#text-editor-app #toolbar select,
-#text-editor-app #findbar input,
-#text-editor-app #spellbar input {
-  height: 30px;
-}
-#text-editor-app #toolbar > select {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  padding: 0 6px;
-}
-#text-editor-app .chk {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  user-select: none;
-}
-#text-editor-app .chk input[type='checkbox'] {
-  accent-color: var(--ecaccent);
 }
 #text-editor-app #inspector {
   flex-basis: 264px;
@@ -604,25 +393,9 @@ html.dark #text-editor-app,
 #text-editor-app #inspector h2 .ph {
   font-size: 14px;
 }
-#text-editor-app .toggles button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-#text-editor-app .num:focus,
-#text-editor-app #inspector select:focus,
-#text-editor-app #findbar input:focus,
-#text-editor-app #spellbar input:focus {
+#text-editor-app .num:focus {
   outline: none;
   border-color: var(--ecaccent);
-}
-#text-editor-app .docname {
-  height: 26px;
-  display: inline-flex;
-  align-items: center;
-}
-#text-editor-app #empty .btn.big {
-  display: inline-flex;
 }
 #text-editor-app #toast {
   border: 1px solid var(--ecline);
@@ -651,13 +424,6 @@ html.dark #text-editor-app,
 }
 #text-editor-app #main:has(#inspector[hidden]) #viewbar {
   left: 50%;
-}
-#text-editor-app #viewbar .btn {
-  background: transparent;
-  border-color: transparent;
-}
-#text-editor-app #viewbar .btn:hover {
-  background: var(--ecpanel2);
 }
 #text-editor-app #viewbar .sep {
   margin: 0 4px;
@@ -768,19 +534,10 @@ html.dark #text-editor-app,
   border: none;
   border-radius: 50%;
 }
-#text-editor-app #fAlign.grow button {
-  flex: 1 1 0;
-  justify-content: center;
-  height: 32px;
-}
 #text-editor-app .toggles {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
-}
-#text-editor-app .toggles button {
-  width: auto;
-  height: 32px;
 }
 #text-editor-app .rowlabel {
   color: var(--ecmuted);
@@ -833,9 +590,6 @@ html.dark #text-editor-app,
 #text-editor-app #viewbar {
   left: calc((100% - 280px) / 2);
 }
-#text-editor-app #inspector select {
-  min-width: 0;
-}
 #text-editor-app #inspector #fSize {
   flex: 0 0 64px;
 }
@@ -858,16 +612,8 @@ html.dark #text-editor-app,
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
 }
-#text-editor-app #inspector .toggles button {
-  width: 100%;
-  height: 32px;
-}
 #text-editor-app #inspector #fDir.grow {
   display: flex;
-}
-#text-editor-app #inspector #fDir.grow button {
-  flex: 1 1 0;
-  justify-content: center;
 }
 
 #text-editor-app #inspector h2 {
@@ -966,18 +712,6 @@ html.dark #text-editor-app,
   display: flex;
   gap: 6px;
 }
-#text-editor-app .findfield input {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-#text-editor-app #findbar input:not([type='checkbox']) {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  padding: 4px 8px;
-  width: auto;
-}
 #text-editor-app #findbar #replText {
   width: 100%;
 }
@@ -1003,10 +737,6 @@ html.dark #text-editor-app,
 #text-editor-app #docName {
   display: none !important;
 }
-#text-editor-app .btn.on {
-  background: var(--ecaccent);
-  border-color: var(--ecaccent);
-}
 #text-editor-app #viewbar {
   position: relative;
   left: auto;
@@ -1025,10 +755,6 @@ html.dark #text-editor-app,
   backdrop-filter: none;
   flex: 0 0 auto;
   z-index: 4;
-}
-#text-editor-app #viewbar .btn {
-  height: 26px;
-  width: 26px;
 }
 #text-editor-app #viewbar .label {
   font-size: 12px;
@@ -1072,23 +798,6 @@ html.dark #text-editor-app,
 }
 #text-editor-app #zoomHud.show[hidden] {
   visibility: visible;
-}
-#text-editor-app .toolright button[data-tool] {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-#text-editor-app .toolright button[data-tool]:hover { background: var(--ecpanel-hover); }
-#text-editor-app .toolright button[data-tool].on {
-  background: var(--ecaccent);
-  border-color: var(--ecaccent);
 }
 #text-editor-app #docPanel {
   position: absolute;
@@ -1168,39 +877,11 @@ html.dark #text-editor-app,
   width: 14px;
   flex: 0 0 14px;
 }
-#text-editor-app .vbzoomlabel {
-  width: auto;
-  padding: 0 8px;
-  background: transparent;
-  border-color: transparent;
-  gap: 2px;
-}
-#text-editor-app .vbzoomlabel:hover {
-  background: var(--ecpanel2);
-}
-#text-editor-app .vbzoomlabel .label {
-  min-width: 40px;
-  text-align: left;
-  color: var(--ectext);
-}
 #text-editor-app .vbright {
   margin-left: auto;
   display: flex;
   align-items: center;
   gap: 2px;
-}
-#text-editor-app .pagebox {
-  min-width: 40px;
-  padding: 3px 8px;
-  background: var(--ecpanel2);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  color: var(--ectext);
-}
-#text-editor-app .pagebox:focus {
-  border-color: var(--ecaccent);
-  box-shadow: none;
-  background: var(--ecpanel2);
 }
 #text-editor-app #vbRestore {
   position: absolute;
@@ -1268,12 +949,6 @@ html.dark #text-editor-app,
   color: var(--ectext);
   overflow-wrap: anywhere;
 }
-
-#text-editor-app .num::-webkit-inner-spin-button,
-#text-editor-app .num::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 #text-editor-app .num {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -1330,45 +1005,8 @@ html.dark #text-editor-app,
   opacity: 0.4;
   cursor: default;
 }
-
-#text-editor-app #viewbar .btn {
-  width: auto;
-}
-#text-editor-app #viewbar .btn.icon {
-  width: 26px;
-}
-#text-editor-app .vbzoomlabel {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0 8px;
-}
-#text-editor-app .vbzoomlabel .label {
-  min-width: 0;
-}
 #text-editor-app #pageLabel {
   display: none !important;
-}
-#text-editor-app .pagebox {
-  width: 44px;
-  height: 24px;
-  padding: 0 4px;
-  background: var(--ecpanel2);
-  border: 1px solid var(--ecline);
-  border-radius: 6px;
-  color: var(--ectext);
-  font-size: 12px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-#text-editor-app .pagebox::-webkit-inner-spin-button,
-#text-editor-app .pagebox::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-#text-editor-app .pagebox:focus {
-  outline: none;
-  border-color: var(--ecaccent);
 }
 #text-editor-app .pagetotal {
   min-width: 0;
@@ -1407,20 +1045,6 @@ html.dark #text-editor-app,
   background: var(--ecpanel2);
   border-radius: 6px;
 }
-#text-editor-app .zoomcustom input {
-  flex: 1 1 auto;
-  min-width: 0;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--ectext);
-  font-size: 12px;
-}
-#text-editor-app .zoomcustom input::-webkit-inner-spin-button,
-#text-editor-app .zoomcustom input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 #text-editor-app .zoomcustom span {
   color: var(--ecmuted);
   font-size: 12px;
@@ -1435,17 +1059,6 @@ html.dark #text-editor-app,
   }
   #toolbar::-webkit-scrollbar {
     display: none;
-  }
-  #toolbar .btn {
-    height: 36px;
-  }
-  #toolbar .btn.icon,
-  #toolbar .toolright button {
-    width: 36px;
-    height: 36px;
-  }
-  #tools.segmented button {
-    height: 36px;
   }
   #info {
     display: none;
@@ -1480,36 +1093,15 @@ html.dark #text-editor-app,
     gap: 4px;
     padding: 6px 10px calc(6px + env(safe-area-inset-bottom));
   }
-  #viewbar .btn {
-    height: 36px;
-    min-width: 36px;
-  }
-  #viewbar .btn.icon {
-    width: 36px;
-  }
   .vbcenter {
     position: static;
     transform: none;
     margin: 0 auto;
   }
-  .pagebox {
-    width: 52px;
-    height: 32px;
-    font-size: 16px;
-  }
-  #inspector input,
-  #inspector select,
-  #findbar input,
-  #spellbar input {
-    font-size: 16px;
-  }
   #inspector .num,
   #inspector #fSize,
   .field .num {
     width: 72px;
-  }
-  .toggles button {
-    height: 40px;
   }
   #docPanel {
     left: 8px;
@@ -1518,9 +1110,6 @@ html.dark #text-editor-app,
   }
   .ecmenu {
     max-width: calc(100vw - 16px);
-  }
-  .ecmenu button {
-    min-height: 38px;
   }
   #vbRestore {
     bottom: calc(12px + env(safe-area-inset-bottom));
@@ -1638,52 +1227,17 @@ html.dark #text-editor-app,
   #toolbar .sep {
     flex-shrink: 0;
   }
-  #toolbar .btn {
-    height: 38px;
-    padding: 0 12px;
-  }
-  #toolbar .btn.icon,
-  #toolbar .toolright button {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-  }
-  #tools.segmented button {
-    height: 38px;
-  }
   #viewbar {
     padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
   }
   #viewbar > * {
     flex-shrink: 0;
   }
-  #viewbar .btn {
-    height: 38px;
-    min-width: 38px;
-  }
-  #viewbar .btn.icon {
-    width: 38px;
-  }
-  .pagebox {
-    width: 56px;
-    height: 36px;
-  }
 }
 
 @media (max-width: 768px) {
   #text-editor-app #findDone {
     display: none;
-  }
-  #text-editor-app #viewbar button {
-    height: 38px;
-    min-width: 38px;
-  }
-  #text-editor-app #viewbar .btn.icon {
-    width: 38px;
-  }
-  #text-editor-app #viewbar .pagebox {
-    width: 56px;
-    height: 36px;
   }
   #text-editor-app #viewbar #zoomMenuBtn {
     width: auto;
@@ -1696,18 +1250,6 @@ html.dark #text-editor-app,
     padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
     gap: 4px;
     justify-content: space-between;
-  }
-  #text-editor-app #viewbar .btn {
-    height: 38px;
-    min-width: 38px;
-  }
-  #text-editor-app #viewbar .btn.icon {
-    width: 38px;
-  }
-  #text-editor-app #viewbar .pagebox {
-    width: 56px;
-    height: 36px;
-    font-size: 16px;
   }
   #text-editor-app #viewbar .label {
     font-size: 14px;
@@ -1755,21 +1297,12 @@ html.dark #text-editor-app,
 }
 
 @media (max-width: 768px) {
-  #text-editor-app .toolright button[data-tool] {
-    width: 38px;
-    height: 38px;
-  }
-  #text-editor-app #viewbar .label,
-  #text-editor-app #viewbar .vbzoomlabel .label {
+  #text-editor-app #viewbar .label {
     font-size: 15px;
   }
   #text-editor-app #viewbar .pagetotal {
     font-size: 15px;
   }
-}
-
-#text-editor-app .segmented button:last-of-type {
-  border-right: none;
 }
 #text-editor-app .editcaret {
   transition: transform 0.15s ease;
@@ -1937,11 +1470,6 @@ html.dark #text-editor-app,
     outline: none;
     border-color: var(--ecaccent);
   }
-  #text-editor-app .dpageinp::-webkit-inner-spin-button,
-  #text-editor-app .dpageinp::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
   #text-editor-app #main {
     flex-direction: column;
   }
@@ -2057,18 +1585,10 @@ html.dark #text-editor-app,
     display: flex;
     flex: 1 1 auto;
   }
-  #text-editor-app .dslot .segmented button {
-    flex: 1 1 0;
-    height: 44px;
-    justify-content: center;
-  }
   #text-editor-app .dslot .toggles {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 8px;
-  }
-  #text-editor-app .dslot .toggles button {
-    height: 44px;
   }
   #text-editor-app .dslot .swatches {
     gap: 10px;
@@ -2138,41 +1658,6 @@ html.dark #text-editor-app,
   #text-editor-app .dlab {
     font-size: 12px;
     color: var(--ecmuted);
-  }
-  #text-editor-app .dfield input[type='range'] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 28px;
-    background: transparent;
-    margin: 0;
-  }
-  #text-editor-app .dfield input[type='range']::-webkit-slider-runnable-track {
-    height: 4px;
-    border-radius: 2px;
-    background: var(--ecline);
-  }
-  #text-editor-app .dfield input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #fff;
-    border: none;
-    margin-top: -9px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  }
-  #text-editor-app .dfield input[type='range']::-moz-range-track {
-    height: 4px;
-    border-radius: 2px;
-    background: var(--ecline);
-  }
-  #text-editor-app .dfield input[type='range']::-moz-range-thumb {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #fff;
-    border: none;
   }
   #text-editor-app .dscope {
     display: grid;
@@ -2354,16 +1839,6 @@ html.dark #text-editor-app,
   #text-editor-app .dclose {
     cursor: pointer;
   }
-  #text-editor-app #inspector .dslot .segmented button,
-  #text-editor-app #inspector .toggles button {
-    height: 44px;
-  }
-  #text-editor-app #fAlign.grow button {
-    height: 44px;
-  }
-  #text-editor-app #inspector #fDir.grow button {
-    height: 44px;
-  }
   #text-editor-app #inspector #fSize {
     flex: 0 0 84px;
     width: 84px;
@@ -2399,382 +1874,35 @@ html.dark #text-editor-app,
 }
 
 
-/* ==========================================================================
-   PDFCraft Tailored Component Styles
-   ========================================================================== */
 
-/* Top Toolbar */
-#text-editor-app #toolbar {
-  height: 48px;
-  min-height: 48px;
-  padding: 0 16px;
-  gap: 8px;
-  background: var(--ecpanel);
-  border-bottom: 1px solid var(--ecline);
-  box-shadow: var(--ecshadow-sm);
-  z-index: 20;
+/* UI controls use the application's standard shadcn primitives. The remaining
+   styles position the editor panels and PDF overlays without changing page geometry. */
+#text-editor-app {
+  --ecbg: var(--background); --ecpanel: var(--card); --ecpanel2: var(--muted);
+  --ecpanel-hover: var(--accent); --ecline: var(--border); --ecborder: var(--border);
+  --ectext: var(--foreground); --ecmuted: var(--muted-foreground);
+  --ecaccent: var(--primary); --ecaccent-hover: var(--primary);
+  --ecaccent-light: color-mix(in oklch, var(--primary) 10%, transparent);
+  --ecaccent-border: color-mix(in oklch, var(--primary) 30%, transparent);
+  --ecstage: var(--muted); --ecradius-sm: var(--radius-sm); --ecradius-md: var(--radius-md);
+  --ecradius-lg: var(--radius); --ecradius-full: var(--radius);
+  --ecshadow-sm: 0 1px 2px #0000000d; --ecshadow-md: 0 4px 6px #0000001a;
+  --ecshadow-lg: 0 10px 15px #0000001a; --ecshadow-xl: 0 20px 25px #0000001a;
+  font-family: var(--font-sans); font-size: 14px;
 }
-
-/* General Buttons */
-#text-editor-app .btn {
-  height: 32px;
-  padding: 0 12px;
-  background: var(--ecpanel);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: var(--ecradius-md);
-  font-weight: 500;
-  font-size: 13px;
-  transition: all 150ms ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-#text-editor-app .btn:hover {
-  background: var(--ecpanel2);
-  border-color: var(--ecline);
-  color: var(--ectext);
-}
-
-#text-editor-app .btn.icon {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  justify-content: center;
-}
-
-#text-editor-app .btn:focus-visible {
-  outline: 2px solid var(--ecaccent);
-  outline-offset: 1px;
-}
-
-/* Primary Export CTA Button */
-#text-editor-app #save {
-  background: var(--ecaccent) !important;
-  color: #ffffff !important;
-  border-color: var(--ecaccent) !important;
-  font-weight: 600 !important;
-  box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.2) !important;
-}
-
-#text-editor-app #save:hover:not(:disabled) {
-  background: var(--ecaccent-hover) !important;
-  border-color: var(--ecaccent-hover) !important;
-}
-
-#text-editor-app #save:disabled {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
-}
-
-#text-editor-app #save i {
-  color: #ffffff !important;
-}
-
-/* Mode Switcher Segmented Control (iOS/macOS Pills) */
-#text-editor-app #tools.segmented {
-  background: var(--ecpanel2);
-  padding: 3px;
-  border-radius: 9px;
-  border: 1px solid var(--ecline);
-  gap: 2px;
-}
-
-#text-editor-app #tools.segmented button {
-  border: none;
-  background: transparent;
-  color: var(--ecmuted);
-  border-radius: 6px;
-  padding: 4px 12px;
-  font-weight: 500;
-  font-size: 13px;
-  height: 28px;
-  transition: all 150ms ease;
-}
-
-#text-editor-app #tools.segmented button:hover:not(.on) {
-  color: var(--ectext);
-  background: rgba(0, 0, 0, 0.03);
-}
-
-#text-editor-app #tools.segmented button.on {
-  background: var(--ecpanel);
-  color: var(--ecaccent);
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-html.dark #text-editor-app #tools.segmented button.on,
-#text-editor-app.dark #tools.segmented button.on {
-  background: var(--ecpanel);
-  color: var(--ecaccent);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Separator */
-#text-editor-app .sep {
-  width: 1px;
-  height: 20px;
-  background: var(--ecline);
-  margin: 0 4px;
-}
-
-/* Canvas & Stage */
-#text-editor-app #stage {
-  background: var(--ecstage);
-  padding: 32px 24px;
-}
-
-#text-editor-app #pageWrap {
-  background: #ffffff;
-  border-radius: 2px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.12) !important;
-}
-
-/* Interactive Text Boxes */
-#text-editor-app .para-box {
-  border: 1px dashed var(--ecaccent-border);
-  border-radius: 2px;
-  transition: border-color 150ms ease, background-color 150ms ease;
-}
-
-#text-editor-app .para-box:hover {
-  border-color: var(--ecaccent);
-  background-color: var(--ecaccent-light);
-}
-
-#text-editor-app .sel-para {
-  border: 1.5px solid var(--ecaccent);
-  background-color: var(--ecaccent-light);
-}
-
-#text-editor-app .editor > [contenteditable] {
-  outline: 2px solid var(--ecaccent);
-  caret-color: var(--ecaccent);
-}
-
-#text-editor-app .obj-box {
-  border: 2px solid var(--ecaccent);
-}
-
-#text-editor-app .obj-handle {
-  width: 10px;
-  height: 10px;
-  background: #ffffff;
-  border: 2px solid var(--ecaccent);
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Format Inspector Panel */
-#text-editor-app #inspector {
-  background: var(--ecpanel);
-  border-left: 1px solid var(--ecline);
-  padding: 16px;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.02);
-}
-
-#text-editor-app #inspector h2 {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ecmuted);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-#text-editor-app .sect {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ecmuted);
-  margin: 16px 0 8px;
-  padding-top: 12px;
-  border-top: 1px solid var(--ecline);
-}
-
-#text-editor-app #inspector select,
-#text-editor-app .num,
-#text-editor-app .pagebox,
-#text-editor-app #findbar input:not([type='checkbox']),
-#text-editor-app #spellbar input {
-  background: var(--ecpanel);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: var(--ecradius-md);
-  padding: 5px 8px;
-  font-size: 13px;
-  transition: all 150ms ease;
-}
-
-#text-editor-app #inspector select:focus,
-#text-editor-app .num:focus,
-#text-editor-app .pagebox:focus,
-#text-editor-app #findbar input:focus,
-#text-editor-app #spellbar input:focus {
-  outline: none;
-  border-color: var(--ecaccent);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
-}
-
-#text-editor-app .toggles button {
-  background: var(--ecpanel2);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: var(--ecradius-md);
-  transition: all 150ms ease;
-}
-
-#text-editor-app .toggles button:hover {
-  background: var(--ecpanel-hover);
-}
-
-#text-editor-app .toggles button.on {
-  background: var(--ecaccent);
-  color: #ffffff;
-  border-color: var(--ecaccent);
-}
-
-/* Floating Bottom Viewbar (Modern Glass Dock) */
-#text-editor-app #viewbar {
-  position: absolute !important;
-  bottom: 20px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: auto !important;
-  max-width: 90% !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 4px 12px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(226, 232, 240, 0.9) !important;
-  border-radius: var(--ecradius-full) !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-  z-index: 10 !important;
-  gap: 6px !important;
-}
-
-html.dark #text-editor-app #viewbar,
-#text-editor-app.dark #viewbar {
-  background: rgba(15, 23, 42, 0.9) !important;
-  border-color: rgba(51, 65, 85, 0.9) !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
-}
-
-#text-editor-app #main:has(#inspector:not([hidden]):not(.collapsed)) #viewbar {
-  left: calc((100% - 280px) / 2) !important;
-}
-
-#text-editor-app #viewbar .btn {
-  background: transparent;
-  border: none;
-  height: 28px;
-  width: 28px;
-  padding: 0;
-  border-radius: var(--ecradius-full);
-}
-
-#text-editor-app #viewbar .btn:hover {
-  background: var(--ecpanel2);
-}
-
-#text-editor-app #viewbar .vbzoomlabel {
-  width: auto;
-  padding: 0 8px;
-  border-radius: var(--ecradius-full);
-}
-
-#text-editor-app #viewbar .vbcenter {
-  position: static;
-  transform: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Modern Context Bar */
-#text-editor-app #contextbar {
-  background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid var(--ecline) !important;
-  border-radius: var(--ecradius-lg) !important;
-  box-shadow: var(--ecshadow-lg) !important;
-  color: var(--ectext) !important;
-}
-
-html.dark #text-editor-app #contextbar,
-#text-editor-app.dark #contextbar {
-  background: rgba(15, 23, 42, 0.92) !important;
-  border-color: var(--ecline) !important;
-}
-
-/* Find & Replace Panel */
-#text-editor-app #findbar {
-  background: var(--ecpanel);
-  border-right: 1px solid var(--ecline);
-  box-shadow: var(--ecshadow-sm);
-}
-
-#text-editor-app #findbar .findtitle {
-  color: var(--ectext);
-  font-weight: 600;
-}
-
-#text-editor-app #findbar .findhead {
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--ecline);
-}
-
-/* Modern Dropdown Menus */
-#text-editor-app .ecmenu {
-  background: var(--ecpanel) !important;
-  border: 1px solid var(--ecline) !important;
-  border-radius: var(--ecradius-lg) !important;
-  box-shadow: var(--ecshadow-xl) !important;
-  color: var(--ectext) !important;
-}
-
-#text-editor-app .ecmenu-item {
-  color: var(--ectext) !important;
-  border-radius: var(--ecradius-md) !important;
-}
-
-#text-editor-app .ecmenu-item:hover {
-  background: var(--ecpanel2) !important;
-}
-
-#text-editor-app .ecmenu-item.active {
-  color: var(--ecaccent) !important;
-  background: var(--ecaccent-light) !important;
-}
-
-/* Document Properties Modal */
-#text-editor-app #docModalOverlay {
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(4px);
-}
-
-#text-editor-app #docModal {
-  background: var(--ecpanel);
-  border: 1px solid var(--ecline);
-  border-radius: 16px;
-  box-shadow: var(--ecshadow-xl);
-}
-
-/* Toast */
-#text-editor-app #toast {
-  background: var(--ecpanel);
-  color: var(--ectext);
-  border: 1px solid var(--ecline);
-  border-radius: var(--ecradius-full);
-  box-shadow: var(--ecshadow-lg);
-  font-weight: 500;
-}
+#text-editor-app [hidden] { display: none !important; }
+#text-editor-app .segmented, #text-editor-app .toggles { border: 0; border-radius: 0; gap: 4px; overflow: visible; }
+#text-editor-app [data-slot='button'].on { background: var(--accent); color: var(--accent-foreground); }
+#text-editor-app #toolbar, #text-editor-app #contextbar { flex-wrap: wrap; min-height: 48px; height: auto; padding: 8px; gap: 4px; box-shadow: none; }
+#text-editor-app #viewbar { flex-wrap: wrap; gap: 4px; background: var(--card); border-top: 1px solid var(--border); border-radius: 0; box-shadow: none; padding: 8px; }
+#text-editor-app #empty { max-width: 28rem; margin: auto; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+#text-editor-app #empty h2 { font-size: 20px; font-weight: 600; }
+#text-editor-app #empty p { margin-block: 12px; color: var(--muted-foreground); }
+#text-editor-app .row > [data-slot='native-select-wrapper'] { flex: 1; width: 100%; }
+#text-editor-app [data-slot='native-select-wrapper']:has(select[hidden]) { display: none; }
+#text-editor-app .docname { min-width: 0; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; }
+#text-editor-app #pageInput { width: 4rem; }
+#text-editor-app #toast { display: none; }
+#text-editor-app #main::before { display: none; }
+#text-editor-app #stage { background: var(--muted); }
+#text-editor-app #empty p { margin-block: 0; }

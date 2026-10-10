@@ -255,7 +255,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
           <TabsContent value="direct"><div className="relative overflow-hidden rounded-lg border bg-card">
               <iframe
                 ref={iframeRef}
-                src={withBasePath(`/direct-pdf-editor/index.html?lang=${encodeURIComponent(locale || 'en')}`)}
+                src={withBasePath(`/direct-pdf-editor/?lang=${encodeURIComponent(locale || 'en')}`)}
                 className="w-full h-[820px] border-0"
                 title="PDF Editor"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
