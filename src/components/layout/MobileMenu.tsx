@@ -6,6 +6,8 @@ import { Menu, X, Github } from 'lucide-react';
 import { type Locale, localeConfig } from '@/lib/i18n/config';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { UpdateCheckButton } from '@/components/common/UpdateCheckButton';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetClose } from '@/components/ui/sheet';
 
@@ -63,6 +65,10 @@ export function MobileMenu({ locale }: MobileMenuProps) {
                 <Link href={`/${locale}/${item}`}>{tCommon(`navigation.${item}`)}</Link>
               </Button></SheetClose>
             ))}
+            <div className="flex items-center justify-between border-t py-2">
+              <span className="px-3 text-sm">{tCommon('theme.toggle')}</span><ThemeToggle />
+            </div>
+            <div className="px-3 py-2 sm:hidden"><UpdateCheckButton /></div>
             <SheetClose asChild><Button variant="ghost" className="justify-start" asChild>
               <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer"><Github aria-hidden="true" />GitHub</a>
             </Button></SheetClose>
