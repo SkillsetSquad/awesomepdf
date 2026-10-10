@@ -611,7 +611,7 @@ export function LegacyAnnotatorTool({
                 colorRow.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:8px;';
                 
                 const colorLabel = document.createElement('span');
-                {t('editPdf.strokeColorLabel')}
+                colorLabel.textContent = ${JSON.stringify(t('editPdf.strokeColorLabel'))};
                 
                 const colorPicker = document.createElement('input');
                 colorPicker.type = 'color';
@@ -655,7 +655,7 @@ export function LegacyAnnotatorTool({
                   
                   const fillLabel = document.createElement('label');
                   fillLabel.htmlFor = 'pdfcraft-fill-enabled';
-                  {t('editPdf.fillColorLabel')}
+                  fillLabel.textContent = ${JSON.stringify(t('editPdf.fillColorLabel'))};
                   fillLabel.style.cssText = 'cursor:pointer; user-select:none;';
 
                   leftPart.appendChild(fillCheckbox);
