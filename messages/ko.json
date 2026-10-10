@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "PDFCraft - 전문 PDF 도구",
+      "title": "AwesomePDF - 전문 PDF 도구",
       "description": "무료, 비공개, 브라우저 기반. 서버에 업로드하지 않고 온라인으로 PDF 파일을 병합하고 편집하세요."
     },
     "tools": {
@@ -10,7 +10,7 @@
     },
     "about": {
       "title": "회사 소개",
-      "description": "PDFCraft 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
+      "description": "AwesomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
     },
     "faq": {
       "title": "자주 묻는 질문",
@@ -18,11 +18,11 @@
     },
     "privacy": {
       "title": "개인정보 보호정책",
-      "description": "PDFCraft 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
+      "description": "AwesomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
     },
     "contact": {
       "title": "문의하기",
-      "description": "PDFCraft 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
+      "description": "AwesomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
     },
     "keywords": {
       "pdfTools": "PDF 도구",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "PDFCraft",
+    "brand": "AwesomePDF",
     "tagline": "전문 PDF 도구 - 무료 & 프라이빗",
     "navigation": {
       "home": "집",
@@ -85,8 +85,8 @@
       "loading": "로딩 중..."
     },
     "footer": {
-      "footer": "© 2025 PDFCraft. All rights reserved.",
-      "copyright": "© {year} PDFCraft. All rights reserved.",
+      "footer": "© 2025 AwesomePDF. All rights reserved.",
+      "copyright": "© {year} AwesomePDF. All rights reserved.",
       "privacyBadge": "100% 프라이빗 - 파일이 기기를 떠나지 않습니다",
       "madeWith": "<Heart /> 및 <Nextjs />로 제작"
     },
@@ -1048,7 +1048,7 @@
         },
         "offline": {
           "question": "인터넷이 연결되지 않은 상태에서도 작동하나요?",
-          "answer": "현재로서는 PDFCraft 웹 앱을 처음 로드하기 위해 네트워크 연결이 필요합니다. 하지만 앱이 한 번 완전히 로드되면, 실제 PDF 변환 및 처리 작업은 모두 로컬에서 수행되므로 오프라인에서도 진행할 수 있습니다."
+          "answer": "현재로서는 AwesomePDF 웹 앱을 처음 로드하기 위해 네트워크 연결이 필요합니다. 하지만 앱이 한 번 완전히 로드되면, 실제 PDF 변환 및 처리 작업은 모두 로컬에서 수행되므로 오프라인에서도 진행할 수 있습니다."
         }
       },
       "languages": {
@@ -1273,7 +1273,7 @@
   "workflow": {
     "title": "PDF 워크플로우 편집기",
     "subtitle": "도구를 연결하여 맞춤형 PDF 처리 파이프라인 생성",
-    "metaTitle": "PDF 워크플로 빌더 - PDFCraft",
+    "metaTitle": "PDF 워크플로 빌더 - AwesomePDF",
     "metaDescription": "도구를 시각적으로 연결하여 맞춤형 PDF 처리 파이프라인을 생성하세요. 워크플로우를 구축, 저장 및 재사용하세요.",
     "toolbox": "도구 상자",
     "dragToAdd": "워크플로우에 도구를 드래그하여 추가",

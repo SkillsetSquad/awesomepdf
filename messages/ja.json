@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "PDFCraft - プロフェッショナルPDFツール",
+      "title": "AwesomePDF - プロフェッショナルPDFツール",
       "description": "無料、プライベート、ブラウザベース。サーバーにアップロードせずにPDFファイルをオンラインで結合・編集。"
     },
     "tools": {
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "PDFCraft",
+    "brand": "AwesomePDF",
     "tagline": "プロフェッショナルPDFツール - 無料＆プライベート",
     "navigation": {
       "home": "家",
@@ -85,8 +85,8 @@
       "loading": "読み込み中..."
     },
     "footer": {
-      "footer": "© 2025 PDFCraft. All rights reserved.",
-      "copyright": "© {year} PDFCraft. All rights reserved.",
+      "footer": "© 2025 AwesomePDF. All rights reserved.",
+      "copyright": "© {year} AwesomePDF. All rights reserved.",
       "privacyBadge": "100%プライベート - ファイルはデバイスから離れません",
       "madeWith": "<Heart /> と <Nextjs /> で作成"
     },
@@ -928,7 +928,7 @@
       "errorTitle": "更新を確認できませんでした",
       "retry": "再試行",
       "latest": "最新バージョンです！",
-      "latestDesc": "PDFCraft は現在最新バージョン ({version}) です。",
+      "latestDesc": "AwesomePDF は現在最新バージョン ({version}) です。",
       "available": "新しいバージョンが利用可能です",
       "currentVersion": "現在のバージョン",
       "released": "リリース日",
@@ -1085,7 +1085,7 @@
       },
       "fast": {
         "title": "高速＆高効率",
-        "description": "最新のウェブ技術を駆使した PDFCraft は、ファイルのアップロードやダウンロードの待ち時間を発生させず、超高速なPDF処理を実現します。"
+        "description": "最新のウェブ技術を駆使した AwesomePDF は、ファイルのアップロードやダウンロードの待ち時間を発生させず、超高速なPDF処理を実現します。"
       },
       "accessible": {
         "title": "どこからでもアクセス可能",
@@ -1273,7 +1273,7 @@
   "workflow": {
     "title": "PDFワークフローエディター",
     "subtitle": "ツールを接続してカスタムPDF処理パイプラインを作成",
-    "metaTitle": "PDF ワークフロー ビルダー - PDFCraft",
+    "metaTitle": "PDF ワークフロー ビルダー - AwesomePDF",
     "metaDescription": "ツールを視覚的に接続してカスタムPDF処理パイプラインを作成。ワークフローを構築、保存、再利用。",
     "toolbox": "ツールボックス",
     "dragToAdd": "ワークフローにツールをドラッグして追加",

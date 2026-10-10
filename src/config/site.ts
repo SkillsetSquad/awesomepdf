@@ -2,15 +2,15 @@
  * Site configuration
  */
 export const siteConfig = {
-  name: 'PDFCraft',
+  name: 'AwesomePDF',
   description: 'Professional PDF Tools - Free, Private & Browser-Based. Merge, split, compress, convert, and edit PDF files online without uploading to servers.',
-  url: 'https://pdfcraft.devtoolcafe.com',
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://pdfcraft.devtoolcafe.com').replace(/\/+$/, ''),
   ogImage: '/images/og-image.png',
   links: {
-    github: 'https://github.com/PDFCraftTool/pdfcraft',
-    twitter: 'https://twitter.com/pdfcraft',
+    github: 'https://github.com/SkillsetSquad/awesomepdf',
+    upstream: 'https://github.com/PDFCraftTool/pdfcraft',
   },
-  creator: 'PDFCraft Team',
+  creator: 'Skillset Squad Private Limited',
   keywords: [
     'PDF tools',
     'PDF editor',
@@ -25,9 +25,8 @@ export const siteConfig = {
   ],
   // SEO-related settings
   seo: {
-    titleTemplate: '%s | PDFCraft',
-    defaultTitle: 'PDFCraft - Professional PDF Tools',
-    twitterHandle: '@pdfcraft',
+    titleTemplate: '%s | AwesomePDF',
+    defaultTitle: 'AwesomePDF - Professional PDF Tools',
     locale: 'en_US',
   },
 };
