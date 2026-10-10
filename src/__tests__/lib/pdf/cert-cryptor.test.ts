@@ -6,6 +6,14 @@ import {
 } from '@/lib/pdf/processors/cert-cryptor';
 import { PDFErrorCode } from '@/types/pdf';
 
+vi.mock('@/lib/pdf/local-certificate-signer', () => ({
+  createLocalSigningCertificate: vi.fn().mockResolvedValue(new Uint8Array([1, 2, 3])),
+  withLocalCertificateSigner: async (operation: (engine: unknown) => Promise<unknown>) => operation({
+    Crypto: { Mode: { AES_256: 3 } },
+    PdfSigner: class { sign = vi.fn().mockResolvedValue(new Uint8Array([4, 4, 4])); },
+  }),
+}));
+
 // Mock loader
 vi.mock('@/lib/pdf/loader', () => {
   const mockPdfName = {

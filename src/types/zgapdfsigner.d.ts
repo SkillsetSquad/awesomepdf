@@ -1,4 +1,14 @@
 declare module 'zgapdfsigner' {
+  export namespace Crypto {
+    enum Mode { RC4_40, RC4_128, AES_128, AES_256 }
+  }
+  export interface EncryptOption {
+    mode: Crypto.Mode;
+    permissions?: string[];
+    userpwd?: string;
+    ownerpwd?: string;
+    pubkeys?: { c?: ArrayBuffer | Uint8Array; p?: string[] }[];
+  }
   export interface SignOption {
     p12cert: ArrayBuffer;
     pwd: string;
@@ -15,6 +25,6 @@ declare module 'zgapdfsigner' {
 
   export class PdfSigner {
     constructor(options: Record<string, unknown>);
-    sign(pdfBytes: Uint8Array): Promise<ArrayBuffer>;
+    sign(pdf: Uint8Array | import('pdf-lib').PDFDocument, encryption?: EncryptOption): Promise<Uint8Array>;
   }
 }
