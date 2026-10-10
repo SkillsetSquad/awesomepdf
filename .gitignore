@@ -86,3 +86,9 @@ public/libreoffice-wasm/soffice.data.bin
 src-tauri/target/
 
 yarn.lock
+# Generated source distribution and verbatim license notices
+public/source-code.zip
+public/source-code.zip.tmp
+public/LICENSE.txt
+public/THIRD_PARTY_NOTICES.txt
+public/source-manifest.json

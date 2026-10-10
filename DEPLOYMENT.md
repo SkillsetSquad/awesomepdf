@@ -679,3 +679,11 @@ After deploying, test:
 - [ ] Page refresh doesn't cause 404 errors
 - [ ] PWA can be installed
 - [ ] Performance is acceptable (< 3s first load)
+
+## AwesomePDF source and canonical origin
+
+Set `NEXT_PUBLIC_SITE_URL` to the production origin when building AwesomePDF. Until it is configured, canonical tags preserve the existing `https://pdfcraft.devtoolcafe.com` origin; a new AwesomePDF domain has not been supplied. Keep the existing base-path and WASM/security-header configuration for your host.
+
+The `prebuild` hook generates `public/source-code.zip`, `LICENSE.txt`, `THIRD_PARTY_NOTICES.txt` and a SHA-256 source manifest from the actual build inputs. They are exported alongside the site, so users can download the source for that deployed version even when its Git commit has not been pushed. The archive includes the lockfile, build scripts, original license and bundled assets. It excludes dependencies, Git history, local environment files and generated build output. These generated distributions are intentionally not committed. Docker builds without `.git` use the source and build inputs copied into the builder instead.
+
+Serve these generated files with the static export. Keep `/[locale]/open-source/` reachable. `SOURCE_REVISION` may optionally label Git-less builds with a revision; the download always contains the actual build source. The canonical-origin setting must be passed at build time, including in Docker via its build argument.
