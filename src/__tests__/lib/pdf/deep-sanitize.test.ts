@@ -19,6 +19,7 @@ vi.mock('@/lib/pdf/loader', () => {
   const mockPdfLib = {
     PDFName: mockPdfName,
     PDFString: mockPdfString,
+    PDFDict: class {},
     PDFDocument: {
       load: vi.fn().mockImplementation(async () => {
         // Tracker maps for testing deletion
@@ -47,6 +48,7 @@ vi.mock('@/lib/pdf/loader', () => {
 
         const mockPage = {
           node: {
+            Resources: () => mockResources,
             has: vi.fn().mockReturnValue(true),
             get: vi.fn().mockImplementation((pdfName) => {
               if (pdfName.name === 'Resources') {
@@ -63,7 +65,7 @@ vi.mock('@/lib/pdf/loader', () => {
         return {
           getPageCount: () => 2,
           catalog: mockCatalog,
-          getInfoDict: () => mockInfoDict,
+          context: { trailerInfo: {}, lookupMaybe: () => mockInfoDict },
           getPage: vi.fn().mockImplementation(() => mockPage),
           save: vi.fn().mockResolvedValue(new Uint8Array([9, 9, 9])),
           // Custom hooks for assertions

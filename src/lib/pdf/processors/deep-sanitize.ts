@@ -53,7 +53,7 @@ export class DeepSanitizeProcessor extends BasePDFProcessor {
       this.updateProgress(20, 'Parsing PDF binary object tree...');
       const arrayBuffer = await file.arrayBuffer();
       // Load PDF document (allowing decryption)
-      const pdfDoc = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      const pdfDoc = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true, updateMetadata: false });
       const totalPages = pdfDoc.getPageCount();
 
       const findings: string[] = [];
@@ -71,7 +71,7 @@ export class DeepSanitizeProcessor extends BasePDFProcessor {
         }
 
         // Wipe standard Info dictionary
-        const infoDict = (pdfDoc as any).getInfoDict();
+        const infoDict = pdfDoc.context.lookupMaybe(pdfDoc.context.trailerInfo.Info, pdfLib.PDFDict);
         if (infoDict) {
           infoDict.set(pdfLib.PDFName.of('Title'), pdfLib.PDFString.of(''));
           infoDict.set(pdfLib.PDFName.of('Author'), pdfLib.PDFString.of(''));
@@ -120,9 +120,13 @@ export class DeepSanitizeProcessor extends BasePDFProcessor {
         const page = pdfDoc.getPage(i);
         
         // Remove OCGs from individual page resource dictionary
-        const resources = page.node.get(pdfLib.PDFName.of('Resources')) as any;
-        if (resources && resources.has && resources.has(pdfLib.PDFName.of('Properties'))) {
-          resources.delete(pdfLib.PDFName.of('Properties'));
+        if (sanitizeOptions.stripOcgWatermarks) {
+          const resources = page.node.Resources();
+          if (resources?.has(pdfLib.PDFName.of('Properties'))) {
+            resources.delete(pdfLib.PDFName.of('Properties'));
+            const finding = 'OCProperties layers (often host invisible watermarks)';
+            if (!findings.includes(finding)) findings.push(finding);
+          }
         }
 
         if (sanitizeOptions.stripAnnotations) {
