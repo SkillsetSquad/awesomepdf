@@ -4,7 +4,7 @@ import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Check as UICheck, ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, Copy as UICopy, Download as UIDownload, FilePlus2 as UIFilePlus2, Redo2 as UIRedo2, RefreshCw as UIRefreshCw, RotateCcw as UIRotateCcw, RotateCw as UIRotateCw, Trash2 as UITrash2, Undo2 as UIUndo2, X as UIX } from 'lucide-react';
+import { Check as UICheck, Copy as UICopy, Download as UIDownload, FilePlus2 as UIFilePlus2, Redo2 as UIRedo2, RefreshCw as UIRefreshCw, RotateCcw as UIRotateCcw, RotateCw as UIRotateCw, Trash2 as UITrash2, Undo2 as UIUndo2 } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
 
@@ -18,7 +18,8 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
+import { X, ArrowUp, ArrowDown, Square, Loader2 } from 'lucide-react';
+import type { PDFDocument } from 'pdf-lib';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
@@ -368,7 +369,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       const newPdf = await pdfLib.PDFDocument.create();
 
       // Load all source files
-      const loadedPdfs: any[] = [];
+      const loadedPdfs: PDFDocument[] = [];
       for (const sf of sourceFiles) {
         const arrayBuffer = await sf.file.arrayBuffer();
         const pdf = await pdfLib.PDFDocument.load(arrayBuffer);
@@ -394,7 +395,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       await saveBlobFile(blob, 'selected_pages.pdf');
 
       setStatus('idle');
-    } catch (err) {
+    } catch {
       setError('Failed to download selected pages');
       setStatus('error');
     }
@@ -428,7 +429,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       setProgressMessage('Loading source files...');
 
       // Load all source PDFs
-      const loadedPdfs: any[] = [];
+      const loadedPdfs: PDFDocument[] = [];
       for (const sf of sourceFiles) {
         const arrayBuffer = await sf.file.arrayBuffer();
         const pdf = await pdfLib.PDFDocument.load(arrayBuffer);
@@ -491,12 +492,6 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
     setProgress(0);
   }, []);
 
-  const formatSize = (bytes: number): string => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  };
-
   const isProcessing = status === 'processing';
   const canExport = pagePreviews.length > 0 && !isProcessing;
   const selectedCount = pagePreviews.filter(p => p.selected).length;
@@ -541,7 +536,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 size="sm"
                 onClick={handleUndo}
                 disabled={!canUndo || isProcessing}
-                title="Undo"
+                title={tTools('pdfMultiTool.undo')}
               >
                 <UIUndo2 className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.undo') || 'Undo'}
@@ -551,7 +546,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 size="sm"
                 onClick={handleRedo}
                 disabled={!canRedo || isProcessing}
-                title="Redo"
+                title={tTools('pdfMultiTool.redo')}
               >
                 <UIRedo2 className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.redo') || 'Redo'}
@@ -561,7 +556,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 size="sm"
                 onClick={handleReset}
                 disabled={isProcessing}
-                title="Reset"
+                title={tTools('pdfMultiTool.reset')}
               >
                 <UIRefreshCw className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.reset') || 'Reset'}
@@ -616,11 +611,10 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
             {/* Delete Action */}
             <Button
-              variant="outline"
+              variant="destructive"
               size="sm"
               onClick={handleDeleteSelected}
               disabled={selectedCount === 0 || isProcessing}
-              className="!text-red-600 !border-red-200 hover:!bg-red-50 dark:!border-red-800 dark:hover:!bg-red-900/20"
             >
               <UITrash2 className="w-4 h-4 mr-1" aria-hidden="true" />
               {tTools('pdfMultiTool.delete') || 'Delete'}
@@ -631,8 +625,8 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
             {/* Info */}
             <div className="text-sm text-muted-foreground">
-              {totalPages} {totalPages === 1 ? 'page' : 'pages'}
-              {selectedCount > 0 && ` • ${selectedCount} selected`}
+              {totalPages} {tTools('nUpPdf.pagesLabel')}
+              {selectedCount > 0 && ` • ${selectedCount} ${t('accessibility.selected')}`}
             </div>
 
             {/* Clear All */}
@@ -645,126 +639,47 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
           {isLoadingPreviews ? (
             <div className="flex items-center justify-center py-16">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <Loader2 className="size-6 animate-spin" aria-hidden="true" />
                 <p className="text-sm text-muted-foreground">
                   {t('status.loading') || 'Loading previews...'}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 max-h-[500px] overflow-y-auto p-1">
-              {pagePreviews.map((page, index) => (
-                <div
+            <div className="grid max-h-[600px] grid-cols-2 gap-3 overflow-y-auto p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+              {pagePreviews.map((page, index) => {
+                const pageLabel = t('accessibility.pageOf', { current: index + 1, total: totalPages });
+                return <Card
                   key={`page-${index}`}
                   draggable={!isProcessing}
-                  onDragStart={(e) => handleDragStart(e, index)}
-                  onDragOver={(e) => handleDragOver(e, index)}
-                  onDrop={(e) => handleDrop(e, index)}
+                  onDragStart={(event) => handleDragStart(event, index)}
+                  onDragOver={(event) => handleDragOver(event, index)}
+                  onDrop={(event) => handleDrop(event, index)}
                   onDragEnd={handleDragEnd}
-                  className={` group relative rounded-lg cursor-grab transition-all duration-200 ${draggedIndex === index ? 'opacity-50 scale-95' : ''}  ${dragOverIndex === index ? 'ring-2 ring-primary ring-offset-2' : ''}  `}
+                  className={`min-w-0 gap-2 p-2 ${draggedIndex === index ? 'opacity-50' : ''} ${dragOverIndex === index ? 'ring-2 ring-ring' : ''}`}
                 >
-                  {/* Page Card */}
-                  <div
+                  <Button variant="outline" disabled={isProcessing} aria-label={pageLabel} aria-pressed={page.selected}
                     onClick={() => handleToggleSelect(index)}
-                    className={` relative aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer ${page.selected
-                        ? 'border-primary ring-2 ring-primary/30'
-                        : 'border-border hover:border-primary/50'
-                      }  `}
-                  >
-                    {page.thumbnail ? (
-                      <img
-                        src={page.thumbnail}
-                        alt={`Page ${index + 1}`}
-                        className="w-full h-full object-contain bg-white dark:bg-slate-800"
-                        style={{ transform: `rotate(${page.rotation}deg)` }}
-                        draggable={false}
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-muted flex items-center justify-center">
-                        <span className="text-lg font-medium text-muted-foreground">
-                          {page.sourceFileIndex === -1 ? '◻' : page.originalPageNumber}
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Selection indicator */}
-                    {page.selected && (
-                      <div className="absolute top-2 left-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
-                        <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                      </div>
-                    )}
-
-                    {/* Move buttons */}
-                    <div className="absolute bottom-1 left-1 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button variant="ghost" size="icon-sm"
-                        type="button"
-                        onClick={(e) => { e.stopPropagation(); handleMovePage(index, index - 1); }}
-                        disabled={index === 0 || isProcessing}
-                        className="flex items-center justify-center"
-                        aria-label="Move left"
-                        title="Move left"
-                      >
-                        <UIChevronLeft className="w-3 h-3 text-foreground" aria-hidden="true" />
-                      </Button>
-                      <Button variant="ghost" size="icon-sm"
-                        type="button"
-                        onClick={(e) => { e.stopPropagation(); handleMovePage(index, index + 1); }}
-                        disabled={index === pagePreviews.length - 1 || isProcessing}
-                        className="flex items-center justify-center"
-                        aria-label="Move right"
-                        title="Move right"
-                      >
-                        <UIChevronRight className="w-3 h-3 text-foreground" aria-hidden="true" />
-                      </Button>
-                    </div>
+                    className={`relative block aspect-[3/4] h-auto w-full overflow-hidden p-0 ${page.selected ? 'border-primary ring-2 ring-ring/50' : ''}`}>
+                    {page.thumbnail
+                      ? <img src={page.thumbnail} alt="" className="h-full w-full bg-white object-contain" style={{ transform: `rotate(${page.rotation}deg)` }} draggable={false} />
+                      : <span className="flex h-full w-full items-center justify-center bg-muted text-lg text-muted-foreground">{page.sourceFileIndex === -1 ? <Square className="size-6" aria-hidden="true" /> : page.originalPageNumber}</span>}
+                    {page.selected && <UICheck className="absolute start-2 top-2 size-6 rounded-md bg-primary p-1 text-primary-foreground" aria-hidden="true" />}
+                  </Button>
+                  <div className="text-center">
+                    <p className="text-xs font-medium">{index + 1}{page.rotation !== 0 && <span className="text-muted-foreground"> ({page.rotation}°)</span>}</p>
+                    {sourceFiles.length > 1 && page.sourceFileIndex >= 0 && <p className="truncate text-xs text-muted-foreground" title={page.sourceFileName}>{page.sourceFileName}</p>}
                   </div>
-
-                  {/* Page Info */}
-                  <div className="mt-1 text-center">
-                    <p className="text-xs font-medium text-foreground">
-                      {index + 1}
-                      {page.rotation !== 0 && <span className="text-muted-foreground"> ({page.rotation}°)</span>}
-                    </p>
-                    {sourceFiles.length > 1 && page.sourceFileIndex >= 0 && (
-                      <p className="text-[10px] text-muted-foreground truncate" title={page.sourceFileName}>
-                        {page.sourceFileName.length > 12 ? page.sourceFileName.slice(0, 10) + '...' : page.sourceFileName}
-                      </p>
-                    )}
+                  <div className="flex flex-wrap justify-center gap-1">
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleMovePage(index, index - 1)} disabled={index === 0 || isProcessing} aria-label={`${t('buttons.moveUp')}: ${pageLabel}`}><ArrowUp aria-hidden="true" /></Button>
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleMovePage(index, index + 1)} disabled={index === pagePreviews.length - 1 || isProcessing} aria-label={`${t('buttons.moveDown')}: ${pageLabel}`}><ArrowDown aria-hidden="true" /></Button>
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleRotatePage(index, -90)} disabled={isProcessing} aria-label={`${tTools('pdfMultiTool.rotateLeft')}: ${pageLabel}`}><UIRotateCcw aria-hidden="true" /></Button>
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleRotatePage(index, 90)} disabled={isProcessing} aria-label={`${tTools('pdfMultiTool.rotateRight')}: ${pageLabel}`}><UIRotateCw aria-hidden="true" /></Button>
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleDuplicatePage(index)} disabled={isProcessing} aria-label={`${t('buttons.duplicate')}: ${pageLabel}`}><UICopy aria-hidden="true" /></Button>
+                    <Button variant="destructive" size="icon-sm" onClick={() => handleDeletePage(index)} disabled={isProcessing} aria-label={`${t('buttons.delete')}: ${pageLabel}`}><UITrash2 aria-hidden="true" /></Button>
                   </div>
-
-                  {/* Hover Actions */}
-                  <div className="absolute top-1 right-1 flex flex-col gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button variant="ghost" size="icon-sm" aria-label="Rotate left"
-                      onClick={(e) => { e.stopPropagation(); handleRotatePage(index, -90); }}
-                      className="flex items-center justify-center"
-                      title="Rotate left"
-                    >
-                      <UIRotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
-                    </Button>
-                    <Button variant="ghost" size="icon-sm" aria-label="Rotate right"
-                      onClick={(e) => { e.stopPropagation(); handleRotatePage(index, 90); }}
-                      className="flex items-center justify-center"
-                      title="Rotate right"
-                    >
-                      <UIRotateCw className="w-3.5 h-3.5" aria-hidden="true" />
-                    </Button>
-                    <Button variant="ghost" size="icon-sm" aria-label="Duplicate"
-                      onClick={(e) => { e.stopPropagation(); handleDuplicatePage(index); }}
-                      className="flex items-center justify-center"
-                      title="Duplicate"
-                    >
-                      <UICopy className="w-3.5 h-3.5" aria-hidden="true" />
-                    </Button>
-                    <Button variant="destructive" size="icon-sm" aria-label="Delete"
-                      onClick={(e) => { e.stopPropagation(); handleDeletePage(index); }}
-                      className="flex items-center justify-center"
-                      title="Delete"
-                    >
-                      <UIX className="w-3.5 h-3.5" aria-hidden="true" />
-                    </Button>
-                  </div>
-                </div>
-              ))}
+                </Card>;
+              })}
             </div>
           )}
 
