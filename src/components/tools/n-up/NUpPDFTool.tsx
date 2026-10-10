@@ -442,7 +442,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
           </div>
 
           {/* Layout Preview */}
-          <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-muted to-background border border-border">
+          <div className="mt-6 rounded-lg border border-border bg-muted p-4">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-2 h-2 rounded-full bg-primary"></div>
               <h4 className="text-sm font-semibold text-foreground">
@@ -475,7 +475,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                     {Array.from({ length: actualPagesPerSheet }).map((_, idx) => (
                       <div
                         key={idx}
-                        className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded flex items-center justify-center text-xs font-bold text-primary shadow-inner"
+                        className="bg-primary/10 border border-primary/20 rounded flex items-center justify-center text-xs font-bold text-primary"
                       >
                         {idx + 1}
                       </div>

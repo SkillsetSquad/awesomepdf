@@ -468,8 +468,6 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                         backgroundRepeat: 'no-repeat',
                       }}
                     />
-                    {/* Glass glare effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/20" />
                   </div>
                 )}
 
