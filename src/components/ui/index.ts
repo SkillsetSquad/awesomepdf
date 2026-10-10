@@ -2,7 +2,6 @@ export { Button, buttonVariants, type ButtonProps, type ButtonVariant, type Butt
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from './card';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
 export { OptimizedImage, IMAGE_SIZES, type OptimizedImageProps } from './OptimizedImage';
-export { Modal, type ModalProps } from './Modal';
 export { Input } from './input';
 export { Textarea } from './textarea';
 export { NativeSelect as Select } from './native-select';
