@@ -965,7 +965,7 @@
       "linkCopied": "다운로드 링크가 클립보드에 복사되었습니다!"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "색상 테마 전환"
     },
     "processingTime": {
       "seconds": "{seconds}초 남음",

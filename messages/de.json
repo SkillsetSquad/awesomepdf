@@ -965,7 +965,7 @@
       "linkCopied": "Download-Link in die Zwischenablage kopiert!"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "Farbschema wechseln"
     },
     "processingTime": {
       "seconds": "Noch {seconds} s",

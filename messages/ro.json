@@ -965,7 +965,7 @@
       "linkCopied": "Linkul de descărcare a fost copiat în clipboard!"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "Schimbă tema de culoare"
     },
     "processingTime": {
       "seconds": "Au rămas {seconds} s",

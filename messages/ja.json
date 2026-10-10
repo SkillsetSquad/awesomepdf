@@ -965,7 +965,7 @@
       "linkCopied": "ダウンロードリンクをクリップボードにコピーしました！"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "カラーテーマを切り替える"
     },
     "processingTime": {
       "seconds": "残り{seconds}秒",

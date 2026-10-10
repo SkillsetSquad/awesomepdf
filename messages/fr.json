@@ -965,7 +965,7 @@
       "linkCopied": "Lien de téléchargement copié dans le presse-papiers !"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "Changer le thème de couleur"
     },
     "processingTime": {
       "seconds": "{seconds} s restantes",

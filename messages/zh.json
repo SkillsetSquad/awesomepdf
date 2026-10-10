@@ -979,7 +979,7 @@
       "linkCopied": "下载链接已复制到剪贴板！"
     },
     "theme": {
-      "toggle": "Toggle color theme"
+      "toggle": "切换颜色主题"
     },
     "processingTime": {
       "seconds": "剩余{seconds}秒",
