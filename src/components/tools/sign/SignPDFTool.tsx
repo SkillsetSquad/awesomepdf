@@ -10,8 +10,9 @@ import { Input } from '@/components/ui/input';
 
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
+import { PDFViewerControls } from '../PDFViewerControls';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
@@ -66,6 +67,7 @@ const VIEWER_HTML = withBasePath('/pdfjs-viewer/viewer.html');
  * Supports: draw (handwritten), type, and image signatures.
  */
 export function SignPDFTool({ className = '' }: SignPDFToolProps) {
+  const locale = useLocale();
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
 
@@ -75,6 +77,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   });
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null);
 
   // Extractor & Library modals
   const [isExtractorOpen, setIsExtractorOpen] = useState(false);
@@ -204,6 +207,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
    * Load PDF into viewer via ArrayBuffer (avoids blob: URL issues on HTTP)
    */
   const handleIframeLoad = useCallback(async () => {
+    setEditorFrame(iframeRef.current);
     const file = fileRef.current;
     const iframe = iframeRef.current;
     if (!file || !iframe?.contentWindow) return;
@@ -301,6 +305,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
    * Clear and start over
    */
   const handleClear = useCallback(() => {
+    setEditorFrame(null);
     fileRef.current = null;
     setSignState({
       file: null,
@@ -311,6 +316,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
+      <PDFViewerControls iframe={editorFrame} locale={locale} />
       {/* Quick Action Header: Signature Extractor & Library */}
       <Card className="flex-row flex-wrap items-center justify-between gap-4 p-4">
         <div className="flex items-center gap-3">

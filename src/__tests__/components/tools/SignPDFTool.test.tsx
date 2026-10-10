@@ -7,7 +7,7 @@ import { getSavedSignatures, saveSignature } from '@/lib/pdf/signature-storage';
 import { toast } from 'sonner';
 
 vi.mock('sonner', () => ({ toast: { success: vi.fn() } }));
-vi.mock('next-intl', () => ({ useTranslations: () => (key: string) => key }));
+vi.mock('next-intl', () => ({ useTranslations: () => (key: string) => key, useLocale: () => 'en' }));
 vi.mock('@/lib/pdf/signature-storage', () => ({ getSavedSignatures: vi.fn(() => []), saveSignature: vi.fn(), dataUrlToBlob: vi.fn(() => new Blob(['png'], { type: 'image/png' })) }));
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: ({ onFilesSelected }: { onFilesSelected: (files: File[]) => void }) => <button onClick={() => onFilesSelected([new File(['%PDF-1.4'], 'sign.pdf', { type: 'application/pdf' })])}>Select PDF</button> }));
 vi.mock('@/components/tools/sign/SignatureLibraryModal', () => ({ SignatureLibraryModal: () => null }));

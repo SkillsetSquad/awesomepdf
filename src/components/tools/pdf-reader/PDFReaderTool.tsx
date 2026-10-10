@@ -4,7 +4,7 @@ import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -12,6 +12,7 @@ import { Download, X, CopyCheck } from 'lucide-react';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import { toast } from 'sonner';
 import { withBasePath } from '@/lib/utils/path';
+import { PDFViewerControls } from '../PDFViewerControls';
 
 export interface PDFReaderToolProps {
     className?: string;
@@ -23,6 +24,7 @@ export interface PDFReaderToolProps {
  * A full-featured PDF reader with automatic selection-to-clipboard synchronization.
  */
 export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
+    const locale = useLocale();
     const t = useTranslations('common');
     const tTools = useTranslations('tools');
 
@@ -30,6 +32,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [autoCopyEnabled, setAutoCopyEnabled] = useState(true);
+    const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null);
     const toastIdRef = useRef<string | number | undefined>(undefined);
     const selectionCleanupRef = useRef<(() => void) | null>(null);
 
@@ -69,6 +72,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
 
     // Attach selection listener into iframe contentDocument once loaded
     const handleIframeLoad = useCallback(() => {
+        setEditorFrame(iframeRef.current);
         selectionCleanupRef.current?.();
         selectionCleanupRef.current = null;
         try {
@@ -135,6 +139,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
             URL.revokeObjectURL(pdfUrl);
         }
         setFile(null);
+        setEditorFrame(null);
         setPdfUrl(null);
         setError(null);
         if (toastIdRef.current !== undefined) toast.dismiss(toastIdRef.current);
@@ -145,6 +150,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
 
     return (
         <div className={`space-y-4 ${className}`.trim()} ref={containerRef}>
+            <PDFViewerControls iframe={editorFrame} locale={locale} />
             {!hasFile && (
                 <FileUploader
                     accept={['application/pdf', '.pdf']}
