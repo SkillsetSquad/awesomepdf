@@ -653,7 +653,10 @@
       "redo": "やり直す",
       "annDefault": "注釈",
       "comments": "コメント",
-      "colorFormat": "色の形式"
+      "colorFormat": "色の形式",
+      "annotationStyle": "注釈のスタイル",
+      "strokeWidth": "線の太さ",
+      "opacity": "不透明度"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津しきい値オフセット)",

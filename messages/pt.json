@@ -653,7 +653,10 @@
       "redo": "Refazer",
       "annDefault": "Anotação",
       "comments": "Comentários",
-      "colorFormat": "Formato de cor"
+      "colorFormat": "Formato de cor",
+      "annotationStyle": "Estilo de anotação",
+      "strokeWidth": "Espessura do traço",
+      "opacity": "Opacidade"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desvio Otsu)",

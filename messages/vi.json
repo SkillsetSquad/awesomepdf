@@ -653,7 +653,10 @@
       "redo": "Làm lại",
       "annDefault": "Chú thích",
       "comments": "Nhận xét",
-      "colorFormat": "Định dạng màu"
+      "colorFormat": "Định dạng màu",
+      "annotationStyle": "Kiểu chú thích",
+      "strokeWidth": "Độ dày nét",
+      "opacity": "Độ mờ"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Độ lệch Otsu)",

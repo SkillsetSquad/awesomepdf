@@ -653,7 +653,10 @@
       "redo": "Rétablir",
       "annDefault": "Annotation",
       "comments": "Commentaires",
-      "colorFormat": "Format de couleur"
+      "colorFormat": "Format de couleur",
+      "annotationStyle": "Style de l’annotation",
+      "strokeWidth": "Épaisseur du trait",
+      "opacity": "Opacité"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Décalage d'Otsu)",

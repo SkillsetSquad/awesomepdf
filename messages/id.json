@@ -653,7 +653,10 @@
       "redo": "Ulangi",
       "annDefault": "Anotasi",
       "comments": "Komentar",
-      "colorFormat": "Format warna"
+      "colorFormat": "Format warna",
+      "annotationStyle": "Gaya anotasi",
+      "strokeWidth": "Ketebalan garis",
+      "opacity": "Opasitas"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

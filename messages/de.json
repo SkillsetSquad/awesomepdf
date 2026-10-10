@@ -653,7 +653,10 @@
       "redo": "Wiederholen",
       "annDefault": "Anmerkung",
       "comments": "Kommentare",
-      "colorFormat": "Farbformat"
+      "colorFormat": "Farbformat",
+      "annotationStyle": "Anmerkungsstil",
+      "strokeWidth": "Strichstärke",
+      "opacity": "Deckkraft"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu-Offset)",

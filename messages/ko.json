@@ -653,7 +653,10 @@
       "redo": "다시 실행",
       "annDefault": "주석",
       "comments": "댓글",
-      "colorFormat": "색상 형식"
+      "colorFormat": "색상 형식",
+      "annotationStyle": "주석 스타일",
+      "strokeWidth": "선 두께",
+      "opacity": "불투명도"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (오츠 임계값 오프셋)",

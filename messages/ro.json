@@ -653,7 +653,10 @@
       "redo": "Refă",
       "annDefault": "Adnotare",
       "comments": "Comentarii",
-      "colorFormat": "Formatul culorii"
+      "colorFormat": "Formatul culorii",
+      "annotationStyle": "Stilul adnotării",
+      "strokeWidth": "Grosimea liniei",
+      "opacity": "Opacitate"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

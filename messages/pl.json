@@ -653,7 +653,10 @@
       "redo": "Powtórz",
       "annDefault": "Adnotacja",
       "comments": "Komentarze",
-      "colorFormat": "Format koloru"
+      "colorFormat": "Format koloru",
+      "annotationStyle": "Styl adnotacji",
+      "strokeWidth": "Grubość linii",
+      "opacity": "Krycie"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Przesunięcie Otsu)",

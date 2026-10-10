@@ -54,7 +54,7 @@ export function LegacyAnnotatorTool({
     note: t('editPdf.annNote'), arrow: t('editPdf.annArrow'), cloud: t('editPdf.annCloud'),
     freehand: t('editPdf.annFreehand'), freeHighlight: t('editPdf.annFreeHighlight'), freeText: t('editPdf.annFreeText'),
     signature: t('editPdf.annSignature'), stamp: t('editPdf.annStamp'), color: tBookmark('color'),
-    export: t('buttons.download'), comments: t('editPdf.comments'), delete: t('buttons.delete'),
+    export: t('buttons.download'), comments: t('editPdf.comments'), delete: t('buttons.delete'), style: t('editPdf.annotationStyle'),
   }), [t, tTools, tBookmark]);
   
   const [internalFile, setInternalFile] = useState<File | null>(null);
@@ -994,7 +994,10 @@ export function LegacyAnnotatorTool({
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
-      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels} colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }} exportError={tErrors('processingFailed')} />
+      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels}
+        colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }}
+        styleLabels={{ title: t('editPdf.annotationStyle'), color: tBookmark('color'), strokeWidth: t('editPdf.strokeWidth'), opacity: t('editPdf.opacity'), back: t('buttons.back'), format: t('editPdf.colorFormat'), close: t('buttons.close') }}
+        exportError={tErrors('processingFailed')} />
       <AnnotationExportDialog key={`exports:${pdfUrl}`} iframe={editorFrame} locale={locale} closeLabel={t('buttons.close')} labels={{ title: t('buttons.download'), processing: t('status.processing'), complete: t('status.complete') }} />
       <LegacyTextEditDialog key={`text:${pdfUrl}`} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
       {!file && (

@@ -7,6 +7,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ArrowUpRight, Circle, Cloud, Download, Highlighter, Info, MessageSquare, MousePointer2, Palette, PenLine, Redo2, Square, Stamp, StickyNote, TextCursorInput, Trash2, Type, Undo2, type LucideIcon } from 'lucide-react';
 import { AnnotationExportMenu, type AnnotationExportAction, type AnnotationExportFormat } from './AnnotationExportMenu';
 import { AnnotationColorControl, type AnnotationColorOptions } from './AnnotationColorControl';
+import { AnnotationStyleControls, type AnnotationStyleLabels, type AnnotationStyleOptions } from './AnnotationStyleControls';
 
 const annotationIcons: Record<string, LucideIcon> = {
   select: MousePointer2, rectangle: Square, circle: Circle, note: StickyNote,
@@ -18,12 +19,13 @@ const annotationIcons: Record<string, LucideIcon> = {
 interface ViewerControl {
   item: HTMLElement;
   mount: HTMLElement;
-  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation' | 'annotation-action';
+  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation' | 'annotation-action' | 'annotation-style';
   key: string;
   Icon: LucideIcon;
   toggle: boolean;
   color?: string;
   colorOptions?: AnnotationColorOptions;
+  styleOptions?: AnnotationStyleOptions;
   onExport?: AnnotationExportAction;
   exportFormats?: AnnotationExportFormat[];
   label: string;
@@ -32,13 +34,14 @@ interface ViewerControl {
   action: HTMLElement;
 }
 
-export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, exportError = 'Export failed. Please try again.' }: {
+export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, styleLabels, exportError = 'Export failed. Please try again.' }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   undo: string;
   redo: string;
   labels?: Record<string, string>;
   colorLabels?: { format: string; close: string };
+  styleLabels?: AnnotationStyleLabels;
   exportError?: string;
 }) {
   const [controls, setControls] = useState<ViewerControl[]>([]);
@@ -132,18 +135,23 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       }
       for (const item of doc.querySelectorAll<HTMLElement>('.CustomAnnotationMenu .buttons > li[data-annotation-action]')) {
         const key = item.dataset.annotationAction!;
-        const action = { comments: { Icon: MessageSquare, label: labels?.comments ?? 'Comments' }, style: { Icon: Palette, label: labels?.color ?? 'Color' }, delete: { Icon: Trash2, label: labels?.delete ?? 'Delete' } }[key];
+        const action = { comments: { Icon: MessageSquare, label: labels?.comments ?? 'Comments' }, style: { Icon: Palette, label: labels?.style ?? labels?.color ?? 'Color' }, delete: { Icon: Trash2, label: labels?.delete ?? 'Delete' } }[key];
         if (!action) continue;
         next.push({ item, mount: mountControl(item), action: item, key: `context-${key}`, kind: 'annotation-action', ...action, toggle: false, disabled: false, pressed: false });
       }
+      for (const item of doc.querySelectorAll<HTMLElement>('.CustomAnnotationMenu .styleContainer[data-annotation-style]')) {
+        const styleOptions = (item as HTMLElement & { awesomepdfStyle?: AnnotationStyleOptions }).awesomepdfStyle;
+        if (!styleOptions) continue;
+        next.push({ item, mount: mountControl(item), action: item, key: 'context-style-panel', kind: 'annotation-style', Icon: Palette, label: '', styleOptions, toggle: false, disabled: false, pressed: false });
+      }
       setControls(previous => previous.length === next.length && next.every((control, index) => {
         const old = previous[index];
-        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
+        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.styleOptions === control.styleOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
       }) ? previous : next);
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel', 'data-annotation-style', 'data-color', 'data-stroke-width', 'data-opacity'] });
     return () => {
       observer.disconnect();
       theme.disconnect();
@@ -155,6 +163,8 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
 
   return controls.map(control => createPortal(control.kind === 'hint'
     ? <Alert className="pointer-events-none fixed top-20 left-1/2 z-[100000] w-[calc(100%-2rem)] max-w-md -translate-x-1/2" role="status" dir={locale === 'ar' ? 'rtl' : 'ltr'}><Info aria-hidden="true" /><AlertDescription>{control.label}</AlertDescription></Alert>
+    : control.kind === 'annotation-style' && control.styleOptions
+    ? <AnnotationStyleControls options={control.styleOptions} direction={locale === 'ar' ? 'rtl' : 'ltr'} labels={styleLabels ?? { title: 'Annotation style', color: labels?.color ?? 'Color', strokeWidth: 'Stroke width', opacity: 'Opacity', back: 'Back', format: colorLabels?.format ?? 'Color format', close: colorLabels?.close ?? 'Close' }} />
     : control.key === 'color' && control.colorOptions
     ? <AnnotationColorControl options={control.colorOptions} label={control.label} disabled={control.disabled} direction={locale === 'ar' ? 'rtl' : 'ltr'} formatLabel={colorLabels?.format ?? 'Color format'} closeLabel={colorLabels?.close ?? 'Close'} />
     : control.key === 'export' && control.onExport
@@ -172,7 +182,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         control.action.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true, view: viewer }));
         viewer?.setTimeout(() => {
           if (!iframe?.isConnected || document.activeElement !== iframe || doc.activeElement !== doc.body) return;
-          const target = control.key === 'context-style' ? '.CustomAnnotationMenu .styleContainer [tabindex="0"]'
+          const target = control.key === 'context-style' ? '.CustomAnnotationMenu .styleContainer [data-awesomepdf-mount] [role="slider"], .CustomAnnotationMenu .styleContainer [data-awesomepdf-mount] button'
             : control.key === 'context-comments' ? '.CustomComment input, .CustomComment textarea, .CustomComment [tabindex="0"]' : '#viewerContainer';
           (doc.querySelector<HTMLElement>(target) ?? doc.querySelector<HTMLElement>('#viewerContainer'))?.focus();
         }, 0);

@@ -653,7 +653,10 @@
       "redo": "إعادة",
       "annDefault": "تعليق توضيحي",
       "comments": "التعليقات",
-      "colorFormat": "تنسيق اللون"
+      "colorFormat": "تنسيق اللون",
+      "annotationStyle": "نمط التعليق التوضيحي",
+      "strokeWidth": "عرض الخط",
+      "opacity": "التعتيم"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (إزاحة أوتسو)",

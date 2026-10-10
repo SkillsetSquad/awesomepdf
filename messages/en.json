@@ -653,7 +653,10 @@
       "redo": "Redo",
       "annDefault": "Annotation",
       "comments": "Comments",
-      "colorFormat": "Color format"
+      "colorFormat": "Color format",
+      "annotationStyle": "Annotation style",
+      "strokeWidth": "Stroke width",
+      "opacity": "Opacity"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu Offset)",
