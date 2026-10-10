@@ -1,21 +1,17 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Label } from '@/components/ui/label';
-
-import { Input } from '@/components/ui/input';
-
-import React, { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { ArrowDown, ArrowUp, CheckCircle2, CircleAlert, FileText, X } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { composePassportId, type PassportIdOptions } from '@/lib/pdf/processors/passport-id-composer';
-import type { ProcessOutput } from '@/types/pdf';
-import { Shield, Sparkles, Layers, Sliders } from 'lucide-react';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
+import { composePassportId } from '@/lib/pdf/processors/passport-id-composer';
 
 export interface PassportIdComposerToolProps {
   className?: string;
@@ -23,209 +19,120 @@ export interface PassportIdComposerToolProps {
 
 export function PassportIdComposerTool({ className = '' }: PassportIdComposerToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
   const [files, setFiles] = useState<File[]>([]);
-  const [watermark, setWatermark] = useState<string>('FOR COPY ONLY');
-  const [layout, setLayout] = useState<'single-page' | 'two-pages'>('single-page');
-  const [idCardWidth, setIdCardWidth] = useState<number>(242.6);
-  const [idCardHeight, setIdCardHeight] = useState<number>(153);
-
+  const [watermark, setWatermark] = useState('FOR COPY ONLY');
+  const [idCardHeight, setIdCardHeight] = useState(153);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const operation = useRef(0);
+  const isProcessing = status === 'processing';
 
   const handleFilesSelected = useCallback((selectedFiles: File[]) => {
-    setFiles((prev) => [...prev, ...selectedFiles].slice(0, 2));
+    operation.current++;
+    setFiles(previous => [...previous, ...selectedFiles].slice(0, 2));
+    setResultBlob(null);
+    setStatus('idle');
     setError(null);
   }, []);
 
   const handleCompose = async () => {
-    if (files.length === 0) return;
-    cancelledRef.current = false;
+    if (!files.length) return;
+    const current = ++operation.current;
     setStatus('processing');
     setProgress(0);
+    setProgressMessage('');
+    setResultBlob(null);
     setError(null);
-
     try {
-      const output: ProcessOutput = await composePassportId(
-        files,
-        {
-          watermarkText: watermark,
-          layout,
-          idCardWidth,
-          idCardHeight,
-        },
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Composing ID page...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
+      const output = await composePassportId(files, {
+        watermarkText: watermark, layout: 'single-page', idCardWidth: 242.6, idCardHeight,
+      }, (value, message) => {
+        if (operation.current !== current) return;
+        setProgress(value);
+        setProgressMessage(message || t('status.processing'));
+      });
+      if (operation.current !== current) return;
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
         setStatus('complete');
       } else {
-        setError(output.error?.message || 'Failed to compose ID card layout.');
+        setError(output.error?.message || tErrors('processingFailed'));
         setStatus('error');
       }
-    } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'Error composing ID.');
-        setStatus('error');
-      }
+    } catch (error) {
+      if (operation.current !== current) return;
+      setError(error instanceof Error ? error.message : tErrors('processingFailed'));
+      setStatus('error');
     }
   };
 
-  const handleClear = () => {
-    setFiles([]);
-    setResultBlob(null);
-    setStatus('idle');
+  const resetResult = () => { setResultBlob(null); setError(null); setStatus('idle'); };
+  const moveFile = (index: number, offset: number) => {
+    setFiles(previous => {
+      const next = [...previous];
+      [next[index], next[index + offset]] = [next[index + offset], next[index]];
+      return next;
+    });
+    resetResult();
   };
+  const handleClear = () => { operation.current++; setFiles([]); resetResult(); };
 
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {files.length < 2 && (
-        <FileUploader
-          accept={['application/pdf', 'image/jpeg', 'image/png']}
-          multiple={true}
-          onFilesSelected={handleFilesSelected}
-          onError={setError}
-          disabled={status === 'processing'}
-          label={t('passportIdComposer.uploadLabel')}
-          description={t('passportIdComposer.uploadDescription')}
-        />
-      )}
-
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          {error}
-        </AlertDescription></Alert>
-      )}
-
-      {files.length > 0 && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Files display & visual effect */}
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-primary" />
-                  {t('passportIdComposer.layersCountLabel', { count: files.length })}
-                </span>
-                <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
-                  {t('passportIdComposer.clearButton')}
-                </Button>
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {files.length < 2 && <FileUploader accept={['application/pdf', 'image/jpeg', 'image/png']} multiple
+      onFilesSelected={handleFilesSelected} onError={setError} disabled={isProcessing}
+      label={t('passportIdComposer.uploadLabel')} description={t('passportIdComposer.uploadDescription')} />}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {files.length > 0 && <div className="grid gap-6 lg:grid-cols-2">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('passportIdComposer.layersCountLabel', { count: files.length })}</CardTitle>
+          <CardAction><Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing}>{t('passportIdComposer.clearButton')}</Button></CardAction>
+        </CardHeader>
+        <CardContent>
+          <ol className="space-y-3">
+            {files.map((file, index) => <li key={index} className="flex flex-wrap items-center gap-3 rounded-md border p-3">
+              <FileText className="size-5 shrink-0 text-muted-foreground" aria-hidden="true" />
+              <div className="min-w-0 flex-1 space-y-1">
+                <p className="text-sm font-medium">{t(index === 0 ? 'passportIdComposer.frontLabel' : 'passportIdComposer.backLabel')}</p>
+                <p className="break-all text-sm">{file.name}</p>
+                <p className="text-xs text-muted-foreground">{(file.size / 1024).toFixed(1)} KB</p>
               </div>
-
-              {/* Replica scan animation effect */}
-              <div className="flex-1 flex flex-col md:flex-row gap-6 items-center justify-center p-6 relative">
-                {status === 'processing' && (
-                  <div className="absolute inset-0 bg-primary/5 pointer-events-none flex flex-col items-center justify-center animate-pulse">
-                    <div className="w-full h-1.5 bg-gradient-to-r from-transparent via-primary to-transparent absolute top-0 animate-[bounce_3s_infinite]" />
-                    <Sparkles className="w-12 h-12 text-primary animate-spin" />
-                  </div>
-                )}
-
-                {files.map((f, idx) => (
-                  <div key={idx} className="w-48 h-32 bg-background border-2 border-border rounded-xl shadow-lg flex flex-col items-center justify-center p-4 relative group overflow-hidden">
-                    <div className="absolute top-2 left-2 text-[10px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
-                      {idx === 0 ? t('passportIdComposer.frontLabel') : t('passportIdComposer.backLabel')}
-                    </div>
-                    <span className="text-xs font-semibold truncate max-w-full text-center mt-4">
-                      {f.name}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground mt-1">
-                      {(f.size / 1024).toFixed(1)} KB
-                    </span>
-                  </div>
-                ))}
+              <div className="flex gap-1">
+                <Button variant="ghost" size="icon-sm" disabled={isProcessing || index === 0} onClick={() => moveFile(index, -1)} aria-label={`${t('buttons.moveUp')}: ${file.name}`}><ArrowUp aria-hidden="true" /></Button>
+                <Button variant="ghost" size="icon-sm" disabled={isProcessing || index === files.length - 1} onClick={() => moveFile(index, 1)} aria-label={`${t('buttons.moveDown')}: ${file.name}`}><ArrowDown aria-hidden="true" /></Button>
+                <Button variant="ghost" size="icon-sm" disabled={isProcessing} onClick={() => { setFiles(previous => previous.filter((_, i) => i !== index)); resetResult(); }} aria-label={`${t('buttons.remove')}: ${file.name}`}><X aria-hidden="true" /></Button>
               </div>
-            </Card>
+            </li>)}
+          </ol>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader><CardTitle>{t('passportIdComposer.optionsTitle')}</CardTitle><CardDescription>{t('passportIdComposer.layoutSpecA4')}</CardDescription></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="passport-watermark">{t('passportIdComposer.watermarkLabel')}</Label>
+            <Input id="passport-watermark" value={watermark} disabled={isProcessing} placeholder={t('passportIdComposer.watermarkPlaceholder')} onChange={event => { setWatermark(event.target.value); resetResult(); }} />
           </div>
-
-          {/* Options side panel */}
-          <div className="lg:col-span-4 space-y-6">
-            <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
-              <div className="space-y-6">
-                <div className="border-b border-border pb-3 flex items-center gap-2">
-                  <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-semibold text-foreground">{t('passportIdComposer.optionsTitle')}</h3>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="space-y-1.5">
-                    <Label className="flex items-center gap-1.5">
-                      <Shield className="w-4 h-4 text-primary" />
-                      {t('passportIdComposer.watermarkLabel')}
-                    </Label>
-                    <Input
-                      type="text"
-                      value={watermark}
-                      onChange={(e) => setWatermark(e.target.value)}
-                      placeholder={t('passportIdComposer.watermarkPlaceholder')}
-                      className="w-full"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <Label className="" htmlFor="passportidcomposertool-field-1">{t('passportIdComposer.idCardHeightLabel')}</Label>
-                    <Input
-                      type="number"
-                      value={idCardHeight}
-                      onChange={(e) => setIdCardHeight(parseFloat(e.target.value) || 153)}
-                      className="w-full" id="passportidcomposertool-field-1" aria-label={t('passportIdComposer.idCardHeightLabel')}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-border mt-6">
-                {status === 'complete' && resultBlob ? (
-                  <DownloadButton
-                    file={resultBlob}
-                    filename="passport_id_composite.pdf"
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4"
-                    showFileSize
-                  />
-                ) : (
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4"
-                    onClick={handleCompose}
-                    disabled={status === 'processing'}
-                  >
-                    {status === 'processing' ? 'Processing...' : t('passportIdComposer.processButton')}
-                  </Button>
-                )}
-              </div>
-            </Card>
+          <div className="space-y-2">
+            <Label htmlFor="passport-height">{t('passportIdComposer.idCardHeightLabel')}</Label>
+            <Input id="passport-height" type="number" value={idCardHeight} disabled={isProcessing} onChange={event => { setIdCardHeight(parseFloat(event.target.value) || 153); resetResult(); }} />
           </div>
-        </div>
-      )}
-
-      {status === 'processing' && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
-          showPercentage
-        />
-      )}
-    </div>
-  );
+        </CardContent>
+        <CardFooter>
+          {status === 'complete' && resultBlob
+            ? <DownloadButton file={resultBlob} filename="passport_id_composite.pdf" size="lg" className="w-full" showFileSize />
+            : <Button size="lg" className="w-full" loading={isProcessing} onClick={handleCompose}>{t('passportIdComposer.processButton')}</Button>}
+        </CardFooter>
+      </Card>
+    </div>}
+    {status === 'complete' && <Alert><CheckCircle2 aria-hidden="true" /><AlertDescription>{t('passportIdComposer.successMessage')}</AlertDescription></Alert>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage}
+      onCancel={() => { operation.current++; setStatus('idle'); setProgress(0); }} showPercentage />}
+  </div>;
 }
 
 export default PassportIdComposerTool;
