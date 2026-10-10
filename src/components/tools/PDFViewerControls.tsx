@@ -17,6 +17,7 @@ import { textareaClassName } from '@/components/ui/textarea';
 import { dialogContentClassName } from '@/components/ui/dialog';
 import { tabsListVariants, tabsTriggerClassName } from '@/components/ui/tabs';
 import { PDFViewerField } from './PDFViewerField';
+import { switchClassName, switchThumbClassName } from '@/components/ui/switch';
 
 const icons: Partial<Record<string, LucideIcon>> = {
   sidebarToggleButton: PanelLeft, sidebarToggle: PanelLeft, viewFindButton: Search,
@@ -77,6 +78,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       #scaleSelect { appearance: auto; padding-inline-end: .75rem; }
       #scaleSelectContainer::after { display: none; }
       dialog::backdrop { background: rgb(0 0 0 / .5); }
+      [data-pdf-viewer-switch]::before, [data-pdf-viewer-switch]::after { display: none; }
     `;
     doc.head.appendChild(style);
     const syncTheme = () => {
@@ -92,6 +94,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
 
     const elements = new Map<HTMLElement, { classes: string[]; slot?: string; size?: string; variant?: string; state?: string }>();
     const mounts = new Map<HTMLButtonElement, IconMount>();
+    const switches = new Map<HTMLButtonElement, HTMLElement>();
     const fields = new Map<HTMLInputElement, { mount: HTMLElement; wrapper: HTMLElement; style: string | null }>();
     const apply = (element: HTMLElement, slot: string, classes: string) => {
       const tokens = classes.split(/\s+/).filter(Boolean);
@@ -112,8 +115,23 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
         if (!doc.body.contains(input)) { entry.wrapper.remove(); fields.delete(input); }
       }
       for (const button of doc.querySelectorAll<HTMLButtonElement>('#toolbarContainer button[id], #toolbarSidebar button[id], #findbar button[id], #secondaryToolbar button[id], .editorParamsToolbar button[id], dialog button[id]')) {
-        // Color picker and switch controls keep their document-specific visual state.
-        if (button.classList.contains('toggle-button')) continue;
+        if (button.classList.contains('toggle-button')) {
+          apply(button, 'switch', switchClassName);
+          button.dataset.size = 'default';
+          button.dataset.state = button.getAttribute('aria-pressed') === 'true' ? 'checked' : 'unchecked';
+          let thumb = switches.get(button);
+          if (!thumb) {
+            thumb = doc.createElement('span');
+            thumb.dataset.slot = 'switch-thumb';
+            thumb.className = switchThumbClassName;
+            thumb.setAttribute('aria-hidden', 'true');
+            button.dataset.pdfViewerSwitch = 'true';
+            button.appendChild(thumb);
+            switches.set(button, thumb);
+          }
+          thumb.dataset.state = button.dataset.state;
+          continue;
+        }
         if (button.getAttribute('role') === 'tab') {
           apply(button, 'tabs-trigger', tabsTriggerClassName);
           button.dataset.state = button.getAttribute('aria-selected') === 'true' ? 'active' : 'inactive';
@@ -144,13 +162,13 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       }
       for (const dialog of doc.querySelectorAll<HTMLDialogElement>('dialog')) apply(dialog, 'dialog-content', cn(dialogContentClassName, 'static top-auto left-auto m-auto block translate-x-0 translate-y-0 max-h-[calc(100dvh-2rem)] overflow-y-auto text-sm'));
       for (const list of doc.querySelectorAll<HTMLElement>('dialog [role=tablist]')) { apply(list, 'tabs-list', tabsListVariants({ className: 'h-9 max-w-full' })); list.dataset.variant = 'default'; }
-      for (const input of doc.querySelectorAll<HTMLInputElement>('#findbar input[type=checkbox][id], dialog input[type=checkbox][id], dialog input[type=range][id], .editorParamsToolbar input[type=range][id]')) {
+      for (const input of doc.querySelectorAll<HTMLInputElement>('#findbar input[type=checkbox][id], dialog input[type=checkbox][id], dialog input[type=radio][id], dialog input[type=range][id], .editorParamsToolbar input[type=range][id]')) {
         if (!fields.has(input)) {
           const wrapper = doc.createElement('span');
           wrapper.dataset.pdfViewerField = 'true';
-          wrapper.className = input.type === 'checkbox' ? 'group/field relative inline-flex size-4 shrink-0 items-center' : 'group/field relative inline-flex h-6 w-full min-w-24 items-center';
+          wrapper.className = input.type === 'range' ? 'group/field relative inline-flex h-6 w-full min-w-24 items-center' : 'group/field relative inline-flex size-4 shrink-0 items-center';
           const mount = doc.createElement('span');
-          mount.className = 'pointer-events-none flex w-full items-center [&:has([data-slot=checkbox])]:rounded-[4px] [&:has([data-slot=slider])]:rounded-full group-has-[input:focus-visible]/field:ring-[3px] group-has-[input:focus-visible]/field:ring-ring/50';
+          mount.className = 'pointer-events-none flex w-full items-center [&:has([data-slot=checkbox])]:rounded-[4px] [&:has([data-slot=slider])]:rounded-full [&:has([data-slot=radio-group-item])]:rounded-full group-has-[input:focus-visible]/field:ring-[3px] group-has-[input:focus-visible]/field:ring-ring/50';
           mount.setAttribute('aria-hidden', 'true');
           mount.setAttribute('inert', '');
           const style = input.getAttribute('style');
@@ -168,10 +186,11 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'aria-checked', 'aria-selected'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'aria-checked', 'aria-selected', 'aria-pressed'] });
     return () => {
       observer.disconnect(); theme.disconnect(); style.remove(); sheets.forEach(sheet => sheet.remove());
       for (const { button, mount } of mounts.values()) { mount.remove(); delete button.dataset.pdfViewerIcon; }
+      for (const [button, thumb] of switches) { thumb.remove(); delete button.dataset.pdfViewerSwitch; }
       for (const [input, { wrapper, style }] of fields) {
         wrapper.before(input); wrapper.remove();
         if (style === null) input.removeAttribute('style'); else input.setAttribute('style', style);

@@ -131,12 +131,56 @@ describe('PDF.js shared controls', () => {
       await waitFor(() => expect(range.parentElement!.querySelector('[data-slot=slider-thumb]')).toHaveAttribute('aria-valuenow', '7'));
       expect(range).toHaveAttribute('step', '1');
       act(() => { range.disabled = true; });
-      await waitFor(() => expect(range.parentElement!.querySelector('[data-slot=slider]')).toHaveClass('opacity-50'));
+      await waitFor(() => expect(range.parentElement!.querySelector('[data-slot=slider]')).toHaveClass('data-[disabled]:opacity-50'));
       view.rerender(<PDFViewerControls iframe={null} locale="ar" />);
       expect(range.parentElement).toBe(panel);
       expect(checkbox.parentElement).toBe(find);
       expect(range).not.toHaveAttribute('style');
       expect(doc.querySelector('[data-pdf-viewer-field]')).toBeNull();
+    } finally { cleanup(); }
+  });
+
+  it('keeps native switch activation and radio group keyboard selection without extra interactive controls', async () => {
+    const { doc, view, cleanup } = setup();
+    try {
+      const dialog = doc.createElement('dialog');
+      dialog.setAttribute('open', '');
+      dialog.innerHTML = '<button id="createModelButton" type="button" class="toggle-button" aria-pressed="true"></button><label for="createModelButton">Create descriptions</label><input type="radio" id="descriptionButton" name="altTextOption" checked><label for="descriptionButton">Description</label><input type="radio" id="decorativeButton" name="altTextOption"><label for="decorativeButton">Decorative</label>';
+      const toggle = dialog.querySelector<HTMLButtonElement>('button')!;
+      const description = dialog.querySelector<HTMLInputElement>('#descriptionButton')!;
+      const decorative = dialog.querySelector<HTMLInputElement>('#decorativeButton')!;
+      const toggled = vi.fn(() => toggle.setAttribute('aria-pressed', String(toggle.getAttribute('aria-pressed') !== 'true')));
+      const selected = vi.fn();
+      toggle.addEventListener('click', toggled);
+      decorative.addEventListener('change', selected);
+      act(() => { doc.body.append(dialog); });
+      await waitFor(() => expect(toggle).toHaveAttribute('data-slot', 'switch'));
+      expect(toggle.querySelector('[data-slot=switch-thumb]')).toHaveAttribute('data-state', 'checked');
+      const user = userEvent.setup({ document: doc });
+      toggle.focus();
+      await user.keyboard(' ');
+      expect(toggled).toHaveBeenCalledOnce();
+      expect(toggle).toHaveFocus();
+      await waitFor(() => expect(toggle.querySelector('[data-slot=switch-thumb]')).toHaveAttribute('data-state', 'unchecked'));
+      expect(within(dialog).getAllByRole('radio')).toEqual([description, decorative]);
+      // JSDOM's iframe omits CSS.escape; the fixture's radio name contains only letters.
+      Object.defineProperty(doc.defaultView!, 'CSS', { value: { escape: (name: string) => name }, configurable: true });
+      description.focus();
+      await user.keyboard('{ArrowRight}');
+      expect(decorative).toHaveFocus();
+      expect(decorative).toBeChecked();
+      expect(description).not.toBeChecked();
+      expect(selected).toHaveBeenCalledOnce();
+      await waitFor(() => expect(description.parentElement!.querySelector('[data-slot=radio-group-item]')).toHaveAttribute('data-state', 'unchecked'));
+      expect(decorative.parentElement!.querySelector('[data-slot=radio-group-item]')).toHaveAttribute('data-state', 'checked');
+      act(() => { decorative.disabled = true; });
+      await waitFor(() => expect(decorative.parentElement!.querySelector('[data-slot=radio-group-item]')).toHaveClass('disabled:opacity-50'));
+      view.rerender(<PDFViewerControls iframe={null} locale="en" />);
+      expect(toggle).not.toHaveAttribute('data-slot');
+      expect(toggle.querySelector('[data-slot=switch-thumb]')).toBeNull();
+      expect(description.parentElement).toBe(dialog);
+      expect(decorative.parentElement).toBe(dialog);
+      expect(toggle).toHaveAttribute('aria-pressed', 'false');
     } finally { cleanup(); }
   });
 });
