@@ -18,6 +18,7 @@ html.dark #text-editor-app { color-scheme: dark; }
 #text-editor-app #zoomHud.show[hidden] { display: block !important; }
 #text-editor-app #pageWrap { margin-inline: auto; }
 #text-editor-app #findbar [data-slot='label'] { white-space: nowrap; }
+#text-editor-app #inspector.path-only > :not(h2):not(#pStrokeRow) { display: none; }
 #text-editor-app .spellhit {
   position: absolute;
   pointer-events: none;

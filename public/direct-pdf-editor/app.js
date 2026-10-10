@@ -9136,9 +9136,11 @@ function updateChrome() {
 function syncInspector() {
   const insp = $('inspector');
   const p = state.editing?.para || state.selection?.para;
-  const enabled = (!!p || !!state.editing) && state.selection?.kind !== 'multi';
+  const path = state.selection?.kind === 'object' && state.selection.type === OBJ.PATH;
+  insp.classList.toggle('path-only', path);
+  const enabled = (!!p || !!state.editing || path) && state.selection?.kind !== 'multi';
   insp.toggleAttribute('disabled', !enabled);
-  if (!enabled) return;
+  if (!enabled || path) return;
   let r = p?.runs[0] || {};
   if (state.editing) {
     const ed = state.editing.editable;
