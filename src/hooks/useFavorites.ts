@@ -3,103 +3,61 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const FAVORITES_STORAGE_KEY = 'pdfcraft-favorite-tools';
+const FAVORITES_CHANGED_EVENT = 'pdfcraft-favorites-changed';
+let memoryFavorites: string[] = [];
 
-/**
- * Custom hook to manage favorite tools
- * Uses localStorage for persistent storage
- */
+function readFavorites(): string[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const parsed: unknown = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]');
+    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
+  } catch {
+    return memoryFavorites;
+  }
+}
+
+/** Keep cards and directory filters synchronized without changing the existing storage key. */
 export function useFavorites() {
-    const [favorites, setFavorites] = useState<string[]>([]);
-    const [isLoaded, setIsLoaded] = useState(false);
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-    // Load favorites from localStorage on mount
-    useEffect(() => {
-        try {
-            const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
-            if (stored) {
-                const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed)) {
-                    setFavorites(parsed);
-                }
-            }
-        } catch (error) {
-            console.error('Failed to load favorites from localStorage:', error);
-        }
-        setIsLoaded(true);
-    }, []);
-
-    // Save favorites to localStorage whenever they change
-    useEffect(() => {
-        if (isLoaded) {
-            try {
-                localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
-            } catch (error) {
-                console.error('Failed to save favorites to localStorage:', error);
-            }
-        }
-    }, [favorites, isLoaded]);
-
-    /**
-     * Check if a tool is in favorites
-     */
-    const isFavorite = useCallback((toolId: string): boolean => {
-        return favorites.includes(toolId);
-    }, [favorites]);
-
-    /**
-     * Toggle a tool's favorite status
-     */
-    const toggleFavorite = useCallback((toolId: string): void => {
-        setFavorites(prev => {
-            if (prev.includes(toolId)) {
-                return prev.filter(id => id !== toolId);
-            } else {
-                return [...prev, toolId];
-            }
-        });
-    }, []);
-
-    /**
-     * Add a tool to favorites
-     */
-    const addFavorite = useCallback((toolId: string): void => {
-        setFavorites(prev => {
-            if (prev.includes(toolId)) {
-                return prev;
-            }
-            return [...prev, toolId];
-        });
-    }, []);
-
-    /**
-     * Remove a tool from favorites
-     */
-    const removeFavorite = useCallback((toolId: string): void => {
-        setFavorites(prev => prev.filter(id => id !== toolId));
-    }, []);
-
-    /**
-     * Clear all favorites
-     */
-    const clearFavorites = useCallback((): void => {
-        setFavorites([]);
-    }, []);
-
-    /**
-     * Get the count of favorite tools
-     */
-    const favoritesCount = favorites.length;
-
-    return {
-        favorites,
-        isLoaded,
-        isFavorite,
-        toggleFavorite,
-        addFavorite,
-        removeFavorite,
-        clearFavorites,
-        favoritesCount,
+  useEffect(() => {
+    memoryFavorites = readFavorites();
+    setFavorites(memoryFavorites);
+    setIsLoaded(true);
+    const onLocalChange = (event: Event) => setFavorites((event as CustomEvent<string[]>).detail);
+    const onStorageChange = (event: StorageEvent) => {
+      if (event.key !== null && event.key !== FAVORITES_STORAGE_KEY) return;
+      memoryFavorites = readFavorites();
+      setFavorites(memoryFavorites);
     };
+    window.addEventListener(FAVORITES_CHANGED_EVENT, onLocalChange);
+    window.addEventListener('storage', onStorageChange);
+    return () => {
+      window.removeEventListener(FAVORITES_CHANGED_EVENT, onLocalChange);
+      window.removeEventListener('storage', onStorageChange);
+    };
+  }, []);
+
+  const updateFavorites = useCallback((update: (current: string[]) => string[]) => {
+    // Read the latest list before updating so a sibling control cannot overwrite it.
+    const next = update(readFavorites());
+    memoryFavorites = next;
+    try {
+      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // Favorites still work for this session when persistence is unavailable.
+    }
+    window.dispatchEvent(new CustomEvent(FAVORITES_CHANGED_EVENT, { detail: next }));
+  }, []);
+
+  const isFavorite = useCallback((id: string) => favorites.includes(id), [favorites]);
+  const toggleFavorite = useCallback((id: string) => updateFavorites((current) => current.includes(id) ? current.filter((value) => value !== id) : [...current, id]), [updateFavorites]);
+  const addFavorite = useCallback((id: string) => updateFavorites((current) => current.includes(id) ? current : [...current, id]), [updateFavorites]);
+  const removeFavorite = useCallback((id: string) => updateFavorites((current) => current.filter((value) => value !== id)), [updateFavorites]);
+  const clearFavorites = useCallback(() => updateFavorites(() => []), [updateFavorites]);
+
+  return { favorites, isLoaded, isFavorite, toggleFavorite, addFavorite, removeFavorite, clearFavorites, favoritesCount: favorites.length };
 }
 
 export default useFavorites;
