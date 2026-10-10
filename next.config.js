@@ -41,6 +41,7 @@ const nextConfig = {
   assetPrefix: process.env.TAURI_ENV ? '/' : undefined,
 
   env: {
+    NEXT_PUBLIC_BASE_PATH: process.env.BASE_PATH || process.env.NEXT_PUBLIC_BASE_PATH || '',
     NEXT_PUBLIC_APP_VERSION: resolveAppVersion(),
     NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
     NEXT_PUBLIC_DISABLE_UPDATE_CHECK:
