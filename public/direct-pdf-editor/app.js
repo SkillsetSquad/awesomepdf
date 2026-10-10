@@ -95,11 +95,7 @@ const rgbaToHex = (n) => {
 };
 
 function toast(msg) {
-  const t = $('toast');
-  t.textContent = msg;
-  t.hidden = false;
-  clearTimeout(toast._t);
-  toast._t = setTimeout(() => (t.hidden = true), 2200);
+  window.dispatchEvent(new CustomEvent('PDFCRAFT_EDITOR_NOTICE', { detail: { message: msg } }));
 }
 
 const P = () => state.engine;

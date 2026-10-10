@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { ALargeSmall, AlignCenter, AlignCenterHorizontal, AlignCenterVertical, AlignEndVertical, AlignJustify, AlignLeft, AlignRight, AlignStartVertical, ArrowDownToLine, ArrowLeft, ArrowUpToLine, Bold, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, ChevronsDown, ChevronsUp, CircleMinus, CirclePlus, Clipboard, Columns2, Copy, Download, ExternalLink, FlipHorizontal, FlipVertical, FolderOpen, Image as ImageIcon, IndentDecrease, IndentIncrease, Info, Italic, List, ListOrdered, PanelRight, Pencil, Redo2, RotateCcw, RotateCw, Rows2, Scan, Search, SlidersHorizontal, Strikethrough, Subscript, Superscript, Tag, TextCursorInput, Trash2, Underline, Undo2, X } from 'lucide-react';
 import { EditorEditMenu, EditorZoomMenu, EditorDocumentDialog } from './EditorMenus';
+import { EditorNotifications } from './EditorNotifications';
 import { withBasePath } from '@/lib/utils/path';
 
 // Keep native input IDs and change events for the existing browser-only editor engine.
@@ -542,6 +543,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
       </Button>
       <div id="toast" hidden={true} aria-hidden="true">
       </div>
+      <EditorNotifications direction={locale === 'ar' ? 'rtl' : 'ltr'} />
     </div>
   );
 }
