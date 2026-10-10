@@ -15,6 +15,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import {
   splitPDF,
   parsePageRanges,
@@ -491,106 +492,21 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
               <Label className="block mb-3">
                 {tTools('splitPdf.splitModeLabel') || 'Split Mode'}
               </Label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {/* Range Mode */}
-                <Button size="sm" variant={splitMode === 'ranges' ? 'default' : 'outline'} aria-pressed={splitMode === 'ranges'}
-                  type="button"
-                  onClick={() => setSplitMode('ranges')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'ranges' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UIList className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'ranges' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeRanges')?.replace(' (Default)', '') || 'Page Range'}
-                  </span>
-                  {splitMode === 'ranges' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
-
-                {/* Even/Odd Mode */}
-                <Button size="sm" variant={splitMode === 'even-odd' ? 'default' : 'outline'} aria-pressed={splitMode === 'even-odd'}
-                  type="button"
-                  onClick={() => setSplitMode('even-odd')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'even-odd' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UIListFilter className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'even-odd' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeEvenOdd')?.replace('Split by ', '') || 'Even/Odd'}
-                  </span>
-                  {splitMode === 'even-odd' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
-
-                {/* Every Page Mode */}
-                <Button size="sm" variant={splitMode === 'every-page' ? 'default' : 'outline'} aria-pressed={splitMode === 'every-page'}
-                  type="button"
-                  onClick={() => setSplitMode('every-page')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'every-page' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UIFileText className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'every-page' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeEveryPage')?.replace('Split All Pages into Separate Files', 'Every Page') || 'Every Page'}
-                  </span>
-                  {splitMode === 'every-page' && (
-              <Alert>
-                <UIFileText aria-hidden="true" />
-                <AlertTitle>{totalPages} Separate Files</AlertTitle>
-                <AlertDescription>{tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}</AlertDescription>
-              </Alert>
-            )}
-
-            {splitMode === 'visual' && (
-              <Alert>
-                <UIMousePointerClick aria-hidden="true" />
-                <AlertTitle>Visual Page Selection</AlertTitle>
-                <AlertDescription>{tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}</AlertDescription>
-              </Alert>
-            )}
-
-            {splitMode === 'bookmarks' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
-
-                {/* N Times Mode */}
-                <Button size="sm" variant={splitMode === 'n-times' ? 'default' : 'outline'} aria-pressed={splitMode === 'n-times'}
-                  type="button"
-                  onClick={() => setSplitMode('n-times')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'n-times' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UILayoutGrid className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'n-times' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeNTimesShort') || 'Split N Parts'}
-                  </span>
-                  {splitMode === 'n-times' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+                {([
+                  { id: 'ranges', Icon: UIList, label: tTools('splitPdf.modeRanges') || 'Page Range' },
+                  { id: 'even-odd', Icon: UIListFilter, label: tTools('splitPdf.modeEvenOdd') || 'Even/Odd' },
+                  { id: 'every-page', Icon: UIFileText, label: tTools('splitPdf.modeEveryPage') || 'Every Page' },
+                  { id: 'visual', Icon: UIMousePointerClick, label: tTools('splitPdf.modeVisualShort') || 'Visual Select' },
+                  { id: 'bookmarks', Icon: UIBookmark, label: tTools('splitPdf.modeBookmarksShort') || 'Bookmarks' },
+                  { id: 'n-times', Icon: UILayoutGrid, label: tTools('splitPdf.modeNTimesShort') || 'Split N Parts' },
+                ] as const).map(({ id, Icon, label }) => (
+                  <Button key={id} size="sm" variant={splitMode === id ? 'default' : 'outline'} aria-label={label} aria-pressed={splitMode === id}
+                    onClick={() => setSplitMode(id)} disabled={isProcessing} className="h-auto min-h-9 whitespace-normal">
+                    <Icon aria-hidden="true" /><span>{label}</span>
+                    {id === 'bookmarks' && pdfBookmarks.length > 0 && <Badge variant="secondary" aria-hidden="true">{pdfBookmarks.length}</Badge>}
+                  </Button>
+                ))}
               </div>
             </div>
 
@@ -660,41 +576,19 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
             )}
 
             {splitMode === 'every-page' && (
-              <div className="relative overflow-hidden p-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/60 shadow-sm">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="relative flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                    <UIFileText className="w-5 h-5 text-blue-600" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-blue-800">
-                      {totalPages} Separate Files
-                    </p>
-                    <p className="text-xs text-blue-600 mt-0.5">
-                      {tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <Alert>
+                <UIFileText aria-hidden="true" />
+                <AlertTitle>{totalPages} Separate Files</AlertTitle>
+                <AlertDescription>{tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}</AlertDescription>
+              </Alert>
             )}
 
             {splitMode === 'visual' && (
-              <div className="relative overflow-hidden p-4 rounded-xl bg-gradient-to-r from-purple-50 to-fuchsia-50 border border-purple-200/60 shadow-sm">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="relative flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                    <UIMousePointerClick className="w-5 h-5 text-purple-600" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-purple-800">
-                      Visual Page Selection
-                    </p>
-                    <p className="text-xs text-purple-600 mt-0.5">
-                      {tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <Alert>
+                <UIMousePointerClick aria-hidden="true" />
+                <AlertTitle>Visual Page Selection</AlertTitle>
+                <AlertDescription>{tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}</AlertDescription>
+              </Alert>
             )}
 
             {splitMode === 'bookmarks' && (
