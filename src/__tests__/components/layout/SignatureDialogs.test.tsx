@@ -22,8 +22,8 @@ describe('Signature dialogs', () => {
     await userEvent.click(within(library).getAllByRole('button', { name: /从已签署 PDF 提取/ })[0]);
     const extractor = await screen.findByRole('dialog', { name: '从已签署 PDF 提取签名 / 印章' });
     expect(screen.getAllByRole('dialog')).toHaveLength(1);
-    await userEvent.click(within(extractor).getByRole('button', { name: 'Close', exact: true }));
+    await userEvent.click(within(extractor).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
-    expect(screen.getByRole('button', { name: '从 PDF 提取', exact: true })).toHaveFocus();
+    expect(screen.getByRole('button', { name: '从 PDF 提取' })).toHaveFocus();
   });
 });
