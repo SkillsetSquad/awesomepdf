@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { LegacyTextEditDialog } from './LegacyTextEditDialog';
 import { LegacyEditorControls } from './LegacyEditorControls';
+import { AnnotationExportDialog } from './AnnotationExportDialog';
 import { PDFViewerControls } from '../PDFViewerControls';
 import {
   replaceExistingText,
@@ -986,6 +987,7 @@ export function LegacyAnnotatorTool({
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
       <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} exportError={tErrors('processingFailed')} />
+      <AnnotationExportDialog key={`exports:${pdfUrl}`} iframe={editorFrame} locale={locale} closeLabel={t('buttons.close')} />
       <LegacyTextEditDialog key={`text:${pdfUrl}`} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
       {!file && (
         <FileUploader
