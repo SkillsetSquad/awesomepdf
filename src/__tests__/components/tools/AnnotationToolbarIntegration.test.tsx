@@ -8,13 +8,16 @@ import { act, fireEvent, render, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { LegacyEditorControls } from '@/components/tools/edit-pdf/LegacyEditorControls';
+import { toast } from 'sonner';
+
+vi.mock('sonner', () => ({ toast: { error: vi.fn() } }));
 
 type Annotation = { name: string; type: number; pdfjsEditorType: number; icon: React.ReactNode; style?: { color: string }; styleEditable?: { color: boolean } };
 type ToolbarProps = { defaultSidebarOpen: boolean; onChange: (annotation: Annotation | null, image: string | null) => void; onSidebarOpen: (open: boolean) => void; onExport: (format: string) => void };
 type GraphicProps = { annotation: Annotation; onAdd: (image: string) => void };
 
 /** Execute the shipped toolbar's state/handlers with small popover fixtures; no PDF is opened. */
-function setup() {
+function setup(exportPdf = true, exportExcel = true) {
   const iframe = document.createElement('iframe');
   document.body.append(iframe);
   const doc = iframe.contentDocument!;
@@ -57,7 +60,7 @@ function setup() {
   const Toolbar = new Function('m', 'Po', 'Ao', 'To', 'tL', 'ke', 'JB', 'Mn', 'ad', '$B', 'bF', 'Eo', 'pS', 'SS', 'AC', 'hm', 'po', 'go', 'vo', 'xF', 'yo', `return ${renderer}`)(
     React, tools, { HIGHLIGHT: 9 }, { STAMP: 13, SIGNATURE: 101 }, (value: unknown) => value,
     () => ({ t: (key: string) => labels[key.split('.').at(-1)!] ?? key }), Object.assign, jsxRuntime, { open: notices }, Graphic, Graphic,
-    { setting: { COLOR: '#000000', SAVE_BUTTON: false, EXPORT_PDF: true, EXPORT_EXCEL: true }, colors: [] },
+    { setting: { COLOR: '#000000', SAVE_BUTTON: false, EXPORT_PDF: exportPdf, EXPORT_EXCEL: exportExcel }, colors: [] },
     ColorPicker, Space, NativeButton, Popover, Icon, Icon, Icon, Icon, Icon,
   ) as React.ComponentType<ToolbarProps>;
   let root!: Root;
@@ -101,7 +104,7 @@ describe('Shipped annotation toolbar integration', () => {
     expect(doc.querySelector('[data-awesomepdf-action]')).toBeNull();
   });
 
-  it('activates native graphic and export popover anchors and retains their original callbacks', async () => {
+  it('activates native graphic anchors and exposes the engine export callback through an accessible menu', async () => {
     const { doc, tools, onChange, onExport, notices, cleanup } = setup();
     try {
       const ui = within(doc.body);
@@ -120,9 +123,72 @@ describe('Shipped annotation toolbar integration', () => {
       expect(ui.getByTestId('export-anchor')).toContainElement(exportButton);
       exportButton.focus();
       await user.keyboard('{Enter}');
-      await user.click(ui.getByRole('button', { name: 'PDF' }));
-      await user.click(ui.getByRole('button', { name: 'Excel' }));
+      const menu = await ui.findByRole('menu');
+      expect(menu.ownerDocument).toBe(doc);
+      expect(menu).toHaveAttribute('dir', 'rtl');
+      expect(ui.queryByRole('button', { name: 'PDF' })).toBeNull();
+      await waitFor(() => expect(ui.getByRole('menuitem', { name: 'PDF' })).toHaveFocus());
+      await user.keyboard('{Enter}');
+      await waitFor(() => expect(onExport).toHaveBeenCalledWith('pdf'));
+      await waitFor(() => expect(exportButton).toHaveFocus());
+      await user.keyboard('{Enter}');
+      const excel = await ui.findByRole('menuitem', { name: 'Excel' });
+      await user.keyboard('{End}');
+      expect(excel).toHaveFocus();
+      await user.keyboard('{Home}');
+      expect(ui.getByRole('menuitem', { name: 'PDF' })).toHaveFocus();
+      await user.keyboard('{ArrowDown}');
+      await waitFor(() => expect(excel).toHaveFocus());
+      await user.keyboard('{Enter}');
       expect(onExport.mock.calls).toEqual([['pdf'], ['excel']]);
+    } finally { cleanup(); }
+  });
+
+  it('respects enabled formats, dismisses with Escape and restores focus after a failed export', async () => {
+    const { doc, onExport, cleanup } = setup(true, false);
+    try {
+      const ui = within(doc.body);
+      const user = userEvent.setup({ document: doc });
+      const trigger = ui.getByRole('button', { name: 'Export' });
+      trigger.focus();
+      await user.keyboard('{Enter}');
+      await ui.findByRole('menuitem', { name: 'PDF' });
+      expect(ui.queryByRole('menuitem', { name: 'Excel' })).toBeNull();
+      await user.keyboard('{Escape}');
+      await waitFor(() => expect(ui.queryByRole('menu')).toBeNull());
+      expect(trigger).toHaveFocus();
+      onExport.mockImplementationOnce(() => Promise.reject(new Error('Local export unavailable')));
+      await user.keyboard('{Enter}');
+      await user.click(await ui.findByRole('menuitem', { name: 'PDF' }));
+      await waitFor(() => expect(toast.error).toHaveBeenCalledWith('Local export unavailable'));
+      expect(trigger).toBeEnabled();
+      trigger.focus();
+      await user.keyboard('{Enter}');
+      await user.click(await ui.findByRole('menuitem', { name: 'PDF' }));
+      expect(onExport).toHaveBeenCalledTimes(2);
+    } finally { cleanup(); }
+  });
+
+  it('prevents repeated export while pending and restores the trigger after completion', async () => {
+    const { doc, onExport, cleanup } = setup(true, false);
+    let completeExport!: () => void;
+    onExport.mockImplementationOnce(() => new Promise<void>(resolve => { completeExport = resolve; }));
+    try {
+      const ui = within(doc.body);
+      const user = userEvent.setup({ document: doc });
+      const trigger = ui.getByRole('button', { name: 'Export' });
+      trigger.focus();
+      await user.keyboard('{Enter}');
+      await user.click(await ui.findByRole('menuitem', { name: 'PDF' }));
+      expect(trigger).toBeDisabled();
+      expect(trigger).toHaveAttribute('aria-busy', 'true');
+      expect(onExport).toHaveBeenCalledOnce();
+      act(() => completeExport());
+      await waitFor(() => expect(trigger).toBeEnabled());
+      await waitFor(() => expect(trigger).toHaveFocus());
+      await user.keyboard('{Enter}');
+      await user.click(await ui.findByRole('menuitem', { name: 'PDF' }));
+      expect(onExport).toHaveBeenCalledTimes(2);
     } finally { cleanup(); }
   });
 });

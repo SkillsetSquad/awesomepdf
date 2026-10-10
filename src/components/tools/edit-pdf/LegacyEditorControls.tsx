@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ArrowUpRight, Circle, Cloud, Download, Highlighter, Info, MessageSquare, MousePointer2, Palette, PenLine, Redo2, Square, Stamp, StickyNote, TextCursorInput, Type, Undo2, type LucideIcon } from 'lucide-react';
+import { AnnotationExportMenu, type AnnotationExportAction, type AnnotationExportFormat } from './AnnotationExportMenu';
 
 const annotationIcons: Record<string, LucideIcon> = {
   select: MousePointer2, rectangle: Square, circle: Circle, note: StickyNote,
@@ -21,17 +22,20 @@ interface ViewerControl {
   Icon: LucideIcon;
   toggle: boolean;
   color?: string;
+  onExport?: AnnotationExportAction;
+  exportFormats?: AnnotationExportFormat[];
   label: string;
   disabled: boolean;
   pressed: boolean;
   action: HTMLElement;
 }
 
-export function LegacyEditorControls({ iframe, locale, undo, redo }: {
+export function LegacyEditorControls({ iframe, locale, undo, redo, exportError = 'Export failed. Please try again.' }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   undo: string;
   redo: string;
+  exportError?: string;
 }) {
   const [controls, setControls] = useState<ViewerControl[]>([]);
   useEffect(() => {
@@ -111,18 +115,21 @@ export function LegacyEditorControls({ iframe, locale, undo, redo }: {
         const color = icon.querySelector<HTMLElement>('[style]')?.style.color || undefined;
         const label = name.textContent?.trim() || item.title;
         const mount = mountControl(item, action);
+        const exportAction = (item as HTMLElement & { awesomepdfExport?: AnnotationExportAction }).awesomepdfExport;
+        const exportFormats = (['pdf', 'excel'] as const).filter(format => item.dataset[format === 'pdf' ? 'exportPdf' : 'exportExcel'] === 'true');
         next.push({ item, mount, action, kind: 'annotation', key: tool, Icon, color: tool === 'color' ? color : undefined,
+          onExport: typeof exportAction === 'function' ? exportAction : undefined, exportFormats,
           label, toggle: !['color', 'export'].includes(tool),
           disabled: item.classList.contains('disabled') || action.hasAttribute('disabled'), pressed: item.classList.contains('selected') });
       }
       setControls(previous => previous.length === next.length && next.every((control, index) => {
         const old = previous[index];
-        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color;
+        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
       }) ? previous : next);
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel'] });
     return () => {
       observer.disconnect();
       theme.disconnect();
@@ -134,6 +141,8 @@ export function LegacyEditorControls({ iframe, locale, undo, redo }: {
 
   return controls.map(control => createPortal(control.kind === 'hint'
     ? <Alert className="pointer-events-none fixed top-20 left-1/2 z-[100000] w-[calc(100%-2rem)] max-w-md -translate-x-1/2" role="status" dir={locale === 'ar' ? 'rtl' : 'ltr'}><Info aria-hidden="true" /><AlertDescription>{control.label}</AlertDescription></Alert>
+    : control.key === 'export' && control.onExport
+    ? <AnnotationExportMenu container={control.item.ownerDocument.body} label={control.label} formats={control.exportFormats ?? []} onExport={control.onExport} direction={locale === 'ar' ? 'rtl' : 'ltr'} errorMessage={exportError} />
     : <Button dir={locale === 'ar' ? 'rtl' : 'ltr'} type="button" size="sm" variant={control.pressed ? 'secondary' : 'ghost'} disabled={control.disabled}
       aria-pressed={control.toggle ? control.pressed : undefined} onClick={event => { event.stopPropagation(); control.action.click(); }}>
       <control.Icon aria-hidden="true" />{control.color && <span className="size-3 rounded-sm border" aria-hidden="true" style={{ backgroundColor: control.color }} />}{control.label}

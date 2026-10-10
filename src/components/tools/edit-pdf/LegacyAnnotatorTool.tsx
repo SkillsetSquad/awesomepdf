@@ -43,6 +43,7 @@ export function LegacyAnnotatorTool({
   onClear,
 }: LegacyAnnotatorToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
   const locale = useLocale();
   const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null);
   const tTools = useTranslations('tools.editPdf');
@@ -984,7 +985,7 @@ export function LegacyAnnotatorTool({
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
-      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} />
+      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} exportError={tErrors('processingFailed')} />
       <LegacyTextEditDialog key={`text:${pdfUrl}`} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
       {!file && (
         <FileUploader
