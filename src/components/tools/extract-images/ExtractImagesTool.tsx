@@ -1,16 +1,19 @@
 'use client';
-import { Download as UIDownload, Expand as UIExpand, FileText as UIFileText, X as UIX } from 'lucide-react';
+import { Download as UIDownload, FileText as UIFileText, X as UIX } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert, CheckCircle2 } from 'lucide-react';
 import { extractImages, type ExtractedImage, type ExtractImagesOptions } from '@/lib/pdf/processors/extract-images';
 import type { ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
@@ -52,6 +55,8 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
     const [error, setError] = useState<string | null>(null);
 
     const [selectedImage, setSelectedImage] = useState<ExtractedImage | null>(null);
+    const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
+    const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
 
     // Filter options
     const [minWidth, setMinWidth] = useState(50);
@@ -269,18 +274,13 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
             {/* Error Message */}
             {error && (
-                <div
-                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-                    role="alert"
-                >
-                    <p className="text-sm">{error}</p>
-                </div>
+                <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>
             )}
 
             {/* File List */}
             {files.length > 0 && (
                 <Card className="p-6"  >
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                         <h3 className="text-lg font-medium text-foreground">
                             {tTools('extractImages.filesTitle') || 'Selected Files'} ({files.length})
                         </h3>
@@ -408,7 +408,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {/* Extracted Images Grid */}
             {extractedImages.length > 0 && (
                 <Card className="p-6"  >
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                         <h3 className="text-lg font-medium text-foreground">
                             {tTools('extractImages.extractedTitle') || 'Extracted Images'} ({extractedImages.length})
                         </h3>
@@ -436,22 +436,10 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 key={image.index}
                                 className="group relative rounded-md border border-border overflow-hidden bg-muted/20"
                             >
-                                {/* Image Preview with click handler */}
-                                <div
-                                    className="aspect-square flex items-center justify-center overflow-hidden bg-muted/10 cursor-pointer"
-                                    onClick={() => setSelectedImage(image)}
-                                >
+                                <Button variant="ghost" aria-label={`${tTools('extractImages.extractedTitle')}: ${image.name}`} className="aspect-square h-auto w-full overflow-hidden p-0" onClick={event => { previewTriggerRef.current = event.currentTarget; setSelectedImage(image); }}>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src={imagePreviewUrls[image.index]}
-                                        alt={image.name}
-                                        className="max-w-full max-h-full object-contain transition-transform group-hover:scale-105"
-                                        loading="lazy"
-                                    />
-                                    <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <UIExpand className="w-8 h-8 text-white drop-shadow-md" aria-hidden="true" />
-                                    </div>
-                                </div>
+                                    <img src={imagePreviewUrls[image.index]} alt="" className="max-h-full max-w-full object-contain" loading="lazy" />
+                                </Button>
 
                                 {/* Image Info */}
                                 <div className="p-2">
@@ -473,8 +461,8 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                         e.stopPropagation();
                                         handleDownloadImage(image);
                                     }}
-                                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
-                                    aria-label={`Download ${image.name}`}
+                                    className="absolute end-2 top-2"
+                                    aria-label={`${t('buttons.download')}: ${image.name}`}
                                 >
                                     <UIDownload className="w-4 h-4" aria-hidden="true" />
                                 </Button>
@@ -486,61 +474,20 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
             {/* Success Message */}
             {status === 'complete' && extractedImages.length > 0 && (
-                <div
-                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-                    role="status"
-                >
-                    <p className="text-sm font-medium">
-                        {tTools('extractImages.successMessage') || `Successfully extracted ${extractedImages.length} image(s). Click to download individual images or use "Download as ZIP".`}
-                    </p>
-                </div>
+                <Alert role="status"><CheckCircle2 aria-hidden="true" /><AlertTitle>{t('status.complete')}</AlertTitle><AlertDescription>{tTools('extractImages.successMessage')}</AlertDescription></Alert>
             )}
 
-            {/* Image Preview Modal */}
-            {selectedImage && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                    onClick={() => setSelectedImage(null)}
-                >
-                    <div
-                        className="relative max-w-full max-h-full flex flex-col items-center"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Close Button */}
-                        <Button variant="ghost" size="icon-sm"
-                            className="absolute -top-12 right-0"
-                            onClick={() => setSelectedImage(null)}
-                        >
-                            <UIX className="w-8 h-8" aria-hidden="true" />
-                        </Button>
-
-                        {/* Image */}
-                        <img
-                            src={imagePreviewUrls[selectedImage.index]}
-                            alt={selectedImage.name}
-                            className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl bg-background"
-                        />
-
-                        {/* Info Bar */}
-                        <div className="mt-4 flex items-center gap-4 px-6 py-3 bg-background rounded-full shadow-lg">
-                            <div className="text-sm text-foreground">
-                                <span className="font-medium mr-2">{selectedImage.name}</span>
-                                <span className="text-muted-foreground">
-                                    {selectedImage.width}×{selectedImage.height} • {formatSize(selectedImage.size)}
-                                </span>
-                            </div>
-                            <div className="h-4 w-px bg-border" />
-                            <Button
-                                size="sm"
-                                variant="default"
-                                onClick={() => handleDownloadImage(selectedImage)}
-                            >
-                                {t('buttons.download') || 'Download'}
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <Dialog open={selectedImage !== null} onOpenChange={open => { if (!open) setSelectedImage(null); }}>
+                <DialogContent dir={direction} showCloseButton={false} className="sm:max-w-3xl" onCloseAutoFocus={event => { event.preventDefault(); previewTriggerRef.current?.focus(); }}>
+                    <DialogHeader><DialogTitle className="break-words pe-8">{selectedImage?.name}</DialogTitle><DialogDescription>{selectedImage && `${selectedImage.width}×${selectedImage.height} • ${formatSize(selectedImage.size)}`}</DialogDescription></DialogHeader>
+                    <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={t('buttons.close')}><UIX aria-hidden="true" /></Button></DialogClose>
+                    {selectedImage && <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={imagePreviewUrls[selectedImage.index]} alt={selectedImage.name} className="mx-auto max-h-[65dvh] max-w-full object-contain" />
+                        <Button size="sm" onClick={() => handleDownloadImage(selectedImage)}><UIDownload aria-hidden="true" />{t('buttons.download')}</Button>
+                    </>}
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
