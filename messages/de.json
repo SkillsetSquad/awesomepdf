@@ -394,8 +394,9 @@
       "clearButton": "Löschen",
       "emptyStateDescription": "Identifiziert Tj/TJ-Inhaltsstrom-Schlüsselwörter und bereinigt automatisch sich wiederholende Hintergrundlayouts unter Beibehaltung der Vektorauflösung.",
       "watermarkKeywordsLabel": "Ziel-Wasserzeichentextmuster",
-      "watermarkKeywordsPlaceholder": "z.B. KOPIE, VERTRAULICH (kommagetrennt)",
-      "toleranceLabel": "Glyphen-Übereinstimmungstoleranz"
+      "watermarkKeywordsPlaceholder": "z. B. Vertraulich",
+      "removeImagesLabel": "Seitenbilder entfernen",
+      "removeImagesDescription": "Entfernt auch Bilder wie Fotos und Logos von den Seiten."
     },
     "smartDataRedactor": {
       "uploadLabel": "PDF-Dokumente für Schwärzung hochladen",

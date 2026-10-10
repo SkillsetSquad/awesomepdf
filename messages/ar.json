@@ -394,8 +394,9 @@
       "clearButton": "مسح",
       "emptyStateDescription": "يحدد الكلمات المفتاحية لتدفق محتويات Tj/TJ وينظف تخطيطات الخلفية المتكررة تلقائياً، مع الحفاظ على دقة المتجهات الأصلية.",
       "watermarkKeywordsLabel": "نمط نص العلامة المائية المستهدف",
-      "watermarkKeywordsPlaceholder": "مثال: COPY, CONFIDENTIAL (مفصولة بفاصلة)",
-      "toleranceLabel": "نسبة التسامح لمطابقة الحروف الرسومية"
+      "watermarkKeywordsPlaceholder": "مثل: سري",
+      "removeImagesLabel": "إزالة صور الصفحات",
+      "removeImagesDescription": "يزيل أيضًا صور الصفحات، مثل الصور الفوتوغرافية والشعارات."
     },
     "smartDataRedactor": {
       "uploadLabel": "تحميل مستندات PDF لإجراء التعتيم/إخفاء البيانات",

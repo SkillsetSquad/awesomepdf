@@ -394,8 +394,9 @@
       "clearButton": "초기화",
       "emptyStateDescription": "Tj/TJ 콘텐츠 스트림 키워드를 식별하고 반복되는 배경 레이아웃을 자동으로 정리하며 원본 벡터 해상도를 유지합니다.",
       "watermarkKeywordsLabel": "대상 워터마크 텍스트 패턴",
-      "watermarkKeywordsPlaceholder": "예: COPY, CONFIDENTIAL (쉼표로 구분)",
-      "toleranceLabel": "글리프 일치 허용 오차"
+      "watermarkKeywordsPlaceholder": "예: 기밀",
+      "removeImagesLabel": "페이지 이미지 제거",
+      "removeImagesDescription": "사진과 로고 같은 이미지도 페이지에서 제거합니다."
     },
     "smartDataRedactor": {
       "uploadLabel": "민감 정보 블라인드 처리(Redact)할 PDF 문서 업로드",

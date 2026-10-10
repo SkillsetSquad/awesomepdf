@@ -394,8 +394,9 @@
       "clearButton": "Curăță",
       "emptyStateDescription": "Identifică cuvintele cheie din fluxul de conținut Tj/TJ și curăță automat aspectele repetate de fundal, păstrând rezoluția nativă a vectorilor.",
       "watermarkKeywordsLabel": "Model text filigran țintă",
-      "watermarkKeywordsPlaceholder": "ex. COPY, CONFIDENTIAL (separate prin virgulă)",
-      "toleranceLabel": "Toleranță de potrivire a glyph-ului"
+      "watermarkKeywordsPlaceholder": "de ex. Confidențial",
+      "removeImagesLabel": "Elimină imaginile din pagini",
+      "removeImagesDescription": "Elimină și imagini precum fotografii și sigle din pagini."
     },
     "smartDataRedactor": {
       "uploadLabel": "Încărcați documente PDF pentru redactare",

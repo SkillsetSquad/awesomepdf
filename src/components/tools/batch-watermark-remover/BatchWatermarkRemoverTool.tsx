@@ -1,228 +1,104 @@
 'use client';
-import { RefreshCw as UIEmojiRefreshCw } from 'lucide-react';
 
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
-
-import { Checkbox } from '@/components/ui/checkbox';
-
-import { Label } from '@/components/ui/label';
-
-import { Input } from '@/components/ui/input';
-
-import React, { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { CheckCircle2, CircleAlert, FileText } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { removeBatchWatermarks, type BatchWatermarkOptions } from '@/lib/pdf/processors/batch-watermark-remover';
-import type { ProcessOutput } from '@/types/pdf';
-import { Eraser, Trash2, ShieldAlert, Settings } from 'lucide-react';
+import { Card, CardAction, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
+import { removeBatchWatermarks } from '@/lib/pdf/processors/batch-watermark-remover';
 
-export interface BatchWatermarkRemoverToolProps {
-  className?: string;
-}
+export interface BatchWatermarkRemoverToolProps { className?: string }
 
 export function BatchWatermarkRemoverTool({ className = '' }: BatchWatermarkRemoverToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
   const [file, setFile] = useState<File | null>(null);
   const [watermarkText, setWatermarkText] = useState('Confidential');
   const [removeImages, setRemoveImages] = useState(false);
-
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
-
-  const handleFileSelected = useCallback((selectedFiles: File[]) => {
-    if (selectedFiles.length === 0) return;
-    setFile(selectedFiles[0]);
+  const operation = useRef(0);
+  const isProcessing = status === 'processing';
+  const handleFileSelected = useCallback((files: File[]) => {
+    if (!files.length) return;
+    operation.current++;
+    setFile(files[0]);
+    setStatus('idle');
     setError(null);
     setResultBlob(null);
   }, []);
-
+  const resetResult = () => { setResultBlob(null); setStatus('idle'); setError(null); };
   const handleScrub = async () => {
     if (!file) return;
-    cancelledRef.current = false;
+    const current = ++operation.current;
     setStatus('processing');
     setProgress(0);
+    setProgressMessage('');
     setError(null);
-
+    setResultBlob(null);
     try {
-      const output: ProcessOutput = await removeBatchWatermarks(
-        [file],
-        {
-          watermarkText,
-          removeImages,
-        },
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Erasing watermark signatures...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
+      const output = await removeBatchWatermarks([file], { watermarkText, removeImages }, (value, message) => {
+        if (operation.current !== current) return;
+        setProgress(value);
+        setProgressMessage(message || t('status.processing'));
+      });
+      if (operation.current !== current) return;
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
         setStatus('complete');
       } else {
-        setError(output.error?.message || 'Failed to scrub watermark elements.');
+        setError(output.error?.message || tErrors('processingFailed'));
         setStatus('error');
       }
-    } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'Error cleaning watermarks.');
-        setStatus('error');
-      }
+    } catch (error) {
+      if (operation.current !== current) return;
+      setError(error instanceof Error ? error.message : tErrors('processingFailed'));
+      setStatus('error');
     }
   };
-
-  const handleClear = () => {
-    setFile(null);
-    setResultBlob(null);
-    setStatus('idle');
-  };
-
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {!file && (
-        <FileUploader
-          accept={['application/pdf']}
-          multiple={false}
-          onFilesSelected={handleFileSelected}
-          onError={setError}
-          disabled={status === 'processing'}
-          label={t('batchWatermarkRemover.uploadLabel')}
-          description={t('batchWatermarkRemover.uploadDescription')}
-        />
-      )}
-
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          {error}
-        </AlertDescription></Alert>
-      )}
-
-      {file && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                  <Eraser className="w-4 h-4 text-primary" />
-                  {t('batchWatermarkRemover.previewTitle')}
-                </span>
-                <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
-                  {t('batchWatermarkRemover.clearButton')}
-                </Button>
-              </div>
-
-              {/* Laser laser sweep cleaning wave effect mock */}
-              <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
-                {status === 'processing' && (
-                  <div className="absolute inset-0 bg-primary/5 flex flex-col items-center justify-center pointer-events-none">
-                    <div className="w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent absolute top-0 animate-[bounce_4s_infinite]" />
-                    <ShieldAlert className="w-12 h-12 text-cyan-400 animate-bounce" />
-                  </div>
-                )}
-                <div className="max-w-md text-center space-y-3">
-                  <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto text-cyan-500">
-                    <UIEmojiRefreshCw className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
-                  </div>
-                  <h4 className="text-sm font-bold text-foreground">
-                    {file.name}
-                  </h4>
-                  <p className="text-xs text-muted-foreground">
-                    {t('batchWatermarkRemover.emptyStateDescription')}
-                  </p>
-                </div>
-              </div>
-            </Card>
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {!file && <FileUploader accept={['application/pdf']} multiple={false} onFilesSelected={handleFileSelected} onError={setError}
+      disabled={isProcessing} label={t('batchWatermarkRemover.uploadLabel')} description={t('batchWatermarkRemover.uploadDescription')} />}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {file && <div className="grid items-start gap-6 lg:grid-cols-2">
+      <Card>
+        <CardHeader>
+          <div className="flex min-w-0 items-center gap-3"><FileText className="size-5 shrink-0 text-muted-foreground" aria-hidden="true" /><CardTitle className="break-all">{file.name}</CardTitle></div>
+          <CardAction><Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => { operation.current++; setFile(null); resetResult(); }}>{t('batchWatermarkRemover.clearButton')}</Button></CardAction>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader><CardTitle>{t('batchWatermarkRemover.optionsTitle')}</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="watermark-text">{t('batchWatermarkRemover.watermarkKeywordsLabel')}</Label>
+            <Input id="watermark-text" value={watermarkText} disabled={isProcessing} placeholder={t('batchWatermarkRemover.watermarkKeywordsPlaceholder')} onChange={event => { setWatermarkText(event.target.value); resetResult(); }} />
           </div>
-
-          <div className="lg:col-span-4 space-y-6">
-            <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
-              <div className="space-y-6">
-                <div className="border-b border-border pb-3 flex items-center gap-2">
-                  <Settings className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-semibold text-foreground">{t('batchWatermarkRemover.optionsTitle')}</h3>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="space-y-1.5">
-                    <Label className="" htmlFor="batchwatermarkremovertool-field-1">{t('batchWatermarkRemover.watermarkKeywordsLabel')}</Label>
-                    <Input
-                      type="text"
-                      value={watermarkText}
-                      onChange={(e) => setWatermarkText(e.target.value)}
-                      placeholder="e.g. Confidential"
-                      className="w-full" id="batchwatermarkremovertool-field-1" aria-label={t('batchWatermarkRemover.watermarkKeywordsLabel')}
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-2.5 pt-2">
-                    <Checkbox
-
-                      id="removeImages"
-                      checked={removeImages}
-                      onCheckedChange={(checked) => setRemoveImages((checked === true))}
-                       aria-label={t('batchWatermarkRemover.toleranceLabel')}
-                    />
-                    <Label htmlFor="removeImages" className="">
-                      {t('batchWatermarkRemover.toleranceLabel')}
-                    </Label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-border mt-6">
-                {status === 'complete' && resultBlob ? (
-                  <DownloadButton
-                    file={resultBlob}
-                    filename={`${file.name.replace(/\.pdf$/i, '')}_watermark_scrubbed.pdf`}
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4"
-                    showFileSize
-                  />
-                ) : (
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4"
-                    onClick={handleScrub}
-                    disabled={status === 'processing'}
-                  >
-                    {t('batchWatermarkRemover.processButton')}
-                  </Button>
-                )}
-              </div>
-            </Card>
+          <div className="flex items-start gap-3">
+            <Checkbox id="watermark-remove-images" checked={removeImages} disabled={isProcessing} aria-describedby="watermark-remove-images-help" onCheckedChange={checked => { setRemoveImages(checked === true); resetResult(); }} />
+            <div className="space-y-1"><Label htmlFor="watermark-remove-images">{t('batchWatermarkRemover.removeImagesLabel')}</Label><p id="watermark-remove-images-help" className="text-sm text-muted-foreground">{t('batchWatermarkRemover.removeImagesDescription')}</p></div>
           </div>
-        </div>
-      )}
-
-      {status === 'processing' && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
-          showPercentage
-        />
-      )}
-    </div>
-  );
+        </CardContent>
+        <CardFooter>
+          {status === 'complete' && resultBlob
+            ? <DownloadButton file={resultBlob} filename={`${file.name.replace(/\.pdf$/i, '')}_watermark_scrubbed.pdf`} size="lg" className="w-full" showFileSize />
+            : <Button size="lg" className="w-full" loading={isProcessing} onClick={handleScrub}>{t('batchWatermarkRemover.processButton')}</Button>}
+        </CardFooter>
+      </Card>
+    </div>}
+    {status === 'complete' && <Alert><CheckCircle2 aria-hidden="true" /><AlertDescription>{t('batchWatermarkRemover.successMessage')}</AlertDescription></Alert>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={() => { operation.current++; setStatus('idle'); setProgress(0); }} showPercentage />}
+  </div>;
 }
 
 export default BatchWatermarkRemoverTool;

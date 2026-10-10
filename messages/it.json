@@ -394,8 +394,9 @@
       "clearButton": "Cancella",
       "emptyStateDescription": "Identifica le parole chiave del flusso di contenuti Tj/TJ e pulisce automaticamente i layout di sfondo ripetitivi, mantenendo la risoluzione vettoriale originale.",
       "watermarkKeywordsLabel": "Modello di testo della filigrana di destinazione",
-      "watermarkKeywordsPlaceholder": "es. COPIA, CONFIDENZIALE (separati da virgola)",
-      "toleranceLabel": "Tolleranza di corrispondenza dei glifi"
+      "watermarkKeywordsPlaceholder": "ad es. Riservato",
+      "removeImagesLabel": "Rimuovi le immagini dalle pagine",
+      "removeImagesDescription": "Rimuove anche immagini come foto e loghi dalle pagine."
     },
     "smartDataRedactor": {
       "uploadLabel": "Carica documenti PDF da redigere",

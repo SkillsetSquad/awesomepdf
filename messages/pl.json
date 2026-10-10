@@ -394,8 +394,9 @@
       "clearButton": "Wyczyść",
       "emptyStateDescription": "Wykrywaj słowa kluczowe w strumieniach treści Tj/TJ i automatycznie usuwaj powtarzalne tła, zachowując jakość wektorów.",
       "watermarkKeywordsLabel": "Docelowy wzór tekstu znaku wodnego",
-      "watermarkKeywordsPlaceholder": "np. KOPIA, POUFNE (oddzielone przecinkami)",
-      "toleranceLabel": "Tolerancja dopasowania glifów"
+      "watermarkKeywordsPlaceholder": "np. Poufne",
+      "removeImagesLabel": "Usuń obrazy ze stron",
+      "removeImagesDescription": "Usuwa również obrazy, takie jak zdjęcia i logotypy, ze stron."
     },
     "smartDataRedactor": {
       "uploadLabel": "Prześlij dokumenty PDF do redakcji",

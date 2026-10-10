@@ -394,8 +394,9 @@
       "clearButton": "Limpiar",
       "emptyStateDescription": "Identifique palabras clave del flujo de contenido de Tj/TJ y limpie automáticamente los diseños de fondo repetitivos, manteniendo la resolución del vector original.",
       "watermarkKeywordsLabel": "Patrón de texto de marca de agua objetivo",
-      "watermarkKeywordsPlaceholder": "p. ej., COPIA, CONFIDENCIAL (separados por comas)",
-      "toleranceLabel": "Tolerancia de coincidencia de glifos"
+      "watermarkKeywordsPlaceholder": "p. ej., Confidencial",
+      "removeImagesLabel": "Eliminar imágenes de las páginas",
+      "removeImagesDescription": "También elimina imágenes como fotos y logotipos de las páginas."
     },
     "smartDataRedactor": {
       "uploadLabel": "Subir documentos PDF para redactar",

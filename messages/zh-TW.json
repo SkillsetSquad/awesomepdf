@@ -394,8 +394,9 @@
       "clearButton": "清空",
       "emptyStateDescription": "智能檢索 Tj/TJ 文本操作數流，物理剔除背景特定文本層，不做任何有損轉圖，無縫維持高清晰度。",
       "watermarkKeywordsLabel": "水印文本關鍵詞",
-      "watermarkKeywordsPlaceholder": "e.g. COPY, 內部文檔 (逗號分隔)",
-      "toleranceLabel": "圖樣字典匹配容差"
+      "watermarkKeywordsPlaceholder": "例如：機密",
+      "removeImagesLabel": "移除頁面圖片",
+      "removeImagesDescription": "也會移除頁面中的照片、標誌等圖片。"
     },
     "smartDataRedactor": {
       "uploadLabel": "上傳需要脫敏/隱藏敏感詞的 PDF",

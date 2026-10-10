@@ -394,8 +394,9 @@
       "clearButton": "クリア",
       "emptyStateDescription": "Tj/TJコンテンツストリームのキーワードを識別し、繰り返される背景レイアウトを自動的にクリーンアップし、元のベクター解像度を維持します。",
       "watermarkKeywordsLabel": "対象の透かしテキストパターン",
-      "watermarkKeywordsPlaceholder": "例：COPY, CONFIDENTIAL (カンマ区切り)",
-      "toleranceLabel": "グリフマッチング許容誤差"
+      "watermarkKeywordsPlaceholder": "例: 機密",
+      "removeImagesLabel": "ページの画像を削除",
+      "removeImagesDescription": "写真やロゴなどの画像もページから削除します。"
     },
     "smartDataRedactor": {
       "uploadLabel": "黒塗り（墨消し）処理するPDFドキュメントをアップロード",

@@ -394,8 +394,9 @@
       "clearButton": "Bersihkan",
       "emptyStateDescription": "Identifikasi kata kunci aliran konten Tj/TJ dan bersihkan tata letak latar belakang yang berulang secara otomatis, dengan tetap menjaga resolusi vektor mentah.",
       "watermarkKeywordsLabel": "Pola Teks Tanda Air Target",
-      "watermarkKeywordsPlaceholder": "misal. COPY, CONFIDENTIAL (dipisahkan koma)",
-      "toleranceLabel": "Toleransi Pencocokan Glyph"
+      "watermarkKeywordsPlaceholder": "mis. Rahasia",
+      "removeImagesLabel": "Hapus gambar halaman",
+      "removeImagesDescription": "Juga menghapus gambar seperti foto dan logo dari halaman."
     },
     "smartDataRedactor": {
       "uploadLabel": "Unggah Dokumen PDF untuk Diredaksi",

@@ -394,8 +394,9 @@
       "clearButton": "Xóa sạch",
       "emptyStateDescription": "Nhận diện từ khóa luồng nội dung Tj/TJ và tự động làm sạch bố cục nền lặp lại, giữ nguyên độ phân giải vectơ gốc.",
       "watermarkKeywordsLabel": "Từ khóa văn bản dấu nước mục tiêu",
-      "watermarkKeywordsPlaceholder": "VD: COPY, CONFIDENTIAL (phân tách bằng dấu phẩy)",
-      "toleranceLabel": "Sai số khớp glyph ký tự"
+      "watermarkKeywordsPlaceholder": "ví dụ: Bí mật",
+      "removeImagesLabel": "Xóa hình ảnh trên trang",
+      "removeImagesDescription": "Cũng xóa các hình ảnh như ảnh chụp và biểu trưng khỏi trang."
     },
     "smartDataRedactor": {
       "uploadLabel": "Tải lên tài liệu PDF cần làm mờ/ẩn thông tin nhạy cảm",

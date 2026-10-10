@@ -394,8 +394,9 @@
       "clearButton": "Effacer",
       "emptyStateDescription": "Identifiez les mots-clés du flux de contenu Tj/TJ et nettoyez automatiquement les mises en page d'arrière-plan répétitives, en conservant la résolution du vecteur d'origine.",
       "watermarkKeywordsLabel": "Motif de texte de filigrane cible",
-      "watermarkKeywordsPlaceholder": "ex. COPIE, CONFIDENTIEL (séparés par des virgules)",
-      "toleranceLabel": "Tolérance de correspondance des glyphes"
+      "watermarkKeywordsPlaceholder": "p. ex. Confidentiel",
+      "removeImagesLabel": "Supprimer les images des pages",
+      "removeImagesDescription": "Supprime également les images des pages, comme les photos et les logos."
     },
     "smartDataRedactor": {
       "uploadLabel": "Télécharger des documents PDF à caviarder",

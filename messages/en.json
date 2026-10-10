@@ -394,8 +394,9 @@
       "clearButton": "Clear",
       "emptyStateDescription": "Identify Tj/TJ contents stream keywords and automatically clean repetitive backdrop layouts, keeping raw vector resolution.",
       "watermarkKeywordsLabel": "Target Watermark Text Pattern",
-      "watermarkKeywordsPlaceholder": "e.g. COPY, CONFIDENTIAL (comma-separated)",
-      "toleranceLabel": "Glyph Matching Tolerance"
+      "watermarkKeywordsPlaceholder": "e.g. Confidential",
+      "removeImagesLabel": "Remove page images",
+      "removeImagesDescription": "Also removes images such as photos and logos from pages."
     },
     "smartDataRedactor": {
       "uploadLabel": "Upload PDF Documents to Redact",
