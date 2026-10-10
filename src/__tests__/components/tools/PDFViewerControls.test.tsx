@@ -71,4 +71,32 @@ describe('PDF.js shared controls', () => {
       expect(doc.querySelector('[data-pdf-viewer-icon-mount]')).toBeNull();
     } finally { cleanup(); }
   });
+
+  it('preserves native dialog controls, password submission and signature tab state', async () => {
+    const { doc, cleanup } = setup();
+    try {
+      const dialog = doc.createElement('dialog');
+      dialog.id = 'passwordDialog';
+      dialog.innerHTML = '<label for="password">Password</label><input id="password" type="password"><button id="passwordSubmit" type="button">Open</button><div role="tablist"><button id="addSignatureTypeButton" role="tab" aria-selected="true">Type</button><button id="addSignatureDrawButton" role="tab" aria-selected="false">Draw</button></div><label for="description">Description</label><textarea id="description"></textarea>';
+      const submit = dialog.querySelector<HTMLButtonElement>('#passwordSubmit')!;
+      const password = dialog.querySelector<HTMLInputElement>('#password')!;
+      const submitted = vi.fn();
+      submit.addEventListener('click', () => submitted(password.value));
+      const draw = dialog.querySelector<HTMLButtonElement>('#addSignatureDrawButton')!;
+      draw.addEventListener('click', () => { draw.setAttribute('aria-selected', 'true'); });
+      act(() => { doc.body.appendChild(dialog); dialog.setAttribute('open', ''); });
+      await waitFor(() => expect(dialog).toHaveAttribute('data-slot', 'dialog-content'));
+      expect(dialog).toBe(doc.getElementById('passwordDialog'));
+      expect(password).toHaveAttribute('data-slot', 'input');
+      expect(submit).toHaveAttribute('data-variant', 'default');
+      const user = userEvent.setup({ document: doc });
+      await user.type(password, 'local-password');
+      await user.click(submit);
+      expect(submitted).toHaveBeenCalledWith('local-password');
+      expect(submitted).toHaveBeenCalledOnce();
+      await user.click(draw);
+      await waitFor(() => expect(draw).toHaveAttribute('data-state', 'active'));
+      expect(dialog.querySelector('textarea')).toHaveAttribute('data-slot', 'textarea');
+    } finally { cleanup(); }
+  });
 });

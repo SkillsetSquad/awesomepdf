@@ -7,12 +7,15 @@ import {
   BookOpen, ChevronDown, ChevronUp, Download, FileImage, FolderOpen, Hand,
   Highlighter, Info, Layers, ListTree, Maximize, MessageSquare, MoreHorizontal,
   PanelLeft, Paperclip, PenLine, Printer, RotateCcw, RotateCw, Search, Settings,
-  Square, Stamp, TextCursor, Type, ZoomIn, ZoomOut, type LucideIcon,
+  Square, Stamp, TextCursor, Type, X, ZoomIn, ZoomOut, type LucideIcon,
 } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { inputClassName } from '@/components/ui/input';
 import { nativeSelectClassName } from '@/components/ui/native-select';
 import { cn } from '@/lib/utils';
+import { textareaClassName } from '@/components/ui/textarea';
+import { dialogContentClassName } from '@/components/ui/dialog';
+import { tabsListVariants, tabsTriggerClassName } from '@/components/ui/tabs';
 
 const icons: Partial<Record<string, LucideIcon>> = {
   sidebarToggleButton: PanelLeft, sidebarToggle: PanelLeft, viewFindButton: Search,
@@ -33,6 +36,8 @@ const icons: Partial<Record<string, LucideIcon>> = {
   scrollHorizontal: ArrowRight, scrollWrapped: ArrowLeft, spreadNone: Square,
   spreadOdd: BookOpen, spreadEven: BookOpen, imageAltTextSettings: Settings,
   documentProperties: Info,
+  newAltTextCloseButton: X, addSignatureErrorCloseButton: X,
+  addSignatureScanRotateLeft: RotateCcw, addSignatureScanRotateRight: RotateCw,
 };
 
 type IconMount = { button: HTMLButtonElement; mount: HTMLElement; Icon: LucideIcon };
@@ -68,6 +73,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       #pageNumber { width: 4rem; }
       #scaleSelect { appearance: auto; padding-inline-end: .75rem; }
       #scaleSelectContainer::after { display: none; }
+      dialog::backdrop { background: rgb(0 0 0 / .5); }
     `;
     doc.head.appendChild(style);
     const syncTheme = () => {
@@ -81,12 +87,12 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
     const theme = new MutationObserver(syncTheme);
     theme.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
-    const elements = new Map<HTMLElement, { classes: string[]; slot?: string; size?: string; variant?: string }>();
+    const elements = new Map<HTMLElement, { classes: string[]; slot?: string; size?: string; variant?: string; state?: string }>();
     const mounts = new Map<HTMLButtonElement, IconMount>();
     const apply = (element: HTMLElement, slot: string, classes: string) => {
       const tokens = classes.split(/\s+/).filter(Boolean);
       const previous = elements.get(element);
-      if (!previous) elements.set(element, { classes: [], slot: element.dataset.slot, size: element.dataset.size, variant: element.dataset.variant });
+      if (!previous) elements.set(element, { classes: [], slot: element.dataset.slot, size: element.dataset.size, variant: element.dataset.variant, state: element.dataset.state });
       const record = elements.get(element)!;
       record.classes.filter(token => !tokens.includes(token)).forEach(token => element.classList.remove(token));
       const added = tokens.filter(token => !element.classList.contains(token));
@@ -98,14 +104,22 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       for (const [button, entry] of mounts) {
         if (!doc.body.contains(button)) { entry.mount.remove(); mounts.delete(button); }
       }
-      for (const button of doc.querySelectorAll<HTMLButtonElement>('#toolbarContainer button[id], #toolbarSidebar button[id], #findbar button[id], #secondaryToolbar button[id], .editorParamsToolbar button[id]')) {
+      for (const button of doc.querySelectorAll<HTMLButtonElement>('#toolbarContainer button[id], #toolbarSidebar button[id], #findbar button[id], #secondaryToolbar button[id], .editorParamsToolbar button[id], dialog button[id]')) {
         // Color picker and switch controls keep their document-specific visual state.
         if (button.classList.contains('toggle-button')) continue;
+        if (button.getAttribute('role') === 'tab') {
+          apply(button, 'tabs-trigger', tabsTriggerClassName);
+          button.dataset.state = button.getAttribute('aria-selected') === 'true' ? 'active' : 'inactive';
+          continue;
+        }
         const labeled = button.classList.contains('labeled') || button.classList.contains('secondaryToolbarButton');
-        const variant = button.classList.contains('toggled') || button.getAttribute('aria-checked') === 'true' ? 'secondary' : 'ghost';
-        apply(button, 'button', buttonVariants({ variant, size: labeled ? 'sm' : 'icon-sm', className: labeled ? 'w-full justify-start' : undefined }));
+        const inDialog = !!button.closest('dialog');
+        const primary = button.classList.contains('primaryButton') || button.id === 'passwordSubmit';
+        const variant = inDialog ? primary ? 'default' : 'outline' : button.classList.contains('toggled') || button.getAttribute('aria-checked') === 'true' ? 'secondary' : 'ghost';
+        const size = inDialog ? 'default' : labeled ? 'sm' : 'icon-sm';
+        apply(button, 'button', buttonVariants({ variant, size, className: labeled ? 'w-full justify-start' : undefined }));
         button.dataset.variant = variant;
-        button.dataset.size = labeled ? 'sm' : 'icon-sm';
+        button.dataset.size = size;
         const Icon = icons[button.id];
         if (Icon && !mounts.has(button)) {
           const mount = doc.createElement('span');
@@ -116,20 +130,25 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
         }
       }
       for (const field of doc.querySelectorAll<HTMLInputElement>('#pageNumber, #findInput')) apply(field, 'input', cn(inputClassName, 'h-8'));
-      const scale = doc.getElementById('scaleSelect');
-      if (scale) { apply(scale, 'native-select', nativeSelectClassName); scale.dataset.size = 'sm'; }
+      for (const field of doc.querySelectorAll<HTMLInputElement>('dialog input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]), .editorParamsToolbar input[type=color]')) apply(field, 'input', inputClassName);
+      for (const field of doc.querySelectorAll<HTMLTextAreaElement>('dialog textarea')) apply(field, 'textarea', textareaClassName);
+      for (const select of doc.querySelectorAll<HTMLSelectElement>('#scaleSelect, dialog select')) {
+        apply(select, 'native-select', nativeSelectClassName); select.dataset.size = select.id === 'scaleSelect' ? 'sm' : 'default';
+      }
+      for (const dialog of doc.querySelectorAll<HTMLDialogElement>('dialog')) apply(dialog, 'dialog-content', cn(dialogContentClassName, 'static top-auto left-auto m-auto block translate-x-0 translate-y-0 max-h-[calc(100dvh-2rem)] overflow-y-auto text-sm'));
+      for (const list of doc.querySelectorAll<HTMLElement>('dialog [role=tablist]')) { apply(list, 'tabs-list', tabsListVariants({ className: 'h-9 max-w-full' })); list.dataset.variant = 'default'; }
       const next = [...mounts.values()];
       setIconMounts(previous => previous.length === next.length && next.every((entry, index) => previous[index].mount === entry.mount) ? previous : next);
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'aria-checked'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'aria-checked', 'aria-selected'] });
     return () => {
       observer.disconnect(); theme.disconnect(); style.remove(); sheets.forEach(sheet => sheet.remove());
       for (const { button, mount } of mounts.values()) { mount.remove(); delete button.dataset.pdfViewerIcon; }
       for (const [element, record] of elements) {
         element.classList.remove(...record.classes);
-        for (const key of ['slot', 'size', 'variant'] as const) {
+        for (const key of ['slot', 'size', 'variant', 'state'] as const) {
           if (record[key] === undefined) delete element.dataset[key]; else element.dataset[key] = record[key];
         }
       }
