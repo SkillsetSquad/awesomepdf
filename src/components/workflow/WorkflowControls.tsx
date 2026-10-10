@@ -199,9 +199,9 @@ export function WorkflowControls({
     return (
         <Dialog open={showSaveDialog} onOpenChange={setShowSaveDialog}>
         <div className="relative">
-            <div className="flex items-center justify-between px-3 py-2 bg-background border-b border-border min-h-[46px] gap-2 overflow-x-auto">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b bg-background px-3 py-2">
                 {/* Left: File input and execute */}
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex min-w-0 flex-wrap items-center gap-2">
                     {/* File selection */}
                     <div className="flex items-center gap-1.5">
                         <Input
@@ -352,7 +352,7 @@ export function WorkflowControls({
 
                     {/* Sidebar Toggle */}
                     {onToggleRightSidebar && (
-                        <div className="flex items-center pl-1.5 border-l border-border">
+                        <div className="hidden items-center border-s ps-1.5 xl:flex">
                             <Button size="icon-sm" variant={!isRightSidebarCollapsed ? 'default' : 'outline'} aria-pressed={!isRightSidebarCollapsed} aria-label={isRightSidebarCollapsed ? '展开模板库 (宽画布模式)' : '收起模板库 (全景大画布)'}
                                 onClick={onToggleRightSidebar}
 

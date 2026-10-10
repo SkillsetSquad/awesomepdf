@@ -1,5 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 
 
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
@@ -23,7 +24,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { logger } from '@/lib/utils/logger';
 import { WorkflowNode, WorkflowEdge, ToolNodeData, WorkflowExecutionState, SavedWorkflow, WorkflowTemplate, WorkflowOutputFile } from '@/types/workflow';
 import { validateWorkflow, validateConnection, topologicalSort, findInputNodes, distributeFilesToInputNodes, getExecutionStages, getDownstreamNodeIds } from '@/lib/workflow/engine';
@@ -89,6 +90,7 @@ const getNodeId = (): string => {
  */
 function WorkflowEditorContent() {
     const tWorkflow = useTranslations('workflow');
+    const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
 
     const reactFlowWrapper = useRef<HTMLDivElement>(null);
     const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
@@ -108,6 +110,8 @@ function WorkflowEditorContent() {
     const [isPreviewVisible, setIsPreviewVisible] = useState(false);
 
     // Sidebar collapse state
+    const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+    const [mobileLibraryOpen, setMobileLibraryOpen] = useState(false);
     const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState(false);
     const [isRightSidebarCollapsed, setIsRightSidebarCollapsed] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -1181,20 +1185,42 @@ function WorkflowEditorContent() {
     }, [loadWorkflow]);
 
     return (
-        <div className="flex h-full relative">
+        <div className="relative flex h-full min-h-0 min-w-0">
             {/* Left Sidebar - Tool Library */}
+            <div className="hidden shrink-0 lg:flex">
             <ToolSidebar
                 onDragStart={onDragStart}
                 onDragEnd={onDragEnd}
                 isCollapsed={isLeftSidebarCollapsed}
                 onToggleCollapse={() => setIsLeftSidebarCollapsed(!isLeftSidebarCollapsed)}
             />
+            </div>
 
             {/* Main Canvas Area */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+                <div className="flex flex-wrap gap-2 border-b p-2 xl:hidden">
+                    <Sheet open={mobileToolsOpen} onOpenChange={setMobileToolsOpen}>
+                        <SheetTrigger asChild><Button variant="outline" size="sm" className="lg:hidden"><PanelLeftOpen aria-hidden="true" />{tWorkflow('toolbox')}</Button></SheetTrigger>
+                        <SheetContent dir={direction} side={direction === 'rtl' ? 'right' : 'left'} showCloseButton={false} className="w-full sm:max-w-sm [&_aside]:w-full">
+                            <SheetHeader className="sr-only"><SheetTitle>{tWorkflow('toolbox')}</SheetTitle><SheetDescription>{tWorkflow('dragToAdd')}</SheetDescription></SheetHeader>
+                            <ToolSidebar onDragStart={onDragStart} onDragEnd={onDragEnd} onToggleCollapse={() => setMobileToolsOpen(false)} onToolAdded={() => setMobileToolsOpen(false)} />
+                        </SheetContent>
+                    </Sheet>
+                    <Sheet open={mobileLibraryOpen} onOpenChange={setMobileLibraryOpen}>
+                        <SheetTrigger asChild><Button variant="outline" size="sm"><PanelRightOpen aria-hidden="true" />{tWorkflow('templates')}</Button></SheetTrigger>
+                        <SheetContent dir={direction} side={direction === 'rtl' ? 'left' : 'right'} showCloseButton={false} className="w-full sm:max-w-sm [&>div]:w-full">
+                            <SheetHeader className="sr-only"><SheetTitle>{tWorkflow('templates')}</SheetTitle><SheetDescription>{tWorkflow('saveWorkflowHint')}</SheetDescription></SheetHeader>
+                            <WorkflowLibrary savedWorkflows={savedWorkflows}
+                                onLoadTemplate={(template) => { loadTemplate(template); setMobileLibraryOpen(false); }}
+                                onLoadWorkflow={(workflow) => { loadWorkflow(workflow); setMobileLibraryOpen(false); }}
+                                onDeleteWorkflow={handleDeleteWorkflow} onDuplicateWorkflow={handleDuplicateWorkflow} onExportWorkflow={handleExportWorkflow}
+                                onLoadFromHistory={(record) => { loadFromHistory(record); setMobileLibraryOpen(false); }} onToggleCollapse={() => setMobileLibraryOpen(false)} />
+                        </SheetContent>
+                    </Sheet>
+                </div>
                 {/* Controls with Undo/Redo */}
                 <div className="flex items-center">
-                    <div className="flex-1">
+                    <div className="min-w-0 flex-1">
                         <WorkflowControls
                             nodes={nodes as WorkflowNode[]}
                             edges={edges as WorkflowEdge[]}
@@ -1220,7 +1246,7 @@ function WorkflowEditorContent() {
 
                 {/* Canvas */}
                 <div
-                    className="flex-1 relative"
+                    className="relative min-h-0 min-w-0 flex-1"
                     ref={reactFlowWrapper}
                 >
                     {/* Undo/Redo Floating Island */}
@@ -1319,6 +1345,7 @@ function WorkflowEditorContent() {
             </div>
 
             {/* Right Sidebar - Templates & Saved Workflows */}
+            <div className="hidden shrink-0 xl:flex">
             <WorkflowLibrary
                 savedWorkflows={savedWorkflows}
                 onLoadTemplate={loadTemplate}
@@ -1330,6 +1357,7 @@ function WorkflowEditorContent() {
                 isCollapsed={isRightSidebarCollapsed}
                 onToggleCollapse={() => setIsRightSidebarCollapsed(!isRightSidebarCollapsed)}
             />
+            </div>
 
             {/* Node Settings Panel */}
             {isSettingsPanelOpen && (
