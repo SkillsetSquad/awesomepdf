@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -158,12 +161,9 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
             {/* Error Message */}
             {error && (
-                <div
-                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-                    role="alert"
-                >
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {/* File List */}
@@ -339,19 +339,16 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
             {/* Batch Completion Status */}
             {allCompleted && (
-                <div
-                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-                    role="status"
-                >
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <p className="text-sm font-medium">
                         {tTools('deskewPdf.successMessage') || `Successfully deskewed ${completedCount} PDF file(s)!`}
                     </p>
                     {errorCount > 0 && (
-                        <p className="text-sm text-red-600 mt-1">
+                        <p className="text-sm mt-1">
                             {errorCount} file(s) failed to process.
                         </p>
                     )}
-                </div>
+                </AlertDescription></Alert>
             )}
         </div>
     );

@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -112,9 +117,9 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
       )}
 
       {error && (
-        <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && (
@@ -263,9 +268,9 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
       )}
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">{tTools('success')}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

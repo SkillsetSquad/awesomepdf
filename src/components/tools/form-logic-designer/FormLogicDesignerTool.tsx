@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -280,9 +283,9 @@ export function FormLogicDesignerTool() {
               )}
 
               {status === 'error' && error && (
-                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                   {error}
-                </div>
+                </AlertDescription></Alert>
               )}
             </div>
 

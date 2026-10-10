@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -251,9 +254,9 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* Error Block */}
       {error && (
-        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400 animate-in fade-in">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-semibold">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File metadata status block */}

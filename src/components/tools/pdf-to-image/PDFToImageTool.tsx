@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { File as UIFile } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -265,12 +268,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File Info */}
@@ -623,14 +623,11 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('pdfToImage.successMessage') || 'PDF converted to images successfully! Click the download button to save your files.'}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

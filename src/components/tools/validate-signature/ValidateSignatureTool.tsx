@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -118,9 +121,9 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
       />
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300" role="alert">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {pdfFile && (

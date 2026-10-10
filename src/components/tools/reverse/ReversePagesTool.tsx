@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { ArrowRight as UIArrowRight, FileText as UIFileText } from 'lucide-react';
 
 
@@ -180,12 +183,9 @@ export function ReversePagesTool({ className = '' }: ReversePagesToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File Info */}
@@ -289,14 +289,11 @@ export function ReversePagesTool({ className = '' }: ReversePagesToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('reversePages.successMessage') || 'Page order reversed successfully! Click the download button to save your file.'}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

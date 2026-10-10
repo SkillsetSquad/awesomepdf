@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -105,9 +108,9 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
       )}
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 text-red-600 text-sm">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           {error}
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && (

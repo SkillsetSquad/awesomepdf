@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -136,10 +139,10 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-xl bg-red-50/50 border border-red-200 text-red-700 flex items-start gap-3 animate-in fade-in slide-in-from-top-2" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <p className="text-sm font-medium">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {file && (
@@ -226,15 +229,15 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
             </div>
 
             {status === 'complete' && result && (
-                <div className="p-6 rounded-2xl bg-green-50/50 border border-green-200 text-green-700 text-center animate-in fade-in zoom-in-95 duration-300" role="status">
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
-                        <CheckCircle2 className="w-6 h-6 text-green-600" />
+                        <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
-                    <p className="text-green-800/80 max-w-md mx-auto">
+                    <p className="max-w-md mx-auto">
                         {tTools('djvuToPdf.successMessage') || 'Your DJVU file has been converted to PDF.'}
                     </p>
-                </div>
+                </AlertDescription></Alert>
             )}
         </div>
     );

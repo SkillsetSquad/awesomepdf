@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Check as UICheck, ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, Copy as UICopy, Download as UIDownload, FilePlus2 as UIFilePlus2, Redo2 as UIRedo2, RefreshCw as UIRefreshCw, RotateCcw as UIRotateCcw, RotateCw as UIRotateCw, Trash2 as UITrash2, Undo2 as UIUndo2, X as UIX } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
@@ -519,9 +524,9 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
       {/* Error Message */}
       {error && (
-        <Card  className="!bg-red-50 dark:!bg-red-900/20 !border-red-200 dark:!border-red-800">
-          <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
-        </Card>
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
+          <p className="text-sm">{error}</p>
+        </AlertDescription></Alert>
       )}
 
       {/* Editor Panel */}
@@ -865,11 +870,11 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <Card  className="!bg-green-50 dark:!bg-green-900/20 !border-green-200 dark:!border-green-800">
-          <p className="text-sm font-medium text-green-700 dark:text-green-400">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
+          <p className="text-sm font-medium">
             {tTools('pdfMultiTool.successMessage') || 'PDF processed successfully! Click the download button to save your file.'}
           </p>
-        </Card>
+        </AlertDescription></Alert>
       )}
     </div>
     </Dialog>

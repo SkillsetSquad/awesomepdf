@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -1019,9 +1024,9 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && (
@@ -1655,8 +1660,8 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
       {/* Success Message & Download */}
       {status === 'complete' && result && (
-        <div className="flex items-center gap-4 p-4 rounded-lg bg-green-50 border border-green-200">
-          <p className="text-sm font-medium text-green-700">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
+          <p className="text-sm font-medium">
             {tTools('formCreator.successMessage') || 'Form created successfully!'}
           </p>
           <DownloadButton
@@ -1666,7 +1671,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             size="sm"
             showFileSize
           />
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Save Project Dialog */}

@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -195,9 +198,9 @@ export function BookletFoldingSimulatorTool() {
               )}
 
               {status === 'error' && error && (
-                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                   {error}
-                </div>
+                </AlertDescription></Alert>
               )}
             </div>
 

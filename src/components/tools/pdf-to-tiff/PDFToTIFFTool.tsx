@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { FileText as UIFileText, X as UIX } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -197,12 +202,12 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <div className="flex gap-2.5 items-start">
             <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
             <p className="text-sm font-semibold">{error}</p>
           </div>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Configuration & 3D Interactive Grid */}
@@ -401,12 +406,12 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
             {/* Complete Prompt */}
             {status === 'complete' && result && (
-              <div className="p-4 rounded-xl bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/50 text-green-700 dark:text-green-400 text-center animate-in fade-in">
+              <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                 <p className="text-sm font-semibold flex items-center justify-center gap-1.5">
                   <Check className="w-5 h-5" />
                   {t('pdfToTiff.successMessage')}
                 </p>
-              </div>
+              </AlertDescription></Alert>
             )}
           </div>
 

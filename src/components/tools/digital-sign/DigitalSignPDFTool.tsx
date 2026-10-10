@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Eye as UIEye, EyeOff as UIEyeOff } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -279,9 +282,9 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
       />
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300" role="alert">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* PDF File Info */}
@@ -331,9 +334,9 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
             )}
 
             {certError && (
-              <div className="p-3 rounded-sm bg-red-50 border border-red-200 dark:bg-red-950 dark:border-red-800">
-                <p className="text-sm text-red-700 dark:text-red-300">{certError}</p>
-              </div>
+              <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
+                <p className="text-sm">{certError}</p>
+              </AlertDescription></Alert>
             )}
 
             {needsPassword && !certData && (
@@ -510,9 +513,9 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
       {
         status === 'complete' && result && (
-          <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700 dark:bg-green-950 dark:border-green-800 dark:text-green-300" role="status">
+          <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
             <p className="text-sm font-medium">{tTool('successMessage')}</p>
-          </div>
+          </AlertDescription></Alert>
         )
       }
     </div >

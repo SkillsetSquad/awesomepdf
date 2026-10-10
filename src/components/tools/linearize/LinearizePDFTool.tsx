@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -207,12 +210,9 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Selected Files */}
@@ -343,34 +343,31 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
       {/* Results */}
       {status === 'complete' && result && stats && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium mb-2">
             {tTools('linearizePdf.successMessage') || 'PDF linearized successfully!'}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             {stats.filesProcessed && stats.filesProcessed > 1 && (
               <div>
-                <span className="text-green-600">{tTools('linearizePdf.filesProcessed') || 'Files:'}</span>
+                <span className="">{tTools('linearizePdf.filesProcessed') || 'Files:'}</span>
                 <span className="ml-1 font-medium">{stats.filesProcessed}</span>
               </div>
             )}
             <div>
-              <span className="text-green-600">{tTools('linearizePdf.pages') || 'Pages:'}</span>
+              <span className="">{tTools('linearizePdf.pages') || 'Pages:'}</span>
               <span className="ml-1 font-medium">{stats.pageCount}</span>
             </div>
             <div>
-              <span className="text-green-600">{tTools('linearizePdf.originalSize') || 'Original:'}</span>
+              <span className="">{tTools('linearizePdf.originalSize') || 'Original:'}</span>
               <span className="ml-1 font-medium">{formatSize(stats.originalSize)}</span>
             </div>
             <div>
-              <span className="text-green-600">{tTools('linearizePdf.optimizedSize') || 'Optimized:'}</span>
+              <span className="">{tTools('linearizePdf.optimizedSize') || 'Optimized:'}</span>
               <span className="ml-1 font-medium">{formatSize(stats.linearizedSize)}</span>
             </div>
           </div>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

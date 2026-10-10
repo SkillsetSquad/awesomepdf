@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { FileText as UIFileText, X as UIX } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -183,12 +186,9 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File List */}
@@ -334,14 +334,11 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('pdfToZip.successMessage') || `Successfully packaged ${files.length} PDF file(s) into a ZIP archive. Click the download button to save your file.`}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

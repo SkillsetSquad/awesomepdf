@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { File as UIFile, X as UIX } from 'lucide-react';
 
 import { Textarea } from '@/components/ui/textarea';
@@ -236,7 +239,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
         </Card>
       )}
 
-      {error && <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert"><p className="text-sm">{error}</p></div>}
+      {error && <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription><p className="text-sm">{error}</p></AlertDescription></Alert>}
 
       {/* Options Panel */}
       {(files.length >= 1 || (inputMode === 'text' && directText.length > 0)) && (
@@ -331,9 +334,9 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
       </div>
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">{tTools('txtToPdf.successMessage') || 'Text converted to PDF successfully!'}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

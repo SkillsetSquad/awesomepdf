@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
@@ -207,12 +210,9 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Selected File */}
@@ -336,27 +336,24 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
 
       {/* Results */}
       {status === 'complete' && result && stats && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium mb-2">
             {tTools('removeRestrictions.successMessage') || 'PDF restrictions removed successfully!'}
           </p>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="text-green-600">{tTools('removeRestrictions.originalSize') || 'Original:'}</span>
+              <span className="">{tTools('removeRestrictions.originalSize') || 'Original:'}</span>
               <span className="ml-1 font-medium">{formatSize(stats.originalSize)}</span>
             </div>
             <div>
-              <span className="text-green-600">{tTools('removeRestrictions.newSize') || 'New Size:'}</span>
+              <span className="">{tTools('removeRestrictions.newSize') || 'New Size:'}</span>
               <span className="ml-1 font-medium">{formatSize(stats.newSize)}</span>
             </div>
           </div>
-          <p className="text-xs mt-2 text-green-600">
+          <p className="text-xs mt-2">
             {tTools('removeRestrictions.successHint') || 'The PDF can now be printed, copied, and edited without restrictions.'}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Password Error Modal */}

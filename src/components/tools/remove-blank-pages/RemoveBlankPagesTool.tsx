@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Ban as UIBan } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -297,10 +300,10 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* Error message */}
       {error && (
-        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-500" />
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
+          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Analyzing Phase */}

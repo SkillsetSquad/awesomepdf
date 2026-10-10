@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Check as UICheck, FileText as UIFileText, Redo2 as UIRedo2, RotateCcw as UIRotateCcw, Settings as UISettings, Trash2 as UITrash2, Undo2 as UIUndo2 } from 'lucide-react';
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -528,12 +531,9 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700 dark:bg-red-950/40 dark:border-red-900/50 dark:text-red-400"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File Info */}
@@ -870,14 +870,11 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
 
             {/* Success Prompt */}
             {status === 'complete' && result && (
-              <div
-                className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700 dark:bg-green-950/20 dark:border-green-900/50 dark:text-green-400 text-center animate-in fade-in"
-                role="status"
-              >
+              <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                 <p className="text-sm font-semibold">
                   {t('rotate.successMessage')}
                 </p>
-              </div>
+              </AlertDescription></Alert>
             )}
           </div>
 

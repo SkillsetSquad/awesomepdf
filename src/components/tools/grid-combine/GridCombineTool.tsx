@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { ChevronDown as UIChevronDown, ChevronUp as UIChevronUp, FileText as UIFileText, GripVertical as UIGripVertical, Info as UIInfo, X as UIX } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -355,17 +358,17 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
             {/* Error Message */}
             {error && (
-                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm font-medium">{error}</p>
                     {errorDetails && (
                         <details className="mt-2">
-                            <summary className="text-xs cursor-pointer hover:underline text-red-500">
+                            <summary className="text-xs cursor-pointer hover:underline">
                                 {tTools('gridCombine.showErrorDetails') || 'Show error details'}
                             </summary>
                             <pre className="mt-2 p-2 text-xs bg-red-100 rounded overflow-x-auto whitespace-pre-wrap break-all max-h-40 overflow-y-auto">{errorDetails}</pre>
                         </details>
                     )}
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {/* Preview Info */}
@@ -764,11 +767,11 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
             {/* Success Message */}
             {status === 'complete' && result && (
-                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <p className="text-sm font-medium">
                         {tTools('gridCombine.successMessage') || 'PDFs combined successfully! Click the download button to save your file.'}
                     </p>
-                </div>
+                </AlertDescription></Alert>
             )}
         </div>
     );

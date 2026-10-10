@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { File as UIFile } from 'lucide-react';
 
 
@@ -1076,9 +1079,9 @@ export function LegacyAnnotatorTool({
       )}
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && pdfUrl && (
@@ -1146,9 +1149,9 @@ export function LegacyAnnotatorTool({
           )}
 
           {replacementDiagnostics?.hasDigitalSignatures && (
-            <div className="rounded-md border border-red-200 bg-red-50 p-3" role="alert">
-              <p className="text-sm font-medium text-red-800">{tTools('signatureInvalidatedWarning')}</p>
-            </div>
+            <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
+              <p className="text-sm font-medium">{tTools('signatureInvalidatedWarning')}</p>
+            </AlertDescription></Alert>
           )}
 
           {/* PDF Viewer iframe */}

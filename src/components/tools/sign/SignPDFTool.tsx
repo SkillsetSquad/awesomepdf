@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Check as UICheck, File as UIFile, Info as UIInfo, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -411,12 +414,9 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* PDF Viewer */}

@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -104,9 +107,9 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {hasFile && (
@@ -212,9 +215,9 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
             </div>
 
             {resultBlob && (
-                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <p className="text-sm font-medium">{tTools('emailToPdf.successMessage') || 'Email converted successfully!'}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
         </div>
     );

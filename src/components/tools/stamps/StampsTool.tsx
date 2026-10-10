@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { File as UIFile, Info as UIInfo } from 'lucide-react';
 
 
@@ -305,9 +308,9 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700" role="alert">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {stampState.file && viewerUrl && (

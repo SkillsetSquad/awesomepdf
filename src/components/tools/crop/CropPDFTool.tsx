@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, FileText as UIFileText, Shrink as UIShrink, X as UIX, ZoomIn as UIZoomIn, ZoomOut as UIZoomOut } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -407,9 +412,9 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {state.file && (
@@ -616,14 +621,14 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
 
       {state.file && result && status === 'complete' && (
-        <div className="p-4 rounded-md bg-green-50 border border-green-200">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="text-green-700 font-medium">
+            <div className="font-medium">
               {tTools('cropPdf.successMessage') || 'PDF cropped successfully!'}
             </div>
             <DownloadButton file={result} filename={state.file.name.replace('.pdf', '_cropped.pdf')} variant="default" size="lg" />
           </div>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

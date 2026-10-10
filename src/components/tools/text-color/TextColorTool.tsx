@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 import { Slider } from '@/components/ui/slider';
@@ -72,9 +77,9 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && (
@@ -178,9 +183,9 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
       )}
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">{t('successMessage')}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -58,7 +63,7 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && <FileUploader accept={['application/pdf', '.pdf']} multiple={false} maxFiles={1} onFilesSelected={handleFilesSelected} onError={setError} disabled={isProcessing} label="Upload PDF Form" description="Drag and drop a PDF form here." />}
-      {error && <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700"><p className="text-sm">{error}</p></div>}
+      {error && <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription><p className="text-sm">{error}</p></AlertDescription></Alert>}
       {file && (
         <>
           <Card className="p-6" ><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); setFields([]); }} disabled={isProcessing}>Remove</Button></div></Card>
@@ -82,7 +87,7 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
       )}
       {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
       {file && fields.length > 0 && <div className="flex flex-wrap items-center gap-4"><Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>{isProcessing ? 'Processing...' : 'Fill Form'}</Button>{result && <DownloadButton file={result} filename={file.name.replace('.pdf', '_filled.pdf')} variant="secondary" size="lg" showFileSize />}</div>}
-      {status === 'complete' && result && <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700"><p className="text-sm font-medium">Form filled successfully!</p></div>}
+      {status === 'complete' && result && <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription><p className="text-sm font-medium">Form filled successfully!</p></AlertDescription></Alert>}
     </div>
   );
 }

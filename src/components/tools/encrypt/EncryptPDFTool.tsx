@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -176,12 +179,9 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Selected File */}
@@ -362,17 +362,14 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('encryptPdf.successMessage') || 'PDF encrypted successfully!'}
           </p>
-          <p className="text-xs mt-1 text-green-600">
+          <p className="text-xs mt-1">
             {tTools('encryptPdf.successHint') || 'Remember to save your passwords securely. They cannot be recovered if lost.'}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

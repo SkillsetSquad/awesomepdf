@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -132,9 +135,9 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {hasFiles && (
@@ -261,12 +264,12 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             </div>
 
             {allCompleted && (
-                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <p className="text-sm font-medium">
                         {tTools('pdfToPdfa.successMessage') || `Successfully converted ${completedCount} file(s) to PDF/A!`}
                     </p>
-                    {errorCount > 0 && <p className="text-sm text-red-600 mt-1">{errorCount} file(s) failed.</p>}
-                </div>
+                    {errorCount > 0 && <p className="text-sm mt-1">{errorCount} file(s) failed.</p>}
+                </AlertDescription></Alert>
             )}
         </div>
     );

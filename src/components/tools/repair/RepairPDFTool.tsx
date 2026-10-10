@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -90,9 +95,9 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
             )}
 
             {error && (
-                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {files.length > 0 && (
@@ -148,9 +153,9 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
             )}
 
             {status === 'complete' && result && (
-                <div className="p-4 rounded-md bg-green-50 border border-green-200">
+                <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
                     <div className="flex flex-wrap items-center justify-between gap-4">
-                        <div className="text-green-700 font-medium">
+                        <div className="font-medium">
                             {tTools('repairPdf.successMessage') || 'PDF repaired successfully!'}
                         </div>
                         <DownloadButton
@@ -160,7 +165,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
                             size="lg"
                         />
                     </div>
-                </div>
+                </AlertDescription></Alert>
             )}
         </div>
     );

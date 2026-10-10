@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { FileText as UIFileText } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
@@ -175,12 +178,9 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Selected File */}
@@ -300,17 +300,14 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('decryptPdf.successMessage') || 'PDF decrypted successfully!'}
           </p>
-          <p className="text-xs mt-1 text-green-600">
+          <p className="text-xs mt-1">
             {tTools('decryptPdf.successHint') || 'The PDF is now unlocked and can be opened without a password.'}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* Password Error Modal */}

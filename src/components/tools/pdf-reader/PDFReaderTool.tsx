@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -134,9 +137,9 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
             )}
 
             {error && (
-                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
+                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
-                </div>
+                </AlertDescription></Alert>
             )}
 
             {hasFile && pdfUrl && (

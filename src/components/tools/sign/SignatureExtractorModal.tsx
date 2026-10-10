@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { Check as UICheck, Info as UIInfo, Loader2 as UILoader2, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -411,9 +414,9 @@ export function SignatureExtractorModal({
 
         {/* Error / Status Messages */}
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md">
+          <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
             {error}
-          </div>
+          </AlertDescription></Alert>
         )}
         {statusMessage && (
           <div className="p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-md flex items-center gap-2">

@@ -1,4 +1,7 @@
 'use client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Bookmark as UIBookmark, Check as UICheck, Download as UIDownload, FileText as UIFileText, LayoutGrid as UILayoutGrid, List as UIList, ListFilter as UIListFilter, MousePointerClick as UIMousePointerClick, TriangleAlert as UITriangleAlert } from 'lucide-react';
 
 import { Label } from '@/components/ui/label';
@@ -445,12 +448,9 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {/* File Info */}
@@ -996,14 +996,11 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && results.length > 0 && (
-        <div
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('splitPdf.successMessage') || `PDF split successfully into ${results.length} file(s)! Click the download buttons to save your files.`}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );

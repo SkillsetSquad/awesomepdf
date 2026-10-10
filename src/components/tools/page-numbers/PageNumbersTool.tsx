@@ -1,4 +1,9 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleAlert as UICircleAlert } from 'lucide-react';
+
 import { File as UIFile, RefreshCw as UIRefreshCw, ZoomIn as UIZoomIn, ZoomOut as UIZoomOut } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -378,9 +383,9 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700">
+        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
-        </div>
+        </AlertDescription></Alert>
       )}
 
       {file && (
@@ -752,11 +757,11 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
       )}
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700">
+        <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-medium">
             {tTools('pageNumbers.successMessage')}
           </p>
-        </div>
+        </AlertDescription></Alert>
       )}
     </div>
   );
