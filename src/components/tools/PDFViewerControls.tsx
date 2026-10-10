@@ -144,7 +144,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       }
       for (const dialog of doc.querySelectorAll<HTMLDialogElement>('dialog')) apply(dialog, 'dialog-content', cn(dialogContentClassName, 'static top-auto left-auto m-auto block translate-x-0 translate-y-0 max-h-[calc(100dvh-2rem)] overflow-y-auto text-sm'));
       for (const list of doc.querySelectorAll<HTMLElement>('dialog [role=tablist]')) { apply(list, 'tabs-list', tabsListVariants({ className: 'h-9 max-w-full' })); list.dataset.variant = 'default'; }
-      for (const input of doc.querySelectorAll<HTMLInputElement>('#findbar input[type=checkbox], dialog input[type=checkbox], dialog input[type=range], .editorParamsToolbar input[type=range]')) {
+      for (const input of doc.querySelectorAll<HTMLInputElement>('#findbar input[type=checkbox][id], dialog input[type=checkbox][id], dialog input[type=range][id], .editorParamsToolbar input[type=range][id]')) {
         if (!fields.has(input)) {
           const wrapper = doc.createElement('span');
           wrapper.dataset.pdfViewerField = 'true';
