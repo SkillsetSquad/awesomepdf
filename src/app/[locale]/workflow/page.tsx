@@ -4,7 +4,7 @@ import { locales, type Locale } from '@/lib/i18n/config';
 import { generateBaseMetadata } from '@/lib/seo';
 import WorkflowPageClient from './WorkflowPageClient';
 import Link from 'next/link';
-import { Home, Wrench, HelpCircle, Info } from 'lucide-react';
+import { Home, Wrench, HelpCircle, Info, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { siteConfig } from '@/config/site';
@@ -48,10 +48,10 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
     return <div className="flex h-dvh min-h-0 flex-col bg-background">
         <header className="flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2">
             <Link href={`/${locale}/`} className="flex shrink-0 items-center gap-2 text-sm font-semibold" aria-label={t('brand')}>
-                <img src={withBasePath('/favicon.svg')} alt="" className="size-6" />{t('brand')}
+                <FileText className="size-5 text-primary" aria-hidden="true" />{t('brand')}
             </Link>
             <h1 className="sr-only md:not-sr-only md:truncate md:text-sm md:font-medium">{tWorkflow('title')}</h1>
-            <nav className="flex shrink-0 items-center gap-1" aria-label={t('navigation.tools')}>
+            <nav className="flex shrink-0 items-center gap-1" aria-label={tWorkflow('title')}>
                 {navigation.map(({ key, path, icon: Icon }) => <Button key={key} asChild variant="ghost" size="icon-sm">
                     <Link href={`/${locale}${path}/`} aria-label={t(`navigation.${key}`)} title={t(`navigation.${key}`)}><Icon aria-hidden="true" /></Link>
                 </Button>)}
