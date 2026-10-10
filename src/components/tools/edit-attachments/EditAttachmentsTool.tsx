@@ -1,4 +1,5 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -7,10 +8,10 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { 
-  EditAttachmentsPDFProcessor, 
+import {
+  EditAttachmentsPDFProcessor,
   createEditAttachmentsProcessor,
-  type AttachmentInfo 
+  type AttachmentInfo
 } from '@/lib/pdf/processors/attachments';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
@@ -23,13 +24,13 @@ export interface EditAttachmentsToolProps {
 /**
  * EditAttachmentsTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for viewing and removing attachments from PDF files.
  */
 export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [attachments, setAttachments] = useState<AttachmentInfo[]>([]);
@@ -40,7 +41,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoadingAttachments, setIsLoadingAttachments] = useState(false);
-  
+
   // Ref for processor and cancellation
   const processorRef = useRef<EditAttachmentsPDFProcessor | null>(null);
   const cancelledRef = useRef(false);
@@ -50,7 +51,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
    */
   const handlePdfSelected = useCallback(async (files: File[]) => {
     if (files.length === 0) return;
-    
+
     const file = files[0];
     setPdfFile(file);
     setError(null);
@@ -62,9 +63,9 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
     try {
       const processor = createEditAttachmentsProcessor();
       processorRef.current = processor;
-      
+
       const result = await processor.getAttachments(file);
-      
+
       if (result.success && result.attachments) {
         setAttachments(result.attachments);
         if (result.attachments.length === 0) {
@@ -232,7 +233,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -321,12 +322,12 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
                         : 'border-border hover:bg-muted/30'
                     }`}
                   >
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={selectedForRemoval.has(index)}
-                      onChange={() => handleToggleSelection(index)}
+                      onCheckedChange={() => handleToggleSelection(index)}
                       disabled={isProcessing}
-                      className="w-4 h-4 rounded border-border"
+
                       aria-label={`Select ${attachment.name} for removal`}
                     />
                     <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -384,8 +385,8 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
             disabled={!canRemove}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('editAttachments.removeButton') || 'Remove Selected')
             }
           </Button>
@@ -404,7 +405,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

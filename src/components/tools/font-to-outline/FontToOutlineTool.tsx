@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
@@ -181,12 +183,12 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
 
                         {/* Preserve Text Option */}
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={preserveSelectableText}
-                                onChange={(e) => setPreserveSelectableText(e.target.checked)}
+                                onCheckedChange={(checked) => setPreserveSelectableText((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <div className="flex-1">
                                 <span className="text-sm font-medium text-foreground">

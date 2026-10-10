@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
@@ -159,12 +161,12 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                         </div>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={maintainAspectRatio}
-                                onChange={(e) => setMaintainAspectRatio(e.target.checked)}
+                                onCheckedChange={(checked) => setMaintainAspectRatio((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('cbzToPdf.preserveAspectLabel') || 'Preserve aspect ratio'}

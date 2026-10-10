@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -301,13 +303,13 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
             {/* Add Separator */}
             <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 id="addSeparator"
                 checked={addSeparator}
-                onChange={(e) => setAddSeparator(e.target.checked)}
+                onCheckedChange={(checked) => setAddSeparator((checked === true))}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border" aria-label={tTools('combineSinglePage.addSeparator') || 'Add separator lines between pages'}
+                 aria-label={tTools('combineSinglePage.addSeparator') || 'Add separator lines between pages'}
               />
               <Label htmlFor="addSeparator" className="">
                 {tTools('combineSinglePage.addSeparator') || 'Add separator lines between pages'}

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -197,11 +199,11 @@ export function CertCryptorTool() {
                     <Key className="w-4 h-4 text-yellow-400" />
                     {t('certCryptor.enableDoubleKey')}
                   </Label>
-                  <input
-                    type="checkbox"
+                  <Checkbox
+
                     checked={encryptWithCert}
-                    onChange={(e) => setEncryptWithCert(e.target.checked)}
-                    className="w-4 h-4 rounded text-yellow-500 bg-neutral-800 border-neutral-700 focus:ring-yellow-500 accent-yellow-500"
+                    onCheckedChange={(checked) => setEncryptWithCert((checked === true))}
+
                   />
                 </div>
 

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -265,12 +267,12 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {metadataFields.map(({ key, label }) => (
                 <Label key={key} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
+                  <Checkbox
+
                     checked={options[key]}
-                    onChange={() => handleOptionChange(key)}
+                    onCheckedChange={() => handleOptionChange(key)}
                     disabled={isProcessing}
-                    className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                   />
                   <span className="text-sm text-foreground">
                     {label}

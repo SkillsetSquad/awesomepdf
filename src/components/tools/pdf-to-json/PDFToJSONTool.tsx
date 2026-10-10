@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -266,12 +268,12 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
           <div className="space-y-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={includeText}
-                  onChange={(e) => setIncludeText(e.target.checked)}
+                  onCheckedChange={(checked) => setIncludeText((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeText') || 'Include Text'}
@@ -279,12 +281,12 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={includeMetadata}
-                  onChange={(e) => setIncludeMetadata(e.target.checked)}
+                  onCheckedChange={(checked) => setIncludeMetadata((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeMetadata') || 'Include Metadata'}
@@ -292,12 +294,12 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={includePageInfo}
-                  onChange={(e) => setIncludePageInfo(e.target.checked)}
+                  onCheckedChange={(checked) => setIncludePageInfo((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includePageInfo') || 'Include Page Info'}
@@ -305,12 +307,12 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={includeOutline}
-                  onChange={(e) => setIncludeOutline(e.target.checked)}
+                  onCheckedChange={(checked) => setIncludeOutline((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeOutline') || 'Include Outline'}
@@ -318,12 +320,12 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={prettyPrint}
-                  onChange={(e) => setPrettyPrint(e.target.checked)}
+                  onCheckedChange={(checked) => setPrettyPrint((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.prettyPrint') || 'Pretty Print'}

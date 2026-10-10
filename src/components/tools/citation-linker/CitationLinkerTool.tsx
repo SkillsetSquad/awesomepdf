@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -307,20 +309,20 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
                 <div className="space-y-3">
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={detectDoi}
-                      onChange={(e) => setDetectDoi(e.target.checked)}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+                      onCheckedChange={(checked) => setDetectDoi((checked === true))}
+
                     />
                     <span className="text-xs font-semibold text-foreground">{t('citationLinker.detectDoi')}</span>
                   </Label>
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={fallbackToPageJump}
-                      onChange={(e) => setFallbackToPageJump(e.target.checked)}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+                      onCheckedChange={(checked) => setFallbackToPageJump((checked === true))}
+
                     />
                     <span className="text-xs font-semibold text-foreground">{t('citationLinker.enableGoto')}</span>
                   </Label>

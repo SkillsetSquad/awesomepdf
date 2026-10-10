@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -358,12 +360,12 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
             {/* Maintain Aspect Ratio */}
             <Label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 checked={maintainAspectRatio}
-                onChange={(e) => setMaintainAspectRatio(e.target.checked)}
+                onCheckedChange={(checked) => setMaintainAspectRatio((checked === true))}
                 disabled={isProcessing || scaleMode === 'stretch' || scaleMode === 'center'}
-                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
               />
               <span className="text-sm text-foreground">
                 {tTools('fixPageSize.maintainAspectRatio') || 'Maintain aspect ratio'}

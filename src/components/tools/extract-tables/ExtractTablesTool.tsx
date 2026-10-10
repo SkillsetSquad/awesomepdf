@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -242,12 +244,12 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
 
                         {/* Include Page Numbers */}
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={includePageNumbers}
-                                onChange={(e) => setIncludePageNumbers(e.target.checked)}
+                                onCheckedChange={(checked) => setIncludePageNumbers((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('extractTables.includePageNumbersLabel') || 'Include page numbers in output'}

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -154,12 +156,12 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="highlights"
                       checked={incHighlights}
-                      onChange={(e) => setIncHighlights(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('annotationExporter.incHighlightsLabel')}
+                      onCheckedChange={(checked) => setIncHighlights((checked === true))}
+                       aria-label={t('annotationExporter.incHighlightsLabel')}
                     />
                     <Label htmlFor="highlights" className="dark:text-zinc-300">
                       {t('annotationExporter.incHighlightsLabel')}
@@ -167,12 +169,12 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="notes"
                       checked={incNotes}
-                      onChange={(e) => setIncNotes(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('annotationExporter.incNotesLabel')}
+                      onCheckedChange={(checked) => setIncNotes((checked === true))}
+                       aria-label={t('annotationExporter.incNotesLabel')}
                     />
                     <Label htmlFor="notes" className="dark:text-zinc-300">
                       {t('annotationExporter.incNotesLabel')}

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
@@ -341,22 +343,22 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
             {/* Extra Options */}
             <div className="space-y-2">
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={optimizeImages}
-                  onChange={(e) => setOptimizeImages(e.target.checked)}
+                  onCheckedChange={(checked) => setOptimizeImages((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm">{t('compress.optimizeGraphics')}</span>
               </Label>
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={removeMetadata}
-                  onChange={(e) => setRemoveMetadata(e.target.checked)}
+                  onCheckedChange={(checked) => setRemoveMetadata((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm">{t('compress.clearMetadata')}</span>
               </Label>
@@ -579,20 +581,20 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                 {/* Extra Options */}
                 <div className="space-y-2 border-t border-border pt-4">
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={optimizeImages}
-                      onChange={(e) => setOptimizeImages(e.target.checked)}
-                      className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
+                      onCheckedChange={(checked) => setOptimizeImages((checked === true))}
+
                     />
                     {t('compress.optimizeGraphics')}
                   </Label>
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={removeMetadata}
-                      onChange={(e) => setRemoveMetadata(e.target.checked)}
-                      className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
+                      onCheckedChange={(checked) => setRemoveMetadata((checked === true))}
+
                     />
                     {t('compress.clearMetadata')}
                   </Label>

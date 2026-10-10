@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -71,7 +73,7 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
                   </div>
                 ))}
               </div>
-              <Label className="flex items-center gap-2 mt-4"><input type="checkbox" checked={flatten} onChange={(e) => setFlatten(e.target.checked)} disabled={isProcessing} className="w-4 h-4" /><span>Flatten form after filling (make non-editable)</span></Label>
+              <Label className="flex items-center gap-2 mt-4"><Checkbox  checked={flatten} onCheckedChange={(checked) => setFlatten((checked === true))} disabled={isProcessing}  /><span>Flatten form after filling (make non-editable)</span></Label>
             </Card>
           ) : (
             <Card className="p-6" ><p className="text-gray-500">No fillable form fields found in this PDF.</p></Card>

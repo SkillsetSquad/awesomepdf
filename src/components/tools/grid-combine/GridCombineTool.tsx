@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -688,13 +690,13 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                 {/* Margins & Borders */}
                                 <div className="space-y-2 pt-2 border-t border-border">
                                     <div className="flex items-center gap-2">
-                                        <input
-                                            type="checkbox"
+                                        <Checkbox
+
                                             id="useMargins"
                                             checked={useMargins}
-                                            onChange={(e) => setUseMargins(e.target.checked)}
+                                            onCheckedChange={(checked) => setUseMargins((checked === true))}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-border" aria-label={tTools('gridCombine.useMargins') || 'Add margins'}
+                                             aria-label={tTools('gridCombine.useMargins') || 'Add margins'}
                                         />
                                         <Label htmlFor="useMargins" className="">
                                             {tTools('gridCombine.useMargins') || 'Add margins'}
@@ -702,13 +704,13 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                        <input
-                                            type="checkbox"
+                                        <Checkbox
+
                                             id="addBorder"
                                             checked={addBorder}
-                                            onChange={(e) => setAddBorder(e.target.checked)}
+                                            onCheckedChange={(checked) => setAddBorder((checked === true))}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-border" aria-label={tTools('gridCombine.addBorder') || 'Add borders'}
+                                             aria-label={tTools('gridCombine.addBorder') || 'Add borders'}
                                         />
                                         <Label htmlFor="addBorder" className="">
                                             {tTools('gridCombine.addBorder') || 'Add borders'}

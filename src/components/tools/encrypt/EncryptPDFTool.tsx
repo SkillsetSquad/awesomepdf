@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -301,12 +303,12 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {Object.entries(permissions).map(([key, value]) => (
               <Label key={key} className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={value}
-                  onChange={() => handlePermissionChange(key as keyof PDFPermissions)}
+                  onCheckedChange={() => handlePermissionChange(key as keyof PDFPermissions)}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {key === 'printing' && (tTools('encryptPdf.permPrinting') || 'Allow Printing')}

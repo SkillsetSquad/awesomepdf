@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -215,12 +217,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
             {/* Options */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.removeJavaScript}
-                  onChange={() => handleOptionChange('removeJavaScript')}
+                  onCheckedChange={() => handleOptionChange('removeJavaScript')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeJavaScript') || 'Remove JavaScript'}
@@ -228,12 +230,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.removeAttachments}
-                  onChange={() => handleOptionChange('removeAttachments')}
+                  onCheckedChange={() => handleOptionChange('removeAttachments')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeAttachments') || 'Remove Attachments'}
@@ -241,12 +243,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.removeLinks}
-                  onChange={() => handleOptionChange('removeLinks')}
+                  onCheckedChange={() => handleOptionChange('removeLinks')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeLinks') || 'Remove External Links'}
@@ -254,12 +256,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.flattenForms}
-                  onChange={() => handleOptionChange('flattenForms')}
+                  onCheckedChange={() => handleOptionChange('flattenForms')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.flattenForms') || 'Flatten Forms'}
@@ -267,12 +269,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.removeMetadata}
-                  onChange={() => handleOptionChange('removeMetadata')}
+                  onCheckedChange={() => handleOptionChange('removeMetadata')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeMetadata') || 'Remove Metadata'}
@@ -280,12 +282,12 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.removeAnnotations}
-                  onChange={() => handleOptionChange('removeAnnotations')}
+                  onCheckedChange={() => handleOptionChange('removeAnnotations')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeAnnotations') || 'Remove Annotations'}

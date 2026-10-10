@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -915,11 +917,11 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                 </h3>
                 <Label className="flex items-center gap-2 cursor-pointer select-none">
                   <div className="relative inline-flex">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       className="sr-only"
                       checked={repeatWatermark}
-                      onChange={(e) => setRepeatWatermark(e.target.checked)}
+                      onCheckedChange={(checked) => setRepeatWatermark((checked === true))}
                       disabled={isProcessing}
                     />
                     <div
@@ -987,11 +989,11 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                     <Label className="flex items-center gap-2 cursor-pointer select-none">
                       <div className="relative inline-flex">
-                        <input
-                          type="checkbox"
+                        <Checkbox
+
                           className="sr-only"
                           checked={staggerWatermark}
-                          onChange={(e) => setStaggerWatermark(e.target.checked)}
+                          onCheckedChange={(checked) => setStaggerWatermark((checked === true))}
                           disabled={isProcessing}
                         />
                         <div
@@ -1014,12 +1016,12 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             {/* Flatten Watermark Option */}
             <Card className="p-6"  >
               <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   id="flatten-watermark"
                   checked={flattenWatermark}
-                  onChange={(e) => setFlattenWatermark(e.target.checked)}
-                  className="mt-1 w-4 h-4 rounded text-blue-600 border-gray-300 focus:ring-blue-500"
+                  onCheckedChange={(checked) => setFlattenWatermark((checked === true))}
+                  className="mt-1"
                   disabled={isProcessing}
                 />
                 <Label htmlFor="flatten-watermark" className="cursor-pointer">

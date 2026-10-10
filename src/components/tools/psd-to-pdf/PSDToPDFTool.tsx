@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -480,12 +482,12 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
 
                     <div className="mt-4 space-y-3">
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={centerImage}
-                                onChange={(e) => setCenterImage(e.target.checked)}
+                                onCheckedChange={(checked) => setCenterImage((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('imageToPdf.centerImage') || 'Center images on page'}
@@ -493,12 +495,12 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                         </Label>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={scaleToFit}
-                                onChange={(e) => setScaleToFit(e.target.checked)}
+                                onCheckedChange={(checked) => setScaleToFit((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('imageToPdf.scaleToFit') || 'Scale images to fit page'}

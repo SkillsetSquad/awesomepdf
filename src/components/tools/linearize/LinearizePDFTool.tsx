@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -283,12 +285,12 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
             {/* Options */}
             <div className="space-y-3">
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={useObjectStreams}
-                  onChange={(e) => setUseObjectStreams(e.target.checked)}
+                  onCheckedChange={(checked) => setUseObjectStreams((checked === true))}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <div>
                   <span className="text-sm text-foreground">

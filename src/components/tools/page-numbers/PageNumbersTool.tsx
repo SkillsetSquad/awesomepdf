@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -553,10 +555,10 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </div>
 
               <Label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={skipFirstPage}
-                  onChange={(e) => setSkipFirstPage(e.target.checked)}
+                  onCheckedChange={(checked) => setSkipFirstPage((checked === true))}
                   className="w-3.5 h-3.5"
                   disabled={isProcessing}
                 />

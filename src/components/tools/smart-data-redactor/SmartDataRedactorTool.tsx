@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -170,12 +172,12 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="email"
                       checked={emailRedact}
-                      onChange={(e) => setEmailRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.emailRedactLabel')}
+                      onCheckedChange={(checked) => setEmailRedact((checked === true))}
+                       aria-label={t('smartDataRedactor.emailRedactLabel')}
                     />
                     <Label htmlFor="email" className="dark:text-zinc-300">
                       {t('smartDataRedactor.emailRedactLabel')}
@@ -183,12 +185,12 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="phone"
                       checked={phoneRedact}
-                      onChange={(e) => setPhoneRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.phoneRedactLabel')}
+                      onCheckedChange={(checked) => setPhoneRedact((checked === true))}
+                       aria-label={t('smartDataRedactor.phoneRedactLabel')}
                     />
                     <Label htmlFor="phone" className="dark:text-zinc-300">
                       {t('smartDataRedactor.phoneRedactLabel')}
@@ -196,12 +198,12 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="idcard"
                       checked={idRedact}
-                      onChange={(e) => setIdRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.idRedactLabel')}
+                      onCheckedChange={(checked) => setIdRedact((checked === true))}
+                       aria-label={t('smartDataRedactor.idRedactLabel')}
                     />
                     <Label htmlFor="idcard" className="dark:text-zinc-300">
                       {t('smartDataRedactor.idRedactLabel')}

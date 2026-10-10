@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -213,12 +215,12 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
             {/* Options */}
             <div className="space-y-3">
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.flattenForms}
-                  onChange={() => handleOptionChange('flattenForms')}
+                  onCheckedChange={() => handleOptionChange('flattenForms')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <div>
                   <span className="text-sm text-foreground">
@@ -231,12 +233,12 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.flattenAnnotations}
-                  onChange={() => handleOptionChange('flattenAnnotations')}
+                  onCheckedChange={() => handleOptionChange('flattenAnnotations')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <div>
                   <span className="text-sm text-foreground">
@@ -249,12 +251,12 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
               </Label>
 
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={options.flattenLayers}
-                  onChange={() => handleOptionChange('flattenLayers')}
+                  onCheckedChange={() => handleOptionChange('flattenLayers')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                 />
                 <div>
                   <span className="text-sm text-foreground">

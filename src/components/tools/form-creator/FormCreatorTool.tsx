@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption, NativeSelectOptGroup } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -1382,11 +1384,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {selectedField.type === 'text' && (
                         <Label className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
+                          <Checkbox
+
                             checked={selectedField.multiline || false}
-                            onChange={(e) => updateSelectedField({ multiline: e.target.checked })}
-                            className="w-4 h-4"
+                            onCheckedChange={(checked) => updateSelectedField({ multiline: (checked === true) })}
+
                           />
                           <span className="text-sm">{tTools('formCreator.multiline')}</span>
                         </Label>
@@ -1409,11 +1411,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Default value for checkbox */}
                       {selectedField.type === 'checkbox' && (
                         <Label className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
+                          <Checkbox
+
                             checked={selectedField.defaultValue === true}
-                            onChange={(e) => updateSelectedField({ defaultValue: e.target.checked })}
-                            className="w-4 h-4"
+                            onCheckedChange={(checked) => updateSelectedField({ defaultValue: (checked === true) })}
+
                           />
                           <span className="text-sm">{tTools('formCreator.defaultChecked') || 'Checked by default'}</span>
                         </Label>
@@ -1451,11 +1453,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Listbox multi-select option */}
                       {selectedField.type === 'listbox' && (
                         <Label className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
+                          <Checkbox
+
                             checked={selectedField.multiSelect || false}
-                            onChange={(e) => updateSelectedField({ multiSelect: e.target.checked })}
-                            className="w-4 h-4"
+                            onCheckedChange={(checked) => updateSelectedField({ multiSelect: (checked === true) })}
+
                           />
                           <span className="text-sm">{tTools('formCreator.multiSelect') || 'Allow multiple selection'}</span>
                         </Label>
@@ -1521,11 +1523,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {/* Required field option */}
                       <Label className="flex items-center gap-2 pt-2 border-t border-gray-100">
-                        <input
-                          type="checkbox"
+                        <Checkbox
+
                           checked={selectedField.required || false}
-                          onChange={(e) => updateSelectedField({ required: e.target.checked })}
-                          className="w-4 h-4"
+                          onCheckedChange={(checked) => updateSelectedField({ required: (checked === true) })}
+
                         />
                         <span className="text-sm">{tTools('formCreator.required') || 'Required field'}</span>
                       </Label>
@@ -1585,11 +1587,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 <div className="space-y-4">
                   {/* Flatten Form Option */}
                   <Label className="flex items-start gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={flattenForm}
-                      onChange={(e) => setFlattenForm(e.target.checked)}
-                      className="w-4 h-4 mt-0.5 rounded border-gray-300"
+                      onCheckedChange={(checked) => setFlattenForm((checked === true))}
+                      className="mt-0.5"
                     />
                     <div>
                       <span className="text-sm font-medium">{tTools('formCreator.flattenForm') || 'Flatten Form'}</span>

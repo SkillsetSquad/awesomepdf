@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useMemo } from 'react';
@@ -387,12 +389,12 @@ Enjoy converting your Markdown to PDF!
 
                     {/* GFM Support */}
                     <Label className="flex items-center gap-3 cursor-pointer">
-                        <input
-                            type="checkbox"
+                        <Checkbox
+
                             checked={gfm}
-                            onChange={(e) => setGfm(e.target.checked)}
+                            onCheckedChange={(checked) => setGfm((checked === true))}
                             disabled={isProcessing}
-                            className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                         />
                         <span className="text-sm text-foreground">
                             {tTools('markdownToPdf.gfmLabel') || 'Enable GitHub Flavored Markdown (tables, task lists, etc.)'}
@@ -401,12 +403,12 @@ Enjoy converting your Markdown to PDF!
 
                     {/* Syntax Highlighting */}
                     <Label className="flex items-center gap-3 cursor-pointer">
-                        <input
-                            type="checkbox"
+                        <Checkbox
+
                             checked={syntaxHighlight}
-                            onChange={(e) => setSyntaxHighlight(e.target.checked)}
+                            onCheckedChange={(checked) => setSyntaxHighlight((checked === true))}
                             disabled={isProcessing}
-                            className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
                         />
                         <span className="text-sm text-foreground">
                             {tTools('markdownToPdf.syntaxHighlightLabel') || 'Enable syntax highlighting for code blocks'}

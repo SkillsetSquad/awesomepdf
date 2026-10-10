@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -469,11 +471,11 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
 
               {/* Skip First Page */}
               <Label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   checked={skipFirstPage}
-                  onChange={(e) => setSkipFirstPage(e.target.checked)}
-                  className="w-4 h-4"
+                  onCheckedChange={(checked) => setSkipFirstPage((checked === true))}
+
                   disabled={isProcessing}
                 />
                 <span className="text-sm">Skip first page (cover page)</span>

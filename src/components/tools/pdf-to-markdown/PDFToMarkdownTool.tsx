@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -264,12 +266,12 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
                         {/* Include Page Numbers */}
                         <div className="flex items-center gap-3">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 id="includePageNumbers"
                                 checked={includePageNumbers}
-                                onChange={(e) => setIncludePageNumbers(e.target.checked)}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary" aria-label={tTools('pdfToMarkdown.includePageNumbers') || 'Include page numbers as headers'}
+                                onCheckedChange={(checked) => setIncludePageNumbers((checked === true))}
+                                 aria-label={tTools('pdfToMarkdown.includePageNumbers') || 'Include page numbers as headers'}
                             />
                             <Label htmlFor="includePageNumbers" className="">
                                 {tTools('pdfToMarkdown.includePageNumbers') || 'Include page numbers as headers'}
@@ -278,12 +280,12 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
                         {/* Preserve Line Breaks */}
                         <div className="flex items-center gap-3">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 id="preserveLineBreaks"
                                 checked={preserveLineBreaks}
-                                onChange={(e) => setPreserveLineBreaks(e.target.checked)}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary" aria-label={tTools('pdfToMarkdown.preserveLineBreaks') || 'Preserve line breaks'}
+                                onCheckedChange={(checked) => setPreserveLineBreaks((checked === true))}
+                                 aria-label={tTools('pdfToMarkdown.preserveLineBreaks') || 'Preserve line breaks'}
                             />
                             <Label htmlFor="preserveLineBreaks" className="">
                                 {tTools('pdfToMarkdown.preserveLineBreaks') || 'Preserve line breaks'}

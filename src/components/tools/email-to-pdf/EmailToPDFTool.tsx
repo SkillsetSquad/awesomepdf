@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -150,12 +152,12 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                         </div>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={includeCcBcc}
-                                onChange={(e) => setIncludeCcBcc(e.target.checked)}
+                                onCheckedChange={(checked) => setIncludeCcBcc((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('emailToPdf.includeCcBccLabel') || 'Include CC/BCC fields'}
@@ -163,12 +165,12 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                         </Label>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={includeAttachments}
-                                onChange={(e) => setIncludeAttachments(e.target.checked)}
+                                onCheckedChange={(checked) => setIncludeAttachments((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('emailToPdf.includeAttachmentsLabel') || 'Include attachment list'}

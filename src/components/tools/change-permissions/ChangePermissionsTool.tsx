@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -318,12 +320,12 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
             <div className="space-y-3">
               {permissionFields.map(({ key, label, desc }) => (
                 <Label key={key} className="flex items-start gap-3 cursor-pointer p-2 rounded-sm hover:bg-muted/30">
-                  <input
-                    type="checkbox"
+                  <Checkbox
+
                     checked={permissions[key]}
-                    onChange={() => handlePermissionChange(key)}
+                    onCheckedChange={() => handlePermissionChange(key)}
                     disabled={isProcessing}
-                    className="w-4 h-4 mt-0.5 rounded border-border text-primary focus:ring-primary"
+                    className="mt-0.5"
                   />
                   <div>
                     <span className="text-sm font-medium text-foreground">

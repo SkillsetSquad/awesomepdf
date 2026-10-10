@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -198,12 +200,12 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
 
               {/* Add Bookmark Checkbox */}
               <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
+                <Checkbox
+
                   id="addBookmark"
                   checked={addBookmark}
-                  onChange={(e) => setAddBookmark(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
+                  onCheckedChange={(checked) => setAddBookmark((checked === true))}
+
                   disabled={isProcessing} aria-label={tTools('addBookmark')}
                 />
                 <Label

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -47,7 +49,7 @@ export function RemoveAnnotationsTool({ className = '' }: RemoveAnnotationsToolP
           <Card className="p-6"  >
             <h3 className="text-lg font-medium mb-4">{tTools('removeAnnotations.optionsTitle') || 'Options'}</h3>
             <Label className="flex items-center gap-2">
-              <input type="checkbox" checked={removeAll} onChange={(e) => setRemoveAll(e.target.checked)} disabled={isProcessing} className="w-4 h-4" />
+              <Checkbox  checked={removeAll} onCheckedChange={(checked) => setRemoveAll((checked === true))} disabled={isProcessing}  />
               <span>{tTools('removeAnnotations.removeAllLabel') || 'Remove all annotations (comments, highlights, links, etc.)'}</span>
             </Label>
           </Card>

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
@@ -353,12 +355,12 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
                 <div className="space-y-3.5">
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={stripMetadata}
-                      onChange={(e) => setStripMetadata(e.target.checked)}
+                      onCheckedChange={(checked) => setStripMetadata((checked === true))}
                       disabled={isProcessing}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+
                     />
                     <div className="text-xs">
                       {t('deepSanitize.clearXmp')}
@@ -367,12 +369,12 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                   </Label>
 
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={stripPieceInfo}
-                      onChange={(e) => setStripPieceInfo(e.target.checked)}
+                      onCheckedChange={(checked) => setStripPieceInfo((checked === true))}
                       disabled={isProcessing}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+
                     />
                     <div className="text-xs">
                       {t('deepSanitize.clearPieceInfo')}
@@ -381,12 +383,12 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                   </Label>
 
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={stripOcgWatermarks}
-                      onChange={(e) => setStripOcgWatermarks(e.target.checked)}
+                      onCheckedChange={(checked) => setStripOcgWatermarks((checked === true))}
                       disabled={isProcessing}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+
                     />
                     <div className="text-xs">
                       {t('deepSanitize.clearOcProperties')}
@@ -395,12 +397,12 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                   </Label>
 
                   <Label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={stripAnnotations}
-                      onChange={(e) => setStripAnnotations(e.target.checked)}
+                      onCheckedChange={(checked) => setStripAnnotations((checked === true))}
                       disabled={isProcessing}
-                      className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
+
                     />
                     <div className="text-xs">
                       {t('deepSanitize.clearAnnotations')}

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -395,13 +397,13 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
             {/* Margins */}
             <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 id="useMargins"
                 checked={useMargins}
-                onChange={(e) => setUseMargins(e.target.checked)}
+                onCheckedChange={(checked) => setUseMargins((checked === true))}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border" aria-label={tTools('nUpPdf.useMargins') || 'Add margins and gutters'}
+                 aria-label={tTools('nUpPdf.useMargins') || 'Add margins and gutters'}
               />
               <Label htmlFor="useMargins" className="">
                 {tTools('nUpPdf.useMargins') || 'Add margins and gutters'}
@@ -410,13 +412,13 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
             {/* Border */}
             <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 id="addBorder"
                 checked={addBorder}
-                onChange={(e) => setAddBorder(e.target.checked)}
+                onCheckedChange={(checked) => setAddBorder((checked === true))}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border" aria-label={tTools('nUpPdf.addBorder') || 'Add border around pages'}
+                 aria-label={tTools('nUpPdf.addBorder') || 'Add border around pages'}
               />
               <Label htmlFor="addBorder" className="">
                 {tTools('nUpPdf.addBorder') || 'Add border around pages'}

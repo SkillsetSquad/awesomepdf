@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -1966,11 +1968,11 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
 
                 <div className="space-y-2.5 text-xs">
                   <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={true}
                       disabled={true}
-                      className="mt-0.5 rounded border-muted-foreground accent-emerald-500"
+                      className="mt-0.5"
                     />
                     <div>
                       <span className="font-semibold text-foreground">物理不可逆销毁 (必选)</span>
@@ -1979,11 +1981,11 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Label>
 
                   <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={stripMetadata}
-                      onChange={(e) => setStripMetadata(e.target.checked)}
-                      className="mt-0.5 rounded border-muted-foreground accent-primary"
+                      onCheckedChange={(checked) => setStripMetadata((checked === true))}
+                      className="mt-0.5"
                     />
                     <div>
                       <span className="font-medium text-foreground">深度擦除元数据</span>
@@ -1992,11 +1994,11 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Label>
 
                   <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={purgeAnnotations}
-                      onChange={(e) => setPurgeAnnotations(e.target.checked)}
-                      className="mt-0.5 rounded border-muted-foreground accent-primary"
+                      onCheckedChange={(checked) => setPurgeAnnotations((checked === true))}
+                      className="mt-0.5"
                     />
                     <div>
                       <span className="font-medium text-foreground">清除残留批注与脚本</span>
@@ -2005,11 +2007,11 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Label>
 
                   <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={flattenAllPages}
-                      onChange={(e) => setFlattenAllPages(e.target.checked)}
-                      className="mt-0.5 rounded border-muted-foreground accent-primary"
+                      onCheckedChange={(checked) => setFlattenAllPages((checked === true))}
+                      className="mt-0.5"
                     />
                     <div>
                       <span className="font-medium text-foreground">全局统一栅格化</span>

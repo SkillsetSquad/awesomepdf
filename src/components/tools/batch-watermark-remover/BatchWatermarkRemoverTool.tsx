@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -164,12 +166,12 @@ export function BatchWatermarkRemoverTool({ className = '' }: BatchWatermarkRemo
                   </div>
 
                   <div className="flex items-center gap-2.5 pt-2">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       id="removeImages"
                       checked={removeImages}
-                      onChange={(e) => setRemoveImages(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('batchWatermarkRemover.toleranceLabel')}
+                      onCheckedChange={(checked) => setRemoveImages((checked === true))}
+                       aria-label={t('batchWatermarkRemover.toleranceLabel')}
                     />
                     <Label htmlFor="removeImages" className="dark:text-zinc-300">
                       {t('batchWatermarkRemover.toleranceLabel')}

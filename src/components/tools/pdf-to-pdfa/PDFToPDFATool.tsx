@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
@@ -210,12 +212,12 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                         </div>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={embedFonts}
-                                onChange={(e) => setEmbedFonts(e.target.checked)}
+                                onCheckedChange={(checked) => setEmbedFonts((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.embedFontsLabel') || 'Embed all fonts'}
@@ -223,12 +225,12 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                         </Label>
 
                         <Label className="flex items-center gap-3 cursor-pointer">
-                            <input
-                                type="checkbox"
+                            <Checkbox
+
                                 checked={flattenTransparency}
-                                onChange={(e) => setFlattenTransparency(e.target.checked)}
+                                onCheckedChange={(checked) => setFlattenTransparency((checked === true))}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded"
+
                             />
                             <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.flattenTransparencyLabel') || 'Flatten transparency (required for PDF/A-1b)'}

@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -499,11 +501,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             {/* Search Options */}
                             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-2 border-t border-gray-200 dark:border-gray-700">
                                 <Label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="checkbox"
+                                    <Checkbox
+
                                         checked={caseSensitive}
-                                        onChange={(e) => setCaseSensitive(e.target.checked)}
-                                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                                        onCheckedChange={(checked) => setCaseSensitive((checked === true))}
+
                                         disabled={isProcessing || isSearching}
                                     />
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
@@ -511,11 +513,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     </span>
                                 </Label>
                                 <Label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="checkbox"
+                                    <Checkbox
+
                                         checked={wholeWord}
-                                        onChange={(e) => setWholeWord(e.target.checked)}
-                                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                                        onCheckedChange={(checked) => setWholeWord((checked === true))}
+
                                         disabled={isProcessing || isSearching || useRegex}
                                     />
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
@@ -523,14 +525,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     </span>
                                 </Label>
                                 <Label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="checkbox"
+                                    <Checkbox
+
                                         checked={useRegex}
-                                        onChange={(e) => {
-                                            setUseRegex(e.target.checked);
-                                            if (e.target.checked) setWholeWord(false);
+                                        onCheckedChange={(checked) => {
+                                            setUseRegex((checked === true));
+                                            if ((checked === true)) setWholeWord(false);
                                         }}
-                                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+
                                         disabled={isProcessing || isSearching}
                                     />
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
@@ -718,11 +720,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                 className={`flex items-center gap-2 p-2.5 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''
                                                     } ${previewPage === match.page ? 'border-l-2 border-l-blue-500' : ''}`}
                                             >
-                                                <input
-                                                    type="checkbox"
+                                                <Checkbox
+
                                                     checked={match.selected}
-                                                    onChange={() => toggleMatchSelection(match.id)}
-                                                    className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 flex-shrink-0"
+                                                    onCheckedChange={() => toggleMatchSelection(match.id)}
+                                                    className="flex-shrink-0"
                                                     disabled={isProcessing}
                                                 />
                                                 <div
@@ -785,11 +787,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         key={match.id}
                                         className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
                                     >
-                                        <input
-                                            type="checkbox"
+                                        <Checkbox
+
                                             checked={match.selected}
-                                            onChange={() => toggleMatchSelection(match.id)}
-                                            className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                                            onCheckedChange={() => toggleMatchSelection(match.id)}
+
                                             disabled={isProcessing}
                                         />
                                         <div className="flex-1 min-w-0">
@@ -856,11 +858,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                 </div>
 
                                 <Label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="checkbox"
+                                    <Checkbox
+
                                         checked={addBorder}
-                                        onChange={(e) => setAddBorder(e.target.checked)}
-                                        className="w-4 h-4 text-blue-600"
+                                        onCheckedChange={(checked) => setAddBorder((checked === true))}
+
                                         disabled={isProcessing}
                                     />
                                     <span className="text-sm text-gray-700 dark:text-gray-300">

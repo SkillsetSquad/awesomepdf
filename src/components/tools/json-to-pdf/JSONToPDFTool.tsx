@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -363,12 +365,12 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
           <div className="mt-4 space-y-3">
             <Label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 checked={prettyPrint}
-                onChange={(e) => setPrettyPrint(e.target.checked)}
+                onCheckedChange={(checked) => setPrettyPrint((checked === true))}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
               />
               <span className="text-sm text-foreground">
                 {tTools('jsonToPdf.prettyPrint') || 'Format JSON (pretty print)'}
@@ -376,12 +378,12 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
             </Label>
 
             <Label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
+              <Checkbox
+
                 checked={showLineNumbers}
-                onChange={(e) => setShowLineNumbers(e.target.checked)}
+                onCheckedChange={(checked) => setShowLineNumbers((checked === true))}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+
               />
               <span className="text-sm text-foreground">
                 {tTools('jsonToPdf.showLineNumbers') || 'Show line numbers'}

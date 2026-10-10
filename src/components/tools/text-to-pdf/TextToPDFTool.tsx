@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -303,11 +305,11 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
 
           <div className="mt-4 space-y-3">
             <Label className="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" checked={preserveLineBreaks} onChange={(e) => setPreserveLineBreaks(e.target.checked)} disabled={isProcessing} className="w-4 h-4 rounded" />
+              <Checkbox  checked={preserveLineBreaks} onCheckedChange={(checked) => setPreserveLineBreaks((checked === true))} disabled={isProcessing}  />
               <span className="text-sm">{tTools('txtToPdf.preserveLineBreaks') || 'Preserve line breaks'}</span>
             </Label>
             <Label className="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" checked={wrapLines} onChange={(e) => setWrapLines(e.target.checked)} disabled={isProcessing} className="w-4 h-4 rounded" />
+              <Checkbox  checked={wrapLines} onCheckedChange={(checked) => setWrapLines((checked === true))} disabled={isProcessing}  />
               <span className="text-sm">{tTools('txtToPdf.wrapLines') || 'Wrap long lines'}</span>
             </Label>
           </div>

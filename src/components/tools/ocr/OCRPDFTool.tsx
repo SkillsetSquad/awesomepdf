@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -540,10 +542,10 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                     </p>
                   </div>
                   <Label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
-                    <input
-                      type="checkbox"
+                    <Checkbox
+
                       checked={enhanceContrast}
-                      onChange={(e) => setEnhanceContrast(e.target.checked)}
+                      onCheckedChange={(checked) => setEnhanceContrast((checked === true))}
                       disabled={isProcessing}
                       className="sr-only peer"
                     />

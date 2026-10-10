@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -603,11 +605,11 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
 
               <div className="flex items-center gap-6">
                 <Label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
+                  <Checkbox
+
                     checked={applyToAll}
-                    onChange={(e) => setApplyToAll(e.target.checked)}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    onCheckedChange={(checked) => setApplyToAll((checked === true))}
+
                     disabled={isProcessing}
                   />
                   <span className="text-sm font-medium">{tTools('cropPdf.applyToAll') || 'Apply to all pages'}</span>

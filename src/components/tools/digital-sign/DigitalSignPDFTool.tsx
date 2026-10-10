@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox } from '@/components/ui/checkbox';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -408,7 +410,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
               {/* Visible Signature Toggle */}
               <Label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" checked={enableVisible} onChange={(e) => setEnableVisible(e.target.checked)} className="w-4 h-4 rounded border-border text-primary focus:ring-primary" />
+                <Checkbox  checked={enableVisible} onCheckedChange={(checked) => setEnableVisible((checked === true))}  />
                 <span className="text-sm font-medium text-foreground">{tTool('visibleSignatureLabel')}</span>
               </Label>
 
