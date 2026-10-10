@@ -12,6 +12,7 @@ import { withBasePath } from '@/lib/utils/path';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { LegacyTextEditDialog } from './LegacyTextEditDialog';
+import { LegacyEditorControls } from './LegacyEditorControls';
 import {
   replaceExistingText,
   type ReplaceExistingTextDiagnostics,
@@ -228,11 +229,6 @@ export function LegacyAnnotatorTool({
                 const item = document.createElement('li');
                 item.id = 'pdfcraft-edit-existing-text';
                 item.title = labels.tool;
-                item.innerHTML =
-                  '<div class="icon"><span role="img" aria-label="' + labels.tool + '"' +
-                  ' style="font-size:18px;font-weight:700;line-height:1">T✎</span></div>' +
-                  '<div class="name">' + labels.tool + '</div>';
-
                 const selectItem = toolbar.querySelector('li[title="Select"]');
                 if (selectItem?.nextSibling) {
                   toolbar.insertBefore(item, selectItem.nextSibling);
@@ -253,16 +249,6 @@ export function LegacyAnnotatorTool({
                   body.pdfcraft-text-edit-mode .textLayer span:hover {
                     outline: 2px solid #2563eb !important;
                     background: rgba(37, 99, 235, .14) !important;
-                  }
-                  #pdfcraft-edit-existing-text.pdfcraft-active {
-                    background: rgba(37, 99, 235, .18) !important;
-                    color: #2563eb !important;
-                  }
-                  #pdfcraft-text-edit-hint {
-                    position: fixed; left: 50%; top: 74px; transform: translateX(-50%);
-                    z-index: 100000; padding: 7px 12px; border-radius: 999px;
-                    color: white; background: #1d4ed8; box-shadow: 0 5px 18px rgba(0,0,0,.2);
-                    font: 500 12px/1.2 system-ui, sans-serif; pointer-events: none;
                   }
                   .pdfcraft-live-text-preview {
                     outline: 2px dashed #16a34a !important;
@@ -305,7 +291,7 @@ export function LegacyAnnotatorTool({
                   if (active) {
                     const hint = document.createElement('div');
                     hint.id = 'pdfcraft-text-edit-hint';
-                    hint.textContent = labels.hint;
+                    hint.dataset.message = labels.hint;
                     document.body.appendChild(hint);
                   }
                 }
@@ -804,28 +790,24 @@ export function LegacyAnnotatorTool({
 
                   const undoLi = document.createElement('li');
                   undoLi.className = 'pdfcraft-undo-btn';
-                  undoLi.style.cssText = 'display:inline-block; margin-right:8px;';
+
 
                   const undoBtn = document.createElement('button');
                   undoBtn.type = 'button';
-                  undoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↩</span>';
-                  undoBtn.append(document.createTextNode(${JSON.stringify(t('editPdf.undo'))}));
+                  undoBtn.textContent = ${JSON.stringify(t('editPdf.undo'))};
                   undoBtn.className = 'toolbarButton';
-                  undoBtn.style.cssText = 'padding:4px 8px; font-size:12px; cursor:pointer; border-radius:4px; opacity:0.5; border:1px solid var(--toolbar-border-color, #ccc); background-color:var(--toolbar-bg-color, #f5f5f5); color:var(--toolbar-fg-color, #333); font-family:inherit;';
                   undoBtn.disabled = true;
                   undoBtn.addEventListener('click', performUndo);
                   undoLi.appendChild(undoBtn);
 
                   const redoLi = document.createElement('li');
                   redoLi.className = 'pdfcraft-redo-btn';
-                  redoLi.style.cssText = 'display:inline-block; margin-right:8px;';
+
 
                   const redoBtn = document.createElement('button');
                   redoBtn.type = 'button';
-                  redoBtn.innerHTML = '<span style="margin-right:2px; font-weight:bold;">↪</span>';
-                  redoBtn.append(document.createTextNode(${JSON.stringify(t('editPdf.redo'))}));
+                  redoBtn.textContent = ${JSON.stringify(t('editPdf.redo'))};
                   redoBtn.className = 'toolbarButton';
-                  redoBtn.style.cssText = 'padding:4px 8px; font-size:12px; cursor:pointer; border-radius:4px; opacity:0.5; border:1px solid var(--toolbar-border-color, #ccc); background-color:var(--toolbar-bg-color, #f5f5f5); color:var(--toolbar-fg-color, #333); font-family:inherit;';
                   redoBtn.disabled = true;
                   redoBtn.addEventListener('click', performRedo);
                   redoLi.appendChild(redoBtn);
@@ -847,12 +829,10 @@ export function LegacyAnnotatorTool({
                 if (undoBtn) {
                   const canUndo = undoStack.length > 1;
                   undoBtn.disabled = !canUndo;
-                  undoBtn.style.opacity = canUndo ? '1' : '0.5';
                 }
                 if (redoBtn) {
                   const canRedo = redoStack.length > 0;
                   redoBtn.disabled = !canRedo;
-                  redoBtn.style.opacity = canRedo ? '1' : '0.5';
                 }
               }
             })();
@@ -1002,7 +982,8 @@ export function LegacyAnnotatorTool({
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      <LegacyTextEditDialog key={pdfUrl} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
+      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} />
+      <LegacyTextEditDialog key={`text:${pdfUrl}`} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
       {!file && (
         <FileUploader
           accept={['application/pdf', '.pdf']}
