@@ -11,6 +11,7 @@ export const siteConfig = {
     upstream: 'https://github.com/PDFCraftTool/pdfcraft',
   },
   creator: 'Skillset Squad Private Limited',
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || undefined,
   keywords: [
     'PDF tools',
     'PDF editor',
