@@ -1,4 +1,6 @@
 'use client';
+import { Check as UIEmojiCheck } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
@@ -207,7 +209,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                                             )}
                                             {batchFile.status === 'completed' && batchFile.result && (
                                                 <span className="text-xs text-green-500">
-                                                    ✓ Deskewed
+                                                    <UIEmojiCheck className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> Deskewed
                                                 </span>
                                             )}
                                             {batchFile.status === 'error' && (

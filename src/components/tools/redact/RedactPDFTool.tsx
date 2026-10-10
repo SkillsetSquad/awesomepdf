@@ -1,4 +1,6 @@
 'use client';
+import { Lightbulb as UIEmojiLightbulb } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -1695,7 +1697,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 {/* Hint for Rect mode without sliders */}
                 {activeTool === 'rect' && activeStyle !== 'mosaic' && activeStyle !== 'blur' && (
                   <span className="text-muted-foreground text-[11px] flex items-center gap-1">
-                    <span className="text-primary font-bold">💡</span>
+                    <span className="text-primary font-bold"><UIEmojiLightbulb className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></span>
                     <span>按住鼠标左键在页面拖拽可绘制矩形遮盖区，点击选区可拖动或通过手柄缩放。</span>
                   </span>
                 )}

@@ -1,4 +1,6 @@
 'use client';
+import { Lightbulb as UIEmojiLightbulb } from 'lucide-react';
+
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -1190,7 +1192,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             {/* Hint */}
             {!repeatWatermark && (
               <p className="text-xs text-gray-500 dark:text-gray-400 self-start px-2">
-                💡 {tTools('dragHint')}
+                <UIEmojiLightbulb className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('dragHint')}
               </p>
             )}
 

@@ -1,4 +1,6 @@
 'use client';
+import { RefreshCw as UIEmojiRefreshCw } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
@@ -135,7 +137,7 @@ export function BatchWatermarkRemoverTool({ className = '' }: BatchWatermarkRemo
                 )}
                 <div className="max-w-md text-center space-y-3">
                   <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto text-cyan-500">
-                    🌀
+                    <UIEmojiRefreshCw className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                   </div>
                   <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
                     {file.name}

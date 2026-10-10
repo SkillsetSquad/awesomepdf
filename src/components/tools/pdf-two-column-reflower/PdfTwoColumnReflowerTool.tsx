@@ -1,4 +1,6 @@
 'use client';
+import { ArrowRight as UIEmojiArrowRight } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
@@ -141,7 +143,7 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
                   </div>
                 </div>
 
-                <div className="text-zinc-300 dark:text-zinc-700 text-2xl font-bold animate-pulse">➔</div>
+                <div className="text-zinc-300 dark:text-zinc-700 text-2xl font-bold animate-pulse"><UIEmojiArrowRight className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></div>
 
                 <div className="w-44 h-56 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
                   <span className="absolute top-2 right-2 text-[8px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-mono font-bold">AFTER</span>

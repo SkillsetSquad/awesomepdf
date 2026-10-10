@@ -1,4 +1,6 @@
 'use client';
+import { TriangleAlert as UIEmojiTriangleAlert } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
@@ -355,7 +357,7 @@ export function DeletePagesTool({ className = '' }: DeletePagesToolProps) {
           {/* Warning about deletion */}
           <div className="mb-4 p-3 rounded-md bg-amber-50 border border-amber-200 text-amber-800">
             <p className="text-sm">
-              <strong>⚠️ {tTools('deletePages.warning') || 'Warning'}:</strong>{' '}
+              <strong><UIEmojiTriangleAlert className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('deletePages.warning') || 'Warning'}:</strong>{' '}
               {tTools('deletePages.warningText') || 'Selected pages will be permanently removed from the PDF. At least one page must remain.'}
             </p>
           </div>

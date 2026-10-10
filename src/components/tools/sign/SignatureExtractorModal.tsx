@@ -1,4 +1,6 @@
 'use client';
+import { FileText as UIEmojiFileText, Lightbulb as UIEmojiLightbulb, MapPin as UIEmojiMapPin } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
@@ -432,7 +434,7 @@ export function SignatureExtractorModal({
             <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-muted/40 rounded-md">
               <div className="flex items-center gap-2 text-sm text-foreground">
                 <span className="font-medium truncate max-w-[220px]" title={file.name}>
-                  📄 {file.name}
+                  <UIEmojiFileText className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {file.name}
                 </span>
                 <span className="text-xs text-muted-foreground">
                   (共 {pageCount} 页)
@@ -486,7 +488,7 @@ export function SignatureExtractorModal({
                       onClick={() => handleSelectZone(z)}
                       className="flex items-center gap-1.5"
                     >
-                      <span>📍</span>
+                      <span><UIEmojiMapPin className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></span>
                       <span>{z.title}</span>
                     </Button>
                   ))}
@@ -501,7 +503,7 @@ export function SignatureExtractorModal({
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>拖拽鼠标拉框选择要提取的签名区域：</span>
                   <span className="text-[11px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200">
-                    💡 提示：选框尽量紧贴笔迹或印章
+                    <UIEmojiLightbulb className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 提示：选框尽量紧贴笔迹或印章
                   </span>
                 </div>
 

@@ -1,4 +1,6 @@
 'use client';
+import { Image as UIEmojiImage, Plus as UIEmojiPlus, X as UIEmojiX } from 'lucide-react';
+
 import { PenLine as UIPenLine } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -143,7 +145,7 @@ export function SignatureLibraryModal({
               onClick={() => fileInputRef.current?.click()}
               className="text-xs"
             >
-              🖼️ 上传图片签名
+              <UIEmojiImage className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 上传图片签名
             </Button>
             <Button
               variant="outline"
@@ -154,7 +156,7 @@ export function SignatureLibraryModal({
               }}
               className="text-xs"
             >
-              ➕ 从已签署 PDF 提取
+              <UIEmojiPlus className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 从已签署 PDF 提取
             </Button>
           </div>
         </div>
@@ -172,7 +174,7 @@ export function SignatureLibraryModal({
                 size="sm"
                 onClick={() => fileInputRef.current?.click()}
               >
-                🖼️ 上传签名图片 (PNG/JPG)
+                <UIEmojiImage className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 上传签名图片 (PNG/JPG)
               </Button>
               <Button
                 variant="outline"
@@ -221,7 +223,7 @@ export function SignatureLibraryModal({
 
                       title="删除"
                     >
-                      ✕
+                      <UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                     </Button>
                   </div>
                   <div className="text-[10px] text-muted-foreground flex items-center justify-between">

@@ -1,4 +1,6 @@
 'use client';
+import { Check as UIEmojiCheck, Download as UIEmojiDownload, MapPin as UIEmojiMapPin, Pencil as UIEmojiPencil, X as UIEmojiX } from 'lucide-react';
+
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -613,7 +615,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                       className="flex items-center justify-center"
                       title={tTools('bookmark.setToCurrentPage') || 'Set to current page'}
                     >
-                      📍
+                      <UIEmojiMapPin className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
@@ -643,8 +645,8 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   </NativeSelect>
                 </div>
                 <div className="flex gap-1 self-end mb-0.5">
-                  <Button size="sm" onClick={() => handleUpdateBookmark(editingBookmark)} title={t('buttons.save') || 'Save'}>✓</Button>
-                  <Button size="sm" variant="ghost" onClick={() => setEditingBookmark(null)} title={t('buttons.cancel') || 'Cancel'}>✕</Button>
+                  <Button size="sm" onClick={() => handleUpdateBookmark(editingBookmark)} title={t('buttons.save') || 'Save'} aria-label={t('buttons.save')}><UIEmojiCheck className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></Button>
+                  <Button size="sm" variant="ghost" onClick={() => setEditingBookmark(null)} title={t('buttons.cancel') || 'Cancel'} aria-label={t('buttons.cancel')}><UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></Button>
                 </div>
               </div>
             </div>
@@ -669,7 +671,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
                   title="Edit"
                 >
-                  ✎
+                  <UIEmojiPencil className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                 </Button>
                 <Button variant="ghost" size="icon-sm" aria-label="Add child"
                   onClick={(e) => { e.stopPropagation(); handleAddChild(bookmark.id); }}
@@ -772,7 +774,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   onClick={handleExtractBookmarks}
                   title={tTools('bookmark.extractExisting') || 'Extract Existing Bookmarks'}
                 >
-                  📥 {tTools('bookmark.extractExisting') || 'Extract'}
+                  <UIEmojiDownload className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('bookmark.extractExisting') || 'Extract'}
                 </Button>
                 <Button
                   variant="secondary"

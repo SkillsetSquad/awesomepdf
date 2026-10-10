@@ -1,4 +1,6 @@
 'use client';
+import { Check as UIEmojiCheck } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
@@ -134,7 +136,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                         <div className="flex items-center gap-2">
                                             <span className="text-xs text-muted-foreground">{formatSize(batchFile.file.size)}</span>
                                             {batchFile.status === 'processing' && <span className="text-xs text-blue-500">{batchFile.progress}%</span>}
-                                            {batchFile.status === 'completed' && <span className="text-xs text-green-500">✓ Outlined</span>}
+                                            {batchFile.status === 'completed' && <span className="text-xs text-green-500"><UIEmojiCheck className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> Outlined</span>}
                                             {batchFile.status === 'error' && <span className="text-xs text-red-500">{batchFile.error}</span>}
                                         </div>
                                     </div>

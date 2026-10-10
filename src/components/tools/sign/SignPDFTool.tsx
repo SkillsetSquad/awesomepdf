@@ -1,4 +1,6 @@
 'use client';
+import { FolderOpen as UIEmojiFolderOpen, Image as UIEmojiImage, X as UIEmojiX } from 'lucide-react';
+
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
@@ -343,7 +345,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             size="sm"
             className="text-xs flex items-center gap-1.5"
           >
-            <span>📂 签名库</span>
+            <span><UIEmojiFolderOpen className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 签名库</span>
             {savedSignatureCount > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-100 text-blue-700 font-medium">
                 {savedSignatureCount}
@@ -362,7 +364,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             onClick={() => imageInputRef.current?.click()}
             className="text-xs flex items-center gap-1.5"
           >
-            <span>🖼️ 导入图片签名</span>
+            <span><UIEmojiImage className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 导入图片签名</span>
           </Button>
 
           <Dialog open={isExtractorOpen} onOpenChange={setIsExtractorOpen}><DialogTrigger asChild><Button
@@ -393,7 +395,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             onClick={() => setToastMessage(null)}
 
           >
-            ✕
+            <UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
           </Button>
         </div>
       )}

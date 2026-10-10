@@ -1,4 +1,6 @@
 'use client';
+import { X as UIEmojiX } from 'lucide-react';
+
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -1046,13 +1048,13 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   <NativeSelectOption value="select">↖ {tTools('formCreator.selectTool')}</NativeSelectOption>
                   <NativeSelectOptGroup label={tTools('formCreator.basicTools') || 'Basic'}>
                     <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
-                    <NativeSelectOption value="checkbox">☑ {tTools('formCreator.checkboxTool')}</NativeSelectOption>
+                    <NativeSelectOption value="checkbox"> {tTools('formCreator.checkboxTool')}</NativeSelectOption>
                     <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
                     <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
                   </NativeSelectOptGroup>
                   <NativeSelectOptGroup label={tTools('formCreator.advancedTools') || 'Advanced'}>
                     <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
-                    <NativeSelectOption value="signature">✍ {tTools('formCreator.signatureTool')}</NativeSelectOption>
+                    <NativeSelectOption value="signature"> {tTools('formCreator.signatureTool')}</NativeSelectOption>
                     <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
                     <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
                   </NativeSelectOptGroup>
@@ -1275,8 +1277,8 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 <p className="font-medium text-sm truncate">{file.name}</p>
                 <p className="text-xs text-gray-500">{formatSize(file.size)} • {totalPages} {tTools('formCreator.pages') || 'pages'}</p>
               </div>
-              <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isProcessing} className="shrink-0 ml-2">
-                ✕
+              <Button variant="ghost" size="icon-sm" aria-label={t('buttons.remove')} onClick={handleClearFile} disabled={isProcessing} className="shrink-0 ms-2">
+                <UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
               </Button>
             </div>
 
@@ -1317,11 +1319,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                         className="w-full"
                       >
                         <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
-                        <NativeSelectOption value="checkbox">☑ {tTools('formCreator.checkboxTool')}</NativeSelectOption>
+                        <NativeSelectOption value="checkbox"> {tTools('formCreator.checkboxTool')}</NativeSelectOption>
                         <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
                         <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
                         <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
-                        <NativeSelectOption value="signature">✍ {tTools('formCreator.signatureTool')}</NativeSelectOption>
+                        <NativeSelectOption value="signature"> {tTools('formCreator.signatureTool')}</NativeSelectOption>
                         <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
                         <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
                       </NativeSelect>
