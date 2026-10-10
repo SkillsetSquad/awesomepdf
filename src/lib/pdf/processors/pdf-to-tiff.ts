@@ -353,7 +353,7 @@ function encodeMultiPageTIFF(
     }
 
     // Number of tags in this IFD
-    const numTags = mode === 'color' ? 12 : 10;
+    const numTags = mode === 'color' ? 12 : 11;
     writer.writeUint16(numTags);
 
     // Track offsets to fill later
