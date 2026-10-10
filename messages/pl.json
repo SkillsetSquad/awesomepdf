@@ -978,6 +978,12 @@
       "downloadFailedNotice": "Nie udało się otworzyć przeglądarki. Skopiuj link i wklej ręcznie w przeglądarce.",
       "linkCopied": "Link do pobrania skopiowany do schowka!"
     },
+    "canvas": {
+      "zoomIn": "Powiększ",
+      "zoomOut": "Pomniejsz",
+      "fitView": "Dopasuj widok",
+      "toggleEditing": "Przełącz edycję"
+    },
     "theme": {
       "toggle": "Zmień motyw kolorystyczny"
     },

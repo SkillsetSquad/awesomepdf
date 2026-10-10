@@ -964,6 +964,12 @@
       "downloadFailedNotice": "無法自動開啟瀏覽器，請點擊複製按鈕手動在瀏覽器中貼上下載。",
       "linkCopied": "下載鏈接已複製到剪貼板！"
     },
+    "canvas": {
+      "zoomIn": "放大",
+      "zoomOut": "縮小",
+      "fitView": "適應畫布",
+      "toggleEditing": "切換編輯模式"
+    },
     "theme": {
       "toggle": "切換色彩主題"
     },

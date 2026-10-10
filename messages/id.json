@@ -964,6 +964,12 @@
       "downloadFailedNotice": "Tidak dapat membuka browser secara otomatis. Silakan salin tautan dan unduh secara manual.",
       "linkCopied": "Tautan unduhan berhasil disalin!"
     },
+    "canvas": {
+      "zoomIn": "Perbesar",
+      "zoomOut": "Perkecil",
+      "fitView": "Sesuaikan tampilan",
+      "toggleEditing": "Alihkan pengeditan"
+    },
     "theme": {
       "toggle": "Ganti tema warna"
     },

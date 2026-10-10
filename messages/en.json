@@ -978,6 +978,12 @@
       "downloadFailedNotice": "Could not open browser automatically. Please click copy to paste link manually in your browser.",
       "linkCopied": "Download link copied to clipboard!"
     },
+    "canvas": {
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "fitView": "Fit view",
+      "toggleEditing": "Toggle editing"
+    },
     "theme": {
       "toggle": "Toggle color theme"
     },

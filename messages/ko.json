@@ -964,6 +964,12 @@
       "downloadFailedNotice": "브라우저를 자동으로 열 수 없습니다. 링크를 복사하여 브라우저에서 다운로드하세요.",
       "linkCopied": "다운로드 링크가 클립보드에 복사되었습니다!"
     },
+    "canvas": {
+      "zoomIn": "확대",
+      "zoomOut": "축소",
+      "fitView": "화면에 맞추기",
+      "toggleEditing": "편집 전환"
+    },
     "theme": {
       "toggle": "색상 테마 전환"
     },

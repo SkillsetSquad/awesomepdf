@@ -964,6 +964,12 @@
       "downloadFailedNotice": "Không thể tự động mở trình duyệt. Vui lòng sao chép liên kết và tải thủ công.",
       "linkCopied": "Đã sao chép liên kết tải xuống!"
     },
+    "canvas": {
+      "zoomIn": "Phóng to",
+      "zoomOut": "Thu nhỏ",
+      "fitView": "Vừa khung nhìn",
+      "toggleEditing": "Chuyển chế độ chỉnh sửa"
+    },
     "theme": {
       "toggle": "Chuyển giao diện màu"
     },

@@ -964,6 +964,12 @@
       "downloadFailedNotice": "Nu s-a putut deschide browserul. Copiați linkul și descărcați manual.",
       "linkCopied": "Linkul de descărcare a fost copiat în clipboard!"
     },
+    "canvas": {
+      "zoomIn": "Mărește",
+      "zoomOut": "Micșorează",
+      "fitView": "Potrivește vizualizarea",
+      "toggleEditing": "Comută editarea"
+    },
     "theme": {
       "toggle": "Schimbă tema de culoare"
     },

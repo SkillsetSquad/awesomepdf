@@ -964,6 +964,12 @@
       "downloadFailedNotice": "Browser konnte nicht geöffnet werden. Bitte Link kopieren und manuell im Browser öffnen.",
       "linkCopied": "Download-Link in die Zwischenablage kopiert!"
     },
+    "canvas": {
+      "zoomIn": "Vergrößern",
+      "zoomOut": "Verkleinern",
+      "fitView": "Ansicht einpassen",
+      "toggleEditing": "Bearbeitung umschalten"
+    },
     "theme": {
       "toggle": "Farbschema wechseln"
     },

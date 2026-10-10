@@ -8,7 +8,6 @@ import { flushSync } from 'react-dom';
 import ReactFlow, {
     Node,
     Edge,
-    Controls,
     Background,
     MiniMap,
     ReactFlowProvider,
@@ -46,6 +45,8 @@ import { WorkflowLibrary } from './WorkflowLibrary';
 import { WorkflowControls } from './WorkflowControls';
 import { NodeSettingsPanel } from './NodeSettingsPanel';
 import { WorkflowPreview } from './WorkflowPreview';
+import { CanvasControls } from './CanvasControls';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { WORKFLOW_TOOL_DROP_EVENT, type WorkflowToolDropEventDetail } from './dragEvents';
 import { Undo2, Redo2, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen, LayoutGrid, Copy } from 'lucide-react';
 import { getAutoLayoutedNodes } from '@/lib/workflow/layout';
@@ -1309,35 +1310,25 @@ function WorkflowEditorContent() {
                         snapGrid={[15, 15]}
                         proOptions={{ hideAttribution: true }}
                     >
-                        <Controls />
+                        <CanvasControls />
                         <MiniMap
                             nodeStrokeWidth={3}
                             zoomable
                             pannable
-                            className="!bg-background/80 !border-border !rounded-lg !shadow-md backdrop-blur-sm"
+                            className="!bg-card !border-border !rounded-md"
                         />
                         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
 
                         {/* Empty state */}
                         {nodes.length === 0 && (
-                            <Panel position="top-center" className="mt-20">
-                                <div className="text-center p-8 bg-background rounded-lg border border-dashed border-border shadow-sm">
-                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
-                                        <svg className="w-8 h-8 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path d="M4 14h6v6H4zM14 4h6v6h-6z" />
-                                            <path d="M7 4v10M17 14v6M4 17h6M14 7h6" />
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-lg font-medium text-foreground">
-                                        {tWorkflow('emptyTitle') || 'Create Your Workflow'}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground mt-2 max-w-sm">
-                                        {tWorkflow('emptyDescription') || 'Drag tools from the sidebar to build your PDF processing pipeline. Connect nodes to define the processing order.'}
-                                    </p>
-                                    <p className="text-xs text-muted-foreground mt-4">
-                                        {tWorkflow('clickHint') || 'Click a node to configure its settings'}
-                                    </p>
-                                </div>
+                            <Panel position="top-center" className="!m-0 !mt-16 w-[calc(100%-2rem)] max-w-sm">
+                                <Card className="gap-3 border-dashed text-center">
+                                    <CardHeader><LayoutGrid className="mx-auto mb-2 size-6 text-muted-foreground" aria-hidden="true" />
+                                        <CardTitle><h3>{tWorkflow('emptyTitle')}</h3></CardTitle>
+                                        <CardDescription>{tWorkflow('emptyDescription')}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent><p className="text-xs text-muted-foreground">{tWorkflow('clickHint')}</p></CardContent>
+                                </Card>
                             </Panel>
                         )}
                     </ReactFlow>

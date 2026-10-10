@@ -964,6 +964,12 @@
       "downloadFailedNotice": "No se pudo abrir el navegador. Copie el enlace y péguelo manualmente.",
       "linkCopied": "¡Enlace de descarga copiado al portapapeles!"
     },
+    "canvas": {
+      "zoomIn": "Acercar",
+      "zoomOut": "Alejar",
+      "fitView": "Ajustar vista",
+      "toggleEditing": "Alternar edición"
+    },
     "theme": {
       "toggle": "Cambiar tema de color"
     },

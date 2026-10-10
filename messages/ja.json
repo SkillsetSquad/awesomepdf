@@ -964,6 +964,12 @@
       "downloadFailedNotice": "ブラウザを自動で開けませんでした。リンクをコピーしてブラウザに貼り付けてください。",
       "linkCopied": "ダウンロードリンクをクリップボードにコピーしました！"
     },
+    "canvas": {
+      "zoomIn": "拡大",
+      "zoomOut": "縮小",
+      "fitView": "表示に合わせる",
+      "toggleEditing": "編集を切り替える"
+    },
     "theme": {
       "toggle": "カラーテーマを切り替える"
     },

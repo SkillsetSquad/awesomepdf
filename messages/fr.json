@@ -964,6 +964,12 @@
       "downloadFailedNotice": "Impossible d'ouvrir le navigateur. Veuillez copier le lien et le coller manuellement.",
       "linkCopied": "Lien de téléchargement copié dans le presse-papiers !"
     },
+    "canvas": {
+      "zoomIn": "Zoom avant",
+      "zoomOut": "Zoom arrière",
+      "fitView": "Ajuster la vue",
+      "toggleEditing": "Activer ou désactiver la modification"
+    },
     "theme": {
       "toggle": "Changer le thème de couleur"
     },
