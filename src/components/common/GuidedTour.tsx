@@ -88,7 +88,6 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
       const rect = target.getBoundingClientRect();
       setTargetRect(rect);
 
-      const padding = currentStepData.highlightPadding || 8;
       const margin = 12;
       const tooltipWidth = Math.min(320, window.innerWidth - margin * 2);
       const tooltipHeight = tooltipRef.current?.getBoundingClientRect().height || 200;
@@ -220,10 +219,10 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
         <div
           className="fixed z-[9999] pointer-events-none border-2 border-primary rounded-md transition-all duration-300"
           style={{
-            top: targetRect.top - 8,
-            left: targetRect.left - 8,
-            width: targetRect.width + 16,
-            height: targetRect.height + 16,
+            top: targetRect.top - (currentStepData.highlightPadding || 8),
+            left: targetRect.left - (currentStepData.highlightPadding || 8),
+            width: targetRect.width + (currentStepData.highlightPadding || 8) * 2,
+            height: targetRect.height + (currentStepData.highlightPadding || 8) * 2,
           }}
         />
       )}
