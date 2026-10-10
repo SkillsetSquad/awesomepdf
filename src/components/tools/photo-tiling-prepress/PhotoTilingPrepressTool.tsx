@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -156,26 +158,26 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="phototilingprepresstool-field-1">{t('photoTilingPrepress.photoSpecLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={photoSpec}
                       onChange={(e) => setPhotoSpec(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="phototilingprepresstool-field-1" aria-label={t('photoTilingPrepress.photoSpecLabel')}
+                      className="w-full" id="phototilingprepresstool-field-1" aria-label={t('photoTilingPrepress.photoSpecLabel')}
                     >
-                      <option value="1-inch">{t('photoTilingPrepress.photoSpec1Inch')}</option>
-                      <option value="2-inch">{t('photoTilingPrepress.photoSpec2Inch')}</option>
-                    </select>
+                      <NativeSelectOption value="1-inch">{t('photoTilingPrepress.photoSpec1Inch')}</NativeSelectOption>
+                      <NativeSelectOption value="2-inch">{t('photoTilingPrepress.photoSpec2Inch')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="phototilingprepresstool-field-2">{t('photoTilingPrepress.paperSizeLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={paperSize}
                       onChange={(e) => setPaperSize(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="phototilingprepresstool-field-2" aria-label={t('photoTilingPrepress.paperSizeLabel')}
+                      className="w-full" id="phototilingprepresstool-field-2" aria-label={t('photoTilingPrepress.paperSizeLabel')}
                     >
-                      <option value="5-inch">{t('photoTilingPrepress.paperSize5Inch')}</option>
-                      <option value="6-inch">{t('photoTilingPrepress.paperSize6Inch')}</option>
-                    </select>
+                      <NativeSelectOption value="5-inch">{t('photoTilingPrepress.paperSize5Inch')}</NativeSelectOption>
+                      <NativeSelectOption value="6-inch">{t('photoTilingPrepress.paperSize6Inch')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1">

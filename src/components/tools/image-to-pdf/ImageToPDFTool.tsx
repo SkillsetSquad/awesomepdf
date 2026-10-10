@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -435,12 +437,12 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 onChange={(e) => setPageSize(e.target.value as PageSizeType)}
                 disabled={isProcessing} id="imagetopdftool-field-1" aria-label={tTools('imageToPdf.pageSize') || 'Page Size'}
               >
-                <option value="A4">A4</option>
-                <option value="LETTER">Letter</option>
-                <option value="LEGAL">Legal</option>
-                <option value="A3">A3</option>
-                <option value="A5">A5</option>
-                <option value="FIT">Fit to Image</option>
+                <NativeSelectOption value="A4">A4</NativeSelectOption>
+                <NativeSelectOption value="LETTER">Letter</NativeSelectOption>
+                <NativeSelectOption value="LEGAL">Legal</NativeSelectOption>
+                <NativeSelectOption value="A3">A3</NativeSelectOption>
+                <NativeSelectOption value="A5">A5</NativeSelectOption>
+                <NativeSelectOption value="FIT">Fit to Image</NativeSelectOption>
               </Select>
             </div>
 
@@ -454,9 +456,9 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing} id="imagetopdftool-field-2" aria-label={tTools('imageToPdf.orientation') || 'Orientation'}
               >
-                <option value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</option>
-                <option value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</option>
-                <option value="landscape">{tTools('imageToPdf.orientationLandscape') || 'Landscape'}</option>
+                <NativeSelectOption value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</NativeSelectOption>
+                <NativeSelectOption value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</NativeSelectOption>
+                <NativeSelectOption value="landscape">{tTools('imageToPdf.orientationLandscape') || 'Landscape'}</NativeSelectOption>
               </Select>
             </div>
 
@@ -470,10 +472,10 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 onChange={(e) => setMargin(Number(e.target.value))}
                 disabled={isProcessing} id="imagetopdftool-field-3" aria-label={tTools('imageToPdf.margin') || 'Margin'}
               >
-                <option value="0">{tTools('imageToPdf.marginNone') || 'None'}</option>
-                <option value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</option>
-                <option value="36">{tTools('imageToPdf.marginMedium') || 'Medium (0.5")'}</option>
-                <option value="72">{tTools('imageToPdf.marginLarge') || 'Large (1")'}</option>
+                <NativeSelectOption value="0">{tTools('imageToPdf.marginNone') || 'None'}</NativeSelectOption>
+                <NativeSelectOption value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</NativeSelectOption>
+                <NativeSelectOption value="36">{tTools('imageToPdf.marginMedium') || 'Medium (0.5")'}</NativeSelectOption>
+                <NativeSelectOption value="72">{tTools('imageToPdf.marginLarge') || 'Large (1")'}</NativeSelectOption>
               </Select>
             </div>
           </div>
@@ -557,10 +559,10 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 disabled={isProcessing}
                 className="w-full sm:w-auto" id="imagetopdftool-field-5" aria-label={tTools('imageToPdf.svgQuality') || 'SVG Export Quality'}
               >
-                <option value="1">{tTools('imageToPdf.svgQualityLow') || 'Low (1x - smaller file)'}</option>
-                <option value="2">{tTools('imageToPdf.svgQualityMedium') || 'Medium (2x - balanced)'}</option>
-                <option value="3">{tTools('imageToPdf.svgQualityHigh') || 'High (3x - better quality)'}</option>
-                <option value="4">{tTools('imageToPdf.svgQualityVeryHigh') || 'Very High (4x - best quality)'}</option>
+                <NativeSelectOption value="1">{tTools('imageToPdf.svgQualityLow') || 'Low (1x - smaller file)'}</NativeSelectOption>
+                <NativeSelectOption value="2">{tTools('imageToPdf.svgQualityMedium') || 'Medium (2x - balanced)'}</NativeSelectOption>
+                <NativeSelectOption value="3">{tTools('imageToPdf.svgQualityHigh') || 'High (3x - better quality)'}</NativeSelectOption>
+                <NativeSelectOption value="4">{tTools('imageToPdf.svgQualityVeryHigh') || 'Very High (4x - best quality)'}</NativeSelectOption>
               </Select>
               <p className="mt-1 text-xs text-muted-foreground">
                 {tTools('imageToPdf.svgQualityHint') || 'Higher quality produces sharper images but larger file sizes.'}

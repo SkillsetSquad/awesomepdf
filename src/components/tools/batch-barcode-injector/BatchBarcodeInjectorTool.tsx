@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -179,14 +181,14 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="batchbarcodeinjectortool-field-1">{t('batchBarcodeInjector.barcodeTypeLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={barcodeType}
                       onChange={(e) => setBarcodeType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="batchbarcodeinjectortool-field-1" aria-label={t('batchBarcodeInjector.barcodeTypeLabel')}
+                      className="w-full" id="batchbarcodeinjectortool-field-1" aria-label={t('batchBarcodeInjector.barcodeTypeLabel')}
                     >
-                      <option value="qr">{t('batchBarcodeInjector.barcodeTypeQr')}</option>
-                      <option value="code128">{t('batchBarcodeInjector.barcodeTypeBar')}</option>
-                    </select>
+                      <NativeSelectOption value="qr">{t('batchBarcodeInjector.barcodeTypeQr')}</NativeSelectOption>
+                      <NativeSelectOption value="code128">{t('batchBarcodeInjector.barcodeTypeBar')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1.5">

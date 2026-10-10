@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -432,11 +434,11 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                   </div>
                   <div>
                     <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-5">{tTool('pageLabel')}</Label>
-                    <select value={sigPage} onChange={(e) => setSigPage(e.target.value)} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" id="digitalsignpdftool-field-5" aria-label={tTool('pageLabel')}>
-                      <option value="first">{tTool('firstPage')}</option>
-                      <option value="last">{tTool('lastPage')}</option>
-                      <option value="all">{tTool('allPages')}</option>
-                    </select>
+                    <NativeSelect value={sigPage} onChange={(e) => setSigPage(e.target.value)} className="w-full" id="digitalsignpdftool-field-5" aria-label={tTool('pageLabel')}>
+                      <NativeSelectOption value="first">{tTool('firstPage')}</NativeSelectOption>
+                      <NativeSelectOption value="last">{tTool('lastPage')}</NativeSelectOption>
+                      <NativeSelectOption value="all">{tTool('allPages')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   {/* Signature Image */}

@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -508,21 +510,21 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="gridLayout" className="block mb-1">
                                         {tTools('gridCombine.gridLayout') || 'Grid Layout'}
                                     </Label>
-                                    <select
+                                    <NativeSelect
                                         id="gridLayout"
                                         value={gridLayout}
                                         onChange={(e) => setGridLayout(e.target.value as GridCombineOptions['gridLayout'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.gridLayout') || 'Grid Layout'}
+                                        className="w-full" aria-label={tTools('gridCombine.gridLayout') || 'Grid Layout'}
                                     >
-                                        <option value="1x2">1×2 (2 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="2x1">2×1 (2 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="2x2">2×2 (4 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="2x3">2×3 (6 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="3x2">3×2 (6 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="3x3">3×3 (9 {tTools('gridCombine.cells') || 'cells'})</option>
-                                        <option value="4x4">4×4 (16 {tTools('gridCombine.cells') || 'cells'})</option>
-                                    </select>
+                                        <NativeSelectOption value="1x2">1×2 (2 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="2x1">2×1 (2 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="2x2">2×2 (4 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="2x3">2×3 (6 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="3x2">3×2 (6 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="3x3">3×3 (9 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                        <NativeSelectOption value="4x4">4×4 (16 {tTools('gridCombine.cells') || 'cells'})</NativeSelectOption>
+                                    </NativeSelect>
 
                                     {/* 布局可视化预览 - 带缩略图 */}
                                     <div className="mt-3 p-3 bg-muted/30 rounded-md">
@@ -590,16 +592,16 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="pageMode" className="block mb-1">
                                         {tTools('gridCombine.pageMode') || 'Page Mode'}
                                     </Label>
-                                    <select
+                                    <NativeSelect
                                         id="pageMode"
                                         value={pageMode}
                                         onChange={(e) => setPageMode(e.target.value as GridCombineOptions['pageMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.pageMode') || 'Page Mode'}
+                                        className="w-full" aria-label={tTools('gridCombine.pageMode') || 'Page Mode'}
                                     >
-                                        <option value="first-page-only">{tTools('gridCombine.firstPageOnly') || 'First page only'}</option>
-                                        <option value="all-pages">{tTools('gridCombine.allPages') || 'All pages'}</option>
-                                    </select>
+                                        <NativeSelectOption value="first-page-only">{tTools('gridCombine.firstPageOnly') || 'First page only'}</NativeSelectOption>
+                                        <NativeSelectOption value="all-pages">{tTools('gridCombine.allPages') || 'All pages'}</NativeSelectOption>
+                                    </NativeSelect>
                                     <p className="text-xs text-muted-foreground mt-1">
                                         {pageMode === 'all-pages'
                                             ? (tTools('gridCombine.allPagesHint') || 'Include all pages from each PDF in the grid.')
@@ -613,17 +615,17 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="fillMode" className="block mb-1">
                                         {tTools('gridCombine.fillMode') || 'Fill Mode'}
                                     </Label>
-                                    <select
+                                    <NativeSelect
                                         id="fillMode"
                                         value={fillMode}
                                         onChange={(e) => setFillMode(e.target.value as GridCombineOptions['fillMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.fillMode') || 'Fill Mode'}
+                                        className="w-full" aria-label={tTools('gridCombine.fillMode') || 'Fill Mode'}
                                     >
-                                        <option value="leave-empty">{tTools('gridCombine.leaveEmpty') || 'Leave empty cells'}</option>
-                                        <option value="repeat">{tTools('gridCombine.repeat') || 'Repeat from start'}</option>
-                                        <option value="stretch-last">{tTools('gridCombine.stretchLast') || 'Repeat last page'}</option>
-                                    </select>
+                                        <NativeSelectOption value="leave-empty">{tTools('gridCombine.leaveEmpty') || 'Leave empty cells'}</NativeSelectOption>
+                                        <NativeSelectOption value="repeat">{tTools('gridCombine.repeat') || 'Repeat from start'}</NativeSelectOption>
+                                        <NativeSelectOption value="stretch-last">{tTools('gridCombine.stretchLast') || 'Repeat last page'}</NativeSelectOption>
+                                    </NativeSelect>
                                     <p className="text-xs text-muted-foreground mt-1">
                                         {tTools('gridCombine.fillModeHint') || 'How to fill empty cells when files are fewer than grid cells.'}
                                     </p>
@@ -634,18 +636,18 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="pageSize" className="block mb-1">
                                         {tTools('gridCombine.pageSize') || 'Page Size'}
                                     </Label>
-                                    <select
+                                    <NativeSelect
                                         id="pageSize"
                                         value={pageSize}
                                         onChange={(e) => setPageSize(e.target.value as GridCombineOptions['pageSize'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.pageSize') || 'Page Size'}
+                                        className="w-full" aria-label={tTools('gridCombine.pageSize') || 'Page Size'}
                                     >
-                                        <option value="A4">A4</option>
-                                        <option value="Letter">Letter</option>
-                                        <option value="Legal">Legal</option>
-                                        <option value="A3">A3</option>
-                                    </select>
+                                        <NativeSelectOption value="A4">A4</NativeSelectOption>
+                                        <NativeSelectOption value="Letter">Letter</NativeSelectOption>
+                                        <NativeSelectOption value="Legal">Legal</NativeSelectOption>
+                                        <NativeSelectOption value="A3">A3</NativeSelectOption>
+                                    </NativeSelect>
                                 </div>
 
                                 {/* Orientation */}
@@ -653,16 +655,16 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="orientation" className="block mb-1">
                                         {tTools('gridCombine.orientation') || 'Orientation'}
                                     </Label>
-                                    <select
+                                    <NativeSelect
                                         id="orientation"
                                         value={orientation}
                                         onChange={(e) => setOrientation(e.target.value as GridCombineOptions['orientation'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.orientation') || 'Orientation'}
+                                        className="w-full" aria-label={tTools('gridCombine.orientation') || 'Orientation'}
                                     >
-                                        <option value="landscape">{t('options.landscape') || 'Landscape'}</option>
-                                        <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
-                                    </select>
+                                        <NativeSelectOption value="landscape">{t('options.landscape') || 'Landscape'}</NativeSelectOption>
+                                        <NativeSelectOption value="portrait">{t('options.portrait') || 'Portrait'}</NativeSelectOption>
+                                    </NativeSelect>
                                 </div>
 
                                 {/* Spacing */}

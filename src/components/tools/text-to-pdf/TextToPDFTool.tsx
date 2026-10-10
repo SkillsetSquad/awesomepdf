@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -241,8 +243,8 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
             <div>
               <Label className="block mb-2" htmlFor="texttopdftool-field-1">{tTools('txtToPdf.pageSize') || 'Page Size'}</Label>
               <Select value={pageSize} onChange={(e) => setPageSize(e.target.value as TextPageSizeType)} disabled={isProcessing} id="texttopdftool-field-1" aria-label={tTools('txtToPdf.pageSize') || 'Page Size'}>
-                <option value="A4">A4</option><option value="LETTER">Letter</option><option value="LEGAL">Legal</option>
-                <option value="A5">A5</option><option value="A3">A3</option><option value="CUSTOM">{tTools('txtToPdf.custom') || 'Custom'}</option>
+                <NativeSelectOption value="A4">A4</NativeSelectOption><NativeSelectOption value="LETTER">Letter</NativeSelectOption><NativeSelectOption value="LEGAL">Legal</NativeSelectOption>
+                <NativeSelectOption value="A5">A5</NativeSelectOption><NativeSelectOption value="A3">A3</NativeSelectOption><NativeSelectOption value="CUSTOM">{tTools('txtToPdf.custom') || 'Custom'}</NativeSelectOption>
               </Select>
             </div>
             {pageSize === 'CUSTOM' && (
@@ -262,31 +264,31 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
             <div>
               <Label className="block mb-2" htmlFor="texttopdftool-field-4">{tTools('txtToPdf.orientation') || 'Orientation'}</Label>
               <Select value={orientation} onChange={(e) => setOrientation(e.target.value as PageOrientation)} disabled={isProcessing} id="texttopdftool-field-4" aria-label={tTools('txtToPdf.orientation') || 'Orientation'}>
-                <option value="portrait">{tTools('txtToPdf.portrait') || 'Portrait'}</option>
-                <option value="landscape">{tTools('txtToPdf.landscape') || 'Landscape'}</option>
+                <NativeSelectOption value="portrait">{tTools('txtToPdf.portrait') || 'Portrait'}</NativeSelectOption>
+                <NativeSelectOption value="landscape">{tTools('txtToPdf.landscape') || 'Landscape'}</NativeSelectOption>
               </Select>
             </div>
             <div>
               <Label className="block mb-2" htmlFor="texttopdftool-field-5">{tTools('txtToPdf.fontFamily') || 'Font Family'}</Label>
               <Select value={fontId} onChange={(e) => setFontId(e.target.value as FontId)} disabled={isProcessing} id="texttopdftool-field-5" aria-label={tTools('txtToPdf.fontFamily') || 'Font Family'}>
                 {AVAILABLE_FONTS.map(font => (
-                  <option key={font.id} value={font.id}>{font.name}</option>
+                  <NativeSelectOption key={font.id} value={font.id}>{font.name}</NativeSelectOption>
                 ))}
               </Select>
             </div>
             <div>
               <Label className="block mb-2" htmlFor="texttopdftool-field-6">{tTools('txtToPdf.fontSize') || 'Font Size'}</Label>
               <Select value={fontSize} onChange={(e) => setFontSize(Number(e.target.value))} disabled={isProcessing} id="texttopdftool-field-6" aria-label={tTools('txtToPdf.fontSize') || 'Font Size'}>
-                {[8, 10, 11, 12, 14, 16, 18, 20, 24].map(size => <option key={size} value={size}>{size}pt</option>)}
+                {[8, 10, 11, 12, 14, 16, 18, 20, 24].map(size => <NativeSelectOption key={size} value={size}>{size}pt</NativeSelectOption>)}
               </Select>
             </div>
             <div>
               <Label className="block mb-2" htmlFor="texttopdftool-field-7">{tTools('txtToPdf.lineHeight') || 'Line Spacing'}</Label>
               <Select value={lineHeight} onChange={(e) => setLineHeight(Number(e.target.value))} disabled={isProcessing} id="texttopdftool-field-7" aria-label={tTools('txtToPdf.lineHeight') || 'Line Spacing'}>
-                <option value="1">{tTools('txtToPdf.single') || 'Single'}</option>
-                <option value="1.15">1.15</option>
-                <option value="1.5">1.5</option>
-                <option value="2">{tTools('txtToPdf.double') || 'Double'}</option>
+                <NativeSelectOption value="1">{tTools('txtToPdf.single') || 'Single'}</NativeSelectOption>
+                <NativeSelectOption value="1.15">1.15</NativeSelectOption>
+                <NativeSelectOption value="1.5">1.5</NativeSelectOption>
+                <NativeSelectOption value="2">{tTools('txtToPdf.double') || 'Double'}</NativeSelectOption>
               </Select>
             </div>
             <div>

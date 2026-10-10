@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -439,14 +441,14 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                     <Globe className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.readingOrderLabel')}
                   </Label>
-                  <select
+                  <NativeSelect
                     value={manga}
                     onChange={(e) => setManga(e.target.value as any)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/35 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   >
-                    <option value="No">{t('pdfToCbz.readingOrderLtr')}</option>
-                    <option value="YesAndRightToLeft">{t('pdfToCbz.readingOrderRtl')}</option>
-                  </select>
+                    <NativeSelectOption value="No">{t('pdfToCbz.readingOrderLtr')}</NativeSelectOption>
+                    <NativeSelectOption value="YesAndRightToLeft">{t('pdfToCbz.readingOrderRtl')}</NativeSelectOption>
+                  </NativeSelect>
                 </div>
               </div>
 

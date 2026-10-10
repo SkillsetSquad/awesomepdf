@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -626,16 +628,16 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                 </div>
                 <div className="flex-1">
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-4">{tTools('bookmark.style') || 'Style'}</Label>
-                  <select
+                  <NativeSelect
                     value={editingBookmark.style || ''}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, style: e.target.value as any || undefined })}
-                    className="w-full px-2 py-1 border rounded text-sm h-8" id="bookmarktool-field-4" aria-label={tTools('bookmark.style') || 'Style'}
+                    className="w-full h-8" id="bookmarktool-field-4" aria-label={tTools('bookmark.style') || 'Style'}
                   >
-                    <option value="">{tTools('bookmark.normal') || 'Normal'}</option>
-                    <option value="bold">{tTools('bookmark.bold') || 'Bold'}</option>
-                    <option value="italic">{tTools('bookmark.italic') || 'Italic'}</option>
-                    <option value="bold-italic">{tTools('bookmark.boldItalic') || 'Bold & Italic'}</option>
-                  </select>
+                    <NativeSelectOption value="">{tTools('bookmark.normal') || 'Normal'}</NativeSelectOption>
+                    <NativeSelectOption value="bold">{tTools('bookmark.bold') || 'Bold'}</NativeSelectOption>
+                    <NativeSelectOption value="italic">{tTools('bookmark.italic') || 'Italic'}</NativeSelectOption>
+                    <NativeSelectOption value="bold-italic">{tTools('bookmark.boldItalic') || 'Bold & Italic'}</NativeSelectOption>
+                  </NativeSelect>
                 </div>
                 <div className="flex gap-1 self-end mb-0.5">
                   <Button size="sm" onClick={() => handleUpdateBookmark(editingBookmark)} title={t('buttons.save') || 'Save'}>✓</Button>

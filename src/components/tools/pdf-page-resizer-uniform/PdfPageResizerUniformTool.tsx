@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect } from '@/components/ui/native-select';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -150,27 +152,27 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     {t('pdfPageResizerUniform.targetSpecLabel')}
-                    <select
+                    <NativeSelect
                       value={targetSize}
                       onChange={(e) => setTargetSize(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     >
                       {t('pdfPageResizerUniform.specA4')}
                       {t('pdfPageResizerUniform.specA3')}
                       {t('pdfPageResizerUniform.specLetter')}
-                    </select>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1.5">
                     {t('pdfPageResizerUniform.scaleModeLabel')}
-                    <select
+                    <NativeSelect
                       value={scaleMode}
                       onChange={(e) => setScaleMode(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     >
                       {t('pdfPageResizerUniform.modeFit')}
                       {t('pdfPageResizerUniform.modeFill')}
-                    </select>
+                    </NativeSelect>
                   </div>
                 </div>
               </div>

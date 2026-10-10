@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -215,17 +217,17 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                             <Label className="block mb-2" htmlFor="pdftopptxtool-field-1">
                                 {tTools('pdfToPptx.dpiLabel') || 'Image Quality (DPI)'}
                             </Label>
-                            <select
+                            <NativeSelect
                                 value={dpi}
                                 onChange={(e) => setDpi(Number(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftopptxtool-field-1" aria-label={tTools('pdfToPptx.dpiLabel') || 'Image Quality (DPI)'}
+                                className="w-full" id="pdftopptxtool-field-1" aria-label={tTools('pdfToPptx.dpiLabel') || 'Image Quality (DPI)'}
                             >
-                                <option value="72">{tTools('pdfToPptx.lowSet') || 'Low (72 DPI - smaller file)'}</option>
-                                <option value="150">{tTools('pdfToPptx.mediumSet') || 'Medium (150 DPI - balanced)'}</option>
-                                <option value="200">{tTools('pdfToPptx.highSet') || 'High (200 DPI - better quality)'}</option>
-                                <option value="300">{tTools('pdfToPptx.veryHighSet') || 'Very High (300 DPI - best quality)'}</option>
-                            </select>
+                                <NativeSelectOption value="72">{tTools('pdfToPptx.lowSet') || 'Low (72 DPI - smaller file)'}</NativeSelectOption>
+                                <NativeSelectOption value="150">{tTools('pdfToPptx.mediumSet') || 'Medium (150 DPI - balanced)'}</NativeSelectOption>
+                                <NativeSelectOption value="200">{tTools('pdfToPptx.highSet') || 'High (200 DPI - better quality)'}</NativeSelectOption>
+                                <NativeSelectOption value="300">{tTools('pdfToPptx.veryHighSet') || 'Very High (300 DPI - best quality)'}</NativeSelectOption>
+                            </NativeSelect>
                             <p className="mt-1 text-xs text-muted-foreground">
                                 {tTools('pdfToPptx.dpiHint') || 'Higher DPI produces better quality slides but larger file sizes.'}
                             </p>

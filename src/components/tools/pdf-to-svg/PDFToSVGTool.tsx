@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -296,17 +298,17 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                             <Label className="block mb-2" htmlFor="pdftosvgtool-field-1">
                                 {tTools('pdfToSvg.resolution') || 'Resolution'}
                             </Label>
-                            <select
+                            <NativeSelect
                                 value={scale}
                                 onChange={(e) => setScale(parseFloat(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftosvgtool-field-1" aria-label={tTools('pdfToSvg.resolution') || 'Resolution'}
+                                className="w-full" id="pdftosvgtool-field-1" aria-label={tTools('pdfToSvg.resolution') || 'Resolution'}
                             >
-                                <option value="1">72 DPI (Low)</option>
-                                <option value="2">144 DPI (Medium)</option>
-                                <option value="3">216 DPI (High)</option>
-                                <option value="4">288 DPI (Very High)</option>
-                            </select>
+                                <NativeSelectOption value="1">72 DPI (Low)</NativeSelectOption>
+                                <NativeSelectOption value="2">144 DPI (Medium)</NativeSelectOption>
+                                <NativeSelectOption value="3">216 DPI (High)</NativeSelectOption>
+                                <NativeSelectOption value="4">288 DPI (Very High)</NativeSelectOption>
+                            </NativeSelect>
                             <p className="text-xs text-muted-foreground mt-1">
                                 {tTools('pdfToSvg.resolutionHint') || 'Higher resolution produces larger, more detailed SVG files.'}
                             </p>

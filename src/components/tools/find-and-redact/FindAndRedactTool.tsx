@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -586,17 +588,17 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             >
                                                 →
                                             </Button>
-                                            <select
+                                            <NativeSelect
                                                 value={previewScale}
                                                 onChange={(e) => setPreviewScale(parseFloat(e.target.value))}
-                                                className="ml-2 px-2 py-1 text-sm border rounded bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600"
+                                                className="ml-2"
                                             >
-                                                <option value="0.5">50%</option>
-                                                <option value="0.75">75%</option>
-                                                <option value="1">100%</option>
-                                                <option value="1.5">150%</option>
-                                                <option value="2">200%</option>
-                                            </select>
+                                                <NativeSelectOption value="0.5">50%</NativeSelectOption>
+                                                <NativeSelectOption value="0.75">75%</NativeSelectOption>
+                                                <NativeSelectOption value="1">100%</NativeSelectOption>
+                                                <NativeSelectOption value="1.5">150%</NativeSelectOption>
+                                                <NativeSelectOption value="2">200%</NativeSelectOption>
+                                            </NativeSelect>
                                         </div>
                                     </div>
 

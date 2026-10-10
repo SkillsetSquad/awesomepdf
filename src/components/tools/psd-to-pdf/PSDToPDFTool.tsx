@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -425,19 +427,19 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                             <Label className="block mb-2" htmlFor="psdtopdftool-field-1">
                                 {tTools('imageToPdf.pageSize') || 'Page Size'}
                             </Label>
-                            <select
+                            <NativeSelect
                                 value={pageSize}
                                 onChange={(e) => setPageSize(e.target.value as PageSizeType)}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-1" aria-label={tTools('imageToPdf.pageSize') || 'Page Size'}
+                                className="w-full" id="psdtopdftool-field-1" aria-label={tTools('imageToPdf.pageSize') || 'Page Size'}
                             >
-                                <option value="A4">A4</option>
-                                <option value="LETTER">Letter</option>
-                                <option value="LEGAL">Legal</option>
-                                <option value="A3">A3</option>
-                                <option value="A5">A5</option>
-                                <option value="FIT">Fit to Image</option>
-                            </select>
+                                <NativeSelectOption value="A4">A4</NativeSelectOption>
+                                <NativeSelectOption value="LETTER">Letter</NativeSelectOption>
+                                <NativeSelectOption value="LEGAL">Legal</NativeSelectOption>
+                                <NativeSelectOption value="A3">A3</NativeSelectOption>
+                                <NativeSelectOption value="A5">A5</NativeSelectOption>
+                                <NativeSelectOption value="FIT">Fit to Image</NativeSelectOption>
+                            </NativeSelect>
                         </div>
 
                         {/* Orientation */}
@@ -445,16 +447,16 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                             <Label className="block mb-2" htmlFor="psdtopdftool-field-2">
                                 {tTools('imageToPdf.orientation') || 'Orientation'}
                             </Label>
-                            <select
+                            <NativeSelect
                                 value={orientation}
                                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-2" aria-label={tTools('imageToPdf.orientation') || 'Orientation'}
+                                className="w-full" id="psdtopdftool-field-2" aria-label={tTools('imageToPdf.orientation') || 'Orientation'}
                             >
-                                <option value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</option>
-                                <option value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</option>
-                                <option value="landscape">{tTools('imageToPdf.orientationLandscape') || 'Landscape'}</option>
-                            </select>
+                                <NativeSelectOption value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</NativeSelectOption>
+                                <NativeSelectOption value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</NativeSelectOption>
+                                <NativeSelectOption value="landscape">{tTools('imageToPdf.orientationLandscape') || 'Landscape'}</NativeSelectOption>
+                            </NativeSelect>
                         </div>
 
                         {/* Margin */}
@@ -462,17 +464,17 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                             <Label className="block mb-2" htmlFor="psdtopdftool-field-3">
                                 {tTools('imageToPdf.margin') || 'Margin'}
                             </Label>
-                            <select
+                            <NativeSelect
                                 value={margin}
                                 onChange={(e) => setMargin(Number(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-3" aria-label={tTools('imageToPdf.margin') || 'Margin'}
+                                className="w-full" id="psdtopdftool-field-3" aria-label={tTools('imageToPdf.margin') || 'Margin'}
                             >
-                                <option value="0">{tTools('imageToPdf.marginNone') || 'None'}</option>
-                                <option value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</option>
-                                <option value="36">{tTools('imageToPdf.marginMedium') || 'Medium (0.5")'}</option>
-                                <option value="72">{tTools('imageToPdf.marginLarge') || 'Large (1")'}</option>
-                            </select>
+                                <NativeSelectOption value="0">{tTools('imageToPdf.marginNone') || 'None'}</NativeSelectOption>
+                                <NativeSelectOption value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</NativeSelectOption>
+                                <NativeSelectOption value="36">{tTools('imageToPdf.marginMedium') || 'Medium (0.5")'}</NativeSelectOption>
+                                <NativeSelectOption value="72">{tTools('imageToPdf.marginLarge') || 'Large (1")'}</NativeSelectOption>
+                            </NativeSelect>
                         </div>
                     </div>
 

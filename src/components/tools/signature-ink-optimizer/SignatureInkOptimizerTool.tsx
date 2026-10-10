@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -153,15 +155,15 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="signatureinkoptimizertool-field-1">{t('signatureInkOptimizer.optimizerTypeLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={inkType}
                       onChange={(e) => setInkType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="signatureinkoptimizertool-field-1" aria-label={t('signatureInkOptimizer.optimizerTypeLabel')}
+                      className="w-full" id="signatureinkoptimizertool-field-1" aria-label={t('signatureInkOptimizer.optimizerTypeLabel')}
                     >
-                      <option value="auto">{t('signatureInkOptimizer.optimizerTypeAuto')}</option>
-                      <option value="dark-ink">{t('signatureInkOptimizer.optimizerTypeDark')}</option>
-                      <option value="red-stamp">{t('signatureInkOptimizer.optimizerTypeRed')}</option>
-                    </select>
+                      <NativeSelectOption value="auto">{t('signatureInkOptimizer.optimizerTypeAuto')}</NativeSelectOption>
+                      <NativeSelectOption value="dark-ink">{t('signatureInkOptimizer.optimizerTypeDark')}</NativeSelectOption>
+                      <NativeSelectOption value="red-stamp">{t('signatureInkOptimizer.optimizerTypeRed')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1">

@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -183,15 +185,15 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     {t('handwritingInkContrastBooster.targetTypeLabel')}
-                    <select
+                    <NativeSelect
                       value={inkType}
                       onChange={(e) => setInkType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     >
                       {t('handwritingInkContrastBooster.typeAuto')}
                       {t('handwritingInkContrastBooster.typeDarkInk')}
                       {t('handwritingInkContrastBooster.typeRedStamp')}
-                    </select>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1">

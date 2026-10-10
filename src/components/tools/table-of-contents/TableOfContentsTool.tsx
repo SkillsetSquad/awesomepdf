@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -159,20 +161,20 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
                 <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-2">
                   {tTools('fontSize')}
                 </Label>
-                <select
+                <NativeSelect
                   value={fontSize}
                   onChange={(e) => setFontSize(parseInt(e.target.value, 10))}
-                  className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                  className="w-full"
                   disabled={isProcessing} id="tableofcontentstool-field-2" aria-label={tTools('fontSize')}
                 >
-                  <option value={8}>8pt</option>
-                  <option value={10}>10pt</option>
-                  <option value={12}>12pt</option>
-                  <option value={14}>14pt</option>
-                  <option value={16}>16pt</option>
-                  <option value={18}>18pt</option>
-                  <option value={24}>24pt</option>
-                </select>
+                  <NativeSelectOption value={8}>8pt</NativeSelectOption>
+                  <NativeSelectOption value={10}>10pt</NativeSelectOption>
+                  <NativeSelectOption value={12}>12pt</NativeSelectOption>
+                  <NativeSelectOption value={14}>14pt</NativeSelectOption>
+                  <NativeSelectOption value={16}>16pt</NativeSelectOption>
+                  <NativeSelectOption value={18}>18pt</NativeSelectOption>
+                  <NativeSelectOption value={24}>24pt</NativeSelectOption>
+                </NativeSelect>
               </div>
 
               {/* Font Family - Dynamic based on OS */}
@@ -180,18 +182,18 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
                 <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-3">
                   {tTools('fontFamily')}
                 </Label>
-                <select
+                <NativeSelect
                   value={fontFamily}
                   onChange={(e) => setFontFamily(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                  className="w-full"
                   disabled={isProcessing} id="tableofcontentstool-field-3" aria-label={tTools('fontFamily')}
                 >
                   {fontOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
+                    <NativeSelectOption key={option.value} value={option.value}>
                       {option.label}
-                    </option>
+                    </NativeSelectOption>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
 
               {/* Add Bookmark Checkbox */}

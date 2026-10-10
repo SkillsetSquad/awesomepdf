@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -244,16 +246,16 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
               <Label htmlFor="orientation" className="block mb-1">
                 {tTools('combineSinglePage.orientation') || 'Orientation'}
               </Label>
-              <select
+              <NativeSelect
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as CombineOrientation)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('combineSinglePage.orientation') || 'Orientation'}
+                className="w-full" aria-label={tTools('combineSinglePage.orientation') || 'Orientation'}
               >
-                <option value="vertical">{tTools('combineSinglePage.vertical') || 'Vertical (Top to Bottom)'}</option>
-                <option value="horizontal">{tTools('combineSinglePage.horizontal') || 'Horizontal (Left to Right)'}</option>
-              </select>
+                <NativeSelectOption value="vertical">{tTools('combineSinglePage.vertical') || 'Vertical (Top to Bottom)'}</NativeSelectOption>
+                <NativeSelectOption value="horizontal">{tTools('combineSinglePage.horizontal') || 'Horizontal (Left to Right)'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Spacing */}

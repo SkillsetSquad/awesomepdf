@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -271,7 +273,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
               <Label htmlFor="pagesPerSheet" className="block mb-1">
                 {tTools('nUpPdf.pagesPerSheet') || 'Pages per Sheet'}
               </Label>
-              <select
+              <NativeSelect
                 id="pagesPerSheet"
                 value={pagesPerSheet}
                 onChange={(e) => {
@@ -283,14 +285,14 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                   }
                 }}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.pagesPerSheet') || 'Pages per Sheet'}
+                className="w-full" aria-label={tTools('nUpPdf.pagesPerSheet') || 'Pages per Sheet'}
               >
-                <option value={2}>2-up (2×1)</option>
-                <option value={4}>4-up (2×2)</option>
-                <option value={9}>9-up (3×3)</option>
-                <option value={16}>16-up (4×4)</option>
-                <option value="custom">{tTools('nUpPdf.customLayout') || 'Custom...'}</option>
-              </select>
+                <NativeSelectOption value={2}>2-up (2×1)</NativeSelectOption>
+                <NativeSelectOption value={4}>4-up (2×2)</NativeSelectOption>
+                <NativeSelectOption value={9}>9-up (3×3)</NativeSelectOption>
+                <NativeSelectOption value={16}>16-up (4×4)</NativeSelectOption>
+                <NativeSelectOption value="custom">{tTools('nUpPdf.customLayout') || 'Custom...'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Custom layout inputs */}
@@ -334,18 +336,18 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
               <Label htmlFor="pageSize" className="block mb-1">
                 {tTools('nUpPdf.pageSize') || 'Output Page Size'}
               </Label>
-              <select
+              <NativeSelect
                 id="pageSize"
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.pageSize') || 'Output Page Size'}
+                className="w-full" aria-label={tTools('nUpPdf.pageSize') || 'Output Page Size'}
               >
-                <option value="A4">A4</option>
-                <option value="Letter">Letter</option>
-                <option value="Legal">Legal</option>
-                <option value="A3">A3</option>
-              </select>
+                <NativeSelectOption value="A4">A4</NativeSelectOption>
+                <NativeSelectOption value="Letter">Letter</NativeSelectOption>
+                <NativeSelectOption value="Legal">Legal</NativeSelectOption>
+                <NativeSelectOption value="A3">A3</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Orientation */}
@@ -353,17 +355,17 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
               <Label htmlFor="orientation" className="block mb-1">
                 {tTools('nUpPdf.orientation') || 'Orientation'}
               </Label>
-              <select
+              <NativeSelect
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.orientation') || 'Orientation'}
+                className="w-full" aria-label={tTools('nUpPdf.orientation') || 'Orientation'}
               >
-                <option value="auto">{t('options.auto') || 'Auto'}</option>
-                <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
-                <option value="landscape">{t('options.landscape') || 'Landscape'}</option>
-              </select>
+                <NativeSelectOption value="auto">{t('options.auto') || 'Auto'}</NativeSelectOption>
+                <NativeSelectOption value="portrait">{t('options.portrait') || 'Portrait'}</NativeSelectOption>
+                <NativeSelectOption value="landscape">{t('options.landscape') || 'Landscape'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Layout Direction - only show for 2-up */}
@@ -372,16 +374,16 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                 <Label htmlFor="layoutDirection" className="block mb-1">
                   {tTools('nUpPdf.layoutDirection') || 'Layout Direction'}
                 </Label>
-                <select
+                <NativeSelect
                   id="layoutDirection"
                   value={layoutDirection}
                   onChange={(e) => setLayoutDirection(e.target.value as 'horizontal' | 'vertical')}
                   disabled={isProcessing}
-                  className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.layoutDirection') || 'Layout Direction'}
+                  className="w-full" aria-label={tTools('nUpPdf.layoutDirection') || 'Layout Direction'}
                 >
-                  <option value="horizontal">{tTools('nUpPdf.layoutHorizontal') || 'Horizontal (side by side)'}</option>
-                  <option value="vertical">{tTools('nUpPdf.layoutVertical') || 'Vertical (stacked)'}</option>
-                </select>
+                  <NativeSelectOption value="horizontal">{tTools('nUpPdf.layoutHorizontal') || 'Horizontal (side by side)'}</NativeSelectOption>
+                  <NativeSelectOption value="vertical">{tTools('nUpPdf.layoutVertical') || 'Vertical (stacked)'}</NativeSelectOption>
+                </NativeSelect>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {layoutDirection === 'horizontal'
                     ? (tTools('nUpPdf.layoutHorizontalDesc') || 'Pages are placed side by side (left-right)')

@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -147,15 +149,15 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
                       {t('pdfDeskewAligner.dpiLabel')}
                       <span className="font-mono text-primary font-bold">{dpi} DPI</span>
                     </Label>
-                    <select
+                    <NativeSelect
                       value={dpi}
                       onChange={(e) => setDpi(parseInt(e.target.value))}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     >
                       {t('pdfDeskewAligner.dpi72')}
                       {t('pdfDeskewAligner.dpi150')}
                       {t('pdfDeskewAligner.dpi300')}
-                    </select>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1">

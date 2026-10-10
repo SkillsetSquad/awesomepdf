@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -253,16 +255,16 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
               <Label className="block mb-2" htmlFor="pdftogreyscaletool-field-1">
                 {tTools('pdfToGreyscale.method') || 'Conversion Method'}
               </Label>
-              <select
+              <NativeSelect
                 value={method}
                 onChange={(e) => setMethod(e.target.value as PDFToGreyscaleOptions['method'])}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftogreyscaletool-field-1" aria-label={tTools('pdfToGreyscale.method') || 'Conversion Method'}
+                className="w-full" id="pdftogreyscaletool-field-1" aria-label={tTools('pdfToGreyscale.method') || 'Conversion Method'}
               >
-                <option value="luminosity">{tTools('pdfToGreyscale.methodLuminosity') || 'Luminosity (Recommended)'}</option>
-                <option value="average">{tTools('pdfToGreyscale.methodAverage') || 'Average'}</option>
-                <option value="lightness">{tTools('pdfToGreyscale.methodLightness') || 'Lightness'}</option>
-              </select>
+                <NativeSelectOption value="luminosity">{tTools('pdfToGreyscale.methodLuminosity') || 'Luminosity (Recommended)'}</NativeSelectOption>
+                <NativeSelectOption value="average">{tTools('pdfToGreyscale.methodAverage') || 'Average'}</NativeSelectOption>
+                <NativeSelectOption value="lightness">{tTools('pdfToGreyscale.methodLightness') || 'Lightness'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Quality/Scale */}
@@ -270,16 +272,16 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
               <Label className="block mb-2" htmlFor="pdftogreyscaletool-field-2">
                 {tTools('pdfToGreyscale.quality') || 'Quality'}
               </Label>
-              <select
+              <NativeSelect
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftogreyscaletool-field-2" aria-label={tTools('pdfToGreyscale.quality') || 'Quality'}
+                className="w-full" id="pdftogreyscaletool-field-2" aria-label={tTools('pdfToGreyscale.quality') || 'Quality'}
               >
-                <option value="1">{tTools('pdfToGreyscale.qualityLow') || 'Low (Faster)'}</option>
-                <option value="2">{tTools('pdfToGreyscale.qualityMedium') || 'Medium (Recommended)'}</option>
-                <option value="3">{tTools('pdfToGreyscale.qualityHigh') || 'High (Slower)'}</option>
-              </select>
+                <NativeSelectOption value="1">{tTools('pdfToGreyscale.qualityLow') || 'Low (Faster)'}</NativeSelectOption>
+                <NativeSelectOption value="2">{tTools('pdfToGreyscale.qualityMedium') || 'Medium (Recommended)'}</NativeSelectOption>
+                <NativeSelectOption value="3">{tTools('pdfToGreyscale.qualityHigh') || 'High (Slower)'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Page Range */}

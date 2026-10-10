@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -312,11 +314,11 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   onChange={(e) => setFormat(e.target.value as ImageFormat)}
                   disabled={isProcessing} id="pdftoimagetool-field-1" aria-label={tTools('pdfToImage.format') || 'Output Format'}
                 >
-                  <option value="png">PNG</option>
-                  <option value="jpg">JPG</option>
-                  <option value="webp">WebP</option>
-                  <option value="bmp">BMP</option>
-                  <option value="tiff">TIFF</option>
+                  <NativeSelectOption value="png">PNG</NativeSelectOption>
+                  <NativeSelectOption value="jpg">JPG</NativeSelectOption>
+                  <NativeSelectOption value="webp">WebP</NativeSelectOption>
+                  <NativeSelectOption value="bmp">BMP</NativeSelectOption>
+                  <NativeSelectOption value="tiff">TIFF</NativeSelectOption>
                 </Select>
               </div>
             )}
@@ -350,10 +352,10 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 onChange={(e) => setScale(parseFloat(e.target.value))}
                 disabled={isProcessing} id="pdftoimagetool-field-2" aria-label={tTools('pdfToImage.resolution') || 'Resolution'}
               >
-                <option value="1">72 DPI (Low)</option>
-                <option value="2">144 DPI (Medium)</option>
-                <option value="3">216 DPI (High)</option>
-                <option value="4">288 DPI (Very High)</option>
+                <NativeSelectOption value="1">72 DPI (Low)</NativeSelectOption>
+                <NativeSelectOption value="2">144 DPI (Medium)</NativeSelectOption>
+                <NativeSelectOption value="3">216 DPI (High)</NativeSelectOption>
+                <NativeSelectOption value="4">288 DPI (Very High)</NativeSelectOption>
               </Select>
             </div>
 

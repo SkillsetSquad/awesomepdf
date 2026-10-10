@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -378,18 +380,18 @@ export function AddPageLabelsTool() {
                       <Label className="text-muted-foreground block">
                         {t('pageLabels.styleLabel')}
                       </Label>
-                      <select
+                      <NativeSelect
                         value={rule.style}
                         onChange={(e) => handleRuleChange(idx, { style: e.target.value as any })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/35 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all" aria-label={t('pageLabels.styleLabel')}
+                        className="w-full transition-all" aria-label={t('pageLabels.styleLabel')}
                       >
-                        <option value="D">{t('pageLabels.styleArabic')}</option>
-                        <option value="R">{t('pageLabels.styleRomanUpper')}</option>
-                        <option value="r">{t('pageLabels.styleRomanLower')}</option>
-                        <option value="A">{t('pageLabels.styleAlphaUpper')}</option>
-                        <option value="a">{t('pageLabels.styleAlphaLower')}</option>
-                        <option value="none">{t('pageLabels.styleNone')}</option>
-                      </select>
+                        <NativeSelectOption value="D">{t('pageLabels.styleArabic')}</NativeSelectOption>
+                        <NativeSelectOption value="R">{t('pageLabels.styleRomanUpper')}</NativeSelectOption>
+                        <NativeSelectOption value="r">{t('pageLabels.styleRomanLower')}</NativeSelectOption>
+                        <NativeSelectOption value="A">{t('pageLabels.styleAlphaUpper')}</NativeSelectOption>
+                        <NativeSelectOption value="a">{t('pageLabels.styleAlphaLower')}</NativeSelectOption>
+                        <NativeSelectOption value="none">{t('pageLabels.styleNone')}</NativeSelectOption>
+                      </NativeSelect>
                     </div>
 
                     {/* Prefix input */}

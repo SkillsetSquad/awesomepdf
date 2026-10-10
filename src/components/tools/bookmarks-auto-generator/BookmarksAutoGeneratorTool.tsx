@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -153,15 +155,15 @@ export function BookmarksAutoGeneratorTool({ className = '' }: BookmarksAutoGene
                 <div className="space-y-4">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="bookmarksautogeneratortool-field-1">{t('bookmarksAutoGenerator.detectStrategyLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={strategy}
                       onChange={(e) => setStrategy(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:ring-1 focus:ring-primary" id="bookmarksautogeneratortool-field-1" aria-label={t('bookmarksAutoGenerator.detectStrategyLabel')}
+                      className="w-full" id="bookmarksautogeneratortool-field-1" aria-label={t('bookmarksAutoGenerator.detectStrategyLabel')}
                     >
-                      <option value="both">{t('bookmarksAutoGenerator.detectStrategyBoth')}</option>
-                      <option value="regex">{t('bookmarksAutoGenerator.detectStrategyRegex')}</option>
-                      <option value="font-size">{t('bookmarksAutoGenerator.detectStrategyFontSize')}</option>
-                    </select>
+                      <NativeSelectOption value="both">{t('bookmarksAutoGenerator.detectStrategyBoth')}</NativeSelectOption>
+                      <NativeSelectOption value="regex">{t('bookmarksAutoGenerator.detectStrategyRegex')}</NativeSelectOption>
+                      <NativeSelectOption value="font-size">{t('bookmarksAutoGenerator.detectStrategyFontSize')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1.5">

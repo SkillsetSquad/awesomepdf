@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -309,17 +311,17 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
               <Label className="block mb-2" htmlFor="jsontopdftool-field-1">
                 {tTools('jsonToPdf.pageSize') || 'Page Size'}
               </Label>
-              <select
+              <NativeSelect
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as JSONPageSizeType)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-1" aria-label={tTools('jsonToPdf.pageSize') || 'Page Size'}
+                className="w-full" id="jsontopdftool-field-1" aria-label={tTools('jsonToPdf.pageSize') || 'Page Size'}
               >
-                <option value="A4">A4</option>
-                <option value="LETTER">Letter</option>
-                <option value="LEGAL">Legal</option>
-                <option value="A3">A3</option>
-              </select>
+                <NativeSelectOption value="A4">A4</NativeSelectOption>
+                <NativeSelectOption value="LETTER">Letter</NativeSelectOption>
+                <NativeSelectOption value="LEGAL">Legal</NativeSelectOption>
+                <NativeSelectOption value="A3">A3</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Font Size */}
@@ -327,18 +329,18 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
               <Label className="block mb-2" htmlFor="jsontopdftool-field-2">
                 {tTools('jsonToPdf.fontSize') || 'Font Size'}
               </Label>
-              <select
+              <NativeSelect
                 value={fontSize}
                 onChange={(e) => setFontSize(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-2" aria-label={tTools('jsonToPdf.fontSize') || 'Font Size'}
+                className="w-full" id="jsontopdftool-field-2" aria-label={tTools('jsonToPdf.fontSize') || 'Font Size'}
               >
-                <option value="8">8pt</option>
-                <option value="9">9pt</option>
-                <option value="10">10pt</option>
-                <option value="11">11pt</option>
-                <option value="12">12pt</option>
-              </select>
+                <NativeSelectOption value="8">8pt</NativeSelectOption>
+                <NativeSelectOption value="9">9pt</NativeSelectOption>
+                <NativeSelectOption value="10">10pt</NativeSelectOption>
+                <NativeSelectOption value="11">11pt</NativeSelectOption>
+                <NativeSelectOption value="12">12pt</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Indent Spaces */}
@@ -346,16 +348,16 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
               <Label className="block mb-2" htmlFor="jsontopdftool-field-3">
                 {tTools('jsonToPdf.indentSpaces') || 'Indentation'}
               </Label>
-              <select
+              <NativeSelect
                 value={indentSpaces}
                 onChange={(e) => setIndentSpaces(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-3" aria-label={tTools('jsonToPdf.indentSpaces') || 'Indentation'}
+                className="w-full" id="jsontopdftool-field-3" aria-label={tTools('jsonToPdf.indentSpaces') || 'Indentation'}
               >
-                <option value="2">2 spaces</option>
-                <option value="4">4 spaces</option>
-                <option value="8">8 spaces (tab)</option>
-              </select>
+                <NativeSelectOption value="2">2 spaces</NativeSelectOption>
+                <NativeSelectOption value="4">4 spaces</NativeSelectOption>
+                <NativeSelectOption value="8">8 spaces (tab)</NativeSelectOption>
+              </NativeSelect>
             </div>
           </div>
 

@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -182,16 +184,16 @@ export function GlobalInvoiceParserTool({ className = '' }: GlobalInvoiceParserT
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="globalinvoiceparsertool-field-1">{t('globalInvoiceParser.targetCurrencyLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={targetCurrency}
                       onChange={(e) => setTargetCurrency(e.target.value)}
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="globalinvoiceparsertool-field-1" aria-label={t('globalInvoiceParser.targetCurrencyLabel')}
+                      className="w-full" id="globalinvoiceparsertool-field-1" aria-label={t('globalInvoiceParser.targetCurrencyLabel')}
                     >
-                      <option value="CNY">{t('globalInvoiceParser.cnyLabel')}</option>
-                      <option value="USD">{t('globalInvoiceParser.usdLabel')}</option>
-                      <option value="EUR">{t('globalInvoiceParser.eurLabel')}</option>
-                      <option value="JPY">{t('globalInvoiceParser.jpyLabel')}</option>
-                    </select>
+                      <NativeSelectOption value="CNY">{t('globalInvoiceParser.cnyLabel')}</NativeSelectOption>
+                      <NativeSelectOption value="USD">{t('globalInvoiceParser.usdLabel')}</NativeSelectOption>
+                      <NativeSelectOption value="EUR">{t('globalInvoiceParser.eurLabel')}</NativeSelectOption>
+                      <NativeSelectOption value="JPY">{t('globalInvoiceParser.jpyLabel')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1.5">

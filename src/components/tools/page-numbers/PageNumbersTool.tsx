@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -435,17 +437,17 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
                   <Label className="block mb-1" htmlFor="pagenumberstool-field-1">{tTools('pageNumbers.style')}</Label>
-                  <select
+                  <NativeSelect
                     value={format}
                     onChange={(e) => setFormat(e.target.value as Format)}
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing} id="pagenumberstool-field-1" aria-label={tTools('pageNumbers.style')}
                   >
-                    <option value="number">1, 2, 3...</option>
-                    <option value="roman">I, II, III...</option>
-                    <option value="page-of-total">Page 1 of N</option>
-                    <option value="custom">Custom</option>
-                  </select>
+                    <NativeSelectOption value="number">1, 2, 3...</NativeSelectOption>
+                    <NativeSelectOption value="roman">I, II, III...</NativeSelectOption>
+                    <NativeSelectOption value="page-of-total">Page 1 of N</NativeSelectOption>
+                    <NativeSelectOption value="custom">Custom</NativeSelectOption>
+                  </NativeSelect>
                 </div>
                 <div>
                   <Label className="block mb-1" htmlFor="pagenumberstool-field-2">{tTools('pageNumbers.startNumber')}</Label>
@@ -570,53 +572,53 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                 <div className="space-y-2">
                   <div>
                     <Label className="block mb-1" htmlFor="pagenumberstool-field-9">{tTools('pageNumbers.pageMode')}</Label>
-                    <select
+                    <NativeSelect
                       value={pageMode}
                       onChange={(e) => setPageMode(e.target.value as typeof pageMode)}
-                      className="w-full px-2 py-1.5 text-sm border rounded-md"
+                      className="w-full"
                       disabled={isProcessing} id="pagenumberstool-field-9" aria-label={tTools('pageNumbers.pageMode')}
                     >
-                      <option value="all">{tTools('pageNumbers.modeAll')}</option>
-                      <option value="odd-only">{tTools('pageNumbers.modeOddOnly')}</option>
-                      <option value="even-only">{tTools('pageNumbers.modeEvenOnly')}</option>
-                      <option value="odd-even-different">{tTools('pageNumbers.modeDifferent')}</option>
-                    </select>
+                      <NativeSelectOption value="all">{tTools('pageNumbers.modeAll')}</NativeSelectOption>
+                      <NativeSelectOption value="odd-only">{tTools('pageNumbers.modeOddOnly')}</NativeSelectOption>
+                      <NativeSelectOption value="even-only">{tTools('pageNumbers.modeEvenOnly')}</NativeSelectOption>
+                      <NativeSelectOption value="odd-even-different">{tTools('pageNumbers.modeDifferent')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   {pageMode === 'odd-even-different' && (
                     <div className="grid grid-cols-2 gap-2">
                       <div>
                         <Label className="block mb-1" htmlFor="pagenumberstool-field-10">{tTools('pageNumbers.oddPosition')}</Label>
-                        <select
+                        <NativeSelect
                           value={oddPosition}
                           onChange={(e) => setOddPosition(e.target.value as Position)}
-                          className="w-full px-2 py-1.5 text-sm border rounded-md"
+                          className="w-full"
                           disabled={isProcessing} id="pagenumberstool-field-10" aria-label={tTools('pageNumbers.oddPosition')}
                         >
-                          <option value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</option>
-                          <option value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</option>
-                          <option value="bottom-right">{tTools('pageNumbers.posBottomRight')}</option>
-                          <option value="top-left">{tTools('pageNumbers.posTopLeft')}</option>
-                          <option value="top-center">{tTools('pageNumbers.posTopCenter')}</option>
-                          <option value="top-right">{tTools('pageNumbers.posTopRight')}</option>
-                        </select>
+                          <NativeSelectOption value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</NativeSelectOption>
+                          <NativeSelectOption value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</NativeSelectOption>
+                          <NativeSelectOption value="bottom-right">{tTools('pageNumbers.posBottomRight')}</NativeSelectOption>
+                          <NativeSelectOption value="top-left">{tTools('pageNumbers.posTopLeft')}</NativeSelectOption>
+                          <NativeSelectOption value="top-center">{tTools('pageNumbers.posTopCenter')}</NativeSelectOption>
+                          <NativeSelectOption value="top-right">{tTools('pageNumbers.posTopRight')}</NativeSelectOption>
+                        </NativeSelect>
                         <p className="text-xs text-gray-500">{tTools('pageNumbers.oddPositionHint')}</p>
                       </div>
                       <div>
                         <Label className="block mb-1" htmlFor="pagenumberstool-field-11">{tTools('pageNumbers.evenPosition')}</Label>
-                        <select
+                        <NativeSelect
                           value={evenPosition}
                           onChange={(e) => setEvenPosition(e.target.value as Position)}
-                          className="w-full px-2 py-1.5 text-sm border rounded-md"
+                          className="w-full"
                           disabled={isProcessing} id="pagenumberstool-field-11" aria-label={tTools('pageNumbers.evenPosition')}
                         >
-                          <option value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</option>
-                          <option value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</option>
-                          <option value="bottom-right">{tTools('pageNumbers.posBottomRight')}</option>
-                          <option value="top-left">{tTools('pageNumbers.posTopLeft')}</option>
-                          <option value="top-center">{tTools('pageNumbers.posTopCenter')}</option>
-                          <option value="top-right">{tTools('pageNumbers.posTopRight')}</option>
-                        </select>
+                          <NativeSelectOption value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</NativeSelectOption>
+                          <NativeSelectOption value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</NativeSelectOption>
+                          <NativeSelectOption value="bottom-right">{tTools('pageNumbers.posBottomRight')}</NativeSelectOption>
+                          <NativeSelectOption value="top-left">{tTools('pageNumbers.posTopLeft')}</NativeSelectOption>
+                          <NativeSelectOption value="top-center">{tTools('pageNumbers.posTopCenter')}</NativeSelectOption>
+                          <NativeSelectOption value="top-right">{tTools('pageNumbers.posTopRight')}</NativeSelectOption>
+                        </NativeSelect>
                         <p className="text-xs text-gray-500">{tTools('pageNumbers.evenPositionHint')}</p>
                       </div>
                     </div>

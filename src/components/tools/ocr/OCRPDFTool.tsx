@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -485,10 +487,10 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                       onChange={(e) => setOutputFormat(e.target.value as OCROptions['outputFormat'])}
                       disabled={isProcessing} id="ocrpdftool-field-1" aria-label={t('ocr.outputFormat')}
                     >
-                      <option value="searchable-pdf">{t('ocr.formatSearchablePdf')}</option>
-                      <option value="text">{t('ocr.formatText')}</option>
-                      <option value="markdown">{t('ocr.formatMarkdown')}</option>
-                      <option value="json">{t('ocr.formatJson')}</option>
+                      <NativeSelectOption value="searchable-pdf">{t('ocr.formatSearchablePdf')}</NativeSelectOption>
+                      <NativeSelectOption value="text">{t('ocr.formatText')}</NativeSelectOption>
+                      <NativeSelectOption value="markdown">{t('ocr.formatMarkdown')}</NativeSelectOption>
+                      <NativeSelectOption value="json">{t('ocr.formatJson')}</NativeSelectOption>
                     </Select>
                   </div>
 
@@ -502,9 +504,9 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                       onChange={(e) => setScale(parseFloat(e.target.value))}
                       disabled={isProcessing} id="ocrpdftool-field-2" aria-label={t('ocr.accuracyTitle')}
                     >
-                      <option value="1">{t('ocr.accuracySd')}</option>
-                      <option value="2">{t('ocr.accuracyHd')}</option>
-                      <option value="3">{t('ocr.accuracyUd')}</option>
+                      <NativeSelectOption value="1">{t('ocr.accuracySd')}</NativeSelectOption>
+                      <NativeSelectOption value="2">{t('ocr.accuracyHd')}</NativeSelectOption>
+                      <NativeSelectOption value="3">{t('ocr.accuracyUd')}</NativeSelectOption>
                     </Select>
                   </div>
 

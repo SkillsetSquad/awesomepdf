@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption, NativeSelectOptGroup } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -1017,31 +1019,31 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               {/* Tool Selector */}
               <div className="flex items-center gap-2">
                 <span className="text-xs font-medium text-gray-500">{tTools('formCreator.addField') || 'Add'}:</span>
-                <select
+                <NativeSelect
                   value={currentTool}
                   onChange={(e) => setCurrentTool(e.target.value as FieldType | 'select')}
-                  className="px-2 py-1.5 text-sm border rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className=""
                 >
-                  <option value="select">↖ {tTools('formCreator.selectTool')}</option>
-                  <optgroup label={tTools('formCreator.basicTools') || 'Basic'}>
-                    <option value="text">📝 {tTools('formCreator.textFieldTool')}</option>
-                    <option value="checkbox">☑ {tTools('formCreator.checkboxTool')}</option>
-                    <option value="dropdown">▼ {tTools('formCreator.dropdownTool')}</option>
-                    <option value="radio">◉ {tTools('formCreator.radioTool')}</option>
-                  </optgroup>
-                  <optgroup label={tTools('formCreator.advancedTools') || 'Advanced'}>
-                    <option value="button">🔘 {tTools('formCreator.buttonTool')}</option>
-                    <option value="signature">✍ {tTools('formCreator.signatureTool')}</option>
-                    <option value="date">📅 {tTools('formCreator.dateTool')}</option>
-                    <option value="listbox">📋 {tTools('formCreator.listboxTool')}</option>
-                  </optgroup>
-                </select>
+                  <NativeSelectOption value="select">↖ {tTools('formCreator.selectTool')}</NativeSelectOption>
+                  <NativeSelectOptGroup label={tTools('formCreator.basicTools') || 'Basic'}>
+                    <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
+                    <NativeSelectOption value="checkbox">☑ {tTools('formCreator.checkboxTool')}</NativeSelectOption>
+                    <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
+                    <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
+                  </NativeSelectOptGroup>
+                  <NativeSelectOptGroup label={tTools('formCreator.advancedTools') || 'Advanced'}>
+                    <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
+                    <NativeSelectOption value="signature">✍ {tTools('formCreator.signatureTool')}</NativeSelectOption>
+                    <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
+                    <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
+                  </NativeSelectOptGroup>
+                </NativeSelect>
               </div>
 
               {/* Template Selector */}
               <div className="flex items-center gap-2">
                 <span className="text-xs font-medium text-gray-500">{tTools('formCreator.templates') || 'Template'}:</span>
-                <select
+                <NativeSelect
                   value=""
                   onChange={(e) => {
                     const templateId = e.target.value;
@@ -1059,15 +1061,15 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       e.target.value = '';
                     }
                   }}
-                  className="px-2 py-1.5 text-sm border rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className=""
                 >
-                  <option value="">{tTools('formCreator.selectTemplate') || 'Select...'}</option>
+                  <NativeSelectOption value="">{tTools('formCreator.selectTemplate') || 'Select...'}</NativeSelectOption>
                   {formTemplates.map(template => (
-                    <option key={template.id} value={template.id}>
+                    <NativeSelectOption key={template.id} value={template.id}>
                       {template.icon} {tTools(`formCreator.template.${template.id}`) || template.name}
-                    </option>
+                    </NativeSelectOption>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
 
               <div className="w-px h-6 bg-gray-200" />
@@ -1309,20 +1311,20 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       </div>
 
                       {/* Type selector */}
-                      <select
+                      <NativeSelect
                         value={selectedField.type}
                         onChange={(e) => updateSelectedField({ type: e.target.value as FieldType })}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-white"
+                        className="w-full"
                       >
-                        <option value="text">📝 {tTools('formCreator.textFieldTool')}</option>
-                        <option value="checkbox">☑ {tTools('formCreator.checkboxTool')}</option>
-                        <option value="dropdown">▼ {tTools('formCreator.dropdownTool')}</option>
-                        <option value="radio">◉ {tTools('formCreator.radioTool')}</option>
-                        <option value="button">🔘 {tTools('formCreator.buttonTool')}</option>
-                        <option value="signature">✍ {tTools('formCreator.signatureTool')}</option>
-                        <option value="date">📅 {tTools('formCreator.dateTool')}</option>
-                        <option value="listbox">📋 {tTools('formCreator.listboxTool')}</option>
-                      </select>
+                        <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
+                        <NativeSelectOption value="checkbox">☑ {tTools('formCreator.checkboxTool')}</NativeSelectOption>
+                        <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
+                        <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
+                        <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
+                        <NativeSelectOption value="signature">✍ {tTools('formCreator.signatureTool')}</NativeSelectOption>
+                        <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
+                        <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
+                      </NativeSelect>
 
                       {/* Label */}
                       <div>
@@ -1433,16 +1435,16 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {(selectedField.type === 'dropdown' || selectedField.type === 'radio' || selectedField.type === 'listbox') && selectedField.options && selectedField.options.length > 0 && (
                         <div>
                           <Label className="block mb-1" htmlFor="formcreatortool-field-4">{tTools('formCreator.defaultSelection') || 'Default Selection'}</Label>
-                          <select
+                          <NativeSelect
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-4" aria-label={tTools('formCreator.defaultSelection') || 'Default Selection'}
+                            className="w-full" id="formcreatortool-field-4" aria-label={tTools('formCreator.defaultSelection') || 'Default Selection'}
                           >
-                            <option value="">{tTools('formCreator.noDefault') || '-- None --'}</option>
+                            <NativeSelectOption value="">{tTools('formCreator.noDefault') || '-- None --'}</NativeSelectOption>
                             {selectedField.options.map((opt, idx) => (
-                              <option key={idx} value={opt}>{opt}</option>
+                              <NativeSelectOption key={idx} value={opt}>{opt}</NativeSelectOption>
                             ))}
-                          </select>
+                          </NativeSelect>
                         </div>
                       )}
 
@@ -1491,16 +1493,16 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.type === 'date' && (
                         <div>
                           <Label className="block mb-1" htmlFor="formcreatortool-field-7">{tTools('formCreator.dateFormat') || 'Date Format'}</Label>
-                          <select
+                          <NativeSelect
                             value={selectedField.dateFormat || 'YYYY-MM-DD'}
                             onChange={(e) => updateSelectedField({ dateFormat: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-7" aria-label={tTools('formCreator.dateFormat') || 'Date Format'}
+                            className="w-full" id="formcreatortool-field-7" aria-label={tTools('formCreator.dateFormat') || 'Date Format'}
                           >
-                            <option value="YYYY-MM-DD">YYYY-MM-DD</option>
-                            <option value="MM/DD/YYYY">MM/DD/YYYY</option>
-                            <option value="DD/MM/YYYY">DD/MM/YYYY</option>
-                            <option value="YYYY/MM/DD">YYYY/MM/DD</option>
-                          </select>
+                            <NativeSelectOption value="YYYY-MM-DD">YYYY-MM-DD</NativeSelectOption>
+                            <NativeSelectOption value="MM/DD/YYYY">MM/DD/YYYY</NativeSelectOption>
+                            <NativeSelectOption value="DD/MM/YYYY">DD/MM/YYYY</NativeSelectOption>
+                            <NativeSelectOption value="YYYY/MM/DD">YYYY/MM/DD</NativeSelectOption>
+                          </NativeSelect>
                         </div>
                       )}
 
@@ -1743,17 +1745,17 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               {/* Page Size */}
               <div>
                 <Label className="block mb-1" htmlFor="formcreatortool-field-10">{tTools('formCreator.pageSize') || 'Page Size'}</Label>
-                <select
+                <NativeSelect
                   value={blankPdfPageSize}
                   onChange={(e) => setBlankPdfPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3' | 'A5')}
-                  className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-10" aria-label={tTools('formCreator.pageSize') || 'Page Size'}
+                  className="w-full" id="formcreatortool-field-10" aria-label={tTools('formCreator.pageSize') || 'Page Size'}
                 >
-                  <option value="A4">A4 (210 × 297 mm)</option>
-                  <option value="Letter">Letter (8.5 × 11 in)</option>
-                  <option value="Legal">Legal (8.5 × 14 in)</option>
-                  <option value="A3">A3 (297 × 420 mm)</option>
-                  <option value="A5">A5 (148 × 210 mm)</option>
-                </select>
+                  <NativeSelectOption value="A4">A4 (210 × 297 mm)</NativeSelectOption>
+                  <NativeSelectOption value="Letter">Letter (8.5 × 11 in)</NativeSelectOption>
+                  <NativeSelectOption value="Legal">Legal (8.5 × 14 in)</NativeSelectOption>
+                  <NativeSelectOption value="A3">A3 (297 × 420 mm)</NativeSelectOption>
+                  <NativeSelectOption value="A5">A5 (148 × 210 mm)</NativeSelectOption>
+                </NativeSelect>
               </div>
 
               {/* Page Count */}

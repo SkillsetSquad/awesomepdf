@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -172,16 +174,16 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
                         <Label className="block mb-2" htmlFor="djvutopdftool-field-1">
                             {tTools('djvuToPdf.dpiLabel') || 'Output DPI'}
                         </Label>
-                        <select
+                        <NativeSelect
                             value={dpi}
                             onChange={(e) => setDpi(Number(e.target.value))}
                             disabled={isProcessing}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="djvutopdftool-field-1" aria-label={tTools('djvuToPdf.dpiLabel') || 'Output DPI'}
+                            className="w-full" id="djvutopdftool-field-1" aria-label={tTools('djvuToPdf.dpiLabel') || 'Output DPI'}
                         >
-                            <option value={72}>72 DPI (Web)</option>
-                            <option value={150}>150 DPI (Standard)</option>
-                            <option value={300}>300 DPI (Print)</option>
-                        </select>
+                            <NativeSelectOption value={72}>72 DPI (Web)</NativeSelectOption>
+                            <NativeSelectOption value={150}>150 DPI (Standard)</NativeSelectOption>
+                            <NativeSelectOption value={300}>300 DPI (Print)</NativeSelectOption>
+                        </NativeSelect>
                         <p className="text-xs text-muted-foreground mt-1">
                             {tTools('djvuToPdf.dpiHint') || 'Higher DPI = larger file size, better quality'}
                         </p>
@@ -190,17 +192,17 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
                         <Label className="block mb-2" htmlFor="djvutopdftool-field-2">
                             {tTools('djvuToPdf.qualityLabel') || 'Image Quality'}
                         </Label>
-                        <select
+                        <NativeSelect
                             value={quality}
                             onChange={(e) => setQuality(Number(e.target.value))}
                             disabled={isProcessing}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="djvutopdftool-field-2" aria-label={tTools('djvuToPdf.qualityLabel') || 'Image Quality'}
+                            className="w-full" id="djvutopdftool-field-2" aria-label={tTools('djvuToPdf.qualityLabel') || 'Image Quality'}
                         >
-                            <option value={0.7}>70% (Smaller file)</option>
-                            <option value={0.85}>85% (Balanced)</option>
-                            <option value={0.92}>92% (High quality)</option>
-                            <option value={1.0}>100% (Maximum)</option>
-                        </select>
+                            <NativeSelectOption value={0.7}>70% (Smaller file)</NativeSelectOption>
+                            <NativeSelectOption value={0.85}>85% (Balanced)</NativeSelectOption>
+                            <NativeSelectOption value={0.92}>92% (High quality)</NativeSelectOption>
+                            <NativeSelectOption value={1.0}>100% (Maximum)</NativeSelectOption>
+                        </NativeSelect>
                         <p className="text-xs text-muted-foreground mt-1">
                             {tTools('djvuToPdf.qualityHint') || 'JPEG compression quality for pages'}
                         </p>

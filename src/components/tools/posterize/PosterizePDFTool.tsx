@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -296,18 +298,18 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <Label htmlFor="pageSize" className="block mb-1">
                 {tTools('posterizePdf.pageSize') || 'Output Page Size'}
               </Label>
-              <select
+              <NativeSelect
                 id="pageSize"
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.pageSize') || 'Output Page Size'}
+                className="w-full" aria-label={tTools('posterizePdf.pageSize') || 'Output Page Size'}
               >
-                <option value="A4">A4</option>
-                <option value="Letter">Letter</option>
-                <option value="Legal">Legal</option>
-                <option value="A3">A3</option>
-              </select>
+                <NativeSelectOption value="A4">A4</NativeSelectOption>
+                <NativeSelectOption value="Letter">Letter</NativeSelectOption>
+                <NativeSelectOption value="Legal">Legal</NativeSelectOption>
+                <NativeSelectOption value="A3">A3</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Orientation */}
@@ -315,17 +317,17 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <Label htmlFor="orientation" className="block mb-1">
                 {tTools('posterizePdf.orientation') || 'Orientation'}
               </Label>
-              <select
+              <NativeSelect
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.orientation') || 'Orientation'}
+                className="w-full" aria-label={tTools('posterizePdf.orientation') || 'Orientation'}
               >
-                <option value="auto">{t('options.auto') || 'Auto'}</option>
-                <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
-                <option value="landscape">{t('options.landscape') || 'Landscape'}</option>
-              </select>
+                <NativeSelectOption value="auto">{t('options.auto') || 'Auto'}</NativeSelectOption>
+                <NativeSelectOption value="portrait">{t('options.portrait') || 'Portrait'}</NativeSelectOption>
+                <NativeSelectOption value="landscape">{t('options.landscape') || 'Landscape'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Overlap */}
@@ -344,16 +346,16 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                   disabled={isProcessing}
                   className="flex-1" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
                 />
-                <select
+                <NativeSelect
                   value={overlapUnit}
                   onChange={(e) => setOverlapUnit(e.target.value as 'pt' | 'mm' | 'in')}
                   disabled={isProcessing}
-                  className="w-20 px-2 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="overlap" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
+                  className="w-20" id="overlap" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
                 >
-                  <option value="mm">mm</option>
-                  <option value="in">in</option>
-                  <option value="pt">pt</option>
-                </select>
+                  <NativeSelectOption value="mm">mm</NativeSelectOption>
+                  <NativeSelectOption value="in">in</NativeSelectOption>
+                  <NativeSelectOption value="pt">pt</NativeSelectOption>
+                </NativeSelect>
               </div>
             </div>
 
@@ -362,16 +364,16 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <Label htmlFor="scalingMode" className="block mb-1">
                 {tTools('posterizePdf.scalingMode') || 'Scaling Mode'}
               </Label>
-              <select
+              <NativeSelect
                 id="scalingMode"
                 value={scalingMode}
                 onChange={(e) => setScalingMode(e.target.value as 'fit' | 'fill')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.scalingMode') || 'Scaling Mode'}
+                className="w-full" aria-label={tTools('posterizePdf.scalingMode') || 'Scaling Mode'}
               >
-                <option value="fit">{tTools('posterizePdf.fit') || 'Fit (preserve aspect ratio)'}</option>
-                <option value="fill">{tTools('posterizePdf.fill') || 'Fill (may crop)'}</option>
-              </select>
+                <NativeSelectOption value="fit">{tTools('posterizePdf.fit') || 'Fit (preserve aspect ratio)'}</NativeSelectOption>
+                <NativeSelectOption value="fill">{tTools('posterizePdf.fill') || 'Fill (may crop)'}</NativeSelectOption>
+              </NativeSelect>
             </div>
 
             {/* Page range */}

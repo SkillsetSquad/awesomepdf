@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -173,14 +175,14 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="pdfscratchpadcanvastool-field-1">{t('pdfScratchpadCanvas.padPositionLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={padPosition}
                       onChange={(e) => setPadPosition(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="pdfscratchpadcanvastool-field-1" aria-label={t('pdfScratchpadCanvas.padPositionLabel')}
+                      className="w-full" id="pdfscratchpadcanvastool-field-1" aria-label={t('pdfScratchpadCanvas.padPositionLabel')}
                     >
-                      <option value="right">{t('pdfScratchpadCanvas.padPositionRight')}</option>
-                      <option value="bottom">{t('pdfScratchpadCanvas.padPositionBottom')}</option>
-                    </select>
+                      <NativeSelectOption value="right">{t('pdfScratchpadCanvas.padPositionRight')}</NativeSelectOption>
+                      <NativeSelectOption value="bottom">{t('pdfScratchpadCanvas.padPositionBottom')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
 
                   <div className="space-y-1">
@@ -201,15 +203,15 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
 
                   <div className="space-y-1.5">
                     <Label className="" htmlFor="pdfscratchpadcanvastool-field-2">{t('pdfScratchpadCanvas.gridTypeLabel')}</Label>
-                    <select
+                    <NativeSelect
                       value={gridType}
                       onChange={(e) => setGridType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="pdfscratchpadcanvastool-field-2" aria-label={t('pdfScratchpadCanvas.gridTypeLabel')}
+                      className="w-full" id="pdfscratchpadcanvastool-field-2" aria-label={t('pdfScratchpadCanvas.gridTypeLabel')}
                     >
-                      <option value="grid">{t('pdfScratchpadCanvas.gridTypeGrid')}</option>
-                      <option value="ruled">{t('pdfScratchpadCanvas.gridTypeRuled')}</option>
-                      <option value="blank">{t('pdfScratchpadCanvas.gridTypeBlank')}</option>
-                    </select>
+                      <NativeSelectOption value="grid">{t('pdfScratchpadCanvas.gridTypeGrid')}</NativeSelectOption>
+                      <NativeSelectOption value="ruled">{t('pdfScratchpadCanvas.gridTypeRuled')}</NativeSelectOption>
+                      <NativeSelectOption value="blank">{t('pdfScratchpadCanvas.gridTypeBlank')}</NativeSelectOption>
+                    </NativeSelect>
                   </div>
                 </div>
               </div>

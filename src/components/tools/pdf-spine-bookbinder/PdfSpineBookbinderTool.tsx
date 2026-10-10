@@ -1,4 +1,6 @@
 'use client';
+import { NativeSelect } from '@/components/ui/native-select';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -214,16 +216,16 @@ export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToo
 
                 <div className="space-y-1.5">
                   {t('pdfSpineBookbinder.gsmLabel')}
-                  <select
+                  <NativeSelect
                     value={paperGsm}
                     onChange={(e) => setPaperGsm(parseInt(e.target.value) as any)}
-                    className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                    className="w-full"
                   >
                     {t('pdfSpineBookbinder.gsm80')}
                     {t('pdfSpineBookbinder.gsm100')}
                     {t('pdfSpineBookbinder.gsm120')}
                     {t('pdfSpineBookbinder.gsm150')}
-                  </select>
+                  </NativeSelect>
                 </div>
               </div>
             </div>
