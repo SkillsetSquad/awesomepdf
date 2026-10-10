@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { ArrowUpRight, Circle, Cloud, Download, Highlighter, Info, MessageSquare, MousePointer2, Palette, PenLine, Redo2, Square, Stamp, StickyNote, TextCursorInput, Type, Undo2, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, Circle, Cloud, Download, Highlighter, Info, MessageSquare, MousePointer2, Palette, PenLine, Redo2, Square, Stamp, StickyNote, TextCursorInput, Trash2, Type, Undo2, type LucideIcon } from 'lucide-react';
 import { AnnotationExportMenu, type AnnotationExportAction, type AnnotationExportFormat } from './AnnotationExportMenu';
 import { AnnotationColorControl, type AnnotationColorOptions } from './AnnotationColorControl';
 
@@ -18,7 +18,7 @@ const annotationIcons: Record<string, LucideIcon> = {
 interface ViewerControl {
   item: HTMLElement;
   mount: HTMLElement;
-  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation';
+  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation' | 'annotation-action';
   key: string;
   Icon: LucideIcon;
   toggle: boolean;
@@ -62,6 +62,9 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       .CustomToolbar::after { display: none; }
       .CustomToolbar .buttons { flex-shrink: 0; gap: .25rem; }
       .CustomToolbar .right { position: static; margin-inline-start: auto; }
+      .CustomAnnotationMenu { background: var(--popover); color: var(--popover-foreground); border-color: var(--border); }
+      .CustomAnnotationMenu .buttons { display: flex; gap: .25rem; }
+      .CustomAnnotationMenu .buttons li[data-awesomepdf-control] { background: transparent; border: 0; padding: 0; margin: 0; width: auto; height: auto; }
       [data-awesomepdf-mount] { display: inline-flex; }
     `;
     doc.head.appendChild(style);
@@ -127,6 +130,12 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
           label, toggle: !['color', 'export'].includes(tool),
           disabled: item.classList.contains('disabled') || action.hasAttribute('disabled'), pressed: item.classList.contains('selected') });
       }
+      for (const item of doc.querySelectorAll<HTMLElement>('.CustomAnnotationMenu .buttons > li[data-annotation-action]')) {
+        const key = item.dataset.annotationAction!;
+        const action = { comments: { Icon: MessageSquare, label: labels?.comments ?? 'Comments' }, style: { Icon: Palette, label: labels?.color ?? 'Color' }, delete: { Icon: Trash2, label: labels?.delete ?? 'Delete' } }[key];
+        if (!action) continue;
+        next.push({ item, mount: mountControl(item), action: item, key: `context-${key}`, kind: 'annotation-action', ...action, toggle: false, disabled: false, pressed: false });
+      }
       setControls(previous => previous.length === next.length && next.every((control, index) => {
         const old = previous[index];
         return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
@@ -150,8 +159,24 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     ? <AnnotationColorControl options={control.colorOptions} label={control.label} disabled={control.disabled} direction={locale === 'ar' ? 'rtl' : 'ltr'} formatLabel={colorLabels?.format ?? 'Color format'} closeLabel={colorLabels?.close ?? 'Close'} />
     : control.key === 'export' && control.onExport
     ? <AnnotationExportMenu container={control.item.ownerDocument.body} label={control.label} formats={control.exportFormats ?? []} onExport={control.onExport} direction={locale === 'ar' ? 'rtl' : 'ltr'} errorMessage={exportError} />
-    : <Button dir={locale === 'ar' ? 'rtl' : 'ltr'} type="button" size="sm" variant={control.pressed ? 'secondary' : 'ghost'} disabled={control.disabled}
-      aria-pressed={control.toggle ? control.pressed : undefined} onClick={event => { event.stopPropagation(); control.action.click(); }}>
-      <control.Icon aria-hidden="true" />{control.color && <span className="size-3 rounded-sm border" aria-hidden="true" style={{ backgroundColor: control.color }} />}{control.label}
+    : <Button dir={locale === 'ar' ? 'rtl' : 'ltr'} type="button" size={control.kind === 'annotation-action' ? 'icon-sm' : 'sm'} variant={control.pressed ? 'secondary' : 'ghost'} disabled={control.disabled}
+      aria-label={control.kind === 'annotation-action' ? control.label : undefined} title={control.kind === 'annotation-action' ? control.label : undefined}
+      onMouseDown={event => { if (control.kind === 'annotation-action') event.stopPropagation(); }}
+      onKeyDown={event => { if (control.kind === 'annotation-action') event.stopPropagation(); }}
+      aria-pressed={control.toggle ? control.pressed : undefined} onClick={event => {
+        event.stopPropagation();
+        if (control.kind !== 'annotation-action') { control.action.click(); return; }
+        const doc = control.item.ownerDocument;
+        const viewer = doc.defaultView;
+        // The shipped menu listens on mouse-down. Suppress the button's mouse-down and send exactly one engine action on click, including keyboard clicks.
+        control.action.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true, view: viewer }));
+        viewer?.setTimeout(() => {
+          if (!iframe?.isConnected || document.activeElement !== iframe || doc.activeElement !== doc.body) return;
+          const target = control.key === 'context-style' ? '.CustomAnnotationMenu .styleContainer [tabindex="0"]'
+            : control.key === 'context-comments' ? '.CustomComment input, .CustomComment textarea, .CustomComment [tabindex="0"]' : '#viewerContainer';
+          (doc.querySelector<HTMLElement>(target) ?? doc.querySelector<HTMLElement>('#viewerContainer'))?.focus();
+        }, 0);
+      }}>
+      <control.Icon aria-hidden="true" />{control.color && <span className="size-3 rounded-sm border" aria-hidden="true" style={{ backgroundColor: control.color }} />}{control.kind !== 'annotation-action' && control.label}
     </Button>, control.mount, control.key));
 }

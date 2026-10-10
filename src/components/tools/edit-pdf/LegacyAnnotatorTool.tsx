@@ -54,7 +54,7 @@ export function LegacyAnnotatorTool({
     note: t('editPdf.annNote'), arrow: t('editPdf.annArrow'), cloud: t('editPdf.annCloud'),
     freehand: t('editPdf.annFreehand'), freeHighlight: t('editPdf.annFreeHighlight'), freeText: t('editPdf.annFreeText'),
     signature: t('editPdf.annSignature'), stamp: t('editPdf.annStamp'), color: tBookmark('color'),
-    export: t('buttons.download'), comments: t('editPdf.comments'),
+    export: t('buttons.download'), comments: t('editPdf.comments'), delete: t('buttons.delete'),
   }), [t, tTools, tBookmark]);
   
   const [internalFile, setInternalFile] = useState<File | null>(null);
