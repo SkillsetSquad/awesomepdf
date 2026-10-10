@@ -3,7 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '../../../../messages/en.json';
-import { PDFReaderTool } from '@/components/tools/pdf-reader/PdfReaderTool';
+import { PDFReaderTool } from '@/components/tools/pdf-reader/PDFReaderTool';
 
 const notifications = vi.hoisted(() => ({ success: vi.fn(() => 'reader-copy'), dismiss: vi.fn() }));
 vi.mock('sonner', () => ({ toast: notifications }));
