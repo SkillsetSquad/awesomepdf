@@ -22,7 +22,7 @@ import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2, ChevronLeft, ChevronRight, Mail, ClipboardList, Star, ShoppingCart, PenLine, Receipt, TextCursorInput, SquareCheck, ChevronDown, CircleDot, MousePointerClick, CalendarDays, List, FileText, type LucideIcon } from 'lucide-react';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
@@ -69,7 +69,7 @@ interface FormTemplate {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  icon: LucideIcon;
   fields: Omit<VisualField, 'id'>[];
 }
 
@@ -78,7 +78,7 @@ const formTemplates: FormTemplate[] = [
     id: 'contact',
     name: 'Contact Form',
     description: 'Basic contact form with name, email, and message fields',
-    icon: '📧',
+    icon: Mail,
     fields: [
       { name: 'full_name', type: 'text', x: 50, y: 700, width: 200, height: 24, pageNumber: 1, label: 'Full Name' },
       { name: 'email', type: 'text', x: 50, y: 650, width: 200, height: 24, pageNumber: 1, label: 'Email Address' },
@@ -92,7 +92,7 @@ const formTemplates: FormTemplate[] = [
     id: 'registration',
     name: 'Registration Form',
     description: 'User registration form with account details',
-    icon: '📝',
+    icon: ClipboardList,
     fields: [
       { name: 'first_name', type: 'text', x: 50, y: 700, width: 150, height: 24, pageNumber: 1, label: 'First Name' },
       { name: 'last_name', type: 'text', x: 220, y: 700, width: 150, height: 24, pageNumber: 1, label: 'Last Name' },
@@ -108,7 +108,7 @@ const formTemplates: FormTemplate[] = [
     id: 'feedback',
     name: 'Feedback Form',
     description: 'Customer feedback and survey form',
-    icon: '⭐',
+    icon: Star,
     fields: [
       { name: 'customer_name', type: 'text', x: 50, y: 700, width: 200, height: 24, pageNumber: 1, label: 'Your Name' },
       { name: 'satisfaction', type: 'dropdown', x: 50, y: 650, width: 200, height: 24, pageNumber: 1, options: ['Very Satisfied', 'Satisfied', 'Neutral', 'Dissatisfied', 'Very Dissatisfied'], label: 'Satisfaction Level' },
@@ -122,7 +122,7 @@ const formTemplates: FormTemplate[] = [
     id: 'order',
     name: 'Order Form',
     description: 'Product order form with quantities',
-    icon: '🛒',
+    icon: ShoppingCart,
     fields: [
       { name: 'customer_name', type: 'text', x: 50, y: 720, width: 200, height: 24, pageNumber: 1, label: 'Customer Name' },
       { name: 'company', type: 'text', x: 280, y: 720, width: 200, height: 24, pageNumber: 1, label: 'Company' },
@@ -140,7 +140,7 @@ const formTemplates: FormTemplate[] = [
     id: 'consent',
     name: 'Consent Form',
     description: 'Legal consent form with signature',
-    icon: '✍️',
+    icon: PenLine,
     fields: [
       { name: 'full_name', type: 'text', x: 50, y: 700, width: 250, height: 24, pageNumber: 1, label: 'Full Name' },
       { name: 'date', type: 'date', x: 320, y: 700, width: 150, height: 24, pageNumber: 1, label: 'Date' },
@@ -156,7 +156,7 @@ const formTemplates: FormTemplate[] = [
     id: 'invoice',
     name: 'Invoice',
     description: 'Professional invoice with itemized billing',
-    icon: '🧾',
+    icon: Receipt,
     fields: [
       // Header - Company info
       { name: 'company_name', type: 'text', x: 50, y: 750, width: 200, height: 24, pageNumber: 1, label: 'Company Name' },
@@ -923,19 +923,6 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   const selectedField = fields.find(f => f.id === selectedFieldId);
   const currentPageFields = fields.filter(f => f.pageNumber === currentPage);
 
-  // Tool buttons
-  const tools = [
-    { type: 'select' as const, icon: '↖', labelKey: 'selectTool' },
-    { type: 'text' as const, icon: '📝', labelKey: 'textFieldTool' },
-    { type: 'checkbox' as const, icon: '☑', labelKey: 'checkboxTool' },
-    { type: 'dropdown' as const, icon: '▼', labelKey: 'dropdownTool' },
-    { type: 'radio' as const, icon: '◉', labelKey: 'radioTool' },
-    { type: 'button' as const, icon: '🔘', labelKey: 'buttonTool' },
-    { type: 'signature' as const, icon: '✍', labelKey: 'signatureTool' },
-    { type: 'date' as const, icon: '📅', labelKey: 'dateTool' },
-    { type: 'listbox' as const, icon: '📋', labelKey: 'listboxTool' },
-  ];
-
   // Get field style for overlay
   const getFieldStyle = (field: VisualField): React.CSSProperties => {
     const pdfHeight = pageSize.height / scale;
@@ -959,19 +946,19 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
     };
   };
 
-  // Get field icon
   const getFieldIcon = (type: FieldType) => {
-    switch (type) {
-      case 'text': return '📝';
-      case 'checkbox': return '☑';
-      case 'dropdown': return '▼';
-      case 'radio': return '◉';
-      case 'button': return '🔘';
-      case 'signature': return '✍';
-      case 'date': return '📅';
-      case 'listbox': return '📋';
-      default: return '📄';
-    }
+    const icons: Record<FieldType, LucideIcon> = {
+      text: TextCursorInput,
+      checkbox: SquareCheck,
+      dropdown: ChevronDown,
+      radio: CircleDot,
+      button: MousePointerClick,
+      signature: PenLine,
+      date: CalendarDays,
+      listbox: List,
+    };
+    const Icon = icons[type] ?? FileText;
+    return <Icon aria-hidden="true" className="inline-block size-3.5 shrink-0 align-middle" />;
   };
 
   return (
@@ -1010,10 +997,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               <Button variant="outline" size="sm"
                 key={template.id}
                 onClick={() => createFromTemplate(template)}
-                className="flex flex-col items-center justify-center gap-2 group"
+                className="h-auto min-h-20 flex-col gap-2 whitespace-normal p-3"
               >
-                <span className="text-2xl">{template.icon}</span>
-                <span className="text-xs font-medium text-gray-600 text-center group-hover:text-blue-600">{tTools(`formCreator.template.${template.id}`) || template.name}</span>
+                <template.icon aria-hidden="true" className="size-5" />
+                <span className="text-xs text-center">{tTools(`formCreator.template.${template.id}`) || template.name}</span>
               </Button>
             ))}
           </div>
@@ -1040,22 +1027,23 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               <div className="flex items-center gap-2">
                 <span className="text-xs font-medium text-gray-500">{tTools('formCreator.addField') || 'Add'}:</span>
                 <NativeSelect
+                  aria-label={tTools('formCreator.addField')}
                   value={currentTool}
                   onChange={(e) => setCurrentTool(e.target.value as FieldType | 'select')}
                   className=""
                 >
-                  <NativeSelectOption value="select">↖ {tTools('formCreator.selectTool')}</NativeSelectOption>
+                  <NativeSelectOption value="select">{tTools('formCreator.selectTool')}</NativeSelectOption>
                   <NativeSelectOptGroup label={tTools('formCreator.basicTools') || 'Basic'}>
-                    <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
+                    <NativeSelectOption value="text">{tTools('formCreator.textFieldTool')}</NativeSelectOption>
                     <NativeSelectOption value="checkbox"> {tTools('formCreator.checkboxTool')}</NativeSelectOption>
-                    <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
-                    <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
+                    <NativeSelectOption value="dropdown">{tTools('formCreator.dropdownTool')}</NativeSelectOption>
+                    <NativeSelectOption value="radio">{tTools('formCreator.radioTool')}</NativeSelectOption>
                   </NativeSelectOptGroup>
                   <NativeSelectOptGroup label={tTools('formCreator.advancedTools') || 'Advanced'}>
-                    <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
+                    <NativeSelectOption value="button">{tTools('formCreator.buttonTool')}</NativeSelectOption>
                     <NativeSelectOption value="signature"> {tTools('formCreator.signatureTool')}</NativeSelectOption>
-                    <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
-                    <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
+                    <NativeSelectOption value="date">{tTools('formCreator.dateTool')}</NativeSelectOption>
+                    <NativeSelectOption value="listbox">{tTools('formCreator.listboxTool')}</NativeSelectOption>
                   </NativeSelectOptGroup>
                 </NativeSelect>
               </div>
@@ -1064,6 +1052,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               <div className="flex items-center gap-2">
                 <span className="text-xs font-medium text-gray-500">{tTools('formCreator.templates') || 'Template'}:</span>
                 <NativeSelect
+                  aria-label={tTools('formCreator.templates')}
                   value=""
                   onChange={(e) => {
                     const templateId = e.target.value;
@@ -1086,7 +1075,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   <NativeSelectOption value="">{tTools('formCreator.selectTemplate') || 'Select...'}</NativeSelectOption>
                   {formTemplates.map(template => (
                     <NativeSelectOption key={template.id} value={template.id}>
-                      {template.icon} {tTools(`formCreator.template.${template.id}`) || template.name}
+                      {tTools(`formCreator.template.${template.id}`) || template.name}
                     </NativeSelectOption>
                   ))}
                 </NativeSelect>
@@ -1288,6 +1277,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                         <span className="text-xl">{getFieldIcon(selectedField.type)}</span>
                         <Input
                           type="text"
+                          aria-label={tTools('formCreator.fieldName')}
                           value={selectedField.name}
                           onChange={(e) => updateSelectedField({ name: e.target.value })}
                           className="flex-1"
@@ -1296,18 +1286,19 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {/* Type selector */}
                       <NativeSelect
+                        aria-label={tTools('formCreator.fieldType')}
                         value={selectedField.type}
                         onChange={(e) => updateSelectedField({ type: e.target.value as FieldType })}
                         className="w-full"
                       >
-                        <NativeSelectOption value="text">📝 {tTools('formCreator.textFieldTool')}</NativeSelectOption>
+                        <NativeSelectOption value="text">{tTools('formCreator.textFieldTool')}</NativeSelectOption>
                         <NativeSelectOption value="checkbox"> {tTools('formCreator.checkboxTool')}</NativeSelectOption>
-                        <NativeSelectOption value="dropdown">▼ {tTools('formCreator.dropdownTool')}</NativeSelectOption>
-                        <NativeSelectOption value="radio">◉ {tTools('formCreator.radioTool')}</NativeSelectOption>
-                        <NativeSelectOption value="button">🔘 {tTools('formCreator.buttonTool')}</NativeSelectOption>
+                        <NativeSelectOption value="dropdown">{tTools('formCreator.dropdownTool')}</NativeSelectOption>
+                        <NativeSelectOption value="radio">{tTools('formCreator.radioTool')}</NativeSelectOption>
+                        <NativeSelectOption value="button">{tTools('formCreator.buttonTool')}</NativeSelectOption>
                         <NativeSelectOption value="signature"> {tTools('formCreator.signatureTool')}</NativeSelectOption>
-                        <NativeSelectOption value="date">📅 {tTools('formCreator.dateTool')}</NativeSelectOption>
-                        <NativeSelectOption value="listbox">📋 {tTools('formCreator.listboxTool')}</NativeSelectOption>
+                        <NativeSelectOption value="date">{tTools('formCreator.dateTool')}</NativeSelectOption>
+                        <NativeSelectOption value="listbox">{tTools('formCreator.listboxTool')}</NativeSelectOption>
                       </NativeSelect>
 
                       {/* Label */}
