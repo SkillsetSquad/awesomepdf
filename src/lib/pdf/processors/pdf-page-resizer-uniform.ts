@@ -67,11 +67,17 @@ export class PdfPageResizerUniformProcessor extends BasePDFProcessor {
           const [srcPage] = await destDoc.copyPages(srcDoc, [pIdx]);
           const { width: srcW, height: srcH } = srcPage.getSize();
 
-          // Embed page as an image-like object (XObject)
-          const embeddedPage = await destDoc.embedPage(srcPage);
-
           // Create a new blank page with uniform size
           const newPage = destDoc.addPage([targetDim.width, targetDim.height]);
+
+          // A page without drawing commands must remain blank; embedding it throws.
+          const contents = srcPage.node.Contents();
+          if (!contents || (contents instanceof pdfLib.PDFArray && contents.size() === 0)) {
+            processedCount++;
+            continue;
+          }
+
+          const embeddedPage = await destDoc.embedPage(srcPage);
 
           // Calculate scale factors
           const scaleX = targetDim.width / srcW;
@@ -104,7 +110,7 @@ export class PdfPageResizerUniformProcessor extends BasePDFProcessor {
 
       this.updateProgress(90, 'Generating uniform-sized PDF output...');
       const outputBytes = await destDoc.save();
-      const blob = new Blob([outputBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(outputBytes)], { type: 'application/pdf' });
 
       this.updateProgress(100, 'Complete!');
 
