@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     X,
     FileText,
@@ -15,11 +15,14 @@ import {
     XCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 
 interface FileListPanelProps {
     files: File[];
     onFilesChange: (files: File[]) => void;
     onClose: () => void;
+    onReturnFocus?: () => void;
 }
 
 /**
@@ -28,12 +31,12 @@ interface FileListPanelProps {
 function getFileIcon(file: File) {
     const type = file.type;
     if (type.startsWith('image/')) {
-        return <Image className="w-5 h-5 text-blue-500" />;
+        return <Image className="w-5 h-5 text-muted-foreground" />;
     }
     if (type === 'application/pdf') {
-        return <FileText className="w-5 h-5 text-red-500" />;
+        return <FileText className="w-5 h-5 text-muted-foreground" />;
     }
-    return <File className="w-5 h-5 text-gray-500" />;
+    return <File className="w-5 h-5 text-muted-foreground" />;
 }
 
 /**
@@ -51,8 +54,11 @@ function formatFileSize(bytes: number): string {
  * File List Panel Component
  * Shows selected files with options to preview, remove, and reorder
  */
-export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelProps) {
+export function FileListPanel({ files, onFilesChange, onClose, onReturnFocus }: FileListPanelProps) {
     const tWorkflow = useTranslations('workflow');
+    const tCommon = useTranslations('common');
+    const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
+    const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
 
     const [previewFile, setPreviewFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -182,187 +188,49 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
         setDragIndex(null);
     }, []);
 
-    if (files.length === 0) {
-        return null;
-    }
-
     return (
         <>
-            {/* File List Panel */}
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                <div className="bg-background rounded-lg shadow-xl w-[600px] max-h-[80vh] flex flex-col">
-                    {/* Header */}
-                    <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-                        <div className="flex items-center gap-2">
-                            <FileText className="w-5 h-5 text-primary" />
-                            <h3 className="text-lg font-semibold text-foreground">
-                                {tWorkflow('selectedFiles') || 'Selected Files'}
-                            </h3>
-                            <span className="text-sm text-muted-foreground ml-2">
-                                ({files.length} {tWorkflow('filesCount') || 'files'})
-                            </span>
-                        </div>
-                        <Button variant="ghost" size="icon-sm"
-                            onClick={handleClose}
-
-                        >
-                            <X className="w-5 h-5 text-muted-foreground" />
-                        </Button>
-                    </div>
-
-                    {/* File List */}
-                    <div className="flex-1 overflow-auto p-4">
-                        <div className="space-y-2">
-                            {files.map((file, index) => (
-                                <div
-                                    key={`${file.name}-${index}`}
-                                    draggable
-                                    onDragStart={(e) => handleDragStart(e, index)}
-                                    onDragOver={(e) => handleDragOver(e, index)}
-                                    onDrop={handleDrop}
-                                    onDragEnd={handleDragEnd}
-                                    className={`
-                                        flex items-center gap-3 p-3 rounded-lg border
-                                        ${dragIndex === index
-                                            ? 'border-primary bg-primary/10'
-                                            : 'border-border bg-muted/30'
-                                        }
-                                        hover:border-primary/50 transition-colors cursor-grab active:cursor-grabbing
-                                    `}
-                                >
-                                    {/* Drag Handle */}
-                                    <div className="text-muted-foreground">
-                                        <GripVertical className="w-4 h-4" />
-                                    </div>
-
-                                    {/* File Icon */}
-                                    <div className="flex-shrink-0">
-                                        {getFileIcon(file)}
-                                    </div>
-
-                                    {/* File Info */}
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium text-foreground truncate">
-                                            {file.name}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground">
-                                            {formatFileSize(file.size)}
-                                        </p>
-                                    </div>
-
-                                    {/* Actions */}
-                                    <div className="flex items-center gap-1">
-                                        {/* Move Up */}
-                                        <Button size="icon-sm" variant="ghost" aria-label={tWorkflow('moveUp') || 'Move Up'}
-                                            onClick={() => handleMoveUp(index)}
-                                            disabled={index === 0}
-
-                                            title={tWorkflow('moveUp') || 'Move Up'}
-                                        >
-                                            <ChevronUp className="w-4 h-4 text-muted-foreground" />
-                                        </Button>
-
-                                        {/* Move Down */}
-                                        <Button size="icon-sm" variant="ghost" aria-label={tWorkflow('moveDown') || 'Move Down'}
-                                            onClick={() => handleMoveDown(index)}
-                                            disabled={index === files.length - 1}
-
-                                            title={tWorkflow('moveDown') || 'Move Down'}
-                                        >
-                                            <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                                        </Button>
-
-                                        {/* Preview */}
-                                        <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('preview') || 'Preview'}
-                                            onClick={() => handlePreview(file)}
-
-                                            title={tWorkflow('preview') || 'Preview'}
-                                        >
-                                            <Eye className="w-4 h-4 text-primary" />
-                                        </Button>
-
-                                        {/* Remove */}
-                                        <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('removeFile') || 'Remove'}
-                                            onClick={() => handleRemoveFile(index)}
-
-                                            title={tWorkflow('removeFile') || 'Remove'}
-                                        >
-                                            <Trash2 className="w-4 h-4 text-red-500" />
-                                        </Button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Footer */}
-                    <div className="flex items-center justify-between px-4 py-3 border-t border-border">
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={handleClearAll}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                        >
-                            <XCircle className="w-4 h-4 mr-2" />
-                            {tWorkflow('clearAll') || 'Clear All'}
-                        </Button>
-                        <Button
-                            variant="default"
-                            size="sm"
-                            onClick={handleClose}
-                        >
-                            {tWorkflow('confirm') || 'Confirm'}
-                        </Button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Preview Modal */}
-            {previewFile && previewUrl && (
-                <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[60]">
-                    <div className="bg-background rounded-lg shadow-xl max-w-[90vw] max-h-[90vh] flex flex-col">
-                        {/* Preview Header */}
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-                            <div className="flex items-center gap-2">
-                                {getFileIcon(previewFile)}
-                                <span className="text-sm font-medium text-foreground truncate max-w-[400px]">
-                                    {previewFile.name}
-                                </span>
+            <DialogContent dir={direction} showCloseButton={false} className="max-h-[calc(100dvh-2rem)] sm:max-w-2xl"
+                onCloseAutoFocus={(event) => { if (onReturnFocus) { event.preventDefault(); onReturnFocus(); } }}>
+                <DialogHeader>
+                    <DialogTitle className="flex flex-wrap items-center gap-2"><FileText className="size-5" aria-hidden="true" />{tWorkflow('selectedFiles')}<Badge variant="secondary">{files.length} {tWorkflow('filesCount')}</Badge></DialogTitle>
+                    <DialogDescription>{tWorkflow('viewEditFiles')}</DialogDescription>
+                </DialogHeader>
+                <div className="max-h-[55dvh] space-y-2 overflow-auto" role="list" aria-label={tWorkflow('selectedFiles')}>
+                    {files.map((file, index) => (
+                        <div key={`${file.name}-${index}`} draggable onDragStart={(event) => handleDragStart(event, index)}
+                            onDragOver={(event) => handleDragOver(event, index)} onDrop={handleDrop} onDragEnd={handleDragEnd}
+                            role="listitem" className={`flex flex-wrap items-center gap-3 rounded-md border p-3 ${dragIndex === index ? 'bg-accent' : ''}`}>
+                            <GripVertical className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                            {getFileIcon(file)}
+                            <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{file.name}</p><p className="text-xs text-muted-foreground">{formatFileSize(file.size)}</p></div>
+                            <div className="flex items-center gap-1">
+                                <Button variant="ghost" size="icon-sm" onClick={() => handleMoveUp(index)} disabled={index === 0} aria-label={`${tWorkflow('moveUp')}: ${file.name}`}><ChevronUp aria-hidden="true" /></Button>
+                                <Button variant="ghost" size="icon-sm" onClick={() => handleMoveDown(index)} disabled={index === files.length - 1} aria-label={`${tWorkflow('moveDown')}: ${file.name}`}><ChevronDown aria-hidden="true" /></Button>
+                                <Button variant="ghost" size="icon-sm" onClick={(event) => { previewTriggerRef.current = event.currentTarget; handlePreview(file); }} aria-label={`${tWorkflow('preview')}: ${file.name}`}><Eye aria-hidden="true" /></Button>
+                                <Button variant="ghost" size="icon-sm" onClick={() => handleRemoveFile(index)} aria-label={`${tWorkflow('removeFile')}: ${file.name}`}><Trash2 aria-hidden="true" /></Button>
                             </div>
-                            <Button variant="ghost" size="icon-sm"
-                                onClick={closePreview}
-
-                            >
-                                <X className="w-5 h-5 text-muted-foreground" />
-                            </Button>
                         </div>
-
-                        {/* Preview Content */}
-                        <div className="flex-1 overflow-auto p-4 flex items-center justify-center min-h-[400px]">
-                            {previewFile.type.startsWith('image/') ? (
-                                <img
-                                    src={previewUrl}
-                                    alt={previewFile.name}
-                                    className="max-w-full max-h-[70vh] object-contain rounded"
-                                />
-                            ) : previewFile.type === 'application/pdf' ? (
-                                <iframe
-                                    src={previewUrl}
-                                    title={previewFile.name}
-                                    className="w-[800px] h-[600px] rounded border border-border"
-                                />
-                            ) : (
-                                <div className="text-center p-8">
-                                    <File className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                                    <p className="text-muted-foreground">
-                                        {tWorkflow('previewNotAvailable') || 'Preview not available for this file type'}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                    ))}
                 </div>
-            )}
+                <DialogFooter className="sm:justify-between">
+                    <Button variant="ghost" onClick={handleClearAll}><XCircle aria-hidden="true" />{tWorkflow('clearAll')}</Button>
+                    <Button onClick={handleClose}>{tWorkflow('confirm')}</Button>
+                </DialogFooter>
+                <Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" onClick={handleClose} aria-label={tCommon('buttons.close')}><X aria-hidden="true" /></Button>
+            </DialogContent>
+            <Dialog open={!!previewFile && !!previewUrl} onOpenChange={(open) => { if (!open) closePreview(); }}>
+                <DialogContent dir={direction} showCloseButton={false} className="max-h-[calc(100dvh-2rem)] sm:max-w-5xl"
+                    onCloseAutoFocus={(event) => { event.preventDefault(); previewTriggerRef.current?.focus(); }}>
+                    <DialogHeader><DialogTitle className="truncate pe-8">{previewFile?.name}</DialogTitle><DialogDescription>{tWorkflow('preview')}</DialogDescription></DialogHeader>
+                    <div className="flex min-h-0 items-center justify-center overflow-auto">
+                        {previewFile?.type.startsWith('image/') && previewUrl ? <img src={previewUrl} alt={previewFile.name} className="max-h-[70dvh] max-w-full object-contain" />
+                            : previewFile?.type === 'application/pdf' && previewUrl ? <iframe src={previewUrl} title={previewFile.name} className="h-[65dvh] w-full rounded-md border" />
+                            : <p className="p-8 text-center text-muted-foreground">{tWorkflow('previewNotAvailable')}</p>}
+                    </div>
+                    <Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" onClick={closePreview} aria-label={tCommon('buttons.close')}><X aria-hidden="true" /></Button>
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

@@ -86,6 +86,8 @@ export function WorkflowControls({
     const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
     const tCommon = useTranslations('common');
 
+    const fileListTriggerRef = useRef<HTMLButtonElement>(null);
+    const fileSelectButtonRef = useRef<HTMLButtonElement>(null);
     const [showSaveDialog, setShowSaveDialog] = useState(false);
     const [showFileListPanel, setShowFileListPanel] = useState(false);
     const [workflowName, setWorkflowName] = useState('');
@@ -214,6 +216,7 @@ export function WorkflowControls({
                         <Button
                             variant="outline"
                             size="sm"
+                            ref={fileSelectButtonRef}
                             onClick={() => fileInputRef.current?.click()}
                             disabled={isRunning}
                             className="h-8 px-2.5 text-xs whitespace-nowrap shrink-0"
@@ -221,18 +224,18 @@ export function WorkflowControls({
                             <Upload className="w-3.5 h-3.5 mr-1.5" />
                             {tWorkflow('selectFiles') || '选择文件'}
                         </Button>
+                        <Dialog open={showFileListPanel} onOpenChange={setShowFileListPanel}>
                         {selectedFiles.length > 0 ? (
-                            <Button size="sm" variant="ghost"
-                                onClick={() => setShowFileListPanel(true)}
+                            <DialogTrigger asChild><Button ref={fileListTriggerRef} size="sm" variant="secondary"
                                 disabled={isRunning}
                                 className="flex items-center gap-1.5 whitespace-nowrap shrink-0"
                                 title={tWorkflow('viewEditFiles') || '查看已选文件'}
                             >
                                 <span className="font-medium">
-                                    {selectedFiles.length} 个文件
+                                    {selectedFiles.length} {tWorkflow('filesCount')}
                                 </span>
                                 <Edit2 className="w-3 h-3" />
-                            </Button>
+                            </Button></DialogTrigger>
                         ) : nodeFiles.length > 0 ? (
                             <div
                                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-medium cursor-default whitespace-nowrap shrink-0"
@@ -242,6 +245,11 @@ export function WorkflowControls({
                                 <span>输入卡片就绪 ({nodeFiles.length})</span>
                             </div>
                         ) : null}
+                            {showFileListPanel && <FileListPanel files={selectedFiles}
+                                onFilesChange={(files) => { setSelectedFiles(files); onFilesChange?.(files); if (!files.length) setShowFileListPanel(false); }}
+                                onClose={() => setShowFileListPanel(false)}
+                                onReturnFocus={() => (fileListTriggerRef.current || fileSelectButtonRef.current)?.focus()} />}
+                        </Dialog>
                     </div>
 
                     <div className="h-4 w-px bg-border mx-0.5" />
@@ -529,17 +537,6 @@ export function WorkflowControls({
                 <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={tCommon('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
             </DialogContent>
 
-            {/* File List Panel */}
-            {showFileListPanel && (
-                <FileListPanel
-                    files={selectedFiles}
-                    onFilesChange={(files) => {
-                        setSelectedFiles(files);
-                        onFilesChange?.(files);
-                    }}
-                    onClose={() => setShowFileListPanel(false)}
-                />
-            )}
         </div>
         </Dialog>
     );
