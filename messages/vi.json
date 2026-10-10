@@ -708,7 +708,22 @@
       "successTitle": "Hoàn tất nhận dạng chữ OCR!",
       "successSearchablePdf": "Đã tạo PDF có thể tìm kiếm! Các trang quét được đè lớp văn bản tương tác. Tô sáng và tìm kiếm tự do.",
       "successText": "Đã trích xuất cấu trúc văn bản thuần thành công. Bản xem trước văn bản hiển thị bên dưới.",
-      "previewTitle": "Xem trước luồng văn bản được trích xuất"
+      "previewTitle": "Xem trước luồng văn bản được trích xuất",
+      "copyFailed": "Không thể sao chép văn bản. Hãy chọn và sao chép từ bản xem trước.",
+      "formatMarkdown": "Markdown có cấu trúc (.md)",
+      "formatJson": "JSON có cấu trúc (.json)",
+      "enhanceContrast": "Cải thiện chất lượng hình ảnh",
+      "enhanceContrastDesc": "Cải thiện độ tương phản và đường viền cho mực mờ và bản quét tối",
+      "copyText": "Sao chép văn bản nhận dạng",
+      "copied": "Đã sao chép vào bộ nhớ tạm",
+      "openInEditor": "Mở trong trình chỉnh sửa PDF",
+      "openInEditorDesc": "Chỉnh sửa văn bản và bố cục trong AwesomePDF mà không cần tải xuống",
+      "statsPages": "Trang",
+      "statsWords": "Từ",
+      "statsChars": "Ký tự",
+      "statsConfidence": "Độ tin cậy trung bình",
+      "tabText": "Xem trước văn bản",
+      "tabJson": "Cấu trúc JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Tải lên tài liệu chính (Base PDF)",
@@ -2350,8 +2365,8 @@
       "successMessage": "Trích xuất PDF sang JSON thành công! Nhấp vào nút tải xuống để lưu tệp."
     },
     "ocrPdf": {
-      "uploadLabel": "Tải lên tệp PDF",
-      "uploadDescription": "Kéo và thả tệp PDF đã quét vào đây, hoặc nhấp để duyệt.",
+      "uploadLabel": "Chọn PDF hoặc hình ảnh",
+      "uploadDescription": "Chọn PDF đã quét hoặc hình ảnh (PNG, JPG hoặc WebP).",
       "optionsTitle": "Tùy chọn OCR",
       "languages": "Ngôn ngữ",
       "languagesHint": "Chọn một hoặc nhiều ngôn ngữ để có độ chính xác cao hơn",

@@ -708,7 +708,22 @@
       "successTitle": "OCR文字認識が完了しました！",
       "successSearchablePdf": "検索可能なPDFが生成されました！スキャンされたシートにインタラクティブなテキストがオーバーレイされています。自由にハイライトや検索を行えます。",
       "successText": "プレーンテキスト構造が正常に抽出されました。以下にテキストのプレビューが表示されます。",
-      "previewTitle": "抽出されたテキストストリームのプレビュー"
+      "previewTitle": "抽出されたテキストストリームのプレビュー",
+      "copyFailed": "テキストをコピーできませんでした。プレビューで選択してコピーしてください。",
+      "formatMarkdown": "構造化Markdown（.md）",
+      "formatJson": "構造化JSON（.json）",
+      "enhanceContrast": "画像品質を改善",
+      "enhanceContrastDesc": "薄いインクや暗いスキャンのコントラストと輪郭を改善します",
+      "copyText": "認識したテキストをコピー",
+      "copied": "クリップボードにコピーしました",
+      "openInEditor": "PDFエディターで開く",
+      "openInEditorDesc": "ダウンロードせずにAwesomePDFエディターでテキストとレイアウトを編集します",
+      "statsPages": "ページ",
+      "statsWords": "単語",
+      "statsChars": "文字",
+      "statsConfidence": "平均信頼度",
+      "tabText": "テキストプレビュー",
+      "tabJson": "JSON構造"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. 基本ドキュメントをアップロード (Base PDF)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF が JSON に正常に抽出されました。ダウンロード ボタンをクリックしてファイルを保存します。"
     },
     "ocrPdf": {
-      "uploadLabel": "PDFファイルをアップロード",
-      "uploadDescription": "スキャンした PDF ファイルをここにドラッグ アンド ドロップするか、クリックして参照します。",
+      "uploadLabel": "PDFまたは画像を選択",
+      "uploadDescription": "スキャンしたPDFまたは画像（PNG、JPG、WebP）を選択します。",
       "optionsTitle": "OCR オプション",
       "languages": "言語",
       "languagesHint": "精度を高めるために 1 つ以上の言語を選択してください",

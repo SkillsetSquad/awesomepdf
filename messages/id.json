@@ -708,7 +708,22 @@
       "successTitle": "Pengenalan OCR Selesai!",
       "successSearchablePdf": "PDF dapat dicari berhasil dibuat! Lembar yang dipindai dilapisi dengan teks interaktif. Sorot dan cari dengan bebas.",
       "successText": "Struktur teks biasa berhasil diekstrak. Pratinjau teks ditampilkan di bawah.",
-      "previewTitle": "Pratinjau Aliran Teks yang Diekstrak"
+      "previewTitle": "Pratinjau Aliran Teks yang Diekstrak",
+      "copyFailed": "Teks tidak dapat disalin. Pilih dan salin dari pratinjau.",
+      "formatMarkdown": "Markdown terstruktur (.md)",
+      "formatJson": "JSON terstruktur (.json)",
+      "enhanceContrast": "Tingkatkan kualitas gambar",
+      "enhanceContrastDesc": "Meningkatkan kontras dan tepi pada tinta pudar dan pemindaian gelap",
+      "copyText": "Salin teks yang dikenali",
+      "copied": "Disalin ke papan klip",
+      "openInEditor": "Buka di editor PDF",
+      "openInEditorDesc": "Edit teks dan tata letak di editor AwesomePDF tanpa mengunduh",
+      "statsPages": "Halaman",
+      "statsWords": "Kata",
+      "statsChars": "Karakter",
+      "statsConfidence": "Kepercayaan rata-rata",
+      "tabText": "Pratinjau teks",
+      "tabJson": "Struktur JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Unggah Dokumen Utama (PDF Utama)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF berhasil diekstrak ke JSON! Klik tombol unduh untuk menyimpan file Anda."
     },
     "ocrPdf": {
-      "uploadLabel": "Unggah File PDF",
-      "uploadDescription": "Seret dan letakkan file PDF hasil pemindaian di sini, atau klik untuk menelusuri.",
+      "uploadLabel": "Pilih PDF atau gambar",
+      "uploadDescription": "Pilih PDF hasil pemindaian atau gambar (PNG, JPG, atau WebP).",
       "optionsTitle": "Opsi OCR",
       "languages": "Bahasa",
       "languagesHint": "Pilih satu atau beberapa bahasa untuk akurasi yang lebih baik",

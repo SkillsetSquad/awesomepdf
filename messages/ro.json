@@ -708,7 +708,22 @@
       "successTitle": "Recunoașterea OCR s-a finalizat!",
       "successSearchablePdf": "PDF căutabil generat! Foile scanate sunt suprapuse cu text interactiv. Evidențiați și căutați liber.",
       "successText": "Structurile de text simplu au fost extrase cu succes. Previzoalizarea textului este afișată mai jos.",
-      "previewTitle": "Previzualizare flux de text extras"
+      "previewTitle": "Previzualizare flux de text extras",
+      "copyFailed": "Textul nu a putut fi copiat. Selectează-l și copiază-l din previzualizare.",
+      "formatMarkdown": "Markdown structurat (.md)",
+      "formatJson": "JSON structurat (.json)",
+      "enhanceContrast": "Îmbunătățește calitatea imaginii",
+      "enhanceContrastDesc": "Îmbunătățește contrastul și contururile pentru cerneală palidă și scanări întunecate",
+      "copyText": "Copiază textul recunoscut",
+      "copied": "Copiat în clipboard",
+      "openInEditor": "Deschide în editorul PDF",
+      "openInEditorDesc": "Editează textul și aspectul în editorul AwesomePDF fără descărcare",
+      "statsPages": "Pagini",
+      "statsWords": "Cuvinte",
+      "statsChars": "Caractere",
+      "statsConfidence": "Încredere medie",
+      "tabText": "Previzualizare text",
+      "tabJson": "Structură JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Încărcați documentul de bază (PDF de bază)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF extras în JSON cu succes! Faceți clic pe butonul de descărcare pentru a salva fișierul."
     },
     "ocrPdf": {
-      "uploadLabel": "Încărcați fișierul PDF",
-      "uploadDescription": "Trageți și plasați un fișier PDF scanat aici sau faceți clic pentru a răsfoi.",
+      "uploadLabel": "Selectează un PDF sau o imagine",
+      "uploadDescription": "Alege un PDF scanat sau o imagine (PNG, JPG sau WebP).",
       "optionsTitle": "Opțiuni OCR",
       "languages": "Limbi",
       "languagesHint": "Selectați una sau mai multe limbi pentru o acuratețe mai bună",

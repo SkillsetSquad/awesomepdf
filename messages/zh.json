@@ -722,7 +722,8 @@
       "successTitle": "文字识别提取完成！",
       "successSearchablePdf": "双层可搜索 PDF 编译完成。原始扫描图片已被文字遮罩覆盖，您可以使用任意 PDF 查看器打开文件并进行划词搜索与复制。",
       "successText": "纯文本文件结构提取成功，已在下方显示文本流预览。",
-      "previewTitle": "提取出来的文本流预览"
+      "previewTitle": "提取出来的文本流预览",
+      "copyFailed": "无法复制文字。请在预览中选择并复制。"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. 上传主文档 (Base PDF)",
@@ -2369,8 +2370,8 @@
       "successMessage": "PDF已成功提取为JSON！点击下载按钮保存文件。"
     },
     "ocrPdf": {
-      "uploadLabel": "上传PDF文件",
-      "uploadDescription": "拖放扫描的PDF文件到此处，或点击浏览。",
+      "uploadLabel": "选择 PDF 或图片",
+      "uploadDescription": "选择扫描的 PDF 或图片（PNG、JPG 或 WebP）。",
       "optionsTitle": "OCR选项",
       "languages": "语言",
       "languagesHint": "选择一种或多种语言以提高准确性",

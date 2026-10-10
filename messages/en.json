@@ -722,7 +722,8 @@
       "successTitle": "OCR Recognition Complete!",
       "successSearchablePdf": "Searchable PDF generated! The scanned sheets are overlaid with interactive text. Highlight and search freely.",
       "successText": "Plain text structures extracted successfully. Text preview displayed below.",
-      "previewTitle": "Extracted Text Stream Preview"
+      "previewTitle": "Extracted Text Stream Preview",
+      "copyFailed": "Could not copy the text. Please select and copy it from the preview."
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Upload Base Document (Base PDF)",
@@ -2377,8 +2378,8 @@
       "successMessage": "PDF extracted to JSON successfully! Click the download button to save your file."
     },
     "ocrPdf": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a scanned PDF file here, or click to browse.",
+      "uploadLabel": "Select a PDF or image",
+      "uploadDescription": "Choose a scanned PDF or image (PNG, JPG, or WebP).",
       "optionsTitle": "OCR Options",
       "languages": "Languages",
       "languagesHint": "Select one or more languages for better accuracy",

@@ -722,7 +722,8 @@
       "successTitle": "OCR Rozpoznawanie zakończone!",
       "successSearchablePdf": "Wygenerowano PDF z możliwością wyszukiwania! Zeskanowane arkusze są nakładane na interaktywny tekst. Zaznacz i szukaj swobodnie.",
       "successText": "Pomyślnie wyodrębniono struktury zwykłego tekstu. Podgląd tekstu wyświetlony poniżej.",
-      "previewTitle": "Wyodrębniony podgląd strumienia tekstu"
+      "previewTitle": "Wyodrębniony podgląd strumienia tekstu",
+      "copyFailed": "Nie można skopiować tekstu. Zaznacz go i skopiuj z podglądu."
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Prześlij dokument podstawowy (baza PDF)",
@@ -2377,8 +2378,8 @@
       "successMessage": "PDF wyodrębniono do JSON pomyślnie! Kliknij przycisk pobierania, aby zapisać plik."
     },
     "ocrPdf": {
-      "uploadLabel": "Prześlij plik PDF",
-      "uploadDescription": "Przeciągnij i upuść tutaj zeskanowany plik PDF lub kliknij, aby przeglądać.",
+      "uploadLabel": "Wybierz PDF lub obraz",
+      "uploadDescription": "Wybierz zeskanowany PDF lub obraz (PNG, JPG lub WebP).",
       "optionsTitle": "Opcje OCR",
       "languages": "Języki",
       "languagesHint": "Wybierz jeden lub więcej języków, aby uzyskać większą dokładność",

@@ -708,7 +708,22 @@
       "successTitle": "اكتمل التعرف على النصوص OCR!",
       "successSearchablePdf": "تم إنشاء ملف PDF القابل للبحث! الصفحات الممسوحة مغطاة بنصوص تفاعلية. حدد وابحث بحرية.",
       "successText": "تم استخراج هياكل النصوص العادية بنجاح. يتم عرض معاينة النص أدناه.",
-      "previewTitle": "معاينة تدفق النص المستخرج"
+      "previewTitle": "معاينة تدفق النص المستخرج",
+      "copyFailed": "تعذّر نسخ النص. يُرجى تحديده ونسخه من المعاينة.",
+      "formatMarkdown": "Markdown منظم (.md)",
+      "formatJson": "JSON منظم (.json)",
+      "enhanceContrast": "تحسين جودة الصورة",
+      "enhanceContrastDesc": "يحسّن التباين والحواف للحبر الباهت والمسح الداكن",
+      "copyText": "نسخ النص المستخرج",
+      "copied": "تم النسخ إلى الحافظة",
+      "openInEditor": "فتح في محرر PDF",
+      "openInEditorDesc": "حرّر النص والتخطيط في محرر AwesomePDF دون تنزيل",
+      "statsPages": "الصفحات",
+      "statsWords": "الكلمات",
+      "statsChars": "الأحرف",
+      "statsConfidence": "متوسط الثقة",
+      "tabText": "معاينة النص",
+      "tabJson": "بنية JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. تحميل المستند الأساسي (Base PDF)",
@@ -2350,8 +2365,8 @@
       "successMessage": "تم استخراج ملف PDF إلى JSON بنجاح! انقر فوق زر التنزيل لحفظ ملفك."
     },
     "ocrPdf": {
-      "uploadLabel": "تحميل ملف PDF",
-      "uploadDescription": "اسحب وأفلت ملف PDF ممسوحاً ضوئياً هنا، أو انقر للتصفح.",
+      "uploadLabel": "اختر ملف PDF أو صورة",
+      "uploadDescription": "اختر ملف PDF ممسوحًا ضوئيًا أو صورة (PNG أو JPG أو WebP).",
       "optionsTitle": "خيارات OCR",
       "languages": "اللغات",
       "languagesHint": "حدد لغة واحدة أو أكثر للحصول على دقة أفضل",

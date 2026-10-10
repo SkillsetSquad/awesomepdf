@@ -708,7 +708,22 @@
       "successTitle": "文字識別提取完成！",
       "successSearchablePdf": "双层可搜索 PDF 编译完成。原始扫描图片已被文字遮罩覆盖，您可以使用任意 PDF 查看器打开文件并进行劃詞搜索与複製。",
       "successText": "纯文本文件結構提取成功，已在下方显示文本流预览。",
-      "previewTitle": "提取出来的文本流预览"
+      "previewTitle": "提取出来的文本流预览",
+      "copyFailed": "無法複製文字。請在預覽中選取並複製。",
+      "formatMarkdown": "結構化 Markdown（.md）",
+      "formatJson": "結構化 JSON（.json）",
+      "enhanceContrast": "改善圖片品質",
+      "enhanceContrastDesc": "提升淡色墨跡與暗色掃描的對比及邊緣清晰度",
+      "copyText": "複製辨識文字",
+      "copied": "已複製到剪貼簿",
+      "openInEditor": "在 PDF 編輯器開啟",
+      "openInEditorDesc": "無需下載即可在 AwesomePDF 編輯器編輯文字與版面",
+      "statsPages": "頁數",
+      "statsWords": "單字",
+      "statsChars": "字元",
+      "statsConfidence": "平均信心值",
+      "tabText": "文字預覽",
+      "tabJson": "JSON 結構"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. 上傳主文檔 (Base PDF)",
@@ -2351,8 +2366,8 @@
       "successMessage": "PDF已成功提取為JSON！點選下載按鈕儲存檔案。"
     },
     "ocrPdf": {
-      "uploadLabel": "上傳 PDF 文件",
-      "uploadDescription": "拖放掃描的PDF檔案到此處，或點選瀏覽。",
+      "uploadLabel": "選擇 PDF 或圖片",
+      "uploadDescription": "選擇掃描的 PDF 或圖片（PNG、JPG 或 WebP）。",
       "optionsTitle": "OCR選項",
       "languages": "語言",
       "languagesHint": "選擇一種或多種語言以提高準確性",

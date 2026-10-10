@@ -708,7 +708,22 @@
       "successTitle": "OCR-Erkennung abgeschlossen!",
       "successSearchablePdf": "Durchsuchbares PDF generiert! Die gescannten Seiten sind mit interaktivem Text überlagert. Markieren und durchsuchen Sie das Dokument nach Belieben.",
       "successText": "Reiner Text erfolgreich extrahiert. Textvorschau wird unten angezeigt.",
-      "previewTitle": "Vorschau des extrahierten Textstroms"
+      "previewTitle": "Vorschau des extrahierten Textstroms",
+      "copyFailed": "Der Text konnte nicht kopiert werden. Bitte markieren und kopieren Sie ihn aus der Vorschau.",
+      "formatMarkdown": "Strukturiertes Markdown (.md)",
+      "formatJson": "Strukturiertes JSON (.json)",
+      "enhanceContrast": "Bildqualität verbessern",
+      "enhanceContrastDesc": "Verbessert Kontrast und Kanten bei blasser Tinte und dunklen Scans",
+      "copyText": "Erkannten Text kopieren",
+      "copied": "In die Zwischenablage kopiert",
+      "openInEditor": "Im PDF-Editor öffnen",
+      "openInEditorDesc": "Text und Layout ohne Download im AwesomePDF-Editor bearbeiten",
+      "statsPages": "Seiten",
+      "statsWords": "Wörter",
+      "statsChars": "Zeichen",
+      "statsConfidence": "Durchschnittliche Konfidenz",
+      "tabText": "Textvorschau",
+      "tabJson": "JSON-Struktur"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Basisdokument hochladen (Basis-PDF)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF erfolgreich in JSON extrahiert! Klicken Sie auf die Schaltfläche „Herunterladen“, um Ihre Datei zu speichern."
     },
     "ocrPdf": {
-      "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "Ziehen Sie eine gescannte PDF-Datei per Drag-and-Drop hierher oder klicken Sie zum Durchsuchen.",
+      "uploadLabel": "PDF oder Bild auswählen",
+      "uploadDescription": "Wählen Sie eine gescannte PDF-Datei oder ein Bild (PNG, JPG oder WebP).",
       "optionsTitle": "OCR-Optionen",
       "languages": "Sprachen",
       "languagesHint": "Wählen Sie für eine bessere Genauigkeit eine oder mehrere Sprachen aus",

@@ -708,7 +708,22 @@
       "successTitle": "Reconnaissance OCR terminée !",
       "successSearchablePdf": "PDF interrogeable généré ! Les feuilles numérisées sont superposées avec du texte interactif. Surlignez et recherchez librement.",
       "successText": "Structures de texte brut extraites avec succès. L'aperçu du texte s'affiche ci-dessous.",
-      "previewTitle": "Aperçu du flux de texte extrait"
+      "previewTitle": "Aperçu du flux de texte extrait",
+      "copyFailed": "Impossible de copier le texte. Sélectionnez-le et copiez-le depuis l’aperçu.",
+      "formatMarkdown": "Markdown structuré (.md)",
+      "formatJson": "JSON structuré (.json)",
+      "enhanceContrast": "Améliorer la qualité de l’image",
+      "enhanceContrastDesc": "Améliore le contraste et les contours de l’encre pâle et des numérisations sombres",
+      "copyText": "Copier le texte reconnu",
+      "copied": "Copié dans le presse-papiers",
+      "openInEditor": "Ouvrir dans l’éditeur PDF",
+      "openInEditorDesc": "Modifiez le texte et la mise en page dans AwesomePDF sans téléchargement",
+      "statsPages": "Pages",
+      "statsWords": "Mots",
+      "statsChars": "Caractères",
+      "statsConfidence": "Confiance moyenne",
+      "tabText": "Aperçu du texte",
+      "tabJson": "Structure JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Télécharger le document de base (PDF de base)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF extrait en JSON avec succès ! Cliquez sur le bouton de téléchargement pour enregistrer votre fichier."
     },
     "ocrPdf": {
-      "uploadLabel": "Téléverser le fichier PDF",
-      "uploadDescription": "Faites glisser et déposez un fichier PDF numérisé ici, ou cliquez pour parcourir.",
+      "uploadLabel": "Sélectionner un PDF ou une image",
+      "uploadDescription": "Choisissez un PDF numérisé ou une image (PNG, JPG ou WebP).",
       "optionsTitle": "Options de ROC",
       "languages": "Langues",
       "languagesHint": "Sélectionnez une ou plusieurs langues pour une meilleure précision",

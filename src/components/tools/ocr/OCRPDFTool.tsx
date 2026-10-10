@@ -1,731 +1,210 @@
-'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
+"use client";
 
-import { File as UIFile } from 'lucide-react';
-
-import { Checkbox } from '@/components/ui/checkbox';
-
-import { NativeSelectOption } from '@/components/ui/native-select';
-
-import { Label } from '@/components/ui/label';
-
-import { Input } from '@/components/ui/input';
-
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useEffect, useId, useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { CircleAlert, Copy, ExternalLink, FileCheck, FileText, Info, Scan } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Switch } from '@/components/ui/switch';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
 import { ocrPDF, type OCROptions, type OCRLanguage, OCR_LANGUAGE_NAMES } from '@/lib/pdf/processors/ocr';
-import { NativeSelect as Select } from '@/components/ui/native-select';
-import type { UploadedFile, ProcessOutput } from '@/types/pdf';
-import {
-  Scan,
-  Settings2,
-  Trash2,
-  Check,
-  Sparkles,
-  HelpCircle,
-  ShieldCheck,
-  Languages,
-  Copy,
-  CheckCheck,
-  ExternalLink,
-  SlidersHorizontal,
-  BarChart3,
-  FileCode,
-  FileText
-} from 'lucide-react';
 
-function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+const availableLanguages: OCRLanguage[] = ['eng', 'chi_sim', 'chi_tra', 'jpn', 'kor', 'spa', 'fra', 'deu', 'por', 'ara', 'hun'];
+type OCRStats = { pageCount?: number; totalWords?: number; totalChars?: number; avgConfidence?: number };
+const numeric = (value: unknown) => typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+
+function parsePageRange(range: string): number[] {
+  const pages: number[] = [];
+  for (const part of range.split(',')) {
+    const trimmed = part.trim();
+    if (trimmed.includes('-')) {
+      const [start, end] = trimmed.split('-').map(value => parseInt(value.trim(), 10));
+      if (!isNaN(start) && !isNaN(end)) for (let page = start; page <= end; page++) if (!pages.includes(page)) pages.push(page);
+    } else {
+      const page = parseInt(trimmed, 10);
+      if (!isNaN(page) && !pages.includes(page)) pages.push(page);
+    }
+  }
+  return pages.sort((a, b) => a - b);
 }
 
-export interface OCRPDFToolProps {
-  className?: string;
-}
+export interface OCRPDFToolProps { className?: string; }
 
 export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
-  const router = useRouter();
+  const tTools = useTranslations('tools.ocrPdf');
+  const tErrors = useTranslations('errors');
   const locale = useLocale();
-
-  // State
-  const [file, setFile] = useState<UploadedFile | null>(null);
+  const router = useRouter();
+  const id = useId();
+  const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [textPreview, setTextPreview] = useState<string | null>(null);
+  const [stats, setStats] = useState<OCRStats | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  // Enhanced metrics & interaction state
-  const [stats, setStats] = useState<{
-    pageCount?: number;
-    totalWords?: number;
-    totalChars?: number;
-    avgConfidence?: number;
-  } | null>(null);
   const [copied, setCopied] = useState(false);
-  const [enhanceContrast, setEnhanceContrast] = useState(true);
-
-  // Options state
   const [languages, setLanguages] = useState<OCRLanguage[]>(['eng']);
-  const [outputFormat, setOutputFormat] = useState<OCROptions['outputFormat']>('searchable-pdf'); // Default to searchable PDF
+  const [outputFormat, setOutputFormat] = useState<OCROptions['outputFormat']>('searchable-pdf');
   const [scale, setScale] = useState(2);
   const [pageRange, setPageRange] = useState('');
+  const [enhanceContrast, setEnhanceContrast] = useState(true);
+  const processingRun = useRef(0);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { processingRun.current++; if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
 
-  // Canvas Ref for 3D Laser Mesh Scan animation
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>(0);
-  const cancelledRef = useRef(false);
-
-  // Render 3D wavy scanner grid in Canvas
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = 320;
-    canvas.height = 200;
-
-    let time = 0;
-
-    const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (status === 'processing') {
-        time += 0.05;
-
-        ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)'; // Purple mesh
-        ctx.lineWidth = 1;
-
-        const cols = 15;
-        const rows = 10;
-        const colWidth = canvas.width / cols;
-        const rowHeight = canvas.height / rows;
-
-        // Draw 3D projected perspective wireframe grid
-        for (let r = 0; r <= rows; r++) {
-          ctx.beginPath();
-          for (let c = 0; c <= cols; c++) {
-            // Apply 3D wavy distortion using sin/cos
-            const z = Math.sin(c * 0.5 + time) * Math.cos(r * 0.4 + time) * 15;
-
-            // 3D perspective projection formula
-            const px = c * colWidth;
-            const py = r * rowHeight + z;
-
-            if (c === 0) {
-              ctx.moveTo(px, py);
-            } else {
-              ctx.lineTo(px, py);
-            }
-          }
-          ctx.stroke();
-        }
-
-        for (let c = 0; c <= cols; c++) {
-          ctx.beginPath();
-          for (let r = 0; r <= rows; r++) {
-            const z = Math.sin(c * 0.5 + time) * Math.cos(r * 0.4 + time) * 15;
-            const px = c * colWidth;
-            const py = r * rowHeight + z;
-
-            if (r === 0) {
-              ctx.moveTo(px, py);
-            } else {
-              ctx.lineTo(px, py);
-            }
-          }
-          ctx.stroke();
-        }
-
-        // Purple scanner laser line sliding top-to-bottom
-        const laserY = (canvas.height / 2) + (canvas.height / 2.3) * Math.sin(time * 0.7);
-        const gradient = ctx.createLinearGradient(0, laserY, canvas.width, laserY);
-        gradient.addColorStop(0, 'rgba(168, 85, 247, 0)');
-        gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.95)');
-        gradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 4;
-        ctx.shadowColor = 'rgba(168, 85, 247, 0.8)';
-        ctx.shadowBlur = 12;
-        ctx.beginPath();
-        ctx.moveTo(10, laserY);
-        ctx.lineTo(canvas.width - 10, laserY);
-        ctx.stroke();
-        ctx.shadowBlur = 0; // Reset
-      } else {
-        // Flat static tech grids in idle state
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-        ctx.lineWidth = 0.5;
-        for (let x = 0; x < canvas.width; x += 20) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0);
-          ctx.lineTo(x, canvas.height);
-          ctx.stroke();
-        }
-        for (let y = 0; y < canvas.height; y += 20) {
-          ctx.beginPath();
-          ctx.moveTo(0, y);
-          ctx.lineTo(canvas.width, y);
-          ctx.stroke();
-        }
+  const clearResult = () => {
+    processingRun.current++;
+    if (copyTimer.current) clearTimeout(copyTimer.current);
+    setResult(null); setTextPreview(null); setStats(null); setCopied(false); setError(null);
+    setStatus('idle'); setProgress(0); setProgressMessage('');
+  };
+  const handleFilesSelected = (files: File[]) => { if (files[0]) { clearResult(); setFile(files[0]); } };
+  const handleOCR = async () => {
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing'));
+    setError(null); setResult(null); setTextPreview(null); setStats(null); setCopied(false);
+    try {
+      const output = await ocrPDF(file, { languages, outputFormat, scale, pages: parsePageRange(pageRange), enhanceContrast }, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
+      });
+      if (run !== processingRun.current) return;
+      if (!output.success || !output.result) {
+        const details = output.error?.details ? ` (${output.error.details})` : '';
+        setError(`${output.error?.message || tErrors('processingFailed')}${details}`); setStatus('error'); return;
       }
-
-      animationRef.current = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      cancelAnimationFrame(animationRef.current);
-    };
-  }, [status]);
-
-  /**
-   * Handle file selection
-   */
-  const handleFilesSelected = useCallback((newFiles: File[]) => {
-    if (newFiles.length > 0) {
-      const uploadedFile: UploadedFile = {
-        id: generateId(),
-        file: newFiles[0],
-        status: 'pending' as const,
-      };
-      setFile(uploadedFile);
-      setError(null);
-      setResult(null);
-      setTextPreview(null);
+      const blob = output.result as Blob;
+      const text = outputFormat === 'searchable-pdf'
+        ? typeof output.metadata?.rawText === 'string' ? output.metadata.rawText : null
+        : await blob.text();
+      if (run !== processingRun.current) return;
+      setResult(blob); setTextPreview(text);
+      setStats({ pageCount: numeric(output.metadata?.pageCount), totalWords: numeric(output.metadata?.totalWords),
+        totalChars: numeric(output.metadata?.totalChars), avgConfidence: numeric(output.metadata?.avgConfidence) });
+      setStatus('complete');
+    } catch (err) {
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
-  }, []);
-
-  const handleUploadError = useCallback((errorMessage: string) => {
-    setError(errorMessage);
-  }, []);
-
-  const handleRemoveFile = useCallback(() => {
-    setFile(null);
-    setResult(null);
-    setTextPreview(null);
-    setError(null);
-    setStatus('idle');
-    setProgress(0);
-  }, []);
-
-  const toggleLanguage = useCallback((lang: OCRLanguage) => {
-    setLanguages(prev => {
-      if (prev.includes(lang)) {
-        if (prev.length === 1) return prev;
-        return prev.filter(l => l !== lang);
-      }
-      return [...prev, lang];
-    });
-  }, []);
-
-  const parsePageRange = (rangeStr: string): number[] => {
-    if (!rangeStr.trim()) return [];
-
-    const pages: number[] = [];
-    const parts = rangeStr.split(',');
-
-    for (const part of parts) {
-      const trimmed = part.trim();
-      if (trimmed.includes('-')) {
-        const [start, end] = trimmed.split('-').map(s => parseInt(s.trim(), 10));
-        if (!isNaN(start) && !isNaN(end)) {
-          for (let i = start; i <= end; i++) {
-            if (!pages.includes(i)) pages.push(i);
-          }
-        }
-      } else {
-        const num = parseInt(trimmed, 10);
-        if (!isNaN(num) && !pages.includes(num)) {
-          pages.push(num);
-        }
-      }
-    }
-
-    return pages.sort((a, b) => a - b);
   };
 
-  /**
-   * Run OCR Parser
-   */
-  const handleOCR = useCallback(async () => {
-    if (!file) {
-      setError('Please upload a PDF file.');
-      return;
-    }
-
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setError(null);
-    setResult(null);
-    setTextPreview(null);
-    setStats(null);
-
-    const options: Partial<OCROptions> = {
-      languages,
-      outputFormat,
-      scale,
-      pages: parsePageRange(pageRange),
-      enhanceContrast,
-    };
-
-    try {
-      const output: ProcessOutput = await ocrPDF(
-        file.file,
-        options,
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Initializing model workers...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
-      if (output.success && output.result) {
-        const blob = output.result as Blob;
-        setResult(blob);
-        setStats({
-          pageCount: output.metadata?.pageCount as number | undefined,
-          totalWords: output.metadata?.totalWords as number | undefined,
-          totalChars: output.metadata?.totalChars as number | undefined,
-          avgConfidence: output.metadata?.avgConfidence as number | undefined,
-        });
-
-        if (outputFormat === 'text' || outputFormat === 'markdown' || outputFormat === 'json') {
-          const text = await blob.text();
-          setTextPreview(text);
-        } else if (output.metadata?.rawText) {
-          setTextPreview(output.metadata.rawText as string);
-        }
-
-        setStatus('complete');
-      } else {
-        const errMsg = output.error?.message || 'Failed to perform OCR on PDF.';
-        const errDetails = output.error?.details ? ` (${output.error.details})` : '';
-        setError(`${errMsg}${errDetails}`);
-        setStatus('error');
-      }
-    } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
-        setStatus('error');
-      }
-    }
-  }, [file, languages, outputFormat, scale, pageRange, enhanceContrast]);
-
-  const handleCopy = useCallback(async () => {
+  const handleCopy = async () => {
     if (!textPreview) return;
+    const run = processingRun.current;
     try {
-      await navigator.clipboard.writeText(textPreview);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      const textarea = document.createElement('textarea');
-      textarea.value = textPreview;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }, [textPreview]);
+      try { await navigator.clipboard.writeText(textPreview); }
+      catch {
+        const textarea = document.createElement('textarea');
+        textarea.value = textPreview;
+        textarea.className = 'sr-only';
+        document.body.appendChild(textarea);
+        const focused = document.activeElement;
+        try { textarea.select(); if (!document.execCommand('copy')) throw new Error(t('ocr.copyFailed')); }
+        finally { textarea.remove(); if (focused instanceof HTMLElement) focused.focus(); }
+      }
+      if (run !== processingRun.current) return;
+      setCopied(true); setError(null);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2000);
+    } catch { if (run === processingRun.current) setError(t('ocr.copyFailed')); }
+  };
 
-  const handleOpenInEditor = useCallback(() => {
+  const handleOpenInEditor = () => {
     if (!result || !file) return;
-    const fileName = `${file.file.name.replace(/\.[^.]+$/, '')}_ocr.pdf`;
+    const fileName = `${file.name.replace(/\.[^.]+$/, '')}_ocr.pdf`;
     const targetFile = new File([result], fileName, { type: 'application/pdf' });
-
-    // Store in global memory
-    (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ = targetFile;
-
-    // Fallback to sessionStorage
+    const transfer = window as Window & { __PDFCRAFT_PENDING_EDIT_FILE__?: File | null };
+    transfer.__PDFCRAFT_PENDING_EDIT_FILE__ = targetFile;
     try {
       const reader = new FileReader();
       reader.onloadend = () => {
-        try {
-          window.sessionStorage.setItem('pdfcraft_pending_edit_file', JSON.stringify({
-            name: fileName,
-            type: 'application/pdf',
-            data: reader.result,
-          }));
-        } catch {
-          // ignore quota exceeded
-        }
+        if (transfer.__PDFCRAFT_PENDING_EDIT_FILE__ !== targetFile) return;
+        try { window.sessionStorage.setItem('pdfcraft_pending_edit_file', JSON.stringify({ name: fileName, type: 'application/pdf', data: reader.result })); }
+        catch { /* The in-memory file still supports transfer if storage is full. */ }
       };
       reader.readAsDataURL(result);
-    } catch {
-      // ignore
-    }
-
+    } catch { /* The in-memory file remains available to the editor. */ }
     router.push(`/${locale}/tools/edit-pdf`);
-  }, [result, file, router, locale]);
-
-  const handleCancel = useCallback(() => {
-    cancelledRef.current = true;
-    setStatus('idle');
-    setProgress(0);
-  }, []);
-
-  const formatSize = (bytes: number): string => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
 
-  const isProcessing = status === 'processing' || status === 'uploading';
-  const canProcess = file && !isProcessing;
+  const isProcessing = status === 'processing';
+  const statLabels = [
+    ['pageCount', 'statsPages'], ['totalWords', 'statsWords'], ['totalChars', 'statsChars'], ['avgConfidence', 'statsConfidence'],
+  ] as const;
+  const extension = outputFormat === 'text' ? 'txt' : outputFormat === 'markdown' ? 'md' : outputFormat === 'json' ? 'json' : 'pdf';
 
-  const availableLanguages: OCRLanguage[] = ['eng', 'chi_sim', 'chi_tra', 'jpn', 'kor', 'spa', 'fra', 'deu', 'por', 'ara', 'hun'];
-
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-
-      {/* File Upload Zone */}
-      {!file && (
-        <FileUploader
-          accept={['application/pdf', '.pdf', 'image/png', '.png', 'image/jpeg', '.jpg', '.jpeg', 'image/webp', '.webp']}
-          multiple={false}
-          maxFiles={1}
-          onFilesSelected={handleFilesSelected}
-          onError={handleUploadError}
-          disabled={isProcessing}
-          label={tTools('ocrPdf.uploadLabel') || 'Upload PDF or Scanned Image'}
-          description={tTools('ocrPdf.uploadDescription') || 'Drag and drop a scanned PDF or image (PNG, JPG, WebP) here, or click to browse.'}
-        />
-      )}
-
-      {/* Error Block */}
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          <p className="text-sm font-semibold">{error}</p>
-        </AlertDescription></Alert>
-      )}
-
-      {/* File metadata bar */}
-      {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <UIFile className="w-5 h-5 text-primary" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="font-semibold text-sm text-foreground">{file.file.name}</p>
-              <p className="text-xs text-muted-foreground">{formatSize(file.file.size)}</p>
-            </div>
-          </div>
-          <Button variant="ghost" size="sm" onClick={handleRemoveFile} disabled={isProcessing}>
-            {t('buttons.remove') || 'Remove'}
-          </Button>
-        </Card>
-      )}
-
-      {/* Primary Workspace */}
-      {file && status !== 'complete' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-
-          {/* LEFT: OCR Options */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 border flex flex-col justify-between gap-6">
-
-              <div className="space-y-4 flex-1">
-                <div className="border-b border-border pb-3">
-                  <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <Settings2 className="w-5 h-5 text-primary" />
-                    {t('ocr.optionsTitle')}
-                  </h3>
-                </div>
-
-                {/* Multi language choice */}
-                <div className="space-y-2">
-                  <Label className="text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
-                    <Languages className="w-4 h-4" /> {t('ocr.selectLang')}
-                  </Label>
-                  <div className="flex flex-wrap gap-1.5">
-                    {availableLanguages.map(lang => (
-                      <Button size="sm" variant={languages.includes(lang) ? 'default' : 'outline'} aria-pressed={languages.includes(lang)}
-                        key={lang}
-                        type="button"
-                        onClick={() => toggleLanguage(lang)}
-                        disabled={isProcessing}
-
-                      >
-                        {OCR_LANGUAGE_NAMES[lang]}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {/* Format Output */}
-                  <div>
-                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-1">
-                      {t('ocr.outputFormat')}
-                    </Label>
-                    <Select
-                      value={outputFormat}
-                      onChange={(e) => setOutputFormat(e.target.value as OCROptions['outputFormat'])}
-                      disabled={isProcessing} id="ocrpdftool-field-1" aria-label={t('ocr.outputFormat')}
-                    >
-                      <NativeSelectOption value="searchable-pdf">{t('ocr.formatSearchablePdf')}</NativeSelectOption>
-                      <NativeSelectOption value="text">{t('ocr.formatText')}</NativeSelectOption>
-                      <NativeSelectOption value="markdown">{t('ocr.formatMarkdown')}</NativeSelectOption>
-                      <NativeSelectOption value="json">{t('ocr.formatJson')}</NativeSelectOption>
-                    </Select>
-                  </div>
-
-                  {/* Resolution scale */}
-                  <div>
-                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-2">
-                      {t('ocr.accuracyTitle')}
-                    </Label>
-                    <Select
-                      value={scale}
-                      onChange={(e) => setScale(parseFloat(e.target.value))}
-                      disabled={isProcessing} id="ocrpdftool-field-2" aria-label={t('ocr.accuracyTitle')}
-                    >
-                      <NativeSelectOption value="1">{t('ocr.accuracySd')}</NativeSelectOption>
-                      <NativeSelectOption value="2">{t('ocr.accuracyHd')}</NativeSelectOption>
-                      <NativeSelectOption value="3">{t('ocr.accuracyUd')}</NativeSelectOption>
-                    </Select>
-                  </div>
-
-                  {/* Range */}
-                  <div>
-                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-3">
-                      {t('ocr.specifyPages')}
-                    </Label>
-                    <Input
-                      type="text"
-                      value={pageRange}
-                      onChange={(e) => setPageRange(e.target.value)}
-                      placeholder={t('ocr.pagesPlaceholder')}
-                      disabled={isProcessing}
-                      className="w-full" id="ocrpdftool-field-3" aria-label={t('ocr.specifyPages')}
-                    />
-                  </div>
-                </div>
-
-                {/* Contrast enhancement toggle */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-background border border-border transition-all hover:border-primary/40">
-                  <div className="space-y-0.5 pr-3">
-                    <div className="flex items-center gap-2">
-                      <SlidersHorizontal className="w-4 h-4 text-primary" />
-                      <span className="text-xs font-bold text-foreground">
-                        {t('ocr.enhanceContrast')}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-muted-foreground pl-6">
-                      {t('ocr.enhanceContrastDesc')}
-                    </p>
-                  </div>
-                  <Label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
-                    <Checkbox
-
-                      checked={enhanceContrast}
-                      onCheckedChange={(checked) => setEnhanceContrast((checked === true))}
-                      disabled={isProcessing}
-                      className="sr-only peer"
-                    />
-                    <div className="w-9 h-5 bg-zinc-200 dark:bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
-                  </Label>
-                </div>
-              </div>
-
-              {/* Start Trigger */}
-              <div className="pt-4 border-t border-border mt-6">
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="w-full py-4 flex items-center justify-center gap-2"
-                  onClick={handleOCR}
-                  disabled={!canProcess}
-                >
-                  <Scan className="w-5 h-5" />
-                  {t('ocr.startOcr')}
-                </Button>
-              </div>
-
-            </Card>
-          </div>
-
-          {/* RIGHT: 3D Holographic Wireframe Scan visualizer */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[380px]">
-
-              {/* Scan grid canvas */}
-              <div className="relative w-full aspect-video flex items-center justify-center z-10">
-                <canvas ref={canvasRef} className="w-full max-w-[280px] h-full" />
-                {/* Floating alert */}
-                {status === 'processing' && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <div className="px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold text-[10px] tracking-widest uppercase animate-pulse">
-                      Analyzing Pixels
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Info text box */}
-              <div className="w-full mt-4 bg-muted border border-border rounded-2xl p-4 z-20 space-y-1.5">
-                <h4 className="text-[10px] font-semibold tracking-widest text-purple-400 uppercase flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
-                  {t('ocr.advantageTitle')}
-                </h4>
-                <p className="text-[10px] text-muted-foreground leading-relaxed pl-1">
-                  {t.rich('ocr.advantageDesc', {
-                    b: (chunks) => <b>{chunks}</b>
-                  })}
-                </p>
-              </div>
-
-            </Card>
-          </div>
-
-        </div>
-      )}
-
-      {/* Progress Block */}
-      {isProcessing && progress > 5 && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={handleCancel}
-          showPercentage
-        />
-      )}
-
-      {/* Complete Outcomes screen */}
-      {status === 'complete' && result && (
-        <Card  className="p-8 border text-center gap-6">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
-            <ShieldCheck className="w-10 h-10" />
-          </div>
-
-          <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-base font-semibold text-foreground">{t('ocr.successTitle')}</h3>
-            <p className="text-xs text-muted-foreground">
-              {outputFormat === 'searchable-pdf'
-                ? t('ocr.successSearchablePdf')
-                : t('ocr.successText')
-              }
-            </p>
-          </div>
-
-          {/* Stats Bar */}
-          {stats && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto py-1">
-              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsPages')}</p>
-                <p className="text-base font-semibold text-foreground">{stats.pageCount || 1}</p>
-              </div>
-              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsWords')}</p>
-                <p className="text-base font-semibold text-foreground">{stats.totalWords || 0}</p>
-              </div>
-              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsChars')}</p>
-                <p className="text-base font-semibold text-foreground">{stats.totalChars || 0}</p>
-              </div>
-              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsConfidence')}</p>
-                <p className="text-base font-semibold text-emerald-600 dark:text-emerald-400">{stats.avgConfidence || 92}%</p>
-              </div>
-            </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto">
-            <DownloadButton
-              file={result}
-              filename={`${file?.file.name.replace(/\.(pdf|png|jpe?g|webp|bmp|tiff?)$/i, '')}_ocr.${
-                outputFormat === 'text' ? 'txt' : outputFormat === 'markdown' ? 'md' : outputFormat === 'json' ? 'json' : 'pdf'
-              }`}
-              variant="default"
-              size="lg"
-              className="flex-1 min-w-[140px]"
-              showFileSize
-            />
-
-            {outputFormat === 'searchable-pdf' && (
-              <Button
-                variant="secondary"
-                size="lg"
-                onClick={handleOpenInEditor}
-                className="flex-1 border-2 flex items-center justify-center gap-2 min-w-[160px]"
-              >
-                <ExternalLink className="w-4 h-4" />
-                {t('ocr.openInEditor')}
-              </Button>
-            )}
-
-            {textPreview && (
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={handleCopy}
-                className="flex items-center justify-center gap-2"
-              >
-                {copied ? <CheckCheck className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-                {copied ? t('ocr.copied') : t('ocr.copyText')}
-              </Button>
-            )}
-          </div>
-        </Card>
-      )}
-
-      {/* Pure text/JSON preview box */}
-      {textPreview && (
-        <Card   className="gap-3">
-          <div className="flex items-center justify-between border-b border-border pb-3">
-            <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-primary" />
-              <h3 className="text-sm font-bold text-foreground">
-                {t('ocr.previewTitle')}
-              </h3>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-muted text-foreground uppercase">
-                {outputFormat}
-              </span>
-            </div>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleCopy}
-              className="text-xs font-semibold flex items-center gap-1.5 h-8 px-2.5"
-            >
-              {copied ? <CheckCheck className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-              {copied ? t('ocr.copied') : t('ocr.copyText')}
-            </Button>
-          </div>
-
-          <pre className="p-4 bg-muted/35 border border-border rounded-2xl overflow-auto max-h-80 text-xs font-mono text-foreground whitespace-pre-wrap leading-relaxed select-text">
-            {textPreview}
-          </pre>
-        </Card>
-      )}
-
-    </div>
-  );
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {!file && <FileUploader accept={['application/pdf', '.pdf', 'image/png', '.png', 'image/jpeg', '.jpg', '.jpeg', 'image/webp', '.webp']}
+      multiple={false} maxFiles={1} onFilesSelected={handleFilesSelected} onError={setError} disabled={isProcessing}
+      label={tTools('uploadLabel')} description={tTools('uploadDescription')} />}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {file && <Card className="flex flex-row items-center justify-between gap-4 p-4">
+      <div className="flex min-w-0 items-center gap-3"><FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />
+        <div className="min-w-0"><p className="truncate text-sm font-medium" title={file.name}>{file.name}</p>
+          <p className="text-sm text-muted-foreground">{(file.size / (1024 * 1024)).toFixed(2)} MB</p></div>
+      </div>
+      <Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => { clearResult(); setFile(null); }}>{t('buttons.remove')}</Button>
+    </Card>}
+    {file && status !== 'complete' && <Card className="p-6">
+      <h3 className="text-base font-semibold">{t('ocr.optionsTitle')}</h3>
+      <fieldset className="space-y-3" disabled={isProcessing}>
+        <legend className="mb-3 text-sm font-medium">{t('ocr.selectLang')}</legend>
+        <div className="flex flex-wrap gap-2">{availableLanguages.map(lang => <Button key={lang} size="sm" variant={languages.includes(lang) ? 'default' : 'outline'}
+          aria-pressed={languages.includes(lang)} disabled={isProcessing} onClick={() => setLanguages(previous => previous.includes(lang)
+            ? previous.length > 1 ? previous.filter(value => value !== lang) : previous : [...previous, lang])}>{OCR_LANGUAGE_NAMES[lang]}</Button>)}</div>
+      </fieldset>
+      <div className="grid gap-4 sm:grid-cols-3">
+        <div className="space-y-2"><Label htmlFor={`${id}-format`}>{t('ocr.outputFormat')}</Label>
+          <NativeSelect id={`${id}-format`} value={outputFormat} disabled={isProcessing} onChange={event => setOutputFormat(event.target.value as OCROptions['outputFormat'])}>
+            <NativeSelectOption value="searchable-pdf">{t('ocr.formatSearchablePdf')}</NativeSelectOption>
+            <NativeSelectOption value="text">{t('ocr.formatText')}</NativeSelectOption>
+            <NativeSelectOption value="markdown">{t('ocr.formatMarkdown')}</NativeSelectOption>
+            <NativeSelectOption value="json">{t('ocr.formatJson')}</NativeSelectOption>
+          </NativeSelect></div>
+        <div className="space-y-2"><Label htmlFor={`${id}-scale`}>{t('ocr.accuracyTitle')}</Label>
+          <NativeSelect id={`${id}-scale`} value={scale} disabled={isProcessing} onChange={event => setScale(Number(event.target.value))}>
+            <NativeSelectOption value="1">{t('ocr.accuracySd')}</NativeSelectOption><NativeSelectOption value="2">{t('ocr.accuracyHd')}</NativeSelectOption>
+            <NativeSelectOption value="3">{t('ocr.accuracyUd')}</NativeSelectOption>
+          </NativeSelect></div>
+        <div className="space-y-2"><Label htmlFor={`${id}-pages`}>{t('ocr.specifyPages')}</Label>
+          <Input id={`${id}-pages`} value={pageRange} placeholder={t('ocr.pagesPlaceholder')} disabled={isProcessing} onChange={event => setPageRange(event.target.value)} /></div>
+      </div>
+      <div className="flex items-start gap-3"><Switch id={`${id}-contrast`} checked={enhanceContrast} onCheckedChange={setEnhanceContrast} disabled={isProcessing}
+        aria-describedby={`${id}-contrast-description`} className="mt-0.5" />
+        <div className="space-y-1"><Label htmlFor={`${id}-contrast`}>{t('ocr.enhanceContrast')}</Label>
+          <p id={`${id}-contrast-description`} className="text-sm text-muted-foreground">{t('ocr.enhanceContrastDesc')}</p></div>
+      </div>
+      <Alert role="note"><Info aria-hidden="true" /><AlertTitle>{t('ocr.advantageTitle')}</AlertTitle>
+        <AlertDescription>{t.rich('ocr.advantageDesc', { b: chunks => <strong>{chunks}</strong> })}</AlertDescription></Alert>
+      <Button className="w-full whitespace-normal sm:w-fit" disabled={isProcessing} loading={isProcessing} onClick={handleOCR}><Scan aria-hidden="true" />{t('ocr.startOcr')}</Button>
+    </Card>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={() => { processingRun.current++; setStatus('idle'); setProgress(0); setProgressMessage(''); }} />}
+    {status === 'complete' && result && <Card className="p-6">
+      <div role="status" className="flex items-start gap-3"><FileCheck aria-hidden="true" className="size-5 shrink-0 text-primary" /><div className="space-y-1">
+        <h3 className="text-base font-semibold">{t('ocr.successTitle')}</h3>
+        <p className="text-sm text-muted-foreground">{t(outputFormat === 'searchable-pdf' ? 'ocr.successSearchablePdf' : 'ocr.successText')}</p></div></div>
+      {stats && <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">{statLabels.map(([key, label]) => <div key={key} className="space-y-1">
+        <dt className="text-sm text-muted-foreground">{t(`ocr.${label}`)}</dt><dd className="font-medium tabular-nums">{stats[key] === undefined ? '—' : `${stats[key]}${key === 'avgConfidence' ? '%' : ''}`}</dd>
+      </div>)}</dl>}
+      <div className="flex flex-wrap gap-3"><DownloadButton file={result} filename={`${file?.name.replace(/\.(pdf|png|jpe?g|webp|bmp|tiff?)$/i, '')}_ocr.${extension}`} showFileSize />
+        {outputFormat === 'searchable-pdf' && <Button variant="secondary" onClick={handleOpenInEditor}><ExternalLink aria-hidden="true" />{t('ocr.openInEditor')}</Button>}</div>
+    </Card>}
+    {textPreview && <Card className="p-6" role="region" aria-labelledby={`${id}-preview`}>
+      <div className="flex flex-wrap items-center justify-between gap-3"><h3 id={`${id}-preview`} className="text-base font-semibold">{t('ocr.previewTitle')}</h3>
+        <Button variant="outline" size="sm" onClick={handleCopy}><Copy aria-hidden="true" />{t(copied ? 'ocr.copied' : 'ocr.copyText')}</Button></div>
+      <pre className="max-h-80 overflow-auto whitespace-pre-wrap break-words text-sm" tabIndex={0}>{textPreview}</pre>
+      {copied && <p role="status" className="sr-only">{t('ocr.copied')}</p>}
+    </Card>}
+  </div>;
 }
 
 export default OCRPDFTool;

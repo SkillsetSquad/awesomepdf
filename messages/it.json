@@ -708,7 +708,22 @@
       "successTitle": "Riconoscimento OCR completato!",
       "successSearchablePdf": "PDF ricercabile generato! I fogli scansionati sono sovrapposti con testo interattivo. Evidenzia e cerca liberamente.",
       "successText": "Strutture di testo normale estratte con successo. L'anteprima del testo è mostrata di seguito.",
-      "previewTitle": "Anteprima del flusso di testo estratto"
+      "previewTitle": "Anteprima del flusso di testo estratto",
+      "copyFailed": "Impossibile copiare il testo. Selezionalo e copialo dall’anteprima.",
+      "formatMarkdown": "Markdown strutturato (.md)",
+      "formatJson": "JSON strutturato (.json)",
+      "enhanceContrast": "Migliora qualità immagine",
+      "enhanceContrastDesc": "Migliora contrasto e bordi di inchiostro sbiadito e scansioni scure",
+      "copyText": "Copia testo riconosciuto",
+      "copied": "Copiato negli appunti",
+      "openInEditor": "Apri nell’editor PDF",
+      "openInEditorDesc": "Modifica testo e layout nell’editor AwesomePDF senza scaricare",
+      "statsPages": "Pagine",
+      "statsWords": "Parole",
+      "statsChars": "Caratteri",
+      "statsConfidence": "Confidenza media",
+      "tabText": "Anteprima testo",
+      "tabJson": "Struttura JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Carica documento di base (PDF di base)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF estratto in JSON con successo! Fare clic sul pulsante di download per salvare il file."
     },
     "ocrPdf": {
-      "uploadLabel": "Carica file PDF",
-      "uploadDescription": "Trascina e rilascia qui un file PDF scansionato oppure fai clic per sfogliarlo.",
+      "uploadLabel": "Seleziona un PDF o un’immagine",
+      "uploadDescription": "Scegli un PDF scansionato o un’immagine (PNG, JPG o WebP).",
       "optionsTitle": "Opzioni dell'OCR",
       "languages": "Lingue",
       "languagesHint": "Seleziona una o più lingue per una maggiore precisione",

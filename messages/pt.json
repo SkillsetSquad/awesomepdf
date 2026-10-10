@@ -708,7 +708,22 @@
       "successTitle": "Reconhecimento OCR concluído!",
       "successSearchablePdf": "PDF pesquisável gerado! As folhas digitalizadas são sobrepostas com texto interativo. Realce e pesquise livremente.",
       "successText": "Estruturas de texto simples extraídas com sucesso. Visualização do texto exibida abaixo.",
-      "previewTitle": "Visualização do fluxo de texto extraído"
+      "previewTitle": "Visualização do fluxo de texto extraído",
+      "copyFailed": "Não foi possível copiar o texto. Selecione-o e copie-o na pré-visualização.",
+      "formatMarkdown": "Markdown estruturado (.md)",
+      "formatJson": "JSON estruturado (.json)",
+      "enhanceContrast": "Melhorar qualidade da imagem",
+      "enhanceContrastDesc": "Melhora o contraste e os contornos de tinta fraca e digitalizações escuras",
+      "copyText": "Copiar texto reconhecido",
+      "copied": "Copiado para a área de transferência",
+      "openInEditor": "Abrir no editor PDF",
+      "openInEditorDesc": "Edite texto e layout no editor AwesomePDF sem baixar",
+      "statsPages": "Páginas",
+      "statsWords": "Palavras",
+      "statsChars": "Caracteres",
+      "statsConfidence": "Confiança média",
+      "tabText": "Pré-visualização do texto",
+      "tabJson": "Estrutura JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Enviar documento base (PDF base)",
@@ -2350,8 +2365,8 @@
       "successMessage": "PDF extraído para JSON com sucesso! Clique no botão de download para salvar seu arquivo."
     },
     "ocrPdf": {
-      "uploadLabel": "Carregar arquivo PDF",
-      "uploadDescription": "Arraste e solte um arquivo PDF digitalizado aqui ou clique para navegar.",
+      "uploadLabel": "Selecionar um PDF ou uma imagem",
+      "uploadDescription": "Escolha um PDF digitalizado ou uma imagem (PNG, JPG ou WebP).",
       "optionsTitle": "Opções de OCR",
       "languages": "Idiomas",
       "languagesHint": "Selecione um ou mais idiomas para melhor precisão",

@@ -708,7 +708,22 @@
       "successTitle": "¡Reconocimiento OCR completo!",
       "successSearchablePdf": "¡PDF con capacidad de búsqueda generado! Las hojas escaneadas se superponen con texto interactivo. Resalte y busque libremente.",
       "successText": "Estructuras de texto plano extraídas con éxito. La vista previa del texto se muestra a continuación.",
-      "previewTitle": "Vista previa del flujo de texto extraído"
+      "previewTitle": "Vista previa del flujo de texto extraído",
+      "copyFailed": "No se pudo copiar el texto. Selecciónalo y cópialo desde la vista previa.",
+      "formatMarkdown": "Markdown estructurado (.md)",
+      "formatJson": "JSON estructurado (.json)",
+      "enhanceContrast": "Mejorar calidad de imagen",
+      "enhanceContrastDesc": "Mejora el contraste y los bordes de tinta tenue y escaneos oscuros",
+      "copyText": "Copiar texto reconocido",
+      "copied": "Copiado al portapapeles",
+      "openInEditor": "Abrir en el editor PDF",
+      "openInEditorDesc": "Edita el texto y el diseño en AwesomePDF sin descargar",
+      "statsPages": "Páginas",
+      "statsWords": "Palabras",
+      "statsChars": "Caracteres",
+      "statsConfidence": "Confianza media",
+      "tabText": "Vista previa de texto",
+      "tabJson": "Estructura JSON"
     },
     "overlayPdf": {
       "uploadBaseLabel": "1. Subir documento base (PDF base)",
@@ -2358,8 +2373,8 @@
       "successMessage": "¡PDF extraído a JSON exitosamente! Haga clic en el botón de descarga para guardar su archivo."
     },
     "ocrPdf": {
-      "uploadLabel": "Subir archivo PDF",
-      "uploadDescription": "Arrastre y suelte un archivo PDF escaneado aquí o haga clic para explorar.",
+      "uploadLabel": "Seleccionar un PDF o una imagen",
+      "uploadDescription": "Elige un PDF escaneado o una imagen (PNG, JPG o WebP).",
       "optionsTitle": "Opciones de reconocimiento óptico de caracteres",
       "languages": "Idiomas",
       "languagesHint": "Seleccione uno o más idiomas para una mayor precisión",
