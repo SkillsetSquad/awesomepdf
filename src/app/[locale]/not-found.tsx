@@ -2,41 +2,20 @@
 
 import { FileQuestion, Home, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { isValidLocale } from '@/lib/i18n/config';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 
 export default function NotFound() {
+  const params = useParams<{ locale?: string }>();
+  const locale = params.locale && isValidLocale(params.locale) ? params.locale : 'en';
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-      <div className="max-w-md w-full text-center space-y-6">
-        <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center">
-          <FileQuestion className="w-8 h-8 text-muted-foreground" />
-        </div>
-        
-        <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-foreground">
-            Page not found
-          </h1>
-          <p className="text-muted-foreground">
-            The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
-          >
-            <Home className="w-4 h-4" />
-            Go home
-          </Link>
-          <button
-            onClick={() => typeof window !== 'undefined' && window.history.back()}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground font-medium hover:opacity-90 transition-opacity"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Go back
-          </button>
-        </div>
-      </div>
-    </div>
+    <main id="main-content" lang="en" dir="ltr" className="flex min-h-screen items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader><FileQuestion className="size-6 text-muted-foreground" aria-hidden="true" /><CardTitle><h1>Page not found</h1></CardTitle><CardDescription>The page you&apos;re looking for doesn&apos;t exist or has been moved.</CardDescription></CardHeader>
+        <CardFooter className="flex flex-wrap gap-3"><Button asChild><Link href={`/${locale}`}><Home aria-hidden="true" />Go home</Link></Button><Button variant="outline" onClick={() => window.history.back()}><ArrowLeft aria-hidden="true" />Go back</Button></CardFooter>
+      </Card>
+    </main>
   );
 }
