@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '../../../../messages/en.json';
@@ -7,6 +7,23 @@ import { ToolSidebar } from '@/components/workflow/ToolSidebar';
 import { WORKFLOW_TOOL_DROP_EVENT } from '@/components/workflow/dragEvents';
 
 describe('Workflow tool sidebar', () => {
+  it('emits a fallback pointer drop when native drag and drop is unavailable', () => {
+    const dropped = vi.fn();
+    window.addEventListener(WORKFLOW_TOOL_DROP_EVENT, dropped);
+    render(<NextIntlClientProvider locale="en" messages={messages}>
+      <ToolSidebar onDragStart={vi.fn()} onDragEnd={vi.fn()} />
+    </NextIntlClientProvider>);
+    const merge = screen.getByText('Merge PDF');
+    fireEvent.pointerDown(merge, { pointerId: 1, clientX: 100, clientY: 120 });
+    fireEvent.pointerMove(window, { pointerId: 1, clientX: 340, clientY: 220 });
+    fireEvent.pointerUp(window, { pointerId: 1, clientX: 340, clientY: 220 });
+    expect(dropped).toHaveBeenCalledOnce();
+    expect(dropped.mock.calls[0][0]).toMatchObject({ detail: {
+      clientX: 340, clientY: 220, nodeData: expect.objectContaining({ toolId: 'merge-pdf', label: 'Merge PDF' }),
+    } });
+    window.removeEventListener(WORKFLOW_TOOL_DROP_EVENT, dropped);
+  });
+
   it('adds a tool with the keyboard and keeps category controls expandable', async () => {
     const added = vi.fn();
     const drop = vi.fn();
