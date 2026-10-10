@@ -6,7 +6,7 @@ import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
 
-import { NativeSelect } from '@/components/ui/native-select';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
 
@@ -192,11 +192,13 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
                     {t('pdfTwoColumnReflower.readingFlowLabel')}
                     <NativeSelect
                       value={horizontalReading ? 'horizontal' : 'vertical'}
+                      aria-label={t('pdfTwoColumnReflower.readingFlowLabel')}
+                      disabled={status === 'processing'}
                       onChange={(e) => setHorizontalReading(e.target.value === 'horizontal')}
                       className="w-full"
                     >
-                      {t('pdfTwoColumnReflower.flowVertical')}
-                      {t('pdfTwoColumnReflower.flowHorizontal')}
+                      <NativeSelectOption value="vertical">{t('pdfTwoColumnReflower.flowVertical')}</NativeSelectOption>
+                      <NativeSelectOption value="horizontal">{t('pdfTwoColumnReflower.flowHorizontal')}</NativeSelectOption>
                     </NativeSelect>
                   </div>
                 </div>

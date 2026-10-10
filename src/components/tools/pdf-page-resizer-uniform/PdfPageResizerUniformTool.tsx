@@ -2,7 +2,7 @@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { NativeSelect } from '@/components/ui/native-select';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -134,7 +134,7 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
 
                 <div className="max-w-md text-center mt-6 space-y-2">
                   <h4 className="text-sm font-bold text-foreground">
-                    {t('pdfPageResizerUniform.filesLoaded', { count: files.length })}
+                  {t('pdfPageResizerUniform.loadedFiles', { count: files.length })}
                   </h4>
                   <p className="text-xs text-muted-foreground">
                     {t('pdfPageResizerUniform.uniformHelp')}
@@ -157,12 +157,14 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
                     {t('pdfPageResizerUniform.targetSpecLabel')}
                     <NativeSelect
                       value={targetSize}
-                      onChange={(e) => setTargetSize(e.target.value as any)}
+                      aria-label={t('pdfPageResizerUniform.targetSpecLabel')}
+                      disabled={status === 'processing'}
+                      onChange={(e) => setTargetSize(e.target.value as PdfPageResizerUniformOptions['targetSize'])}
                       className="w-full"
                     >
-                      {t('pdfPageResizerUniform.specA4')}
-                      {t('pdfPageResizerUniform.specA3')}
-                      {t('pdfPageResizerUniform.specLetter')}
+                      <NativeSelectOption value="A4">{t('pdfPageResizerUniform.specA4')}</NativeSelectOption>
+                      <NativeSelectOption value="A3">{t('pdfPageResizerUniform.specA3')}</NativeSelectOption>
+                      <NativeSelectOption value="Letter">{t('pdfPageResizerUniform.specLetter')}</NativeSelectOption>
                     </NativeSelect>
                   </div>
 
@@ -170,11 +172,13 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
                     {t('pdfPageResizerUniform.scaleModeLabel')}
                     <NativeSelect
                       value={scaleMode}
-                      onChange={(e) => setScaleMode(e.target.value as any)}
+                      aria-label={t('pdfPageResizerUniform.scaleModeLabel')}
+                      disabled={status === 'processing'}
+                      onChange={(e) => setScaleMode(e.target.value as PdfPageResizerUniformOptions['scaleMode'])}
                       className="w-full"
                     >
-                      {t('pdfPageResizerUniform.modeFit')}
-                      {t('pdfPageResizerUniform.modeFill')}
+                      <NativeSelectOption value="fit">{t('pdfPageResizerUniform.modeFit')}</NativeSelectOption>
+                      <NativeSelectOption value="fill">{t('pdfPageResizerUniform.modeFill')}</NativeSelectOption>
                     </NativeSelect>
                   </div>
                 </div>

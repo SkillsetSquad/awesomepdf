@@ -1,7 +1,7 @@
 'use client';
 import { Slider } from '@/components/ui/slider';
 
-import { NativeSelect } from '@/components/ui/native-select';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
 
@@ -219,13 +219,15 @@ export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToo
                   {t('pdfSpineBookbinder.gsmLabel')}
                   <NativeSelect
                     value={paperGsm}
-                    onChange={(e) => setPaperGsm(parseInt(e.target.value) as any)}
+                      aria-label={t('pdfSpineBookbinder.gsmLabel')}
+                      disabled={status === 'processing'}
+                    onChange={(e) => setPaperGsm(parseInt(e.target.value, 10) as PdfSpineBookbinderOptions['paperGsm'])}
                     className="w-full"
                   >
-                    {t('pdfSpineBookbinder.gsm80')}
-                    {t('pdfSpineBookbinder.gsm100')}
-                    {t('pdfSpineBookbinder.gsm120')}
-                    {t('pdfSpineBookbinder.gsm150')}
+                    <NativeSelectOption value="80">{t('pdfSpineBookbinder.gsm80')}</NativeSelectOption>
+                    <NativeSelectOption value="100">{t('pdfSpineBookbinder.gsm100')}</NativeSelectOption>
+                    <NativeSelectOption value="120">{t('pdfSpineBookbinder.gsm120')}</NativeSelectOption>
+                    <NativeSelectOption value="150">{t('pdfSpineBookbinder.gsm150')}</NativeSelectOption>
                   </NativeSelect>
                 </div>
               </div>

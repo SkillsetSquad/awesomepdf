@@ -4,7 +4,7 @@ import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
 
-import { NativeSelect } from '@/components/ui/native-select';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
 
@@ -156,12 +156,14 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
                     </Label>
                     <NativeSelect
                       value={dpi}
+                      aria-label={t('pdfDeskewAligner.dpiLabel')}
+                      disabled={status === 'processing'}
                       onChange={(e) => setDpi(parseInt(e.target.value))}
                       className="w-full"
                     >
-                      {t('pdfDeskewAligner.dpi72')}
-                      {t('pdfDeskewAligner.dpi150')}
-                      {t('pdfDeskewAligner.dpi300')}
+                      <NativeSelectOption value="72">{t('pdfDeskewAligner.dpi72')}</NativeSelectOption>
+                      <NativeSelectOption value="150">{t('pdfDeskewAligner.dpi150')}</NativeSelectOption>
+                      <NativeSelectOption value="300">{t('pdfDeskewAligner.dpi300')}</NativeSelectOption>
                     </NativeSelect>
                   </div>
 

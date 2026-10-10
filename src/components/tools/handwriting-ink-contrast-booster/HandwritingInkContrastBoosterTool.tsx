@@ -4,7 +4,7 @@ import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
 
-import { NativeSelect } from '@/components/ui/native-select';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
 
@@ -192,12 +192,14 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                     {t('handwritingInkContrastBooster.targetTypeLabel')}
                     <NativeSelect
                       value={inkType}
-                      onChange={(e) => setInkType(e.target.value as any)}
+                      aria-label={t('handwritingInkContrastBooster.targetTypeLabel')}
+                      disabled={status === 'processing'}
+                      onChange={(e) => setInkType(e.target.value as HandwritingInkContrastBoosterOptions['inkType'])}
                       className="w-full"
                     >
-                      {t('handwritingInkContrastBooster.typeAuto')}
-                      {t('handwritingInkContrastBooster.typeDarkInk')}
-                      {t('handwritingInkContrastBooster.typeRedStamp')}
+                      <NativeSelectOption value="auto">{t('handwritingInkContrastBooster.typeAuto')}</NativeSelectOption>
+                      <NativeSelectOption value="dark-ink">{t('handwritingInkContrastBooster.typeDarkInk')}</NativeSelectOption>
+                      <NativeSelectOption value="red-stamp">{t('handwritingInkContrastBooster.typeRedStamp')}</NativeSelectOption>
                     </NativeSelect>
                   </div>
 
