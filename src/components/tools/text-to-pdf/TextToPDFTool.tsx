@@ -1,4 +1,6 @@
 'use client';
+import { Textarea } from '@/components/ui/textarea';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelectOption } from '@/components/ui/native-select';
@@ -228,9 +230,9 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
       {inputMode === 'text' && (
         <Card className="p-6"  >
           <h3 className="text-lg font-medium mb-4">{tTools('txtToPdf.enterText') || 'Enter Text'}</h3>
-          <textarea value={directText} onChange={(e) => setDirectText(e.target.value)}
+          <Textarea value={directText} onChange={(e) => setDirectText(e.target.value)}
             placeholder={tTools('txtToPdf.textPlaceholder') || 'Type or paste your text here...'} disabled={isProcessing}
-            className="w-full h-64 px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary resize-y" />
+            className="w-full h-64 resize-y" />
           <p className="text-xs text-muted-foreground mt-2">{directText.length} {tTools('txtToPdf.characters') || 'characters'}</p>
         </Card>
       )}

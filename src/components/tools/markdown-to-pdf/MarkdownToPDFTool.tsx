@@ -1,4 +1,6 @@
 'use client';
+import { Textarea } from '@/components/ui/textarea';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -269,7 +271,7 @@ Enjoy converting your Markdown to PDF!
                             <Label className="block" htmlFor="markdowntopdftool-field-1">
                                 {tTools('markdownToPdf.editorLabel') || 'Markdown Editor'}
                             </Label>
-                            <textarea
+                            <Textarea
                                 value={manualMarkdown}
                                 onChange={(e) => {
                                     setManualMarkdown(e.target.value);
@@ -277,18 +279,7 @@ Enjoy converting your Markdown to PDF!
                                 }}
                                 disabled={isProcessing}
                                 placeholder="# Enter your Markdown here..."
-                                className="
-                                    w-full h-[400px] p-4
-                                    font-mono text-sm
-                                    border border-border
-                                    rounded-md
-                                    bg-background
-                                    text-foreground
-                                    placeholder:text-muted-foreground
-                                    focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
-                                    resize-none
-                                    disabled:opacity-50 disabled:cursor-not-allowed
-                                " id="markdowntopdftool-field-1" aria-label={tTools('markdownToPdf.editorLabel') || 'Markdown Editor'}
+                                className="w-full h-[400px] resize-none disabled:opacity-50 disabled:cursor-not-allowed" id="markdowntopdftool-field-1" aria-label={tTools('markdownToPdf.editorLabel') || 'Markdown Editor'}
                             />
                         </div>
 

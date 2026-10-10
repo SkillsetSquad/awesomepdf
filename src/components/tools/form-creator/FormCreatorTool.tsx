@@ -1,4 +1,6 @@
 'use client';
+import { Textarea } from '@/components/ui/textarea';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption, NativeSelectOptGroup } from '@/components/ui/native-select';
@@ -1424,10 +1426,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {(selectedField.type === 'dropdown' || selectedField.type === 'radio' || selectedField.type === 'listbox') && (
                         <div>
                           <Label className="block mb-1" htmlFor="formcreatortool-field-3">{tTools('formCreator.options')}</Label>
-                          <textarea
+                          <Textarea
                             value={(selectedField.options || []).join('\n')}
                             onChange={(e) => updateSelectedField({ options: e.target.value.split('\n').filter(o => o.trim()) })}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full"
                             rows={4} id="formcreatortool-field-3" aria-label={tTools('formCreator.options')}
                           />
                         </div>

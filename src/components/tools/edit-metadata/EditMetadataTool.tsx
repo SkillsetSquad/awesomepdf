@@ -1,5 +1,7 @@
 'use client';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -48,7 +50,7 @@ function MetadataField({
   multiline = false,
   disabled = false,
 }: MetadataFieldProps) {
-  const InputComponent = multiline ? 'textarea' : 'input';
+  const InputComponent = multiline ? Textarea : Input;
 
   return (
     <div className="space-y-1">
@@ -60,17 +62,11 @@ function MetadataField({
       </Label>
       <InputComponent
         id={`metadata-${field}`}
-        type={multiline ? undefined : 'text'}
         value={value}
         onChange={(e) => onChange(field, e.target.value)}
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full px-3 py-2 rounded-md border border-border
-          bg-background text-foreground
-          placeholder:text-muted-foreground
-          focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
-          disabled:opacity-50 disabled:cursor-not-allowed
-          ${multiline ? 'min-h-[80px] resize-y' : ''}`}
+        className={multiline ? 'min-h-20 resize-y' : undefined}
       />
     </div>
   );
