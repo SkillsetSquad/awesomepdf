@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} halaman • {size} MB",
       "uploadButton": "Unggah File PDF",
       "uploadDesc": "Kompositor IFD biner fisik, menyatukan beberapa halaman dengan fidelitas tinggi langsung ke dalam satu file TIFF multi-halaman.",
-      "previewTitle": "Pratinjau Kepadatan Piksel Spektra 3D",
+      "previewTitle": "Ringkasan keluaran",
       "descColor": "Warna RGB 24-bit: 3 byte per piksel. Mempertahankan spektrum warna penuh dengan fidelitas tinggi.",
       "descGrayscale": "Skala Abu-abu 8-bit: Mengonversi warna menjadi luminans yang seimbang, ideal untuk memindai arsip hitam-putih.",
       "descMono": "Monokromatik 1-bit: Ambang binarisasi setengah nada 127, kontras ekstrem, memperkecil ukuran file hingga 24x.",
@@ -839,7 +839,7 @@
       "compressionNone": "Tanpa Kompresi (None - Kompatibilitas tinggi)",
       "compressionPackbits": "Kompresi Run-Length Tanpa Kehilangan (PackBits RLE)",
       "resolutionLabel": "C. Kepadatan Piksel Resolusi (Resolusi)",
-      "resolutionDpi": "{dpi} DPI (Skala Retina {percent}%)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Resolusi Layar Rendah)",
       "dpi150": "150 DPI (Standar Kantor Seimbang)",
       "dpi300": "300 DPI (Kualitas Cetak Arsip)",
@@ -848,7 +848,7 @@
       "tipDesc": "Dokumen TIFF multi-halaman bergulir dengan lancar di Photoshop atau Acrobat, namun tetap berupa bitmap raster. Untuk teks dan garis vektor, kami merekomendasikan setidaknya",
       "tipRecommend": "300 DPI",
       "processButton": "Jalankan Pengemasan TIFF Multi-Halaman",
-      "successMessage": "🎉 TIFF multi-halaman file tunggal berhasil disusun! Siap diunduh."
+      "successMessage": "TIFF multi-halaman file tunggal berhasil disusun! Siap diunduh."
     },
     "removeBlankPages": {
       "pagesCount": "{count} halaman • {size} MB",

@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} 页 • {size} MB",
       "uploadButton": "点击上傳待转换 PDF 文件",
       "uploadDesc": "手写手写手写手写手写手写二进制 IFD 拼接编译器，直接合并生成单个包含多页面（Multi-page）的合法高保真 TIFF。",
-      "previewTitle": "3D 晶格像素密度与光谱实时预览",
+      "previewTitle": "輸出概覽",
       "descColor": "24-bit 印刷全彩 (RGB)：每像素占用 3 字节，完美还原丰富的光谱色彩。",
       "descGrayscale": "8-bit 专业灰度：使用经典光敏系数脱色，层次分明，适合黑白文卷存档。",
       "descMono": "1-bit 纯黑白二值：基于半色调 127 阀值二值化，极具对比度，體積缩减至 1/24。",
@@ -839,7 +839,7 @@
       "compressionNone": "無壓縮 (None - 极大兼容)",
       "compressionPackbits": "無损游程壓縮 (PackBits RLE)",
       "resolutionLabel": "C. 高精度 DPI 分辨率滑轨 (Resolution)",
-      "resolutionDpi": "{dpi} DPI ({percent}% 视网膜缩放)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (屏幕低精)",
       "dpi150": "150 DPI (普通办公)",
       "dpi300": "300 DPI (印刷级高清)",
@@ -848,7 +848,7 @@
       "tipDesc": "多页 TIFF (Multi-page TIFF) 在导入 Acrobat 或 Photoshop 时，可像 PDF 一样顺畅地进行页面上下滚动，但其完全由光栅位图构成。对图表和文字，我们极力推荐使用",
       "tipRecommend": "300 DPI",
       "processButton": "开始编译并生成多页 TIFF",
-      "successMessage": "🎉 单文件多页 TIFF 编译成功！所有页面已合并就位。一鍵极速下载。"
+      "successMessage": "单文件多页 TIFF 编译成功！所有页面已合并就位。一鍵极速下载。"
     },
     "removeBlankPages": {
       "pagesCount": "{count} 页 • {size} MB",

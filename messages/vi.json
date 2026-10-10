@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} trang • {size} MB",
       "uploadButton": "Tải lên tệp PDF",
       "uploadDesc": "Trình tổng hợp IFD nhị phân vật lý, ghép trực tiếp nhiều trang độ phân giải cao thành một tệp TIFF nhiều trang duy nhất.",
-      "previewTitle": "Xem trước mật độ pixel phổ 3D",
+      "previewTitle": "Tóm tắt đầu ra",
       "descColor": "Màu RGB 24-bit: 3 byte mỗi pixel. Giữ nguyên phổ màu đầy đủ độ phân giải cao.",
       "descGrayscale": "Mức xám 8-bit: Chuyển đổi màu sắc sang độ sáng cân bằng, lý tưởng để quét các tài liệu lưu trữ đen trắng.",
       "descMono": "Đơn sắc 1-bit: Ngưỡng nhị phân hóa bán tông 127, tương phản cực cao, giảm dung lượng tệp xuống 24 lần.",
@@ -839,7 +839,7 @@
       "compressionNone": "Không nén (None - Tương thích cao)",
       "compressionPackbits": "Nén Run-Length không hao tổn (PackBits RLE)",
       "resolutionLabel": "C. Mật độ pixel độ phân giải (Resolution)",
-      "resolutionDpi": "{dpi} DPI (Tỷ lệ Retina {percent}%)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Độ phân giải màn hình thấp)",
       "dpi150": "150 DPI (Tiêu chuẩn văn phòng cân bằng)",
       "dpi300": "300 DPI (Chất lượng in lưu trữ)",
@@ -848,7 +848,7 @@
       "tipDesc": "Tài liệu TIFF nhiều trang cuộn mượt mà trong Photoshop hoặc Acrobat, nhưng vẫn là ảnh bitmap raster. Đối với văn bản và đường nét vectơ, chúng tôi khuyên dùng ít nhất là",
       "tipRecommend": "300 DPI",
       "processButton": "Thực hiện đóng gói TIFF nhiều trang",
-      "successMessage": "🎉 Biên dịch tệp TIFF nhiều trang đơn thành công! Sẵn sàng tải xuống."
+      "successMessage": "Biên dịch tệp TIFF nhiều trang đơn thành công! Sẵn sàng tải xuống."
     },
     "removeBlankPages": {
       "pagesCount": "{count} trang • {size} MB",

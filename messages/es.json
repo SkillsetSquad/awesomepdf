@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} página(s) • {size} MB",
       "uploadButton": "Subir archivo PDF",
       "uploadDesc": "Compositor físico de IFD binario, que une directamente varias páginas de alta fidelidad en un solo TIFF de varias páginas.",
-      "previewTitle": "Vista previa de densidad de píxeles espectrales 3D",
+      "previewTitle": "Resumen de salida",
       "descColor": "Color RGB de 24 bits: 3 bytes por píxel. Conserva el espectro de color completo de alta fidelidad.",
       "descGrayscale": "Escala de grises de 8 bits: Convierte colores en luminancias equilibradas, ideal para escanear archivos en blanco y negro.",
       "descMono": "Monocromático de 1 bit: Umbral de binarización de medio tono 127, contraste extremo, reduce el tamaño del archivo 24 veces.",
@@ -839,7 +839,7 @@
       "compressionNone": "Sin compresión (Ninguna - Alta compatibilidad)",
       "compressionPackbits": "Compresión run-length sin pérdidas (PackBits RLE)",
       "resolutionLabel": "C. Densidad de píxeles de resolución (Resolución)",
-      "resolutionDpi": "{dpi} DPI ({percent}% de escala Retina)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Baja resolución de pantalla)",
       "dpi150": "150 DPI (Estándar de oficina equilibrado)",
       "dpi300": "300 DPI (Calidad de impresión de archivo)",
@@ -848,7 +848,7 @@
       "tipDesc": "Los documentos TIFF de varias páginas se desplazan suavemente en Photoshop o Acrobat, pero siguen siendo mapas de bits rasterizados. Para texto y líneas vectoriales, recomendamos al menos",
       "tipRecommend": "300 DPI",
       "processButton": "Ejecutar empaquetado TIFF de varias páginas",
-      "successMessage": "¡🎉 TIFF de varias páginas de un solo archivo compilado con éxito! Descarga lista."
+      "successMessage": "¡TIFF de varias páginas de un solo archivo compilado con éxito! Descarga lista."
     },
     "removeBlankPages": {
       "pagesCount": "{count} página(s) • {size} MB",

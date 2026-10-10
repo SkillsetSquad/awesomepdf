@@ -840,7 +840,7 @@
       "uploadSuccess": "{count} page(s) • {size} MB",
       "uploadButton": "Upload PDF File",
       "uploadDesc": "Physical binary IFD compositor, stitching multiple high-fidelity pages directly into a single multi-page TIFF.",
-      "previewTitle": "3D Spectral Pixels Density Preview",
+      "previewTitle": "Output summary",
       "descColor": "24-bit RGB Color: 3 bytes per pixel. Preserves high-fidelity full color spectrum.",
       "descGrayscale": "8-bit Grayscale: Converts colors to balanced luminances, ideal for scanning black-and-white archives.",
       "descMono": "1-bit Monochromatic: Half-tone 127 binarization threshold, extreme contrast, shrinks file sizes by 24x.",
@@ -853,7 +853,7 @@
       "compressionNone": "No Compression (None - High compatibility)",
       "compressionPackbits": "Lossless Run-Length Compression (PackBits RLE)",
       "resolutionLabel": "C. Resolution Pixel Density (Resolution)",
-      "resolutionDpi": "{dpi} DPI ({percent}% Retina Scale)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Low Screen Resolution)",
       "dpi150": "150 DPI (Balanced Office Standard)",
       "dpi300": "300 DPI (Archival Print Quality)",
@@ -862,7 +862,7 @@
       "tipDesc": "Multi-page TIFF documents scroll smoothly in Photoshop or Acrobat, yet remain raster bitmapped. For text and vector lines, we recommend at least",
       "tipRecommend": "300 DPI",
       "processButton": "Execute Multi-Page TIFF Packing",
-      "successMessage": "🎉 Single-file multi-page TIFF compiled successfully! Download ready."
+      "successMessage": "Single-file multi-page TIFF compiled successfully! Download ready."
     },
     "removeBlankPages": {
       "pagesCount": "{count} page(s) • {size} MB",

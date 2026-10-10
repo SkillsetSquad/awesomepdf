@@ -840,7 +840,7 @@
       "uploadSuccess": "{count, plural, one {# strona} few {# strony} many {# stron} other {# strony}} • {size} MB",
       "uploadButton": "Prześlij plik PDF",
       "uploadDesc": "Łączy wiele stron wysokiej jakości w jeden wielostronicowy plik TIFF.",
-      "previewTitle": "Podgląd gęstości widmowej pikseli 3D",
+      "previewTitle": "Podsumowanie pliku wyjściowego",
       "descColor": "24-bitowy kolor RGB: 3 bajty na piksel. Zachowuje pełne spektrum kolorów o wysokiej wierności.",
       "descGrayscale": "8-bitowa skala szarości: konwertuje kolory na zrównoważoną luminancję, idealną do skanowania czarno-białych archiwów.",
       "descMono": "1-bitowy monochromatyczny: próg binaryzacji półtonów 127, ekstremalny kontrast, zmniejsza rozmiar pliku 24x.",
@@ -853,7 +853,7 @@
       "compressionNone": "Brak kompresji (brak — wysoka kompatybilność)",
       "compressionPackbits": "Bezstratna kompresja długości przebiegu (PackBits RLE)",
       "resolutionLabel": "C. Gęstość pikseli (rozdzielczość)",
-      "resolutionDpi": "{dpi} DPI (skala {percent}% Retina)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (niska rozdzielczość ekranu)",
       "dpi150": "150 DPI (zrównoważony standard biurowy)",
       "dpi300": "300 DPI (jakość wydruku archiwalnego)",
@@ -862,7 +862,7 @@
       "tipDesc": "Wielostronicowe dokumenty TIFF przewijają się płynnie w Photoshopie i Acrobat Readerze, ale pozostają obrazami rastrowymi. W przypadku tekstu i linii wektorowych zalecamy co najmniej",
       "tipRecommend": "300 DPI",
       "processButton": "Wykonaj pakowanie wielostronicowe TIFF",
-      "successMessage": "🎉 Wielostronicowy TIFF został utworzony! Pobierz plik."
+      "successMessage": "Wielostronicowy TIFF został utworzony! Pobierz plik."
     },
     "removeBlankPages": {
       "pagesCount": "{count, plural, one {# strona} few {# strony} many {# stron} other {# strony}} • {size} MB",

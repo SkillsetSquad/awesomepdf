@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} pagină(e) • {size} MB",
       "uploadButton": "Încărcați fișierul PDF",
       "uploadDesc": "Compozitor IFD binar fizic, îmbinând mai multe pagini de înaltă fidelitate direct într-un singur fișier TIFF multi-pagină.",
-      "previewTitle": "Previzualizare 3D a densității pixelilor spectrali",
+      "previewTitle": "Rezumatul rezultatului",
       "descColor": "Culoare RGB pe 24 de biți: 3 octeți per pixel. Păstrează spectrul complet de culori cu fidelitate ridicată.",
       "descGrayscale": "Nuanțe de gri pe 8 biți: Convertește culorile în luminanțe echilibrate, ideal pentru scanarea arhivelor alb-negru.",
       "descMono": "Monocrom pe 1 bit: Prag de binarizare semi-ton 127, contrast extrem, reduce dimensiunea fișierului de 24 de ori.",
@@ -839,7 +839,7 @@
       "compressionNone": "Fără comprimare (None - Compatibilitate ridicată)",
       "compressionPackbits": "Comprimare Run-Length fără pierderi (PackBits RLE)",
       "resolutionLabel": "C. Densitate pixeli rezoluție (Rezoluție)",
-      "resolutionDpi": "{dpi} DPI (Scală Retina {percent}%)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Rezoluție ecran scăzută)",
       "dpi150": "150 DPI (Standard de birou echilibrat)",
       "dpi300": "300 DPI (Calitate de imprimare arhivă)",
@@ -848,7 +848,7 @@
       "tipDesc": "Documentele TIFF multi-pagină se derulează ușor în Photoshop sau Acrobat, dar rămân bitmap-uri rasterizate. Pentru text și linii vectoriale, recomandăm cel puțin",
       "tipRecommend": "300 DPI",
       "processButton": "Execută împachetarea TIFF-ului multi-pagină",
-      "successMessage": "🎉 TIFF-ul multi-pagină într-un singur fișier a fost compilat cu succes! Descărcare disponibilă."
+      "successMessage": "TIFF-ul multi-pagină într-un singur fișier a fost compilat cu succes! Descărcare disponibilă."
     },
     "removeBlankPages": {
       "pagesCount": "{count} pagină(e) • {size} MB",

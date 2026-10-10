@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} pagina/e • {size} MB",
       "uploadButton": "Carica file PDF",
       "uploadDesc": "Compositore IFD binario fisico, che unisce più pagine ad alta fedeltà direttamente in un singolo TIFF multipagina.",
-      "previewTitle": "Anteprima della densità dei pixel spettrali 3D",
+      "previewTitle": "Riepilogo dell’output",
       "descColor": "Colore RGB a 24 bit: 3 byte per pixel. Preserva lo spettro completo dei colori ad alta fedeltà.",
       "descGrayscale": "Scala di grigi a 8 bit: Converte i colori in luminanze bilanciate, ideale per la scansione di archivi in bianco e negro.",
       "descMono": "Monocromatico a 1 bit: Soglia di binarizzazione a mezzitoni 127, contrasto estremo, riduce le dimensioni del file di 24 volte.",
@@ -839,7 +839,7 @@
       "compressionNone": "Nessuna compressione (Nessuna - Elevata compatibilità)",
       "compressionPackbits": "Compressione RLE senza perdite (PackBits RLE)",
       "resolutionLabel": "C. Densità dei pixel di risoluzione (Risoluzione)",
-      "resolutionDpi": "{dpi} DPI ({percent}% scala Retina)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Bassa risoluzione dello schermo)",
       "dpi150": "150 DPI (Standard da ufficio bilanciato)",
       "dpi300": "300 DPI (Qualità di stampa d'archivio)",
@@ -848,7 +848,7 @@
       "tipDesc": "I documenti TIFF multipagina scorrono in modo fluido in Photoshop o Acrobat, ma rimangono bitmap rasterizzati. Per testo e linee vettoriali, si consiglia almeno",
       "tipRecommend": "300 DPI",
       "processButton": "Esegui compressione TIFF multipagina",
-      "successMessage": "🎉 TIFF multipagina a file singolo compilato con successo! Download pronto."
+      "successMessage": "TIFF multipagina a file singolo compilato con successo! Download pronto."
     },
     "removeBlankPages": {
       "pagesCount": "{count} pagina/e • {size} MB",

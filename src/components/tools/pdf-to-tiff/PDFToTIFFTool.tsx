@@ -1,34 +1,18 @@
 'use client';
-import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
-
+import { useId, useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { CheckCircle2, CircleAlert, FileText, Info, Loader2, Printer, X } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
-
-import { FileText as UIFileText, X as UIX } from 'lucide-react';
-
-import { Slider } from '@/components/ui/slider';
-
-import { Label } from '@/components/ui/label';
-
-import React, { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Slider } from '@/components/ui/slider';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
 import { pdfToTiff } from '@/lib/pdf/processors/pdf-to-tiff';
 import type { ProcessOutput } from '@/types/pdf';
-import {
-  Printer,
-  Settings,
-  Cpu,
-  Layers,
-  Sliders,
-  Info,
-  Check,
-  AlertCircle
-} from 'lucide-react';
 
 export interface PDFToTIFFToolProps {
   className?: string;
@@ -36,7 +20,8 @@ export interface PDFToTIFFToolProps {
 
 export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
+  const locale = useLocale();
+  const id = useId();
 
   // File state
   const [file, setFile] = useState<File | null>(null);
@@ -61,10 +46,11 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
   /**
    * Handle File Selection and read pages
    */
-  const handleFileSelected = useCallback(async (files: File[]) => {
+  const handleFileSelected = async (files: File[]) => {
     if (files.length === 0) return;
     const selectedFile = files[0];
     setFile(selectedFile);
+    setTotalPages(0);
     setIsLoadingFile(true);
     setError(null);
     setResult(null);
@@ -80,7 +66,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
     } finally {
       setIsLoadingFile(false);
     }
-  }, []);
+  };
 
   const handleClearFile = () => {
     setFile(null);
@@ -152,284 +138,79 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
   const isProcessing = status === 'processing' || status === 'uploading';
 
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {/* File Upload Zone */}
-      <div className="space-y-3">
-        <Label className="block" htmlFor="pdftotifftool-slider-1">
-          {t('pdfToTiff.uploadLabel')}
-        </Label>
-        {file ? (
-          <Card
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+  const colorModes = [
+    { value: 'color', label: t('pdfToTiff.colorModeFull') },
+    { value: 'grayscale', label: t('pdfToTiff.colorModeGrayscale') },
+    { value: 'mono', label: t('pdfToTiff.colorModeMono') },
+  ] as const;
+  const compressionModes = [
+    { value: 'none', label: t('pdfToTiff.compressionNone') },
+    { value: 'packbits', label: t('pdfToTiff.compressionPackbits') },
+  ] as const;
 
-            className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15"
-          >
-            <div className="flex items-center gap-3">
-              <UIFileText className="w-10 h-10 text-primary" aria-hidden="true" />
-              <div>
-                <p
-                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md"
-                  title={file.name}
-                >
-                  {file.name}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {totalPages > 0 ? t('pdfToTiff.uploadSuccess', { count: totalPages, size: (file.size / (1024 * 1024)).toFixed(2) }) : (t('aiPdfReflower.scanningMetadata') || 'Loading...')}
-                </p>
-              </div>
-            </div>
-            <Button variant="ghost" size="icon-sm"
-              onClick={handleClearFile}
-              disabled={isProcessing}
-
-            >
-              <UIX className="w-5 h-5" aria-hidden="true" />
-            </Button>
-          </Card>
-        ) : (
-          <FileUploader
-            accept={['application/pdf']}
-            multiple={false}
-            onFilesSelected={handleFileSelected}
-            onError={setError}
-            disabled={isProcessing || isLoadingFile}
-            label={t('pdfToTiff.uploadButton')}
-            description={t('pdfToTiff.uploadDesc')}
-            className="min-h-[160px] p-6 rounded-2xl"
-          />
-        )}
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          <div className="flex gap-2.5 items-start">
-            <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
-            <p className="text-sm font-semibold">{error}</p>
+  return <div className={`space-y-6 ${className}`.trim()}>
+    <div className="space-y-3">
+      <h3 className="text-sm font-medium">{t('pdfToTiff.uploadLabel')}</h3>
+      {file ? <Card className="flex flex-row items-center justify-between gap-4 p-4">
+        <div className="flex min-w-0 items-center gap-3"><FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />
+          <div className="min-w-0"><p className="truncate text-sm font-medium" title={file.name}>{file.name}</p>
+            <p className="text-sm text-muted-foreground">{isLoadingFile ? t('aiPdfReflower.scanningMetadata') : t('pdfToTiff.uploadSuccess', { count: totalPages, size: (file.size / (1024 * 1024)).toFixed(2) })}</p>
           </div>
-        </AlertDescription></Alert>
-      )}
-
-      {/* Configuration & 3D Interactive Grid */}
-      {file && totalPages > 0 && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-          {/* LEFT: 3D Pixel Grid Interactive Widget */}
-          <div className="lg:col-span-5 space-y-4">
-            <Card  className="p-6 bg-card flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
-              <span className="text-xs font-bold text-muted-foreground mb-8 flex items-center gap-1.5">
-                <Cpu className="w-4 h-4 text-primary" />
-                {t('pdfToTiff.previewTitle')}
-              </span>
-
-              <div
-                className="relative w-44 h-44 transform-gpu transition-all duration-700 ease-in-out"
-                style={{
-                  perspective: '600px',
-                  transformStyle: 'preserve-3d',
-                }}
-              >
-                {/* 3D Grid container */}
-                <div
-                  className="w-full h-full border border-border rounded-2xl flex items-center justify-center transition-all duration-500 shadow-2xl"
-                  style={{
-                    transform: 'rotateX(55deg) rotateZ(-35deg)',
-                    background: 'rgba(15, 15, 18, 0.85)',
-                    boxShadow: colorMode === 'mono'
-                      ? '0 25px 50px rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(255,255,255,0.03)'
-                      : colorMode === 'grayscale'
-                        ? '0 25px 50px rgba(156, 163, 175, 0.08), inset 0 0 20px rgba(156, 163, 175, 0.03)'
-                        : '0 25px 50px rgba(99, 102, 241, 0.25), inset 0 0 20px rgba(99, 102, 241, 0.08)',
-                  }}
-                >
-                  {/* Dynamic Grid lines representing DPI */}
-                  <div
-                    className="absolute inset-4 rounded-xl opacity-90 grid gap-1 transition-all duration-500"
-                    style={{
-                      gridTemplateColumns: `repeat(${dpi <= 100 ? 5 : dpi <= 200 ? 10 : 16}, minmax(0, 1fr))`,
-                      gridTemplateRows: `repeat(${dpi <= 100 ? 5 : dpi <= 200 ? 10 : 16}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {Array.from({ length: dpi <= 100 ? 25 : dpi <= 200 ? 100 : 256 }).map((_, idx) => (
-                      <div
-                        key={idx}
-                        className="rounded-xs transition-all duration-700"
-                        style={{
-                          background: colorMode === 'mono'
-                            ? (Math.random() > 0.45 ? '#ffffff' : '#000000')
-                            : colorMode === 'grayscale'
-                              ? `rgb(${Math.random() * 200 + 40}, ${Math.random() * 200 + 40}, ${Math.random() * 200 + 40})`
-                              : `hsl(${(idx * 17) % 360}, 90%, 65%)`,
-                          opacity: colorMode === 'mono' ? (Math.random() > 0.45 ? 0.95 : 0.1) : 0.8
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center max-w-xs leading-normal">
-                <p className="text-[11px] font-semibold text-muted-foreground">
-                  {colorMode === 'color'
-                    ? t('pdfToTiff.descColor')
-                    : colorMode === 'grayscale'
-                      ? t('pdfToTiff.descGrayscale')
-                      : t('pdfToTiff.descMono')
-                  }
-                </p>
-              </div>
-            </Card>
-          </div>
-
-          {/* RIGHT: Parameter adjustments */}
-          <div className="lg:col-span-7 space-y-6">
-            <Card
-
-              className="p-6 gap-6 border"
-            >
-              <h3 className="text-sm font-bold text-foreground border-b border-border pb-3 flex items-center gap-1.5">
-                <Printer className="w-4.5 h-4.5 text-primary" />
-                {t('pdfToTiff.optionsTitle')}
-              </h3>
-
-              {/* Color Mode Switcher */}
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-                  <Sliders className="w-3.5 h-3.5 text-muted-foreground" />
-                  {t('pdfToTiff.colorModeLabel')}
-                </span>
-                <div className="flex bg-muted/50 p-0.5 rounded-xl border border-input/40">
-                  {[
-                    { mode: 'color', label: t('pdfToTiff.colorModeFull') },
-                    { mode: 'grayscale', label: t('pdfToTiff.colorModeGrayscale') },
-                    { mode: 'mono', label: t('pdfToTiff.colorModeMono') }
-                  ].map(item => (
-                    <Button size="sm" variant={colorMode === item.mode ? 'default' : 'outline'} aria-pressed={colorMode === item.mode}
-                      key={item.mode}
-                      type="button"
-                      onClick={() => setColorMode(item.mode as any)}
-                      className="flex-1"
-                    >
-                      {item.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Compression Algorithm */}
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-                  <Layers className="w-3.5 h-3.5 text-muted-foreground" />
-                  {t('pdfToTiff.compressionLabel')}
-                </span>
-                <div className="flex bg-muted/50 p-0.5 rounded-xl border border-input/40">
-                  {[
-                    { cmp: 'none', label: t('pdfToTiff.compressionNone') },
-                    { cmp: 'packbits', label: t('pdfToTiff.compressionPackbits') }
-                  ].map(item => (
-                    <Button size="sm" variant={compression === item.cmp ? 'default' : 'outline'} aria-pressed={compression === item.cmp}
-                      key={item.cmp}
-                      type="button"
-                      onClick={() => setCompression(item.cmp as any)}
-                      className="flex-1"
-                    >
-                      {item.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              {/* DPI 无级滑轨 */}
-              <div className="space-y-2.5">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold text-muted-foreground flex items-center gap-1">
-                    <Settings className="w-3.5 h-3.5 text-muted-foreground" />
-                    {t('pdfToTiff.resolutionLabel')}
-                  </span>
-                  <span className="font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded">
-                    {t('pdfToTiff.resolutionDpi', { dpi, percent: Math.round(dpi / 72 * 100) })}
-                  </span>
-                </div>
-
-                <Slider
-                  min={72}
-                  max={600}
-                  step={6}
-                  value={[dpi]}
-                  onValueChange={(values) => setDpi(parseInt(String(values[0]), 10))}
-                  className="w-full cursor-pointer" id="pdftotifftool-slider-1" aria-label={t('pdfToTiff.uploadLabel')}
-                />
-
-                <div className="flex justify-between text-[9px] text-muted-foreground font-semibold">
-                  <span>{t('pdfToTiff.dpi72')}</span>
-                  <span>{t('pdfToTiff.dpi150')}</span>
-                  <span>{t('pdfToTiff.dpi300')}</span>
-                  <span>{t('pdfToTiff.dpi600')}</span>
-                </div>
-              </div>
-
-              {/* Halftone / 1-bit logic notice */}
-              <div className="p-3 rounded-xl bg-muted border border-border/50 text-[10px] text-muted-foreground leading-normal flex gap-2">
-                <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-foreground">{t('pdfToTiff.tipTitle')}</span>
-                  {t('pdfToTiff.tipDesc') || 'TIFF recommendations:'} <span className="text-primary font-semibold mx-0.5">{t('pdfToTiff.tipRecommend') || '300 DPI'}</span> {t('pdfToTiff.tipTail') || 'to ensure clean edges.'}
-                </div>
-              </div>
-
-            </Card>
-
-            {/* Run Buttons */}
-            <div className="space-y-3">
-              <Button
-                variant="default"
-                size="lg"
-                onClick={handleProcess}
-                disabled={isProcessing}
-                className="w-full py-4 flex items-center justify-center gap-2"
-              >
-                <Printer className="w-5 h-5" />
-                {isProcessing ? (t('pdfToTiff.processing') || 'Processing...') : t('pdfToTiff.processButton')}
-              </Button>
-
-              {result && (
-                <DownloadButton
-                  file={result}
-                  filename={`${file.name.replace(/\.pdf$/i, '')}.tiff`}
-                  variant="secondary"
-                  size="lg"
-                  className="w-full py-4"
-                  showFileSize
-                />
-              )}
-            </div>
-
-            {/* Complete Prompt */}
-            {status === 'complete' && result && (
-              <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
-                <p className="text-sm font-semibold flex items-center justify-center gap-1.5">
-                  <Check className="w-5 h-5" />
-                  {t('pdfToTiff.successMessage')}
-                </p>
-              </AlertDescription></Alert>
-            )}
-          </div>
-
         </div>
-      )}
-
-      {/* Processing Progress */}
-      {isProcessing && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={handleCancel}
-          showPercentage
-        />
-      )}
+        <Button variant="ghost" size="icon-sm" aria-label={t('buttons.remove')} onClick={handleClearFile} disabled={isProcessing}><X aria-hidden="true" /></Button>
+      </Card> : <FileUploader accept={['application/pdf']} multiple={false} onFilesSelected={handleFileSelected} onError={setError}
+        disabled={isProcessing || isLoadingFile} label={t('pdfToTiff.uploadButton')} description={t('pdfToTiff.uploadDesc')} />}
     </div>
-  );
+
+    {isLoadingFile && <div role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 aria-hidden="true" className="size-4 animate-spin" />{t('aiPdfReflower.scanningMetadata')}</div>}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+
+    {file && totalPages > 0 && <div className="grid items-start gap-6 lg:grid-cols-2">
+      <Card className="p-6" role="region" aria-labelledby={`${id}-summary`}>
+        <h3 id={`${id}-summary`} className="text-base font-semibold">{t('pdfToTiff.previewTitle')}</h3>
+        <dl className="space-y-4 text-sm">
+          <div><dt className="text-muted-foreground">{t('pdfToTiff.colorModeLabel')}</dt><dd className="font-medium">{colorModes.find(mode => mode.value === colorMode)?.label}</dd></div>
+          <div><dt className="text-muted-foreground">{t('pdfToTiff.compressionLabel')}</dt><dd className="font-medium">{compressionModes.find(mode => mode.value === compression)?.label}</dd></div>
+          <div><dt className="text-muted-foreground">{t('pdfToTiff.resolutionLabel')}</dt><dd className="font-medium tabular-nums">{t('pdfToTiff.resolutionDpi', { dpi, percent: Math.round(dpi / 72 * 100) })}</dd></div>
+        </dl>
+        <p className="text-sm text-muted-foreground">{t(colorMode === 'color' ? 'pdfToTiff.descColor' : colorMode === 'grayscale' ? 'pdfToTiff.descGrayscale' : 'pdfToTiff.descMono')}</p>
+      </Card>
+
+      <div className="space-y-6">
+        <Card className="p-6">
+          <h3 className="text-base font-semibold">{t('pdfToTiff.optionsTitle')}</h3>
+          <fieldset className="space-y-3">
+            <legend id={`${id}-color`} className="mb-3 text-sm font-medium">{t('pdfToTiff.colorModeLabel')}</legend>
+            <RadioGroup value={colorMode} onValueChange={value => { if (value === 'color' || value === 'grayscale' || value === 'mono') setColorMode(value); }}
+              aria-labelledby={`${id}-color`} orientation="vertical" dir={direction} disabled={isProcessing}>
+              {colorModes.map(mode => <div key={mode.value} className="flex items-start gap-3"><RadioGroupItem id={`${id}-color-${mode.value}`} value={mode.value} className="mt-0.5" /><Label className="min-w-0 leading-5" htmlFor={`${id}-color-${mode.value}`}>{mode.label}</Label></div>)}
+            </RadioGroup>
+          </fieldset>
+          <fieldset className="space-y-3">
+            <legend id={`${id}-compression`} className="mb-3 text-sm font-medium">{t('pdfToTiff.compressionLabel')}</legend>
+            <RadioGroup value={compression} onValueChange={value => { if (value === 'none' || value === 'packbits') setCompression(value); }}
+              aria-labelledby={`${id}-compression`} orientation="vertical" dir={direction} disabled={isProcessing}>
+              {compressionModes.map(mode => <div key={mode.value} className="flex items-start gap-3"><RadioGroupItem id={`${id}-compression-${mode.value}`} value={mode.value} className="mt-0.5" /><Label className="min-w-0 leading-5" htmlFor={`${id}-compression-${mode.value}`}>{mode.label}</Label></div>)}
+            </RadioGroup>
+          </fieldset>
+          <div className="space-y-3">
+            <Label id={`${id}-dpi`}>{t('pdfToTiff.resolutionLabel')}<span className="ms-auto tabular-nums">{dpi} DPI</span></Label>
+            <Slider value={[dpi]} onValueChange={([value]) => setDpi(value)} min={72} max={600} step={6} disabled={isProcessing} dir={direction}
+              aria-labelledby={`${id}-dpi`} aria-valuetext={`${dpi} DPI`} />
+            <div className="flex flex-wrap justify-between gap-2 text-xs text-muted-foreground"><span>72 DPI</span><span>150 DPI</span><span>300 DPI</span><span>600 DPI</span></div>
+          </div>
+          <Alert role="note"><Info aria-hidden="true" /><AlertDescription>{t('pdfToTiff.tipDesc')} {t('pdfToTiff.tipRecommend')}</AlertDescription></Alert>
+        </Card>
+        <Button className="w-full whitespace-normal" onClick={handleProcess} disabled={isProcessing || isLoadingFile} loading={isProcessing}>
+          <Printer aria-hidden="true" />{isProcessing ? t('status.processing') : t('pdfToTiff.processButton')}
+        </Button>
+        {result && <DownloadButton file={result} filename={`${file.name.replace(/\.pdf$/i, '')}.tiff`} className="w-full" showFileSize />}
+        {status === 'complete' && result && <Alert role="status"><CheckCircle2 aria-hidden="true" /><AlertDescription>{t('pdfToTiff.successMessage')}</AlertDescription></Alert>}
+      </div>
+    </div>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} showPercentage />}
+  </div>;
 }
 
 export default PDFToTIFFTool;

@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} Seite(n) • {size} MB",
       "uploadButton": "PDF-Datei hochladen",
       "uploadDesc": "Physischer binärer IFD-Compositor, der mehrere hochauflösende Seiten direkt in ein einziges mehrseitiges TIFF zusammenfügt.",
-      "previewTitle": "Echtzeit-Vorschau der 3D-Spektralpixel-Dichte",
+      "previewTitle": "Ausgabeübersicht",
       "descColor": "24-Bit-RGB-Farbe: 3 Bytes pro Pixel. Erhält das gesamte Farbspektrum in hoher Auflösung.",
       "descGrayscale": "8-Bit-Graustufen: Konvertiert Farben in ausgewogene Helligkeitswerte, ideal für Schwarz-Weiß-Archive.",
       "descMono": "1-Bit-Monochrom: Halbton-127-Binarisierungsschwelle, extrem hoher Kontrast, verringert die Dateigröße um das 24-fache.",
@@ -839,7 +839,7 @@
       "compressionNone": "Keine Komprimierung (Höchste Kompatibilität)",
       "compressionPackbits": "Verlustfreie Lauflängenkodierung (PackBits RLE)",
       "resolutionLabel": "C. Auflösungspixeldichte (DPI)",
-      "resolutionDpi": "{dpi} DPI ({percent}% Retina-Skalierung)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (Niedrige Bildschirmauflösung)",
       "dpi150": "150 DPI (Ausgewogener Bürostandard)",
       "dpi300": "300 DPI (Archivierungsdruckqualität)",
@@ -848,7 +848,7 @@
       "tipDesc": "Mehrseitige TIFF-Dokumente lassen sich in Photoshop oder Acrobat reibungslos scrollen, bleiben jedoch Raster-Bitmaps. Für Text und Vektarlinien empfehlen wir mindestens",
       "tipRecommend": "300 DPI",
       "processButton": "Mehrseitige TIFF-Erstellung ausführen",
-      "successMessage": "🎉 Mehrseitiges TIFF in einer Datei erfolgreich kompiliert! Der Download steht bereit."
+      "successMessage": "Mehrseitiges TIFF in einer Datei erfolgreich kompiliert! Der Download steht bereit."
     },
     "removeBlankPages": {
       "pagesCount": "{count} Seite(n) • {size} MB",

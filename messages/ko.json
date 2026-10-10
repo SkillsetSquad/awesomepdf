@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} 페이지 • {size} MB",
       "uploadButton": "PDF 파일 업로드",
       "uploadDesc": "이진 바이너리 IFD 작성기로서, 고정밀 다중 페이지 PDF 데이터를 하나의 다중 페이지(Multi-page) TIFF 문서로 결합합니다.",
-      "previewTitle": "3D 스펙트럼 픽셀 밀도 및 실시간 미리보기",
+      "previewTitle": "출력 요약",
       "descColor": "24비트 RGB 컬러: 픽셀당 3바이트를 사용하며, 화려하고 완벽한 원본 색조를 유지합니다.",
       "descGrayscale": "8비트 그레이스케일: 색상을 명도 정보로 변환하여 흑백 문서 보관에 이상적입니다.",
       "descMono": "1비트 단색 흑백(Monochromatic): 하프톤 127 임계값을 통한 이진화(Binarization)를 수행하여 극한의 대비를 제공하며 파일 크기를 1/24로 축소합니다.",
@@ -839,7 +839,7 @@
       "compressionNone": "압축 없음 (높은 호환성)",
       "compressionPackbits": "무손실 런 레인스 압축 (PackBits RLE)",
       "resolutionLabel": "C. 해상도 픽셀 밀도 (DPI)",
-      "resolutionDpi": "{dpi} DPI ({percent}% 레티나 스케일)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (화면용 저해상도)",
       "dpi150": "150 DPI (사무용 표준 화질)",
       "dpi300": "300 DPI (인쇄 및 보관용 고화질)",
@@ -848,7 +848,7 @@
       "tipDesc": "다중 페이지 TIFF 파일은 Photoshop이나 Acrobat에서 무리 없이 볼 수 있지만, 래스터화된 비트맵 형태입니다. 텍스트와 벡터 선 정보를 정교하게 유지하려면 최소 다음 설정을 권장합니다.",
       "tipRecommend": "300 DPI",
       "processButton": "다중 페이지 TIFF 생성 시작",
-      "successMessage": "🎉 단일 파일 다중 페이지 TIFF 파일 빌드가 성공적으로 완료되었습니다! 다운로드할 수 있습니다."
+      "successMessage": "단일 파일 다중 페이지 TIFF 파일 빌드가 성공적으로 완료되었습니다! 다운로드할 수 있습니다."
     },
     "removeBlankPages": {
       "pagesCount": "{count} 페이지 • {size} MB",

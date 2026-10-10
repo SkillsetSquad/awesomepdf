@@ -826,7 +826,7 @@
       "uploadSuccess": "{count} ページ • {size} MB",
       "uploadButton": "PDFファイルをアップロード",
       "uploadDesc": "物理的なバイナリIFDコンポジター。複数の高精度ページを直接1つのマルチページTIFFに結合します。",
-      "previewTitle": "3Dスペクトル画素密度とスペクトルのリアルタイムプレビュー",
+      "previewTitle": "出力の概要",
       "descColor": "24ビットRGBカラー：1画素あたり3バイト。高精度にフルカラーのスペクトルを保持します。",
       "descGrayscale": "8ビットグレースケール：カラーをバランスの取れた輝度に変換し、白黒アーカイブのスキャンに最適です。",
       "descMono": "1ビットモノクローム：ハーフトーン127の二値化しきい値。高コントラストでファイルサイズを1/24に縮小します。",
@@ -839,7 +839,7 @@
       "compressionNone": "圧縮なし (高互換性)",
       "compressionPackbits": "無劣化ランレングス圧縮 (PackBits RLE)",
       "resolutionLabel": "C. 解像度画素密度 (DPI)",
-      "resolutionDpi": "{dpi} DPI ({percent}% Retinaスケール)",
+      "resolutionDpi": "{dpi} DPI",
       "dpi72": "72 DPI (低画面解像度)",
       "dpi150": "150 DPI (標準オフィス解像度)",
       "dpi300": "300 DPI (印刷・保存用高解像度)",
@@ -848,7 +848,7 @@
       "tipDesc": "マルチページTIFF文書は、PhotoshopやAcrobat内でスムーズにスクロールできますが、ラスタービットマップイメージのままです。テキストやベクター線を鮮明に保つには、少なくとも次の解像度を推奨します。",
       "tipRecommend": "300 DPI",
       "processButton": "マルチページTIFFパッケージングを実行",
-      "successMessage": "🎉 単一ファイルのマルチページTIFFが正常にコンパイルされました！ダウンロード可能です。"
+      "successMessage": "単一ファイルのマルチページTIFFが正常にコンパイルされました！ダウンロード可能です。"
     },
     "removeBlankPages": {
       "pagesCount": "{count} ページ • {size} MB",
