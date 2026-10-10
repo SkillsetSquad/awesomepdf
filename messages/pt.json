@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} página(s) • {size} MB",
       "uploadButton": "Enviar PDF de quadrinho",
       "uploadDesc": "Renderiza páginas com o máximo de detalhes enquanto incorpora bancos de dados de quadrinhos padrão OPF / XML.",
-      "previewTitle": "Visualização de capa de quadrinho animada em 3D",
+      "previewTitle": "Prévia dos metadados do quadrinho",
       "comicTitleDefault": "Título do quadrinho",
       "comicArtistDefault": "Artista anônimo",
       "directionRtlHelp": "Direita para a esquerda: Esquema clássico de mangá. A lombada é encadernada no lado direito.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Otimização de e-Ink",
       "einkGreyscaleDesc": "Desatura as páginas para uma escala de cinza rápida de 16 níveis para acelerar a atualização do papel eletrônico.",
       "processButton": "Compilar pacote de quadrinhos CBZ",
-      "successMessage": "🎉 Quadrinho CBZ compilado com sucesso! metadata.opf e ComicInfo.xml injetados. Download pronto."
+      "successMessage": "Quadrinho CBZ compilado com sucesso! metadata.opf e ComicInfo.xml injetados. Download pronto."
     },
     "pdfToSlide": {
       "themeLabel": "Esquema de tema de fundo do PPT",

@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} pagină(e) • {size} MB",
       "uploadButton": "Încărcați PDF-ul benzii desenate",
       "uploadDesc": "Redă paginile la detalii maxime în timp ce încorporează baze de date standard OPF / XML de benzi desenate.",
-      "previewTitle": "Previzualizare 3D a coperții benzii desenate",
+      "previewTitle": "Previzualizarea metadatelor benzii desenate",
       "comicTitleDefault": "Titlu bandă desenată",
       "comicArtistDefault": "Artist anonim",
       "directionRtlHelp": "De la dreapta la stânga: Schemă clasică Manga. Cotorul se leagă pe partea dreaptă.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Optimizare e-Ink",
       "einkGreyscaleDesc": "Desaturează paginile la o scară rapidă de gri cu 16 niveluri pentru a îmbunătăți rata de reîmprospătare a ecranelor e-paper.",
       "processButton": "Compilați pachetul de benzi desenate CBZ",
-      "successMessage": "🎉 Banda desenată CBZ a fost compilată cu succes! metadata.opf și ComicInfo.xml au fost injectate. Descărcare disponibilă."
+      "successMessage": "Banda desenată CBZ a fost compilată cu succes! metadata.opf și ComicInfo.xml au fost injectate. Descărcare disponibilă."
     },
     "pdfToSlide": {
       "themeLabel": "Schemă temă fundal PPT",

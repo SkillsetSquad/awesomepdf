@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} trang • {size} MB",
       "uploadButton": "Tải lên PDF truyện tranh",
       "uploadDesc": "Hiển thị các trang ở chi tiết tối đa trong khi nhúng cơ sở dữ liệu truyện tranh OPF / XML tiêu chuẩn.",
-      "previewTitle": "Xem trước bìa lật truyện tranh động 3D",
+      "previewTitle": "Xem trước siêu dữ liệu truyện tranh",
       "comicTitleDefault": "Tiêu đề truyện tranh",
       "comicArtistDefault": "Tác giả ẩn danh",
       "directionRtlHelp": "Từ phải sang trái: Phong cách Manga cổ điển. Gáy sách nằm ở bên phải.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Tối ưu hóa màn hình e-Ink",
       "einkGreyscaleDesc": "Giảm độ bão hòa màu của trang sang mức xám 16 cấp độ nhanh chóng giúp tối ưu tốc độ làm mới của màn hình giấy điện tử.",
       "processButton": "Biên dịch gói truyện tranh CBZ",
-      "successMessage": "🎉 Biên dịch gói CBZ thành công! Đã nhúng metadata.opf và ComicInfo.xml. Sẵn sàng tải xuống."
+      "successMessage": "Biên dịch gói CBZ thành công! Đã nhúng metadata.opf và ComicInfo.xml. Sẵn sàng tải xuống."
     },
     "pdfToSlide": {
       "themeLabel": "Chủ đề màu nền PPT",

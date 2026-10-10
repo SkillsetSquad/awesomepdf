@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} pagina/e • {size} MB",
       "uploadButton": "Carica fumetto PDF",
       "uploadDesc": "Esegue il rendering delle pagine con il massimo dettaglio incorporando database di fumetti standard OPF / XML.",
-      "previewTitle": "Anteprima della copertina del fumetto animata in 3D",
+      "previewTitle": "Anteprima dei metadati del fumetto",
       "comicTitleDefault": "Titolo del fumetto",
       "comicArtistDefault": "Artista anonimo",
       "directionRtlHelp": "Da destra a sinistra: Schema classico dei manga. La rilegatura del dorso è sul lato destro.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Ottimizzazione e-Ink",
       "einkGreyscaleDesc": "Desatura le pagine a una scala di grigi rapida a 16 livelli per accelerare l'aggiornamento della carta elettronica.",
       "processButton": "Compila pacchetto CBZ del fumetto",
-      "successMessage": "🎉 CBZ del fumetto compilato con successo! metadata.opf e ComicInfo.xml inseriti. Download pronto."
+      "successMessage": "CBZ del fumetto compilato con successo! metadata.opf e ComicInfo.xml inseriti. Download pronto."
     },
     "pdfToSlide": {
       "themeLabel": "Schema del tema di sfondo PPT",

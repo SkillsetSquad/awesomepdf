@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} Seite(n) • {size} MB",
       "uploadButton": "Comic-PDF hochladen",
       "uploadDesc": "Rendert Seiten in maximaler Detailtreue und bettet standardmäßige OPF-/XML-Comic-Datenbanken ein.",
-      "previewTitle": "Dynamische 3D-Comic-Umschlagvorschau",
+      "previewTitle": "Vorschau der Comic-Metadaten",
       "comicTitleDefault": "Comic-Titel",
       "comicArtistDefault": "Anonymer Künstler",
       "directionRtlHelp": "Rechts nach Links: Klassischer Manga-Stil. Buchrückenbindung auf der rechten Seite.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "E-Ink-Optimierung",
       "einkGreyscaleDesc": "Reduziert die Farbsättigung der Seiten auf 16 Graustufen für eine schnellere Aktualisierung auf E-Paper-Displays.",
       "processButton": "CBZ-Comic-Paket kompilieren",
-      "successMessage": "🎉 Comic-CBZ erfolgreich kompiliert! metadata.opf und ComicInfo.xml wurden eingebettet. Der Download steht bereit."
+      "successMessage": "Comic-CBZ erfolgreich kompiliert! metadata.opf und ComicInfo.xml wurden eingebettet. Der Download steht bereit."
     },
     "pdfToSlide": {
       "themeLabel": "PPT-Hintergrundthema",

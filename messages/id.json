@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} halaman • {size} MB",
       "uploadButton": "Unggah PDF Komik",
       "uploadDesc": "Merender halaman dengan detail maksimum sambil menyematkan basis data komik OPF / XML standar.",
-      "previewTitle": "Pratinjau Sampul Komik Dinamis 3D",
+      "previewTitle": "Pratinjau metadata komik",
       "comicTitleDefault": "Judul Komik",
       "comicArtistDefault": "Seniman Anonim",
       "directionRtlHelp": "Kanan ke Kiri: Skema manga klasik. Penjilidan punggung di sisi kanan.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Optimalisasi e-Ink",
       "einkGreyscaleDesc": "Menghilangkan saturasi halaman ke skala abu-abu 16 tingkat yang cepat untuk meningkatkan penyegaran kertas elektronik.",
       "processButton": "Susun Paket Komik CBZ",
-      "successMessage": "🎉 CBZ Komik berhasil disusun! metadata.opf dan ComicInfo.xml disuntikkan. Siap diunduh."
+      "successMessage": "CBZ Komik berhasil disusun! metadata.opf dan ComicInfo.xml disuntikkan. Siap diunduh."
     },
     "pdfToSlide": {
       "themeLabel": "Skema Tema Latar Belakang PPT",

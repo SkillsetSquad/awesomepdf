@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} 페이지 • {size} MB",
       "uploadButton": "만화 PDF 업로드",
       "uploadDesc": "고해상도 만화 페이지를 렌더링함과 동시에 표준 OPF / XML 기반의 ComicInfo 메타데이터 데이터베이스 정보를 자동으로 삽입합니다.",
-      "previewTitle": "3D 동적 만화책 넘기기 표지 미리보기",
+      "previewTitle": "만화 메타데이터 미리보기",
       "comicTitleDefault": "만화 제목",
       "comicArtistDefault": "작가 미상",
       "directionRtlHelp": "우하향/우측부터 읽기: 클래식 일본 만화 방식. 오른쪽 책등 제본.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "전자잉크(E-ink) 디스플레이 최적화",
       "einkGreyscaleDesc": "전자잉크 단말기의 화면 잔상 및 로딩 속도를 향상하기 위해 페이지를 16단계 그레이스케일로 변환합니다.",
       "processButton": "CBZ 만화 패키지 빌드 시작",
-      "successMessage": "🎉 만화 CBZ 파일이 성공적으로 빌드되었습니다! metadata.opf 및 ComicInfo.xml 메타데이터가 삽입되었습니다. 다운로드할 수 있습니다."
+      "successMessage": "만화 CBZ 파일이 성공적으로 빌드되었습니다! metadata.opf 및 ComicInfo.xml 메타데이터가 삽입되었습니다. 다운로드할 수 있습니다."
     },
     "pdfToSlide": {
       "themeLabel": "PPT 배경 테마",

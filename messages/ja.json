@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} ページ • {size} MB",
       "uploadButton": "コミックPDFをアップロード",
       "uploadDesc": "標準のOPF / XMLコミックデータベースを埋め込みながら、高解像度のページをレンダリングします。",
-      "previewTitle": "3D動的コミックめくりカバープレビュー",
+      "previewTitle": "コミックのメタデータのプレビュー",
       "comicTitleDefault": "コミックタイトル",
       "comicArtistDefault": "作者不明",
       "directionRtlHelp": "右開き: クラシックな日本の漫画のスタイル。右側で綴じます。",
@@ -800,7 +800,7 @@
       "einkGreyscale": "電子ペーパー（E-ink）最適化",
       "einkGreyscaleDesc": "E-inkデバイスの書き換え速度を向上させるため、ページを素早く16段階のグレースケールに減色します。",
       "processButton": "CBZコミックパッケージをコンパイル",
-      "successMessage": "🎉 コミックCBZが正常にコンパイルされました！ metadata.opf と ComicInfo.xml が注入されました。ダウンロード可能です。"
+      "successMessage": "コミックCBZが正常にコンパイルされました！ metadata.opf と ComicInfo.xml が注入されました。ダウンロード可能です。"
     },
     "pdfToSlide": {
       "themeLabel": "PPT背景テーマ設定",

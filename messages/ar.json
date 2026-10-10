@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} صفحة • {size} ميجابايت",
       "uploadButton": "تحميل ملف PDF للقصة المصورة",
       "uploadDesc": "يعرض الصفحات بأقصى قدر من التفاصيل مع تضمين قواعد بيانات القصص المصورة القياسية OPF / XML.",
-      "previewTitle": "معاينة ثلاثية الأبعاد لغلاف القصة المصورة التفاعلي",
+      "previewTitle": "معاينة بيانات القصص المصورة",
       "comicTitleDefault": "عنوان القصة المصورة",
       "comicArtistDefault": "رسام مجهول",
       "directionRtlHelp": "من اليمين إلى اليسار: نظام المانجا الكلاسيكي. يتم تجليد الكعب على الجانب الأيمن.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "تحسين شاشات الحبر الإلكتروني (e-Ink)",
       "einkGreyscaleDesc": "يزيل تشبع الصفحات إلى تدرج رمادي سريع مكون من 16 مستوى لزيادة سرعة تحديث الورق الإلكتروني.",
       "processButton": "تجميع حزمة القصة المصورة CBZ",
-      "successMessage": "🎉 تم تجميع حزمة CBZ للقصة المصورة بنجاح! تم حقن metadata.opf وComicInfo.xml. التنزيل جاهز."
+      "successMessage": "تم تجميع حزمة CBZ للقصة المصورة بنجاح! تم حقن metadata.opf وComicInfo.xml. التنزيل جاهز."
     },
     "pdfToSlide": {
       "themeLabel": "نظام سمة خلفية PPT",

@@ -787,7 +787,7 @@
       "uploadSuccess": "{count, plural, one {# strona} few {# strony} many {# stron} other {# strony}} • {size} MB",
       "uploadButton": "Prześlij komiks PDF",
       "uploadDesc": "Renderuje strony z maksymalną szczegółowością, osadzając standardowe bazy danych komiksów OPF / XML.",
-      "previewTitle": "Podgląd dynamicznej okładki komiksu 3D",
+      "previewTitle": "Podgląd metadanych komiksu",
       "comicTitleDefault": "Tytuł komiksu",
       "comicArtistDefault": "Anonimowy artysta",
       "directionRtlHelp": "Od prawej do lewej: klasyczny układ mangi. Grzbiet znajduje się po prawej stronie.",
@@ -814,7 +814,7 @@
       "einkGreyscale": "Optymalizacja e-Ink",
       "einkGreyscaleDesc": "Zmniejsza nasycanie stron do szybkiej 16-stopniowej skali szarości w celu zwiększenia odświeżania e-papieru.",
       "processButton": "Utwórz pakiet komiksowy CBZ",
-      "successMessage": "🎉 Komiks CBZ został pomyślnie utworzony! Dodano metadata.opf i ComicInfo.xml. Plik jest gotowy do pobrania."
+      "successMessage": "Komiks CBZ został pomyślnie utworzony! Dodano metadata.opf i ComicInfo.xml. Plik jest gotowy do pobrania."
     },
     "pdfToSlide": {
       "themeLabel": "Schemat motywu tła PPT",

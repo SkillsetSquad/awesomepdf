@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} page(s) • {size} Mo",
       "uploadButton": "Télécharger le manga PDF",
       "uploadDesc": "Rend les pages avec un maximum de détails tout en intégrant des bases de données de manga standard OPF / XML.",
-      "previewTitle": "Aperçu de la couverture de manga animée en 3D",
+      "previewTitle": "Aperçu des métadonnées de la bande dessinée",
       "comicTitleDefault": "Titre du manga",
       "comicArtistDefault": "Artiste anonyme",
       "directionRtlHelp": "Droite à gauche : Schéma classique du manga. Le dos se relie sur le côté droit.",
@@ -800,7 +800,7 @@
       "einkGreyscale": "Optimisation e-Ink",
       "einkGreyscaleDesc": "Désature les pages vers une échelle de gris rapide de 16 niveaux pour accélérer le rafraîchissement du papier électronique.",
       "processButton": "Compiler le package de manga CBZ",
-      "successMessage": "🎉 Manga CBZ compilé avec succès ! metadata.opf et ComicInfo.xml injectés. Téléchargement prêt."
+      "successMessage": "Manga CBZ compilé avec succès ! metadata.opf et ComicInfo.xml injectés. Téléchargement prêt."
     },
     "pdfToSlide": {
       "themeLabel": "Thème de fond de la présentation PPT",

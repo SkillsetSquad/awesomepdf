@@ -787,7 +787,7 @@
       "uploadSuccess": "{count} page(s) • {size} MB",
       "uploadButton": "Upload Comic PDF",
       "uploadDesc": "Renders pages at maximum details while embedding standard OPF / XML comic databases.",
-      "previewTitle": "3D Dynamic Comic Flip Cover Preview",
+      "previewTitle": "Comic metadata preview",
       "comicTitleDefault": "Comic Title",
       "comicArtistDefault": "Anonymous Artist",
       "directionRtlHelp": "Right to Left: Classic Manga scheme. Spines bind on the right side.",
@@ -814,7 +814,7 @@
       "einkGreyscale": "e-Ink Optimization",
       "einkGreyscaleDesc": "Desaturates pages to fast 16-level grayscale for e-paper refresh boosts.",
       "processButton": "Compile CBZ Comic Package",
-      "successMessage": "🎉 Comic CBZ compiled successfully! metadata.opf and ComicInfo.xml injected. Download ready."
+      "successMessage": "Comic CBZ compiled successfully! metadata.opf and ComicInfo.xml injected. Download ready."
     },
     "pdfToSlide": {
       "themeLabel": "PPT Background Theme Scheme",

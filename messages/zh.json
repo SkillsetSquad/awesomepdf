@@ -787,7 +787,7 @@
       "uploadSuccess": "{count} 页 • {size} MB",
       "uploadButton": "点击上传漫画 PDF 文档",
       "uploadDesc": "渲染高清页面的同时，自动自动嵌入 OPF / XML / Comment 漫画专属多维度数据库信息。",
-      "previewTitle": "3D 漫画体三维动态封面预览",
+      "previewTitle": "漫画元数据预览",
       "comicTitleDefault": "漫画标题",
       "comicArtistDefault": "佚名作者",
       "directionRtlHelp": "右翻页模式 (Right to Left)：经典日漫读向，书脊对齐右侧翻开。",
@@ -814,7 +814,7 @@
       "einkGreyscale": "墨水屏灰阶处理",
       "einkGreyscaleDesc": "脱色加速墨水屏刷新率与画质对比度",
       "processButton": "开始提取编译 CBZ 漫画包",
-      "successMessage": "🎉 漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。"
+      "successMessage": "漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。"
     },
     "pdfToSlide": {
       "themeLabel": "PPT 主题基色",

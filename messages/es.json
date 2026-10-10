@@ -773,7 +773,7 @@
       "uploadSuccess": "{count} página(s) • {size} MB",
       "uploadButton": "Subir PDF de cómic",
       "uploadDesc": "Renderiza páginas con el máximo detalle mientras incrusta bases de datos de cómics estándar OPF / XML.",
-      "previewTitle": "Vista previa de portada de cómic animada en 3D",
+      "previewTitle": "Vista previa de metadatos del cómic",
       "comicTitleDefault": "Título del cómic",
       "comicArtistDefault": "Artista anónimo",
       "directionRtlHelp": "Derecha a izquierda: Esquema de manga clásico. El lomo se encuaderna en el lado derecho.",
