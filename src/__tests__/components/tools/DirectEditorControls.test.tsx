@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DirectEditorControls } from '@/components/editor/DirectEditorControls';
 import ids from '../../fixtures/direct-editor-dom-contract.json';
@@ -8,6 +8,7 @@ afterEach(() => {
   document.getElementById('direct-editor-engine')?.remove();
   document.documentElement.dir = 'ltr';
   document.documentElement.lang = 'en';
+  Reflect.deleteProperty(window, 'appModule');
 });
 
 describe('Direct editor engine controls', () => {
@@ -40,5 +41,50 @@ describe('Direct editor engine controls', () => {
     expect(native.checked).toBe(true);
     expect(changes).toHaveBeenCalledOnce();
     expect(size.value).toBe('20');
+  });
+
+  it('keeps combined edit scopes and restores keyboard focus after dismissing the menu', async () => {
+    render(<DirectEditorControls labels={{}} locale="en" />);
+    const scope = document.getElementById('editScope') as HTMLSelectElement;
+    const changes = vi.fn();
+    scope.addEventListener('change', changes);
+    const trigger = screen.getByRole('button', { name: 'Edit existing content' });
+    await userEvent.click(trigger);
+    await userEvent.click(screen.getByRole('menuitemcheckbox', { name: 'Edit Text' }));
+    expect(scope.value).toBe('text');
+    await userEvent.click(screen.getByRole('menuitemcheckbox', { name: 'Edit Images' }));
+    expect(scope.value).toBe('text,image');
+    expect(changes).toHaveBeenCalledTimes(2);
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => expect(trigger).toHaveFocus());
+    expect(document.getElementById('editLabel')).toHaveTextContent('Edit Text + Edit Images');
+  });
+
+  it('passes a zoom preset to the existing editor API', async () => {
+    const setZoom = vi.fn();
+    Object.defineProperty(window, 'appModule', { configurable: true, value: { getZoom: () => 1, setZoom } });
+    render(<DirectEditorControls labels={{}} locale="en" />);
+    const trigger = screen.getByRole('button', { name: 'Zoom presets' });
+    await userEvent.click(trigger);
+    expect(screen.getByRole('menuitemradio', { name: '100%' })).toHaveAttribute('aria-checked', 'true');
+    await userEvent.click(screen.getByRole('menuitemradio', { name: '150%' }));
+    expect(setZoom).toHaveBeenCalledOnce();
+    expect(setZoom).toHaveBeenCalledWith(1.5);
+    await waitFor(() => expect(trigger).toHaveFocus());
+  });
+
+  it('displays local document properties in a dialog and returns focus on Escape', async () => {
+    const getDocDescription = vi.fn(() => ({ meta: { name: 'layout.pdf', size: 2048 }, fields: { Title: 'Local document title' } }));
+    Object.defineProperty(window, 'appModule', { configurable: true, value: { getDocDescription } });
+    render(<DirectEditorControls labels={{}} locale="en" />);
+    const trigger = screen.getByRole('button', { name: 'Document properties' });
+    await userEvent.click(trigger);
+    const dialog = screen.getByRole('dialog', { name: 'Document Properties' });
+    expect(within(dialog).getByText('layout.pdf')).toBeInTheDocument();
+    expect(within(dialog).getByText('Local document title')).toBeInTheDocument();
+    expect(within(dialog).getByText('2.0 KB')).toBeInTheDocument();
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => expect(trigger).toHaveFocus());
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });

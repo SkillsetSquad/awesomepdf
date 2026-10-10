@@ -22,6 +22,7 @@ export function DirectEditorClient() {
         const { common, tools } = catalog.default as typeof english;
         setLabels({
           tipBackToUpload: common.buttons.back,
+          close: common.buttons.close,
           export: common.buttons.download,
           tipExportS: common.buttons.download,
           tipUndoZ: common.editPdf.undo,

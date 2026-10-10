@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Card } from '@/components/ui/card';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { ALargeSmall, AlignCenter, AlignCenterHorizontal, AlignCenterVertical, AlignEndVertical, AlignJustify, AlignLeft, AlignRight, AlignStartVertical, ArrowDownToLine, ArrowLeft, ArrowUpToLine, Bold, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, ChevronsDown, ChevronsUp, CircleMinus, CirclePlus, Clipboard, Columns2, Copy, Download, ExternalLink, FlipHorizontal, FlipVertical, FolderOpen, Image as ImageIcon, IndentDecrease, IndentIncrease, Info, Italic, List, ListOrdered, PanelRight, Pencil, Redo2, RotateCcw, RotateCw, Rows2, Scan, Search, SlidersHorizontal, Strikethrough, Subscript, Superscript, Tag, TextCursorInput, Trash2, Underline, Undo2, X } from 'lucide-react';
+import { EditorEditMenu, EditorZoomMenu, EditorDocumentDialog } from './EditorMenus';
 import { withBasePath } from '@/lib/utils/path';
 
 // Keep native input IDs and change events for the existing browser-only editor engine.
@@ -70,13 +71,13 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
         <span className="sep">
         </span>
         <div id="tools" className="segmented">
-          <Button data-tool="edit" className="on" title={label("tools:editPdfText.tipEditExistingContent","Edit existing content")} data-i18n-title="tools:editPdfText.tipEditExistingContent" variant="ghost" size="sm" aria-label={label("tools:editPdfText.tipEditExistingContent","Edit existing content")}>
+          <EditorEditMenu locale={locale} labels={labels}><Button data-tool="edit" className="on" title={label("tools:editPdfText.tipEditExistingContent","Edit existing content")} data-i18n-title="tools:editPdfText.tipEditExistingContent" variant="ghost" size="sm" aria-label={label("tools:editPdfText.tipEditExistingContent","Edit existing content")}>
             <Pencil aria-hidden="true" className="size-4" />
             <span id="editLabel">
               {"Edit All"}
             </span>
             <ChevronDown aria-hidden="true" className="editcaret size-4" />
-          </Button>
+          </Button></EditorEditMenu>
           <NativeSelect id="editScope" hidden={true} title={label("tools:editPdfText.tipWhatTheEditToolTouchesNarrowTheScopeOnBus","What the Edit tool touches: narrow the scope on busy pages")} data-i18n-title="tools:editPdfText.tipWhatTheEditToolTouchesNarrowTheScopeOnBus" aria-label={label("tools:editPdfText.tipWhatTheEditToolTouchesNarrowTheScopeOnBus","What the Edit tool touches: narrow the scope on busy pages")} defaultValue="all">
             <NativeSelectOption value="all" data-i18n="tools:editPdfText.filterAll">
               {label("tools:editPdfText.filterAll","All")}
@@ -496,12 +497,12 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
       </div>
       <div id="viewbar">
         <div className="vbzoom">
-          <Button id="zoomMenuBtn" className="btn vbzoomlabel" title={label("tools:editPdfText.tipZoomPresets","Zoom presets")} data-i18n-title="tools:editPdfText.tipZoomPresets" variant="ghost" size="sm" aria-label={label("tools:editPdfText.tipZoomPresets","Zoom presets")}>
+          <EditorZoomMenu locale={locale} labels={labels}><Button id="zoomMenuBtn" className="btn vbzoomlabel" title={label("tools:editPdfText.tipZoomPresets","Zoom presets")} data-i18n-title="tools:editPdfText.tipZoomPresets" variant="ghost" size="sm" aria-label={label("tools:editPdfText.tipZoomPresets","Zoom presets")}>
             <span id="zoomLabel" className="label">
               {"100%"}
             </span>
             <ChevronDown aria-hidden="true" className="editcaret size-4" />
-          </Button>
+          </Button></EditorZoomMenu>
           <Button id="zoomOut" className="btn icon" title={label("tools:editPdfText.tipZoomOut","Zoom out")} data-i18n-title="tools:editPdfText.tipZoomOut" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipZoomOut","Zoom out")}>
             <CircleMinus aria-hidden="true" className="size-4" />
           </Button>
@@ -528,9 +529,9 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
           </Button>
         </div>
         <div className="vbright">
-          <Button id="docInfoBtn" className="btn icon" title={label("tools:editPdfText.tipDocumentProperties","Document properties")} data-i18n-title="tools:editPdfText.tipDocumentProperties" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipDocumentProperties","Document properties")}>
+          <EditorDocumentDialog locale={locale} labels={labels}><Button id="docInfoBtn" className="btn icon" title={label("tools:editPdfText.tipDocumentProperties","Document properties")} data-i18n-title="tools:editPdfText.tipDocumentProperties" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipDocumentProperties","Document properties")}>
             <Info aria-hidden="true" className="size-4" />
-          </Button>
+          </Button></EditorDocumentDialog>
           <Button id="vbCollapse" className="btn icon" title={label("tools:editPdfText.tipHideBar","Hide bar")} data-i18n-title="tools:editPdfText.tipHideBar" variant="ghost" size="icon-sm" aria-label={label("tools:editPdfText.tipHideBar","Hide bar")}>
             <ChevronsDown aria-hidden="true" className="size-4" />
           </Button>
