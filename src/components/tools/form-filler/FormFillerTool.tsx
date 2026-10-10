@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { fillForm, getFormFields, FormFieldValue } from '@/lib/pdf/processors/form-filler';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -56,9 +56,9 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
       {error && <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700"><p className="text-sm">{error}</p></div>}
       {file && (
         <>
-          <Card variant="outlined"><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); setFields([]); }} disabled={isProcessing}>Remove</Button></div></Card>
+          <Card className="p-6" ><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); setFields([]); }} disabled={isProcessing}>Remove</Button></div></Card>
           {fields.length > 0 ? (
-            <Card variant="outlined" size="lg">
+            <Card className="p-6"  >
               <h3 className="text-lg font-medium mb-4">Form Fields ({fields.length})</h3>
               <div className="space-y-3 max-h-96 overflow-y-auto">
                 {fields.map((field, idx) => (
@@ -71,12 +71,12 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
               <label className="flex items-center gap-2 mt-4"><input type="checkbox" checked={flatten} onChange={(e) => setFlatten(e.target.checked)} disabled={isProcessing} className="w-4 h-4" /><span>Flatten form after filling (make non-editable)</span></label>
             </Card>
           ) : (
-            <Card variant="outlined"><p className="text-gray-500">No fillable form fields found in this PDF.</p></Card>
+            <Card className="p-6" ><p className="text-gray-500">No fillable form fields found in this PDF.</p></Card>
           )}
         </>
       )}
       {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
-      {file && fields.length > 0 && <div className="flex flex-wrap items-center gap-4"><Button variant="primary" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>{isProcessing ? 'Processing...' : 'Fill Form'}</Button>{result && <DownloadButton file={result} filename={file.name.replace('.pdf', '_filled.pdf')} variant="secondary" size="lg" showFileSize />}</div>}
+      {file && fields.length > 0 && <div className="flex flex-wrap items-center gap-4"><Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>{isProcessing ? 'Processing...' : 'Fill Form'}</Button>{result && <DownloadButton file={result} filename={file.name.replace('.pdf', '_filled.pdf')} variant="secondary" size="lg" showFileSize />}</div>}
       {status === 'complete' && result && <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700"><p className="text-sm font-medium">Form filled successfully!</p></div>}
     </div>
   );

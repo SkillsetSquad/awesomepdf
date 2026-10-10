@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { linkCitations, type CitationLinkerOptions } from '@/lib/pdf/processors/citation-linker';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
@@ -264,7 +264,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* File Metadata Overview */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -292,7 +292,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           
           {/* LEFT: Citation Configuration & List */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            <Card variant="default" className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
               
               <div className="space-y-4">
                 <div className="border-b border-[hsl(var(--color-border))] pb-3">
@@ -343,7 +343,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                         placeholder={t('citationLinker.doiPlaceholder')}
                         className="flex-1 px-3 py-2 text-xs rounded-xl bg-white dark:bg-zinc-800 border border-[hsl(var(--color-border))] focus:ring-1 focus:ring-[hsl(var(--color-primary))]"
                       />
-                      <Button size="sm" variant="primary" onClick={handleSaveUrl}>
+                      <Button size="sm" variant="default" onClick={handleSaveUrl}>
                         <Check className="w-3.5 h-3.5" />
                       </Button>
                     </div>
@@ -391,7 +391,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               {/* Action Apply Button */}
               <div className="pt-4 border-t border-[hsl(var(--color-border))]">
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="lg"
                   className="w-full py-4 font-bold shadow-lg flex items-center justify-center gap-2"
                   onClick={handleApplyLinks}
@@ -405,7 +405,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
           {/* RIGHT: Interactive Glassmorphism Citation Star Map */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card variant="outlined" className="flex-1 p-6 bg-[hsl(var(--color-card))] border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
+            <Card  className="flex-1 p-6 bg-[hsl(var(--color-card))] border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
               
               {/* Star Topology SVG Map */}
               <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
@@ -527,7 +527,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* Processing State (Rotating gear dynamic panel) */}
       {isProcessing && (
-        <Card variant="default" className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 flex flex-col items-center justify-center space-y-6 shadow-2xl">
+        <Card  className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 flex flex-col items-center justify-center space-y-6 shadow-2xl">
           {/* 3D Gear rotate animation */}
           <div className="relative w-24 h-24 flex items-center justify-center">
             <div 
@@ -561,7 +561,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* Finished Stage (Success screen) */}
       {status === 'complete' && result && (
-        <Card variant="default" className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -577,7 +577,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
             <DownloadButton
               file={result}
               filename={file?.name.replace('.pdf', '_linked.pdf') || 'citations_linked.pdf'}
-              variant="primary"
+              variant="default"
               size="lg"
               className="flex-1 font-bold shadow-lg"
               showFileSize

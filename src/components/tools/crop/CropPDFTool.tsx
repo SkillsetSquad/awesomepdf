@@ -8,8 +8,8 @@ import 'cropperjs/dist/cropper.css';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { cropPDF, CropData } from '@/lib/pdf/processors/crop';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -408,7 +408,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       {state.file && (
         <>
           {/* File Info */}
-          <Card variant="outlined">
+          <Card className="p-6" >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-red-100 rounded-lg">
@@ -430,7 +430,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
           </Card>
 
           {/* Visual Cropper */}
-          <Card variant="outlined" className="p-0 overflow-hidden bg-gray-100">
+          <Card  className="p-0 overflow-hidden bg-gray-100">
             <div
               ref={cropperContainerRef}
               className={`relative ${isFullscreen ? 'bg-gray-900 flex flex-col' : ''}`}
@@ -611,7 +611,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                 </label>
 
                 <Button
-                  variant="primary"
+                  variant="default"
                   onClick={handleProcess}
                   loading={isProcessing}
                   disabled={isProcessing}
@@ -632,7 +632,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
             <div className="text-green-700 font-medium">
               {tTools('cropPdf.successMessage') || 'PDF cropped successfully!'}
             </div>
-            <DownloadButton file={result} filename={state.file.name.replace('.pdf', '_cropped.pdf')} variant="primary" size="lg" />
+            <DownloadButton file={result} filename={state.file.name.replace('.pdf', '_cropped.pdf')} variant="default" size="lg" />
           </div>
         </div>
       )}

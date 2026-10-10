@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Modal } from '@/components/ui/Modal';
 import { changePermissions, type ChangePermissionsOptions, type PDFPermissionSettings } from '@/lib/pdf/processors/change-permissions';
 import type { ProcessOutput } from '@/types/pdf';
@@ -255,7 +255,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
       {/* Selected File */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -288,7 +288,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
       {/* Permission Options */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('changePermissions.optionsTitle') || 'Document Permissions'}
@@ -339,7 +339,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
       {/* Password Settings */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('changePermissions.passwordTitle') || 'Password Settings'}
           </h3>
@@ -423,7 +423,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleChangePermissions}
           disabled={!canProcess}
@@ -483,7 +483,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
           </div>
           <div className="flex justify-end">
             <Button
-              variant="primary"
+              variant="default"
               size="sm"
               onClick={() => setShowPasswordErrorModal(false)}
             >

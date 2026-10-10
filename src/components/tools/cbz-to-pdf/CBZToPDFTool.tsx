@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { cbzToPDF, type CbzToPDFOptions, type CbzPageSize } from '@/lib/pdf/processors/cbz-to-pdf';
 import { BookOpen } from 'lucide-react';
 
@@ -101,7 +101,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
             )}
 
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
@@ -115,7 +115,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
             )}
 
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('cbzToPdf.optionsTitle') || 'Conversion Options'}
                     </h3>
@@ -178,7 +178,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
             )}
 
             <div className="flex flex-wrap items-center gap-4">
-                <Button variant="primary" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
+                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
                     <BookOpen className="w-4 h-4 mr-2" />
                     {isProcessing ? (t('status.processing') || 'Processing...') : (tTools('cbzToPdf.convertButton') || 'Convert to PDF')}
                 </Button>

@@ -22,8 +22,8 @@ import {
 } from 'lucide-react';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { formatFileSize } from '@/lib/storage/recent-files';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 export interface BatchProcessingPanelProps {
   translations: {
@@ -321,7 +321,7 @@ export const BatchProcessingPanel: React.FC<BatchProcessingPanelProps> = ({
         <div className="mt-4 flex flex-wrap gap-2">
           {!isProcessing && pendingCount > 0 && (
             <Button
-              variant="primary"
+              variant="default"
               size="sm"
               onClick={handleStartProcessing}
               className="flex items-center gap-2"

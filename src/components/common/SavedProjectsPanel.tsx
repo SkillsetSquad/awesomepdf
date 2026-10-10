@@ -12,8 +12,8 @@ import Link from 'next/link';
 import { FolderOpen, Trash2, Play, Pause, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import { useProjectStorage } from '@/lib/hooks/useProjectStorage';
 import { formatDate } from '@/lib/storage/recent-files';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { type Locale } from '@/lib/i18n/config';
 
 export interface SavedProjectsPanelProps {

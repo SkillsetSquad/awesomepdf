@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { manageOCGLayers, listOCGLayers, type OCGLayer } from '@/lib/pdf/processors/ocg-manager';
 import { Layers, Eye, EyeOff, Plus, Trash2, Edit2, RefreshCw } from 'lucide-react';
 
@@ -210,7 +210,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
             )}
 
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
                             <Layers className="w-5 h-5 text-[hsl(var(--color-primary))]" />
@@ -360,7 +360,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                     <DownloadButton
                         file={resultBlob}
                         filename={file ? `${file.name.replace(/\.pdf$/i, '')}_layers.pdf` : 'layers.pdf'}
-                        variant="primary"
+                        variant="default"
                         size="lg"
                     />
                 </div>

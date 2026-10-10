@@ -16,7 +16,7 @@ import {
   Check,
 } from 'lucide-react';
 import { Modal } from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { UpdateCheckResult, ReleaseAsset } from '@/types/updater';
 import { ignoreVersion, GITHUB_REPO } from '@/lib/updater';
 import { openExternalUrl } from '@/lib/tauri-bridge';
@@ -201,7 +201,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
                 {getMsg('retry', '重试')}
               </Button>
               <Button
-                variant="primary"
+                variant="default"
                 size="sm"
                 className="gap-1.5"
                 onClick={handleOpenGitHub}
@@ -232,7 +232,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
               </p>
             </div>
             <div className="pt-2">
-              <Button variant="primary" size="sm" onClick={onClose}>
+              <Button variant="default" size="sm" onClick={onClose}>
                 {getMsg('close', 'Close')}
               </Button>
             </div>
@@ -286,7 +286,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
               {result.matchedAssets.primary && (
                 <div className="flex items-stretch gap-2">
                   <Button
-                    variant="primary"
+                    variant="default"
                     className="flex-1 justify-center gap-2 py-5 text-sm font-semibold shadow-md shadow-primary/20"
                     onClick={() => handleDownload(result.matchedAssets.primary!)}
                   >

@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { encryptPDF, type EncryptPDFOptions, type PDFPermissions } from '@/lib/pdf/processors/encrypt';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -180,7 +180,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Selected File */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -214,7 +214,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Password Options */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('encryptPdf.passwordTitle') || 'Password Settings'}
           </h3>
@@ -292,7 +292,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Permission Options */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('encryptPdf.permissionsTitle') || 'Document Permissions'}
           </h3>
@@ -336,7 +336,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleEncrypt}
           disabled={!canEncrypt}

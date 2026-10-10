@@ -3,7 +3,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Sparkles, X, ArrowRight, Clock, Ban } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { UpdateCheckResult } from '@/types/updater';
 
 export interface UpdateNotificationToastProps {
@@ -105,7 +105,7 @@ export const UpdateNotificationToast: React.FC<UpdateNotificationToastProps> = (
       {/* Action buttons */}
       <div className="space-y-2">
         <Button
-          variant="primary"
+          variant="default"
           size="sm"
           onClick={onOpenModal}
           className="w-full justify-center gap-1.5 py-2 text-xs font-semibold shadow-sm"

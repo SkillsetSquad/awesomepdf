@@ -3,8 +3,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { isTauri, saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface StampsToolProps {
@@ -310,7 +310,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
 
       {stampState.file && viewerUrl && (
         <>
-          <Card variant="outlined">
+          <Card className="p-6" >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -328,7 +328,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
             </div>
           </Card>
 
-          <Card variant="outlined" className="bg-blue-50 border-blue-200">
+          <Card  className="bg-blue-50 border-blue-200">
             <div className="flex gap-3">
               <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -357,9 +357,9 @@ export function StampsTool({ className = '' }: StampsToolProps) {
             />
           </div>
 
-          <Card variant="outlined">
+          <Card className="p-6" >
             <Button
-              variant="primary"
+              variant="default"
               size="lg"
               onClick={handleSave}
               disabled={!stampState.viewerReady || isProcessing}

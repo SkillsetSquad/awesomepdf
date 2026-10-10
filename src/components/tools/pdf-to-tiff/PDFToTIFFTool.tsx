@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToTiff } from '@/lib/pdf/processors/pdf-to-tiff';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
@@ -151,7 +151,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
         </label>
         {file ? (
           <Card 
-            variant="outlined" 
+             
             className="relative group p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.3)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl"
           >
             <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
           
           {/* LEFT: 3D Pixel Grid Interactive Widget */}
           <div className="lg:col-span-5 space-y-4">
-            <Card variant="outlined" className="p-6 bg-[hsl(var(--color-card))] rounded-2xl flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
+            <Card  className="p-6 bg-[hsl(var(--color-card))] rounded-2xl flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
               <span className="text-xs font-bold text-[hsl(var(--color-muted-foreground))] mb-8 flex items-center gap-1.5">
                 <Cpu className="w-4 h-4 text-[hsl(var(--color-primary))]" />
                 {t('pdfToTiff.previewTitle')}
@@ -280,7 +280,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
           {/* RIGHT: Parameter adjustments */}
           <div className="lg:col-span-7 space-y-6">
             <Card 
-              variant="default" 
+               
               className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40"
             >
               <h3 className="text-sm font-bold text-[hsl(var(--color-foreground))] border-b border-[hsl(var(--color-border))] pb-3 flex items-center gap-1.5">
@@ -387,7 +387,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
             {/* Run Buttons */}
             <div className="space-y-3">
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}

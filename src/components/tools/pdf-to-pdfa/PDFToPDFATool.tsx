@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToPdfA, type PdfToPdfAOptions, type PdfALevel, PDFA_LEVEL_INFO } from '@/lib/pdf/processors/pdf-to-pdfa';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { Trash2, FileArchive, Check, AlertCircle, Loader2, X, Archive } from 'lucide-react';
@@ -135,7 +135,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             )}
 
             {hasFiles && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                             {tTools('pdfToPdfa.filesTitle') || 'Files to Convert'} ({files.length})
@@ -176,7 +176,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             )}
 
             {hasFiles && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('pdfToPdfa.optionsTitle') || 'PDF/A Options'}
                     </h3>
@@ -248,7 +248,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             )}
 
             <div className="flex flex-wrap items-center gap-4">
-                <Button variant="primary" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
+                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
                     <Archive className="w-4 h-4 mr-2" />
                     {isProcessing ? (t('status.processing') || 'Processing...') : (tTools('pdfToPdfa.convertButton') || 'Convert to PDF/A')}
                 </Button>

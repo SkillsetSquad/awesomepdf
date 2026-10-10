@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToJSON, type PDFToJSONOptions } from '@/lib/pdf/processors/pdf-to-json';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -227,7 +227,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
@@ -255,7 +255,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
 
       {/* Options Panel */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToJson.optionsTitle') || 'Extraction Options'}
           </h3>
@@ -363,7 +363,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleConvert}
           disabled={!canConvert}
@@ -388,7 +388,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
 
       {/* JSON Preview */}
       {jsonPreview && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToJson.previewTitle') || 'JSON Preview'}
           </h3>

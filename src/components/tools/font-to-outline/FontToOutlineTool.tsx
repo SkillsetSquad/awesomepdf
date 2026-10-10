@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { fontToOutline, type FontToOutlineOptions } from '@/lib/pdf/processors/font-to-outline';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { Trash2, FileArchive, Check, AlertCircle, Loader2, X, Type } from 'lucide-react';
@@ -108,7 +108,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             )}
 
             {hasFiles && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                             {tTools('fontToOutline.filesTitle') || 'Files'} ({files.length})
@@ -148,7 +148,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             )}
 
             {hasFiles && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('fontToOutline.optionsTitle') || 'Conversion Options'}
                     </h3>
@@ -205,7 +205,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             )}
 
             <div className="flex flex-wrap items-center gap-4">
-                <Button variant="primary" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
+                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canProcess} loading={isProcessing}>
                     <Type className="w-4 h-4 mr-2" />
                     {isProcessing ? (t('status.processing') || 'Processing...') : (tTools('fontToOutline.convertButton') || 'Convert Fonts to Outlines')}
                 </Button>

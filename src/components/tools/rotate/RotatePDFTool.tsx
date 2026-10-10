@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { rotatePDF } from '@/lib/pdf/processors/rotate';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
@@ -531,7 +531,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -565,7 +565,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
           {/* LEFT: Rotational Calibration Hub (Glassmorphism Control Area) */}
           <div className="lg:col-span-4 space-y-6">
             <Card
-              variant="default"
+              
               className="backdrop-blur-md border border-white/20 dark:border-zinc-800/40 shadow-xl overflow-hidden"
             >
               {/* Header */}
@@ -865,7 +865,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
             {/* Run Operations Button Area */}
             <div className="space-y-3">
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
                 onClick={handleRotate}
                 disabled={!canRotate}

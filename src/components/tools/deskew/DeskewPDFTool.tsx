@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { deskewPDF, type DeskewPDFOptions } from '@/lib/pdf/processors/deskew';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { Trash2, FileArchive, Check, AlertCircle, Loader2, X, ScanLine } from 'lucide-react';
@@ -165,7 +165,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
             {/* File List */}
             {hasFiles && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                             {tTools('deskewPdf.filesTitle') || 'Files to Deskew'} ({files.length})
@@ -244,7 +244,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
             {/* Deskew Options */}
             {hasFiles && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('deskewPdf.optionsTitle') || 'Deskew Options'}
                     </h3>
@@ -317,7 +317,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleDeskew}
                     disabled={!canProcess}

@@ -3,8 +3,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
   replaceExistingText,
   type ReplaceExistingTextDiagnostics,
@@ -1081,7 +1081,7 @@ export function LegacyAnnotatorTool({
       {file && pdfUrl && (
         <div className="space-y-4">
           {!hideHeaderCard && (
-            <Card variant="outlined" size="sm">
+            <Card className="p-6"  >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">

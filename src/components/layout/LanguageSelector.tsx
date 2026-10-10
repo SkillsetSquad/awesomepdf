@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Globe, ChevronDown, Check } from 'lucide-react';
 import { type Locale, locales, localeConfig, getLocalizedPath } from '@/lib/i18n/config';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export interface LanguageSelectorProps {
   currentLocale: Locale;

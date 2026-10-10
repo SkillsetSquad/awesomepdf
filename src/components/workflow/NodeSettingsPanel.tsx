@@ -6,7 +6,7 @@ import { WorkflowNode } from '@/types/workflow';
 import { getToolContent } from '@/config/tool-content';
 import { Locale } from '@/lib/i18n/config';
 import { X, Settings, RotateCcw, Check } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 interface NodeSettingsPanelProps {
     node: WorkflowNode | null;
@@ -3014,7 +3014,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                             {locale === 'zh' ? '即时已同步' : 'Auto-synced'}
                         </span>
                         <Button
-                            variant="primary"
+                            variant="default"
                             size="sm"
                             onClick={handleApply}
                         >

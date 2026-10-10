@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { addAttachments, type AddAttachmentsOptions } from '@/lib/pdf/processors/attachments';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -179,7 +179,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {/* PDF File Upload */}
-      <Card variant="outlined" size="lg">
+      <Card className="p-6"  >
         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
           {tTools('addAttachments.pdfFileTitle') || '1. Select PDF File'}
         </h3>
@@ -224,7 +224,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
       </Card>
 
       {/* Attachment Files Upload */}
-      <Card variant="outlined" size="lg">
+      <Card className="p-6"  >
         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
           {tTools('addAttachments.attachmentsTitle') || '2. Select Files to Attach'}
         </h3>
@@ -291,7 +291,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
 
       {/* Options Panel */}
       {pdfFile && attachmentFiles.length > 0 && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('addAttachments.optionsTitle') || 'Attachment Options'}
           </h3>
@@ -375,7 +375,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleAddAttachments}
           disabled={!canProcess}

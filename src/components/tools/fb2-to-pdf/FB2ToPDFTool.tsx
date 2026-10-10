@@ -6,8 +6,8 @@ import { BookText, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-r
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { fb2ToPDF } from '@/lib/pdf/processors/fb2-to-pdf';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -146,7 +146,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
             )}
 
             {files.length > 0 && (
-                <Card variant="outlined" size="lg" className="glass-card">
+                <Card   className="glass-card">
                     <div className="space-y-3">
                         <h3 className="font-semibold text-[hsl(var(--color-foreground))]">
                             {files.length} {files.length === 1 ? 'File' : 'Files'} Selected
@@ -185,7 +185,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
 
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleConvert}
                     disabled={!canConvert}

@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { createGridCombinePDF, type GridCombineOptions } from '@/lib/pdf/processors/grid-combine';
 import { loadPdfjs } from '@/lib/pdf/loader';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
@@ -359,7 +359,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
             {/* Preview Info */}
             {files.length > 0 && (
-                <Card variant="outlined" className="bg-blue-50 border-blue-200">
+                <Card  className="bg-blue-50 border-blue-200">
                     <div className="flex items-center gap-2 text-blue-800">
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -378,7 +378,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                 {/* File List (2/3 width) */}
                 <div className="lg:col-span-2 space-y-4">
                     {files.length > 0 && (
-                        <Card variant="outlined" size="lg">
+                        <Card className="p-6"  >
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                                     {tTools('gridCombine.filesTitle') || 'Files to Combine'} ({files.length})
@@ -494,7 +494,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                 {/* Options Panel (1/3 width) */}
                 <div className="lg:col-span-1">
                     {files.length > 0 && (
-                        <Card variant="outlined" className="sticky top-4">
+                        <Card  className="sticky top-4">
                             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                                 {tTools('gridCombine.optionsTitle') || 'Layout Options'}
                             </h3>
@@ -747,7 +747,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
             {files.length > 0 && (
                 <div className="flex flex-wrap items-center gap-4">
                     <Button
-                        variant="primary"
+                        variant="default"
                         size="lg"
                         onClick={handleCombine}
                         disabled={!canCombine}

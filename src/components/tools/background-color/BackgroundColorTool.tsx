@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { addBackgroundColor } from '@/lib/pdf/processors/background-color';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -44,8 +44,8 @@ export function BackgroundColorTool({ className = '' }: BackgroundColorToolProps
       {error && <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700"><p className="text-sm">{error}</p></div>}
       {file && (
         <>
-          <Card variant="outlined"><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>Remove</Button></div></Card>
-          <Card variant="outlined" size="lg">
+          <Card className="p-6" ><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>Remove</Button></div></Card>
+          <Card className="p-6"  >
             <label className="block text-sm font-medium mb-2">Background Color</label>
             <div className="flex items-center gap-4">
               <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-16 h-10 border rounded cursor-pointer" disabled={isProcessing} />
@@ -55,7 +55,7 @@ export function BackgroundColorTool({ className = '' }: BackgroundColorToolProps
         </>
       )}
       {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
-      {file && <div className="flex flex-wrap items-center gap-4"><Button variant="primary" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>{isProcessing ? 'Processing...' : 'Add Background'}</Button>{result && <DownloadButton file={result} filename={file.name.replace('.pdf', '_background.pdf')} variant="secondary" size="lg" showFileSize />}</div>}
+      {file && <div className="flex flex-wrap items-center gap-4"><Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>{isProcessing ? 'Processing...' : 'Add Background'}</Button>{result && <DownloadButton file={result} filename={file.name.replace('.pdf', '_background.pdf')} variant="secondary" size="lg" showFileSize />}</div>}
       {status === 'complete' && result && <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700"><p className="text-sm font-medium">Background color added!</p></div>}
     </div>
   );

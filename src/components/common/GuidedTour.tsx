@@ -10,7 +10,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import { useGuidedTour, type TourStep } from '@/lib/hooks/useGuidedTour';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export interface GuidedTourProps {
   steps: TourStep[];
@@ -176,7 +176,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
               <Button variant="ghost" onClick={handleSkipWelcome}>
                 {translations.skip}
               </Button>
-              <Button variant="primary" onClick={handleStartTour}>
+              <Button variant="default" onClick={handleStartTour}>
                 {translations.startTour}
               </Button>
             </div>
@@ -276,7 +276,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
                   {translations.prev}
                 </Button>
               )}
-              <Button variant="primary" size="sm" onClick={nextStep}>
+              <Button variant="default" size="sm" onClick={nextStep}>
                 {isLastStep ? translations.finish : translations.next}
                 {!isLastStep && <ChevronRight className="h-4 w-4 ml-1" />}
               </Button>

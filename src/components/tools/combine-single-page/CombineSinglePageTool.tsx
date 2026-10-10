@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { combineSinglePage, type CombineSinglePageOptions, type CombineOrientation } from '@/lib/pdf/processors/combine-single-page';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
@@ -202,7 +202,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -232,7 +232,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
       {/* Options */}
       {file && totalPages > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('combineSinglePage.optionsTitle') || 'Combine Options'}
           </h3>
@@ -383,7 +383,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
       {file && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleCombine}
             disabled={!canProcess}

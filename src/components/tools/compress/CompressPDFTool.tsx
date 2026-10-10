@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { compressPDF, type CompressionQuality, type CompressionAlgorithm } from '@/lib/pdf/processors/compress';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { loadPdfjs } from '@/lib/pdf/loader';
@@ -261,7 +261,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
       {/* File List / Multi-file Grid */}
       {hasFiles && !singleFile && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-[hsl(var(--color-foreground))]">
               {t('compress.waitingFiles', { count: files.length })}
@@ -363,7 +363,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
             {/* Start Compression Button */}
             <Button
-              variant="primary"
+              variant="default"
               size="lg"
               className="w-full font-bold shadow-lg"
               onClick={handleCompress}
@@ -382,7 +382,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           
           {/* LEFT: Split screen live comparison */}
           <div className="lg:col-span-7 flex flex-col space-y-4">
-            <Card variant="outlined" className="p-4 bg-zinc-100 dark:bg-zinc-950 rounded-[2rem] flex flex-col justify-between shadow-inner h-full min-h-[480px]">
+            <Card  className="p-4 bg-zinc-100 dark:bg-zinc-950 rounded-[2rem] flex flex-col justify-between shadow-inner h-full min-h-[480px]">
               
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-[hsl(var(--color-foreground))] flex items-center gap-1.5">
@@ -479,7 +479,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
           {/* RIGHT: Controls & Physics Balance Beam */}
           <div className="lg:col-span-5 flex flex-col space-y-6 justify-between">
-            <Card variant="default" className="p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between h-full shadow-xl">
+            <Card  className="p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between h-full shadow-xl">
               
               <div className="space-y-6">
                 
@@ -606,7 +606,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                     <Trash2 className="w-4 h-4" />
                   </Button>
                   <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     className="flex-1 font-bold shadow-lg shadow-[hsl(var(--color-primary)/0.15)]"
                     onClick={handleCompress}
@@ -637,7 +637,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
       {/* Download Zip Panel for Batch */}
       {allCompleted && !singleFile && (
-        <Card variant="default" className="p-6 rounded-[2rem] text-center space-y-4">
+        <Card  className="p-6 rounded-[2rem] text-center space-y-4">
           {t('compress.successTitle')}
           <div className="flex gap-2 justify-center">
             <Button variant="secondary" onClick={handleDownloadZip}>
@@ -650,7 +650,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
       {/* Single download outcome */}
       {allCompleted && singleFile && completedCount > 0 && (
-        <Card variant="default" className="p-8 rounded-[2rem] text-center space-y-6 shadow-xl animate-in zoom-in-95 duration-300">
+        <Card  className="p-8 rounded-[2rem] text-center space-y-6 shadow-xl animate-in zoom-in-95 duration-300">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -676,7 +676,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
             <DownloadButton
               file={files[0].result!}
               filename={`${singleFile.name.replace('.pdf', '')}_compressed.pdf`}
-              variant="primary"
+              variant="default"
               size="lg"
               className="flex-1 font-bold shadow-lg"
               showFileSize

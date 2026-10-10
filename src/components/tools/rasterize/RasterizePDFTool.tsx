@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { rasterizePDF, type RasterizePDFOptions, type RasterizeFormat, DPI_PRESETS } from '@/lib/pdf/processors/rasterize';
 import { Grid2X2, Image } from 'lucide-react';
 
@@ -139,7 +139,7 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
 
             {/* File Info */}
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
@@ -156,7 +156,7 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
 
             {/* Rasterize Options */}
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('rasterizePdf.optionsTitle') || 'Output Options'}
                     </h3>
@@ -294,7 +294,7 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleRasterize}
                     disabled={!canProcess}

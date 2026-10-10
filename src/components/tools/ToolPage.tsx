@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Tool, ToolContent, HowToStep, UseCase, FAQ, ToolCategory } from '@/types/tool';
-import { Card } from '@/components/ui/Card';
+import { Card } from '@/components/ui/card';
 import { getToolById } from '@/config/tools';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -204,7 +204,7 @@ function DescriptionSection({ description }: DescriptionSectionProps) {
       >
         {t('tools.about')}
       </h2>
-      <Card variant="outlined" size="lg" className="glass-card">
+      <Card   className="glass-card">
         <div
           className="prose prose-sm max-w-none text-[hsl(var(--color-foreground))/0.8]"
           dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
@@ -303,7 +303,7 @@ function UseCasesSection({ useCases }: UseCasesSectionProps) {
         {useCases.map((useCase, index) => (
           <Card
             key={index}
-            variant="default"
+            
             className="glass-card hover:shadow-lg transition-all duration-300"
             data-testid={`use-case-${index}`}
           >
@@ -362,7 +362,7 @@ function FAQSection({ faq }: FAQSectionProps) {
         {faq.map((item, index) => (
           <Card
             key={index}
-            variant="outlined"
+            
             className="glass-card"
             data-testid={`faq-item-${index}`}
             itemScope
@@ -429,7 +429,7 @@ function RelatedToolsSection({ tools, locale, localizedRelatedTools }: RelatedTo
               href={`/${locale}/tools/${tool.slug}`}
               className="block group"
             >
-              <Card hover clickable className="h-full glass-card transition-all duration-300 group-hover:-translate-y-1">
+              <Card   className="h-full glass-card transition-all duration-300 group-hover:-translate-y-1">
                 <div className="flex items-center gap-4">
                   <div
                     className="flex-shrink-0 w-12 h-12 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center group-hover:bg-[hsl(var(--color-primary))] transition-colors duration-300"

@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { Mail, MessageSquare, Github, Twitter, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { type Locale } from '@/lib/i18n/config';
 
 interface ContactPageClientProps {
@@ -101,7 +101,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    <Card className="p-6 h-full text-center" hover>
+                    <Card className="p-6 h-full text-center" >
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(var(--color-primary)/0.1)] mb-4">
                         <Icon className="h-6 w-6 text-[hsl(var(--color-primary))]" />
                       </div>
@@ -246,7 +246,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
 
                     <Button
                       type="submit"
-                      variant="primary"
+                      variant="default"
                       className="w-full"
                       loading={formStatus === 'submitting'}
                       disabled={formStatus === 'submitting'}

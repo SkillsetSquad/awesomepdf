@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { markdownToPDF, type MarkdownPageSize, type MarkdownTheme } from '@/lib/pdf/processors/markdown-to-pdf';
 import { FileType, Upload, Type, Eye, EyeOff } from 'lucide-react';
 import { marked } from 'marked';
@@ -229,7 +229,7 @@ Enjoy converting your Markdown to PDF!
                 <div className="space-y-4">
                     {/* File info for upload mode */}
                     {inputMode === 'upload' && file && (
-                        <Card variant="outlined">
+                        <Card className="p-6" >
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
@@ -322,7 +322,7 @@ Enjoy converting your Markdown to PDF!
             )}
 
             {/* Conversion Options */}
-            <Card variant="outlined">
+            <Card className="p-6" >
                 <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                     {tTools('markdownToPdf.optionsTitle') || 'Conversion Options'}
                 </h3>
@@ -427,7 +427,7 @@ Enjoy converting your Markdown to PDF!
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleConvert}
                     disabled={!canProcess}

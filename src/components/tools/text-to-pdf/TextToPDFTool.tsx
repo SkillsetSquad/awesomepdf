@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { 
   textToPDF, 
   AVAILABLE_FONTS,
@@ -16,7 +16,7 @@ import {
   type PageOrientation,
   type FontId
 } from '@/lib/pdf/processors/text-to-pdf';
-import { Select } from '@/components/ui/FormField';
+import { NativeSelect as Select } from '@/components/ui/native-select';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
 function generateId(): string {
@@ -183,7 +183,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
             label={tTools('txtToPdf.uploadLabel') || 'Upload Text Files'}
             description={tTools('txtToPdf.uploadDescription') || 'Drag and drop text files here, or click to browse.'} />
           {files.length > 0 && (
-            <Card variant="outlined" size="lg">
+            <Card className="p-6"  >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium">{tTools('txtToPdf.filesTitle') || 'Text Files'} ({files.length})</h3>
                 <Button variant="ghost" size="sm" onClick={handleClearAll} disabled={isProcessing}>{t('buttons.clearAll') || 'Clear All'}</Button>
@@ -219,7 +219,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
 
       {/* Text Input Mode */}
       {inputMode === 'text' && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium mb-4">{tTools('txtToPdf.enterText') || 'Enter Text'}</h3>
           <textarea value={directText} onChange={(e) => setDirectText(e.target.value)}
             placeholder={tTools('txtToPdf.textPlaceholder') || 'Type or paste your text here...'} disabled={isProcessing}
@@ -232,7 +232,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
 
       {/* Options Panel */}
       {(files.length >= 1 || (inputMode === 'text' && directText.length > 0)) && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium mb-4">{tTools('txtToPdf.optionsTitle') || 'PDF Options'}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
@@ -312,7 +312,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
       {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} showPercentage />}
 
       <div className="flex flex-wrap items-center gap-4">
-        <Button variant="primary" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing}>
+        <Button variant="default" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing}>
           {isProcessing ? (t('status.processing') || 'Processing...') : (tTools('txtToPdf.convertButton') || 'Convert to PDF')}
         </Button>
         {result && (

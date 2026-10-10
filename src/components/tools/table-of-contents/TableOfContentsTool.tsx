@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { generateTableOfContents, TOCOptions } from '@/lib/pdf/processors/table-of-contents';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -113,7 +113,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
 
       {file && (
         <>
-          <Card variant="outlined">
+          <Card className="p-6" >
             <div className="flex items-center justify-between">
               <p className="font-medium text-gray-900 dark:text-gray-100">{file.name}</p>
               <Button
@@ -131,7 +131,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
             </div>
           </Card>
 
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
               {tTools('options')}
             </h3>
@@ -236,7 +236,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
       {file && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleProcess}
             disabled={!file || isProcessing}

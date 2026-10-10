@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToSVG, type PDFToSVGOptions, type SVGResult } from '@/lib/pdf/processors/pdf-to-svg';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
@@ -254,7 +254,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
 
             {/* File Info */}
             {file && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
@@ -283,7 +283,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
 
             {/* Options Panel */}
             {file && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('pdfToSvg.optionsTitle') || 'Conversion Options'}
                     </h3>
@@ -345,7 +345,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleConvert}
                     disabled={!canConvert}
@@ -380,7 +380,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
 
             {/* SVG Preview Grid */}
             {svgResults.length > 0 && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('pdfToSvg.previewTitle') || 'Converted SVGs'} ({svgResults.length})
                     </h3>

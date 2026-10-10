@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Shield, Zap, Globe, Heart, Code, Users, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { type Locale } from '@/lib/i18n/config';
 import { getAllTools } from '@/config/tools';
 
@@ -103,7 +103,7 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
               {values.map((value, index) => {
                 const Icon = value.icon;
                 return (
-                  <Card key={index} className="p-6" hover>
+                  <Card key={index} className="p-6" >
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
                         <Icon className="h-6 w-6 text-[hsl(var(--color-primary))]" />
@@ -161,7 +161,7 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
                 {t('cta.description', { brand: tCommon('brand'), count: allTools.length })}
               </p>
               <Link href={`/${locale}/tools`}>
-                <Button variant="primary" size="lg">
+                <Button variant="default" size="lg">
                   {t('cta.button')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

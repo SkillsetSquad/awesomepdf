@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
@@ -321,7 +321,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -363,7 +363,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
       {metadata && status === 'complete' && (
         <>
           {/* Document Properties */}
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                 {tTools('viewMetadata.documentProperties') || 'Document Properties'}
@@ -381,7 +381,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
           </Card>
 
           {/* Dates */}
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
               {tTools('viewMetadata.dates') || 'Dates'}
             </h3>
@@ -393,7 +393,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
           </Card>
 
           {/* Document Info */}
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
               {tTools('viewMetadata.documentInfo') || 'Document Information'}
             </h3>
@@ -408,7 +408,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
 
           {/* Custom Metadata */}
           {metadata.customMetadata && Object.keys(metadata.customMetadata).length > 0 && (
-            <Card variant="outlined" size="lg">
+            <Card className="p-6"  >
               <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                 {tTools('viewMetadata.customMetadata') || 'Additional Metadata'}
               </h3>

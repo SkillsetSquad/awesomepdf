@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Modal } from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
   scanPdfForSignatures,
   renderPdfPage,
@@ -557,7 +557,7 @@ export function SignatureExtractorModal({
 
               {/* Right Column: Transparent Preview & Color Tuning (5 cols) */}
               <div className="lg:col-span-5 flex flex-col space-y-4">
-                <Card variant="outlined" className="p-4 space-y-4 flex-1 flex flex-col justify-between">
+                <Card  className="p-4 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <h4 className="text-sm font-semibold text-[hsl(var(--color-foreground))]">
@@ -705,7 +705,7 @@ export function SignatureExtractorModal({
                   {/* Action Buttons */}
                   <div className="space-y-2 pt-3 border-t border-[hsl(var(--color-border))]">
                     <Button
-                      variant="primary"
+                      variant="default"
                       className="w-full flex items-center justify-center gap-2"
                       disabled={!extractedResult || isExtracting}
                       onClick={handleSaveToLibrary}

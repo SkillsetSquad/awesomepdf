@@ -5,10 +5,10 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToImages, type ImageFormat, type PDFToImageOptions, type PageLayoutPreset, type PageLayoutOptions } from '@/lib/pdf/processors/pdf-to-image';
-import { Select } from '@/components/ui/FormField';
+import { NativeSelect as Select } from '@/components/ui/native-select';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
 import { saveBlobFile } from '@/lib/tauri-bridge';
@@ -265,7 +265,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
@@ -294,7 +294,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Options Panel */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToImage.optionsTitle') || 'Conversion Options'}
           </h3>
@@ -558,7 +558,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleConvert}
           disabled={!canConvert}
@@ -593,7 +593,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Image Preview for multiple images */}
       {isMultipleImages && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToImage.previewTitle') || 'Converted Images'} ({(result as Blob[]).length})
           </h3>

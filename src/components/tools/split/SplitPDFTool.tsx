@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
   splitPDF,
   parsePageRanges,
@@ -450,7 +450,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -479,7 +479,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* Split Mode Selection */}
       {file && totalPages > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('splitPdf.splitModeTitle') || 'Split Method'}
           </h3>
@@ -902,7 +902,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* Page Preview Grid */}
       {file && pagePreviews.length > 0 && (splitMode === 'ranges' || splitMode === 'visual') && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('splitPdf.pagePreviewTitle') || 'Select Pages'}
@@ -986,7 +986,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
       {file && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleSplit}
             disabled={!canSplit}
@@ -1002,7 +1002,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
       {/* Results */}
       {status === 'complete' && results.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('splitPdf.resultsTitle') || 'Split Results'} ({results.length} {results.length === 1 ? 'file' : 'files'})
           </h3>
@@ -1011,7 +1011,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
           {results.length > 1 && (
             <div className="mb-4">
               <Button
-                variant="primary"
+                variant="default"
                 onClick={async () => {
                   try {
                     const zipBlob = await createZip(results);

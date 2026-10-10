@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { ocrPDF, type OCROptions, type OCRLanguage, OCR_LANGUAGE_NAMES } from '@/lib/pdf/processors/ocr';
-import { Select } from '@/components/ui/FormField';
+import { NativeSelect as Select } from '@/components/ui/native-select';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import { 
   Scan, 
@@ -410,7 +410,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* File metadata bar */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
               <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -435,7 +435,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           
           {/* LEFT: OCR Options */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card variant="default" className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
+            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
               
               <div className="space-y-4 flex-1">
                 <div className="border-b border-[hsl(var(--color-border))] pb-3">
@@ -550,7 +550,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               {/* Start Trigger */}
               <div className="pt-4 border-t border-[hsl(var(--color-border))] mt-6">
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="lg"
                   className="w-full py-4 font-bold shadow-lg flex items-center justify-center gap-2"
                   onClick={handleOCR}
@@ -566,7 +566,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
           {/* RIGHT: 3D Holographic Wireframe Scan visualizer */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <Card variant="outlined" className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[380px]">
+            <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[380px]">
               
               {/* Scan grid canvas */}
               <div className="relative w-full aspect-video flex items-center justify-center z-10">
@@ -613,7 +613,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* Complete Outcomes screen */}
       {status === 'complete' && result && (
-        <Card variant="default" className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -657,7 +657,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               filename={`${file?.file.name.replace(/\.(pdf|png|jpe?g|webp|bmp|tiff?)$/i, '')}_ocr.${
                 outputFormat === 'text' ? 'txt' : outputFormat === 'markdown' ? 'md' : outputFormat === 'json' ? 'json' : 'pdf'
               }`}
-              variant="primary"
+              variant="default"
               size="lg"
               className="flex-1 font-bold shadow-lg min-w-[140px]"
               showFileSize
@@ -692,7 +692,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       {/* Pure text/JSON preview box */}
       {textPreview && (
-        <Card variant="outlined" size="lg" className="rounded-3xl shadow-sm space-y-3">
+        <Card   className="rounded-3xl shadow-sm space-y-3">
           <div className="flex items-center justify-between border-b border-[hsl(var(--color-border))] pb-3">
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-[hsl(var(--color-primary))]" />

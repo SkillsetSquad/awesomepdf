@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { packagePDFsToZip, type PDFToZipOptions } from '@/lib/pdf/processors/pdf-to-zip';
 import type { ProcessOutput, UploadedFile } from '@/types/pdf';
 
@@ -188,7 +188,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* File List */}
       {files.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <div>
               <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
@@ -253,7 +253,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* Options Panel */}
       {files.length > 0 && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToZip.optionsTitle') || 'ZIP Options'}
           </h3>
@@ -310,7 +310,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleCreateZip}
           disabled={!canCreateZip}

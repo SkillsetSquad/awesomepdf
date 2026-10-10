@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { overlayPDF } from '@/lib/pdf/processors/overlay';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -166,7 +166,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
             {t('overlayPdf.uploadBaseLabel')}
           </label>
           {baseFile ? (
-            <Card variant="outlined" className="relative group p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.3)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl">
+            <Card  className="relative group p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.3)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl">
               <div className="flex items-center gap-3">
                 <svg className="w-10 h-10 text-[hsl(var(--color-primary))]" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -212,7 +212,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
             {t('overlayPdf.uploadLayerLabel')}
           </label>
           {layerFile ? (
-            <Card variant="outlined" className="relative group p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
+            <Card  className="relative group p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
               <div className="flex items-center gap-3">
                 <svg className="w-10 h-10 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -266,7 +266,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
           
           {/* LEFT: 3D Visualization layer layout preview (Pure CSS awesome show) */}
           <div className="lg:col-span-5 space-y-4">
-            <Card variant="outlined" className="p-6 bg-[hsl(var(--color-card))] rounded-2xl flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
+            <Card  className="p-6 bg-[hsl(var(--color-card))] rounded-2xl flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
               <span className="text-xs font-bold text-[hsl(var(--color-muted-foreground))] mb-8">
                 {t('overlayPdf.previewTitle')}
               </span>
@@ -327,7 +327,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
           {/* RIGHT: Parameter adjustments */}
           <div className="lg:col-span-7 space-y-6">
-            <Card variant="default" className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40">
+            <Card  className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40">
               <h3 className="text-md font-bold text-[hsl(var(--color-foreground))] border-b border-[hsl(var(--color-border))] pb-3">
                 {t('overlayPdf.optionsTitle')}
               </h3>
@@ -409,7 +409,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
             {/* Run Button */}
             <div className="space-y-3">
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}

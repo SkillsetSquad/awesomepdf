@@ -14,7 +14,7 @@ import {
     GripVertical,
     XCircle,
 } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 interface FileListPanelProps {
     files: File[];
@@ -309,7 +309,7 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                             {tWorkflow('clearAll') || 'Clear All'}
                         </Button>
                         <Button
-                            variant="primary"
+                            variant="default"
                             size="sm"
                             onClick={handleClose}
                         >

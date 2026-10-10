@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { createBooklet, type BookletPDFOptions, type BookletGridMode, type BookletPaperSize, type BookletRotation } from '@/lib/pdf/processors/booklet';
 import { BookOpen } from 'lucide-react';
 
@@ -135,7 +135,7 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
             {/* File Info */}
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
@@ -152,7 +152,7 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
             {/* Booklet Options */}
             {hasFile && (
-                <Card variant="outlined">
+                <Card className="p-6" >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('pdfBooklet.optionsTitle') || 'Booklet Options'}
                     </h3>
@@ -361,7 +361,7 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleCreateBooklet}
                     disabled={!canProcess}

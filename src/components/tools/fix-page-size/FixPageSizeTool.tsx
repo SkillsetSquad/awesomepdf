@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
   fixPageSize,
   PAGE_SIZES,
@@ -183,7 +183,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
       {/* Selected File */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -217,7 +217,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
       {/* Options */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('fixPageSize.optionsTitle') || 'Page Size Options'}
           </h3>
@@ -386,7 +386,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleFixPageSize}
           disabled={!canProcess}

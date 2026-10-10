@@ -6,7 +6,7 @@ import { Star } from 'lucide-react';
 import { useFavorites } from '@/hooks/useFavorites';
 import { getToolById } from '@/config/tools';
 import { ToolCard } from '@/components/tools/ToolCard';
-import { Card } from '@/components/ui/Card';
+import { Card } from '@/components/ui/card';
 
 export interface FavoriteToolsSectionProps {
     /** Current locale */

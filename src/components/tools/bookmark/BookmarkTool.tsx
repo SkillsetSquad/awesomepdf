@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { processBookmarks, BookmarkItem, BookmarkOptions } from '@/lib/pdf/processors/bookmark';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -716,7 +716,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       {file && pdfDoc && (
         <div className="grid lg:grid-cols-2 gap-6">
           {/* PDF Preview Panel */}
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.pdfPreview') || 'PDF Preview'}</h3>
               <Button variant="ghost" size="sm" onClick={handleClearFile}>
@@ -754,7 +754,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           </Card>
 
           {/* Bookmark Editor Panel */}
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.bookmarksTitle') || 'Bookmarks'}</h3>
               <div className="flex gap-1">
@@ -775,7 +775,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                 >
                   ↑↓ {tTools('bookmark.sort') || 'Sort'}
                 </Button>
-                <Button variant="primary" size="sm" onClick={handleAddBookmark}>
+                <Button variant="default" size="sm" onClick={handleAddBookmark}>
                   + {tTools('bookmark.addBookmark') || 'Add Bookmark'}
                 </Button>
               </div>
@@ -823,7 +823,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       {file && bookmarks.length > 0 && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleProcess}
             disabled={isProcessing}

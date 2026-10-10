@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { extractVectors, type VectorExtractorOptions } from '@/lib/pdf/processors/vector-extractor';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
@@ -267,7 +267,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
       {/* Metadata bar */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -318,7 +318,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
           
           {/* LEFT: SVG Display Canvas */}
           <div className="lg:col-span-8 flex flex-col space-y-4">
-            <Card variant="outlined" className="p-4 bg-zinc-100 dark:bg-zinc-950 flex-1 flex flex-col justify-between rounded-[2rem] border-2 shadow-inner min-h-[480px]">
+            <Card  className="p-4 bg-zinc-100 dark:bg-zinc-950 flex-1 flex flex-col justify-between rounded-[2rem] border-2 shadow-inner min-h-[480px]">
               
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-[hsl(var(--color-foreground))] flex items-center gap-1.5">
@@ -350,7 +350,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
           <div className="lg:col-span-4 flex flex-col space-y-6">
             
             {/* Inspector Panel */}
-            <Card variant="default" className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
               
               <div className="space-y-6">
                 <div className="border-b border-[hsl(var(--color-border))] pb-3">
@@ -431,7 +431,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                   <DownloadButton
                     file={resultBlob}
                     filename={file.name.replace(/\.pdf$/i, `_page_${targetPage}.svg`)}
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     className="w-full py-4 font-bold shadow-lg"
                     showFileSize

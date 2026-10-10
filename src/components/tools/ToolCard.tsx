@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Tool, ToolCategory } from '@/types/tool';
-import { Card } from '@/components/ui/Card';
+import { Card } from '@/components/ui/card';
 import { ArrowUpRight } from 'lucide-react';
 import { getToolIcon } from '@/config/icons';
 import { FavoriteButton } from '@/components/ui/FavoriteButton';

@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Shield, Lock, Eye, Server, Trash2, Cookie, Globe, Mail } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Card } from '@/components/ui/Card';
+import { Card } from '@/components/ui/card';
 import { type Locale } from '@/lib/i18n/config';
 
 interface PrivacyPageClientProps {
@@ -67,7 +67,7 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
               {privacyHighlights.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <Card key={index} className="p-6 text-center" hover>
+                  <Card key={index} className="p-6 text-center" >
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                       <Icon className="h-6 w-6 text-green-600" />
                     </div>

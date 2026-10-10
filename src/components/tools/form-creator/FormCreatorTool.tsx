@@ -7,8 +7,8 @@ import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { createForm, FormField } from '@/lib/pdf/processors/form-creator';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -1180,7 +1180,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             </div>
 
             {/* Canvas with field overlays */}
-            <Card variant="outlined" size="sm">
+            <Card className="p-6"  >
               <div
                 ref={containerRef}
                 className="relative bg-gray-100 rounded-[var(--radius-md)] overflow-auto"
@@ -1642,8 +1642,8 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             {/* Action Button */}
             <div className="p-3 border-t border-gray-100 bg-gray-50">
               <Button
-                variant="primary"
-                size="md"
+                variant="default"
+                size="default"
                 onClick={handleProcess}
                 disabled={isProcessing || fields.length === 0}
                 className="w-full"
@@ -1685,7 +1685,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       {/* Save Project Dialog */}
       {showSaveDialog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card variant="outlined" size="lg" className="w-full max-w-md mx-4 bg-white shadow-xl">
+          <Card   className="w-full max-w-md mx-4 bg-white shadow-xl">
             <h3 className="text-lg font-medium mb-4">{tTools('formCreator.saveProjectTitle') || 'Save Project'}</h3>
             <div className="space-y-4">
               <div>
@@ -1714,7 +1714,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   {tTools('formCreator.cancelButton') || 'Cancel'}
                 </Button>
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="sm"
                   onClick={handleSaveProject}
                   disabled={fields.length === 0}
@@ -1731,7 +1731,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       {/* Create Blank PDF Dialog */}
       {showBlankPdfDialog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card variant="outlined" size="lg" className="w-full max-w-md mx-4 bg-white shadow-xl">
+          <Card   className="w-full max-w-md mx-4 bg-white shadow-xl">
             <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
               <FilePlus2 className="w-5 h-5 text-blue-500" />
               {tTools('formCreator.createBlankPdfTitle') || 'Create Blank PDF'}
@@ -1783,7 +1783,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   {tTools('formCreator.cancelButton') || 'Cancel'}
                 </Button>
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="sm"
                   onClick={createBlankPdf}
                 >

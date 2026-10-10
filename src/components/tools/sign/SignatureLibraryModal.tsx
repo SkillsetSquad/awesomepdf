@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Modal } from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import {
   getSavedSignatures,
   saveSignature,
@@ -135,7 +135,7 @@ export function SignatureLibraryModal({
           </p>
           <div className="flex items-center gap-2">
             <Button
-              variant="primary"
+              variant="default"
               size="sm"
               onClick={() => fileInputRef.current?.click()}
               className="text-xs"
@@ -177,7 +177,7 @@ export function SignatureLibraryModal({
             </p>
             <div className="flex items-center justify-center gap-3">
               <Button
-                variant="primary"
+                variant="default"
                 size="sm"
                 onClick={() => fileInputRef.current?.click()}
               >
@@ -242,7 +242,7 @@ export function SignatureLibraryModal({
                 <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-[hsl(var(--color-border))]">
                   {viewerWindow && (
                     <Button
-                      variant="primary"
+                      variant="default"
                       size="sm"
                       className="flex-1 text-xs py-1 h-auto"
                       onClick={() => handleApply(sig)}

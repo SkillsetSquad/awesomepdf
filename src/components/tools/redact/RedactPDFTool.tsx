@@ -37,8 +37,8 @@ import {
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { loadPdfjs } from '@/lib/pdf/loader';
 import { PDFJS_CONFIG } from '@/lib/pdf/config';
 import { withBasePath } from '@/lib/utils/path';
@@ -1473,7 +1473,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/80">
                   <Button
                     size="sm"
-                    variant={activeTool === 'brush' ? 'primary' : 'ghost'}
+                    variant={activeTool === 'brush' ? 'default' : 'ghost'}
                     onClick={() => setActiveTool('brush')}
                     className="gap-1.5 text-xs h-8 font-medium"
                     title="自由画笔涂抹模式"
@@ -1483,7 +1483,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Button>
                   <Button
                     size="sm"
-                    variant={activeTool === 'rect' ? 'primary' : 'ghost'}
+                    variant={activeTool === 'rect' ? 'default' : 'ghost'}
                     onClick={() => setActiveTool('rect')}
                     className="gap-1.5 text-xs h-8 font-medium"
                     title="矩形选区框选模式"
@@ -1499,7 +1499,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/80">
                   <Button
                     size="sm"
-                    variant={activeStyle === 'blackout' ? 'primary' : 'ghost'}
+                    variant={activeStyle === 'blackout' ? 'default' : 'ghost'}
                     onClick={() => setActiveStyle('blackout')}
                     className="gap-1.5 text-xs h-8"
                   >
@@ -1508,7 +1508,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Button>
                   <Button
                     size="sm"
-                    variant={activeStyle === 'whiteout' ? 'primary' : 'ghost'}
+                    variant={activeStyle === 'whiteout' ? 'default' : 'ghost'}
                     onClick={() => setActiveStyle('whiteout')}
                     className="gap-1.5 text-xs h-8"
                   >
@@ -1517,7 +1517,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Button>
                   <Button
                     size="sm"
-                    variant={activeStyle === 'mosaic' ? 'primary' : 'ghost'}
+                    variant={activeStyle === 'mosaic' ? 'default' : 'ghost'}
                     onClick={() => setActiveStyle('mosaic')}
                     className="gap-1.5 text-xs h-8"
                   >
@@ -1526,7 +1526,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </Button>
                   <Button
                     size="sm"
-                    variant={activeStyle === 'blur' ? 'primary' : 'ghost'}
+                    variant={activeStyle === 'blur' ? 'default' : 'ghost'}
                     onClick={() => setActiveStyle('blur')}
                     className="gap-1.5 text-xs h-8"
                   >
@@ -1540,7 +1540,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
               <div className="flex items-center gap-2">
                 <Button
                   size="sm"
-                  variant={previewMode ? 'primary' : 'outline'}
+                  variant={previewMode ? 'default' : 'outline'}
                   onClick={() => setPreviewMode(!previewMode)}
                   className="gap-1.5 text-xs h-8"
                 >

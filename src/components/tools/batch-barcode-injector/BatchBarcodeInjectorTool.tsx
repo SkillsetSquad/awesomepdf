@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { injectBatchBarcodes, type BatchBarcodeOptions } from '@/lib/pdf/processors/batch-barcode-injector';
 import type { ProcessOutput } from '@/types/pdf';
 import { RefreshCcw, Sliders, CheckSquare, Sparkles } from 'lucide-react';
@@ -131,7 +131,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
-            <Card variant="outlined" className="p-6 bg-zinc-50 dark:bg-zinc-950/40 relative overflow-hidden rounded-[2rem] min-h-[380px] flex flex-col justify-between border-2">
+            <Card  className="p-6 bg-zinc-50 dark:bg-zinc-950/40 relative overflow-hidden rounded-[2rem] min-h-[380px] flex flex-col justify-between border-2">
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
                   <RefreshCcw className="w-4 h-4 text-primary" />
@@ -166,7 +166,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <Card variant="default" className="p-6 bg-white/40 dark:bg-black/30 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 rounded-[2rem] shadow-xl flex flex-col justify-between min-h-[380px]">
+            <Card  className="p-6 bg-white/40 dark:bg-black/30 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 rounded-[2rem] shadow-xl flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
@@ -225,14 +225,14 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                   <DownloadButton
                     file={resultBlob}
                     filename={`${file.name.replace(/\.pdf$/i, '')}_barcoded.pdf`}
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     className="w-full py-4 font-bold shadow-lg shadow-primary/25 rounded-2xl"
                     showFileSize
                   />
                 ) : (
                   <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     className="w-full py-4 font-bold rounded-2xl"
                     onClick={handleInject}

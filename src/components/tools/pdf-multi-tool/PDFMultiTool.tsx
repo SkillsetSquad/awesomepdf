@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
@@ -510,14 +510,14 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
       {/* Error Message */}
       {error && (
-        <Card variant="outlined" className="!bg-red-50 dark:!bg-red-900/20 !border-red-200 dark:!border-red-800">
+        <Card  className="!bg-red-50 dark:!bg-red-900/20 !border-red-200 dark:!border-red-800">
           <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
         </Card>
       )}
 
       {/* Editor Panel */}
       {pagePreviews.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           {/* Toolbar */}
           <div className="flex flex-wrap items-center gap-2 pb-4 mb-4 border-b border-[hsl(var(--color-border))]">
             {/* Edit Actions */}
@@ -798,7 +798,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
           <div className="flex flex-wrap items-center gap-3 pt-4 mt-4 border-t border-[hsl(var(--color-border))]">
             <Button
               variant="outline"
-              size="md"
+              size="default"
               onClick={handleDownloadSelected}
               disabled={selectedCount === 0 || isProcessing}
             >
@@ -809,8 +809,8 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             </Button>
 
             <Button
-              variant="primary"
-              size="md"
+              variant="default"
+              size="default"
               onClick={handleExport}
               disabled={!canExport}
               loading={isProcessing}
@@ -826,7 +826,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 file={result}
                 filename="edited.pdf"
                 variant="secondary"
-                size="md"
+                size="default"
                 showFileSize
               />
             )}
@@ -838,7 +838,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       {showAddBlankModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowAddBlankModal(false)}>
           <Card
-            variant="elevated"
+            
             className="max-w-sm w-full mx-4"
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
@@ -876,7 +876,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 <Button variant="outline" onClick={() => setShowAddBlankModal(false)} className="flex-1">
                   {t('buttons.cancel') || 'Cancel'}
                 </Button>
-                <Button variant="primary" onClick={handleAddBlankPage} className="flex-1">
+                <Button variant="default" onClick={handleAddBlankPage} className="flex-1">
                   {t('buttons.add') || 'Add'}
                 </Button>
               </div>
@@ -898,7 +898,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <Card variant="outlined" className="!bg-green-50 dark:!bg-green-900/20 !border-green-200 dark:!border-green-800">
+        <Card  className="!bg-green-50 dark:!bg-green-900/20 !border-green-200 dark:!border-green-800">
           <p className="text-sm font-medium text-green-700 dark:text-green-400">
             {tTools('pdfMultiTool.successMessage') || 'PDF processed successfully! Click the download button to save your file.'}
           </p>

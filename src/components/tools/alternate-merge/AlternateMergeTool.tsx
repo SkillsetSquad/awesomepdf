@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { alternateMergePDFs, type AlternateMergeOptions } from '@/lib/pdf';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -263,7 +263,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
 
       {/* File List */}
       {files.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('alternateMerge.filesTitle') || 'Files to Interleave'} ({files.length})
@@ -384,7 +384,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
 
       {/* Options Panel */}
       {files.length >= 2 && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('alternateMerge.optionsTitle') || 'Interleave Options'}
           </h3>
@@ -431,7 +431,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleMerge}
           disabled={!canMerge}

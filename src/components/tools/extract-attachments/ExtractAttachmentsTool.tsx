@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { extractAttachments, type AttachmentInfo } from '@/lib/pdf/processors/attachments';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
@@ -199,7 +199,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
 
       {/* File List */}
       {files.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('extractAttachments.filesTitle') || 'Selected Files'} ({files.length})
@@ -264,7 +264,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleExtract}
           disabled={!canExtract}
@@ -279,7 +279,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
 
       {/* Extracted Attachments */}
       {extractedAttachments.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('extractAttachments.extractedTitle') || 'Extracted Attachments'} ({extractedAttachments.length})

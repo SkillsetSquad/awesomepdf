@@ -3,8 +3,8 @@
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import type { SignatureValidationResult } from '@/types/digital-signature';
 
 export function ValidateSignatureTool({ className = '' }: { className?: string }) {
@@ -120,7 +120,7 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
       )}
 
       {pdfFile && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">{pdfFile.name}</p>
@@ -133,7 +133,7 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
 
       {/* Optional Trusted Certificate */}
       {pdfFile && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-3">{tTool('trustedCertTitle')}</h3>
           <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-3">{tTool('trustedCertDescription')}</p>
           <input
@@ -161,7 +161,7 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
       {validated && !loading && (
         <div className="space-y-4">
           {results.length === 0 ? (
-            <Card variant="outlined">
+            <Card className="p-6" >
               <div className="text-center py-8">
                 <svg className="w-12 h-12 mx-auto mb-4 text-[hsl(var(--color-muted-foreground))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -173,7 +173,7 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
           ) : (
             <>
               {/* Summary */}
-              <Card variant="outlined">
+              <Card className="p-6" >
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
                     {tTool('signaturesFound', { count: results.length })}
@@ -214,7 +214,7 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
                 }
 
                 return (
-                  <Card key={index} variant="outlined">
+                  <Card className="p-6" key={index} >
                     <div className="space-y-4">
                       {/* Header */}
                       <div className="flex items-start justify-between">

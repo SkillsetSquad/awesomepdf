@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { changeTextColor } from '@/lib/pdf/processors/text-color';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -72,7 +72,7 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
       
       {file && (
         <>
-          <Card variant="outlined">
+          <Card className="p-6" >
             <div className="flex items-center justify-between">
               <p className="font-medium">{file.name}</p>
               <Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>
@@ -81,7 +81,7 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
             </div>
           </Card>
           
-          <Card variant="outlined" size="lg">
+          <Card className="p-6"  >
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">{t('colorLabel')}</label>
@@ -164,7 +164,7 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
       
       {file && (
         <div className="flex flex-wrap items-center gap-4">
-          <Button variant="primary" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>
+          <Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>
             {isProcessing ? tCommon('process') + '...' : t('applyButton')}
           </Button>
           {result && (

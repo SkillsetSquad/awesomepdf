@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { removeBlankPages } from '@/lib/pdf/processors/remove-blank-pages';
 import type { ProcessOutput } from '@/types/pdf';
@@ -302,7 +302,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* Analyzing Phase */}
       {isAnalyzing && (
-        <Card variant="outlined" className="p-8 border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md rounded-3xl text-center space-y-4">
+        <Card  className="p-8 border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md rounded-3xl text-center space-y-4">
           <div className="flex justify-center">
             <div className="relative w-16 h-16 flex items-center justify-center">
               <Loader2 className="w-10 h-10 text-[hsl(var(--color-primary))] animate-spin" />
@@ -331,7 +331,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         <div className="space-y-6">
           
           {/* File Header Bar */}
-          <Card variant="outlined" className="p-4 flex flex-wrap items-center justify-between border border-zinc-200 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-950/20 backdrop-blur-sm rounded-2xl gap-4">
+          <Card  className="p-4 flex flex-wrap items-center justify-between border border-zinc-200 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-950/20 backdrop-blur-sm rounded-2xl gap-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-red-100 dark:bg-red-950/20 text-red-500">
                 <FileText className="w-6 h-6" />
@@ -352,7 +352,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
           </Card>
 
           {/* Control Workshop Controls */}
-          <Card variant="default" className="p-6 border border-zinc-200/60 dark:border-zinc-800/40 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md rounded-[2rem] shadow-xl space-y-6">
+          <Card  className="p-6 border border-zinc-200/60 dark:border-zinc-800/40 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md rounded-[2rem] shadow-xl space-y-6">
             
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               
@@ -456,8 +456,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               {/* Apply action triggers */}
               <div className="flex gap-2">
                 <Button 
-                  variant="primary" 
-                  size="md" 
+                  variant="default" 
+                  size="default" 
                   onClick={handleProcess} 
                   disabled={isProcessing || keepPagesCount === 0} 
                   loading={isProcessing}
@@ -473,7 +473,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
           {/* 3D Pages Queue Grid */}
           {displayedPages.length === 0 ? (
-            <Card variant="outlined" className="p-12 text-center rounded-[2rem] border-dashed border-zinc-200 dark:border-zinc-800">
+            <Card  className="p-12 text-center rounded-[2rem] border-dashed border-zinc-200 dark:border-zinc-800">
               <Eye className="w-10 h-10 text-zinc-300 dark:text-zinc-700 mx-auto mb-3" />
               <p className="text-sm text-[hsl(var(--color-muted-foreground))] font-bold">
                 {t('removeBlankPages.noPagesToDisplay') || 'No pages to display'}
@@ -509,7 +509,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* Complete State Screen */}
       {status === 'complete' && result && (
-        <Card variant="default" className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <FileCheck className="w-10 h-10" />
           </div>
@@ -530,7 +530,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             <DownloadButton 
               file={result} 
               filename={file?.name.replace('.pdf', '_no_blanks.pdf') || 'cleaned_document.pdf'} 
-              variant="primary" 
+              variant="default" 
               size="lg" 
               className="flex-1 font-bold shadow-lg"
               showFileSize 

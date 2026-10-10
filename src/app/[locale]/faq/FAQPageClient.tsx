@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { ChevronDown, ChevronUp, Search, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { type Locale } from '@/lib/i18n/config';
 
 interface FAQPageClientProps {
@@ -136,7 +136,7 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
                 {categories.map((cat) => (
                   <Button
                     key={cat.key}
-                    variant={selectedCategory === cat.key ? 'primary' : 'outline'}
+                    variant={selectedCategory === cat.key ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setSelectedCategory(cat.key)}
                   >
@@ -211,7 +211,7 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
                 {t('cta.description')}
               </p>
               <Link href={`/${locale}/contact`}>
-                <Button variant="primary">
+                <Button variant="default">
                   {t('cta.button')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

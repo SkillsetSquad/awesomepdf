@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { extractImages, type ExtractedImage, type ExtractImagesOptions } from '@/lib/pdf/processors/extract-images';
 import type { ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
@@ -274,7 +274,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
             {/* File List */}
             {files.length > 0 && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                             {tTools('extractImages.filesTitle') || 'Selected Files'} ({files.length})
@@ -327,7 +327,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
             {/* Filter Options */}
             {files.length > 0 && !isProcessing && extractedImages.length === 0 && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                         {tTools('extractImages.filterTitle') || 'Filter Options'}
                     </h3>
@@ -393,7 +393,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleExtract}
                     disabled={!canExtract}
@@ -408,7 +408,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
             {/* Extracted Images Grid */}
             {extractedImages.length > 0 && (
-                <Card variant="outlined" size="lg">
+                <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
                             {tTools('extractImages.extractedTitle') || 'Extracted Images'} ({extractedImages.length})
@@ -541,7 +541,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                             <div className="h-4 w-px bg-[hsl(var(--color-border))]" />
                             <Button
                                 size="sm"
-                                variant="primary"
+                                variant="default"
                                 onClick={() => handleDownloadImage(selectedImage)}
                             >
                                 {t('buttons.download') || 'Download'}

@@ -3,8 +3,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Download, X, CopyCheck } from 'lucide-react';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import { withBasePath } from '@/lib/utils/path';
@@ -142,7 +142,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
             {hasFile && pdfUrl && (
                 <>
                     {/* Simple Header with File Info */}
-                    <Card variant="outlined" className="!p-3">
+                    <Card  className="!p-3">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">

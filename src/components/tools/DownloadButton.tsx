@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Button, type ButtonProps } from '../ui/Button';
+import { Button, type ButtonProps } from '../ui/button';
 import { addRecentFile } from '@/lib/storage/recent-files';
 import { useToolContext } from '@/lib/contexts/ToolContext';
 import { sanitizeFilename } from '@/lib/utils/sanitize';
@@ -58,8 +58,8 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
   autoRevoke = true,
   showFileSize = true,
   disabled = false,
-  variant = 'primary',
-  size = 'md',
+  variant = 'default',
+  size = 'default',
   className = '',
   toolSlug: propToolSlug,
   toolName: propToolName,

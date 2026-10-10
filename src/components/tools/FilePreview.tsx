@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 
 export interface FilePreviewProps {

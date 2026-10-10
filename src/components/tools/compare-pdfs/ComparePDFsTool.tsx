@@ -4,8 +4,8 @@ import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react'
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { 
   FileText, 
@@ -415,7 +415,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               {t('comparePdfs.originalPdfTitle')}
             </label>
             {file1 ? (
-              <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.35)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl">
+              <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.35)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl">
                 <div className="flex items-center gap-3">
                   <FileText className="w-10 h-10 text-[hsl(var(--color-primary))]" />
                   <div>
@@ -445,7 +445,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               {t('comparePdfs.modifiedPdfTitle')}
             </label>
             {file2 ? (
-              <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
+              <Card  className="p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
                 <div className="flex items-center gap-3">
                   <FileText className="w-10 h-10 text-emerald-500" />
                   <div>
@@ -475,7 +475,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
       {file1 && file2 && pairedPages.length === 0 && !isProcessing && (
         <div className="flex justify-center pt-3">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleCompare}
             className="px-12 py-4 font-bold shadow-lg shadow-[hsl(var(--color-primary)/0.15)] flex items-center gap-2"
@@ -503,7 +503,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
           
           {/* Header Panel */}
           <Card 
-            variant="default" 
+             
             className="p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40"
           >
             <div>

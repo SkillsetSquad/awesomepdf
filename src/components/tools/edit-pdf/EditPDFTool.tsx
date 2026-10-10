@@ -3,8 +3,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { LegacyAnnotatorTool } from './LegacyAnnotatorTool';
 
 export interface EditPDFToolProps {
@@ -231,7 +231,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
       {file && (
         <div className="space-y-4">
           {/* File summary & mode switcher */}
-          <Card variant="outlined" size="sm" className="bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+          <Card   className="bg-white/80 dark:bg-gray-800/80 backdrop-blur">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <svg className="w-8 h-8 text-red-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">

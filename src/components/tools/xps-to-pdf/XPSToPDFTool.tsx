@@ -6,8 +6,8 @@ import { FileBox, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-re
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { xpsToPDF } from '@/lib/pdf/processors/xps-to-pdf';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -138,7 +138,7 @@ export function XPSToPDFTool({ className = '' }: XPSToPDFToolProps) {
             )}
 
             {file && (
-                <Card variant="outlined" size="lg" className="glass-card">
+                <Card   className="glass-card">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center text-[hsl(var(--color-primary))]">
@@ -161,7 +161,7 @@ export function XPSToPDFTool({ className = '' }: XPSToPDFToolProps) {
             )}
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button variant="primary" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing} className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5">
+                <Button variant="default" size="lg" onClick={handleConvert} disabled={!canConvert} loading={isProcessing} className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5">
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing ? (t('status.processing') || 'Converting...') : (tTools('xpsToPdf.convertButton') || 'Convert to PDF')}
                 </Button>

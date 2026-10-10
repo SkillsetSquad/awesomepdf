@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { addPageNumbers, PageNumberOptions } from '@/lib/pdf/processors/page-numbers';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -379,7 +379,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
           {/* Options Panel */}
           <div className="space-y-3 lg:max-h-[850px] lg:overflow-y-auto lg:pr-2">
             {/* File Info */}
-            <Card variant="outlined" className="p-3">
+            <Card  className="p-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <svg className="w-8 h-8 text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -399,7 +399,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
             </Card>
 
             {/* Main Options Card */}
-            <Card variant="outlined" className="p-4">
+            <Card  className="p-4">
               {/* Position Section */}
               <h4 className="text-sm font-semibold mb-2 text-gray-700">
                 {tTools('pageNumbers.positionTitle')}
@@ -631,7 +631,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
 
           {/* Preview Panel */}
           <div>
-            <Card variant="outlined" size="lg">
+            <Card className="p-6"  >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium">
                   {tTools('pageNumbers.preview')}
@@ -737,7 +737,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
       {file && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            variant="primary"
+            variant="default"
             size="lg"
             onClick={handleProcess}
             disabled={!file || isProcessing}

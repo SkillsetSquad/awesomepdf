@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { reflowPDF, type AIPDFReflowerOptions } from '@/lib/pdf/processors/ai-pdf-reflower';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
@@ -253,7 +253,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* File metadata status block */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -286,7 +286,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
           
           {/* LEFT: Controls Panel */}
           <div className="lg:col-span-5 space-y-6">
-            <Card variant="default" className="p-6 rounded-[2rem] shadow-xl border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md space-y-6">
+            <Card  className="p-6 rounded-[2rem] shadow-xl border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md space-y-6">
               <div className="border-b border-[hsl(var(--color-border))] pb-3">
                 <h3 className="text-base font-bold text-[hsl(var(--color-foreground))] flex items-center gap-2">
                   <Settings2 className="w-5 h-5 text-[hsl(var(--color-primary))]" />

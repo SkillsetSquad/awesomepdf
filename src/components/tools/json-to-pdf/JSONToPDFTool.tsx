@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { jsonToPDF, JSON_PAGE_SIZES, type JSONPageSizeType, type JSONToPDFOptions } from '@/lib/pdf/processors/json-to-pdf';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -225,7 +225,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
       {/* File List */}
       {files.length > 0 && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('jsonToPdf.filesTitle') || 'JSON Files'} ({files.length})
@@ -298,7 +298,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
       {/* Options Panel */}
       {files.length >= 1 && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('jsonToPdf.optionsTitle') || 'PDF Options'}
           </h3>
@@ -403,7 +403,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleConvert}
           disabled={!canConvert}

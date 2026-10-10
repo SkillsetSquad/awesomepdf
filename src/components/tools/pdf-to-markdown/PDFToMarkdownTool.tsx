@@ -7,8 +7,8 @@ import { marked } from 'marked';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToMarkdown } from '@/lib/pdf/processors/pdf-to-markdown';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import { sanitizeHtml } from '@/lib/utils/html-sanitizer';
@@ -208,7 +208,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
             {/* File Info */}
             {file && (
-                <Card variant="outlined" size="lg" className="glass-card">
+                <Card   className="glass-card">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center text-[hsl(var(--color-primary))]">
@@ -235,7 +235,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
             {/* Options */}
             {file && !isProcessing && status !== 'complete' && (
-                <Card variant="outlined" size="lg" className="glass-card">
+                <Card   className="glass-card">
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-[hsl(var(--color-foreground))]">
                             <Settings2 className="w-5 h-5" />
@@ -304,7 +304,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleConvert}
                     disabled={!canConvert}
@@ -349,7 +349,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
             {/* Preview Section */}
             {status === 'complete' && markdownContent && (
                 <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <Card variant="outlined" className="overflow-hidden glass-card p-0">
+                    <Card  className="overflow-hidden glass-card p-0">
                         {/* Preview Tabs */}
                         <div className="flex border-b border-[hsl(var(--color-border))] bg-[hsl(var(--color-muted))]/30">
                             <button

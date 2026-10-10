@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { addPageLabels } from '@/lib/pdf/processors/page-labels';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
@@ -250,7 +250,7 @@ export function AddPageLabelsTool() {
         </label>
         {file ? (
           <Card 
-            variant="outlined" 
+             
             className="relative group p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.3)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl"
           >
             <div className="flex items-center gap-3">
@@ -331,7 +331,7 @@ export function AddPageLabelsTool() {
               {rules.map((rule, idx) => (
                 <Card 
                   key={idx}
-                  variant="outlined" 
+                   
                   className="p-5 rounded-2xl relative space-y-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300"
                 >
                   <div className="flex justify-between items-center border-b border-[hsl(var(--color-border))] pb-3">
@@ -424,7 +424,7 @@ export function AddPageLabelsTool() {
             {/* Run Buttons */}
             <div className="space-y-3 pt-3">
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
                 onClick={handleProcess}
                 disabled={isProcessing}
@@ -464,7 +464,7 @@ export function AddPageLabelsTool() {
             </label>
 
             <Card 
-              variant="outlined" 
+               
               className="p-6 bg-[hsl(var(--color-card))] rounded-2xl min-h-[460px] flex flex-col border border-[hsl(var(--color-border))] shadow-inner"
             >
               {/* Informative tips */}

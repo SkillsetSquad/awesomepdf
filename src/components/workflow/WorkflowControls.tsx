@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { WorkflowExecutionState, WorkflowNode, WorkflowEdge, WorkflowValidation, WorkflowOutputFile } from '@/types/workflow';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { FileListPanel } from './FileListPanel';
 import { createZip } from '@/lib/zip';
 import { logger } from '@/lib/utils/logger';
@@ -245,7 +245,7 @@ export function WorkflowControls({
 
                     {/* Execute button */}
                     <Button
-                        variant="primary"
+                        variant="default"
                         size="sm"
                         onClick={handleExecute}
                         disabled={!canExecute}
@@ -550,7 +550,7 @@ export function WorkflowControls({
                                 {tCommon('buttons.cancel') || 'Cancel'}
                             </Button>
                             <Button
-                                variant="primary"
+                                variant="default"
                                 onClick={handleSave}
                                 disabled={!workflowName.trim()}
                             >

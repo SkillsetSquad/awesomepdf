@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { analyzePageDimensions, type PageDimensionsResult, type PageDimension } from '@/lib/pdf/processors/page-dimensions';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -190,7 +190,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
 
       {/* Selected File */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -223,7 +223,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
 
       {/* Display Options */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pageDimensions.displayOptions') || 'Display Options'}
           </h3>
@@ -273,7 +273,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleAnalyze}
           disabled={!canAnalyze}
@@ -300,7 +300,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
       {status === 'complete' && dimensionsResult && (
         <div className="space-y-4">
           {/* Summary */}
-          <Card variant="outlined">
+          <Card className="p-6" >
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
               {tTools('pageDimensions.summary') || 'Summary'}
             </h3>
@@ -338,7 +338,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
 
           {/* Unique Sizes */}
           {dimensionsResult.uniqueSizes.length > 0 && (
-            <Card variant="outlined">
+            <Card className="p-6" >
               <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
                 {tTools('pageDimensions.sizeDistribution') || 'Size Distribution'}
               </h3>
@@ -377,7 +377,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
           )}
 
           {/* Page Details */}
-          <Card variant="outlined">
+          <Card className="p-6" >
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
               {tTools('pageDimensions.pageDetails') || 'Page Details'}
             </h3>

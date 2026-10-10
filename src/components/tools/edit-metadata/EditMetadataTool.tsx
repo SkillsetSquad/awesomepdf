@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { editPDFMetadata, EditableMetadata } from '@/lib/pdf/processors/edit-metadata';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 
@@ -342,7 +342,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
 
       {/* File Info */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -382,7 +382,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
 
       {/* Metadata Edit Form */}
       {file && !isProcessing && status !== 'complete' && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
               {tTools('editMetadata.editTitle') || 'Edit Document Properties'}
@@ -454,7 +454,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
               {tTools('editMetadata.modificationNote') || 'The modification date will be updated automatically when you save.'}
             </p>
             <Button
-              variant="primary"
+              variant="default"
               size="lg"
               onClick={handleSaveMetadata}
               disabled={!file}
@@ -473,7 +473,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
             <DownloadButton
               file={resultBlob}
               filename={resultFilename}
-              variant="primary"
+              variant="default"
               size="lg"
             />
             <Button

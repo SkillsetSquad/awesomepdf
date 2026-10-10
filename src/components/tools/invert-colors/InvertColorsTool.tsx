@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { invertColors } from '@/lib/pdf/processors/invert-colors';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -58,7 +58,7 @@ export function InvertColorsTool({ className = '' }: InvertColorsToolProps) {
       )}
       
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <div className="flex items-center justify-between">
             <p className="font-medium">{file.name}</p>
             <Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>
@@ -79,7 +79,7 @@ export function InvertColorsTool({ className = '' }: InvertColorsToolProps) {
       
       {file && (
         <div className="flex flex-wrap items-center gap-4">
-          <Button variant="primary" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>
+          <Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>
             {isProcessing ? tCommon('process') + '...' : t('invertButton')}
           </Button>
           {result && (

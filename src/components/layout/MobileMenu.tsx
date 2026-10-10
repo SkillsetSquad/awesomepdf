@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { X, ChevronRight, ChevronDown } from 'lucide-react';
 import { type Locale } from '@/lib/i18n/config';
 import { type ToolCategory } from '@/types/tool';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export interface MobileMenuProps {
   isOpen: boolean;

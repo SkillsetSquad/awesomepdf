@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { timestampPDF } from '@/lib/pdf/processors/timestamp';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -175,7 +175,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
       {/* File Metadata Overview */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -208,7 +208,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
           
           {/* LEFT: TSA Authority Selection Hub */}
           <div className="lg:col-span-6 flex flex-col">
-            <Card variant="default" className="flex-1 p-6 rounded-[2rem] space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40 flex flex-col justify-between shadow-xl">
+            <Card  className="flex-1 p-6 rounded-[2rem] space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40 flex flex-col justify-between shadow-xl">
               <div className="space-y-4">
                 <div className="border-b border-[hsl(var(--color-border))] pb-3">
                   <h3 className="text-base font-bold text-[hsl(var(--color-foreground))] flex items-center gap-2">
@@ -282,7 +282,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
               {/* Timestamp action button */}
               <div className="pt-4 border-t border-[hsl(var(--color-border))]">
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="lg"
                   onClick={handleTimestampProcess}
                   disabled={isProcessing}
@@ -299,7 +299,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
           {/* RIGHT: Dynamic Audit & Validation Certificate Panel */}
           <div className="lg:col-span-6 flex flex-col">
-            <Card variant="outlined" className="flex-1 p-6 bg-[hsl(var(--color-card))] border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center shadow-inner relative overflow-hidden">
+            <Card  className="flex-1 p-6 bg-[hsl(var(--color-card))] border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center shadow-inner relative overflow-hidden">
               
               {!auditLog ? (
                 // Awaiting signing state
@@ -387,7 +387,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                         file={result}
                         filename={file.name.replace('.pdf', '_timestamped.pdf')}
                         variant="secondary"
-                        size="md"
+                        size="default"
                         className="flex-1 font-bold"
                         showFileSize
                       />

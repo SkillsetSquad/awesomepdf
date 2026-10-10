@@ -6,8 +6,8 @@ import { Table, Trash2, RefreshCw, CheckCircle2, AlertCircle, FileSpreadsheet } 
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { pdfToExcel } from '@/lib/pdf/processors/pdf-to-excel';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -174,7 +174,7 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
 
             {/* File Info */}
             {file && (
-                <Card variant="outlined" size="lg" className="glass-card">
+                <Card   className="glass-card">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center text-[hsl(var(--color-primary))]">
@@ -223,7 +223,7 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <Button
-                    variant="primary"
+                    variant="default"
                     size="lg"
                     onClick={handleConvert}
                     disabled={!canConvert}

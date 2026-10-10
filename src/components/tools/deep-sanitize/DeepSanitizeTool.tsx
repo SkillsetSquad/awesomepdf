@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { deepSanitizePDF, type DeepSanitizeOptions } from '@/lib/pdf/processors/deep-sanitize';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
@@ -312,7 +312,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
       {/* Metadata Overview */}
       {file && (
-        <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -340,7 +340,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
           
           {/* LEFT: Sanitizer Controls */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            <Card variant="default" className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
+            <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
               
               <div className="space-y-4 flex-1">
                 <div className="border-b border-[hsl(var(--color-border))] pb-3">
@@ -412,7 +412,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
               {/* Action Trigger Button */}
               <div className="pt-4 border-t border-[hsl(var(--color-border))] mt-6">
                 <Button
-                  variant="primary"
+                  variant="default"
                   size="lg"
                   disabled={isProcessing}
                   className="w-full py-4 font-bold shadow-lg shadow-purple-500/15 flex items-center justify-center gap-2"
@@ -428,7 +428,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
           {/* RIGHT: 3D Particle Chamber visual box */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            <Card variant="outlined" className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
+            <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-[hsl(var(--color-border))] rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
               
               {/* Particle chamber canvas */}
               <div className="relative w-60 h-60 flex items-center justify-center z-10">
@@ -475,7 +475,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
       {/* Finished Stage (Success screen) */}
       {status === 'complete' && result && (
-        <Card variant="default" className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
+        <Card  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 text-center space-y-6 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
@@ -491,7 +491,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
             <DownloadButton
               file={result}
               filename={file?.name.replace('.pdf', '_sanitized.pdf') || 'sanitized_document.pdf'}
-              variant="primary"
+              variant="default"
               size="lg"
               className="flex-1 font-bold shadow-lg"
               showFileSize

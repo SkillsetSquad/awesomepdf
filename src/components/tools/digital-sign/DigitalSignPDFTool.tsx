@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import type { CertificateData } from '@/types/digital-signature';
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -282,7 +282,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
       {/* PDF File Info */}
       {pdfFile && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">{pdfFile.name}</p>
@@ -295,7 +295,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
       {/* Certificate Upload */}
       {pdfFile && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">{tTool('certificateTitle')}</h3>
 
           <div className="space-y-4">
@@ -357,7 +357,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                       <EyeIcon open={showPassword} />
                     </button>
                   </div>
-                  <Button variant="primary" size="md" onClick={handlePasswordSubmit} disabled={!password}>
+                  <Button variant="default" size="default" onClick={handlePasswordSubmit} disabled={!password}>
                     {tTool('unlockButton')}
                   </Button>
                 </div>
@@ -383,7 +383,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
       {/* Signature Options */}
       {
         certData && (
-          <Card variant="outlined">
+          <Card className="p-6" >
             <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">{tTool('signatureOptionsTitle')}</h3>
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -490,7 +490,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
-        <Button variant="primary" size="lg" onClick={handleSign} disabled={!canSign} loading={isProcessing}>
+        <Button variant="default" size="lg" onClick={handleSign} disabled={!canSign} loading={isProcessing}>
           {isProcessing ? (t('status.processing') || 'Processing...') : tTool('signButton')}
         </Button>
         {result && (

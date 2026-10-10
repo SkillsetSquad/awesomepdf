@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Modal } from '@/components/ui/Modal';
 import { decryptPDF, type DecryptPDFOptions } from '@/lib/pdf/processors/decrypt';
 import type { ProcessOutput } from '@/types/pdf';
@@ -177,7 +177,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
 
       {/* Selected File */}
       {file && (
-        <Card variant="outlined" size="lg">
+        <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -210,7 +210,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
 
       {/* Password Input */}
       {file && (
-        <Card variant="outlined">
+        <Card className="p-6" >
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('decryptPdf.passwordTitle') || 'Enter Password'}
           </h3>
@@ -270,7 +270,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
       {/* Action Buttons */}
       <div className="flex flex-wrap items-center gap-4">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           onClick={handleDecrypt}
           disabled={!canDecrypt}
@@ -330,7 +330,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
           </div>
           <div className="flex justify-end">
             <Button
-              variant="primary"
+              variant="default"
               size="sm"
               onClick={() => setShowPasswordErrorModal(false)}
             >

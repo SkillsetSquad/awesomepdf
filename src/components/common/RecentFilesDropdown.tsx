@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { Clock, X, Trash2, FileText, ChevronDown } from 'lucide-react';
 import { useRecentFiles } from '@/lib/hooks/useRecentFiles';
 import { formatFileSize, formatDate } from '@/lib/storage/recent-files';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { type Locale } from '@/lib/i18n/config';
 
 export interface RecentFilesDropdownProps {

@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { repairPDF } from '@/lib/pdf/processors/repair';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -97,7 +97,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
 
             {files.length > 0 && (
                 <>
-                    <Card variant="outlined">
+                    <Card className="p-6" >
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="font-medium">{tTools('repairPdf.filesTitle') || 'Files to Repair'} ({files.length})</h3>
                             <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing}>
@@ -123,7 +123,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
 
                     <div className="flex gap-4">
                         <Button
-                            variant="primary"
+                            variant="default"
                             size="lg"
                             onClick={handleProcess}
                             disabled={files.length === 0 || isProcessing}
@@ -156,7 +156,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
                         <DownloadButton
                             file={result}
                             filename={files.length === 1 ? `repaired_${files[0].name}` : 'repaired_pdfs.zip'}
-                            variant="primary"
+                            variant="default"
                             size="lg"
                         />
                     </div>
