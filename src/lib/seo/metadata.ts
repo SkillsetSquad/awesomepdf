@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { type Locale, localeConfig, locales } from '@/lib/i18n/config';
 import type { Tool, ToolContent } from '@/types/tool';
-import { getBasePath } from '@/lib/utils/path';
+import { getBasePath, withBasePath } from '@/lib/utils/path';
 
 /**
  * Base metadata configuration
@@ -101,9 +101,9 @@ export function generateBaseMetadata(options: PageMetadataOptions): Metadata {
         'max-video-preview': -1,
       },
     icons: {
-      icon: '/favicon.svg',
-      shortcut: '/favicon.svg',
-      apple: '/favicon.svg',
+      icon: withBasePath('/favicon.svg'),
+      shortcut: withBasePath('/favicon.svg'),
+      apple: withBasePath('/apple-touch-icon.png'),
     },
     alternates: {
       canonical: canonicalUrl,
