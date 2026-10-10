@@ -2,7 +2,7 @@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
-import { FileText as UIFileText } from 'lucide-react';
+import { Eye, EyeOff, Lock, FileText as UIFileText } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
 
@@ -222,11 +222,10 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
           <div className="space-y-4">
             {/* Privacy Notice */}
-            <div className="p-3 rounded-sm bg-green-50 border border-green-200">
-              <p className="text-sm text-green-700">
-                {tTools('encryptPdf.privacyNotice') || '🔒 Your passwords are processed locally and never sent to any server.'}
-              </p>
-            </div>
+            <Alert role="note">
+              <Lock aria-hidden="true" />
+              <AlertDescription>{tTools('encryptPdf.privacyNotice')}</AlertDescription>
+            </Alert>
 
             {/* User Password */}
             <div>
@@ -242,15 +241,18 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.userPasswordPlaceholder') || 'Enter password to open PDF'}
                   aria-describedby="user-password-hint"
-                  className="w-full pr-10" aria-label={tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
+                  className="w-full pe-11" aria-label={tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
                 />
-                <Button variant="ghost" size="sm"
+                <Button variant="ghost" size="icon-sm"
                   type="button"
                   onClick={() => setShowUserPassword(!showUserPassword)}
-                  aria-label={showUserPassword ? 'Hide user password' : 'Show user password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2"
+                  aria-label={`${t(showUserPassword ? 'buttons.hidePassword' : 'buttons.showPassword')}: ${tTools('encryptPdf.userPasswordLabel')}`}
+                  aria-controls="user-password"
+                  aria-pressed={showUserPassword}
+                  disabled={isProcessing}
+                  className="absolute end-1 top-1/2 -translate-y-1/2"
                 >
-                  {showUserPassword ? '🙈' : '👁️'}
+                  {showUserPassword ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
                 </Button>
               </div>
               <p id="user-password-hint" className="mt-1 text-xs text-muted-foreground">
@@ -272,15 +274,18 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.ownerPasswordPlaceholder') || 'Enter owner password'}
                   aria-describedby="owner-password-hint"
-                  className="w-full pr-10" aria-label={tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
+                  className="w-full pe-11" aria-label={tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
                 />
-                <Button variant="ghost" size="sm"
+                <Button variant="ghost" size="icon-sm"
                   type="button"
                   onClick={() => setShowOwnerPassword(!showOwnerPassword)}
-                  aria-label={showOwnerPassword ? 'Hide owner password' : 'Show owner password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2"
+                  aria-label={`${t(showOwnerPassword ? 'buttons.hidePassword' : 'buttons.showPassword')}: ${tTools('encryptPdf.ownerPasswordLabel')}`}
+                  aria-controls="owner-password"
+                  aria-pressed={showOwnerPassword}
+                  disabled={isProcessing}
+                  className="absolute end-1 top-1/2 -translate-y-1/2"
                 >
-                  {showOwnerPassword ? '🙈' : '👁️'}
+                  {showOwnerPassword ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
                 </Button>
               </div>
               <p id="owner-password-hint" className="mt-1 text-xs text-muted-foreground">

@@ -77,7 +77,9 @@
       "confirm": "Potwierdź",
       "add": "Dodaj",
       "moveUp": "Przenieś w górę",
-      "moveDown": "Przenieś w dół"
+      "moveDown": "Przenieś w dół",
+      "showPassword": "Pokaż hasło",
+      "hidePassword": "Ukryj hasło"
     },
     "status": {
       "idle": "Gotowy",
@@ -2053,7 +2055,7 @@
       "uploadLabel": "Prześlij plik PDF",
       "uploadDescription": "Przeciągnij i upuść tutaj plik PDF lub kliknij, aby przeglądać.",
       "passwordTitle": "Ustawienia hasła",
-      "privacyNotice": "🔒 Twoje hasła są przetwarzane lokalnie i nigdy nie są wysyłane na żaden serwer.",
+      "privacyNotice": "Twoje hasła są przetwarzane lokalnie i nigdy nie są wysyłane na żaden serwer.",
       "userPasswordLabel": "Hasło użytkownika (aby otworzyć dokument)",
       "userPasswordPlaceholder": "Wprowadź hasło, aby otworzyć PDF",
       "userPasswordHint": "Wymagane do otwarcia i wyświetlenia PDF.",

@@ -77,7 +77,9 @@
       "confirm": "確認",
       "add": "新增",
       "moveUp": "上移",
-      "moveDown": "下移"
+      "moveDown": "下移",
+      "showPassword": "顯示密碼",
+      "hidePassword": "隱藏密碼"
     },
     "status": {
       "idle": "就緒",
@@ -2027,7 +2029,7 @@
       "uploadLabel": "上傳 PDF 文件",
       "uploadDescription": "拖放 PDF 文件到此處，或點擊瀏覽。",
       "passwordTitle": "密碼設定",
-      "privacyNotice": "🔒 您的密碼在本地處理，永遠不會傳送到任何伺服器。",
+      "privacyNotice": "您的密碼在本地處理，永遠不會傳送到任何伺服器。",
       "userPasswordLabel": "使用者密碼（開啟文件）",
       "userPasswordPlaceholder": "輸入開啟PDF的密碼",
       "userPasswordHint": "開啟和檢視PDF時需要此密碼。",

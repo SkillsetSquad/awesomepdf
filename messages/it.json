@@ -77,7 +77,9 @@
       "confirm": "Conferma",
       "add": "Aggiungi",
       "moveUp": "Sposta su",
-      "moveDown": "Sposta giù"
+      "moveDown": "Sposta giù",
+      "showPassword": "Mostra password",
+      "hidePassword": "Nascondi password"
     },
     "status": {
       "idle": "Pronto",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Carica file PDF",
       "uploadDescription": "Trascina e rilascia un file PDF qui, o fai clic per sfogliare.",
       "passwordTitle": "Impostazioni della password",
-      "privacyNotice": "🔒 Le tue password vengono elaborate localmente e mai inviate a nessun server.",
+      "privacyNotice": "Le tue password vengono elaborate localmente e mai inviate a nessun server.",
       "userPasswordLabel": "Password utente (per aprire il documento)",
       "userPasswordPlaceholder": "Inserisci la password per aprire il PDF",
       "userPasswordHint": "Necessario per aprire e visualizzare il PDF.",

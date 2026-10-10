@@ -77,7 +77,9 @@
       "confirm": "Confirmar",
       "add": "Añadir",
       "moveUp": "Mover arriba",
-      "moveDown": "Mover abajo"
+      "moveDown": "Mover abajo",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña"
     },
     "status": {
       "idle": "Listo",
@@ -2034,7 +2036,7 @@
       "uploadLabel": "Subir archivo PDF",
       "uploadDescription": "Arrastre y suelte un archivo PDF aquí, o haga clic para buscar.",
       "passwordTitle": "Configuración de contraseña",
-      "privacyNotice": "🔒 Tus contraseñas se procesan localmente y nunca se envían a ningún servidor.",
+      "privacyNotice": "Tus contraseñas se procesan localmente y nunca se envían a ningún servidor.",
       "userPasswordLabel": "Usuario Contraseña (para abrir documento)",
       "userPasswordPlaceholder": "Ingrese la contraseña para abrir PDF",
       "userPasswordHint": "Requerido para abrir y ver el PDF.",

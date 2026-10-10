@@ -77,7 +77,9 @@
       "confirm": "تأكيد",
       "add": "إضافة",
       "moveUp": "نقل لأعلى",
-      "moveDown": "نقل لأسفل"
+      "moveDown": "نقل لأسفل",
+      "showPassword": "إظهار كلمة المرور",
+      "hidePassword": "إخفاء كلمة المرور"
     },
     "status": {
       "idle": "جاهز",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "تحميل ملف PDF",
       "uploadDescription": "اسحب وأسقط ملف PDF هنا، أو انقر للتصفح.",
       "passwordTitle": "إعدادات كلمة المرور",
-      "privacyNotice": "🔒 تتم معالجة كلمات المرور الخاصة بك محلياً ولا يتم إرسالها أبداً إلى أي خادم.",
+      "privacyNotice": "تتم معالجة كلمات المرور الخاصة بك محلياً ولا يتم إرسالها أبداً إلى أي خادم.",
       "userPasswordLabel": "كلمة مرور المستخدم (لفتح المستند)",
       "userPasswordPlaceholder": "أدخل كلمة المرور لفتح ملف PDF",
       "userPasswordHint": "مطلوب لفتح وعرض ملف PDF.",

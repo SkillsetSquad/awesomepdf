@@ -77,7 +77,9 @@
       "confirm": "Konfirmasi",
       "add": "Tambah",
       "moveUp": "Pindahkan ke atas",
-      "moveDown": "Pindahkan ke bawah"
+      "moveDown": "Pindahkan ke bawah",
+      "showPassword": "Tampilkan kata sandi",
+      "hidePassword": "Sembunyikan kata sandi"
     },
     "status": {
       "idle": "Siap",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Unggah File PDF",
       "uploadDescription": "Seret dan letakkan file PDF di sini, atau klik untuk memilih.",
       "passwordTitle": "Pengaturan Kata Sandi",
-      "privacyNotice": "🔒 Kata sandi Anda diproses secara lokal dan tidak pernah dikirim ke server mana pun.",
+      "privacyNotice": "Kata sandi Anda diproses secara lokal dan tidak pernah dikirim ke server mana pun.",
       "userPasswordLabel": "Kata Sandi Pengguna (untuk membuka dokumen)",
       "userPasswordPlaceholder": "Masukkan kata sandi untuk membuka PDF",
       "userPasswordHint": "Diperlukan untuk membuka dan melihat PDF.",

@@ -77,7 +77,9 @@
       "confirm": "Xác nhận",
       "add": "Thêm",
       "moveUp": "Di chuyển lên",
-      "moveDown": "Di chuyển xuống"
+      "moveDown": "Di chuyển xuống",
+      "showPassword": "Hiện mật khẩu",
+      "hidePassword": "Ẩn mật khẩu"
     },
     "status": {
       "idle": "Sẵn sàng",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Tải lên tệp PDF",
       "uploadDescription": "Kéo thả tệp PDF vào đây, hoặc nhấp để duyệt.",
       "passwordTitle": "Cài đặt mật khẩu",
-      "privacyNotice": "🔒 Mật khẩu của bạn được xử lý cục bộ và không bao giờ được gửi đến bất kỳ máy chủ nào.",
+      "privacyNotice": "Mật khẩu của bạn được xử lý cục bộ và không bao giờ được gửi đến bất kỳ máy chủ nào.",
       "userPasswordLabel": "Mật khẩu người dùng (để mở tài liệu)",
       "userPasswordPlaceholder": "Nhập mật khẩu để mở PDF",
       "userPasswordHint": "Bắt buộc để mở và xem PDF.",

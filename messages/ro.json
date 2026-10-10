@@ -77,7 +77,9 @@
       "confirm": "Confirmă",
       "add": "Adaugă",
       "moveUp": "Mută în sus",
-      "moveDown": "Mută în jos"
+      "moveDown": "Mută în jos",
+      "showPassword": "Afișează parola",
+      "hidePassword": "Ascunde parola"
     },
     "status": {
       "idle": "Gata",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Încărcați fișierul PDF",
       "uploadDescription": "Trageți și plasați un fișier PDF aici, sau faceți clic pentru a răsfoi.",
       "passwordTitle": "Setări parolă",
-      "privacyNotice": "🔒 Parolele dvs. sunt procesate local și nu sunt trimise niciodată la un server.",
+      "privacyNotice": "Parolele dvs. sunt procesate local și nu sunt trimise niciodată la un server.",
       "userPasswordLabel": "Parolă utilizator (pentru deschiderea documentului)",
       "userPasswordPlaceholder": "Introduceți parola pentru a deschide PDF-ul",
       "userPasswordHint": "Necesară pentru a deschide și vizualiza PDF-ul.",

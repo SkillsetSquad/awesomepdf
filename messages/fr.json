@@ -77,7 +77,9 @@
       "confirm": "Confirmer",
       "add": "Ajouter",
       "moveUp": "Déplacer vers le haut",
-      "moveDown": "Déplacer vers le bas"
+      "moveDown": "Déplacer vers le bas",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe"
     },
     "status": {
       "idle": "Prêt",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Téléverser le fichier PDF",
       "uploadDescription": "Glissez-déposez un fichier PDF ici, ou cliquez pour parcourir.",
       "passwordTitle": "Paramètres de mot de passe",
-      "privacyNotice": "🔒 Vos mots de passe sont traités localement et jamais envoyés à aucun serveur.",
+      "privacyNotice": "Vos mots de passe sont traités localement et jamais envoyés à aucun serveur.",
       "userPasswordLabel": "Mot de passe utilisateur (pour ouvrir le document)",
       "userPasswordPlaceholder": "Entrez le mot de passe pour ouvrir le PDF",
       "userPasswordHint": "Nécessaire pour ouvrir et visualiser le PDF.",

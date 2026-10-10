@@ -77,7 +77,9 @@
       "confirm": "確認",
       "add": "追加",
       "moveUp": "上へ移動",
-      "moveDown": "下へ移動"
+      "moveDown": "下へ移動",
+      "showPassword": "パスワードを表示",
+      "hidePassword": "パスワードを非表示"
     },
     "status": {
       "idle": "準備完了",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "PDFファイルをアップロード",
       "uploadDescription": "PDFファイルをここにドラッグ＆ドロップするか、クリックして選択してください。",
       "passwordTitle": "パスワード設定",
-      "privacyNotice": "🔒 パスワードはローカルで処理され、サーバーに送信されることはありません。",
+      "privacyNotice": "パスワードはローカルで処理され、サーバーに送信されることはありません。",
       "userPasswordLabel": "ユーザーパスワード (文書を開くため)",
       "userPasswordPlaceholder": "PDFを開くにはパスワードを入力してください",
       "userPasswordHint": "PDFを開いて表示するために必要です。",

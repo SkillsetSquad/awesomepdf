@@ -77,7 +77,9 @@
       "confirm": "Bestätigen",
       "add": "Hinzufügen",
       "moveUp": "Nach oben verschieben",
-      "moveDown": "Nach unten verschieben"
+      "moveDown": "Nach unten verschieben",
+      "showPassword": "Passwort anzeigen",
+      "hidePassword": "Passwort verbergen"
     },
     "status": {
       "idle": "Bereit",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "PDF-Datei hochladen",
       "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Auswählen.",
       "passwordTitle": "Passworteinstellungen",
-      "privacyNotice": "🔒 Ihre Passwörter werden lokal verarbeitet und niemals an einen Server gesendet.",
+      "privacyNotice": "Ihre Passwörter werden lokal verarbeitet und niemals an einen Server gesendet.",
       "userPasswordLabel": "Benutzerpasswort (zum Öffnen des Dokuments)",
       "userPasswordPlaceholder": "Geben Sie das Passwort ein, um PDF zu öffnen",
       "userPasswordHint": "Erforderlich zum Öffnen und Anzeigen der PDF-Datei.",

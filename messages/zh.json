@@ -77,7 +77,9 @@
       "confirm": "确认",
       "add": "添加",
       "moveUp": "上移",
-      "moveDown": "下移"
+      "moveDown": "下移",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码"
     },
     "status": {
       "idle": "就绪",
@@ -2045,7 +2047,7 @@
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
       "passwordTitle": "密码设置",
-      "privacyNotice": "🔒 您的密码在本地处理，永远不会发送到任何服务器。",
+      "privacyNotice": "您的密码在本地处理，永远不会发送到任何服务器。",
       "userPasswordLabel": "用户密码（打开文档）",
       "userPasswordPlaceholder": "输入打开PDF的密码",
       "userPasswordHint": "打开和查看PDF时需要此密码。",

@@ -77,7 +77,9 @@
       "confirm": "확인",
       "add": "추가",
       "moveUp": "위로 이동",
-      "moveDown": "아래로 이동"
+      "moveDown": "아래로 이동",
+      "showPassword": "비밀번호 표시",
+      "hidePassword": "비밀번호 숨기기"
     },
     "status": {
       "idle": "준비됨",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "PDF 파일 업로드",
       "uploadDescription": "PDF 파일을 여기에 드래그 앤 드롭하거나 클릭하여 선택하십시오.",
       "passwordTitle": "비밀번호 설정",
-      "privacyNotice": "🔒 귀하의 비밀번호는 로컬에서 처리되며 서버로 전송되지 않습니다.",
+      "privacyNotice": "귀하의 비밀번호는 로컬에서 처리되며 서버로 전송되지 않습니다.",
       "userPasswordLabel": "사용자 비밀번호(문서 열기용)",
       "userPasswordPlaceholder": "PDF를 열려면 비밀번호를 입력하세요",
       "userPasswordHint": "PDF를 열고 보는 데 필요합니다.",

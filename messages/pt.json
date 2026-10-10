@@ -77,7 +77,9 @@
       "confirm": "Confirmar",
       "add": "Adicionar",
       "moveUp": "Mover para cima",
-      "moveDown": "Mover para baixo"
+      "moveDown": "Mover para baixo",
+      "showPassword": "Mostrar senha",
+      "hidePassword": "Ocultar senha"
     },
     "status": {
       "idle": "Pronto",
@@ -2026,7 +2028,7 @@
       "uploadLabel": "Carregar arquivo PDF",
       "uploadDescription": "Arraste e solte um arquivo PDF aqui, ou clique para navegar.",
       "passwordTitle": "Configurações de senha",
-      "privacyNotice": "🔒 Suas senhas são processadas localmente e nunca enviadas para nenhum servidor.",
+      "privacyNotice": "Suas senhas são processadas localmente e nunca enviadas para nenhum servidor.",
       "userPasswordLabel": "Senha do usuário (para abrir documento)",
       "userPasswordPlaceholder": "Digite a senha para abrir o PDF",
       "userPasswordHint": "Necessário para abrir e visualizar o PDF.",
