@@ -83,6 +83,25 @@
   Content-Type: application/wasm
 
 # LibreOffice WASM data files
+# Match complete current assets exactly; .part_N files must remain unencoded.
+/libreoffice-wasm/soffice.wasm.bin
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/wasm
+
+/libreoffice-wasm/soffice.data.bin
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/octet-stream
+
+/libreoffice-wasm/soffice.wasm.bin.gz
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/wasm
+  Content-Encoding: gzip
+
+/libreoffice-wasm/soffice.data.bin.gz
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/octet-stream
+  Content-Encoding: gzip
+
 /libreoffice-wasm/soffice.wasm.gz
   Cache-Control: public, max-age=31536000, immutable
   Content-Type: application/wasm
