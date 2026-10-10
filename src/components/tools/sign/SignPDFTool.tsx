@@ -1,7 +1,7 @@
 'use client';
 import { FolderOpen as UIEmojiFolderOpen, Image as UIEmojiImage } from 'lucide-react';
 
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { File as UIFile, Info as UIInfo, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
@@ -410,11 +410,11 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
         <>
           {/* File Info & Clear Button */}
           <Card className="p-6" >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex min-w-0 items-center gap-3">
+                <UIFile className="size-6 shrink-0 text-muted-foreground" aria-hidden="true" />
+                <div className="min-w-0">
+                  <p className="break-all text-sm font-medium text-foreground">
                     {signState.file.name}
                   </p>
                   <p className="text-xs text-muted-foreground">
@@ -434,20 +434,18 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           </Card>
 
           {/* Instructions */}
-          <Card  className="">
-            <div className="flex gap-3">
-              <UIInfo className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <div className="text-sm text-blue-700">
-                <p className="font-medium mb-1">{tTools('signPdf.instructionsTitle') || 'How to Sign'}</p>
-                <ol className="list-decimal list-inside space-y-1 text-blue-600">
+          <Alert>
+              <UIInfo aria-hidden="true" />
+              <AlertTitle>{tTools('signPdf.instructionsTitle') || 'How to Sign'}</AlertTitle>
+              <AlertDescription>
+                <ol className="list-decimal list-inside space-y-1">
                   <li>{tTools('signPdf.instruction1') || '点击工具栏中的签名笔工具（或使用上方快捷导入图片/从 PDF 提取）'}</li>
                   <li>{tTools('signPdf.instruction2') || '选择手写绘制、输入文本，或直接上传现成的透明 PNG 图片签名'}</li>
                   <li>{tTools('signPdf.instruction3') || '在页面点击放置签名，可随意拖拽四角自由调整大小（Resize）与旋转'}</li>
                   <li>{tTools('signPdf.instruction4') || '完成签署后，点击下方的“保存已签署 PDF”'}</li>
                 </ol>
-              </div>
-            </div>
-          </Card>
+              </AlertDescription>
+          </Alert>
 
           {/* PDF.js Viewer Iframe */}
           <div className="border border-border rounded-lg overflow-hidden">
