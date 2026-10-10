@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -8,7 +6,7 @@ import { getToolsByCategory } from '@/config/tools';
 import { type Locale } from '@/lib/i18n/config';
 import { type ToolCategory } from '@/types/tool';
 import Link from 'next/link';
-import { Home, ChevronRight } from 'lucide-react';
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 interface CategoryPageClientProps {
     locale: Locale;
@@ -37,35 +35,23 @@ export default function CategoryPageClient({ locale, category, localizedToolCont
             <Header locale={locale} />
 
             <main className="flex-1">
-                <div className="container mx-auto px-4 pt-24 pb-8">
-                    {/* Breadcrumb Navigation */}
-                    <nav aria-label="Breadcrumb" className="mb-4 flex items-center text-sm text-muted-foreground animate-in fade-in slide-in-from-top-4 duration-500 delay-100">
-                        <Link
-                            href={`/${locale}`}
-                            className="flex items-center hover:text-primary transition-colors"
-                            title={t('common.navigation.home')}
-                        >
-                            <Home className="w-4 h-4" />
-                        </Link>
-                        <ChevronRight className="w-4 h-4 mx-2 text-border" />
-                        <Link
-                            href={`/${locale}/tools`}
-                            className="hover:text-primary transition-colors"
-                        >
-                            {t('common.navigation.tools')}
-                        </Link>
-                        <ChevronRight className="w-4 h-4 mx-2 text-border" />
-                        <span className="font-medium text-foreground truncate max-w-[200px] sm:max-w-md" aria-current="page">
-                            {categoryName}
-                        </span>
-                    </nav>
+                <div className="mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6">
+                    <Breadcrumb className="mb-6">
+                        <BreadcrumbList>
+                            <BreadcrumbItem><BreadcrumbLink asChild><Link href={`/${locale}`}>{t('common.navigation.home')}</Link></BreadcrumbLink></BreadcrumbItem>
+                            <BreadcrumbSeparator className="rtl:rotate-180" />
+                            <BreadcrumbItem><BreadcrumbLink asChild><Link href={`/${locale}/tools`}>{t('common.navigation.tools')}</Link></BreadcrumbLink></BreadcrumbItem>
+                            <BreadcrumbSeparator className="rtl:rotate-180" />
+                            <BreadcrumbItem><BreadcrumbPage>{categoryName}</BreadcrumbPage></BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
 
                     {/* Page Header */}
-                    <section className="relative mb-8">
-                        <h1 className="text-3xl font-bold text-foreground mb-2">
+                    <section className="mb-8 space-y-2">
+                        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                             {categoryName}
                         </h1>
-                        <p className="text-base text-muted-foreground">
+                        <p className="text-muted-foreground">
                             {t(`home.categoriesDescription.${categoryTranslationKeys[category]}`)}
                         </p>
                     </section>
