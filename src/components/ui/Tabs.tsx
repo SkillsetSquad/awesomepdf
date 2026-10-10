@@ -1,208 +1,90 @@
-'use client';
+"use client"
 
-import React, {
-  forwardRef,
-  useState,
-  useRef,
-  useCallback,
-  KeyboardEvent,
-  HTMLAttributes,
-} from 'react';
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
+import { Tabs as TabsPrimitive } from "radix-ui"
 
-export interface Tab {
-  id: string;
-  label: string;
-  content: React.ReactNode;
-  disabled?: boolean;
+function Tabs({
+  className,
+  orientation = "horizontal",
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Root>) {
+  return (
+    <TabsPrimitive.Root
+      data-slot="tabs"
+      data-orientation={orientation}
+      orientation={orientation}
+      className={cn(
+        "group/tabs flex gap-2 data-[orientation=horizontal]:flex-col",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
-export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  tabs: Tab[];
-  defaultTab?: string;
-  onChange?: (tabId: string) => void;
-  orientation?: 'horizontal' | 'vertical';
-}
-
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  (
-    {
-      tabs,
-      defaultTab,
-      onChange,
-      orientation = 'horizontal',
-      className = '',
-      ...props
+const tabsListVariants = cva(
+  "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
+  {
+    variants: {
+      variant: {
+        default: "bg-muted",
+        line: "gap-1 bg-transparent",
+      },
     },
-    ref
-  ) => {
-    const [activeTab, setActiveTab] = useState<string>(
-      defaultTab || tabs[0]?.id || ''
-    );
-    const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
-
-    const handleTabChange = useCallback(
-      (tabId: string) => {
-        setActiveTab(tabId);
-        onChange?.(tabId);
-      },
-      [onChange]
-    );
-
-    const handleKeyDown = useCallback(
-      (event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
-        const enabledTabs = tabs.filter((tab) => !tab.disabled);
-        const currentEnabledIndex = enabledTabs.findIndex(
-          (tab) => tab.id === tabs[currentIndex].id
-        );
-
-        let nextIndex: number | null = null;
-
-        const isHorizontal = orientation === 'horizontal';
-        const prevKey = isHorizontal ? 'ArrowLeft' : 'ArrowUp';
-        const nextKey = isHorizontal ? 'ArrowRight' : 'ArrowDown';
-
-        switch (event.key) {
-          case prevKey:
-            event.preventDefault();
-            nextIndex =
-              currentEnabledIndex > 0
-                ? currentEnabledIndex - 1
-                : enabledTabs.length - 1;
-            break;
-          case nextKey:
-            event.preventDefault();
-            nextIndex =
-              currentEnabledIndex < enabledTabs.length - 1
-                ? currentEnabledIndex + 1
-                : 0;
-            break;
-          case 'Home':
-            event.preventDefault();
-            nextIndex = 0;
-            break;
-          case 'End':
-            event.preventDefault();
-            nextIndex = enabledTabs.length - 1;
-            break;
-          case 'Enter':
-          case ' ':
-            event.preventDefault();
-            handleTabChange(tabs[currentIndex].id);
-            return;
-          default:
-            return;
-        }
-
-        if (nextIndex !== null) {
-          const nextTab = enabledTabs[nextIndex];
-          const nextTabElement = tabRefs.current.get(nextTab.id);
-          nextTabElement?.focus();
-          handleTabChange(nextTab.id);
-        }
-      },
-      [tabs, orientation, handleTabChange]
-    );
-
-    const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content;
-
-    const isVertical = orientation === 'vertical';
-
-    return (
-      <div
-        ref={ref}
-        className={`${isVertical ? 'flex gap-4' : ''} ${className}`.trim()}
-        {...props}
-      >
-        {/* Tab List */}
-        <div
-          role="tablist"
-          aria-orientation={orientation}
-          className={`
-            ${isVertical ? 'flex-col' : 'flex'}
-            ${isVertical ? 'border-r' : 'border-b'}
-            border-[hsl(var(--color-border))]
-            ${isVertical ? 'pr-4' : 'pb-0'}
-          `.trim()}
-        >
-          {tabs.map((tab, index) => {
-            const isActive = activeTab === tab.id;
-            const isDisabled = tab.disabled;
-
-            return (
-              <button
-                key={tab.id}
-                ref={(el) => {
-                  if (el) {
-                    tabRefs.current.set(tab.id, el);
-                  } else {
-                    tabRefs.current.delete(tab.id);
-                  }
-                }}
-                role="tab"
-                id={`tab-${tab.id}`}
-                aria-selected={isActive}
-                aria-controls={`tabpanel-${tab.id}`}
-                aria-disabled={isDisabled}
-                tabIndex={isActive ? 0 : -1}
-                disabled={isDisabled}
-                onClick={() => !isDisabled && handleTabChange(tab.id)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                className={`
-                  px-4 py-2
-                  font-medium text-sm
-                  transition-all duration-[var(--transition-fast)]
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--color-ring))] focus-visible:ring-inset
-                  ${isVertical ? 'text-left w-full' : ''}
-                  ${
-                    isActive
-                      ? `
-                        text-[hsl(var(--color-primary))]
-                        ${isVertical ? 'border-r-2 border-[hsl(var(--color-primary))] -mr-[2px]' : 'border-b-2 border-[hsl(var(--color-primary))] -mb-[2px]'}
-                        bg-[hsl(var(--color-muted))]
-                      `
-                      : `
-                        text-[hsl(var(--color-muted-foreground))]
-                        hover:text-[hsl(var(--color-foreground))]
-                        hover:bg-[hsl(var(--color-muted))]
-                      `
-                  }
-                  ${
-                    isDisabled
-                      ? 'opacity-50 cursor-not-allowed'
-                      : 'cursor-pointer'
-                  }
-                `.trim()}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Tab Panels */}
-        <div className={`${isVertical ? 'flex-1' : 'mt-4'}`}>
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              role="tabpanel"
-              id={`tabpanel-${tab.id}`}
-              aria-labelledby={`tab-${tab.id}`}
-              hidden={activeTab !== tab.id}
-              tabIndex={0}
-              className={`
-                focus:outline-none
-                ${activeTab === tab.id ? 'block' : 'hidden'}
-              `.trim()}
-            >
-              {activeTab === tab.id && tab.content}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
+    defaultVariants: {
+      variant: "default",
+    },
   }
-);
+)
 
-Tabs.displayName = 'Tabs';
+function TabsList({
+  className,
+  variant = "default",
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.List> &
+  VariantProps<typeof tabsListVariants>) {
+  return (
+    <TabsPrimitive.List
+      data-slot="tabs-list"
+      data-variant={variant}
+      className={cn(tabsListVariants({ variant }), className)}
+      {...props}
+    />
+  )
+}
 
-export default Tabs;
+function TabsTrigger({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+  return (
+    <TabsPrimitive.Trigger
+      data-slot="tabs-trigger"
+      className={cn(
+        "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent",
+        "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground",
+        "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TabsContent({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Content>) {
+  return (
+    <TabsPrimitive.Content
+      data-slot="tabs-content"
+      className={cn("flex-1 outline-none", className)}
+      {...props}
+    />
+  )
+}
+
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants }
