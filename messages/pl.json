@@ -1507,7 +1507,11 @@
       "fileFormat": "Format pliku",
       "true": "Prawda",
       "false": "Fałsz"
-    }
+    },
+    "inputCategory": "Źródła wejściowe",
+    "pdfInput": "Wejście PDF",
+    "imageInput": "Wejście obrazów",
+    "fileInput": "Wejście plików"
   },
   "tools": {
     "search": {
