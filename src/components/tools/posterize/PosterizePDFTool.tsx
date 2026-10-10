@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,13 +22,13 @@ export interface PosterizePDFToolProps {
 /**
  * PosterizePDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for posterizing PDF pages into printable tiles.
  */
 export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -36,7 +37,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options
   const [rows, setRows] = useState(2);
   const [cols, setCols] = useState(2);
@@ -46,7 +47,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
   const [overlapUnit, setOverlapUnit] = useState<'pt' | 'mm' | 'in'>('mm');
   const [scalingMode, setScalingMode] = useState<'fit' | 'fill'>('fit');
   const [pageRange, setPageRange] = useState('');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -57,17 +58,16 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
     } catch (err) {
       console.error('Failed to load PDF info:', err);
       setError('Failed to load PDF. The file may be corrupted or encrypted.');
     }
   }, []);
-
 
   /**
    * Handle file selected from uploader
@@ -212,7 +212,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -249,7 +249,6 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
         </Card>
       )}
 
-
       {/* Options */}
       {file && totalPages > 0 && (
         <Card className="p-6"  >
@@ -260,9 +259,9 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Rows */}
             <div>
-              <label htmlFor="rows" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="rows" className="block mb-1">
                 {tTools('posterizePdf.rows') || 'Rows'}
-              </label>
+              </Label>
               <Input
                 type="number"
                 id="rows"
@@ -271,15 +270,15 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 value={rows}
                 onChange={(e) => setRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('posterizePdf.rows') || 'Rows'}
               />
             </div>
 
             {/* Columns */}
             <div>
-              <label htmlFor="cols" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="cols" className="block mb-1">
                 {tTools('posterizePdf.cols') || 'Columns'}
-              </label>
+              </Label>
               <Input
                 type="number"
                 id="cols"
@@ -288,21 +287,21 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 value={cols}
                 onChange={(e) => setCols(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('posterizePdf.cols') || 'Columns'}
               />
             </div>
 
             {/* Page size */}
             <div>
-              <label htmlFor="pageSize" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="pageSize" className="block mb-1">
                 {tTools('posterizePdf.pageSize') || 'Output Page Size'}
-              </label>
+              </Label>
               <select
                 id="pageSize"
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.pageSize') || 'Output Page Size'}
               >
                 <option value="A4">A4</option>
                 <option value="Letter">Letter</option>
@@ -313,15 +312,15 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
             {/* Orientation */}
             <div>
-              <label htmlFor="orientation" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="orientation" className="block mb-1">
                 {tTools('posterizePdf.orientation') || 'Orientation'}
-              </label>
+              </Label>
               <select
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.orientation') || 'Orientation'}
               >
                 <option value="auto">{t('options.auto') || 'Auto'}</option>
                 <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
@@ -331,9 +330,9 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
             {/* Overlap */}
             <div>
-              <label htmlFor="overlap" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="overlap" className="block mb-1">
                 {tTools('posterizePdf.overlap') || 'Overlap'}
-              </label>
+              </Label>
               <div className="flex gap-2">
                 <Input
                   type="number"
@@ -343,13 +342,13 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                   value={overlap}
                   onChange={(e) => setOverlap(Math.max(0, parseFloat(e.target.value) || 0))}
                   disabled={isProcessing}
-                  className="flex-1"
+                  className="flex-1" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
                 />
                 <select
                   value={overlapUnit}
                   onChange={(e) => setOverlapUnit(e.target.value as 'pt' | 'mm' | 'in')}
                   disabled={isProcessing}
-                  className="w-20 px-2 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-20 px-2 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="overlap" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
                 >
                   <option value="mm">mm</option>
                   <option value="in">in</option>
@@ -360,15 +359,15 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
             {/* Scaling mode */}
             <div>
-              <label htmlFor="scalingMode" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="scalingMode" className="block mb-1">
                 {tTools('posterizePdf.scalingMode') || 'Scaling Mode'}
-              </label>
+              </Label>
               <select
                 id="scalingMode"
                 value={scalingMode}
                 onChange={(e) => setScalingMode(e.target.value as 'fit' | 'fill')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('posterizePdf.scalingMode') || 'Scaling Mode'}
               >
                 <option value="fit">{tTools('posterizePdf.fit') || 'Fit (preserve aspect ratio)'}</option>
                 <option value="fill">{tTools('posterizePdf.fill') || 'Fill (may crop)'}</option>
@@ -377,9 +376,9 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
             {/* Page range */}
             <div className="md:col-span-2 lg:col-span-3">
-              <label htmlFor="pageRange" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="pageRange" className="block mb-1">
                 {tTools('posterizePdf.pageRange') || 'Page Range (optional)'}
-              </label>
+              </Label>
               <Input
                 type="text"
                 id="pageRange"
@@ -387,7 +386,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('posterizePdf.pageRangePlaceholder') || 'e.g., 1-5, 8, 10-15 (leave empty for all pages)'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('posterizePdf.pageRange') || 'Page Range (optional)'}
               />
             </div>
           </div>
@@ -395,7 +394,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
           {/* Preview info */}
           <div className="mt-4 p-3 rounded-md bg-muted">
             <p className="text-sm text-muted-foreground">
-              {tTools('posterizePdf.previewInfo', { rows, cols, total: rows * cols }) || 
+              {tTools('posterizePdf.previewInfo', { rows, cols, total: rows * cols }) ||
                 `Each page will be split into ${rows}×${cols} = ${rows * cols} tiles. Total output: ${outputTiles} pages.`
               }
             </p>
@@ -424,8 +423,8 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
             disabled={!canProcess}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('posterizePdf.createButton') || 'Posterize PDF')
             }
           </Button>
@@ -444,7 +443,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

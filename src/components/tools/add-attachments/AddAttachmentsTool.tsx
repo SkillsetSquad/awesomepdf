@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -32,13 +33,13 @@ export interface AddAttachmentsToolProps {
 /**
  * AddAttachmentsTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for adding attachments to PDF files.
  */
 export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [attachmentFiles, setAttachmentFiles] = useState<UploadedFile[]>([]);
@@ -49,7 +50,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
   const [error, setError] = useState<string | null>(null);
   const [attachmentLevel, setAttachmentLevel] = useState<'document' | 'page'>('document');
   const [pageRange, setPageRange] = useState('');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -240,7 +241,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
           label={tTools('addAttachments.attachmentsUploadLabel') || 'Upload Attachments'}
           description={tTools('addAttachments.attachmentsUploadDescription') || 'Select files to embed in the PDF. Any file type is supported.'}
         />
-        
+
         {attachmentFiles.length > 0 && (
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
@@ -297,14 +298,14 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('addAttachments.optionsTitle') || 'Attachment Options'}
           </h3>
-          
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2">
                 {tTools('addAttachments.attachmentLevel') || 'Attachment Level'}
-              </label>
+              </Label>
               <div className="flex gap-4">
-                <label className="flex items-center gap-2 cursor-pointer">
+                <Label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="attachmentLevel"
@@ -315,8 +316,8 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
                     className="w-4 h-4"
                   />
                   <span className="text-sm">{tTools('addAttachments.documentLevel') || 'Document Level'}</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                </Label>
+                <Label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="attachmentLevel"
@@ -327,22 +328,22 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
                     className="w-4 h-4"
                   />
                   <span className="text-sm">{tTools('addAttachments.pageLevel') || 'Page Level'}</span>
-                </label>
+                </Label>
               </div>
             </div>
 
             {attachmentLevel === 'page' && (
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <Label className="block mb-2" htmlFor="addattachmentstool-field-1">
                   {tTools('addAttachments.pageRange') || 'Page Range'}
-                </label>
+                </Label>
                 <Input
                   type="text"
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
                   placeholder="e.g., 1-3, 5, 7-9"
                   disabled={isProcessing}
-                  className="w-full"
+                  className="w-full" id="addattachmentstool-field-1" aria-label={tTools('addAttachments.pageRange') || 'Page Range'}
                 />
                 <p className="mt-1 text-xs text-muted-foreground">
                   {tTools('addAttachments.pageRangeHint') || 'Specify which pages to attach files to.'}
@@ -355,7 +356,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -383,8 +384,8 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
           disabled={!canProcess}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('addAttachments.addButton') || 'Add Attachments')
           }
         </Button>
@@ -412,7 +413,7 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

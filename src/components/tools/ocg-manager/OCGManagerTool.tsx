@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -328,9 +329,9 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
 
                     {/* Add New Layer */}
                     <div className="mt-4 pt-4 border-t border-border">
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <Label className="block mb-2" htmlFor="ocgmanagertool-field-1">
                             {tTools('ocgManager.addLayerLabel') || 'Add New Layer'}
-                        </label>
+                        </Label>
                         <div className="flex gap-2">
                             <Input
                                 type="text"
@@ -338,7 +339,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                 onChange={(e) => setNewLayerName(e.target.value)}
                                 placeholder="Layer name..."
                                 disabled={isProcessing}
-                                className="flex-1"
+                                className="flex-1" id="ocgmanagertool-field-1" aria-label={tTools('ocgManager.addLayerLabel') || 'Add New Layer'}
                             />
                             <Button
                                 variant="secondary"

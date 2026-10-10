@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -33,7 +34,7 @@ export interface ExtractImagesToolProps {
 /**
  * ExtractImagesTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for extracting images from PDF files.
  */
 export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
@@ -339,42 +340,42 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-1">
+                            <Label className="block mb-1" htmlFor="extractimagestool-field-1">
                                 {tTools('extractImages.minWidth') || 'Min Width (px)'}
-                            </label>
+                            </Label>
                             <Input
                                 type="number"
                                 min="0"
                                 max="5000"
                                 value={minWidth}
                                 onChange={(e) => setMinWidth(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full"
+                                className="w-full" id="extractimagestool-field-1" aria-label={tTools('extractImages.minWidth') || 'Min Width (px)'}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-1">
+                            <Label className="block mb-1" htmlFor="extractimagestool-field-2">
                                 {tTools('extractImages.minHeight') || 'Min Height (px)'}
-                            </label>
+                            </Label>
                             <Input
                                 type="number"
                                 min="0"
                                 max="5000"
                                 value={minHeight}
                                 onChange={(e) => setMinHeight(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full"
+                                className="w-full" id="extractimagestool-field-2" aria-label={tTools('extractImages.minHeight') || 'Min Height (px)'}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-1">
+                            <Label className="block mb-1" htmlFor="extractimagestool-field-3">
                                 {tTools('extractImages.minSizeKB') || 'Min Size (KB)'}
-                            </label>
+                            </Label>
                             <Input
                                 type="number"
                                 min="0"
                                 max="10000"
                                 value={minSize}
                                 onChange={(e) => setMinSize(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full"
+                                className="w-full" id="extractimagestool-field-3" aria-label={tTools('extractImages.minSizeKB') || 'Min Size (KB)'}
                             />
                         </div>
                     </div>

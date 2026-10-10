@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -168,14 +169,14 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <Label className="block mb-2" htmlFor="djvutopdftool-field-1">
                             {tTools('djvuToPdf.dpiLabel') || 'Output DPI'}
-                        </label>
+                        </Label>
                         <select
                             value={dpi}
                             onChange={(e) => setDpi(Number(e.target.value))}
                             disabled={isProcessing}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="djvutopdftool-field-1" aria-label={tTools('djvuToPdf.dpiLabel') || 'Output DPI'}
                         >
                             <option value={72}>72 DPI (Web)</option>
                             <option value={150}>150 DPI (Standard)</option>
@@ -186,14 +187,14 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
                         </p>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <Label className="block mb-2" htmlFor="djvutopdftool-field-2">
                             {tTools('djvuToPdf.qualityLabel') || 'Image Quality'}
-                        </label>
+                        </Label>
                         <select
                             value={quality}
                             onChange={(e) => setQuality(Number(e.target.value))}
                             disabled={isProcessing}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" id="djvutopdftool-field-2" aria-label={tTools('djvuToPdf.qualityLabel') || 'Image Quality'}
                         >
                             <option value={0.7}>70% (Smaller file)</option>
                             <option value={0.85}>85% (Balanced)</option>

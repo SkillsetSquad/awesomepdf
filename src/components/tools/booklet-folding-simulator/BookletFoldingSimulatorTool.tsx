@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -120,10 +121,10 @@ export function BookletFoldingSimulatorTool() {
             {/* Control Panel */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <label className="text-sm font-semibold text-neutral-300 flex items-center gap-2">
+                <Label className="text-neutral-300 flex items-center gap-2">
                   <Layers className="w-4 h-4 text-violet-400" />
                   {tTools('foldingMode')}
-                </label>
+                </Label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => setFoldingMode('4-page-fold')}
@@ -248,8 +249,8 @@ export function BookletFoldingSimulatorTool() {
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: `rotateY(${-foldProgress * 1.8}deg)`,
-                    boxShadow: foldProgress > 50 
-                      ? 'inset 10px 0 15px rgba(0,0,0,0.1)' 
+                    boxShadow: foldProgress > 50
+                      ? 'inset 10px 0 15px rgba(0,0,0,0.1)'
                       : '0 4px 6px rgba(0,0,0,0.1)'
                   }}
                 >
@@ -260,7 +261,7 @@ export function BookletFoldingSimulatorTool() {
 
                 {/* 3D Binding shadow */}
                 {is3DMode && (
-                  <div 
+                  <div
                     className="absolute top-4 -left-4 w-56 h-72 bg-black/10 blur-xl pointer-events-none -z-10 rounded-xl transition-all"
                     style={{
                       transform: `translateZ(-20px) scale(${1 - foldProgress * 0.003})`,

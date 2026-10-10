@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -9,15 +10,15 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { pdfToTiff } from '@/lib/pdf/processors/pdf-to-tiff';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  Printer, 
-  Settings, 
-  Cpu, 
-  Layers, 
-  Sliders, 
-  Info, 
-  Check, 
-  AlertCircle 
+import {
+  Printer,
+  Settings,
+  Cpu,
+  Layers,
+  Sliders,
+  Info,
+  Check,
+  AlertCircle
 } from 'lucide-react';
 
 export interface PDFToTIFFToolProps {
@@ -146,12 +147,12 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
     <div className={`space-y-6 ${className}`.trim()}>
       {/* File Upload Zone */}
       <div className="space-y-3">
-        <label className="text-sm font-bold text-foreground block">
+        <Label className="block">
           {t('pdfToTiff.uploadLabel')}
-        </label>
+        </Label>
         {file ? (
-          <Card 
-             
+          <Card
+
             className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl"
           >
             <div className="flex items-center gap-3">
@@ -161,8 +162,8 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                 <text x="8" y="17" fontSize="5.5" fill="white" fontWeight="bold">TIFF</text>
               </svg>
               <div>
-                <p 
-                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md" 
+                <p
+                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md"
                   title={file.name}
                 >
                   {file.name}
@@ -172,7 +173,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                 </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={handleClearFile}
               disabled={isProcessing}
               className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
@@ -209,7 +210,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
       {/* Configuration & 3D Interactive Grid */}
       {file && totalPages > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
+
           {/* LEFT: 3D Pixel Grid Interactive Widget */}
           <div className="lg:col-span-5 space-y-4">
             <Card  className="p-6 bg-card rounded-2xl flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
@@ -217,16 +218,16 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                 <Cpu className="w-4 h-4 text-primary" />
                 {t('pdfToTiff.previewTitle')}
               </span>
-              
-              <div 
+
+              <div
                 className="relative w-44 h-44 transform-gpu transition-all duration-700 ease-in-out"
-                style={{ 
+                style={{
                   perspective: '600px',
                   transformStyle: 'preserve-3d',
                 }}
               >
                 {/* 3D Grid container */}
-                <div 
+                <div
                   className="w-full h-full border border-zinc-700/30 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-2xl"
                   style={{
                     transform: 'rotateX(55deg) rotateZ(-35deg)',
@@ -239,7 +240,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                   }}
                 >
                   {/* Dynamic Grid lines representing DPI */}
-                  <div 
+                  <div
                     className="absolute inset-4 rounded-xl opacity-90 grid gap-1 transition-all duration-500"
                     style={{
                       gridTemplateColumns: `repeat(${dpi <= 100 ? 5 : dpi <= 200 ? 10 : 16}, minmax(0, 1fr))`,
@@ -247,7 +248,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                     }}
                   >
                     {Array.from({ length: dpi <= 100 ? 25 : dpi <= 200 ? 100 : 256 }).map((_, idx) => (
-                      <div 
+                      <div
                         key={idx}
                         className="rounded-xs transition-all duration-700"
                         style={{
@@ -266,7 +267,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
               <div className="mt-8 text-center max-w-xs leading-normal">
                 <p className="text-[11px] font-semibold text-muted-foreground">
-                  {colorMode === 'color' 
+                  {colorMode === 'color'
                     ? t('pdfToTiff.descColor')
                     : colorMode === 'grayscale'
                       ? t('pdfToTiff.descGrayscale')
@@ -279,8 +280,8 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
 
           {/* RIGHT: Parameter adjustments */}
           <div className="lg:col-span-7 space-y-6">
-            <Card 
-               
+            <Card
+
               className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40"
             >
               <h3 className="text-sm font-bold text-foreground border-b border-border pb-3 flex items-center gap-1.5">
@@ -354,7 +355,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                     {t('pdfToTiff.resolutionDpi', { dpi, percent: Math.round(dpi / 72 * 100) })}
                   </span>
                 </div>
-                
+
                 <input
                   type="range"
                   min="72"
@@ -364,7 +365,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                   onChange={(e) => setDpi(parseInt(e.target.value, 10))}
                   className="w-full accent-primary bg-muted h-1.5 rounded-lg appearance-none cursor-pointer"
                 />
-                
+
                 <div className="flex justify-between text-[9px] text-muted-foreground font-semibold">
                   <span>{t('pdfToTiff.dpi72')}</span>
                   <span>{t('pdfToTiff.dpi150')}</span>
@@ -419,7 +420,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               </div>
             )}
           </div>
-          
+
         </div>
       )}
 

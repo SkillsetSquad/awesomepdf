@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -433,12 +434,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </h4>
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.style')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-1">{tTools('pageNumbers.style')}</Label>
                   <select
                     value={format}
                     onChange={(e) => setFormat(e.target.value as Format)}
                     className="w-full px-2 py-1.5 text-sm border rounded-md"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-1" aria-label={tTools('pageNumbers.style')}
                   >
                     <option value="number">1, 2, 3...</option>
                     <option value="roman">I, II, III...</option>
@@ -447,28 +448,28 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.startNumber')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-2">{tTools('pageNumbers.startNumber')}</Label>
                   <Input
                     type="number"
                     value={startNumber}
                     onChange={(e) => setStartNumber(parseInt(e.target.value) || 1)}
                     min={1}
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-2" aria-label={tTools('pageNumbers.startNumber')}
                   />
                 </div>
               </div>
 
               {format === 'custom' && (
                 <div className="mb-3">
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.customFormat')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-3">{tTools('pageNumbers.customFormat')}</Label>
                   <Input
                     type="text"
                     value={customFormat}
                     onChange={(e) => setCustomFormat(e.target.value)}
                     placeholder="Page {page} of {total}"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-3" aria-label={tTools('pageNumbers.customFormat')}
                   />
                   <p className="text-xs text-gray-500 mt-1">{tTools('pageNumbers.customFormatHint')}</p>
                 </div>
@@ -476,25 +477,25 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.prefix')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-4">{tTools('pageNumbers.prefix')}</Label>
                   <Input
                     type="text"
                     value={prefix}
                     onChange={(e) => setPrefix(e.target.value)}
                     placeholder="e.g., Page "
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-4" aria-label={tTools('pageNumbers.prefix')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.suffix')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-5">{tTools('pageNumbers.suffix')}</Label>
                   <Input
                     type="text"
                     value={suffix}
                     onChange={(e) => setSuffix(e.target.value)}
                     placeholder="e.g., -"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-5" aria-label={tTools('pageNumbers.suffix')}
                   />
                 </div>
               </div>
@@ -505,7 +506,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </h4>
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.fontSize')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-6">{tTools('pageNumbers.fontSize')}</Label>
                   <Input
                     type="number"
                     value={fontSize}
@@ -513,11 +514,11 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                     min={6}
                     max={72}
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-6" aria-label={tTools('pageNumbers.fontSize')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.margin')}</label>
+                  <Label className="block mb-1" htmlFor="pagenumberstool-field-7">{tTools('pageNumbers.margin')}</Label>
                   <Input
                     type="number"
                     value={margin}
@@ -525,31 +526,31 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                     min={10}
                     max={100}
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-7" aria-label={tTools('pageNumbers.margin')}
                   />
                 </div>
               </div>
               <div className="mb-3">
-                <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.color')}</label>
+                <Label className="block mb-1" htmlFor="pagenumberstool-field-8">{tTools('pageNumbers.color')}</Label>
                 <div className="flex items-center gap-2">
                   <Input
                     type="color"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
                     className="w-10 h-10 cursor-pointer"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="pagenumberstool-field-8" aria-label={tTools('pageNumbers.color')}
                   />
                   <Input
                     type="text"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
                     className="flex-1"
-                    disabled={isProcessing}
+                    disabled={isProcessing} aria-label={tTools('pageNumbers.color')}
                   />
                 </div>
               </div>
 
-              <label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2">
                 <input
                   type="checkbox"
                   checked={skipFirstPage}
@@ -558,7 +559,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                   disabled={isProcessing}
                 />
                 <span className="text-sm">{tTools('pageNumbers.skipFirstPage')}</span>
-              </label>
+              </Label>
 
               {/* Odd/Even Page Mode */}
               <div className="mt-3 pt-3 border-t border-gray-200">
@@ -568,12 +569,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
 
                 <div className="space-y-2">
                   <div>
-                    <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.pageMode')}</label>
+                    <Label className="block mb-1" htmlFor="pagenumberstool-field-9">{tTools('pageNumbers.pageMode')}</Label>
                     <select
                       value={pageMode}
                       onChange={(e) => setPageMode(e.target.value as typeof pageMode)}
                       className="w-full px-2 py-1.5 text-sm border rounded-md"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="pagenumberstool-field-9" aria-label={tTools('pageNumbers.pageMode')}
                     >
                       <option value="all">{tTools('pageNumbers.modeAll')}</option>
                       <option value="odd-only">{tTools('pageNumbers.modeOddOnly')}</option>
@@ -585,12 +586,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                   {pageMode === 'odd-even-different' && (
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.oddPosition')}</label>
+                        <Label className="block mb-1" htmlFor="pagenumberstool-field-10">{tTools('pageNumbers.oddPosition')}</Label>
                         <select
                           value={oddPosition}
                           onChange={(e) => setOddPosition(e.target.value as Position)}
                           className="w-full px-2 py-1.5 text-sm border rounded-md"
-                          disabled={isProcessing}
+                          disabled={isProcessing} id="pagenumberstool-field-10" aria-label={tTools('pageNumbers.oddPosition')}
                         >
                           <option value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</option>
                           <option value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</option>
@@ -602,12 +603,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                         <p className="text-xs text-gray-500">{tTools('pageNumbers.oddPositionHint')}</p>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.evenPosition')}</label>
+                        <Label className="block mb-1" htmlFor="pagenumberstool-field-11">{tTools('pageNumbers.evenPosition')}</Label>
                         <select
                           value={evenPosition}
                           onChange={(e) => setEvenPosition(e.target.value as Position)}
                           className="w-full px-2 py-1.5 text-sm border rounded-md"
-                          disabled={isProcessing}
+                          disabled={isProcessing} id="pagenumberstool-field-11" aria-label={tTools('pageNumbers.evenPosition')}
                         >
                           <option value="bottom-left">{tTools('pageNumbers.posBottomLeft')}</option>
                           <option value="bottom-center">{tTools('pageNumbers.posBottomCenter')}</option>

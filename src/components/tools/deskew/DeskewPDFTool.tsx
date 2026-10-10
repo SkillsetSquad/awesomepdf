@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,7 +19,7 @@ export interface DeskewPDFToolProps {
 
 /**
  * DeskewPDFTool Component
- * 
+ *
  * Provides the UI for automatically straightening scanned or tilted PDF pages.
  * Supports batch processing of multiple files with ZIP download.
  */
@@ -252,9 +253,9 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                     <div className="space-y-4">
                         {/* Threshold Setting */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('deskewPdf.thresholdLabel') || 'Sensitivity Level'}: {threshold}
-                            </label>
+                            </Label>
                             <input
                                 type="range"
                                 min="1"
@@ -271,9 +272,9 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
                         {/* DPI Setting */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('deskewPdf.dpiLabel') || 'Analysis DPI'}: {dpi}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {[72, 150, 300].map((d) => (
                                     <button

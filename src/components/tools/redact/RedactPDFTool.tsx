@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -1964,7 +1965,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 </div>
 
                 <div className="space-y-2.5 text-xs">
-                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                  <Label className="flex items-start gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={true}
@@ -1975,9 +1976,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       <span className="font-semibold text-foreground">物理不可逆销毁 (必选)</span>
                       <p className="text-[11px] text-muted-foreground">脱敏区域以像素合并烧录，彻底清除底层文字与对象流</p>
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                  <Label className="flex items-start gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={stripMetadata}
@@ -1988,9 +1989,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       <span className="font-medium text-foreground">深度擦除元数据</span>
                       <p className="text-[11px] text-muted-foreground">清空作者、标题、修改日期及 XMP 扩展隐私指纹</p>
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                  <Label className="flex items-start gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={purgeAnnotations}
@@ -2001,9 +2002,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       <span className="font-medium text-foreground">清除残留批注与脚本</span>
                       <p className="text-[11px] text-muted-foreground">移除浮动注释、AcroForm 脚本与潜在外链泄露</p>
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                  <Label className="flex items-start gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={flattenAllPages}
@@ -2014,7 +2015,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       <span className="font-medium text-foreground">全局统一栅格化</span>
                       <p className="text-[11px] text-muted-foreground">将未涂黑页面也全部光栅化（体积增大但安全最高）</p>
                     </div>
-                  </label>
+                  </Label>
                 </div>
               </Card>
             </div>

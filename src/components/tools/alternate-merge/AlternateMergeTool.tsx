@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -25,14 +26,14 @@ export interface AlternateMergeToolProps {
 /**
  * AlternateMergeTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for alternate/interleave merging of PDF files.
  * Perfect for combining separately scanned front and back pages.
  */
 export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -41,11 +42,11 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [reverseSecond, setReverseSecond] = useState(false);
-  
+
   // Drag state
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -58,7 +59,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       file,
       status: 'pending' as const,
     }));
-    
+
     setFiles(prev => [...prev, ...uploadedFiles]);
     setError(null);
     setResult(null);
@@ -253,7 +254,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -300,7 +301,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                 `}
               >
                 {/* Drag Handle */}
-                <div 
+                <div
                   className="flex-shrink-0 text-muted-foreground"
                   aria-hidden="true"
                 >
@@ -388,8 +389,8 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('alternateMerge.optionsTitle') || 'Interleave Options'}
           </h3>
-          
-          <label className="flex items-center gap-3 cursor-pointer">
+
+          <Label className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
               checked={reverseSecond}
@@ -405,7 +406,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                 {tTools('alternateMerge.reverseSecondHint') || 'Enable this for back-to-front scanned documents'}
               </p>
             </div>
-          </label>
+          </Label>
 
           {/* Info box explaining how interleaving works */}
           <div className="mt-4 p-3 rounded-md bg-muted/30 border border-border">
@@ -437,8 +438,8 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
           disabled={!canMerge}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('alternateMerge.mergeButton') || 'Interleave PDFs')
           }
         </Button>
@@ -456,7 +457,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

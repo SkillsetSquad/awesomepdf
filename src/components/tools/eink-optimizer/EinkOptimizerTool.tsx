@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -176,10 +177,10 @@ export function EinkOptimizerTool() {
 
               {/* Text Dilation Amount */}
               <div className="space-y-3 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
-                <label className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5">
+                <Label className="text-neutral-300 flex items-center gap-1.5">
                   <Settings className="w-3.5 h-3.5 text-teal-400" />
                   {t('einkOptimizer.dilationSuffix')}
-                </label>
+                </Label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
                     { val: 0, label: t('einkOptimizer.originalInk') },
@@ -237,7 +238,7 @@ export function EinkOptimizerTool() {
             </div>
 
             {/* Split Screen Contrast Lens (WOW FACTOR COMPARISON) */}
-            <div 
+            <div
               ref={containerRef}
               className="relative h-72 md:h-auto min-h-[300px] border border-neutral-800 rounded-xl overflow-hidden cursor-ew-resize select-none bg-neutral-900"
             >
@@ -255,9 +256,9 @@ export function EinkOptimizerTool() {
               </div>
 
               {/* Left Side: Original (Muddy scan page background with gray noise) */}
-              <div 
+              <div
                 className="absolute inset-y-0 left-0 bg-[radial-gradient(#b5b5b5_1px,transparent_1px)] [background-size:16px_16px] bg-neutral-400 flex flex-col justify-center p-8 text-neutral-700/80 font-serif leading-relaxed text-xs overflow-hidden border-r border-neutral-600"
-                style={{ 
+                style={{
                   width: `${sliderPos}%`,
                   boxShadow: '4px 0 16px rgba(0,0,0,0.15)'
                 }}
@@ -277,7 +278,7 @@ export function EinkOptimizerTool() {
               </div>
 
               {/* Lens Handle Slider */}
-              <div 
+              <div
                 onMouseDown={handleMouseDown}
                 className="absolute inset-y-0 w-1 bg-white cursor-ew-resize flex items-center justify-center z-10 shadow-lg"
                 style={{ left: `${sliderPos}%` }}

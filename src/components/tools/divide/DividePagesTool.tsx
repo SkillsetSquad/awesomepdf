@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -19,13 +20,13 @@ export interface DividePagesToolProps {
 /**
  * DividePagesTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for dividing PDF pages into multiple sections.
  */
 export function DividePagesTool({ className = '' }: DividePagesToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -34,10 +35,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options
   const [divisionType, setDivisionType] = useState<DivisionType>('vertical');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -48,10 +49,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
     } catch (err) {
       console.error('Failed to load PDF info:', err);
@@ -200,7 +201,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -247,9 +248,9 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
           <div className="space-y-4">
             {/* Division Type */}
             <div>
-              <label htmlFor="divisionType" className="block text-sm font-medium text-foreground mb-2">
+              <Label htmlFor="divisionType" className="block mb-2">
                 {tTools('dividePages.divisionType') || 'Division Type'}
-              </label>
+              </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {/* Vertical Split */}
                 <button
@@ -336,9 +337,9 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-12 h-16 border-2 border-current rounded grid grid-cols-3 grid-rows-3">
                       {[...Array(9)].map((_, idx) => (
-                        <div 
-                          key={idx} 
-                          className={`${idx % 3 !== 2 ? 'border-r' : ''} ${idx < 6 ? 'border-b' : ''} border-current`} 
+                        <div
+                          key={idx}
+                          className={`${idx % 3 !== 2 ? 'border-r' : ''} ${idx < 6 ? 'border-b' : ''} border-current`}
                         />
                       ))}
                     </div>
@@ -354,7 +355,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
             {/* Preview info */}
             <div className="p-3 rounded-md bg-muted">
               <p className="text-sm text-muted-foreground">
-                {tTools('dividePages.previewInfo') || 
+                {tTools('dividePages.previewInfo') ||
                   `Each of the ${totalPages} page${totalPages !== 1 ? 's' : ''} will be divided into ${sectionsPerPage} parts, resulting in ${outputPages} output page${outputPages !== 1 ? 's' : ''}.`
                 }
               </p>
@@ -384,8 +385,8 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
             disabled={!canProcess}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('dividePages.divideButton') || 'Divide Pages')
             }
           </Button>
@@ -404,7 +405,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

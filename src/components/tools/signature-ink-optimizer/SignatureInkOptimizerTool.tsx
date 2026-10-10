@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -151,11 +152,11 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('signatureInkOptimizer.optimizerTypeLabel')}</label>
+                    <Label className="" htmlFor="signatureinkoptimizertool-field-1">{t('signatureInkOptimizer.optimizerTypeLabel')}</Label>
                     <select
                       value={inkType}
                       onChange={(e) => setInkType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="signatureinkoptimizertool-field-1" aria-label={t('signatureInkOptimizer.optimizerTypeLabel')}
                     >
                       <option value="auto">{t('signatureInkOptimizer.optimizerTypeAuto')}</option>
                       <option value="dark-ink">{t('signatureInkOptimizer.optimizerTypeDark')}</option>
@@ -164,10 +165,10 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       <span>{t('signatureInkOptimizer.thresholdLabel')}</span>
                       <span className="font-mono text-primary font-bold">{threshold}</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="100"
@@ -179,10 +180,10 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       <span>{t('signatureInkOptimizer.contrastLabel')}</span>
                       <span className="font-mono text-primary font-bold">{contrast.toFixed(1)}x</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="1.0"

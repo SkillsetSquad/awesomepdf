@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -45,10 +46,10 @@ export function RemoveAnnotationsTool({ className = '' }: RemoveAnnotationsToolP
           <Card className="p-6" ><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>{t('buttons.remove')}</Button></div></Card>
           <Card className="p-6"  >
             <h3 className="text-lg font-medium mb-4">{tTools('removeAnnotations.optionsTitle') || 'Options'}</h3>
-            <label className="flex items-center gap-2">
+            <Label className="flex items-center gap-2">
               <input type="checkbox" checked={removeAll} onChange={(e) => setRemoveAll(e.target.checked)} disabled={isProcessing} className="w-4 h-4" />
               <span>{tTools('removeAnnotations.removeAllLabel') || 'Remove all annotations (comments, highlights, links, etc.)'}</span>
-            </label>
+            </Label>
           </Card>
         </>
       )}

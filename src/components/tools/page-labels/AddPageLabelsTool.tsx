@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -11,15 +12,15 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { addPageLabels } from '@/lib/pdf/processors/page-labels';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  Plus, 
-  Trash2, 
-  Tag, 
-  Info, 
-  Layers, 
-  HelpCircle, 
-  Check, 
-  AlertCircle 
+import {
+  Plus,
+  Trash2,
+  Tag,
+  Info,
+  Layers,
+  HelpCircle,
+  Check,
+  AlertCircle
 } from 'lucide-react';
 
 export interface PageLabelRuleInput {
@@ -136,7 +137,7 @@ export function AddPageLabelsTool() {
       const indices = parsePageRangeForPreview(rule.pageRange || '', totalPages);
       indices.forEach(idx => {
         // Embed the unique rule order index as reference
-        pageToRuleMap[idx] = { ...rule, startValue: ruleIdx }; 
+        pageToRuleMap[idx] = { ...rule, startValue: ruleIdx };
       });
     });
 
@@ -157,8 +158,8 @@ export function AddPageLabelsTool() {
         const originalRule = rules[ruleIndex];
 
         const countSoFar = ruleAppliedCount.get(ruleIndex) || 0;
-        const startValBase = originalRule.startValue !== undefined && !isNaN(originalRule.startValue) 
-          ? originalRule.startValue 
+        const startValBase = originalRule.startValue !== undefined && !isNaN(originalRule.startValue)
+          ? originalRule.startValue
           : 1;
         const finalStartVal = startValBase + countSoFar;
 
@@ -239,20 +240,20 @@ export function AddPageLabelsTool() {
 
   // Limit preview count to prevent DOM lag on massive PDFs
   const maxPreviewCount = 60;
-  const previewList = showAllPreview 
-    ? pageLabelsPreview 
+  const previewList = showAllPreview
+    ? pageLabelsPreview
     : pageLabelsPreview.slice(0, maxPreviewCount);
 
   return (
     <div className="space-y-6">
       {/* File Upload Zone */}
       <div className="space-y-3">
-        <label className="text-sm font-bold text-foreground block">
+        <Label className="block">
           {t('pageLabels.uploadLabel')}
-        </label>
+        </Label>
         {file ? (
-          <Card 
-             
+          <Card
+
             className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl"
           >
             <div className="flex items-center gap-3">
@@ -262,8 +263,8 @@ export function AddPageLabelsTool() {
                 <text x="8" y="17" fontSize="5" fill="white" fontWeight="bold">LABEL</text>
               </svg>
               <div>
-                <p 
-                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md" 
+                <p
+                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md"
                   title={file.name}
                 >
                   {file.name}
@@ -273,7 +274,7 @@ export function AddPageLabelsTool() {
                 </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={handleClearFile}
               disabled={isProcessing}
               className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
@@ -313,10 +314,10 @@ export function AddPageLabelsTool() {
           {/* LEFT: Rules configuration panel */}
           <div className="lg:col-span-7 space-y-4">
             <div className="flex justify-between items-center pb-2">
-              <label className="text-sm font-bold text-foreground flex items-center gap-1.5">
+              <Label className="flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-primary" />
                 {t('pageLabels.optionsTitle')}
-              </label>
+              </Label>
               <Button
                 variant="outline"
                 size="sm"
@@ -331,9 +332,9 @@ export function AddPageLabelsTool() {
 
             <div className="space-y-4">
               {rules.map((rule, idx) => (
-                <Card 
+                <Card
                   key={idx}
-                   
+
                   className="p-5 rounded-2xl relative space-y-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300"
                 >
                   <div className="flex justify-between items-center border-b border-border pb-3">
@@ -356,9 +357,9 @@ export function AddPageLabelsTool() {
                     {/* Page Range input */}
                     <div className="space-y-1.5">
                       <div className="flex justify-between items-center">
-                        <label className="text-xs font-bold text-muted-foreground">
+                        <Label className="text-muted-foreground">
                           {t('pageLabels.pageRangeLabel')}
-                        </label>
+                        </Label>
                         <span className="text-[10px] text-muted-foreground font-medium">
                           {t('pageLabels.pageRangeHelp')}
                         </span>
@@ -374,13 +375,13 @@ export function AddPageLabelsTool() {
 
                     {/* Style selector */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-muted-foreground block">
+                      <Label className="text-muted-foreground block">
                         {t('pageLabels.styleLabel')}
-                      </label>
+                      </Label>
                       <select
                         value={rule.style}
                         onChange={(e) => handleRuleChange(idx, { style: e.target.value as any })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/35 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/35 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all" aria-label={t('pageLabels.styleLabel')}
                       >
                         <option value="D">{t('pageLabels.styleArabic')}</option>
                         <option value="R">{t('pageLabels.styleRomanUpper')}</option>
@@ -393,29 +394,29 @@ export function AddPageLabelsTool() {
 
                     {/* Prefix input */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-muted-foreground block">
+                      <Label className="text-muted-foreground block">
                         {t('pageLabels.prefixLabel')}
-                      </label>
+                      </Label>
                       <Input
                         type="text"
                         placeholder={t('pageLabels.prefixPlaceholder')}
                         value={rule.prefix}
                         onChange={(e) => handleRuleChange(idx, { prefix: e.target.value })}
-                        className="w-full transition-all"
+                        className="w-full transition-all" aria-label={t('pageLabels.prefixLabel')}
                       />
                     </div>
 
                     {/* Start value input */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-muted-foreground block">
+                      <Label className="text-muted-foreground block">
                         {t('pageLabels.startValueLabel')}
-                      </label>
+                      </Label>
                       <Input
                         type="number"
                         min="1"
                         value={rule.startValue}
                         onChange={(e) => handleRuleChange(idx, { startValue: parseInt(e.target.value, 10) || 1 })}
-                        className="w-full transition-all"
+                        className="w-full transition-all" aria-label={t('pageLabels.startValueLabel')}
                       />
                     </div>
                   </div>
@@ -460,13 +461,13 @@ export function AddPageLabelsTool() {
 
           {/* RIGHT: Live tag preview panel */}
           <div className="lg:col-span-5 space-y-4">
-            <label className="text-sm font-bold text-foreground flex items-center gap-1.5">
+            <Label className="flex items-center gap-1.5">
               <Tag className="w-4 h-4 text-emerald-500" />
               {t('pageLabels.previewTitle')}
-            </label>
+            </Label>
 
-            <Card 
-               
+            <Card
+
               className="p-6 bg-card rounded-2xl min-h-[460px] flex flex-col border border-border shadow-inner"
             >
               {/* Informative tips */}
@@ -481,7 +482,7 @@ export function AddPageLabelsTool() {
               {/* Grid Preview */}
               <div className="grid grid-cols-2 xs:grid-cols-3 gap-2 overflow-y-auto max-h-[380px] pr-1.5 custom-scrollbar">
                 {previewList.map((label, idx) => (
-                  <div 
+                  <div
                     key={idx}
                     className="flex items-center justify-between p-2 rounded-xl border border-border/40 bg-white/20 dark:bg-zinc-800/10 backdrop-blur-sm select-none transition-all duration-300 hover:border-primary/30"
                   >
@@ -573,7 +574,7 @@ function toAlphaForPreview(num: number, isUppercase: boolean): string {
   let result = '';
   let temp = num;
   const baseCharCode = isUppercase ? 65 : 97;
-  
+
   while (temp > 0) {
     const remainder = (temp - 1) % 26;
     result = String.fromCharCode(baseCharCode + remainder) + result;
@@ -630,7 +631,7 @@ function parsePageRangeForPreview(rangeStr: string, totalPages: number): Set<num
       }
     }
   }
-  
+
   return indices;
 }
 

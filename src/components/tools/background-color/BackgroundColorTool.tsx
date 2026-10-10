@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { FileUploader } from '../FileUploader';
@@ -48,10 +49,10 @@ export function BackgroundColorTool({ className = '' }: BackgroundColorToolProps
         <>
           <Card className="p-6" ><div className="flex items-center justify-between"><p className="font-medium">{file.name}</p><Button variant="ghost" size="sm" onClick={() => { setFile(null); setResult(null); }} disabled={isProcessing}>Remove</Button></div></Card>
           <Card className="p-6"  >
-            <label className="block text-sm font-medium mb-2">Background Color</label>
+            <Label className="block mb-2" htmlFor="backgroundcolortool-field-1">Background Color</Label>
             <div className="flex items-center gap-4">
-              <Input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-16 h-10 cursor-pointer" disabled={isProcessing} />
-              <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-32" disabled={isProcessing} />
+              <Input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-16 h-10 cursor-pointer" disabled={isProcessing} id="backgroundcolortool-field-1" aria-label={"Background Color"} />
+              <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-32" disabled={isProcessing} aria-label={"Background Color"} />
             </div>
           </Card>
         </>

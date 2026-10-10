@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -128,7 +129,7 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
               </div>
 
               {/* The magical interactive magnifying contrast lens */}
-              <div 
+              <div
                 ref={imageContainerRef}
                 onMouseMove={handleMouseMove}
                 onMouseEnter={() => setIsHovered(true)}
@@ -138,10 +139,10 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                 <div className="relative w-64 h-48 bg-yellow-100/40 dark:bg-yellow-950/10 border border-yellow-200 dark:border-yellow-900/50 rounded-xl shadow-inner overflow-hidden flex flex-col items-center justify-center p-6">
                   {/* Mock messy background with handwriting */}
                   <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
-                  
+
                   {/* Moldy shadow patch */}
                   <div className="absolute w-24 h-24 bg-zinc-500/20 rounded-full blur-xl top-8 left-8" />
-                  
+
                   <div className="space-y-1.5 z-10 text-center text-zinc-400">
                     <span className="text-sm font-serif font-black italic block text-zinc-700 dark:text-zinc-300">
                       {t('handwritingInkContrastBooster.inkTitle')}
@@ -153,10 +154,10 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
 
                   {/* Contrast booster magnifying lens window */}
                   {isHovered && (
-                    <div 
+                    <div
                       className="absolute w-24 h-24 rounded-full border-2 border-primary bg-white dark:bg-zinc-950 shadow-2xl flex items-center justify-center overflow-hidden pointer-events-none transform -translate-x-12 -translate-y-12 z-30"
-                      style={{ 
-                        left: `${lensPosition.x}%`, 
+                      style={{
+                        left: `${lensPosition.x}%`,
                         top: `${lensPosition.y}%`,
                         boxShadow: '0 0 15px rgba(var(--primary), 0.3)'
                       }}
@@ -194,10 +195,10 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       {t('handwritingInkContrastBooster.bleachThreshold')}
                       <span className="font-mono text-primary font-bold">{threshold}</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="100"
@@ -209,10 +210,10 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       {t('handwritingInkContrastBooster.strokeContrast')}
                       <span className="font-mono text-primary font-bold">{contrast.toFixed(1)}x</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="1.0"

@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,7 +19,7 @@ export interface PDFToPDFAToolProps {
 
 /**
  * PDFToPDFATool Component
- * 
+ *
  * Converts PDF files to PDF/A archival format.
  */
 export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
@@ -183,9 +184,9 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfToPdfa.levelLabel') || 'PDF/A Level'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(Object.keys(PDFA_LEVEL_INFO) as PdfALevel[]).map((lvl) => (
                                     <button
@@ -208,7 +209,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                             </p>
                         </div>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={embedFonts}
@@ -219,9 +220,9 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.embedFontsLabel') || 'Embed all fonts'}
                             </span>
-                        </label>
+                        </Label>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={flattenTransparency}
@@ -232,7 +233,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.flattenTransparencyLabel') || 'Flatten transparency (required for PDF/A-1b)'}
                             </span>
-                        </label>
+                        </Label>
                     </div>
                 </Card>
             )}

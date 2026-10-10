@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -65,18 +66,18 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
       const arrayBuffer = await fileToRender.arrayBuffer();
       const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
       const page = await pdf.getPage(1);
-      
+
       const viewport = page.getViewport({ scale: 1.0 });
       const canvas = document.createElement('canvas');
       canvas.width = viewport.width;
       canvas.height = viewport.height;
-      
+
       const ctx = canvas.getContext('2d');
       if (ctx) {
         await page.render({ canvasContext: ctx, viewport }).promise;
         const originalUrl = canvas.toDataURL('image/jpeg', 1.0);
         setPdfPageImage(originalUrl);
-        
+
         // Frontend simulated compression based on current selected quality
         const compQuality = quality === 'low' ? 0.35 : quality === 'medium' ? 0.6 : quality === 'high' ? 0.8 : 0.95;
         const compressedUrl = canvas.toDataURL('image/jpeg', compQuality);
@@ -114,7 +115,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
     if (newFiles.length > 0) {
       addFiles(newFiles);
       setError(null);
-      
+
       // Load first file as preview metadata if single
       if (newFiles.length === 1) {
         setSingleFile(newFiles[0]);
@@ -182,13 +183,13 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
       return;
     }
     setError(null);
-    
+
     // For single file mode, clear preview during processing
     if (singleFile && pdfPageImage) {
       setPdfPageImage('');
       setCompressedImage('');
     }
-    
+
     await startProcessing(compressProcessor);
   }, [files.length, singleFile, pdfPageImage, startProcessing, compressProcessor]);
 
@@ -221,7 +222,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
     const rect = viewContainerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     // Check boundaries
     if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
       setMagCoords({ x, y, show: true });
@@ -237,7 +238,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* File Upload Area */}
       {!hasFiles && (
         <FileUploader
@@ -290,9 +291,9 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           <div className="mt-4 space-y-4">
             {/* Quality Options */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              <Label className="text-muted-foreground uppercase tracking-wider">
                 {t('compress.qualityTitle')}
-              </label>
+              </Label>
               <div className="grid grid-cols-4 gap-2">
                 {(['low', 'medium', 'high', 'maximum'] as CompressionQuality[]).map((q) => (
                   <button
@@ -316,9 +317,9 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
             {/* Algorithm Options */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              <Label className="text-muted-foreground uppercase tracking-wider">
                 Compression Algorithm
-              </label>
+              </Label>
               <div className="grid grid-cols-3 gap-2">
                 {(['standard', 'condense', 'photon'] as CompressionAlgorithm[]).map((alg) => (
                   <button
@@ -339,7 +340,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
             {/* Extra Options */}
             <div className="space-y-2">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={optimizeImages}
@@ -348,8 +349,8 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                   className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
                 />
                 <span className="text-sm">{t('compress.optimizeGraphics')}</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer">
+              </Label>
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={removeMetadata}
@@ -358,7 +359,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                   className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
                 />
                 <span className="text-sm">{t('compress.clearMetadata')}</span>
-              </label>
+              </Label>
             </div>
 
             {/* Start Compression Button */}
@@ -379,11 +380,11 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
       {/* Single File preview Workspace (Compare + Physics balance) */}
       {singleFile && pdfPageImage && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* LEFT: Split screen live comparison */}
           <div className="lg:col-span-7 flex flex-col space-y-4">
             <Card  className="p-4 bg-zinc-100 dark:bg-zinc-950 rounded-[2rem] flex flex-col justify-between shadow-inner h-full min-h-[480px]">
-              
+
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
                   <Eye className="w-4 h-4 text-zinc-400" />
@@ -395,32 +396,32 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               </div>
 
               {/* Split screen content workspace */}
-              <div 
+              <div
                 ref={viewContainerRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={() => setMagCoords((prev) => ({ ...prev, show: false }))}
                 className="flex-1 flex items-center justify-center p-4 relative overflow-hidden select-none cursor-crosshair min-h-[380px]"
               >
-                
+
                 {/* 1. Original Base Page image */}
-                <img 
-                  src={pdfPageImage} 
-                  alt="Original layout" 
+                <img
+                  src={pdfPageImage}
+                  alt="Original layout"
                   className="max-h-[380px] object-contain select-none"
                   draggable={false}
                 />
 
                 {/* 2. Compressed Overlaid Image with dynamic clip-path */}
                 {compressedImage && (
-                  <div 
+                  <div
                     className="absolute inset-0 flex items-center justify-center pointer-events-none"
                     style={{
                       clipPath: `inset(0 0 0 ${sliderPosition}%)`
                     }}
                   >
-                    <img 
-                      src={compressedImage} 
-                      alt="Compressed preview" 
+                    <img
+                      src={compressedImage}
+                      alt="Compressed preview"
                       className="max-h-[380px] object-contain select-none"
                       draggable={false}
                     />
@@ -428,7 +429,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                 )}
 
                 {/* 3. Sliding split line */}
-                <div 
+                <div
                   className="absolute top-0 bottom-0 w-1 bg-amber-500 cursor-ew-resize z-20"
                   style={{ left: `${sliderPosition}%` }}
                 >
@@ -438,7 +439,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                 </div>
 
                 {/* Split line cover panel for dragging */}
-                <input 
+                <input
                   type="range"
                   min="0"
                   max="100"
@@ -449,7 +450,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
                 {/* 4. WOW 3D refractive floating Magnifier loupe */}
                 {magCoords.show && (
-                  <div 
+                  <div
                     className="absolute w-32 h-32 rounded-full border-4 border-white/80 bg-white shadow-[0_15px_35px_rgba(0,0,0,0.3)] z-40 pointer-events-none overflow-hidden"
                     style={{
                       left: magCoords.x - 64,
@@ -458,7 +459,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                     }}
                   >
                     {/* Zoomed in Canvas snapshot reflection */}
-                    <div 
+                    <div
                       className="absolute w-[200%] h-[200%]"
                       style={{
                         backgroundImage: `url(${magCoords.x / (viewContainerRef.current?.getBoundingClientRect().width || 1) * 100 > sliderPosition ? compressedImage : pdfPageImage})`,
@@ -480,12 +481,12 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           {/* RIGHT: Controls & Physics Balance Beam */}
           <div className="lg:col-span-5 flex flex-col space-y-6 justify-between">
             <Card  className="p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between h-full shadow-xl">
-              
+
               <div className="space-y-6">
-                
+
                 {/* 3D Physics Balance beam representation */}
                 <div className="flex flex-col items-center justify-center p-4 bg-zinc-900/35 border border-zinc-800 rounded-2xl relative overflow-hidden">
-                  
+
                   {/* Balancing Scale SVG */}
                   <svg className="w-full h-24" viewBox="0 0 200 80">
                     <defs>
@@ -494,14 +495,14 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                         <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
                       </radialGradient>
                     </defs>
-                    
+
                     {/* Center stand column */}
                     <line x1="100" y1="20" x2="100" y2="70" stroke="#71717a" strokeWidth="4" />
                     <line x1="80" y1="70" x2="120" y2="70" stroke="#71717a" strokeWidth="6" strokeLinecap="round" />
 
                     {/* Rotatable beam */}
-                    <g 
-                      style={{ 
+                    <g
+                      style={{
                         transform: `rotate(${getBalanceBeamRotation()}deg)`,
                         transformOrigin: '100px 30px',
                         transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
@@ -514,11 +515,11 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                       <line x1="30" y1="30" x2="30" y2="55" stroke="#71717a" strokeWidth="1" />
                       <path d="M15 55 L45 55" stroke="#71717a" strokeWidth="3" strokeLinecap="round" />
                       {/* Weight item (becomes bigger/smaller based on quality) */}
-                      <circle 
-                        cx="30" 
-                        cy="48" 
-                        r={quality === 'low' ? 4 : quality === 'medium' ? 7 : quality === 'high' ? 10 : 13} 
-                        fill={quality === 'low' ? '#10b981' : '#f59e0b'} 
+                      <circle
+                        cx="30"
+                        cy="48"
+                        r={quality === 'low' ? 4 : quality === 'medium' ? 7 : quality === 'high' ? 10 : 13}
+                        fill={quality === 'low' ? '#10b981' : '#f59e0b'}
                         className="transition-all duration-500"
                       />
 
@@ -526,17 +527,17 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                       <line x1="170" y1="30" x2="170" y2="55" stroke="#71717a" strokeWidth="1" />
                       <path d="M155 55 L185 55" stroke="#71717a" strokeWidth="3" strokeLinecap="round" />
                       {/* Quality details item (brighter as quality goes up) */}
-                      <circle 
-                        cx="170" 
-                        cy="48" 
-                        r={quality === 'low' ? 13 : quality === 'medium' ? 10 : quality === 'high' ? 7 : 4} 
-                        fill="#3b82f6" 
+                      <circle
+                        cx="170"
+                        cy="48"
+                        r={quality === 'low' ? 13 : quality === 'medium' ? 10 : quality === 'high' ? 7 : 4}
+                        fill="#3b82f6"
                         className="transition-all duration-500"
                         opacity={quality === 'low' ? 0.3 : quality === 'medium' ? 0.6 : quality === 'high' ? 0.8 : 1.0}
                       />
                     </g>
                   </svg>
-                  
+
                   <div className="flex w-full justify-between px-6 text-[10px] font-bold text-zinc-400">
                     {t('compress.sizeShrink')}
                     {t('compress.pixelSharpness')}
@@ -546,9 +547,9 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
                 {/* Quality options */}
                 <div className="space-y-3.5">
-                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+                  <Label className="text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                     {t('compress.qualityTitle')}
-                  </label>
+                  </Label>
                   <div className="grid grid-cols-4 gap-1.5">
                     {(['low', 'medium', 'high', 'maximum'] as CompressionQuality[]).map((q) => (
                       <button
@@ -577,7 +578,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
 
                 {/* Extra Options */}
                 <div className="space-y-2 border-t border-border pt-4">
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={optimizeImages}
@@ -585,8 +586,8 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                       className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
                     />
                     {t('compress.optimizeGraphics')}
-                  </label>
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  </Label>
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={removeMetadata}
@@ -594,7 +595,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                       className="w-4 h-4 rounded border-zinc-300 text-primary focus:ring-primary"
                     />
                     {t('compress.clearMetadata')}
-                  </label>
+                  </Label>
                 </div>
 
               </div>
@@ -656,7 +657,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          
+
           <div className="space-y-2 max-w-sm mx-auto">
             {t('compress.successDone')}
             <p className="text-xs text-muted-foreground">

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -43,7 +44,6 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
     { label: 'Courier Oblique', value: 'coit' },
     { label: 'Courier Bold Oblique', value: 'cobi' },
   ]);
-
 
   const [addBookmark, setAddBookmark] = useState(true);
 
@@ -141,29 +141,29 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
             <div className="space-y-4">
               {/* TOC Title */}
               <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-1">
                   {tTools('tocTitle')}
-                </label>
+                </Label>
                 <Input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full"
                   disabled={isProcessing}
-                  placeholder="Table of Contents"
+                  placeholder="Table of Contents" id="tableofcontentstool-field-1" aria-label={tTools('tocTitle')}
                 />
               </div>
 
               {/* Font Size */}
               <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-2">
                   {tTools('fontSize')}
-                </label>
+                </Label>
                 <select
                   value={fontSize}
                   onChange={(e) => setFontSize(parseInt(e.target.value, 10))}
                   className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
-                  disabled={isProcessing}
+                  disabled={isProcessing} id="tableofcontentstool-field-2" aria-label={tTools('fontSize')}
                 >
                   <option value={8}>8pt</option>
                   <option value={10}>10pt</option>
@@ -177,14 +177,14 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
 
               {/* Font Family - Dynamic based on OS */}
               <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-3">
                   {tTools('fontFamily')}
-                </label>
+                </Label>
                 <select
                   value={fontFamily}
                   onChange={(e) => setFontFamily(e.target.value)}
                   className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
-                  disabled={isProcessing}
+                  disabled={isProcessing} id="tableofcontentstool-field-3" aria-label={tTools('fontFamily')}
                 >
                   {fontOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -202,14 +202,14 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
                   checked={addBookmark}
                   onChange={(e) => setAddBookmark(e.target.checked)}
                   className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
-                  disabled={isProcessing}
+                  disabled={isProcessing} aria-label={tTools('addBookmark')}
                 />
-                <label
+                <Label
                   htmlFor="addBookmark"
-                  className="text-sm text-gray-700 dark:text-gray-300"
+                  className="dark:text-gray-300"
                 >
                   {tTools('addBookmark')}
-                </label>
+                </Label>
               </div>
             </div>
 

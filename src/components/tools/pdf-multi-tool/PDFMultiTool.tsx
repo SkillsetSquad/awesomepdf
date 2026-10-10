@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -840,7 +841,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       {showAddBlankModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowAddBlankModal(false)}>
           <Card
-            
+
             className="max-w-sm w-full mx-4"
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
@@ -849,29 +850,29 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2 text-muted-foreground">
+                <Label className="block mb-2 text-muted-foreground" htmlFor="pdfmultitool-field-1">
                   {tTools('pdfMultiTool.numberOfPages') || 'Number of pages'}
-                </label>
+                </Label>
                 <Input
                   type="number"
                   min="1"
                   max="100"
                   value={blankPageCount}
                   onChange={(e) => setBlankPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full"
+                  className="w-full" id="pdfmultitool-field-1" aria-label={tTools('pdfMultiTool.numberOfPages') || 'Number of pages'}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-muted-foreground">
+                <Label className="block mb-2 text-muted-foreground" htmlFor="pdfmultitool-field-2">
                   {tTools('pdfMultiTool.insertPosition') || 'Insert at position'}
-                </label>
+                </Label>
                 <Input
                   type="number"
                   min="1"
                   max={pagePreviews.length + 1}
                   value={blankPagePosition}
                   onChange={(e) => setBlankPagePosition(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-full"
+                  className="w-full" id="pdfmultitool-field-2" aria-label={tTools('pdfMultiTool.insertPosition') || 'Insert at position'}
                 />
               </div>
               <div className="flex gap-3 mt-6">

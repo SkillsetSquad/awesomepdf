@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -35,7 +36,7 @@ export interface GridCombineToolProps {
 
 /**
  * GridCombineTool Component
- * 
+ *
  * Provides the UI for combining multiple PDFs into a grid layout.
  */
 export function GridCombineTool({ className = '' }: GridCombineToolProps) {
@@ -504,15 +505,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                             <div className="space-y-4">
                                 {/* Grid Layout */}
                                 <div>
-                                    <label htmlFor="gridLayout" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="gridLayout" className="block mb-1">
                                         {tTools('gridCombine.gridLayout') || 'Grid Layout'}
-                                    </label>
+                                    </Label>
                                     <select
                                         id="gridLayout"
                                         value={gridLayout}
                                         onChange={(e) => setGridLayout(e.target.value as GridCombineOptions['gridLayout'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.gridLayout') || 'Grid Layout'}
                                     >
                                         <option value="1x2">1×2 (2 {tTools('gridCombine.cells') || 'cells'})</option>
                                         <option value="2x1">2×1 (2 {tTools('gridCombine.cells') || 'cells'})</option>
@@ -586,15 +587,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Page Mode */}
                                 <div>
-                                    <label htmlFor="pageMode" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="pageMode" className="block mb-1">
                                         {tTools('gridCombine.pageMode') || 'Page Mode'}
-                                    </label>
+                                    </Label>
                                     <select
                                         id="pageMode"
                                         value={pageMode}
                                         onChange={(e) => setPageMode(e.target.value as GridCombineOptions['pageMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.pageMode') || 'Page Mode'}
                                     >
                                         <option value="first-page-only">{tTools('gridCombine.firstPageOnly') || 'First page only'}</option>
                                         <option value="all-pages">{tTools('gridCombine.allPages') || 'All pages'}</option>
@@ -609,15 +610,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Fill Mode */}
                                 <div>
-                                    <label htmlFor="fillMode" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="fillMode" className="block mb-1">
                                         {tTools('gridCombine.fillMode') || 'Fill Mode'}
-                                    </label>
+                                    </Label>
                                     <select
                                         id="fillMode"
                                         value={fillMode}
                                         onChange={(e) => setFillMode(e.target.value as GridCombineOptions['fillMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.fillMode') || 'Fill Mode'}
                                     >
                                         <option value="leave-empty">{tTools('gridCombine.leaveEmpty') || 'Leave empty cells'}</option>
                                         <option value="repeat">{tTools('gridCombine.repeat') || 'Repeat from start'}</option>
@@ -630,15 +631,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Page Size */}
                                 <div>
-                                    <label htmlFor="pageSize" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="pageSize" className="block mb-1">
                                         {tTools('gridCombine.pageSize') || 'Page Size'}
-                                    </label>
+                                    </Label>
                                     <select
                                         id="pageSize"
                                         value={pageSize}
                                         onChange={(e) => setPageSize(e.target.value as GridCombineOptions['pageSize'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.pageSize') || 'Page Size'}
                                     >
                                         <option value="A4">A4</option>
                                         <option value="Letter">Letter</option>
@@ -649,15 +650,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Orientation */}
                                 <div>
-                                    <label htmlFor="orientation" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="orientation" className="block mb-1">
                                         {tTools('gridCombine.orientation') || 'Orientation'}
-                                    </label>
+                                    </Label>
                                     <select
                                         id="orientation"
                                         value={orientation}
                                         onChange={(e) => setOrientation(e.target.value as GridCombineOptions['orientation'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground" aria-label={tTools('gridCombine.orientation') || 'Orientation'}
                                     >
                                         <option value="landscape">{t('options.landscape') || 'Landscape'}</option>
                                         <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
@@ -666,9 +667,9 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Spacing */}
                                 <div>
-                                    <label htmlFor="spacing" className="block text-sm font-medium text-foreground mb-1">
+                                    <Label htmlFor="spacing" className="block mb-1">
                                         {tTools('gridCombine.spacing') || 'Spacing'} ({spacing}px)
-                                    </label>
+                                    </Label>
                                     <input
                                         type="range"
                                         id="spacing"
@@ -691,11 +692,11 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             checked={useMargins}
                                             onChange={(e) => setUseMargins(e.target.checked)}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-border"
+                                            className="w-4 h-4 rounded border-border" aria-label={tTools('gridCombine.useMargins') || 'Add margins'}
                                         />
-                                        <label htmlFor="useMargins" className="text-sm text-foreground">
+                                        <Label htmlFor="useMargins" className="">
                                             {tTools('gridCombine.useMargins') || 'Add margins'}
-                                        </label>
+                                        </Label>
                                     </div>
 
                                     <div className="flex items-center gap-2">
@@ -705,25 +706,25 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             checked={addBorder}
                                             onChange={(e) => setAddBorder(e.target.checked)}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-border"
+                                            className="w-4 h-4 rounded border-border" aria-label={tTools('gridCombine.addBorder') || 'Add borders'}
                                         />
-                                        <label htmlFor="addBorder" className="text-sm text-foreground">
+                                        <Label htmlFor="addBorder" className="">
                                             {tTools('gridCombine.addBorder') || 'Add borders'}
-                                        </label>
+                                        </Label>
                                     </div>
 
                                     {addBorder && (
                                         <div className="pl-6">
-                                            <label htmlFor="borderColor" className="block text-xs text-muted-foreground mb-1">
+                                            <Label htmlFor="borderColor" className="block text-muted-foreground mb-1">
                                                 {tTools('gridCombine.borderColor') || 'Border Color'}
-                                            </label>
+                                            </Label>
                                             <Input
                                                 type="color"
                                                 id="borderColor"
                                                 value={borderColor}
                                                 onChange={(e) => setBorderColor(e.target.value)}
                                                 disabled={isProcessing}
-                                                className="w-full h-8 cursor-pointer"
+                                                className="w-full h-8 cursor-pointer" aria-label={tTools('gridCombine.borderColor') || 'Border Color'}
                                             />
                                         </div>
                                     )}

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -159,10 +160,10 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
 
                 <div className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+                    <Label className="flex items-center gap-1.5">
                       <Shield className="w-4 h-4 text-primary" />
                       {t('passportIdComposer.watermarkLabel')}
-                    </label>
+                    </Label>
                     <Input
                       type="text"
                       value={watermark}
@@ -173,12 +174,12 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500">{t('passportIdComposer.idCardHeightLabel')}</label>
+                    <Label className="" htmlFor="passportidcomposertool-field-1">{t('passportIdComposer.idCardHeightLabel')}</Label>
                     <Input
                       type="number"
                       value={idCardHeight}
                       onChange={(e) => setIdCardHeight(parseFloat(e.target.value) || 153)}
-                      className="w-full"
+                      className="w-full" id="passportidcomposertool-field-1" aria-label={t('passportIdComposer.idCardHeightLabel')}
                     />
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -23,7 +24,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
   // Files state
   const [baseFile, setBaseFile] = useState<File | null>(null);
   const [layerFile, setLayerFile] = useState<File | null>(null);
-  
+
   // Loaded state
   const [basePages, setBasePages] = useState<number>(0);
   const [layerPages, setLayerPages] = useState<number>(0);
@@ -161,12 +162,12 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
     <div className={`space-y-6 ${className}`.trim()}>
       {/* File Upload Zone (Double layout) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+
         {/* Slot A: Base/Underlay PDF */}
         <div className="space-y-3">
-          <label className="text-sm font-bold text-foreground block">
+          <Label className="block">
             {t('overlayPdf.uploadBaseLabel')}
-          </label>
+          </Label>
           {baseFile ? (
             <Card  className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl">
               <div className="flex items-center gap-3">
@@ -184,7 +185,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                   </p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={handleClearBase}
                 disabled={isProcessing}
                 className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
@@ -210,9 +211,9 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
         {/* Slot B: Overlay Layer PDF */}
         <div className="space-y-3">
-          <label className="text-sm font-bold text-foreground block">
+          <Label className="block">
             {t('overlayPdf.uploadLayerLabel')}
-          </label>
+          </Label>
           {layerFile ? (
             <Card  className="relative group p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
               <div className="flex items-center gap-3">
@@ -230,7 +231,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                   </p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={handleClearLayer}
                 disabled={isProcessing}
                 className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
@@ -265,27 +266,27 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
       {/* Main Workspace Configuration Panel */}
       {baseFile && layerFile && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
+
           {/* LEFT: 3D Visualization layer layout preview (Pure CSS awesome show) */}
           <div className="lg:col-span-5 space-y-4">
             <Card  className="p-6 bg-card rounded-2xl flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
               <span className="text-xs font-bold text-muted-foreground mb-8">
                 {t('overlayPdf.previewTitle')}
               </span>
-              
+
               {/* 3D Paper Layer frame container */}
-              <div 
+              <div
                 className="relative w-44 h-48 transform-gpu transition-all duration-700 ease-in-out"
-                style={{ 
+                style={{
                   perspective: '800px',
                   transformStyle: 'preserve-3d',
                 }}
               >
                 {/* Layer A (Base PDF sheet) */}
-                <div 
+                <div
                   className="absolute inset-0 bg-white dark:bg-zinc-900 border-2 border-primary shadow-xl rounded-xl flex items-center justify-center font-black text-primary select-none transition-all duration-700 ease-in-out"
                   style={{
-                    transform: mode === 'overlay' 
+                    transform: mode === 'overlay'
                       ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(0px)'
                       : 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(40px)',
                     opacity: 0.95,
@@ -299,10 +300,10 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                 </div>
 
                 {/* Layer B (Overlay PDF sheet) */}
-                <div 
+                <div
                   className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-950/20 border-2 border-emerald-500 shadow-2xl rounded-xl flex items-center justify-center font-black text-emerald-500 select-none transition-all duration-700 ease-in-out"
                   style={{
-                    transform: mode === 'overlay' 
+                    transform: mode === 'overlay'
                       ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(40px)'
                       : 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(0px)',
                     opacity: 0.9,
@@ -318,7 +319,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
               <div className="mt-8 text-center max-w-xs">
                 <p className="text-xs font-semibold text-foreground">
-                  {mode === 'overlay' 
+                  {mode === 'overlay'
                     ? t('overlayPdf.placementModeOverlay')
                     : t('overlayPdf.placementModeUnderlay')
                   }
@@ -398,7 +399,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                     loop ? 'bg-emerald-500' : 'bg-zinc-300 dark:bg-zinc-700'
                   }`}
                 >
-                  <div 
+                  <div
                     className={`absolute top-0.5 left-0.5 bg-white w-5.5 h-5.5 rounded-full shadow transition-transform duration-300 ${
                       loop ? 'translate-x-5.5' : 'translate-x-0'
                     }`}
@@ -441,7 +442,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
               </div>
             )}
           </div>
-          
+
         </div>
       )}
 

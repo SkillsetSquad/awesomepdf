@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -25,13 +26,13 @@ export interface JSONToPDFToolProps {
 /**
  * JSONToPDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Converts JSON files to PDF with formatted output.
  */
 export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -41,14 +42,14 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
   const [error, setError] = useState<string | null>(null);
   const [jsonPreview, setJsonPreview] = useState<string>('');
   const [parseError, setParseError] = useState<string | null>(null);
-  
+
   // Options state
   const [pageSize, setPageSize] = useState<JSONPageSizeType>('A4');
   const [fontSize, setFontSize] = useState(10);
   const [indentSpaces, setIndentSpaces] = useState(2);
   const [prettyPrint, setPrettyPrint] = useState(true);
   const [showLineNumbers, setShowLineNumbers] = useState(true);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -61,12 +62,12 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
       file,
       status: 'pending' as const,
     }));
-    
+
     setFiles(prev => [...prev, ...uploadedFiles]);
     setError(null);
     setResult(null);
     setParseError(null);
-    
+
     // Load and validate preview of first file
     if (newFiles.length > 0) {
       try {
@@ -204,7 +205,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -214,7 +215,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
       {/* Parse Error */}
       {parseError && (
-        <div 
+        <div
           className="p-4 rounded-md bg-yellow-50 border border-yellow-200 text-yellow-700"
           role="alert"
         >
@@ -295,25 +296,24 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
         </Card>
       )}
 
-
       {/* Options Panel */}
       {files.length >= 1 && (
         <Card className="p-6" >
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('jsonToPdf.optionsTitle') || 'PDF Options'}
           </h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Page Size */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="jsontopdftool-field-1">
                 {tTools('jsonToPdf.pageSize') || 'Page Size'}
-              </label>
+              </Label>
               <select
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as JSONPageSizeType)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-1" aria-label={tTools('jsonToPdf.pageSize') || 'Page Size'}
               >
                 <option value="A4">A4</option>
                 <option value="LETTER">Letter</option>
@@ -324,14 +324,14 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
             {/* Font Size */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="jsontopdftool-field-2">
                 {tTools('jsonToPdf.fontSize') || 'Font Size'}
-              </label>
+              </Label>
               <select
                 value={fontSize}
                 onChange={(e) => setFontSize(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-2" aria-label={tTools('jsonToPdf.fontSize') || 'Font Size'}
               >
                 <option value="8">8pt</option>
                 <option value="9">9pt</option>
@@ -343,14 +343,14 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
             {/* Indent Spaces */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="jsontopdftool-field-3">
                 {tTools('jsonToPdf.indentSpaces') || 'Indentation'}
-              </label>
+              </Label>
               <select
                 value={indentSpaces}
                 onChange={(e) => setIndentSpaces(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="jsontopdftool-field-3" aria-label={tTools('jsonToPdf.indentSpaces') || 'Indentation'}
               >
                 <option value="2">2 spaces</option>
                 <option value="4">4 spaces</option>
@@ -360,7 +360,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
           </div>
 
           <div className="mt-4 space-y-3">
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={prettyPrint}
@@ -371,9 +371,9 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
               <span className="text-sm text-foreground">
                 {tTools('jsonToPdf.prettyPrint') || 'Format JSON (pretty print)'}
               </span>
-            </label>
+            </Label>
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={showLineNumbers}
@@ -384,7 +384,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
               <span className="text-sm text-foreground">
                 {tTools('jsonToPdf.showLineNumbers') || 'Show line numbers'}
               </span>
-            </label>
+            </Label>
           </div>
         </Card>
       )}
@@ -409,8 +409,8 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
           disabled={!canConvert}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('jsonToPdf.convertButton') || 'Convert to PDF')
           }
         </Button>
@@ -428,7 +428,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

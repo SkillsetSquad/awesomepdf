@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -658,7 +659,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
               {/* Watermark Type Selection */}
               <div className="flex gap-6 mb-6">
-                <label className="flex items-center gap-2 cursor-pointer">
+                <Label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="watermark-type"
@@ -671,8 +672,8 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {tTools('textWatermark')}
                   </span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                </Label>
+                <Label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="watermark-type"
@@ -685,32 +686,32 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {tTools('imageWatermark')}
                   </span>
-                </label>
+                </Label>
               </div>
 
               {/* Text Watermark Options */}
               {watermarkType === 'text' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                    <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-1">
                       {tTools('watermarkText')}
-                    </label>
+                    </Label>
                     <Input
                       type="text"
                       value={watermarkText}
                       onChange={(e) => setWatermarkText(e.target.value)}
                       placeholder={tTools('textPlaceholder') || 'CONFIDENTIAL'}
                       className="w-full"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="watermarktool-field-1" aria-label={tTools('watermarkText')}
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <Label className="dark:text-gray-300">
                           {tTools('fontSize')}
-                        </label>
+                        </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{fontSize}pt</span>
                       </div>
                       <input
@@ -724,23 +725,23 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                      <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-2">
                         {tTools('color')}
-                      </label>
+                      </Label>
                       <div className="flex items-center gap-2">
                         <Input
                           type="color"
                           value={textColor}
                           onChange={(e) => setTextColor(e.target.value)}
                           className="w-9 h-9 cursor-pointer shrink-0"
-                          disabled={isProcessing}
+                          disabled={isProcessing} id="watermarktool-field-2" aria-label={tTools('color')}
                         />
                         <Input
                           type="text"
                           value={textColor}
                           onChange={(e) => setTextColor(e.target.value)}
                           className="flex-1"
-                          disabled={isProcessing}
+                          disabled={isProcessing} aria-label={tTools('color')}
                         />
                       </div>
                     </div>
@@ -749,9 +750,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <Label className="dark:text-gray-300">
                           {tTools('opacity')}
-                        </label>
+                        </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(textOpacity * 100)}%</span>
                       </div>
                       <input
@@ -767,9 +768,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <Label className="dark:text-gray-300">
                           {tTools('angle')}
-                        </label>
+                        </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{textAngle}°</span>
                       </div>
                       <input
@@ -791,15 +792,15 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               {watermarkType === 'image' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                    <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-3">
                       {tTools('watermarkImage')}
-                    </label>
+                    </Label>
                     <Input
                       type="file"
                       accept="image/png, image/jpeg"
                       onChange={handleImageSelected}
                       className="w-full file:mr-4 file:text-white"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="watermarktool-field-3" aria-label={tTools('watermarkImage')}
                     />
                     {imageFile && (
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -811,9 +812,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <Label className="dark:text-gray-300">
                           {tTools('scale')}
-                        </label>
+                        </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{imageScale}%</span>
                       </div>
                       <input
@@ -829,9 +830,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <Label className="dark:text-gray-300">
                           {tTools('opacity')}
-                        </label>
+                        </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(imageOpacity * 100)}%</span>
                       </div>
                       <input
@@ -849,9 +850,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <Label className="dark:text-gray-300">
                         {tTools('angle')}
-                      </label>
+                      </Label>
                       <span className="text-xs text-gray-500 dark:text-gray-400">{imageAngle}°</span>
                     </div>
                     <input
@@ -872,9 +873,9 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               {!repeatWatermark && (
                 <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800">
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <Label className="dark:text-gray-300">
                       {tTools('position')}
-                    </label>
+                    </Label>
                     <span className="text-xs text-gray-400">
                       ({Math.round(watermarkX * 100)}%, {Math.round(watermarkY * 100)}%)
                     </span>
@@ -912,7 +913,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
                   {tTools('repeatTitle')}
                 </h3>
-                <label className="flex items-center gap-2 cursor-pointer select-none">
+                <Label className="flex items-center gap-2 cursor-pointer select-none">
                   <div className="relative inline-flex">
                     <input
                       type="checkbox"
@@ -935,7 +936,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {tTools('repeatEnable')}
                   </span>
-                </label>
+                </Label>
               </div>
 
               {repeatWatermark && (
@@ -984,7 +985,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                         {tTools('staggerDescription')}
                       </p>
                     </div>
-                    <label className="flex items-center gap-2 cursor-pointer select-none">
+                    <Label className="flex items-center gap-2 cursor-pointer select-none">
                       <div className="relative inline-flex">
                         <input
                           type="checkbox"
@@ -1004,7 +1005,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                           }`}
                         />
                       </div>
-                    </label>
+                    </Label>
                   </div>
                 </div>
               )}
@@ -1021,14 +1022,14 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   className="mt-1 w-4 h-4 rounded text-blue-600 border-gray-300 focus:ring-blue-500"
                   disabled={isProcessing}
                 />
-                <label htmlFor="flatten-watermark" className="cursor-pointer">
+                <Label htmlFor="flatten-watermark" className="cursor-pointer">
                   <span className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                     {tTools('flattenTitle')}
                   </span>
                   <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                     {tTools('flattenDescription')}
                   </span>
-                </label>
+                </Label>
               </div>
             </Card>
 
@@ -1040,7 +1041,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-4">
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  <Label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="page-mode"
@@ -1053,8 +1054,8 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeAll')}
                     </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  </Label>
+                  <Label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="page-mode"
@@ -1067,8 +1068,8 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeOdd')}
                     </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  </Label>
+                  <Label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="page-mode"
@@ -1081,8 +1082,8 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeEven')}
                     </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  </Label>
+                  <Label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="page-mode"
@@ -1095,7 +1096,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeCustom')}
                     </span>
-                  </label>
+                  </Label>
                 </div>
 
                 {pageMode === 'custom' && (

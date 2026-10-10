@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -10,14 +11,14 @@ import { Card } from '@/components/ui/card';
 import { reflowPDF, type AIPDFReflowerOptions } from '@/lib/pdf/processors/ai-pdf-reflower';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  Smartphone, 
-  Settings2, 
-  FileText, 
-  Download, 
-  Type, 
-  AlignLeft, 
-  Compass, 
+import {
+  Smartphone,
+  Settings2,
+  FileText,
+  Download,
+  Type,
+  AlignLeft,
+  Compass,
   Undo,
   BookOpen
 } from 'lucide-react';
@@ -48,7 +49,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
   const [resultFilename, setResultFilename] = useState<string>('');
   const [paragraphs, setParagraphs] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Pull cord state
   const [isPulling, setIsPulling] = useState(false);
 
@@ -71,7 +72,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
       setTotalPages(pdf.getPageCount());
-      
+
       // Auto run reflow
       setTimeout(() => {
         handleReflow(selectedFile);
@@ -145,10 +146,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
     setIsPulling(true);
     setTimeout(async () => {
       setIsPulling(false);
-      
+
       let exportBlob: Blob;
       let ext = '.md';
-      
+
       if (format === 'markdown') {
         const mdText = paragraphs.map((p) => {
           switch (p.type) {
@@ -230,7 +231,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* Upload files */}
       {!file && (
         <FileUploader
@@ -283,7 +284,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
       {/* Primary Workspace */}
       {file && paragraphs.length > 0 && status !== 'processing' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* LEFT: Controls Panel */}
           <div className="lg:col-span-5 space-y-6">
             <Card  className="p-6 rounded-[2rem] shadow-xl border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md space-y-6">
@@ -299,10 +300,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Theme selection */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Label className="uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <Compass className="w-4 h-4" />
                   {t('aiPdfReflower.themeLabel')}
-                </label>
+                </Label>
                 <div className="grid grid-cols-4 gap-2">
                   {[
                     { id: 'sepia', name: t('aiPdfReflower.themeSepia'), bg: 'bg-[#f4ebd0] text-[#5b4636]' },
@@ -325,10 +326,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Font Size adjustments */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+                <Label className="uppercase tracking-wider text-muted-foreground flex items-center justify-between">
                   <span className="flex items-center gap-1.5"><Type className="w-4 h-4" /> {t('aiPdfReflower.fontSizeLabel')}</span>
                   <span className="font-mono font-bold text-xs">{fontSize}px</span>
-                </label>
+                </Label>
                 <div className="flex items-center gap-4">
                   <Button
                     variant="secondary"
@@ -359,11 +360,11 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Export Panel with Pulley Pull-rope effect */}
               <div className="border-t border-border pt-6 space-y-4 relative">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Label className="uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <Download className="w-4 h-4" />
                   {t('aiPdfReflower.pullToExport')}
-                </label>
-                
+                </Label>
+
                 <div className="grid grid-cols-3 gap-2">
                   <Button variant="secondary" className="text-xs font-bold flex flex-col gap-1 py-4" onClick={() => handleExportFormat('markdown')}>
                     <FileText className="w-4 h-4 text-emerald-500" />
@@ -381,13 +382,13 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
                 {/* 3D Physical pull rope visual item for wow effect */}
                 <div className="flex flex-col items-center mt-6 pt-4 relative group">
-                  <div className="w-1 bg-zinc-300 dark:bg-zinc-700 h-16 rounded-full relative transition-all duration-300 transform group-hover:h-20" 
-                       style={{ 
+                  <div className="w-1 bg-zinc-300 dark:bg-zinc-700 h-16 rounded-full relative transition-all duration-300 transform group-hover:h-20"
+                       style={{
                          transform: isPulling ? 'translateY(15px) scaleY(0.8)' : 'translateY(0) scaleY(1)'
                        }}
                   >
                     {/* Ring puller */}
-                    <div 
+                    <div
                       onClick={() => handleExportFormat('markdown')}
                       className={`absolute bottom-0 -left-3.5 w-8 h-8 rounded-full border-4 border-amber-500/80 bg-amber-500/25 flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 active:scale-95 transition-all ${
                         isPulling ? 'animate-ping' : ''
@@ -404,10 +405,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
           {/* RIGHT: 3D Perspective Phone Simulator */}
           <div className="lg:col-span-7 flex justify-center">
-            
+
             {/* Phone Outer container with custom CSS perspective perspective-[1200px] */}
             <div className="relative w-[340px] h-[640px] rounded-[3.5rem] p-3.5 bg-zinc-800 shadow-[0_30px_70px_rgba(0,0,0,0.45)] border-4 border-zinc-700/80 transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 group overflow-hidden">
-              
+
               {/* Glossy glare reflection overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-20" />
 
@@ -419,7 +420,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Screen Content */}
               <div className={`w-full h-full rounded-[2.8rem] overflow-hidden pt-10 pb-6 transition-all duration-300 relative border flex flex-col ${getThemeClass()}`}>
-                
+
                 {/* Simulated Header */}
                 <div className="px-5 pb-3 border-b border-inherit flex items-center justify-between text-xs font-bold opacity-60">
                   <span>AI Reflow Reader</span>

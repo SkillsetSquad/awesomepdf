@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -302,16 +303,16 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="cert-input" className="block text-sm font-medium text-foreground mb-2">
+              <Label htmlFor="cert-input" className="block mb-2">
                 {tTool('uploadCertificateLabel')}
-              </label>
+              </Label>
               <Input
                 id="cert-input"
                 type="file"
                 accept=".pfx,.p12,.pem"
                 onChange={handleCertSelected}
                 disabled={isProcessing}
-                className="block w-full file:mr-4 file:text-white hover:file:opacity-90 cursor-pointer"
+                className="block w-full file:mr-4 file:text-white hover:file:opacity-90 cursor-pointer" aria-label={tTool('uploadCertificateLabel')}
               />
             </div>
 
@@ -336,9 +337,9 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
             {needsPassword && !certData && (
               <div>
-                <label htmlFor="cert-password" className="block text-sm font-medium text-foreground mb-2">
+                <Label htmlFor="cert-password" className="block mb-2">
                   {tTool('certificatePasswordLabel')}
-                </label>
+                </Label>
                 <div className="flex gap-2">
                   <div className="relative flex-1">
                     <Input
@@ -348,7 +349,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                       onChange={(e) => setPassword(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handlePasswordSubmit()}
                       placeholder={tTool('enterPassword')}
-                      className="w-full pr-10"
+                      className="w-full pr-10" aria-label={tTool('certificatePasswordLabel')}
                     />
                     <button
                       type="button"
@@ -390,48 +391,48 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="sign-reason" className="block text-sm font-medium text-foreground mb-1">{tTool('reasonLabel')}</label>
-                  <Input id="sign-reason" type="text" value={reason} onChange={(e) => setReason(e.target.value)} placeholder={tTool('reasonPlaceholder')} className="w-full" />
+                  <Label htmlFor="sign-reason" className="block mb-1">{tTool('reasonLabel')}</Label>
+                  <Input id="sign-reason" type="text" value={reason} onChange={(e) => setReason(e.target.value)} placeholder={tTool('reasonPlaceholder')} className="w-full" aria-label={tTool('reasonLabel')} />
                 </div>
                 <div>
-                  <label htmlFor="sign-location" className="block text-sm font-medium text-foreground mb-1">{tTool('locationLabel')}</label>
-                  <Input id="sign-location" type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder={tTool('locationPlaceholder')} className="w-full" />
+                  <Label htmlFor="sign-location" className="block mb-1">{tTool('locationLabel')}</Label>
+                  <Input id="sign-location" type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder={tTool('locationPlaceholder')} className="w-full" aria-label={tTool('locationLabel')} />
                 </div>
               </div>
               <div>
-                <label htmlFor="sign-contact" className="block text-sm font-medium text-foreground mb-1">{tTool('contactInfoLabel')}</label>
-                <Input id="sign-contact" type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} placeholder={tTool('contactInfoPlaceholder')} className="w-full" />
+                <Label htmlFor="sign-contact" className="block mb-1">{tTool('contactInfoLabel')}</Label>
+                <Input id="sign-contact" type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} placeholder={tTool('contactInfoPlaceholder')} className="w-full" aria-label={tTool('contactInfoLabel')} />
               </div>
 
               {/* Visible Signature Toggle */}
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" checked={enableVisible} onChange={(e) => setEnableVisible(e.target.checked)} className="w-4 h-4 rounded border-border text-primary focus:ring-primary" />
                 <span className="text-sm font-medium text-foreground">{tTool('visibleSignatureLabel')}</span>
-              </label>
+              </Label>
 
               {enableVisible && (
                 <div className="space-y-3 pl-7">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('xPosition')}</label>
-                      <Input type="number" value={sigX} onChange={(e) => setSigX(Number(e.target.value))} className="w-full" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-1">{tTool('xPosition')}</Label>
+                      <Input type="number" value={sigX} onChange={(e) => setSigX(Number(e.target.value))} className="w-full" id="digitalsignpdftool-field-1" aria-label={tTool('xPosition')} />
                     </div>
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('yPosition')}</label>
-                      <Input type="number" value={sigY} onChange={(e) => setSigY(Number(e.target.value))} className="w-full" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-2">{tTool('yPosition')}</Label>
+                      <Input type="number" value={sigY} onChange={(e) => setSigY(Number(e.target.value))} className="w-full" id="digitalsignpdftool-field-2" aria-label={tTool('yPosition')} />
                     </div>
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('width')}</label>
-                      <Input type="number" value={sigWidth} onChange={(e) => setSigWidth(Number(e.target.value))} className="w-full" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-3">{tTool('width')}</Label>
+                      <Input type="number" value={sigWidth} onChange={(e) => setSigWidth(Number(e.target.value))} className="w-full" id="digitalsignpdftool-field-3" aria-label={tTool('width')} />
                     </div>
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('height')}</label>
-                      <Input type="number" value={sigHeight} onChange={(e) => setSigHeight(Number(e.target.value))} className="w-full" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-4">{tTool('height')}</Label>
+                      <Input type="number" value={sigHeight} onChange={(e) => setSigHeight(Number(e.target.value))} className="w-full" id="digitalsignpdftool-field-4" aria-label={tTool('height')} />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs text-muted-foreground mb-1">{tTool('pageLabel')}</label>
-                    <select value={sigPage} onChange={(e) => setSigPage(e.target.value)} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground">
+                    <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-5">{tTool('pageLabel')}</Label>
+                    <select value={sigPage} onChange={(e) => setSigPage(e.target.value)} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" id="digitalsignpdftool-field-5" aria-label={tTool('pageLabel')}>
                       <option value="first">{tTool('firstPage')}</option>
                       <option value="last">{tTool('lastPage')}</option>
                       <option value="all">{tTool('allPages')}</option>
@@ -440,12 +441,12 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
                   {/* Signature Image */}
                   <div>
-                    <label className="block text-xs text-muted-foreground mb-1">{tTool('signatureImageLabel')}</label>
+                    <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-6">{tTool('signatureImageLabel')}</Label>
                     <Input
                       type="file"
                       accept=".png,.jpg,.jpeg"
                       onChange={handleImageSelected}
-                      className="block w-full file:mr-2 hover:file:opacity-80 cursor-pointer"
+                      className="block w-full file:mr-2 hover:file:opacity-80 cursor-pointer" id="digitalsignpdftool-field-6" aria-label={tTool('signatureImageLabel')}
                     />
                     {sigImageFile && (
                       <div className="flex items-center gap-2 mt-1">
@@ -457,17 +458,17 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
 
                   {/* Text options */}
                   <div>
-                    <label className="block text-xs text-muted-foreground mb-1">{tTool('signatureTextLabel')}</label>
-                    <Input type="text" value={sigText} onChange={(e) => setSigText(e.target.value)} placeholder={tTool('signatureTextPlaceholder')} className="w-full" />
+                    <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-7">{tTool('signatureTextLabel')}</Label>
+                    <Input type="text" value={sigText} onChange={(e) => setSigText(e.target.value)} placeholder={tTool('signatureTextPlaceholder')} className="w-full" id="digitalsignpdftool-field-7" aria-label={tTool('signatureTextLabel')} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('textColorLabel')}</label>
-                      <Input type="color" value={sigTextColor} onChange={(e) => setSigTextColor(e.target.value)} className="w-full h-8 cursor-pointer" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-8">{tTool('textColorLabel')}</Label>
+                      <Input type="color" value={sigTextColor} onChange={(e) => setSigTextColor(e.target.value)} className="w-full h-8 cursor-pointer" id="digitalsignpdftool-field-8" aria-label={tTool('textColorLabel')} />
                     </div>
                     <div>
-                      <label className="block text-xs text-muted-foreground mb-1">{tTool('textSizeLabel')}</label>
-                      <Input type="number" min={6} max={36} value={sigTextSize} onChange={(e) => setSigTextSize(Number(e.target.value))} className="w-full" />
+                      <Label className="block text-muted-foreground mb-1" htmlFor="digitalsignpdftool-field-9">{tTool('textSizeLabel')}</Label>
+                      <Input type="number" min={6} max={36} value={sigTextSize} onChange={(e) => setSigTextSize(Number(e.target.value))} className="w-full" id="digitalsignpdftool-field-9" aria-label={tTool('textSizeLabel')} />
                     </div>
                   </div>
                 </div>

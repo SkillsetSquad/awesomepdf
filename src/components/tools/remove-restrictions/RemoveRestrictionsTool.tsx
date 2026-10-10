@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -22,14 +23,14 @@ export interface RemoveRestrictionsToolProps {
 /**
  * RemoveRestrictionsTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for removing security restrictions from PDF files.
  * This removes owner password restrictions that prevent printing, copying, and editing.
  */
 export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -41,15 +42,15 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
     originalSize: number;
     newSize: number;
   } | null>(null);
-  
+
   // Options
   const [ownerPassword, setOwnerPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
+
   // Password error modal
   const [showPasswordErrorModal, setShowPasswordErrorModal] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -125,7 +126,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
       if (output.success && output.result) {
         setResult(output.result as Blob);
         setStatus('complete');
-        
+
         // Set stats
         if (output.metadata) {
           setStats({
@@ -137,7 +138,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
         // Check for invalid password error
         const errorMsg = output.error?.message || '';
         const errorCode = output.error?.code || '';
-        
+
         if (
           errorCode === 'INVALID_PASSWORD' ||
           errorMsg === 'INVALID_PASSWORD'
@@ -201,7 +202,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -248,13 +249,13 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('removeRestrictions.optionsTitle') || 'Options'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Owner Password Input */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="removerestrictionstool-field-1">
                 {tTools('removeRestrictions.ownerPasswordLabel') || 'Owner Password (optional)'}
-              </label>
+              </Label>
               <div className="relative">
                 <Input
                   type={showPassword ? 'text' : 'password'}
@@ -262,7 +263,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
                   onChange={(e) => setOwnerPassword(e.target.value)}
                   disabled={isProcessing}
                   placeholder={tTools('removeRestrictions.ownerPasswordPlaceholder') || 'Enter owner password if known'}
-                  className="w-full pr-10 disabled:opacity-50"
+                  className="w-full pr-10 disabled:opacity-50" id="removerestrictionstool-field-1" aria-label={tTools('removeRestrictions.ownerPasswordLabel') || 'Owner Password (optional)'}
                 />
                 <button
                   type="button"
@@ -314,8 +315,8 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
           disabled={!canProcess}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('removeRestrictions.removeButton') || 'Remove Restrictions')
           }
         </Button>
@@ -333,7 +334,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
 
       {/* Results */}
       {status === 'complete' && result && stats && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

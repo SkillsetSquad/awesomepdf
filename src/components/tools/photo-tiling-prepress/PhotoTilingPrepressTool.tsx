@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -118,7 +119,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
               {/* Wooden magnet pre-flight card desk mockup */}
               <div className="flex-1 flex items-center justify-center p-6 relative">
                 <div className="w-72 h-44 bg-amber-100 dark:bg-zinc-800 border-4 border-amber-900/20 dark:border-zinc-700 shadow-2xl rounded-2xl p-4 relative overflow-hidden flex flex-wrap gap-2 items-center justify-center">
-                  
+
                   {/* Photo Matrix grids with strong snapping micro-animations */}
                   <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
@@ -154,11 +155,11 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('photoTilingPrepress.photoSpecLabel')}</label>
+                    <Label className="" htmlFor="phototilingprepresstool-field-1">{t('photoTilingPrepress.photoSpecLabel')}</Label>
                     <select
                       value={photoSpec}
                       onChange={(e) => setPhotoSpec(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="phototilingprepresstool-field-1" aria-label={t('photoTilingPrepress.photoSpecLabel')}
                     >
                       <option value="1-inch">{t('photoTilingPrepress.photoSpec1Inch')}</option>
                       <option value="2-inch">{t('photoTilingPrepress.photoSpec2Inch')}</option>
@@ -166,11 +167,11 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('photoTilingPrepress.paperSizeLabel')}</label>
+                    <Label className="" htmlFor="phototilingprepresstool-field-2">{t('photoTilingPrepress.paperSizeLabel')}</Label>
                     <select
                       value={paperSize}
                       onChange={(e) => setPaperSize(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="phototilingprepresstool-field-2" aria-label={t('photoTilingPrepress.paperSizeLabel')}
                     >
                       <option value="5-inch">{t('photoTilingPrepress.paperSize5Inch')}</option>
                       <option value="6-inch">{t('photoTilingPrepress.paperSize6Inch')}</option>
@@ -178,10 +179,10 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       <span>{t('photoTilingPrepress.gapPtLabel')}</span>
                       <span className="font-mono text-primary font-bold">{gapPt} pt</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="2"

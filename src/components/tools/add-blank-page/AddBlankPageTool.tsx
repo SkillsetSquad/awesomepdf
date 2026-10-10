@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,13 +22,13 @@ export interface AddBlankPageToolProps {
 /**
  * AddBlankPageTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for adding blank pages to a PDF.
  */
 export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -36,11 +37,11 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options
   const [position, setPosition] = useState<number>(0);
   const [count, setCount] = useState<number>(1);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -51,10 +52,10 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
       setPosition(pdf.numPages); // Default to end
     } catch (err) {
@@ -194,7 +195,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -241,12 +242,12 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
           <div className="space-y-4">
             {/* Position */}
             <div>
-              <label 
-                htmlFor="position" 
-                className="block text-sm font-medium text-foreground mb-1"
+              <Label
+                htmlFor="position"
+                className="block mb-1"
               >
                 {tTools('addBlankPage.positionLabel') || 'Insert Position'}
-              </label>
+              </Label>
               <Input
                 type="number"
                 id="position"
@@ -255,7 +256,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
                 value={position}
                 onChange={(e) => setPosition(parseInt(e.target.value) || 0)}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('addBlankPage.positionLabel') || 'Insert Position'}
               />
               <p className="mt-1 text-sm text-muted-foreground">
                 {tTools('addBlankPage.positionHint', { total: totalPages }) || `Enter 0 to insert at the beginning, or ${totalPages} to insert at the end.`}
@@ -264,12 +265,12 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
 
             {/* Count */}
             <div>
-              <label 
-                htmlFor="count" 
-                className="block text-sm font-medium text-foreground mb-1"
+              <Label
+                htmlFor="count"
+                className="block mb-1"
               >
                 {tTools('addBlankPage.countLabel') || 'Number of Blank Pages'}
-              </label>
+              </Label>
               <Input
                 type="number"
                 id="count"
@@ -278,7 +279,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
                 value={count}
                 onChange={(e) => setCount(parseInt(e.target.value) || 1)}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('addBlankPage.countLabel') || 'Number of Blank Pages'}
               />
             </div>
 
@@ -326,8 +327,8 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
             disabled={!canProcess}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('addBlankPage.addButton') || `Add ${count} Blank Page${count !== 1 ? 's' : ''}`)
             }
           </Button>
@@ -346,7 +347,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

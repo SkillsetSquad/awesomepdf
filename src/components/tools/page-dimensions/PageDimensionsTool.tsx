@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -20,14 +21,14 @@ type DisplayUnit = 'pt' | 'in' | 'mm';
 /**
  * PageDimensionsTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for analyzing PDF page dimensions.
  * Displays detailed information about each page's size, orientation, and standard size match.
  */
 export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -36,10 +37,10 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
   const [result, setResult] = useState<Blob | null>(null);
   const [dimensionsResult, setDimensionsResult] = useState<PageDimensionsResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Display options
   const [displayUnit, setDisplayUnit] = useState<DisplayUnit>('pt');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -110,7 +111,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
       if (output.success && output.result) {
         setResult(output.result as Blob);
         setStatus('complete');
-        
+
         // Set dimensions result
         if (output.metadata?.result) {
           setDimensionsResult(output.metadata.result as PageDimensionsResult);
@@ -180,7 +181,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -227,11 +228,11 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pageDimensions.displayOptions') || 'Display Options'}
           </h3>
-          
+
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <Label className="block mb-2">
               {tTools('pageDimensions.unitLabel') || 'Measurement Unit'}
-            </label>
+            </Label>
             <div className="flex gap-2">
               {(['pt', 'in', 'mm'] as DisplayUnit[]).map((unit) => (
                 <button
@@ -242,8 +243,8 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
                   className={`
                     px-4 py-2 rounded-md border text-sm font-medium
                     transition-colors duration-200
-                    ${displayUnit === unit 
-                      ? 'border-primary bg-primary text-primary-foreground' 
+                    ${displayUnit === unit
+                      ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border hover:bg-muted/50'
                     }
                     disabled:opacity-50 disabled:cursor-not-allowed
@@ -279,8 +280,8 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
           disabled={!canAnalyze}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('pageDimensions.analyzeButton') || 'Analyze Dimensions')
           }
         </Button>
@@ -304,7 +305,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
             <h3 className="text-lg font-medium text-foreground mb-4">
               {tTools('pageDimensions.summary') || 'Summary'}
             </h3>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="p-3 rounded-sm bg-muted/30">
                 <p className="text-xs text-muted-foreground">
@@ -327,8 +328,8 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
                   {tTools('pageDimensions.uniformSize') || 'Uniform Size'}
                 </p>
                 <p className="text-xl font-semibold text-foreground">
-                  {dimensionsResult.uniformSize 
-                    ? (tTools('pageDimensions.yes') || 'Yes') 
+                  {dimensionsResult.uniformSize
+                    ? (tTools('pageDimensions.yes') || 'Yes')
                     : (tTools('pageDimensions.no') || 'No')
                   }
                 </p>
@@ -342,16 +343,16 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
               <h3 className="text-lg font-medium text-foreground mb-4">
                 {tTools('pageDimensions.sizeDistribution') || 'Size Distribution'}
               </h3>
-              
+
               <div className="space-y-2">
                 {dimensionsResult.uniqueSizes.map((sizeInfo, index) => {
                   const [width, height] = sizeInfo.size.split('x').map(Number);
-                  const page = dimensionsResult.pages.find(p => 
+                  const page = dimensionsResult.pages.find(p =>
                     Math.round(p.widthPt) === width && Math.round(p.heightPt) === height
                   );
-                  
+
                   return (
-                    <div 
+                    <div
                       key={index}
                       className="flex items-center justify-between p-3 rounded-sm bg-muted/20"
                     >
@@ -381,7 +382,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
             <h3 className="text-lg font-medium text-foreground mb-4">
               {tTools('pageDimensions.pageDetails') || 'Page Details'}
             </h3>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -405,7 +406,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
                 </thead>
                 <tbody>
                   {dimensionsResult.pages.slice(0, 50).map((page) => (
-                    <tr 
+                    <tr
                       key={page.pageNumber}
                       className="border-b border-border/50 hover:bg-muted/20"
                     >
@@ -428,7 +429,7 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
                   ))}
                 </tbody>
               </table>
-              
+
               {dimensionsResult.pages.length > 50 && (
                 <p className="text-sm text-muted-foreground mt-2 text-center">
                   {tTools('pageDimensions.showingFirst50') || 'Showing first 50 pages. Download JSON for complete data.'}

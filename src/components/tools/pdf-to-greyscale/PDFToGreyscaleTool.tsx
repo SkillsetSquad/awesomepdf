@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -27,13 +28,13 @@ export interface PDFToGreyscaleToolProps {
 /**
  * PDFToGreyscaleTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Converts PDF pages to greyscale.
  */
 export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -41,12 +42,12 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options state
   const [method, setMethod] = useState<PDFToGreyscaleOptions['method']>('luminosity');
   const [scale, setScale] = useState(2);
   const [pageRange, setPageRange] = useState('');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -89,10 +90,10 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
    */
   const parsePageRange = (rangeStr: string): number[] => {
     if (!rangeStr.trim()) return [];
-    
+
     const pages: number[] = [];
     const parts = rangeStr.split(',');
-    
+
     for (const part of parts) {
       const trimmed = part.trim();
       if (trimmed.includes('-')) {
@@ -109,7 +110,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
         }
       }
     }
-    
+
     return pages.sort((a, b) => a - b);
   };
 
@@ -203,7 +204,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -245,18 +246,18 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToGreyscale.optionsTitle') || 'Greyscale Options'}
           </h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Greyscale Method */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftogreyscaletool-field-1">
                 {tTools('pdfToGreyscale.method') || 'Conversion Method'}
-              </label>
+              </Label>
               <select
                 value={method}
                 onChange={(e) => setMethod(e.target.value as PDFToGreyscaleOptions['method'])}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftogreyscaletool-field-1" aria-label={tTools('pdfToGreyscale.method') || 'Conversion Method'}
               >
                 <option value="luminosity">{tTools('pdfToGreyscale.methodLuminosity') || 'Luminosity (Recommended)'}</option>
                 <option value="average">{tTools('pdfToGreyscale.methodAverage') || 'Average'}</option>
@@ -266,14 +267,14 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
             {/* Quality/Scale */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftogreyscaletool-field-2">
                 {tTools('pdfToGreyscale.quality') || 'Quality'}
-              </label>
+              </Label>
               <select
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftogreyscaletool-field-2" aria-label={tTools('pdfToGreyscale.quality') || 'Quality'}
               >
                 <option value="1">{tTools('pdfToGreyscale.qualityLow') || 'Low (Faster)'}</option>
                 <option value="2">{tTools('pdfToGreyscale.qualityMedium') || 'Medium (Recommended)'}</option>
@@ -283,16 +284,16 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
             {/* Page Range */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftogreyscaletool-field-3">
                 {tTools('pdfToGreyscale.pageRange') || 'Page Range'}
-              </label>
+              </Label>
               <Input
                 type="text"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToGreyscale.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="pdftogreyscaletool-field-3" aria-label={tTools('pdfToGreyscale.pageRange') || 'Page Range'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToGreyscale.pageRangeHint') || 'Leave empty for all pages'}
@@ -322,8 +323,8 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
           disabled={!canConvert}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('pdfToGreyscale.convertButton') || 'Convert to Greyscale')
           }
         </Button>
@@ -341,7 +342,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

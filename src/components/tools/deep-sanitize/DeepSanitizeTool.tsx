@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -9,13 +10,13 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { deepSanitizePDF, type DeepSanitizeOptions } from '@/lib/pdf/processors/deep-sanitize';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  ShieldAlert, 
-  Settings2, 
-  Trash2, 
-  Check, 
-  ShieldCheck, 
-  Skull, 
+import {
+  ShieldAlert,
+  Settings2,
+  Trash2,
+  Check,
+  ShieldCheck,
+  Skull,
   Lock,
   RefreshCw,
   EyeOff
@@ -114,13 +115,13 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
       if (status === 'processing') {
         const scanY = centerY + 80 * Math.sin(Date.now() * 0.005);
         ctx.strokeStyle = 'rgba(168, 85, 2 purple, 0.8)';
-        
+
         // Purple glowing scanline
         const gradient = ctx.createLinearGradient(centerX - 80, scanY, centerX + 80, scanY);
         gradient.addColorStop(0, 'rgba(168, 85, 247, 0)');
         gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.9)');
         gradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
-        
+
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 4;
         ctx.shadowColor = 'rgba(168, 85, 247, 0.8)';
@@ -129,7 +130,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
         ctx.moveTo(centerX - 85, scanY);
         ctx.lineTo(centerX + 85, scanY);
         ctx.stroke();
-        
+
         // Reset shadow
         ctx.shadowBlur = 0;
       }
@@ -139,7 +140,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
         // Orbit physics
         p.angle += p.speed * (status === 'processing' ? 2.5 : 1);
         p.dist -= (status === 'processing' ? 0.35 : 0.05); // slowly fall to center
-        
+
         if (p.dist <= 2) {
           p.dist = Math.random() * 80 + 20; // reset
         }
@@ -195,7 +196,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
       setStatus('processing');
       setProgress(10);
       setProgressMessage('Scrutinizing document layers...');
-      
+
       setTimeout(() => {
         // Simulate finding structural logs
         setFindings([
@@ -289,7 +290,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* File Uploader zone */}
       {!file && (
         <FileUploader
@@ -337,11 +338,11 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
       {/* Primary Workspace */}
       {file && status !== 'complete' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* LEFT: Sanitizer Controls */}
           <div className="lg:col-span-6 flex flex-col justify-between">
             <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
-              
+
               <div className="space-y-4 flex-1">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
@@ -351,7 +352,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                 </div>
 
                 <div className="space-y-3.5">
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={stripMetadata}
@@ -363,9 +364,9 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                       {t('deepSanitize.clearXmp')}
                       {t('deepSanitize.clearXmpDesc')}
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={stripPieceInfo}
@@ -377,9 +378,9 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                       {t('deepSanitize.clearPieceInfo')}
                       {t('deepSanitize.clearPieceInfoDesc')}
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={stripOcgWatermarks}
@@ -391,9 +392,9 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                       {t('deepSanitize.clearOcProperties')}
                       {t('deepSanitize.clearOcPropertiesDesc')}
                     </div>
-                  </label>
+                  </Label>
 
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={stripAnnotations}
@@ -405,7 +406,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                       {t('deepSanitize.clearAnnotations')}
                       {t('deepSanitize.clearAnnotationsDesc')}
                     </div>
-                  </label>
+                  </Label>
                 </div>
               </div>
 
@@ -429,7 +430,7 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
           {/* RIGHT: 3D Particle Chamber visual box */}
           <div className="lg:col-span-6 flex flex-col justify-between">
             <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
-              
+
               {/* Particle chamber canvas */}
               <div className="relative w-60 h-60 flex items-center justify-center z-10">
                 <canvas ref={canvasRef} className="w-full h-full" />

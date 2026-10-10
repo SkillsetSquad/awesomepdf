@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -23,7 +24,7 @@ export interface FindAndRedactToolProps {
 
 /**
  * FindAndRedactTool Component
- * 
+ *
  * Provides functionality to search for text across all pages of a PDF
  * and redact matching content. Useful for removing sensitive information
  * like account numbers, names, etc. from multi-page documents.
@@ -415,9 +416,9 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                         {/* Search Input - Multiple Terms */}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+                                <Label className="block mb-2 dark:text-gray-300" htmlFor="findandredacttool-field-1">
                                     {tTools('searchTermLabel')}
-                                </label>
+                                </Label>
 
                                 {/* Main Input */}
                                 <div className="relative">
@@ -433,7 +434,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         }}
                                         placeholder={tTools('searchInputPlaceholder')}
                                         className="w-full transition-all"
-                                        disabled={isProcessing || isSearching}
+                                        disabled={isProcessing || isSearching} id="findandredacttool-field-1" aria-label={tTools('searchTermLabel')}
                                     />
                                     <div className="absolute right-2 top-1/2 -translate-y-1/2">
                                         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -495,7 +496,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                             {/* Search Options */}
                             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-2 border-t border-gray-200 dark:border-gray-700">
-                                <label className="flex items-center gap-2 cursor-pointer">
+                                <Label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={caseSensitive}
@@ -506,8 +507,8 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
                                         {tTools('caseSensitive')}
                                     </span>
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
+                                </Label>
+                                <Label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={wholeWord}
@@ -518,8 +519,8 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
                                         {tTools('wholeWord')}
                                     </span>
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
+                                </Label>
+                                <Label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={useRegex}
@@ -533,7 +534,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
                                         {tTools('useRegex')}
                                     </span>
-                                </label>
+                                </Label>
                             </div>
 
                             {/* Search Button */}
@@ -817,42 +818,42 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             <div className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                                        <Label className="block mb-1 dark:text-gray-300" htmlFor="findandredacttool-field-2">
                                             {tTools('redactionColor')}
-                                        </label>
+                                        </Label>
                                         <div className="flex items-center gap-2">
                                             <Input
                                                 type="color"
                                                 value={redactionColor}
                                                 onChange={(e) => setRedactionColor(e.target.value)}
                                                 className="w-10 h-10 cursor-pointer"
-                                                disabled={isProcessing}
+                                                disabled={isProcessing} id="findandredacttool-field-2" aria-label={tTools('redactionColor')}
                                             />
                                             <Input
                                                 type="text"
                                                 value={redactionColor}
                                                 onChange={(e) => setRedactionColor(e.target.value)}
                                                 className="flex-1"
-                                                disabled={isProcessing}
+                                                disabled={isProcessing} aria-label={tTools('redactionColor')}
                                             />
                                         </div>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                                        <Label className="block mb-1 dark:text-gray-300" htmlFor="findandredacttool-field-3">
                                             {tTools('replacementText')}
-                                        </label>
+                                        </Label>
                                         <Input
                                             type="text"
                                             value={replacementText}
                                             onChange={(e) => setReplacementText(e.target.value)}
                                             placeholder={tTools('replacementTextPlaceholder')}
                                             className="w-full"
-                                            disabled={isProcessing}
+                                            disabled={isProcessing} id="findandredacttool-field-3" aria-label={tTools('replacementText')}
                                         />
                                     </div>
                                 </div>
 
-                                <label className="flex items-center gap-2 cursor-pointer">
+                                <Label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={addBorder}
@@ -863,7 +864,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <span className="text-sm text-gray-700 dark:text-gray-300">
                                         {tTools('addBorder')}
                                     </span>
-                                </label>
+                                </Label>
 
                                 {/* Warning */}
                                 <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-700 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-400">

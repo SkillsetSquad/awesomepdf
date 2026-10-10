@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -19,7 +20,7 @@ export interface RasterizePDFToolProps {
 
 /**
  * RasterizePDFTool Component
- * 
+ *
  * Converts PDF pages to high-quality images.
  */
 export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
@@ -166,9 +167,9 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                     <div className="space-y-4">
                         {/* DPI Preset */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('rasterizePdf.dpiLabel') || 'Resolution (DPI)'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {Object.entries(DPI_PRESETS).map(([name, value]) => (
                                     <button
@@ -195,9 +196,9 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
 
                         {/* Output Format */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('rasterizePdf.formatLabel') || 'Output Format'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-4 gap-2">
                                 {(['png', 'jpeg', 'webp', 'pdf'] as RasterizeFormat[]).map((fmt) => (
                                     <button
@@ -224,9 +225,9 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                         {/* Quality (for JPEG/WebP) */}
                         {(format === 'jpeg' || format === 'webp' || format === 'pdf') && (
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-2">
+                                <Label className="block mb-2">
                                     {tTools('rasterizePdf.qualityLabel') || 'Quality'}: {quality}%
-                                </label>
+                                </Label>
                                 <input
                                     type="range"
                                     min="10"
@@ -241,16 +242,16 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
 
                         {/* Page Range */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="rasterizepdftool-field-1">
                                 {tTools('rasterizePdf.pageRangeLabel') || 'Page Range (optional)'}
-                            </label>
+                            </Label>
                             <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 disabled={isProcessing}
                                 placeholder="e.g., 1-5, 8, 10-15"
-                                className="w-full"
+                                className="w-full" id="rasterizepdftool-field-1" aria-label={tTools('rasterizePdf.pageRangeLabel') || 'Page Range (optional)'}
                             />
                             <p className="mt-1 text-xs text-muted-foreground">
                                 {tTools('rasterizePdf.pageRangeDesc') || 'Leave empty to convert all pages.'}
@@ -259,23 +260,23 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
 
                         {/* Background Color */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="rasterizepdftool-field-2">
                                 {tTools('rasterizePdf.bgColorLabel') || 'Background Color'}
-                            </label>
+                            </Label>
                             <div className="flex items-center gap-3">
                                 <Input
                                     type="color"
                                     value={backgroundColor}
                                     onChange={(e) => setBackgroundColor(e.target.value)}
                                     disabled={isProcessing}
-                                    className="w-10 h-10 cursor-pointer"
+                                    className="w-10 h-10 cursor-pointer" id="rasterizepdftool-field-2" aria-label={tTools('rasterizePdf.bgColorLabel') || 'Background Color'}
                                 />
                                 <Input
                                     type="text"
                                     value={backgroundColor}
                                     onChange={(e) => setBackgroundColor(e.target.value)}
                                     disabled={isProcessing}
-                                    className="flex-1"
+                                    className="flex-1" aria-label={tTools('rasterizePdf.bgColorLabel') || 'Background Color'}
                                 />
                             </div>
                         </div>

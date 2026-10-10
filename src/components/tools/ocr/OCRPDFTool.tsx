@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -13,12 +14,12 @@ import { Card } from '@/components/ui/card';
 import { ocrPDF, type OCROptions, type OCRLanguage, OCR_LANGUAGE_NAMES } from '@/lib/pdf/processors/ocr';
 import { NativeSelect as Select } from '@/components/ui/native-select';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
-import { 
-  Scan, 
-  Settings2, 
-  Trash2, 
-  Check, 
-  Sparkles, 
+import {
+  Scan,
+  Settings2,
+  Trash2,
+  Check,
+  Sparkles,
   HelpCircle,
   ShieldCheck,
   Languages,
@@ -44,7 +45,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const tTools = useTranslations('tools');
   const router = useRouter();
   const locale = useLocale();
-  
+
   // State
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -53,7 +54,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [textPreview, setTextPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Enhanced metrics & interaction state
   const [stats, setStats] = useState<{
     pageCount?: number;
@@ -69,7 +70,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const [outputFormat, setOutputFormat] = useState<OCROptions['outputFormat']>('searchable-pdf'); // Default to searchable PDF
   const [scale, setScale] = useState(2);
   const [pageRange, setPageRange] = useState('');
-  
+
   // Canvas Ref for 3D Laser Mesh Scan animation
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
@@ -92,7 +93,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
       if (status === 'processing') {
         time += 0.05;
-        
+
         ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)'; // Purple mesh
         ctx.lineWidth = 1;
 
@@ -107,7 +108,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           for (let c = 0; c <= cols; c++) {
             // Apply 3D wavy distortion using sin/cos
             const z = Math.sin(c * 0.5 + time) * Math.cos(r * 0.4 + time) * 15;
-            
+
             // 3D perspective projection formula
             const px = c * colWidth;
             const py = r * rowHeight + z;
@@ -223,10 +224,10 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
   const parsePageRange = (rangeStr: string): number[] => {
     if (!rangeStr.trim()) return [];
-    
+
     const pages: number[] = [];
     const parts = rangeStr.split(',');
-    
+
     for (const part of parts) {
       const trimmed = part.trim();
       if (trimmed.includes('-')) {
@@ -243,7 +244,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
         }
       }
     }
-    
+
     return pages.sort((a, b) => a - b);
   };
 
@@ -298,14 +299,14 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           totalChars: output.metadata?.totalChars as number | undefined,
           avgConfidence: output.metadata?.avgConfidence as number | undefined,
         });
-        
+
         if (outputFormat === 'text' || outputFormat === 'markdown' || outputFormat === 'json') {
           const text = await blob.text();
           setTextPreview(text);
         } else if (output.metadata?.rawText) {
           setTextPreview(output.metadata.rawText as string);
         }
-        
+
         setStatus('complete');
       } else {
         const errMsg = output.error?.message || 'Failed to perform OCR on PDF.';
@@ -343,7 +344,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
     if (!result || !file) return;
     const fileName = `${file.file.name.replace(/\.[^.]+$/, '')}_ocr.pdf`;
     const targetFile = new File([result], fileName, { type: 'application/pdf' });
-    
+
     // Store in global memory
     (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ = targetFile;
 
@@ -388,7 +389,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* File Upload Zone */}
       {!file && (
         <FileUploader
@@ -434,11 +435,11 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
       {/* Primary Workspace */}
       {file && status !== 'complete' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* LEFT: OCR Options */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl space-y-6">
-              
+
               <div className="space-y-4 flex-1">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
@@ -449,9 +450,9 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
                 {/* Multi language choice */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+                  <Label className="text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                     <Languages className="w-4 h-4" /> {t('ocr.selectLang')}
-                  </label>
+                  </Label>
                   <div className="flex flex-wrap gap-1.5">
                     {availableLanguages.map(lang => (
                       <button
@@ -476,13 +477,13 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {/* Format Output */}
                   <div>
-                    <label className="block text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
+                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-1">
                       {t('ocr.outputFormat')}
-                    </label>
+                    </Label>
                     <Select
                       value={outputFormat}
                       onChange={(e) => setOutputFormat(e.target.value as OCROptions['outputFormat'])}
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="ocrpdftool-field-1" aria-label={t('ocr.outputFormat')}
                     >
                       <option value="searchable-pdf">{t('ocr.formatSearchablePdf')}</option>
                       <option value="text">{t('ocr.formatText')}</option>
@@ -493,13 +494,13 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
                   {/* Resolution scale */}
                   <div>
-                    <label className="block text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
+                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-2">
                       {t('ocr.accuracyTitle')}
-                    </label>
+                    </Label>
                     <Select
                       value={scale}
                       onChange={(e) => setScale(parseFloat(e.target.value))}
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="ocrpdftool-field-2" aria-label={t('ocr.accuracyTitle')}
                     >
                       <option value="1">{t('ocr.accuracySd')}</option>
                       <option value="2">{t('ocr.accuracyHd')}</option>
@@ -509,16 +510,16 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
 
                   {/* Range */}
                   <div>
-                    <label className="block text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
+                    <Label className="block text-[11px] text-muted-foreground uppercase tracking-wider mb-2" htmlFor="ocrpdftool-field-3">
                       {t('ocr.specifyPages')}
-                    </label>
+                    </Label>
                     <Input
                       type="text"
                       value={pageRange}
                       onChange={(e) => setPageRange(e.target.value)}
                       placeholder={t('ocr.pagesPlaceholder')}
                       disabled={isProcessing}
-                      className="w-full"
+                      className="w-full" id="ocrpdftool-field-3" aria-label={t('ocr.specifyPages')}
                     />
                   </div>
                 </div>
@@ -536,7 +537,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                       {t('ocr.enhanceContrastDesc')}
                     </p>
                   </div>
-                  <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
+                  <Label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
                     <input
                       type="checkbox"
                       checked={enhanceContrast}
@@ -545,7 +546,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                       className="sr-only peer"
                     />
                     <div className="w-9 h-5 bg-zinc-200 dark:bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
-                  </label>
+                  </Label>
                 </div>
               </div>
 
@@ -569,7 +570,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           {/* RIGHT: 3D Holographic Wireframe Scan visualizer */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <Card  className="flex-1 p-6 bg-zinc-950 border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[380px]">
-              
+
               {/* Scan grid canvas */}
               <div className="relative w-full aspect-video flex items-center justify-center z-10">
                 <canvas ref={canvasRef} className="w-full max-w-[280px] h-full" />
@@ -623,8 +624,8 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           <div className="space-y-2 max-w-sm mx-auto">
             <h3 className="text-base font-extrabold text-foreground">{t('ocr.successTitle')}</h3>
             <p className="text-xs text-muted-foreground">
-              {outputFormat === 'searchable-pdf' 
-                ? t('ocr.successSearchablePdf') 
+              {outputFormat === 'searchable-pdf'
+                ? t('ocr.successSearchablePdf')
                 : t('ocr.successText')
               }
             </p>

@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -17,7 +18,7 @@ export interface PDFBookletToolProps {
 
 /**
  * PDFBookletTool Component
- * 
+ *
  * Creates booklet layouts from PDF files for printing.
  */
 export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
@@ -160,9 +161,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                     <div className="space-y-4">
                         {/* Grid Mode */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfBooklet.gridModeLabel') || 'Grid Mode'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['1x2', '2x2', '2x4', '4x4'] as BookletGridMode[]).map((mode) => (
                                     <button
@@ -191,9 +192,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Paper Size */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfBooklet.paperSizeLabel') || 'Paper Size'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(['a4', 'letter', 'legal'] as BookletPaperSize[]).map((size) => (
                                     <button
@@ -219,9 +220,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Orientation */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfBooklet.orientationLabel') || 'Orientation'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-2 gap-2">
                                 {(['portrait', 'landscape'] as const).map((orient) => (
                                     <button
@@ -247,9 +248,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Rotation */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfBooklet.rotationLabel') || 'Page Rotation'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['none', '90cw', '90ccw', 'alternate'] as BookletRotation[]).map((rot) => (
                                     <button
@@ -278,9 +279,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Padding */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('pdfBooklet.paddingLabel') || 'Padding'}: {padding}pt
-                            </label>
+                            </Label>
                             <input
                                 type="range"
                                 min="0"
@@ -294,9 +295,9 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Live Preview */}
                         <div className="pt-4 border-t border-border">
-                            <label className="block text-sm font-medium text-foreground mb-3">
+                            <Label className="block mb-3">
                                 {tTools('pdfBooklet.previewLabel') || 'Layout Preview'}
-                            </label>
+                            </Label>
                             <div
                                 className="relative bg-gray-100 rounded-md p-4 flex items-center justify-center"
                                 style={{ minHeight: '200px' }}

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -325,7 +326,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       }
     } else {
       // Use individual crops. If a page wasn't visited/cropped, it won't be in the list.
-      // We should probably assume full page or warn? 
+      // We should probably assume full page or warn?
       // If user only cropped page 1, should we only crop page 1?
       // Logic: Only crop pages that have data.
       if (Object.keys(currentCrops).length === 0) {
@@ -601,7 +602,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
               </div>
 
               <div className="flex items-center gap-6">
-                <label className="flex items-center gap-2 cursor-pointer">
+                <Label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={applyToAll}
@@ -610,7 +611,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     disabled={isProcessing}
                   />
                   <span className="text-sm font-medium">{tTools('cropPdf.applyToAll') || 'Apply to all pages'}</span>
-                </label>
+                </Label>
 
                 <Button
                   variant="default"

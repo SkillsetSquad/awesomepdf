@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,7 +22,7 @@ type InputMode = 'upload' | 'manual';
 
 /**
  * MarkdownToPDFTool Component
- * 
+ *
  * Converts Markdown files to PDF with styling options.
  * Supports both file upload and manual markdown input with live preview.
  */
@@ -182,7 +183,7 @@ Enjoy converting your Markdown to PDF!
                     type="button"
                     onClick={() => setInputMode('manual')}
                     className={`
-                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md 
+                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md
                         text-sm font-medium transition-all duration-200
                         ${inputMode === 'manual'
                             ? 'bg-background text-foreground shadow-sm'
@@ -197,7 +198,7 @@ Enjoy converting your Markdown to PDF!
                     type="button"
                     onClick={() => setInputMode('upload')}
                     className={`
-                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md 
+                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md
                         text-sm font-medium transition-all duration-200
                         ${inputMode === 'upload'
                             ? 'bg-background text-foreground shadow-sm'
@@ -263,9 +264,9 @@ Enjoy converting your Markdown to PDF!
                     <div className={`grid gap-4 ${showPreview ? 'lg:grid-cols-2' : 'grid-cols-1'}`}>
                         {/* Markdown Editor */}
                         <div className="space-y-2">
-                            <label className="block text-sm font-medium text-foreground">
+                            <Label className="block" htmlFor="markdowntopdftool-field-1">
                                 {tTools('markdownToPdf.editorLabel') || 'Markdown Editor'}
-                            </label>
+                            </Label>
                             <textarea
                                 value={manualMarkdown}
                                 onChange={(e) => {
@@ -275,9 +276,9 @@ Enjoy converting your Markdown to PDF!
                                 disabled={isProcessing}
                                 placeholder="# Enter your Markdown here..."
                                 className="
-                                    w-full h-[400px] p-4 
+                                    w-full h-[400px] p-4
                                     font-mono text-sm
-                                    border border-border 
+                                    border border-border
                                     rounded-md
                                     bg-background
                                     text-foreground
@@ -285,16 +286,16 @@ Enjoy converting your Markdown to PDF!
                                     focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
                                     resize-none
                                     disabled:opacity-50 disabled:cursor-not-allowed
-                                "
+                                " id="markdowntopdftool-field-1" aria-label={tTools('markdownToPdf.editorLabel') || 'Markdown Editor'}
                             />
                         </div>
 
                         {/* Live Preview */}
                         {showPreview && (
                             <div className="space-y-2">
-                                <label className="block text-sm font-medium text-foreground">
+                                <Label className="block">
                                     {tTools('markdownToPdf.previewLabel') || 'Preview'}
-                                </label>
+                                </Label>
                                 <div
                                     className={`
                                         h-[400px] p-4 overflow-auto
@@ -330,9 +331,9 @@ Enjoy converting your Markdown to PDF!
                 <div className="space-y-4">
                     {/* Theme */}
                     <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <Label className="block mb-2">
                             {tTools('markdownToPdf.themeLabel') || 'Theme'}
-                        </label>
+                        </Label>
                         <div className="grid grid-cols-3 gap-2">
                             {(['light', 'dark', 'github'] as MarkdownTheme[]).map((th) => (
                                 <button
@@ -358,9 +359,9 @@ Enjoy converting your Markdown to PDF!
 
                     {/* Page Size */}
                     <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <Label className="block mb-2">
                             {tTools('markdownToPdf.pageSizeLabel') || 'Page Size'}
-                        </label>
+                        </Label>
                         <div className="grid grid-cols-3 gap-2">
                             {(['a4', 'letter', 'legal'] as MarkdownPageSize[]).map((size) => (
                                 <button
@@ -385,7 +386,7 @@ Enjoy converting your Markdown to PDF!
                     </div>
 
                     {/* GFM Support */}
-                    <label className="flex items-center gap-3 cursor-pointer">
+                    <Label className="flex items-center gap-3 cursor-pointer">
                         <input
                             type="checkbox"
                             checked={gfm}
@@ -396,10 +397,10 @@ Enjoy converting your Markdown to PDF!
                         <span className="text-sm text-foreground">
                             {tTools('markdownToPdf.gfmLabel') || 'Enable GitHub Flavored Markdown (tables, task lists, etc.)'}
                         </span>
-                    </label>
+                    </Label>
 
                     {/* Syntax Highlighting */}
-                    <label className="flex items-center gap-3 cursor-pointer">
+                    <Label className="flex items-center gap-3 cursor-pointer">
                         <input
                             type="checkbox"
                             checked={syntaxHighlight}
@@ -410,7 +411,7 @@ Enjoy converting your Markdown to PDF!
                         <span className="text-sm text-foreground">
                             {tTools('markdownToPdf.syntaxHighlightLabel') || 'Enable syntax highlighting for code blocks'}
                         </span>
-                    </label>
+                    </Label>
                 </div>
             </Card>
 

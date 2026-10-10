@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -142,10 +143,10 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       {t('pdfDeskewAligner.dpiLabel')}
                       <span className="font-mono text-primary font-bold">{dpi} DPI</span>
-                    </label>
+                    </Label>
                     <select
                       value={dpi}
                       onChange={(e) => setDpi(parseInt(e.target.value))}
@@ -158,10 +159,10 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       {t('pdfDeskewAligner.thresholdLabel')}
                       <span className="font-mono text-primary font-bold">{threshold}°</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="1"

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -17,7 +18,7 @@ export interface TextColorToolProps { className?: string; }
 export function TextColorTool({ className = '' }: TextColorToolProps) {
   const t = useTranslations('tools.textColor');
   const tCommon = useTranslations('common.buttons');
-  
+
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
@@ -38,8 +39,8 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
     cancelledRef.current = false;
     setStatus('processing'); setProgress(0); setError(null); setResult(null);
     try {
-      const output: ProcessOutput = await changeTextColor(file, { 
-        color: hexToRgb(color), 
+      const output: ProcessOutput = await changeTextColor(file, {
+        color: hexToRgb(color),
         pages: 'all',
         mode,
         threshold,
@@ -54,24 +55,24 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader 
-          accept={['application/pdf', '.pdf']} 
-          multiple={false} 
-          maxFiles={1} 
-          onFilesSelected={(files) => { if (files.length > 0) { setFile(files[0]); setError(null); setResult(null); } }} 
-          onError={setError} 
-          disabled={isProcessing} 
-          label={t('uploadLabel')} 
-          description={t('uploadDescription')} 
+        <FileUploader
+          accept={['application/pdf', '.pdf']}
+          multiple={false}
+          maxFiles={1}
+          onFilesSelected={(files) => { if (files.length > 0) { setFile(files[0]); setError(null); setResult(null); } }}
+          onError={setError}
+          disabled={isProcessing}
+          label={t('uploadLabel')}
+          description={t('uploadDescription')}
         />
       )}
-      
+
       {error && (
         <div className="p-4 rounded bg-red-50 border border-red-200 text-red-700">
           <p className="text-sm">{error}</p>
         </div>
       )}
-      
+
       {file && (
         <>
           <Card className="p-6" >
@@ -82,68 +83,68 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
               </Button>
             </div>
           </Card>
-          
+
           <Card className="p-6"  >
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">{t('colorLabel')}</label>
+                <Label className="block mb-2" htmlFor="textcolortool-field-1">{t('colorLabel')}</Label>
                 <div className="flex items-center gap-4">
-                  <Input 
-                    type="color" 
-                    value={color} 
-                    onChange={(e) => setColor(e.target.value)} 
-                    className="w-16 h-10 cursor-pointer" 
-                    disabled={isProcessing} 
+                  <Input
+                    type="color"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    className="w-16 h-10 cursor-pointer"
+                    disabled={isProcessing} id="textcolortool-field-1" aria-label={t('colorLabel')}
                   />
-                  <Input 
-                    type="text" 
-                    value={color} 
-                    onChange={(e) => setColor(e.target.value)} 
-                    className="w-32" 
-                    disabled={isProcessing} 
+                  <Input
+                    type="text"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    className="w-32"
+                    disabled={isProcessing} aria-label={t('colorLabel')}
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium mb-2">{t('modeLabel') || 'Mode'}</label>
+                <Label className="block mb-2">{t('modeLabel') || 'Mode'}</Label>
                 <div className="flex gap-4">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input 
-                      type="radio" 
-                      name="mode" 
-                      value="dark" 
-                      checked={mode === 'dark'} 
-                      onChange={() => setMode('dark')} 
+                  <Label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="mode"
+                      value="dark"
+                      checked={mode === 'dark'}
+                      onChange={() => setMode('dark')}
                       disabled={isProcessing}
                     />
                     <span className="text-sm">{t('modeDark') || 'Dark text (light background)'}</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input 
-                      type="radio" 
-                      name="mode" 
-                      value="light" 
-                      checked={mode === 'light'} 
-                      onChange={() => setMode('light')} 
+                  </Label>
+                  <Label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="mode"
+                      value="light"
+                      checked={mode === 'light'}
+                      onChange={() => setMode('light')}
                       disabled={isProcessing}
                     />
                     <span className="text-sm">{t('modeLight') || 'Light text (dark background)'}</span>
-                  </label>
+                  </Label>
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <Label className="block mb-2">
                   {t('thresholdLabel') || 'Threshold'}: {threshold}
-                </label>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="255" 
-                  value={threshold} 
-                  onChange={(e) => setThreshold(Number(e.target.value))} 
-                  className="w-full" 
+                </Label>
+                <input
+                  type="range"
+                  min="0"
+                  max="255"
+                  value={threshold}
+                  onChange={(e) => setThreshold(Number(e.target.value))}
+                  className="w-full"
                   disabled={isProcessing}
                 />
                 <p className="text-xs text-gray-500 mt-1">
@@ -154,33 +155,33 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
           </Card>
         </>
       )}
-      
+
       {isProcessing && (
-        <ProcessingProgress 
-          progress={progress} 
-          status={status} 
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} 
-          showPercentage 
+        <ProcessingProgress
+          progress={progress}
+          status={status}
+          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          showPercentage
         />
       )}
-      
+
       {file && (
         <div className="flex flex-wrap items-center gap-4">
           <Button variant="default" size="lg" onClick={handleProcess} disabled={!file || isProcessing} loading={isProcessing}>
             {isProcessing ? tCommon('process') + '...' : t('applyButton')}
           </Button>
           {result && (
-            <DownloadButton 
-              file={result} 
-              filename={file.name.replace('.pdf', '_textcolor.pdf')} 
-              variant="secondary" 
-              size="lg" 
-              showFileSize 
+            <DownloadButton
+              file={result}
+              filename={file.name.replace('.pdf', '_textcolor.pdf')}
+              variant="secondary"
+              size="lg"
+              showFileSize
             />
           )}
         </div>
       )}
-      
+
       {status === 'complete' && result && (
         <div className="p-4 rounded bg-green-50 border border-green-200 text-green-700">
           <p className="text-sm font-medium">{t('successMessage')}</p>

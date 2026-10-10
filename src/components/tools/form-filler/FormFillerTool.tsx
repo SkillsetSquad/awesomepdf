@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { FileUploader } from '../FileUploader';
@@ -65,12 +66,12 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
               <div className="space-y-3 max-h-96 overflow-y-auto">
                 {fields.map((field, idx) => (
                   <div key={idx} className="flex items-center gap-4">
-                    <label className="w-1/3 text-sm font-medium truncate" title={field.name}>{field.name}</label>
-                    <Input type="text" value={field.value} onChange={(e) => handleFieldChange(idx, e.target.value)} placeholder={`Enter ${field.type}`} className="flex-1" disabled={isProcessing} />
+                    <Label className="w-1/3 truncate" title={field.name}>{field.name}</Label>
+                    <Input type="text" value={field.value} onChange={(e) => handleFieldChange(idx, e.target.value)} placeholder={`Enter ${field.type}`} className="flex-1" disabled={isProcessing} aria-label={field.name} />
                   </div>
                 ))}
               </div>
-              <label className="flex items-center gap-2 mt-4"><input type="checkbox" checked={flatten} onChange={(e) => setFlatten(e.target.checked)} disabled={isProcessing} className="w-4 h-4" /><span>Flatten form after filling (make non-editable)</span></label>
+              <Label className="flex items-center gap-2 mt-4"><input type="checkbox" checked={flatten} onChange={(e) => setFlatten(e.target.checked)} disabled={isProcessing} className="w-4 h-4" /><span>Flatten form after filling (make non-editable)</span></Label>
             </Card>
           ) : (
             <Card className="p-6" ><p className="text-gray-500">No fillable form fields found in this PDF.</p></Card>

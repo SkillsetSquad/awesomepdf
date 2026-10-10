@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -50,12 +51,12 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
     if (emailRedact) patterns.push('email');
     if (phoneRedact) patterns.push('phone');
     if (idRedact) patterns.push('idcard');
-    
+
     const keywords = customKeywords
       .split(',')
       .map(k => k.trim())
       .filter(k => k.length > 0);
-    
+
     if (keywords.length > 0) {
       patterns.push('custom');
     }
@@ -174,11 +175,11 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       id="email"
                       checked={emailRedact}
                       onChange={(e) => setEmailRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.emailRedactLabel')}
                     />
-                    <label htmlFor="email" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="email" className="dark:text-zinc-300">
                       {t('smartDataRedactor.emailRedactLabel')}
-                    </label>
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-2.5">
@@ -187,11 +188,11 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       id="phone"
                       checked={phoneRedact}
                       onChange={(e) => setPhoneRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.phoneRedactLabel')}
                     />
-                    <label htmlFor="phone" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="phone" className="dark:text-zinc-300">
                       {t('smartDataRedactor.phoneRedactLabel')}
-                    </label>
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-2.5">
@@ -200,18 +201,18 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       id="idcard"
                       checked={idRedact}
                       onChange={(e) => setIdRedact(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('smartDataRedactor.idRedactLabel')}
                     />
-                    <label htmlFor="idcard" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="idcard" className="dark:text-zinc-300">
                       {t('smartDataRedactor.idRedactLabel')}
-                    </label>
+                    </Label>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500 flex items-center gap-1">
+                    <Label className="flex items-center gap-1">
                       {t('smartDataRedactor.customKeywordsLabel')}
                       <HelpCircle className="w-3.5 h-3.5 text-zinc-400" />
-                    </label>
+                    </Label>
                     <Input
                       type="text"
                       value={customKeywords}

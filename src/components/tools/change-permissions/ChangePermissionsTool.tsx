@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,13 +22,13 @@ export interface ChangePermissionsToolProps {
 /**
  * ChangePermissionsTool Component
  * Requirements: 5.1
- * 
+ *
  * Provides the UI for changing PDF document permissions.
  */
 export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -35,16 +36,16 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Password fields
   const [currentPassword, setCurrentPassword] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newOwnerPassword, setNewOwnerPassword] = useState('');
-  
+
   // Password error modal
   const [showPasswordErrorModal, setShowPasswordErrorModal] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
-  
+
   // Permission options
   const [permissions, setPermissions] = useState<PDFPermissionSettings>({
     allowPrinting: true,
@@ -56,7 +57,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
     allowContentAccessibility: true,
     allowDocumentAssembly: true,
   });
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -160,9 +161,9 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
         const errorMsg = output.error?.message || '';
         const errorDetails = output.error?.details || '';
         const combinedError = `${errorMsg} ${errorDetails}`.toLowerCase();
-       
+
         if (
-          errorMsg === 'INVALID_PASSWORD' || 
+          errorMsg === 'INVALID_PASSWORD' ||
           combinedError.includes('invalid password') ||
           combinedError.includes('incorrect password')
         ) {
@@ -247,7 +248,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -304,7 +305,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               </Button>
             </div>
           </div>
-          
+
           <div className="space-y-4">
             {/* Info */}
             <div className="p-3 rounded-sm bg-yellow-50 border border-yellow-200">
@@ -316,7 +317,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
             {/* Permissions List */}
             <div className="space-y-3">
               {permissionFields.map(({ key, label, desc }) => (
-                <label key={key} className="flex items-start gap-3 cursor-pointer p-2 rounded-sm hover:bg-muted/30">
+                <Label key={key} className="flex items-start gap-3 cursor-pointer p-2 rounded-sm hover:bg-muted/30">
                   <input
                     type="checkbox"
                     checked={permissions[key]}
@@ -332,7 +333,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
                       {desc}
                     </p>
                   </div>
-                </label>
+                </Label>
               ))}
             </div>
           </div>
@@ -345,7 +346,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('changePermissions.passwordTitle') || 'Password Settings'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Privacy Notice */}
             <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
@@ -356,16 +357,16 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
             {/* Current Password */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <Label className="block mb-1" htmlFor="changepermissionstool-field-1">
                 {tTools('changePermissions.currentPasswordLabel') || 'Current Password (if PDF is encrypted)'}
-              </label>
+              </Label>
               <Input
                 type="password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder={tTools('changePermissions.currentPasswordPlaceholder') || 'Enter current password'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="changepermissionstool-field-1" aria-label={tTools('changePermissions.currentPasswordLabel') || 'Current Password (if PDF is encrypted)'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.currentPasswordHint') || 'Required if the PDF is already password-protected.'}
@@ -374,16 +375,16 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
             {/* New User Password */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <Label className="block mb-1" htmlFor="changepermissionstool-field-2">
                 {tTools('changePermissions.newUserPasswordLabel') || 'New User Password (to open document)'}
-              </label>
+              </Label>
               <Input
                 type="password"
                 value={newUserPassword}
                 onChange={(e) => setNewUserPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newUserPasswordPlaceholder') || 'Enter user password'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="changepermissionstool-field-2" aria-label={tTools('changePermissions.newUserPasswordLabel') || 'New User Password (to open document)'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.newUserPasswordHint') || 'Users will need this password to open the PDF.'}
@@ -392,16 +393,16 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
             {/* New Owner Password */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <Label className="block mb-1" htmlFor="changepermissionstool-field-3">
                 {tTools('changePermissions.newOwnerPasswordLabel') || 'New Owner Password (to change permissions)'}
-              </label>
+              </Label>
               <Input
                 type="password"
                 value={newOwnerPassword}
                 onChange={(e) => setNewOwnerPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newOwnerPasswordPlaceholder') || 'Enter owner password'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="changepermissionstool-field-3" aria-label={tTools('changePermissions.newOwnerPasswordLabel') || 'New Owner Password (to change permissions)'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.newOwnerPasswordHint') || 'Required to enforce permission restrictions.'}
@@ -431,8 +432,8 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
           disabled={!canProcess}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('changePermissions.applyButton') || 'Apply Permissions')
           }
         </Button>
@@ -450,7 +451,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

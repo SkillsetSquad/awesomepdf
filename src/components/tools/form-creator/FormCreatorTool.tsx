@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -1325,13 +1326,13 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {/* Label */}
                       <div>
-                        <label className="block text-sm font-medium mb-1">{tTools('formCreator.fieldLabel') || 'Label'}</label>
+                        <Label className="block mb-1" htmlFor="formcreatortool-field-1">{tTools('formCreator.fieldLabel') || 'Label'}</Label>
                         <Input
                           type="text"
                           value={selectedField.label || ''}
                           onChange={(e) => updateSelectedField({ label: e.target.value })}
                           placeholder={tTools('formCreator.fieldLabelPlaceholder') || 'Enter label text...'}
-                          className="w-full"
+                          className="w-full" id="formcreatortool-field-1" aria-label={tTools('formCreator.fieldLabel') || 'Label'}
                         />
                       </div>
 
@@ -1339,7 +1340,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.label && (
                         <div className="flex items-center gap-2">
                           <span className="text-sm text-gray-500">{tTools('formCreator.labelPosition') || 'Position'}:</span>
-                          <label className="flex items-center gap-1 text-sm">
+                          <Label className="flex items-center gap-1">
                             <input
                               type="radio"
                               name="labelPosition"
@@ -1348,8 +1349,8 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                               className="w-3 h-3"
                             />
                             {tTools('formCreator.labelAbove') || 'Above'}
-                          </label>
-                          <label className="flex items-center gap-1 text-sm">
+                          </Label>
+                          <Label className="flex items-center gap-1">
                             <input
                               type="radio"
                               name="labelPosition"
@@ -1358,7 +1359,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                               className="w-3 h-3"
                             />
                             {tTools('formCreator.labelLeft') || 'Left'}
-                          </label>
+                          </Label>
                         </div>
                       )}
 
@@ -1366,19 +1367,19 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       <div className="grid grid-cols-4 gap-1">
                         {['x', 'y', 'width', 'height'].map((prop, idx) => (
                           <div key={prop}>
-                            <label className="block text-[10px] text-gray-400 uppercase">{['X', 'Y', 'W', 'H'][idx]}</label>
+                            <Label className="block text-[10px] uppercase">{['X', 'Y', 'W', 'H'][idx]}</Label>
                             <Input
                               type="number"
                               value={Math.round(selectedField[prop as keyof typeof selectedField] as number)}
                               onChange={(e) => updateSelectedField({ [prop]: parseInt(e.target.value) || 0 })}
-                              className="w-full text-center"
+                              className="w-full text-center" aria-label={['X', 'Y', 'W', 'H'][idx]}
                             />
                           </div>
                         ))}
                       </div>
 
                       {selectedField.type === 'text' && (
-                        <label className="flex items-center gap-2">
+                        <Label className="flex items-center gap-2">
                           <input
                             type="checkbox"
                             checked={selectedField.multiline || false}
@@ -1386,26 +1387,26 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             className="w-4 h-4"
                           />
                           <span className="text-sm">{tTools('formCreator.multiline')}</span>
-                        </label>
+                        </Label>
                       )}
 
                       {/* Default value for text fields */}
                       {selectedField.type === 'text' && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.defaultValue') || 'Default Value'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-2">{tTools('formCreator.defaultValue') || 'Default Value'}</Label>
                           <Input
                             type="text"
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
                             placeholder={tTools('formCreator.defaultValuePlaceholder') || 'Enter default text...'}
-                            className="w-full"
+                            className="w-full" id="formcreatortool-field-2" aria-label={tTools('formCreator.defaultValue') || 'Default Value'}
                           />
                         </div>
                       )}
 
                       {/* Default value for checkbox */}
                       {selectedField.type === 'checkbox' && (
-                        <label className="flex items-center gap-2">
+                        <Label className="flex items-center gap-2">
                           <input
                             type="checkbox"
                             checked={selectedField.defaultValue === true}
@@ -1413,17 +1414,17 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             className="w-4 h-4"
                           />
                           <span className="text-sm">{tTools('formCreator.defaultChecked') || 'Checked by default'}</span>
-                        </label>
+                        </Label>
                       )}
 
                       {(selectedField.type === 'dropdown' || selectedField.type === 'radio' || selectedField.type === 'listbox') && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.options')}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-3">{tTools('formCreator.options')}</Label>
                           <textarea
                             value={(selectedField.options || []).join('\n')}
                             onChange={(e) => updateSelectedField({ options: e.target.value.split('\n').filter(o => o.trim()) })}
                             className="w-full px-3 py-2 border rounded-md text-sm"
-                            rows={4}
+                            rows={4} id="formcreatortool-field-3" aria-label={tTools('formCreator.options')}
                           />
                         </div>
                       )}
@@ -1431,11 +1432,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Default selection for dropdown/radio/listbox */}
                       {(selectedField.type === 'dropdown' || selectedField.type === 'radio' || selectedField.type === 'listbox') && selectedField.options && selectedField.options.length > 0 && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.defaultSelection') || 'Default Selection'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-4">{tTools('formCreator.defaultSelection') || 'Default Selection'}</Label>
                           <select
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-4" aria-label={tTools('formCreator.defaultSelection') || 'Default Selection'}
                           >
                             <option value="">{tTools('formCreator.noDefault') || '-- None --'}</option>
                             {selectedField.options.map((opt, idx) => (
@@ -1447,7 +1448,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {/* Listbox multi-select option */}
                       {selectedField.type === 'listbox' && (
-                        <label className="flex items-center gap-2">
+                        <Label className="flex items-center gap-2">
                           <input
                             type="checkbox"
                             checked={selectedField.multiSelect || false}
@@ -1455,19 +1456,19 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             className="w-4 h-4"
                           />
                           <span className="text-sm">{tTools('formCreator.multiSelect') || 'Allow multiple selection'}</span>
-                        </label>
+                        </Label>
                       )}
 
                       {/* Button label */}
                       {selectedField.type === 'button' && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.buttonLabel') || 'Button Label'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-5">{tTools('formCreator.buttonLabel') || 'Button Label'}</Label>
                           <Input
                             type="text"
                             value={selectedField.buttonLabel || ''}
                             onChange={(e) => updateSelectedField({ buttonLabel: e.target.value })}
                             placeholder={tTools('formCreator.buttonLabelPlaceholder') || 'Submit'}
-                            className="w-full"
+                            className="w-full" id="formcreatortool-field-5" aria-label={tTools('formCreator.buttonLabel') || 'Button Label'}
                           />
                         </div>
                       )}
@@ -1475,13 +1476,13 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Signature label */}
                       {selectedField.type === 'signature' && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.signatureLabel') || 'Signature Label'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-6">{tTools('formCreator.signatureLabel') || 'Signature Label'}</Label>
                           <Input
                             type="text"
                             value={selectedField.signatureLabel || ''}
                             onChange={(e) => updateSelectedField({ signatureLabel: e.target.value })}
                             placeholder={tTools('formCreator.signatureLabelPlaceholder') || 'Sign here'}
-                            className="w-full"
+                            className="w-full" id="formcreatortool-field-6" aria-label={tTools('formCreator.signatureLabel') || 'Signature Label'}
                           />
                         </div>
                       )}
@@ -1489,11 +1490,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Date format */}
                       {selectedField.type === 'date' && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.dateFormat') || 'Date Format'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-7">{tTools('formCreator.dateFormat') || 'Date Format'}</Label>
                           <select
                             value={selectedField.dateFormat || 'YYYY-MM-DD'}
                             onChange={(e) => updateSelectedField({ dateFormat: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-7" aria-label={tTools('formCreator.dateFormat') || 'Date Format'}
                           >
                             <option value="YYYY-MM-DD">YYYY-MM-DD</option>
                             <option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -1506,18 +1507,18 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Date default value */}
                       {selectedField.type === 'date' && (
                         <div>
-                          <label className="block text-sm font-medium mb-1">{tTools('formCreator.defaultDate') || 'Default Date'}</label>
+                          <Label className="block mb-1" htmlFor="formcreatortool-field-8">{tTools('formCreator.defaultDate') || 'Default Date'}</Label>
                           <Input
                             type="date"
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full"
+                            className="w-full" id="formcreatortool-field-8" aria-label={tTools('formCreator.defaultDate') || 'Default Date'}
                           />
                         </div>
                       )}
 
                       {/* Required field option */}
-                      <label className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                      <Label className="flex items-center gap-2 pt-2 border-t border-gray-100">
                         <input
                           type="checkbox"
                           checked={selectedField.required || false}
@@ -1525,7 +1526,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           className="w-4 h-4"
                         />
                         <span className="text-sm">{tTools('formCreator.required') || 'Required field'}</span>
-                      </label>
+                      </Label>
 
                       <button
                         onClick={handleDeleteField}
@@ -1581,7 +1582,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               {activeTab === 'options' && (
                 <div className="space-y-4">
                   {/* Flatten Form Option */}
-                  <label className="flex items-start gap-3 cursor-pointer">
+                  <Label className="flex items-start gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={flattenForm}
@@ -1592,7 +1593,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       <span className="text-sm font-medium">{tTools('formCreator.flattenForm') || 'Flatten Form'}</span>
                       <p className="text-xs text-gray-500">{tTools('formCreator.flattenFormHint')}</p>
                     </div>
-                  </label>
+                  </Label>
 
                   {/* Save Project */}
                   <div className="pt-3 border-t border-gray-100">
@@ -1691,14 +1692,14 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <h3 className="text-lg font-medium mb-4">{tTools('formCreator.saveProjectTitle') || 'Save Project'}</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">{tTools('formCreator.projectName') || 'Project Name'}</label>
+                <Label className="block mb-1" htmlFor="formcreatortool-field-9">{tTools('formCreator.projectName') || 'Project Name'}</Label>
                 <Input
                   type="text"
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
                   placeholder={tTools('formCreator.projectNamePlaceholder') || 'Enter project name...'}
                   className="w-full"
-                  autoFocus
+                  autoFocus id="formcreatortool-field-9" aria-label={tTools('formCreator.projectName') || 'Project Name'}
                 />
               </div>
               <div className="text-xs text-gray-500">
@@ -1741,11 +1742,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <div className="space-y-4">
               {/* Page Size */}
               <div>
-                <label className="block text-sm font-medium mb-1">{tTools('formCreator.pageSize') || 'Page Size'}</label>
+                <Label className="block mb-1" htmlFor="formcreatortool-field-10">{tTools('formCreator.pageSize') || 'Page Size'}</Label>
                 <select
                   value={blankPdfPageSize}
                   onChange={(e) => setBlankPdfPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3' | 'A5')}
-                  className="w-full px-3 py-2 border rounded-md text-sm"
+                  className="w-full px-3 py-2 border rounded-md text-sm" id="formcreatortool-field-10" aria-label={tTools('formCreator.pageSize') || 'Page Size'}
                 >
                   <option value="A4">A4 (210 × 297 mm)</option>
                   <option value="Letter">Letter (8.5 × 11 in)</option>
@@ -1757,14 +1758,14 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
               {/* Page Count */}
               <div>
-                <label className="block text-sm font-medium mb-1">{tTools('formCreator.pageCount') || 'Number of Pages'}</label>
+                <Label className="block mb-1" htmlFor="formcreatortool-field-11">{tTools('formCreator.pageCount') || 'Number of Pages'}</Label>
                 <Input
                   type="number"
                   min="1"
                   max="100"
                   value={blankPdfPageCount}
                   onChange={(e) => setBlankPdfPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full"
+                  className="w-full" id="formcreatortool-field-11" aria-label={tTools('formCreator.pageCount') || 'Number of Pages'}
                 />
               </div>
 

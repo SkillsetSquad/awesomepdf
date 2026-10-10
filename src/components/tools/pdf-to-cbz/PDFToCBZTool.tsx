@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -11,17 +12,17 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { pdfToCbz } from '@/lib/pdf/processors/pdf-to-cbz';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  BookOpen, 
-  Settings2, 
-  Layers, 
-  User, 
-  Tag, 
-  Globe, 
-  Eye, 
-  HelpCircle, 
-  Check, 
-  AlertCircle 
+import {
+  BookOpen,
+  Settings2,
+  Layers,
+  User,
+  Tag,
+  Globe,
+  Eye,
+  HelpCircle,
+  Check,
+  AlertCircle
 } from 'lucide-react';
 
 export interface PDFToCBZToolProps {
@@ -168,12 +169,12 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
     <div className={`space-y-6 ${className}`.trim()}>
       {/* File Upload Zone */}
       <div className="space-y-3">
-        <label className="text-sm font-bold text-foreground block">
+        <Label className="block">
           {t('pdfToCbz.uploadLabel')}
-        </label>
+        </Label>
         {file ? (
-          <Card 
-             
+          <Card
+
             className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15 rounded-2xl"
           >
             <div className="flex items-center gap-3">
@@ -183,8 +184,8 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 <text x="8" y="17" fontSize="5.5" fill="white" fontWeight="bold">CBZ</text>
               </svg>
               <div>
-                <p 
-                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md" 
+                <p
+                  className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md"
                   title={file.name}
                 >
                   {file.name}
@@ -194,7 +195,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={handleClearFile}
               disabled={isProcessing}
               className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
@@ -231,7 +232,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
       {/* Configuration Panel & 3D Preview */}
       {file && totalPages > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
+
           {/* LEFT: 3D Comic Book floating Preview */}
           <div className="lg:col-span-5 space-y-4">
             <Card  className="p-6 bg-card rounded-2xl flex flex-col items-center justify-center min-h-[360px] overflow-hidden relative">
@@ -239,10 +240,10 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 <BookOpen className="w-4 h-4 text-primary" />
                 {t('pdfToCbz.previewTitle')}
               </span>
-              
-              <div 
+
+              <div
                 className="relative w-48 h-64 transform-gpu transition-all duration-700 ease-in-out cursor-pointer"
-                style={{ 
+                style={{
                   perspective: '1000px',
                   transformStyle: 'preserve-3d',
                 }}
@@ -251,14 +252,14 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 <div
                   className="w-full h-full relative rounded-r-lg shadow-2xl transition-transform duration-500 hover:rotate-y-12"
                   style={{
-                    transform: manga === 'YesAndRightToLeft' 
-                      ? 'rotateY(-15deg) rotateX(8deg) rotateZ(1deg)' 
+                    transform: manga === 'YesAndRightToLeft'
+                      ? 'rotateY(-15deg) rotateX(8deg) rotateZ(1deg)'
                       : 'rotateY(15deg) rotateX(8deg) rotateZ(-1deg)',
                     transformStyle: 'preserve-3d',
                   }}
                 >
                   {/* Front Cover page */}
-                  <div 
+                  <div
                     className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-950 border border-zinc-700 text-white rounded-r-lg flex flex-col justify-between p-4 select-none"
                     style={{
                       transform: 'translateZ(10px)',
@@ -278,7 +279,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                         </p>
                       )}
                     </div>
-                    
+
                     <div className="border-t border-zinc-700/60 pt-2 flex justify-between items-end">
                       <div>
                         <p className="text-[8px] text-zinc-500 uppercase tracking-wider font-bold">Artist / Writer</p>
@@ -295,7 +296,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   </div>
 
                   {/* Book Spine (thickness) */}
-                  <div 
+                  <div
                     className="absolute top-0 bottom-0 bg-zinc-950 border-r border-zinc-800 flex items-center justify-center text-[7px] font-extrabold text-zinc-500 select-none"
                     style={{
                       width: '20px',
@@ -313,7 +314,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
 
               <div className="mt-8 text-center max-w-xs leading-normal">
                 <p className="text-[11px] font-semibold text-muted-foreground">
-                  {manga === 'YesAndRightToLeft' 
+                  {manga === 'YesAndRightToLeft'
                     ? t('pdfToCbz.directionRtlHelp')
                     : t('pdfToCbz.directionLtrHelp')
                   }
@@ -324,8 +325,8 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
 
           {/* RIGHT: Parameter & Book properties input */}
           <div className="lg:col-span-7 space-y-6">
-            <Card 
-               
+            <Card
+
               className="p-6 rounded-2xl space-y-6 backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40"
             >
               <h3 className="text-sm font-bold text-foreground border-b border-border pb-3 flex items-center gap-1.5">
@@ -337,63 +338,63 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Book Title */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground">
+                  <Label className="text-muted-foreground" htmlFor="pdftocbztool-field-1">
                     {t('pdfToCbz.fieldTitle')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full transition-all"
+                    className="w-full transition-all" id="pdftocbztool-field-1" aria-label={t('pdfToCbz.fieldTitle')}
                   />
                 </div>
 
                 {/* Series name */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground">
+                  <Label className="text-muted-foreground" htmlFor="pdftocbztool-field-2">
                     {t('pdfToCbz.fieldSeries')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     placeholder={t('pdfToCbz.seriesPlaceholder')}
                     value={series}
                     onChange={(e) => setSeries(e.target.value)}
-                    className="w-full transition-all"
+                    className="w-full transition-all" id="pdftocbztool-field-2" aria-label={t('pdfToCbz.fieldSeries')}
                   />
                 </div>
 
                 {/* Issue Number */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground">
+                  <Label className="text-muted-foreground" htmlFor="pdftocbztool-field-3">
                     {t('pdfToCbz.fieldIssue')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
-                    className="w-full transition-all"
+                    className="w-full transition-all" id="pdftocbztool-field-3" aria-label={t('pdfToCbz.fieldIssue')}
                   />
                 </div>
 
                 {/* Volume Number */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground">
+                  <Label className="text-muted-foreground" htmlFor="pdftocbztool-field-4">
                     {t('pdfToCbz.fieldVolume')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     value={volume}
                     onChange={(e) => setVolume(e.target.value)}
-                    className="w-full transition-all"
+                    className="w-full transition-all" id="pdftocbztool-field-4" aria-label={t('pdfToCbz.fieldVolume')}
                   />
                 </div>
 
                 {/* Writer/Artist */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground flex items-center gap-1">
+                  <Label className="text-muted-foreground flex items-center gap-1">
                     <User className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.fieldArtist')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     placeholder={t('pdfToCbz.artistPlaceholder')}
@@ -405,24 +406,24 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
 
                 {/* Publisher */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground">
+                  <Label className="text-muted-foreground" htmlFor="pdftocbztool-field-5">
                     {t('pdfToCbz.fieldPublisher')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     placeholder={t('pdfToCbz.publisherPlaceholder')}
                     value={publisher}
                     onChange={(e) => setPublisher(e.target.value)}
-                    className="w-full transition-all"
+                    className="w-full transition-all" id="pdftocbztool-field-5" aria-label={t('pdfToCbz.fieldPublisher')}
                   />
                 </div>
 
                 {/* Genre */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground flex items-center gap-1">
+                  <Label className="text-muted-foreground flex items-center gap-1">
                     <Tag className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.fieldGenre')}
-                  </label>
+                  </Label>
                   <Input
                     type="text"
                     placeholder={t('pdfToCbz.genrePlaceholder')}
@@ -434,10 +435,10 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
 
                 {/* Manga LTR/RTL reading order */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-muted-foreground flex items-center gap-1">
+                  <Label className="text-muted-foreground flex items-center gap-1">
                     <Globe className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.readingOrderLabel')}
-                  </label>
+                  </Label>
                   <select
                     value={manga}
                     onChange={(e) => setManga(e.target.value as any)}
@@ -460,9 +461,9 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   {/* Quality slider */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center text-xs">
-                      <label className="font-bold text-muted-foreground">
+                      <Label className="text-muted-foreground">
                         {t('pdfToCbz.qualityLabel')}
-                      </label>
+                      </Label>
                       <span className="font-black text-primary">
                         {Math.round(quality * 100)}%
                       </span>
@@ -481,9 +482,9 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   {/* Scale slider */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center text-xs">
-                      <label className="font-bold text-muted-foreground">
+                      <Label className="text-muted-foreground">
                         {t('pdfToCbz.scaleLabel')}
-                      </label>
+                      </Label>
                       <span className="font-black text-primary">
                         {scale.toFixed(1)}x ({Math.round(scale * 72)} DPI)
                       </span>
@@ -501,9 +502,9 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
 
                   {/* Format selector */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted-foreground block">
+                    <Label className="text-muted-foreground block">
                       {t('pdfToCbz.formatLabel')}
-                    </label>
+                    </Label>
                     <div className="flex bg-muted/50 p-0.5 rounded-lg border border-input/40">
                       {(['jpg', 'png', 'webp'] as const).map(fmt => (
                         <button
@@ -542,7 +543,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                         grayscale ? 'bg-emerald-500' : 'bg-zinc-300 dark:bg-zinc-700'
                       }`}
                     >
-                      <div 
+                      <div
                         className={`absolute top-0.5 left-0.5 bg-white w-4 h-4 rounded-full shadow transition-transform duration-300 ${
                           grayscale ? 'translate-x-4' : 'translate-x-0'
                         }`}
@@ -589,7 +590,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
               </div>
             )}
           </div>
-          
+
         </div>
       )}
 

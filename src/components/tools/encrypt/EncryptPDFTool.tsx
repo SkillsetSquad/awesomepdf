@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -20,14 +21,14 @@ export interface EncryptPDFToolProps {
 /**
  * EncryptPDFTool Component
  * Requirements: 5.1, 11.4
- * 
+ *
  * Provides the UI for encrypting PDF files with password protection.
  * All encryption is performed client-side - passwords are never transmitted.
  */
 export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -35,13 +36,13 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Password options
   const [userPassword, setUserPassword] = useState('');
   const [ownerPassword, setOwnerPassword] = useState('');
   const [showUserPassword, setShowUserPassword] = useState(false);
   const [showOwnerPassword, setShowOwnerPassword] = useState(false);
-  
+
   // Permission options
   const [permissions, setPermissions] = useState<PDFPermissions>({
     printing: true,
@@ -52,7 +53,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
     contentAccessibility: true,
     documentAssembly: true,
   });
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -77,7 +78,6 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
     setUserPassword('');
     setOwnerPassword('');
   }, []);
-
 
   const handlePermissionChange = useCallback((key: keyof PDFPermissions) => {
     setPermissions(prev => ({
@@ -172,7 +172,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -213,14 +213,13 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
         </Card>
       )}
 
-
       {/* Password Options */}
       {file && (
         <Card className="p-6" >
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('encryptPdf.passwordTitle') || 'Password Settings'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Privacy Notice */}
             <div className="p-3 rounded-sm bg-green-50 border border-green-200">
@@ -231,9 +230,9 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
             {/* User Password */}
             <div>
-              <label htmlFor="user-password" className="block text-sm font-medium text-foreground mb-2">
+              <Label htmlFor="user-password" className="block mb-2">
                 {tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
-              </label>
+              </Label>
               <div className="relative">
                 <Input
                   id="user-password"
@@ -243,7 +242,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.userPasswordPlaceholder') || 'Enter password to open PDF'}
                   aria-describedby="user-password-hint"
-                  className="w-full pr-10"
+                  className="w-full pr-10" aria-label={tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
                 />
                 <button
                   type="button"
@@ -261,9 +260,9 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
             {/* Owner Password */}
             <div>
-              <label htmlFor="owner-password" className="block text-sm font-medium text-foreground mb-2">
+              <Label htmlFor="owner-password" className="block mb-2">
                 {tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
-              </label>
+              </Label>
               <div className="relative">
                 <Input
                   id="owner-password"
@@ -273,7 +272,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.ownerPasswordPlaceholder') || 'Enter owner password'}
                   aria-describedby="owner-password-hint"
-                  className="w-full pr-10"
+                  className="w-full pr-10" aria-label={tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
                 />
                 <button
                   type="button"
@@ -298,10 +297,10 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('encryptPdf.permissionsTitle') || 'Document Permissions'}
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {Object.entries(permissions).map(([key, value]) => (
-              <label key={key} className="flex items-center gap-3 cursor-pointer">
+              <Label key={key} className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={value}
@@ -318,7 +317,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   {key === 'contentAccessibility' && (tTools('encryptPdf.permAccessibility') || 'Allow Accessibility')}
                   {key === 'documentAssembly' && (tTools('encryptPdf.permAssembly') || 'Allow Assembly')}
                 </span>
-              </label>
+              </Label>
             ))}
           </div>
         </Card>
@@ -344,8 +343,8 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
           disabled={!canEncrypt}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('encryptPdf.encryptButton') || 'Encrypt PDF')
           }
         </Button>
@@ -363,7 +362,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

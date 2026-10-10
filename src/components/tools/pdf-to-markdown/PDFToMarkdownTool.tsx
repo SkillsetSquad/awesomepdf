@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -29,7 +30,7 @@ export interface PDFToMarkdownToolProps {
 
 /**
  * PDFToMarkdownTool Component
- * 
+ *
  * Converts PDF files to Markdown format.
  */
 export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
@@ -246,15 +247,15 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
                         {/* Page Range */}
                         <div className="space-y-2">
-                            <label className="block text-sm font-medium text-foreground">
+                            <Label className="block" htmlFor="pdftomarkdowntool-field-1">
                                 {tTools('pdfToMarkdown.pageRange') || 'Page Range'}
-                            </label>
+                            </Label>
                             <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 placeholder={tTools('pdfToMarkdown.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
-                                className="w-full"
+                                className="w-full" id="pdftomarkdowntool-field-1" aria-label={tTools('pdfToMarkdown.pageRange') || 'Page Range'}
                             />
                             <p className="text-xs text-muted-foreground">
                                 {tTools('pdfToMarkdown.pageRangeHint') || 'Leave empty for all pages'}
@@ -268,11 +269,11 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                                 id="includePageNumbers"
                                 checked={includePageNumbers}
                                 onChange={(e) => setIncludePageNumbers(e.target.checked)}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary" aria-label={tTools('pdfToMarkdown.includePageNumbers') || 'Include page numbers as headers'}
                             />
-                            <label htmlFor="includePageNumbers" className="text-sm text-foreground">
+                            <Label htmlFor="includePageNumbers" className="">
                                 {tTools('pdfToMarkdown.includePageNumbers') || 'Include page numbers as headers'}
-                            </label>
+                            </Label>
                         </div>
 
                         {/* Preserve Line Breaks */}
@@ -282,11 +283,11 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                                 id="preserveLineBreaks"
                                 checked={preserveLineBreaks}
                                 onChange={(e) => setPreserveLineBreaks(e.target.checked)}
-                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary" aria-label={tTools('pdfToMarkdown.preserveLineBreaks') || 'Preserve line breaks'}
                             />
-                            <label htmlFor="preserveLineBreaks" className="text-sm text-foreground">
+                            <Label htmlFor="preserveLineBreaks" className="">
                                 {tTools('pdfToMarkdown.preserveLineBreaks') || 'Preserve line breaks'}
-                            </label>
+                            </Label>
                         </div>
                     </div>
                 </Card>

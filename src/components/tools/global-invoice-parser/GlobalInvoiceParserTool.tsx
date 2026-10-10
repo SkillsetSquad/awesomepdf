@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -135,7 +136,7 @@ export function GlobalInvoiceParserTool({ className = '' }: GlobalInvoiceParserT
                     <Sparkles className="w-12 h-12 text-primary animate-bounce" />
                   </div>
                 )}
-                
+
                 {invoiceStats ? (
                   <div className="space-y-4 text-center max-w-sm">
                     <div className="text-[10px] font-black text-green-500 tracking-widest uppercase">
@@ -180,11 +181,11 @@ export function GlobalInvoiceParserTool({ className = '' }: GlobalInvoiceParserT
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('globalInvoiceParser.targetCurrencyLabel')}</label>
+                    <Label className="" htmlFor="globalinvoiceparsertool-field-1">{t('globalInvoiceParser.targetCurrencyLabel')}</Label>
                     <select
                       value={targetCurrency}
                       onChange={(e) => setTargetCurrency(e.target.value)}
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="globalinvoiceparsertool-field-1" aria-label={t('globalInvoiceParser.targetCurrencyLabel')}
                     >
                       <option value="CNY">{t('globalInvoiceParser.cnyLabel')}</option>
                       <option value="USD">{t('globalInvoiceParser.usdLabel')}</option>
@@ -194,13 +195,13 @@ export function GlobalInvoiceParserTool({ className = '' }: GlobalInvoiceParserT
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('globalInvoiceParser.customRateLabel')}</label>
+                    <Label className="" htmlFor="globalinvoiceparsertool-field-2">{t('globalInvoiceParser.customRateLabel')}</Label>
                     <Input
                       type="text"
                       value={customRate}
                       onChange={(e) => setCustomRate(e.target.value)}
                       placeholder={t('globalInvoiceParser.customRatePlaceholder')}
-                      className="w-full"
+                      className="w-full" id="globalinvoiceparsertool-field-2" aria-label={t('globalInvoiceParser.customRateLabel')}
                     />
                   </div>
                 </div>

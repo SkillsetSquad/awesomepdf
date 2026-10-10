@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -30,7 +31,7 @@ export interface ImageToPDFToolProps {
 /**
  * ImageToPDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Converts images to PDF with support for multiple formats.
  */
 export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProps) {
@@ -99,7 +100,6 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       '.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.tif', '.svg', '.heic', '.heif'
     ];
   }, [imageType]);
-
 
   /**
    * Handle files selected from uploader
@@ -417,7 +417,6 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
         </Card>
       )}
 
-
       {/* Options Panel */}
       {files.length >= 1 && (
         <Card className="p-6" >
@@ -428,13 +427,13 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Page Size */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="imagetopdftool-field-1">
                 {tTools('imageToPdf.pageSize') || 'Page Size'}
-              </label>
+              </Label>
               <Select
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as PageSizeType)}
-                disabled={isProcessing}
+                disabled={isProcessing} id="imagetopdftool-field-1" aria-label={tTools('imageToPdf.pageSize') || 'Page Size'}
               >
                 <option value="A4">A4</option>
                 <option value="LETTER">Letter</option>
@@ -447,13 +446,13 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
             {/* Orientation */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="imagetopdftool-field-2">
                 {tTools('imageToPdf.orientation') || 'Orientation'}
-              </label>
+              </Label>
               <Select
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
-                disabled={isProcessing}
+                disabled={isProcessing} id="imagetopdftool-field-2" aria-label={tTools('imageToPdf.orientation') || 'Orientation'}
               >
                 <option value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</option>
                 <option value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</option>
@@ -463,13 +462,13 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
             {/* Margin */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="imagetopdftool-field-3">
                 {tTools('imageToPdf.margin') || 'Margin'}
-              </label>
+              </Label>
               <Select
                 value={margin}
                 onChange={(e) => setMargin(Number(e.target.value))}
-                disabled={isProcessing}
+                disabled={isProcessing} id="imagetopdftool-field-3" aria-label={tTools('imageToPdf.margin') || 'Margin'}
               >
                 <option value="0">{tTools('imageToPdf.marginNone') || 'None'}</option>
                 <option value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</option>
@@ -480,7 +479,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
           </div>
 
           <div className="mt-4 space-y-3">
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={centerImage}
@@ -491,9 +490,9 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <span className="text-sm text-foreground">
                 {tTools('imageToPdf.centerImage') || 'Center images on page'}
               </span>
-            </label>
+            </Label>
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={scaleToFit}
@@ -504,13 +503,13 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <span className="text-sm text-foreground">
                 {tTools('imageToPdf.scaleToFit') || 'Scale images to fit page'}
               </span>
-            </label>
+            </Label>
           </div>
 
           {/* Batch Export Options */}
           {files.length > 1 && (
             <div className="mt-4 pt-4 border-t border-border">
-              <label className="flex items-center gap-3 cursor-pointer mb-3">
+              <Label className="flex items-center gap-3 cursor-pointer mb-3">
                 <input
                   type="checkbox"
                   checked={batchMode}
@@ -521,13 +520,13 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 <span className="text-sm font-medium text-foreground">
                   {tTools('imageToPdf.batchMode') || 'Split into multiple PDFs'}
                 </span>
-              </label>
+              </Label>
 
               {batchMode && (
                 <div className="ml-7 space-y-2">
-                  <label className="block text-sm text-foreground">
+                  <Label className="block" htmlFor="imagetopdftool-field-4">
                     {tTools('imageToPdf.imagesPerPdf') || 'Images per PDF'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     min="1"
@@ -535,7 +534,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                     value={imagesPerPdf}
                     onChange={(e) => setImagesPerPdf(Math.max(1, Math.min(files.length, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-24"
+                    className="w-24" id="imagetopdftool-field-4" aria-label={tTools('imageToPdf.imagesPerPdf') || 'Images per PDF'}
                   />
                   <p className="text-xs text-muted-foreground">
                     {tTools('imageToPdf.batchModeHint', { pdfCount: Math.ceil(files.length / imagesPerPdf) }) ||
@@ -549,14 +548,14 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
           {/* SVG Quality Option - only show for SVG files */}
           {(imageType === 'svg' || files.some(f => f.file.name.toLowerCase().endsWith('.svg') || f.file.type === 'image/svg+xml')) && (
             <div className="mt-4 pt-4 border-t border-border">
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="imagetopdftool-field-5">
                 {tTools('imageToPdf.svgQuality') || 'SVG Export Quality'}
-              </label>
+              </Label>
               <Select
                 value={svgScale}
                 onChange={(e) => setSvgScale(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto" id="imagetopdftool-field-5" aria-label={tTools('imageToPdf.svgQuality') || 'SVG Export Quality'}
               >
                 <option value="1">{tTools('imageToPdf.svgQualityLow') || 'Low (1x - smaller file)'}</option>
                 <option value="2">{tTools('imageToPdf.svgQualityMedium') || 'Medium (2x - balanced)'}</option>

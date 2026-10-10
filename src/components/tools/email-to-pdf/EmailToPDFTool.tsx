@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -128,9 +129,9 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('emailToPdf.pageSizeLabel') || 'Page Size'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(['a4', 'letter', 'legal'] as EmailPageSize[]).map((size) => (
                                     <button
@@ -148,7 +149,7 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                             </div>
                         </div>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={includeCcBcc}
@@ -159,9 +160,9 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('emailToPdf.includeCcBccLabel') || 'Include CC/BCC fields'}
                             </span>
-                        </label>
+                        </Label>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={includeAttachments}
@@ -172,18 +173,18 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('emailToPdf.includeAttachmentsLabel') || 'Include attachment list'}
                             </span>
-                        </label>
+                        </Label>
 
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="emailtopdftool-field-1">
                                 {tTools('emailToPdf.timezoneLabel') || 'Timezone'}
-                            </label>
+                            </Label>
                             <Input
                                 type="text"
                                 value={timezone}
                                 onChange={(e) => setTimezone(e.target.value)}
                                 disabled={isProcessing}
-                                className="w-full"
+                                className="w-full" id="emailtopdftool-field-1" aria-label={tTools('emailToPdf.timezoneLabel') || 'Timezone'}
                             />
                         </div>
                     </div>

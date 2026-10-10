@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -11,14 +12,14 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { linkCitations, type CitationLinkerOptions } from '@/lib/pdf/processors/citation-linker';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  GitBranch, 
-  Settings2, 
-  Link2, 
-  Edit3, 
-  Check, 
-  RotateCw, 
-  CheckCircle2, 
+import {
+  GitBranch,
+  Settings2,
+  Link2,
+  Edit3,
+  Check,
+  RotateCw,
+  CheckCircle2,
   ExternalLink,
   ShieldCheck,
   FileText
@@ -57,7 +58,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
   // Citation Data
   const [citations, setCitations] = useState<CitationItem[]>([]);
   const [selectedCitation, setSelectedCitation] = useState<CitationItem | null>(null);
-  
+
   // Customization
   const [detectDoi, setDetectDoi] = useState(true);
   const [fallbackToPageJump, setFallbackToPageJump] = useState(true);
@@ -97,7 +98,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
       setTotalPages(pdf.getPageCount());
-      
+
       // Auto run scan first
       setTimeout(() => {
         handleScanCitations(selectedFile);
@@ -243,7 +244,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* File Upload Zone */}
       {!file && (
         <FileUploader
@@ -291,11 +292,11 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
       {/* Main Workspace (Visible after citation scanning completes) */}
       {file && citations.length > 0 && status !== 'processing' && status !== 'complete' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* LEFT: Citation Configuration & List */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
             <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
-              
+
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
@@ -305,7 +306,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                 </div>
 
                 <div className="space-y-3">
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={detectDoi}
@@ -313,8 +314,8 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
                     />
                     <span className="text-xs font-semibold text-foreground">{t('citationLinker.detectDoi')}</span>
-                  </label>
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  </Label>
+                  <Label className="flex items-center gap-3 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={fallbackToPageJump}
@@ -322,7 +323,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       className="w-4.5 h-4.5 rounded border-zinc-300 text-primary focus:ring-primary"
                     />
                     <span className="text-xs font-semibold text-foreground">{t('citationLinker.enableGoto')}</span>
-                  </label>
+                  </Label>
                 </div>
 
                 {/* Edit Link input */}
@@ -332,7 +333,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       <span className="text-xs font-bold text-amber-500">{t('citationLinker.editingCitation', { marker: selectedCitation.marker })}</span>
                       <span className="text-[10px] opacity-60">{t('citationLinker.citationPage', { page: selectedCitation.pageNum })}</span>
                     </div>
-                    
+
                     <p className="text-[11px] leading-relaxed line-clamp-2 text-zinc-500 dark:text-zinc-400">
                       {t('citationLinker.citationRef', { ref: selectedCitation.refText })}
                     </p>
@@ -354,9 +355,9 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
                 {/* Citations checklist */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                  <Label className="text-muted-foreground uppercase tracking-wider">
                     {t('citationLinker.citationListTitle', { count: citations.length })}
-                  </label>
+                  </Label>
                   <div className="space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
                     {citations.map((c) => (
                       <div
@@ -408,7 +409,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           {/* RIGHT: Interactive Glassmorphism Citation Star Map */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden shadow-inner h-full min-h-[420px]">
-              
+
               {/* Star Topology SVG Map */}
               <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
                 <svg className="w-full h-full opacity-60">
@@ -423,7 +424,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       <feComposite in="SourceGraphic" in2="blur" operator="over" />
                     </filter>
                   </defs>
-                  
+
                   {/* Central Glow */}
                   <circle cx="50%" cy="50%" r="150" fill="url(#star-glow)" />
 
@@ -432,12 +433,12 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                     const angle = (idx * (2 * Math.PI)) / Math.min(10, citations.length);
                     const x = 50 + 35 * Math.cos(angle);
                     const y = 50 + 35 * Math.sin(angle);
-                    
+
                     const isSelected = selectedCitation?.id === c.id;
-                    const strokeColor = isSelected 
-                      ? 'var(--primary)' 
-                      : c.url 
-                        ? 'rgba(16, 185, 129, 0.4)' 
+                    const strokeColor = isSelected
+                      ? 'var(--primary)'
+                      : c.url
+                        ? 'rgba(16, 185, 129, 0.4)'
                         : 'rgba(156, 163, 175, 0.3)';
                     const strokeDash = isSelected ? 'none' : c.url ? 'none' : '4,4';
 
@@ -472,7 +473,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
               {/* Topology Nodes (DOM Elements overlaid on SVG space) */}
               <div className="w-full h-full relative z-20 flex items-center justify-center">
-                
+
                 {/* Central paper node */}
                 <div className="w-20 h-20 rounded-full border-4 border-primary/60 bg-white dark:bg-zinc-800 shadow-2xl flex flex-col items-center justify-center text-center p-2 z-30 transform hover:scale-105 transition-transform">
                   <FileText className="w-6 h-6 text-primary" />
@@ -532,7 +533,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
         <Card  className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-zinc-800/40 flex flex-col items-center justify-center space-y-6 shadow-2xl">
           {/* 3D Gear rotate animation */}
           <div className="relative w-24 h-24 flex items-center justify-center">
-            <div 
+            <div
               style={{ transform: `rotate(${gearAngle}deg)` }}
               className="absolute w-20 h-20 text-primary opacity-80"
             >
@@ -541,9 +542,9 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
               </svg>
             </div>
-            
+
             {/* Small offset gear */}
-            <div 
+            <div
               style={{ transform: `rotate(${-gearAngle * 1.5}deg)` }}
               className="absolute -top-1 -right-1 w-10 h-10 text-zinc-500 opacity-60"
             >
@@ -567,7 +568,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
             <ShieldCheck className="w-10 h-10" />
           </div>
-          
+
           <div className="space-y-2 max-w-sm mx-auto">
             <h3 className="text-base font-extrabold text-foreground">{t('citationLinker.injectLink')}</h3>
             <p className="text-xs text-muted-foreground">

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -318,36 +319,36 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               </h3>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm mb-1">Left</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-1">Left</Label>
                   <Input
                     type="text"
                     value={headerLeft}
                     onChange={(e) => setHeaderLeft(e.target.value)}
                     placeholder="e.g., Company Name"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-1" aria-label={"Left"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Center</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-2">Center</Label>
                   <Input
                     type="text"
                     value={headerCenter}
                     onChange={(e) => setHeaderCenter(e.target.value)}
                     placeholder="e.g., Document Title"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-2" aria-label={"Center"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Right</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-3">Right</Label>
                   <Input
                     type="text"
                     value={headerRight}
                     onChange={(e) => setHeaderRight(e.target.value)}
                     placeholder="e.g., {date}"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-3" aria-label={"Right"}
                   />
                 </div>
               </div>
@@ -357,43 +358,43 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               </h3>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm mb-1">Left</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-4">Left</Label>
                   <Input
                     type="text"
                     value={footerLeft}
                     onChange={(e) => setFooterLeft(e.target.value)}
                     placeholder="e.g., Confidential"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-4" aria-label={"Left"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Center</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-5">Center</Label>
                   <Input
                     type="text"
                     value={footerCenter}
                     onChange={(e) => setFooterCenter(e.target.value)}
                     placeholder="e.g., Page {page} of {total}"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-5" aria-label={"Center"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Right</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-6">Right</Label>
                   <Input
                     type="text"
                     value={footerRight}
                     onChange={(e) => setFooterRight(e.target.value)}
                     placeholder="e.g., {date}"
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-6" aria-label={"Right"}
                   />
                 </div>
               </div>
 
               {/* Quick Insert Buttons */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-2">Quick Insert</label>
+                <Label className="block mb-2">Quick Insert</Label>
                 <div className="flex flex-wrap gap-2">
                   {quickInserts.map((item) => (
                     <button
@@ -415,7 +416,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               </h3>
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm mb-1">Font Size</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-7">Font Size</Label>
                   <Input
                     type="number"
                     value={fontSize}
@@ -423,11 +424,11 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     min={6}
                     max={24}
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-7" aria-label={"Font Size"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Margin (pt)</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-8">Margin (pt)</Label>
                   <Input
                     type="number"
                     value={margin}
@@ -435,31 +436,31 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     min={10}
                     max={100}
                     className="w-full"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-8" aria-label={"Margin (pt)"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Text Color</label>
+                  <Label className="block mb-1" htmlFor="headerfootertool-field-9">Text Color</Label>
                   <Input
                     type="color"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
                     className="w-full h-10 cursor-pointer"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="headerfootertool-field-9" aria-label={"Text Color"}
                   />
                 </div>
               </div>
 
               {/* Page Range */}
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Page Range</label>
+                <Label className="block mb-1" htmlFor="headerfootertool-field-10">Page Range</Label>
                 <Input
                   type="text"
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
                   placeholder="e.g., 1-5, 8, 10-12 or 'all'"
                   className="w-full"
-                  disabled={isProcessing}
+                  disabled={isProcessing} id="headerfootertool-field-10" aria-label={"Page Range"}
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Use "all" for all pages, or specify ranges like "1-5, 8, 10-12"
@@ -467,7 +468,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               </div>
 
               {/* Skip First Page */}
-              <label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2">
                 <input
                   type="checkbox"
                   checked={skipFirstPage}
@@ -476,7 +477,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                   disabled={isProcessing}
                 />
                 <span className="text-sm">Skip first page (cover page)</span>
-              </label>
+              </Label>
             </Card>
           </div>
 

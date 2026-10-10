@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -122,9 +123,9 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('cbzToPdf.pageSizeLabel') || 'Page Size'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['original', 'a4', 'letter', 'comic'] as CbzPageSize[]).map((size) => (
                                     <button
@@ -143,9 +144,9 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('cbzToPdf.qualityLabel') || 'Image Quality'}: {quality}%
-                            </label>
+                            </Label>
                             <input
                                 type="range"
                                 min="50"
@@ -157,7 +158,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                             />
                         </div>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={maintainAspectRatio}
@@ -168,7 +169,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('cbzToPdf.preserveAspectLabel') || 'Preserve aspect ratio'}
                             </span>
-                        </label>
+                        </Label>
                     </div>
                 </Card>
             )}

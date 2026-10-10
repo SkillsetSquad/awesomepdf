@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,7 +22,7 @@ export interface NUpPDFToolProps {
 /**
  * NUpPDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for creating N-Up PDF layouts.
  */
 export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
@@ -267,9 +268,9 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Pages per sheet */}
             <div>
-              <label htmlFor="pagesPerSheet" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="pagesPerSheet" className="block mb-1">
                 {tTools('nUpPdf.pagesPerSheet') || 'Pages per Sheet'}
-              </label>
+              </Label>
               <select
                 id="pagesPerSheet"
                 value={pagesPerSheet}
@@ -282,7 +283,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                   }
                 }}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.pagesPerSheet') || 'Pages per Sheet'}
               >
                 <option value={2}>2-up (2×1)</option>
                 <option value={4}>4-up (2×2)</option>
@@ -296,9 +297,9 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
             {pagesPerSheet === 'custom' && (
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <label htmlFor="customCols" className="block text-sm font-medium text-foreground mb-1">
+                  <Label htmlFor="customCols" className="block mb-1">
                     {tTools('nUpPdf.columns') || 'Columns'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     id="customCols"
@@ -307,13 +308,13 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                     value={customCols}
                     onChange={(e) => setCustomCols(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full"
+                    className="w-full" aria-label={tTools('nUpPdf.columns') || 'Columns'}
                   />
                 </div>
                 <div className="flex-1">
-                  <label htmlFor="customRows" className="block text-sm font-medium text-foreground mb-1">
+                  <Label htmlFor="customRows" className="block mb-1">
                     {tTools('nUpPdf.rows') || 'Rows'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     id="customRows"
@@ -322,7 +323,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full"
+                    className="w-full" aria-label={tTools('nUpPdf.rows') || 'Rows'}
                   />
                 </div>
               </div>
@@ -330,15 +331,15 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
             {/* Page size */}
             <div>
-              <label htmlFor="pageSize" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="pageSize" className="block mb-1">
                 {tTools('nUpPdf.pageSize') || 'Output Page Size'}
-              </label>
+              </Label>
               <select
                 id="pageSize"
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.pageSize') || 'Output Page Size'}
               >
                 <option value="A4">A4</option>
                 <option value="Letter">Letter</option>
@@ -349,15 +350,15 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
             {/* Orientation */}
             <div>
-              <label htmlFor="orientation" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="orientation" className="block mb-1">
                 {tTools('nUpPdf.orientation') || 'Orientation'}
-              </label>
+              </Label>
               <select
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.orientation') || 'Orientation'}
               >
                 <option value="auto">{t('options.auto') || 'Auto'}</option>
                 <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
@@ -368,15 +369,15 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
             {/* Layout Direction - only show for 2-up */}
             {pagesPerSheet === 2 && (
               <div>
-                <label htmlFor="layoutDirection" className="block text-sm font-medium text-foreground mb-1">
+                <Label htmlFor="layoutDirection" className="block mb-1">
                   {tTools('nUpPdf.layoutDirection') || 'Layout Direction'}
-                </label>
+                </Label>
                 <select
                   id="layoutDirection"
                   value={layoutDirection}
                   onChange={(e) => setLayoutDirection(e.target.value as 'horizontal' | 'vertical')}
                   disabled={isProcessing}
-                  className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('nUpPdf.layoutDirection') || 'Layout Direction'}
                 >
                   <option value="horizontal">{tTools('nUpPdf.layoutHorizontal') || 'Horizontal (side by side)'}</option>
                   <option value="vertical">{tTools('nUpPdf.layoutVertical') || 'Vertical (stacked)'}</option>
@@ -398,11 +399,11 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                 checked={useMargins}
                 onChange={(e) => setUseMargins(e.target.checked)}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border"
+                className="w-4 h-4 rounded border-border" aria-label={tTools('nUpPdf.useMargins') || 'Add margins and gutters'}
               />
-              <label htmlFor="useMargins" className="text-sm text-foreground">
+              <Label htmlFor="useMargins" className="">
                 {tTools('nUpPdf.useMargins') || 'Add margins and gutters'}
-              </label>
+              </Label>
             </div>
 
             {/* Border */}
@@ -413,26 +414,26 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                 checked={addBorder}
                 onChange={(e) => setAddBorder(e.target.checked)}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border"
+                className="w-4 h-4 rounded border-border" aria-label={tTools('nUpPdf.addBorder') || 'Add border around pages'}
               />
-              <label htmlFor="addBorder" className="text-sm text-foreground">
+              <Label htmlFor="addBorder" className="">
                 {tTools('nUpPdf.addBorder') || 'Add border around pages'}
-              </label>
+              </Label>
             </div>
 
             {/* Border color */}
             {addBorder && (
               <div>
-                <label htmlFor="borderColor" className="block text-sm font-medium text-foreground mb-1">
+                <Label htmlFor="borderColor" className="block mb-1">
                   {tTools('nUpPdf.borderColor') || 'Border Color'}
-                </label>
+                </Label>
                 <Input
                   type="color"
                   id="borderColor"
                   value={borderColor}
                   onChange={(e) => setBorderColor(e.target.value)}
                   disabled={isProcessing}
-                  className="w-full h-10 cursor-pointer"
+                  className="w-full h-10 cursor-pointer" aria-label={tTools('nUpPdf.borderColor') || 'Border Color'}
                 />
               </div>
             )}

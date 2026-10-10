@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Modal } from '@/components/ui/Modal';
@@ -390,7 +391,7 @@ export function SignatureExtractorModal({
               支持自动提取 Adobe Acrobat 等各类工具签署的数字签名、电子印章与手写签名，自动剔除纸张白底，生成高精透明签名并存入签名库。
             </p>
 
-            <label className="inline-flex">
+            <Label className="inline-flex">
               <Input
                 type="file"
                 accept="application/pdf,.pdf"
@@ -406,7 +407,7 @@ export function SignatureExtractorModal({
                 </svg>
                 选择已签署 PDF 文件
               </span>
-            </label>
+            </Label>
           </div>
         )}
 
@@ -574,9 +575,9 @@ export function SignatureExtractorModal({
                     <div
                       className="w-full h-44 rounded-md border border-border flex items-center justify-center p-3 relative overflow-hidden"
                       style={{
-                        backgroundImage: `linear-gradient(45deg, #e5e7eb 25%, transparent 25%), 
-                                          linear-gradient(-45deg, #e5e7eb 25%, transparent 25%), 
-                                          linear-gradient(45deg, transparent 75%, #e5e7eb 75%), 
+                        backgroundImage: `linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+                                          linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+                                          linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
                                           linear-gradient(-45deg, transparent 75%, #e5e7eb 75%)`,
                         backgroundSize: '16px 16px',
                         backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
@@ -596,23 +597,23 @@ export function SignatureExtractorModal({
 
                     {/* Name Input */}
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground mb-1">
+                      <Label className="block text-muted-foreground mb-1" htmlFor="signatureextractormodal-field-1">
                         签名名称：
-                      </label>
+                      </Label>
                       <Input
                         type="text"
                         value={signatureName}
                         onChange={(e) => setSignatureName(e.target.value)}
                         placeholder="例如：张三签名 / 财务专用章"
-                        className="w-full"
+                        className="w-full" id="signatureextractormodal-field-1" aria-label={"签名名称："}
                       />
                     </div>
 
                     {/* Color Modes */}
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      <Label className="block text-muted-foreground mb-1.5">
                         笔迹色彩增强：
-                      </label>
+                      </Label>
                       <div className="grid grid-cols-2 gap-2 text-xs">
                         <button
                           type="button"

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -177,11 +178,11 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('batchBarcodeInjector.barcodeTypeLabel')}</label>
+                    <Label className="" htmlFor="batchbarcodeinjectortool-field-1">{t('batchBarcodeInjector.barcodeTypeLabel')}</Label>
                     <select
                       value={barcodeType}
                       onChange={(e) => setBarcodeType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="batchbarcodeinjectortool-field-1" aria-label={t('batchBarcodeInjector.barcodeTypeLabel')}
                     >
                       <option value="qr">{t('batchBarcodeInjector.barcodeTypeQr')}</option>
                       <option value="code128">{t('batchBarcodeInjector.barcodeTypeBar')}</option>
@@ -189,33 +190,33 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('batchBarcodeInjector.barcodeValueLabel')}</label>
+                    <Label className="" htmlFor="batchbarcodeinjectortool-field-2">{t('batchBarcodeInjector.barcodeValueLabel')}</Label>
                     <Input
                       type="text"
                       value={value}
                       onChange={(e) => setValue(e.target.value)}
                       placeholder="e.g. https://pdfcraft.org"
-                      className="w-full"
+                      className="w-full" id="batchbarcodeinjectortool-field-2" aria-label={t('batchBarcodeInjector.barcodeValueLabel')}
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
-                      <label className="text-zinc-400 font-bold">{t('batchBarcodeInjector.xPosLabel')}</label>
+                      <Label className="" htmlFor="batchbarcodeinjectortool-field-3">{t('batchBarcodeInjector.xPosLabel')}</Label>
                       <Input
                         type="number"
                         value={xPos}
                         onChange={(e) => setXPos(parseInt(e.target.value) || 0)}
-                        className="w-full"
+                        className="w-full" id="batchbarcodeinjectortool-field-3" aria-label={t('batchBarcodeInjector.xPosLabel')}
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-zinc-400 font-bold">{t('batchBarcodeInjector.yPosLabel')}</label>
+                      <Label className="" htmlFor="batchbarcodeinjectortool-field-4">{t('batchBarcodeInjector.yPosLabel')}</Label>
                       <Input
                         type="number"
                         value={yPos}
                         onChange={(e) => setYPos(parseInt(e.target.value) || 0)}
-                        className="w-full"
+                        className="w-full" id="batchbarcodeinjectortool-field-4" aria-label={t('batchBarcodeInjector.yPosLabel')}
                       />
                     </div>
                   </div>

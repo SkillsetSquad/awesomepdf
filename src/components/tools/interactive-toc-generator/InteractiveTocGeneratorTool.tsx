@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -151,23 +152,23 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('interactiveTocGenerator.tocTitleLabel')}</label>
+                    <Label className="" htmlFor="interactivetocgeneratortool-field-1">{t('interactiveTocGenerator.tocTitleLabel')}</Label>
                     <Input
                       type="text"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="Table of Contents"
-                      className="w-full"
+                      className="w-full" id="interactivetocgeneratortool-field-1" aria-label={t('interactiveTocGenerator.tocTitleLabel')}
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('interactiveTocGenerator.insertPageLabel')}</label>
+                    <Label className="" htmlFor="interactivetocgeneratortool-field-2">{t('interactiveTocGenerator.insertPageLabel')}</Label>
                     <Input
                       type="number"
                       value={insertIndex}
                       onChange={(e) => setInsertIndex(parseInt(e.target.value) || 0)}
-                      className="w-full"
+                      className="w-full" id="interactivetocgeneratortool-field-2" aria-label={t('interactiveTocGenerator.insertPageLabel')}
                     />
                   </div>
                 </div>

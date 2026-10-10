@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -155,9 +156,9 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                     <div className="space-y-4">
                         {/* DPI Setting */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('fontToOutline.dpiLabel') || 'Output Quality (DPI)'}: {dpi}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {[150, 300, 600].map((d) => (
                                     <button
@@ -179,7 +180,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                         </div>
 
                         {/* Preserve Text Option */}
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={preserveSelectableText}
@@ -195,7 +196,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                     {tTools('fontToOutline.preserveTextDesc') || 'Adds invisible text layer for search. May increase file size.'}
                                 </p>
                             </div>
-                        </label>
+                        </Label>
                     </div>
                 </Card>
             )}

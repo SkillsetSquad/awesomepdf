@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -19,7 +20,7 @@ export interface ExtractTablesToolProps {
 
 /**
  * ExtractTablesTool Component
- * 
+ *
  * Extracts tables from PDF documents.
  */
 export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
@@ -166,9 +167,9 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                     <div className="space-y-4">
                         {/* Output Format */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2">
                                 {tTools('extractTables.formatLabel') || 'Output Format'}
-                            </label>
+                            </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(['json', 'markdown', 'csv'] as TableExportFormat[]).map((fmt) => (
                                     <button
@@ -194,25 +195,25 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
 
                         {/* Page Range */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="extracttablestool-field-1">
                                 {tTools('extractTables.pageRangeLabel') || 'Page Range (optional)'}
-                            </label>
+                            </Label>
                             <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 disabled={isProcessing}
                                 placeholder="e.g., 1-5, 8, 10-15"
-                                className="w-full"
+                                className="w-full" id="extracttablestool-field-1" aria-label={tTools('extractTables.pageRangeLabel') || 'Page Range (optional)'}
                             />
                         </div>
 
                         {/* Min Columns/Rows */}
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-2">
+                                <Label className="block mb-2">
                                     {tTools('extractTables.minColumnsLabel') || 'Min Columns'}: {minColumns}
-                                </label>
+                                </Label>
                                 <input
                                     type="range"
                                     min="1"
@@ -224,9 +225,9 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-2">
+                                <Label className="block mb-2">
                                     {tTools('extractTables.minRowsLabel') || 'Min Rows'}: {minRows}
-                                </label>
+                                </Label>
                                 <input
                                     type="range"
                                     min="1"
@@ -240,7 +241,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                         </div>
 
                         {/* Include Page Numbers */}
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={includePageNumbers}
@@ -251,7 +252,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('extractTables.includePageNumbersLabel') || 'Include page numbers in output'}
                             </span>
-                        </label>
+                        </Label>
                     </div>
                 </Card>
             )}

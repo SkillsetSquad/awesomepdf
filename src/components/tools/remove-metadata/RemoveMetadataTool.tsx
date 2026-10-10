@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,13 +19,13 @@ export interface RemoveMetadataToolProps {
 /**
  * RemoveMetadataTool Component
  * Requirements: 5.1
- * 
+ *
  * Provides the UI for removing metadata from PDF files.
  */
 export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -33,7 +34,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [removedFields, setRemovedFields] = useState<string[]>([]);
-  
+
   // Options
   const [options, setOptions] = useState<RemoveMetadataOptions>({
     removeTitle: true,
@@ -45,7 +46,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
     removeCreationDate: true,
     removeModificationDate: true,
   });
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -194,7 +195,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -251,7 +252,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
               </Button>
             </div>
           </div>
-          
+
           <div className="space-y-4">
             {/* Info */}
             <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
@@ -263,7 +264,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
             {/* Options Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {metadataFields.map(({ key, label }) => (
-                <label key={key} className="flex items-center gap-2 cursor-pointer">
+                <Label key={key} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={options[key]}
@@ -274,7 +275,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
                   <span className="text-sm text-foreground">
                     {label}
                   </span>
-                </label>
+                </Label>
               ))}
             </div>
           </div>
@@ -301,8 +302,8 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
           disabled={!canProcess}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('removeMetadata.removeButton') || 'Remove Metadata')
           }
         </Button>
@@ -320,7 +321,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

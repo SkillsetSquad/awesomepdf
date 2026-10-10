@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -21,13 +22,13 @@ export interface CombineSinglePageToolProps {
 /**
  * CombineSinglePageTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for combining PDF pages into a single continuous page.
  */
 export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -36,7 +37,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options
   const [orientation, setOrientation] = useState<CombineOrientation>('vertical');
   const [spacing, setSpacing] = useState(0);
@@ -44,10 +45,9 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
   const [addSeparator, setAddSeparator] = useState(false);
   const [separatorThickness, setSeparatorThickness] = useState(0.5);
   const [separatorColor, setSeparatorColor] = useState('#000000');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
-
 
   /**
    * Load PDF to get page count
@@ -56,10 +56,10 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
     } catch (err) {
       console.error('Failed to load PDF info:', err);
@@ -194,7 +194,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -231,7 +231,6 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
         </Card>
       )}
 
-
       {/* Options */}
       {file && totalPages > 0 && (
         <Card className="p-6"  >
@@ -242,15 +241,15 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Orientation */}
             <div>
-              <label htmlFor="orientation" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="orientation" className="block mb-1">
                 {tTools('combineSinglePage.orientation') || 'Orientation'}
-              </label>
+              </Label>
               <select
                 id="orientation"
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as CombineOrientation)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label={tTools('combineSinglePage.orientation') || 'Orientation'}
               >
                 <option value="vertical">{tTools('combineSinglePage.vertical') || 'Vertical (Top to Bottom)'}</option>
                 <option value="horizontal">{tTools('combineSinglePage.horizontal') || 'Horizontal (Left to Right)'}</option>
@@ -259,9 +258,9 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
             {/* Spacing */}
             <div>
-              <label htmlFor="spacing" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="spacing" className="block mb-1">
                 {tTools('combineSinglePage.spacing') || 'Page Spacing (points)'}
-              </label>
+              </Label>
               <Input
                 type="number"
                 id="spacing"
@@ -270,15 +269,15 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                 min={0}
                 max={200}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" aria-label={tTools('combineSinglePage.spacing') || 'Page Spacing (points)'}
               />
             </div>
 
             {/* Background Color */}
             <div>
-              <label htmlFor="backgroundColor" className="block text-sm font-medium text-foreground mb-1">
+              <Label htmlFor="backgroundColor" className="block mb-1">
                 {tTools('combineSinglePage.backgroundColor') || 'Background Color'}
-              </label>
+              </Label>
               <div className="flex gap-2">
                 <Input
                   type="color"
@@ -286,14 +285,14 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                   value={backgroundColor}
                   onChange={(e) => setBackgroundColor(e.target.value)}
                   disabled={isProcessing}
-                  className="w-12 h-10 cursor-pointer"
+                  className="w-12 h-10 cursor-pointer" aria-label={tTools('combineSinglePage.backgroundColor') || 'Background Color'}
                 />
                 <Input
                   type="text"
                   value={backgroundColor}
                   onChange={(e) => setBackgroundColor(e.target.value)}
                   disabled={isProcessing}
-                  className="flex-1"
+                  className="flex-1" id="backgroundColor" aria-label={tTools('combineSinglePage.backgroundColor') || 'Background Color'}
                 />
               </div>
             </div>
@@ -306,20 +305,20 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                 checked={addSeparator}
                 onChange={(e) => setAddSeparator(e.target.checked)}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-border"
+                className="w-4 h-4 rounded border-border" aria-label={tTools('combineSinglePage.addSeparator') || 'Add separator lines between pages'}
               />
-              <label htmlFor="addSeparator" className="text-sm text-foreground">
+              <Label htmlFor="addSeparator" className="">
                 {tTools('combineSinglePage.addSeparator') || 'Add separator lines between pages'}
-              </label>
+              </Label>
             </div>
 
             {/* Separator Options */}
             {addSeparator && (
               <>
                 <div>
-                  <label htmlFor="separatorThickness" className="block text-sm font-medium text-foreground mb-1">
+                  <Label htmlFor="separatorThickness" className="block mb-1">
                     {tTools('combineSinglePage.separatorThickness') || 'Separator Thickness (points)'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     id="separatorThickness"
@@ -329,14 +328,14 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                     max={10}
                     step={0.1}
                     disabled={isProcessing}
-                    className="w-full"
+                    className="w-full" aria-label={tTools('combineSinglePage.separatorThickness') || 'Separator Thickness (points)'}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="separatorColor" className="block text-sm font-medium text-foreground mb-1">
+                  <Label htmlFor="separatorColor" className="block mb-1">
                     {tTools('combineSinglePage.separatorColor') || 'Separator Color'}
-                  </label>
+                  </Label>
                   <div className="flex gap-2">
                     <Input
                       type="color"
@@ -344,14 +343,14 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                       value={separatorColor}
                       onChange={(e) => setSeparatorColor(e.target.value)}
                       disabled={isProcessing}
-                      className="w-12 h-10 cursor-pointer"
+                      className="w-12 h-10 cursor-pointer" aria-label={tTools('combineSinglePage.separatorColor') || 'Separator Color'}
                     />
                     <Input
                       type="text"
                       value={separatorColor}
                       onChange={(e) => setSeparatorColor(e.target.value)}
                       disabled={isProcessing}
-                      className="flex-1"
+                      className="flex-1" id="separatorColor" aria-label={tTools('combineSinglePage.separatorColor') || 'Separator Color'}
                     />
                   </div>
                 </div>
@@ -362,7 +361,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
           {/* Preview info */}
           <div className="mt-4 p-3 rounded-md bg-muted">
             <p className="text-sm text-muted-foreground">
-              {tTools('combineSinglePage.previewInfo', { pages: totalPages, orientation: orientation === 'vertical' ? tTools('combineSinglePage.vertical') : tTools('combineSinglePage.horizontal') }) || 
+              {tTools('combineSinglePage.previewInfo', { pages: totalPages, orientation: orientation === 'vertical' ? tTools('combineSinglePage.vertical') : tTools('combineSinglePage.horizontal') }) ||
                 `${totalPages} pages will be combined into 1 continuous ${orientation === 'vertical' ? 'vertical' : 'horizontal'} page.`
               }
             </p>
@@ -391,8 +390,8 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
             disabled={!canProcess}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('combineSinglePage.combineButton') || 'Combine Pages')
             }
           </Button>
@@ -411,7 +410,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

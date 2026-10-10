@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -7,20 +8,20 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
-import { 
-  FileText, 
-  HelpCircle, 
-  Check, 
-  AlertCircle, 
-  ChevronLeft, 
-  ChevronRight, 
-  Shuffle, 
-  Eye, 
-  Settings, 
-  Filter, 
-  Download, 
-  Minimize, 
-  Maximize2 
+import {
+  FileText,
+  HelpCircle,
+  Check,
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  Shuffle,
+  Eye,
+  Settings,
+  Filter,
+  Download,
+  Minimize,
+  Maximize2
 } from 'lucide-react';
 
 export interface ComparePDFsToolProps {
@@ -151,7 +152,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
         const ctx = canvas.getContext('2d')!;
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         await page.render({ canvasContext: ctx, viewport }).promise;
         pagesImages.push(canvas.toDataURL('image/jpeg', 0.85));
 
@@ -181,7 +182,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
 
           // CJK character splitting or English word splitting
           const isChinese = /[\u4e00-\u9fa5]/.test(strVal);
-          
+
           if (isChinese) {
             // For CJK languages, map per character coordinates proportionally
             const chars = strVal.split('');
@@ -302,7 +303,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
         if (pair.pageIndex1 !== -1 && pair.pageIndex2 !== -1) {
           const page1 = file1.pageTextContents[pair.pageIndex1];
           const page2 = file2.pageTextContents[pair.pageIndex2];
-          
+
           const dim1 = file1.pageDimensions[pair.pageIndex1];
           const dim2 = file2.pageDimensions[pair.pageIndex2];
 
@@ -411,9 +412,9 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* File 1 */}
           <div className="space-y-3">
-            <label className="text-sm font-bold text-foreground block">
+            <Label className="block">
               {t('comparePdfs.originalPdfTitle')}
-            </label>
+            </Label>
             {file1 ? (
               <Card  className="p-4 flex items-center justify-between border-2 border-primary/35 bg-muted/15 rounded-2xl">
                 <div className="flex items-center gap-3">
@@ -441,9 +442,9 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
 
           {/* File 2 */}
           <div className="space-y-3">
-            <label className="text-sm font-bold text-foreground block">
+            <Label className="block">
               {t('comparePdfs.modifiedPdfTitle')}
-            </label>
+            </Label>
             {file2 ? (
               <Card  className="p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
                 <div className="flex items-center gap-3">
@@ -500,10 +501,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
       {/* Results Workspace */}
       {pairedPages.length > 0 && (
         <div className="space-y-4">
-          
+
           {/* Header Panel */}
-          <Card 
-             
+          <Card
+
             className="p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40"
           >
             <div>
@@ -511,23 +512,23 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                 {t('comparePdfs.successTitle')}
               </h3>
               <p className="text-xs text-muted-foreground mt-1">
-                {t('comparePdfs.totalAligned', { count: pairedPages.length })} • 
+                {t('comparePdfs.totalAligned', { count: pairedPages.length })} •
                 {t.rich('comparePdfs.diffSummary', { count: pairedPages.filter(p => p.hasDifference).length, red: (chunks) => <span className="font-bold text-red-500 mx-1">{chunks}</span> })}
               </p>
             </div>
-            
+
             {/* Filter pills bar */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-[10px] font-black text-zinc-400 flex items-center gap-1 uppercase tracking-wider mr-2">
                 <Filter className="w-3.5 h-3.5" />
                 {t('comparePdfs.filterLabel')}
               </span>
-              
+
               <button
                 onClick={() => setFilterPills(p => ({ ...p, text: !p.text }))}
                 className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.text 
-                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/35 shadow-sm shadow-amber-500/5' 
+                  filterPills.text
+                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/35 shadow-sm shadow-amber-500/5'
                     : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
                 }`}
               >
@@ -537,8 +538,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               <button
                 onClick={() => setFilterPills(p => ({ ...p, formatting: !p.formatting }))}
                 className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.formatting 
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/35 shadow-sm shadow-emerald-500/5' 
+                  filterPills.formatting
+                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/35 shadow-sm shadow-emerald-500/5'
                     : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
                 }`}
               >
@@ -548,8 +549,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               <button
                 onClick={() => setFilterPills(p => ({ ...p, headerFooter: !p.headerFooter }))}
                 className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.headerFooter 
-                    ? 'bg-blue-500/10 text-blue-500 border border-blue-500/35 shadow-sm shadow-blue-500/5' 
+                  filterPills.headerFooter
+                    ? 'bg-blue-500/10 text-blue-500 border border-blue-500/35 shadow-sm shadow-blue-500/5'
                     : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
                 }`}
               >
@@ -559,8 +560,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               <button
                 onClick={() => setFilterPills(p => ({ ...p, moved: !p.moved }))}
                 className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.moved 
-                    ? 'bg-purple-500/10 text-purple-500 border border-purple-500/35 shadow-sm shadow-purple-500/5' 
+                  filterPills.moved
+                    ? 'bg-purple-500/10 text-purple-500 border border-purple-500/35 shadow-sm shadow-purple-500/5'
                     : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
                 }`}
               >
@@ -599,7 +600,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                   {currentPair.pageIndex1 === -1 && t('comparePdfs.insertedPage')}
                   {currentPair.pageIndex2 === -1 && t('comparePdfs.deletedPage')}
                   {currentPair.pageIndex1 !== -1 && currentPair.pageIndex2 !== -1 && (
-                    currentPair.hasDifference 
+                    currentPair.hasDifference
                       ? t('comparePdfs.diffPercentage', { percent: currentPair.diffPercentage.toFixed(1) })
                       : t('comparePdfs.noDiff')
                   )}
@@ -632,7 +633,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
           </div>
 
           {/* Double View Panels Workspace */}
-          <div 
+          <div
             ref={comparisonContainerRef}
             className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
               isFullscreen ? 'fixed inset-0 z-50 p-4 bg-zinc-900 overflow-y-auto' : ''
@@ -648,8 +649,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                   {currentPair?.pageIndex1 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex1 + 1 }) : '---'}
                 </span>
               </div>
-              
-              <div 
+
+              <div
                 ref={scrollContainer1Ref}
                 onScroll={handleScroll1}
                 className="border border-border rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
@@ -657,16 +658,16 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                 {currentPair?.pageIndex1 !== -1 ? (
                   <div className="relative transform-gpu">
                     {/* Rendered PDF base canvas image */}
-                    <img 
-                      src={file1?.pagesImages[currentPair.pageIndex1]} 
-                      alt="Original Page" 
+                    <img
+                      src={file1?.pagesImages[currentPair.pageIndex1]}
+                      alt="Original Page"
                       className="max-w-none shadow-md rounded-lg"
                       style={{
                         width: `${file1?.pageDimensions[currentPair.pageIndex1].width}px`,
                         height: `${file1?.pageDimensions[currentPair.pageIndex1].height}px`,
                       }}
                     />
-                    
+
                     {/* Diff highlights Overlay Layer */}
                     <div className="absolute inset-0 pointer-events-none">
                       {getFilteredHighlights(currentPair.highlights1).map((hl, idx) => (
@@ -678,8 +679,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                             top: `${hl.y}px`,
                             width: `${hl.w}px`,
                             height: `${hl.h}px`,
-                            background: hl.type === 'deleted' 
-                              ? 'rgba(239, 68, 68, 0.18)' 
+                            background: hl.type === 'deleted'
+                              ? 'rgba(239, 68, 68, 0.18)'
                               : hl.type === 'modified'
                                 ? 'rgba(245, 158, 11, 0.18)'
                                 : 'rgba(168, 85, 247, 0.18)', // Moved source
@@ -697,10 +698,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                         >
                           {/* Tooltip widget */}
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
-                            {hl.type === 'deleted' 
-                              ? t('comparePdfs.removedText') 
-                              : hl.type === 'modified' 
-                                ? t('comparePdfs.modifiedText') 
+                            {hl.type === 'deleted'
+                              ? t('comparePdfs.removedText')
+                              : hl.type === 'modified'
+                                ? t('comparePdfs.modifiedText')
                                 : t('comparePdfs.paragraphMovedRight')}
                             <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
                           </div>
@@ -731,8 +732,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                   {currentPair?.pageIndex2 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex2 + 1 }) : '---'}
                 </span>
               </div>
-              
-              <div 
+
+              <div
                 ref={scrollContainer2Ref}
                 onScroll={handleScroll2}
                 className="border border-border rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
@@ -740,16 +741,16 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                 {currentPair?.pageIndex2 !== -1 ? (
                   <div className="relative transform-gpu">
                     {/* Rendered PDF base canvas image */}
-                    <img 
-                      src={file2?.pagesImages[currentPair.pageIndex2]} 
-                      alt="Modified Page" 
+                    <img
+                      src={file2?.pagesImages[currentPair.pageIndex2]}
+                      alt="Modified Page"
                       className="max-w-none shadow-md rounded-lg"
                       style={{
                         width: `${file2?.pageDimensions[currentPair.pageIndex2].width}px`,
                         height: `${file2?.pageDimensions[currentPair.pageIndex2].height}px`,
                       }}
                     />
-                    
+
                     {/* Diff highlights Overlay Layer */}
                     <div className="absolute inset-0 pointer-events-none">
                       {getFilteredHighlights(currentPair.highlights2).map((hl, idx) => (
@@ -761,8 +762,8 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                             top: `${hl.y}px`,
                             width: `${hl.w}px`,
                             height: `${hl.h}px`,
-                            background: hl.type === 'added' 
-                              ? 'rgba(16, 185, 129, 0.18)' 
+                            background: hl.type === 'added'
+                              ? 'rgba(16, 185, 129, 0.18)'
                               : hl.type === 'modified'
                                 ? 'rgba(245, 158, 11, 0.18)'
                                 : 'rgba(168, 85, 247, 0.18)', // Moved dest
@@ -780,10 +781,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                         >
                           {/* Tooltip widget */}
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
-                            {hl.type === 'added' 
-                              ? t('comparePdfs.addedText') 
-                              : hl.type === 'modified' 
-                                ? t('comparePdfs.modifiedText') 
+                            {hl.type === 'added'
+                              ? t('comparePdfs.addedText')
+                              : hl.type === 'modified'
+                                ? t('comparePdfs.modifiedText')
                                 : t('comparePdfs.paragraphMovedLeft')}
                             <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
                           </div>
@@ -804,7 +805,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               </div>
             </div>
           </div>
-          
+
         </div>
       )}
     </div>
@@ -901,7 +902,7 @@ function computeTextSimilarity(txt1: string, txt2: string): number {
   clean2.split('').forEach(c => {
     if (set1.has(c)) match++;
   });
-  
+
   return (match * 2) / (clean1.length + clean2.length);
 }
 
@@ -1006,10 +1007,10 @@ function diffSinglePageWords(
       // Check for Formatting discrepancies (Fonts diff)
       const wInfo1 = words1[item.indexA];
       const wInfo2 = words2[item.indexB];
-      
+
       if (wInfo1.fontName !== wInfo2.fontName) {
         category = 'formatting';
-        
+
         highlights1.push({
           type: 'modified',
           text: item.word,
@@ -1019,7 +1020,7 @@ function diffSinglePageWords(
           h: wInfo1.h + 2,
           category
         });
-        
+
         highlights2.push({
           type: 'modified',
           text: item.word,
@@ -1059,11 +1060,11 @@ function compactAdjacentHighlights(highlights: DiffHighlight[], type: 'added' | 
 
   for (let i = 1; i < highlights.length; i++) {
     const next = highlights[i];
-    
+
     // Check if next highlight is on the same line, contiguous coordinate, and same properties
     const sameLine = Math.abs(next.y - current.y) < 5;
     const contiguous = Math.abs(next.x - (current.x + current.w)) < 15;
-    
+
     if (sameLine && contiguous && next.category === current.category && next.type === current.type) {
       current.w = (next.x + next.w) - current.x;
       current.text += next.text;
@@ -1096,14 +1097,14 @@ function findMovedTextSegments(pairedList: PageComparisonResult[]) {
 
           // Cross-correlation threshold 85% textual likeness
           const matchSim = computeTextSimilarity(hl1.text, hl2.text);
-          
+
           if (matchSim >= 0.85) {
             // Relabel as moved
             hl1.type = 'moved';
             hl2.type = 'moved';
             hl1.movedToPageIndex = pair2.pageIndex2;
             hl1.movedToCoords = { x: hl2.x, y: hl2.y };
-            
+
             hl2.movedToPageIndex = pair1.pageIndex1;
             hl2.movedToCoords = { x: hl1.x, y: hl1.y };
           }

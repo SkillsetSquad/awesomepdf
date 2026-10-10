@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -9,11 +10,11 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { 
-  textToPDF, 
+import {
+  textToPDF,
   AVAILABLE_FONTS,
   hexToRgb,
-  type TextPageSizeType, 
+  type TextPageSizeType,
   type TextToPDFOptions,
   type PageOrientation,
   type FontId
@@ -34,7 +35,7 @@ type InputMode = 'upload' | 'text';
 export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   const [inputMode, setInputMode] = useState<InputMode>('upload');
   const [directText, setDirectText] = useState('');
   const [files, setFiles] = useState<UploadedFile[]>([]);
@@ -44,7 +45,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [textPreview, setTextPreview] = useState<string>('');
-  
+
   const [pageSize, setPageSize] = useState<TextPageSizeType>('A4');
   const [customWidth, setCustomWidth] = useState(595);
   const [customHeight, setCustomHeight] = useState(842);
@@ -55,7 +56,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
   const [textColor, setTextColor] = useState('#000000');
   const [preserveLineBreaks, setPreserveLineBreaks] = useState(true);
   const [wrapLines, setWrapLines] = useState(true);
-  
+
   const cancelledRef = useRef(false);
 
   const handleFilesSelected = useCallback(async (newFiles: File[]) => {
@@ -96,7 +97,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
     const hasFiles = files.length >= 1;
     const hasDirectText = inputMode === 'text' && directText.trim().length > 0;
     if (!hasFiles && !hasDirectText) {
-      setError(inputMode === 'text' 
+      setError(inputMode === 'text'
         ? (tTools('txtToPdf.noTextError') || 'Please enter some text to convert.')
         : (tTools('txtToPdf.noFilesError') || 'Please add at least 1 text file.'));
       return;
@@ -238,8 +239,8 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
           <h3 className="text-lg font-medium mb-4">{tTools('txtToPdf.optionsTitle') || 'PDF Options'}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.pageSize') || 'Page Size'}</label>
-              <Select value={pageSize} onChange={(e) => setPageSize(e.target.value as TextPageSizeType)} disabled={isProcessing}>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-1">{tTools('txtToPdf.pageSize') || 'Page Size'}</Label>
+              <Select value={pageSize} onChange={(e) => setPageSize(e.target.value as TextPageSizeType)} disabled={isProcessing} id="texttopdftool-field-1" aria-label={tTools('txtToPdf.pageSize') || 'Page Size'}>
                 <option value="A4">A4</option><option value="LETTER">Letter</option><option value="LEGAL">Legal</option>
                 <option value="A5">A5</option><option value="A3">A3</option><option value="CUSTOM">{tTools('txtToPdf.custom') || 'Custom'}</option>
               </Select>
@@ -247,41 +248,41 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
             {pageSize === 'CUSTOM' && (
               <>
                 <div>
-                  <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.width') || 'Width (pt)'}</label>
+                  <Label className="block mb-2" htmlFor="texttopdftool-field-2">{tTools('txtToPdf.width') || 'Width (pt)'}</Label>
                   <Input type="number" value={customWidth} onChange={(e) => setCustomWidth(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full" />
+                    className="w-full" id="texttopdftool-field-2" aria-label={tTools('txtToPdf.width') || 'Width (pt)'} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.height') || 'Height (pt)'}</label>
+                  <Label className="block mb-2" htmlFor="texttopdftool-field-3">{tTools('txtToPdf.height') || 'Height (pt)'}</Label>
                   <Input type="number" value={customHeight} onChange={(e) => setCustomHeight(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full" />
+                    className="w-full" id="texttopdftool-field-3" aria-label={tTools('txtToPdf.height') || 'Height (pt)'} />
                 </div>
               </>
             )}
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.orientation') || 'Orientation'}</label>
-              <Select value={orientation} onChange={(e) => setOrientation(e.target.value as PageOrientation)} disabled={isProcessing}>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-4">{tTools('txtToPdf.orientation') || 'Orientation'}</Label>
+              <Select value={orientation} onChange={(e) => setOrientation(e.target.value as PageOrientation)} disabled={isProcessing} id="texttopdftool-field-4" aria-label={tTools('txtToPdf.orientation') || 'Orientation'}>
                 <option value="portrait">{tTools('txtToPdf.portrait') || 'Portrait'}</option>
                 <option value="landscape">{tTools('txtToPdf.landscape') || 'Landscape'}</option>
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.fontFamily') || 'Font Family'}</label>
-              <Select value={fontId} onChange={(e) => setFontId(e.target.value as FontId)} disabled={isProcessing}>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-5">{tTools('txtToPdf.fontFamily') || 'Font Family'}</Label>
+              <Select value={fontId} onChange={(e) => setFontId(e.target.value as FontId)} disabled={isProcessing} id="texttopdftool-field-5" aria-label={tTools('txtToPdf.fontFamily') || 'Font Family'}>
                 {AVAILABLE_FONTS.map(font => (
                   <option key={font.id} value={font.id}>{font.name}</option>
                 ))}
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.fontSize') || 'Font Size'}</label>
-              <Select value={fontSize} onChange={(e) => setFontSize(Number(e.target.value))} disabled={isProcessing}>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-6">{tTools('txtToPdf.fontSize') || 'Font Size'}</Label>
+              <Select value={fontSize} onChange={(e) => setFontSize(Number(e.target.value))} disabled={isProcessing} id="texttopdftool-field-6" aria-label={tTools('txtToPdf.fontSize') || 'Font Size'}>
                 {[8, 10, 11, 12, 14, 16, 18, 20, 24].map(size => <option key={size} value={size}>{size}pt</option>)}
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.lineHeight') || 'Line Spacing'}</label>
-              <Select value={lineHeight} onChange={(e) => setLineHeight(Number(e.target.value))} disabled={isProcessing}>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-7">{tTools('txtToPdf.lineHeight') || 'Line Spacing'}</Label>
+              <Select value={lineHeight} onChange={(e) => setLineHeight(Number(e.target.value))} disabled={isProcessing} id="texttopdftool-field-7" aria-label={tTools('txtToPdf.lineHeight') || 'Line Spacing'}>
                 <option value="1">{tTools('txtToPdf.single') || 'Single'}</option>
                 <option value="1.15">1.15</option>
                 <option value="1.5">1.5</option>
@@ -289,24 +290,24 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.textColor') || 'Text Color'}</label>
+              <Label className="block mb-2" htmlFor="texttopdftool-field-8">{tTools('txtToPdf.textColor') || 'Text Color'}</Label>
               <div className="flex gap-2">
-                <Input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing} className="w-10 h-10 cursor-pointer" />
+                <Input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing} className="w-10 h-10 cursor-pointer" id="texttopdftool-field-8" aria-label={tTools('txtToPdf.textColor') || 'Text Color'} />
                 <Input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing}
-                  className="flex-1" />
+                  className="flex-1" aria-label={tTools('txtToPdf.textColor') || 'Text Color'} />
               </div>
             </div>
           </div>
 
           <div className="mt-4 space-y-3">
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input type="checkbox" checked={preserveLineBreaks} onChange={(e) => setPreserveLineBreaks(e.target.checked)} disabled={isProcessing} className="w-4 h-4 rounded" />
               <span className="text-sm">{tTools('txtToPdf.preserveLineBreaks') || 'Preserve line breaks'}</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer">
+            </Label>
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input type="checkbox" checked={wrapLines} onChange={(e) => setWrapLines(e.target.checked)} disabled={isProcessing} className="w-4 h-4 rounded" />
               <span className="text-sm">{tTools('txtToPdf.wrapLines') || 'Wrap long lines'}</span>
-            </label>
+            </Label>
           </div>
         </Card>
       )}

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -71,7 +72,7 @@ export function CertCryptorTool() {
     setTimeout(() => {
       setStampState('pressing');
       setProgress(50);
-      
+
       setTimeout(async () => {
         try {
           // Translate UI coordinates (relative to 300x400 preview) back to actual standard A4 PDF coordinates (approx 595x841)
@@ -164,10 +165,10 @@ export function CertCryptorTool() {
             <div className="space-y-6">
               {/* Wax color selection */}
               <div className="space-y-3">
-                <label className="text-sm font-semibold text-neutral-300 flex items-center gap-1.5">
+                <Label className="text-neutral-300 flex items-center gap-1.5">
                   <Stamp className="w-4 h-4 text-yellow-400" />
                   {tTools('waxColor')}{t('certCryptor.waxStyleSuffix')}
-                </label>
+                </Label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
                     { id: 'gold', label: t('certCryptor.goldWax'), bg: 'bg-yellow-600 border-yellow-500 text-yellow-100' },
@@ -192,10 +193,10 @@ export function CertCryptorTool() {
               {/* Encryption settings */}
               <div className="space-y-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5 cursor-pointer">
+                  <Label className="text-neutral-300 flex items-center gap-1.5 cursor-pointer">
                     <Key className="w-4 h-4 text-yellow-400" />
                     {t('certCryptor.enableDoubleKey')}
-                  </label>
+                  </Label>
                   <input
                     type="checkbox"
                     checked={encryptWithCert}
@@ -203,16 +204,16 @@ export function CertCryptorTool() {
                     className="w-4 h-4 rounded text-yellow-500 bg-neutral-800 border-neutral-700 focus:ring-yellow-500 accent-yellow-500"
                   />
                 </div>
-                
+
                 {encryptWithCert && (
                   <div className="space-y-2 pt-2 border-t border-neutral-800">
-                    <label className="text-[10px] text-neutral-400">{t('certCryptor.decryptPasswordHelp')}</label>
+                    <Label className="text-[10px] text-neutral-400" htmlFor="certcryptortool-field-1">{t('certCryptor.decryptPasswordHelp')}</Label>
                     <Input
                       type="password"
                       placeholder={t('certCryptor.passwordPlaceholder')}
                       value={pfxPassword}
                       onChange={(e) => setPfxPassword(e.target.value)}
-                      className="w-full text-white"
+                      className="w-full text-white" id="certcryptortool-field-1" aria-label={t('certCryptor.decryptPasswordHelp')}
                     />
                   </div>
                 )}
@@ -260,7 +261,7 @@ export function CertCryptorTool() {
                 <span>{t('certCryptor.clickToReposition')}</span>
               </div>
 
-              <div 
+              <div
                 ref={previewRef}
                 onClick={handlePreviewClick}
                 className="relative w-[300px] h-[400px] bg-white rounded-lg mx-auto overflow-hidden shadow-2xl border border-neutral-750 flex flex-col justify-between p-6 select-none"
@@ -280,7 +281,7 @@ export function CertCryptorTool() {
 
                 {/* The 3D Wax Seal Placement / Imprinted Graphic */}
                 {(stampState === 'idle' || stampState === 'stamped') && (
-                  <div 
+                  <div
                     className="absolute pointer-events-none rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
                       left: `${sealPos.x - 30}px`,
@@ -290,7 +291,7 @@ export function CertCryptorTool() {
                     }}
                   >
                     {/* Rendered stamp */}
-                    <div 
+                    <div
                       className={`w-full h-full rounded-full flex items-center justify-center shadow-lg border-2 ${
                         waxColor === 'gold' ? 'bg-yellow-600 border-yellow-400 text-yellow-100 shadow-yellow-600/30' :
                         waxColor === 'red' ? 'bg-red-700 border-red-500 text-red-100 shadow-red-700/30' :
@@ -309,7 +310,7 @@ export function CertCryptorTool() {
 
                 {/* 3D Falling Stamp Animation (WOW FACTOR IN ACTION) */}
                 {(stampState === 'descending' || stampState === 'pressing') && (
-                  <div 
+                  <div
                     className="absolute pointer-events-none z-20 flex items-center justify-center"
                     style={{
                       left: `${sealPos.x - 35}px`,
@@ -321,7 +322,7 @@ export function CertCryptorTool() {
                     }}
                   >
                     {/* Metal handle and base seal */}
-                    <div 
+                    <div
                       className="w-full h-full flex flex-col items-center justify-end"
                       style={{
                         transformStyle: 'preserve-3d',

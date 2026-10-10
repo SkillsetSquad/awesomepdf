@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -26,13 +27,13 @@ export interface FixPageSizeToolProps {
 /**
  * FixPageSizeTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for standardizing PDF page sizes.
  */
 export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -40,7 +41,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options
   const [sizePreset, setSizePreset] = useState<PageSizePreset>('a4');
   const [customWidth, setCustomWidth] = useState(595.28);
@@ -48,10 +49,9 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
   const [scaleMode, setScaleMode] = useState<ScaleMode>('fit');
   const [maintainAspectRatio, setMaintainAspectRatio] = useState(true);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape' | 'auto'>('auto');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
-
 
   /**
    * Handle file selected from uploader
@@ -175,7 +175,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -216,20 +216,19 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
         </Card>
       )}
 
-
       {/* Options */}
       {file && (
         <Card className="p-6" >
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('fixPageSize.optionsTitle') || 'Page Size Options'}
           </h3>
-          
+
           <div className="space-y-6">
             {/* Page Size Selection */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2">
                 {tTools('fixPageSize.targetSize') || 'Target Page Size'}
-              </label>
+              </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {(Object.keys(PAGE_SIZES) as PageSizePreset[]).map((preset) => (
                   <button
@@ -240,8 +239,8 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                     className={`
                       px-3 py-2 rounded-md border text-sm font-medium
                       transition-colors duration-200
-                      ${sizePreset === preset 
-                        ? 'border-primary bg-primary text-primary-foreground' 
+                      ${sizePreset === preset
+                        ? 'border-primary bg-primary text-primary-foreground'
                         : 'border-border hover:bg-muted/50'
                       }
                       disabled:opacity-50 disabled:cursor-not-allowed
@@ -260,9 +259,9 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
             {sizePreset === 'custom' && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <Label className="block mb-1" htmlFor="fixpagesizetool-field-1">
                     {tTools('fixPageSize.width') || 'Width (points)'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     value={customWidth}
@@ -270,13 +269,13 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                     disabled={isProcessing}
                     min={72}
                     max={3000}
-                    className="w-full"
+                    className="w-full" id="fixpagesizetool-field-1" aria-label={tTools('fixPageSize.width') || 'Width (points)'}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <Label className="block mb-1" htmlFor="fixpagesizetool-field-2">
                     {tTools('fixPageSize.height') || 'Height (points)'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     value={customHeight}
@@ -284,7 +283,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                     disabled={isProcessing}
                     min={72}
                     max={3000}
-                    className="w-full"
+                    className="w-full" id="fixpagesizetool-field-2" aria-label={tTools('fixPageSize.height') || 'Height (points)'}
                   />
                 </div>
               </div>
@@ -292,9 +291,9 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
             {/* Scale Mode */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2">
                 {tTools('fixPageSize.scaleMode') || 'Content Scaling'}
-              </label>
+              </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {(['fit', 'fill', 'stretch', 'center'] as ScaleMode[]).map((mode) => (
                   <button
@@ -305,8 +304,8 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                     className={`
                       px-3 py-2 rounded-md border text-sm font-medium
                       transition-colors duration-200
-                      ${scaleMode === mode 
-                        ? 'border-primary bg-primary text-primary-foreground' 
+                      ${scaleMode === mode
+                        ? 'border-primary bg-primary text-primary-foreground'
                         : 'border-border hover:bg-muted/50'
                       }
                       disabled:opacity-50 disabled:cursor-not-allowed
@@ -329,9 +328,9 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
             {/* Orientation */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2">
                 {tTools('fixPageSize.orientation') || 'Page Orientation'}
-              </label>
+              </Label>
               <div className="grid grid-cols-3 gap-2">
                 {(['auto', 'portrait', 'landscape'] as const).map((orient) => (
                   <button
@@ -342,8 +341,8 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                     className={`
                       px-3 py-2 rounded-md border text-sm font-medium
                       transition-colors duration-200
-                      ${orientation === orient 
-                        ? 'border-primary bg-primary text-primary-foreground' 
+                      ${orientation === orient
+                        ? 'border-primary bg-primary text-primary-foreground'
                         : 'border-border hover:bg-muted/50'
                       }
                       disabled:opacity-50 disabled:cursor-not-allowed
@@ -358,7 +357,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
             </div>
 
             {/* Maintain Aspect Ratio */}
-            <label className="flex items-center gap-3 cursor-pointer">
+            <Label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 checked={maintainAspectRatio}
@@ -369,7 +368,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
               <span className="text-sm text-foreground">
                 {tTools('fixPageSize.maintainAspectRatio') || 'Maintain aspect ratio'}
               </span>
-            </label>
+            </Label>
           </div>
         </Card>
       )}
@@ -394,8 +393,8 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
           disabled={!canProcess}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('fixPageSize.applyButton') || 'Fix Page Sizes')
           }
         </Button>
@@ -413,7 +412,7 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

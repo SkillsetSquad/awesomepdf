@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -51,12 +52,12 @@ function MetadataField({
 
   return (
     <div className="space-y-1">
-      <label
+      <Label
         htmlFor={`metadata-${field}`}
-        className="block text-sm font-medium text-foreground"
+        className="block"
       >
         {label}
-      </label>
+      </Label>
       <InputComponent
         id={`metadata-${field}`}
         type={multiline ? undefined : 'text'}
@@ -64,7 +65,7 @@ function MetadataField({
         onChange={(e) => onChange(field, e.target.value)}
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full px-3 py-2 rounded-md border border-border 
+        className={`w-full px-3 py-2 rounded-md border border-border
           bg-background text-foreground
           placeholder:text-muted-foreground
           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
@@ -83,14 +84,14 @@ export interface EditMetadataToolProps {
 /**
  * EditMetadataTool Component
  * Requirements: 5.1
- * 
+ *
  * Provides the UI for editing PDF document metadata including
  * title, author, subject, and keywords.
  */
 export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -99,7 +100,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [resultFilename, setResultFilename] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
-  
+
   // Metadata form state
   const [metadata, setMetadata] = useState<CurrentMetadata>({
     title: '',
@@ -110,7 +111,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
     producer: '',
   });
   const [originalMetadata, setOriginalMetadata] = useState<CurrentMetadata | null>(null);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -121,13 +122,13 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       const metadataResult = await pdf.getMetadata();
-      
+
       const info = metadataResult.info as Record<string, unknown> | null;
-      
+
       const extracted: CurrentMetadata = {
         title: (info?.Title as string) || '',
         author: (info?.Author as string) || '',
@@ -136,7 +137,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
         creator: (info?.Creator as string) || '',
         producer: (info?.Producer as string) || '',
       };
-      
+
       setMetadata(extracted);
       setOriginalMetadata(extracted);
     } catch (err) {
@@ -332,7 +333,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -397,50 +398,50 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
               </Button>
             )}
           </div>
-          
+
           <div className="space-y-4">
-            <MetadataField 
-              label={tTools('editMetadata.title') || 'Title'} 
+            <MetadataField
+              label={tTools('editMetadata.title') || 'Title'}
               field="title"
               value={metadata.title}
               onChange={handleMetadataChange}
               placeholder={tTools('editMetadata.titlePlaceholder') || 'Enter document title'}
               disabled={isProcessing}
             />
-            <MetadataField 
-              label={tTools('editMetadata.author') || 'Author'} 
+            <MetadataField
+              label={tTools('editMetadata.author') || 'Author'}
               field="author"
               value={metadata.author}
               onChange={handleMetadataChange}
               placeholder={tTools('editMetadata.authorPlaceholder') || 'Enter author name'}
               disabled={isProcessing}
             />
-            <MetadataField 
-              label={tTools('editMetadata.subject') || 'Subject'} 
+            <MetadataField
+              label={tTools('editMetadata.subject') || 'Subject'}
               field="subject"
               value={metadata.subject}
               onChange={handleMetadataChange}
               placeholder={tTools('editMetadata.subjectPlaceholder') || 'Enter document subject'}
               disabled={isProcessing}
             />
-            <MetadataField 
-              label={tTools('editMetadata.keywords') || 'Keywords'} 
+            <MetadataField
+              label={tTools('editMetadata.keywords') || 'Keywords'}
               field="keywords"
               value={metadata.keywords}
               onChange={handleMetadataChange}
               placeholder={tTools('editMetadata.keywordsPlaceholder') || 'Enter keywords separated by commas'}
               disabled={isProcessing}
             />
-            <MetadataField 
-              label={tTools('editMetadata.creator') || 'Creator Application'} 
+            <MetadataField
+              label={tTools('editMetadata.creator') || 'Creator Application'}
               field="creator"
               value={metadata.creator}
               onChange={handleMetadataChange}
               placeholder={tTools('editMetadata.creatorPlaceholder') || 'Enter creator application'}
               disabled={isProcessing}
             />
-            <MetadataField 
-              label={tTools('editMetadata.producer') || 'PDF Producer'} 
+            <MetadataField
+              label={tTools('editMetadata.producer') || 'PDF Producer'}
               field="producer"
               value={metadata.producer}
               onChange={handleMetadataChange}
@@ -486,7 +487,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
           </div>
 
           {/* Success Message */}
-          <div 
+          <div
             className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
             role="status"
           >

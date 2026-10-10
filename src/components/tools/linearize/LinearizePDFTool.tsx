@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,7 +19,7 @@ export interface LinearizePDFToolProps {
 /**
  * LinearizePDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for linearizing PDF files for fast web viewing.
  * Linearized PDFs are optimized for streaming, allowing the first page
  * to display before the entire file is downloaded.
@@ -26,7 +27,7 @@ export interface LinearizePDFToolProps {
 export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -41,10 +42,10 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
     pageCount: number;
     filesProcessed?: number;
   } | null>(null);
-  
+
   // Options
   const [useObjectStreams, setUseObjectStreams] = useState(true);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -109,7 +110,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
     try {
       let output: ProcessOutput;
-      
+
       if (files.length === 1) {
         output = await linearizePDF(
           files[0],
@@ -143,7 +144,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
         setResult(output.result as Blob);
         setResultFilename(output.filename || 'linearized.pdf');
         setStatus('complete');
-        
+
         // Set stats
         if (output.metadata) {
           setStats({
@@ -202,7 +203,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -226,10 +227,10 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
               {t('buttons.clearAll') || 'Clear All'}
             </Button>
           </div>
-          
+
           <div className="space-y-2 max-h-60 overflow-y-auto">
             {files.map((file, index) => (
-              <div 
+              <div
                 key={`${file.name}-${index}`}
                 className="flex items-center justify-between p-3 rounded-sm bg-muted/30"
               >
@@ -270,7 +271,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('linearizePdf.optionsTitle') || 'Linearization Options'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Info about linearization */}
             <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
@@ -281,7 +282,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
             {/* Options */}
             <div className="space-y-3">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={useObjectStreams}
@@ -297,7 +298,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
                     {tTools('linearizePdf.useObjectStreamsDesc') || 'Recommended for smaller file sizes. Disable for maximum compatibility with older PDF readers.'}
                   </p>
                 </div>
-              </label>
+              </Label>
             </div>
           </div>
         </Card>
@@ -323,8 +324,8 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
           disabled={!canLinearize}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('linearizePdf.linearizeButton') || 'Linearize PDF')
           }
         </Button>
@@ -342,7 +343,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
 
       {/* Results */}
       {status === 'complete' && result && stats && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

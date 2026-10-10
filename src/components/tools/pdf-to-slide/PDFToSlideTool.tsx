@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -137,10 +138,10 @@ export function PDFToSlideTool() {
             {/* Left Column: Color Picker & Action */}
             <div className="space-y-6 md:col-span-1">
               <div className="space-y-3">
-                <label className="text-sm font-semibold text-neutral-300 flex items-center gap-2">
+                <Label className="text-neutral-300 flex items-center gap-2">
                   <Palette className="w-4 h-4 text-indigo-400" />
                   {t('pdfToSlide.themeLabel')}
-                </label>
+                </Label>
                 <div className="grid grid-cols-5 gap-2">
                   {['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#ef4444'].map((color) => (
                     <button
@@ -195,7 +196,7 @@ export function PDFToSlideTool() {
                 /* Starfield Flow Transition (WOW Effect) */
                 <div className="relative h-64 bg-neutral-900 rounded-xl overflow-hidden flex flex-col items-center justify-center border border-indigo-900/30">
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/40 via-neutral-950 to-neutral-950 -z-10" />
-                  
+
                   {/* Floating particles */}
                   <div className="absolute top-10 left-12 h-2 w-2 rounded-full bg-indigo-500 blur-sm animate-ping" />
                   <div className="absolute bottom-10 right-20 h-3 w-3 rounded-full bg-pink-500 blur-sm animate-ping" />
@@ -227,7 +228,7 @@ export function PDFToSlideTool() {
                   </div>
 
                   {/* Modern Glassmorphic PPT Slide Preview Card */}
-                  <div 
+                  <div
                     className="p-6 rounded-xl border min-h-[220px] flex flex-col justify-between transition-all duration-300"
                     style={{
                       backgroundColor: 'rgba(23, 23, 23, 0.75)',
@@ -237,8 +238,8 @@ export function PDFToSlideTool() {
                   >
                     <div>
                       {/* Accent indicator */}
-                      <div 
-                        className="w-12 h-1.5 rounded mb-4" 
+                      <div
+                        className="w-12 h-1.5 rounded mb-4"
                         style={{ backgroundColor: themeColor }}
                       />
                       <h3 className="text-lg font-bold text-neutral-100 leading-snug">

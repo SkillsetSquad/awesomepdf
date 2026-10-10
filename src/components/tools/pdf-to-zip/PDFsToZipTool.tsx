@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -25,13 +26,13 @@ export interface PDFsToZipToolProps {
 /**
  * PDFsToZipTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for packaging multiple PDF files into a ZIP archive.
  */
 export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -40,7 +41,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [compressionLevel, setCompressionLevel] = useState(6);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -53,7 +54,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
       file,
       status: 'pending' as const,
     }));
-    
+
     setFiles(prev => [...prev, ...uploadedFiles]);
     setError(null);
     setResult(null);
@@ -178,7 +179,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -257,15 +258,15 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToZip.optionsTitle') || 'ZIP Options'}
           </h3>
-          
+
           <div className="space-y-4">
             <div>
-              <label 
+              <Label
                 htmlFor="compression-level"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block mb-2"
               >
                 {tTools('pdfToZip.compressionLevel') || 'Compression Level'}
-              </label>
+              </Label>
               <div className="flex items-center gap-4">
                 <input
                   id="compression-level"
@@ -275,14 +276,14 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
                   value={compressionLevel}
                   onChange={(e) => setCompressionLevel(Number(e.target.value))}
                   disabled={isProcessing}
-                  className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer"
+                  className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer" aria-label={tTools('pdfToZip.compressionLevel') || 'Compression Level'}
                 />
                 <span className="text-sm text-muted-foreground w-8 text-center">
                   {compressionLevel}
                 </span>
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                {compressionLevel === 0 
+                {compressionLevel === 0
                   ? (tTools('pdfToZip.noCompression') || 'No compression (fastest)')
                   : compressionLevel <= 3
                   ? (tTools('pdfToZip.lowCompression') || 'Low compression (fast)')
@@ -316,8 +317,8 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
           disabled={!canCreateZip}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('pdfToZip.createButton') || 'Create ZIP Archive')
           }
         </Button>
@@ -335,7 +336,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

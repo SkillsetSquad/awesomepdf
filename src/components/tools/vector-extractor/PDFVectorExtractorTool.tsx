@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -12,14 +13,14 @@ import { Card } from '@/components/ui/card';
 import { extractVectors, type VectorExtractorOptions } from '@/lib/pdf/processors/vector-extractor';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  Layers, 
-  Settings2, 
-  Copy, 
-  Download, 
-  Check, 
-  Palette, 
-  Search, 
+import {
+  Layers,
+  Settings2,
+  Copy,
+  Download,
+  Check,
+  Palette,
+  Search,
   FileCode,
   Maximize2
 } from 'lucide-react';
@@ -73,7 +74,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
       setTotalPages(pdf.getPageCount());
-      
+
       // Auto run vector extract
       setTimeout(() => {
         handleExtract(selectedFile, 1);
@@ -151,20 +152,20 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
     if (!svgContent || !containerRef.current) return;
 
     const container = containerRef.current;
-    
+
     // Find all paths, shapes, text elements in the parsed SVG container
     const selectableTags = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'text', 'g'];
-    
+
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (selectableTags.includes(target.tagName.toLowerCase())) {
         e.stopPropagation();
-        
+
         // Add visual glowing styles on the fly
         target.style.transition = 'all 0.25s ease';
         target.style.filter = 'drop-shadow(0 4px 8px rgba(59, 130, 246, 0.5))';
         target.style.cursor = 'pointer';
-        
+
         setHoveredElementId(target.id || target.tagName);
       }
     };
@@ -181,11 +182,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
       const target = e.target as HTMLElement;
       if (selectableTags.includes(target.tagName.toLowerCase())) {
         e.stopPropagation();
-        
+
         // Clone element HTML string for code copying
         const outerHtml = target.outerHTML;
         setSelectedElementHtml(outerHtml);
-        
+
         // Pick existing color
         const fill = target.getAttribute('fill') || target.style.fill || '#3b82f6';
         if (fill.startsWith('#') || fill.startsWith('rgb')) {
@@ -220,7 +221,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
    */
   const handleDownloadSelected = async () => {
     if (!selectedElementHtml) return;
-    
+
     // Wrap in full standard SVG container
     const wrappedSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">${selectedElementHtml}</svg>`;
     const blob = new Blob([wrappedSvg], { type: 'image/svg+xml;charset=utf-8' });
@@ -246,7 +247,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* File Upload zone */}
       {!file && (
         <FileUploader
@@ -284,11 +285,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                 <span className="text-xs text-muted-foreground">
                   {totalPages > 0 ? t('comparePdfs.totalAligned', { count: totalPages }) : t('status.loading')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
                 </span>
-                
+
                 {/* Page Selector */}
                 {totalPages > 1 && (
                   <div className="flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-0.5 bg-white dark:bg-zinc-900">
-                    <button 
+                    <button
                       onClick={() => handlePageChange(targetPage - 1)}
                       disabled={targetPage <= 1}
                       className="text-xs font-black px-1 opacity-60 hover:opacity-100 disabled:opacity-30"
@@ -296,7 +297,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                       ◀
                     </button>
                     <span className="text-[11px] font-bold">{t('comparePdfs.pageNumber', { page: targetPage })}</span>
-                    <button 
+                    <button
                       onClick={() => handlePageChange(targetPage + 1)}
                       disabled={targetPage >= totalPages}
                       className="text-xs font-black px-1 opacity-60 hover:opacity-100 disabled:opacity-30"
@@ -317,11 +318,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
       {/* Main Workspace */}
       {file && svgContent && status !== 'processing' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* LEFT: SVG Display Canvas */}
           <div className="lg:col-span-8 flex flex-col space-y-4">
             <Card  className="p-4 bg-zinc-100 dark:bg-zinc-950 flex-1 flex flex-col justify-between rounded-[2rem] border-2 shadow-inner min-h-[480px]">
-              
+
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
                   <Search className="w-4 h-4 text-zinc-400" />
@@ -334,7 +335,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
               {/* Rendered SVG wrapper with 3D Explode perspective container */}
               <div className="flex-1 flex items-center justify-center p-6 overflow-auto">
-                <div 
+                <div
                   ref={containerRef}
                   className="w-full max-w-lg aspect-square bg-white border border-zinc-200 dark:border-zinc-800 shadow-md rounded-2xl p-4 overflow-hidden relative"
                   style={{
@@ -350,10 +351,10 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
           {/* RIGHT: Inspector & Export Options */}
           <div className="lg:col-span-4 flex flex-col space-y-6">
-            
+
             {/* Inspector Panel */}
             <Card  className="flex-1 p-6 rounded-[2rem] border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md flex flex-col justify-between shadow-xl">
-              
+
               <div className="space-y-6">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
@@ -370,11 +371,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                   </div>
                 ) : (
                   <div className="space-y-5 animate-in fade-in zoom-in-95 duration-200">
-                    
+
                     {/* SVG Preview Box */}
                     <div className="border border-border rounded-2xl p-4 bg-white flex items-center justify-center aspect-video shadow-sm relative overflow-hidden">
                       <div className="absolute top-2 left-2 text-[8px] font-bold text-zinc-400">Preview</div>
-                      <div 
+                      <div
                         className="w-20 h-20 flex items-center justify-center"
                         dangerouslySetInnerHTML={{ __html: `<svg viewBox="0 0 100 100" width="100%" height="100%">${selectedElementHtml}</svg>` }}
                       />
@@ -382,9 +383,9 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
                     {/* Recolor panel */}
                     <div className="space-y-2">
-                      <label className="text-[11px] font-bold text-muted-foreground flex items-center gap-1.5">
+                      <Label className="text-[11px] text-muted-foreground flex items-center gap-1.5">
                         <Palette className="w-4 h-4" /> {tTools('vectorExtractor.colorFill')}
-                      </label>
+                      </Label>
                       <div className="flex items-center gap-3">
                         <Input
                           type="color"
@@ -398,11 +399,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
                     {/* Actions list */}
                     <div className="space-y-2.5 pt-2 border-t border-border">
-                      
+
                       {/* Copy Code */}
-                      <Button 
-                        variant="secondary" 
-                        size="sm" 
+                      <Button
+                        variant="secondary"
+                        size="sm"
                         className="w-full flex items-center justify-center gap-2 text-xs py-3"
                         onClick={handleCopyCode}
                       >
@@ -411,9 +412,9 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                       </Button>
 
                       {/* Download element */}
-                      <Button 
-                        variant="secondary" 
-                        size="sm" 
+                      <Button
+                        variant="secondary"
+                        size="sm"
                         className="w-full flex items-center justify-center gap-2 text-xs py-3"
                         onClick={handleDownloadSelected}
                       >

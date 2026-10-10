@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -129,7 +130,7 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                   </div>
 
                   {/* Right scratchpad fold margin */}
-                  <div 
+                  <div
                     className="h-52 bg-yellow-50/40 dark:bg-yellow-950/10 transition-all duration-500 ease-out origin-left flex items-center justify-center"
                     style={{
                       width: showScratchpad ? `${padSize / 1.5}px` : '0px',
@@ -171,11 +172,11 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('pdfScratchpadCanvas.padPositionLabel')}</label>
+                    <Label className="" htmlFor="pdfscratchpadcanvastool-field-1">{t('pdfScratchpadCanvas.padPositionLabel')}</Label>
                     <select
                       value={padPosition}
                       onChange={(e) => setPadPosition(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="pdfscratchpadcanvastool-field-1" aria-label={t('pdfScratchpadCanvas.padPositionLabel')}
                     >
                       <option value="right">{t('pdfScratchpadCanvas.padPositionRight')}</option>
                       <option value="bottom">{t('pdfScratchpadCanvas.padPositionBottom')}</option>
@@ -183,10 +184,10 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       <span>{t('pdfScratchpadCanvas.padSizeLabel')}</span>
                       <span className="font-mono text-primary font-bold">{padSize} pt</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="100"
@@ -199,11 +200,11 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-zinc-500 font-bold">{t('pdfScratchpadCanvas.gridTypeLabel')}</label>
+                    <Label className="" htmlFor="pdfscratchpadcanvastool-field-2">{t('pdfScratchpadCanvas.gridTypeLabel')}</Label>
                     <select
                       value={gridType}
                       onChange={(e) => setGridType(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3" id="pdfscratchpadcanvastool-field-2" aria-label={t('pdfScratchpadCanvas.gridTypeLabel')}
                     >
                       <option value="grid">{t('pdfScratchpadCanvas.gridTypeGrid')}</option>
                       <option value="ruled">{t('pdfScratchpadCanvas.gridTypeRuled')}</option>

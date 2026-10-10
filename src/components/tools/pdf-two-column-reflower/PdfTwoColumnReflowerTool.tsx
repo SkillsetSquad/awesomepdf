@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -164,10 +165,10 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1">
-                    <label className="text-zinc-500 font-bold flex justify-between">
+                    <Label className="flex justify-between">
                       {t('pdfTwoColumnReflower.splitRatio')}
                       <span className="font-mono text-primary font-bold">{(middleGapRatio * 100).toFixed(0)}%</span>
-                    </label>
+                    </Label>
                     <input
                       type="range"
                       min="0.4"

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -28,7 +29,7 @@ export interface PDFToSVGToolProps {
 
 /**
  * PDFToSVGTool Component
- * 
+ *
  * Converts PDF pages to SVG (Scalable Vector Graphics).
  * Supports preview and individual export.
  */
@@ -282,7 +283,6 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                 </Card>
             )}
 
-
             {/* Options Panel */}
             {file && (
                 <Card className="p-6" >
@@ -293,14 +293,14 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Scale/Resolution */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="pdftosvgtool-field-1">
                                 {tTools('pdfToSvg.resolution') || 'Resolution'}
-                            </label>
+                            </Label>
                             <select
                                 value={scale}
                                 onChange={(e) => setScale(parseFloat(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="pdftosvgtool-field-1" aria-label={tTools('pdfToSvg.resolution') || 'Resolution'}
                             >
                                 <option value="1">72 DPI (Low)</option>
                                 <option value="2">144 DPI (Medium)</option>
@@ -314,16 +314,16 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
 
                         {/* Page Range */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="pdftosvgtool-field-2">
                                 {tTools('pdfToSvg.pageRange') || 'Page Range'}
-                            </label>
+                            </Label>
                             <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 placeholder={tTools('pdfToSvg.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                                 disabled={isProcessing}
-                                className="w-full"
+                                className="w-full" id="pdftosvgtool-field-2" aria-label={tTools('pdfToSvg.pageRange') || 'Page Range'}
                             />
                             <p className="text-xs text-muted-foreground mt-1">
                                 {tTools('pdfToSvg.pageRangeHint') || 'Leave empty for all pages'}

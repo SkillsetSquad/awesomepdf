@@ -38,7 +38,7 @@ export interface FileUploaderProps {
 /**
  * FileUploader Component
  * Requirements: 5.2
- * 
+ *
  * Supports drag-and-drop, file picker, and paste from clipboard.
  * Files and password-protected documents stay on the device.
  */
@@ -387,7 +387,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             try {
               const bytes = await readFile(filePath);
               const name = filePath.split(/[/\\]/).pop() || 'file.pdf';
-              
+
               let mimeType = 'application/octet-stream';
               if (name.toLowerCase().endsWith('.pdf')) {
                 mimeType = 'application/pdf';
@@ -469,7 +469,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         e.preventDefault();
       }
     };
-    
+
     const handleGlobalDrop = (e: DragEvent) => {
       const hasFiles = e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files');
       if (hasFiles) {
@@ -523,7 +523,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           <form onSubmit={handleDecryptSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor={passwordId}>{t('fileUploader.passwordPlaceholder')}</Label>
-              <Input id={passwordId} type="password" autoComplete="off" placeholder={t('fileUploader.passwordPlaceholder')} value={password} onChange={event => setPassword(event.target.value)} disabled={isDecrypting} aria-invalid={!!decryptError} aria-describedby={decryptError ? `${passwordId}-error` : undefined} />
+              <Input id={passwordId} type="password" autoComplete="off" placeholder={t('fileUploader.passwordPlaceholder')} value={password} onChange={event => setPassword(event.target.value)} disabled={isDecrypting} aria-invalid={!!decryptError} aria-describedby={decryptError ? `${passwordId}-error` : undefined} aria-label={t('fileUploader.passwordPlaceholder')} />
             </div>
             {decryptError && <Alert variant="destructive" id={`${passwordId}-error`}><AlertCircle /><AlertDescription>{decryptError}</AlertDescription></Alert>}
             <DialogFooter>

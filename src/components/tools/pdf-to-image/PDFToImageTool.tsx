@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -32,7 +33,7 @@ export interface PDFToImageToolProps {
 /**
  * PDFToImageTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Converts PDF pages to images (JPG, PNG, WebP, BMP, TIFF).
  */
 export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolProps) {
@@ -61,7 +62,6 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
   // Ref for cancellation
   const cancelledRef = useRef(false);
-
 
   /**
    * Handle file selected from uploader
@@ -293,7 +293,6 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
         </Card>
       )}
 
-
       {/* Options Panel */}
       {file && (
         <Card className="p-6" >
@@ -305,13 +304,13 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {/* Output Format */}
             {!outputFormat && (
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <Label className="block mb-2" htmlFor="pdftoimagetool-field-1">
                   {tTools('pdfToImage.format') || 'Output Format'}
-                </label>
+                </Label>
                 <Select
                   value={format}
                   onChange={(e) => setFormat(e.target.value as ImageFormat)}
-                  disabled={isProcessing}
+                  disabled={isProcessing} id="pdftoimagetool-field-1" aria-label={tTools('pdfToImage.format') || 'Output Format'}
                 >
                   <option value="png">PNG</option>
                   <option value="jpg">JPG</option>
@@ -325,9 +324,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {/* Quality (for lossy formats) */}
             {['jpg', 'jpeg', 'webp'].includes(format) && (
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <Label className="block mb-2">
                   {tTools('pdfToImage.quality') || 'Quality'} ({Math.round(quality * 100)}%)
-                </label>
+                </Label>
                 <input
                   type="range"
                   min="0.1"
@@ -343,13 +342,13 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Scale/DPI */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftoimagetool-field-2">
                 {tTools('pdfToImage.resolution') || 'Resolution'}
-              </label>
+              </Label>
               <Select
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
-                disabled={isProcessing}
+                disabled={isProcessing} id="pdftoimagetool-field-2" aria-label={tTools('pdfToImage.resolution') || 'Resolution'}
               >
                 <option value="1">72 DPI (Low)</option>
                 <option value="2">144 DPI (Medium)</option>
@@ -360,16 +359,16 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Page Range */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftoimagetool-field-3">
                 {tTools('pdfToImage.pageRange') || 'Page Range'}
-              </label>
+              </Label>
               <Input
                 type="text"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToImage.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="pdftoimagetool-field-3" aria-label={tTools('pdfToImage.pageRange') || 'Page Range'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToImage.pageRangeHint') || 'Leave empty for all pages'}
@@ -379,9 +378,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
           {/* Page Layout Section */}
           <div className="mt-4 pt-4 border-t border-border">
-            <label className="block text-sm font-medium text-foreground mb-3">
+            <Label className="block mb-3">
               {tTools('pdfToImage.layoutTitle') || 'Page Layout'}
-            </label>
+            </Label>
 
             {/* Layout Preset Selection */}
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
@@ -441,9 +440,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {layoutPreset === 'custom' && (
               <div className="flex gap-4 mb-4 p-3 rounded-lg bg-muted/30">
                 <div className="flex-1">
-                  <label className="block text-xs font-medium text-foreground mb-1">
+                  <Label className="block mb-1" htmlFor="pdftoimagetool-field-4">
                     {tTools('pdfToImage.columns') || 'Columns'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     min={1}
@@ -451,13 +450,13 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customColumns}
                     onChange={(e) => setCustomColumns(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full"
+                    className="w-full" id="pdftoimagetool-field-4" aria-label={tTools('pdfToImage.columns') || 'Columns'}
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-xs font-medium text-foreground mb-1">
+                  <Label className="block mb-1" htmlFor="pdftoimagetool-field-5">
                     {tTools('pdfToImage.rows') || 'Rows'}
-                  </label>
+                  </Label>
                   <Input
                     type="number"
                     min={1}
@@ -465,7 +464,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full"
+                    className="w-full" id="pdftoimagetool-field-5" aria-label={tTools('pdfToImage.rows') || 'Rows'}
                   />
                 </div>
               </div>
@@ -473,7 +472,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Skip First Page Option - only show when layout is not 1x1 */}
             {layoutPreset !== '1x1' && (
-              <label className="flex items-center gap-3 cursor-pointer mb-4">
+              <Label className="flex items-center gap-3 cursor-pointer mb-4">
                 <input
                   type="checkbox"
                   checked={skipFirstPage}
@@ -484,7 +483,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 <span className="text-sm text-foreground">
                   {tTools('pdfToImage.skipFirstPage') || 'Without first/cover page'}
                 </span>
-              </label>
+              </Label>
             )}
 
             {/* Layout Preview */}

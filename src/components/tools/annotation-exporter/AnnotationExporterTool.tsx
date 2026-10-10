@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -158,11 +159,11 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
                       id="highlights"
                       checked={incHighlights}
                       onChange={(e) => setIncHighlights(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('annotationExporter.incHighlightsLabel')}
                     />
-                    <label htmlFor="highlights" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="highlights" className="dark:text-zinc-300">
                       {t('annotationExporter.incHighlightsLabel')}
-                    </label>
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-2.5">
@@ -171,15 +172,15 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
                       id="notes"
                       checked={incNotes}
                       onChange={(e) => setIncNotes(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('annotationExporter.incNotesLabel')}
                     />
-                    <label htmlFor="notes" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="notes" className="dark:text-zinc-300">
                       {t('annotationExporter.incNotesLabel')}
-                    </label>
+                    </Label>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-zinc-500">{t('annotationExporter.formatLabel')}</label>
+                    <Label className="">{t('annotationExporter.formatLabel')}</Label>
                     <div className="grid grid-cols-2 gap-2">
                       <Button
                         variant={format === 'md' ? 'default' : 'secondary'}

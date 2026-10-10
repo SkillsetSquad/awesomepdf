@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -151,11 +152,11 @@ export function BookmarksAutoGeneratorTool({ className = '' }: BookmarksAutoGene
 
                 <div className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500">{t('bookmarksAutoGenerator.detectStrategyLabel')}</label>
+                    <Label className="" htmlFor="bookmarksautogeneratortool-field-1">{t('bookmarksAutoGenerator.detectStrategyLabel')}</Label>
                     <select
                       value={strategy}
                       onChange={(e) => setStrategy(e.target.value as any)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:ring-1 focus:ring-primary"
+                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:ring-1 focus:ring-primary" id="bookmarksautogeneratortool-field-1" aria-label={t('bookmarksAutoGenerator.detectStrategyLabel')}
                     >
                       <option value="both">{t('bookmarksAutoGenerator.detectStrategyBoth')}</option>
                       <option value="regex">{t('bookmarksAutoGenerator.detectStrategyRegex')}</option>
@@ -164,12 +165,12 @@ export function BookmarksAutoGeneratorTool({ className = '' }: BookmarksAutoGene
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500">{t('bookmarksAutoGenerator.minFontSizeLabel')}</label>
+                    <Label className="" htmlFor="bookmarksautogeneratortool-field-2">{t('bookmarksAutoGenerator.minFontSizeLabel')}</Label>
                     <Input
                       type="number"
                       value={minFontSize}
                       onChange={(e) => setMinFontSize(parseInt(e.target.value) || 16)}
-                      className="w-full"
+                      className="w-full" id="bookmarksautogeneratortool-field-2" aria-label={t('bookmarksAutoGenerator.minFontSizeLabel')}
                     />
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -572,18 +573,18 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             <div className="flex-1 flex flex-col gap-2 p-2 bg-gray-50 rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
               <div className="flex gap-2">
                 <div className="flex-1">
-                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.title') || 'Title'}</label>
+                  <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-1">{tTools('bookmark.title') || 'Title'}</Label>
                   <Input
                     type="text"
                     value={editingBookmark.title}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, title: e.target.value })}
                     className="w-full"
                     placeholder={tTools('bookmark.title') || 'Title'}
-                    autoFocus
+                    autoFocus id="bookmarktool-field-1" aria-label={tTools('bookmark.title') || 'Title'}
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.page') || 'Page'}</label>
+                  <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-2">{tTools('bookmark.page') || 'Page'}</Label>
                   <div className="flex items-center gap-1">
                     <Input
                       type="text"
@@ -592,14 +593,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                       onChange={(e) => {
                         const val = e.target.value;
                         if (/^\d*$/.test(val)) {
-                          setEditingBookmark({ 
-                            ...editingBookmark, 
-                            pageNumber: val === '' ? '' : Math.min(totalPages, parseInt(val)) 
+                          setEditingBookmark({
+                            ...editingBookmark,
+                            pageNumber: val === '' ? '' : Math.min(totalPages, parseInt(val))
                           } as any);
                         }
                       }}
                       className="w-14 h-8"
-                      placeholder="1"
+                      placeholder="1" id="bookmarktool-field-2" aria-label={tTools('bookmark.page') || 'Page'}
                     />
                     <button
                       type="button"
@@ -614,21 +615,21 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               </div>
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0">
-                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.color') || 'Color'}</label>
+                  <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-3">{tTools('bookmark.color') || 'Color'}</Label>
                   <Input
                     type="color"
                     value={editingBookmark.color || '#000000'}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, color: e.target.value })}
                     className="w-10 h-8 cursor-pointer"
-                    title={tTools('bookmark.color') || 'Color'}
+                    title={tTools('bookmark.color') || 'Color'} id="bookmarktool-field-3" aria-label={tTools('bookmark.color') || 'Color'}
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.style') || 'Style'}</label>
+                  <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-4">{tTools('bookmark.style') || 'Style'}</Label>
                   <select
                     value={editingBookmark.style || ''}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, style: e.target.value as any || undefined })}
-                    className="w-full px-2 py-1 border rounded text-sm h-8"
+                    className="w-full px-2 py-1 border rounded text-sm h-8" id="bookmarktool-field-4" aria-label={tTools('bookmark.style') || 'Style'}
                   >
                     <option value="">{tTools('bookmark.normal') || 'Normal'}</option>
                     <option value="bold">{tTools('bookmark.bold') || 'Bold'}</option>
@@ -644,10 +645,10 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             </div>
           ) : (
             <>
-              <span 
+              <span
                 className={`flex-1 text-sm truncate ${
-                  bookmark.style === 'bold' ? 'font-bold' : 
-                  bookmark.style === 'italic' ? 'italic' : 
+                  bookmark.style === 'bold' ? 'font-bold' :
+                  bookmark.style === 'italic' ? 'italic' :
                   bookmark.style === 'bold-italic' ? 'font-bold italic' : ''
                 }`}
                 style={{ color: bookmark.color }}
@@ -760,17 +761,17 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.bookmarksTitle') || 'Bookmarks'}</h3>
               <div className="flex gap-1">
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={handleExtractBookmarks}
                   title={tTools('bookmark.extractExisting') || 'Extract Existing Bookmarks'}
                 >
                   📥 {tTools('bookmark.extractExisting') || 'Extract'}
                 </Button>
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={handleSortBookmarks}
                   title={tTools('bookmark.sortByPage') || 'Sort by page number'}
                   disabled={bookmarks.length === 0}

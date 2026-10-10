@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,14 +19,14 @@ export interface FlattenPDFToolProps {
 /**
  * FlattenPDFTool Component
  * Requirements: 5.1
- * 
+ *
  * Provides the UI for flattening PDF files.
  * Converts interactive elements into static page content.
  */
 export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -34,14 +35,14 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [flattenedItems, setFlattenedItems] = useState<string[]>([]);
-  
+
   // Options
   const [options, setOptions] = useState<FlattenPDFOptions>({
     flattenForms: true,
     flattenAnnotations: true,
     flattenLayers: true,
   });
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -153,7 +154,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -200,7 +201,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('flattenPdf.optionsTitle') || 'Flatten Options'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Info */}
             <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
@@ -211,7 +212,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
 
             {/* Options */}
             <div className="space-y-3">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.flattenForms}
@@ -227,9 +228,9 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                     {tTools('flattenPdf.flattenFormsDesc') || 'Convert fillable form fields to static text'}
                   </p>
                 </div>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.flattenAnnotations}
@@ -245,9 +246,9 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                     {tTools('flattenPdf.flattenAnnotationsDesc') || 'Merge comments, highlights, and stamps into page content'}
                   </p>
                 </div>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.flattenLayers}
@@ -263,7 +264,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                     {tTools('flattenPdf.flattenLayersDesc') || 'Merge all visible layers into a single layer'}
                   </p>
                 </div>
-              </label>
+              </Label>
             </div>
           </div>
         </Card>
@@ -289,8 +290,8 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
           disabled={!canFlatten}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('flattenPdf.flattenButton') || 'Flatten PDF')
           }
         </Button>
@@ -308,7 +309,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

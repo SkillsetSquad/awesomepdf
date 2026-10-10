@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -25,7 +26,7 @@ export interface PSDToPDFToolProps {
 
 /**
  * PSDToPDFTool Component
- * 
+ *
  * Converts PSD files to PDF by first rendering them to images.
  */
 export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
@@ -68,7 +69,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
             file,
             status: 'pending' as const,
             // We don't generate preview immediately for PSD as it's expensive/complex
-            // We'll show a generic icon or try to generate a quick one if possible, 
+            // We'll show a generic icon or try to generate a quick one if possible,
             // but for now let's just use a placeholder text/icon in the UI
             preview: undefined,
         }));
@@ -411,7 +412,6 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                 </Card>
             )}
 
-
             {/* Options Panel */}
             {files.length >= 1 && (
                 <Card className="p-6" >
@@ -422,14 +422,14 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Page Size */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="psdtopdftool-field-1">
                                 {tTools('imageToPdf.pageSize') || 'Page Size'}
-                            </label>
+                            </Label>
                             <select
                                 value={pageSize}
                                 onChange={(e) => setPageSize(e.target.value as PageSizeType)}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-1" aria-label={tTools('imageToPdf.pageSize') || 'Page Size'}
                             >
                                 <option value="A4">A4</option>
                                 <option value="LETTER">Letter</option>
@@ -442,14 +442,14 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
 
                         {/* Orientation */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="psdtopdftool-field-2">
                                 {tTools('imageToPdf.orientation') || 'Orientation'}
-                            </label>
+                            </Label>
                             <select
                                 value={orientation}
                                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-2" aria-label={tTools('imageToPdf.orientation') || 'Orientation'}
                             >
                                 <option value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</option>
                                 <option value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</option>
@@ -459,14 +459,14 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
 
                         {/* Margin */}
                         <div>
-                            <label className="block text-sm font-medium text-foreground mb-2">
+                            <Label className="block mb-2" htmlFor="psdtopdftool-field-3">
                                 {tTools('imageToPdf.margin') || 'Margin'}
-                            </label>
+                            </Label>
                             <select
                                 value={margin}
                                 onChange={(e) => setMargin(Number(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="psdtopdftool-field-3" aria-label={tTools('imageToPdf.margin') || 'Margin'}
                             >
                                 <option value="0">{tTools('imageToPdf.marginNone') || 'None'}</option>
                                 <option value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</option>
@@ -477,7 +477,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                     </div>
 
                     <div className="mt-4 space-y-3">
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={centerImage}
@@ -488,9 +488,9 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('imageToPdf.centerImage') || 'Center images on page'}
                             </span>
-                        </label>
+                        </Label>
 
-                        <label className="flex items-center gap-3 cursor-pointer">
+                        <Label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={scaleToFit}
@@ -501,7 +501,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                             <span className="text-sm text-foreground">
                                 {tTools('imageToPdf.scaleToFit') || 'Scale images to fit page'}
                             </span>
-                        </label>
+                        </Label>
                     </div>
                 </Card>
             )}

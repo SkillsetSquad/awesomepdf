@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -152,13 +153,13 @@ export function BatchWatermarkRemoverTool({ className = '' }: BatchWatermarkRemo
 
                 <div className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-500">{t('batchWatermarkRemover.watermarkKeywordsLabel')}</label>
+                    <Label className="" htmlFor="batchwatermarkremovertool-field-1">{t('batchWatermarkRemover.watermarkKeywordsLabel')}</Label>
                     <Input
                       type="text"
                       value={watermarkText}
                       onChange={(e) => setWatermarkText(e.target.value)}
                       placeholder="e.g. Confidential"
-                      className="w-full"
+                      className="w-full" id="batchwatermarkremovertool-field-1" aria-label={t('batchWatermarkRemover.watermarkKeywordsLabel')}
                     />
                   </div>
 
@@ -168,11 +169,11 @@ export function BatchWatermarkRemoverTool({ className = '' }: BatchWatermarkRemo
                       id="removeImages"
                       checked={removeImages}
                       onChange={(e) => setRemoveImages(e.target.checked)}
-                      className="rounded text-primary focus:ring-primary w-4 h-4"
+                      className="rounded text-primary focus:ring-primary w-4 h-4" aria-label={t('batchWatermarkRemover.toleranceLabel')}
                     />
-                    <label htmlFor="removeImages" className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <Label htmlFor="removeImages" className="dark:text-zinc-300">
                       {t('batchWatermarkRemover.toleranceLabel')}
-                    </label>
+                    </Label>
                   </div>
                 </div>
               </div>

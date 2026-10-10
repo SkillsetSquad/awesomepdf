@@ -1,4 +1,5 @@
 'use client';
+import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -18,13 +19,13 @@ export interface SanitizePDFToolProps {
 /**
  * SanitizePDFTool Component
  * Requirements: 5.1
- * 
+ *
  * Provides the UI for sanitizing PDF files by removing potentially harmful content.
  */
 export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -33,7 +34,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [removedItems, setRemovedItems] = useState<string[]>([]);
-  
+
   // Options
   const [options, setOptions] = useState<SanitizePDFOptions>({
     removeJavaScript: true,
@@ -43,7 +44,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
     removeMetadata: true,
     removeAnnotations: false,
   });
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -155,7 +156,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -202,7 +203,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('sanitizePdf.optionsTitle') || 'Sanitization Options'}
           </h3>
-          
+
           <div className="space-y-4">
             {/* Info */}
             <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
@@ -213,7 +214,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
 
             {/* Options */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.removeJavaScript}
@@ -224,9 +225,9 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeJavaScript') || 'Remove JavaScript'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.removeAttachments}
@@ -237,9 +238,9 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeAttachments') || 'Remove Attachments'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.removeLinks}
@@ -250,9 +251,9 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeLinks') || 'Remove External Links'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.flattenForms}
@@ -263,9 +264,9 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.flattenForms') || 'Flatten Forms'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.removeMetadata}
@@ -276,9 +277,9 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeMetadata') || 'Remove Metadata'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={options.removeAnnotations}
@@ -289,7 +290,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('sanitizePdf.removeAnnotations') || 'Remove Annotations'}
                 </span>
-              </label>
+              </Label>
             </div>
           </div>
         </Card>
@@ -315,8 +316,8 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
           disabled={!canSanitize}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('sanitizePdf.sanitizeButton') || 'Sanitize PDF')
           }
         </Button>
@@ -334,7 +335,7 @@ export function SanitizePDFTool({ className = '' }: SanitizePDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -27,13 +28,13 @@ export interface PDFToJSONToolProps {
 /**
  * PDFToJSONTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Extracts PDF content and metadata to JSON format.
  */
 export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -42,7 +43,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [jsonPreview, setJsonPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options state
   const [includeText, setIncludeText] = useState(true);
   const [includeMetadata, setIncludeMetadata] = useState(true);
@@ -50,7 +51,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
   const [includeOutline, setIncludeOutline] = useState(true);
   const [prettyPrint, setPrettyPrint] = useState(true);
   const [pageRange, setPageRange] = useState('');
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -95,10 +96,10 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
    */
   const parsePageRange = (rangeStr: string): number[] => {
     if (!rangeStr.trim()) return [];
-    
+
     const pages: number[] = [];
     const parts = rangeStr.split(',');
-    
+
     for (const part of parts) {
       const trimmed = part.trim();
       if (trimmed.includes('-')) {
@@ -115,7 +116,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
         }
       }
     }
-    
+
     return pages.sort((a, b) => a - b);
   };
 
@@ -164,11 +165,11 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
       if (output.success && output.result) {
         const blob = output.result as Blob;
         setResult(blob);
-        
+
         // Read JSON for preview (limit to first 5000 chars)
         const text = await blob.text();
         setJsonPreview(text.length > 5000 ? text.substring(0, 5000) + '\n...(truncated)' : text);
-        
+
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to convert PDF to JSON.');
@@ -219,7 +220,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -261,10 +262,10 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
           <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToJson.optionsTitle') || 'Extraction Options'}
           </h3>
-          
+
           <div className="space-y-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includeText}
@@ -275,9 +276,9 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeText') || 'Include Text'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includeMetadata}
@@ -288,9 +289,9 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeMetadata') || 'Include Metadata'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includePageInfo}
@@ -301,9 +302,9 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includePageInfo') || 'Include Page Info'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includeOutline}
@@ -314,9 +315,9 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.includeOutline') || 'Include Outline'}
                 </span>
-              </label>
+              </Label>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <Label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={prettyPrint}
@@ -327,21 +328,21 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
                 <span className="text-sm text-foreground">
                   {tTools('pdfToJson.prettyPrint') || 'Pretty Print'}
                 </span>
-              </label>
+              </Label>
             </div>
 
             {/* Page Range */}
             <div className="max-w-xs">
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <Label className="block mb-2" htmlFor="pdftojsontool-field-1">
                 {tTools('pdfToJson.pageRange') || 'Page Range'}
-              </label>
+              </Label>
               <Input
                 type="text"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToJson.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full"
+                className="w-full" id="pdftojsontool-field-1" aria-label={tTools('pdfToJson.pageRange') || 'Page Range'}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToJson.pageRangeHint') || 'Leave empty for all pages'}
@@ -371,8 +372,8 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
           disabled={!canConvert}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('pdfToJson.convertButton') || 'Extract to JSON')
           }
         </Button>
@@ -402,7 +403,7 @@ export function PDFToJSONTool({ className = '' }: PDFToJSONToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
