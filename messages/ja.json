@@ -49,6 +49,7 @@
       "openMenu": "メニューを開く"
     },
     "buttons": {
+      "duplicate": "複製",
       "upload": "ファイルをアップロード",
       "download": "ダウンロード",
       "process": "処理",

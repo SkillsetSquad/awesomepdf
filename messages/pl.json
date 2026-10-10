@@ -49,6 +49,7 @@
       "openMenu": "Otwórz menu"
     },
     "buttons": {
+      "duplicate": "Duplikuj",
       "upload": "Prześlij pliki",
       "download": "Pobierz",
       "process": "Przetwórz",

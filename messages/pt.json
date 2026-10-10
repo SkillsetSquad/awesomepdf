@@ -49,6 +49,7 @@
       "openMenu": "Abrir menu"
     },
     "buttons": {
+      "duplicate": "Duplicar",
       "upload": "Enviar Arquivos",
       "download": "Baixar",
       "process": "Processar",

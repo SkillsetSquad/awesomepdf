@@ -49,6 +49,7 @@
       "openMenu": "Mở menu"
     },
     "buttons": {
+      "duplicate": "Nhân bản",
       "upload": "Tải lên Tệp",
       "download": "Tải xuống",
       "process": "Xử lý",

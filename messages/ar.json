@@ -49,6 +49,7 @@
       "openMenu": "فتح القائمة"
     },
     "buttons": {
+      "duplicate": "نسخ",
       "upload": "رفع الملفات",
       "download": "تنزيل",
       "process": "تنفيذ",

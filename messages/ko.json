@@ -49,6 +49,7 @@
       "openMenu": "메뉴 열기"
     },
     "buttons": {
+      "duplicate": "복제",
       "upload": "파일 업로드",
       "download": "다운로드",
       "process": "처리",

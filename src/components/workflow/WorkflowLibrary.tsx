@@ -1,9 +1,12 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { logger } from '@/lib/utils/logger';
 import { workflowTemplates } from '@/config/workflow-templates';
 import { WorkflowTemplate, SavedWorkflow } from '@/types/workflow';
@@ -55,6 +58,8 @@ export function WorkflowLibrary({
     onToggleCollapse,
 }: WorkflowLibraryProps) {
     const tWorkflow = useTranslations('workflow');
+    const tCommon = useTranslations('common');
+    const locale = useLocale();
     const [activeTab, setActiveTab] = useState<TabType>('templates');
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -144,258 +149,66 @@ export function WorkflowLibrary({
     const favoriteWorkflows = savedWorkflows.filter(w => w.isFavorite);
 
     const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString(undefined, {
+        return new Date(dateString).toLocaleDateString(locale, {
             month: 'short',
             day: 'numeric',
             year: 'numeric',
         });
     };
 
-    // Collapsed view
-    if (isCollapsed) {
-        return (
-            <div className="w-12 h-full bg-background border-l border-border flex flex-col items-center py-2">
-                <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('templates') || 'Templates'}
-                    onClick={onToggleCollapse}
-                    className="mb-2"
-                    title={tWorkflow('templates') || 'Templates'}
-                >
-                    <PanelRightOpen className="w-5 h-5 text-primary" />
-                </Button>
-                <div className="w-8 h-px bg-border mb-2" />
-                {/* Show tab icons when collapsed */}
-                {tabs.map(tab => {
-                    const Icon = tab.icon;
-                    return (
-                        <Button variant="ghost" size="icon-sm" aria-label={tab.label}
-                            key={tab.id}
-                            onClick={onToggleCollapse}
-                            className="mb-1"
-                            title={tab.label}
-                        >
-                            <Icon className="w-4 h-4 text-muted-foreground" />
-                        </Button>
-                    );
-                })}
-            </div>
-        );
-    }
-
-    return (
-        <div className="w-80 h-full bg-background border-l border-border flex flex-col">
-            {/* Collapse button header */}
-            <div className="flex items-center justify-between px-4 py-2 border-b border-border">
-                <span className="text-sm font-medium text-foreground">
-                    {tWorkflow('templates') || 'Library'}
-                </span>
-                <Button variant="ghost" size="icon-sm" aria-label="Collapse sidebar"
-                    onClick={onToggleCollapse}
-
-                    title="Collapse sidebar"
-                >
-                    <PanelRightClose className="w-4 h-4 text-muted-foreground" />
-                </Button>
-            </div>
-
-            {/* Tabs */}
-            <div className="flex border-b border-border">
-                {tabs.map(tab => {
-                    const Icon = tab.icon;
-                    return (
-                        <Button size="sm" variant={activeTab === tab.id ? 'default' : 'outline'} aria-pressed={activeTab === tab.id}
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className="flex-1 flex items-center justify-center gap-2"
-                        >
-                            <Icon className="w-4 h-4" />
-                            {tab.label}
-                        </Button>
-                    );
-                })}
-            </div>
-
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto">
-                {/* Templates Tab */}
-                {activeTab === 'templates' && (
-                    <div className="p-4">
-                        {/* Category Filter */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {templateCategories.map(cat => {
-                                const Icon = cat.icon;
-                                return (
-                                    <Button size="sm" variant={selectedCategory === cat.id ? 'default' : 'outline'} aria-pressed={selectedCategory === cat.id}
-                                        key={cat.id}
-                                        onClick={() => setSelectedCategory(cat.id)}
-                                        className="flex items-center gap-1.5"
-                                    >
-                                        <Icon className="w-3 h-3" />
-                                        {cat.label}
-                                    </Button>
-                                );
-                            })}
-                        </div>
-
-                        {/* Templates List */}
-                        <div className="space-y-3">
-                            {filteredTemplates.map(template => (
-                                <div
-                                    key={template.id}
-                                    className="p-3 rounded-lg border border-border hover:border-primary/50 hover:shadow-md transition-all cursor-pointer group"
-                                    onClick={() => onLoadTemplate(template)}
-                                >
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex-1">
-                                            <h4 className="text-sm font-medium text-foreground group-hover:text-primary">
-                                                {getTemplateName(template)}
-                                            </h4>
-                                            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                                                {getTemplateDescription(template)}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-2 mt-2">
-                                        <span className="text-[10px] px-2 py-0.5 bg-muted rounded-full text-muted-foreground">
-                                            {template.nodes.length} {tWorkflow('nodes') || 'nodes'}
-                                        </span>
-                                        <span className="text-[10px] px-2 py-0.5 bg-muted rounded-full text-muted-foreground">
-                                            {template.edges.length} {tWorkflow('connections') || 'connections'}
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Saved Tab */}
-                {activeTab === 'saved' && (
-                    <div className="p-4">
-                        {savedWorkflows.length === 0 ? (
-                            <div className="text-center py-8">
-                                <FolderOpen className="w-12 h-12 mx-auto text-muted-foreground" />
-                                <p className="mt-3 text-sm text-muted-foreground">
-                                    {tWorkflow('noSavedWorkflows') || 'No saved workflows yet'}
-                                </p>
-                                <p className="mt-1 text-xs text-muted-foreground">
-                                    {tWorkflow('saveWorkflowHint') || 'Create and save your first workflow'}
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="space-y-3">
-                                {savedWorkflows.map(workflow => (
-                                    <div
-                                        key={workflow.id}
-                                        className="p-3 rounded-lg border border-border hover:border-primary/50 transition-all group"
-                                    >
-                                        <div className="flex items-start justify-between">
-                                            <div
-                                                className="flex-1 cursor-pointer"
-                                                onClick={() => onLoadWorkflow(workflow)}
-                                            >
-                                                <div className="flex items-center gap-2">
-                                                    <h4 className="text-sm font-medium text-foreground group-hover:text-primary">
-                                                        {workflow.name}
-                                                    </h4>
-                                                    {workflow.isFavorite && (
-                                                        <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                                                    )}
-                                                </div>
-                                                {workflow.description && (
-                                                    <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
-                                                        {workflow.description}
-                                                    </p>
-                                                )}
-                                                <p className="text-[10px] text-muted-foreground mt-1">
-                                                    {formatDate(workflow.updatedAt)}
-                                                </p>
-                                            </div>
-
-                                            {/* Actions */}
-                                            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <Button variant="ghost" size="icon-sm" aria-label="Duplicate"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        onDuplicateWorkflow(workflow.id);
-                                                    }}
-
-                                                    title="Duplicate"
-                                                >
-                                                    <Copy className="w-3.5 h-3.5 text-muted-foreground" />
-                                                </Button>
-                                                <Button variant="ghost" size="icon-sm" aria-label="Export"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        onExportWorkflow(workflow);
-                                                    }}
-
-                                                    title="Export"
-                                                >
-                                                    <Download className="w-3.5 h-3.5 text-muted-foreground" />
-                                                </Button>
-                                                <Button variant="ghost" size="icon-sm" aria-label="Delete"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        onDeleteWorkflow(workflow.id);
-                                                    }}
-
-                                                    title="Delete"
-                                                >
-                                                    <Trash2 className="w-3.5 h-3.5 text-red-500" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                )}
-
-                {/* Favorites Tab */}
-                {activeTab === 'favorites' && (
-                    <div className="p-4">
-                        {favoriteWorkflows.length === 0 ? (
-                            <div className="text-center py-8">
-                                <Star className="w-12 h-12 mx-auto text-muted-foreground" />
-                                <p className="mt-3 text-sm text-muted-foreground">
-                                    {tWorkflow('noFavorites') || 'No favorite workflows'}
-                                </p>
-                                <p className="mt-1 text-xs text-muted-foreground">
-                                    {tWorkflow('favoriteHint') || 'Star workflows to add them here'}
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="space-y-3">
-                                {favoriteWorkflows.map(workflow => (
-                                    <div
-                                        key={workflow.id}
-                                        className="p-3 rounded-lg border border-border hover:border-primary/50 transition-all cursor-pointer group"
-                                        onClick={() => onLoadWorkflow(workflow)}
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                            <h4 className="text-sm font-medium text-foreground">
-                                                {workflow.name}
-                                            </h4>
-                                        </div>
-                                        <p className="text-[10px] text-muted-foreground mt-1">
-                                            {formatDate(workflow.updatedAt)}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                )}
-
-                {/* History Tab */}
-                {activeTab === 'history' && (
-                    <WorkflowHistory onLoadFromHistory={onLoadFromHistory} />
-                )}
-            </div>
-        </div>
+    const renderSavedWorkflow = (workflow: SavedWorkflow, actions = true) => (
+        <Card key={workflow.id} className="relative gap-3 py-4">
+            <CardHeader className="px-4">
+                <CardTitle><Button variant="ghost" className="h-auto justify-start whitespace-normal px-0 text-start after:absolute after:inset-0" onClick={() => onLoadWorkflow(workflow)}>
+                    {workflow.isFavorite && <Star className="size-4" aria-hidden="true" />}{workflow.name}
+                </Button></CardTitle>
+                {workflow.description && <CardDescription>{workflow.description}</CardDescription>}
+                <p className="text-xs text-muted-foreground">{formatDate(workflow.updatedAt)}</p>
+            </CardHeader>
+            {actions && <CardFooter className="relative z-10 gap-1 px-4">
+                <Button variant="ghost" size="icon-sm" aria-label={`${tCommon('buttons.duplicate')}: ${workflow.name}`} onClick={() => onDuplicateWorkflow(workflow.id)}><Copy aria-hidden="true" /></Button>
+                <Button variant="ghost" size="icon-sm" aria-label={`${tCommon('buttons.download')}: ${workflow.name}`} onClick={() => onExportWorkflow(workflow)}><Download aria-hidden="true" /></Button>
+                <Button variant="ghost" size="icon-sm" aria-label={`${tCommon('buttons.delete')}: ${workflow.name}`} onClick={() => onDeleteWorkflow(workflow.id)}><Trash2 aria-hidden="true" /></Button>
+            </CardFooter>}
+        </Card>
     );
+
+    if (isCollapsed) return <aside className="flex h-full w-12 shrink-0 flex-col items-center border-s py-2" aria-label={tWorkflow('templates')}>
+        <Button variant="ghost" size="icon-sm" onClick={onToggleCollapse} aria-label={tCommon('accessibility.expandSection')}><PanelRightOpen aria-hidden="true" /></Button>
+        {tabs.map(({ id, label, icon: Icon }) => <Button key={id} variant="ghost" size="icon-sm" aria-label={label} onClick={() => { setActiveTab(id); onToggleCollapse?.(); }}><Icon aria-hidden="true" /></Button>)}
+    </aside>;
+
+    return <Tabs value={activeTab} onValueChange={(value) => { if (value === 'templates' || value === 'saved' || value === 'favorites' || value === 'history') setActiveTab(value); }}
+        className="h-full min-h-0 w-80 shrink-0 border-s bg-background" role="complementary" aria-label={tWorkflow('templates')}>
+        <div className="flex items-center justify-between border-b px-4 py-2">
+            <h2 className="text-sm font-semibold">{tWorkflow('templates')}</h2>
+            <Button variant="ghost" size="icon-sm" onClick={onToggleCollapse} aria-label={tCommon('accessibility.collapseSection')}><PanelRightClose aria-hidden="true" /></Button>
+        </div>
+        <TabsList className="mx-3 grid h-auto w-[calc(100%-1.5rem)] grid-cols-4">
+            {tabs.map(({ id, label, icon: Icon }) => <TabsTrigger key={id} value={id} className="flex-col gap-1 whitespace-normal text-xs"><Icon aria-hidden="true" />{label}</TabsTrigger>)}
+        </TabsList>
+        <div className="min-h-0 flex-1 overflow-y-auto">
+            <TabsContent value="templates" className="space-y-4 p-4">
+                <div className="flex flex-wrap gap-2" role="group" aria-label={tWorkflow('allCategories')}>
+                    {templateCategories.map(({ id, label, icon: Icon }) => <Button key={id} variant={selectedCategory === id ? 'secondary' : 'outline'} size="sm" aria-pressed={selectedCategory === id} onClick={() => setSelectedCategory(id)}><Icon aria-hidden="true" />{label}</Button>)}
+                </div>
+                <div className="space-y-3">{filteredTemplates.map(template => <Card key={template.id} className="relative gap-3 py-4">
+                    <CardHeader className="px-4">
+                        <CardTitle><Button variant="ghost" className="h-auto justify-start whitespace-normal px-0 text-start after:absolute after:inset-0" onClick={() => onLoadTemplate(template)}>{getTemplateName(template)}</Button></CardTitle>
+                        <CardDescription>{getTemplateDescription(template)}</CardDescription>
+                    </CardHeader>
+                    <CardFooter className="flex-wrap gap-2 px-4"><Badge variant="secondary">{template.nodes.length} {tWorkflow('nodes')}</Badge><Badge variant="secondary">{template.edges.length} {tWorkflow('connections')}</Badge></CardFooter>
+                </Card>)}</div>
+            </TabsContent>
+            <TabsContent value="saved" className="space-y-3 p-4">
+                {savedWorkflows.length ? savedWorkflows.map(workflow => renderSavedWorkflow(workflow)) : <Card><CardContent className="space-y-2 text-center"><FolderOpen className="mx-auto size-8 text-muted-foreground" aria-hidden="true" /><p className="text-sm">{tWorkflow('noSavedWorkflows')}</p><p className="text-xs text-muted-foreground">{tWorkflow('saveWorkflowHint')}</p></CardContent></Card>}
+            </TabsContent>
+            <TabsContent value="favorites" className="space-y-3 p-4">
+                {favoriteWorkflows.length ? favoriteWorkflows.map(workflow => renderSavedWorkflow(workflow, false)) : <Card><CardContent className="space-y-2 text-center"><Star className="mx-auto size-8 text-muted-foreground" aria-hidden="true" /><p className="text-sm">{tWorkflow('noFavorites')}</p><p className="text-xs text-muted-foreground">{tWorkflow('favoriteHint')}</p></CardContent></Card>}
+            </TabsContent>
+            <TabsContent value="history" className="h-full"><WorkflowHistory onLoadFromHistory={onLoadFromHistory} /></TabsContent>
+        </div>
+    </Tabs>;
 }
 
 export default WorkflowLibrary;

@@ -49,6 +49,7 @@
       "openMenu": "Deschide meniul"
     },
     "buttons": {
+      "duplicate": "Duplică",
       "upload": "Încarcă Fișiere",
       "download": "Descarcă",
       "process": "Procesează",

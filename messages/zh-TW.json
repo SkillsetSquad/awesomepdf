@@ -49,6 +49,7 @@
       "openMenu": "開啟選單"
     },
     "buttons": {
+      "duplicate": "複製",
       "upload": "上傳檔案",
       "download": "下載",
       "process": "處理",

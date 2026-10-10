@@ -49,6 +49,7 @@
       "openMenu": "Buka menu"
     },
     "buttons": {
+      "duplicate": "Duplikat",
       "upload": "Unggah File",
       "download": "Unduh",
       "process": "Proses",
