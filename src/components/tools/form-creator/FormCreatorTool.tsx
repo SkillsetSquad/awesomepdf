@@ -1,4 +1,6 @@
 'use client';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 import { Textarea } from '@/components/ui/textarea';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -1344,29 +1346,21 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                       {/* Label Position */}
                       {selectedField.label && (
-                        <div className="flex items-center gap-2">
+                        <RadioGroup className="flex flex-wrap items-center gap-2" name="labelPosition" value={selectedField.labelPosition === 'left' ? 'left' : 'above'} onValueChange={(value) => updateSelectedField({ labelPosition: value === 'left' ? 'left' : 'above' })} aria-label={tTools('formCreator.labelPosition')} orientation="horizontal">
                           <span className="text-sm text-gray-500">{tTools('formCreator.labelPosition') || 'Position'}:</span>
-                          <Label className="flex items-center gap-1">
-                            <input
-                              type="radio"
-                              name="labelPosition"
-                              checked={selectedField.labelPosition !== 'left'}
-                              onChange={() => updateSelectedField({ labelPosition: 'above' })}
-                              className="w-3 h-3"
+                          <Label className="flex items-center gap-1" htmlFor="labelPosition-above">
+                            <RadioGroupItem
+                               id="labelPosition-above" value="above"
                             />
                             {tTools('formCreator.labelAbove') || 'Above'}
                           </Label>
-                          <Label className="flex items-center gap-1">
-                            <input
-                              type="radio"
-                              name="labelPosition"
-                              checked={selectedField.labelPosition === 'left'}
-                              onChange={() => updateSelectedField({ labelPosition: 'left' })}
-                              className="w-3 h-3"
+                          <Label className="flex items-center gap-1" htmlFor="labelPosition-left">
+                            <RadioGroupItem
+                               id="labelPosition-left" value="left"
                             />
                             {tTools('formCreator.labelLeft') || 'Left'}
                           </Label>
-                        </div>
+                        </RadioGroup>
                       )}
 
                       {/* Position/Size */}

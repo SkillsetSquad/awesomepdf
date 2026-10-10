@@ -1,4 +1,6 @@
 'use client';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -662,36 +664,26 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               </h3>
 
               {/* Watermark Type Selection */}
-              <div className="flex gap-6 mb-6">
-                <Label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="watermark-type"
+              <RadioGroup className="flex flex-wrap gap-6 mb-6" name="watermark-type" value={watermarkType} onValueChange={(value) => setWatermarkType(value === 'image' ? 'image' : 'text')} aria-label={tTools('optionsTitle')} orientation="horizontal">
+                <Label className="flex items-center gap-2 cursor-pointer" htmlFor="watermark-type-text">
+                  <RadioGroupItem
                     value="text"
-                    checked={watermarkType === 'text'}
-                    onChange={() => setWatermarkType('text')}
-                    className="w-4 h-4 text-blue-600"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="watermark-type-text"
                   />
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {tTools('textWatermark')}
                   </span>
                 </Label>
-                <Label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="watermark-type"
+                <Label className="flex items-center gap-2 cursor-pointer" htmlFor="watermark-type-image">
+                  <RadioGroupItem
                     value="image"
-                    checked={watermarkType === 'image'}
-                    onChange={() => setWatermarkType('image')}
-                    className="w-4 h-4 text-blue-600"
-                    disabled={isProcessing}
+                    disabled={isProcessing} id="watermark-type-image"
                   />
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {tTools('imageWatermark')}
                   </span>
                 </Label>
-              </div>
+              </RadioGroup>
 
               {/* Text Watermark Options */}
               {watermarkType === 'text' && (
@@ -1036,64 +1028,44 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               </h3>
 
               <div className="space-y-4">
-                <div className="flex flex-wrap gap-4">
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="page-mode"
+                <RadioGroup className="flex flex-wrap gap-4" name="page-mode" value={pageMode} onValueChange={(value) => setPageMode(value === 'odd' || value === 'even' || value === 'custom' ? value : 'all')} aria-label={tTools('rangeTitle')} orientation="horizontal">
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="page-mode-all">
+                    <RadioGroupItem
                       value="all"
-                      checked={pageMode === 'all'}
-                      onChange={() => setPageMode('all')}
-                      className="w-4 h-4 text-blue-600"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="page-mode-all"
                     />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeAll')}
                     </span>
                   </Label>
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="page-mode"
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="page-mode-odd">
+                    <RadioGroupItem
                       value="odd"
-                      checked={pageMode === 'odd'}
-                      onChange={() => setPageMode('odd')}
-                      className="w-4 h-4 text-blue-600"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="page-mode-odd"
                     />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeOdd')}
                     </span>
                   </Label>
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="page-mode"
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="page-mode-even">
+                    <RadioGroupItem
                       value="even"
-                      checked={pageMode === 'even'}
-                      onChange={() => setPageMode('even')}
-                      className="w-4 h-4 text-blue-600"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="page-mode-even"
                     />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeEven')}
                     </span>
                   </Label>
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="page-mode"
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="page-mode-custom">
+                    <RadioGroupItem
                       value="custom"
-                      checked={pageMode === 'custom'}
-                      onChange={() => setPageMode('custom')}
-                      className="w-4 h-4 text-blue-600"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="page-mode-custom"
                     />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {tTools('rangeCustom')}
                     </span>
                   </Label>
-                </div>
+                </RadioGroup>
 
                 {pageMode === 'custom' && (
                   <div className="animate-in fade-in slide-in-from-top-1 duration-200">

@@ -1,4 +1,6 @@
 'use client';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -304,32 +306,24 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
               <Label className="block mb-2">
                 {tTools('addAttachments.attachmentLevel') || 'Attachment Level'}
               </Label>
-              <div className="flex gap-4">
-                <Label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="attachmentLevel"
+              <RadioGroup className="flex flex-wrap gap-4" name="attachmentLevel" value={attachmentLevel} onValueChange={(value) => setAttachmentLevel(value === 'page' ? 'page' : 'document')} aria-label={tTools('addAttachments.attachmentLevel')} orientation="horizontal">
+                <Label className="flex items-center gap-2 cursor-pointer" htmlFor="attachmentLevel-document">
+                  <RadioGroupItem
                     value="document"
-                    checked={attachmentLevel === 'document'}
-                    onChange={() => setAttachmentLevel('document')}
                     disabled={isProcessing}
-                    className="w-4 h-4"
+                     id="attachmentLevel-document"
                   />
                   <span className="text-sm">{tTools('addAttachments.documentLevel') || 'Document Level'}</span>
                 </Label>
-                <Label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="attachmentLevel"
+                <Label className="flex items-center gap-2 cursor-pointer" htmlFor="attachmentLevel-page">
+                  <RadioGroupItem
                     value="page"
-                    checked={attachmentLevel === 'page'}
-                    onChange={() => setAttachmentLevel('page')}
                     disabled={isProcessing}
-                    className="w-4 h-4"
+                     id="attachmentLevel-page"
                   />
                   <span className="text-sm">{tTools('addAttachments.pageLevel') || 'Page Level'}</span>
                 </Label>
-              </div>
+              </RadioGroup>
             </div>
 
             {attachmentLevel === 'page' && (

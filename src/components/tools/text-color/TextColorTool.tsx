@@ -1,4 +1,6 @@
 'use client';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -110,30 +112,22 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
 
               <div>
                 <Label className="block mb-2">{t('modeLabel') || 'Mode'}</Label>
-                <div className="flex gap-4">
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mode"
+                <RadioGroup className="flex flex-wrap gap-4" name="mode" value={mode} onValueChange={(value) => setMode(value === 'light' ? 'light' : 'dark')} aria-label={t('modeLabel')} orientation="horizontal">
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="mode-dark">
+                    <RadioGroupItem
                       value="dark"
-                      checked={mode === 'dark'}
-                      onChange={() => setMode('dark')}
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="mode-dark"
                     />
                     <span className="text-sm">{t('modeDark') || 'Dark text (light background)'}</span>
                   </Label>
-                  <Label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mode"
+                  <Label className="flex items-center gap-2 cursor-pointer" htmlFor="mode-light">
+                    <RadioGroupItem
                       value="light"
-                      checked={mode === 'light'}
-                      onChange={() => setMode('light')}
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="mode-light"
                     />
                     <span className="text-sm">{t('modeLight') || 'Light text (dark background)'}</span>
                   </Label>
-                </div>
+                </RadioGroup>
               </div>
 
               <div>
