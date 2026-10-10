@@ -5,6 +5,7 @@ import { FileUploader } from '@/components/tools/FileUploader';
 
 // Mock next-intl
 vi.mock('next-intl', () => ({
+  useLocale: () => 'en',
   useTranslations: () => (key: string, params?: Record<string, unknown>) => {
     const translations: Record<string, string> = {
       'buttons.upload': 'Upload Files',
@@ -14,6 +15,7 @@ vi.mock('next-intl', () => ({
       'fileUploader.support': 'Support',
       'fileUploader.paste': 'Paste (Ctrl+V)',
     };
+    if (key === 'fileUploader.maxFiles') return `Maximum files: ${params?.count}`;
     if (key === 'fileTooLarge') {
       return `File size exceeds ${params?.maxSize}MB limit`;
     }
@@ -126,7 +128,7 @@ describe('FileUploader', () => {
         />
       );
       
-      expect(screen.getByText(/Max files: 5/)).toBeInTheDocument();
+      expect(screen.getByText(/Maximum files: 5/)).toBeInTheDocument();
     });
   });
 

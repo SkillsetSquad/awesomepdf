@@ -1,8 +1,15 @@
 'use client';
 
-import React, { useCallback, useRef, useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { UploadCloud, File, Plus, X, Lock, Loader2 } from 'lucide-react';
+import React, { useCallback, useRef, useState, useEffect, useId } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
+import { UploadCloud, Lock, AlertCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { isTauri } from '@/lib/tauri-bridge';
 
 export interface FileUploaderProps {
@@ -33,7 +40,7 @@ export interface FileUploaderProps {
  * Requirements: 5.2
  * 
  * Supports drag-and-drop, file picker, and paste from clipboard.
- * Beautified with premium UI and glassmorphism.
+ * Files and password-protected documents stay on the device.
  */
 export const FileUploader: React.FC<FileUploaderProps> = ({
   accept = ['application/pdf'],
@@ -49,6 +56,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 }) => {
   const t = useTranslations('common');
   const tErrors = useTranslations('errors');
+  const locale = useLocale();
+  const passwordId = useId();
 
   // Encryption & Decryption states
   const [encryptPendingFiles, setEncryptPendingFiles] = useState<File[]>([]);
@@ -56,11 +65,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   const [password, setPassword] = useState<string>('');
   const [decryptError, setDecryptError] = useState<string | null>(null);
   const [isDecrypting, setIsDecrypting] = useState<boolean>(false);
-  const [shouldShake, setShouldShake] = useState<boolean>(false);
   const [decryptedFilesAccumulator, setDecryptedFilesAccumulator] = useState<File[]>([]);
 
   const [isDragging, setIsDragging] = useState(false);
-  const [dragCounter, setDragCounter] = useState(0);
+  const [, setDragCounter] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
 
@@ -74,8 +82,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       const { PDFDocument } = await import('pdf-lib');
       await PDFDocument.load(arrayBuffer);
       return false;
-    } catch (err: any) {
-      const msg = err.message || '';
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message.toLowerCase() : '';
       if (msg.includes('encrypt') || msg.includes('password') || msg.includes('decrypt')) {
         return true;
       }
@@ -184,7 +192,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       const decryptedBlob = output.result as Blob;
 
       // Create a fresh unlocked virtual File object, fallback to window.File to avoid Node/Browser File type clashes
-      const unlockedFile = new (window as any).File([decryptedBlob], fileToDecrypt.name.replace('.pdf', '_unlocked.pdf'), {
+      const unlockedFile = new window.File([decryptedBlob], fileToDecrypt.name.replace('.pdf', '_unlocked.pdf'), {
         type: 'application/pdf',
       }) as File;
 
@@ -200,10 +208,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         onFilesSelected(updatedAccumulator);
         resetDecryptStates();
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('PDF Decryption failed:', err);
-      setShouldShake(true);
-      setTimeout(() => setShouldShake(false), 500);
       setDecryptError(tErrors('incorrectPassword') || 'Incorrect password. Please try again.');
     } finally {
       setIsDecrypting(false);
@@ -391,7 +397,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
                 mimeType = 'image/jpeg';
               }
 
-              const file = new (window as any).File([bytes], name, { type: mimeType }) as File;
+              const file = new window.File([bytes], name, { type: mimeType }) as File;
               fileObjects.push(file);
             } catch (err) {
               console.error(`Tauri failed to read dragged file: ${filePath}`, err);
@@ -479,214 +485,55 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     };
   }, []);
 
-  const baseStyles = `
-    relative flex flex-col items-center justify-center
-    w-full min-h-[250px] p-10
-    border-2 border-dashed
-    rounded-[2rem]
-    transition-all duration-300
-    cursor-pointer
-    group
-  `;
-
-  // Dynamic styles based on state
-  const stateStyles = disabled
-    ? 'border-muted bg-muted/30 cursor-not-allowed opacity-50'
-    : isDragging
-      ? 'border-primary bg-primary/5 scale-[1.01] shadow-2xl shadow-primary/10'
-      : `
-      border-border 
-      bg-card/50 
-      hover:border-primary 
-      hover:bg-background 
-      hover:shadow-xl hover:shadow-primary/5
-      glass-card
-    `;
-
   return (
-    <div
-      ref={dropZoneRef}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
-      aria-label={label || t('buttons.upload')}
-      aria-disabled={disabled}
-      className={`${baseStyles} ${stateStyles} ${className}`.trim()}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
-    >
-      {/* Hidden file input */}
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept={acceptString}
-        multiple={multiple}
-        onChange={handleInputChange}
-        className="hidden"
-        aria-hidden="true"
-        disabled={disabled}
-      />
-
-      {/* Decorative background blob */}
-      <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/3 rounded-full blur-3xl" />
-      </div>
-
-      {/* Upload icon */}
-      <div className={`
-        mb-6 p-4 rounded-full transition-transform duration-300 group-hover:scale-110
-        ${isDragging ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'}
-      `}>
-        <UploadCloud className="w-10 h-10" aria-hidden="true" />
-      </div>
-
-      {/* Label */}
-      <p className="text-xl font-semibold text-foreground mb-3 text-center">
-        {label || t('buttons.upload')}
-      </p>
-
-      {/* Description */}
-      <div className="text-sm text-muted-foreground text-center max-w-sm leading-relaxed">
-        {description || (
-          <>
-            <p className="mb-2">{t('fileUploader.dragDrop')}</p>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted/50 text-xs font-medium">
-              <span className="opacity-70">{t('fileUploader.support')}:</span>
-              <span>{accept && accept.length > 0 ? accept.join(', ') : t('fileUploader.paste')}</span>
-              {maxSize && maxSize !== Infinity && (
-                <span className="ml-1 opacity-70">
-                  ({Math.round(maxSize / (1024 * 1024))}MB)
-                </span>
-              )}
+    <>
+      <Card
+        ref={dropZoneRef}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        aria-label={label || t('buttons.upload')}
+        aria-disabled={disabled}
+        className={`relative w-full cursor-pointer items-center gap-3 border-dashed px-6 py-10 text-center outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${disabled ? 'cursor-not-allowed opacity-50' : isDragging ? 'border-primary bg-accent' : 'hover:bg-accent/50'} ${className}`}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
+        <Input ref={fileInputRef} type="file" accept={acceptString} multiple={multiple} onChange={handleInputChange} className="hidden" aria-hidden="true" disabled={disabled} />
+        <UploadCloud className="size-8 text-primary" aria-hidden="true" />
+        <p className="font-semibold">{isDragging ? t('fileUploader.dropToUpload') : label || t('buttons.upload')}</p>
+        <p className="max-w-md text-sm text-muted-foreground">{description || t('fileUploader.dragDrop')}</p>
+        <div className="flex max-w-full flex-wrap justify-center gap-2">
+          <Badge variant="secondary" className="whitespace-normal break-all">{t('fileUploader.support')}: {accept.length ? accept.join(', ') : t('fileUploader.paste')}{Number.isFinite(maxSize) ? ` (${Math.round(maxSize / (1024 * 1024))}MB)` : ''}</Badge>
+          {multiple && <Badge variant="outline">{t('fileUploader.maxFiles', { count: maxFiles })}</Badge>}
+        </div>
+      </Card>
+      <Dialog open={encryptCurrentIndex !== -1} onOpenChange={open => { if (!open && !isDecrypting) handleDecryptCancel(); }}>
+        <DialogContent dir={locale === 'ar' ? 'rtl' : 'ltr'} showCloseButton={false}
+          onCloseAutoFocus={event => { event.preventDefault(); dropZoneRef.current?.focus(); }}
+          onEscapeKeyDown={event => { if (isDecrypting) event.preventDefault(); }}
+          onInteractOutside={event => { if (isDecrypting) event.preventDefault(); }}>
+          <DialogHeader>
+            <Lock className="size-5 text-primary" aria-hidden="true" />
+            <DialogTitle>{t('fileUploader.encryptedTitle')}</DialogTitle>
+            <DialogDescription className="break-words">{t('fileUploader.enterPasswordHelp').replace(/<br\s*\/?>/g, ' ')}<span className="block font-medium text-foreground">{encryptPendingFiles[encryptCurrentIndex]?.name}</span></DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleDecryptSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor={passwordId}>{t('fileUploader.passwordPlaceholder')}</Label>
+              <Input id={passwordId} type="password" autoComplete="off" placeholder={t('fileUploader.passwordPlaceholder')} value={password} onChange={event => setPassword(event.target.value)} disabled={isDecrypting} aria-invalid={!!decryptError} aria-describedby={decryptError ? `${passwordId}-error` : undefined} />
             </div>
-          </>
-        )}
-      </div>
-
-      {/* File info hints - only show when multiple files allowed */}
-      {multiple && (
-        <div className="mt-6 flex flex-wrap gap-2 justify-center">
-          <span className="text-xs px-2 py-1 rounded-md bg-muted text-muted-foreground">
-            Max files: {maxFiles}
-          </span>
-        </div>
-      )}
-
-      {/* Drag overlay */}
-      {isDragging && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/90 backdrop-blur-sm rounded-[2rem] z-10 transition-opacity duration-200">
-          <div className="p-4 rounded-full bg-primary/10 text-primary mb-4 motion-safe:animate-bounce">
-            <Plus className="w-8 h-8" />
-          </div>
-          <p className="text-xl font-bold text-primary">
-            {t('fileUploader.dropToUpload')}
-          </p>
-        </div>
-      )}
-
-      {/* Decryption Password Prompt Modal */}
-      {encryptCurrentIndex !== -1 && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md animate-in fade-in duration-300 cursor-default"
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-          }}
-        >
-          {/* Custom shake keyframe injection */}
-          <style>{`
-            @keyframes shake {
-              0%, 100% { transform: translateX(0); }
-              10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
-              20%, 40%, 60%, 80% { transform: translateX(6px); }
-            }
-            .modal-shake {
-              animation: shake 0.5s ease-in-out;
-            }
-          `}</style>
-          
-          <div 
-            className={`bg-card border border-white/10 dark:border-zinc-800/40 p-6 rounded-[2rem] max-w-sm w-full shadow-2xl mx-4 transition-all duration-300 transform scale-100 ${
-              shouldShake ? 'modal-shake' : ''
-            }`}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-            }}
-          >
-            <div className="flex flex-col items-center text-center">
-              {/* Lock Circle Icon */}
-              <div className="p-4 rounded-full bg-red-500/10 text-red-500 mb-4 animate-pulse">
-                <Lock className="w-8 h-8" />
-              </div>
-              
-              <h3 className="text-lg font-bold text-foreground mb-1">
-                {t('fileUploader.encryptedTitle')}
-              </h3>
-              
-              <p className="text-xs text-muted-foreground mb-4 max-w-[280px] break-all leading-relaxed">
-                {t('fileUploader.enterPasswordHelp')}
-                <span className="font-semibold text-foreground">{encryptPendingFiles[encryptCurrentIndex]?.name}</span>
-              </p>
-              
-              {/* Form */}
-              <form 
-                onSubmit={handleDecryptSubmit} 
-                className="w-full space-y-4"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="relative flex items-center">
-                  <input
-                    type="password"
-                    placeholder={t('fileUploader.passwordPlaceholder')}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    autoFocus
-                    disabled={isDecrypting}
-                    className="w-full px-4 py-2.5 rounded-md bg-muted/40 border border-input text-sm text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  />
-                </div>
-                
-                {decryptError && (
-                  <p className="text-xs text-red-500 font-semibold animate-in fade-in">
-                    {decryptError}
-                  </p>
-                )}
-                
-                {/* Actions */}
-                <div className="flex gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={handleDecryptCancel}
-                    disabled={isDecrypting}
-                    className="flex-1 px-4 py-2 text-xs font-semibold rounded-md border border-border hover:bg-muted text-foreground transition-colors disabled:opacity-50"
-                  >
-                    {t('fileUploader.cancelButton')}
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isDecrypting || !password}
-                    className="flex-1 px-4 py-2 text-xs font-semibold rounded-md bg-primary hover:bg-primary/90 text-primary-foreground transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isDecrypting ? (
-                      <>
-                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                        {t('fileUploader.decrypting')}
-                      </>
-                    ) : (
-                      t('fileUploader.decryptAndContinue')
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+            {decryptError && <Alert variant="destructive" id={`${passwordId}-error`}><AlertCircle /><AlertDescription>{decryptError}</AlertDescription></Alert>}
+            <DialogFooter>
+              <Button variant="outline" onClick={handleDecryptCancel} disabled={isDecrypting}>{t('fileUploader.cancelButton')}</Button>
+              <Button type="submit" loading={isDecrypting} disabled={!password}>{t(isDecrypting ? 'fileUploader.decrypting' : 'fileUploader.decryptAndContinue')}</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

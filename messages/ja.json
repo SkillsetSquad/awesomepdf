@@ -157,7 +157,8 @@
       "passwordPlaceholder": "ドキュメントのパスワードを入力してください...",
       "cancelButton": "キャンセル",
       "decrypting": "復号中...",
-      "decryptAndContinue": "復号して続行"
+      "decryptAndContinue": "復号して続行",
+      "maxFiles": "最大ファイル数: {count}"
     },
     "accessibility": {
       "skipToContent": "メインコンテンツへスキップ",

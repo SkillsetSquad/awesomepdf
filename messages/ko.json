@@ -157,7 +157,8 @@
       "passwordPlaceholder": "문서 비밀번호 입력...",
       "cancelButton": "취소",
       "decrypting": "해독 중...",
-      "decryptAndContinue": "해독 후 계속"
+      "decryptAndContinue": "해독 후 계속",
+      "maxFiles": "최대 파일 수: {count}"
     },
     "accessibility": {
       "skipToContent": "본문으로 건너뛰기",

@@ -157,7 +157,8 @@
       "passwordPlaceholder": "Nhập mật khẩu tài liệu...",
       "cancelButton": "Hủy bỏ",
       "decrypting": "Đang giải mã...",
-      "decryptAndContinue": "Giải mã & Tiếp tục"
+      "decryptAndContinue": "Giải mã & Tiếp tục",
+      "maxFiles": "Số tệp tối đa: {count}"
     },
     "accessibility": {
       "skipToContent": "Chuyển đến nội dung chính",

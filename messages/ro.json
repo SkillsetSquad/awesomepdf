@@ -157,7 +157,8 @@
       "passwordPlaceholder": "Introduceți parola documentului...",
       "cancelButton": "Anulați",
       "decrypting": "Se decriptează...",
-      "decryptAndContinue": "Decriptează și continuă"
+      "decryptAndContinue": "Decriptează și continuă",
+      "maxFiles": "Număr maxim de fișiere: {count}"
     },
     "accessibility": {
       "skipToContent": "Salt la conținutul principal",

@@ -157,7 +157,8 @@
       "passwordPlaceholder": "请输入文檔密碼",
       "cancelButton": "取消",
       "decrypting": "解密中...",
-      "decryptAndContinue": "解密并继续"
+      "decryptAndContinue": "解密并继续",
+      "maxFiles": "最多檔案數：{count}"
     },
     "accessibility": {
       "skipToContent": "跳轉到主要內容",

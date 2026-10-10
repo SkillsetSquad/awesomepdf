@@ -157,7 +157,8 @@
       "passwordPlaceholder": "Masukkan kata sandi dokumen...",
       "cancelButton": "Batal",
       "decrypting": "Mendekripsi...",
-      "decryptAndContinue": "Dekripsi & Lanjutkan"
+      "decryptAndContinue": "Dekripsi & Lanjutkan",
+      "maxFiles": "Jumlah file maksimum: {count}"
     },
     "accessibility": {
       "skipToContent": "Lewati ke konten utama",

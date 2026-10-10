@@ -157,7 +157,8 @@
       "passwordPlaceholder": "أدخل كلمة مرور المستند...",
       "cancelButton": "إلغاء",
       "decrypting": "جاري فك التشفير...",
-      "decryptAndContinue": "فك التشفير والمتابعة"
+      "decryptAndContinue": "فك التشفير والمتابعة",
+      "maxFiles": "الحد الأقصى للملفات: {count}"
     },
     "accessibility": {
       "skipToContent": "الانتقال إلى المحتوى الرئيسي",

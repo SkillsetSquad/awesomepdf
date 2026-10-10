@@ -157,7 +157,8 @@
       "passwordPlaceholder": "Podaj hasło dokumentu...",
       "cancelButton": "Anuluj",
       "decrypting": "Odszyfrowywanie...",
-      "decryptAndContinue": "Odszyfruj i kontynuuj"
+      "decryptAndContinue": "Odszyfruj i kontynuuj",
+      "maxFiles": "Maksymalna liczba plików: {count}"
     },
     "accessibility": {
       "skipToContent": "Przejdź do głównej treści",
