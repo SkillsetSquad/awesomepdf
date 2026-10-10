@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. All rights reserved.",
       "copyright": "© {year} AwesomePDF. All rights reserved.",
       "privacyBadge": "100% 프라이빗 - 파일이 기기를 떠나지 않습니다",
-      "madeWith": "<Heart /> 및 <Nextjs />로 제작"
+      "madeWith": "<Heart /> 및 <Nextjs />로 제작",
+      "resources": "자료",
+      "sourceCode": "소스 코드",
+      "license": "라이선스",
+      "openSource": "오픈 소스 고지",
+      "basedOn": "기반 프로젝트:",
+      "downloadError": "소스 다운로드에 실패했습니다. 다시 시도하세요.",
+      "sourceDescription": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요."
     },
     "recentFiles": {
       "title": "최근 파일",

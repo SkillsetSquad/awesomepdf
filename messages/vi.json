@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. Bảo lưu mọi quyền.",
       "copyright": "© {year} AwesomePDF. Bảo lưu mọi quyền.",
       "privacyBadge": "100% Riêng tư - Tệp không bao giờ rời khỏi thiết bị",
-      "madeWith": "Được tạo bởi <Heart /> và <Nextjs />"
+      "madeWith": "Được tạo bởi <Heart /> và <Nextjs />",
+      "resources": "Tài nguyên",
+      "sourceCode": "Mã nguồn",
+      "license": "Giấy phép",
+      "openSource": "Thông báo nguồn mở",
+      "basedOn": "Dựa trên",
+      "downloadError": "Không tải được mã nguồn. Vui lòng thử lại.",
+      "sourceDescription": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc."
     },
     "recentFiles": {
       "title": "Tệp Gần đây",

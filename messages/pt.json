@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. Todos os direitos reservados.",
       "copyright": "© {year} AwesomePDF. Todos os direitos reservados.",
       "privacyBadge": "100% Privado - Os arquivos nunca saem do seu dispositivo",
-      "madeWith": "Feito com <Heart /> e <Nextjs />"
+      "madeWith": "Feito com <Heart /> e <Nextjs />",
+      "resources": "Recursos",
+      "sourceCode": "Código-fonte",
+      "license": "Licença",
+      "openSource": "Avisos de código aberto",
+      "basedOn": "Baseado em",
+      "downloadError": "O download do código-fonte falhou. Tente novamente.",
+      "sourceDescription": "Baixe o código-fonte desta versão do AwesomePDF, incluindo a configuração de compilação e os avisos originais."
     },
     "recentFiles": {
       "title": "Arquivos Recentes",

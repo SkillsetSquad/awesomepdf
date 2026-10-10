@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. All rights reserved.",
       "copyright": "© {year} AwesomePDF. All rights reserved.",
       "privacyBadge": "100%プライベート - ファイルはデバイスから離れません",
-      "madeWith": "<Heart /> と <Nextjs /> で作成"
+      "madeWith": "<Heart /> と <Nextjs /> で作成",
+      "resources": "リソース",
+      "sourceCode": "ソースコード",
+      "license": "ライセンス",
+      "openSource": "オープンソースの通知",
+      "basedOn": "基になったプロジェクト：",
+      "downloadError": "ソースのダウンロードに失敗しました。もう一度お試しください。",
+      "sourceDescription": "この版のAwesomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。"
     },
     "recentFiles": {
       "title": "最近のファイル",

@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. Hak cipta dilindungi undang-undang.",
       "copyright": "© {year} AwesomePDF. Hak cipta dilindungi undang-undang.",
       "privacyBadge": "100% Pribadi - File tidak pernah meninggalkan perangkat Anda",
-      "madeWith": "Dibuat dengan <Heart /> dan <Nextjs />"
+      "madeWith": "Dibuat dengan <Heart /> dan <Nextjs />",
+      "resources": "Sumber daya",
+      "sourceCode": "Kode sumber",
+      "license": "Lisensi",
+      "openSource": "Pemberitahuan sumber terbuka",
+      "basedOn": "Berdasarkan",
+      "downloadError": "Unduhan kode sumber gagal. Silakan coba lagi.",
+      "sourceDescription": "Unduh kode sumber versi AwesomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli."
     },
     "recentFiles": {
       "title": "File Terbaru",

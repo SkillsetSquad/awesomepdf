@@ -1,7 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import * as fc from 'fast-check';
-import { render, screen } from '@testing-library/react';
+import { render as renderComponent, screen } from '@testing-library/react';
 import React from 'react';
+import { TooltipProvider } from '@/components/ui/tooltip';
+
+function render(ui: React.ReactNode) {
+  return renderComponent(<TooltipProvider>{ui}</TooltipProvider>);
+}
 import { locales, type Locale } from '@/lib/i18n/config';
 import { 
   saveLanguagePreference, 

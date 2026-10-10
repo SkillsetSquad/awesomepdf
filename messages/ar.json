@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. جميع الحقوق محفوظة.",
       "copyright": "© {year} AwesomePDF. جميع الحقوق محفوظة.",
       "privacyBadge": "خصوصية 100% - الملفات لا تغادر جهازك",
-      "madeWith": "تم الإنشاء باستخدام <Heart /> و <Nextjs />"
+      "madeWith": "تم الإنشاء باستخدام <Heart /> و <Nextjs />",
+      "resources": "الموارد",
+      "sourceCode": "الشيفرة المصدرية",
+      "license": "الترخيص",
+      "openSource": "إشعارات المصادر المفتوحة",
+      "basedOn": "مبني على",
+      "downloadError": "تعذر تنزيل الشيفرة المصدرية. يرجى المحاولة مرة أخرى.",
+      "sourceDescription": "نزّل الشيفرة المصدرية لهذا الإصدار المنشور من AwesomePDF، بما في ذلك إعدادات البناء والإشعارات الأصلية."
     },
     "recentFiles": {
       "title": "الملفات الأخيرة",

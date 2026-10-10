@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. Toate drepturile rezervate.",
       "copyright": "© {year} AwesomePDF. Toate drepturile rezervate.",
       "privacyBadge": "100% Privat - Fișierele nu părăsesc niciodată dispozitivul",
-      "madeWith": "Creat cu <Heart /> și <Nextjs />"
+      "madeWith": "Creat cu <Heart /> și <Nextjs />",
+      "resources": "Resurse",
+      "sourceCode": "Cod sursă",
+      "license": "Licență",
+      "openSource": "Notificări open source",
+      "basedOn": "Bazat pe",
+      "downloadError": "Descărcarea codului sursă a eșuat. Încercați din nou.",
+      "sourceDescription": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale."
     },
     "recentFiles": {
       "title": "Fișiere Recente",

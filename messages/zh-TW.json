@@ -88,7 +88,14 @@
       "footer": "© 2025 AwesomePDF. 保留所有權利。",
       "copyright": "© {year} AwesomePDF. 保留所有權利。",
       "privacyBadge": "100% 私密 - 檔案永不離開您的裝置",
-      "madeWith": "Made with <Heart /> and <Nextjs />"
+      "madeWith": "Made with <Heart /> and <Nextjs />",
+      "resources": "資源",
+      "sourceCode": "原始碼",
+      "license": "授權條款",
+      "openSource": "開源聲明",
+      "basedOn": "基於",
+      "downloadError": "原始碼下載失敗，請重試。",
+      "sourceDescription": "下載此部署版本的 AwesomePDF 原始碼，包括建置設定和原始聲明。"
     },
     "recentFiles": {
       "title": "最近檔案",
