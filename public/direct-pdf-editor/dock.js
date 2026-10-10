@@ -1,26 +1,28 @@
+import { createEditorIcon } from './icons.js';
+
 const TEXT_SECTIONS = [
-    { id: 'font', title: 'Font', icon: 'ph-text-aa' },
-    { id: 'size', title: 'Font Size', icon: 'ph-text-t' },
-    { id: 'color', title: 'Text Color', icon: 'ph-palette' },
-    { id: 'align', title: 'Alignment', icon: 'ph-text-align-left' },
-    { id: 'spacing', title: 'Spacing', icon: 'ph-arrows-out-line-vertical' },
-    { id: 'lists', title: 'Lists', icon: 'ph-list-bullets' },
-    { id: 'more', title: 'More', icon: 'ph-dots-three' },
+    { id: 'font', title: 'Font', icon: 'ALargeSmall' },
+    { id: 'size', title: 'Font Size', icon: 'Type' },
+    { id: 'color', title: 'Text Color', icon: 'Palette' },
+    { id: 'align', title: 'Alignment', icon: 'AlignLeft' },
+    { id: 'spacing', title: 'Spacing', icon: 'MoveVertical' },
+    { id: 'lists', title: 'Lists', icon: 'List' },
+    { id: 'more', title: 'More', icon: 'Ellipsis' },
 ];
 const SCOPE_SECTION = {
     id: 'scope',
     title: 'Edit Scope',
-    icon: 'ph-pencil-simple',
+    icon: 'Pencil',
 };
 const STROKE_SECTION = {
     id: 'stroke',
     title: 'Path Stroke',
-    icon: 'ph-path',
+    icon: 'Spline',
 };
 const MULTI_SECTION = {
     id: 'alignMulti',
     title: 'Align Objects',
-    icon: 'ph-align-left',
+    icon: 'AlignLeft',
 };
 const OBJ_BTN_IDS = [
     'rotL',
@@ -46,11 +48,6 @@ const MORE_FIELDS = [
     ['fHangInd', 'Hanging Indent'],
 ];
 const q = (id) => document.getElementById(id);
-const ph = (name) => {
-    const i = document.createElement('i');
-    i.className = `ph ${name}`;
-    return i;
-};
 const div = (cls) => {
     const d = document.createElement('div');
     d.className = cls;
@@ -119,10 +116,10 @@ function setupPagePill() {
         menu.addEventListener('click', (e) => e.stopPropagation());
         const nav = div('dpagenav');
         const prevB = mkBtn('dnavbtn', 'Previous page');
-        prevB.appendChild(ph('ph-caret-left'));
+        prevB.appendChild(createEditorIcon('ChevronLeft'));
         prevB.addEventListener('click', () => q('prev')?.click());
         const nextB = mkBtn('dnavbtn', 'Next page');
-        nextB.appendChild(ph('ph-caret-right'));
+        nextB.appendChild(createEditorIcon('ChevronRight'));
         nextB.addEventListener('click', () => q('next')?.click());
         const inp = document.createElement('input');
         inp.type = 'number';
@@ -164,7 +161,7 @@ function setupPagePill() {
         const props = mkBtn('ecmenu-item', 'Document properties');
         const propLabel = document.createElement('span');
         propLabel.textContent = 'Document properties';
-        props.append(ph('ph-info'), propLabel);
+        props.append(createEditorIcon('Info'), propLabel);
         props.addEventListener('click', () => {
             closeMenu();
             q('docInfoBtn')?.click();
@@ -207,7 +204,7 @@ export function setupFormatDock() {
     const dtext = document.createElement('span');
     dtitle.append(dticon, dtext);
     const dclose = mkBtn('dclose', 'Close panel');
-    dclose.appendChild(ph('ph-x'));
+    dclose.appendChild(createEditorIcon('X'));
     head.append(dtitle, dclose);
     const slotsWrap = div('dockslots');
     body.append(head, slotsWrap);
@@ -217,7 +214,7 @@ export function setupFormatDock() {
     const chipsWrap = div('dockchips');
     const acts = div('dockacts');
     const delChip = mkBtn('dchip ddel', 'Delete');
-    delChip.appendChild(ph('ph-trash'));
+    delChip.appendChild(createEditorIcon('Trash2'));
     delChip.addEventListener('click', () => q('del')?.click());
     acts.appendChild(delChip);
     rail.append(chipsWrap, acts);
@@ -269,7 +266,7 @@ export function setupFormatDock() {
         const sizer = div('dsizer');
         const step = (dir, icon, label) => {
             const b = mkBtn('dstep', label);
-            b.appendChild(ph(icon));
+            b.appendChild(createEditorIcon(icon));
             b.addEventListener('click', () => {
                 if (fSize.disabled || fSize.value === '')
                     return;
@@ -281,8 +278,8 @@ export function setupFormatDock() {
             });
             return b;
         };
-        const minus = step(-1, 'ph-minus', 'Decrease size');
-        const plus = step(1, 'ph-plus', 'Increase size');
+        const minus = step(-1, 'Minus', 'Decrease size');
+        const plus = step(1, 'Plus', 'Increase size');
         const host = stepperOf(fSize) ?? fSize;
         sizer.append(minus, host, plus);
         sizeSlot.appendChild(sizer);
@@ -396,7 +393,7 @@ export function setupFormatDock() {
         }
     };
     const setHead = (spec) => {
-        dticon.replaceChildren(ph(spec.icon));
+        dticon.replaceChildren(createEditorIcon(spec.icon));
         dtext.textContent = spec.title;
     };
     const showSlot = (id) => {
@@ -447,7 +444,7 @@ export function setupFormatDock() {
     const grab = div('dgrab');
     grab.appendChild(document.createElement('span'));
     const shead = div('dsheethead');
-    shead.append(ph('ph-text-aa'), document.createTextNode(' Select Font'));
+    shead.append(createEditorIcon('ALargeSmall'), document.createTextNode(' Select Font'));
     const fontListEl = div('dfontlist');
     sheet.append(grab, shead, fontListEl);
     inspector.append(dim, sheet);
@@ -463,7 +460,7 @@ export function setupFormatDock() {
             b.style.fontFamily = `"${opt.value.replace(/"/g, '')}", sans-serif`;
             const name = document.createElement('span');
             name.textContent = opt.value;
-            const chk = ph('ph-check');
+            const chk = createEditorIcon('Check');
             chk.classList.add('dfchk');
             b.append(name, chk);
             b.addEventListener('click', () => {
@@ -552,7 +549,7 @@ export function setupFormatDock() {
     const secChip = (spec) => {
         const b = mkBtn('dchip', spec.title);
         b.dataset.sec = spec.id;
-        b.appendChild(ph(spec.icon));
+        b.appendChild(createEditorIcon(spec.icon));
         b.addEventListener('click', () => {
             if (spec.id === 'font') {
                 if (sheetOpen)
@@ -568,15 +565,15 @@ export function setupFormatDock() {
     const proxyChip = (src) => {
         const b = mkBtn('dchip', src.title || 'Action');
         b.dataset.proxy = src.id;
-        const icon = src.querySelector('i');
-        b.appendChild(icon ? icon.cloneNode(true) : ph('ph-circle'));
+        const icon = src.querySelector('svg');
+        b.appendChild(icon ? icon.cloneNode(true) : createEditorIcon('Circle'));
         b.addEventListener('click', () => src.click());
         return b;
     };
     const toolChip = (id, icon, label, onTap) => {
         const b = mkBtn('dchip', label);
         b.dataset.tool = id;
-        b.appendChild(ph(icon));
+        b.appendChild(createEditorIcon(icon));
         b.addEventListener('click', onTap);
         return b;
     };
@@ -585,8 +582,8 @@ export function setupFormatDock() {
     const toggleChip = (src) => {
         const b = mkBtn('dchip', src.title || 'Toggle style');
         b.dataset.tog = src.dataset.t ?? '';
-        const icon = src.querySelector('i');
-        b.appendChild(icon ? icon.cloneNode(true) : ph('ph-circle'));
+        const icon = src.querySelector('svg');
+        b.appendChild(icon ? icon.cloneNode(true) : createEditorIcon('Circle'));
         b.addEventListener('click', () => src.click());
         return b;
     };
@@ -594,7 +591,7 @@ export function setupFormatDock() {
         const mode = computeMode();
         chipsWrap.replaceChildren();
         if (mode !== 'idle') {
-            chipsWrap.appendChild(toolChip('done', 'ph-check', 'Done — back to tools', () => {
+            chipsWrap.appendChild(toolChip('done', 'Check', 'Done — back to tools', () => {
                 closePanel();
                 closeSheet();
                 editBtn.click();
@@ -612,7 +609,7 @@ export function setupFormatDock() {
             }
         }
         else if (mode === 'idle') {
-            chipsWrap.appendChild(toolChip('edit', 'ph-pencil-simple', 'Edit tool', () => {
+            chipsWrap.appendChild(toolChip('edit', 'Pencil', 'Edit tool', () => {
                 if (editBtn.classList.contains('on'))
                     openSec(SCOPE_SECTION);
                 else {
@@ -620,17 +617,17 @@ export function setupFormatDock() {
                     applyScope();
                 }
             }));
-            chipsWrap.appendChild(toolChip('addText', 'ph-textbox', 'Add a text box', () => {
+            chipsWrap.appendChild(toolChip('addText', 'TextCursorInput', 'Add a text box', () => {
                 closePanel();
                 document
                     .querySelector('[data-tool="addText"]')
                     ?.click();
             }));
-            chipsWrap.appendChild(toolChip('addImage', 'ph-image', 'Add an image', () => {
+            chipsWrap.appendChild(toolChip('addImage', 'Image', 'Add an image', () => {
                 closePanel();
                 q('addImage')?.click();
             }));
-            chipsWrap.appendChild(toolChip('find', 'ph-magnifying-glass', 'Find & replace', () => {
+            chipsWrap.appendChild(toolChip('find', 'Search', 'Find & replace', () => {
                 closePanel();
                 q('find')?.click();
             }));

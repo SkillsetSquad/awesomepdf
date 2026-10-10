@@ -1,4 +1,3 @@
-@import url('./phosphor/style.css');
 
 /* ==========================================================================
    PDFCraft Direct Editor Design System
@@ -356,7 +355,7 @@ html.dark #text-editor-app,
   outline: none;
 }
 
-#text-editor-app .ph {
+#text-editor-app .lucide {
   font-size: 15px;
   line-height: 1;
 }
@@ -390,7 +389,7 @@ html.dark #text-editor-app,
   text-transform: uppercase;
   color: var(--ecmuted);
 }
-#text-editor-app #inspector h2 .ph {
+#text-editor-app #inspector h2 .lucide {
   font-size: 14px;
 }
 #text-editor-app .num:focus {
@@ -869,7 +868,7 @@ html.dark #text-editor-app,
 #text-editor-app .ecmenu-item:hover {
   background: var(--ecpanel2);
 }
-#text-editor-app .ecmenu-item .ph-check {
+#text-editor-app .ecmenu-item .lucide-check {
   font-size: 13px;
   width: 14px;
 }
@@ -996,7 +995,7 @@ html.dark #text-editor-app,
   cursor: pointer;
   user-select: none;
 }
-#text-editor-app .stepbtn .ph {
+#text-editor-app .stepbtn .lucide {
   font-size: 9px;
   line-height: 1;
 }
@@ -1033,7 +1032,7 @@ html.dark #text-editor-app,
   color: var(--ecaccent);
   font-weight: 600;
 }
-#text-editor-app .ecmenu-item .ph {
+#text-editor-app .ecmenu-item .lucide {
   font-size: 14px;
 }
 #text-editor-app .zoomcustom {
@@ -1547,7 +1546,7 @@ html.dark #text-editor-app,
     text-transform: uppercase;
     color: var(--ecmuted);
   }
-  #text-editor-app .dtitle .ph {
+  #text-editor-app .dtitle .lucide {
     font-size: 15px;
     color: var(--ecaccent);
   }
@@ -1714,7 +1713,7 @@ html.dark #text-editor-app,
       background 150ms ease,
       border-color 150ms ease;
   }
-  #text-editor-app .dchip .ph {
+  #text-editor-app .dchip .lucide {
     font-size: 18px;
   }
   #text-editor-app .dchip.on {
@@ -1789,7 +1788,7 @@ html.dark #text-editor-app,
     font-weight: 600;
     flex: 0 0 auto;
   }
-  #text-editor-app .dsheethead .ph {
+  #text-editor-app .dsheethead .lucide {
     color: var(--ecaccent);
     font-size: 17px;
   }

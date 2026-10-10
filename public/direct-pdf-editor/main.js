@@ -1,4 +1,5 @@
 // Direct PDF Editor Controller
+import { createEditorIcon } from './icons.js';
 import * as appModule from './app.js';
 import { setupFormatDock, setupFindSheet } from './dock.js';
 window.appModule = appModule;
@@ -124,10 +125,8 @@ function relocateAddText() {
   const editBtn = document.querySelector('#tools [data-tool="edit"]');
   const findBtn = document.getElementById('find');
   if (!addTextBtn || !editBtn || !findBtn?.parentElement) return;
-  addTextBtn.replaceChildren();
-  const icon = document.createElement('i');
-  icon.className = 'ph ph-text-t';
-  addTextBtn.appendChild(icon);
+  const icon = addTextBtn.querySelector('svg') || createEditorIcon('Type');
+  addTextBtn.replaceChildren(icon);
   addTextBtn.classList.add('btn', 'icon');
   addTextBtn.title = t.addText;
   findBtn.parentElement.insertBefore(addTextBtn, findBtn);
