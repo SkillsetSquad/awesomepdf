@@ -549,15 +549,19 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                     {tTools('splitPdf.modeEveryPage')?.replace('Split All Pages into Separate Files', 'Every Page') || 'Every Page'}
                   </span>
                   {splitMode === 'every-page' && (
-              <Alert><UIFileText aria-hidden="true" /><AlertTitle>{totalPages} Separate Files</AlertTitle><AlertDescription>
-                {tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}
-              </AlertDescription></Alert>
+              <Alert>
+                <UIFileText aria-hidden="true" />
+                <AlertTitle>{totalPages} Separate Files</AlertTitle>
+                <AlertDescription>{tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}</AlertDescription>
+              </Alert>
             )}
 
             {splitMode === 'visual' && (
-              <Alert><UIMousePointerClick aria-hidden="true" /><AlertTitle>Visual Page Selection</AlertTitle><AlertDescription>
-                {tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}
-              </AlertDescription></Alert>
+              <Alert>
+                <UIMousePointerClick aria-hidden="true" />
+                <AlertTitle>Visual Page Selection</AlertTitle>
+                <AlertDescription>{tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}</AlertDescription>
+              </Alert>
             )}
 
             {splitMode === 'bookmarks' && (
