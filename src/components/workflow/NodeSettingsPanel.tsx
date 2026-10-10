@@ -9,13 +9,14 @@ import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useTranslations, useLocale, useMessages } from 'next-intl';
 import { WorkflowNode } from '@/types/workflow';
 import { getToolContent } from '@/config/tool-content';
 import { Locale } from '@/lib/i18n/config';
 import { X, Settings, RotateCcw, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from '@/components/ui/sheet';
 
 interface NodeSettingsPanelProps {
     node: WorkflowNode | null;
@@ -2432,6 +2433,11 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
     const messages = useMessages(); // Get raw messages for nested key lookup
     const locale = useLocale() as Locale;
 
+    const returnFocusRef = useRef<HTMLElement | null>(null);
+    useLayoutEffect(() => {
+        const active = document.activeElement;
+        if (node && active instanceof HTMLElement && !active.closest('[data-slot="sheet-content"]')) returnFocusRef.current = active;
+    }, [node?.id]);
     const [settings, setSettings] = useState<Record<string, unknown>>({});
 
     const toolSettingsConfigs = getToolSettingsConfig();
@@ -2612,22 +2618,21 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
     if (!node) return null;
 
     return (
-        <div className="fixed right-0 top-0 h-full w-80 bg-background border-l border-border shadow-xl z-[100] flex flex-col animate-in slide-in-from-right duration-200">
+        <Sheet open={!!node} modal={false} onOpenChange={(open) => { if (!open) onClose(); }}>
+        <SheetContent side={locale === 'ar' ? 'left' : 'right'} dir={locale === 'ar' ? 'rtl' : 'ltr'} showCloseButton={false}
+            className="w-full max-w-sm" onInteractOutside={(event) => event.preventDefault()}
+            onCloseAutoFocus={(event) => { event.preventDefault(); returnFocusRef.current?.focus(); }}>
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
+            <SheetHeader className="relative border-b pe-12">
                 <div className="flex items-center gap-2">
                     <Settings className="w-5 h-5 text-primary" />
-                    <h3 className="font-medium text-foreground truncate max-w-[180px]">
+                    <SheetTitle className="truncate">
                         {getToolTitle()}
-                    </h3>
+                    </SheetTitle>
                 </div>
-                <Button variant="ghost" size="icon-sm"
-                    onClick={onClose}
-
-                >
-                    <X className="w-4 h-4 text-muted-foreground" />
-                </Button>
-            </div>
+                <SheetDescription className="sr-only">{getTranslation(config?.titleKey || 'Settings')}</SheetDescription>
+                <SheetClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={tCommon('buttons.close')}><X aria-hidden="true" /></Button></SheetClose>
+            </SheetHeader>
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-4">
@@ -3005,7 +3010,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
             {/* Footer */}
             {(isConditionGateway || (config && config.fields.length > 0)) && (
-                <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-border bg-muted/30">
+                <SheetFooter className="flex-row flex-wrap items-center justify-between border-t">
                     <Button
                         variant="ghost"
                         size="sm"
@@ -3015,7 +3020,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                         {tWorkflow('reset') || 'Reset'}
                     </Button>
                     <div className="flex items-center gap-2.5">
-                        <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+                        <span className="text-xs text-muted-foreground">
                             {locale === 'zh' ? '即时已同步' : 'Auto-synced'}
                         </span>
                         <Button
@@ -3027,9 +3032,10 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                             {locale === 'zh' ? '完成' : (tWorkflow('done') || 'Done')}
                         </Button>
                     </div>
-                </div>
+                </SheetFooter>
             )}
-        </div>
+        </SheetContent>
+        </Sheet>
     );
 }
 
