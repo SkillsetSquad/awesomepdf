@@ -18,6 +18,7 @@ import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { addPageLabels } from '@/lib/pdf/processors/page-labels';
 import type { ProcessOutput } from '@/types/pdf';
@@ -492,9 +493,7 @@ export function AddPageLabelsTool() {
                     <span className="text-[10px] font-bold text-muted-foreground">
                       P.{idx + 1}
                     </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 text-white shadow-sm shadow-emerald-500/10">
-                      {label}
-                    </span>
+                    <Badge variant="secondary">{label}</Badge>
                   </div>
                 ))}
 

@@ -1,5 +1,5 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Bookmark as UIBookmark, Check as UICheck, Download as UIDownload, FileText as UIFileText, LayoutGrid as UILayoutGrid, List as UIList, ListFilter as UIListFilter, MousePointerClick as UIMousePointerClick, TriangleAlert as UITriangleAlert } from 'lucide-react';
@@ -549,53 +549,18 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                     {tTools('splitPdf.modeEveryPage')?.replace('Split All Pages into Separate Files', 'Every Page') || 'Every Page'}
                   </span>
                   {splitMode === 'every-page' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
+              <Alert><UIFileText aria-hidden="true" /><AlertTitle>{totalPages} Separate Files</AlertTitle><AlertDescription>
+                {tTools('splitPdf.everyPageInfo', { count: totalPages }) || 'Each page will be extracted as a separate PDF file'}
+              </AlertDescription></Alert>
+            )}
 
-                {/* Visual Mode */}
-                <Button size="sm" variant={splitMode === 'visual' ? 'default' : 'outline'} aria-pressed={splitMode === 'visual'}
-                  type="button"
-                  onClick={() => setSplitMode('visual')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'visual' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UIMousePointerClick className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'visual' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeVisualShort') || 'Visual Select'}
-                  </span>
-                  {splitMode === 'visual' && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                    </div>
-                  )}
-                </Button>
+            {splitMode === 'visual' && (
+              <Alert><UIMousePointerClick aria-hidden="true" /><AlertTitle>Visual Page Selection</AlertTitle><AlertDescription>
+                {tTools('splitPdf.visualInfo') || 'Click on page thumbnails below to select pages for extraction'}
+              </AlertDescription></Alert>
+            )}
 
-                {/* Bookmarks Mode */}
-                <Button size="sm" variant={splitMode === 'bookmarks' ? 'default' : 'outline'} aria-pressed={splitMode === 'bookmarks'}
-                  type="button"
-                  onClick={() => setSplitMode('bookmarks')}
-                  disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
-                >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'bookmarks' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
-                    }`}>
-                    <UIBookmark className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className={`text-sm font-medium text-center ${splitMode === 'bookmarks' ? 'text-primary' : 'text-foreground'}`}>
-                    {tTools('splitPdf.modeBookmarksShort') || 'Bookmarks'}
-                  </span>
-                  {pdfBookmarks.length > 0 && (
-                    <span className="absolute -top-1 -left-1 px-1.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold">
-                      {pdfBookmarks.length}
-                    </span>
-                  )}
-                  {splitMode === 'bookmarks' && (
+            {splitMode === 'bookmarks' && (
                     <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
                       <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
                     </div>
@@ -732,27 +697,13 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
               <div className="space-y-4">
                 {pdfBookmarks.length > 0 ? (
                   <>
-                    {/* Success banner with gradient */}
-                    <div className="relative overflow-hidden p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/60 shadow-sm">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-200/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
-                      <div className="relative flex items-start gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                          <UICheck className="w-5 h-5 text-emerald-600" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-emerald-800">
-                            {pdfBookmarks.length} {pdfBookmarks.length === 1 ? 'Bookmark' : 'Bookmarks'} Found
-                          </p>
-                          <p className="text-xs text-emerald-600 mt-0.5">
-                            Your PDF will be split into {pdfBookmarks.length} separate files based on the bookmark structure
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    <Alert role="status"><UICheck aria-hidden="true" /><AlertTitle>
+                      {pdfBookmarks.length} {pdfBookmarks.length === 1 ? 'Bookmark' : 'Bookmarks'} Found
+                    </AlertTitle><AlertDescription>Your PDF will be split into {pdfBookmarks.length} separate files based on the bookmark structure</AlertDescription></Alert>
 
                     {/* Bookmark list with modern styling */}
-                    <div className="rounded-xl border border-border overflow-hidden shadow-sm bg-background">
-                      <div className="px-4 py-3 bg-gradient-to-r from-muted/50 to-muted/30 border-b border-border">
+                    <div className="rounded-md border border-border overflow-hidden bg-background">
+                      <div className="px-4 py-3 bg-muted border-b border-border">
                         <div className="flex items-center gap-2">
                           <UIBookmark className="w-4 h-4 text-primary" aria-hidden="true" />
                           <p className="text-sm font-medium text-foreground">
@@ -789,23 +740,9 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                     </div>
                   </>
                 ) : (
-                  /* No bookmarks warning with modern styling */
-                  <div className="relative overflow-hidden p-4 rounded-xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 shadow-sm">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-200/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
-                    <div className="relative flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
-                        <UITriangleAlert className="w-5 h-5 text-amber-600" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-amber-800">
-                          No Bookmarks Found
-                        </p>
-                        <p className="text-xs text-amber-600 mt-0.5">
-                          {tTools('splitPdf.bookmarksNotice') || 'This PDF does not contain bookmarks. The entire document will be returned as a single file.'}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <Alert><UITriangleAlert aria-hidden="true" /><AlertTitle>No Bookmarks Found</AlertTitle><AlertDescription>
+                    {tTools('splitPdf.bookmarksNotice') || 'This PDF does not contain bookmarks. The entire document will be returned as a single file.'}
+                  </AlertDescription></Alert>
                 )}
               </div>
             )}

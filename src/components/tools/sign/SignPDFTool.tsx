@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { withBasePath } from '@/lib/utils/path';
 import { saveBlobFile } from '@/lib/tauri-bridge';
@@ -313,19 +314,17 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {/* Quick Action Header: Signature Extractor & Library */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/80 to-sky-50/80 border border-blue-200 rounded-lg shadow-xs">
+      <Card className="flex-row flex-wrap items-center justify-between gap-4 p-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm flex-shrink-0">
+          <div className="size-10 shrink-0 flex items-center justify-center text-muted-foreground">
             <UIPenLine className="w-5 h-5" aria-hidden="true" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-foreground flex flex-wrap items-center gap-2">
               <span>从已签署 PDF 提取签名 / 印章</span>
-              <span className="text-[10px] font-normal px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
-                支持 Adobe Acrobat
-              </span>
+              <Badge variant="secondary">支持 Adobe Acrobat</Badge>
             </h3>
-            <p className="text-xs text-foreground mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5">
               上传已签名的 PDF，智能识别笔迹或印章并剥离纸张白底，一键存入签名库随时使用。
             </p>
           </div>
@@ -347,9 +346,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           >
             <span><UIEmojiFolderOpen className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> 签名库</span>
             {savedSignatureCount > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-100 text-blue-700 font-medium">
-                {savedSignatureCount}
-              </span>
+              <Badge variant="secondary">{savedSignatureCount}</Badge>
             )}
           </Button></DialogTrigger><SignatureLibraryModal
         isOpen={isLibraryOpen}
@@ -381,7 +378,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
         onSignatureExtracted={handleSignatureExtracted}
       /></Dialog>
         </div>
-      </div>
+      </Card>
 
       {/* Toast Notification */}
       {toastMessage && (

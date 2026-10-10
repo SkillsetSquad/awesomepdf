@@ -12,6 +12,7 @@ import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { removeBlankPages } from '@/lib/pdf/processors/remove-blank-pages';
@@ -20,7 +21,6 @@ import {
   Trash2,
   RefreshCw,
   Check,
-  AlertCircle,
   Loader2,
   X,
   Sliders,
@@ -301,20 +301,14 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
       {/* Error message */}
       {error && (
         <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <p className="text-sm">{error}</p>
+                    <p className="text-sm">{error}</p>
         </AlertDescription></Alert>
       )}
 
       {/* Analyzing Phase */}
       {isAnalyzing && (
         <Card  className="p-8 border text-center gap-4">
-          <div className="flex justify-center">
-            <div className="relative w-16 h-16 flex items-center justify-center">
-              <Loader2 className="w-10 h-10 text-primary animate-spin" />
-              <div className="absolute inset-0 rounded-full border-4 border-primary/15 border-t-[var(--primary)] animate-pulse" />
-            </div>
-          </div>
+          <Loader2 aria-hidden="true" className="mx-auto size-8 animate-spin text-primary" />
           <div className="space-y-2 max-w-sm mx-auto">
             <h3 className="text-sm font-semibold text-foreground tracking-wider">
               {tTools('removeBlankPages.analyzingPages')}
@@ -322,12 +316,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             <p className="text-xs text-muted-foreground">
               {analyzingProgress}% Completed
             </p>
-            <div className="w-full bg-muted h-1.5 rounded-full overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-300"
-                style={{ width: `${analyzingProgress}%` }}
-              />
-            </div>
+            <Progress value={analyzingProgress} aria-label={tTools('removeBlankPages.analyzingPages')} />
           </div>
         </Card>
       )}
