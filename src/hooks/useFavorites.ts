@@ -8,11 +8,17 @@ let memoryFavorites: string[] = [];
 
 function readFavorites(): string[] {
   if (typeof window === 'undefined') return [];
+  let stored: string | null;
   try {
-    const parsed: unknown = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]');
-    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
+    stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
   } catch {
     return memoryFavorites;
+  }
+  try {
+    const parsed: unknown = JSON.parse(stored || '[]');
+    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
+  } catch {
+    return [];
   }
 }
 

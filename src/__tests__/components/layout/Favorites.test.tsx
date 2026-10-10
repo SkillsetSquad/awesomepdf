@@ -26,6 +26,12 @@ describe('Shared favorites', () => {
     expect(screen.getByRole('button', { name: 'Remove from Favorites: Split Pdf' })).toHaveAttribute('aria-pressed', 'true');
   });
 
+  it('recovers from a corrupted saved list without restoring stale session choices', () => {
+    localStorage.setItem('pdfcraft-favorite-tools', 'invalid JSON');
+    render(<DirectoryFilter />);
+    expect(screen.getByRole('status')).toHaveTextContent('Favorites: 0');
+  });
+
   it('reflects changes made by another tab', () => {
     render(<DirectoryFilter />);
     act(() => {
