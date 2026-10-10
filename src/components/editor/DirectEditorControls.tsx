@@ -11,6 +11,7 @@ import { ALargeSmall, AlignCenter, AlignCenterHorizontal, AlignCenterVertical, A
 import { EditorEditMenu, EditorZoomMenu, EditorDocumentDialog } from './EditorMenus';
 import { EditorNotifications } from './EditorNotifications';
 import { EditorPanelToggle } from './EditorPanelToggle';
+import { EditorInputDialog } from './EditorInputDialog';
 import { withBasePath } from '@/lib/utils/path';
 
 // Keep native input IDs and change events for the existing browser-only editor engine.
@@ -545,6 +546,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
       <div id="toast" hidden={true} aria-hidden="true">
       </div>
       <EditorNotifications direction={locale === 'ar' ? 'rtl' : 'ltr'} />
+      <EditorInputDialog labels={labels} locale={locale} />
     </div>
   );
 }

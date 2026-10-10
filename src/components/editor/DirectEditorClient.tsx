@@ -38,6 +38,12 @@ export function DirectEditorClient() {
           dirAuto: common.options.auto,
           emptyState: tools.editPdf.uploadDescription,
           choosePdf: tools.editPdf.uploadLabel,
+          passwordTitle: tools.decryptPdf.passwordTitle,
+          passwordLabel: tools.decryptPdf.passwordLabel,
+          passwordDescription: tools.decryptPdf.passwordPlaceholder,
+          invalidPassword: catalog.default.errors.incorrectPassword,
+          cancel: common.buttons.cancel,
+          apply: common.buttons.apply,
         });
       }
     };

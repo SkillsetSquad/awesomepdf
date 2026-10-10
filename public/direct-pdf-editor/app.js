@@ -14,6 +14,7 @@ window.addEventListener('unhandledrejection', (e) => {
     ((e.reason && (e.reason.stack || e.reason.message)) || e.reason);
 });
 import { PdfEngine, OBJ } from './core.js';
+import { requestEditorInput } from './ui.js';
 import { applyTagSurgery } from './tagsurgery.js';
 import { pageHasPatternFill, protectPatternArtwork } from './shadingsurgery.js';
 import {
@@ -9347,7 +9348,7 @@ async function openFile(file, sourceUrl = null, knownBytes) {
     P().open(bytes);
   } catch (e) {
     if (e.passwordRequired) {
-      let pw = prompt('This PDF is password-protected.\nEnter the password:');
+      let pw = await requestEditorInput({ kind: 'password' });
       while (pw != null) {
         try {
           P().open(bytes, pw);
@@ -9357,7 +9358,7 @@ async function openFile(file, sourceUrl = null, knownBytes) {
             toast(e2.message);
             return;
           }
-          pw = prompt('Wrong password. Try again:');
+          pw = await requestEditorInput({ kind: 'password', retry: true });
         }
       }
       if (pw == null) return;
@@ -9606,7 +9607,7 @@ function wireUI() {
       return;
     await replaceImageFromBlob(state.selection.handle, file, 'Image replaced.');
   });
-  $('altText').addEventListener('click', () => {
+  $('altText').addEventListener('click', async () => {
     const sel = state.selection;
     if (sel?.kind !== 'object' || sel.type !== OBJ.IMAGE) return;
     const mcid = P().objectMcid(sel.handle);
@@ -9618,10 +9619,7 @@ function wireUI() {
       (state.pendingAlt || []).find((a) => a.mcid === mcid)?.text ??
       P().structAltFor(mcid) ??
       '';
-    const text = prompt(
-      'Alternate text for this image (screen readers):',
-      current
-    );
+    const text = await requestEditorInput({ kind: 'altText', value: current });
     if (text === null) return;
     state.pendingAlt = (state.pendingAlt || []).filter((a) => a.mcid !== mcid);
     state.pendingAlt.push({ mcid, text });
@@ -9948,6 +9946,7 @@ function wireUI() {
   stagePointHandlers();
 
   window.addEventListener('keydown', (e) => {
+    if (document.querySelector('[data-slot="dialog-content"]')) return;
     const meta = e.metaKey || e.ctrlKey;
     const typing =
       document.activeElement &&
