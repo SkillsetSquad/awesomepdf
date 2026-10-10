@@ -524,49 +524,33 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                 {t('comparePdfs.filterLabel')}
               </span>
 
-              <button
+              <Button size="sm" variant={filterPills.text ? 'default' : 'outline'} aria-pressed={filterPills.text}
                 onClick={() => setFilterPills(p => ({ ...p, text: !p.text }))}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.text
-                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/35 shadow-sm shadow-amber-500/5'
-                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
-                }`}
+
               >
                 {t('comparePdfs.filterText')}
-              </button>
+              </Button>
 
-              <button
+              <Button size="sm" variant={filterPills.formatting ? 'default' : 'outline'} aria-pressed={filterPills.formatting}
                 onClick={() => setFilterPills(p => ({ ...p, formatting: !p.formatting }))}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.formatting
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/35 shadow-sm shadow-emerald-500/5'
-                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
-                }`}
+
               >
                 {t('comparePdfs.filterFont')}
-              </button>
+              </Button>
 
-              <button
+              <Button size="sm" variant={filterPills.headerFooter ? 'default' : 'outline'} aria-pressed={filterPills.headerFooter}
                 onClick={() => setFilterPills(p => ({ ...p, headerFooter: !p.headerFooter }))}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.headerFooter
-                    ? 'bg-blue-500/10 text-blue-500 border border-blue-500/35 shadow-sm shadow-blue-500/5'
-                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
-                }`}
+
               >
                 {t('comparePdfs.filterHeaderFooter')}
-              </button>
+              </Button>
 
-              <button
+              <Button size="sm" variant={filterPills.moved ? 'default' : 'outline'} aria-pressed={filterPills.moved}
                 onClick={() => setFilterPills(p => ({ ...p, moved: !p.moved }))}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  filterPills.moved
-                    ? 'bg-purple-500/10 text-purple-500 border border-purple-500/35 shadow-sm shadow-purple-500/5'
-                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
-                }`}
+
               >
                 {t('comparePdfs.filterMoved')}
-              </button>
+              </Button>
 
               <Button variant="outline" size="sm" onClick={handleClearAll} className="ml-4 py-2 text-xs">
                 {t('comparePdfs.resetButton')}

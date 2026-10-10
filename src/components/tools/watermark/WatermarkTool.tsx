@@ -874,7 +874,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     {PRESETS.map((p) => {
                       const active = isPresetActive(p.x, p.y);
                       return (
-                        <button
+                        <Button size="sm" variant={active ? 'default' : 'outline'} aria-pressed={active}
                           key={p.key}
                           type="button"
                           onClick={() => {
@@ -882,14 +882,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                             setWatermarkY(p.y);
                           }}
                           disabled={isProcessing}
-                          className={`py-1.5 px-2 text-xs rounded-md font-medium transition-all ${
-                            active
-                              ? 'bg-blue-600 text-white shadow-sm ring-2 ring-blue-500/30'
-                              : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
-                          }`}
+
                         >
                           {p.label}
-                        </button>
+                        </Button>
                       );
                     })}
                   </div>

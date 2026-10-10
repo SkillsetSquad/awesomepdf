@@ -168,23 +168,15 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                             </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['1x2', '2x2', '2x4', '4x4'] as BookletGridMode[]).map((mode) => (
-                                    <button
+                                    <Button size="sm" variant={gridMode === mode ? 'default' : 'outline'} aria-pressed={gridMode === mode}
                                         key={mode}
                                         type="button"
                                         onClick={() => setGridMode(mode)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${gridMode === mode
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                                     >
                                         {mode}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                             <p className="mt-1 text-xs text-muted-foreground">
@@ -199,23 +191,15 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                             </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(['a4', 'letter', 'legal'] as BookletPaperSize[]).map((size) => (
-                                    <button
+                                    <Button size="sm" variant={paperSize === size ? 'default' : 'outline'} aria-pressed={paperSize === size}
                                         key={size}
                                         type="button"
                                         onClick={() => setPaperSize(size)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium uppercase
-                      transition-colors duration-200
-                      ${paperSize === size
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+                                        className="uppercase"
                                     >
                                         {size}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>
@@ -227,23 +211,15 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                             </Label>
                             <div className="grid grid-cols-2 gap-2">
                                 {(['portrait', 'landscape'] as const).map((orient) => (
-                                    <button
+                                    <Button size="sm" variant={orientation === orient ? 'default' : 'outline'} aria-pressed={orientation === orient}
                                         key={orient}
                                         type="button"
                                         onClick={() => setOrientation(orient)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium capitalize
-                      transition-colors duration-200
-                      ${orientation === orient
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+                                        className="capitalize"
                                     >
                                         {orient}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>
@@ -255,26 +231,18 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                             </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['none', '90cw', '90ccw', 'alternate'] as BookletRotation[]).map((rot) => (
-                                    <button
+                                    <Button size="sm" variant={rotation === rot ? 'default' : 'outline'} aria-pressed={rotation === rot}
                                         key={rot}
                                         type="button"
                                         onClick={() => setRotation(rot)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${rotation === rot
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                                     >
                                         {rot === 'none' && 'None'}
                                         {rot === '90cw' && '90° CW'}
                                         {rot === '90ccw' && '90° CCW'}
                                         {rot === 'alternate' && 'Alternate'}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>

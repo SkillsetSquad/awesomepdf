@@ -13,7 +13,7 @@ export interface EditPDFToolProps {
 
 /**
  * EditPDFTool Component
- * 
+ *
  * Provides professional PDF direct in-place editing capabilities (live reflow,
  * font & typography styling, image replacement, find & replace) powered by
  * EditCore WASM, with seamless fallback to classic annotation mode.
@@ -180,30 +180,22 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
         <div className="space-y-4">
           <div className="flex items-center justify-center">
             <div className="flex items-center rounded-lg bg-gray-100 dark:bg-gray-700/60 p-1 border border-gray-200 dark:border-gray-600 text-xs font-medium">
-              <button
+              <Button size="sm" variant={editMode === 'direct' ? 'default' : 'outline'} aria-pressed={editMode === 'direct'}
                 type="button"
                 onClick={() => setEditMode('direct')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${
-                  editMode === 'direct'
-                    ? 'bg-blue-600 text-white shadow-sm font-semibold'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-blue-600'
-                }`}
+                className="flex items-center gap-1.5"
               >
                 <span>✦</span>
                 <span>{locale === 'zh' ? '直接编辑正文与图片' : 'Direct Content Edit'}</span>
-              </button>
-              <button
+              </Button>
+              <Button size="sm" variant={editMode === 'annotator' ? 'default' : 'outline'} aria-pressed={editMode === 'annotator'}
                 type="button"
                 onClick={() => setEditMode('annotator')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${
-                  editMode === 'annotator'
-                    ? 'bg-blue-600 text-white shadow-sm font-semibold'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-blue-600'
-                }`}
+                className="flex items-center gap-1.5"
               >
                 <span>✎</span>
                 <span>{locale === 'zh' ? '经典批注与涂鸦' : 'Classic Annotator'}</span>
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -250,30 +242,22 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
 
               {/* Mode switch pills */}
               <div className="flex items-center rounded-lg bg-gray-100 dark:bg-gray-700/60 p-1 border border-gray-200 dark:border-gray-600 text-xs font-medium">
-                <button
+                <Button size="sm" variant={editMode === 'direct' ? 'default' : 'outline'} aria-pressed={editMode === 'direct'}
                   type="button"
                   onClick={() => setEditMode('direct')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${
-                    editMode === 'direct'
-                      ? 'bg-blue-600 text-white shadow-sm font-semibold'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-blue-600'
-                  }`}
+                  className="flex items-center gap-1.5"
                 >
                   <span>✦</span>
                   <span>{locale === 'zh' ? '直接编辑正文与图片' : 'Direct Content Edit'}</span>
-                </button>
-                <button
+                </Button>
+                <Button size="sm" variant={editMode === 'annotator' ? 'default' : 'outline'} aria-pressed={editMode === 'annotator'}
                   type="button"
                   onClick={() => setEditMode('annotator')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${
-                    editMode === 'annotator'
-                      ? 'bg-blue-600 text-white shadow-sm font-semibold'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-blue-600'
-                  }`}
+                  className="flex items-center gap-1.5"
                 >
                   <span>✎</span>
                   <span>{locale === 'zh' ? '经典批注与涂鸦' : 'Classic Annotator'}</span>
-                </button>
+                </Button>
               </div>
 
               <Button variant="ghost" size="sm" onClick={handleClear}>

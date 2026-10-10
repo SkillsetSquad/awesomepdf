@@ -235,25 +235,17 @@ export function PageDimensionsTool({ className = '' }: PageDimensionsToolProps) 
             </Label>
             <div className="flex gap-2">
               {(['pt', 'in', 'mm'] as DisplayUnit[]).map((unit) => (
-                <button
+                <Button size="sm" variant={displayUnit === unit ? 'default' : 'outline'} aria-pressed={displayUnit === unit}
                   key={unit}
                   type="button"
                   onClick={() => setDisplayUnit(unit)}
                   disabled={isProcessing}
-                  className={`
-                    px-4 py-2 rounded-md border text-sm font-medium
-                    transition-colors duration-200
-                    ${displayUnit === unit
-                      ? 'border-primary bg-primary text-primary-foreground'
-                      : 'border-border hover:bg-muted/50'
-                    }
-                    disabled:opacity-50 disabled:cursor-not-allowed
-                  `}
+
                 >
                   {unit === 'pt' && (tTools('pageDimensions.unitPoints') || 'Points')}
                   {unit === 'in' && (tTools('pageDimensions.unitInches') || 'Inches')}
                   {unit === 'mm' && (tTools('pageDimensions.unitMm') || 'Millimeters')}
-                </button>
+                </Button>
               ))}
             </div>
           </div>

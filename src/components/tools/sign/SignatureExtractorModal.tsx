@@ -488,19 +488,15 @@ export function SignatureExtractorModal({
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {detectedZones.map((z) => (
-                    <button
+                    <Button size="sm" variant={z.pageNumber === currentPage ? 'default' : 'outline'} aria-pressed={z.pageNumber === currentPage}
                       key={z.id}
                       type="button"
                       onClick={() => handleSelectZone(z)}
-                      className={`text-xs px-2.5 py-1 rounded-full border transition flex items-center gap-1.5 ${
-                        z.pageNumber === currentPage
-                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
-                          : 'bg-white text-blue-700 border-blue-300 hover:bg-blue-100'
-                      }`}
+                      className="flex items-center gap-1.5"
                     >
                       <span>📍</span>
                       <span>{z.title}</span>
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -620,57 +616,41 @@ export function SignatureExtractorModal({
                         笔迹色彩增强：
                       </Label>
                       <div className="grid grid-cols-2 gap-2 text-xs">
-                        <button
+                        <Button size="sm" variant={colorMode === 'original' ? 'default' : 'outline'} aria-pressed={colorMode === 'original'}
                           type="button"
                           onClick={() => setColorMode('original')}
-                          className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
-                            colorMode === 'original'
-                              ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-border hover:bg-gray-50'
-                          }`}
+                          className="text-left flex items-center gap-1.5"
                         >
                           <span className="w-3 h-3 rounded-full bg-gradient-to-tr from-blue-500 to-red-500 inline-block" />
                           <span>保持原色</span>
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button size="sm" variant={colorMode === 'black' ? 'default' : 'outline'} aria-pressed={colorMode === 'black'}
                           type="button"
                           onClick={() => setColorMode('black')}
-                          className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
-                            colorMode === 'black'
-                              ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-border hover:bg-gray-50'
-                          }`}
+                          className="text-left flex items-center gap-1.5"
                         >
                           <span className="w-3 h-3 rounded-full bg-gray-900 inline-block" />
                           <span>纯黑墨水</span>
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button size="sm" variant={colorMode === 'blue' ? 'default' : 'outline'} aria-pressed={colorMode === 'blue'}
                           type="button"
                           onClick={() => setColorMode('blue')}
-                          className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
-                            colorMode === 'blue'
-                              ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-border hover:bg-gray-50'
-                          }`}
+                          className="text-left flex items-center gap-1.5"
                         >
                           <span className="w-3 h-3 rounded-full bg-blue-800 inline-block" />
                           <span>公文深蓝</span>
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button size="sm" variant={colorMode === 'seal_red' ? 'default' : 'outline'} aria-pressed={colorMode === 'seal_red'}
                           type="button"
                           onClick={() => setColorMode('seal_red')}
-                          className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
-                            colorMode === 'seal_red'
-                              ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-border hover:bg-gray-50'
-                          }`}
+                          className="text-left flex items-center gap-1.5"
                         >
                           <span className="w-3 h-3 rounded-full bg-red-600 inline-block" />
                           <span>公章朱红</span>
-                        </button>
+                        </Button>
                       </div>
                     </div>
 

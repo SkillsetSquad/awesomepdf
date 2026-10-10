@@ -174,24 +174,16 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                             </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {Object.entries(DPI_PRESETS).map(([name, value]) => (
-                                    <button
+                                    <Button size="sm" variant={dpi === value ? 'default' : 'outline'} aria-pressed={dpi === value}
                                         key={name}
                                         type="button"
                                         onClick={() => setDpi(value)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${dpi === value
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                                     >
                                         <span className="capitalize">{name}</span>
                                         <span className="text-xs ml-1 opacity-70">({value})</span>
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>
@@ -203,23 +195,15 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                             </Label>
                             <div className="grid grid-cols-4 gap-2">
                                 {(['png', 'jpeg', 'webp', 'pdf'] as RasterizeFormat[]).map((fmt) => (
-                                    <button
+                                    <Button size="sm" variant={format === fmt ? 'default' : 'outline'} aria-pressed={format === fmt}
                                         key={fmt}
                                         type="button"
                                         onClick={() => setFormat(fmt)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium uppercase
-                      transition-colors duration-200
-                      ${format === fmt
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+                                        className="uppercase"
                                     >
                                         {fmt}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>

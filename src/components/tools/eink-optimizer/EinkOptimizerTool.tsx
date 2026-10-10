@@ -188,17 +188,13 @@ export function EinkOptimizerTool() {
                     { val: 1, label: t('einkOptimizer.microDilation') },
                     { val: 2, label: t('einkOptimizer.strongDilation') }
                   ].map((option) => (
-                    <button
+                    <Button size="sm" variant={dilationAmount === option.val ? 'default' : 'outline'} aria-pressed={dilationAmount === option.val}
                       key={option.val}
                       onClick={() => setDilationAmount(option.val)}
-                      className={`p-2 text-xs rounded-lg border text-center transition-all ${
-                        dilationAmount === option.val
-                          ? 'border-teal-500 bg-teal-500/10 text-teal-300'
-                          : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-400'
-                      }`}
+                      className="text-center"
                     >
                       {option.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

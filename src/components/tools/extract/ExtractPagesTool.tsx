@@ -26,13 +26,13 @@ interface PagePreview {
 /**
  * ExtractPagesTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for extracting specific pages from a PDF.
  */
 export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -41,13 +41,13 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Page selection
   const [pagePreviews, setPagePreviews] = useState<PagePreview[]>([]);
   const [selectedPages, setSelectedPages] = useState<Set<number>>(new Set());
   const [pageInput, setPageInput] = useState('');
   const [isLoadingPreviews, setIsLoadingPreviews] = useState(false);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -57,48 +57,48 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
   const loadPdfPreviews = useCallback(async (pdfFile: File) => {
     setIsLoadingPreviews(true);
     setPagePreviews([]);
-    
+
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
-      
+
       // Generate thumbnails for each page
       const previews: PagePreview[] = [];
       const maxPreviewPages = Math.min(pdf.numPages, 50);
-      
+
       for (let i = 1; i <= maxPreviewPages; i++) {
         const page = await pdf.getPage(i);
         const viewport = page.getViewport({ scale: 0.15 });
-        
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        
+
         if (context) {
           canvas.height = viewport.height;
           canvas.width = viewport.width;
-          
+
           await page.render({
             canvasContext: context,
             viewport: viewport,
           }).promise;
-          
+
           previews.push({
             pageNumber: i,
             thumbnail: canvas.toDataURL('image/jpeg', 0.6),
           });
         }
       }
-      
+
       // Add remaining pages without thumbnails
       for (let i = maxPreviewPages + 1; i <= pdf.numPages; i++) {
         previews.push({ pageNumber: i });
       }
-      
+
       setPagePreviews(previews);
     } catch (err) {
       console.error('Failed to load PDF previews:', err);
@@ -281,7 +281,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -372,16 +372,12 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
           ) : (
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3 max-h-[400px] overflow-y-auto p-1">
               {pagePreviews.map((preview) => (
-                <button
+                <Button size="sm" variant="outline" aria-pressed={selectedPages.has(preview.pageNumber)}
                   key={preview.pageNumber}
                   type="button"
                   onClick={() => handleTogglePage(preview.pageNumber)}
                   disabled={isProcessing}
-                  className={`relative aspect-[3/4] rounded-md border-2 overflow-hidden transition-all ${
-                    selectedPages.has(preview.pageNumber)
-                      ? 'border-primary ring-2 ring-primary/30'
-                      : 'border-border hover:border-primary/50'
-                  }`}
+                  className="relative aspect-[3/4] overflow-hidden h-auto w-full p-0 aria-pressed:border-primary aria-pressed:ring-2 aria-pressed:ring-primary/30"
                   aria-label={`Page ${preview.pageNumber}${selectedPages.has(preview.pageNumber) ? ' (selected)' : ''}`}
                 >
                   {preview.thumbnail ? (
@@ -407,7 +403,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
               ))}
             </div>
           )}
@@ -435,8 +431,8 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
             disabled={!canExtract}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('extractPages.extractButton') || `Extract ${selectedPages.size} Page${selectedPages.size !== 1 ? 's' : ''}`)
             }
           </Button>
@@ -455,7 +451,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

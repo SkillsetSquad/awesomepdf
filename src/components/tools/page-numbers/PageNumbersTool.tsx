@@ -413,22 +413,15 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </h4>
               <div className="grid grid-cols-3 gap-1.5 mb-4">
                 {positionOptions.map((opt) => (
-                  <button
+                  <Button size="sm" variant={position === opt.value ? 'default' : 'outline'} aria-pressed={position === opt.value}
                     key={opt.value}
                     onClick={() => setPosition(opt.value as Position)}
                     disabled={isProcessing}
-                    className={`
-                      p-2 rounded-md border transition-all text-center
-                      ${position === opt.value
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-200 hover:border-gray-300'
-                      }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+                    className="text-center"
                   >
                     <span className="text-base">{opt.icon}</span>
                     <span className="block text-xs">{opt.label}</span>
-                  </button>
+                  </Button>
                 ))}
               </div>
 

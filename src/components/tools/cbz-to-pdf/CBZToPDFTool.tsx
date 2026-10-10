@@ -132,17 +132,15 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                             </Label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {(['original', 'a4', 'letter', 'comic'] as CbzPageSize[]).map((size) => (
-                                    <button
+                                    <Button size="sm" variant={pageSize === size ? 'default' : 'outline'} aria-pressed={pageSize === size}
                                         key={size}
                                         type="button"
                                         onClick={() => setPageSize(size)}
                                         disabled={isProcessing}
-                                        className={`px-4 py-2 rounded-md border text-sm font-medium capitalize transition-colors duration-200
-                      ${pageSize === size ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted/50'}
-                      disabled:opacity-50 disabled:cursor-not-allowed`}
+                                        className="capitalize"
                                     >
                                         {size}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                         </div>

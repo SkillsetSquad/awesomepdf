@@ -191,19 +191,15 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                             </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {(Object.keys(PDFA_LEVEL_INFO) as PdfALevel[]).map((lvl) => (
-                                    <button
+                                    <Button size="sm" variant={level === lvl ? 'default' : 'outline'} aria-pressed={level === lvl}
                                         key={lvl}
                                         type="button"
                                         onClick={() => setLevel(lvl)}
                                         disabled={isProcessing}
-                                        className={`px-4 py-2 rounded-md border text-sm font-medium transition-colors duration-200
-                      ${level === lvl
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'}
-                      disabled:opacity-50 disabled:cursor-not-allowed`}
+
                                     >
                                         PDF/A-{lvl.toUpperCase()}
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                             <p className="mt-2 text-xs text-muted-foreground">

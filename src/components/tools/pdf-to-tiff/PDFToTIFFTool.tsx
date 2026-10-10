@@ -303,18 +303,14 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                     { mode: 'grayscale', label: t('pdfToTiff.colorModeGrayscale') },
                     { mode: 'mono', label: t('pdfToTiff.colorModeMono') }
                   ].map(item => (
-                    <button
+                    <Button size="sm" variant={colorMode === item.mode ? 'default' : 'outline'} aria-pressed={colorMode === item.mode}
                       key={item.mode}
                       type="button"
                       onClick={() => setColorMode(item.mode as any)}
-                      className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
-                        colorMode === item.mode
-                          ? 'bg-card text-foreground shadow-sm'
-                          : 'text-muted-foreground hover:text-foreground'
-                      }`}
+                      className="flex-1"
                     >
                       {item.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -330,18 +326,14 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                     { cmp: 'none', label: t('pdfToTiff.compressionNone') },
                     { cmp: 'packbits', label: t('pdfToTiff.compressionPackbits') }
                   ].map(item => (
-                    <button
+                    <Button size="sm" variant={compression === item.cmp ? 'default' : 'outline'} aria-pressed={compression === item.cmp}
                       key={item.cmp}
                       type="button"
                       onClick={() => setCompression(item.cmp as any)}
-                      className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
-                        compression === item.cmp
-                          ? 'bg-card text-foreground shadow-sm'
-                          : 'text-muted-foreground hover:text-foreground'
-                      }`}
+                      className="flex-1"
                     >
                       {item.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

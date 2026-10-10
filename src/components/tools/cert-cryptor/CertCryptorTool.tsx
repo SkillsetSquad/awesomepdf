@@ -177,17 +177,13 @@ export function CertCryptorTool() {
                     { id: 'red', label: t('certCryptor.redWax'), bg: 'bg-red-700 border-red-600 text-red-100' },
                     { id: 'bronze', label: t('certCryptor.bronzeWax'), bg: 'bg-amber-800 border-amber-700 text-amber-100' }
                   ].map((color) => (
-                    <button
+                    <Button size="sm" variant={waxColor === color.id ? 'default' : 'outline'} aria-pressed={waxColor === color.id}
                       key={color.id}
                       onClick={() => setWaxColor(color.id as any)}
-                      className={`p-2 text-xs rounded-lg border text-center transition-all ${
-                        waxColor === color.id
-                          ? `${color.bg} scale-105 shadow-lg border-opacity-100`
-                          : 'border-neutral-800 bg-neutral-900 text-neutral-400 border-opacity-40'
-                      }`}
+                      className="text-center"
                     >
                       {color.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

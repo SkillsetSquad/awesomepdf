@@ -253,15 +253,11 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
               </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {/* Vertical Split */}
-                <button
+                <Button size="sm" variant={divisionType === 'vertical' ? 'default' : 'outline'} aria-pressed={divisionType === 'vertical'}
                   type="button"
                   onClick={() => setDivisionType('vertical')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-md border-2 transition-all ${
-                    divisionType === 'vertical'
-                      ? 'border-primary bg-primary/10'
-                      : 'border-border hover:border-primary/50'
-                  }`}
+                  className="h-auto flex-col whitespace-normal p-3"
                 >
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-12 h-16 border-2 border-current rounded flex">
@@ -273,18 +269,14 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     </span>
                     <span className="text-xs text-muted-foreground">2 parts</span>
                   </div>
-                </button>
+                </Button>
 
                 {/* Horizontal Split */}
-                <button
+                <Button size="sm" variant={divisionType === 'horizontal' ? 'default' : 'outline'} aria-pressed={divisionType === 'horizontal'}
                   type="button"
                   onClick={() => setDivisionType('horizontal')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-md border-2 transition-all ${
-                    divisionType === 'horizontal'
-                      ? 'border-primary bg-primary/10'
-                      : 'border-border hover:border-primary/50'
-                  }`}
+                  className="h-auto flex-col whitespace-normal p-3"
                 >
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-12 h-16 border-2 border-current rounded flex flex-col">
@@ -296,18 +288,14 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     </span>
                     <span className="text-xs text-muted-foreground">2 parts</span>
                   </div>
-                </button>
+                </Button>
 
                 {/* 2x2 Grid */}
-                <button
+                <Button size="sm" variant={divisionType === 'grid-2x2' ? 'default' : 'outline'} aria-pressed={divisionType === 'grid-2x2'}
                   type="button"
                   onClick={() => setDivisionType('grid-2x2')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-md border-2 transition-all ${
-                    divisionType === 'grid-2x2'
-                      ? 'border-primary bg-primary/10'
-                      : 'border-border hover:border-primary/50'
-                  }`}
+                  className="h-auto flex-col whitespace-normal p-3"
                 >
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-12 h-16 border-2 border-current rounded grid grid-cols-2 grid-rows-2">
@@ -321,18 +309,14 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     </span>
                     <span className="text-xs text-muted-foreground">4 parts</span>
                   </div>
-                </button>
+                </Button>
 
                 {/* 3x3 Grid */}
-                <button
+                <Button size="sm" variant={divisionType === 'grid-3x3' ? 'default' : 'outline'} aria-pressed={divisionType === 'grid-3x3'}
                   type="button"
                   onClick={() => setDivisionType('grid-3x3')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-md border-2 transition-all ${
-                    divisionType === 'grid-3x3'
-                      ? 'border-primary bg-primary/10'
-                      : 'border-border hover:border-primary/50'
-                  }`}
+                  className="h-auto flex-col whitespace-normal p-3"
                 >
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-12 h-16 border-2 border-current rounded grid grid-cols-3 grid-rows-3">
@@ -348,7 +332,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     </span>
                     <span className="text-xs text-muted-foreground">9 parts</span>
                   </div>
-                </button>
+                </Button>
               </div>
             </div>
 

@@ -459,21 +459,15 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                   </Label>
                   <div className="flex flex-wrap gap-1.5">
                     {availableLanguages.map(lang => (
-                      <button
+                      <Button size="sm" variant={languages.includes(lang) ? 'default' : 'outline'} aria-pressed={languages.includes(lang)}
                         key={lang}
                         type="button"
                         onClick={() => toggleLanguage(lang)}
                         disabled={isProcessing}
-                        className={`
-                          px-3 py-1.5 rounded-xl text-xs font-bold transition-all border
-                          ${languages.includes(lang)
-                            ? 'bg-primary text-white border-primary'
-                            : 'bg-white/50 dark:bg-zinc-800/50 text-zinc-600 border-border'
-                          }
-                        `}
+
                       >
                         {OCR_LANGUAGE_NAMES[lang]}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>

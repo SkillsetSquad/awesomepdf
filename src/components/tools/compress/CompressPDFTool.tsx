@@ -300,21 +300,17 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               </Label>
               <div className="grid grid-cols-4 gap-2">
                 {(['low', 'medium', 'high', 'maximum'] as CompressionQuality[]).map((q) => (
-                  <button
+                  <Button size="sm" variant={quality === q ? 'default' : 'outline'} aria-pressed={quality === q}
                     key={q}
                     onClick={() => setQuality(q)}
                     disabled={isProcessing}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border ${
-                      quality === q
-                        ? 'border-primary bg-primary/8 text-foreground'
-                        : 'border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/20 text-zinc-500'
-                    }`}
+
                   >
                     {q === 'low' && t('compress.qualityLow')}
                     {q === 'medium' && t('compress.qualityMedium')}
                     {q === 'high' && t('compress.qualityHigh')}
                     {q === 'maximum' && t('compress.qualityMaximum')}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -326,18 +322,14 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               </Label>
               <div className="grid grid-cols-3 gap-2">
                 {(['standard', 'condense', 'photon'] as CompressionAlgorithm[]).map((alg) => (
-                  <button
+                  <Button size="sm" variant={algorithm === alg ? 'default' : 'outline'} aria-pressed={algorithm === alg}
                     key={alg}
                     onClick={() => setAlgorithm(alg)}
                     disabled={isProcessing}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border ${
-                      algorithm === alg
-                        ? 'border-primary bg-primary/8 text-foreground'
-                        : 'border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/20 text-zinc-500'
-                    }`}
+
                   >
                     {alg.charAt(0).toUpperCase() + alg.slice(1)}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -555,20 +547,16 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                   </Label>
                   <div className="grid grid-cols-4 gap-1.5">
                     {(['low', 'medium', 'high', 'maximum'] as CompressionQuality[]).map((q) => (
-                      <button
+                      <Button size="sm" variant={quality === q ? 'default' : 'outline'} aria-pressed={quality === q}
                         key={q}
                         onClick={() => setQuality(q)}
-                        className={`py-2 rounded-xl text-xs font-extrabold transition-all border ${
-                          quality === q
-                            ? 'border-primary bg-primary/8 text-foreground'
-                            : 'border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/20 text-zinc-500'
-                        }`}
+
                       >
                         {q === 'low' && t('compress.qualityLow')}
                         {q === 'medium' && t('compress.qualityMedium')}
                         {q === 'high' && t('compress.qualityHigh')}
                         {q === 'maximum' && t('compress.qualityMaximum')}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                   <p className="text-[10px] text-zinc-400 leading-normal">

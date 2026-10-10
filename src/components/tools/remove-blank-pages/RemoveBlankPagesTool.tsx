@@ -421,36 +421,24 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             {/* View filter mode tabs */}
             <div className="border-t border-zinc-100 dark:border-zinc-800/80 pt-4 flex items-center justify-between flex-wrap gap-4">
               <div className="flex rounded-xl bg-zinc-100 dark:bg-zinc-900 p-1">
-                <button
+                <Button size="sm" variant={filterMode === 'all' ? 'default' : 'outline'} aria-pressed={filterMode === 'all'}
                   onClick={() => setFilterMode('all')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'all'
-                      ? 'bg-white dark:bg-zinc-800 text-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
+
                 >
                   {t('removeBlankPages.tabAll', { count: pages.length })}
-                </button>
-                <button
+                </Button>
+                <Button size="sm" variant={filterMode === 'blanks' ? 'default' : 'outline'} aria-pressed={filterMode === 'blanks'}
                   onClick={() => setFilterMode('blanks')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'blanks'
-                      ? 'bg-red-500 text-white shadow-sm'
-                      : 'text-red-500/80 hover:text-red-500'
-                  }`}
+
                 >
                   {t('removeBlankPages.tabBlanks', { count: blankPagesCount })}
-                </button>
-                <button
+                </Button>
+                <Button size="sm" variant={filterMode === 'keeps' ? 'default' : 'outline'} aria-pressed={filterMode === 'keeps'}
                   onClick={() => setFilterMode('keeps')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'keeps'
-                      ? 'bg-emerald-500 text-white shadow-sm'
-                      : 'text-emerald-500/80 hover:text-emerald-500'
-                  }`}
+
                 >
                   {t('removeBlankPages.tabKeeps', { count: keepPagesCount })}
-                </button>
+                </Button>
               </div>
 
               {/* Apply action triggers */}

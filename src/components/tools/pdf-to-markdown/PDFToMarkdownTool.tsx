@@ -357,26 +357,20 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                     <Card  className="overflow-hidden glass-card p-0">
                         {/* Preview Tabs */}
                         <div className="flex border-b border-border bg-muted/30">
-                            <button
+                            <Button size="sm" variant={activeTab === 'preview' ? 'default' : 'outline'} aria-pressed={activeTab === 'preview'}
                                 onClick={() => setActiveTab('preview')}
-                                className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${activeTab === 'preview'
-                                        ? 'bg-background text-primary border-b-2 border-primary -mb-[1px]'
-                                        : 'text-muted-foreground hover:text-foreground'
-                                    }`}
+                                className="flex items-center gap-2"
                             >
                                 <Eye className="w-4 h-4" />
                                 {tTools('pdfToMarkdown.previewTab') || 'Preview'}
-                            </button>
-                            <button
+                            </Button>
+                            <Button size="sm" variant={activeTab === 'source' ? 'default' : 'outline'} aria-pressed={activeTab === 'source'}
                                 onClick={() => setActiveTab('source')}
-                                className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${activeTab === 'source'
-                                        ? 'bg-background text-primary border-b-2 border-primary -mb-[1px]'
-                                        : 'text-muted-foreground hover:text-foreground'
-                                    }`}
+                                className="flex items-center gap-2"
                             >
                                 <Code className="w-4 h-4" />
                                 {tTools('pdfToMarkdown.sourceTab') || 'Markdown Source'}
-                            </button>
+                            </Button>
                         </div>
 
                         {/* Preview Content */}

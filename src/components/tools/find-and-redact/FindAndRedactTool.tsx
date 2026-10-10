@@ -611,19 +611,16 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                 {tTools('pagesWithMatches') || 'Pages with matches:'}
                                             </span>
                                             {pagesWithMatches.map(page => (
-                                                <button
+                                                <Button size="sm" variant={previewPage === page ? 'default' : 'outline'} aria-pressed={previewPage === page}
                                                     key={page}
                                                     onClick={() => {
                                                         setPreviewPage(page);
                                                         setSelectedPage(page);
                                                     }}
-                                                    className={`px-2 py-1 text-xs rounded ${previewPage === page
-                                                        ? 'bg-blue-500 text-white'
-                                                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                                                        }`}
+
                                                 >
                                                     {page}
-                                                </button>
+                                                </Button>
                                             ))}
                                         </div>
                                     )}
@@ -678,34 +675,28 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     {pagesWithMatches.length > 1 && (
                                         <div className="mb-3">
                                             <div className="flex flex-wrap gap-1.5">
-                                                <button
+                                                <Button size="sm" variant={selectedPage === 'all' ? 'default' : 'outline'} aria-pressed={selectedPage === 'all'}
                                                     onClick={() => setSelectedPage('all')}
-                                                    className={`px-2 py-1 text-xs rounded-full border transition-all ${selectedPage === 'all'
-                                                        ? 'bg-blue-600 text-white border-blue-600'
-                                                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-blue-400'
-                                                        }`}
+
                                                     disabled={isProcessing}
                                                 >
                                                     {tTools('allMatches', { count: matches.length })}
-                                                </button>
+                                                </Button>
                                                 {pagesWithMatches.map(page => {
                                                     const pageMatchCount = matches.filter(m => m.page === page).length;
                                                     const isSelected = selectedPage === page;
                                                     return (
-                                                        <button
+                                                        <Button size="sm" variant={isSelected ? 'default' : 'outline'} aria-pressed={isSelected}
                                                             key={page}
                                                             onClick={() => {
                                                                 setSelectedPage(page);
                                                                 setPreviewPage(page);
                                                             }}
-                                                            className={`px-2 py-1 text-xs rounded-full border transition-all ${isSelected
-                                                                ? 'bg-blue-600 text-white border-blue-600'
-                                                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-blue-400'
-                                                                }`}
+
                                                             disabled={isProcessing}
                                                         >
                                                             P{page} ({pageMatchCount})
-                                                        </button>
+                                                        </Button>
                                                     );
                                                 })}
                                             </div>

@@ -341,26 +341,18 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                   {t('overlayPdf.placementModeLabel')}
                 </span>
                 <div className="flex bg-muted/50 p-1 rounded-xl">
-                  <button
+                  <Button size="sm" variant={mode === 'overlay' ? 'default' : 'outline'} aria-pressed={mode === 'overlay'}
                     onClick={() => setMode('overlay')}
-                    className={`flex-1 py-2.5 text-xs font-bold rounded-lg transition-all ${
-                      mode === 'overlay'
-                        ? 'bg-card text-foreground shadow'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
+                    className="flex-1"
                   >
                     {t('overlayPdf.placementOverlayBtn')}
-                  </button>
-                  <button
+                  </Button>
+                  <Button size="sm" variant={mode === 'underlay' ? 'default' : 'outline'} aria-pressed={mode === 'underlay'}
                     onClick={() => setMode('underlay')}
-                    className={`flex-1 py-2.5 text-xs font-bold rounded-lg transition-all ${
-                      mode === 'underlay'
-                        ? 'bg-card text-foreground shadow'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
+                    className="flex-1"
                   >
                     {t('overlayPdf.placementUnderlayBtn')}
-                  </button>
+                  </Button>
                 </div>
               </div>
 
@@ -393,18 +385,16 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                     {t('overlayPdf.loopOverlayDesc')}
                   </span>
                 </div>
-                <button
+                <Button size="icon-sm" variant={loop ? 'default' : 'outline'} aria-pressed={loop}
                   onClick={() => setLoop(prev => !prev)}
-                  className={`relative w-12 h-6.5 rounded-full transition-colors duration-300 focus:outline-none ${
-                    loop ? 'bg-emerald-500' : 'bg-zinc-300 dark:bg-zinc-700'
-                  }`}
+                  className="relative"
                 >
                   <div
                     className={`absolute top-0.5 left-0.5 bg-white w-5.5 h-5.5 rounded-full shadow transition-transform duration-300 ${
                       loop ? 'translate-x-5.5' : 'translate-x-0'
                     }`}
                   />
-                </button>
+                </Button>
               </div>
 
             </Card>

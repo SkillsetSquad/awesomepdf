@@ -509,18 +509,14 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                     </Label>
                     <div className="flex bg-muted/50 p-0.5 rounded-lg border border-input/40">
                       {(['jpg', 'png', 'webp'] as const).map(fmt => (
-                        <button
+                        <Button size="sm" variant={format === fmt ? 'default' : 'outline'} aria-pressed={format === fmt}
                           key={fmt}
                           type="button"
                           onClick={() => setFormat(fmt)}
-                          className={`flex-1 py-1 text-[10px] font-bold rounded transition-all ${
-                            format === fmt
-                              ? 'bg-card text-foreground shadow-sm'
-                              : 'text-muted-foreground hover:text-foreground'
-                          }`}
+                          className="flex-1"
                         >
                           {fmt.toUpperCase()}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </div>
@@ -538,19 +534,17 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                         </span>
                       </div>
                     </div>
-                    <button
+                    <Button size="icon-sm" variant={grayscale ? 'default' : 'outline'} aria-pressed={grayscale}
                       type="button"
                       onClick={() => setGrayscale(prev => !prev)}
-                      className={`relative w-9 h-5 rounded-full transition-colors duration-300 focus:outline-none ${
-                        grayscale ? 'bg-emerald-500' : 'bg-zinc-300 dark:bg-zinc-700'
-                      }`}
+                      className="relative"
                     >
                       <div
                         className={`absolute top-0.5 left-0.5 bg-white w-4 h-4 rounded-full shadow transition-transform duration-300 ${
                           grayscale ? 'translate-x-4' : 'translate-x-0'
                         }`}
                       />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

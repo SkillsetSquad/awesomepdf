@@ -495,14 +495,11 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
               </Label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {/* Range Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'ranges' ? 'default' : 'outline'} aria-pressed={splitMode === 'ranges'}
                   type="button"
                   onClick={() => setSplitMode('ranges')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'ranges'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'ranges' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -520,17 +517,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
 
                 {/* Even/Odd Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'even-odd' ? 'default' : 'outline'} aria-pressed={splitMode === 'even-odd'}
                   type="button"
                   onClick={() => setSplitMode('even-odd')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'even-odd'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'even-odd' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -548,17 +542,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
 
                 {/* Every Page Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'every-page' ? 'default' : 'outline'} aria-pressed={splitMode === 'every-page'}
                   type="button"
                   onClick={() => setSplitMode('every-page')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'every-page'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'every-page' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -576,17 +567,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
 
                 {/* Visual Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'visual' ? 'default' : 'outline'} aria-pressed={splitMode === 'visual'}
                   type="button"
                   onClick={() => setSplitMode('visual')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'visual'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'visual' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -604,17 +592,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
 
                 {/* Bookmarks Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'bookmarks' ? 'default' : 'outline'} aria-pressed={splitMode === 'bookmarks'}
                   type="button"
                   onClick={() => setSplitMode('bookmarks')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'bookmarks'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'bookmarks' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -637,17 +622,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
 
                 {/* N Times Mode */}
-                <button
+                <Button size="sm" variant={splitMode === 'n-times' ? 'default' : 'outline'} aria-pressed={splitMode === 'n-times'}
                   type="button"
                   onClick={() => setSplitMode('n-times')}
                   disabled={isProcessing}
-                  className={`group relative flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200 ${splitMode === 'n-times'
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/30'
-                    }`}
+                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'n-times' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -665,7 +647,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
               </div>
             </div>
 
@@ -702,39 +684,30 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                     {tTools('splitPdf.evenOddLabel') || 'Extract Pages'}
                   </Label>
                   <div className="flex flex-wrap gap-2">
-                    <button
+                    <Button size="sm" variant={evenOddMode === 'odd' ? 'default' : 'outline'} aria-pressed={evenOddMode === 'odd'}
                       type="button"
                       onClick={() => setEvenOddMode('odd')}
                       disabled={isProcessing}
-                      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${evenOddMode === 'odd'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted text-foreground hover:bg-muted/80'
-                        }`}
+
                     >
                       {tTools('splitPdf.oddPagesOnly') || 'Odd Pages Only'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button size="sm" variant={evenOddMode === 'even' ? 'default' : 'outline'} aria-pressed={evenOddMode === 'even'}
                       type="button"
                       onClick={() => setEvenOddMode('even')}
                       disabled={isProcessing}
-                      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${evenOddMode === 'even'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted text-foreground hover:bg-muted/80'
-                        }`}
+
                     >
                       {tTools('splitPdf.evenPagesOnly') || 'Even Pages Only'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button size="sm" variant={evenOddMode === 'both' ? 'default' : 'outline'} aria-pressed={evenOddMode === 'both'}
                       type="button"
                       onClick={() => setEvenOddMode('both')}
                       disabled={isProcessing}
-                      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${evenOddMode === 'both'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted text-foreground hover:bg-muted/80'
-                        }`}
+
                     >
                       {tTools('splitPdf.bothSeparate') || 'Both (Separate Files)'}
-                    </button>
+                    </Button>
                   </div>
                   <p className="mt-2 text-xs text-muted-foreground">
                     {tTools('splitPdf.evenOddHint') || 'Odd pages: 1, 3, 5... Even pages: 2, 4, 6...'}
@@ -933,15 +906,12 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
           ) : (
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3 max-h-[400px] overflow-y-auto p-1">
               {pagePreviews.map((preview) => (
-                <button
+                <Button size="sm" variant="outline" aria-pressed={selectedPages.has(preview.pageNumber)}
                   key={preview.pageNumber}
                   type="button"
                   onClick={() => handleTogglePage(preview.pageNumber)}
                   disabled={isProcessing}
-                  className={`relative aspect-[3/4] rounded-md border-2 overflow-hidden transition-all ${selectedPages.has(preview.pageNumber)
-                    ? 'border-primary ring-2 ring-primary/30'
-                    : 'border-border hover:border-primary/50'
-                    }`}
+                  className="relative aspect-[3/4] overflow-hidden h-auto w-full p-0 aria-pressed:border-primary aria-pressed:ring-2 aria-pressed:ring-primary/30"
                   aria-label={`Page ${preview.pageNumber}${selectedPages.has(preview.pageNumber) ? ' (selected)' : ''}`}
                 >
                   {preview.thumbnail ? (
@@ -967,7 +937,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                       </svg>
                     </div>
                   )}
-                </button>
+                </Button>
               ))}
             </div>
           )}

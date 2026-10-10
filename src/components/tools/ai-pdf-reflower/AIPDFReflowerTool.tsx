@@ -313,15 +313,13 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                     { id: 'green', name: t('aiPdfReflower.themeGreen'), bg: 'bg-[#e2edd9] text-[#1c3016]' },
                     { id: 'dark', name: t('aiPdfReflower.themeDark'), bg: 'bg-zinc-900 text-zinc-100' },
                   ].map((thm) => (
-                    <button
+                    <Button size="sm" variant={theme === thm.id ? 'default' : 'outline'} aria-pressed={theme === thm.id}
                       key={thm.id}
                       onClick={() => setTheme(thm.id as any)}
-                      className={`p-2.5 rounded-xl text-center text-xs font-bold transition-all ${thm.bg} ${
-                        theme === thm.id ? 'ring-2 ring-primary scale-95 shadow-sm' : 'opacity-80 hover:opacity-100'
-                      }`}
+                      className="text-center"
                     >
                       {thm.name}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

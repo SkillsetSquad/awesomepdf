@@ -233,23 +233,15 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
               </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {(Object.keys(PAGE_SIZES) as PageSizePreset[]).map((preset) => (
-                  <button
+                  <Button size="sm" variant={sizePreset === preset ? 'default' : 'outline'} aria-pressed={sizePreset === preset}
                     key={preset}
                     type="button"
                     onClick={() => setSizePreset(preset)}
                     disabled={isProcessing}
-                    className={`
-                      px-3 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${sizePreset === preset
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'border-border hover:bg-muted/50'
-                      }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                   >
                     {preset === 'custom' ? (tTools('fixPageSize.custom') || 'Custom') : preset.toUpperCase()}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -298,26 +290,18 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
               </Label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {(['fit', 'fill', 'stretch', 'center'] as ScaleMode[]).map((mode) => (
-                  <button
+                  <Button size="sm" variant={scaleMode === mode ? 'default' : 'outline'} aria-pressed={scaleMode === mode}
                     key={mode}
                     type="button"
                     onClick={() => setScaleMode(mode)}
                     disabled={isProcessing}
-                    className={`
-                      px-3 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${scaleMode === mode
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'border-border hover:bg-muted/50'
-                      }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                   >
                     {mode === 'fit' && (tTools('fixPageSize.scaleFit') || 'Fit')}
                     {mode === 'fill' && (tTools('fixPageSize.scaleFill') || 'Fill')}
                     {mode === 'stretch' && (tTools('fixPageSize.scaleStretch') || 'Stretch')}
                     {mode === 'center' && (tTools('fixPageSize.scaleCenter') || 'Center')}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -335,25 +319,17 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
               </Label>
               <div className="grid grid-cols-3 gap-2">
                 {(['auto', 'portrait', 'landscape'] as const).map((orient) => (
-                  <button
+                  <Button size="sm" variant={orientation === orient ? 'default' : 'outline'} aria-pressed={orientation === orient}
                     key={orient}
                     type="button"
                     onClick={() => setOrientation(orient)}
                     disabled={isProcessing}
-                    className={`
-                      px-3 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${orientation === orient
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'border-border hover:bg-muted/50'
-                      }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                   >
                     {orient === 'auto' && (tTools('fixPageSize.orientAuto') || 'Auto')}
                     {orient === 'portrait' && (tTools('fixPageSize.orientPortrait') || 'Portrait')}
                     {orient === 'landscape' && (tTools('fixPageSize.orientLandscape') || 'Landscape')}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

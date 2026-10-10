@@ -278,23 +278,15 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                             </Label>
                             <div className="grid grid-cols-3 gap-2">
                                 {[72, 150, 300].map((d) => (
-                                    <button
+                                    <Button size="sm" variant={dpi === d ? 'default' : 'outline'} aria-pressed={dpi === d}
                                         key={d}
                                         type="button"
                                         onClick={() => setDpi(d)}
                                         disabled={isProcessing}
-                                        className={`
-                      px-4 py-2 rounded-md border text-sm font-medium
-                      transition-colors duration-200
-                      ${dpi === d
-                                                ? 'border-primary bg-primary text-primary-foreground'
-                                                : 'border-border hover:bg-muted/50'
-                                            }
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    `}
+
                                     >
                                         {d} DPI
-                                    </button>
+                                    </Button>
                                 ))}
                             </div>
                             <p className="mt-1 text-xs text-muted-foreground">

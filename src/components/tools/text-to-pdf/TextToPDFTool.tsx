@@ -174,14 +174,14 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
     <div className={`space-y-6 ${className}`.trim()}>
       {/* Mode Selector */}
       <div className="flex gap-2">
-        <button type="button" onClick={() => setInputMode('upload')}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${inputMode === 'upload' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
+        <Button size="sm" variant={inputMode === 'upload' ? 'default' : 'outline'} aria-pressed={inputMode === 'upload'} type="button" onClick={() => setInputMode('upload')}
+          >
           {tTools('txtToPdf.modeUpload') || 'Upload Files'}
-        </button>
-        <button type="button" onClick={() => setInputMode('text')}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${inputMode === 'text' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
+        </Button>
+        <Button size="sm" variant={inputMode === 'text' ? 'default' : 'outline'} aria-pressed={inputMode === 'text'} type="button" onClick={() => setInputMode('text')}
+          >
           {tTools('txtToPdf.modeText') || 'Enter Text'}
-        </button>
+        </Button>
       </div>
 
       {/* Upload Mode */}

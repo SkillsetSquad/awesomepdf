@@ -397,19 +397,12 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 { value: '3x3', label: '3×3', cols: 3, rows: 3 },
                 { value: 'custom', label: tTools('pdfToImage.customLayout') || 'Custom', cols: customColumns, rows: customRows },
               ] as const).map((preset) => (
-                <button
+                <Button size="sm" variant={layoutPreset === preset.value ? 'default' : 'outline'} aria-pressed={layoutPreset === preset.value}
                   key={preset.value}
                   type="button"
                   onClick={() => setLayoutPreset(preset.value)}
                   disabled={isProcessing}
-                  className={`
-                    p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-1.5
-                    ${layoutPreset === preset.value
-                      ? 'border-primary bg-primary/5'
-                      : 'border-border hover:border-primary/50'
-                    }
-                    disabled:opacity-50 disabled:cursor-not-allowed
-                  `}
+                  className="flex flex-col items-center gap-1.5 h-auto flex-col whitespace-normal p-3"
                 >
                   {/* Mini grid preview */}
                   <div
@@ -437,7 +430,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     }`}>
                     {preset.label}
                   </span>
-                </button>
+                </Button>
               ))}
             </div>
 

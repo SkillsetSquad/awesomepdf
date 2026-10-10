@@ -1082,22 +1082,22 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
               {/* Quick Actions */}
               <div className="flex items-center gap-1">
-                <button
+                <Button size="icon-sm" variant="ghost" aria-label={tTools('formCreator.undo') || 'Undo'}
                   onClick={handleUndo}
                   disabled={historyIndex <= 0}
-                  className={`p-1.5 rounded transition-colors ${historyIndex > 0 ? 'hover:bg-gray-100 text-gray-600' : 'text-gray-300 cursor-not-allowed'}`}
+
                   title={tTools('formCreator.undo') || 'Undo'}
                 >
                   <Undo2 className="w-4 h-4" />
-                </button>
-                <button
+                </Button>
+                <Button size="icon-sm" variant="ghost" aria-label={tTools('formCreator.redo') || 'Redo'}
                   onClick={handleRedo}
                   disabled={historyIndex >= history.length - 1}
-                  className={`p-1.5 rounded transition-colors ${historyIndex < history.length - 1 ? 'hover:bg-gray-100 text-gray-600' : 'text-gray-300 cursor-not-allowed'}`}
+
                   title={tTools('formCreator.redo') || 'Redo'}
                 >
                   <Redo2 className="w-4 h-4" />
-                </button>
+                </Button>
                 {selectedFieldId && (
                   <>
                     <Button variant="ghost" size="icon-sm" aria-label={tTools('formCreator.duplicate') || 'Duplicate'}
@@ -1120,23 +1120,23 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
               {/* Page Navigation */}
               <div className="flex items-center gap-1 ml-auto">
-                <button
+                <Button size="icon-sm" variant="ghost"
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage <= 1}
-                  className={`px-2 py-1 rounded text-sm ${currentPage > 1 ? 'hover:bg-gray-100 text-gray-600' : 'text-gray-300 cursor-not-allowed'}`}
+
                 >
                   ←
-                </button>
+                </Button>
                 <span className="text-sm text-gray-600 px-2">
                   {currentPage} / {totalPages}
                 </span>
-                <button
+                <Button size="icon-sm" variant="ghost"
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage >= totalPages}
-                  className={`px-2 py-1 rounded text-sm ${currentPage < totalPages ? 'hover:bg-gray-100 text-gray-600' : 'text-gray-300 cursor-not-allowed'}`}
+
                 >
                   →
-                </button>
+                </Button>
 
                 {/* Add Blank Page dropdown */}
                 <div
@@ -1156,13 +1156,13 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                     }, 300); // 300ms delay before hiding
                   }}
                 >
-                  <button
-                    className={`p-1.5 rounded transition-colors ${isAddingPage ? 'text-gray-300 cursor-not-allowed' : 'hover:bg-gray-100 text-gray-600'}`}
+                  <Button size="icon-sm" variant="ghost" aria-label={tTools('formCreator.addBlankPage') || 'Add Blank Page'}
+
                     title={tTools('formCreator.addBlankPage') || 'Add Blank Page'}
                     disabled={isAddingPage}
                   >
                     <FilePlus2 className="w-4 h-4" />
-                  </button>
+                  </Button>
                   <div className={`absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[140px] z-10 transition-opacity duration-150 ${showAddPageMenu && !isAddingPage ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                     <Button variant="ghost" size="sm"
                       onClick={() => { addBlankPage('before'); setShowAddPageMenu(false); }}
@@ -1269,33 +1269,24 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
             {/* Tab Navigation */}
             <div className="flex border-b border-gray-200">
-              <button
+              <Button size="sm" variant={activeTab === 'properties' ? 'default' : 'outline'} aria-pressed={activeTab === 'properties'}
                 onClick={() => setActiveTab('properties')}
-                className={`flex-1 px-3 py-2 text-sm font-medium transition-colors ${activeTab === 'properties'
-                  ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50'
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                  }`}
+                className="flex-1"
               >
                 {tTools('formCreator.properties') || 'Properties'}
-              </button>
-              <button
+              </Button>
+              <Button size="sm" variant={activeTab === 'fields' ? 'default' : 'outline'} aria-pressed={activeTab === 'fields'}
                 onClick={() => setActiveTab('fields')}
-                className={`flex-1 px-3 py-2 text-sm font-medium transition-colors ${activeTab === 'fields'
-                  ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50'
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                  }`}
+                className="flex-1"
               >
                 {tTools('formCreator.fieldsTab') || 'Fields'} ({fields.length})
-              </button>
-              <button
+              </Button>
+              <Button size="sm" variant={activeTab === 'options' ? 'default' : 'outline'} aria-pressed={activeTab === 'options'}
                 onClick={() => setActiveTab('options')}
-                className={`flex-1 px-3 py-2 text-sm font-medium transition-colors ${activeTab === 'options'
-                  ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50'
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                  }`}
+                className="flex-1"
               >
                 {tTools('formCreator.optionsTab') || 'Options'}
-              </button>
+              </Button>
             </div>
 
             {/* Tab Content */}

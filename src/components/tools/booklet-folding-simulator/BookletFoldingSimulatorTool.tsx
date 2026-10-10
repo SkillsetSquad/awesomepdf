@@ -128,28 +128,20 @@ export function BookletFoldingSimulatorTool() {
                   {tTools('foldingMode')}
                 </Label>
                 <div className="grid grid-cols-2 gap-3">
-                  <button
+                  <Button size="sm" variant={foldingMode === '4-page-fold' ? 'default' : 'outline'} aria-pressed={foldingMode === '4-page-fold'}
                     onClick={() => setFoldingMode('4-page-fold')}
-                    className={`p-3 rounded-lg border text-left transition-all ${
-                      foldingMode === '4-page-fold'
-                        ? 'border-violet-500 bg-violet-500/10 text-violet-300'
-                        : 'border-neutral-700 bg-neutral-800 hover:bg-neutral-700 text-neutral-400'
-                    }`}
+                    className="text-left h-auto flex-col whitespace-normal p-3"
                   >
                     <div className="font-bold text-sm">{t('bookletFoldingSimulator.fourPagesFold')}</div>
                     <div className="text-[10px] opacity-75 mt-1">{t('bookletFoldingSimulator.oneSheetDoubleSide')}</div>
-                  </button>
-                  <button
+                  </Button>
+                  <Button size="sm" variant={foldingMode === '8-page-saddle' ? 'default' : 'outline'} aria-pressed={foldingMode === '8-page-saddle'}
                     onClick={() => setFoldingMode('8-page-saddle')}
-                    className={`p-3 rounded-lg border text-left transition-all ${
-                      foldingMode === '8-page-saddle'
-                        ? 'border-violet-500 bg-violet-500/10 text-violet-300'
-                        : 'border-neutral-700 bg-neutral-800 hover:bg-neutral-700 text-neutral-400'
-                    }`}
+                    className="text-left h-auto flex-col whitespace-normal p-3"
                   >
                     <div className="font-bold text-sm">{t('bookletFoldingSimulator.eightPagesSaddle')}</div>
                     <div className="text-[10px] opacity-75 mt-1">{t('bookletFoldingSimulator.twoSheetsMiddleStitch')}</div>
-                  </button>
+                  </Button>
                 </div>
               </div>
 

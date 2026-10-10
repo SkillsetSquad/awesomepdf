@@ -610,24 +610,18 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
               <div className="p-5 space-y-6">
                 {/* Mode Selector Tab buttons */}
                 <div className="flex bg-muted/50 p-1 rounded-md">
-                  <button
+                  <Button size="sm" variant={calibrationTab === 'preset' ? 'default' : 'outline'} aria-pressed={calibrationTab === 'preset'}
                     onClick={() => setCalibrationTab('preset')}
-                    className={`flex-1 py-1.5 text-xs font-semibold rounded-sm transition-all ${calibrationTab === 'preset'
-                        ? 'bg-[hsl(var(--card-background, var(--color-card)))] text-foreground shadow-sm'
-                        : 'text-muted-foreground hover:text-foreground'
-                      }`}
+                    className="flex-1"
                   >
                     {t('rotate.quickRotate')}
-                  </button>
-                  <button
+                  </Button>
+                  <Button size="sm" variant={calibrationTab === 'stepless' ? 'default' : 'outline'} aria-pressed={calibrationTab === 'stepless'}
                     onClick={() => setCalibrationTab('stepless')}
-                    className={`flex-1 py-1.5 text-xs font-semibold rounded-sm transition-all ${calibrationTab === 'stepless'
-                        ? 'bg-[hsl(var(--card-background, var(--color-card)))] text-foreground shadow-sm'
-                        : 'text-muted-foreground hover:text-foreground'
-                      }`}
+                    className="flex-1"
                   >
                     {t('rotate.fineRotate')}
-                  </button>
+                  </Button>
                 </div>
 
                 {/* TAB 1: PRESET ROTATION PANEL */}

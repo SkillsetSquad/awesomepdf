@@ -183,36 +183,22 @@ Enjoy converting your Markdown to PDF!
         <div className={`space-y-6 ${className}`.trim()}>
             {/* Input Mode Tabs */}
             <div className="flex gap-2 p-1 bg-muted/30 rounded-lg">
-                <button
+                <Button size="sm" variant={inputMode === 'manual' ? 'default' : 'outline'} aria-pressed={inputMode === 'manual'}
                     type="button"
                     onClick={() => setInputMode('manual')}
-                    className={`
-                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md
-                        text-sm font-medium transition-all duration-200
-                        ${inputMode === 'manual'
-                            ? 'bg-background text-foreground shadow-sm'
-                            : 'text-muted-foreground hover:text-foreground'
-                        }
-                    `}
+                    className="flex-1 flex items-center justify-center gap-2"
                 >
                     <Type className="w-4 h-4" />
                     {tTools('markdownToPdf.manualInput') || 'Write Markdown'}
-                </button>
-                <button
+                </Button>
+                <Button size="sm" variant={inputMode === 'upload' ? 'default' : 'outline'} aria-pressed={inputMode === 'upload'}
                     type="button"
                     onClick={() => setInputMode('upload')}
-                    className={`
-                        flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md
-                        text-sm font-medium transition-all duration-200
-                        ${inputMode === 'upload'
-                            ? 'bg-background text-foreground shadow-sm'
-                            : 'text-muted-foreground hover:text-foreground'
-                        }
-                    `}
+                    className="flex-1 flex items-center justify-center gap-2"
                 >
                     <Upload className="w-4 h-4" />
                     {tTools('markdownToPdf.uploadFile') || 'Upload File'}
-                </button>
+                </Button>
             </div>
 
             {/* Upload Mode - File Uploader */}
@@ -329,23 +315,15 @@ Enjoy converting your Markdown to PDF!
                         </Label>
                         <div className="grid grid-cols-3 gap-2">
                             {(['light', 'dark', 'github'] as MarkdownTheme[]).map((th) => (
-                                <button
+                                <Button size="sm" variant={theme === th ? 'default' : 'outline'} aria-pressed={theme === th}
                                     key={th}
                                     type="button"
                                     onClick={() => setTheme(th)}
                                     disabled={isProcessing}
-                                    className={`
-                                        px-4 py-2 rounded-md border text-sm font-medium capitalize
-                                        transition-colors duration-200
-                                        ${theme === th
-                                            ? 'border-primary bg-primary text-primary-foreground'
-                                            : 'border-border hover:bg-muted/50'
-                                        }
-                                        disabled:opacity-50 disabled:cursor-not-allowed
-                                    `}
+                                    className="capitalize"
                                 >
                                     {th}
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     </div>
@@ -357,23 +335,15 @@ Enjoy converting your Markdown to PDF!
                         </Label>
                         <div className="grid grid-cols-3 gap-2">
                             {(['a4', 'letter', 'legal'] as MarkdownPageSize[]).map((size) => (
-                                <button
+                                <Button size="sm" variant={pageSize === size ? 'default' : 'outline'} aria-pressed={pageSize === size}
                                     key={size}
                                     type="button"
                                     onClick={() => setPageSize(size)}
                                     disabled={isProcessing}
-                                    className={`
-                                        px-4 py-2 rounded-md border text-sm font-medium uppercase
-                                        transition-colors duration-200
-                                        ${pageSize === size
-                                            ? 'border-primary bg-primary text-primary-foreground'
-                                            : 'border-border hover:bg-muted/50'
-                                        }
-                                        disabled:opacity-50 disabled:cursor-not-allowed
-                                    `}
+                                    className="uppercase"
                                 >
                                     {size}
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     </div>
