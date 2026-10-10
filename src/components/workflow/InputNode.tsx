@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 import { Input } from '@/components/ui/input';
 
 
@@ -180,23 +182,23 @@ const InputNode: React.FC<InputNodeProps> = ({
 
                 <div className="flex items-center gap-1">
                     {files.length > 0 && (
-                        <button
+                        <Button variant="ghost" size="icon-sm" aria-label="清空已选文件"
                             type="button"
                             onClick={handleClearAll}
                             title="清空已选文件"
-                            className="p-1 rounded text-muted-foreground hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+
                         >
                             <Trash2 size={13} />
-                        </button>
+                        </Button>
                     )}
-                    <button
+                    <Button variant="ghost" size="icon-sm" aria-label="删除节点"
                         type="button"
                         onClick={handleDeleteNode}
                         title="删除节点"
-                        className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+
                     >
                         <X size={13} />
-                    </button>
+                    </Button>
                 </div>
             </div>
 
@@ -225,24 +227,24 @@ const InputNode: React.FC<InputNodeProps> = ({
                                 <CheckCircle2 size={12} /> 已加载 {files.length} 个文件
                             </span>
                             <div className="flex items-center gap-2">
-                                <button
+                                <Button variant="ghost" size="sm"
                                     type="button"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         window.dispatchEvent(new CustomEvent('workflow:open-preview'));
                                     }}
-                                    className="flex items-center gap-0.5 text-xs text-primary hover:underline cursor-pointer"
+                                    className="flex items-center gap-0.5 cursor-pointer"
                                     title="打开实时预览窗口"
                                 >
                                     <Eye size={11} /> 预览
-                                </button>
-                                <button
+                                </Button>
+                                <Button variant="ghost" size="sm"
                                     type="button"
                                     onClick={() => fileInputRef.current?.click()}
-                                    className="flex items-center gap-0.5 text-xs text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+                                    className="flex items-center gap-0.5 cursor-pointer"
                                 >
                                     <Plus size={11} /> 追加
-                                </button>
+                                </Button>
                             </div>
                         </div>
                         <div className="space-y-1 max-h-[105px] overflow-y-auto pr-0.5">
@@ -258,13 +260,13 @@ const InputNode: React.FC<InputNodeProps> = ({
                                         <span className="text-[10px] text-muted-foreground">
                                             {formatFileSize(file.size)}
                                         </span>
-                                        <button
+                                        <Button variant="ghost" size="icon-sm"
                                             type="button"
                                             onClick={(e) => handleRemoveFile(idx, e)}
-                                            className="text-muted-foreground hover:text-rose-500 transition-colors p-0.5 cursor-pointer"
+                                            className="cursor-pointer"
                                         >
                                             <X size={11} />
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             ))}

@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 
 import React, { memo, useState } from 'react';
 import { Handle, Position, useReactFlow } from 'reactflow';
@@ -92,13 +94,13 @@ export const ConditionalNode = memo(({ id, data, selected = false, isConnectable
         >
             {/* Delete button on hover */}
             {isHovered && (
-                <button
+                <Button variant="destructive" size="icon-sm" aria-label="删除节点"
                     onClick={handleDelete}
-                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-md transition-all z-20"
+                    className="absolute -top-2 -right-2 flex items-center justify-center z-20"
                     title="删除节点"
                 >
                     <X className="w-3 h-3" />
-                </button>
+                </Button>
             )}
 
             {/* Target input handle (Left) */}

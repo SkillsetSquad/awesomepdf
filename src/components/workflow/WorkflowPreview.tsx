@@ -241,28 +241,28 @@ export function WorkflowPreview({ nodes, edges, inputFiles, isVisible, onToggle 
                     )}
                 </div>
                 <div className="flex items-center gap-1">
-                    <button
+                    <Button variant="ghost" size="icon-sm" aria-label="Refresh preview"
                         onClick={() => generatePreview()}
-                        className="p-1.5 rounded hover:bg-muted transition-colors"
+
                         title="Refresh preview"
                     >
                         <RefreshCw className="w-3.5 h-3.5 text-muted-foreground" />
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="sm"
                         onClick={() => setIsExpanded(!isExpanded)}
-                        className="p-1.5 rounded hover:bg-muted transition-colors"
+
                     >
                         {isExpanded
                             ? <Minimize2 className="w-3.5 h-3.5 text-muted-foreground" />
                             : <Maximize2 className="w-3.5 h-3.5 text-muted-foreground" />
                         }
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="icon-sm"
                         onClick={onToggle}
-                        className="p-1.5 rounded hover:bg-muted transition-colors"
+
                     >
                         <X className="w-3.5 h-3.5 text-muted-foreground" />
-                    </button>
+                    </Button>
                 </div>
             </div>
 

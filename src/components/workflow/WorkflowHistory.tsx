@@ -1,12 +1,14 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { 
-    Clock, 
-    CheckCircle, 
-    XCircle, 
-    FileText, 
+import {
+    Clock,
+    CheckCircle,
+    XCircle,
+    FileText,
     Trash2,
     RotateCcw,
     TrendingUp,
@@ -158,13 +160,13 @@ export function WorkflowHistory({ onLoadFromHistory }: WorkflowHistoryProps) {
                         </span>
                     </div>
                     {records.length > 0 && (
-                        <button
+                        <Button variant="ghost" size="sm"
                             onClick={handleClearAll}
-                            className="text-xs text-red-600 hover:text-red-700 flex items-center gap-1"
+                            className="flex items-center gap-1"
                         >
                             <Trash2 className="w-3 h-3" />
                             {tWorkflow('clearAll') || 'Clear All'}
-                        </button>
+                        </Button>
                     )}
                 </div>
             </div>
@@ -201,7 +203,7 @@ export function WorkflowHistory({ onLoadFromHistory }: WorkflowHistoryProps) {
                                                     {record.workflowName || tWorkflow('unnamedWorkflow') || 'Unnamed Workflow'}
                                                 </h4>
                                                 <span className={`px-2 py-0.5 text-xs rounded-full ${
-                                                    record.status === 'completed' 
+                                                    record.status === 'completed'
                                                         ? 'bg-green-100 text-green-700'
                                                         : record.status === 'failed'
                                                         ? 'bg-red-100 text-red-700'
@@ -230,15 +232,15 @@ export function WorkflowHistory({ onLoadFromHistory }: WorkflowHistoryProps) {
                                             </div>
                                         </div>
                                     </div>
-                                    <button
+                                    <Button variant="ghost" size="icon-sm"
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             handleDelete(record.id);
                                         }}
-                                        className="text-gray-400 hover:text-red-500 transition-colors"
+
                                     >
                                         <Trash2 className="w-4 h-4" />
-                                    </button>
+                                    </Button>
                                 </div>
 
                                 {/* Expanded Details */}
@@ -266,18 +268,18 @@ export function WorkflowHistory({ onLoadFromHistory }: WorkflowHistoryProps) {
                                         {/* Actions */}
                                         <div className="flex gap-2">
                                             {onLoadFromHistory && record.nodes && record.edges && (
-                                                <button
+                                                <Button variant="ghost" size="sm"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         onLoadFromHistory(record);
                                                     }}
-                                                    className="flex-1 px-3 py-1.5 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+                                                    className="flex-1 flex items-center justify-center gap-2"
                                                 >
                                                     <RotateCcw className="w-4 h-4" />
                                                     {tWorkflow('loadWorkflow') || 'Load Workflow'}
-                                                </button>
+                                                </Button>
                                             )}
-                                            <button
+                                            <Button variant="ghost" size="sm"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     logger.log('Workflow Details:', {
@@ -287,11 +289,11 @@ export function WorkflowHistory({ onLoadFromHistory }: WorkflowHistoryProps) {
                                                     });
                                                     alert(tWorkflow('detailsInConsole') || 'Details logged to console (F12)');
                                                 }}
-                                                className="px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors flex items-center gap-2"
+                                                className="flex items-center gap-2"
                                             >
                                                 <TrendingUp className="w-4 h-4" />
                                                 {tWorkflow('viewDetails') || 'View Details'}
-                                            </button>
+                                            </Button>
                                         </div>
                                     </div>
                                 )}

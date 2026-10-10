@@ -2621,12 +2621,12 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                         {getToolTitle()}
                     </h3>
                 </div>
-                <button
+                <Button variant="ghost" size="icon-sm"
                     onClick={onClose}
-                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+
                 >
                     <X className="w-4 h-4 text-muted-foreground" />
-                </button>
+                </Button>
             </div>
 
             {/* Content */}
@@ -2820,7 +2820,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                     { token: '{index}', label: '{index}', desc: locale === 'zh' ? '文件序号' : 'File Index' },
                                                     { token: '{total}', label: '{total}', desc: locale === 'zh' ? '文件总数' : 'Total Count' },
                                                 ].map(({ token, desc }) => (
-                                                    <button
+                                                    <Button variant="outline" size="sm"
                                                         key={token}
                                                         type="button"
                                                         title={desc}
@@ -2837,10 +2837,10 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                             }
                                                             handleFieldChange(field.key, next);
                                                         }}
-                                                        className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-muted hover:bg-primary/15 text-foreground hover:text-primary border border-border transition-colors"
+
                                                     >
                                                         + {token}
-                                                    </button>
+                                                    </Button>
                                                 ))}
                                             </div>
                                         </div>

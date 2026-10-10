@@ -57,7 +57,7 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
     const [previewFile, setPreviewFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [dragIndex, setDragIndex] = useState<number | null>(null);
-    
+
     // Track preview URL for cleanup
     const previewUrlRef = useRef<string | null>(null);
 
@@ -202,12 +202,12 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                                 ({files.length} {tWorkflow('filesCount') || 'files'})
                             </span>
                         </div>
-                        <button
+                        <Button variant="ghost" size="icon-sm"
                             onClick={handleClose}
-                            className="p-1 rounded hover:bg-muted transition-colors"
+
                         >
                             <X className="w-5 h-5 text-muted-foreground" />
-                        </button>
+                        </Button>
                     </div>
 
                     {/* File List */}
@@ -275,22 +275,22 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                                         </button>
 
                                         {/* Preview */}
-                                        <button
+                                        <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('preview') || 'Preview'}
                                             onClick={() => handlePreview(file)}
-                                            className="p-1.5 rounded hover:bg-muted transition-colors"
+
                                             title={tWorkflow('preview') || 'Preview'}
                                         >
                                             <Eye className="w-4 h-4 text-primary" />
-                                        </button>
+                                        </Button>
 
                                         {/* Remove */}
-                                        <button
+                                        <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('removeFile') || 'Remove'}
                                             onClick={() => handleRemoveFile(index)}
-                                            className="p-1.5 rounded hover:bg-red-50 transition-colors"
+
                                             title={tWorkflow('removeFile') || 'Remove'}
                                         >
                                             <Trash2 className="w-4 h-4 text-red-500" />
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             ))}
@@ -331,12 +331,12 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                                     {previewFile.name}
                                 </span>
                             </div>
-                            <button
+                            <Button variant="ghost" size="icon-sm"
                                 onClick={closePreview}
-                                className="p-1 rounded hover:bg-muted transition-colors"
+
                             >
                                 <X className="w-5 h-5 text-muted-foreground" />
-                            </button>
+                            </Button>
                         </div>
 
                         {/* Preview Content */}

@@ -223,7 +223,7 @@ export function WorkflowControls({
                                 disabled={isRunning}
                                 className={`
                                     flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs
-                                    bg-primary/10 
+                                    bg-primary/10
                                     text-primary
                                     hover:bg-primary/20
                                     transition-colors whitespace-nowrap shrink-0
@@ -373,7 +373,7 @@ export function WorkflowControls({
                     <div className="flex items-center gap-1.5">
                         {executionState.outputFiles.length > 1 ? (
                             <>
-                                <button
+                                <Button variant="ghost" size="sm"
                                     disabled={isZipping}
                                     onClick={async () => {
                                         if (!executionState.outputFiles || executionState.outputFiles.length === 0) return;
@@ -394,12 +394,12 @@ export function WorkflowControls({
                                             setIsZipping(false);
                                         }
                                     }}
-                                    className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-sm transition-colors cursor-pointer"
+                                    className="flex items-center gap-1 cursor-pointer"
                                 >
                                     {isZipping ? <Loader2 className="w-3 h-3 animate-spin" /> : <Archive className="w-3 h-3" />}
                                     <span>打包 ZIP</span>
-                                </button>
-                                <button
+                                </Button>
+                                <Button variant="ghost" size="sm"
                                     onClick={() => {
                                         executionState.outputFiles?.forEach((item, index) => {
                                             let blob: Blob = item instanceof Blob ? item : item.blob;
@@ -407,33 +407,33 @@ export function WorkflowControls({
                                             saveBlobFile(blob, filename);
                                         });
                                     }}
-                                    className="flex items-center gap-1 px-2 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 text-xs transition-colors cursor-pointer"
+                                    className="flex items-center gap-1 cursor-pointer"
                                 >
                                     <Download className="w-3 h-3" />
                                     <span>分别下载</span>
-                                </button>
+                                </Button>
                             </>
                         ) : (
-                            <button
+                            <Button variant="ghost" size="sm"
                                 onClick={async () => {
                                     const item = executionState.outputFiles![0];
                                     let blob: Blob = item instanceof Blob ? item : item.blob;
                                     let filename: string = item instanceof Blob ? `output_1.pdf` : (item.filename || `output_1.pdf`);
                                     await saveBlobFile(blob, filename);
                                 }}
-                                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-sm transition-colors cursor-pointer"
+                                className="flex items-center gap-1 cursor-pointer"
                             >
                                 <Download className="w-3 h-3" />
                                 <span>立即下载结果</span>
-                            </button>
+                            </Button>
                         )}
-                        <button
+                        <Button variant="ghost" size="icon-sm" aria-label="关闭提示"
                             onClick={() => setIsDismissedSuccess(true)}
-                            className="p-1 rounded-full text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors ml-0.5 cursor-pointer"
+                            className="ml-0.5 cursor-pointer"
                             title="关闭提示"
                         >
                             <X className="w-3 h-3" />
-                        </button>
+                        </Button>
                     </div>
                 </div>
             )}

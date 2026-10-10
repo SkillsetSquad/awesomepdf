@@ -1,9 +1,11 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 
 import React from 'react';
-import { 
-    EdgeProps, 
-    getBezierPath, 
+import {
+    EdgeProps,
+    getBezierPath,
     EdgeLabelRenderer,
     BaseEdge,
     useReactFlow
@@ -62,9 +64,9 @@ export function CustomEdge({
 
     return (
         <>
-            <BaseEdge 
-                path={edgePath} 
-                markerEnd={markerEnd} 
+            <BaseEdge
+                path={edgePath}
+                markerEnd={markerEnd}
                 interactionWidth={20}
                 style={{
                     ...style,
@@ -105,13 +107,13 @@ export function CustomEdge({
                     )}
 
                     {selected && (
-                        <button
+                        <Button variant="destructive" size="icon-sm" aria-label="删除连接 (Delete)"
                             onClick={onEdgeDelete}
-                            className="w-5 h-5 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+                            className="flex items-center justify-center"
                             title="删除连接 (Delete)"
                         >
                             <X className="w-3 h-3" />
-                        </button>
+                        </Button>
                     )}
                 </div>
             </EdgeLabelRenderer>

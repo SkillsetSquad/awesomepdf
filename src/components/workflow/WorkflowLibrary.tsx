@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -153,26 +155,26 @@ export function WorkflowLibrary({
     if (isCollapsed) {
         return (
             <div className="w-12 h-full bg-background border-l border-border flex flex-col items-center py-2">
-                <button
+                <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('templates') || 'Templates'}
                     onClick={onToggleCollapse}
-                    className="p-2 rounded-lg hover:bg-muted transition-colors mb-2"
+                    className="mb-2"
                     title={tWorkflow('templates') || 'Templates'}
                 >
                     <PanelRightOpen className="w-5 h-5 text-primary" />
-                </button>
+                </Button>
                 <div className="w-8 h-px bg-border mb-2" />
                 {/* Show tab icons when collapsed */}
                 {tabs.map(tab => {
                     const Icon = tab.icon;
                     return (
-                        <button
+                        <Button variant="ghost" size="icon-sm" aria-label={tab.label}
                             key={tab.id}
                             onClick={onToggleCollapse}
-                            className="p-2 rounded-lg hover:bg-muted transition-colors mb-1"
+                            className="mb-1"
                             title={tab.label}
                         >
                             <Icon className="w-4 h-4 text-muted-foreground" />
-                        </button>
+                        </Button>
                     );
                 })}
             </div>
@@ -186,13 +188,13 @@ export function WorkflowLibrary({
                 <span className="text-sm font-medium text-foreground">
                     {tWorkflow('templates') || 'Library'}
                 </span>
-                <button
+                <Button variant="ghost" size="icon-sm" aria-label="Collapse sidebar"
                     onClick={onToggleCollapse}
-                    className="p-1.5 rounded-lg hover:bg-muted transition-colors"
+
                     title="Collapse sidebar"
                 >
                     <PanelRightClose className="w-4 h-4 text-muted-foreground" />
-                </button>
+                </Button>
             </div>
 
             {/* Tabs */}
@@ -323,36 +325,36 @@ export function WorkflowLibrary({
 
                                             {/* Actions */}
                                             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <button
+                                                <Button variant="ghost" size="icon-sm" aria-label="Duplicate"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         onDuplicateWorkflow(workflow.id);
                                                     }}
-                                                    className="p-1.5 rounded hover:bg-muted transition-colors"
+
                                                     title="Duplicate"
                                                 >
                                                     <Copy className="w-3.5 h-3.5 text-muted-foreground" />
-                                                </button>
-                                                <button
+                                                </Button>
+                                                <Button variant="ghost" size="icon-sm" aria-label="Export"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         onExportWorkflow(workflow);
                                                     }}
-                                                    className="p-1.5 rounded hover:bg-muted transition-colors"
+
                                                     title="Export"
                                                 >
                                                     <Download className="w-3.5 h-3.5 text-muted-foreground" />
-                                                </button>
-                                                <button
+                                                </Button>
+                                                <Button variant="ghost" size="icon-sm" aria-label="Delete"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         onDeleteWorkflow(workflow.id);
                                                     }}
-                                                    className="p-1.5 rounded hover:bg-red-100 transition-colors"
+
                                                     title="Delete"
                                                 >
                                                     <Trash2 className="w-3.5 h-3.5 text-red-500" />
-                                                </button>
+                                                </Button>
                                             </div>
                                         </div>
                                     </div>

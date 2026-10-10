@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 import { Input } from '@/components/ui/input';
 
 
@@ -429,26 +431,26 @@ export function ToolSidebar({
     if (isCollapsed) {
         return (
             <div className="w-12 h-full bg-background border-r border-border flex flex-col items-center py-2">
-                <button
+                <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('toolbox') || 'Toolbox'}
                     onClick={onToggleCollapse}
-                    className="p-2 rounded-lg hover:bg-muted transition-colors mb-2"
+                    className="mb-2"
                     title={tWorkflow('toolbox') || 'Toolbox'}
                 >
                     <PanelLeftOpen className="w-5 h-5 text-primary" />
-                </button>
+                </Button>
                 <div className="w-8 h-px bg-border mb-2" />
                 {/* Show category icons when collapsed */}
                 {categories.slice(0, 6).map(category => {
                     const CategoryIcon = getIcon(category.icon);
                     return (
-                        <button
+                        <Button variant="ghost" size="icon-sm" aria-label={category.name}
                             key={category.id}
                             onClick={onToggleCollapse}
-                            className="p-2 rounded-lg hover:bg-muted transition-colors mb-1"
+                            className="mb-1"
                             title={category.name}
                         >
                             <CategoryIcon className="w-4 h-4 text-muted-foreground" />
-                        </button>
+                        </Button>
                     );
                 })}
             </div>
@@ -467,13 +469,13 @@ export function ToolSidebar({
                         {tWorkflow('dragToAdd') || 'Drag or double-click a tool to add it to the workflow'}
                     </p>
                 </div>
-                <button
+                <Button variant="ghost" size="icon-sm" aria-label="Collapse sidebar"
                     onClick={onToggleCollapse}
-                    className="p-1.5 rounded-lg hover:bg-muted transition-colors"
+
                     title="Collapse sidebar"
                 >
                     <PanelLeftClose className="w-4 h-4 text-muted-foreground" />
-                </button>
+                </Button>
             </div>
 
             {/* Search */}
@@ -499,9 +501,9 @@ export function ToolSidebar({
                     return (
                         <div key={category.id} className="border-b border-border">
                             {/* Category Header */}
-                            <button
+                            <Button variant="ghost" size="sm"
                                 onClick={() => toggleCategory(category.id)}
-                                className="w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-muted/50 transition-colors"
+                                className="w-full flex items-center gap-2 text-left"
                             >
                                 {isExpanded ? (
                                     <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -515,7 +517,7 @@ export function ToolSidebar({
                                 <span className="ml-auto text-xs text-muted-foreground">
                                     {category.tools.length}
                                 </span>
-                            </button>
+                            </Button>
 
                             {/* Tools in Category */}
                             {isExpanded && (
