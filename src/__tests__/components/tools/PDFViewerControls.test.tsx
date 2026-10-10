@@ -1,4 +1,4 @@
-import { act, render, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, render, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { PDFViewerControls } from '@/components/tools/PDFViewerControls';
@@ -97,6 +97,46 @@ describe('PDF.js shared controls', () => {
       await user.click(draw);
       await waitFor(() => expect(draw).toHaveAttribute('data-state', 'active'));
       expect(dialog.querySelector('textarea')).toHaveAttribute('data-slot', 'textarea');
+    } finally { cleanup(); }
+  });
+
+  it('draws native checkbox and range inputs with standard components while keeping labels, keyboard focus and engine changes', async () => {
+    const { doc, view, cleanup } = setup();
+    try {
+      const panel = doc.createElement('div');
+      panel.className = 'editorParamsToolbar';
+      panel.innerHTML = '<label for="thickness">Thickness</label><input id="thickness" type="range" min="1" max="20" step="1" value="4">';
+      const find = doc.createElement('div');
+      find.id = 'findbar';
+      find.innerHTML = '<input id="findMatchCase" type="checkbox"><label for="findMatchCase">Match case</label>';
+      act(() => { doc.body.append(panel, find); });
+      const range = panel.querySelector('input')!;
+      const checkbox = find.querySelector('input')!;
+      await waitFor(() => expect(range.parentElement).toHaveAttribute('data-pdf-viewer-field'));
+      const changed = vi.fn();
+      checkbox.addEventListener('change', changed);
+      const user = userEvent.setup({ document: doc });
+      checkbox.focus();
+      expect(within(doc.body).getByRole('checkbox', { name: 'Match case' })).toBe(checkbox);
+      expect(checkbox).toHaveFocus();
+      await user.keyboard(' ');
+      expect(changed).toHaveBeenCalledOnce();
+      expect(checkbox).toBeChecked();
+      expect(checkbox.parentElement!.querySelector('[data-slot=checkbox]')).toHaveAttribute('data-state', 'checked');
+      expect(within(doc.body).getAllByRole('slider')).toEqual([range]);
+      const rangeChanged = vi.fn();
+      range.addEventListener('input', rangeChanged);
+      fireEvent.input(range, { target: { value: '7' } });
+      expect(rangeChanged).toHaveBeenCalledOnce();
+      await waitFor(() => expect(range.parentElement!.querySelector('[data-slot=slider-thumb]')).toHaveAttribute('aria-valuenow', '7'));
+      expect(range).toHaveAttribute('step', '1');
+      act(() => { range.disabled = true; });
+      await waitFor(() => expect(range.parentElement!.querySelector('[data-slot=slider]')).toHaveClass('opacity-50'));
+      view.rerender(<PDFViewerControls iframe={null} locale="ar" />);
+      expect(range.parentElement).toBe(panel);
+      expect(checkbox.parentElement).toBe(find);
+      expect(range).not.toHaveAttribute('style');
+      expect(doc.querySelector('[data-pdf-viewer-field]')).toBeNull();
     } finally { cleanup(); }
   });
 });

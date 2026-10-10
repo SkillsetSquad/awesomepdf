@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { textareaClassName } from '@/components/ui/textarea';
 import { dialogContentClassName } from '@/components/ui/dialog';
 import { tabsListVariants, tabsTriggerClassName } from '@/components/ui/tabs';
+import { PDFViewerField } from './PDFViewerField';
 
 const icons: Partial<Record<string, LucideIcon>> = {
   sidebarToggleButton: PanelLeft, sidebarToggle: PanelLeft, viewFindButton: Search,
@@ -41,10 +42,12 @@ const icons: Partial<Record<string, LucideIcon>> = {
 };
 
 type IconMount = { button: HTMLButtonElement; mount: HTMLElement; Icon: LucideIcon };
+type FieldMount = { input: HTMLInputElement; mount: HTMLElement };
 
 /** Keep the PDF.js elements, IDs, listeners and focus targets; apply the shared primitives. */
 export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElement | null; locale: string }) {
   const [iconMounts, setIconMounts] = useState<IconMount[]>([]);
+  const [fieldMounts, setFieldMounts] = useState<FieldMount[]>([]);
   useEffect(() => {
     const doc = iframe?.contentDocument;
     if (!doc?.body) return;
@@ -89,6 +92,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
 
     const elements = new Map<HTMLElement, { classes: string[]; slot?: string; size?: string; variant?: string; state?: string }>();
     const mounts = new Map<HTMLButtonElement, IconMount>();
+    const fields = new Map<HTMLInputElement, { mount: HTMLElement; wrapper: HTMLElement; style: string | null }>();
     const apply = (element: HTMLElement, slot: string, classes: string) => {
       const tokens = classes.split(/\s+/).filter(Boolean);
       const previous = elements.get(element);
@@ -103,6 +107,9 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
     const sync = () => {
       for (const [button, entry] of mounts) {
         if (!doc.body.contains(button)) { entry.mount.remove(); mounts.delete(button); }
+      }
+      for (const [input, entry] of fields) {
+        if (!doc.body.contains(input)) { entry.wrapper.remove(); fields.delete(input); }
       }
       for (const button of doc.querySelectorAll<HTMLButtonElement>('#toolbarContainer button[id], #toolbarSidebar button[id], #findbar button[id], #secondaryToolbar button[id], .editorParamsToolbar button[id], dialog button[id]')) {
         // Color picker and switch controls keep their document-specific visual state.
@@ -137,8 +144,27 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       }
       for (const dialog of doc.querySelectorAll<HTMLDialogElement>('dialog')) apply(dialog, 'dialog-content', cn(dialogContentClassName, 'static top-auto left-auto m-auto block translate-x-0 translate-y-0 max-h-[calc(100dvh-2rem)] overflow-y-auto text-sm'));
       for (const list of doc.querySelectorAll<HTMLElement>('dialog [role=tablist]')) { apply(list, 'tabs-list', tabsListVariants({ className: 'h-9 max-w-full' })); list.dataset.variant = 'default'; }
+      for (const input of doc.querySelectorAll<HTMLInputElement>('#findbar input[type=checkbox], dialog input[type=checkbox], dialog input[type=range], .editorParamsToolbar input[type=range]')) {
+        if (!fields.has(input)) {
+          const wrapper = doc.createElement('span');
+          wrapper.dataset.pdfViewerField = 'true';
+          wrapper.className = input.type === 'checkbox' ? 'group/field relative inline-flex size-4 shrink-0 items-center' : 'group/field relative inline-flex h-6 w-full min-w-24 items-center';
+          const mount = doc.createElement('span');
+          mount.className = 'pointer-events-none flex w-full items-center [&:has([data-slot=checkbox])]:rounded-[4px] [&:has([data-slot=slider])]:rounded-full group-has-[input:focus-visible]/field:ring-[3px] group-has-[input:focus-visible]/field:ring-ring/50';
+          mount.setAttribute('aria-hidden', 'true');
+          mount.setAttribute('inert', '');
+          const style = input.getAttribute('style');
+          input.before(wrapper);
+          wrapper.append(input, mount);
+          Object.assign(input.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', margin: '0', opacity: '0', zIndex: '1' });
+          fields.set(input, { mount, wrapper, style });
+        }
+        input.dispatchEvent(new Event('awesomepdf:sync-field'));
+      }
       const next = [...mounts.values()];
       setIconMounts(previous => previous.length === next.length && next.every((entry, index) => previous[index].mount === entry.mount) ? previous : next);
+      const nextFields = [...fields.entries()].map(([input, { mount }]) => ({ input, mount }));
+      setFieldMounts(previous => previous.length === nextFields.length && nextFields.every((entry, index) => previous[index].mount === entry.mount) ? previous : nextFields);
     };
     sync();
     const observer = new MutationObserver(sync);
@@ -146,6 +172,10 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
     return () => {
       observer.disconnect(); theme.disconnect(); style.remove(); sheets.forEach(sheet => sheet.remove());
       for (const { button, mount } of mounts.values()) { mount.remove(); delete button.dataset.pdfViewerIcon; }
+      for (const [input, { wrapper, style }] of fields) {
+        wrapper.before(input); wrapper.remove();
+        if (style === null) input.removeAttribute('style'); else input.setAttribute('style', style);
+      }
       for (const [element, record] of elements) {
         element.classList.remove(...record.classes);
         for (const key of ['slot', 'size', 'variant', 'state'] as const) {
@@ -154,5 +184,8 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
       }
     };
   }, [iframe, locale]);
-  return iconMounts.map(({ mount, Icon, button }) => createPortal(<Icon aria-hidden="true" />, mount, button.id));
+  return <>
+    {iconMounts.map(({ mount, Icon, button }) => createPortal(<Icon aria-hidden="true" />, mount, button.id))}
+    {fieldMounts.map(({ input, mount }) => createPortal(<PDFViewerField input={input} />, mount, input.id))}
+  </>;
 }
