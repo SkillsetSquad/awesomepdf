@@ -1,19 +1,16 @@
-/**
- * RecentFilesDropdown Component
- * Requirements: 10.4
- * 
- * Displays recent files history in a dropdown menu
- */
-
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useId, useState } from 'react';
 import Link from 'next/link';
-import { Clock, X, Trash2, FileText, ChevronDown } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Clock, X, Trash2, FileText } from 'lucide-react';
 import { useRecentFiles } from '@/lib/hooks/useRecentFiles';
 import { formatFileSize, formatDate } from '@/lib/storage/recent-files';
 import { Button } from '@/components/ui/button';
-import { type Locale } from '@/lib/i18n/config';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { type Locale, localeConfig } from '@/lib/i18n/config';
 
 export interface RecentFilesDropdownProps {
   locale: Locale;
@@ -25,213 +22,47 @@ export interface RecentFilesDropdownProps {
   };
 }
 
-export const RecentFilesDropdown: React.FC<RecentFilesDropdownProps> = ({
-  locale,
-  translations,
-}) => {
+export function RecentFilesDropdown({ locale, translations }: RecentFilesDropdownProps) {
   const { recentFiles, removeFile, clearAll, isLoading } = useRecentFiles();
-  const [isOpen, setIsOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        setFocusedIndex(-1);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // Close on escape key
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-        setFocusedIndex(-1);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
-    }
-  }, [isOpen]);
-
-  // Focus item when focusedIndex changes
-  useEffect(() => {
-    if (focusedIndex >= 0 && itemRefs.current[focusedIndex]) {
-      itemRefs.current[focusedIndex]?.focus();
-    }
-  }, [focusedIndex]);
-
-  const handleButtonKeyDown = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      if (!isOpen) {
-        setIsOpen(true);
-      }
-      if (recentFiles.length > 0) {
-        setFocusedIndex(0);
-      }
-    }
-  }, [isOpen, recentFiles.length]);
-
-  const handleItemKeyDown = useCallback((event: React.KeyboardEvent, _index: number) => {
-    switch (event.key) {
-      case 'ArrowDown':
-        event.preventDefault();
-        setFocusedIndex((prev) => (prev < recentFiles.length - 1 ? prev + 1 : 0));
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : recentFiles.length - 1));
-        break;
-      case 'Home':
-        event.preventDefault();
-        setFocusedIndex(0);
-        break;
-      case 'End':
-        event.preventDefault();
-        setFocusedIndex(recentFiles.length - 1);
-        break;
-      case 'Escape':
-        event.preventDefault();
-        setIsOpen(false);
-        setFocusedIndex(-1);
-        break;
-      case 'Tab':
-        setIsOpen(false);
-        setFocusedIndex(-1);
-        break;
-    }
-  }, [recentFiles.length]);
-
-  if (isLoading) {
-    return null;
-  }
+  const [open, setOpen] = useState(false);
+  const headingId = useId();
+  const t = useTranslations('common.buttons');
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => {
-          setIsOpen(!isOpen);
-          if (!isOpen && recentFiles.length > 0) {
-            setFocusedIndex(0);
-          } else {
-            setFocusedIndex(-1);
-          }
-        }}
-        onKeyDown={handleButtonKeyDown}
-        aria-label={translations.title}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        className="flex items-center gap-1"
-      >
-        <Clock className="h-4 w-4" aria-hidden="true" />
-        {recentFiles.length > 0 && (
-          <span className="text-xs bg-primary text-white rounded-full px-1.5 py-0.5 min-w-[18px] text-center">
-            {recentFiles.length}
-          </span>
-        )}
-        <ChevronDown className={`h-3 w-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
-      </Button>
-
-      {isOpen && (
-        <div
-          className="absolute right-0 top-full mt-2 w-80 max-h-96 overflow-auto rounded-lg border border-border bg-background shadow-lg z-50"
-          role="menu"
-          aria-label={translations.title}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-            <h3 className="font-medium text-sm text-foreground">
-              {translations.title}
-            </h3>
-            {recentFiles.length > 0 && (
-              <button
-                onClick={() => {
-                  clearAll();
-                  setIsOpen(false);
-                }}
-                className="text-xs text-muted-foreground hover:text-destructive transition-colors flex items-center gap-1"
-                aria-label={translations.clearAll}
-              >
-                <Trash2 className="h-3 w-3" aria-hidden="true" />
-                {translations.clearAll}
-              </button>
-            )}
-          </div>
-
-          {/* Content */}
-          {recentFiles.length === 0 ? (
-            <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-              <FileText className="h-8 w-8 mx-auto mb-2 opacity-50" aria-hidden="true" />
-              {translations.empty}
-            </div>
-          ) : (
-            <ul className="py-2" role="list">
-              {recentFiles.map((file, index) => (
-                <li
-                  key={file.id}
-                  className="group px-4 py-2 hover:bg-muted transition-colors"
-                  role="menuitem"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <Link
-                      ref={(el) => { itemRefs.current[index] = el; }}
-                      href={`/${locale}/tools/${file.toolUsed}`}
-                      className="flex-1 min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                      tabIndex={focusedIndex === index ? 0 : -1}
-                      onClick={() => {
-                        setIsOpen(false);
-                        setFocusedIndex(-1);
-                      }}
-                      onKeyDown={(e) => handleItemKeyDown(e, index)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <FileText className="h-4 w-4 text-primary flex-shrink-0" aria-hidden="true" />
-                        <span className="text-sm font-medium text-foreground truncate">
-                          {file.name}
-                        </span>
-                      </div>
-                      <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span>{formatFileSize(file.size)}</span>
-                        <span>•</span>
-                        <span>{formatDate(file.processedAt)}</span>
-                      </div>
-                      <div className="mt-0.5 text-xs text-muted-foreground">
-                        {translations.processedWith} {file.toolName || file.toolUsed}
-                      </div>
-                    </Link>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        removeFile(file.id);
-                      }}
-                      className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 text-muted-foreground hover:text-destructive focus:text-destructive transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                      aria-label={`Remove ${file.name}`}
-                      tabIndex={-1}
-                    >
-                      <X className="h-4 w-4" aria-hidden="true" />
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button variant="ghost" size="icon" aria-label={translations.title} disabled={isLoading}>
+          <Clock aria-hidden="true" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align="end" dir={localeConfig[locale].direction} aria-labelledby={headingId} className="max-h-[min(28rem,70dvh)] w-[min(24rem,calc(100vw-2rem))] overflow-y-auto">
+        <div className="flex items-center justify-between gap-2">
+          <h2 id={headingId} className="flex items-center gap-2 text-sm font-medium">{translations.title}<Badge variant="secondary">{recentFiles.length}</Badge></h2>
+          {recentFiles.length > 0 && <Button variant="ghost" size="sm" onClick={() => { clearAll(); setOpen(false); }}>
+            <Trash2 aria-hidden="true" />{translations.clearAll}
+          </Button>}
         </div>
-      )}
-    </div>
+        <Separator className="my-3" />
+        {recentFiles.length === 0 ? <div className="py-6 text-center text-sm text-muted-foreground">
+          <FileText className="mx-auto mb-2 size-6" aria-hidden="true" />{translations.empty}
+        </div> : <ul className="space-y-2">
+          {recentFiles.map((file) => <li key={file.id} className="flex items-start gap-1">
+            <Button variant="ghost" className="h-auto min-w-0 flex-1 justify-start whitespace-normal py-2 text-start" asChild>
+              <Link href={`/${locale}/tools/${file.toolUsed}`} onClick={() => setOpen(false)}>
+                <FileText className="shrink-0" aria-hidden="true" />
+                <span className="min-w-0">
+                  <span className="block truncate font-medium">{file.name}</span>
+                  <span className="block text-xs text-muted-foreground">{formatFileSize(file.size)} · {formatDate(file.processedAt)}</span>
+                  <span className="block text-xs text-muted-foreground">{translations.processedWith} {file.toolName || file.toolUsed}</span>
+                </span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" aria-label={`${t('remove')}: ${file.name}`} onClick={() => removeFile(file.id)}><X aria-hidden="true" /></Button>
+          </li>)}
+        </ul>}
+      </PopoverContent>
+    </Popover>
   );
-};
+}
 
 export default RecentFilesDropdown;
