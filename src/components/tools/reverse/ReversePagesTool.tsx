@@ -1,4 +1,6 @@
 'use client';
+import { ArrowRight as UIArrowRight, FileText as UIFileText } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -191,11 +193,7 @@ export function ReversePagesTool({ className = '' }: ReversePagesToolProps) {
         <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-              </svg>
+              <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
               <div>
                 <p className="font-medium text-foreground">{file.name}</p>
                 <p className="text-sm text-muted-foreground">
@@ -237,9 +235,7 @@ export function ReversePagesTool({ className = '' }: ReversePagesToolProps) {
               ))}
               <span className="text-muted-foreground">...</span>
             </div>
-            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <UIArrowRight className="w-6 h-6 text-primary" aria-hidden="true" />
             <div className="flex items-center gap-1">
               <span className="text-muted-foreground">...</span>
               {[3, 2, 1].map(n => (

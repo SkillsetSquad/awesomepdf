@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, Clock as UIClock, FileText as UIFileText, Layers as UILayers, Lock as UILock } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -177,11 +179,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
       {file && (
         <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
-            <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-              <path d="M14 2v6h6" fill="white" />
-              <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-            </svg>
+            <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
             <div>
               <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
                 {file.name}
@@ -212,9 +210,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
+                    <UILayers className="w-5 h-5 text-primary" aria-hidden="true" />
                     {tTools('timestampPdf.selectTsaTitle')}
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-1">
@@ -267,9 +263,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                               : 'border-zinc-400 dark:border-zinc-600'
                           }`}>
                             {isSelected && (
-                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
+                              <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
                             )}
                           </div>
                         </div>
@@ -288,9 +282,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                   disabled={isProcessing}
                   className="w-full py-4 flex items-center justify-center gap-2"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
+                  <UILock className="w-5 h-5" aria-hidden="true" />
                   {tTools('timestampPdf.processButton')}
                 </Button>
               </div>
@@ -305,9 +297,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                 // Awaiting signing state
                 <div className="text-center space-y-3 p-6 text-muted-foreground">
                   <div className="w-16 h-16 rounded-full bg-muted/50 border border-border flex items-center justify-center mx-auto text-zinc-400 mb-2">
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+                    <UIFileText className="w-8 h-8" aria-hidden="true" />
                   </div>
                   <h4 className="text-sm font-bold text-foreground">{tTools('timestampPdf.waitingTitle')}</h4>
                   <p className="text-xs leading-relaxed max-w-[260px] mx-auto">
@@ -343,9 +333,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                     {/* Timestamp clock */}
                     <div className="bg-muted/30 border border-border p-3.5 rounded-2xl flex items-center gap-3">
                       <div className="p-2 rounded-xl bg-amber-500/10 text-amber-500">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <UIClock className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div>
                         <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.tsaTime')}</p>

@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, FileText as UIFileText, Redo2 as UIRedo2, RotateCcw as UIRotateCcw, Settings as UISettings, Trash2 as UITrash2, Undo2 as UIUndo2 } from 'lucide-react';
+
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 import { Slider } from '@/components/ui/slider';
@@ -539,11 +541,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
         <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-              </svg>
+              <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
               <div>
                 <p className="font-medium text-foreground">{file.name}</p>
                 <p className="text-sm text-muted-foreground">
@@ -576,10 +574,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
               {/* Header */}
               <div className="p-5 border-b border-border">
                 <h3 className="text-lg font-bold tracking-tight text-foreground flex items-center gap-2">
-                  <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                  <UISettings className="w-5 h-5 text-primary" aria-hidden="true" />
                   {t('rotate.optionsTitle')}
                 </h3>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -630,9 +625,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         disabled={isProcessing || selectedPages.size === 0}
                         className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
                       >
-                        <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                        </svg>
+                        <UIUndo2 className="w-5 h-5 text-primary" aria-hidden="true" />
                         {t('rotate.rotateLeft90')}
                       </Button>
                       <Button
@@ -642,9 +635,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         disabled={isProcessing || selectedPages.size === 0}
                         className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
                       >
-                        <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
-                        </svg>
+                        <UIRedo2 className="w-5 h-5 text-primary" aria-hidden="true" />
                         {t('rotate.rotateRight90')}
                       </Button>
                       <Button
@@ -654,9 +645,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         disabled={isProcessing || selectedPages.size === 0}
                         className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
                       >
-                        <svg className="w-5 h-5 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H17.5" />
-                        </svg>
+                        <UIRotateCcw className="w-5 h-5 text-zinc-500" aria-hidden="true" />
                         {t('rotate.rotate180')}
                       </Button>
                       <Button
@@ -666,9 +655,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         disabled={isProcessing || !hasRotations}
                         className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium border border-dashed border-border"
                       >
-                        <svg className="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
+                        <UITrash2 className="w-5 h-5 text-red-500" aria-hidden="true" />
                         {t('rotate.resetRotate')}
                       </Button>
                     </div>
@@ -861,9 +848,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                 className="w-full py-4 flex gap-2 items-center justify-center"
               >
                 {!isProcessing && (
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H17.5" />
-                  </svg>
+                  <UIRotateCcw className="w-5 h-5" aria-hidden="true" />
                 )}
                 {isProcessing
                   ? t('status.processing')
@@ -938,9 +923,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             ? 'bg-primary text-primary-foreground scale-100'
                             : 'bg-black/40 text-transparent scale-90 group-hover:scale-100 group-hover:bg-black/60'
                           }`}>
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                          <UICheck className="w-3.5 h-3.5" aria-hidden="true" />
                         </div>
 
                         {/* Custom Fine-grain rotation degree angle Badge (Gold/Purple premium) */}
@@ -992,9 +975,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                               className="flex items-center justify-center"
                               aria-label={`Rotate page ${preview.pageNumber} left`}
                             >
-                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                              </svg>
+                              <UIUndo2 className="w-3.5 h-3.5" aria-hidden="true" />
                             </Button>
 
                             <Button variant="secondary" size="icon-sm"
@@ -1004,9 +985,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                               className="flex items-center justify-center"
                               aria-label={`Rotate page ${preview.pageNumber} right`}
                             >
-                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
-                              </svg>
+                              <UIRedo2 className="w-3.5 h-3.5" aria-hidden="true" />
                             </Button>
                           </div>
                         </div>

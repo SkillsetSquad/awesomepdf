@@ -1,4 +1,6 @@
 'use client';
+import { FileText as UIFileText, X as UIX } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -158,11 +160,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
             className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15"
           >
             <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="8" y="17" fontSize="5.5" fill="white" fontWeight="bold">TIFF</text>
-              </svg>
+              <UIFileText className="w-10 h-10 text-primary" aria-hidden="true" />
               <div>
                 <p
                   className="font-semibold text-sm text-foreground truncate max-w-[280px] md:max-w-md"
@@ -180,9 +178,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               disabled={isProcessing}
 
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <UIX className="w-5 h-5" aria-hidden="true" />
             </Button>
           </Card>
         ) : (

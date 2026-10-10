@@ -1,4 +1,6 @@
 'use client';
+import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -644,9 +646,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
       {allCompleted && singleFile && completedCount > 0 && (
         <Card  className="p-8 text-center gap-6 animate-in zoom-in-95 duration-300">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <UICheckCircle2 className="w-8 h-8" aria-hidden="true" />
           </div>
 
           <div className="space-y-2 max-w-sm mx-auto">

@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, Copy as UICopy, Download as UIDownload, FilePlus2 as UIFilePlus2, Redo2 as UIRedo2, RefreshCw as UIRefreshCw, RotateCcw as UIRotateCcw, RotateCw as UIRotateCw, Trash2 as UITrash2, Undo2 as UIUndo2, X as UIX } from 'lucide-react';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -536,9 +538,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 disabled={!canUndo || isProcessing}
                 title="Undo"
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                </svg>
+                <UIUndo2 className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.undo') || 'Undo'}
               </Button>
               <Button
@@ -548,9 +548,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 disabled={!canRedo || isProcessing}
                 title="Redo"
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" />
-                </svg>
+                <UIRedo2 className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.redo') || 'Redo'}
               </Button>
               <Button
@@ -560,9 +558,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 disabled={isProcessing}
                 title="Reset"
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
+                <UIRefreshCw className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.reset') || 'Reset'}
               </Button>
             </div>
@@ -584,15 +580,11 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             {/* Rotate Actions */}
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="sm" onClick={() => handleRotateSelected(-90)} disabled={isProcessing}>
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8M3 3v5h5" />
-                </svg>
+                <UIRotateCcw className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.rotateLeft') || 'Left'}
               </Button>
               <Button variant="ghost" size="sm" onClick={() => handleRotateSelected(90)} disabled={isProcessing}>
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-9-9 9.75 9.75 0 016.74 2.74L21 8M21 3v5h-5" />
-                </svg>
+                <UIRotateCw className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.rotateRight') || 'Right'}
               </Button>
             </div>
@@ -602,10 +594,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             {/* Transform Actions */}
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="sm" onClick={handleDuplicateSelected} disabled={selectedCount === 0 || isProcessing}>
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <rect x="9" y="9" width="13" height="13" rx="2" strokeWidth={2} />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                </svg>
+                <UICopy className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.duplicate') || 'Duplicate'}
               </Button>
               <DialogTrigger asChild><Button
@@ -613,9 +602,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 size="sm"
                 disabled={isProcessing}
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+                <UIFilePlus2 className="w-4 h-4 mr-1" aria-hidden="true" />
                 {tTools('pdfMultiTool.addBlank') || 'Add Blank'}
               </Button></DialogTrigger>
             </div>
@@ -630,9 +617,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               disabled={selectedCount === 0 || isProcessing}
               className="!text-red-600 !border-red-200 hover:!bg-red-50 dark:!border-red-800 dark:hover:!bg-red-900/20"
             >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
+              <UITrash2 className="w-4 h-4 mr-1" aria-hidden="true" />
               {tTools('pdfMultiTool.delete') || 'Delete'}
             </Button>
 
@@ -707,9 +692,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                     {/* Selection indicator */}
                     {page.selected && (
                       <div className="absolute top-2 left-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
-                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                        </svg>
+                        <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
                       </div>
                     )}
 
@@ -723,9 +706,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         aria-label="Move left"
                         title="Move left"
                       >
-                        <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
+                        <UIChevronLeft className="w-3 h-3 text-slate-700 dark:text-slate-200" aria-hidden="true" />
                       </Button>
                       <Button variant="ghost" size="icon-sm"
                         type="button"
@@ -735,9 +716,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         aria-label="Move right"
                         title="Move right"
                       >
-                        <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
+                        <UIChevronRight className="w-3 h-3 text-slate-700 dark:text-slate-200" aria-hidden="true" />
                       </Button>
                     </div>
                   </div>
@@ -762,37 +741,28 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                       className="flex items-center justify-center"
                       title="Rotate left"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8M3 3v5h5" />
-                      </svg>
+                      <UIRotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                     </Button>
                     <Button variant="ghost" size="icon-sm" aria-label="Rotate right"
                       onClick={(e) => { e.stopPropagation(); handleRotatePage(index, 90); }}
                       className="flex items-center justify-center"
                       title="Rotate right"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-9-9 9.75 9.75 0 016.74 2.74L21 8M21 3v5h-5" />
-                      </svg>
+                      <UIRotateCw className="w-3.5 h-3.5" aria-hidden="true" />
                     </Button>
                     <Button variant="ghost" size="icon-sm" aria-label="Duplicate"
                       onClick={(e) => { e.stopPropagation(); handleDuplicatePage(index); }}
                       className="flex items-center justify-center"
                       title="Duplicate"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2" strokeWidth={2} />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                      </svg>
+                      <UICopy className="w-3.5 h-3.5" aria-hidden="true" />
                     </Button>
                     <Button variant="destructive" size="icon-sm" aria-label="Delete"
                       onClick={(e) => { e.stopPropagation(); handleDeletePage(index); }}
                       className="flex items-center justify-center"
                       title="Delete"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <UIX className="w-3.5 h-3.5" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
@@ -808,9 +778,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               onClick={handleDownloadSelected}
               disabled={selectedCount === 0 || isProcessing}
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+              <UIDownload className="w-4 h-4 mr-2" aria-hidden="true" />
               {tTools('pdfMultiTool.downloadSelected') || 'Download Selected'}
             </Button>
 

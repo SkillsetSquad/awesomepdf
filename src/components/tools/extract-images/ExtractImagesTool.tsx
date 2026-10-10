@@ -1,4 +1,6 @@
 'use client';
+import { Download as UIDownload, Expand as UIExpand, FileText as UIFileText, X as UIX } from 'lucide-react';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -298,11 +300,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 key={item.id}
                                 className="flex items-center gap-3 p-3 rounded-md border border-border"
                             >
-                                <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                                    <path d="M14 2v6h6" fill="white" />
-                                    <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-                                </svg>
+                                <UIFileText className="w-8 h-8 text-red-500" aria-hidden="true" />
                                 <div className="flex-1 min-w-0">
                                     <p className="text-sm font-medium text-foreground truncate">
                                         {item.file.name}
@@ -318,9 +316,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
                                     aria-label={`Remove ${item.file.name}`}
                                 >
-                                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M18 6L6 18M6 6l12 12" />
-                                    </svg>
+                                    <UIX className="w-5 h-5" aria-hidden="true" />
                                 </Button>
                             </li>
                         ))}
@@ -453,9 +449,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                         loading="lazy"
                                     />
                                     <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <svg className="w-8 h-8 text-white drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1" />
-                                        </svg>
+                                        <UIExpand className="w-8 h-8 text-white drop-shadow-md" aria-hidden="true" />
                                     </div>
                                 </div>
 
@@ -482,11 +476,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                     className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
                                     aria-label={`Download ${image.name}`}
                                 >
-                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                        <polyline points="7 10 12 15 17 10" />
-                                        <line x1="12" y1="15" x2="12" y2="3" />
-                                    </svg>
+                                    <UIDownload className="w-4 h-4" aria-hidden="true" />
                                 </Button>
                             </div>
                         ))}
@@ -521,9 +511,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                             className="absolute -top-12 right-0"
                             onClick={() => setSelectedImage(null)}
                         >
-                            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M18 6L6 18M6 6l12 12" />
-                            </svg>
+                            <UIX className="w-8 h-8" aria-hidden="true" />
                         </Button>
 
                         {/* Image */}

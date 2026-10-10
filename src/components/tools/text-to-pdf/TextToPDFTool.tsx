@@ -1,4 +1,6 @@
 'use client';
+import { File as UIFile, X as UIX } from 'lucide-react';
+
 import { Textarea } from '@/components/ui/textarea';
 
 import { Checkbox } from '@/components/ui/checkbox';
@@ -200,17 +202,14 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
               <ul className="space-y-2" role="list">
                 {files.map((file) => (
                   <li key={file.id} className="flex items-center gap-3 p-3 rounded-md border border-border bg-card">
-                    <svg className="w-8 h-8 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                      <path d="M14 2v6h6" fill="white" />
-                    </svg>
+                    <UIFile className="w-8 h-8 text-blue-500 flex-shrink-0" aria-hidden="true" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium truncate">{file.file.name}</p>
                       <p className="text-xs text-muted-foreground">{formatSize(file.file.size)}</p>
                     </div>
                     <Button variant="ghost" size="icon-sm" type="button" onClick={() => handleRemoveFile(file.id)} disabled={isProcessing}
                       className="flex-shrink-0">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                      <UIX className="w-5 h-5" aria-hidden="true" />
                     </Button>
                   </li>
                 ))}

@@ -1,4 +1,6 @@
 'use client';
+import { FileText as UIFileText, Settings as UISettings } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -271,11 +273,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
       {file && (
         <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
           <div className="flex items-center gap-3">
-            <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-              <path d="M14 2v6h6" fill="white" />
-              <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-            </svg>
+            <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
             <div>
               <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
                 {file.name}
@@ -539,10 +537,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               style={{ transform: `rotate(${gearAngle}deg)` }}
               className="absolute w-20 h-20 text-primary opacity-80"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
+              <UISettings className="w-full h-full" aria-hidden="true" />
             </div>
 
             {/* Small offset gear */}
@@ -550,10 +545,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               style={{ transform: `rotate(${-gearAngle * 1.5}deg)` }}
               className="absolute -top-1 -right-1 w-10 h-10 text-zinc-500 opacity-60"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
+              <UISettings className="w-full h-full" aria-hidden="true" />
             </div>
           </div>
 

@@ -1,4 +1,6 @@
 'use client';
+import { ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, File as UIFile } from 'lucide-react';
+
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 import { Slider } from '@/components/ui/slider';
@@ -644,9 +646,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             <Card className="p-6" >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <svg className="w-10 h-10 text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                  </svg>
+                  <UIFile className="w-10 h-10 text-red-500 shrink-0" aria-hidden="true" />
                   <div className="min-w-0">
                     <p className="font-medium text-gray-900 dark:text-gray-100 truncate">{file.name}</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{formatSize(file.size)}</p>
@@ -1148,9 +1148,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                     aria-label="Previous Page"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
+                    <UIChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </Button>
 
                   <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300">
@@ -1178,9 +1176,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                     aria-label="Next Page"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <UIChevronRight className="w-4 h-4" aria-hidden="true" />
                   </Button>
                 </div>
               )}

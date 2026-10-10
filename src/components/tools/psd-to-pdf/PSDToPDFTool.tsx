@@ -1,4 +1,6 @@
 'use client';
+import { FileImage as UIFileImage, X as UIX } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -374,11 +376,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                                 <div className="aspect-square bg-muted/30 flex items-center justify-center p-4">
                                     {/* Generic PSD Icon since preview isn't instant */}
                                     <div className="flex flex-col items-center justify-center text-muted-foreground">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                            <polyline points="14 2 14 8 20 8" />
-                                            <path d="M10 13v-1.5a1.5 1.5 0 0 0-3 0V13" />
-                                        </svg>
+                                        <UIFileImage width="32" height="32" aria-hidden="true" />
                                         <span className="text-xs font-bold mt-1">PSD</span>
                                     </div>
                                 </div>
@@ -396,9 +394,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                                     className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
                                     aria-label={`Remove ${file.file.name}`}
                                 >
-                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M18 6L6 18M6 6l12 12" />
-                                    </svg>
+                                    <UIX className="w-4 h-4" aria-hidden="true" />
                                 </Button>
 
                                 {/* File Info */}

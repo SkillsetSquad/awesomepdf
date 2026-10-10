@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, File as UIFile, X as UIX } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -298,10 +300,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
             <Card className="p-6" >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                    <path d="M14 2v6h6" fill="white" />
-                  </svg>
+                  <UIFile className="w-10 h-10 text-red-500" aria-hidden="true" />
                   <div>
                     <p className="font-medium">{file.name}</p>
                     <p className="text-sm text-muted-foreground">
@@ -525,16 +524,12 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               <div className="mt-4 text-center">
                 {isPageInRange(currentPreviewPage) && !(skipFirstPage && currentPreviewPage === 1) ? (
                   <span className="inline-flex items-center gap-1 text-sm text-green-600">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <UICheck className="w-4 h-4" aria-hidden="true" />
                     Header/Footer will be added to this page
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1 text-sm text-gray-500">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <UIX className="w-4 h-4" aria-hidden="true" />
                     This page will be skipped
                   </span>
                 )}

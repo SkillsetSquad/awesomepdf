@@ -1,4 +1,6 @@
 'use client';
+import { ArrowDownRight as UIArrowDownRight, FileText as UIFileText } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -238,11 +240,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
         <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-              </svg>
+              <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
               <div>
                 <p className="font-medium text-foreground">{file.name}</p>
                 <p className="text-sm text-muted-foreground">
@@ -516,12 +514,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
                 {/* Reading order */}
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    {pagesPerSheet === 2 && layoutDirection === 'vertical'
-                      ? <path d="M12 5v14M12 19l-4-4M12 19l4-4" />
-                      : <path d="M5 12h14M17 8l4 4-4 4" />
-                    }
-                  </svg>
+                  <UIArrowDownRight className="w-4 h-4" aria-hidden="true" />
                   <span>
                     {pagesPerSheet === 2 && layoutDirection === 'vertical'
                       ? tTools('nUpPdf.topToBottom')

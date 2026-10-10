@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, Info as UIInfo, Loader2 as UILoader2, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -380,14 +382,7 @@ export function SignatureExtractorModal({
         {!file && (
           <div className="py-8 px-4 text-center border-2 border-dashed border-border rounded-lg hover:border-blue-500 transition-colors bg-muted/20">
             <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                />
-              </svg>
+              <UIPenLine className="w-8 h-8" aria-hidden="true" />
             </div>
             <h3 className="text-lg font-semibold text-foreground mb-1">
               上传已签署的 PDF 文件
@@ -407,9 +402,7 @@ export function SignatureExtractorModal({
                 }}
               />
               <span className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm transition">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
+                <UIUpload className="w-4 h-4" aria-hidden="true" />
                 选择已签署 PDF 文件
               </span>
             </Label>
@@ -424,9 +417,7 @@ export function SignatureExtractorModal({
         )}
         {statusMessage && (
           <div className="p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-md flex items-center gap-2">
-            <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+            <UICheck className="w-5 h-5 text-green-600 flex-shrink-0" aria-hidden="true" />
             <span>{statusMessage}</span>
           </div>
         )}
@@ -481,9 +472,7 @@ export function SignatureExtractorModal({
             {detectedZones.length > 0 && (
               <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-md">
                 <div className="flex items-center gap-2 text-xs font-medium text-blue-800 mb-2">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <UIInfo className="w-4 h-4 text-blue-600" aria-hidden="true" />
                   <span>检测到 {detectedZones.length} 处签名/印章区域，点击可快速定位：</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -521,10 +510,7 @@ export function SignatureExtractorModal({
                   {isLoading && (
                     <div className="absolute inset-0 bg-white/70 backdrop-blur-xs flex items-center justify-center z-20">
                       <div className="flex items-center gap-2 text-sm text-blue-600">
-                        <svg className="animate-spin h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="none">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                        </svg>
+                        <UILoader2 className="animate-spin h-5 w-5 text-blue-600" aria-hidden="true" />
                         <span>正在渲染页面...</span>
                       </div>
                     </div>
@@ -696,9 +682,7 @@ export function SignatureExtractorModal({
                       disabled={!extractedResult || isExtracting}
                       onClick={handleSaveToLibrary}
                     >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <UICheck className="w-4 h-4" aria-hidden="true" />
                       <span>一键存入签名库</span>
                     </Button>
 

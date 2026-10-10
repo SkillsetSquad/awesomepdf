@@ -1,4 +1,6 @@
 'use client';
+import { FileText as UIFileText, X as UIX } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Label } from '@/components/ui/label';
@@ -219,11 +221,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
               >
                 {/* PDF Icon */}
                 <div className="flex-shrink-0">
-                  <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                    <path d="M14 2v6h6" fill="white" />
-                    <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-                  </svg>
+                  <UIFileText className="w-8 h-8 text-red-500" aria-hidden="true" />
                 </div>
 
                 {/* File Info */}
@@ -244,9 +242,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
                   className="flex-shrink-0"
                   aria-label={`Remove ${file.file.name}`}
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
+                  <UIX className="w-5 h-5" aria-hidden="true" />
                 </Button>
               </li>
             ))}

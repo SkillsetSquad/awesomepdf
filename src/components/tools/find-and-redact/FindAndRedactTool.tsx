@@ -1,4 +1,6 @@
 'use client';
+import { File as UIFile, Search as UISearch, X as UIX } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -397,9 +399,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                     <Card className="p-6" >
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                                </svg>
+                                <UIFile className="w-10 h-10 text-red-500" aria-hidden="true" />
                                 <div>
                                     <p className="font-medium text-gray-900 dark:text-gray-100">{file.name}</p>
                                     <p className="text-sm text-gray-500 dark:text-gray-400">{formatSize(file.size)}</p>
@@ -441,9 +441,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         disabled={isProcessing || isSearching} id="findandredacttool-field-1" aria-label={tTools('searchTermLabel')}
                                     />
                                     <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                        </svg>
+                                        <UISearch className="w-5 h-5 text-gray-400" aria-hidden="true" />
                                     </div>
                                 </div>
 
@@ -474,9 +472,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                     key={index}
                                                     className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
                                                 >
-                                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                                    </svg>
+                                                    <UISearch className="w-3.5 h-3.5" aria-hidden="true" />
                                                     {term}
                                                     <Button variant="ghost" size="icon-sm"
                                                         type="button"
@@ -487,9 +483,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                         className="ml-1"
                                                         disabled={isProcessing || isSearching}
                                                     >
-                                                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                                        </svg>
+                                                        <UIX className="w-3.5 h-3.5" aria-hidden="true" />
                                                     </Button>
                                                 </span>
                                             ))}
@@ -551,9 +545,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     loading={isSearching}
                                     className="px-8"
                                 >
-                                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
+                                    <UISearch className="w-5 h-5 mr-2" aria-hidden="true" />
                                     {isSearching ? tTools('searching') : tTools('searchButton')}
                                 </Button>
                             </div>

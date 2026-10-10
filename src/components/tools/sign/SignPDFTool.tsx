@@ -1,4 +1,6 @@
 'use client';
+import { Check as UICheck, File as UIFile, Info as UIInfo, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
+
 import { Input } from '@/components/ui/input';
 
 
@@ -309,9 +311,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/80 to-sky-50/80 border border-blue-200 rounded-lg shadow-xs">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm flex-shrink-0">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-            </svg>
+            <UIPenLine className="w-5 h-5" aria-hidden="true" />
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
@@ -367,9 +367,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             size="sm"
             className="text-xs flex items-center gap-1.5"
           >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-            </svg>
+            <UIUpload className="w-3.5 h-3.5" aria-hidden="true" />
             <span>从 PDF 提取</span>
           </Button></DialogTrigger><SignatureExtractorModal
         isOpen={isExtractorOpen}
@@ -384,9 +382,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       {toastMessage && (
         <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-md flex items-center justify-between shadow-xs animate-in fade-in duration-200">
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+            <UICheck className="w-5 h-5 text-emerald-600 flex-shrink-0" aria-hidden="true" />
             <span>{toastMessage}</span>
           </div>
           <Button variant="ghost" size="icon-sm"
@@ -430,10 +426,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           <Card className="p-6" >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                  <path d="M14 2v6h6" fill="white" />
-                </svg>
+                <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-medium text-foreground">
                     {signState.file.name}
@@ -457,9 +450,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           {/* Instructions */}
           <Card  className="">
             <div className="flex gap-3">
-              <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <UIInfo className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div className="text-sm text-blue-700">
                 <p className="font-medium mb-1">{tTools('signPdf.instructionsTitle') || 'How to Sign'}</p>
                 <ol className="list-decimal list-inside space-y-1 text-blue-600">

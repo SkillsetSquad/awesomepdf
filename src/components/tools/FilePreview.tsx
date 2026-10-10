@@ -1,4 +1,6 @@
 'use client';
+import { ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, File as UIFile, Minus as UIMinus, Plus as UIPlus, TriangleAlert as UITriangleAlert } from 'lucide-react';
+
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -258,20 +260,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
     return (
       <div className={`flex items-center justify-center min-h-[300px] bg-muted/30 rounded-lg ${className}`}>
         <div className="flex flex-col items-center gap-3 text-center p-4">
-          <svg
-            className="w-12 h-12 text-red-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            />
-          </svg>
+          <UITriangleAlert className="w-12 h-12 text-red-500" aria-hidden="true" />
           <p className="text-sm text-muted-foreground">
             {error}
           </p>
@@ -286,20 +275,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
       <div className="flex items-center justify-between p-2 bg-muted/50 rounded-t-[var(--radius-lg)] border-b border-border">
         {/* File name */}
         <div className="flex items-center gap-2 min-w-0">
-          <svg
-            className="w-5 h-5 text-muted-foreground flex-shrink-0"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-            />
-          </svg>
+          <UIFile className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
           <span className="text-sm text-foreground truncate">
             {filename || 'Document'}
           </span>
@@ -317,9 +293,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                 disabled={zoom <= minZoom}
                 aria-label="Zoom out"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-                </svg>
+                <UIMinus className="w-4 h-4" aria-hidden="true" />
               </Button>
 
               <Button variant="ghost" size="sm"
@@ -337,9 +311,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                 disabled={zoom >= maxZoom}
                 aria-label="Zoom in"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
+                <UIPlus className="w-4 h-4" aria-hidden="true" />
               </Button>
             </div>
           )}
@@ -354,9 +326,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                 disabled={currentPage <= 1}
                 aria-label="Previous page"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <UIChevronLeft className="w-4 h-4" aria-hidden="true" />
               </Button>
 
               <span className="text-xs text-muted-foreground whitespace-nowrap">
@@ -370,9 +340,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                 disabled={currentPage >= totalPages}
                 aria-label="Next page"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <UIChevronRight className="w-4 h-4" aria-hidden="true" />
               </Button>
             </div>
           )}

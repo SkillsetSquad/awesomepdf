@@ -1,4 +1,6 @@
 'use client';
+import { ChevronLeft as UIChevronLeft, ChevronRight as UIChevronRight, FileText as UIFileText, Shrink as UIShrink, X as UIX, ZoomIn as UIZoomIn, ZoomOut as UIZoomOut } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -417,9 +419,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-red-100 rounded-lg">
-                  <svg className="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
+                  <UIFileText className="w-6 h-6 text-red-600" aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="font-medium">{state.file.name}</h3>
@@ -470,9 +470,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     className="flex items-center justify-center"
                     title={tTools('cropPdf.zoomOut') || 'Zoom Out'}
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
-                    </svg>
+                    <UIZoomOut className="w-5 h-5" aria-hidden="true" />
                   </Button>
 
                   <span className="px-2 text-sm font-medium text-gray-600 min-w-[60px] text-center">
@@ -496,9 +494,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     className="flex items-center justify-center"
                     title={tTools('cropPdf.zoomIn') || 'Zoom In'}
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                    </svg>
+                    <UIZoomIn className="w-5 h-5" aria-hidden="true" />
                   </Button>
 
                   <div className="w-px h-6 bg-gray-300 mx-1"></div>
@@ -510,13 +506,9 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     title={isFullscreen ? (tTools('cropPdf.exitFullscreen') || 'Exit Fullscreen') : (tTools('cropPdf.fullscreen') || 'Fullscreen')}
                   >
                     {isFullscreen ? (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <UIX className="w-5 h-5" aria-hidden="true" />
                     ) : (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                      </svg>
+                      <UIShrink className="w-5 h-5" aria-hidden="true" />
                     )}
                   </Button>
                 </div>
@@ -531,9 +523,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     disabled={state.currentPage <= 1 || isProcessing}
                     className="flex items-center justify-center"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
+                    <UIChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <div className="flex items-center gap-1 text-sm font-medium text-gray-600">
                     <Input
@@ -554,9 +544,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     disabled={state.currentPage >= state.numPages || isProcessing}
                     className="flex items-center justify-center"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <UIChevronRight className="w-4 h-4" aria-hidden="true" />
                   </Button>
                 </div>
               )}
@@ -572,9 +560,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                   disabled={state.currentPage <= 1 || isProcessing}
                   aria-label="Previous page"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
+                  <UIChevronLeft className="w-4 h-4" aria-hidden="true" />
                 </Button>
                 <div className="flex items-center gap-1 text-sm font-medium min-w-[120px] justify-center">
                   <span>{tTools('cropPdf.page') || 'Page'}</span>
@@ -597,9 +583,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                   disabled={state.currentPage >= state.numPages || isProcessing}
                   aria-label="Next page"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <UIChevronRight className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </div>
 

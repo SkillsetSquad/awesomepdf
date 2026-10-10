@@ -1,4 +1,6 @@
 'use client';
+import { Ban as UIBan } from 'lucide-react';
+
 import { Slider } from '@/components/ui/slider';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
@@ -615,10 +617,7 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
           <div className="absolute inset-0 bg-zinc-950/40 dark:bg-zinc-950/60 backdrop-blur-[1px] flex flex-col items-center justify-center text-center p-2 z-10 transition-all duration-300">
             {/* Shaking red diagonal bar symbol */}
             <div className="p-2.5 rounded-full bg-red-500/10 text-red-500 animate-[bounce_1.5s_infinite] border border-red-500/25 shadow-lg">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              </svg>
+              <UIBan className="w-6 h-6" aria-hidden="true" />
             </div>
           </div>
         )}

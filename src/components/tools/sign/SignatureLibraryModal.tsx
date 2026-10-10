@@ -1,4 +1,6 @@
 'use client';
+import { PenLine as UIPenLine } from 'lucide-react';
+
 import { Input } from '@/components/ui/input';
 
 
@@ -159,19 +161,7 @@ export function SignatureLibraryModal({
 
         {signatures.length === 0 ? (
           <div className="py-12 text-center border border-dashed border-border rounded-md bg-gray-50/50">
-            <svg
-              className="w-12 h-12 mx-auto text-gray-300 mb-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-              />
-            </svg>
+            <UIPenLine className="w-12 h-12 mx-auto text-gray-300 mb-3" aria-hidden="true" />
             <p className="text-sm font-medium text-gray-700 mb-1">暂无已保存的签名</p>
             <p className="text-xs text-gray-500 mb-4 max-w-sm mx-auto">
               您可以直接上传本地透明 PNG / JPG 签名图片，或上传已在 Adobe Acrobat 中签署过的文件提取签名。

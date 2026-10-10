@@ -1,4 +1,6 @@
 'use client';
+import { ChevronDown as UIChevronDown, ChevronUp as UIChevronUp, Copy as UICopy, FileText as UIFileText, Trash2 as UITrash2 } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -371,11 +373,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
         <Card className="p-6" >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-              </svg>
+              <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
               <div>
                 <p className="font-medium text-foreground">{file.name}</p>
                 <p className="text-sm text-muted-foreground">
@@ -488,9 +486,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                         className="flex items-center justify-center"
                         aria-label="Move up"
                       >
-                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <path d="M18 15l-6-6-6 6" />
-                        </svg>
+                        <UIChevronUp className="w-3 h-3" aria-hidden="true" />
                       </Button>
                       <Button variant="ghost" size="icon-sm"
                         type="button"
@@ -499,9 +495,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                         className="flex items-center justify-center"
                         aria-label="Move down"
                       >
-                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <path d="M6 9l6 6 6-6" />
-                        </svg>
+                        <UIChevronDown className="w-3 h-3" aria-hidden="true" />
                       </Button>
                     </div>
 
@@ -515,10 +509,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                         aria-label="Duplicate page"
                         title="Duplicate"
                       >
-                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                        </svg>
+                        <UICopy className="w-3 h-3" aria-hidden="true" />
                       </Button>
                       <Button variant="destructive" size="icon-sm"
                         type="button"
@@ -528,12 +519,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                         aria-label="Delete page"
                         title="Delete"
                       >
-                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <polyline points="3,6 5,6 21,6" />
-                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                          <line x1="10" y1="11" x2="10" y2="17" />
-                          <line x1="14" y1="11" x2="14" y2="17" />
-                        </svg>
+                        <UITrash2 className="w-3 h-3" aria-hidden="true" />
                       </Button>
                     </div>
                   </div>

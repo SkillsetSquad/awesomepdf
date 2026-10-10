@@ -1,4 +1,6 @@
 'use client';
+import { File as UIFile, Info as UIInfo } from 'lucide-react';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -313,10 +315,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
           <Card className="p-6" >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                  <path d="M14 2v6h6" fill="white" />
-                </svg>
+                <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-medium">{stampState.file.name}</p>
                   <p className="text-xs text-gray-500">{(stampState.file.size / 1024 / 1024).toFixed(2)} MB</p>
@@ -330,9 +329,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
 
           <Card  className="">
             <div className="flex gap-3">
-              <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <UIInfo className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div className="text-sm text-blue-700">
                 <p className="font-medium mb-1">{tTools('instructionsTitle') || 'How to Add Stamps'}</p>
                 <ol className="list-decimal list-inside space-y-1 text-blue-600">

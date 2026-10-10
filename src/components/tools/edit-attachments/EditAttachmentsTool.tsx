@@ -1,4 +1,6 @@
 'use client';
+import { FileText as UIFileText, Loader2 as UILoader2, Paperclip as UIPaperclip } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -245,10 +247,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
       {isLoadingAttachments && (
         <div className="flex items-center justify-center p-8">
           <div className="flex items-center gap-3">
-            <svg className="animate-spin h-5 w-5 text-primary" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
+            <UILoader2 className="animate-spin h-5 w-5 text-primary" aria-hidden="true" />
             <span className="text-sm text-muted-foreground">
               {tTools('editAttachments.loadingAttachments') || 'Loading attachments...'}
             </span>
@@ -261,11 +260,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                <path d="M14 2v6h6" fill="white" />
-                <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-              </svg>
+              <UIFileText className="w-8 h-8 text-red-500" aria-hidden="true" />
               <div>
                 <p className="text-sm font-medium text-foreground">
                   {pdfFile.name}
@@ -330,9 +325,7 @@ export function EditAttachmentsTool({ className = '' }: EditAttachmentsToolProps
 
                       aria-label={`Select ${attachment.name} for removal`}
                     />
-                    <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                    </svg>
+                    <UIPaperclip className="w-6 h-6 text-muted-foreground" aria-hidden="true" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-foreground truncate">
                         {attachment.name}

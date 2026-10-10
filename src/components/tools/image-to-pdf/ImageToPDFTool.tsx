@@ -1,4 +1,6 @@
 'use client';
+import { X as UIX } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelectOption } from '@/components/ui/native-select';
@@ -401,9 +403,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                   className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
                   aria-label={`Remove ${file.file.name}`}
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
+                  <UIX className="w-4 h-4" aria-hidden="true" />
                 </Button>
 
                 {/* File Info */}
