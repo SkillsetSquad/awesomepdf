@@ -74,7 +74,9 @@
       "rotateAllLeft": "Rotate All Left",
       "rotateAllRight": "Rotate All Right",
       "confirm": "Confirm",
-      "add": "Add"
+      "add": "Add",
+      "moveUp": "Move up",
+      "moveDown": "Move down"
     },
     "status": {
       "idle": "Ready",

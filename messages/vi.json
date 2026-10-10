@@ -74,7 +74,9 @@
       "rotateAllLeft": "Xoay tất cả sang trái",
       "rotateAllRight": "Xoay tất cả sang phải",
       "confirm": "Xác nhận",
-      "add": "Thêm"
+      "add": "Thêm",
+      "moveUp": "Di chuyển lên",
+      "moveDown": "Di chuyển xuống"
     },
     "status": {
       "idle": "Sẵn sàng",

@@ -74,7 +74,9 @@
       "rotateAllLeft": "Putar Semua ke Kiri",
       "rotateAllRight": "Putar Semua ke Kanan",
       "confirm": "Konfirmasi",
-      "add": "Tambah"
+      "add": "Tambah",
+      "moveUp": "Pindahkan ke atas",
+      "moveDown": "Pindahkan ke bawah"
     },
     "status": {
       "idle": "Siap",

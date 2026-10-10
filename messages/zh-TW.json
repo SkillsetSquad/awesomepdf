@@ -74,7 +74,9 @@
       "rotateAllLeft": "全部左旋",
       "rotateAllRight": "全部右旋",
       "confirm": "確認",
-      "add": "新增"
+      "add": "新增",
+      "moveUp": "上移",
+      "moveDown": "下移"
     },
     "status": {
       "idle": "就緒",

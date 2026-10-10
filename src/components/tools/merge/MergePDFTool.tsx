@@ -6,7 +6,12 @@ import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { GripVertical, FileText, ArrowUp, ArrowDown, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { mergePDFs } from '@/lib/pdf';
 import type { MergeOptions, UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -237,222 +242,48 @@ export function MergePDFTool({ className = '' }: MergePDFToolProps) {
   const canMerge = files.length >= 2 && !isProcessing;
 
   return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {/* File Upload Area */}
-      <FileUploader
-        accept={['application/pdf', '.pdf']}
-        multiple
-        maxFiles={100}
-        onFilesSelected={handleFilesSelected}
-        onError={handleUploadError}
-        disabled={isProcessing}
-        label={tTools('mergePdf.uploadLabel') || 'Upload PDF Files'}
-        description={tTools('mergePdf.uploadDescription') || 'Drag and drop PDF files here, or click to browse. You can add multiple files.'}
-      />
-
-      {/* Error Message */}
-      {error && (
-        <div 
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
-          <p className="text-sm">{error}</p>
-        </div>
-      )}
-
-      {/* File List */}
-      {files.length > 0 && (
-        <Card className="p-6"  >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-foreground">
-              {tTools('mergePdf.filesTitle') || 'Files to Merge'} ({files.length})
-            </h3>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleClearAll}
-              disabled={isProcessing}
-            >
-              {t('buttons.clearAll') || 'Clear All'}
-            </Button>
-          </div>
-
-          <p className="text-sm text-muted-foreground mb-4">
-            {tTools('mergePdf.reorderHint') || 'Drag and drop to reorder files. Files will be merged in the order shown.'}
-          </p>
-
-          <ul className="space-y-2" role="list" aria-label="Files to merge">
-            {files.map((file, index) => (
-              <li
-                key={file.id}
-                draggable={!isProcessing}
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDragOver={(e) => handleDragOver(e, index)}
-                onDrop={(e) => handleDrop(e, index)}
-                onDragEnd={handleDragEnd}
-                className={`
-                  flex items-center gap-3 p-3 rounded-md border
-                  transition-all duration-200
-                  ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                  ${dragOverIndex === index ? 'border-primary bg-primary/5' : 'border-border'}
-                  ${!isProcessing ? 'cursor-grab hover:bg-muted/50' : ''}
-                `}
-              >
-                {/* Drag Handle */}
-                <div 
-                  className="flex-shrink-0 text-muted-foreground"
-                  aria-hidden="true"
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <circle cx="9" cy="6" r="1.5" />
-                    <circle cx="15" cy="6" r="1.5" />
-                    <circle cx="9" cy="12" r="1.5" />
-                    <circle cx="15" cy="12" r="1.5" />
-                    <circle cx="9" cy="18" r="1.5" />
-                    <circle cx="15" cy="18" r="1.5" />
-                  </svg>
-                </div>
-
-                {/* File Number */}
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
-                  {index + 1}
-                </span>
-
-                {/* PDF Icon */}
-                <div className="flex-shrink-0">
-                  <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                    <path d="M14 2v6h6" fill="white" />
-                    <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-                  </svg>
-                </div>
-
-                {/* File Info */}
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-foreground truncate">
-                    {file.file.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {formatSize(file.file.size)}
-                  </p>
-                </div>
-
-                {/* Reorder Buttons */}
-                <div className="flex-shrink-0 flex items-center gap-1">
-                  <button
-                    type="button"
-                    onClick={() => handleMoveUp(index)}
-                    disabled={index === 0 || isProcessing}
-                    className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label="Move up"
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M18 15l-6-6-6 6" />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleMoveDown(index)}
-                    disabled={index === files.length - 1 || isProcessing}
-                    className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label="Move down"
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Remove Button */}
-                <button
-                  type="button"
-                  onClick={() => handleRemoveFile(file.id)}
-                  disabled={isProcessing}
-                  className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
-                  aria-label={`Remove ${file.file.name}`}
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
-              </li>
-            ))}
+    <div className={`space-y-6 ${className}`}>
+      <FileUploader accept={['application/pdf', '.pdf']} multiple maxFiles={100}
+        onFilesSelected={handleFilesSelected} onError={handleUploadError} disabled={isProcessing}
+        label={tTools('mergePdf.uploadLabel')} description={tTools('mergePdf.uploadDescription')} />
+      {error && <Alert variant="destructive"><AlertCircle /><AlertDescription>{error}</AlertDescription></Alert>}
+      {!!files.length && <Card>
+        <CardHeader>
+          <CardTitle><h2>{tTools('mergePdf.filesTitle')} ({files.length})</h2></CardTitle>
+          <CardDescription>{tTools('mergePdf.reorderHint')}</CardDescription>
+          <CardAction><Button variant="ghost" size="sm" onClick={handleClearAll} disabled={isProcessing}>{t('buttons.clearAll')}</Button></CardAction>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2" aria-label={tTools('mergePdf.filesTitle')}>
+            {files.map((file, index) => <li key={file.id} draggable={!isProcessing}
+              onDragStart={event => handleDragStart(event, index)} onDragOver={event => handleDragOver(event, index)} onDrop={event => handleDrop(event, index)} onDragEnd={handleDragEnd}
+              className={`flex flex-wrap items-center gap-2 rounded-md border p-3 ${draggedIndex === index ? 'opacity-50' : ''} ${dragOverIndex === index ? 'border-primary bg-accent' : ''} ${!isProcessing ? 'cursor-grab' : ''}`}>
+              <GripVertical className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+              <Badge variant="secondary" className="tabular-nums">{index + 1}</Badge>
+              <FileText className="hidden size-5 shrink-0 text-primary sm:block" aria-hidden="true" />
+              <div className="min-w-0 flex-1 basis-24"><p className="truncate text-sm font-medium" title={file.file.name}>{file.file.name}</p><p className="text-xs text-muted-foreground">{formatSize(file.file.size)}</p></div>
+              <div className="flex items-center gap-1">
+                <Button variant="ghost" size="icon-sm" onClick={() => handleMoveUp(index)} disabled={index === 0 || isProcessing} aria-label={`${t('buttons.moveUp')}: ${file.file.name}`}><ArrowUp /></Button>
+                <Button variant="ghost" size="icon-sm" onClick={() => handleMoveDown(index)} disabled={index === files.length - 1 || isProcessing} aria-label={`${t('buttons.moveDown')}: ${file.file.name}`}><ArrowDown /></Button>
+                <Button variant="ghost" size="icon-sm" onClick={() => handleRemoveFile(file.id)} disabled={isProcessing} aria-label={`${t('buttons.remove')}: ${file.file.name}`}><Trash2 /></Button>
+              </div>
+            </li>)}
           </ul>
-        </Card>
-      )}
-
-      {/* Options Panel */}
-      {files.length >= 2 && (
-        <Card className="p-6" >
-          <h3 className="text-lg font-medium text-foreground mb-4">
-            {tTools('mergePdf.optionsTitle') || 'Merge Options'}
-          </h3>
-          
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              id="preserve-bookmarks"
-              checked={preserveBookmarks}
-              onChange={(e) => setPreserveBookmarks(e.target.checked)}
-              disabled={isProcessing}
-              aria-describedby="preserve-bookmarks-description"
-              className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
-            />
-            <span id="preserve-bookmarks-description" className="text-sm text-foreground">
-              {tTools('mergePdf.preserveBookmarks') || 'Preserve bookmarks (create bookmark for each file)'}
-            </span>
-          </label>
-        </Card>
-      )}
-
-      {/* Processing Progress */}
-      {isProcessing && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={handleCancel}
-          showPercentage
-        />
-      )}
-
-      {/* Action Buttons */}
-      <div className="flex flex-wrap items-center gap-4">
-        <Button
-          variant="default"
-          size="lg"
-          onClick={handleMerge}
-          disabled={!canMerge}
-          loading={isProcessing}
-        >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
-            : (tTools('mergePdf.mergeButton') || 'Merge PDFs')
-          }
-        </Button>
-
-        {result && (
-          <DownloadButton
-            file={result}
-            filename="merged.pdf"
-            variant="secondary"
-            size="lg"
-            showFileSize
-          />
-        )}
+        </CardContent>
+      </Card>}
+      {files.length >= 2 && <Card>
+        <CardHeader><CardTitle><h2>{tTools('mergePdf.optionsTitle')}</h2></CardTitle></CardHeader>
+        <CardContent className="flex items-start gap-3">
+          <Checkbox id="preserve-bookmarks" checked={preserveBookmarks} onCheckedChange={checked => setPreserveBookmarks(checked === true)} disabled={isProcessing} />
+          <Label htmlFor="preserve-bookmarks" className="leading-normal">{tTools('mergePdf.preserveBookmarks')}</Label>
+        </CardContent>
+      </Card>}
+      {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} />}
+      <div className="flex flex-wrap gap-3">
+        <Button onClick={handleMerge} disabled={!canMerge} loading={isProcessing}>{isProcessing ? t('status.processing') : tTools('mergePdf.mergeButton')}</Button>
+        {result && <DownloadButton file={result} filename="merged.pdf" variant="outline" />}
       </div>
-
-      {/* Success Message */}
-      {status === 'complete' && result && (
-        <div 
-          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
-          <p className="text-sm font-medium">
-            {tTools('mergePdf.successMessage') || 'PDFs merged successfully! Click the download button to save your file.'}
-          </p>
-        </div>
-      )}
+      {status === 'complete' && result && <Alert role="status"><CheckCircle2 /><AlertDescription>{tTools('mergePdf.successMessage')}</AlertDescription></Alert>}
     </div>
   );
 }

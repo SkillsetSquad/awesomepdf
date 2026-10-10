@@ -74,7 +74,9 @@
       "rotateAllLeft": "Tout pivoter à gauche",
       "rotateAllRight": "Tout pivoter à droite",
       "confirm": "Confirmer",
-      "add": "Ajouter"
+      "add": "Ajouter",
+      "moveUp": "Déplacer vers le haut",
+      "moveDown": "Déplacer vers le bas"
     },
     "status": {
       "idle": "Prêt",

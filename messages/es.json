@@ -74,7 +74,9 @@
       "rotateAllLeft": "Rotar todo a la izquierda",
       "rotateAllRight": "Rotar todo a la derecha",
       "confirm": "Confirmar",
-      "add": "Añadir"
+      "add": "Añadir",
+      "moveUp": "Mover arriba",
+      "moveDown": "Mover abajo"
     },
     "status": {
       "idle": "Listo",

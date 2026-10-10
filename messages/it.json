@@ -74,7 +74,9 @@
       "rotateAllLeft": "Ruota tutto a sinistra",
       "rotateAllRight": "Ruota tutto a destra",
       "confirm": "Conferma",
-      "add": "Aggiungi"
+      "add": "Aggiungi",
+      "moveUp": "Sposta su",
+      "moveDown": "Sposta giù"
     },
     "status": {
       "idle": "Pronto",

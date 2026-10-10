@@ -74,7 +74,9 @@
       "rotateAllLeft": "Obróć wszystko w lewo",
       "rotateAllRight": "Obróć wszystko w prawo",
       "confirm": "Potwierdź",
-      "add": "Dodaj"
+      "add": "Dodaj",
+      "moveUp": "Przenieś w górę",
+      "moveDown": "Przenieś w dół"
     },
     "status": {
       "idle": "Gotowy",

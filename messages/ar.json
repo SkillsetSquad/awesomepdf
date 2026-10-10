@@ -74,7 +74,9 @@
       "rotateAllLeft": "تدوير الكل لليسار",
       "rotateAllRight": "تدوير الكل لليمين",
       "confirm": "تأكيد",
-      "add": "إضافة"
+      "add": "إضافة",
+      "moveUp": "نقل لأعلى",
+      "moveDown": "نقل لأسفل"
     },
     "status": {
       "idle": "جاهز",

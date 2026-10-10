@@ -74,7 +74,9 @@
       "rotateAllLeft": "Rotește tot la stânga",
       "rotateAllRight": "Rotește tot la dreapta",
       "confirm": "Confirmă",
-      "add": "Adaugă"
+      "add": "Adaugă",
+      "moveUp": "Mută în sus",
+      "moveDown": "Mută în jos"
     },
     "status": {
       "idle": "Gata",

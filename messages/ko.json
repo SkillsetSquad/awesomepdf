@@ -74,7 +74,9 @@
       "rotateAllLeft": "모두 왼쪽으로 회전",
       "rotateAllRight": "모두 오른쪽으로 회전",
       "confirm": "확인",
-      "add": "추가"
+      "add": "추가",
+      "moveUp": "위로 이동",
+      "moveDown": "아래로 이동"
     },
     "status": {
       "idle": "준비됨",

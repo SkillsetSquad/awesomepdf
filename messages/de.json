@@ -74,7 +74,9 @@
       "rotateAllLeft": "Alle nach links drehen",
       "rotateAllRight": "Alle nach rechts drehen",
       "confirm": "Bestätigen",
-      "add": "Hinzufügen"
+      "add": "Hinzufügen",
+      "moveUp": "Nach oben verschieben",
+      "moveDown": "Nach unten verschieben"
     },
     "status": {
       "idle": "Bereit",
