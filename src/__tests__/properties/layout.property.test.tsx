@@ -15,6 +15,7 @@ import {
 
 // Mock next-intl
 vi.mock('next-intl', () => ({
+  useLocale: () => 'en',
   useTranslations: () => (key: string) => {
     const translations: Record<string, string> = {
       'brand': 'AwesomePDF',
