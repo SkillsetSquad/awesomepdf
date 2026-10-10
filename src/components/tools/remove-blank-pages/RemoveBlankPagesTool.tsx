@@ -2,7 +2,7 @@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Slider } from '@/components/ui/slider';
 
-import React, { useState, useCallback, useId, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useId, useRef } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
@@ -54,7 +54,9 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
   const [error, setError] = useState<string | null>(null);
   const [removedCount, setRemovedCount] = useState(0);
 
-  const cancelledRef = useRef(false);
+  const analysisRun = useRef(0);
+  const processingRun = useRef(0);
+  useEffect(() => () => { analysisRun.current++; processingRun.current++; }, []);
 
   // Helper: calculate Shannon entropy on imageData
   const calculateEntropy = (imageData: ImageData): number => {
@@ -100,6 +102,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
    * Render and analyze PDF pages in the background
    */
   const loadAndAnalyzePdf = async (selectedFile: File) => {
+    const run = ++analysisRun.current;
     setIsAnalyzing(true);
     setAnalyzingProgress(0);
     setPages([]);
@@ -113,12 +116,14 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      if (run !== analysisRun.current) return;
       const totalPages = pdfDoc.numPages;
 
       const loadedPages: PageInfo[] = [];
 
       for (let i = 1; i <= totalPages; i++) {
         const page = await pdfDoc.getPage(i);
+        if (run !== analysisRun.current) return;
         const viewport = page.getViewport({ scale: 0.3 }); // Small preview for faster rendering
 
         const canvas = document.createElement('canvas');
@@ -132,6 +137,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             canvasContext: context,
             viewport: viewport,
           }).promise;
+          if (run !== analysisRun.current) return;
 
           const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
           const entropy = calculateEntropy(imageData);
@@ -143,6 +149,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             dataUrl,
             aspectRatio: viewport.width / viewport.height,
           });
+        } else {
+          throw new Error(tErrors('processingFailed'));
         }
 
         setAnalyzingProgress(Math.round((i / totalPages) * 100));
@@ -150,16 +158,20 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         setPages([...loadedPages]);
       }
     } catch (err) {
+      if (run !== analysisRun.current) return;
       console.error(err);
+      setPages([]);
       setError(err instanceof Error ? err.message : tErrors('processingFailed'));
     } finally {
-      setIsAnalyzing(false);
+      if (run === analysisRun.current) setIsAnalyzing(false);
     }
   };
 
   const handleFileSelected = (files: File[]) => {
     if (files.length > 0) {
       const selectedFile = files[0];
+      processingRun.current++;
+      setStatus('idle');
       setFile(selectedFile);
       loadAndAnalyzePdf(selectedFile);
     }
@@ -202,7 +214,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
   const handleProcess = useCallback(async () => {
     if (!file || pages.length === 0) return;
-    cancelledRef.current = false;
+    const run = ++processingRun.current;
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -225,14 +237,11 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         file,
         { explicitPagesToRemove },
         (prog) => {
-          if (!cancelledRef.current) setProgress(prog);
+          if (run === processingRun.current) setProgress(prog);
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResult(output.result as Blob);
@@ -243,18 +252,23 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         setStatus('error');
       }
     } catch (err) {
+      if (run !== processingRun.current) return;
       setError(err instanceof Error ? err.message : tErrors('processingFailed'));
       setStatus('error');
     }
   }, [file, pages, isPageRemoved, t, tErrors]);
 
   const handleClear = () => {
+    analysisRun.current++;
+    processingRun.current++;
     setFile(null);
     setPages([]);
     setResult(null);
     setError(null);
     setUserOverrides({});
     setStatus('idle');
+    setProgress(0);
+    setIsAnalyzing(false);
   };
 
   const isProcessing = status === 'processing';
@@ -352,7 +366,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         </div>
       </Card>}
 
-      {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
+      {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { processingRun.current++; setProgress(0); setStatus('idle'); }} showPercentage />}
     </div>
   );
 }

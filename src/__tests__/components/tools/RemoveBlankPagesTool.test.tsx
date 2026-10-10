@@ -8,6 +8,7 @@ import ar from '../../../../messages/ar.json';
 import { RemoveBlankPagesTool } from '@/components/tools/remove-blank-pages/RemoveBlankPagesTool';
 import { removeBlankPages } from '@/lib/pdf/processors/remove-blank-pages';
 import { getDocument } from 'pdfjs-dist';
+import type { ProcessOutput } from '@/types/pdf';
 
 let selectedFile: File;
 let activePage = 0;
@@ -126,5 +127,55 @@ describe('Blank-page review workspace', () => {
     expect(screen.queryByRole('alert')).toBeNull();
     await act(async () => user.click(screen.getByRole('button', { name: en.common.removeBlankPages.processNew })));
     expect(screen.getByRole('button', { name: 'Choose PDF' })).toBeEnabled();
+  });
+
+  it.each(['result', 'error'] as const)('ignores a cancelled run’s late progress and %s while the next run is processing', async outcome => {
+    let finishOld!: (output: ProcessOutput) => void, failOld!: (error: Error) => void, finishNew!: (output: ProcessOutput) => void;
+    vi.mocked(removeBlankPages)
+      .mockImplementationOnce(() => new Promise((resolve, reject) => { finishOld = resolve; failOld = reject; }))
+      .mockImplementationOnce(() => new Promise(resolve => { finishNew = resolve; }));
+    const user = userEvent.setup();
+    render(<NextIntlClientProvider locale="en" messages={en}><RemoveBlankPagesTool /></NextIntlClientProvider>);
+    await user.click(screen.getByRole('button', { name: 'Choose PDF' }));
+    const process = await screen.findByRole('button', { name: en.tools.removeBlankPages.removeButton });
+    await user.click(process);
+    expect(screen.getByRole('button', { name: /^Page 1:/ })).toBeDisabled();
+    expect(screen.getByRole('button', { name: en.common.removeBlankPages.keepAllBtn })).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: en.common.buttons.cancel }));
+    await user.click(process);
+    act(() => vi.mocked(removeBlankPages).mock.calls[0][2]?.(95));
+    await act(async () => {
+      if (outcome === 'result') finishOld({ success: true, result: new Blob(['old']) });
+      else failOld(new Error('Cancelled run failed'));
+    });
+    expect(screen.queryByRole('button', { name: 'Download PDF' })).toBeNull();
+    expect(screen.queryByText('Cancelled run failed')).toBeNull();
+    expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '0');
+    expect(process).toBeDisabled();
+    const latest = new Blob(['latest']);
+    await act(async () => finishNew({ success: true, result: latest }));
+    await waitFor(() => expect(download).toHaveBeenCalledWith(expect.objectContaining({ file: latest })));
+  });
+
+  it('prevents processing a partially analyzed PDF and permits selecting the file again', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.mocked(getDocument).mockReturnValueOnce({ promise: Promise.resolve({
+      numPages: 3,
+      getPage: async (page: number) => {
+        if (page === 2) throw new Error('Preview failed');
+        return { getViewport: () => ({ width: 100, height: 150 }), render: () => { activePage = 1; return { promise: Promise.resolve() }; } };
+      },
+    }) } as unknown as ReturnType<typeof getDocument>);
+    const user = userEvent.setup();
+    render(<NextIntlClientProvider locale="en" messages={en}><RemoveBlankPagesTool /></NextIntlClientProvider>);
+    await user.click(screen.getByRole('button', { name: 'Choose PDF' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent('Preview failed');
+    expect(screen.queryByRole('button', { name: /^Page 1:/ })).toBeNull();
+    expect(screen.getByRole('button', { name: en.tools.removeBlankPages.removeButton })).toBeDisabled();
+    expect(removeBlankPages).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: en.common.buttons.remove }));
+    await user.click(screen.getByRole('button', { name: 'Choose PDF' }));
+    expect(await screen.findByRole('button', { name: /^Page 1:/ })).toBeEnabled();
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 });
