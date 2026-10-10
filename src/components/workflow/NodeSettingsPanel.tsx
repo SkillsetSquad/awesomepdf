@@ -3029,7 +3029,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                             onClick={handleApply}
                         >
                             <Check className="w-4 h-4 mr-1.5" />
-                            {locale === 'zh' ? '完成' : (tWorkflow('done') || 'Done')}
+                            {tCommon('buttons.confirm')}
                         </Button>
                     </div>
                 </SheetFooter>
