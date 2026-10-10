@@ -348,7 +348,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                   value={overlapUnit}
                   onChange={(e) => setOverlapUnit(e.target.value as 'pt' | 'mm' | 'in')}
                   disabled={isProcessing}
-                  className="w-20" id="overlap" aria-label={tTools('posterizePdf.overlap') || 'Overlap'}
+                  className="w-20" id="overlap-unit" aria-label={`${tTools('posterizePdf.overlap')} (mm/in/pt)`}
                 >
                   <NativeSelectOption value="mm">mm</NativeSelectOption>
                   <NativeSelectOption value="in">in</NativeSelectOption>

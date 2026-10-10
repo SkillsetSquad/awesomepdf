@@ -160,10 +160,10 @@ export function EinkOptimizerTool() {
               {/* Contrast Threshold Offset Slider */}
               <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1.5">
+                  <Label htmlFor="eink-contrast-offset" className="flex items-center gap-1.5">
                     <Sliders className="w-3.5 h-3.5 text-teal-400" />
                     {t('einkOptimizer.otsueThresholdSuffix')}
-                  </span>
+                  </Label>
                   <span className="font-mono text-teal-400">{contrastOffset > 0 ? `+${contrastOffset}` : contrastOffset}</span>
                 </div>
                 <Slider
@@ -171,7 +171,8 @@ export function EinkOptimizerTool() {
                   max={50}
                   value={[contrastOffset]}
                   onValueChange={(values) => setContrastOffset(parseInt(String(values[0])))}
-                  className="w-full cursor-pointer" id="einkoptimizertool-slider-1" aria-label={t('einkOptimizer.dilationSuffix')}
+                  disabled={status === 'processing'}
+                  className="w-full" id="eink-contrast-offset" aria-label={t('einkOptimizer.otsueThresholdSuffix')}
                 />
                 <div className="flex justify-between text-[9px] text-muted-foreground">
                   {t('einkOptimizer.keepStrokes')}
@@ -180,20 +181,21 @@ export function EinkOptimizerTool() {
               </div>
 
               {/* Text Dilation Amount */}
-              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
-                <Label className="text-foreground flex items-center gap-1.5" htmlFor="einkoptimizertool-slider-1">
+              <div role="group" aria-labelledby="eink-dilation-label" className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+                <p id="eink-dilation-label" className="text-sm font-medium flex items-center gap-1.5">
                   <Settings className="w-3.5 h-3.5 text-teal-400" />
                   {t('einkOptimizer.dilationSuffix')}
-                </Label>
+                </p>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    { val: 0, label: t('einkOptimizer.originalInk') },
+                    { val: 0, label: t('einkOptimizer.originalStroke') },
                     { val: 1, label: t('einkOptimizer.microDilation') },
                     { val: 2, label: t('einkOptimizer.strongDilation') }
                   ].map((option) => (
                     <Button size="sm" variant={dilationAmount === option.val ? 'default' : 'outline'} aria-pressed={dilationAmount === option.val}
                       key={option.val}
                       onClick={() => setDilationAmount(option.val)}
+                      disabled={status === 'processing'}
                       className="text-center"
                     >
                       {option.label}

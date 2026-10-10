@@ -294,7 +294,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                   value={backgroundColor}
                   onChange={(e) => setBackgroundColor(e.target.value)}
                   disabled={isProcessing}
-                  className="flex-1" id="backgroundColor" aria-label={tTools('combineSinglePage.backgroundColor') || 'Background Color'}
+                  className="flex-1" id="backgroundColor-hex" aria-label={`${tTools('combineSinglePage.backgroundColor')} (HEX)`}
                 />
               </div>
             </div>
@@ -352,7 +352,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                       value={separatorColor}
                       onChange={(e) => setSeparatorColor(e.target.value)}
                       disabled={isProcessing}
-                      className="flex-1" id="separatorColor" aria-label={tTools('combineSinglePage.separatorColor') || 'Separator Color'}
+                      className="flex-1" id="separatorColor-hex" aria-label={`${tTools('combineSinglePage.separatorColor')} (HEX)`}
                     />
                   </div>
                 </div>

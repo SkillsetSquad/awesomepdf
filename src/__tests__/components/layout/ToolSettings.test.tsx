@@ -1,13 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor, act, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '../../../../messages/en.json';
 import { EncryptPDFTool } from '@/components/tools/encrypt/EncryptPDFTool';
 import { TextColorTool } from '@/components/tools/text-color/TextColorTool';
-const { encryptPDF, changeTextColor } = vi.hoisted(() => ({ encryptPDF: vi.fn(), changeTextColor: vi.fn() }));
+import { EinkOptimizerTool } from '@/components/tools/eink-optimizer/EinkOptimizerTool';
+const { encryptPDF, changeTextColor, optimizeEink } = vi.hoisted(() => ({ encryptPDF: vi.fn(), changeTextColor: vi.fn(), optimizeEink: vi.fn() }));
 vi.mock('@/lib/pdf/processors/encrypt', () => ({ encryptPDF }));
 vi.mock('@/lib/pdf/processors/text-color', () => ({ changeTextColor }));
+vi.mock('@/lib/pdf/processors/eink-optimizer', () => ({ optimizeEink }));
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: ({ onFilesSelected }: { onFilesSelected: (files: File[]) => void }) => <button onClick={() => onFilesSelected([new File(['pdf'], 'test.pdf')])}>Select test PDF</button> }));
 beforeEach(() => { encryptPDF.mockResolvedValue({ success: true, result: new Blob(['encrypted']) }); changeTextColor.mockResolvedValue({ success: true, result: new Blob(['changed']) }); });
 describe('Tool settings', () => {
@@ -42,6 +44,21 @@ describe('Tool settings', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Apply Text Color' }));
     await waitFor(() => expect(changeTextColor).toHaveBeenCalledOnce());
     expect(changeTextColor.mock.calls[0][1]).toMatchObject({ mode: 'light', threshold: 129 });
+  });
+
+  it('names contrast and ink dilation separately and passes their settings to e-ink processing', async () => {
+    optimizeEink.mockResolvedValue({ success: true, result: new Blob(['optimized']) });
+    render(<NextIntlClientProvider locale="en" messages={messages}><EinkOptimizerTool /></NextIntlClientProvider>);
+    await userEvent.click(screen.getByRole('button', { name: 'Select test PDF' }));
+    const contrast = screen.getByRole('slider', { name: messages.common.einkOptimizer.otsueThresholdSuffix.trim() });
+    act(() => contrast.focus());
+    await userEvent.keyboard('{ArrowRight}');
+    expect(contrast).toHaveAttribute('aria-valuenow', '1');
+    const dilation = screen.getByRole('group', { name: messages.common.einkOptimizer.dilationSuffix.trim() });
+    await userEvent.click(within(dilation).getByRole('button', { name: messages.common.einkOptimizer.microDilation }));
+    await userEvent.click(screen.getByRole('button', { name: messages.tools.einkOptimizer.processButton }));
+    await waitFor(() => expect(optimizeEink).toHaveBeenCalledOnce());
+    expect(optimizeEink.mock.calls[0][1]).toEqual({ contrastOffset: 1, dilationAmount: 1 });
   });
 
 });
