@@ -6,13 +6,14 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Modal } from '@/components/ui/Modal';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { AlertCircle } from 'lucide-react';
 import { changePermissions, type ChangePermissionsOptions, type PDFPermissionSettings } from '@/lib/pdf/processors/change-permissions';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -29,6 +30,8 @@ export interface ChangePermissionsToolProps {
  */
 export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolProps) {
   const t = useTranslations('common');
+  const locale = useLocale();
+  const processButtonRef = useRef<HTMLButtonElement>(null);
   const tTools = useTranslations('tools');
 
   // State
@@ -430,6 +433,7 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
         <Button
           variant="default"
           size="lg"
+          ref={processButtonRef}
           onClick={handleChangePermissions}
           disabled={!canProcess}
           loading={isProcessing}
@@ -467,36 +471,16 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
       )}
 
       {/* Password Error Modal */}
-      <Modal
-        isOpen={showPasswordErrorModal}
-        onClose={() => setShowPasswordErrorModal(false)}
-        title={t('status.error') || 'Error'}
-        size="sm"
-      >
-        <div className="space-y-4">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
-              <svg className="w-5 h-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm text-foreground">
-                {passwordErrorMessage}
-              </p>
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => setShowPasswordErrorModal(false)}
-            >
-              {t('buttons.close') || 'Close'}
-            </Button>
-          </div>
-        </div>
-      </Modal>
+      <Dialog open={showPasswordErrorModal} onOpenChange={setShowPasswordErrorModal}>
+        <DialogContent dir={locale === 'ar' ? 'rtl' : 'ltr'} showCloseButton={false} onCloseAutoFocus={event => { event.preventDefault(); processButtonRef.current?.focus(); }}>
+          <DialogHeader>
+            <AlertCircle className="size-5 text-destructive" aria-hidden="true" />
+            <DialogTitle>{t('status.error')}</DialogTitle>
+            <DialogDescription>{passwordErrorMessage}</DialogDescription>
+          </DialogHeader>
+          <DialogFooter><DialogClose asChild><Button>{t('buttons.close')}</Button></DialogClose></DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
