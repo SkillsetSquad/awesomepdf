@@ -1,16 +1,18 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { File as UIFile, Info as UIInfo } from 'lucide-react';
 
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { isTauri, saveBlobFile } from '@/lib/tauri-bridge';
+import { withBasePath } from '@/lib/utils/path';
+import { PDFViewerControls } from '../PDFViewerControls';
 
 export interface StampsToolProps {
   className?: string;
@@ -23,6 +25,7 @@ interface StampState {
 }
 
 export function StampsTool({ className = '' }: StampsToolProps) {
+  const locale = useLocale();
   const t = useTranslations('common');
   const tTools = useTranslations('tools.stamps');
 
@@ -34,6 +37,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     return () => {
@@ -54,6 +58,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
   const handleUploadError = useCallback((msg: string) => setError(msg), []);
 
   const handleIframeLoad = useCallback(() => {
+    setEditorFrame(iframeRef.current);
     setTimeout(() => setStampState(prev => ({ ...prev, viewerReady: true })), 1500);
   }, []);
 
@@ -283,17 +288,19 @@ export function StampsTool({ className = '' }: StampsToolProps) {
   }, [stampState.viewerReady, tTools]);
 
   const handleClear = useCallback(() => {
+    setEditorFrame(null);
     if (stampState.blobUrl) URL.revokeObjectURL(stampState.blobUrl);
     setStampState({ file: null, blobUrl: null, viewerReady: false });
     setError(null);
   }, [stampState.blobUrl]);
 
   const viewerUrl = stampState.blobUrl
-    ? `/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(stampState.blobUrl)}`
+    ? withBasePath(`/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(stampState.blobUrl)}`)
     : null;
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
+      <PDFViewerControls iframe={editorFrame} locale={locale} />
       {!stampState.file && (
         <FileUploader
           accept={['application/pdf', '.pdf']}
@@ -316,11 +323,11 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       {stampState.file && viewerUrl && (
         <>
           <Card className="p-6" >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-medium">{stampState.file.name}</p>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex min-w-0 items-center gap-3">
+                <UIFile className="size-6 shrink-0 text-muted-foreground" aria-hidden="true" />
+                <div className="min-w-0">
+                  <p className="break-all text-sm font-medium">{stampState.file.name}</p>
                   <p className="text-xs text-muted-foreground">{(stampState.file.size / 1024 / 1024).toFixed(2)} MB</p>
                 </div>
               </div>
@@ -330,21 +337,19 @@ export function StampsTool({ className = '' }: StampsToolProps) {
             </div>
           </Card>
 
-          <Card  className="">
-            <div className="flex gap-3">
-              <UIInfo className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <div className="text-sm text-blue-700">
-                <p className="font-medium mb-1">{tTools('instructionsTitle') || 'How to Add Stamps'}</p>
-                <ol className="list-decimal list-inside space-y-1 text-blue-600">
+          <Alert>
+              <UIInfo aria-hidden="true" />
+              <AlertTitle>{tTools('instructionsTitle') || 'How to Add Stamps'}</AlertTitle>
+              <AlertDescription>
+                <ol className="list-decimal list-inside space-y-1">
                   <li>{tTools('instruction1') || 'Click the Stamp tool in the toolbar'}</li>
                   <li>{tTools('instruction2') || 'Click Add image to upload your stamp'}</li>
                   <li>{tTools('instruction3') || 'Click on the PDF to place the stamp'}</li>
                   <li>{tTools('instruction4') || 'Drag to resize or reposition'}</li>
                   <li>{tTools('instruction5') || 'Click Save Stamped PDF when done'}</li>
                 </ol>
-              </div>
-            </div>
-          </Card>
+              </AlertDescription>
+          </Alert>
 
           <div className="border rounded-lg overflow-hidden">
             <iframe
