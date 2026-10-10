@@ -5,6 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
+import { withBasePath } from '@/lib/utils/path';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -254,7 +255,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
           <TabsContent value="direct"><div className="relative overflow-hidden rounded-lg border bg-card">
               <iframe
                 ref={iframeRef}
-                src={`/direct-pdf-editor/index.html?lang=${encodeURIComponent(locale || 'en')}`}
+                src={withBasePath(`/direct-pdf-editor/index.html?lang=${encodeURIComponent(locale || 'en')}`)}
                 className="w-full h-[820px] border-0"
                 title="PDF Editor"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
