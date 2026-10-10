@@ -67,13 +67,13 @@ export const ConditionalNode = memo(({ id, data, selected = false, isConnectable
 
     // Node boundary status colors
     const statusClasses = {
-        idle: 'border-indigo-400 dark:border-indigo-500 bg-[hsl(var(--color-card))]',
+        idle: 'border-indigo-400 dark:border-indigo-500 bg-card',
         processing: 'border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 animate-pulse',
         complete: data.activeBranch === 'true'
             ? 'border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20'
             : data.activeBranch === 'false'
                 ? 'border-amber-500 bg-amber-50/30 dark:bg-amber-950/20'
-                : 'border-green-500 bg-[hsl(var(--color-card))]',
+                : 'border-green-500 bg-card',
         error: 'border-red-500 bg-red-50/50 dark:bg-red-950/20',
         skipped: 'border-dashed border-gray-300 dark:border-gray-600 bg-gray-100/60 dark:bg-gray-800/40 opacity-60',
     };
@@ -111,23 +111,23 @@ export const ConditionalNode = memo(({ id, data, selected = false, isConnectable
             />
 
             {/* Header: Icon + Title */}
-            <div className="flex items-center gap-2.5 pb-2 border-b border-[hsl(var(--color-border)/0.6)]">
+            <div className="flex items-center gap-2.5 pb-2 border-b border-border/60">
                 <div className="p-1.5 rounded-lg bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300">
                     <GitFork className="w-4 h-4" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-[hsl(var(--color-foreground))] truncate">
+                    <p className="text-xs font-semibold text-foreground truncate">
                         {data.label || '条件分流'}
                     </p>
-                    <p className="text-[10px] text-[hsl(var(--color-muted-foreground))]">
+                    <p className="text-[10px] text-muted-foreground">
                         Condition Gateway
                     </p>
                 </div>
             </div>
 
             {/* Condition rule summary */}
-            <div className="mt-2.5 px-2 py-1.5 rounded-md bg-[hsl(var(--color-muted)/0.5)] border border-[hsl(var(--color-border)/0.5)]">
-                <p className="text-[11px] font-mono text-[hsl(var(--color-foreground))] truncate" title={conditionSummary}>
+            <div className="mt-2.5 px-2 py-1.5 rounded-md bg-muted/50 border border-border/50">
+                <p className="text-[11px] font-mono text-foreground truncate" title={conditionSummary}>
                     {conditionSummary}
                 </p>
             </div>
@@ -161,7 +161,7 @@ export const ConditionalNode = memo(({ id, data, selected = false, isConnectable
             )}
 
             {/* Output branch handles (Right) */}
-            <div className="mt-3 pt-2 border-t border-[hsl(var(--color-border)/0.6)] space-y-2">
+            <div className="mt-3 pt-2 border-t border-border/60 space-y-2">
                 {/* True branch handle label */}
                 <div className="flex items-center justify-between text-[11px]">
                     <span className="text-muted-foreground text-[10px]">满足条件:</span>

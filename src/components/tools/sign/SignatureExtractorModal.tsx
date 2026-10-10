@@ -370,7 +370,7 @@ export function SignatureExtractorModal({
       <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-1">
         {/* Step 1: Upload signed PDF */}
         {!file && (
-          <div className="py-8 px-4 text-center border-2 border-dashed border-[hsl(var(--color-border))] rounded-[var(--radius-lg)] hover:border-blue-500 transition-colors bg-[hsl(var(--color-muted)/0.2)]">
+          <div className="py-8 px-4 text-center border-2 border-dashed border-border rounded-lg hover:border-blue-500 transition-colors bg-muted/20">
             <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -381,10 +381,10 @@ export function SignatureExtractorModal({
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-[hsl(var(--color-foreground))] mb-1">
+            <h3 className="text-lg font-semibold text-foreground mb-1">
               上传已签署的 PDF 文件
             </h3>
-            <p className="text-sm text-[hsl(var(--color-muted-foreground))] max-w-md mx-auto mb-5">
+            <p className="text-sm text-muted-foreground max-w-md mx-auto mb-5">
               支持自动提取 Adobe Acrobat 等各类工具签署的数字签名、电子印章与手写签名，自动剔除纸张白底，生成高精透明签名并存入签名库。
             </p>
 
@@ -398,7 +398,7 @@ export function SignatureExtractorModal({
                   if (f) handleFileChange(f);
                 }}
               />
-              <span className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-[var(--radius-md)] bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm transition">
+              <span className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm transition">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
@@ -410,12 +410,12 @@ export function SignatureExtractorModal({
 
         {/* Error / Status Messages */}
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-[var(--radius-md)]">
+          <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md">
             {error}
           </div>
         )}
         {statusMessage && (
-          <div className="p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-[var(--radius-md)] flex items-center gap-2">
+          <div className="p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-md flex items-center gap-2">
             <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -427,12 +427,12 @@ export function SignatureExtractorModal({
         {file && (
           <div className="space-y-4">
             {/* Top Toolbar & Detection summary */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-[hsl(var(--color-muted)/0.4)] rounded-[var(--radius-md)]">
-              <div className="flex items-center gap-2 text-sm text-[hsl(var(--color-foreground))]">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-muted/40 rounded-md">
+              <div className="flex items-center gap-2 text-sm text-foreground">
                 <span className="font-medium truncate max-w-[220px]" title={file.name}>
                   📄 {file.name}
                 </span>
-                <span className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                <span className="text-xs text-muted-foreground">
                   (共 {pageCount} 页)
                 </span>
               </div>
@@ -447,7 +447,7 @@ export function SignatureExtractorModal({
                 >
                   ◀ 上一页
                 </Button>
-                <span className="text-xs font-medium px-2 py-1 bg-[hsl(var(--color-card))] border border-[hsl(var(--color-border))] rounded">
+                <span className="text-xs font-medium px-2 py-1 bg-card border border-border rounded">
                   {currentPage} / {pageCount}
                 </span>
                 <Button
@@ -471,7 +471,7 @@ export function SignatureExtractorModal({
 
             {/* Detected zones pill list */}
             {detectedZones.length > 0 && (
-              <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-[var(--radius-md)]">
+              <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-md">
                 <div className="flex items-center gap-2 text-xs font-medium text-blue-800 mb-2">
                   <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -502,7 +502,7 @@ export function SignatureExtractorModal({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               {/* Left Column: Canvas & Crop selection (8 cols) */}
               <div className="lg:col-span-7 flex flex-col space-y-2">
-                <div className="flex items-center justify-between text-xs text-[hsl(var(--color-muted-foreground))]">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>拖拽鼠标拉框选择要提取的签名区域：</span>
                   <span className="text-[11px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200">
                     💡 提示：选框尽量紧贴笔迹或印章
@@ -511,7 +511,7 @@ export function SignatureExtractorModal({
 
                 <div
                   ref={canvasContainerRef}
-                  className="relative border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] overflow-auto bg-gray-100 max-h-[460px] flex items-center justify-center select-none"
+                  className="relative border border-border rounded-md overflow-auto bg-gray-100 max-h-[460px] flex items-center justify-center select-none"
                   style={{ minHeight: '340px' }}
                 >
                   {isLoading && (
@@ -560,7 +560,7 @@ export function SignatureExtractorModal({
                 <Card  className="p-4 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <h4 className="text-sm font-semibold text-[hsl(var(--color-foreground))]">
+                      <h4 className="text-sm font-semibold text-foreground">
                         透明化提取预览
                       </h4>
                       {isExtracting && (
@@ -570,7 +570,7 @@ export function SignatureExtractorModal({
 
                     {/* Checkerboard Transparent Preview Canvas Container */}
                     <div
-                      className="w-full h-44 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] flex items-center justify-center p-3 relative overflow-hidden"
+                      className="w-full h-44 rounded-md border border-border flex items-center justify-center p-3 relative overflow-hidden"
                       style={{
                         backgroundImage: `linear-gradient(45deg, #e5e7eb 25%, transparent 25%), 
                                           linear-gradient(-45deg, #e5e7eb 25%, transparent 25%), 
@@ -594,7 +594,7 @@ export function SignatureExtractorModal({
 
                     {/* Name Input */}
                     <div>
-                      <label className="block text-xs font-medium text-[hsl(var(--color-muted-foreground))] mb-1">
+                      <label className="block text-xs font-medium text-muted-foreground mb-1">
                         签名名称：
                       </label>
                       <input
@@ -602,13 +602,13 @@ export function SignatureExtractorModal({
                         value={signatureName}
                         onChange={(e) => setSignatureName(e.target.value)}
                         placeholder="例如：张三签名 / 财务专用章"
-                        className="w-full text-xs px-3 py-1.5 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-card))] text-[hsl(var(--color-foreground))]"
+                        className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-card text-foreground"
                       />
                     </div>
 
                     {/* Color Modes */}
                     <div>
-                      <label className="block text-xs font-medium text-[hsl(var(--color-muted-foreground))] mb-1.5">
+                      <label className="block text-xs font-medium text-muted-foreground mb-1.5">
                         笔迹色彩增强：
                       </label>
                       <div className="grid grid-cols-2 gap-2 text-xs">
@@ -618,7 +618,7 @@ export function SignatureExtractorModal({
                           className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
                             colorMode === 'original'
                               ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-[hsl(var(--color-border))] hover:bg-gray-50'
+                              : 'border-border hover:bg-gray-50'
                           }`}
                         >
                           <span className="w-3 h-3 rounded-full bg-gradient-to-tr from-blue-500 to-red-500 inline-block" />
@@ -631,7 +631,7 @@ export function SignatureExtractorModal({
                           className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
                             colorMode === 'black'
                               ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-[hsl(var(--color-border))] hover:bg-gray-50'
+                              : 'border-border hover:bg-gray-50'
                           }`}
                         >
                           <span className="w-3 h-3 rounded-full bg-gray-900 inline-block" />
@@ -644,7 +644,7 @@ export function SignatureExtractorModal({
                           className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
                             colorMode === 'blue'
                               ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-[hsl(var(--color-border))] hover:bg-gray-50'
+                              : 'border-border hover:bg-gray-50'
                           }`}
                         >
                           <span className="w-3 h-3 rounded-full bg-blue-800 inline-block" />
@@ -657,7 +657,7 @@ export function SignatureExtractorModal({
                           className={`p-1.5 rounded border text-left transition flex items-center gap-1.5 ${
                             colorMode === 'seal_red'
                               ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                              : 'border-[hsl(var(--color-border))] hover:bg-gray-50'
+                              : 'border-border hover:bg-gray-50'
                           }`}
                         >
                           <span className="w-3 h-3 rounded-full bg-red-600 inline-block" />
@@ -667,9 +667,9 @@ export function SignatureExtractorModal({
                     </div>
 
                     {/* Fine-tuning Sliders */}
-                    <div className="space-y-2 pt-1 border-t border-[hsl(var(--color-border))]">
+                    <div className="space-y-2 pt-1 border-t border-border">
                       <div>
-                        <div className="flex justify-between text-xs text-[hsl(var(--color-muted-foreground))] mb-1">
+                        <div className="flex justify-between text-xs text-muted-foreground mb-1">
                           <span>去白底灵敏度：</span>
                           <span className="font-mono text-gray-700">{threshold}</span>
                         </div>
@@ -685,7 +685,7 @@ export function SignatureExtractorModal({
                       </div>
 
                       <div>
-                        <div className="flex justify-between text-xs text-[hsl(var(--color-muted-foreground))] mb-1">
+                        <div className="flex justify-between text-xs text-muted-foreground mb-1">
                           <span>边缘抗锯齿平滑：</span>
                           <span className="font-mono text-gray-700">{smoothness}</span>
                         </div>
@@ -703,7 +703,7 @@ export function SignatureExtractorModal({
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="space-y-2 pt-3 border-t border-[hsl(var(--color-border))]">
+                  <div className="space-y-2 pt-3 border-t border-border">
                     <Button
                       variant="default"
                       className="w-full flex items-center justify-center gap-2"

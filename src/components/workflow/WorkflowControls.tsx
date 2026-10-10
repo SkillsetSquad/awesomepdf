@@ -188,7 +188,7 @@ export function WorkflowControls({
 
     return (
         <div className="relative">
-            <div className="flex items-center justify-between px-3 py-2 bg-[hsl(var(--color-background))] border-b border-[hsl(var(--color-border))] min-h-[46px] gap-2 overflow-x-auto">
+            <div className="flex items-center justify-between px-3 py-2 bg-background border-b border-border min-h-[46px] gap-2 overflow-x-auto">
                 {/* Left: File input and execute */}
                 <div className="flex items-center gap-2 shrink-0">
                     {/* File selection */}
@@ -217,9 +217,9 @@ export function WorkflowControls({
                                 disabled={isRunning}
                                 className={`
                                     flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs
-                                    bg-[hsl(var(--color-primary)/0.1)] 
-                                    text-[hsl(var(--color-primary))]
-                                    hover:bg-[hsl(var(--color-primary)/0.2)]
+                                    bg-primary/10 
+                                    text-primary
+                                    hover:bg-primary/20
                                     transition-colors whitespace-nowrap shrink-0
                                     ${isRunning ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                                 `}
@@ -241,7 +241,7 @@ export function WorkflowControls({
                         ) : null}
                     </div>
 
-                    <div className="h-4 w-px bg-[hsl(var(--color-border))] mx-0.5" />
+                    <div className="h-4 w-px bg-border mx-0.5" />
 
                     {/* Execute button */}
                     <Button
@@ -266,7 +266,7 @@ export function WorkflowControls({
                             className="h-8 px-2.5 text-xs whitespace-nowrap shrink-0"
                             title={tWorkflow('preview') || '实时预览'}
                         >
-                            <Eye className="w-3.5 h-3.5 mr-1.5 text-[hsl(var(--color-primary))]" />
+                            <Eye className="w-3.5 h-3.5 mr-1.5 text-primary" />
                             <span>{tWorkflow('preview') || '预览'}</span>
                         </Button>
                     )}
@@ -291,7 +291,7 @@ export function WorkflowControls({
                 {/* Right: Actions and Sidebar Toggles */}
                 <div className="flex items-center gap-1.5 shrink-0">
                     {/* Node count */}
-                    <span className="text-xs px-2 py-1 rounded bg-[hsl(var(--color-muted))] text-[hsl(var(--color-muted-foreground))] whitespace-nowrap shrink-0">
+                    <span className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground whitespace-nowrap shrink-0">
                         {nodes.length} 节点
                     </span>
 
@@ -339,13 +339,13 @@ export function WorkflowControls({
 
                     {/* Sidebar Toggle */}
                     {onToggleRightSidebar && (
-                        <div className="flex items-center pl-1.5 border-l border-[hsl(var(--color-border))]">
+                        <div className="flex items-center pl-1.5 border-l border-border">
                             <button
                                 onClick={onToggleRightSidebar}
                                 className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
                                     !isRightSidebarCollapsed
-                                        ? 'bg-[hsl(var(--color-primary)/0.1)] text-[hsl(var(--color-primary))] border-[hsl(var(--color-primary)/0.3)]'
-                                        : 'text-[hsl(var(--color-muted-foreground))] hover:bg-[hsl(var(--color-muted))] border-transparent'
+                                        ? 'bg-primary/10 text-primary border-primary/30'
+                                        : 'text-muted-foreground hover:bg-muted border-transparent'
                                 }`}
                                 title={isRightSidebarCollapsed ? '展开模板库 (宽画布模式)' : '收起模板库 (全景大画布)'}
                             >
@@ -508,14 +508,14 @@ export function WorkflowControls({
             {/* Save Dialog */}
             {showSaveDialog && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                    <div className="bg-[hsl(var(--color-background))] rounded-lg shadow-xl p-6 w-[400px]">
-                        <h3 className="text-lg font-semibold text-[hsl(var(--color-foreground))] mb-4">
+                    <div className="bg-background rounded-lg shadow-xl p-6 w-[400px]">
+                        <h3 className="text-lg font-semibold text-foreground mb-4">
                             {tWorkflow('saveWorkflow') || 'Save Workflow'}
                         </h3>
 
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                <label className="block text-sm font-medium text-foreground mb-1">
                                     {tWorkflow('workflowName') || 'Workflow Name'}
                                 </label>
                                 <input
@@ -523,13 +523,13 @@ export function WorkflowControls({
                                     value={workflowName}
                                     onChange={(e) => setWorkflowName(e.target.value)}
                                     placeholder={tWorkflow('enterName') || 'Enter workflow name...'}
-                                    className="w-full px-3 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                                     autoFocus
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                <label className="block text-sm font-medium text-foreground mb-1">
                                     {tWorkflow('description') || 'Description'} ({tWorkflow('optional') || 'optional'})
                                 </label>
                                 <textarea
@@ -537,7 +537,7 @@ export function WorkflowControls({
                                     onChange={(e) => setWorkflowDescription(e.target.value)}
                                     placeholder={tWorkflow('enterDescription') || 'Enter description...'}
                                     rows={3}
-                                    className="w-full px-3 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] resize-none"
+                                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                                 />
                             </div>
                         </div>

@@ -1222,15 +1222,15 @@ function WorkflowEditorContent() {
                     ref={reactFlowWrapper}
                 >
                     {/* Undo/Redo Floating Island */}
-                    <div className="absolute top-3 left-3 z-10 flex items-center gap-1 p-1 rounded-lg bg-[hsl(var(--color-background)/0.9)] backdrop-blur-md border border-[hsl(var(--color-border))] shadow-md">
+                    <div className="absolute top-3 left-3 z-10 flex items-center gap-1 p-1 rounded-lg bg-background/90 backdrop-blur-md border border-border shadow-md">
                         <button
                             onClick={handleUndo}
                             disabled={!canUndo}
                             className={`
                                 p-1.5 rounded-md transition-colors
                                 ${canUndo
-                                    ? 'hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] cursor-pointer'
-                                    : 'opacity-35 text-[hsl(var(--color-muted-foreground))] cursor-not-allowed'
+                                    ? 'hover:bg-muted text-foreground cursor-pointer'
+                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
                                 }
                             `}
                             title={`${tWorkflow('undo') || '撤销'} (Ctrl+Z)`}
@@ -1243,8 +1243,8 @@ function WorkflowEditorContent() {
                             className={`
                                 p-1.5 rounded-md transition-colors
                                 ${canRedo
-                                    ? 'hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] cursor-pointer'
-                                    : 'opacity-35 text-[hsl(var(--color-muted-foreground))] cursor-not-allowed'
+                                    ? 'hover:bg-muted text-foreground cursor-pointer'
+                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
                                 }
                             `}
                             title={`${tWorkflow('redo') || '重做'} (Ctrl+Shift+Z)`}
@@ -1252,7 +1252,7 @@ function WorkflowEditorContent() {
                             <Redo2 className="w-4 h-4" />
                         </button>
 
-                        <div className="w-px h-4 bg-[hsl(var(--color-border))] mx-0.5" />
+                        <div className="w-px h-4 bg-border mx-0.5" />
 
                         <button
                             onClick={handleAutoLayout}
@@ -1260,8 +1260,8 @@ function WorkflowEditorContent() {
                             className={`
                                 p-1.5 rounded-md transition-colors
                                 ${nodes.length > 0
-                                    ? 'hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] cursor-pointer'
-                                    : 'opacity-35 text-[hsl(var(--color-muted-foreground))] cursor-not-allowed'
+                                    ? 'hover:bg-muted text-foreground cursor-pointer'
+                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
                                 }
                             `}
                             title={tWorkflow('autoLayout') || '自动整理布局 (Auto Layout)'}
@@ -1275,8 +1275,8 @@ function WorkflowEditorContent() {
                             className={`
                                 p-1.5 rounded-md transition-colors
                                 ${(selectedNode || nodes.some(n => n.selected))
-                                    ? 'hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] cursor-pointer'
-                                    : 'opacity-35 text-[hsl(var(--color-muted-foreground))] cursor-not-allowed'
+                                    ? 'hover:bg-muted text-foreground cursor-pointer'
+                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
                                 }
                             `}
                             title={`${tWorkflow('duplicateNode') || '复制节点 (Duplicate)'} (Ctrl+D)`}
@@ -1310,27 +1310,27 @@ function WorkflowEditorContent() {
                             nodeStrokeWidth={3}
                             zoomable
                             pannable
-                            className="!bg-[hsl(var(--color-background)/0.8)] !border-[hsl(var(--color-border))] !rounded-lg !shadow-md backdrop-blur-sm"
+                            className="!bg-background/80 !border-border !rounded-lg !shadow-md backdrop-blur-sm"
                         />
                         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
 
                         {/* Empty state */}
                         {nodes.length === 0 && (
                             <Panel position="top-center" className="mt-20">
-                                <div className="text-center p-8 bg-[hsl(var(--color-background))] rounded-lg border border-dashed border-[hsl(var(--color-border))] shadow-sm">
-                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[hsl(var(--color-muted))] flex items-center justify-center">
-                                        <svg className="w-8 h-8 text-[hsl(var(--color-muted-foreground))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <div className="text-center p-8 bg-background rounded-lg border border-dashed border-border shadow-sm">
+                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
+                                        <svg className="w-8 h-8 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                             <path d="M4 14h6v6H4zM14 4h6v6h-6z" />
                                             <path d="M7 4v10M17 14v6M4 17h6M14 7h6" />
                                         </svg>
                                     </div>
-                                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                                    <h3 className="text-lg font-medium text-foreground">
                                         {tWorkflow('emptyTitle') || 'Create Your Workflow'}
                                     </h3>
-                                    <p className="text-sm text-[hsl(var(--color-muted-foreground))] mt-2 max-w-sm">
+                                    <p className="text-sm text-muted-foreground mt-2 max-w-sm">
                                         {tWorkflow('emptyDescription') || 'Drag tools from the sidebar to build your PDF processing pipeline. Connect nodes to define the processing order.'}
                                     </p>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-4">
+                                    <p className="text-xs text-muted-foreground mt-4">
                                         {tWorkflow('clickHint') || 'Click a node to configure its settings'}
                                     </p>
                                 </div>

@@ -58,13 +58,13 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[hsl(var(--color-primary)/0.1)] via-[hsl(var(--color-background))] to-[hsl(var(--color-secondary)/0.1)] py-16 md:py-24">
+        <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-[hsl(var(--color-foreground))] mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 {t('title', { brand: tCommon('brand') })}
               </h1>
-              <p className="text-lg text-[hsl(var(--color-muted-foreground))] mb-8">
+              <p className="text-lg text-muted-foreground mb-8">
                 {t('description', { brand: tCommon('brand'), count: allTools.length })}
               </p>
             </div>
@@ -75,10 +75,10 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-[hsl(var(--color-foreground))] mb-6 text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-6 text-center">
                 {t('mission.title')}
               </h2>
-              <div className="prose prose-lg max-w-none text-[hsl(var(--color-muted-foreground))]">
+              <div className="prose prose-lg max-w-none text-muted-foreground">
                 <p className="mb-4">
                   {t('mission.p1', { brand: tCommon('brand') })}
                 </p>
@@ -94,9 +94,9 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
         </section>
 
         {/* Values Section */}
-        <section className="py-16 bg-[hsl(var(--color-muted)/0.3)]">
+        <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-[hsl(var(--color-foreground))] mb-12 text-center">
+            <h2 className="text-3xl font-bold text-foreground mb-12 text-center">
               {t('values.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,14 +105,14 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
                 return (
                   <Card key={index} className="p-6" >
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-[hsl(var(--color-primary))]" />
+                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-[hsl(var(--color-foreground))] mb-2">
+                        <h3 className="font-semibold text-foreground mb-2">
                           {value.title}
                         </h3>
-                        <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                        <p className="text-sm text-muted-foreground">
                           {value.description}
                         </p>
                       </div>
@@ -128,10 +128,10 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-[hsl(var(--color-foreground))] mb-6 text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-6 text-center">
                 {t('technology.title')}
               </h2>
-              <div className="prose prose-lg max-w-none text-[hsl(var(--color-muted-foreground))]">
+              <div className="prose prose-lg max-w-none text-muted-foreground">
                 <p className="mb-4">
                   {t('technology.description', { brand: tCommon('brand') })}
                 </p>
@@ -151,13 +151,13 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-[hsl(var(--color-primary)/0.05)]">
+        <section className="py-16 bg-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-[hsl(var(--color-foreground))] mb-4">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
                 {t('cta.title')}
               </h2>
-              <p className="text-[hsl(var(--color-muted-foreground))] mb-8">
+              <p className="text-muted-foreground mb-8">
                 {t('cta.description', { brand: tCommon('brand'), count: allTools.length })}
               </p>
               <Link href={`/${locale}/tools`}>

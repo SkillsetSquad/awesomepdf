@@ -265,7 +265,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {/* Error Message */}
             {error && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
                     role="alert"
                 >
                     <p className="text-sm">{error}</p>
@@ -276,7 +276,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {files.length > 0 && (
                 <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                        <h3 className="text-lg font-medium text-foreground">
                             {tTools('extractImages.filesTitle') || 'Selected Files'} ({files.length})
                         </h3>
                         <Button
@@ -293,7 +293,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                         {files.map((item) => (
                             <li
                                 key={item.id}
-                                className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))]"
+                                className="flex items-center gap-3 p-3 rounded-md border border-border"
                             >
                                 <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -301,10 +301,10 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                     <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
                                 </svg>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">
+                                    <p className="text-sm font-medium text-foreground truncate">
                                         {item.file.name}
                                     </p>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                    <p className="text-xs text-muted-foreground">
                                         {formatSize(item.file.size)}
                                     </p>
                                 </div>
@@ -312,7 +312,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                     type="button"
                                     onClick={() => handleRemoveFile(item.id)}
                                     disabled={isProcessing}
-                                    className="p-1 rounded hover:bg-red-100 text-[hsl(var(--color-muted-foreground))] hover:text-red-600"
+                                    className="p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600"
                                     aria-label={`Remove ${item.file.name}`}
                                 >
                                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -328,16 +328,16 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {/* Filter Options */}
             {files.length > 0 && !isProcessing && extractedImages.length === 0 && (
                 <Card className="p-6"  >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('extractImages.filterTitle') || 'Filter Options'}
                     </h3>
-                    <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+                    <p className="text-sm text-muted-foreground mb-4">
                         {tTools('extractImages.filterDescription') || 'Filter out small images (icons, decorations, etc.)'}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                            <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minWidth') || 'Min Width (px)'}
                             </label>
                             <input
@@ -346,11 +346,11 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 max="5000"
                                 value={minWidth}
                                 onChange={(e) => setMinWidth(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                            <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minHeight') || 'Min Height (px)'}
                             </label>
                             <input
@@ -359,11 +359,11 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 max="5000"
                                 value={minHeight}
                                 onChange={(e) => setMinHeight(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                            <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minSizeKB') || 'Min Size (KB)'}
                             </label>
                             <input
@@ -372,7 +372,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 max="10000"
                                 value={minSize}
                                 onChange={(e) => setMinSize(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
                             />
                         </div>
                     </div>
@@ -410,7 +410,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {extractedImages.length > 0 && (
                 <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                        <h3 className="text-lg font-medium text-foreground">
                             {tTools('extractImages.extractedTitle') || 'Extracted Images'} ({extractedImages.length})
                         </h3>
                         <div className="flex gap-2">
@@ -435,11 +435,11 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                         {extractedImages.map((image) => (
                             <div
                                 key={image.index}
-                                className="group relative rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] overflow-hidden bg-[hsl(var(--color-muted)/0.2)]"
+                                className="group relative rounded-md border border-border overflow-hidden bg-muted/20"
                             >
                                 {/* Image Preview with click handler */}
                                 <div
-                                    className="aspect-square flex items-center justify-center overflow-hidden bg-[hsl(var(--color-muted)/0.1)] cursor-pointer"
+                                    className="aspect-square flex items-center justify-center overflow-hidden bg-muted/10 cursor-pointer"
                                     onClick={() => setSelectedImage(image)}
                                 >
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -458,13 +458,13 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
 
                                 {/* Image Info */}
                                 <div className="p-2">
-                                    <p className="text-xs font-medium text-[hsl(var(--color-foreground))] truncate" title={image.name}>
+                                    <p className="text-xs font-medium text-foreground truncate" title={image.name}>
                                         {image.name}
                                     </p>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                    <p className="text-xs text-muted-foreground">
                                         {image.width}×{image.height} • {formatSize(image.size)}
                                     </p>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                    <p className="text-xs text-muted-foreground">
                                         {tTools('extractImages.page') || 'Page'} {image.pageNumber}
                                     </p>
                                 </div>
@@ -476,7 +476,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                         e.stopPropagation();
                                         handleDownloadImage(image);
                                     }}
-                                    className="absolute top-2 right-2 p-1.5 rounded-[var(--radius-md)] bg-[hsl(var(--color-background)/0.9)] border border-[hsl(var(--color-border))] opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[hsl(var(--color-primary))] hover:text-white"
+                                    className="absolute top-2 right-2 p-1.5 rounded-md bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:text-white"
                                     aria-label={`Download ${image.name}`}
                                 >
                                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -494,7 +494,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
             {/* Success Message */}
             {status === 'complete' && extractedImages.length > 0 && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
                     role="status"
                 >
                     <p className="text-sm font-medium">
@@ -527,18 +527,18 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                         <img
                             src={imagePreviewUrls[selectedImage.index]}
                             alt={selectedImage.name}
-                            className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl bg-[hsl(var(--color-background))]"
+                            className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl bg-background"
                         />
 
                         {/* Info Bar */}
-                        <div className="mt-4 flex items-center gap-4 px-6 py-3 bg-[hsl(var(--color-background))] rounded-full shadow-lg">
-                            <div className="text-sm text-[hsl(var(--color-foreground))]">
+                        <div className="mt-4 flex items-center gap-4 px-6 py-3 bg-background rounded-full shadow-lg">
+                            <div className="text-sm text-foreground">
                                 <span className="font-medium mr-2">{selectedImage.name}</span>
-                                <span className="text-[hsl(var(--color-muted-foreground))]">
+                                <span className="text-muted-foreground">
                                     {selectedImage.width}×{selectedImage.height} • {formatSize(selectedImage.size)}
                                 </span>
                             </div>
-                            <div className="h-4 w-px bg-[hsl(var(--color-border))]" />
+                            <div className="h-4 w-px bg-border" />
                             <Button
                                 size="sm"
                                 variant="default"

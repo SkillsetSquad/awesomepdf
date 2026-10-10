@@ -1073,7 +1073,7 @@ export function LegacyAnnotatorTool({
       )}
 
       {error && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
           <p className="text-sm">{error}</p>
         </div>
       )}
@@ -1089,8 +1089,8 @@ export function LegacyAnnotatorTool({
                     <path d="M14 2v6h6" fill="white" />
                   </svg>
                   <div>
-                    <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                    <p className="text-sm font-medium text-foreground">{file.name}</p>
+                    <p className="text-xs text-muted-foreground">
                       {(file.size / (1024 * 1024)).toFixed(2)} MB
                     </p>
                   </div>
@@ -1109,10 +1109,10 @@ export function LegacyAnnotatorTool({
           )}
 
           <div
-            className="flex flex-wrap items-center gap-2 rounded-md border border-[hsl(var(--color-border))] bg-white p-2"
+            className="flex flex-wrap items-center gap-2 rounded-md border border-border bg-white p-2"
             aria-label={tTools('textHistory')}
           >
-            <span className="mr-1 text-xs font-medium text-[hsl(var(--color-muted-foreground))]">
+            <span className="mr-1 text-xs font-medium text-muted-foreground">
               {tTools('textHistory')}:
             </span>
             <Button
@@ -1152,7 +1152,7 @@ export function LegacyAnnotatorTool({
           )}
 
           {/* PDF Viewer iframe */}
-          <div className="relative border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] overflow-hidden bg-gray-100">
+          <div className="relative border border-border rounded-md overflow-hidden bg-gray-100">
             <iframe
               ref={iframeRef}
               src={`/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`}
@@ -1164,15 +1164,15 @@ export function LegacyAnnotatorTool({
             {!isEditorReady && (
               <div className="absolute inset-0 flex items-center justify-center bg-white/80">
                 <div className="text-center">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[hsl(var(--color-primary))] mx-auto mb-2"></div>
-                  <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{t('status.loading') || 'Loading...'}</p>
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+                  <p className="text-sm text-muted-foreground">{t('status.loading') || 'Loading...'}</p>
                 </div>
               </div>
             )}
             {isTextReplacing && (
               <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70">
                 <div className="rounded-lg bg-white px-5 py-4 text-center shadow-lg">
-                  <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-[hsl(var(--color-primary))]" />
+                  <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-primary" />
                   <p className="text-sm font-medium">Updating PDF text…</p>
                 </div>
               </div>

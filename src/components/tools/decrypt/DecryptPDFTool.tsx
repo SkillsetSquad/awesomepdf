@@ -168,7 +168,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -188,10 +188,10 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                <p className="text-sm font-medium text-foreground">
                   {file.name}
                 </p>
-                <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                <p className="text-xs text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -211,13 +211,13 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
       {/* Password Input */}
       {file && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('decryptPdf.passwordTitle') || 'Enter Password'}
           </h3>
           
           <div className="space-y-4">
             {/* Privacy Notice */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-green-50 border border-green-200">
+            <div className="p-3 rounded-sm bg-green-50 border border-green-200">
               <p className="text-sm text-green-700">
                 {tTools('decryptPdf.privacyNotice') || '🔒 Your password is processed locally and never sent to any server.'}
               </p>
@@ -225,7 +225,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="decrypt-password" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label htmlFor="decrypt-password" className="block text-sm font-medium text-foreground mb-2">
                 {tTools('decryptPdf.passwordLabel') || 'PDF Password'}
               </label>
               <div className="relative">
@@ -237,18 +237,18 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('decryptPdf.passwordPlaceholder') || 'Enter the PDF password'}
                   aria-describedby="decrypt-password-hint"
-                  className="w-full px-3 py-2 pr-10 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))]"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
                 >
                   {showPassword ? '🙈' : '👁️'}
                 </button>
               </div>
-              <p id="decrypt-password-hint" className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
+              <p id="decrypt-password-hint" className="mt-1 text-xs text-muted-foreground">
                 {tTools('decryptPdf.passwordHint') || 'Leave empty if the PDF only has owner password restrictions.'}
               </p>
             </div>
@@ -296,7 +296,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">
@@ -323,7 +323,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
               </svg>
             </div>
             <div>
-              <p className="text-sm text-[hsl(var(--color-foreground))]">
+              <p className="text-sm text-foreground">
                 {passwordErrorMessage}
               </p>
             </div>

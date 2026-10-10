@@ -344,7 +344,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
             {/* Error Message */}
             {error && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
                     <p className="text-sm font-medium">{error}</p>
                     {errorDetails && (
                         <details className="mt-2">
@@ -380,7 +380,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                     {files.length > 0 && (
                         <Card className="p-6"  >
                             <div className="flex items-center justify-between mb-4">
-                                <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                                <h3 className="text-lg font-medium text-foreground">
                                     {tTools('gridCombine.filesTitle') || 'Files to Combine'} ({files.length})
                                 </h3>
                                 <Button variant="ghost" size="sm" onClick={handleClearAll} disabled={isProcessing}>
@@ -388,7 +388,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                 </Button>
                             </div>
 
-                            <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+                            <p className="text-sm text-muted-foreground mb-4">
                                 {tTools('gridCombine.reorderHint') || 'Drag and drop to reorder files.'}
                             </p>
 
@@ -402,14 +402,14 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         onDrop={(e) => handleDrop(e, index)}
                                         onDragEnd={handleDragEnd}
                                         className={`
-                                            flex items-center gap-3 p-3 rounded-[var(--radius-md)] border transition-all duration-200
+                                            flex items-center gap-3 p-3 rounded-md border transition-all duration-200
                                             ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                                            ${dragOverIndex === index ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.05)]' : 'border-[hsl(var(--color-border))]'}
-                                            ${!isProcessing ? 'cursor-grab hover:bg-[hsl(var(--color-muted)/0.5)]' : ''}
+                                            ${dragOverIndex === index ? 'border-primary bg-primary/5' : 'border-border'}
+                                            ${!isProcessing ? 'cursor-grab hover:bg-muted/50' : ''}
                                         `}
                                     >
                                         {/* Drag Handle */}
-                                        <div className="flex-shrink-0 text-[hsl(var(--color-muted-foreground))]">
+                                        <div className="flex-shrink-0 text-muted-foreground">
                                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                                 <circle cx="9" cy="6" r="1.5" />
                                                 <circle cx="15" cy="6" r="1.5" />
@@ -421,12 +421,12 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         </div>
 
                                         {/* File Number */}
-                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))] text-xs font-medium flex items-center justify-center">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
                                             {index + 1}
                                         </span>
 
                                         {/* Thumbnail or PDF Icon */}
-                                        <div className="flex-shrink-0 w-12 h-16 rounded overflow-hidden bg-[hsl(var(--color-muted))] flex items-center justify-center">
+                                        <div className="flex-shrink-0 w-12 h-16 rounded overflow-hidden bg-muted flex items-center justify-center">
                                             {file.thumbnail ? (
                                                 <img src={file.thumbnail} alt={file.file.name} className="w-full h-full object-contain" />
                                             ) : (
@@ -440,10 +440,10 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                         {/* File Info */}
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">
+                                            <p className="text-sm font-medium text-foreground truncate">
                                                 {file.file.name}
                                             </p>
-                                            <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                            <p className="text-xs text-muted-foreground">
                                                 {formatSize(file.file.size)}
                                                 {file.pageCount && ` • ${file.pageCount} ${file.pageCount === 1 ? (tTools('gridCombine.page') || 'page') : (tTools('gridCombine.pages') || 'pages')}`}
                                             </p>
@@ -455,7 +455,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                 type="button"
                                                 onClick={() => handleMoveUp(index)}
                                                 disabled={index === 0 || isProcessing}
-                                                className="p-1 rounded hover:bg-[hsl(var(--color-muted))] disabled:opacity-30 disabled:cursor-not-allowed"
+                                                className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
                                             >
                                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                     <path d="M18 15l-6-6-6 6" />
@@ -465,7 +465,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                 type="button"
                                                 onClick={() => handleMoveDown(index)}
                                                 disabled={index === files.length - 1 || isProcessing}
-                                                className="p-1 rounded hover:bg-[hsl(var(--color-muted))] disabled:opacity-30 disabled:cursor-not-allowed"
+                                                className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
                                             >
                                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                     <path d="M6 9l6 6 6-6" />
@@ -478,7 +478,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             type="button"
                                             onClick={() => handleRemoveFile(file.id)}
                                             disabled={isProcessing}
-                                            className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-[hsl(var(--color-muted-foreground))] hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                            className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
                                         >
                                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                 <path d="M18 6L6 18M6 6l12 12" />
@@ -495,14 +495,14 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                 <div className="lg:col-span-1">
                     {files.length > 0 && (
                         <Card  className="sticky top-4">
-                            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                            <h3 className="text-lg font-medium text-foreground mb-4">
                                 {tTools('gridCombine.optionsTitle') || 'Layout Options'}
                             </h3>
 
                             <div className="space-y-4">
                                 {/* Grid Layout */}
                                 <div>
-                                    <label htmlFor="gridLayout" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="gridLayout" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.gridLayout') || 'Grid Layout'}
                                     </label>
                                     <select
@@ -510,7 +510,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         value={gridLayout}
                                         onChange={(e) => setGridLayout(e.target.value as GridCombineOptions['gridLayout'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
                                     >
                                         <option value="1x2">1×2 (2 {tTools('gridCombine.cells') || 'cells'})</option>
                                         <option value="2x1">2×1 (2 {tTools('gridCombine.cells') || 'cells'})</option>
@@ -522,12 +522,12 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     </select>
 
                                     {/* 布局可视化预览 - 带缩略图 */}
-                                    <div className="mt-3 p-3 bg-[hsl(var(--color-muted)/0.3)] rounded-[var(--radius-md)]">
-                                        <p className="text-xs text-[hsl(var(--color-muted-foreground))] mb-2">
+                                    <div className="mt-3 p-3 bg-muted/30 rounded-md">
+                                        <p className="text-xs text-muted-foreground mb-2">
                                             {tTools('gridCombine.layoutPreview') || 'Layout Preview'}:
                                         </p>
                                         <div
-                                            className="grid mx-auto border border-[hsl(var(--color-border))] rounded bg-white transition-all duration-300 ease-in-out"
+                                            className="grid mx-auto border border-border rounded bg-white transition-all duration-300 ease-in-out"
                                             style={{
                                                 gridTemplateColumns: `repeat(${cols}, 1fr)`,
                                                 gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -555,8 +555,8 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                         className={`
                                                             flex items-center justify-center text-xs font-medium rounded-sm overflow-hidden
                                                             ${displayFile
-                                                                ? 'bg-[hsl(var(--color-primary)/0.1)]'
-                                                                : 'bg-[hsl(var(--color-muted))] border border-dashed border-[hsl(var(--color-border))]'
+                                                                ? 'bg-primary/10'
+                                                                : 'bg-muted border border-dashed border-border'
                                                             }
                                                         `}
                                                         title={displayFile?.file.name}
@@ -568,7 +568,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                                 className={`w-full h-full object-contain ${!file && repeatFile ? 'opacity-50' : ''}`}
                                                             />
                                                         ) : displayFile ? (
-                                                            <span className={`text-[hsl(var(--color-primary))] ${!file && repeatFile ? 'opacity-50' : ''}`}>
+                                                            <span className={`text-primary ${!file && repeatFile ? 'opacity-50' : ''}`}>
                                                                 {idx < files.length ? idx + 1 : '↺'}
                                                             </span>
                                                         ) : null}
@@ -576,7 +576,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                 );
                                             })}
                                         </div>
-                                        <p className="text-xs text-center text-[hsl(var(--color-muted-foreground))] mt-2">
+                                        <p className="text-xs text-center text-muted-foreground mt-2">
                                             {cols} {tTools('gridCombine.columns') || 'columns'} × {rows} {tTools('gridCombine.rows') || 'rows'}
                                         </p>
                                     </div>
@@ -584,7 +584,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Page Mode */}
                                 <div>
-                                    <label htmlFor="pageMode" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="pageMode" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.pageMode') || 'Page Mode'}
                                     </label>
                                     <select
@@ -592,12 +592,12 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         value={pageMode}
                                         onChange={(e) => setPageMode(e.target.value as GridCombineOptions['pageMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
                                     >
                                         <option value="first-page-only">{tTools('gridCombine.firstPageOnly') || 'First page only'}</option>
                                         <option value="all-pages">{tTools('gridCombine.allPages') || 'All pages'}</option>
                                     </select>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                                    <p className="text-xs text-muted-foreground mt-1">
                                         {pageMode === 'all-pages'
                                             ? (tTools('gridCombine.allPagesHint') || 'Include all pages from each PDF in the grid.')
                                             : (tTools('gridCombine.firstPageOnlyHint') || 'Only use the first page from each PDF.')
@@ -607,7 +607,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Fill Mode */}
                                 <div>
-                                    <label htmlFor="fillMode" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="fillMode" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.fillMode') || 'Fill Mode'}
                                     </label>
                                     <select
@@ -615,20 +615,20 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         value={fillMode}
                                         onChange={(e) => setFillMode(e.target.value as GridCombineOptions['fillMode'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
                                     >
                                         <option value="leave-empty">{tTools('gridCombine.leaveEmpty') || 'Leave empty cells'}</option>
                                         <option value="repeat">{tTools('gridCombine.repeat') || 'Repeat from start'}</option>
                                         <option value="stretch-last">{tTools('gridCombine.stretchLast') || 'Repeat last page'}</option>
                                     </select>
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                                    <p className="text-xs text-muted-foreground mt-1">
                                         {tTools('gridCombine.fillModeHint') || 'How to fill empty cells when files are fewer than grid cells.'}
                                     </p>
                                 </div>
 
                                 {/* Page Size */}
                                 <div>
-                                    <label htmlFor="pageSize" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="pageSize" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.pageSize') || 'Page Size'}
                                     </label>
                                     <select
@@ -636,7 +636,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         value={pageSize}
                                         onChange={(e) => setPageSize(e.target.value as GridCombineOptions['pageSize'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
                                     >
                                         <option value="A4">A4</option>
                                         <option value="Letter">Letter</option>
@@ -647,7 +647,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Orientation */}
                                 <div>
-                                    <label htmlFor="orientation" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="orientation" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.orientation') || 'Orientation'}
                                     </label>
                                     <select
@@ -655,7 +655,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                         value={orientation}
                                         onChange={(e) => setOrientation(e.target.value as GridCombineOptions['orientation'])}
                                         disabled={isProcessing}
-                                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]"
+                                        className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground"
                                     >
                                         <option value="landscape">{t('options.landscape') || 'Landscape'}</option>
                                         <option value="portrait">{t('options.portrait') || 'Portrait'}</option>
@@ -664,7 +664,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                 {/* Spacing */}
                                 <div>
-                                    <label htmlFor="spacing" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-1">
+                                    <label htmlFor="spacing" className="block text-sm font-medium text-foreground mb-1">
                                         {tTools('gridCombine.spacing') || 'Spacing'} ({spacing}px)
                                     </label>
                                     <input
@@ -681,7 +681,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                 </div>
 
                                 {/* Margins & Borders */}
-                                <div className="space-y-2 pt-2 border-t border-[hsl(var(--color-border))]">
+                                <div className="space-y-2 pt-2 border-t border-border">
                                     <div className="flex items-center gap-2">
                                         <input
                                             type="checkbox"
@@ -689,9 +689,9 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             checked={useMargins}
                                             onChange={(e) => setUseMargins(e.target.checked)}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-[hsl(var(--color-border))]"
+                                            className="w-4 h-4 rounded border-border"
                                         />
-                                        <label htmlFor="useMargins" className="text-sm text-[hsl(var(--color-foreground))]">
+                                        <label htmlFor="useMargins" className="text-sm text-foreground">
                                             {tTools('gridCombine.useMargins') || 'Add margins'}
                                         </label>
                                     </div>
@@ -703,16 +703,16 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             checked={addBorder}
                                             onChange={(e) => setAddBorder(e.target.checked)}
                                             disabled={isProcessing}
-                                            className="w-4 h-4 rounded border-[hsl(var(--color-border))]"
+                                            className="w-4 h-4 rounded border-border"
                                         />
-                                        <label htmlFor="addBorder" className="text-sm text-[hsl(var(--color-foreground))]">
+                                        <label htmlFor="addBorder" className="text-sm text-foreground">
                                             {tTools('gridCombine.addBorder') || 'Add borders'}
                                         </label>
                                     </div>
 
                                     {addBorder && (
                                         <div className="pl-6">
-                                            <label htmlFor="borderColor" className="block text-xs text-[hsl(var(--color-muted-foreground))] mb-1">
+                                            <label htmlFor="borderColor" className="block text-xs text-muted-foreground mb-1">
                                                 {tTools('gridCombine.borderColor') || 'Border Color'}
                                             </label>
                                             <input
@@ -721,7 +721,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                                 value={borderColor}
                                                 onChange={(e) => setBorderColor(e.target.value)}
                                                 disabled={isProcessing}
-                                                className="w-full h-8 rounded border border-[hsl(var(--color-border))] cursor-pointer p-0"
+                                                className="w-full h-8 rounded border border-border cursor-pointer p-0"
                                             />
                                         </div>
                                     )}
@@ -773,7 +773,7 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
             {/* Success Message */}
             {status === 'complete' && result && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700" role="status">
+                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
                     <p className="text-sm font-medium">
                         {tTools('gridCombine.successMessage') || 'PDFs combined successfully! Click the download button to save your file.'}
                     </p>

@@ -326,7 +326,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       {/* Error Message */}
       {error && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -337,7 +337,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       {files.length > 0 && (
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('imageToPdf.imagesTitle') || 'Images'} ({files.length})
             </h3>
             <Button
@@ -350,7 +350,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
             </Button>
           </div>
 
-          <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             {tTools('imageToPdf.reorderHint') || 'Drag and drop to reorder images. Images will appear in the PDF in the order shown.'}
           </p>
 
@@ -364,15 +364,15 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
                 className={`
-                  relative group rounded-[var(--radius-md)] border overflow-hidden
+                  relative group rounded-md border overflow-hidden
                   transition-all duration-200
                   ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                  ${dragOverIndex === index ? 'border-[hsl(var(--color-primary))] ring-2 ring-[hsl(var(--color-primary)/0.2)]' : 'border-[hsl(var(--color-border))]'}
-                  ${!isProcessing ? 'cursor-grab hover:border-[hsl(var(--color-primary)/0.5)]' : ''}
+                  ${dragOverIndex === index ? 'border-primary ring-2 ring-primary/20' : 'border-border'}
+                  ${!isProcessing ? 'cursor-grab hover:border-primary/50' : ''}
                 `}
               >
                 {/* Image Preview */}
-                <div className="aspect-square bg-[hsl(var(--color-muted)/0.3)]">
+                <div className="aspect-square bg-muted/30">
                   {file.preview && (
                     <img
                       src={file.preview}
@@ -383,7 +383,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 </div>
 
                 {/* Page Number Badge */}
-                <span className="absolute top-2 left-2 w-6 h-6 rounded-full bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))] text-xs font-medium flex items-center justify-center">
+                <span className="absolute top-2 left-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
                   {index + 1}
                 </span>
 
@@ -402,10 +402,10 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
                 {/* File Info */}
                 <div className="p-2 bg-white">
-                  <p className="text-xs font-medium text-[hsl(var(--color-foreground))] truncate">
+                  <p className="text-xs font-medium text-foreground truncate">
                     {file.file.name}
                   </p>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {formatSize(file.file.size)}
                   </p>
                 </div>
@@ -419,14 +419,14 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       {/* Options Panel */}
       {files.length >= 1 && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('imageToPdf.optionsTitle') || 'PDF Options'}
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Page Size */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('imageToPdf.pageSize') || 'Page Size'}
               </label>
               <Select
@@ -445,7 +445,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
             {/* Orientation */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('imageToPdf.orientation') || 'Orientation'}
               </label>
               <Select
@@ -461,7 +461,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
             {/* Margin */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('imageToPdf.margin') || 'Margin'}
               </label>
               <Select
@@ -484,9 +484,9 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 checked={centerImage}
                 onChange={(e) => setCenterImage(e.target.checked)}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
               />
-              <span className="text-sm text-[hsl(var(--color-foreground))]">
+              <span className="text-sm text-foreground">
                 {tTools('imageToPdf.centerImage') || 'Center images on page'}
               </span>
             </label>
@@ -497,9 +497,9 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 checked={scaleToFit}
                 onChange={(e) => setScaleToFit(e.target.checked)}
                 disabled={isProcessing}
-                className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
               />
-              <span className="text-sm text-[hsl(var(--color-foreground))]">
+              <span className="text-sm text-foreground">
                 {tTools('imageToPdf.scaleToFit') || 'Scale images to fit page'}
               </span>
             </label>
@@ -507,23 +507,23 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
           {/* Batch Export Options */}
           {files.length > 1 && (
-            <div className="mt-4 pt-4 border-t border-[hsl(var(--color-border))]">
+            <div className="mt-4 pt-4 border-t border-border">
               <label className="flex items-center gap-3 cursor-pointer mb-3">
                 <input
                   type="checkbox"
                   checked={batchMode}
                   onChange={(e) => setBatchMode(e.target.checked)}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
-                <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                <span className="text-sm font-medium text-foreground">
                   {tTools('imageToPdf.batchMode') || 'Split into multiple PDFs'}
                 </span>
               </label>
 
               {batchMode && (
                 <div className="ml-7 space-y-2">
-                  <label className="block text-sm text-[hsl(var(--color-foreground))]">
+                  <label className="block text-sm text-foreground">
                     {tTools('imageToPdf.imagesPerPdf') || 'Images per PDF'}
                   </label>
                   <input
@@ -533,9 +533,9 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                     value={imagesPerPdf}
                     onChange={(e) => setImagesPerPdf(Math.max(1, Math.min(files.length, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-24 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-24 px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {tTools('imageToPdf.batchModeHint', { pdfCount: Math.ceil(files.length / imagesPerPdf) }) ||
                       `Will create ${Math.ceil(files.length / imagesPerPdf)} PDF file(s), packaged as a ZIP archive.`}
                   </p>
@@ -546,8 +546,8 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
 
           {/* SVG Quality Option - only show for SVG files */}
           {(imageType === 'svg' || files.some(f => f.file.name.toLowerCase().endsWith('.svg') || f.file.type === 'image/svg+xml')) && (
-            <div className="mt-4 pt-4 border-t border-[hsl(var(--color-border))]">
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+            <div className="mt-4 pt-4 border-t border-border">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('imageToPdf.svgQuality') || 'SVG Export Quality'}
               </label>
               <Select
@@ -561,7 +561,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 <option value="3">{tTools('imageToPdf.svgQualityHigh') || 'High (3x - better quality)'}</option>
                 <option value="4">{tTools('imageToPdf.svgQualityVeryHigh') || 'Very High (4x - best quality)'}</option>
               </Select>
-              <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
+              <p className="mt-1 text-xs text-muted-foreground">
                 {tTools('imageToPdf.svgQualityHint') || 'Higher quality produces sharper images but larger file sizes.'}
               </p>
             </div>
@@ -619,7 +619,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       {/* Success Message */}
       {status === 'complete' && result && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">
@@ -631,7 +631,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
       {/* Batch Success Message */}
       {status === 'complete' && batchResult && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

@@ -179,7 +179,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -191,10 +191,10 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+              <h3 className="text-lg font-medium text-foreground">
                 {tTools('pdfToZip.filesTitle') || 'Files to Package'} ({files.length})
               </h3>
-              <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+              <p className="text-sm text-muted-foreground">
                 {tTools('pdfToZip.totalSize') || 'Total size'}: {formatSize(totalSize)}
               </p>
             </div>
@@ -212,7 +212,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
             {files.map((file) => (
               <li
                 key={file.id}
-                className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.3)]"
+                className="flex items-center gap-3 p-3 rounded-md border border-border hover:bg-muted/30"
               >
                 {/* PDF Icon */}
                 <div className="flex-shrink-0">
@@ -225,10 +225,10 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
 
                 {/* File Info */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">
+                  <p className="text-sm font-medium text-foreground truncate">
                     {file.file.name}
                   </p>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {formatSize(file.file.size)}
                   </p>
                 </div>
@@ -238,7 +238,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
                   type="button"
                   onClick={() => handleRemoveFile(file.id)}
                   disabled={isProcessing}
-                  className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-[hsl(var(--color-muted-foreground))] hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
                   aria-label={`Remove ${file.file.name}`}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -254,7 +254,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
       {/* Options Panel */}
       {files.length > 0 && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToZip.optionsTitle') || 'ZIP Options'}
           </h3>
           
@@ -262,7 +262,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
             <div>
               <label 
                 htmlFor="compression-level"
-                className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2"
+                className="block text-sm font-medium text-foreground mb-2"
               >
                 {tTools('pdfToZip.compressionLevel') || 'Compression Level'}
               </label>
@@ -275,13 +275,13 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
                   value={compressionLevel}
                   onChange={(e) => setCompressionLevel(Number(e.target.value))}
                   disabled={isProcessing}
-                  className="flex-1 h-2 bg-[hsl(var(--color-muted))] rounded-lg appearance-none cursor-pointer"
+                  className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer"
                 />
-                <span className="text-sm text-[hsl(var(--color-muted-foreground))] w-8 text-center">
+                <span className="text-sm text-muted-foreground w-8 text-center">
                   {compressionLevel}
                 </span>
               </div>
-              <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 {compressionLevel === 0 
                   ? (tTools('pdfToZip.noCompression') || 'No compression (fastest)')
                   : compressionLevel <= 3
@@ -336,7 +336,7 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

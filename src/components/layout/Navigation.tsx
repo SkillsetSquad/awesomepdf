@@ -151,11 +151,11 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
                 onClick={() => handleDropdownToggle(item.href)}
                 onKeyDown={(e) => handleKeyDown(e, item.href)}
                 className={`
-                  flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-[var(--radius-md)]
+                  flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md
                   transition-colors
                   ${isActive(item.href) 
-                    ? 'text-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]' 
-                    : 'text-[hsl(var(--color-foreground))] hover:text-[hsl(var(--color-primary))] hover:bg-[hsl(var(--color-muted))]'
+                    ? 'text-primary bg-primary/10' 
+                    : 'text-foreground hover:text-primary hover:bg-muted'
                   }
                 `}
                 aria-expanded={openDropdown === item.href}
@@ -173,7 +173,7 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
               {openDropdown === item.href && (
                 <div
                   id={`dropdown-${item.href}`}
-                  className="absolute top-full left-0 mt-1 w-56 py-2 bg-[hsl(var(--color-background))] border border-[hsl(var(--color-border))] rounded-[var(--radius-lg)] shadow-lg z-50"
+                  className="absolute top-full left-0 mt-1 w-56 py-2 bg-background border border-border rounded-lg shadow-lg z-50"
                   role="menu"
                   aria-orientation="vertical"
                 >
@@ -182,7 +182,7 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
                       key={category.id}
                       ref={(el) => { menuItemRefs.current[index] = el; }}
                       href={category.href}
-                      className="block px-4 py-2 text-sm text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] hover:text-[hsl(var(--color-primary))] focus:bg-[hsl(var(--color-muted))] focus:text-[hsl(var(--color-primary))] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[hsl(var(--color-ring))] transition-colors"
+                      className="block px-4 py-2 text-sm text-foreground hover:bg-muted hover:text-primary focus:bg-muted focus:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring transition-colors"
                       role="menuitem"
                       tabIndex={focusedIndex === index ? 0 : -1}
                       onClick={() => {
@@ -201,11 +201,11 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
             <Link
               href={item.href}
               className={`
-                px-3 py-2 text-sm font-medium rounded-[var(--radius-md)]
+                px-3 py-2 text-sm font-medium rounded-md
                 transition-colors
                 ${isActive(item.href) 
-                  ? 'text-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]' 
-                  : 'text-[hsl(var(--color-foreground))] hover:text-[hsl(var(--color-primary))] hover:bg-[hsl(var(--color-muted))]'
+                  ? 'text-primary bg-primary/10' 
+                  : 'text-foreground hover:text-primary hover:bg-muted'
                 }
               `}
               aria-current={isActive(item.href) ? 'page' : undefined}

@@ -130,7 +130,7 @@ export function SignatureLibraryModal({
         />
 
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+          <p className="text-xs text-muted-foreground">
             已保存 {signatures.length} 个个性化手写签名与印章，可随时重用或应用到文档。
           </p>
           <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ export function SignatureLibraryModal({
         </div>
 
         {signatures.length === 0 ? (
-          <div className="py-12 text-center border border-dashed border-[hsl(var(--color-border))] rounded-[var(--radius-md)] bg-gray-50/50">
+          <div className="py-12 text-center border border-dashed border-border rounded-md bg-gray-50/50">
             <svg
               className="w-12 h-12 mx-auto text-gray-300 mb-3"
               fill="none"
@@ -200,7 +200,7 @@ export function SignatureLibraryModal({
             {signatures.map((sig) => (
               <div
                 key={sig.id}
-                className="border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] p-3 bg-[hsl(var(--color-card))] flex flex-col justify-between hover:shadow-sm transition"
+                className="border border-border rounded-md p-3 bg-card flex flex-col justify-between hover:shadow-sm transition"
               >
                 <div>
                   <div
@@ -221,7 +221,7 @@ export function SignatureLibraryModal({
                     />
                   </div>
                   <div className="flex items-start justify-between gap-1 mb-1">
-                    <span className="text-xs font-semibold text-[hsl(var(--color-foreground))] truncate" title={sig.name}>
+                    <span className="text-xs font-semibold text-foreground truncate" title={sig.name}>
                       {sig.name}
                     </span>
                     <button
@@ -233,13 +233,13 @@ export function SignatureLibraryModal({
                       ✕
                     </button>
                   </div>
-                  <div className="text-[10px] text-[hsl(var(--color-muted-foreground))] flex items-center justify-between">
+                  <div className="text-[10px] text-muted-foreground flex items-center justify-between">
                     <span>{new Date(sig.createdAt).toLocaleDateString()}</span>
                     <span>{sig.width} × {sig.height}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-[hsl(var(--color-border))]">
+                <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-border">
                   {viewerWindow && (
                     <Button
                       variant="default"

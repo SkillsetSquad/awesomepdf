@@ -369,7 +369,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700">
+        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700">
           <p className="text-sm">{error}</p>
         </div>
       )}
@@ -387,7 +387,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                   </svg>
                   <div className="min-w-0">
                     <p className="font-medium text-sm truncate">{file.name}</p>
-                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                    <p className="text-xs text-muted-foreground">
                       {formatSize(file.size)} • {totalPages} pages
                     </p>
                   </div>
@@ -697,7 +697,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                 </Button>
               </div>
 
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-[var(--radius-md)] p-4 overflow-auto" style={{ maxHeight: '600px', minHeight: '500px' }}>
+              <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-auto" style={{ maxHeight: '600px', minHeight: '500px' }}>
                 <div
                   className="flex justify-center"
                   style={{
@@ -758,7 +758,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
       )}
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700">
+        <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700">
           <p className="text-sm font-medium">
             {tTools('pageNumbers.successMessage')}
           </p>

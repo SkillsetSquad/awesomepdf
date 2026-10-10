@@ -282,11 +282,11 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
     const isNotSet = displayValue === '- Not Set -';
     
     return (
-      <div className="flex flex-col sm:flex-row py-2 border-b border-[hsl(var(--color-border)/0.5)] last:border-b-0">
-        <span className="w-full sm:w-48 flex-shrink-0 font-medium text-[hsl(var(--color-muted-foreground))]">
+      <div className="flex flex-col sm:flex-row py-2 border-b border-border/50 last:border-b-0">
+        <span className="w-full sm:w-48 flex-shrink-0 font-medium text-muted-foreground">
           {label}
         </span>
-        <span className={`flex-grow ${isNotSet ? 'text-[hsl(var(--color-muted-foreground))] italic' : 'text-[hsl(var(--color-foreground))]'} break-all`}>
+        <span className={`flex-grow ${isNotSet ? 'text-muted-foreground italic' : 'text-foreground'} break-all`}>
           {displayValue}
         </span>
       </div>
@@ -312,7 +312,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -330,8 +330,8 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
                 <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
               </svg>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <p className="font-medium text-foreground">{file.name}</p>
+                <p className="text-sm text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -365,7 +365,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
           {/* Document Properties */}
           <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+              <h3 className="text-lg font-medium text-foreground">
                 {tTools('viewMetadata.documentProperties') || 'Document Properties'}
               </h3>
             </div>
@@ -382,7 +382,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
 
           {/* Dates */}
           <Card className="p-6"  >
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+            <h3 className="text-lg font-medium text-foreground mb-4">
               {tTools('viewMetadata.dates') || 'Dates'}
             </h3>
             
@@ -394,7 +394,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
 
           {/* Document Info */}
           <Card className="p-6"  >
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+            <h3 className="text-lg font-medium text-foreground mb-4">
               {tTools('viewMetadata.documentInfo') || 'Document Information'}
             </h3>
             
@@ -409,7 +409,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
           {/* Custom Metadata */}
           {metadata.customMetadata && Object.keys(metadata.customMetadata).length > 0 && (
             <Card className="p-6"  >
-              <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+              <h3 className="text-lg font-medium text-foreground mb-4">
                 {tTools('viewMetadata.customMetadata') || 'Additional Metadata'}
               </h3>
               
@@ -434,7 +434,7 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
 
           {/* Success Message */}
           <div 
-            className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+            className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
             role="status"
           >
             <p className="text-sm font-medium">

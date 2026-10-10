@@ -280,7 +280,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -298,8 +298,8 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
                 <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
               </svg>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <p className="font-medium text-foreground">{file.name}</p>
+                <p className="text-sm text-muted-foreground">
                   {formatSize(file.size)} • {totalPages} {totalPages === 1 ? 'page' : 'pages'}
                 </p>
               </div>
@@ -320,7 +320,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
       {file && totalPages > 0 && (
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('extractPages.selectTitle') || 'Select Pages to Extract'}
               {selectedPages.size > 0 && ` (${selectedPages.size} selected)`}
             </h3>
@@ -342,7 +342,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
               onChange={(e) => setPageInput(e.target.value)}
               placeholder="e.g., 1-5, 8, 10-15"
               disabled={isProcessing}
-              className="flex-1 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] placeholder:text-[hsl(var(--color-muted-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+              className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <Button
               variant="secondary"
@@ -354,15 +354,15 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
             </Button>
           </div>
 
-          <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             {tTools('extractPages.selectHint') || 'Click pages to select them, or enter page numbers/ranges above.'}
           </p>
 
           {isLoadingPreviews ? (
             <div className="flex items-center justify-center py-12">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[hsl(var(--color-primary))] border-t-transparent rounded-full animate-spin" />
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <p className="text-sm text-muted-foreground">
                   {t('status.loading') || 'Loading previews...'}
                 </p>
               </div>
@@ -375,10 +375,10 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
                   type="button"
                   onClick={() => handleTogglePage(preview.pageNumber)}
                   disabled={isProcessing}
-                  className={`relative aspect-[3/4] rounded-[var(--radius-md)] border-2 overflow-hidden transition-all ${
+                  className={`relative aspect-[3/4] rounded-md border-2 overflow-hidden transition-all ${
                     selectedPages.has(preview.pageNumber)
-                      ? 'border-[hsl(var(--color-primary))] ring-2 ring-[hsl(var(--color-primary)/0.3)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary ring-2 ring-primary/30'
+                      : 'border-border hover:border-primary/50'
                   }`}
                   aria-label={`Page ${preview.pageNumber}${selectedPages.has(preview.pageNumber) ? ' (selected)' : ''}`}
                 >
@@ -389,8 +389,8 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-[hsl(var(--color-muted))] flex items-center justify-center">
-                      <span className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-xs text-muted-foreground">
                         {preview.pageNumber}
                       </span>
                     </div>
@@ -399,7 +399,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
                     {preview.pageNumber}
                   </div>
                   {selectedPages.has(preview.pageNumber) && (
-                    <div className="absolute top-1 right-1 w-5 h-5 bg-[hsl(var(--color-primary))] rounded-full flex items-center justify-center">
+                    <div className="absolute top-1 right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
@@ -454,7 +454,7 @@ export function ExtractPagesTool({ className = '' }: ExtractPagesToolProps) {
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

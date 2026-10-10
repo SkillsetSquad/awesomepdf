@@ -187,7 +187,7 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
 
     // Status colors
     const statusColors: Record<ToolNodeData['status'], string> = {
-        idle: 'bg-[hsl(var(--color-muted))]',
+        idle: 'bg-muted',
         processing: 'bg-blue-50/90 dark:bg-blue-950/40 border-blue-400',
         complete: 'bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-400',
         error: 'bg-rose-50/90 dark:bg-rose-950/40 border-rose-400',
@@ -232,7 +232,7 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
         w-[240px]
         ${statusColors[data.status]}
         ${categoryBorders[data.category] || 'border-l-gray-400'}
-        ${selected ? 'ring-2 ring-[hsl(var(--color-primary))] ring-offset-2' : ''}
+        ${selected ? 'ring-2 ring-primary ring-offset-2' : ''}
         ${isHovered ? 'shadow-xl scale-[1.02]' : ''}
         ${data.status === 'processing' ? 'ring-2 ring-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''}
       `}
@@ -270,7 +270,7 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
                 </span>
                 <div className="flex items-center gap-1.5">
                     <div className={`w-2 h-2 rounded-full ${statusIndicatorColors[data.status]}`} />
-                    <span className="text-[11px] text-[hsl(var(--color-muted-foreground))] capitalize font-medium">
+                    <span className="text-[11px] text-muted-foreground capitalize font-medium">
                         {data.status}
                     </span>
                 </div>
@@ -283,16 +283,16 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
                     p-2 rounded-lg shrink-0 shadow-xs
                     ${data.status === 'processing' ? 'bg-blue-200 dark:bg-blue-900/60' : 'bg-white dark:bg-gray-800/80'}
                 `}>
-                    <IconComponent className="w-4 h-4 text-[hsl(var(--color-foreground))]" />
+                    <IconComponent className="w-4 h-4 text-foreground" />
                 </div>
 
                 {/* Label */}
                 <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[hsl(var(--color-foreground))] truncate leading-tight">
+                    <p className="text-sm font-semibold text-foreground truncate leading-tight">
                         {data.label}
                     </p>
                     {data.toolId && (
-                        <p className="text-[10px] text-[hsl(var(--color-muted-foreground))] truncate mt-0.5 font-mono opacity-80">
+                        <p className="text-[10px] text-muted-foreground truncate mt-0.5 font-mono opacity-80">
                             {data.toolId}
                         </p>
                     )}
@@ -301,8 +301,8 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
 
             {/* Inline Parameter Summary Badge */}
             {settingsSummary && (
-                <div className="mt-2 flex items-center gap-1.5 px-2 py-1 rounded-md bg-[hsl(var(--color-muted)/0.7)] dark:bg-gray-800/60 border border-[hsl(var(--color-border)/0.6)] text-[11px] text-[hsl(var(--color-foreground))] font-medium truncate" title={`参数: ${settingsSummary}`}>
-                    <LucideIcons.Sliders className="w-3 h-3 text-[hsl(var(--color-primary))] shrink-0" />
+                <div className="mt-2 flex items-center gap-1.5 px-2 py-1 rounded-md bg-muted/70 dark:bg-gray-800/60 border border-border/60 text-[11px] text-foreground font-medium truncate" title={`参数: ${settingsSummary}`}>
+                    <LucideIcons.Sliders className="w-3 h-3 text-primary shrink-0" />
                     <span className="truncate">{settingsSummary}</span>
                 </div>
             )}
@@ -356,7 +356,7 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
 
             {/* Output file count indicator & Quick Preview Button */}
             {data.status === 'complete' && data.outputFiles && data.outputFiles.length > 0 && (
-                <div className="mt-2 flex items-center justify-between gap-1.5 pt-1 border-t border-[hsl(var(--color-border)/0.4)]">
+                <div className="mt-2 flex items-center justify-between gap-1.5 pt-1 border-t border-border/40">
                     <div className="flex items-center gap-1.5">
                         <LucideIcons.CheckCircle className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
@@ -386,13 +386,13 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
             )}
 
             {/* Format tags with socket color dots */}
-            <div className="flex items-center justify-between gap-1 mt-2.5 pt-2 border-t border-[hsl(var(--color-border)/0.5)]">
-                <div className="flex items-center gap-1 text-[10px] text-[hsl(var(--color-muted-foreground))] truncate max-w-[100px]" title={data.acceptedFormats.join(', ')}>
+            <div className="flex items-center justify-between gap-1 mt-2.5 pt-2 border-t border-border/50">
+                <div className="flex items-center gap-1 text-[10px] text-muted-foreground truncate max-w-[100px]" title={data.acceptedFormats.join(', ')}>
                     <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: inputSocket.bg }} />
                     <span className="truncate">{data.acceptedFormats.slice(0, 1).join(', ') || '*'}</span>
                 </div>
-                <LucideIcons.ArrowRight className="w-2.5 h-2.5 text-[hsl(var(--color-muted-foreground))] shrink-0 opacity-50" />
-                <div className="flex items-center gap-1 text-[10px] text-[hsl(var(--color-muted-foreground))] truncate max-w-[90px]" title={data.outputFormat}>
+                <LucideIcons.ArrowRight className="w-2.5 h-2.5 text-muted-foreground shrink-0 opacity-50" />
+                <div className="flex items-center gap-1 text-[10px] text-muted-foreground truncate max-w-[90px]" title={data.outputFormat}>
                     <span className="truncate">{data.outputFormat || '*'}</span>
                     <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: outputSocket.bg }} />
                 </div>

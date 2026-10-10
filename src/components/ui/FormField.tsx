@@ -71,13 +71,13 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
         <label
           htmlFor={fieldId}
           className={`
-            block text-sm font-medium text-[hsl(var(--color-foreground))]
+            block text-sm font-medium text-foreground
             ${hideLabel ? 'sr-only' : ''}
           `.trim()}
         >
           {label}
           {required && (
-            <span className="text-[hsl(var(--color-destructive))] ml-1" aria-hidden="true">
+            <span className="text-destructive ml-1" aria-hidden="true">
               *
             </span>
           )}
@@ -91,7 +91,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
         {helpText && !error && (
           <p
             id={helpId}
-            className="text-xs text-[hsl(var(--color-muted-foreground))]"
+            className="text-xs text-muted-foreground"
           >
             {helpText}
           </p>
@@ -102,7 +102,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
           <p
             id={errorId}
             role="alert"
-            className="text-xs text-[hsl(var(--color-destructive))] flex items-center gap-1"
+            className="text-xs text-destructive flex items-center gap-1"
           >
             <svg
               className="w-3 h-3"
@@ -143,14 +143,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         className={`
           w-full px-3 py-2
-          rounded-[var(--radius-md)]
-          border border-[hsl(var(--color-border))]
-          bg-[hsl(var(--color-background))]
-          text-[hsl(var(--color-foreground))]
-          placeholder:text-[hsl(var(--color-muted-foreground))]
-          focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))] focus:border-transparent
+          rounded-md
+          border border-border
+          bg-background
+          text-foreground
+          placeholder:text-muted-foreground
+          focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent
           disabled:opacity-50 disabled:cursor-not-allowed
-          ${hasError ? 'border-[hsl(var(--color-destructive))] focus:ring-[hsl(var(--color-destructive))]' : ''}
+          ${hasError ? 'border-destructive focus:ring-destructive' : ''}
           ${className}
         `.trim()}
         {...props}
@@ -176,15 +176,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         ref={ref}
         className={`
           w-full px-3 py-2
-          rounded-[var(--radius-md)]
-          border border-[hsl(var(--color-border))]
-          bg-[hsl(var(--color-background))]
-          text-[hsl(var(--color-foreground))]
-          placeholder:text-[hsl(var(--color-muted-foreground))]
-          focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))] focus:border-transparent
+          rounded-md
+          border border-border
+          bg-background
+          text-foreground
+          placeholder:text-muted-foreground
+          focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent
           disabled:opacity-50 disabled:cursor-not-allowed
           resize-y min-h-[80px]
-          ${hasError ? 'border-[hsl(var(--color-destructive))] focus:ring-[hsl(var(--color-destructive))]' : ''}
+          ${hasError ? 'border-destructive focus:ring-destructive' : ''}
           ${className}
         `.trim()}
         {...props}
@@ -210,13 +210,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         ref={ref}
         className={`
           w-full px-3 py-2
-          rounded-[var(--radius-md)]
-          border border-[hsl(var(--color-border))]
-          bg-[hsl(var(--color-background))]
-          text-[hsl(var(--color-foreground))]
-          focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))] focus:border-transparent
+          rounded-md
+          border border-border
+          bg-background
+          text-foreground
+          focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent
           disabled:opacity-50 disabled:cursor-not-allowed
-          ${hasError ? 'border-[hsl(var(--color-destructive))] focus:ring-[hsl(var(--color-destructive))]' : ''}
+          ${hasError ? 'border-destructive focus:ring-destructive' : ''}
           ${className}
         `.trim()}
         {...props}
@@ -254,9 +254,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           aria-describedby={description ? descriptionId : undefined}
           className="
             mt-1 w-4 h-4
-            rounded border-[hsl(var(--color-border))]
-            text-[hsl(var(--color-primary))]
-            focus:ring-[hsl(var(--color-ring))]
+            rounded border-border
+            text-primary
+            focus:ring-ring
             disabled:opacity-50 disabled:cursor-not-allowed
           "
           {...props}
@@ -264,14 +264,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <div>
           <label
             htmlFor={checkboxId}
-            className="text-sm font-medium text-[hsl(var(--color-foreground))] cursor-pointer"
+            className="text-sm font-medium text-foreground cursor-pointer"
           >
             {label}
           </label>
           {description && (
             <p
               id={descriptionId}
-              className="text-xs text-[hsl(var(--color-muted-foreground))] mt-0.5"
+              className="text-xs text-muted-foreground mt-0.5"
             >
               {description}
             </p>

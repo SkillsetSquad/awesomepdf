@@ -74,13 +74,13 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-[hsl(var(--color-muted)/0.3)] py-12">
+        <section className="bg-muted/30 py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-bold text-[hsl(var(--color-foreground))] mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {t('hero.title')}
               </h1>
-              <p className="text-[hsl(var(--color-muted-foreground))]">
+              <p className="text-muted-foreground">
                 {t('hero.description')}
               </p>
             </div>
@@ -102,16 +102,16 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                     className="block"
                   >
                     <Card className="p-6 h-full text-center" >
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(var(--color-primary)/0.1)] mb-4">
-                        <Icon className="h-6 w-6 text-[hsl(var(--color-primary))]" />
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="font-semibold text-[hsl(var(--color-foreground))] mb-2">
+                      <h3 className="font-semibold text-foreground mb-2">
                         {method.title}
                       </h3>
-                      <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+                      <p className="text-sm text-muted-foreground mb-4">
                         {method.description}
                       </p>
-                      <span className="text-sm font-medium text-[hsl(var(--color-primary))]">
+                      <span className="text-sm font-medium text-primary">
                         {method.action}
                       </span>
                     </Card>
@@ -123,14 +123,14 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
         </section>
 
         {/* Contact Form */}
-        <section className="py-12 bg-[hsl(var(--color-muted)/0.3)]">
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-[hsl(var(--color-foreground))] mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                   {t('form.title')}
                 </h2>
-                <p className="text-[hsl(var(--color-muted-foreground))]">
+                <p className="text-muted-foreground">
                   {t('form.description')}
                 </p>
               </div>
@@ -140,10 +140,10 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
                     <CheckCircle className="h-8 w-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--color-foreground))] mb-2">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
                     {t('form.success.title')}
                   </h3>
-                  <p className="text-[hsl(var(--color-muted-foreground))] mb-6">
+                  <p className="text-muted-foreground mb-6">
                     {t('form.success.description')}
                   </p>
                   <Button variant="outline" onClick={() => setFormStatus('idle')}>
@@ -157,7 +157,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2"
+                          className="block text-sm font-medium text-foreground mb-2"
                         >
                           {t('form.fields.name.label')}
                         </label>
@@ -168,14 +168,14 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))]"
+                          className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                           placeholder={t('form.fields.name.placeholder')}
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2"
+                          className="block text-sm font-medium text-foreground mb-2"
                         >
                           {t('form.fields.email.label')}
                         </label>
@@ -186,7 +186,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))]"
+                          className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                           placeholder={t('form.fields.email.placeholder')}
                         />
                       </div>
@@ -195,7 +195,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                     <div>
                       <label
                         htmlFor="subject"
-                        className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2"
+                        className="block text-sm font-medium text-foreground mb-2"
                       >
                         {t('form.fields.subject.label')}
                       </label>
@@ -205,7 +205,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))]"
+                        className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                       >
                         <option value="">{t('form.fields.subject.placeholder')}</option>
                         <option value="general">{t('form.fields.subject.options.general')}</option>
@@ -219,7 +219,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2"
+                        className="block text-sm font-medium text-foreground mb-2"
                       >
                         {t('form.fields.message.label')}
                       </label>
@@ -230,7 +230,7 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                         onChange={handleInputChange}
                         required
                         rows={6}
-                        className="w-full px-4 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))] resize-none"
+                        className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                         placeholder={t('form.fields.message.placeholder')}
                       />
                     </div>
@@ -265,11 +265,11 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
-              <MessageSquare className="h-12 w-12 mx-auto mb-4 text-[hsl(var(--color-muted-foreground))]" />
-              <h2 className="text-2xl font-bold text-[hsl(var(--color-foreground))] mb-4">
+              <MessageSquare className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+              <h2 className="text-2xl font-bold text-foreground mb-4">
                 {t('faq.title')}
               </h2>
-              <p className="text-[hsl(var(--color-muted-foreground))] mb-6">
+              <p className="text-muted-foreground mb-6">
                 {t('faq.description', { brand: tCommon('brand') })}
               </p>
               <Link href={`/${locale}/faq`}>

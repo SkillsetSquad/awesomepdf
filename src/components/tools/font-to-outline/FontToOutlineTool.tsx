@@ -102,7 +102,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
                     <p className="text-sm">{error}</p>
                 </div>
             )}
@@ -110,7 +110,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             {hasFiles && (
                 <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                        <h3 className="text-lg font-medium text-foreground">
                             {tTools('fontToOutline.filesTitle') || 'Files'} ({files.length})
                         </h3>
                         <Button variant="ghost" size="sm" onClick={clearFiles} disabled={isProcessing}>
@@ -120,13 +120,13 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                     </div>
                     <div className="space-y-2 max-h-64 overflow-y-auto">
                         {files.map((batchFile) => (
-                            <div key={batchFile.id} className="flex items-center justify-between p-3 bg-[hsl(var(--color-muted)/0.3)] rounded-[var(--radius-md)]">
+                            <div key={batchFile.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-md">
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     {getStatusIcon(batchFile.status)}
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">{batchFile.file.name}</p>
+                                        <p className="text-sm font-medium text-foreground truncate">{batchFile.file.name}</p>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xs text-[hsl(var(--color-muted-foreground))]">{formatSize(batchFile.file.size)}</span>
+                                            <span className="text-xs text-muted-foreground">{formatSize(batchFile.file.size)}</span>
                                             {batchFile.status === 'processing' && <span className="text-xs text-blue-500">{batchFile.progress}%</span>}
                                             {batchFile.status === 'completed' && <span className="text-xs text-green-500">✓ Outlined</span>}
                                             {batchFile.status === 'error' && <span className="text-xs text-red-500">{batchFile.error}</span>}
@@ -137,7 +137,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                     <DownloadButton file={batchFile.result} filename={`${batchFile.file.name.replace('.pdf', '')}_outlined.pdf`} variant="ghost" size="sm" />
                                 )}
                                 {batchFile.status === 'pending' && !isProcessing && (
-                                    <button onClick={() => removeFile(batchFile.id)} className="p-1 text-[hsl(var(--color-muted-foreground))] hover:text-red-500 transition-colors">
+                                    <button onClick={() => removeFile(batchFile.id)} className="p-1 text-muted-foreground hover:text-red-500 transition-colors">
                                         <X className="w-4 h-4" />
                                     </button>
                                 )}
@@ -149,13 +149,13 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
 
             {hasFiles && (
                 <Card className="p-6" >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('fontToOutline.optionsTitle') || 'Conversion Options'}
                     </h3>
                     <div className="space-y-4">
                         {/* DPI Setting */}
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('fontToOutline.dpiLabel') || 'Output Quality (DPI)'}: {dpi}
                             </label>
                             <div className="grid grid-cols-3 gap-2">
@@ -165,15 +165,15 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                         type="button"
                                         onClick={() => setDpi(d)}
                                         disabled={isProcessing}
-                                        className={`px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium transition-colors duration-200
-                        ${dpi === d ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]' : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'}
+                                        className={`px-4 py-2 rounded-md border text-sm font-medium transition-colors duration-200
+                        ${dpi === d ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted/50'}
                         disabled:opacity-50 disabled:cursor-not-allowed`}
                                     >
                                         {d} DPI
                                     </button>
                                 ))}
                             </div>
-                            <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
+                            <p className="mt-1 text-xs text-muted-foreground">
                                 {tTools('fontToOutline.dpiDesc') || 'Higher DPI produces better quality but larger files. 300 DPI recommended for print.'}
                             </p>
                         </div>
@@ -188,10 +188,10 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                 className="w-4 h-4 rounded"
                             />
                             <div className="flex-1">
-                                <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                                <span className="text-sm font-medium text-foreground">
                                     {tTools('fontToOutline.preserveTextLabel') || 'Preserve searchable text (experimental)'}
                                 </span>
-                                <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-0.5">
+                                <p className="text-xs text-muted-foreground mt-0.5">
                                     {tTools('fontToOutline.preserveTextDesc') || 'Adds invisible text layer for search. May increase file size.'}
                                 </p>
                             </div>
@@ -218,7 +218,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             </div>
 
             {allCompleted && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700" role="status">
+                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
                     <p className="text-sm font-medium">{tTools('fontToOutline.successMessage') || `Successfully converted ${completedCount} file(s)!`}</p>
                     {errorCount > 0 && <p className="text-sm text-red-600 mt-1">{errorCount} file(s) failed.</p>}
                 </div>

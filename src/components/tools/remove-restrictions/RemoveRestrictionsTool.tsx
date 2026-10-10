@@ -200,7 +200,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -220,10 +220,10 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                <p className="text-sm font-medium text-foreground">
                   {file.name}
                 </p>
-                <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                <p className="text-xs text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -243,14 +243,14 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
       {/* Options */}
       {file && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('removeRestrictions.optionsTitle') || 'Options'}
           </h3>
           
           <div className="space-y-4">
             {/* Owner Password Input */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('removeRestrictions.ownerPasswordLabel') || 'Owner Password (optional)'}
               </label>
               <div className="relative">
@@ -260,30 +260,30 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
                   onChange={(e) => setOwnerPassword(e.target.value)}
                   disabled={isProcessing}
                   placeholder={tTools('removeRestrictions.ownerPasswordPlaceholder') || 'Enter owner password if known'}
-                  className="w-full px-3 py-2 pr-10 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] placeholder:text-[hsl(var(--color-muted-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] disabled:opacity-50"
+                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))]"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
-              <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
+              <p className="mt-1 text-xs text-muted-foreground">
                 {tTools('removeRestrictions.ownerPasswordHint') || 'If the PDF has an owner password, enter it here for better results.'}
               </p>
             </div>
 
             {/* Info about restrictions */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-blue-50 border border-blue-200">
+            <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
               <p className="text-sm text-blue-700">
                 {tTools('removeRestrictions.info') || 'This tool removes owner password restrictions that prevent printing, copying, and editing. It works on PDFs with permission restrictions but cannot remove user passwords required to open the document.'}
               </p>
             </div>
 
             {/* Warning */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-yellow-50 border border-yellow-200">
+            <div className="p-3 rounded-sm bg-yellow-50 border border-yellow-200">
               <p className="text-sm text-yellow-700">
                 {tTools('removeRestrictions.warning') || 'Only use this tool on PDFs you own or have permission to modify. Removing restrictions from copyrighted material without authorization may violate copyright laws.'}
               </p>
@@ -332,7 +332,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
       {/* Results */}
       {status === 'complete' && result && stats && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium mb-2">
@@ -369,7 +369,7 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
               </svg>
             </div>
             <div>
-              <p className="text-sm text-[hsl(var(--color-foreground))]">
+              <p className="text-sm text-foreground">
                 {passwordErrorMessage}
               </p>
             </div>

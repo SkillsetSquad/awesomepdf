@@ -53,7 +53,7 @@ function MetadataField({
     <div className="space-y-1">
       <label
         htmlFor={`metadata-${field}`}
-        className="block text-sm font-medium text-[hsl(var(--color-foreground))]"
+        className="block text-sm font-medium text-foreground"
       >
         {label}
       </label>
@@ -64,10 +64,10 @@ function MetadataField({
         onChange={(e) => onChange(field, e.target.value)}
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] 
-          bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))]
-          placeholder:text-[hsl(var(--color-muted-foreground))]
-          focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] focus:border-transparent
+        className={`w-full px-3 py-2 rounded-md border border-border 
+          bg-background text-foreground
+          placeholder:text-muted-foreground
+          focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
           disabled:opacity-50 disabled:cursor-not-allowed
           ${multiline ? 'min-h-[80px] resize-y' : ''}`}
       />
@@ -333,7 +333,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -351,8 +351,8 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
                 <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
               </svg>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <p className="font-medium text-foreground">{file.name}</p>
+                <p className="text-sm text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -384,7 +384,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
       {file && !isProcessing && status !== 'complete' && (
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('editMetadata.editTitle') || 'Edit Document Properties'}
             </h3>
             {hasChanges && (
@@ -449,8 +449,8 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
             />
           </div>
 
-          <div className="mt-6 pt-4 border-t border-[hsl(var(--color-border))]">
-            <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+          <div className="mt-6 pt-4 border-t border-border">
+            <p className="text-sm text-muted-foreground mb-4">
               {tTools('editMetadata.modificationNote') || 'The modification date will be updated automatically when you save.'}
             </p>
             <Button
@@ -487,7 +487,7 @@ export function EditMetadataTool({ className = '' }: EditMetadataToolProps) {
 
           {/* Success Message */}
           <div 
-            className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+            className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
             role="status"
           >
             <p className="text-sm font-medium">

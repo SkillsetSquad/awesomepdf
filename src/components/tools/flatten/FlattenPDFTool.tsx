@@ -154,7 +154,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -174,10 +174,10 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                <p className="text-sm font-medium text-foreground">
                   {file.name}
                 </p>
-                <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                <p className="text-xs text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -197,13 +197,13 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
       {/* Flatten Options */}
       {file && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('flattenPdf.optionsTitle') || 'Flatten Options'}
           </h3>
           
           <div className="space-y-4">
             {/* Info */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-blue-50 border border-blue-200">
+            <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
               <p className="text-sm text-blue-700">
                 {tTools('flattenPdf.info') || 'Flattening converts interactive elements (forms, annotations) into static page content. This makes the PDF non-editable but ensures consistent appearance across all viewers.'}
               </p>
@@ -217,13 +217,13 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                   checked={options.flattenForms}
                   onChange={() => handleOptionChange('flattenForms')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
                 <div>
-                  <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  <span className="text-sm text-foreground">
                     {tTools('flattenPdf.flattenForms') || 'Flatten Form Fields'}
                   </span>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {tTools('flattenPdf.flattenFormsDesc') || 'Convert fillable form fields to static text'}
                   </p>
                 </div>
@@ -235,13 +235,13 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                   checked={options.flattenAnnotations}
                   onChange={() => handleOptionChange('flattenAnnotations')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
                 <div>
-                  <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  <span className="text-sm text-foreground">
                     {tTools('flattenPdf.flattenAnnotations') || 'Flatten Annotations'}
                   </span>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {tTools('flattenPdf.flattenAnnotationsDesc') || 'Merge comments, highlights, and stamps into page content'}
                   </p>
                 </div>
@@ -253,13 +253,13 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
                   checked={options.flattenLayers}
                   onChange={() => handleOptionChange('flattenLayers')}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
                 <div>
-                  <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  <span className="text-sm text-foreground">
                     {tTools('flattenPdf.flattenLayers') || 'Flatten Layers'}
                   </span>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {tTools('flattenPdf.flattenLayersDesc') || 'Merge all visible layers into a single layer'}
                   </p>
                 </div>
@@ -309,7 +309,7 @@ export function FlattenPDFTool({ className = '' }: FlattenPDFToolProps) {
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

@@ -31,7 +31,7 @@ interface ToolsPageProps {
 function ToolsPageFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-[hsl(var(--color-muted-foreground))]">
+      <div className="animate-pulse text-muted-foreground">
         Loading...
       </div>
     </div>

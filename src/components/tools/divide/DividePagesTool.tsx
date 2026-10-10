@@ -201,7 +201,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -219,8 +219,8 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                 <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
               </svg>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <p className="font-medium text-foreground">{file.name}</p>
+                <p className="text-sm text-muted-foreground">
                   {formatSize(file.size)} • {totalPages} {totalPages === 1 ? 'page' : 'pages'}
                 </p>
               </div>
@@ -240,14 +240,14 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
       {/* Options */}
       {file && totalPages > 0 && (
         <Card className="p-6"  >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('dividePages.optionsTitle') || 'Division Options'}
           </h3>
 
           <div className="space-y-4">
             {/* Division Type */}
             <div>
-              <label htmlFor="divisionType" className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label htmlFor="divisionType" className="block text-sm font-medium text-foreground mb-2">
                 {tTools('dividePages.divisionType') || 'Division Type'}
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -256,10 +256,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                   type="button"
                   onClick={() => setDivisionType('vertical')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-[var(--radius-md)] border-2 transition-all ${
+                  className={`p-4 rounded-md border-2 transition-all ${
                     divisionType === 'vertical'
-                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -270,7 +270,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     <span className="text-xs font-medium">
                       {tTools('dividePages.vertical') || 'Vertical'}
                     </span>
-                    <span className="text-xs text-[hsl(var(--color-muted-foreground))]">2 parts</span>
+                    <span className="text-xs text-muted-foreground">2 parts</span>
                   </div>
                 </button>
 
@@ -279,10 +279,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                   type="button"
                   onClick={() => setDivisionType('horizontal')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-[var(--radius-md)] border-2 transition-all ${
+                  className={`p-4 rounded-md border-2 transition-all ${
                     divisionType === 'horizontal'
-                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -293,7 +293,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     <span className="text-xs font-medium">
                       {tTools('dividePages.horizontal') || 'Horizontal'}
                     </span>
-                    <span className="text-xs text-[hsl(var(--color-muted-foreground))]">2 parts</span>
+                    <span className="text-xs text-muted-foreground">2 parts</span>
                   </div>
                 </button>
 
@@ -302,10 +302,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                   type="button"
                   onClick={() => setDivisionType('grid-2x2')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-[var(--radius-md)] border-2 transition-all ${
+                  className={`p-4 rounded-md border-2 transition-all ${
                     divisionType === 'grid-2x2'
-                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -318,7 +318,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     <span className="text-xs font-medium">
                       {tTools('dividePages.grid2x2') || '2×2 Grid'}
                     </span>
-                    <span className="text-xs text-[hsl(var(--color-muted-foreground))]">4 parts</span>
+                    <span className="text-xs text-muted-foreground">4 parts</span>
                   </div>
                 </button>
 
@@ -327,10 +327,10 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                   type="button"
                   onClick={() => setDivisionType('grid-3x3')}
                   disabled={isProcessing}
-                  className={`p-4 rounded-[var(--radius-md)] border-2 transition-all ${
+                  className={`p-4 rounded-md border-2 transition-all ${
                     divisionType === 'grid-3x3'
-                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -345,15 +345,15 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                     <span className="text-xs font-medium">
                       {tTools('dividePages.grid3x3') || '3×3 Grid'}
                     </span>
-                    <span className="text-xs text-[hsl(var(--color-muted-foreground))]">9 parts</span>
+                    <span className="text-xs text-muted-foreground">9 parts</span>
                   </div>
                 </button>
               </div>
             </div>
 
             {/* Preview info */}
-            <div className="p-3 rounded-[var(--radius-md)] bg-[hsl(var(--color-muted))]">
-              <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+            <div className="p-3 rounded-md bg-muted">
+              <p className="text-sm text-muted-foreground">
                 {tTools('dividePages.previewInfo') || 
                   `Each of the ${totalPages} page${totalPages !== 1 ? 's' : ''} will be divided into ${sectionsPerPage} parts, resulting in ${outputPages} output page${outputPages !== 1 ? 's' : ''}.`
                 }
@@ -405,7 +405,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

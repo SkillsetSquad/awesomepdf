@@ -95,7 +95,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
                     <p className="text-sm">{error}</p>
                 </div>
             )}
@@ -104,8 +104,8 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                 <Card className="p-6" >
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                            <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                            <p className="font-medium text-foreground">{file.name}</p>
+                            <p className="text-sm text-muted-foreground">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                         <Button variant="ghost" size="sm" onClick={handleReset} disabled={isProcessing}>
                             {t('buttons.clear') || 'Clear'}
@@ -116,13 +116,13 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
 
             {hasFile && (
                 <Card className="p-6" >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('cbzToPdf.optionsTitle') || 'Conversion Options'}
                     </h3>
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('cbzToPdf.pageSizeLabel') || 'Page Size'}
                             </label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -132,8 +132,8 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                                         type="button"
                                         onClick={() => setPageSize(size)}
                                         disabled={isProcessing}
-                                        className={`px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium capitalize transition-colors duration-200
-                      ${pageSize === size ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]' : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'}
+                                        className={`px-4 py-2 rounded-md border text-sm font-medium capitalize transition-colors duration-200
+                      ${pageSize === size ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted/50'}
                       disabled:opacity-50 disabled:cursor-not-allowed`}
                                     >
                                         {size}
@@ -143,7 +143,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('cbzToPdf.qualityLabel') || 'Image Quality'}: {quality}%
                             </label>
                             <input
@@ -153,7 +153,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                                 value={quality}
                                 onChange={(e) => setQuality(Number(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
+                                className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
                             />
                         </div>
 
@@ -165,7 +165,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                                 disabled={isProcessing}
                                 className="w-4 h-4 rounded"
                             />
-                            <span className="text-sm text-[hsl(var(--color-foreground))]">
+                            <span className="text-sm text-foreground">
                                 {tTools('cbzToPdf.preserveAspectLabel') || 'Preserve aspect ratio'}
                             </span>
                         </label>
@@ -194,7 +194,7 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
             </div>
 
             {resultBlob && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700" role="status">
+                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
                     <p className="text-sm font-medium">{tTools('cbzToPdf.successMessage') || 'Comic converted successfully!'}</p>
                 </div>
             )}

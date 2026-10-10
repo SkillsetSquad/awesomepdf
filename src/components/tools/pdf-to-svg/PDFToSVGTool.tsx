@@ -245,7 +245,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
             {/* Error Message */}
             {error && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
                     role="alert"
                 >
                     <p className="text-sm">{error}</p>
@@ -257,15 +257,15 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                 <Card className="p-6"  >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
-                                <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                     <polyline points="14 2 14 8 20 8" />
                                 </svg>
                             </div>
                             <div>
-                                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.file.name}</p>
-                                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{formatSize(file.file.size)}</p>
+                                <p className="font-medium text-foreground">{file.file.name}</p>
+                                <p className="text-sm text-muted-foreground">{formatSize(file.file.size)}</p>
                             </div>
                         </div>
                         <Button
@@ -284,35 +284,35 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
             {/* Options Panel */}
             {file && (
                 <Card className="p-6" >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('pdfToSvg.optionsTitle') || 'Conversion Options'}
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Scale/Resolution */}
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('pdfToSvg.resolution') || 'Resolution'}
                             </label>
                             <select
                                 value={scale}
                                 onChange={(e) => setScale(parseFloat(e.target.value))}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                             >
                                 <option value="1">72 DPI (Low)</option>
                                 <option value="2">144 DPI (Medium)</option>
                                 <option value="3">216 DPI (High)</option>
                                 <option value="4">288 DPI (Very High)</option>
                             </select>
-                            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                            <p className="text-xs text-muted-foreground mt-1">
                                 {tTools('pdfToSvg.resolutionHint') || 'Higher resolution produces larger, more detailed SVG files.'}
                             </p>
                         </div>
 
                         {/* Page Range */}
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('pdfToSvg.pageRange') || 'Page Range'}
                             </label>
                             <input
@@ -321,9 +321,9 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
                                 onChange={(e) => setPageRange(e.target.value)}
                                 placeholder={tTools('pdfToSvg.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                             />
-                            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                            <p className="text-xs text-muted-foreground mt-1">
                                 {tTools('pdfToSvg.pageRangeHint') || 'Leave empty for all pages'}
                             </p>
                         </div>
@@ -381,14 +381,14 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
             {/* SVG Preview Grid */}
             {svgResults.length > 0 && (
                 <Card className="p-6"  >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('pdfToSvg.previewTitle') || 'Converted SVGs'} ({svgResults.length})
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                         {svgResults.map((svgResult, index) => (
                             <div key={index} className="relative group">
                                 <div
-                                    className="aspect-[3/4] rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] overflow-hidden bg-[hsl(var(--color-muted)/0.3)] cursor-pointer hover:border-[hsl(var(--color-primary))] transition-colors"
+                                    className="aspect-[3/4] rounded-md border border-border overflow-hidden bg-muted/30 cursor-pointer hover:border-primary transition-colors"
                                     onClick={() => openPreview(index)}
                                 >
                                     <div
@@ -468,7 +468,7 @@ export function PDFToSVGTool({ className = '' }: PDFToSVGToolProps) {
             {/* Success Message */}
             {status === 'complete' && result && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
                     role="status"
                 >
                     <p className="text-sm font-medium">

@@ -281,7 +281,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700">
+        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700">
           <p className="text-sm">{error}</p>
         </div>
       )}
@@ -299,7 +299,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                   </svg>
                   <div>
                     <p className="font-medium">{file.name}</p>
-                    <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                    <p className="text-sm text-muted-foreground">
                       {formatSize(file.size)} • {totalPages} pages
                     </p>
                   </div>
@@ -322,7 +322,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={headerLeft}
                     onChange={(e) => setHeaderLeft(e.target.value)}
                     placeholder="e.g., Company Name"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -333,7 +333,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={headerCenter}
                     onChange={(e) => setHeaderCenter(e.target.value)}
                     placeholder="e.g., Document Title"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -344,7 +344,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={headerRight}
                     onChange={(e) => setHeaderRight(e.target.value)}
                     placeholder="e.g., {date}"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -361,7 +361,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={footerLeft}
                     onChange={(e) => setFooterLeft(e.target.value)}
                     placeholder="e.g., Confidential"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -372,7 +372,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={footerCenter}
                     onChange={(e) => setFooterCenter(e.target.value)}
                     placeholder="e.g., Page {page} of {total}"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -383,7 +383,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     value={footerRight}
                     onChange={(e) => setFooterRight(e.target.value)}
                     placeholder="e.g., {date}"
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                    className="w-full px-3 py-2 border rounded-md text-sm"
                     disabled={isProcessing}
                   />
                 </div>
@@ -420,7 +420,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     onChange={(e) => setFontSize(parseInt(e.target.value) || 10)}
                     min={6}
                     max={24}
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)]"
+                    className="w-full px-3 py-2 border rounded-md"
                     disabled={isProcessing}
                   />
                 </div>
@@ -432,7 +432,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     onChange={(e) => setMargin(parseInt(e.target.value) || 30)}
                     min={10}
                     max={100}
-                    className="w-full px-3 py-2 border rounded-[var(--radius-md)]"
+                    className="w-full px-3 py-2 border rounded-md"
                     disabled={isProcessing}
                   />
                 </div>
@@ -456,7 +456,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
                   placeholder="e.g., 1-5, 8, 10-12 or 'all'"
-                  className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                  className="w-full px-3 py-2 border rounded-md text-sm"
                   disabled={isProcessing}
                 />
                 <p className="text-xs text-gray-500 mt-1">
@@ -508,7 +508,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                 </div>
               </div>
 
-              <div className="bg-gray-100 rounded-[var(--radius-md)] p-4 flex justify-center">
+              <div className="bg-gray-100 rounded-md p-4 flex justify-center">
                 <canvas
                   ref={previewCanvasRef}
                   className="shadow-lg bg-white max-w-full h-auto"
@@ -579,7 +579,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
       )}
 
       {status === 'complete' && result && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700">
+        <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700">
           <p className="text-sm font-medium">
             {tTools('headerFooter.successMessage') || 'Header & footer added successfully!'}
           </p>

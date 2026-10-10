@@ -130,7 +130,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
             {/* Error Message */}
             {error && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+                    className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
                     role="alert"
                 >
                     <p className="text-sm">{error}</p>
@@ -142,8 +142,8 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                 <Card className="p-6" >
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="font-medium text-[hsl(var(--color-foreground))]">{file.name}</p>
-                            <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                            <p className="font-medium text-foreground">{file.name}</p>
+                            <p className="text-sm text-muted-foreground">
                                 {(file.size / 1024 / 1024).toFixed(2)} MB
                             </p>
                         </div>
@@ -157,14 +157,14 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
             {/* Extraction Options */}
             {hasFile && (
                 <Card className="p-6" >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('extractTables.optionsTitle') || 'Extraction Options'}
                     </h3>
 
                     <div className="space-y-4">
                         {/* Output Format */}
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('extractTables.formatLabel') || 'Output Format'}
                             </label>
                             <div className="grid grid-cols-3 gap-2">
@@ -175,11 +175,11 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                         onClick={() => setFormat(fmt)}
                                         disabled={isProcessing}
                                         className={`
-                      px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium uppercase
+                      px-4 py-2 rounded-md border text-sm font-medium uppercase
                       transition-colors duration-200
                       ${format === fmt
-                                                ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]'
-                                                : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'
+                                                ? 'border-primary bg-primary text-primary-foreground'
+                                                : 'border-border hover:bg-muted/50'
                                             }
                       disabled:opacity-50 disabled:cursor-not-allowed
                     `}
@@ -192,7 +192,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
 
                         {/* Page Range */}
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('extractTables.pageRangeLabel') || 'Page Range (optional)'}
                             </label>
                             <input
@@ -201,14 +201,14 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                 onChange={(e) => setPageRange(e.target.value)}
                                 disabled={isProcessing}
                                 placeholder="e.g., 1-5, 8, 10-15"
-                                className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] text-sm"
+                                className="w-full px-3 py-2 border border-border rounded-md text-sm"
                             />
                         </div>
 
                         {/* Min Columns/Rows */}
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                                <label className="block text-sm font-medium text-foreground mb-2">
                                     {tTools('extractTables.minColumnsLabel') || 'Min Columns'}: {minColumns}
                                 </label>
                                 <input
@@ -218,11 +218,11 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                     value={minColumns}
                                     onChange={(e) => setMinColumns(Number(e.target.value))}
                                     disabled={isProcessing}
-                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
+                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                                <label className="block text-sm font-medium text-foreground mb-2">
                                     {tTools('extractTables.minRowsLabel') || 'Min Rows'}: {minRows}
                                 </label>
                                 <input
@@ -232,7 +232,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                     value={minRows}
                                     onChange={(e) => setMinRows(Number(e.target.value))}
                                     disabled={isProcessing}
-                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
+                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
                                 />
                             </div>
                         </div>
@@ -244,9 +244,9 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                                 checked={includePageNumbers}
                                 onChange={(e) => setIncludePageNumbers(e.target.checked)}
                                 disabled={isProcessing}
-                                className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                             />
-                            <span className="text-sm text-[hsl(var(--color-foreground))]">
+                            <span className="text-sm text-foreground">
                                 {tTools('extractTables.includePageNumbersLabel') || 'Include page numbers in output'}
                             </span>
                         </label>
@@ -293,7 +293,7 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
             {/* Success Message */}
             {resultBlob && (
                 <div
-                    className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+                    className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
                     role="status"
                 >
                     <p className="text-sm font-medium">

@@ -253,7 +253,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* File metadata status block */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.25)] rounded-2xl">
+        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25 rounded-2xl">
           <div className="flex items-center gap-3">
             <svg className="w-10 h-10 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -261,10 +261,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
               <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
             </svg>
             <div>
-              <p className="font-semibold text-sm text-[hsl(var(--color-foreground))] truncate max-w-[280px]" title={file.name}>
+              <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
                 {file.name}
               </p>
-              <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+              <p className="text-xs text-muted-foreground">
                 {totalPages > 0 ? `${totalPages} ${t('pdfToCbz.pagesLabel') || 'pages'}` : t('aiPdfReflower.scanningMetadata')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
               </p>
             </div>
@@ -287,19 +287,19 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
           {/* LEFT: Controls Panel */}
           <div className="lg:col-span-5 space-y-6">
             <Card  className="p-6 rounded-[2rem] shadow-xl border border-white/20 dark:border-zinc-800/40 bg-white/40 dark:bg-black/30 backdrop-blur-md space-y-6">
-              <div className="border-b border-[hsl(var(--color-border))] pb-3">
-                <h3 className="text-base font-bold text-[hsl(var(--color-foreground))] flex items-center gap-2">
-                  <Settings2 className="w-5 h-5 text-[hsl(var(--color-primary))]" />
+              <div className="border-b border-border pb-3">
+                <h3 className="text-base font-bold text-foreground flex items-center gap-2">
+                  <Settings2 className="w-5 h-5 text-primary" />
                   {t('aiPdfReflower.optionsTitle')}
                 </h3>
-                <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {t('aiPdfReflower.optionsHelp')}
                 </p>
               </div>
 
               {/* Theme selection */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--color-muted-foreground))] flex items-center gap-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <Compass className="w-4 h-4" />
                   {t('aiPdfReflower.themeLabel')}
                 </label>
@@ -314,7 +314,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                       key={thm.id}
                       onClick={() => setTheme(thm.id as any)}
                       className={`p-2.5 rounded-xl text-center text-xs font-bold transition-all ${thm.bg} ${
-                        theme === thm.id ? 'ring-2 ring-[hsl(var(--color-primary))] scale-95 shadow-sm' : 'opacity-80 hover:opacity-100'
+                        theme === thm.id ? 'ring-2 ring-primary scale-95 shadow-sm' : 'opacity-80 hover:opacity-100'
                       }`}
                     >
                       {thm.name}
@@ -325,7 +325,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Font Size adjustments */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--color-muted-foreground))] flex items-center justify-between">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
                   <span className="flex items-center gap-1.5"><Type className="w-4 h-4" /> {t('aiPdfReflower.fontSizeLabel')}</span>
                   <span className="font-mono font-bold text-xs">{fontSize}px</span>
                 </label>
@@ -358,8 +358,8 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
               </div>
 
               {/* Export Panel with Pulley Pull-rope effect */}
-              <div className="border-t border-[hsl(var(--color-border))] pt-6 space-y-4 relative">
-                <label className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--color-muted-foreground))] flex items-center gap-1.5">
+              <div className="border-t border-border pt-6 space-y-4 relative">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <Download className="w-4 h-4" />
                   {t('aiPdfReflower.pullToExport')}
                 </label>

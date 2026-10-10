@@ -90,7 +90,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
             )}
 
             {error && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
                     <p className="text-sm">{error}</p>
                 </div>
             )}
@@ -148,7 +148,7 @@ export function RepairPDFTool({ className = '' }: RepairPDFToolProps) {
             )}
 
             {status === 'complete' && result && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200">
+                <div className="p-4 rounded-md bg-green-50 border border-green-200">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div className="text-green-700 font-medium">
                             {tTools('repairPdf.successMessage') || 'PDF repaired successfully!'}

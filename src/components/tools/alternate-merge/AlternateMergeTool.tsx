@@ -254,7 +254,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -265,7 +265,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       {files.length > 0 && (
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('alternateMerge.filesTitle') || 'Files to Interleave'} ({files.length})
             </h3>
             <Button
@@ -278,7 +278,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
             </Button>
           </div>
 
-          <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             {tTools('alternateMerge.reorderHint') || 'Drag and drop to reorder files. Pages will be interleaved in the order shown (1st page from file 1, 1st page from file 2, 2nd page from file 1, etc.).'}
           </p>
 
@@ -292,16 +292,16 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
                 className={`
-                  flex items-center gap-3 p-3 rounded-[var(--radius-md)] border
+                  flex items-center gap-3 p-3 rounded-md border
                   transition-all duration-200
                   ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                  ${dragOverIndex === index ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.05)]' : 'border-[hsl(var(--color-border))]'}
-                  ${!isProcessing ? 'cursor-grab hover:bg-[hsl(var(--color-muted)/0.5)]' : ''}
+                  ${dragOverIndex === index ? 'border-primary bg-primary/5' : 'border-border'}
+                  ${!isProcessing ? 'cursor-grab hover:bg-muted/50' : ''}
                 `}
               >
                 {/* Drag Handle */}
                 <div 
-                  className="flex-shrink-0 text-[hsl(var(--color-muted-foreground))]"
+                  className="flex-shrink-0 text-muted-foreground"
                   aria-hidden="true"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -315,7 +315,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                 </div>
 
                 {/* File Number */}
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))] text-xs font-medium flex items-center justify-center">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
                   {index + 1}
                 </span>
 
@@ -330,10 +330,10 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
 
                 {/* File Info */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">
+                  <p className="text-sm font-medium text-foreground truncate">
                     {file.file.name}
                   </p>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {formatSize(file.file.size)}
                   </p>
                 </div>
@@ -344,7 +344,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                     type="button"
                     onClick={() => handleMoveUp(index)}
                     disabled={index === 0 || isProcessing}
-                    className="p-1 rounded hover:bg-[hsl(var(--color-muted))] disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Move up"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -355,7 +355,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                     type="button"
                     onClick={() => handleMoveDown(index)}
                     disabled={index === files.length - 1 || isProcessing}
-                    className="p-1 rounded hover:bg-[hsl(var(--color-muted))] disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Move down"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -369,7 +369,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                   type="button"
                   onClick={() => handleRemoveFile(file.id)}
                   disabled={isProcessing}
-                  className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-[hsl(var(--color-muted-foreground))] hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
                   aria-label={`Remove ${file.file.name}`}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -385,7 +385,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       {/* Options Panel */}
       {files.length >= 2 && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('alternateMerge.optionsTitle') || 'Interleave Options'}
           </h3>
           
@@ -395,21 +395,21 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
               checked={reverseSecond}
               onChange={(e) => setReverseSecond(e.target.checked)}
               disabled={isProcessing}
-              className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+              className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
             />
             <div>
-              <span className="text-sm text-[hsl(var(--color-foreground))]">
+              <span className="text-sm text-foreground">
                 {tTools('alternateMerge.reverseSecond') || 'Reverse second document'}
               </span>
-              <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+              <p className="text-xs text-muted-foreground">
                 {tTools('alternateMerge.reverseSecondHint') || 'Enable this for back-to-front scanned documents'}
               </p>
             </div>
           </label>
 
           {/* Info box explaining how interleaving works */}
-          <div className="mt-4 p-3 rounded-[var(--radius-md)] bg-[hsl(var(--color-muted)/0.3)] border border-[hsl(var(--color-border))]">
-            <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+          <div className="mt-4 p-3 rounded-md bg-muted/30 border border-border">
+            <p className="text-sm text-muted-foreground">
               <strong>{tTools('alternateMerge.howItWorks') || 'How it works:'}</strong>{' '}
               {tTools('alternateMerge.howItWorksDescription') || 'Pages are interleaved alternately: Page 1 from File 1, Page 1 from File 2, Page 2 from File 1, Page 2 from File 2, and so on. If documents have different page counts, extra pages are appended at the end.'}
             </p>
@@ -457,7 +457,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

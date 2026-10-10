@@ -1000,7 +1000,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700">
+        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700">
           <p className="text-sm">{error}</p>
         </div>
       )}
@@ -1183,7 +1183,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <Card className="p-6"  >
               <div
                 ref={containerRef}
-                className="relative bg-gray-100 rounded-[var(--radius-md)] overflow-auto"
+                className="relative bg-gray-100 rounded-md overflow-auto"
                 style={{ maxHeight: '600px' }}
               >
                 <div
@@ -1329,7 +1329,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           value={selectedField.label || ''}
                           onChange={(e) => updateSelectedField({ label: e.target.value })}
                           placeholder={tTools('formCreator.fieldLabelPlaceholder') || 'Enter label text...'}
-                          className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                          className="w-full px-3 py-2 border rounded-md text-sm"
                         />
                       </div>
 
@@ -1396,7 +1396,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
                             placeholder={tTools('formCreator.defaultValuePlaceholder') || 'Enter default text...'}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           />
                         </div>
                       )}
@@ -1420,7 +1420,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           <textarea
                             value={(selectedField.options || []).join('\n')}
                             onChange={(e) => updateSelectedField({ options: e.target.value.split('\n').filter(o => o.trim()) })}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                             rows={4}
                           />
                         </div>
@@ -1433,7 +1433,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           <select
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           >
                             <option value="">{tTools('formCreator.noDefault') || '-- None --'}</option>
                             {selectedField.options.map((opt, idx) => (
@@ -1465,7 +1465,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             value={selectedField.buttonLabel || ''}
                             onChange={(e) => updateSelectedField({ buttonLabel: e.target.value })}
                             placeholder={tTools('formCreator.buttonLabelPlaceholder') || 'Submit'}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           />
                         </div>
                       )}
@@ -1479,7 +1479,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             value={selectedField.signatureLabel || ''}
                             onChange={(e) => updateSelectedField({ signatureLabel: e.target.value })}
                             placeholder={tTools('formCreator.signatureLabelPlaceholder') || 'Sign here'}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           />
                         </div>
                       )}
@@ -1491,7 +1491,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           <select
                             value={selectedField.dateFormat || 'YYYY-MM-DD'}
                             onChange={(e) => updateSelectedField({ dateFormat: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           >
                             <option value="YYYY-MM-DD">YYYY-MM-DD</option>
                             <option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -1509,7 +1509,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             type="date"
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                            className="w-full px-3 py-2 border rounded-md text-sm"
                           />
                         </div>
                       )}
@@ -1695,7 +1695,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
                   placeholder={tTools('formCreator.projectNamePlaceholder') || 'Enter project name...'}
-                  className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   autoFocus
                 />
               </div>
@@ -1743,7 +1743,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 <select
                   value={blankPdfPageSize}
                   onChange={(e) => setBlankPdfPageSize(e.target.value as 'A4' | 'Letter' | 'Legal' | 'A3' | 'A5')}
-                  className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                  className="w-full px-3 py-2 border rounded-md text-sm"
                 >
                   <option value="A4">A4 (210 × 297 mm)</option>
                   <option value="Letter">Letter (8.5 × 11 in)</option>
@@ -1762,7 +1762,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   max="100"
                   value={blankPdfPageCount}
                   onChange={(e) => setBlankPdfPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full px-3 py-2 border rounded-[var(--radius-md)] text-sm"
+                  className="w-full px-3 py-2 border rounded-md text-sm"
                 />
               </div>
 

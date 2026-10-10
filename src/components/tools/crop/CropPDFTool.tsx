@@ -400,7 +400,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       )}
 
       {error && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+        <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
           <p className="text-sm">{error}</p>
         </div>
       )}
@@ -418,7 +418,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                 </div>
                 <div>
                   <h3 className="font-medium">{state.file.name}</h3>
-                  <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-sm text-muted-foreground">
                     {state.numPages} {tTools('cropPdf.pages') || 'pages'}
                   </p>
                 </div>
@@ -627,7 +627,7 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
       {isProcessing && <ProcessingProgress progress={progress} status={status} onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} showPercentage />}
 
       {state.file && result && status === 'complete' && (
-        <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200">
+        <div className="p-4 rounded-md bg-green-50 border border-green-200">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="text-green-700 font-medium">
               {tTools('cropPdf.successMessage') || 'PDF cropped successfully!'}

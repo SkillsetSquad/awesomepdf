@@ -2603,20 +2603,20 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
     if (!node) return null;
 
     return (
-        <div className="fixed right-0 top-0 h-full w-80 bg-[hsl(var(--color-background))] border-l border-[hsl(var(--color-border))] shadow-xl z-[100] flex flex-col animate-in slide-in-from-right duration-200">
+        <div className="fixed right-0 top-0 h-full w-80 bg-background border-l border-border shadow-xl z-[100] flex flex-col animate-in slide-in-from-right duration-200">
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-[hsl(var(--color-border))] bg-[hsl(var(--color-muted)/0.3)]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
                 <div className="flex items-center gap-2">
-                    <Settings className="w-5 h-5 text-[hsl(var(--color-primary))]" />
-                    <h3 className="font-medium text-[hsl(var(--color-foreground))] truncate max-w-[180px]">
+                    <Settings className="w-5 h-5 text-primary" />
+                    <h3 className="font-medium text-foreground truncate max-w-[180px]">
                         {getToolTitle()}
                     </h3>
                 </div>
                 <button
                     onClick={onClose}
-                    className="p-1.5 rounded-md hover:bg-[hsl(var(--color-muted))] transition-colors"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
                 >
-                    <X className="w-4 h-4 text-[hsl(var(--color-muted-foreground))]" />
+                    <X className="w-4 h-4 text-muted-foreground" />
                 </button>
             </div>
 
@@ -2632,7 +2632,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                         {/* Condition Type */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))]">
+                            <label className="block text-sm font-medium text-foreground">
                                 {locale === 'zh' ? '判断维度 (Type)' : 'Dimension'}
                             </label>
                             <select
@@ -2646,7 +2646,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         value: nextType === 'file-format' ? 'pdf' : (nextType === 'file-size' ? 10 : 1),
                                     }));
                                 }}
-                                className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                             >
                                 <option value="file-count">{locale === 'zh' ? '文件数量 (File Count)' : 'File Count'}</option>
                                 <option value="file-size">{locale === 'zh' ? '总文件体积 (File Size)' : 'Total File Size'}</option>
@@ -2656,13 +2656,13 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                         {/* Operator */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))]">
+                            <label className="block text-sm font-medium text-foreground">
                                 {locale === 'zh' ? '比较规则 (Operator)' : 'Operator'}
                             </label>
                             <select
                                 value={(settings.operator as string) || (settings.conditionType === 'file-format' ? 'equals' : 'greater-than')}
                                 onChange={(e) => handleFieldChange('operator', e.target.value)}
-                                className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                             >
                                 {settings.conditionType === 'file-format' ? (
                                     <>
@@ -2686,7 +2686,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                         {/* Value Input */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))]">
+                            <label className="block text-sm font-medium text-foreground">
                                 {locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
                             </label>
 
@@ -2697,7 +2697,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                     step={1}
                                     value={Number(settings.value ?? 1)}
                                     onChange={(e) => handleFieldChange('value', Number(e.target.value))}
-                                    className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                    className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                             )}
 
@@ -2709,12 +2709,12 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         step={0.1}
                                         value={Number(settings.value ?? 10)}
                                         onChange={(e) => handleFieldChange('value', Number(e.target.value))}
-                                        className="flex-1 px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                        className="flex-1 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                     />
                                     <select
                                         value={(settings.sizeUnit as string) || 'MB'}
                                         onChange={(e) => handleFieldChange('sizeUnit', e.target.value)}
-                                        className="w-24 px-2 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                        className="w-24 px-2 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                     >
                                         <option value="MB">MB</option>
                                         <option value="KB">KB</option>
@@ -2729,14 +2729,14 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                     placeholder="例如: pdf, docx, png, jpg"
                                     value={(settings.value as string) || ''}
                                     onChange={(e) => handleFieldChange('value', e.target.value)}
-                                    className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                    className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                             )}
                         </div>
 
                         {/* Branch Route Explanation */}
-                        <div className="mt-4 p-3 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-muted)/0.3)] space-y-2 text-xs">
-                            <p className="font-medium text-[hsl(var(--color-foreground))]">
+                        <div className="mt-4 p-3 rounded-lg border border-border bg-muted/30 space-y-2 text-xs">
+                            <p className="font-medium text-foreground">
                                 {locale === 'zh' ? '分支流向指引:' : 'Routing Guide:'}
                             </p>
                             <div className="flex items-start gap-1.5 text-emerald-700 dark:text-emerald-300">
@@ -2747,7 +2747,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                 <span className="font-bold">✗ False:</span>
                                 <span>{locale === 'zh' ? '不满足条件时流入此端口下游节点' : 'Files proceed here if condition is not met'}</span>
                             </div>
-                            <p className="text-[10px] text-[hsl(var(--color-muted-foreground))] pt-1 border-t border-[hsl(var(--color-border)/0.5)]">
+                            <p className="text-[10px] text-muted-foreground pt-1 border-t border-border/50">
                                 {locale === 'zh'
                                     ? '* 执行时未命中的下游分支将被自动跳过并置灰，无需担心额外开销。'
                                     : '* Inactive branch nodes will be skipped during execution.'}
@@ -2756,14 +2756,14 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                     </div>
                 ) : !config || config.fields.length === 0 ? (
                     <div className="text-center py-8">
-                        <Settings className="w-12 h-12 mx-auto text-[hsl(var(--color-muted-foreground))] opacity-50" />
-                        <p className="mt-3 text-sm text-[hsl(var(--color-muted-foreground))]">
+                        <Settings className="w-12 h-12 mx-auto text-muted-foreground opacity-50" />
+                        <p className="mt-3 text-sm text-muted-foreground">
                             {tWorkflow('noSettings') || 'No configurable settings for this tool'}
                         </p>
                     </div>
                 ) : (
                     <div className="space-y-4">
-                        <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                        <p className="text-sm text-muted-foreground">
                             {getTranslation(config.titleKey, 'Settings')}
                         </p>
 
@@ -2779,12 +2779,12 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                             return (
                             <div key={field.key} className="space-y-1.5">
-                                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))]">
+                                <label className="block text-sm font-medium text-foreground">
                                     {getTranslation(field.labelKey)}
                                 </label>
 
                                 {field.descriptionKey && (
-                                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                    <p className="text-xs text-muted-foreground">
                                         {getTranslation(field.descriptionKey)}
                                     </p>
                                 )}
@@ -2796,11 +2796,11 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] placeholder:text-[hsl(var(--color-muted-foreground))]"
+                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
                                     />
                                     {field.key === 'filename' && (
                                         <div className="pt-1">
-                                            <div className="flex items-center gap-1 text-[11px] text-[hsl(var(--color-muted-foreground))] mb-1">
+                                            <div className="flex items-center gap-1 text-[11px] text-muted-foreground mb-1">
                                                 <span>{locale === 'zh' ? '点击插入动态变量:' : 'Insert variable:'}</span>
                                             </div>
                                             <div className="flex flex-wrap gap-1">
@@ -2828,7 +2828,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                             }
                                                             handleFieldChange(field.key, next);
                                                         }}
-                                                        className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-primary)/0.15)] text-[hsl(var(--color-foreground))] hover:text-[hsl(var(--color-primary))] border border-[hsl(var(--color-border))] transition-colors"
+                                                        className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-muted hover:bg-primary/15 text-foreground hover:text-primary border border-border transition-colors"
                                                     >
                                                         + {token}
                                                     </button>
@@ -2847,15 +2847,15 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         min={field.min}
                                         max={field.max}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] placeholder:text-[hsl(var(--color-muted-foreground))]"
+                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
                                     />
                                 )}
 
                                 {field.type === 'select' && (
                                     <>
                                     {field.key === 'position' && field.options?.some(o => o.value === 'top-left' || o.value === 'center') && (
-                                        <div className="mb-2 p-2 bg-[hsl(var(--color-muted)/0.4)] rounded-lg border border-[hsl(var(--color-border))]">
-                                            <div className="text-[11px] text-[hsl(var(--color-muted-foreground))] mb-1.5 font-medium text-center">
+                                        <div className="mb-2 p-2 bg-muted/40 rounded-lg border border-border">
+                                            <div className="text-[11px] text-muted-foreground mb-1.5 font-medium text-center">
                                                 {locale === 'zh' ? '九宫格快速定位' : 'Position Grid'}
                                             </div>
                                             <div className="grid grid-cols-3 gap-1.5 max-w-[150px] mx-auto">
@@ -2866,7 +2866,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                         return (
                                                             <div
                                                                 key={pos.value}
-                                                                className="h-7 rounded border border-dashed border-[hsl(var(--color-border)/0.5)] bg-[hsl(var(--color-muted)/0.2)] opacity-30 cursor-not-allowed"
+                                                                className="h-7 rounded border border-dashed border-border/50 bg-muted/20 opacity-30 cursor-not-allowed"
                                                             />
                                                         );
                                                     }
@@ -2878,8 +2878,8 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                             onClick={() => handleFieldChange(field.key, pos.value)}
                                                             className={`h-7 text-xs font-semibold rounded border transition-all flex items-center justify-center ${
                                                                 isSelected
-                                                                    ? 'bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))] border-[hsl(var(--color-primary))] shadow-sm scale-105'
-                                                                    : 'bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.6)] hover:bg-[hsl(var(--color-primary)/0.05)]'
+                                                                    ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-105'
+                                                                    : 'bg-background text-foreground border-border hover:border-primary/60 hover:bg-primary/5'
                                                             }`}
                                                         >
                                                             {pos.label}
@@ -2892,7 +2892,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                     <select
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                     >
                                         {field.options?.map(opt => (
                                             <option key={opt.value} value={opt.value}>
@@ -2903,7 +2903,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                     {(() => {
                                         const selectedOpt = field.options?.find(o => o.value === (settings[field.key] as string));
                                         return selectedOpt?.descriptionKey ? (
-                                            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                                            <p className="text-xs text-muted-foreground mt-1">
                                                 {getTranslation(selectedOpt.descriptionKey)}
                                             </p>
                                         ) : null;
@@ -2917,7 +2917,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                             type="checkbox"
                                             checked={(settings[field.key] as boolean) || false}
                                             onChange={(e) => handleFieldChange(field.key, e.target.checked)}
-                                            className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                                            className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                                         />
                                     </label>
                                 )}
@@ -2931,11 +2931,11 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                             min={field.min}
                                             max={field.max}
                                             step={field.step}
-                                            className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
+                                            className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
                                         />
-                                        <div className="flex justify-between text-xs text-[hsl(var(--color-muted-foreground))]">
+                                        <div className="flex justify-between text-xs text-muted-foreground">
                                             <span>{field.min}</span>
-                                            <span className="font-medium text-[hsl(var(--color-foreground))]">
+                                            <span className="font-medium text-foreground">
                                                 {field.key.includes('opacity') || field.key.includes('quality')
                                                     ? `${Math.round((settings[field.key] as number || 0) * 100)}%`
                                                     : settings[field.key] as number
@@ -2952,13 +2952,13 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                             type="color"
                                             value={(settings[field.key] as string) || '#000000'}
                                             onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                            className="w-10 h-10 rounded border border-[hsl(var(--color-border))] cursor-pointer"
+                                            className="w-10 h-10 rounded border border-border cursor-pointer"
                                         />
                                         <input
                                             type="text"
                                             value={(settings[field.key] as string) || ''}
                                             onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                            className="flex-1 px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                                            className="flex-1 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                                         />
                                     </div>
                                 )}
@@ -2972,10 +2972,10 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                 const file = e.target.files?.[0] || null;
                                                 handleFieldChange(field.key, file);
                                             }}
-                                            className="w-full text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-[hsl(var(--color-primary))] file:text-[hsl(var(--color-primary-foreground))] hover:file:opacity-90 cursor-pointer"
+                                            className="w-full text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:opacity-90 cursor-pointer"
                                         />
                                         {settings[field.key] instanceof File && (
-                                            <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                                            <p className="text-xs text-muted-foreground">
                                                 {(settings[field.key] as File).name}
                                             </p>
                                         )}
@@ -2988,7 +2988,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] placeholder:text-[hsl(var(--color-muted-foreground))]"
+                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
                                     />
                                 )}
                             </div>
@@ -3000,7 +3000,7 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
             {/* Footer */}
             {(isConditionGateway || (config && config.fields.length > 0)) && (
-                <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[hsl(var(--color-border))] bg-[hsl(var(--color-muted)/0.3)]">
+                <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-border bg-muted/30">
                     <Button
                         variant="ghost"
                         size="sm"

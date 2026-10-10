@@ -154,7 +154,7 @@ const InputNode: React.FC<InputNodeProps> = ({
 
     return (
         <div
-            className={`relative min-w-[280px] max-w-[340px] rounded-xl border-2 transition-all duration-200 bg-[hsl(var(--color-card))] shadow-md text-[hsl(var(--color-card-foreground))] ${
+            className={`relative min-w-[280px] max-w-[340px] rounded-xl border-2 transition-all duration-200 bg-card shadow-md text-card-foreground ${
                 selected
                     ? 'border-emerald-500 shadow-lg shadow-emerald-500/20'
                     : 'border-emerald-200 dark:border-emerald-800/60 hover:border-emerald-400'
@@ -167,7 +167,7 @@ const InputNode: React.FC<InputNodeProps> = ({
                         {isImageNode ? <ImageIcon size={16} /> : <FileText size={16} />}
                     </div>
                     <div>
-                        <h4 className="text-xs font-semibold text-[hsl(var(--color-foreground))]">
+                        <h4 className="text-xs font-semibold text-foreground">
                             {data.label || (isImageNode ? '图片输入 (Image Input)' : 'PDF 输入 (PDF Input)')}
                         </h4>
                         <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
@@ -229,7 +229,7 @@ const InputNode: React.FC<InputNodeProps> = ({
                                         e.stopPropagation();
                                         window.dispatchEvent(new CustomEvent('workflow:open-preview'));
                                     }}
-                                    className="flex items-center gap-0.5 text-xs text-[hsl(var(--color-primary))] hover:underline cursor-pointer"
+                                    className="flex items-center gap-0.5 text-xs text-primary hover:underline cursor-pointer"
                                     title="打开实时预览窗口"
                                 >
                                     <Eye size={11} /> 预览
@@ -247,7 +247,7 @@ const InputNode: React.FC<InputNodeProps> = ({
                             {files.map((file, idx) => (
                                 <div
                                     key={`${file.name}-${idx}`}
-                                    className="flex items-center justify-between gap-2 px-2 py-1.5 rounded-md bg-[hsl(var(--color-muted)/0.5)] border border-[hsl(var(--color-border))] text-[11px]"
+                                    className="flex items-center justify-between gap-2 px-2 py-1.5 rounded-md bg-muted/50 border border-border text-[11px]"
                                 >
                                     <span className="truncate max-w-[155px] font-mono text-[11px]" title={file.name}>
                                         {file.name}
@@ -276,7 +276,7 @@ const InputNode: React.FC<InputNodeProps> = ({
                             className={`cursor-pointer rounded border border-dashed py-1 px-2 text-center transition-all ${
                                 isDragOver
                                     ? 'border-emerald-500 bg-emerald-50/60 dark:bg-emerald-950/40'
-                                    : 'border-[hsl(var(--color-border))] hover:border-emerald-400 hover:bg-emerald-50/10 dark:hover:bg-emerald-950/10'
+                                    : 'border-border hover:border-emerald-400 hover:bg-emerald-50/10 dark:hover:bg-emerald-950/10'
                             }`}
                         >
                             <span className="text-[10px] text-muted-foreground">
@@ -294,7 +294,7 @@ const InputNode: React.FC<InputNodeProps> = ({
                         className={`cursor-pointer rounded-lg border border-dashed p-3 text-center transition-all ${
                             isDragOver
                                 ? 'border-emerald-500 bg-emerald-50/60 dark:bg-emerald-950/40 scale-[0.99]'
-                                : 'border-[hsl(var(--color-border))] hover:border-emerald-400 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20'
+                                : 'border-border hover:border-emerald-400 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20'
                         }`}
                     >
                         <div className="flex flex-col items-center justify-center gap-1.5 text-muted-foreground">

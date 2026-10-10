@@ -203,7 +203,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -214,7 +214,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
       {files.length > 0 && (
         <Card className="p-6"  >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('linearizePdf.selectedFiles') || 'Selected Files'} ({files.length})
             </h3>
             <Button
@@ -231,7 +231,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
             {files.map((file, index) => (
               <div 
                 key={`${file.name}-${index}`}
-                className="flex items-center justify-between p-3 rounded-[var(--radius-sm)] bg-[hsl(var(--color-muted)/0.3)]"
+                className="flex items-center justify-between p-3 rounded-sm bg-muted/30"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex-shrink-0">
@@ -242,10 +242,10 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                    <p className="text-sm font-medium text-foreground">
                       {file.name}
                     </p>
-                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                    <p className="text-xs text-muted-foreground">
                       {formatSize(file.size)}
                     </p>
                   </div>
@@ -267,13 +267,13 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
       {/* Linearization Options */}
       {files.length > 0 && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('linearizePdf.optionsTitle') || 'Linearization Options'}
           </h3>
           
           <div className="space-y-4">
             {/* Info about linearization */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-blue-50 border border-blue-200">
+            <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
               <p className="text-sm text-blue-700">
                 {tTools('linearizePdf.info') || 'Linearization optimizes PDFs for fast web viewing. The first page will display before the entire file is downloaded, improving user experience for web-hosted documents.'}
               </p>
@@ -287,13 +287,13 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
                   checked={useObjectStreams}
                   onChange={(e) => setUseObjectStreams(e.target.checked)}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
                 <div>
-                  <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  <span className="text-sm text-foreground">
                     {tTools('linearizePdf.useObjectStreams') || 'Use object streams for better compression'}
                   </span>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {tTools('linearizePdf.useObjectStreamsDesc') || 'Recommended for smaller file sizes. Disable for maximum compatibility with older PDF readers.'}
                   </p>
                 </div>
@@ -343,7 +343,7 @@ export function LinearizePDFTool({ className = '' }: LinearizePDFToolProps) {
       {/* Results */}
       {status === 'complete' && result && stats && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium mb-2">

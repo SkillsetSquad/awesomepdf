@@ -256,7 +256,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
       {/* Error Message */}
       {error && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -268,15 +268,15 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
         <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
-                <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                 </svg>
               </div>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{formatSize(file.file.size)}</p>
+                <p className="font-medium text-foreground">{file.file.name}</p>
+                <p className="text-sm text-muted-foreground">{formatSize(file.file.size)}</p>
               </div>
             </div>
             <Button
@@ -295,7 +295,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
       {/* Options Panel */}
       {file && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToImage.optionsTitle') || 'Conversion Options'}
           </h3>
 
@@ -303,7 +303,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {/* Output Format */}
             {!outputFormat && (
               <div>
-                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   {tTools('pdfToImage.format') || 'Output Format'}
                 </label>
                 <Select
@@ -323,7 +323,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {/* Quality (for lossy formats) */}
             {['jpg', 'jpeg', 'webp'].includes(format) && (
               <div>
-                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   {tTools('pdfToImage.quality') || 'Quality'} ({Math.round(quality * 100)}%)
                 </label>
                 <input
@@ -341,7 +341,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Scale/DPI */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToImage.resolution') || 'Resolution'}
               </label>
               <Select
@@ -358,7 +358,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Page Range */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToImage.pageRange') || 'Page Range'}
               </label>
               <input
@@ -367,17 +367,17 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToImage.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToImage.pageRangeHint') || 'Leave empty for all pages'}
               </p>
             </div>
           </div>
 
           {/* Page Layout Section */}
-          <div className="mt-4 pt-4 border-t border-[hsl(var(--color-border))]">
-            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-3">
+          <div className="mt-4 pt-4 border-t border-border">
+            <label className="block text-sm font-medium text-foreground mb-3">
               {tTools('pdfToImage.layoutTitle') || 'Page Layout'}
             </label>
 
@@ -399,8 +399,8 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   className={`
                     p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-1.5
                     ${layoutPreset === preset.value
-                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.05)]'
-                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                      ? 'border-primary bg-primary/5'
+                      : 'border-border hover:border-primary/50'
                     }
                     disabled:opacity-50 disabled:cursor-not-allowed
                   `}
@@ -419,15 +419,15 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                       <div
                         key={idx}
                         className={`rounded-sm ${layoutPreset === preset.value
-                          ? 'bg-[hsl(var(--color-primary))]'
-                          : 'bg-[hsl(var(--color-muted-foreground)/0.3)]'
+                          ? 'bg-primary'
+                          : 'bg-muted-foreground/30'
                           }`}
                       />
                     ))}
                   </div>
                   <span className={`text-xs font-medium ${layoutPreset === preset.value
-                    ? 'text-[hsl(var(--color-primary))]'
-                    : 'text-[hsl(var(--color-muted-foreground))]'
+                    ? 'text-primary'
+                    : 'text-muted-foreground'
                     }`}>
                     {preset.label}
                   </span>
@@ -437,9 +437,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Custom Layout Inputs */}
             {layoutPreset === 'custom' && (
-              <div className="flex gap-4 mb-4 p-3 rounded-lg bg-[hsl(var(--color-muted)/0.3)]">
+              <div className="flex gap-4 mb-4 p-3 rounded-lg bg-muted/30">
                 <div className="flex-1">
-                  <label className="block text-xs font-medium text-[hsl(var(--color-foreground))] mb-1">
+                  <label className="block text-xs font-medium text-foreground mb-1">
                     {tTools('pdfToImage.columns') || 'Columns'}
                   </label>
                   <input
@@ -449,11 +449,11 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customColumns}
                     onChange={(e) => setCustomColumns(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-xs font-medium text-[hsl(var(--color-foreground))] mb-1">
+                  <label className="block text-xs font-medium text-foreground mb-1">
                     {tTools('pdfToImage.rows') || 'Rows'}
                   </label>
                   <input
@@ -463,7 +463,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
@@ -477,9 +477,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   checked={skipFirstPage}
                   onChange={(e) => setSkipFirstPage(e.target.checked)}
                   disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                  className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                 />
-                <span className="text-sm text-[hsl(var(--color-foreground))]">
+                <span className="text-sm text-foreground">
                   {tTools('pdfToImage.skipFirstPage') || 'Without first/cover page'}
                 </span>
               </label>
@@ -487,10 +487,10 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Layout Preview */}
             {layoutPreset !== '1x1' && (
-              <div className="p-4 rounded-xl bg-gradient-to-br from-[hsl(var(--color-muted))] to-[hsl(var(--color-background))] border border-[hsl(var(--color-border))]">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-muted to-background border border-border">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-[hsl(var(--color-primary))]"></div>
-                  <h4 className="text-sm font-semibold text-[hsl(var(--color-foreground))]">
+                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <h4 className="text-sm font-semibold text-foreground">
                     {tTools('pdfToImage.layoutPreview') || 'Layout Preview'}
                   </h4>
                 </div>
@@ -498,7 +498,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                   {/* Grid visualization */}
                   <div
-                    className="border-2 border-[hsl(var(--color-primary)/0.3)] rounded-lg p-3 bg-white"
+                    className="border-2 border-primary/30 rounded-lg p-3 bg-white"
                     style={{ width: '140px', height: '100px' }}
                   >
                     <div
@@ -511,7 +511,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                       {Array.from({ length: (layoutPreset === 'custom' ? customColumns * customRows : parseInt(layoutPreset.split('x')[0]) * parseInt(layoutPreset.split('x')[1])) }).map((_, idx) => (
                         <div
                           key={idx}
-                          className="bg-gradient-to-br from-[hsl(var(--color-primary)/0.15)] to-[hsl(var(--color-primary)/0.05)] border border-[hsl(var(--color-primary)/0.2)] rounded flex items-center justify-center text-xs font-bold text-[hsl(var(--color-primary))]"
+                          className="bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20 rounded flex items-center justify-center text-xs font-bold text-primary"
                         >
                           {idx + 1}
                         </div>
@@ -520,9 +520,9 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   </div>
 
                   {/* Info */}
-                  <div className="flex-1 text-sm text-[hsl(var(--color-muted-foreground))]">
+                  <div className="flex-1 text-sm text-muted-foreground">
                     <p>
-                      <span className="font-medium text-[hsl(var(--color-foreground))]">
+                      <span className="font-medium text-foreground">
                         {layoutPreset === 'custom' ? `${customColumns}×${customRows}` : layoutPreset.replace('x', '×')}
                       </span>
                       {' '}{tTools('pdfToImage.pagesPerImage') || 'pages per image'}
@@ -537,7 +537,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
               </div>
             )}
 
-            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-3">
+            <p className="text-xs text-muted-foreground mt-3">
               {tTools('pdfToImage.layoutHint') || 'Combine multiple PDF pages into a single image with the selected grid layout.'}
             </p>
           </div>
@@ -594,13 +594,13 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
       {/* Image Preview for multiple images */}
       {isMultipleImages && (
         <Card className="p-6"  >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToImage.previewTitle') || 'Converted Images'} ({(result as Blob[]).length})
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {(result as Blob[]).map((blob, index) => (
               <div key={index} className="relative group">
-                <div className="aspect-[3/4] rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] overflow-hidden bg-[hsl(var(--color-muted)/0.3)]">
+                <div className="aspect-[3/4] rounded-md border border-border overflow-hidden bg-muted/30">
                   <img
                     src={URL.createObjectURL(blob)}
                     alt={`Page ${index + 1}`}
@@ -626,7 +626,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
       {/* Success Message */}
       {status === 'complete' && result && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

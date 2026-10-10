@@ -202,7 +202,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -214,15 +214,15 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
         <Card className="p-6"  >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center">
-                <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                 </svg>
               </div>
               <div>
-                <p className="font-medium text-[hsl(var(--color-foreground))]">{file.file.name}</p>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{formatSize(file.file.size)}</p>
+                <p className="font-medium text-foreground">{file.file.name}</p>
+                <p className="text-sm text-muted-foreground">{formatSize(file.file.size)}</p>
               </div>
             </div>
             <Button
@@ -240,21 +240,21 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
       {/* Options Panel */}
       {file && (
         <Card className="p-6" >
-          <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-4">
             {tTools('pdfToGreyscale.optionsTitle') || 'Greyscale Options'}
           </h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Greyscale Method */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToGreyscale.method') || 'Conversion Method'}
               </label>
               <select
                 value={method}
                 onChange={(e) => setMethod(e.target.value as PDFToGreyscaleOptions['method'])}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="luminosity">{tTools('pdfToGreyscale.methodLuminosity') || 'Luminosity (Recommended)'}</option>
                 <option value="average">{tTools('pdfToGreyscale.methodAverage') || 'Average'}</option>
@@ -264,14 +264,14 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
             {/* Quality/Scale */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToGreyscale.quality') || 'Quality'}
               </label>
               <select
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="1">{tTools('pdfToGreyscale.qualityLow') || 'Low (Faster)'}</option>
                 <option value="2">{tTools('pdfToGreyscale.qualityMedium') || 'Medium (Recommended)'}</option>
@@ -281,7 +281,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
 
             {/* Page Range */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToGreyscale.pageRange') || 'Page Range'}
               </label>
               <input
@@ -290,9 +290,9 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToGreyscale.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToGreyscale.pageRangeHint') || 'Leave empty for all pages'}
               </p>
             </div>
@@ -340,7 +340,7 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">

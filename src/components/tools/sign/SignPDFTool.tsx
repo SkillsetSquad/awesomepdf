@@ -303,7 +303,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {/* Quick Action Header: Signature Extractor & Library */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/80 to-sky-50/80 border border-blue-200 rounded-[var(--radius-lg)] shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/80 to-sky-50/80 border border-blue-200 rounded-lg shadow-xs">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm flex-shrink-0">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -371,7 +371,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-[var(--radius-md)] flex items-center justify-between shadow-xs animate-in fade-in duration-200">
+        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-md flex items-center justify-between shadow-xs animate-in fade-in duration-200">
           <div className="flex items-center gap-2">
             <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -405,7 +405,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       {/* Error Message */}
       {error && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -424,10 +424,10 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
                   <path d="M14 2v6h6" fill="white" />
                 </svg>
                 <div>
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                  <p className="text-sm font-medium text-foreground">
                     {signState.file.name}
                   </p>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {(signState.file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                 </div>
@@ -462,7 +462,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           </Card>
 
           {/* PDF.js Viewer Iframe */}
-          <div className="border border-[hsl(var(--color-border))] rounded-[var(--radius-lg)] overflow-hidden">
+          <div className="border border-border rounded-lg overflow-hidden">
             <iframe
               key={signState.file.name + signState.file.lastModified}
               ref={iframeRef}

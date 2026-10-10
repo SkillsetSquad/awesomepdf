@@ -221,7 +221,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
 
       {error && (
         <div
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -239,10 +239,10 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
                   <path d="M14 2v6h6" fill="white" />
                 </svg>
                 <div>
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate max-w-[240px] sm:max-w-md">
+                  <p className="text-sm font-medium text-foreground truncate max-w-[240px] sm:max-w-md">
                     {file.name}
                   </p>
-                  <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                  <p className="text-xs text-muted-foreground">
                     {(file.size / (1024 * 1024)).toFixed(2)} MB
                   </p>
                 </div>
@@ -290,7 +290,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
 
           {/* Direct In-place Text/Image Editor Mode */}
           {editMode === 'direct' && (
-            <div className="relative border border-[hsl(var(--color-border))] rounded-2xl overflow-hidden bg-[hsl(var(--color-card))] shadow-sm">
+            <div className="relative border border-border rounded-2xl overflow-hidden bg-card shadow-sm">
               <iframe
                 ref={iframeRef}
                 src={`/direct-pdf-editor/index.html?lang=${encodeURIComponent(locale || 'en')}`}
@@ -302,9 +302,9 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
               />
               {!isEditorReady && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-950/80 z-10 backdrop-blur-md">
-                  <div className="text-center p-6 rounded-2xl bg-white dark:bg-gray-900 border border-[hsl(var(--color-border))] shadow-lg">
+                  <div className="text-center p-6 rounded-2xl bg-white dark:bg-gray-900 border border-border shadow-lg">
                     <div className="animate-spin rounded-full h-9 w-9 border-2 border-blue-600 border-t-transparent mx-auto mb-3"></div>
-                    <p className="text-sm font-semibold text-[hsl(var(--color-foreground))]">
+                    <p className="text-sm font-semibold text-foreground">
                       {t('status.loading') || 'Loading...'}
                     </p>
                   </div>

@@ -14,8 +14,8 @@ const WorkflowEditor = dynamic(
         loading: () => (
             <div className="flex items-center justify-center h-full">
                 <div className="flex flex-col items-center gap-4">
-                    <div className="w-10 h-10 border-3 border-[hsl(var(--color-primary))] border-t-transparent rounded-full animate-spin" />
-                    <p className="text-[hsl(var(--color-muted-foreground))]">Loading workflow editor...</p>
+                    <div className="w-10 h-10 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+                    <p className="text-muted-foreground">Loading workflow editor...</p>
                 </div>
             </div>
         )
@@ -31,16 +31,16 @@ export default function WorkflowPageClient({ locale }: WorkflowPageClientProps) 
     const tWorkflow = useTranslations('workflow');
 
     return (
-        <div className="h-screen flex flex-col bg-[hsl(var(--color-background))]">
+        <div className="h-screen flex flex-col bg-background">
             {/* Compact Top Navigation Bar - 48px */}
-            <header className="h-12 flex-shrink-0 border-b border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] px-4 flex items-center justify-between">
+            <header className="h-12 flex-shrink-0 border-b border-border bg-background px-4 flex items-center justify-between">
                 {/* Left: Logo and Title */}
                 <div className="flex items-center gap-3">
                     <Link
                         href={`/${locale}`}
-                        className="flex items-center gap-2 text-[hsl(var(--color-foreground))] hover:text-[hsl(var(--color-primary))] transition-colors"
+                        className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
                     >
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(var(--color-primary))] to-[hsl(var(--color-accent))] shadow-sm">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent shadow-sm">
                             <svg
                                 className="h-4 w-4 text-white"
                                 viewBox="0 0 24 24"
@@ -57,11 +57,11 @@ export default function WorkflowPageClient({ locale }: WorkflowPageClientProps) 
                         <span className="font-semibold text-sm hidden sm:inline">{t('brand')}</span>
                     </Link>
 
-                    <span className="text-[hsl(var(--color-border))]">|</span>
+                    <span className="text-border">|</span>
 
                     <div className="flex items-center gap-1.5">
-                        <GitBranch className="w-4 h-4 text-[hsl(var(--color-primary))]" />
-                        <h1 className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                        <GitBranch className="w-4 h-4 text-primary" />
+                        <h1 className="text-sm font-medium text-foreground">
                             {tWorkflow('title') || 'PDF Workflow Builder'}
                         </h1>
                     </div>
@@ -71,28 +71,28 @@ export default function WorkflowPageClient({ locale }: WorkflowPageClientProps) 
                 <nav className="flex items-center gap-1">
                     <Link
                         href={`/${locale}`}
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] rounded-md transition-colors"
+                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
                     >
                         <Home className="w-3.5 h-3.5" />
                         <span className="hidden md:inline">{t('navigation.home')}</span>
                     </Link>
                     <Link
                         href={`/${locale}/tools`}
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] rounded-md transition-colors"
+                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
                     >
                         <Wrench className="w-3.5 h-3.5" />
                         <span className="hidden md:inline">{t('navigation.tools')}</span>
                     </Link>
                     <Link
                         href={`/${locale}/about`}
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] rounded-md transition-colors"
+                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
                     >
                         <FileText className="w-3.5 h-3.5" />
                         <span className="hidden md:inline">{t('navigation.about')}</span>
                     </Link>
                     <Link
                         href={`/${locale}/faq`}
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] rounded-md transition-colors"
+                        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
                     >
                         <HelpCircle className="w-3.5 h-3.5" />
                         <span className="hidden md:inline">{t('navigation.faq')}</span>

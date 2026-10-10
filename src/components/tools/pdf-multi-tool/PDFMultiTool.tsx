@@ -519,7 +519,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
       {pagePreviews.length > 0 && (
         <Card className="p-6"  >
           {/* Toolbar */}
-          <div className="flex flex-wrap items-center gap-2 pb-4 mb-4 border-b border-[hsl(var(--color-border))]">
+          <div className="flex flex-wrap items-center gap-2 pb-4 mb-4 border-b border-border">
             {/* Edit Actions */}
             <div className="flex items-center gap-1">
               <Button
@@ -560,7 +560,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               </Button>
             </div>
 
-            <div className="w-px h-6 bg-[hsl(var(--color-border))]" />
+            <div className="w-px h-6 bg-border" />
 
             {/* Selection Actions */}
             <div className="flex items-center gap-1">
@@ -572,7 +572,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               </Button>
             </div>
 
-            <div className="w-px h-6 bg-[hsl(var(--color-border))]" />
+            <div className="w-px h-6 bg-border" />
 
             {/* Rotate Actions */}
             <div className="flex items-center gap-1">
@@ -590,7 +590,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               </Button>
             </div>
 
-            <div className="w-px h-6 bg-[hsl(var(--color-border))]" />
+            <div className="w-px h-6 bg-border" />
 
             {/* Transform Actions */}
             <div className="flex items-center gap-1">
@@ -614,7 +614,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
               </Button>
             </div>
 
-            <div className="w-px h-6 bg-[hsl(var(--color-border))]" />
+            <div className="w-px h-6 bg-border" />
 
             {/* Delete Action */}
             <Button
@@ -634,7 +634,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             <div className="flex-1" />
 
             {/* Info */}
-            <div className="text-sm text-[hsl(var(--color-muted-foreground))]">
+            <div className="text-sm text-muted-foreground">
               {totalPages} {totalPages === 1 ? 'page' : 'pages'}
               {selectedCount > 0 && ` • ${selectedCount} selected`}
             </div>
@@ -649,8 +649,8 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
           {isLoadingPreviews ? (
             <div className="flex items-center justify-center py-16">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[hsl(var(--color-primary))] border-t-transparent rounded-full animate-spin" />
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <p className="text-sm text-muted-foreground">
                   {t('status.loading') || 'Loading previews...'}
                 </p>
               </div>
@@ -668,7 +668,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   className={`
                     group relative rounded-lg cursor-grab transition-all duration-200
                     ${draggedIndex === index ? 'opacity-50 scale-95' : ''}
-                    ${dragOverIndex === index ? 'ring-2 ring-[hsl(var(--color-primary))] ring-offset-2' : ''}
+                    ${dragOverIndex === index ? 'ring-2 ring-primary ring-offset-2' : ''}
                   `}
                 >
                   {/* Page Card */}
@@ -677,8 +677,8 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                     className={`
                       relative aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer
                       ${page.selected
-                        ? 'border-[hsl(var(--color-primary))] ring-2 ring-[hsl(var(--color-primary)/0.3)]'
-                        : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                        ? 'border-primary ring-2 ring-primary/30'
+                        : 'border-border hover:border-primary/50'
                       }
                     `}
                   >
@@ -691,8 +691,8 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         draggable={false}
                       />
                     ) : (
-                      <div className="w-full h-full bg-[hsl(var(--color-muted))] flex items-center justify-center">
-                        <span className="text-lg font-medium text-[hsl(var(--color-muted-foreground))]">
+                      <div className="w-full h-full bg-muted flex items-center justify-center">
+                        <span className="text-lg font-medium text-muted-foreground">
                           {page.sourceFileIndex === -1 ? '◻' : page.originalPageNumber}
                         </span>
                       </div>
@@ -700,7 +700,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
                     {/* Selection indicator */}
                     {page.selected && (
-                      <div className="absolute top-2 left-2 w-5 h-5 bg-[hsl(var(--color-primary))] rounded-full flex items-center justify-center">
+                      <div className="absolute top-2 left-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
@@ -738,12 +738,12 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
                   {/* Page Info */}
                   <div className="mt-1 text-center">
-                    <p className="text-xs font-medium text-[hsl(var(--color-foreground))]">
+                    <p className="text-xs font-medium text-foreground">
                       {index + 1}
-                      {page.rotation !== 0 && <span className="text-[hsl(var(--color-muted-foreground))]"> ({page.rotation}°)</span>}
+                      {page.rotation !== 0 && <span className="text-muted-foreground"> ({page.rotation}°)</span>}
                     </p>
                     {sourceFiles.length > 1 && page.sourceFileIndex >= 0 && (
-                      <p className="text-[10px] text-[hsl(var(--color-muted-foreground))] truncate" title={page.sourceFileName}>
+                      <p className="text-[10px] text-muted-foreground truncate" title={page.sourceFileName}>
                         {page.sourceFileName.length > 12 ? page.sourceFileName.slice(0, 10) + '...' : page.sourceFileName}
                       </p>
                     )}
@@ -795,7 +795,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
           )}
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-4 mt-4 border-t border-[hsl(var(--color-border))]">
+          <div className="flex flex-wrap items-center gap-3 pt-4 mt-4 border-t border-border">
             <Button
               variant="outline"
               size="default"
@@ -847,7 +847,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2 text-[hsl(var(--color-muted-foreground))]">
+                <label className="block text-sm font-medium mb-2 text-muted-foreground">
                   {tTools('pdfMultiTool.numberOfPages') || 'Number of pages'}
                 </label>
                 <input
@@ -856,11 +856,11 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   max="100"
                   value={blankPageCount}
                   onChange={(e) => setBlankPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-lg bg-[hsl(var(--color-background))]"
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-[hsl(var(--color-muted-foreground))]">
+                <label className="block text-sm font-medium mb-2 text-muted-foreground">
                   {tTools('pdfMultiTool.insertPosition') || 'Insert at position'}
                 </label>
                 <input
@@ -869,7 +869,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   max={pagePreviews.length + 1}
                   value={blankPagePosition}
                   onChange={(e) => setBlankPagePosition(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-full px-3 py-2 border border-[hsl(var(--color-border))] rounded-lg bg-[hsl(var(--color-background))]"
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background"
                 />
               </div>
               <div className="flex gap-3 mt-6">

@@ -129,7 +129,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             />
 
             {error && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700" role="alert">
+                <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700" role="alert">
                     <p className="text-sm">{error}</p>
                 </div>
             )}
@@ -137,7 +137,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             {hasFiles && (
                 <Card className="p-6"  >
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+                        <h3 className="text-lg font-medium text-foreground">
                             {tTools('pdfToPdfa.filesTitle') || 'Files to Convert'} ({files.length})
                         </h3>
                         <Button variant="ghost" size="sm" onClick={clearFiles} disabled={isProcessing}>
@@ -148,13 +148,13 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
 
                     <div className="space-y-2 max-h-64 overflow-y-auto">
                         {files.map((batchFile) => (
-                            <div key={batchFile.id} className="flex items-center justify-between p-3 bg-[hsl(var(--color-muted)/0.3)] rounded-[var(--radius-md)]">
+                            <div key={batchFile.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-md">
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     {getStatusIcon(batchFile.status)}
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate">{batchFile.file.name}</p>
+                                        <p className="text-sm font-medium text-foreground truncate">{batchFile.file.name}</p>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xs text-[hsl(var(--color-muted-foreground))]">{formatSize(batchFile.file.size)}</span>
+                                            <span className="text-xs text-muted-foreground">{formatSize(batchFile.file.size)}</span>
                                             {batchFile.status === 'processing' && <span className="text-xs text-blue-500">{batchFile.progress}%</span>}
                                             {batchFile.status === 'completed' && <span className="text-xs text-green-500">✓ PDF/A</span>}
                                             {batchFile.status === 'error' && <span className="text-xs text-red-500">{batchFile.error}</span>}
@@ -165,7 +165,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                                     <DownloadButton file={batchFile.result} filename={`${batchFile.file.name.replace('.pdf', '')}_pdfa.pdf`} variant="ghost" size="sm" />
                                 )}
                                 {batchFile.status === 'pending' && !isProcessing && (
-                                    <button onClick={() => removeFile(batchFile.id)} className="p-1 text-[hsl(var(--color-muted-foreground))] hover:text-red-500 transition-colors" aria-label="Remove file">
+                                    <button onClick={() => removeFile(batchFile.id)} className="p-1 text-muted-foreground hover:text-red-500 transition-colors" aria-label="Remove file">
                                         <X className="w-4 h-4" />
                                     </button>
                                 )}
@@ -177,13 +177,13 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
 
             {hasFiles && (
                 <Card className="p-6" >
-                    <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
+                    <h3 className="text-lg font-medium text-foreground mb-4">
                         {tTools('pdfToPdfa.optionsTitle') || 'PDF/A Options'}
                     </h3>
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('pdfToPdfa.levelLabel') || 'PDF/A Level'}
                             </label>
                             <div className="grid grid-cols-3 gap-2">
@@ -193,17 +193,17 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                                         type="button"
                                         onClick={() => setLevel(lvl)}
                                         disabled={isProcessing}
-                                        className={`px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium transition-colors duration-200
+                                        className={`px-4 py-2 rounded-md border text-sm font-medium transition-colors duration-200
                       ${level === lvl
-                                                ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]'
-                                                : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'}
+                                                ? 'border-primary bg-primary text-primary-foreground'
+                                                : 'border-border hover:bg-muted/50'}
                       disabled:opacity-50 disabled:cursor-not-allowed`}
                                     >
                                         PDF/A-{lvl.toUpperCase()}
                                     </button>
                                 ))}
                             </div>
-                            <p className="mt-2 text-xs text-[hsl(var(--color-muted-foreground))]">
+                            <p className="mt-2 text-xs text-muted-foreground">
                                 {PDFA_LEVEL_INFO[level].description}
                             </p>
                         </div>
@@ -216,7 +216,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                                 disabled={isProcessing}
                                 className="w-4 h-4 rounded"
                             />
-                            <span className="text-sm text-[hsl(var(--color-foreground))]">
+                            <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.embedFontsLabel') || 'Embed all fonts'}
                             </span>
                         </label>
@@ -229,7 +229,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
                                 disabled={isProcessing}
                                 className="w-4 h-4 rounded"
                             />
-                            <span className="text-sm text-[hsl(var(--color-foreground))]">
+                            <span className="text-sm text-foreground">
                                 {tTools('pdfToPdfa.flattenTransparencyLabel') || 'Flatten transparency (required for PDF/A-1b)'}
                             </span>
                         </label>
@@ -262,7 +262,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
             </div>
 
             {allCompleted && (
-                <div className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700" role="status">
+                <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700" role="status">
                     <p className="text-sm font-medium">
                         {tTools('pdfToPdfa.successMessage') || `Successfully converted ${completedCount} file(s) to PDF/A!`}
                     </p>

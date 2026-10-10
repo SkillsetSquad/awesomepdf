@@ -196,15 +196,15 @@ export function RTFToPDFTool({ className = '' }: RTFToPDFToolProps) {
                 <Card   className="glass-card">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-[hsl(var(--color-primary)/0.1)] flex items-center justify-center text-[hsl(var(--color-primary))]">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                                 <FileType className="w-6 h-6" />
                             </div>
                             <div>
-                                <p className="font-semibold text-[hsl(var(--color-foreground))]">{file.file.name}</p>
-                                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">{formatSize(file.file.size)}</p>
+                                <p className="font-semibold text-foreground">{file.file.name}</p>
+                                <p className="text-sm text-muted-foreground">{formatSize(file.file.size)}</p>
                             </div>
                         </div>
-                        <Button variant="ghost" size="sm" onClick={handleRemoveFile} disabled={isProcessing} className="text-[hsl(var(--color-muted-foreground))] hover:text-red-500 hover:bg-red-50">
+                        <Button variant="ghost" size="sm" onClick={handleRemoveFile} disabled={isProcessing} className="text-muted-foreground hover:text-red-500 hover:bg-red-50">
                             <Trash2 className="w-5 h-5" />
                         </Button>
                     </div>

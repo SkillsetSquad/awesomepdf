@@ -195,7 +195,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -215,10 +215,10 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                <p className="text-sm font-medium text-foreground">
                   {file.name}
                 </p>
-                <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                <p className="text-xs text-muted-foreground">
                   {formatSize(file.size)}
                 </p>
               </div>
@@ -239,7 +239,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
       {file && (
         <Card className="p-6" >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
+            <h3 className="text-lg font-medium text-foreground">
               {tTools('removeMetadata.optionsTitle') || 'Select Metadata to Remove'}
             </h3>
             <div className="flex gap-2">
@@ -254,7 +254,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
           
           <div className="space-y-4">
             {/* Info */}
-            <div className="p-3 rounded-[var(--radius-sm)] bg-blue-50 border border-blue-200">
+            <div className="p-3 rounded-sm bg-blue-50 border border-blue-200">
               <p className="text-sm text-blue-700">
                 {tTools('removeMetadata.info') || 'Removing metadata helps protect your privacy by stripping identifying information from the PDF.'}
               </p>
@@ -269,9 +269,9 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
                     checked={options[key]}
                     onChange={() => handleOptionChange(key)}
                     disabled={isProcessing}
-                    className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                    className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
                   />
-                  <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  <span className="text-sm text-foreground">
                     {label}
                   </span>
                 </label>
@@ -321,7 +321,7 @@ export function RemoveMetadataTool({ className = '' }: RemoveMetadataToolProps) 
       {/* Success Message */}
       {status === 'complete' && result && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
+          className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
           <p className="text-sm font-medium">
