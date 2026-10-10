@@ -518,11 +518,21 @@
       "goldWax": "皇家黄金",
       "redWax": "复古深红",
       "bronzeWax": "古铜赤金",
-      "enableDoubleKey": "启用证书双钥锁 (256位强加密)",
-      "decryptPasswordHelp": "设置解密所持密码 (PFX 解密密钥)",
+      "enableDoubleKey": "为签署证书加密（AES-256）",
+      "decryptPasswordHelp": "证书密码",
       "passwordPlaceholder": "默认密码: pdfcraft",
-      "sealCoordinates": "数字证书盖印坐标: X: {x}px, Y: {y}px",
-      "clickToReposition": "在白纸处点击以重定位印章"
+      "sealCoordinates": "PDF 点数单位的火漆中心：X: {x}，Y: {y}",
+      "clickToReposition": "点击或使用方向键放置火漆。百分比从左上角计算。",
+      "previewTitle": "第一页的火漆位置",
+      "positionX": "水平位置（%）",
+      "positionY": "垂直位置（%）",
+      "certificateLabel": "签署证书（.p12 / .pfx）",
+      "certificateDescription": "选填。未选择证书时会创建本机证书。",
+      "removeCertificate": "移除签署证书",
+      "certificateDownload": "下载签署证书（.p12）",
+      "passwordHelp": "用于解锁指定证书或保护新 .p12。新证书在此字段为空时使用 pdfcraft。",
+      "localCertificateHelp": "本机证书为自签名，PDF 阅读器可能不信任它。请保留下载的 .p12。",
+      "encryptedHelp": "需要在兼容的 PDF 阅读器中使用此证书的私钥。请保留 .p12 或 .pfx 证书。"
     },
     "citationLinker": {
       "uploadLabel": "上传带有参考文献列表的学术 PDF",
@@ -3222,11 +3232,11 @@
       "dilationAmount": "字迹膨胀加粗程度"
     },
     "certCryptor": {
-      "uploadLabel": "上传待保护PDF",
-      "uploadDescription": "拖放PDF文件到此处以放置3D火漆印章及证书锁。",
-      "optionsTitle": "物理签名与证书加密选项",
-      "processButton": "执行黄金蜡封签名",
-      "successMessage": "3D火漆签名与双钥证书加密已成功执行！",
+      "uploadLabel": "选择 PDF",
+      "uploadDescription": "选择 PDF 以放置火漆并在本机签署。",
+      "optionsTitle": "火漆与证书",
+      "processButton": "加盖火漆并签署",
+      "successMessage": "已签署的 PDF 已就绪。",
       "waxColor": "火漆蜡色",
       "signCoordinates": "盖印坐标"
     },

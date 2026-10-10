@@ -518,11 +518,21 @@
       "goldWax": "Sigillo d'oro reale",
       "redWax": "Rosso scuro vintage",
       "bronzeWax": "Bronzo cremisi antico",
-      "enableDoubleKey": "Abilita crittografia certificato a doppia chiave (Blocco sicuro a 256 bit)",
-      "decryptPasswordHelp": "Imposta password della chiave di decrittografia PFX",
+      "enableDoubleKey": "Cifra per il certificato di firma (AES-256)",
+      "decryptPasswordHelp": "Password del certificato",
       "passwordPlaceholder": "Password predefinita: pdfcraft",
-      "sealCoordinates": "Coordinate del sigillo: X: {x}px, Y: {y}px",
-      "clickToReposition": "Clicca in un punto qualsiasi per riposizionare il sigillo in ceralacca"
+      "sealCoordinates": "Centro del sigillo in punti PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Fai clic o usa i tasti freccia. Le percentuali partono dall’angolo superiore sinistro.",
+      "previewTitle": "Posizione del sigillo sulla prima pagina",
+      "positionX": "Posizione orizzontale (%)",
+      "positionY": "Posizione verticale (%)",
+      "certificateLabel": "Certificato di firma (.p12 / .pfx)",
+      "certificateDescription": "Facoltativo. Senza un certificato selezionato ne viene creato uno locale.",
+      "removeCertificate": "Rimuovi certificato di firma",
+      "certificateDownload": "Scarica certificato di firma (.p12)",
+      "passwordHelp": "Sblocca un certificato o protegge il nuovo .p12. I nuovi certificati usano pdfcraft se il campo è vuoto.",
+      "localCertificateHelp": "I certificati locali sono autofirmati e i lettori PDF potrebbero non considerarli attendibili. Conserva il .p12 scaricato.",
+      "encryptedHelp": "Richiede la chiave privata del certificato in un lettore PDF compatibile. Conserva il certificato .p12 o .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Carica PDF accademico con bibliografie",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Raggio del carattere in grassetto (dilatazione)."
     },
     "certCryptor": {
-      "uploadLabel": "Carica PDF in modo sicuro",
-      "uploadDescription": "Trascina e rilascia qui il tuo PDF per applicare un sigillo di ceralacca 3D e un lucchetto con certificato.",
-      "optionsTitle": "Sigillo di ceralacca e certificato di sicurezza",
-      "processButton": "Eseguire la firma del sigillo di ceralacca",
-      "successMessage": "Impronta del sigillo di cera 3D e crittografia basata su certificato applicate con successo!",
+      "uploadLabel": "Seleziona un PDF",
+      "uploadDescription": "Scegli un PDF per posizionare un sigillo di cera e firmare localmente.",
+      "optionsTitle": "Sigillo di cera e certificato",
+      "processButton": "Applica sigillo e firma",
+      "successMessage": "Il PDF firmato è pronto.",
       "waxColor": "Stile sigillo di cera",
       "signCoordinates": "Posizionamento della firma"
     },

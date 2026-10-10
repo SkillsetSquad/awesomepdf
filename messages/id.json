@@ -518,11 +518,21 @@
       "goldWax": "Segel Emas Kerajaan",
       "redWax": "Merah Tua Klasik",
       "bronzeWax": "Perunggu Merah Kuno",
-      "enableDoubleKey": "Aktifkan Dekripsi Kunci Ganda Sertifikat (Kunci Kuat 256-bit)",
-      "decryptPasswordHelp": "Atur Kata Sandi Kunci Dekripsi PFX",
+      "enableDoubleKey": "Enkripsi untuk sertifikat penandatanganan (AES-256)",
+      "decryptPasswordHelp": "Kata sandi sertifikat",
       "passwordPlaceholder": "Kata sandi bawaan: pdfcraft",
-      "sealCoordinates": "Koordinat Segel: X: {x}px, Y: {y}px",
-      "clickToReposition": "Klik di mana saja untuk memindahkan posisi segel lilin"
+      "sealCoordinates": "Pusat segel dalam poin PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Klik atau gunakan tombol panah. Persentase dihitung dari sudut kiri atas.",
+      "previewTitle": "Posisi segel pada halaman pertama",
+      "positionX": "Posisi horizontal (%)",
+      "positionY": "Posisi vertikal (%)",
+      "certificateLabel": "Sertifikat penandatanganan (.p12 / .pfx)",
+      "certificateDescription": "Opsional. Sertifikat lokal dibuat jika tidak ada sertifikat yang dipilih.",
+      "removeCertificate": "Hapus sertifikat penandatanganan",
+      "certificateDownload": "Unduh sertifikat penandatanganan (.p12)",
+      "passwordHelp": "Membuka sertifikat atau melindungi .p12 baru. Sertifikat baru menggunakan pdfcraft jika kolom ini kosong.",
+      "localCertificateHelp": "Sertifikat lokal ditandatangani sendiri dan mungkin tidak dipercaya pembaca PDF. Simpan .p12 yang diunduh.",
+      "encryptedHelp": "Memerlukan kunci pribadi sertifikat ini dalam pembaca PDF yang kompatibel. Simpan sertifikat .p12 atau .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Unggah PDF Akademik dengan Bibliografi",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Radius Penebalan Karakter (Dilasi)"
     },
     "certCryptor": {
-      "uploadLabel": "Unggah PDF untuk Diamankan",
-      "uploadDescription": "Seret dan lepas PDF Anda di sini untuk menerapkan segel lilin 3D dan penguncian sertifikat.",
-      "optionsTitle": "Segel Lilin & Keamanan Sertifikat",
-      "processButton": "Eksekusi Tanda Tangan Segel Lilin",
-      "successMessage": "Implan segel lilin 3D dan enkripsi berbasis sertifikat berhasil diterapkan!",
+      "uploadLabel": "Pilih PDF",
+      "uploadDescription": "Pilih PDF untuk menempatkan segel lilin dan menandatangani secara lokal.",
+      "optionsTitle": "Segel lilin dan sertifikat",
+      "processButton": "Terapkan segel dan tandatangani",
+      "successMessage": "PDF yang ditandatangani siap.",
       "waxColor": "Gaya Segel Lilin",
       "signCoordinates": "Penempatan Tanda Tangan"
     },

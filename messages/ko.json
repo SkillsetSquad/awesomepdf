@@ -518,11 +518,21 @@
       "goldWax": "로열 골드 실",
       "redWax": "빈티지 딥 레드",
       "bronzeWax": "앤티크 크림슨 브론즈",
-      "enableDoubleKey": "인증서 이중 키 암호화 활성화 (256비트 강력 잠금)",
-      "decryptPasswordHelp": "PFX 암호 해독 키 비밀번호 설정",
+      "enableDoubleKey": "서명 인증서로 암호화 (AES-256)",
+      "decryptPasswordHelp": "인증서 비밀번호",
       "passwordPlaceholder": "기본 비밀번호: pdfcraft",
-      "sealCoordinates": "인감 좌표: X: {x}px, Y: {y}px",
-      "clickToReposition": "임의의 위치를 클릭하여 실링 왁스 위치를 변경하십시오"
+      "sealCoordinates": "PDF 포인트 단위 인장 중심: X: {x}, Y: {y}",
+      "clickToReposition": "클릭하거나 화살표 키로 배치하세요. 백분율은 왼쪽 위 모서리부터 측정합니다.",
+      "previewTitle": "첫 페이지의 인장 위치",
+      "positionX": "가로 위치 (%)",
+      "positionY": "세로 위치 (%)",
+      "certificateLabel": "서명 인증서 (.p12 / .pfx)",
+      "certificateDescription": "선택 사항입니다. 인증서를 선택하지 않으면 로컬 인증서를 생성합니다.",
+      "removeCertificate": "서명 인증서 제거",
+      "certificateDownload": "서명 인증서 다운로드 (.p12)",
+      "passwordHelp": "기존 인증서를 열거나 새 .p12를 보호합니다. 새 인증서는 빈칸일 때 pdfcraft를 사용합니다.",
+      "localCertificateHelp": "로컬 인증서는 자체 서명되어 PDF 리더에서 신뢰하지 않을 수 있습니다. 다운로드한 .p12를 보관하세요.",
+      "encryptedHelp": "호환되는 PDF 리더에서 이 인증서의 개인 키가 필요합니다. .p12 또는 .pfx 인증서를 보관하세요."
     },
     "citationLinker": {
       "uploadLabel": "참고문헌이 포함된 학술 PDF 업로드",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "글씨 굵기 확장(팽창) 반경"
     },
     "certCryptor": {
-      "uploadLabel": "보안을 적용할 PDF 업로드",
-      "uploadDescription": "여기에 PDF 파일을 드래그 앤 드롭하여 3D 실링 왁스 서명 및 인증서 잠금을 적용하십시오.",
-      "optionsTitle": "실링 왁스 서명 및 인증서 보안",
-      "processButton": "실링 왁스 서명 실행",
-      "successMessage": "3D 실링 왁스 씰 적용 및 인증서 기반 암호화가 성공적으로 적용되었습니다!",
+      "uploadLabel": "PDF 선택",
+      "uploadDescription": "인장을 배치하고 로컬에서 서명할 PDF를 선택하세요.",
+      "optionsTitle": "밀랍 인장과 인증서",
+      "processButton": "인장 적용 및 서명",
+      "successMessage": "서명된 PDF가 준비되었습니다.",
       "waxColor": "실링 왁스 스타일(색상)",
       "signCoordinates": "서명 배치 위치"
     },

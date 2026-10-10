@@ -518,11 +518,21 @@
       "goldWax": "Con dấu vàng hoàng gia",
       "redWax": "Đỏ sẫm cổ điển",
       "bronzeWax": "Đồng đỏ cổ xưa",
-      "enableDoubleKey": "Bật mã hóa chứng thư hai khóa (Khóa bảo mật mạnh 256-bit)",
-      "decryptPasswordHelp": "Thiết lập mật khẩu khóa giải mã PFX",
+      "enableDoubleKey": "Mã hóa cho chứng chỉ ký (AES-256)",
+      "decryptPasswordHelp": "Mật khẩu chứng chỉ",
       "passwordPlaceholder": "Mật khẩu mặc định: pdfcraft",
-      "sealCoordinates": "Tọa độ dấu: X: {x}px, Y: {y}px",
-      "clickToReposition": "Nhấp vào bất kỳ đâu để đặt lại vị trí dấu sáp"
+      "sealCoordinates": "Tâm con dấu theo điểm PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Nhấp hoặc dùng phím mũi tên. Phần trăm được đo từ góc trên bên trái.",
+      "previewTitle": "Vị trí con dấu trên trang đầu",
+      "positionX": "Vị trí ngang (%)",
+      "positionY": "Vị trí dọc (%)",
+      "certificateLabel": "Chứng chỉ ký (.p12 / .pfx)",
+      "certificateDescription": "Không bắt buộc. Nếu không chọn chứng chỉ, một chứng chỉ cục bộ sẽ được tạo.",
+      "removeCertificate": "Xóa chứng chỉ ký",
+      "certificateDownload": "Tải chứng chỉ ký (.p12)",
+      "passwordHelp": "Mở khóa chứng chỉ có sẵn hoặc bảo vệ .p12 mới. Chứng chỉ mới dùng pdfcraft nếu ô này để trống.",
+      "localCertificateHelp": "Chứng chỉ cục bộ tự ký có thể không được trình đọc PDF tin cậy. Hãy giữ tệp .p12 đã tải xuống.",
+      "encryptedHelp": "Cần khóa riêng của chứng chỉ này trong trình đọc PDF tương thích. Hãy giữ chứng chỉ .p12 hoặc .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Tải lên tài liệu PDF học thuật kèm danh mục tham khảo",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Bán kính Làm đậm Ký tự (Giãn nở)"
     },
     "certCryptor": {
-      "uploadLabel": "Tải lên tài liệu PDF cần Bảo mật",
-      "uploadDescription": "Kéo và thả PDF của bạn vào đây để đóng dấu sáp 3D và khóa chứng thư.",
-      "optionsTitle": "Bảo mật Dấu sáp & Chứng thư",
-      "processButton": "Thực hiện Ký Dấu sáp",
-      "successMessage": "Đã đóng dấu sáp 3D và mã hóa dựa trên chứng thư thành công!",
+      "uploadLabel": "Chọn PDF",
+      "uploadDescription": "Chọn PDF để đặt dấu sáp và ký cục bộ.",
+      "optionsTitle": "Dấu sáp và chứng chỉ",
+      "processButton": "Đóng dấu và ký",
+      "successMessage": "PDF đã ký đã sẵn sàng.",
       "waxColor": "Kiểu Dấu sáp",
       "signCoordinates": "Vị trí đặt Chữ ký"
     },

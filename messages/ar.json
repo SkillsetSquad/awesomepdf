@@ -518,11 +518,21 @@
       "goldWax": "ختم ذهبي ملكي",
       "redWax": "أحمر داكن عتيق",
       "bronzeWax": "برونزي قرمزي عتيق",
-      "enableDoubleKey": "تمكين تشفير الشهادة بمفتاحين (قفل قوي 256 بت)",
-      "decryptPasswordHelp": "تعيين كلمة مرور مفتاح فك تشفير PFX",
+      "enableDoubleKey": "التشفير لشهادة التوقيع (AES-256)",
+      "decryptPasswordHelp": "كلمة مرور الشهادة",
       "passwordPlaceholder": "كلمة المرور الافتراضية: pdfcraft",
-      "sealCoordinates": "إحداثيات الختم: X: {x}px, Y: {y}px",
-      "clickToReposition": "انقر في أي مكان لإعادة تحديد موضع ختم الشمع"
+      "sealCoordinates": "مركز الختم بنقاط PDF: X: {x}، Y: {y}",
+      "clickToReposition": "انقر لوضع الختم أو استخدم مفاتيح الأسهم. تُقاس النسب من الزاوية العلوية اليسرى.",
+      "previewTitle": "موضع الختم في الصفحة الأولى",
+      "positionX": "الموضع الأفقي (%)",
+      "positionY": "الموضع الرأسي (%)",
+      "certificateLabel": "شهادة التوقيع (.p12 / .pfx)",
+      "certificateDescription": "اختياري. تُنشأ شهادة محلية عند عدم اختيار شهادة.",
+      "removeCertificate": "إزالة شهادة التوقيع",
+      "certificateDownload": "تنزيل شهادة التوقيع (.p12)",
+      "passwordHelp": "يفتح الشهادة المحددة أو يحمي ملف .p12 الجديد. تستخدم الشهادة الجديدة pdfcraft إذا كان الحقل فارغًا.",
+      "localCertificateHelp": "الشهادات المحلية موقعة ذاتيًا وقد لا تثق بها برامج قراءة PDF. احتفظ بملف .p12 الذي تم تنزيله.",
+      "encryptedHelp": "يتطلب المفتاح الخاص لهذه الشهادة في قارئ PDF متوافق. احتفظ بشهادة .p12 أو .pfx."
     },
     "citationLinker": {
       "uploadLabel": "تحميل ملف PDF الأكاديمي مع المراجع",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "نصف قطر تغميق الحروف (التمدد)"
     },
     "certCryptor": {
-      "uploadLabel": "تحميل ملف PDF لتأمينه",
-      "uploadDescription": "قم بسحب وإسقاط ملف PDF هنا لتطبيق ختم شمعي ثلاثي الأبعاد وقفل الشهادة.",
-      "optionsTitle": "أمان الختم الشمعي والشهادات",
-      "processButton": "تنفيذ توقيع الختم الشمعي",
-      "successMessage": "تم تطبيق بصمة الختم الشمعي ثلاثي الأبعاد والتشفير القائم على الشهادة بنجاح!",
+      "uploadLabel": "اختر ملف PDF",
+      "uploadDescription": "اختر ملف PDF لوضع ختم شمعي وتوقيعه محليًا.",
+      "optionsTitle": "الختم الشمعي والشهادة",
+      "processButton": "وضع الختم والتوقيع",
+      "successMessage": "ملف PDF الموقّع جاهز.",
       "waxColor": "نمط الختم الشمعي",
       "signCoordinates": "موضع التوقيع"
     },

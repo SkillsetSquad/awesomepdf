@@ -518,11 +518,21 @@
       "goldWax": "Sigiliu de aur regal",
       "redWax": "Roșu închis vintage",
       "bronzeWax": "Bronz stacojiu antic",
-      "enableDoubleKey": "Activați criptarea cu cheie dublă a certificatului (Blocare puternică pe 256 de biți)",
-      "decryptPasswordHelp": "Setați parola cheii de decriptare PFX",
+      "enableDoubleKey": "Criptează pentru certificatul de semnare (AES-256)",
+      "decryptPasswordHelp": "Parola certificatului",
       "passwordPlaceholder": "Parola implicită: pdfcraft",
-      "sealCoordinates": "Coordonate sigiliu: X: {x}px, Y: {y}px",
-      "clickToReposition": "Faceți clic oriunde pentru a repoziționa sigiliul de ceară"
+      "sealCoordinates": "Centrul sigiliului în puncte PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Fă clic sau folosește tastele săgeată. Procentele sunt măsurate din colțul stânga sus.",
+      "previewTitle": "Poziția sigiliului pe prima pagină",
+      "positionX": "Poziție orizontală (%)",
+      "positionY": "Poziție verticală (%)",
+      "certificateLabel": "Certificat de semnare (.p12 / .pfx)",
+      "certificateDescription": "Opțional. Dacă nu alegi un certificat, se creează unul local.",
+      "removeCertificate": "Elimină certificatul de semnare",
+      "certificateDownload": "Descarcă certificatul de semnare (.p12)",
+      "passwordHelp": "Deblochează un certificat sau protejează noul .p12. Certificatele noi folosesc pdfcraft dacă acest câmp este gol.",
+      "localCertificateHelp": "Certificatele locale sunt autosemnate și pot să nu fie acceptate de cititoarele PDF. Păstrează fișierul .p12 descărcat.",
+      "encryptedHelp": "Necesită cheia privată a acestui certificat într-un cititor PDF compatibil. Păstrează certificatul .p12 sau .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Încărcați PDF academic cu bibliografii",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Raza de îngroșare a caracterelor (dilatare)"
     },
     "certCryptor": {
-      "uploadLabel": "Încărcați PDF pentru securizare",
-      "uploadDescription": "Trageți și plasați PDF-ul aici pentru a aplica un sigiliu de ceară 3D și o blocare cu certificat.",
-      "optionsTitle": "Securitate cu sigiliu de ceară și certificat",
-      "processButton": "Execută semnătura cu sigiliu de ceară",
-      "successMessage": "Amprenta sigiliului de ceară 3D și criptarea pe bază de certificat au fost aplicate cu succes!",
+      "uploadLabel": "Selectează un PDF",
+      "uploadDescription": "Alege un PDF pentru a plasa un sigiliu de ceară și a semna local.",
+      "optionsTitle": "Sigiliu de ceară și certificat",
+      "processButton": "Aplică sigiliul și semnează",
+      "successMessage": "PDF-ul semnat este gata.",
       "waxColor": "Stil sigiliu de ceară",
       "signCoordinates": "Plasarea semnăturii"
     },

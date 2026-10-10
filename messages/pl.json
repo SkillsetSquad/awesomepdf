@@ -518,11 +518,21 @@
       "goldWax": "Królewska Złota Pieczęć",
       "redWax": "Vintage głęboka czerwień",
       "bronzeWax": "Antyczny karmazynowy brąz",
-      "enableDoubleKey": "Włącz szyfrowanie podwójnym kluczem certyfikatu (256-bitowa silna blokada)",
-      "decryptPasswordHelp": "Ustaw hasło klucza deszyfrującego PFX",
+      "enableDoubleKey": "Szyfruj dla certyfikatu podpisu (AES-256)",
+      "decryptPasswordHelp": "Hasło certyfikatu",
       "passwordPlaceholder": "Domyślne hasło: pdfcraft",
-      "sealCoordinates": "Współrzędne pieczęci: X: {x}px, Y: {y}px",
-      "clickToReposition": "Kliknij w dowolnym miejscu, aby zmienić położenie pieczęci woskowej"
+      "sealCoordinates": "Środek pieczęci w punktach PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Kliknij lub użyj klawiszy strzałek. Procenty są mierzone od lewego górnego rogu.",
+      "previewTitle": "Położenie pieczęci na pierwszej stronie",
+      "positionX": "Pozycja pozioma (%)",
+      "positionY": "Pozycja pionowa (%)",
+      "certificateLabel": "Certyfikat podpisu (.p12 / .pfx)",
+      "certificateDescription": "Opcjonalnie. Jeśli nie wybierzesz certyfikatu, zostanie utworzony lokalny.",
+      "removeCertificate": "Usuń certyfikat podpisu",
+      "certificateDownload": "Pobierz certyfikat podpisu (.p12)",
+      "passwordHelp": "Odblokowuje certyfikat lub chroni nowy .p12. Nowe certyfikaty używają pdfcraft, gdy pole jest puste.",
+      "localCertificateHelp": "Lokalne certyfikaty są podpisane samodzielnie i czytniki PDF mogą im nie ufać. Zachowaj pobrany .p12.",
+      "encryptedHelp": "Wymaga klucza prywatnego tego certyfikatu w zgodnym czytniku PDF. Zachowaj certyfikat .p12 lub .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Prześlij wersję akademicką PDF z bibliografiami",
@@ -3230,11 +3240,11 @@
       "dilationAmount": "Promień pogrubienia (rozszerzenia) znaku"
     },
     "certCryptor": {
-      "uploadLabel": "Prześlij plik PDF do zabezpieczenia",
-      "uploadDescription": "Przeciągnij i upuść tutaj swój PDF, aby zastosować pieczęć woskową 3D i blokadę certyfikatu.",
-      "optionsTitle": "Pieczęć woskowa i certyfikat bezpieczeństwa",
-      "processButton": "Złóż podpis pieczęcią woskową",
-      "successMessage": "Odcisk pieczęci woskowej 3D i szyfrowanie oparte na certyfikatach pomyślnie zastosowane!",
+      "uploadLabel": "Wybierz PDF",
+      "uploadDescription": "Wybierz PDF, aby umieścić pieczęć woskową i podpisać lokalnie.",
+      "optionsTitle": "Pieczęć woskowa i certyfikat",
+      "processButton": "Zastosuj pieczęć i podpisz",
+      "successMessage": "Podpisany PDF jest gotowy.",
       "waxColor": "Styl pieczęci woskowej",
       "signCoordinates": "Umieszczenie podpisu"
     },

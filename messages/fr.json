@@ -518,11 +518,21 @@
       "goldWax": "Sceau d'or royal",
       "redWax": "Rouge foncé vintage",
       "bronzeWax": "Bronze cramoisi antique",
-      "enableDoubleKey": "Activer le chiffrement de certificat à double clé (Verrouillage fort 256 bits)",
-      "decryptPasswordHelp": "Définir le mot de passe de la clé de déchiffrement PFX",
+      "enableDoubleKey": "Chiffrer pour le certificat de signature (AES-256)",
+      "decryptPasswordHelp": "Mot de passe du certificat",
       "passwordPlaceholder": "Mot de passe par défaut : pdfcraft",
-      "sealCoordinates": "Coordonnées du sceau : X : {x}px, Y : {y}px",
-      "clickToReposition": "Cliquez n'importe où pour repositionner le sceau de cire"
+      "sealCoordinates": "Centre du sceau en points PDF : X : {x}, Y : {y}",
+      "clickToReposition": "Cliquez ou utilisez les touches fléchées. Les pourcentages partent du coin supérieur gauche.",
+      "previewTitle": "Position du sceau sur la première page",
+      "positionX": "Position horizontale (%)",
+      "positionY": "Position verticale (%)",
+      "certificateLabel": "Certificat de signature (.p12 / .pfx)",
+      "certificateDescription": "Facultatif. Sans sélection, un certificat local est créé.",
+      "removeCertificate": "Supprimer le certificat de signature",
+      "certificateDownload": "Télécharger le certificat de signature (.p12)",
+      "passwordHelp": "Déverrouille un certificat ou protège le nouveau .p12. Les nouveaux certificats utilisent pdfcraft si ce champ est vide.",
+      "localCertificateHelp": "Les certificats locaux sont auto-signés et peuvent ne pas être reconnus par les lecteurs PDF. Conservez le .p12 téléchargé.",
+      "encryptedHelp": "Nécessite la clé privée de ce certificat dans un lecteur PDF compatible. Conservez le certificat .p12 ou .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Télécharger le PDF universitaire avec bibliographies",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Caractère gras (dilatation) Rayon"
     },
     "certCryptor": {
-      "uploadLabel": "Télécharger un PDF en mode sécurisé",
-      "uploadDescription": "Faites glisser et déposez votre PDF ici pour appliquer un sceau de cire 3D et un verrou de certificat.",
-      "optionsTitle": "Sceau de cire et sécurité des certificats",
-      "processButton": "Exécuter la signature du sceau de cire",
-      "successMessage": "Impression de sceau de cire 3D et cryptage basé sur un certificat appliqués avec succès !",
+      "uploadLabel": "Sélectionner un PDF",
+      "uploadDescription": "Choisissez un PDF pour placer un sceau et signer localement.",
+      "optionsTitle": "Sceau de cire et certificat",
+      "processButton": "Appliquer le sceau et signer",
+      "successMessage": "Le PDF signé est prêt.",
       "waxColor": "Style de sceau de cire",
       "signCoordinates": "Emplacement des signatures"
     },

@@ -518,11 +518,21 @@
       "goldWax": "Royal Gold Seal",
       "redWax": "Vintage Deep Red",
       "bronzeWax": "Antique Crimson Bronze",
-      "enableDoubleKey": "Enable Certificate Double-Key Encryption (256-bit Strong Lock)",
-      "decryptPasswordHelp": "Set PFX Decryption Key Password",
+      "enableDoubleKey": "Encrypt for the signing certificate (AES-256)",
+      "decryptPasswordHelp": "Certificate password",
       "passwordPlaceholder": "Default password: pdfcraft",
-      "sealCoordinates": "Seal Coordinates: X: {x}px, Y: {y}px",
-      "clickToReposition": "Click anywhere to reposition the wax seal"
+      "sealCoordinates": "Seal center in PDF points: X: {x}, Y: {y}",
+      "clickToReposition": "Click to position the seal or use arrow keys. Percentages are measured from the upper-left corner.",
+      "previewTitle": "Seal placement on the first page",
+      "positionX": "Horizontal position (%)",
+      "positionY": "Vertical position (%)",
+      "certificateLabel": "Signing certificate (.p12 / .pfx)",
+      "certificateDescription": "Optional. A local certificate is created when no certificate is selected.",
+      "removeCertificate": "Remove signing certificate",
+      "certificateDownload": "Download signing certificate (.p12)",
+      "passwordHelp": "Unlocks a supplied certificate or protects the new .p12. New certificates use pdfcraft when this field is empty.",
+      "localCertificateHelp": "Local certificates are self-signed and may not be trusted by PDF readers. Keep the downloaded .p12.",
+      "encryptedHelp": "Requires this certificate’s private key in a compatible PDF reader. Keep the .p12 or .pfx certificate."
     },
     "citationLinker": {
       "uploadLabel": "Upload Academic PDF with Bibliographies",
@@ -3230,11 +3240,11 @@
       "dilationAmount": "Character Bolding (Dilation) Radius"
     },
     "certCryptor": {
-      "uploadLabel": "Upload PDF to Secure",
-      "uploadDescription": "Drag and drop your PDF here to apply a 3D wax seal and certificate lock.",
-      "optionsTitle": "Wax Seal & Certificate Security",
-      "processButton": "Execute Wax Seal Signature",
-      "successMessage": "3D wax-seal imprint and certificate-based encryption applied successfully!",
+      "uploadLabel": "Select a PDF",
+      "uploadDescription": "Choose a PDF to place a wax seal and sign locally.",
+      "optionsTitle": "Wax seal and certificate",
+      "processButton": "Apply seal and sign",
+      "successMessage": "Signed PDF is ready.",
       "waxColor": "Wax Seal Style",
       "signCoordinates": "Signature Placement"
     },

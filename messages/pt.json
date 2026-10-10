@@ -518,11 +518,21 @@
       "goldWax": "Selo de ouro real",
       "redWax": "Vermelho escuro vintage",
       "bronzeWax": "Bronze carmesim antigo",
-      "enableDoubleKey": "Habilitar criptografia de chave dupla de certificado (Bloqueio forte de 256 bits)",
-      "decryptPasswordHelp": "Definir senha da chave de descriptografia PFX",
+      "enableDoubleKey": "Criptografar para o certificado de assinatura (AES-256)",
+      "decryptPasswordHelp": "Senha do certificado",
       "passwordPlaceholder": "Senha padrão: pdfcraft",
-      "sealCoordinates": "Coordenadas do selo: X: {x}px, Y: {y}px",
-      "clickToReposition": "Clique em qualquer lugar para reposicionar o selo de lacre"
+      "sealCoordinates": "Centro do selo em pontos PDF: X: {x}, Y: {y}",
+      "clickToReposition": "Clique ou use as teclas de seta. As porcentagens são medidas a partir do canto superior esquerdo.",
+      "previewTitle": "Posição do selo na primeira página",
+      "positionX": "Posição horizontal (%)",
+      "positionY": "Posição vertical (%)",
+      "certificateLabel": "Certificado de assinatura (.p12 / .pfx)",
+      "certificateDescription": "Opcional. Sem certificado selecionado, será criado um certificado local.",
+      "removeCertificate": "Remover certificado de assinatura",
+      "certificateDownload": "Baixar certificado de assinatura (.p12)",
+      "passwordHelp": "Desbloqueia um certificado ou protege o novo .p12. Novos certificados usam pdfcraft quando o campo está vazio.",
+      "localCertificateHelp": "Certificados locais são autoassinados e podem não ser confiáveis para leitores PDF. Guarde o .p12 baixado.",
+      "encryptedHelp": "Requer a chave privada deste certificado em um leitor PDF compatível. Guarde o certificado .p12 ou .pfx."
     },
     "citationLinker": {
       "uploadLabel": "Enviar PDF acadêmico com bibliografias",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Raio de negrito (dilatação) dos caracteres"
     },
     "certCryptor": {
-      "uploadLabel": "Carregar PDF para proteger",
-      "uploadDescription": "Arraste e solte seu PDF aqui para aplicar um selo de cera 3D e um bloqueio de certificado.",
-      "optionsTitle": "Selo de cera e certificado de segurança",
-      "processButton": "Executar assinatura do selo de cera",
-      "successMessage": "Impressão de selo de cera 3D e criptografia baseada em certificado aplicadas com sucesso!",
+      "uploadLabel": "Selecionar PDF",
+      "uploadDescription": "Escolha um PDF para colocar um selo de cera e assinar localmente.",
+      "optionsTitle": "Selo de cera e certificado",
+      "processButton": "Aplicar selo e assinar",
+      "successMessage": "O PDF assinado está pronto.",
       "waxColor": "Estilo de selo de cera",
       "signCoordinates": "Colocação de assinatura"
     },

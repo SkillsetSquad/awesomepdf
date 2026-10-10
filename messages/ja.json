@@ -518,11 +518,21 @@
       "goldWax": "ロイヤルゴールドシール",
       "redWax": "ヴィンテージディープブラッドレッド",
       "bronzeWax": "アンティーククリムゾンブロンズ",
-      "enableDoubleKey": "証明書のダブルキー暗号化を有効化 (256ビット強力ロック)",
-      "decryptPasswordHelp": "PFX復号キーのパスワードを設定",
+      "enableDoubleKey": "署名証明書用に暗号化（AES-256）",
+      "decryptPasswordHelp": "証明書パスワード",
       "passwordPlaceholder": "デフォルトのパスワード: pdfcraft",
-      "sealCoordinates": "印影座標: X: {x}px, Y: {y}px",
-      "clickToReposition": "任意の場所をクリックしてシーリングワックスを再配置します"
+      "sealCoordinates": "PDFポイントでのシール中心：X: {x}、Y: {y}",
+      "clickToReposition": "クリックまたは矢印キーで配置します。割合は左上隅から測定します。",
+      "previewTitle": "最初のページでのシール位置",
+      "positionX": "横位置（%）",
+      "positionY": "縦位置（%）",
+      "certificateLabel": "署名証明書（.p12 / .pfx）",
+      "certificateDescription": "任意です。証明書を選択しない場合はローカル証明書を作成します。",
+      "removeCertificate": "署名証明書を削除",
+      "certificateDownload": "署名証明書をダウンロード（.p12）",
+      "passwordHelp": "指定した証明書を開く、または新しい.p12を保護するためのパスワードです。新規証明書では空欄の場合pdfcraftを使用します。",
+      "localCertificateHelp": "ローカル証明書は自己署名のため、PDFリーダーが信頼しない場合があります。ダウンロードした.p12を保管してください。",
+      "encryptedHelp": "対応するPDFリーダーでこの証明書の秘密鍵が必要です。.p12または.pfx証明書を保管してください。"
     },
     "citationLinker": {
       "uploadLabel": "文献目録付きの学術PDFをアップロード",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "文字太字化（膨張）半径"
     },
     "certCryptor": {
-      "uploadLabel": "保護するPDFのアップロード",
-      "uploadDescription": "PDFファイルをここにドラッグ＆ドロップして、3Dワックスシールとデジタル証明書ロックを適用します。",
-      "optionsTitle": "ワックスシール＆証明書セキュリティ",
-      "processButton": "ワックスシール署名を実行する",
-      "successMessage": "3Dワックスシール捺印および証明書暗号化が正常に適用されました！",
+      "uploadLabel": "PDFを選択",
+      "uploadDescription": "シールを配置してローカルで署名するPDFを選択します。",
+      "optionsTitle": "ワックスシールと証明書",
+      "processButton": "シールを適用して署名",
+      "successMessage": "署名済みPDFの準備ができました。",
       "waxColor": "ワックスシールのスタイル（色）",
       "signCoordinates": "署名の配置座標"
     },

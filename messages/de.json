@@ -518,11 +518,21 @@
       "goldWax": "Königliches Goldsiegel",
       "redWax": "Klassisches Dunkelrot",
       "bronzeWax": "Antike Karmesin-Bronze",
-      "enableDoubleKey": "Doppel-Schlüssel-Zertifikatsverschlüsselung aktivieren (256-Bit-Verschlüsselung)",
-      "decryptPasswordHelp": "Passwort für PFX-Entschlüsselungsschlüssel festlegen",
+      "enableDoubleKey": "Für das Signaturzertifikat verschlüsseln (AES-256)",
+      "decryptPasswordHelp": "Zertifikatspasswort",
       "passwordPlaceholder": "Standardpasswort: pdfcraft",
-      "sealCoordinates": "Siegel-Koordinaten: X: {x}px, Y: {y}px",
-      "clickToReposition": "Klicken Sie auf eine beliebige Stelle, um das Siegel neu zu positionieren"
+      "sealCoordinates": "Siegelmitte in PDF-Punkten: X: {x}, Y: {y}",
+      "clickToReposition": "Klicken Sie oder verwenden Sie die Pfeiltasten. Prozentwerte beziehen sich auf die obere linke Ecke.",
+      "previewTitle": "Siegelposition auf der ersten Seite",
+      "positionX": "Horizontale Position (%)",
+      "positionY": "Vertikale Position (%)",
+      "certificateLabel": "Signaturzertifikat (.p12 / .pfx)",
+      "certificateDescription": "Optional. Ohne Auswahl wird ein lokales Zertifikat erstellt.",
+      "removeCertificate": "Signaturzertifikat entfernen",
+      "certificateDownload": "Signaturzertifikat herunterladen (.p12)",
+      "passwordHelp": "Entsperrt ein vorhandenes Zertifikat oder schützt die neue .p12-Datei. Neue Zertifikate verwenden bei leerem Feld pdfcraft.",
+      "localCertificateHelp": "Lokale Zertifikate sind selbstsigniert und werden eventuell nicht als vertrauenswürdig erkannt. Bewahren Sie die heruntergeladene .p12-Datei auf.",
+      "encryptedHelp": "Erfordert den privaten Schlüssel dieses Zertifikats in einem kompatiblen PDF-Reader. Bewahren Sie das .p12- oder .pfx-Zertifikat auf."
     },
     "citationLinker": {
       "uploadLabel": "Wissenschaftliches PDF mit Literaturverzeichnis hochladen",
@@ -3217,11 +3227,11 @@
       "dilationAmount": "Radius für Zeichenfettung (Dilation)"
     },
     "certCryptor": {
-      "uploadLabel": "Zu sicherndes PDF hochladen",
-      "uploadDescription": "Ziehen Sie Ihr PDF hierher, um ein 3D-Siegellack-Siegel und eine Zertifikatssperre anzuwenden.",
-      "optionsTitle": "Siegellack & Zertifikatssicherheit",
-      "processButton": "Siegellack-Signatur ausführen",
-      "successMessage": "3D-Siegellack-Aufdruck und zertifikatsbasierte Verschlüsselung erfolgreich angewendet!",
+      "uploadLabel": "PDF auswählen",
+      "uploadDescription": "Wählen Sie eine PDF-Datei, um ein Wachssiegel zu platzieren und lokal zu signieren.",
+      "optionsTitle": "Wachssiegel und Zertifikat",
+      "processButton": "Siegel anwenden und signieren",
+      "successMessage": "Die signierte PDF-Datei ist bereit.",
       "waxColor": "Siegellack-Stil",
       "signCoordinates": "Signaturplatzierung"
     },
