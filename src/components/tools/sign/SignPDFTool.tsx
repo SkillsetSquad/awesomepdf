@@ -1,10 +1,10 @@
 'use client';
-import { FolderOpen as UIEmojiFolderOpen, Image as UIEmojiImage, X as UIEmojiX } from 'lucide-react';
+import { FolderOpen as UIEmojiFolderOpen, Image as UIEmojiImage } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Check as UICheck, File as UIFile, Info as UIInfo, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
+import { File as UIFile, Info as UIInfo, PenLine as UIPenLine, Upload as UIUpload } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 
@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
@@ -78,7 +79,6 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   // Extractor & Library modals
   const [isExtractorOpen, setIsExtractorOpen] = useState(false);
   const [isLibraryOpen, setIsLibraryOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [savedSignatureCount, setSavedSignatureCount] = useState<number>(0);
 
   useEffect(() => {
@@ -87,8 +87,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
   const handleSignatureExtracted = useCallback((res: { blob: Blob; dataUrl: string; name: string }) => {
     setSavedSignatureCount(getSavedSignatures().length);
-    setToastMessage(`签名“${res.name}”已成功存入签名库！您可以在工具栏的签名笔或签名库中直接使用。`);
-    setTimeout(() => setToastMessage(null), 6000);
+    toast.success(`签名“${res.name}”已成功存入签名库！您可以在工具栏的签名笔或签名库中直接使用。`, { id: 'signature-import', duration: 6000 });
   }, []);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -114,14 +113,13 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
         });
         setSavedSignatureCount(getSavedSignatures().length);
 
-        if (iframeRef.current?.contentWindow && (iframeRef.current.contentWindow as any).pdfcraftImportSignature) {
-          const blob = dataUrlToBlob(dataUrl);
-          await (iframeRef.current.contentWindow as any).pdfcraftImportSignature(blob, saved.name);
-          setToastMessage(`签名“${saved.name}”已成功导入并在当前文档激活！可在页面点击放置并拖动边角自由缩放。`);
-        } else {
-          setToastMessage(`签名“${saved.name}”已存入签名库！打开 PDF 后即可随时选用盖章。`);
-        }
-        setTimeout(() => setToastMessage(null), 6000);
+        const viewer = iframeRef.current?.contentWindow as PdfViewerWindow | null;
+        const activated = viewer?.pdfcraftImportSignature
+          ? await viewer.pdfcraftImportSignature(dataUrlToBlob(dataUrl), saved.name)
+          : false;
+        toast.success(activated
+          ? `签名“${saved.name}”已成功导入并在当前文档激活！可在页面点击放置并拖动边角自由缩放。`
+          : `签名“${saved.name}”已存入签名库！打开 PDF 后即可随时选用盖章。`, { id: 'signature-import', duration: 6000 });
       };
       img.src = dataUrl;
     };
@@ -379,23 +377,6 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       /></Dialog>
         </div>
       </Card>
-
-      {/* Toast Notification */}
-      {toastMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-md flex items-center justify-between shadow-xs animate-in fade-in duration-200">
-          <div className="flex items-center gap-2">
-            <UICheck className="w-5 h-5 text-emerald-600 flex-shrink-0" aria-hidden="true" />
-            <span>{toastMessage}</span>
-          </div>
-          <Button variant="ghost" size="icon-sm"
-            type="button"
-            onClick={() => setToastMessage(null)}
-
-          >
-            <UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
-          </Button>
-        </div>
-      )}
 
       {/* File Upload Area - Only show when no file */}
       {!signState.file && (
