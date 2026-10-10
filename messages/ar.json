@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "تحميل صورة عقد تحتوي على توقيع/ختم",
-      "uploadDescription": "يطبق تحسين الهستوغرام الموضعي (CLAHE) لتبييض الظلال الداكنة وتعزيز التوقيعات الزرقاء/السوداء وحبر الختم الأحمر بوضوح.",
+      "uploadDescription": "اختر صورة PNG أو JPEG لتفتيح الخلفية وزيادة تباين الكتابة اليدوية أو الختم.",
       "optionsTitle": "إعدادات تحسين تباين الحبر",
       "processButton": "تنفيذ تبييض الخلفية",
       "successMessage": "تم تنقية تباين خطوط اليد والختم الأحمر بنجاح!",
-      "magnifierTitle": "عدسة تباين مضيئة (اسحب لمسح شوائب الورقة)",
+      "magnifierTitle": "الصورة الأصلية",
       "clearButton": "مسح",
       "inkTitle": "حبر يدوي / توقيعات",
       "bleachHelp": "(اسحب شريط التمرير الأيمن لتبييض ورقة الخلفية)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "شحذ ضربات الحبر الداكن",
       "typeRedStamp": "استعادة تباين الختم الأحمر",
       "bleachThreshold": "حد سطوع تبييض الخلفية",
-      "strokeContrast": "مستوى تباين ضربات الحبر"
+      "strokeContrast": "مستوى تباين ضربات الحبر",
+      "resultTitle": "الصورة المحسّنة"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "تصميم كعب الكتاب دون تحميل مستند",

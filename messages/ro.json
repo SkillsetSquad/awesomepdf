@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Încărcați fotografia contractului cu semnătură/ștampilă",
-      "uploadDescription": "Aplică îmbunătățirea locală a histogramei CLAHE pentru a albi umbrele pătate și pentru a intensifica puternic semnăturile albastre/negre și cerneala roșie a ștampilei.",
+      "uploadDescription": "Alege un PNG sau JPEG pentru a lumina fundalul și a crește contrastul scrisului de mână sau al ștampilei.",
       "optionsTitle": "Setări de amplificare a contrastului cernelii",
       "processButton": "Execută înălbirea fundalului",
       "successMessage": "Contrastul liniilor scrise de mână și al ștampilei roșii a fost purificat cu succes!",
-      "magnifierTitle": "Lentilă de contrast iluminată (Trageți pentru a curăța petele de pe hârtie)",
+      "magnifierTitle": "Imagine originală",
       "clearButton": "Curăță",
       "inkTitle": "Cerneală olografă / Semnături",
       "bleachHelp": "(Trageți glisorul din dreapta pentru a înălbi hârtia de suport)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Accentuează trăsăturile de cerneală închisă",
       "typeRedStamp": "Restabilește contrastul ștampilei de ceară roșie",
       "bleachThreshold": "Pragul de luminanță pentru înălbirea fundalului",
-      "strokeContrast": "Nivelul de contrast al trăsăturii de cerneală"
+      "strokeContrast": "Nivelul de contrast al trăsăturii de cerneală",
+      "resultTitle": "Imagine îmbunătățită"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Proiectează cotorul fără încărcare",

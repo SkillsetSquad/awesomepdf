@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Carica foto di contratto firmata/sigillata",
-      "uploadDescription": "Applica il miglioramento dell'istogramma CLAHE locale per sbiancare le ombre di muffa e risaltare nettamente le firme blu/nere e l'inchiostro rosso dei timbri.",
+      "uploadDescription": "Scegli un PNG o JPEG per schiarire lo sfondo e aumentare il contrasto della scrittura o del timbro.",
       "optionsTitle": "Impostazioni dell'amplificatore di contrasto dell'inchiostro",
       "processButton": "Esegui sbiancamento dello sfondo",
       "successMessage": "Contrasto dei tratti scritti a mano e del timbro rosso purificato con successo!",
-      "magnifierTitle": "Lente di contrasto illuminata (Trascina per spazzare via la muffa dalla carta)",
+      "magnifierTitle": "Immagine originale",
       "clearButton": "Cancella",
       "inkTitle": "Inchiostro scritto a mano / Firme",
       "bleachHelp": "(Trascina il cursore destro per sbiancare la carta di supporto)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Nitidezza dei tratti di inchiostro scuro",
       "typeRedStamp": "Ripristina il contrasto del timbro in ceralacca rossa",
       "bleachThreshold": "Soglia di luminanza per lo sbiancamento dello sfondo",
-      "strokeContrast": "Livello di contrasto dell'inchiostro del tratto"
+      "strokeContrast": "Livello di contrasto dell'inchiostro del tratto",
+      "resultTitle": "Immagine migliorata"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Progetta il dorso senza caricare file",

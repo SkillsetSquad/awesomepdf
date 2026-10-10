@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Subir foto de contrato firmada/sellada",
-      "uploadDescription": "Aplica la mejora del histograma CLAHE local para blanquear las sombras de moho y resaltar drásticamente las firmas azules/negras y la tinta roja de los sellos.",
+      "uploadDescription": "Elige una imagen PNG o JPEG para aclarar el fondo y aumentar el contraste de la escritura o del sello.",
       "optionsTitle": "Ajustes del amplificador de contraste de tinta",
       "processButton": "Ejecutar blanqueamiento de fondo",
       "successMessage": "¡Contraste de trazos escritos a mano y sello rojo purificado con éxito!",
-      "magnifierTitle": "Lente de contraste iluminada (Arrastre para limpiar el moho del papel)",
+      "magnifierTitle": "Imagen original",
       "clearButton": "Limpiar",
       "inkTitle": "Tinta escrita a mano / Firmas",
       "bleachHelp": "(Arrastre el deslizador derecho para blanquear el papel de soporte)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Enfocar trazos de tinta oscura",
       "typeRedStamp": "Restaurar contraste de sello de cera roja",
       "bleachThreshold": "Umbral de luminosidad para blanqueamiento de fondo",
-      "strokeContrast": "Nivel de contraste de tinta del trazo"
+      "strokeContrast": "Nivel de contraste de tinta del trazo",
+      "resultTitle": "Imagen mejorada"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Diseñar lomo sin subir archivos",

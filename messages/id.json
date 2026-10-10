@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Unggah Foto Kontrak Tanda Tangan/Stempel",
-      "uploadDescription": "Menerapkan peningkatan histogram CLAHE lokal untuk memutihkan bayangan bernoda dan meningkatkan ketajaman tanda tangan biru/hitam serta tinta stempel merah.",
+      "uploadDescription": "Pilih PNG atau JPEG untuk mencerahkan latar belakang dan meningkatkan kontras tulisan tangan atau stempel.",
       "optionsTitle": "Pengaturan Peningkat Kontras Tinta",
       "processButton": "Jalankan Pemutihan Latar Belakang",
       "successMessage": "Kontras goresan tangan dan stempel merah berhasil dimurnikan!",
-      "magnifierTitle": "Lensa Kontras Bercahaya (Seret untuk membersihkan noda kertas)",
+      "magnifierTitle": "Gambar asli",
       "clearButton": "Bersihkan",
       "inkTitle": "Tinta Tangan / Tanda Tangan",
       "bleachHelp": "(Seret slider kanan untuk memutihkan kertas latar)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Pertajam Goresan Tinta Gelap",
       "typeRedStamp": "Pulihkan Kontras Stempel Lilin Merah",
       "bleachThreshold": "Ambang Batas Luma Pemutih Latar Belakang",
-      "strokeContrast": "Tingkat Kontras Goresan Tinta"
+      "strokeContrast": "Tingkat Kontras Goresan Tinta",
+      "resultTitle": "Gambar yang ditingkatkan"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Desain Punggung Buku Tanpa Mengunggah",

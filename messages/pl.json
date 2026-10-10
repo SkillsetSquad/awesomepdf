@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Prześlij zdjęcie podpisu/pieczęci umowy",
-      "uploadDescription": "Stosuje lokalne wzmocnienie histogramu CLAHE, aby rozjaśnić zacienione obszary i wyraźnie wzmocnić niebieskie/czarne podpisy oraz czerwony atrament pieczęci.",
+      "uploadDescription": "Wybierz PNG lub JPEG, aby rozjaśnić tło i zwiększyć kontrast pisma odręcznego lub pieczątki.",
       "optionsTitle": "Ustawienia zwiększania kontrastu atramentu",
       "processButton": "Rozjaśnij tło",
       "successMessage": "Kontrast odręcznych kresek i czerwonych pieczęci został pomyślnie poprawiony!",
-      "magnifierTitle": "Podświetlana soczewka kontrastowa (przeciągnij, aby usunąć przebarwienia papieru)",
+      "magnifierTitle": "Obraz źródłowy",
       "clearButton": "Wyczyść",
       "inkTitle": "Odręczny atrament / podpisy",
       "bleachHelp": "(Przeciągnij prawy suwak, aby rozjaśnić papier podkładowy)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Wyostrz pociągnięcia ciemnym atramentem",
       "typeRedStamp": "Przywróć kontrast czerwonego stempla woskowego",
       "bleachThreshold": "Próg rozjaśniania tła",
-      "strokeContrast": "Poziom kontrastu kresek"
+      "strokeContrast": "Poziom kontrastu kresek",
+      "resultTitle": "Ulepszony obraz"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Zaprojektuj grzbiet bez przesyłania pliku",

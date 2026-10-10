@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Tải lên ảnh chụp hợp đồng có chữ ký/con dấu",
-      "uploadDescription": "Áp dụng cải thiện biểu đồ CLAHE cục bộ để làm sáng bóng mờ loang lổ và tăng cường mạnh chữ ký màu xanh/đen cũng như mực dấu màu đỏ.",
+      "uploadDescription": "Chọn PNG hoặc JPEG để làm sáng nền và tăng độ tương phản của chữ viết tay hoặc con dấu.",
       "optionsTitle": "Cài đặt tăng cường tương phản mực",
       "processButton": "Thực hiện tẩy trắng nền",
       "successMessage": "Đã làm sạch và tăng cường độ tương phản nét viết tay và con dấu đỏ thành công!",
-      "magnifierTitle": "Kính tương phản phát sáng (Kéo để tẩy sạch vết mốc giấy)",
+      "magnifierTitle": "Ảnh gốc",
       "clearButton": "Xóa sạch",
       "inkTitle": "Mực viết tay / Chữ ký",
       "bleachHelp": "(Kéo thanh trượt bên phải để tẩy trắng nền giấy)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Tăng độ sắc nét nét mực tối màu",
       "typeRedStamp": "Khôi phục độ tương phản con dấu đỏ",
       "bleachThreshold": "Ngưỡng độ sáng tẩy trắng nền",
-      "strokeContrast": "Mức tương phản nét viết"
+      "strokeContrast": "Mức tương phản nét viết",
+      "resultTitle": "Ảnh đã tăng cường"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Thiết kế gáy sách không cần tải lên",

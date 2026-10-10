@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Vertragsfoto mit Unterschrift/Stempel hochladen",
-      "uploadDescription": "Wendet lokale CLAHE-Histogrammoptimierung an, um schattige Hintergründe aufzuhellen und blaue/schwarze Unterschriften sowie rote Stempeltinte deutlich hervorzuheben.",
+      "uploadDescription": "Wählen Sie eine PNG- oder JPEG-Datei, um den Hintergrund aufzuhellen und den Kontrast von Handschrift oder Stempeln zu erhöhen.",
       "optionsTitle": "Einstellungen zur Tintenkontrast-Verstärkung",
       "processButton": "Hintergrundaufhellung ausführen",
       "successMessage": "Kontrast von handschriftlichen Linien und rotem Stempel erfolgreich bereinigt!",
-      "magnifierTitle": "Beleuchtete Kontrastlinse (Ziehen, um Flecken zu entfernen)",
+      "magnifierTitle": "Originalbild",
       "clearButton": "Löschen",
       "inkTitle": "Handschriftliche Tinte / Unterschriften",
       "bleachHelp": "(Ziehen Sie den rechten Schieberegler, um das Trägerpapier aufzuhellen)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Dunkle Tintenstriche schärfen",
       "typeRedStamp": "Kontrast von rotem Stempel wiederherstellen",
       "bleachThreshold": "Helligkeitsschwellenwert für Hintergrundaufhellung",
-      "strokeContrast": "Tintenstrichtiefe (Kontrast)"
+      "strokeContrast": "Tintenstrichtiefe (Kontrast)",
+      "resultTitle": "Verbessertes Bild"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Buchrücken ohne Upload entwerfen",

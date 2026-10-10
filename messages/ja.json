@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "署名/捺印された契約書写真をアップロード",
-      "uploadDescription": "局所的なCLAHEヒストグラム強調を適用して黄ばみや影を漂白し、青/黒の署名と赤の捺印のコントラストを大幅に向上させます。",
+      "uploadDescription": "PNGまたはJPEGを選択して背景を明るくし、手書き文字や印影のコントラストを高めます。",
       "optionsTitle": "インクコントラスト強調設定",
       "processButton": "背景漂白を実行",
       "successMessage": "手書きの筆跡と赤の捺印のコントラストが正常に浄化されました！",
-      "magnifierTitle": "照明付きコントラストレンズ (ドラッグしてカビやシミを除去)",
+      "magnifierTitle": "元の画像",
       "clearButton": "クリア",
       "inkTitle": "手書きインク / 署名",
       "bleachHelp": "(右のスライダーをドラッグして背景の紙を漂白)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "濃いインクの筆跡を鮮明化",
       "typeRedStamp": "赤の捺印コントラストの復元",
       "bleachThreshold": "背景漂白の輝度しきい値",
-      "strokeContrast": "筆跡インクのコントラストレベル"
+      "strokeContrast": "筆跡インクのコントラストレベル",
+      "resultTitle": "補正後の画像"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "アップロードせずに書棚の背表紙をデザイン",

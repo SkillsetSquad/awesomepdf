@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Enviar foto do contrato com assinatura/selo",
-      "uploadDescription": "Aplica realce de histograma CLAHE local para branquear sombras de mofo e destacar nitidamente assinaturas azuis/pretas e tinta vermelha de carimbos.",
+      "uploadDescription": "Escolha um PNG ou JPEG para clarear o fundo e aumentar o contraste da escrita à mão ou do carimbo.",
       "optionsTitle": "Configurações do intensificador de contraste de tinta",
       "processButton": "Executar branqueamento de fundo",
       "successMessage": "Contraste de traços escritos à mão e carimbo vermelho purificado com sucesso!",
-      "magnifierTitle": "Lente de contraste iluminada (Arraste para limpar o mofo do papel)",
+      "magnifierTitle": "Imagem original",
       "clearButton": "Limpar",
       "inkTitle": "Tinta escrita à mão / Assinaturas",
       "bleachHelp": "(Arraste o controle deslizante direito para branquear o papel de fundo)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Nitidez em traços de tinta escura",
       "typeRedStamp": "Restaurar o contraste do carimbo de cera vermelha",
       "bleachThreshold": "Limiar de luma para branqueamento de fundo",
-      "strokeContrast": "Nível de contraste da tinta do traço"
+      "strokeContrast": "Nível de contraste da tinta do traço",
+      "resultTitle": "Imagem aprimorada"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Projetar lombada sem enviar arquivos",

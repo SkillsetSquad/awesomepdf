@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Upload Signature/Seal Contract Photo",
-      "uploadDescription": "Applies local CLAHE histogram enhancement to bleach moldy shadows and sharply boost blue/black signatures and red stamp ink.",
+      "uploadDescription": "Choose a PNG or JPEG to brighten the background and increase handwriting or stamp contrast.",
       "optionsTitle": "Ink Contrast Booster Settings",
       "processButton": "Execute Background Bleach",
       "successMessage": "Handwritten stroke lines and red stamp contrast purified successfully!",
-      "magnifierTitle": "Illuminated Contrast Lens (Drag to sweep paper mold)",
+      "magnifierTitle": "Source image",
       "clearButton": "Clear",
       "inkTitle": "Handwritten Ink / Signatures",
       "bleachHelp": "(Drag the right slider to bleach backing paper)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Sharpen Dark Ink Strokes",
       "typeRedStamp": "Restore Red Wax Stamp Contrast",
       "bleachThreshold": "Background Bleach Luma Threshold",
-      "strokeContrast": "Stroke Ink Contrast Level"
+      "strokeContrast": "Stroke Ink Contrast Level",
+      "resultTitle": "Enhanced image"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Design Spine Without Uploading",

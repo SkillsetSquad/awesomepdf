@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "上传手写签名、盖章或合同拍摄照片",
-      "uploadDescription": "采用高级局部对比度直方图增强(CLAHE)算法。将手机拍摄照片中发黄、霉斑阴影背景强效漂白，加粗加浓蓝/黑色签字笔锋和红色印章。",
+      "uploadDescription": "选择 PNG 或 JPEG，以提亮背景并增强手写字迹或印章的对比。",
       "optionsTitle": "去噪增强设置",
       "processButton": "执行笔迹去噪漂白",
       "successMessage": "手写笔锋与盖泥印迹局部对比度强效纯化成功！",
-      "magnifierTitle": "发光探照对比镜 (拖拽鼠标穿透漂除霉斑)",
+      "magnifierTitle": "原始图片",
       "clearButton": "清空",
       "inkTitle": "Handwritten Ink / 签字笔迹",
       "bleachHelp": "(拉动右侧滑块漂白纸张)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "深色签字字迹增强",
       "typeRedStamp": "红色盖章印泥还原",
       "bleachThreshold": "背景擦除亮度阈值",
-      "strokeContrast": "笔画笔锋对比度"
+      "strokeContrast": "笔画笔锋对比度",
+      "resultTitle": "增强后的图片"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "无须上传文档，直接设计装订书脊",

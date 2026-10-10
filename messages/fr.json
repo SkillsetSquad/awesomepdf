@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "Télécharger une photo de contrat signée/scellée",
-      "uploadDescription": "Applique une amélioration de l'histogramme CLAHE local pour blanchir les ombres de moisissure et rehausser nettement les signatures bleues/noires et l'encre rouge des tampons.",
+      "uploadDescription": "Choisissez une image PNG ou JPEG pour éclaircir le fond et renforcer le contraste de l’écriture ou du tampon.",
       "optionsTitle": "Paramètres de l'amplificateur de contraste d'encre",
       "processButton": "Exécuter le blanchiment de l'arrière-plan",
       "successMessage": "Contraste des traits manuscrits et du tampon rouge purifié avec succès !",
-      "magnifierTitle": "Loupe de contraste éclairée (Faire glisser pour balayer la moisissure du papier)",
+      "magnifierTitle": "Image d’origine",
       "clearButton": "Effacer",
       "inkTitle": "Encre manuscrite / Signatures",
       "bleachHelp": "(Faites glisser le curseur droit pour blanchir le papier support)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "Accentuer les traits d'encre sombre",
       "typeRedStamp": "Restaurer le contraste du tampon en cire rouge",
       "bleachThreshold": "Seuil de luminance du blanchiment de l'arrière-plan",
-      "strokeContrast": "Niveau de contraste de l'encre du trait"
+      "strokeContrast": "Niveau de contraste de l'encre du trait",
+      "resultTitle": "Image améliorée"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "Concevoir le dos sans télécharger",

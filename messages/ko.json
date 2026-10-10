@@ -238,11 +238,11 @@
     },
     "handwritingInkContrastBooster": {
       "uploadLabel": "서명/인감 계약서 사진 업로드",
-      "uploadDescription": "국부 CLAHE 히스토그램 대비 향상 알고리즘을 적용하여 누렇게 빛바랜 그림자 배경을 표백하고, 청/흑색 서명 및 적색 인감 잉크의 선명도를 높입니다.",
+      "uploadDescription": "PNG 또는 JPEG를 선택하여 배경을 밝게 하고 손글씨나 도장의 대비를 높이세요.",
       "optionsTitle": "잉크 대비 향상 설정",
       "processButton": "배경 표백 실행",
       "successMessage": "필적 및 적색 인감의 대비가 성공적으로 정화되었습니다!",
-      "magnifierTitle": "조명 대비 렌즈 (드래그하여 곰팡이 및 얼룩 제거)",
+      "magnifierTitle": "원본 이미지",
       "clearButton": "초기화",
       "inkTitle": "필기 잉크 / 서명",
       "bleachHelp": "(오른쪽 슬라이더를 드래그하여 배경 종이 표백)",
@@ -251,7 +251,8 @@
       "typeDarkInk": "어두운 잉크 획 선명화",
       "typeRedStamp": "적색 인감 대비 복원",
       "bleachThreshold": "배경 표백 휘도 임계값",
-      "strokeContrast": "획 잉크 대비 레벨"
+      "strokeContrast": "획 잉크 대비 레벨",
+      "resultTitle": "개선된 이미지"
     },
     "pdfSpineBookbinder": {
       "uploadLabel": "업로드 없이 책등 디자인",
