@@ -35,39 +35,6 @@ This project is built with modern web technologies to provide a slick, app-like 
 - **🎨 Modern UI**: Clean, accessible, and responsive design built with Tailwind CSS.
 - **🌐 Multi-language**: Supports English, Spanish, French, German, Portuguese, Japanese, Korean, and Chinese.
 
-## 🔄 Workflow Editor (Beta)
-
-> ⚠️ **Early Development Notice**: This feature is currently in early development stage. You may encounter bugs or incomplete functionality. We appreciate your feedback and patience!
-
-PDFCraft includes a powerful **visual workflow editor** that allows you to chain multiple PDF operations together, creating automated processing pipelines.
-
-<div align="center">
-  <img src="public/images/workflow-editor-screenshot.png" alt="Workflow Editor Screenshot" width="800" />
-  <p><em>Visual workflow editor with drag-and-drop interface</em></p>
-</div>
-
-### Key Capabilities
-
-- **🔗 Visual Node-Based Editor**: Drag and drop tools onto a canvas and connect them to create processing pipelines
-- **📋 23+ Pre-built Templates**: Common workflows like "Merge & Compress", "Secure PDF", "Document Preparation", etc.
-- **💾 Save & Reuse**: Save your custom workflows for future use
-- **🎯 Real-time Validation**: Automatic format compatibility checking between connected tools
-- **📁 Batch Processing**: Process multiple files through the same workflow
-- **↔️ Collapsible Panels**: Maximize canvas workspace with collapsible tool and library sidebars
-
-### Available Templates
-
-| Category | Templates |
-|----------|-----------|
-| **Common** | Merge & Compress, Document Preparation, Split & Watermark, Batch Watermark, Report Assembly, Invoice Processing |
-| **Conversion** | Images to PDF, PDF to Images, Office to PDF, eBook to PDF, Photo Album Creator |
-| **Optimization** | Optimize for Web, Full Optimization, Grayscale & Compress, Archive Preparation |
-| **Security** | Create Secure PDF, Confidential Document, Unlock & Edit |
-
-### How to Access
-
-Navigate to `/workflow` or click on "Workflow Editor" in the navigation menu.
-
 ## 🧰 Complete Tool List (90+ Tools)
 
 ### 📁 Organize & Manage (27 tools)
@@ -377,7 +344,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 PDFCraft stands on the shoulders of giants. We gratefully acknowledge [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools.
 
-Their project served as a significant inspiration and reference for our core logic. While PDFCraft has been re-engineered for the Next.js ecosystem and extends functionality with unique features like the *Workflow Editor*, we deeply respect the foundation laid by the BentoPDF team.
+Their project served as a significant inspiration and reference for our core logic. While PDFCraft has been re-engineered for the Next.js ecosystem, we deeply respect the foundation laid by the BentoPDF team.
 
 ## 📄 License
 
