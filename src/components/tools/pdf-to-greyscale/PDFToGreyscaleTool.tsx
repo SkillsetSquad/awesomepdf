@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -284,13 +286,13 @@ export function PDFToGreyscaleTool({ className = '' }: PDFToGreyscaleToolProps) 
               <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToGreyscale.pageRange') || 'Page Range'}
               </label>
-              <input
+              <Input
                 type="text"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToGreyscale.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToGreyscale.pageRangeHint') || 'Leave empty for all pages'}

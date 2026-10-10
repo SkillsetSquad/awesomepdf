@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -176,12 +178,12 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                             <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('emailToPdf.timezoneLabel') || 'Timezone'}
                             </label>
-                            <input
+                            <Input
                                 type="text"
                                 value={timezone}
                                 onChange={(e) => setTimezone(e.target.value)}
                                 disabled={isProcessing}
-                                className="w-full px-3 py-2 border border-border rounded-md text-sm"
+                                className="w-full"
                             />
                         </div>
                     </div>

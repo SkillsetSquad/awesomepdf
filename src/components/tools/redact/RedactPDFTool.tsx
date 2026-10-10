@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -2054,12 +2056,12 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                       }}
                       className="inline-flex"
                     >
-                      <input
+                      <Input
                         type="text"
                         value={jumpInput}
                         onChange={(e) => setJumpInput(e.target.value)}
                         onBlur={() => handleJumpPage()}
-                        className="w-10 h-6 text-center font-mono font-bold text-xs bg-transparent focus:outline-none focus:bg-muted/50 rounded"
+                        className="w-10 h-6 text-center"
                         title="输入页码按 Enter 跳转"
                       />
                     </form>

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -850,26 +852,26 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">
                   {tTools('pdfMultiTool.numberOfPages') || 'Number of pages'}
                 </label>
-                <input
+                <Input
                   type="number"
                   min="1"
                   max="100"
                   value={blankPageCount}
                   onChange={(e) => setBlankPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full px-3 py-2 border border-border rounded-lg bg-background"
+                  className="w-full"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">
                   {tTools('pdfMultiTool.insertPosition') || 'Insert at position'}
                 </label>
-                <input
+                <Input
                   type="number"
                   min="1"
                   max={pagePreviews.length + 1}
                   value={blankPagePosition}
                   onChange={(e) => setBlankPagePosition(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-full px-3 py-2 border border-border rounded-lg bg-background"
+                  className="w-full"
                 />
               </div>
               <div className="flex gap-3 mt-6">

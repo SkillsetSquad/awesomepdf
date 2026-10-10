@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -362,13 +364,13 @@ export function DeletePagesTool({ className = '' }: DeletePagesToolProps) {
 
           {/* Page range input */}
           <div className="mb-4 flex gap-2">
-            <input
+            <Input
               type="text"
               value={pageInput}
               onChange={(e) => setPageInput(e.target.value)}
               placeholder="e.g., 1-5, 8, 10-15"
               disabled={isProcessing}
-              className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              className="flex-1"
             />
             <Button
               variant="secondary"

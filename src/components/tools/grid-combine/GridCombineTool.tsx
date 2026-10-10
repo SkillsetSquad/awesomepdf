@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -715,13 +717,13 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                             <label htmlFor="borderColor" className="block text-xs text-muted-foreground mb-1">
                                                 {tTools('gridCombine.borderColor') || 'Border Color'}
                                             </label>
-                                            <input
+                                            <Input
                                                 type="color"
                                                 id="borderColor"
                                                 value={borderColor}
                                                 onChange={(e) => setBorderColor(e.target.value)}
                                                 disabled={isProcessing}
-                                                className="w-full h-8 rounded border border-border cursor-pointer p-0"
+                                                className="w-full h-8 cursor-pointer"
                                             />
                                         </div>
                                     )}

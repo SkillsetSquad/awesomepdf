@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -323,7 +325,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           </div>
         </div>
 
-        <input
+        <Input
           ref={imageInputRef}
           type="file"
           accept="image/png,image/jpeg,image/webp,image/svg+xml"

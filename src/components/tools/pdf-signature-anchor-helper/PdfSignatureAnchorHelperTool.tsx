@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -181,22 +183,22 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1">
                     {t('pdfSignatureAnchorHelper.anchorLabelLabel')}
-                    <input
+                    <Input
                       type="text"
                       value={anchorLabel}
                       onChange={(e) => setAnchorLabel(e.target.value)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
 
                   <div className="space-y-1">
                     {t('pdfSignatureAnchorHelper.targetPageLabel')}
-                    <input
+                    <Input
                       type="number"
                       min={1}
                       value={pageNumber}
                       onChange={(e) => setPageNumber(parseInt(e.target.value) || 1)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
 

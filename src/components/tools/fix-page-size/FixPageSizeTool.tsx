@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -261,28 +263,28 @@ export function FixPageSizeTool({ className = '' }: FixPageSizeToolProps) {
                   <label className="block text-sm font-medium text-foreground mb-1">
                     {tTools('fixPageSize.width') || 'Width (points)'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     value={customWidth}
                     onChange={(e) => setCustomWidth(Number(e.target.value))}
                     disabled={isProcessing}
                     min={72}
                     max={3000}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">
                     {tTools('fixPageSize.height') || 'Height (points)'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     value={customHeight}
                     onChange={(e) => setCustomHeight(Number(e.target.value))}
                     disabled={isProcessing}
                     min={72}
                     max={3000}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
               </div>

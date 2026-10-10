@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -297,7 +299,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                   <label htmlFor="customCols" className="block text-sm font-medium text-foreground mb-1">
                     {tTools('nUpPdf.columns') || 'Columns'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     id="customCols"
                     min={1}
@@ -305,14 +307,14 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                     value={customCols}
                     onChange={(e) => setCustomCols(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
                 <div className="flex-1">
                   <label htmlFor="customRows" className="block text-sm font-medium text-foreground mb-1">
                     {tTools('nUpPdf.rows') || 'Rows'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     id="customRows"
                     min={1}
@@ -320,7 +322,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
               </div>
@@ -424,13 +426,13 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                 <label htmlFor="borderColor" className="block text-sm font-medium text-foreground mb-1">
                   {tTools('nUpPdf.borderColor') || 'Border Color'}
                 </label>
-                <input
+                <Input
                   type="color"
                   id="borderColor"
                   value={borderColor}
                   onChange={(e) => setBorderColor(e.target.value)}
                   disabled={isProcessing}
-                  className="w-full h-10 rounded-md border border-border cursor-pointer"
+                  className="w-full h-10 cursor-pointer"
                 />
               </div>
             )}

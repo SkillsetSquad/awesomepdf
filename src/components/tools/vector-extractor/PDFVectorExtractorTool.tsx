@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -384,11 +386,11 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                         <Palette className="w-4 h-4" /> {tTools('vectorExtractor.colorFill')}
                       </label>
                       <div className="flex items-center gap-3">
-                        <input
+                        <Input
                           type="color"
                           value={elementColor}
                           onChange={(e) => setElementColor(e.target.value)}
-                          className="w-10 h-10 rounded-xl cursor-pointer border-0 bg-transparent"
+                          className="w-10 h-10 cursor-pointer"
                         />
                         <code className="text-xs font-mono font-bold">{elementColor}</code>
                       </div>

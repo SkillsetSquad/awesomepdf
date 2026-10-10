@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -303,13 +305,13 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
               <label htmlFor="cert-input" className="block text-sm font-medium text-foreground mb-2">
                 {tTool('uploadCertificateLabel')}
               </label>
-              <input
+              <Input
                 id="cert-input"
                 type="file"
                 accept=".pfx,.p12,.pem"
                 onChange={handleCertSelected}
                 disabled={isProcessing}
-                className="block w-full text-sm text-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-white hover:file:opacity-90 cursor-pointer"
+                className="block w-full file:mr-4 file:text-white hover:file:opacity-90 cursor-pointer"
               />
             </div>
 
@@ -339,14 +341,14 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                 </label>
                 <div className="flex gap-2">
                   <div className="relative flex-1">
-                    <input
+                    <Input
                       id="cert-password"
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handlePasswordSubmit()}
                       placeholder={tTool('enterPassword')}
-                      className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full pr-10"
                     />
                     <button
                       type="button"
@@ -389,16 +391,16 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="sign-reason" className="block text-sm font-medium text-foreground mb-1">{tTool('reasonLabel')}</label>
-                  <input id="sign-reason" type="text" value={reason} onChange={(e) => setReason(e.target.value)} placeholder={tTool('reasonPlaceholder')} className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                  <Input id="sign-reason" type="text" value={reason} onChange={(e) => setReason(e.target.value)} placeholder={tTool('reasonPlaceholder')} className="w-full" />
                 </div>
                 <div>
                   <label htmlFor="sign-location" className="block text-sm font-medium text-foreground mb-1">{tTool('locationLabel')}</label>
-                  <input id="sign-location" type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder={tTool('locationPlaceholder')} className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                  <Input id="sign-location" type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder={tTool('locationPlaceholder')} className="w-full" />
                 </div>
               </div>
               <div>
                 <label htmlFor="sign-contact" className="block text-sm font-medium text-foreground mb-1">{tTool('contactInfoLabel')}</label>
-                <input id="sign-contact" type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} placeholder={tTool('contactInfoPlaceholder')} className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                <Input id="sign-contact" type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} placeholder={tTool('contactInfoPlaceholder')} className="w-full" />
               </div>
 
               {/* Visible Signature Toggle */}
@@ -412,19 +414,19 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('xPosition')}</label>
-                      <input type="number" value={sigX} onChange={(e) => setSigX(Number(e.target.value))} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                      <Input type="number" value={sigX} onChange={(e) => setSigX(Number(e.target.value))} className="w-full" />
                     </div>
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('yPosition')}</label>
-                      <input type="number" value={sigY} onChange={(e) => setSigY(Number(e.target.value))} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                      <Input type="number" value={sigY} onChange={(e) => setSigY(Number(e.target.value))} className="w-full" />
                     </div>
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('width')}</label>
-                      <input type="number" value={sigWidth} onChange={(e) => setSigWidth(Number(e.target.value))} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                      <Input type="number" value={sigWidth} onChange={(e) => setSigWidth(Number(e.target.value))} className="w-full" />
                     </div>
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('height')}</label>
-                      <input type="number" value={sigHeight} onChange={(e) => setSigHeight(Number(e.target.value))} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                      <Input type="number" value={sigHeight} onChange={(e) => setSigHeight(Number(e.target.value))} className="w-full" />
                     </div>
                   </div>
                   <div>
@@ -439,11 +441,11 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                   {/* Signature Image */}
                   <div>
                     <label className="block text-xs text-muted-foreground mb-1">{tTool('signatureImageLabel')}</label>
-                    <input
+                    <Input
                       type="file"
                       accept=".png,.jpg,.jpeg"
                       onChange={handleImageSelected}
-                      className="block w-full text-xs text-foreground file:mr-2 file:py-1 file:px-3 file:rounded-sm file:border-0 file:text-xs file:bg-muted file:text-foreground hover:file:opacity-80 cursor-pointer"
+                      className="block w-full file:mr-2 hover:file:opacity-80 cursor-pointer"
                     />
                     {sigImageFile && (
                       <div className="flex items-center gap-2 mt-1">
@@ -456,16 +458,16 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                   {/* Text options */}
                   <div>
                     <label className="block text-xs text-muted-foreground mb-1">{tTool('signatureTextLabel')}</label>
-                    <input type="text" value={sigText} onChange={(e) => setSigText(e.target.value)} placeholder={tTool('signatureTextPlaceholder')} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                    <Input type="text" value={sigText} onChange={(e) => setSigText(e.target.value)} placeholder={tTool('signatureTextPlaceholder')} className="w-full" />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('textColorLabel')}</label>
-                      <input type="color" value={sigTextColor} onChange={(e) => setSigTextColor(e.target.value)} className="w-full h-8 rounded-sm border border-border cursor-pointer" />
+                      <Input type="color" value={sigTextColor} onChange={(e) => setSigTextColor(e.target.value)} className="w-full h-8 cursor-pointer" />
                     </div>
                     <div>
                       <label className="block text-xs text-muted-foreground mb-1">{tTool('textSizeLabel')}</label>
-                      <input type="number" min={6} max={36} value={sigTextSize} onChange={(e) => setSigTextSize(Number(e.target.value))} className="w-full px-2 py-1.5 text-sm rounded-md border border-border bg-background text-foreground" />
+                      <Input type="number" min={6} max={36} value={sigTextSize} onChange={(e) => setSigTextSize(Number(e.target.value))} className="w-full" />
                     </div>
                   </div>
                 </div>

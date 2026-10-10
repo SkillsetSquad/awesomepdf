@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -150,22 +152,22 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1.5">
                     <label className="text-zinc-500 font-bold">{t('interactiveTocGenerator.tocTitleLabel')}</label>
-                    <input
+                    <Input
                       type="text"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="Table of Contents"
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
 
                   <div className="space-y-1.5">
                     <label className="text-zinc-500 font-bold">{t('interactiveTocGenerator.insertPageLabel')}</label>
-                    <input
+                    <Input
                       type="number"
                       value={insertIndex}
                       onChange={(e) => setInsertIndex(parseInt(e.target.value) || 0)}
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
                 </div>

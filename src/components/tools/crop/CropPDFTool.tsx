@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -531,14 +533,14 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     </svg>
                   </button>
                   <div className="flex items-center gap-1 text-sm font-medium text-gray-600">
-                    <input
+                    <Input
                       type="text"
                       value={pageInputValue}
                       onChange={(e) => setPageInputValue(e.target.value)}
                       onKeyDown={handlePageInputKeyDown}
                       onBlur={handlePageInputBlur}
                       disabled={isProcessing}
-                      className="w-12 text-center border border-gray-300 rounded px-1 py-0.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
+                      className="w-12 text-center disabled:opacity-50"
                       aria-label="Go to page"
                     />
                     <span>/ {state.numPages}</span>
@@ -573,14 +575,14 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                 </Button>
                 <div className="flex items-center gap-1 text-sm font-medium min-w-[120px] justify-center">
                   <span>{tTools('cropPdf.page') || 'Page'}</span>
-                  <input
+                  <Input
                     type="text"
                     value={pageInputValue}
                     onChange={(e) => setPageInputValue(e.target.value)}
                     onKeyDown={handlePageInputKeyDown}
                     onBlur={handlePageInputBlur}
                     disabled={isProcessing}
-                    className="w-14 text-center border border-gray-300 rounded px-1 py-0.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                    className="w-14 text-center disabled:opacity-50"
                     aria-label="Go to page"
                   />
                   <span>/ {state.numPages}</span>

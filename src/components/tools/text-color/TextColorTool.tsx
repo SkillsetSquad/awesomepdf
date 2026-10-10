@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -86,18 +88,18 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
               <div>
                 <label className="block text-sm font-medium mb-2">{t('colorLabel')}</label>
                 <div className="flex items-center gap-4">
-                  <input 
+                  <Input 
                     type="color" 
                     value={color} 
                     onChange={(e) => setColor(e.target.value)} 
-                    className="w-16 h-10 border rounded cursor-pointer" 
+                    className="w-16 h-10 cursor-pointer" 
                     disabled={isProcessing} 
                   />
-                  <input 
+                  <Input 
                     type="text" 
                     value={color} 
                     onChange={(e) => setColor(e.target.value)} 
-                    className="px-3 py-2 border rounded w-32" 
+                    className="w-32" 
                     disabled={isProcessing} 
                   />
                 </div>

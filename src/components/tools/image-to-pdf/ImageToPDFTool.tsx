@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -526,14 +528,14 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                   <label className="block text-sm text-foreground">
                     {tTools('imageToPdf.imagesPerPdf') || 'Images per PDF'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     min="1"
                     max={files.length}
                     value={imagesPerPdf}
                     onChange={(e) => setImagesPerPdf(Math.max(1, Math.min(files.length, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-24 px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-24"
                   />
                   <p className="text-xs text-muted-foreground">
                     {tTools('imageToPdf.batchModeHint', { pdfCount: Math.ceil(files.length / imagesPerPdf) }) ||

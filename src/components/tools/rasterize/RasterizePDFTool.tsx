@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -242,13 +244,13 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                             <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('rasterizePdf.pageRangeLabel') || 'Page Range (optional)'}
                             </label>
-                            <input
+                            <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 disabled={isProcessing}
                                 placeholder="e.g., 1-5, 8, 10-15"
-                                className="w-full px-3 py-2 border border-border rounded-md text-sm"
+                                className="w-full"
                             />
                             <p className="mt-1 text-xs text-muted-foreground">
                                 {tTools('rasterizePdf.pageRangeDesc') || 'Leave empty to convert all pages.'}
@@ -261,19 +263,19 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                                 {tTools('rasterizePdf.bgColorLabel') || 'Background Color'}
                             </label>
                             <div className="flex items-center gap-3">
-                                <input
+                                <Input
                                     type="color"
                                     value={backgroundColor}
                                     onChange={(e) => setBackgroundColor(e.target.value)}
                                     disabled={isProcessing}
-                                    className="w-10 h-10 rounded border-0 cursor-pointer"
+                                    className="w-10 h-10 cursor-pointer"
                                 />
-                                <input
+                                <Input
                                     type="text"
                                     value={backgroundColor}
                                     onChange={(e) => setBackgroundColor(e.target.value)}
                                     disabled={isProcessing}
-                                    className="flex-1 px-3 py-2 border border-border rounded-md text-sm font-mono"
+                                    className="flex-1"
                                 />
                             </div>
                         </div>

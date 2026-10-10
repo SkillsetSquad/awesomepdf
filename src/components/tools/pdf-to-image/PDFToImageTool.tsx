@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -361,13 +363,13 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
               <label className="block text-sm font-medium text-foreground mb-2">
                 {tTools('pdfToImage.pageRange') || 'Page Range'}
               </label>
-              <input
+              <Input
                 type="text"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToImage.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('pdfToImage.pageRangeHint') || 'Leave empty for all pages'}
@@ -442,28 +444,28 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   <label className="block text-xs font-medium text-foreground mb-1">
                     {tTools('pdfToImage.columns') || 'Columns'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     min={1}
                     max={10}
                     value={customColumns}
                     onChange={(e) => setCustomColumns(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
                 <div className="flex-1">
                   <label className="block text-xs font-medium text-foreground mb-1">
                     {tTools('pdfToImage.rows') || 'Rows'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     min={1}
                     max={10}
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
               </div>

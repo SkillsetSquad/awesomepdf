@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -247,12 +249,12 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                             <label className="block text-sm font-medium text-foreground">
                                 {tTools('pdfToMarkdown.pageRange') || 'Page Range'}
                             </label>
-                            <input
+                            <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 placeholder={tTools('pdfToMarkdown.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full"
                             />
                             <p className="text-xs text-muted-foreground">
                                 {tTools('pdfToMarkdown.pageRangeHint') || 'Leave empty for all pages'}

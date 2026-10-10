@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -701,7 +703,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         </button>
                       </div>
                       <div className="mt-2 flex gap-1.5">
-                        <input
+                        <Input
                           type="text"
                           value={customPageInput}
                           onChange={(e) => setCustomPageInput(e.target.value)}
@@ -712,7 +714,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             }
                           }}
                           placeholder="e.g. 1, 3-5"
-                          className="flex-1 text-[11px] px-2 py-1 rounded bg-background border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary"
+                          className="flex-1 text-[11px]"
                         />
                         <button
                           type="button"
@@ -825,14 +827,14 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         </button>
 
                         <div className="relative flex items-center max-w-[70px]">
-                          <input
+                          <Input
                             type="text"
                             value={steplessAngle}
                             onChange={handleTextInputChange}
                             onBlur={handleTextInputBlur}
                             onKeyDown={handleTextInputKeyDown}
                             disabled={isProcessing || selectedPages.size === 0}
-                            className="w-full text-center bg-transparent font-bold text-sm text-foreground border-none outline-none py-1 focus:ring-0"
+                            className="w-full text-center"
                           />
                           <span className="absolute right-0.5 text-xs text-muted-foreground select-none">°</span>
                         </div>

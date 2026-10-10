@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -193,12 +195,12 @@ export function GlobalInvoiceParserTool({ className = '' }: GlobalInvoiceParserT
 
                   <div className="space-y-1.5">
                     <label className="text-zinc-500 font-bold">{t('globalInvoiceParser.customRateLabel')}</label>
-                    <input
+                    <Input
                       type="text"
                       value={customRate}
                       onChange={(e) => setCustomRate(e.target.value)}
                       placeholder={t('globalInvoiceParser.customRatePlaceholder')}
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
                 </div>

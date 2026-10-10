@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -336,12 +338,12 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                     </p>
 
                     <div className="flex gap-2">
-                      <input
+                      <Input
                         type="text"
                         value={editUrl}
                         onChange={(e) => setEditUrl(e.target.value)}
                         placeholder={t('citationLinker.doiPlaceholder')}
-                        className="flex-1 px-3 py-2 text-xs rounded-xl bg-white dark:bg-zinc-800 border border-border focus:ring-1 focus:ring-primary"
+                        className="flex-1"
                       />
                       <Button size="sm" variant="default" onClick={handleSaveUrl}>
                         <Check className="w-3.5 h-3.5" />

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -142,11 +144,11 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
                 <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                   {tTools('tocTitle')}
                 </label>
-                <input
+                <Input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                  className="w-full"
                   disabled={isProcessing}
                   placeholder="Table of Contents"
                 />

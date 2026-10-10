@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -195,13 +197,13 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                             <label className="block text-sm font-medium text-foreground mb-2">
                                 {tTools('extractTables.pageRangeLabel') || 'Page Range (optional)'}
                             </label>
-                            <input
+                            <Input
                                 type="text"
                                 value={pageRange}
                                 onChange={(e) => setPageRange(e.target.value)}
                                 disabled={isProcessing}
                                 placeholder="e.g., 1-5, 8, 10-15"
-                                className="w-full px-3 py-2 border border-border rounded-md text-sm"
+                                className="w-full"
                             />
                         </div>
 

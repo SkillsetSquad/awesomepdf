@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Modal } from '@/components/ui/Modal';
@@ -389,7 +391,7 @@ export function SignatureExtractorModal({
             </p>
 
             <label className="inline-flex">
-              <input
+              <Input
                 type="file"
                 accept="application/pdf,.pdf"
                 className="hidden"
@@ -597,12 +599,12 @@ export function SignatureExtractorModal({
                       <label className="block text-xs font-medium text-muted-foreground mb-1">
                         签名名称：
                       </label>
-                      <input
+                      <Input
                         type="text"
                         value={signatureName}
                         onChange={(e) => setSignatureName(e.target.value)}
                         placeholder="例如：张三签名 / 财务专用章"
-                        className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-card text-foreground"
+                        className="w-full"
                       />
                     </div>
 

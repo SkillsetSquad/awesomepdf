@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { FileUploader } from '../FileUploader';
@@ -64,7 +66,7 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
                 {fields.map((field, idx) => (
                   <div key={idx} className="flex items-center gap-4">
                     <label className="w-1/3 text-sm font-medium truncate" title={field.name}>{field.name}</label>
-                    <input type="text" value={field.value} onChange={(e) => handleFieldChange(idx, e.target.value)} placeholder={`Enter ${field.type}`} className="flex-1 px-3 py-2 border rounded" disabled={isProcessing} />
+                    <Input type="text" value={field.value} onChange={(e) => handleFieldChange(idx, e.target.value)} placeholder={`Enter ${field.type}`} className="flex-1" disabled={isProcessing} />
                   </div>
                 ))}
               </div>

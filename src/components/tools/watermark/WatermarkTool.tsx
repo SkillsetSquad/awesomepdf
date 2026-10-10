@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -693,12 +695,12 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                       {tTools('watermarkText')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={watermarkText}
                       onChange={(e) => setWatermarkText(e.target.value)}
                       placeholder={tTools('textPlaceholder') || 'CONFIDENTIAL'}
-                      className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                      className="w-full"
                       disabled={isProcessing}
                     />
                   </div>
@@ -726,18 +728,18 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                         {tTools('color')}
                       </label>
                       <div className="flex items-center gap-2">
-                        <input
+                        <Input
                           type="color"
                           value={textColor}
                           onChange={(e) => setTextColor(e.target.value)}
-                          className="w-9 h-9 p-0.5 cursor-pointer rounded border border-gray-300 dark:border-gray-600 shrink-0"
+                          className="w-9 h-9 cursor-pointer shrink-0"
                           disabled={isProcessing}
                         />
-                        <input
+                        <Input
                           type="text"
                           value={textColor}
                           onChange={(e) => setTextColor(e.target.value)}
-                          className="flex-1 px-3 py-1.5 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 text-sm"
+                          className="flex-1"
                           disabled={isProcessing}
                         />
                       </div>
@@ -792,11 +794,11 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                       {tTools('watermarkImage')}
                     </label>
-                    <input
+                    <Input
                       type="file"
                       accept="image/png, image/jpeg"
                       onChange={handleImageSelected}
-                      className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                      className="w-full file:mr-4 file:text-white"
                       disabled={isProcessing}
                     />
                     {imageFile && (
@@ -1098,12 +1100,12 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                 {pageMode === 'custom' && (
                   <div className="animate-in fade-in slide-in-from-top-1 duration-200">
-                    <input
+                    <Input
                       type="text"
                       value={customPageRange}
                       onChange={(e) => setCustomPageRange(e.target.value)}
                       placeholder={tTools('rangePlaceholder')}
-                      className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                      className="w-full"
                       disabled={isProcessing}
                     />
                   </div>
@@ -1188,7 +1190,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                   <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300">
                     <span>{tTools('page')}</span>
-                    <input
+                    <Input
                       type="number"
                       min={1}
                       max={totalPages}
@@ -1199,7 +1201,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                           setCurrentPage(val);
                         }
                       }}
-                      className="w-10 text-center py-0.5 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-900 font-medium"
+                      className="w-10 text-center"
                     />
                     <span>{tTools('of')} {totalPages} {tTools('pages')}</span>
                   </div>

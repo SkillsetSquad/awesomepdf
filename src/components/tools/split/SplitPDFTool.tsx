@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -676,14 +678,14 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   >
                     {tTools('splitPdf.rangeInputLabel') || 'Page Ranges'}
                   </label>
-                  <input
+                  <Input
                     id="page-ranges"
                     type="text"
                     value={rangeInput}
                     onChange={(e) => setRangeInput(e.target.value)}
                     placeholder="e.g., 1-5, 8, 10-15"
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                   <p className="mt-1 text-xs text-muted-foreground">
                     {tTools('splitPdf.rangeInputHint') || 'Enter page numbers or ranges separated by commas. Leave empty to export all pages as one file.'}
@@ -878,7 +880,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                 >
                   {tTools('splitPdf.splitCountLabel') || 'Number of Parts'}
                 </label>
-                <input
+                <Input
                   id="split-count"
                   type="number"
                   min={2}
@@ -886,7 +888,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   value={splitCount}
                   onChange={(e) => setSplitCount(Math.max(2, Math.min(totalPages, parseInt(e.target.value) || 2)))}
                   disabled={isProcessing}
-                  className="w-24 px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-24"
                 />
                 <p className="mt-1 text-xs text-muted-foreground">
                   {tTools('splitPdf.splitCountHint', {

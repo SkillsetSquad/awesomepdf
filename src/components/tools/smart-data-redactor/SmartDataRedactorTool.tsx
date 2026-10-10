@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -210,12 +212,12 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       {t('smartDataRedactor.customKeywordsLabel')}
                       <HelpCircle className="w-3.5 h-3.5 text-zinc-400" />
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={customKeywords}
                       onChange={(e) => setCustomKeywords(e.target.value)}
                       placeholder={t('smartDataRedactor.customKeywordsPlaceholder')}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
                 </div>

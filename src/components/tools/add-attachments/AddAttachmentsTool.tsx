@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -334,13 +336,13 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
                 <label className="block text-sm font-medium text-foreground mb-2">
                   {tTools('addAttachments.pageRange') || 'Page Range'}
                 </label>
-                <input
+                <Input
                   type="text"
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
                   placeholder="e.g., 1-3, 5, 7-9"
                   disabled={isProcessing}
-                  className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm"
+                  className="w-full"
                 />
                 <p className="mt-1 text-xs text-muted-foreground">
                   {tTools('addAttachments.pageRangeHint') || 'Specify which pages to attach files to.'}

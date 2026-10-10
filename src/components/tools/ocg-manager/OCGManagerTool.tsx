@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -254,12 +256,12 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                         </button>
 
                                         {editingLayer === layer.id ? (
-                                            <input
+                                            <Input
                                                 type="text"
                                                 value={editName}
                                                 onChange={(e) => setEditName(e.target.value)}
                                                 onKeyDown={(e) => e.key === 'Enter' && handleRenameLayer(layer.id)}
-                                                className="px-2 py-1 text-sm border rounded"
+                                                className=""
                                                 autoFocus
                                             />
                                         ) : (
@@ -330,13 +332,13 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                             {tTools('ocgManager.addLayerLabel') || 'Add New Layer'}
                         </label>
                         <div className="flex gap-2">
-                            <input
+                            <Input
                                 type="text"
                                 value={newLayerName}
                                 onChange={(e) => setNewLayerName(e.target.value)}
                                 placeholder="Layer name..."
                                 disabled={isProcessing}
-                                className="flex-1 px-3 py-2 border border-border rounded-md text-sm"
+                                className="flex-1"
                             />
                             <Button
                                 variant="secondary"

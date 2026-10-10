@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -260,7 +262,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
               <label htmlFor="spacing" className="block text-sm font-medium text-foreground mb-1">
                 {tTools('combineSinglePage.spacing') || 'Page Spacing (points)'}
               </label>
-              <input
+              <Input
                 type="number"
                 id="spacing"
                 value={spacing}
@@ -268,7 +270,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                 min={0}
                 max={200}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
             </div>
 
@@ -278,20 +280,20 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                 {tTools('combineSinglePage.backgroundColor') || 'Background Color'}
               </label>
               <div className="flex gap-2">
-                <input
+                <Input
                   type="color"
                   id="backgroundColor"
                   value={backgroundColor}
                   onChange={(e) => setBackgroundColor(e.target.value)}
                   disabled={isProcessing}
-                  className="w-12 h-10 rounded-md border border-border cursor-pointer"
+                  className="w-12 h-10 cursor-pointer"
                 />
-                <input
+                <Input
                   type="text"
                   value={backgroundColor}
                   onChange={(e) => setBackgroundColor(e.target.value)}
                   disabled={isProcessing}
-                  className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="flex-1"
                 />
               </div>
             </div>
@@ -318,7 +320,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                   <label htmlFor="separatorThickness" className="block text-sm font-medium text-foreground mb-1">
                     {tTools('combineSinglePage.separatorThickness') || 'Separator Thickness (points)'}
                   </label>
-                  <input
+                  <Input
                     type="number"
                     id="separatorThickness"
                     value={separatorThickness}
@@ -327,7 +329,7 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                     max={10}
                     step={0.1}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full"
                   />
                 </div>
 
@@ -336,20 +338,20 @@ export function CombineSinglePageTool({ className = '' }: CombineSinglePageToolP
                     {tTools('combineSinglePage.separatorColor') || 'Separator Color'}
                   </label>
                   <div className="flex gap-2">
-                    <input
+                    <Input
                       type="color"
                       id="separatorColor"
                       value={separatorColor}
                       onChange={(e) => setSeparatorColor(e.target.value)}
                       disabled={isProcessing}
-                      className="w-12 h-10 rounded-md border border-border cursor-pointer"
+                      className="w-12 h-10 cursor-pointer"
                     />
-                    <input
+                    <Input
                       type="text"
                       value={separatorColor}
                       onChange={(e) => setSeparatorColor(e.target.value)}
                       disabled={isProcessing}
-                      className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="flex-1"
                     />
                   </div>
                 </div>

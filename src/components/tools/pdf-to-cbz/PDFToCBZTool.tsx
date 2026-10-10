@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -338,11 +340,11 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   <label className="text-xs font-bold text-muted-foreground">
                     {t('pdfToCbz.fieldTitle')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -351,12 +353,12 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   <label className="text-xs font-bold text-muted-foreground">
                     {t('pdfToCbz.fieldSeries')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     placeholder={t('pdfToCbz.seriesPlaceholder')}
                     value={series}
                     onChange={(e) => setSeries(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -365,11 +367,11 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   <label className="text-xs font-bold text-muted-foreground">
                     {t('pdfToCbz.fieldIssue')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -378,11 +380,11 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   <label className="text-xs font-bold text-muted-foreground">
                     {t('pdfToCbz.fieldVolume')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     value={volume}
                     onChange={(e) => setVolume(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -392,12 +394,12 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                     <User className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.fieldArtist')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     placeholder={t('pdfToCbz.artistPlaceholder')}
                     value={writer}
                     onChange={(e) => setWriter(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -406,12 +408,12 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   <label className="text-xs font-bold text-muted-foreground">
                     {t('pdfToCbz.fieldPublisher')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     placeholder={t('pdfToCbz.publisherPlaceholder')}
                     value={publisher}
                     onChange={(e) => setPublisher(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 
@@ -421,12 +423,12 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                     <Tag className="w-3.5 h-3.5 text-zinc-400" />
                     {t('pdfToCbz.fieldGenre')}
                   </label>
-                  <input
+                  <Input
                     type="text"
                     placeholder={t('pdfToCbz.genrePlaceholder')}
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full transition-all"
                   />
                 </div>
 

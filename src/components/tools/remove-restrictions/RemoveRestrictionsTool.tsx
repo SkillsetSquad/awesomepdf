@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -254,13 +256,13 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
                 {tTools('removeRestrictions.ownerPasswordLabel') || 'Owner Password (optional)'}
               </label>
               <div className="relative">
-                <input
+                <Input
                   type={showPassword ? 'text' : 'password'}
                   value={ownerPassword}
                   onChange={(e) => setOwnerPassword(e.target.value)}
                   disabled={isProcessing}
                   placeholder={tTools('removeRestrictions.ownerPasswordPlaceholder') || 'Enter owner password if known'}
-                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50"
+                  className="w-full pr-10 disabled:opacity-50"
                 />
                 <button
                   type="button"

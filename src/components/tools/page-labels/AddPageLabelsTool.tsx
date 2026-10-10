@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -361,12 +363,12 @@ export function AddPageLabelsTool() {
                           {t('pageLabels.pageRangeHelp')}
                         </span>
                       </div>
-                      <input
+                      <Input
                         type="text"
                         placeholder={t('pageLabels.pageRangePlaceholder')}
                         value={rule.pageRange}
                         onChange={(e) => handleRuleChange(idx, { pageRange: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full transition-all"
                       />
                     </div>
 
@@ -394,12 +396,12 @@ export function AddPageLabelsTool() {
                       <label className="text-xs font-bold text-muted-foreground block">
                         {t('pageLabels.prefixLabel')}
                       </label>
-                      <input
+                      <Input
                         type="text"
                         placeholder={t('pageLabels.prefixPlaceholder')}
                         value={rule.prefix}
                         onChange={(e) => handleRuleChange(idx, { prefix: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                        className="w-full transition-all"
                       />
                     </div>
 
@@ -408,12 +410,12 @@ export function AddPageLabelsTool() {
                       <label className="text-xs font-bold text-muted-foreground block">
                         {t('pageLabels.startValueLabel')}
                       </label>
-                      <input
+                      <Input
                         type="number"
                         min="1"
                         value={rule.startValue}
                         onChange={(e) => handleRuleChange(idx, { startValue: parseInt(e.target.value, 10) || 1 })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-muted/30 border border-input text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                        className="w-full transition-all"
                       />
                     </div>
                   </div>

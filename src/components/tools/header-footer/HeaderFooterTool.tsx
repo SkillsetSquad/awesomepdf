@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -317,34 +319,34 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
                   <label className="block text-sm mb-1">Left</label>
-                  <input
+                  <Input
                     type="text"
                     value={headerLeft}
                     onChange={(e) => setHeaderLeft(e.target.value)}
                     placeholder="e.g., Company Name"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Center</label>
-                  <input
+                  <Input
                     type="text"
                     value={headerCenter}
                     onChange={(e) => setHeaderCenter(e.target.value)}
                     placeholder="e.g., Document Title"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Right</label>
-                  <input
+                  <Input
                     type="text"
                     value={headerRight}
                     onChange={(e) => setHeaderRight(e.target.value)}
                     placeholder="e.g., {date}"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
@@ -356,34 +358,34 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
                   <label className="block text-sm mb-1">Left</label>
-                  <input
+                  <Input
                     type="text"
                     value={footerLeft}
                     onChange={(e) => setFooterLeft(e.target.value)}
                     placeholder="e.g., Confidential"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Center</label>
-                  <input
+                  <Input
                     type="text"
                     value={footerCenter}
                     onChange={(e) => setFooterCenter(e.target.value)}
                     placeholder="e.g., Page {page} of {total}"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Right</label>
-                  <input
+                  <Input
                     type="text"
                     value={footerRight}
                     onChange={(e) => setFooterRight(e.target.value)}
                     placeholder="e.g., {date}"
-                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
@@ -414,35 +416,35 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
                   <label className="block text-sm mb-1">Font Size</label>
-                  <input
+                  <Input
                     type="number"
                     value={fontSize}
                     onChange={(e) => setFontSize(parseInt(e.target.value) || 10)}
                     min={6}
                     max={24}
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Margin (pt)</label>
-                  <input
+                  <Input
                     type="number"
                     value={margin}
                     onChange={(e) => setMargin(parseInt(e.target.value) || 30)}
                     min={10}
                     max={100}
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1">Text Color</label>
-                  <input
+                  <Input
                     type="color"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
-                    className="w-full h-10 p-1 cursor-pointer rounded border border-gray-300"
+                    className="w-full h-10 cursor-pointer"
                     disabled={isProcessing}
                   />
                 </div>
@@ -451,12 +453,12 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               {/* Page Range */}
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Page Range</label>
-                <input
+                <Input
                   type="text"
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
                   placeholder="e.g., 1-5, 8, 10-12 or 'all'"
-                  className="w-full px-3 py-2 border rounded-md text-sm"
+                  className="w-full"
                   disabled={isProcessing}
                 />
                 <p className="text-xs text-gray-500 mt-1">

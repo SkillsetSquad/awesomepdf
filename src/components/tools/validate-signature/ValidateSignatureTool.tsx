@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
@@ -136,12 +138,12 @@ export function ValidateSignatureTool({ className = '' }: { className?: string }
         <Card className="p-6" >
           <h3 className="text-lg font-medium text-foreground mb-3">{tTool('trustedCertTitle')}</h3>
           <p className="text-sm text-muted-foreground mb-3">{tTool('trustedCertDescription')}</p>
-          <input
+          <Input
             type="file"
             accept=".pem,.crt,.cer,.der"
             onChange={handleTrustedCert}
             disabled={loading}
-            className="block w-full text-sm text-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-white hover:file:opacity-90 cursor-pointer"
+            className="block w-full file:mr-4 file:text-white hover:file:opacity-90 cursor-pointer"
           />
           {trustedCertName && (
             <p className="text-xs text-green-600 dark:text-green-400 mt-2">{tTool('trustedCertLoaded', { name: trustedCertName })}</p>

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -246,13 +248,13 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
               <>
                 <div>
                   <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.width') || 'Width (pt)'}</label>
-                  <input type="number" value={customWidth} onChange={(e) => setCustomWidth(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm" />
+                  <Input type="number" value={customWidth} onChange={(e) => setCustomWidth(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
+                    className="w-full" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.height') || 'Height (pt)'}</label>
-                  <input type="number" value={customHeight} onChange={(e) => setCustomHeight(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm" />
+                  <Input type="number" value={customHeight} onChange={(e) => setCustomHeight(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
+                    className="w-full" />
                 </div>
               </>
             )}
@@ -289,9 +291,9 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.textColor') || 'Text Color'}</label>
               <div className="flex gap-2">
-                <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing} className="w-10 h-10 rounded border cursor-pointer" />
-                <input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing}
-                  className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm" />
+                <Input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing} className="w-10 h-10 cursor-pointer" />
+                <Input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing}
+                  className="flex-1" />
               </div>
             </div>
           </div>

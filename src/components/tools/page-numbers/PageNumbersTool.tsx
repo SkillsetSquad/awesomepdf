@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -446,12 +448,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.startNumber')}</label>
-                  <input
+                  <Input
                     type="number"
                     value={startNumber}
                     onChange={(e) => setStartNumber(parseInt(e.target.value) || 1)}
                     min={1}
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
@@ -460,12 +462,12 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               {format === 'custom' && (
                 <div className="mb-3">
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.customFormat')}</label>
-                  <input
+                  <Input
                     type="text"
                     value={customFormat}
                     onChange={(e) => setCustomFormat(e.target.value)}
                     placeholder="Page {page} of {total}"
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                   <p className="text-xs text-gray-500 mt-1">{tTools('pageNumbers.customFormatHint')}</p>
@@ -475,23 +477,23 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.prefix')}</label>
-                  <input
+                  <Input
                     type="text"
                     value={prefix}
                     onChange={(e) => setPrefix(e.target.value)}
                     placeholder="e.g., Page "
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.suffix')}</label>
-                  <input
+                  <Input
                     type="text"
                     value={suffix}
                     onChange={(e) => setSuffix(e.target.value)}
                     placeholder="e.g., -"
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
@@ -504,25 +506,25 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div>
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.fontSize')}</label>
-                  <input
+                  <Input
                     type="number"
                     value={fontSize}
                     onChange={(e) => setFontSize(parseInt(e.target.value) || 12)}
                     min={6}
                     max={72}
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.margin')}</label>
-                  <input
+                  <Input
                     type="number"
                     value={margin}
                     onChange={(e) => setMargin(parseInt(e.target.value) || 30)}
                     min={10}
                     max={100}
-                    className="w-full px-2 py-1.5 text-sm border rounded-md"
+                    className="w-full"
                     disabled={isProcessing}
                   />
                 </div>
@@ -530,18 +532,18 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               <div className="mb-3">
                 <label className="block text-sm font-medium mb-1">{tTools('pageNumbers.color')}</label>
                 <div className="flex items-center gap-2">
-                  <input
+                  <Input
                     type="color"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
-                    className="w-10 h-10 p-0.5 cursor-pointer rounded border border-gray-300"
+                    className="w-10 h-10 cursor-pointer"
                     disabled={isProcessing}
                   />
-                  <input
+                  <Input
                     type="text"
                     value={fontColor}
                     onChange={(e) => setFontColor(e.target.value)}
-                    className="flex-1 px-2 py-1.5 text-sm border rounded-md"
+                    className="flex-1"
                     disabled={isProcessing}
                   />
                 </div>

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -350,9 +352,9 @@ export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
                                 >
                                     -
                                 </Button>
-                                <input
+                                <Input
                                     type="number"
-                                    className="h-9 w-16 text-center border-y border-input bg-background text-sm"
+                                    className="h-9 w-16 text-center"
                                     value={batchAngle}
                                     onChange={(e) => setBatchAngle(e.target.value)}
                                 />
@@ -421,9 +423,9 @@ export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
                                         >
                                             -
                                         </button>
-                                        <input
+                                        <Input
                                             type="number"
-                                            className="w-12 h-6 text-center text-xs bg-transparent border border-input rounded"
+                                            className="w-12 h-6 text-center"
                                             value={preview.rotation}
                                             onChange={(e) => updatePageRotation(preview.pageNumber, parseFloat(e.target.value) || 0)}
                                         />

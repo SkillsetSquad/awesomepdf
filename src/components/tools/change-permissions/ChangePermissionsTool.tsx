@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -357,13 +359,13 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               <label className="block text-sm font-medium text-foreground mb-1">
                 {tTools('changePermissions.currentPasswordLabel') || 'Current Password (if PDF is encrypted)'}
               </label>
-              <input
+              <Input
                 type="password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder={tTools('changePermissions.currentPasswordPlaceholder') || 'Enter current password'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-sm border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.currentPasswordHint') || 'Required if the PDF is already password-protected.'}
@@ -375,13 +377,13 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               <label className="block text-sm font-medium text-foreground mb-1">
                 {tTools('changePermissions.newUserPasswordLabel') || 'New User Password (to open document)'}
               </label>
-              <input
+              <Input
                 type="password"
                 value={newUserPassword}
                 onChange={(e) => setNewUserPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newUserPasswordPlaceholder') || 'Enter user password'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-sm border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.newUserPasswordHint') || 'Users will need this password to open the PDF.'}
@@ -393,13 +395,13 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               <label className="block text-sm font-medium text-foreground mb-1">
                 {tTools('changePermissions.newOwnerPasswordLabel') || 'New Owner Password (to change permissions)'}
               </label>
-              <input
+              <Input
                 type="password"
                 value={newOwnerPassword}
                 onChange={(e) => setNewOwnerPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newOwnerPasswordPlaceholder') || 'Enter owner password'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-sm border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 {tTools('changePermissions.newOwnerPasswordHint') || 'Required to enforce permission restrictions.'}

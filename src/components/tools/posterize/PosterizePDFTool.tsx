@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -261,7 +263,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <label htmlFor="rows" className="block text-sm font-medium text-foreground mb-1">
                 {tTools('posterizePdf.rows') || 'Rows'}
               </label>
-              <input
+              <Input
                 type="number"
                 id="rows"
                 min={1}
@@ -269,7 +271,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 value={rows}
                 onChange={(e) => setRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
             </div>
 
@@ -278,7 +280,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <label htmlFor="cols" className="block text-sm font-medium text-foreground mb-1">
                 {tTools('posterizePdf.cols') || 'Columns'}
               </label>
-              <input
+              <Input
                 type="number"
                 id="cols"
                 min={1}
@@ -286,7 +288,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 value={cols}
                 onChange={(e) => setCols(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
             </div>
 
@@ -333,7 +335,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                 {tTools('posterizePdf.overlap') || 'Overlap'}
               </label>
               <div className="flex gap-2">
-                <input
+                <Input
                   type="number"
                   id="overlap"
                   min={0}
@@ -341,7 +343,7 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
                   value={overlap}
                   onChange={(e) => setOverlap(Math.max(0, parseFloat(e.target.value) || 0))}
                   disabled={isProcessing}
-                  className="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="flex-1"
                 />
                 <select
                   value={overlapUnit}
@@ -378,14 +380,14 @@ export function PosterizePDFTool({ className = '' }: PosterizePDFToolProps) {
               <label htmlFor="pageRange" className="block text-sm font-medium text-foreground mb-1">
                 {tTools('posterizePdf.pageRange') || 'Page Range (optional)'}
               </label>
-              <input
+              <Input
                 type="text"
                 id="pageRange"
                 value={pageRange}
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('posterizePdf.pageRangePlaceholder') || 'e.g., 1-5, 8, 10-15 (leave empty for all pages)'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
             </div>
           </div>

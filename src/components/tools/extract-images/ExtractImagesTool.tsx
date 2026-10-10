@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -340,39 +342,39 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                             <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minWidth') || 'Min Width (px)'}
                             </label>
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="5000"
                                 value={minWidth}
                                 onChange={(e) => setMinWidth(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                                className="w-full"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minHeight') || 'Min Height (px)'}
                             </label>
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="5000"
                                 value={minHeight}
                                 onChange={(e) => setMinHeight(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                                className="w-full"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-foreground mb-1">
                                 {tTools('extractImages.minSizeKB') || 'Min Size (KB)'}
                             </label>
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="10000"
                                 value={minSize}
                                 onChange={(e) => setMinSize(Math.max(0, parseInt(e.target.value) || 0))}
-                                className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                                className="w-full"
                             />
                         </div>
                     </div>

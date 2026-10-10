@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -419,7 +421,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                 {/* Main Input */}
                                 <div className="relative">
-                                    <input
+                                    <Input
                                         type="text"
                                         value={searchTermsInput}
                                         onChange={(e) => setSearchTermsInput(e.target.value)}
@@ -430,7 +432,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             }
                                         }}
                                         placeholder={tTools('searchInputPlaceholder')}
-                                        className="w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                        className="w-full transition-all"
                                         disabled={isProcessing || isSearching}
                                     />
                                     <div className="absolute right-2 top-1/2 -translate-y-1/2">
@@ -819,18 +821,18 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             {tTools('redactionColor')}
                                         </label>
                                         <div className="flex items-center gap-2">
-                                            <input
+                                            <Input
                                                 type="color"
                                                 value={redactionColor}
                                                 onChange={(e) => setRedactionColor(e.target.value)}
-                                                className="w-10 h-10 p-1 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
+                                                className="w-10 h-10 cursor-pointer"
                                                 disabled={isProcessing}
                                             />
-                                            <input
+                                            <Input
                                                 type="text"
                                                 value={redactionColor}
                                                 onChange={(e) => setRedactionColor(e.target.value)}
-                                                className="flex-1 px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 text-sm"
+                                                className="flex-1"
                                                 disabled={isProcessing}
                                             />
                                         </div>
@@ -839,12 +841,12 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                                             {tTools('replacementText')}
                                         </label>
-                                        <input
+                                        <Input
                                             type="text"
                                             value={replacementText}
                                             onChange={(e) => setReplacementText(e.target.value)}
                                             placeholder={tTools('replacementTextPlaceholder')}
-                                            className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                                            className="w-full"
                                             disabled={isProcessing}
                                         />
                                     </div>

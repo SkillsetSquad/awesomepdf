@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -229,7 +231,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                 {tTools('decryptPdf.passwordLabel') || 'PDF Password'}
               </label>
               <div className="relative">
-                <input
+                <Input
                   id="decrypt-password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
@@ -237,7 +239,7 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('decryptPdf.passwordPlaceholder') || 'Enter the PDF password'}
                   aria-describedby="decrypt-password-hint"
-                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pr-10"
                 />
                 <button
                   type="button"

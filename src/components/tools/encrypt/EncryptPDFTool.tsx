@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -233,7 +235,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                 {tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
               </label>
               <div className="relative">
-                <input
+                <Input
                   id="user-password"
                   type={showUserPassword ? 'text' : 'password'}
                   value={userPassword}
@@ -241,7 +243,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.userPasswordPlaceholder') || 'Enter password to open PDF'}
                   aria-describedby="user-password-hint"
-                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pr-10"
                 />
                 <button
                   type="button"
@@ -263,7 +265,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                 {tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
               </label>
               <div className="relative">
-                <input
+                <Input
                   id="owner-password"
                   type={showOwnerPassword ? 'text' : 'password'}
                   value={ownerPassword}
@@ -271,7 +273,7 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   disabled={isProcessing}
                   placeholder={tTools('encryptPdf.ownerPasswordPlaceholder') || 'Enter owner password'}
                   aria-describedby="owner-password-hint"
-                  className="w-full px-3 py-2 pr-10 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pr-10"
                 />
                 <button
                   type="button"

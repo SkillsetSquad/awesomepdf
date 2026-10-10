@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -510,13 +512,13 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                     <label className="block text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
                       {t('ocr.specifyPages')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={pageRange}
                       onChange={(e) => setPageRange(e.target.value)}
                       placeholder={t('ocr.pagesPlaceholder')}
                       disabled={isProcessing}
-                      className="w-full px-3 py-2 rounded-xl border border-border bg-white dark:bg-zinc-800 text-xs focus:ring-1 focus:ring-primary"
+                      className="w-full"
                     />
                   </div>
                 </div>

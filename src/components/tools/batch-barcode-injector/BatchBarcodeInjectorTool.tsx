@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -188,32 +190,32 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
 
                   <div className="space-y-1.5">
                     <label className="text-zinc-500 font-bold">{t('batchBarcodeInjector.barcodeValueLabel')}</label>
-                    <input
+                    <Input
                       type="text"
                       value={value}
                       onChange={(e) => setValue(e.target.value)}
                       placeholder="e.g. https://pdfcraft.org"
-                      className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
                       <label className="text-zinc-400 font-bold">{t('batchBarcodeInjector.xPosLabel')}</label>
-                      <input
+                      <Input
                         type="number"
                         value={xPos}
                         onChange={(e) => setXPos(parseInt(e.target.value) || 0)}
-                        className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-2.5"
+                        className="w-full"
                       />
                     </div>
                     <div className="space-y-1">
                       <label className="text-zinc-400 font-bold">{t('batchBarcodeInjector.yPosLabel')}</label>
-                      <input
+                      <Input
                         type="number"
                         value={yPos}
                         onChange={(e) => setYPos(parseInt(e.target.value) || 0)}
-                        className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-2.5"
+                        className="w-full"
                       />
                     </div>
                   </div>

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -1297,11 +1299,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Field header */}
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
                         <span className="text-xl">{getFieldIcon(selectedField.type)}</span>
-                        <input
+                        <Input
                           type="text"
                           value={selectedField.name}
                           onChange={(e) => updateSelectedField({ name: e.target.value })}
-                          className="flex-1 px-2 py-1 text-sm font-medium border-0 bg-transparent focus:ring-1 focus:ring-blue-500 rounded"
+                          className="flex-1"
                         />
                       </div>
 
@@ -1324,12 +1326,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Label */}
                       <div>
                         <label className="block text-sm font-medium mb-1">{tTools('formCreator.fieldLabel') || 'Label'}</label>
-                        <input
+                        <Input
                           type="text"
                           value={selectedField.label || ''}
                           onChange={(e) => updateSelectedField({ label: e.target.value })}
                           placeholder={tTools('formCreator.fieldLabelPlaceholder') || 'Enter label text...'}
-                          className="w-full px-3 py-2 border rounded-md text-sm"
+                          className="w-full"
                         />
                       </div>
 
@@ -1365,11 +1367,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                         {['x', 'y', 'width', 'height'].map((prop, idx) => (
                           <div key={prop}>
                             <label className="block text-[10px] text-gray-400 uppercase">{['X', 'Y', 'W', 'H'][idx]}</label>
-                            <input
+                            <Input
                               type="number"
                               value={Math.round(selectedField[prop as keyof typeof selectedField] as number)}
                               onChange={(e) => updateSelectedField({ [prop]: parseInt(e.target.value) || 0 })}
-                              className="w-full px-1 py-1 text-xs text-center border rounded"
+                              className="w-full text-center"
                             />
                           </div>
                         ))}
@@ -1391,12 +1393,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.type === 'text' && (
                         <div>
                           <label className="block text-sm font-medium mb-1">{tTools('formCreator.defaultValue') || 'Default Value'}</label>
-                          <input
+                          <Input
                             type="text"
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
                             placeholder={tTools('formCreator.defaultValuePlaceholder') || 'Enter default text...'}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full"
                           />
                         </div>
                       )}
@@ -1460,12 +1462,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.type === 'button' && (
                         <div>
                           <label className="block text-sm font-medium mb-1">{tTools('formCreator.buttonLabel') || 'Button Label'}</label>
-                          <input
+                          <Input
                             type="text"
                             value={selectedField.buttonLabel || ''}
                             onChange={(e) => updateSelectedField({ buttonLabel: e.target.value })}
                             placeholder={tTools('formCreator.buttonLabelPlaceholder') || 'Submit'}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full"
                           />
                         </div>
                       )}
@@ -1474,12 +1476,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.type === 'signature' && (
                         <div>
                           <label className="block text-sm font-medium mb-1">{tTools('formCreator.signatureLabel') || 'Signature Label'}</label>
-                          <input
+                          <Input
                             type="text"
                             value={selectedField.signatureLabel || ''}
                             onChange={(e) => updateSelectedField({ signatureLabel: e.target.value })}
                             placeholder={tTools('formCreator.signatureLabelPlaceholder') || 'Sign here'}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full"
                           />
                         </div>
                       )}
@@ -1505,11 +1507,11 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {selectedField.type === 'date' && (
                         <div>
                           <label className="block text-sm font-medium mb-1">{tTools('formCreator.defaultDate') || 'Default Date'}</label>
-                          <input
+                          <Input
                             type="date"
                             value={String(selectedField.defaultValue || '')}
                             onChange={(e) => updateSelectedField({ defaultValue: e.target.value })}
-                            className="w-full px-3 py-2 border rounded-md text-sm"
+                            className="w-full"
                           />
                         </div>
                       )}
@@ -1690,12 +1692,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-1">{tTools('formCreator.projectName') || 'Project Name'}</label>
-                <input
+                <Input
                   type="text"
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
                   placeholder={tTools('formCreator.projectNamePlaceholder') || 'Enter project name...'}
-                  className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full"
                   autoFocus
                 />
               </div>
@@ -1756,13 +1758,13 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               {/* Page Count */}
               <div>
                 <label className="block text-sm font-medium mb-1">{tTools('formCreator.pageCount') || 'Number of Pages'}</label>
-                <input
+                <Input
                   type="number"
                   min="1"
                   max="100"
                   value={blankPdfPageCount}
                   onChange={(e) => setBlankPdfPageCount(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full px-3 py-2 border rounded-md text-sm"
+                  className="w-full"
                 />
               </div>
 

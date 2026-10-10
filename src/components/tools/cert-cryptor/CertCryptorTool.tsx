@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -205,12 +207,12 @@ export function CertCryptorTool() {
                 {encryptWithCert && (
                   <div className="space-y-2 pt-2 border-t border-neutral-800">
                     <label className="text-[10px] text-neutral-400">{t('certCryptor.decryptPasswordHelp')}</label>
-                    <input
+                    <Input
                       type="password"
                       placeholder={t('certCryptor.passwordPlaceholder')}
                       value={pfxPassword}
                       onChange={(e) => setPfxPassword(e.target.value)}
-                      className="w-full bg-neutral-950 border border-neutral-850 rounded p-2 text-xs text-white focus:outline-none focus:border-yellow-500"
+                      className="w-full text-white"
                     />
                   </div>
                 )}

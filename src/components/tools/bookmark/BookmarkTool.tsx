@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -571,11 +573,11 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               <div className="flex gap-2">
                 <div className="flex-1">
                   <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.title') || 'Title'}</label>
-                  <input
+                  <Input
                     type="text"
                     value={editingBookmark.title}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, title: e.target.value })}
-                    className="w-full px-2 py-1 border rounded text-sm"
+                    className="w-full"
                     placeholder={tTools('bookmark.title') || 'Title'}
                     autoFocus
                   />
@@ -583,7 +585,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                 <div>
                   <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.page') || 'Page'}</label>
                   <div className="flex items-center gap-1">
-                    <input
+                    <Input
                       type="text"
                       inputMode="numeric"
                       value={editingBookmark.pageNumber}
@@ -596,7 +598,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                           } as any);
                         }
                       }}
-                      className="w-14 px-2 py-1 border rounded text-sm h-8"
+                      className="w-14 h-8"
                       placeholder="1"
                     />
                     <button
@@ -613,11 +615,11 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0">
                   <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.color') || 'Color'}</label>
-                  <input
+                  <Input
                     type="color"
                     value={editingBookmark.color || '#000000'}
                     onChange={(e) => setEditingBookmark({ ...editingBookmark, color: e.target.value })}
-                    className="w-10 h-8 p-0 border rounded cursor-pointer"
+                    className="w-10 h-8 cursor-pointer"
                     title={tTools('bookmark.color') || 'Color'}
                   />
                 </div>

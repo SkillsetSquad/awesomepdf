@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -161,22 +163,22 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
                       <Shield className="w-4 h-4 text-primary" />
                       {t('passportIdComposer.watermarkLabel')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={watermark}
                       onChange={(e) => setWatermark(e.target.value)}
                       placeholder={t('passportIdComposer.watermarkPlaceholder')}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:ring-1 focus:ring-primary"
+                      className="w-full"
                     />
                   </div>
 
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-zinc-500">{t('passportIdComposer.idCardHeightLabel')}</label>
-                    <input
+                    <Input
                       type="number"
                       value={idCardHeight}
                       onChange={(e) => setIdCardHeight(parseFloat(e.target.value) || 153)}
-                      className="w-full text-xs bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3"
+                      className="w-full"
                     />
                   </div>
                 </div>

@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -144,12 +146,12 @@ export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolPro
                         {item.originalUrl}
                       </div>
                       <div className="flex gap-2 items-center">
-                        <input
+                        <Input
                           type="text"
                           placeholder={t('deadLinkDebugger.redirectPlaceholder')}
                           value={replacements[item.originalUrl] || ''}
                           onChange={(e) => handleUpdateLink(item.originalUrl, e.target.value)}
-                          className="flex-1 text-[11px] bg-zinc-50 dark:bg-zinc-950 border rounded-lg p-2 focus:outline-none"
+                          className="flex-1 text-[11px]"
                         />
                       </div>
                     </div>

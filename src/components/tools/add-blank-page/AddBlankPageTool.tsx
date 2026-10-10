@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -245,7 +247,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
               >
                 {tTools('addBlankPage.positionLabel') || 'Insert Position'}
               </label>
-              <input
+              <Input
                 type="number"
                 id="position"
                 min={0}
@@ -253,7 +255,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
                 value={position}
                 onChange={(e) => setPosition(parseInt(e.target.value) || 0)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
               <p className="mt-1 text-sm text-muted-foreground">
                 {tTools('addBlankPage.positionHint', { total: totalPages }) || `Enter 0 to insert at the beginning, or ${totalPages} to insert at the end.`}
@@ -268,7 +270,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
               >
                 {tTools('addBlankPage.countLabel') || 'Number of Blank Pages'}
               </label>
-              <input
+              <Input
                 type="number"
                 id="count"
                 min={1}
@@ -276,7 +278,7 @@ export function AddBlankPageTool({ className = '' }: AddBlankPageToolProps) {
                 value={count}
                 onChange={(e) => setCount(parseInt(e.target.value) || 1)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full"
               />
             </div>
 

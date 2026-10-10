@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
@@ -371,12 +373,12 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                     {t('overlayPdf.targetRangeHelp')}
                   </span>
                 </div>
-                <input
+                <Input
                   type="text"
                   placeholder={t('overlayPdf.targetRangePlaceholder')}
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}
-                  className="w-full px-4 py-3 text-sm rounded-xl bg-muted/30 border border-input text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full transition-all"
                 />
               </div>
 

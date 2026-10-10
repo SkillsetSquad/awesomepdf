@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useEffect } from 'react';
 import { Modal } from '@/components/ui/Modal';
@@ -121,7 +123,7 @@ export function SignatureLibraryModal({
       className="!max-w-2xl"
     >
       <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-1">
-        <input
+        <Input
           ref={fileInputRef}
           type="file"
           accept="image/png,image/jpeg,image/webp,image/svg+xml"
