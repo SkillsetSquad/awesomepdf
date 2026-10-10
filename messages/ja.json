@@ -44,7 +44,9 @@
       "about": "概要",
       "faq": "よくある質問",
       "privacy": "プライバシー",
-      "contact": "お問い合わせ"
+      "contact": "お問い合わせ",
+      "mainMenu": "メインナビゲーション",
+      "openMenu": "メニューを開く"
     },
     "buttons": {
       "upload": "ファイルをアップロード",

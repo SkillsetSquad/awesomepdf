@@ -44,7 +44,9 @@
       "about": "Despre",
       "faq": "FAQ",
       "privacy": "Confidențialitate",
-      "contact": "Contact"
+      "contact": "Contact",
+      "mainMenu": "Navigare principală",
+      "openMenu": "Deschide meniul"
     },
     "buttons": {
       "upload": "Încarcă Fișiere",

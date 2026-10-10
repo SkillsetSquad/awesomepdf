@@ -44,7 +44,9 @@
       "about": "Sobre",
       "faq": "Perguntas Frequentes",
       "privacy": "Privacidade",
-      "contact": "Contato"
+      "contact": "Contato",
+      "mainMenu": "Navegação principal",
+      "openMenu": "Abrir menu"
     },
     "buttons": {
       "upload": "Enviar Arquivos",

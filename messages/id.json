@@ -44,7 +44,9 @@
       "about": "Tentang",
       "faq": "FAQ",
       "privacy": "Pribadi",
-      "contact": "Hubungi"
+      "contact": "Hubungi",
+      "mainMenu": "Navigasi utama",
+      "openMenu": "Buka menu"
     },
     "buttons": {
       "upload": "Unggah File",

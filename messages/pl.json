@@ -44,7 +44,9 @@
       "about": "O PDFCraft",
       "faq": "Często zadawane pytania",
       "privacy": "Prywatność",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "mainMenu": "Nawigacja główna",
+      "openMenu": "Otwórz menu"
     },
     "buttons": {
       "upload": "Prześlij pliki",

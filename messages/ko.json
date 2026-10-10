@@ -44,7 +44,9 @@
       "about": "소개",
       "faq": "자주 묻는 질문",
       "privacy": "은둔",
-      "contact": "문의하기"
+      "contact": "문의하기",
+      "mainMenu": "주 탐색",
+      "openMenu": "메뉴 열기"
     },
     "buttons": {
       "upload": "파일 업로드",

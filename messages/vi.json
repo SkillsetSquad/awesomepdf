@@ -44,7 +44,9 @@
       "about": "Giới thiệu",
       "faq": "FAQ",
       "privacy": "Sự riêng tư",
-      "contact": "Liên hệ"
+      "contact": "Liên hệ",
+      "mainMenu": "Điều hướng chính",
+      "openMenu": "Mở menu"
     },
     "buttons": {
       "upload": "Tải lên Tệp",

@@ -44,7 +44,9 @@
       "about": "Informazioni",
       "faq": "FAQ",
       "privacy": "Privacy",
-      "contact": "Contatto"
+      "contact": "Contatto",
+      "mainMenu": "Navigazione principale",
+      "openMenu": "Apri menu"
     },
     "buttons": {
       "upload": "Carica file",

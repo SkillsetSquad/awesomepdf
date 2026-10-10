@@ -44,7 +44,9 @@
       "about": "About",
       "faq": "FAQ",
       "privacy": "Privacy",
-      "contact": "Contact"
+      "contact": "Contact",
+      "mainMenu": "Main navigation",
+      "openMenu": "Open menu"
     },
     "buttons": {
       "upload": "Upload Files",

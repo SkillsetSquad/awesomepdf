@@ -44,7 +44,9 @@
       "about": "關於",
       "faq": "常見問題",
       "privacy": "隱私",
-      "contact": "聯絡我們"
+      "contact": "聯絡我們",
+      "mainMenu": "主導覽",
+      "openMenu": "開啟選單"
     },
     "buttons": {
       "upload": "上傳檔案",
