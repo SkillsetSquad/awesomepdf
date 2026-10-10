@@ -8,6 +8,7 @@ vi.mock('next-intl', () => ({
 }));
 
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: () => null }));
+vi.mock('@/lib/utils/path', () => ({ withBasePath: (path: string) => `/awesomepdf${path}` }));
 
 describe('Annotation viewer integration', () => {
   it('keeps injected viewer code valid with quotes, backslashes and newlines in translations', () => {
@@ -21,6 +22,7 @@ describe('Annotation viewer integration', () => {
       act(() => vi.advanceTimersByTime(1000));
       const script = iframe.contentDocument!.querySelector('script')!;
       expect(script?.tagName).toBe('SCRIPT');
+      expect(script.textContent).toContain('/awesomepdf/fonts/NotoSansSC-Regular.ttf');
       expect(() => new Function(script.textContent!)).not.toThrow();
     } finally {
       view.unmount();
