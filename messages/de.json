@@ -490,15 +490,14 @@
       "uploadDescription": "Ziehen Sie wissenschaftliche Arbeiten, zweispaltige Layouts oder Text-PDFs hierher. Das System analysiert und bricht diese automatisch um.",
       "scanningMetadata": "Dokumentenstruktur wird analysiert...",
       "optionsTitle": "Dynamische Reader-Einstellungen",
-      "optionsHelp": "Passen Sie Typografie und Layout im 3D-Telefon-Simulator an.",
+      "optionsHelp": "Lesethema und Schriftgröße in der Vorschau anpassen.",
       "themeLabel": "Reader-Farbthema",
       "themeSepia": "Auge-schonendes Sepia",
       "themeLight": "Klares Hellweiß",
       "themeGreen": "Frisches Softgrün",
       "themeDark": "Midnight Geek (Dunkel)",
       "fontSizeLabel": "Schriftgröße",
-      "pullToExport": "Kordel ziehen zum Exportieren",
-      "pullToExportHint": "Ring nach unten ziehen zum Speichern (Markdown)"
+      "previewTitle": "Lesevorschau"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "4-Seiten-Falz",

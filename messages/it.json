@@ -490,15 +490,14 @@
       "uploadDescription": "Trascina e rilascia qui articoli accademici, layout a due colonne o PDF di testo. Il sistema li analizzerà e li riorganizzerà automaticamente.",
       "scanningMetadata": "Analisi della struttura del documento...",
       "optionsTitle": "Impostazioni del lettore adattivo",
-      "optionsHelp": "Regola la tipografia e il layout sul simulatore di telefono 3D.",
+      "optionsHelp": "Regola il tema di lettura e la dimensione del testo nell’anteprima.",
       "themeLabel": "Schema del tema di lettura",
       "themeSepia": "Modalità lettura calda",
       "themeLight": "Bianco lucido pulito",
       "themeGreen": "Verde chiaro fresco",
       "themeDark": "Midnight Geek",
       "fontSizeLabel": "Dimensione carattere tipografico",
-      "pullToExport": "Tira la corda per esportare",
-      "pullToExportHint": "Tira giù l'anello per salvare (Markdown)"
+      "previewTitle": "Anteprima di lettura"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Piegatura a 4 pagine",

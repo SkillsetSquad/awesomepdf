@@ -490,15 +490,14 @@
       "uploadDescription": "Przeciągnij i upuść artykuły naukowe, układy dwukolumnowe lub tekstowe pliki PDF. System automatycznie przeanalizuje dokument i dostosuje układ.",
       "scanningMetadata": "Analizowanie struktury dokumentu...",
       "optionsTitle": "Ustawienia adaptacyjnego czytnika",
-      "optionsHelp": "Dostosuj typografię i układ w symulatorze telefonu 3D.",
+      "optionsHelp": "Dostosuj motyw czytania i rozmiar tekstu w podglądzie.",
       "themeLabel": "Motyw czytnika",
       "themeSepia": "Ciepła sepia przyjazna dla oczu",
       "themeLight": "Czysta jasna biel",
       "themeGreen": "Delikatna zieleń",
       "themeDark": "Ciemny motyw nocny",
       "fontSizeLabel": "Rozmiar czcionki",
-      "pullToExport": "Pociągnij, aby wyeksportować",
-      "pullToExportHint": "Pociągnij pierścień w dół, aby zapisać plik Markdown"
+      "previewTitle": "Podgląd tekstu"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Składanie na 4 strony",

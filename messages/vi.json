@@ -490,15 +490,14 @@
       "uploadDescription": "Kéo và thả tài liệu học thuật, bố cục hai cột hoặc tài liệu PDF dạng văn bản vào đây. Hệ thống sẽ tự động phân tích và dàn lại dòng.",
       "scanningMetadata": "Đang phân tích cấu trúc tài liệu...",
       "optionsTitle": "Cài đặt chế độ đọc tự thích ứng",
-      "optionsHelp": "Điều chỉnh phong cách trình bày và bố cục trên trình mô phỏng điện thoại 3D.",
+      "optionsHelp": "Điều chỉnh chủ đề đọc và cỡ chữ trong bản xem trước.",
       "themeLabel": "Chủ đề màu nền đọc",
       "themeSepia": "Màu bảo vệ mắt ấm áp",
       "themeLight": "Trắng sáng sạch sẽ",
       "themeGreen": "Xanh dịu tươi mát",
       "themeDark": "Đêm tối cá tính",
       "fontSizeLabel": "Cỡ chữ trình bày",
-      "pullToExport": "Kéo dây để xuất",
-      "pullToExportHint": "Kéo vòng xuống để lưu (Markdown)"
+      "previewTitle": "Xem trước nội dung đọc"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Gấp 4 trang",

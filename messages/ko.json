@@ -490,15 +490,14 @@
       "uploadDescription": "학술 논문, 2단 레이아웃 또는 텍스트 PDF를 여기에 드래그 앤 드롭하십시오. 시스템이 자동으로 파싱하여 텍스트를 재배치합니다.",
       "scanningMetadata": "문서 구조 분석 중...",
       "optionsTitle": "맞춤형 리더기 설정",
-      "optionsHelp": "우측 3D 모바일 시뮬레이터 화면을 보며 폰트 스타일과 레이아웃을 조절하십시오.",
+      "optionsHelp": "미리보기에서 읽기 테마와 글자 크기를 조정하세요.",
       "themeLabel": "리더기 배경 테마",
       "themeSepia": "시력 보호 세피아",
       "themeLight": "밝고 깨끗한 화이트",
       "themeGreen": "눈이 편안한 그린",
       "themeDark": "다크 모드 블랙",
       "fontSizeLabel": "텍스트 글꼴 크기",
-      "pullToExport": "코드선을 당겨서 내보내기",
-      "pullToExportHint": "고리를 아래로 당겨 저장 (Markdown)"
+      "previewTitle": "읽기 미리보기"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "4페이지 대접지",

@@ -490,15 +490,14 @@
       "uploadDescription": "اسحب وأفلت الأوراق الأكاديمية أو التخطيطات ذات العمودين أو ملفات PDF النصية هنا. سيقوم النظام بتحليلها وإعادة تدفقها تلقائياً.",
       "scanningMetadata": "جاري تحليل بنية المستند...",
       "optionsTitle": "إعدادات القارئ التكيفي",
-      "optionsHelp": "ضبط الخط والتنسيق على محاكي الهاتف ثلاثي الأبعاد.",
+      "optionsHelp": "اضبط سمة القراءة وحجم الخط في المعاينة.",
       "themeLabel": "نظام سمة القارئ",
       "themeSepia": "حماية دافئة للعين",
       "themeLight": "أبيض ساطع ونظيف",
       "themeGreen": "أخضر ناعم منعش",
       "themeDark": "مظهر داكن ليلى",
       "fontSizeLabel": "حجم خط الطباعة",
-      "pullToExport": "اسحب الحبل للتصدير",
-      "pullToExportHint": "اسحب الحلقة لأسفل للحفظ (Markdown)"
+      "previewTitle": "معاينة القراءة"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "طي 4 صفحات",

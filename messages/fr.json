@@ -490,15 +490,14 @@
       "uploadDescription": "Glissez-déposez ici des articles universitaires, des mises en page à deux colonnes ou des PDF textuels. Le système les analysera et les redimensionnera automatiquement.",
       "scanningMetadata": "Analyse de la structure du document...",
       "optionsTitle": "Paramètres du lecteur adaptatif",
-      "optionsHelp": "Ajustez la typographie et la mise en page sur le simulateur de téléphone 3D.",
+      "optionsHelp": "Ajustez le thème de lecture et la taille du texte dans l’aperçu.",
       "themeLabel": "Schéma de thème du lecteur",
       "themeSepia": "Soin des yeux chaud",
       "themeLight": "Blanc brillant propre",
       "themeGreen": "Vert doux frais",
       "themeDark": "Geek de minuit",
       "fontSizeLabel": "Taille de police typographique",
-      "pullToExport": "Tirer le cordon pour exporter",
-      "pullToExportHint": "Tirez l'anneau vers le bas pour enregistrer (Markdown)"
+      "previewTitle": "Aperçu de lecture"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Pliage 4 pages",

@@ -490,15 +490,14 @@
       "uploadDescription": "Arrastre y suelte aquí artículos académicos, diseños de dos columnas o archivos PDF de texto. El sistema los analizará y redistribuirá automáticamente.",
       "scanningMetadata": "Analizando la estructura del documento...",
       "optionsTitle": "Ajustes del lector adaptativo",
-      "optionsHelp": "Ajuste la tipografía y el diseño en el simulador de teléfono 3D.",
+      "optionsHelp": "Ajusta el tema de lectura y el tamaño de letra en la vista previa.",
       "themeLabel": "Esquema de tema del lector",
       "themeSepia": "Cuidado ocular cálido",
       "themeLight": "Blanco brillante limpio",
       "themeGreen": "Verde suave fresco",
       "themeDark": "Geek de medianoche",
       "fontSizeLabel": "Tamaño de fuente tipográfica",
-      "pullToExport": "Tirar del cable para exportar",
-      "pullToExportHint": "Tirar hacia abajo del anillo para guardar (Markdown)"
+      "previewTitle": "Vista previa de lectura"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Plegado de 4 páginas",

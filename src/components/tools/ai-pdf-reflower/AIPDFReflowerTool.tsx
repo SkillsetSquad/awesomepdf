@@ -1,34 +1,18 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { FileText as UIFileText } from 'lucide-react';
-
-import { Slider } from '@/components/ui/slider';
-
-import { Label } from '@/components/ui/label';
-
-import React, { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { reflowPDF, type AIPDFReflowerOptions } from '@/lib/pdf/processors/ai-pdf-reflower';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { reflowPDF, type ReflowParagraph } from '@/lib/pdf/processors/ai-pdf-reflower';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
-import {
-  Smartphone,
-  Settings2,
-  FileText,
-  Download,
-  Type,
-  AlignLeft,
-  Compass,
-  Undo,
-  BookOpen
-} from 'lucide-react';
+import { Settings2, FileText, Download, Type, AlignLeft, Compass, BookOpen, CircleAlert, Loader2 } from 'lucide-react';
 
 export interface AIPDFReflowerToolProps {
   className?: string;
@@ -36,6 +20,7 @@ export interface AIPDFReflowerToolProps {
 
 export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
   const tTools = useTranslations('tools');
 
   // File states
@@ -46,62 +31,26 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
   // Layout states
   const [theme, setTheme] = useState<'sepia' | 'dark' | 'green' | 'light'>('sepia');
   const [fontSize, setFontSize] = useState<number>(16);
-  const [isDualColumn, setIsDualColumn] = useState<boolean>(true);
 
   // Status & Outcomes
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
-  const [result, setResult] = useState<Blob | null>(null);
-  const [resultFilename, setResultFilename] = useState<string>('');
-  const [paragraphs, setParagraphs] = useState<any[]>([]);
+  const [paragraphs, setParagraphs] = useState<ReflowParagraph[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  // Pull cord state
-  const [isPulling, setIsPulling] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   const cancelledRef = useRef(false);
 
   /**
-   * Handle File Selection
-   */
-  const handleFileSelected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    const selectedFile = files[0];
-    setFile(selectedFile);
-    setIsLoadingMetadata(true);
-    setError(null);
-    setResult(null);
-    setParagraphs([]);
-
-    try {
-      const { PDFDocument } = await import('pdf-lib');
-      const arrayBuffer = await selectedFile.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
-      setTotalPages(pdf.getPageCount());
-
-      // Auto run reflow
-      setTimeout(() => {
-        handleReflow(selectedFile);
-      }, 500);
-
-    } catch (err) {
-      console.error(err);
-      setError('Failed to parse PDF file metadata. Ensure it is not corrupted.');
-    } finally {
-      setIsLoadingMetadata(false);
-    }
-  }, []);
-
-  /**
    * Run Reflow Processor
    */
-  const handleReflow = async (targetFile: File) => {
+  const handleReflow = useCallback(async (targetFile: File) => {
     cancelledRef.current = false;
     setStatus('processing');
     setProgress(0);
     setError(null);
-    setResult(null);
 
     try {
       const output: ProcessOutput = await reflowPDF(
@@ -125,12 +74,10 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
       }
 
       if (output.success && output.result) {
-        setResult(output.result as Blob);
-        setResultFilename(output.filename || 'reflowed.md');
         setStatus('complete');
 
         if (output.metadata && output.metadata.paragraphs) {
-          setParagraphs(output.metadata.paragraphs as any[]);
+          setParagraphs(output.metadata.paragraphs as ReflowParagraph[]);
         }
       } else {
         setError(output.error?.message || 'Failed to analyze and reflow PDF.');
@@ -142,7 +89,34 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
         setStatus('error');
       }
     }
-  };
+  }, [theme, fontSize]);
+
+  /**
+   * Handle File Selection
+   */
+  const handleFileSelected = useCallback(async (files: File[]) => {
+    if (files.length === 0) return;
+    const selectedFile = files[0];
+    setFile(selectedFile);
+    setIsLoadingMetadata(true);
+    setError(null);
+    setParagraphs([]);
+
+    try {
+      const { PDFDocument } = await import('pdf-lib');
+      const arrayBuffer = await selectedFile.arrayBuffer();
+      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      setTotalPages(pdf.getPageCount());
+
+      await handleReflow(selectedFile);
+
+    } catch (err) {
+      console.error(err);
+      setError('Failed to parse PDF file metadata. Ensure it is not corrupted.');
+    } finally {
+      setIsLoadingMetadata(false);
+    }
+  }, [handleReflow]);
 
   /**
    * Export to specific format dynamically in front-end
@@ -150,9 +124,9 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
   const handleExportFormat = async (format: 'markdown' | 'epub' | 'json') => {
     if (!file || paragraphs.length === 0) return;
 
-    setIsPulling(true);
-    setTimeout(async () => {
-      setIsPulling(false);
+    setIsExporting(true);
+    setError(null);
+    try {
 
       let exportBlob: Blob;
       let ext = '.md';
@@ -201,14 +175,17 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       // Download trigger
       const downloadName = `${file.name.replace(/\.pdf$/i, '')}_reflowed${ext}`;
-      saveBlobFile(exportBlob, downloadName);
-    }, 600);
+      await saveBlobFile(exportBlob, downloadName);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : tErrors('processingFailed'));
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   const handleClearFile = () => {
     setFile(null);
     setTotalPages(0);
-    setResult(null);
     setParagraphs([]);
     setStatus('idle');
   };
@@ -254,22 +231,22 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* Error Block */}
       {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
+        <Alert variant="destructive" ><CircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm font-semibold">{error}</p>
         </AlertDescription></Alert>
       )}
 
       {/* File metadata status block */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
-          <div className="flex items-center gap-3">
-            <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
-            <div>
-              <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
+        <Card className="flex-row items-center justify-between gap-3 p-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <FileText className="size-8 shrink-0 text-muted-foreground" aria-hidden="true" />
+            <div className="min-w-0">
+              <p className="break-all text-sm font-medium" title={file.name}>
                 {file.name}
               </p>
               <p className="text-xs text-muted-foreground">
-                {totalPages > 0 ? `${totalPages} ${t('pdfToCbz.pagesLabel') || 'pages'}` : t('aiPdfReflower.scanningMetadata')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
+                {totalPages > 0 ? `${totalPages} ${tTools('nUpPdf.pagesLabel')}` : t('aiPdfReflower.scanningMetadata')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
               </p>
             </div>
           </div>
@@ -277,7 +254,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
             variant="ghost"
             size="sm"
             onClick={handleClearFile}
-            disabled={isProcessing}
+            disabled={isProcessing || isLoadingMetadata || isExporting}
           >
             {t('buttons.remove') || 'Remove'}
           </Button>
@@ -286,7 +263,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
       {/* Primary Workspace */}
       {file && paragraphs.length > 0 && status !== 'processing' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
           {/* LEFT: Controls Panel */}
           <div className="lg:col-span-5 space-y-6">
@@ -303,21 +280,21 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Theme selection */}
               <div className="space-y-2">
-                <Label className="uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Label className="flex items-center gap-1.5">
                   <Compass className="w-4 h-4" />
                   {t('aiPdfReflower.themeLabel')}
                 </Label>
-                <div className="grid grid-cols-4 gap-2">
-                  {[
-                    { id: 'sepia', name: t('aiPdfReflower.themeSepia'), bg: 'bg-[#f4ebd0] text-[#5b4636]' },
-                    { id: 'light', name: t('aiPdfReflower.themeLight'), bg: 'bg-white text-zinc-800 border' },
-                    { id: 'green', name: t('aiPdfReflower.themeGreen'), bg: 'bg-[#e2edd9] text-[#1c3016]' },
-                    { id: 'dark', name: t('aiPdfReflower.themeDark'), bg: 'bg-zinc-900 text-zinc-100' },
-                  ].map((thm) => (
+                <div className="grid grid-cols-2 gap-2">
+                  {([
+                    { id: 'sepia', name: t('aiPdfReflower.themeSepia') },
+                    { id: 'light', name: t('aiPdfReflower.themeLight') },
+                    { id: 'green', name: t('aiPdfReflower.themeGreen') },
+                    { id: 'dark', name: t('aiPdfReflower.themeDark') },
+                  ] as const).map((thm) => (
                     <Button size="sm" variant={theme === thm.id ? 'default' : 'outline'} aria-pressed={theme === thm.id}
                       key={thm.id}
-                      onClick={() => setTheme(thm.id as any)}
-                      className="text-center"
+                      onClick={() => setTheme(thm.id)}
+                      className="h-auto min-h-8 whitespace-normal text-center"
                     >
                       {thm.name}
                     </Button>
@@ -327,15 +304,16 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Font Size adjustments */}
               <div className="space-y-2">
-                <Label className="uppercase tracking-wider text-muted-foreground flex items-center justify-between" htmlFor="aipdfreflowertool-slider-1">
+                <Label className="flex items-center justify-between" htmlFor="aipdfreflowertool-slider-1">
                   <span className="flex items-center gap-1.5"><Type className="w-4 h-4" /> {t('aiPdfReflower.fontSizeLabel')}</span>
-                  <span className="font-mono font-bold text-xs">{fontSize}px</span>
+                  <span className="text-sm text-muted-foreground">{fontSize}px</span>
                 </Label>
                 <div className="flex items-center gap-4">
                   <Button
                     variant="secondary"
                     size="sm"
                     className="flex-1"
+                    aria-label={`${t('aiPdfReflower.fontSizeLabel')}: −1`}
                     onClick={() => setFontSize(Math.max(12, fontSize - 1))}
                   >
                     A-
@@ -344,13 +322,14 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                     min={12}
                     max={28}
                     value={[fontSize]}
-                    onValueChange={(values) => setFontSize(Number(String(values[0])))}
+                    onValueChange={([value]) => setFontSize(value)}
                     className="flex-[2] cursor-pointer" id="aipdfreflowertool-slider-1" aria-label={t('aiPdfReflower.fontSizeLabel')}
                   />
                   <Button
                     variant="secondary"
                     size="sm"
                     className="flex-1"
+                    aria-label={`${t('aiPdfReflower.fontSizeLabel')}: +1`}
                     onClick={() => setFontSize(Math.min(28, fontSize + 1))}
                   >
                     A+
@@ -358,126 +337,50 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                 </div>
               </div>
 
-              {/* Export Panel with Pulley Pull-rope effect */}
+              {/* Export formats */}
               <div className="border-t border-border pt-6 space-y-4 relative">
-                <Label className="uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Label className="flex items-center gap-1.5">
                   <Download className="w-4 h-4" />
-                  {t('aiPdfReflower.pullToExport')}
+                  {t('buttons.download')}
                 </Label>
 
-                <div className="grid grid-cols-3 gap-2">
-                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('markdown')}>
-                    <FileText className="w-4 h-4 text-emerald-500" />
+                <div className="flex flex-wrap gap-2" aria-busy={isExporting}>
+                  <Button variant="outline" disabled={isExporting} onClick={() => handleExportFormat('markdown')}>
+                    <FileText aria-hidden="true" />
                     Markdown
                   </Button>
-                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('epub')}>
-                    <BookOpen className="w-4 h-4 text-amber-500" />
-                    EPUB Ebook
+                  <Button variant="outline" disabled={isExporting} onClick={() => handleExportFormat('epub')}>
+                    <BookOpen aria-hidden="true" />
+                    EPUB
                   </Button>
-                  <Button variant="secondary" className="text-xs flex flex-col gap-1 py-4" onClick={() => handleExportFormat('json')}>
-                    <AlignLeft className="w-4 h-4 text-blue-500" />
-                    Structured JSON
+                  <Button variant="outline" disabled={isExporting} onClick={() => handleExportFormat('json')}>
+                    <AlignLeft aria-hidden="true" />
+                    JSON
                   </Button>
                 </div>
 
-                {/* 3D Physical pull rope visual item for wow effect */}
-                <div className="flex flex-col items-center mt-6 pt-4 relative group">
-                  <div className="w-1 bg-muted h-16 rounded-full relative transition-all duration-300 transform group-hover:h-20"
-                       style={{
-                         transform: isPulling ? 'translateY(15px) scaleY(0.8)' : 'translateY(0) scaleY(1)'
-                       }}
-                  >
-                    {/* Ring puller */}
-                    <div
-                      onClick={() => handleExportFormat('markdown')}
-                      className={`absolute bottom-0 -left-3.5 w-8 h-8 rounded-full border-4 border-amber-500/80 bg-amber-500/25 flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 active:scale-95 transition-all ${
-                        isPulling ? 'animate-ping' : ''
-                      }`}
-                    >
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                    </div>
-                  </div>
-                  <span className="text-[10px] text-muted-foreground mt-2 tracking-wider">{t('aiPdfReflower.pullToExportHint')}</span>
-                </div>
+                {isExporting && <p className="flex items-center gap-2 text-sm text-muted-foreground" role="status"><Loader2 className="size-4 animate-spin" aria-hidden="true" />{t('status.processing')}</p>}
               </div>
             </Card>
           </div>
 
-          {/* RIGHT: 3D Perspective Phone Simulator */}
-          <div className="lg:col-span-7 flex justify-center">
-
-            {/* Phone Outer container with custom CSS perspective perspective-[1200px] */}
-            <div className="relative w-[340px] h-[640px] rounded-[3.5rem] p-3.5 bg-muted shadow-[0_30px_70px_rgba(0,0,0,0.45)] border-4 border-border transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 group overflow-hidden">
-
-              {/* Glossy glare reflection overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-20" />
-
-              {/* Speaker / Camera Notch */}
-              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-30 flex items-center justify-center">
-                <div className="w-12 h-1 bg-muted rounded-full" />
-                <div className="w-3 h-3 rounded-full bg-muted ml-3 border border-border" />
-              </div>
-
-              {/* Screen Content */}
-              <div className={`w-full h-full rounded-[2.8rem] overflow-hidden pt-10 pb-6 transition-all duration-300 relative border flex flex-col ${getThemeClass()}`}>
-
-                {/* Simulated Header */}
-                <div className="px-5 pb-3 border-b border-inherit flex items-center justify-between text-xs font-bold opacity-60">
-                  <span>AI Reflow Reader</span>
-                  <span className="flex items-center gap-1.5">
-                    <span>Page {paragraphs[0]?.pageNum || 1}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  </span>
-                </div>
-
-                {/* Main Scrollable View */}
-                <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 scrollbar-none" style={{ fontSize: `${fontSize}px` }}>
-                  {paragraphs.map((p, idx) => {
-                    switch (p.type) {
-                      case 'h1':
-                        return (
-                          <h1 key={idx} className="font-semibold text-lg mt-4 mb-2 border-l-4 border-amber-500 pl-2 leading-snug">
-                            {p.text}
-                          </h1>
-                        );
-                      case 'h2':
-                        return (
-                          <h2 key={idx} className="font-bold text-base mt-3 mb-1 leading-snug">
-                            {p.text}
-                          </h2>
-                        );
-                      case 'h3':
-                        return (
-                          <h3 key={idx} className="font-bold text-sm mt-2 mb-1 leading-snug opacity-90">
-                            {p.text}
-                          </h3>
-                        );
-                      case 'li':
-                        return (
-                          <li key={idx} className="list-disc ml-4 leading-relaxed opacity-95">
-                            {p.text}
-                          </li>
-                        );
-                      default:
-                        return (
-                          <p key={idx} className="leading-relaxed text-justify opacity-95 text-indent-2">
-                            {p.text}
-                          </p>
-                        );
-                    }
+          <Card className="min-w-0 lg:col-span-7">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><BookOpen className="size-4" aria-hidden="true" />{t('aiPdfReflower.previewTitle')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className={`max-h-[640px] overflow-y-auto rounded-md border p-5 ${getThemeClass()}`} role="region" aria-label={t('aiPdfReflower.previewTitle')} tabIndex={0} style={{ fontSize: `${fontSize}px` }}>
+                <div className="space-y-4">
+                  {paragraphs.map((paragraph, index) => {
+                    if (paragraph.type === 'li') return <ul key={index} className="list-disc ps-5"><li className="leading-relaxed">{paragraph.text}</li></ul>;
+                    const Tag = paragraph.type;
+                    const heading = paragraph.type !== 'p';
+                    return <Tag key={index} className={heading ? 'font-semibold leading-snug' : 'leading-relaxed'}>{paragraph.text}</Tag>;
                   })}
                 </div>
-
-                {/* Simulated Bottom Navigation */}
-                <div className="pt-2 border-t border-inherit flex items-center justify-center text-[10px] font-bold opacity-40">
-                  <span>PDFCraft Mobile Reflower v1.0</span>
-                </div>
-
               </div>
-
-            </div>
-
-          </div>
+            </CardContent>
+          </Card>
 
         </div>
       )}

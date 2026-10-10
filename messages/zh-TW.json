@@ -490,15 +490,14 @@
       "uploadDescription": "拖放學術論文、雙欄文檔或文字类 PDF 到此处。系統将自動執行行重组和雙欄解析。",
       "scanningMetadata": "解析文檔結構中...",
       "optionsTitle": "自適應阅读设置",
-      "optionsHelp": "实时修改右侧 3D 手机模拟器内的文字排版风格。",
+      "optionsHelp": "在預覽中調整閱讀主題和字型大小。",
       "themeLabel": "阅读底色方案",
       "themeSepia": "護眼紙張",
       "themeLight": "亮白清爽",
       "themeGreen": "清新柔绿",
       "themeDark": "夜間极客",
       "fontSizeLabel": "阅读字號大小",
-      "pullToExport": "拉动拉绳一鍵導出",
-      "pullToExportHint": "下拉环快速保存 (Markdown)"
+      "previewTitle": "閱讀預覽"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "4页對折",

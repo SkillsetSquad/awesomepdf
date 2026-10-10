@@ -490,15 +490,14 @@
       "uploadDescription": "学術論文、2カラムレイアウト、またはテキストPDFをここにドラッグ＆ドロップします。システムが自動的に解析してリフローします。",
       "scanningMetadata": "ドキュメント構造を解析中...",
       "optionsTitle": "アダプティブリーダー設定",
-      "optionsHelp": "右側の3Dスマートフォンシミュレータ上で文字のフォントやレイアウトスタイルを調整します。",
+      "optionsHelp": "プレビューで読書テーマと文字サイズを調整します。",
       "themeLabel": "リーダーのテーマ設定",
       "themeSepia": "目に優しいセピア",
       "themeLight": "クリーンで明るいホワイト",
       "themeGreen": "爽やかなソフトグリーン",
       "themeDark": "ミッドナイトギーク",
       "fontSizeLabel": "文字のフォントサイズ",
-      "pullToExport": "コードを引いてエクスポート",
-      "pullToExportHint": "リングを引き下げて保存 (Markdown)"
+      "previewTitle": "読書プレビュー"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "4ページ折り",

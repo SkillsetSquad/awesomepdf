@@ -490,15 +490,14 @@
       "uploadDescription": "Arraste e solte artigos acadêmicos, layouts de duas colunas ou PDFs de texto aqui. O sistema irá analisar e redistribuir automaticamente.",
       "scanningMetadata": "Analisando estrutura do documento...",
       "optionsTitle": "Configurações do leitor adaptativo",
-      "optionsHelp": "Ajuste a tipografia e o layout estilizados no simulador de celular 3D.",
+      "optionsHelp": "Ajuste o tema de leitura e o tamanho do texto na prévia.",
       "themeLabel": "Esquema de tema do leitor",
       "themeSepia": "Proteção ocular quente",
       "themeLight": "Branco brilhante limpo",
       "themeGreen": "Verde suave fresco",
       "themeDark": "Geek da meia-noite",
       "fontSizeLabel": "Tamanho da fonte tipográfica",
-      "pullToExport": "Puxe a corda para exportar",
-      "pullToExportHint": "Puxe o anel para baixo para salvar (Markdown)"
+      "previewTitle": "Prévia de leitura"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Dobra de 4 páginas",

@@ -490,15 +490,14 @@
       "uploadDescription": "Seret dan lepas makalah akademik, tata letak dua kolom, atau PDF teks di sini. Sistem akan mengurai dan mengalirkan ulang secara otomatis.",
       "scanningMetadata": "Menganalisis struktur dokumen...",
       "optionsTitle": "Pengaturan Pembaca Adaptif",
-      "optionsHelp": "Sesuaikan tipografi dan tata letak pada simulator ponsel 3D.",
+      "optionsHelp": "Sesuaikan tema baca dan ukuran font di pratinjau.",
       "themeLabel": "Skema Tema Pembaca",
       "themeSepia": "Perawatan Mata Hangat",
       "themeLight": "Putih Cerah Bersih",
       "themeGreen": "Hijau Lembut Segar",
       "themeDark": "Geek Tengah Malam",
       "fontSizeLabel": "Ukuran Font Tipografi",
-      "pullToExport": "Tarik Tali untuk Mengekspor",
-      "pullToExportHint": "Tarik cincin ke bawah untuk menyimpan (Markdown)"
+      "previewTitle": "Pratinjau bacaan"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Lipatan 4 Halaman",

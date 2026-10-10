@@ -490,15 +490,14 @@
       "uploadDescription": "Trageți și plasați lucrări academice, aspecte pe două coloane sau PDF-uri text aici. Sistemul le va analiza și redistribui automat.",
       "scanningMetadata": "Se analizează structura documentului...",
       "optionsTitle": "Setări de citire adaptivă",
-      "optionsHelp": "Reglați tipografia și aspectul pe simulatorul de telefon 3D.",
+      "optionsHelp": "Ajustați tema de lectură și dimensiunea textului în previzualizare.",
       "themeLabel": "Schemă temă cititor",
       "themeSepia": "Protecție caldă a ochilor (Sepia)",
       "themeLight": "Alb curat și strălucitor",
       "themeGreen": "Verde proaspăt și moale",
       "themeDark": "Midnight Geek (Întunecat)",
       "fontSizeLabel": "Dimensiune font tipografie",
-      "pullToExport": "Trageți cablul pentru a exporta",
-      "pullToExportHint": "Trageți inelul în jos pentru a salva (Markdown)"
+      "previewTitle": "Previzualizare lectură"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "Pliere pe 4 pagini",

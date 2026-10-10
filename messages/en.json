@@ -490,15 +490,14 @@
       "uploadDescription": "Drag and drop academic papers, two-column layouts, or text PDFs here. The system will automatically parse and reflow.",
       "scanningMetadata": "Analyzing document structure...",
       "optionsTitle": "Adaptive Reader Settings",
-      "optionsHelp": "Adjust typography and layout styled on the 3D phone simulator.",
+      "optionsHelp": "Adjust the reading theme and font size in the preview.",
       "themeLabel": "Reader Theme Scheme",
       "themeSepia": "Warm Eye-Care",
       "themeLight": "Clean Bright White",
       "themeGreen": "Fresh Soft Green",
       "themeDark": "Midnight Geek",
       "fontSizeLabel": "Typography Font Size",
-      "pullToExport": "Pull Cord to Export",
-      "pullToExportHint": "Pull down ring to save (Markdown)"
+      "previewTitle": "Reading preview"
     },
     "bookletFoldingSimulator": {
       "fourPagesFold": "4-Page Fold",
