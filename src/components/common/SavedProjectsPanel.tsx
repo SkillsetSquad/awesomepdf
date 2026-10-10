@@ -1,7 +1,7 @@
 /**
  * SavedProjectsPanel Component
  * Requirements: 10.2
- * 
+ *
  * Displays saved projects and allows resuming interrupted operations
  */
 
@@ -13,7 +13,10 @@ import { FolderOpen, Trash2, Play, Pause, CheckCircle, Clock, AlertCircle } from
 import { useProjectStorage } from '@/lib/hooks/useProjectStorage';
 import { formatDate } from '@/lib/storage/recent-files';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardAction, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Skeleton } from '@/components/ui/skeleton';
 import { type Locale } from '@/lib/i18n/config';
 
 export interface SavedProjectsPanelProps {
@@ -37,13 +40,13 @@ export interface SavedProjectsPanelProps {
 const StatusIcon: React.FC<{ status: string }> = ({ status }) => {
   switch (status) {
     case 'in_progress':
-      return <Clock className="h-4 w-4 text-blue-500" aria-hidden="true" />;
+      return <Clock className="h-4 w-4 text-primary" aria-hidden="true" />;
     case 'paused':
-      return <Pause className="h-4 w-4 text-yellow-500" aria-hidden="true" />;
+      return <Pause className="h-4 w-4 text-muted-foreground" aria-hidden="true" />;
     case 'completed':
-      return <CheckCircle className="h-4 w-4 text-green-500" aria-hidden="true" />;
+      return <CheckCircle className="h-4 w-4 text-foreground" aria-hidden="true" />;
     default:
-      return <AlertCircle className="h-4 w-4 text-gray-500" aria-hidden="true" />;
+      return <AlertCircle className="h-4 w-4 text-muted-foreground" aria-hidden="true" />;
   }
 };
 
@@ -71,11 +74,11 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        setFocusedIndex((prev) => (prev < totalItems - 1 ? prev + 1 : 0));
+        setFocusedIndex(index < totalItems - 1 ? index + 1 : 0);
         break;
       case 'ArrowUp':
         event.preventDefault();
-        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : totalItems - 1));
+        setFocusedIndex(index > 0 ? index - 1 : totalItems - 1);
         break;
       case 'Home':
         event.preventDefault();
@@ -94,17 +97,9 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
 
   if (isLoading) {
     return (
-      <Card className="p-4">
-        <div className="animate-pulse flex space-x-4">
-          <div className="flex-1 space-y-4 py-1">
-            <div className="h-4 bg-muted rounded w-3/4"></div>
-            <div className="space-y-2">
-              <div className="h-4 bg-muted rounded"></div>
-              <div className="h-4 bg-muted rounded w-5/6"></div>
-            </div>
-          </div>
-        </div>
-      </Card>
+      <Card><CardContent className="space-y-3" aria-busy="true" aria-label={translations.title}>
+        <Skeleton className="h-4 w-3/4" /><Skeleton className="h-4 w-full" /><Skeleton className="h-4 w-5/6" />
+      </CardContent></Card>
     );
   }
 
@@ -127,27 +122,14 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
   };
 
   return (
-    <Card className="p-4">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <FolderOpen className="h-5 w-5 text-primary" aria-hidden="true" />
-          <h3 className="font-medium text-foreground">
-            {translations.title}
-          </h3>
-        </div>
-        {filteredProjects.length > 0 && (
-          <button
-            onClick={() => clearProjects()}
-            className="text-xs text-muted-foreground hover:text-destructive transition-colors flex items-center gap-1"
-            aria-label={translations.clearAll}
-          >
-            <Trash2 className="h-3 w-3" aria-hidden="true" />
-            {translations.clearAll}
-          </button>
-        )}
-      </div>
-
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2"><FolderOpen className="size-5" aria-hidden="true" />{translations.title}</CardTitle>
+        {filteredProjects.length > 0 && <CardAction><Button variant="ghost" size="sm" onClick={() => clearProjects()}>
+          <Trash2 aria-hidden="true" />{translations.clearAll}
+        </Button></CardAction>}
+      </CardHeader>
+      <CardContent>
       {/* Content */}
       {filteredProjects.length === 0 ? (
         <div className="text-center py-6 text-sm text-muted-foreground">
@@ -160,7 +142,7 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
             <li
               key={project.id}
               ref={(el) => { itemRefs.current[index] = el; }}
-              className="group p-3 rounded-md border border-border hover:border-primary focus-within:border-primary transition-colors"
+              className="rounded-md border p-3"
               onKeyDown={(e) => handleItemKeyDown(e, index, filteredProjects.length)}
             >
               <div className="flex items-start justify-between gap-2">
@@ -171,9 +153,9 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
                       {project.name}
                     </span>
                   </div>
-                  
+
                   <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                    <span>{getStatusLabel(project.status)}</span>
+                    <Badge variant="secondary">{getStatusLabel(project.status)}</Badge>
                     <span>•</span>
                     <span>{formatDate(project.updatedAt)}</span>
                     {project.fileMetadata.length > 0 && (
@@ -190,35 +172,25 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
                         <span>{translations.progress}</span>
                         <span>{project.progress}%</span>
                       </div>
-                      <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-primary transition-all"
-                          style={{ width: `${project.progress}%` }}
-                        />
-                      </div>
+                      <Progress value={project.progress} aria-label={`${translations.progress}: ${project.name}`} />
                     </div>
                   )}
                 </div>
 
                 <div className="flex items-center gap-1">
                   {project.status !== 'completed' && (
-                    <Link href={`/${locale}/tools/${project.toolId}`}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => onResumeProject?.(project.id)}
-                        aria-label={translations.resume}
-                      >
-                        <Play className="h-4 w-4" aria-hidden="true" />
-                      </Button>
-                    </Link>
+                    <Button asChild variant="ghost" size="icon-sm">
+                      <Link href={`/${locale}/tools/${project.toolId}`} onClick={() => onResumeProject?.(project.id)} aria-label={translations.resume}>
+                        <Play aria-hidden="true" />
+                      </Link>
+                    </Button>
                   )}
                   <Button
                     variant="ghost"
-                    size="sm"
+                    size="icon-sm"
                     onClick={() => removeProject(project.id)}
                     aria-label={translations.delete}
-                    className="text-muted-foreground hover:text-destructive"
+                    className="text-destructive"
                   >
                     <Trash2 className="h-4 w-4" aria-hidden="true" />
                   </Button>
@@ -228,6 +200,7 @@ export const SavedProjectsPanel: React.FC<SavedProjectsPanelProps> = ({
           ))}
         </ul>
       )}
+      </CardContent>
     </Card>
   );
 };
