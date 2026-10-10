@@ -1707,20 +1707,13 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   <Palette className="w-3.5 h-3.5 text-muted-foreground" />
                   <span>框选标色:</span>
                 </span>
-                <div className="flex items-center gap-1 bg-muted/40 px-2 py-1 rounded-lg border border-border/60">
+                <div className="flex flex-wrap items-center gap-1">
                   {DRAFT_COLORS.map((c) => (
-                    <button
-                      key={c.id}
-                      type="button"
-                      onClick={() => setActiveDraftColor(c.id)}
-                      className={`w-4 h-4 rounded-full border transition-all ${
-                        activeDraftColor === c.id
-                          ? 'ring-2 ring-primary ring-offset-1 scale-110 shadow-xs'
-                          : 'opacity-70 hover:opacity-100 hover:scale-110'
-                      }`}
-                      style={{ backgroundColor: c.stroke }}
-                      title={`${c.name} 标色`}
-                    />
+                    <Button key={c.id} size="icon-sm" variant={activeDraftColor === c.id ? 'default' : 'outline'}
+                      onClick={() => setActiveDraftColor(c.id)} aria-pressed={activeDraftColor === c.id}
+                      aria-label={`${c.name} 标色`}>
+                      <span className="size-4 rounded-sm" style={{ backgroundColor: c.stroke }} aria-hidden="true" />
+                    </Button>
                   ))}
                 </div>
               </div>

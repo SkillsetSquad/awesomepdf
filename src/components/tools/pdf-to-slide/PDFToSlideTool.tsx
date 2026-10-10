@@ -144,14 +144,11 @@ export function PDFToSlideTool() {
                 </Label>
                 <div className="grid grid-cols-5 gap-2">
                   {['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#ef4444'].map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => setThemeColor(color)}
-                      className={`h-8 w-8 rounded-full border-2 transition-all ${
-                        themeColor === color ? 'border-white scale-110 shadow-lg' : 'border-transparent'
-                      }`}
-                      style={{ backgroundColor: color }}
-                    />
+                    <Button key={color} size="icon-sm" variant={themeColor === color ? 'default' : 'outline'}
+                      onClick={() => setThemeColor(color)} aria-pressed={themeColor === color}
+                      aria-label={`${t('pdfToSlide.themeLabel')}: ${color}`}>
+                      <span className="size-4 rounded-sm" style={{ backgroundColor: color }} aria-hidden="true" />
+                    </Button>
                   ))}
                 </div>
               </div>
