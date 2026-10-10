@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import '@/app/globals.css';
 
 import { siteConfig } from '@/config/site';
+import { withBasePath } from '@/lib/utils/path';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: withBasePath('/favicon.svg'),
+    shortcut: withBasePath('/favicon.svg'),
+    apple: withBasePath('/apple-touch-icon.png'),
   },
 };
 

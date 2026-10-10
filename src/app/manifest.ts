@@ -7,6 +7,7 @@
 
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site';
+import { withBasePath } from '@/lib/utils/path';
 
 // Required for static export
 export const dynamic = 'force-static';
@@ -16,7 +17,8 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: siteConfig.name,
     description: siteConfig.description,
-    start_url: '/',
+    start_url: withBasePath('/'),
+    scope: withBasePath('/'),
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#3b82f6',
@@ -24,29 +26,22 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ['productivity', 'utilities'],
     icons: [
       {
-        src: '/favicon.svg',
+        src: withBasePath('/favicon.svg'),
         sizes: 'any',
         type: 'image/svg+xml',
         purpose: 'any',
       },
       {
-        src: '/icon-192.png',
+        src: withBasePath('/icon-192.png'),
         sizes: '192x192',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: '/icon-512.png',
+        src: withBasePath('/icon-512.png'),
         sizes: '512x512',
         type: 'image/png',
         purpose: 'maskable',
-      },
-    ],
-    screenshots: [
-      {
-        src: '/screenshots/home.png',
-        sizes: '1280x720',
-        type: 'image/png',
       },
     ],
     shortcuts: [
@@ -54,22 +49,22 @@ export default function manifest(): MetadataRoute.Manifest {
         name: 'Merge PDF',
         short_name: 'Merge',
         description: 'Combine multiple PDF files',
-        url: '/en/tools/merge-pdf',
-        icons: [{ src: '/icons/merge.png', sizes: '96x96' }],
+        url: withBasePath('/en/tools/merge-pdf/'),
+        icons: [{ src: withBasePath('/icon-192.png'), sizes: '192x192', type: 'image/png' }],
       },
       {
         name: 'Split PDF',
         short_name: 'Split',
         description: 'Split PDF into multiple files',
-        url: '/en/tools/split-pdf',
-        icons: [{ src: '/icons/split.png', sizes: '96x96' }],
+        url: withBasePath('/en/tools/split-pdf/'),
+        icons: [{ src: withBasePath('/icon-192.png'), sizes: '192x192', type: 'image/png' }],
       },
       {
         name: 'Compress PDF',
         short_name: 'Compress',
         description: 'Reduce PDF file size',
-        url: '/en/tools/compress-pdf',
-        icons: [{ src: '/icons/compress.png', sizes: '96x96' }],
+        url: withBasePath('/en/tools/compress-pdf/'),
+        icons: [{ src: withBasePath('/icon-192.png'), sizes: '192x192', type: 'image/png' }],
       },
     ],
   };
