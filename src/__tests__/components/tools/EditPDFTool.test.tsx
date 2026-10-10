@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { EditPDFTool } from '@/components/tools/edit-pdf/EditPDFTool';
 
 // Mock next-intl
@@ -194,6 +195,23 @@ describe('EditPDFTool', () => {
   });
 
   describe('Mode Switching', () => {
+    it('changes modes with arrow keys and retains the selected file', async () => {
+      render(<EditPDFTool />);
+      fireEvent.click(screen.getByTestId('mock-upload-button'));
+      const direct = screen.getByRole('tab', { name: 'Direct Content Edit' });
+      act(() => direct.focus());
+      await userEvent.keyboard('{ArrowRight>}');
+      await waitFor(() => expect(screen.getByRole('tab', { name: 'Classic Annotator' })).toHaveAttribute('aria-selected', 'true'));
+      await userEvent.keyboard('{/ArrowRight}');
+      expect(screen.getByRole('tabpanel')).toBeInTheDocument();
+      expect(screen.getByText('test.pdf')).toBeInTheDocument();
+      expect(screen.queryByTestId('file-uploader')).not.toBeInTheDocument();
+      await userEvent.keyboard('{Home>}');
+      await waitFor(() => expect(screen.getByRole('tab', { name: 'Direct Content Edit' })).toHaveAttribute('aria-selected', 'true'));
+      await userEvent.keyboard('{/Home}');
+      expect(screen.getByTitle('PDF Editor')).toBeInTheDocument();
+    });
+
     it('preserves the uploaded file and does not show file uploader when switching between direct and annotator modes', async () => {
       render(<EditPDFTool />);
       

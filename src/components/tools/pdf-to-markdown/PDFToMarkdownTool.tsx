@@ -1,4 +1,6 @@
 'use client';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -355,28 +357,22 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
             {status === 'complete' && markdownContent && (
                 <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     <Card  className="overflow-hidden glass-card p-0">
+<Tabs value={activeTab} onValueChange={(value) => { if (value === 'preview' || value === 'source') setActiveTab(value); }}>
                         {/* Preview Tabs */}
-                        <div className="flex border-b border-border bg-muted/30">
-                            <Button size="sm" variant={activeTab === 'preview' ? 'default' : 'outline'} aria-pressed={activeTab === 'preview'}
-                                onClick={() => setActiveTab('preview')}
-                                className="flex items-center gap-2"
-                            >
+                        <TabsList className="h-auto max-w-full flex-wrap">
+                            <TabsTrigger value="preview" className="whitespace-normal">
                                 <Eye className="w-4 h-4" />
                                 {tTools('pdfToMarkdown.previewTab') || 'Preview'}
-                            </Button>
-                            <Button size="sm" variant={activeTab === 'source' ? 'default' : 'outline'} aria-pressed={activeTab === 'source'}
-                                onClick={() => setActiveTab('source')}
-                                className="flex items-center gap-2"
-                            >
+                            </TabsTrigger>
+                            <TabsTrigger value="source" className="whitespace-normal">
                                 <Code className="w-4 h-4" />
                                 {tTools('pdfToMarkdown.sourceTab') || 'Markdown Source'}
-                            </Button>
-                        </div>
+                            </TabsTrigger>
+                        </TabsList>
 
                         {/* Preview Content */}
                         <div className="p-6 max-h-[600px] overflow-y-auto bg-background">
-                            {activeTab === 'preview' ? (
-                                <div
+                            <TabsContent value="preview"><div
                                     className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none
                                     prose-headings:font-bold prose-headings:tracking-tight
                                     prose-h1:text-3xl prose-h1:mb-4 prose-h1:mt-6
@@ -398,14 +394,13 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                                     dark:prose-code:bg-gray-800 dark:prose-code:text-gray-200
                                     dark:prose-th:bg-gray-800 dark:prose-td:border-gray-700 dark:prose-th:border-gray-700"
                                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(htmlContent) }}
-                                />
-                            ) : (
-                                <pre className="p-4 rounded-lg bg-muted text-foreground overflow-x-auto text-sm font-mono whitespace-pre-wrap break-words">
+                                /></TabsContent>
+<TabsContent value="source"><pre className="p-4 rounded-lg bg-muted text-foreground overflow-x-auto text-sm font-mono whitespace-pre-wrap break-words">
                                     {markdownContent}
-                                </pre>
-                            )}
+                                </pre></TabsContent>
                         </div>
-                    </Card>
+                    </Tabs>
+</Card>
                 </div>
             )}
         </div>

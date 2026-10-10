@@ -1,4 +1,6 @@
 'use client';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
 import { Slider } from '@/components/ui/slider';
 
 import { Input } from '@/components/ui/input';
@@ -607,26 +609,19 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
               </div>
 
               {/* Tabs Panel */}
-              <div className="p-5 space-y-6">
+              <Tabs value={calibrationTab} onValueChange={(value) => { if (value === 'preset' || value === 'stepless') setCalibrationTab(value); }} className="p-5 space-y-6">
                 {/* Mode Selector Tab buttons */}
-                <div className="flex bg-muted/50 p-1 rounded-md">
-                  <Button size="sm" variant={calibrationTab === 'preset' ? 'default' : 'outline'} aria-pressed={calibrationTab === 'preset'}
-                    onClick={() => setCalibrationTab('preset')}
-                    className="flex-1"
-                  >
+                <TabsList className="h-auto max-w-full flex-wrap">
+                  <TabsTrigger value="preset" className="whitespace-normal">
                     {t('rotate.quickRotate')}
-                  </Button>
-                  <Button size="sm" variant={calibrationTab === 'stepless' ? 'default' : 'outline'} aria-pressed={calibrationTab === 'stepless'}
-                    onClick={() => setCalibrationTab('stepless')}
-                    className="flex-1"
-                  >
+                  </TabsTrigger>
+                  <TabsTrigger value="stepless" className="whitespace-normal">
                     {t('rotate.fineRotate')}
-                  </Button>
-                </div>
+                  </TabsTrigger>
+                </TabsList>
 
                 {/* TAB 1: PRESET ROTATION PANEL */}
-                {calibrationTab === 'preset' && (
-                  <div className="space-y-4 animate-in fade-in slide-in-from-top-1 duration-200">
+                <TabsContent value="preset"><div className="space-y-4 animate-in fade-in slide-in-from-top-1 duration-200">
                     <div className="grid grid-cols-2 gap-2">
                       <Button
                         variant="outline"
@@ -721,12 +716,10 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         </Button>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div></TabsContent>
 
                 {/* TAB 2: STEPLESS STEP ROTATION (FINE GRAIN DIAL + SLIDER) */}
-                {calibrationTab === 'stepless' && (
-                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-1 duration-200">
+                <TabsContent value="stepless"><div className="space-y-6 animate-in fade-in slide-in-from-bottom-1 duration-200">
 
                     {/* Visual Rotating Circle Dial Container */}
                     <div className="flex flex-col items-center justify-center">
@@ -853,9 +846,8 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                       {t.rich('rotate.inputTip', { b: (chunks) => <strong>{chunks}</strong>, code: (chunks) => <code>{chunks}</code> })}
                     </div>
 
-                  </div>
-                )}
-              </div>
+                  </div></TabsContent>
+              </Tabs>
             </Card>
 
             {/* Run Operations Button Area */}

@@ -1,10 +1,14 @@
 'use client';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { FileText, Type, Pencil, Loader2, CircleCheck, AlertCircle } from 'lucide-react';
 import { LegacyAnnotatorTool } from './LegacyAnnotatorTool';
 
 export interface EditPDFToolProps {
@@ -175,28 +179,20 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
   }, [handleClear, sendPdfToIframe, sendThemeToIframe]);
 
   return (
-    <div className={`space-y-6 ${className}`.trim()}>
+    <Tabs value={editMode} onValueChange={(value) => { if (value === 'direct' || value === 'annotator') setEditMode(value); }} className={`space-y-6 ${className}`.trim()}>
       {!file && (
         <div className="space-y-4">
           <div className="flex items-center justify-center">
-            <div className="flex items-center rounded-lg bg-gray-100 dark:bg-gray-700/60 p-1 border border-gray-200 dark:border-gray-600 text-xs font-medium">
-              <Button size="sm" variant={editMode === 'direct' ? 'default' : 'outline'} aria-pressed={editMode === 'direct'}
-                type="button"
-                onClick={() => setEditMode('direct')}
-                className="flex items-center gap-1.5"
-              >
-                <span>✦</span>
+            <TabsList className="h-auto max-w-full flex-wrap">
+              <TabsTrigger value="direct" className="whitespace-normal">
+                <Type aria-hidden="true" />
                 <span>{locale === 'zh' ? '直接编辑正文与图片' : 'Direct Content Edit'}</span>
-              </Button>
-              <Button size="sm" variant={editMode === 'annotator' ? 'default' : 'outline'} aria-pressed={editMode === 'annotator'}
-                type="button"
-                onClick={() => setEditMode('annotator')}
-                className="flex items-center gap-1.5"
-              >
-                <span>✎</span>
+              </TabsTrigger>
+              <TabsTrigger value="annotator" className="whitespace-normal">
+                <Pencil aria-hidden="true" />
                 <span>{locale === 'zh' ? '经典批注与涂鸦' : 'Classic Annotator'}</span>
-              </Button>
-            </div>
+              </TabsTrigger>
+            </TabsList>
           </div>
 
           <FileUploader
@@ -212,24 +208,16 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
       )}
 
       {error && (
-        <div
-          className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
-          <p className="text-sm">{error}</p>
-        </div>
+        <Alert variant="destructive"><AlertCircle aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>
       )}
 
       {file && (
         <div className="space-y-4">
           {/* File summary & mode switcher */}
-          <Card   className="bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+          <Card><CardContent>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <svg className="w-8 h-8 text-red-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                  <path d="M14 2v6h6" fill="white" />
-                </svg>
+                <FileText className="size-6 shrink-0 text-muted-foreground" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-medium text-foreground truncate max-w-[240px] sm:max-w-md">
                     {file.name}
@@ -241,40 +229,29 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
               </div>
 
               {/* Mode switch pills */}
-              <div className="flex items-center rounded-lg bg-gray-100 dark:bg-gray-700/60 p-1 border border-gray-200 dark:border-gray-600 text-xs font-medium">
-                <Button size="sm" variant={editMode === 'direct' ? 'default' : 'outline'} aria-pressed={editMode === 'direct'}
-                  type="button"
-                  onClick={() => setEditMode('direct')}
-                  className="flex items-center gap-1.5"
-                >
-                  <span>✦</span>
+              <TabsList className="h-auto max-w-full flex-wrap">
+                <TabsTrigger value="direct" className="whitespace-normal">
+                  <Type aria-hidden="true" />
                   <span>{locale === 'zh' ? '直接编辑正文与图片' : 'Direct Content Edit'}</span>
-                </Button>
-                <Button size="sm" variant={editMode === 'annotator' ? 'default' : 'outline'} aria-pressed={editMode === 'annotator'}
-                  type="button"
-                  onClick={() => setEditMode('annotator')}
-                  className="flex items-center gap-1.5"
-                >
-                  <span>✎</span>
+                </TabsTrigger>
+                <TabsTrigger value="annotator" className="whitespace-normal">
+                  <Pencil aria-hidden="true" />
                   <span>{locale === 'zh' ? '经典批注与涂鸦' : 'Classic Annotator'}</span>
-                </Button>
-              </div>
+                </TabsTrigger>
+              </TabsList>
 
               <Button variant="ghost" size="sm" onClick={handleClear}>
                 {t('buttons.clear') || 'Clear'}
               </Button>
             </div>
-          </Card>
+          </CardContent></Card>
 
           {savedNotice && (
-            <div className="rounded-md border border-green-200 bg-green-50 dark:bg-green-950/30 dark:border-green-800 p-3">
-              <p className="text-sm text-green-800 dark:text-green-300 font-medium">{savedNotice}</p>
-            </div>
+            <Alert role="status"><CircleCheck aria-hidden="true" /><AlertDescription>{savedNotice}</AlertDescription></Alert>
           )}
 
           {/* Direct In-place Text/Image Editor Mode */}
-          {editMode === 'direct' && (
-            <div className="relative border border-border rounded-2xl overflow-hidden bg-card shadow-sm">
+          <TabsContent value="direct"><div className="relative overflow-hidden rounded-lg border bg-card">
               <iframe
                 ref={iframeRef}
                 src={`/direct-pdf-editor/index.html?lang=${encodeURIComponent(locale || 'en')}`}
@@ -285,31 +262,28 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
                 onLoad={handleIframeLoad}
               />
               {!isEditorReady && (
-                <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-950/80 z-10 backdrop-blur-md">
-                  <div className="text-center p-6 rounded-2xl bg-white dark:bg-gray-900 border border-border shadow-lg">
-                    <div className="animate-spin rounded-full h-9 w-9 border-2 border-blue-600 border-t-transparent mx-auto mb-3"></div>
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/80">
+                  <Card><CardContent className="flex flex-col items-center gap-3 text-center" role="status">
+                    <Loader2 className="size-6 animate-spin" aria-hidden="true" />
                     <p className="text-sm font-semibold text-foreground">
                       {t('status.loading') || 'Loading...'}
                     </p>
-                  </div>
+                  </CardContent></Card>
                 </div>
               )}
-            </div>
-          )}
+            </div></TabsContent>
 
           {/* Classic Annotator Mode */}
-          {editMode === 'annotator' && (
-            <LegacyAnnotatorTool
+          <TabsContent value="annotator"><LegacyAnnotatorTool
               file={file}
               onFileChange={setFile}
               hideHeaderCard={true}
               onClear={handleClear}
               className="border-0 shadow-none p-0"
-            />
-          )}
+            /></TabsContent>
         </div>
       )}
-    </div>
+    </Tabs>
   );
 }
 
