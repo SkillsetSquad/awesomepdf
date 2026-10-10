@@ -519,7 +519,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
 
             {/* Filter pills bar */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] font-black text-zinc-400 flex items-center gap-1 uppercase tracking-wider mr-2">
+              <span className="text-[10px] font-semibold text-muted-foreground flex items-center gap-1 uppercase tracking-wider mr-2">
                 <Filter className="w-3.5 h-3.5" />
                 {t('comparePdfs.filterLabel')}
               </span>
@@ -576,7 +576,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                 {t('comparePdfs.alignSequence', { current: currentPairIdx + 1, total: pairedPages.length })}
               </span>
               {currentPair && (
-                <span className={`text-[10px] font-black px-2.5 py-1 rounded-lg ${
+                <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg ${
                   currentPair.hasDifference
                     ? 'bg-red-500/15 text-red-500 border border-red-500/25'
                     : 'bg-green-500/15 text-green-500 border border-green-500/25'
@@ -620,16 +620,16 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
           <div
             ref={comparisonContainerRef}
             className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
-              isFullscreen ? 'fixed inset-0 z-50 p-4 bg-zinc-900 overflow-y-auto' : ''
+              isFullscreen ? 'fixed inset-0 z-50 p-4 bg-muted overflow-y-auto' : ''
             }`}
           >
             {/* LEFT Version (Original / Deleted Page) */}
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between items-center px-1">
-                <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                   {t('comparePdfs.originalVersion')}
                 </span>
-                <span className="text-[10px] font-bold text-zinc-500">
+                <span className="text-[10px] font-bold text-muted-foreground">
                   {currentPair?.pageIndex1 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex1 + 1 }) : '---'}
                 </span>
               </div>
@@ -637,7 +637,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               <div
                 ref={scrollContainer1Ref}
                 onScroll={handleScroll1}
-                className="border border-border rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
+                className="border border-border rounded-2xl bg-muted overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
               >
                 {currentPair?.pageIndex1 !== -1 ? (
                   <div className="relative transform-gpu">
@@ -681,13 +681,13 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                           }}
                         >
                           {/* Tooltip widget */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-muted text-foreground text-[9px] font-bold py-1 px-2.5 rounded-lg border border-border shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
                             {hl.type === 'deleted'
                               ? t('comparePdfs.removedText')
                               : hl.type === 'modified'
                                 ? t('comparePdfs.modifiedText')
                                 : t('comparePdfs.paragraphMovedRight')}
-                            <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
+                            <span className="text-muted-foreground block mt-1">"{hl.text}"</span>
                           </div>
                         </div>
                       ))}
@@ -695,10 +695,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                   </div>
                 ) : (
                   /* Deleted Page placeholder blank board */
-                  <div className="flex flex-col items-center justify-center p-8 text-center text-zinc-500 w-full min-h-[500px] border border-dashed border-zinc-800 rounded-xl bg-zinc-950/60 backdrop-blur-md">
+                  <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground w-full min-h-[500px] border border-dashed border-border rounded-xl bg-muted">
                     <AlertCircle className="w-10 h-10 text-emerald-500/70 mb-4 animate-bounce" />
                     {t('comparePdfs.insertedPageTitle')}
-                    <p className="text-[10px] text-zinc-600 mt-1 max-w-xs">
+                    <p className="text-[10px] text-foreground mt-1 max-w-xs">
                       {t('comparePdfs.insertedPageDesc')}
                     </p>
                   </div>
@@ -709,10 +709,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
             {/* RIGHT Version (Modified / Inserted Page) */}
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between items-center px-1">
-                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">
+                <span className="text-[10px] font-semibold text-emerald-500 uppercase tracking-widest">
                   {t('comparePdfs.modifiedVersion')}
                 </span>
-                <span className="text-[10px] font-bold text-zinc-500">
+                <span className="text-[10px] font-bold text-muted-foreground">
                   {currentPair?.pageIndex2 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex2 + 1 }) : '---'}
                 </span>
               </div>
@@ -720,7 +720,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
               <div
                 ref={scrollContainer2Ref}
                 onScroll={handleScroll2}
-                className="border border-border rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
+                className="border border-border rounded-2xl bg-muted overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
               >
                 {currentPair?.pageIndex2 !== -1 ? (
                   <div className="relative transform-gpu">
@@ -764,13 +764,13 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                           }}
                         >
                           {/* Tooltip widget */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-muted text-foreground text-[9px] font-bold py-1 px-2.5 rounded-lg border border-border shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
                             {hl.type === 'added'
                               ? t('comparePdfs.addedText')
                               : hl.type === 'modified'
                                 ? t('comparePdfs.modifiedText')
                                 : t('comparePdfs.paragraphMovedLeft')}
-                            <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
+                            <span className="text-muted-foreground block mt-1">"{hl.text}"</span>
                           </div>
                         </div>
                       ))}
@@ -778,10 +778,10 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                   </div>
                 ) : (
                   /* Inserted Page placeholder blank board */
-                  <div className="flex flex-col items-center justify-center p-8 text-center text-zinc-500 w-full min-h-[500px] border border-dashed border-zinc-800 rounded-xl bg-zinc-950/60 backdrop-blur-md">
+                  <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground w-full min-h-[500px] border border-dashed border-border rounded-xl bg-muted">
                     <AlertCircle className="w-10 h-10 text-red-500/70 mb-4 animate-bounce" />
                     {t('comparePdfs.deletedPageTitle')}
-                    <p className="text-[10px] text-zinc-600 mt-1 max-w-xs">
+                    <p className="text-[10px] text-foreground mt-1 max-w-xs">
                       {t('comparePdfs.deletedPageDesc')}
                     </p>
                   </div>

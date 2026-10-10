@@ -316,13 +316,13 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             </div>
           </div>
           <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-sm font-black text-foreground tracking-wider">
+            <h3 className="text-sm font-semibold text-foreground tracking-wider">
               {tTools('removeBlankPages.analyzingPages')}
             </h3>
             <p className="text-xs text-muted-foreground">
               {analyzingProgress}% Completed
             </p>
-            <div className="w-full bg-zinc-200 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-muted h-1.5 rounded-full overflow-hidden">
               <div
                 className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-300"
                 style={{ width: `${analyzingProgress}%` }}
@@ -378,7 +378,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                     className="flex-1 cursor-pointer"
                     disabled={isProcessing} aria-label={tTools('removeBlankPages.sensitivity')}
                   />
-                  <span className="font-mono text-sm px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-md font-bold text-primary">
+                  <span className="font-mono text-sm px-2.5 py-1 bg-muted rounded-md font-bold text-primary">
                     {threshold}%
                   </span>
                 </div>
@@ -389,13 +389,13 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               </div>
 
               {/* Right Column: Summaries & Quick Action buttons */}
-              <div className="md:col-span-5 flex flex-col justify-between border-t md:border-t-0 md:border-l border-zinc-200 dark:border-zinc-800 pt-6 md:pt-0 md:pl-6 space-y-4">
+              <div className="md:col-span-5 flex flex-col justify-between border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0 md:pl-6 space-y-4">
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                     {t('removeBlankPages.summaryTitle')}
                   </h4>
                   <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                    <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                    <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-muted text-foreground">
                       {t('removeBlankPages.totalLabel', { count: pages.length })}
                     </span>
                     <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
@@ -424,8 +424,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             </div>
 
             {/* View filter mode tabs */}
-            <div className="border-t border-zinc-100 dark:border-zinc-800/80 pt-4 flex items-center justify-between flex-wrap gap-4">
-              <div className="flex rounded-xl bg-zinc-100 dark:bg-zinc-900 p-1">
+            <div className="border-t border-border pt-4 flex items-center justify-between flex-wrap gap-4">
+              <div className="flex rounded-xl bg-muted p-1">
                 <Button size="sm" variant={filterMode === 'all' ? 'default' : 'outline'} aria-pressed={filterMode === 'all'}
                   onClick={() => setFilterMode('all')}
 
@@ -467,7 +467,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
           {/* 3D Pages Queue Grid */}
           {displayedPages.length === 0 ? (
             <Card  className="p-12 text-center border-dashed">
-              <Eye className="w-10 h-10 text-zinc-300 dark:text-zinc-700 mx-auto mb-3" />
+              <Eye className="w-10 h-10 text-foreground mx-auto mb-3" />
               <p className="text-sm text-muted-foreground font-bold">
                 {t('removeBlankPages.noPagesToDisplay') || 'No pages to display'}
               </p>
@@ -508,7 +508,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
           </div>
 
           <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-base font-extrabold text-foreground">
+            <h3 className="text-base font-semibold text-foreground">
               {tTools('removeBlankPages.successMessage')}
             </h3>
             <p className="text-xs text-muted-foreground">
@@ -593,10 +593,10 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onToggle}
-      className={`relative group cursor-pointer transition-all duration-300 ease-out rounded-2xl overflow-hidden select-none bg-white dark:bg-zinc-900 border ${
+      className={`relative group cursor-pointer transition-all duration-300 ease-out rounded-2xl overflow-hidden select-none bg-white border ${
         isRemoved
           ? 'border-red-500/40 shadow-inner ring-2 ring-red-500/25'
-          : 'border-zinc-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700'
+          : 'border-border shadow-sm hover:shadow-xl hover:border-border'
       }`}
       style={{
         transformStyle: 'preserve-3d',
@@ -604,7 +604,7 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
     >
       {/* Aspect Ratio Box */}
       <div
-        className="w-full relative overflow-hidden bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-3"
+        className="w-full relative overflow-hidden bg-muted flex items-center justify-center p-3"
         style={{ aspectRatio: page.aspectRatio ? `${page.aspectRatio}` : '0.707' }}
       >
         <img
@@ -617,7 +617,7 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
 
         {/* Gray blur overlay for removed pages */}
         {isRemoved && (
-          <div className="absolute inset-0 bg-zinc-950/40 dark:bg-zinc-950/60 backdrop-blur-[1px] flex flex-col items-center justify-center text-center p-2 z-10 transition-all duration-300">
+          <div className="absolute inset-0 bg-muted flex flex-col items-center justify-center text-center p-2 z-10 transition-all duration-300">
             {/* Shaking red diagonal bar symbol */}
             <div className="p-2.5 rounded-full bg-red-500/10 text-red-500 animate-[bounce_1.5s_infinite] border border-red-500/25 shadow-lg">
               <UIBan className="w-6 h-6" aria-hidden="true" />
@@ -627,7 +627,7 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
 
         {/* Hover action overlay indicator */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 z-20 pointer-events-none">
-          <span className="text-[10px] font-bold text-white bg-black/60 px-2.5 py-1 rounded-full backdrop-blur-md shadow-md border border-white/10 uppercase tracking-wider">
+          <span className="text-[10px] font-bold text-white bg-black/60 px-2.5 py-1 rounded-full shadow-md border border-white/10 uppercase tracking-wider">
             {isRemoved ? t('removeBlankPages.clickToKeep') : t('removeBlankPages.clickToDelete')}
           </span>
         </div>
@@ -637,14 +637,14 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
       <div className={`p-2 flex items-center justify-between text-[11px] font-bold border-t ${
         isRemoved
           ? 'bg-red-50/50 dark:bg-red-950/10 border-red-100 dark:border-red-950/40'
-          : 'bg-zinc-50 dark:bg-zinc-900/60 border-zinc-100 dark:border-zinc-800'
+          : 'bg-muted border-border'
       }`}>
-        <span className={isRemoved ? 'text-red-500' : 'text-zinc-500'}>
+        <span className={isRemoved ? 'text-red-500' : 'text-muted-foreground'}>
           {t('removeBlankPages.pageNumberLabel', { num: page.pageNumber })}
         </span>
 
         {/* Entropy Tag */}
-        <span className="text-[9px] font-medium text-zinc-400 font-mono tracking-tighter" title={`Shannon Entropy: ${page.entropy.toFixed(4)}`}>
+        <span className="text-[9px] font-medium text-muted-foreground font-mono tracking-tighter" title={`Shannon Entropy: ${page.entropy.toFixed(4)}`}>
           {t('removeBlankPages.entropyLabel', { val: page.entropy.toFixed(3) })}
         </span>
       </div>
@@ -652,17 +652,17 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
       {/* Floating Badge Indicator (Top Right) */}
       <div className="absolute top-2.5 right-2.5 z-20 pointer-events-none">
         {isManualRemove && (
-          <span className="px-2 py-0.5 text-[8px] font-extrabold rounded-md shadow-md bg-red-500 text-white border border-red-600 tracking-wider">
+          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-red-500 text-white border border-red-600 tracking-wider">
             {t('removeBlankPages.badgeForceDelete')}
           </span>
         )}
         {isManualKeep && (
-          <span className="px-2 py-0.5 text-[8px] font-extrabold rounded-md shadow-md bg-emerald-500 text-white border border-emerald-600 tracking-wider animate-pulse">
+          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-emerald-500 text-white border border-emerald-600 tracking-wider animate-pulse">
             {t('removeBlankPages.badgeForceKeep')}
           </span>
         )}
         {!isManualKeep && !isManualRemove && isAutoBlank && (
-          <span className="px-2 py-0.5 text-[8px] font-extrabold rounded-md shadow-md bg-red-600/90 text-white border border-red-700 tracking-wider">
+          <span className="px-2 py-0.5 text-[8px] font-semibold rounded-md shadow-md bg-red-600/90 text-white border border-red-700 tracking-wider">
             {t('removeBlankPages.badgeEmptyPage')}
           </span>
         )}

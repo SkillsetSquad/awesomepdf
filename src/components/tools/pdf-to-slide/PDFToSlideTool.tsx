@@ -104,10 +104,10 @@ export function PDFToSlideTool() {
           <Presentation className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground">
             {tTools('optionsTitle')}
           </h2>
-          <p className="text-xs text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             {tTools('uploadDescription')}
           </p>
         </div>
@@ -122,9 +122,9 @@ export function PDFToSlideTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-neutral-900 border border-neutral-850">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-neutral-400" />
+              <BookOpen className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
             </div>
             <Button
@@ -141,7 +141,7 @@ export function PDFToSlideTool() {
             {/* Left Column: Color Picker & Action */}
             <div className="space-y-6 md:col-span-1">
               <div className="space-y-3">
-                <Label className="text-neutral-300 flex items-center gap-2">
+                <Label className="text-foreground flex items-center gap-2">
                   <Palette className="w-4 h-4 text-indigo-400" />
                   {t('pdfToSlide.themeLabel')}
                 </Label>
@@ -194,7 +194,7 @@ export function PDFToSlideTool() {
             <div className="md:col-span-2 space-y-4">
               {isAnimating ? (
                 /* Starfield Flow Transition (WOW Effect) */
-                <div className="relative h-64 bg-neutral-900 rounded-xl overflow-hidden flex flex-col items-center justify-center border border-indigo-900/30">
+                <div className="relative h-64 bg-muted rounded-xl overflow-hidden flex flex-col items-center justify-center border border-indigo-900/30">
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/40 via-neutral-950 to-neutral-950 -z-10" />
 
                   {/* Floating particles */}
@@ -204,17 +204,17 @@ export function PDFToSlideTool() {
                   {/* Flowing Outlines Card */}
                   <div className="space-y-3 text-center z-10">
                     <div className="flex gap-2 justify-center">
-                      <div className="p-4 rounded-xl bg-neutral-800/80 backdrop-blur-md border border-indigo-500/30 shadow-lg shadow-indigo-500/10 animate-bounce">
+                      <div className="p-4 rounded-xl bg-muted border border-indigo-500/30 shadow-lg shadow-indigo-500/10 animate-bounce">
                         <span className="text-xs font-semibold text-indigo-400 font-mono">TEXT OBJECTS</span>
                       </div>
-                      <div className="flex items-center text-neutral-600">
+                      <div className="flex items-center text-foreground">
                         <ChevronRight className="w-5 h-5 animate-pulse" />
                       </div>
-                      <div className="p-4 rounded-xl bg-neutral-800/80 backdrop-blur-md border border-pink-500/30 shadow-lg shadow-pink-500/10 animate-pulse">
+                      <div className="p-4 rounded-xl bg-muted border border-pink-500/30 shadow-lg shadow-pink-500/10 animate-pulse">
                         <span className="text-xs font-semibold text-pink-400 font-mono">OOXML PPT SLIDE</span>
                       </div>
                     </div>
-                    <p className="text-xs text-neutral-400 mt-4 animate-pulse">
+                    <p className="text-xs text-muted-foreground mt-4 animate-pulse">
                       {t('pdfToSlide.progressReconstructing')}
                     </p>
                   </div>
@@ -222,7 +222,7 @@ export function PDFToSlideTool() {
               ) : slides.length > 0 ? (
                 /* Slide Previews Panel */
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs text-neutral-400">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
                     <span>RECONSTRUCTED OUTLINES ({slides.length} SLIDES)</span>
                     <span>SLIDE {activeSlideIdx + 1} OF {slides.length}</span>
                   </div>
@@ -242,12 +242,12 @@ export function PDFToSlideTool() {
                         className="w-12 h-1.5 rounded mb-4"
                         style={{ backgroundColor: themeColor }}
                       />
-                      <h3 className="text-lg font-bold text-neutral-100 leading-snug">
+                      <h3 className="text-lg font-bold text-foreground leading-snug">
                         {slides[activeSlideIdx].title}
                       </h3>
                       <ul className="mt-4 space-y-2">
                         {slides[activeSlideIdx].bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="text-xs text-neutral-400 flex items-start gap-2">
+                          <li key={bIdx} className="text-xs text-muted-foreground flex items-start gap-2">
                             <span className="text-indigo-400 mt-1">•</span>
                             <span>{bullet}</span>
                           </li>
@@ -256,7 +256,7 @@ export function PDFToSlideTool() {
                     </div>
 
                     {/* Pagination buttons */}
-                    <div className="flex gap-2 justify-end mt-6 border-t border-neutral-800 pt-3">
+                    <div className="flex gap-2 justify-end mt-6 border-t border-border pt-3">
                       <Button
                         variant="outline"
                         size="sm"
@@ -280,9 +280,9 @@ export function PDFToSlideTool() {
                 </div>
               ) : (
                 /* Idle/Help display */
-                <div className="h-64 rounded-xl border border-neutral-800 bg-neutral-900/30 flex items-center justify-center p-6 text-center">
+                <div className="h-64 rounded-xl border border-border bg-muted flex items-center justify-center p-6 text-center">
                   <div className="space-y-2">
-                    <Sparkles className="w-8 h-8 text-neutral-600 mx-auto" />
+                    <Sparkles className="w-8 h-8 text-foreground mx-auto" />
                     {t('pdfToSlide.outlinePreviewTitle')}
                     {t('pdfToSlide.outlinePreviewDesc')}
                   </div>

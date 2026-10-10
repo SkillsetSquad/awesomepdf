@@ -413,7 +413,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
             {/* Main Options Card */}
             <Card  className="p-4">
               {/* Position Section */}
-              <h4 className="text-sm font-semibold mb-2 text-gray-700">
+              <h4 className="text-sm font-semibold mb-2 text-foreground">
                 {tTools('pageNumbers.positionTitle')}
               </h4>
               <div className="grid grid-cols-3 gap-1.5 mb-4">
@@ -431,7 +431,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </div>
 
               {/* Format Section */}
-              <h4 className="text-sm font-semibold mb-2 text-gray-700">
+              <h4 className="text-sm font-semibold mb-2 text-foreground">
                 {tTools('pageNumbers.formatTitle')}
               </h4>
               <div className="grid grid-cols-2 gap-2 mb-3">
@@ -473,7 +473,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                     className="w-full"
                     disabled={isProcessing} id="pagenumberstool-field-3" aria-label={tTools('pageNumbers.customFormat')}
                   />
-                  <p className="text-xs text-gray-500 mt-1">{tTools('pageNumbers.customFormatHint')}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{tTools('pageNumbers.customFormatHint')}</p>
                 </div>
               )}
 
@@ -503,7 +503,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </div>
 
               {/* Style Section */}
-              <h4 className="text-sm font-semibold mb-2 text-gray-700 pt-2 border-t">
+              <h4 className="text-sm font-semibold mb-2 text-foreground pt-2 border-t">
                 {tTools('pageNumbers.styleTitle')}
               </h4>
               <div className="grid grid-cols-2 gap-2 mb-3">
@@ -564,8 +564,8 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
               </Label>
 
               {/* Odd/Even Page Mode */}
-              <div className="mt-3 pt-3 border-t border-gray-200">
-                <h4 className="text-sm font-semibold mb-2 text-gray-700">
+              <div className="mt-3 pt-3 border-t border-border">
+                <h4 className="text-sm font-semibold mb-2 text-foreground">
                   {tTools('pageNumbers.oddEvenTitle')}
                 </h4>
 
@@ -602,7 +602,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                           <NativeSelectOption value="top-center">{tTools('pageNumbers.posTopCenter')}</NativeSelectOption>
                           <NativeSelectOption value="top-right">{tTools('pageNumbers.posTopRight')}</NativeSelectOption>
                         </NativeSelect>
-                        <p className="text-xs text-gray-500">{tTools('pageNumbers.oddPositionHint')}</p>
+                        <p className="text-xs text-muted-foreground">{tTools('pageNumbers.oddPositionHint')}</p>
                       </div>
                       <div>
                         <Label className="block mb-1" htmlFor="pagenumberstool-field-11">{tTools('pageNumbers.evenPosition')}</Label>
@@ -619,7 +619,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                           <NativeSelectOption value="top-center">{tTools('pageNumbers.posTopCenter')}</NativeSelectOption>
                           <NativeSelectOption value="top-right">{tTools('pageNumbers.posTopRight')}</NativeSelectOption>
                         </NativeSelect>
-                        <p className="text-xs text-gray-500">{tTools('pageNumbers.evenPositionHint')}</p>
+                        <p className="text-xs text-muted-foreground">{tTools('pageNumbers.evenPositionHint')}</p>
                       </div>
                     </div>
                   )}
@@ -696,7 +696,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                 </Button>
               </div>
 
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-auto" style={{ maxHeight: '600px', minHeight: '500px' }}>
+              <div className="bg-muted rounded-md p-4 overflow-auto" style={{ maxHeight: '600px', minHeight: '500px' }}>
                 <div
                   className="flex justify-center"
                   style={{
@@ -712,7 +712,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
                 </div>
               </div>
 
-              <p className="text-sm text-center text-gray-500 dark:text-gray-400 mt-4">
+              <p className="text-sm text-center text-muted-foreground mt-4">
                 {skipFirstPage && currentPreviewPage === 1
                   ? tTools('pageNumbers.firstPageSkipped')
                   : tTools('pageNumbers.previewText', { text: formatPageNumber(currentPreviewPage, totalPages) })

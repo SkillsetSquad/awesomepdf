@@ -279,7 +279,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
               >
                 {/* Layer A (Base PDF sheet) */}
                 <div
-                  className="absolute inset-0 bg-white dark:bg-zinc-900 border-2 border-primary shadow-xl rounded-xl flex items-center justify-center font-black text-primary select-none transition-all duration-700 ease-in-out"
+                  className="absolute inset-0 bg-background border-2 border-primary shadow-xl rounded-xl flex items-center justify-center font-semibold text-primary select-none transition-all duration-700 ease-in-out"
                   style={{
                     transform: mode === 'overlay'
                       ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(0px)'
@@ -296,7 +296,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
 
                 {/* Layer B (Overlay PDF sheet) */}
                 <div
-                  className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-950/20 border-2 border-emerald-500 shadow-2xl rounded-xl flex items-center justify-center font-black text-emerald-500 select-none transition-all duration-700 ease-in-out"
+                  className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-950/20 border-2 border-emerald-500 shadow-2xl rounded-xl flex items-center justify-center font-semibold text-emerald-500 select-none transition-all duration-700 ease-in-out"
                   style={{
                     transform: mode === 'overlay'
                       ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(40px)'
@@ -385,7 +385,7 @@ export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
                   className="relative"
                 >
                   <div
-                    className={`absolute top-0.5 left-0.5 bg-white w-5.5 h-5.5 rounded-full shadow transition-transform duration-300 ${
+                    className={`absolute top-0.5 left-0.5 bg-background w-5.5 h-5.5 rounded-full shadow transition-transform duration-300 ${
                       loop ? 'translate-x-5.5' : 'translate-x-0'
                     }`}
                   />

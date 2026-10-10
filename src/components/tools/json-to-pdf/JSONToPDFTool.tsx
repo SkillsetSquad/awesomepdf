@@ -251,7 +251,7 @@ export function JSONToPDFTool({ className = '' }: JSONToPDFToolProps) {
             {files.map((file) => (
               <li
                 key={file.id}
-                className="flex items-center gap-3 p-3 rounded-md border border-border bg-white"
+                className="flex items-center gap-3 p-3 rounded-md border border-border bg-background"
               >
                 {/* File Icon */}
                 <div className="flex-shrink-0">

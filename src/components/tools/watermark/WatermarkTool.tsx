@@ -655,8 +655,8 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                 <div className="flex items-center gap-3">
                   <UIFile className="w-10 h-10 text-red-500 shrink-0" aria-hidden="true" />
                   <div className="min-w-0">
-                    <p className="font-medium text-gray-900 dark:text-gray-100 truncate">{file.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{formatSize(file.size)}</p>
+                    <p className="font-medium text-foreground truncate">{file.name}</p>
+                    <p className="text-sm text-muted-foreground">{formatSize(file.size)}</p>
                   </div>
                 </div>
                 <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isProcessing}>
@@ -666,7 +666,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             </Card>
 
             <Card className="p-6"  >
-              <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-medium mb-4 text-foreground">
                 {tTools('optionsTitle')}
               </h3>
 
@@ -677,7 +677,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     value="text"
                     disabled={isProcessing} id="watermark-type-text"
                   />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span className="text-sm font-medium text-foreground">
                     {tTools('textWatermark')}
                   </span>
                 </Label>
@@ -686,7 +686,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     value="image"
                     disabled={isProcessing} id="watermark-type-image"
                   />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span className="text-sm font-medium text-foreground">
                     {tTools('imageWatermark')}
                   </span>
                 </Label>
@@ -696,7 +696,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               {watermarkType === 'text' && (
                 <div className="space-y-4">
                   <div>
-                    <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-1">
+                    <Label className="block mb-1" htmlFor="watermarktool-field-1">
                       {tTools('watermarkText')}
                     </Label>
                     <Input
@@ -712,10 +712,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-1">
+                        <Label className="" htmlFor="watermarktool-slider-1">
                           {tTools('fontSize')}
                         </Label>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{fontSize}pt</span>
+                        <span className="text-xs text-muted-foreground">{fontSize}pt</span>
                       </div>
                       <Slider
                         min={10}
@@ -727,7 +727,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       />
                     </div>
                     <div>
-                      <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-2">
+                      <Label className="block mb-1" htmlFor="watermarktool-field-2">
                         {tTools('color')}
                       </Label>
                       <div className="flex items-center gap-2">
@@ -752,10 +752,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-2">
+                        <Label className="" htmlFor="watermarktool-slider-2">
                           {tTools('opacity')}
                         </Label>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(textOpacity * 100)}%</span>
+                        <span className="text-xs text-muted-foreground">{Math.round(textOpacity * 100)}%</span>
                       </div>
                       <Slider
                         value={[textOpacity]}
@@ -769,10 +769,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-3">
+                        <Label className="" htmlFor="watermarktool-slider-3">
                           {tTools('angle')}
                         </Label>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{textAngle}°</span>
+                        <span className="text-xs text-muted-foreground">{textAngle}°</span>
                       </div>
                       <Slider
                         value={[textAngle]}
@@ -792,7 +792,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               {watermarkType === 'image' && (
                 <div className="space-y-4">
                   <div>
-                    <Label className="block mb-1 dark:text-gray-300" htmlFor="watermarktool-field-3">
+                    <Label className="block mb-1" htmlFor="watermarktool-field-3">
                       {tTools('watermarkImage')}
                     </Label>
                     <Input
@@ -803,7 +803,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       disabled={isProcessing} id="watermarktool-field-3" aria-label={tTools('watermarkImage')}
                     />
                     {imageFile && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-sm text-muted-foreground mt-1">
                         {imageFile.name} ({formatSize(imageFile.size)})
                       </p>
                     )}
@@ -812,10 +812,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-4">
+                        <Label className="" htmlFor="watermarktool-slider-4">
                           {tTools('scale')}
                         </Label>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{imageScale}%</span>
+                        <span className="text-xs text-muted-foreground">{imageScale}%</span>
                       </div>
                       <Slider
                         value={[imageScale]}
@@ -829,10 +829,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-5">
+                        <Label className="" htmlFor="watermarktool-slider-5">
                           {tTools('opacity')}
                         </Label>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(imageOpacity * 100)}%</span>
+                        <span className="text-xs text-muted-foreground">{Math.round(imageOpacity * 100)}%</span>
                       </div>
                       <Slider
                         value={[imageOpacity]}
@@ -848,10 +848,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-6">
+                      <Label className="" htmlFor="watermarktool-slider-6">
                         {tTools('angle')}
                       </Label>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">{imageAngle}°</span>
+                      <span className="text-xs text-muted-foreground">{imageAngle}°</span>
                     </div>
                     <Slider
                       value={[imageAngle]}
@@ -868,12 +868,12 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
               {/* 9-Grid Position Presets (only shown when repeat is false) */}
               {!repeatWatermark && (
-                <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800">
+                <div className="mt-5 pt-4 border-t border-border">
                   <div className="flex items-center justify-between mb-2">
-                    <Label className="dark:text-gray-300">
+                    <Label className="">
                       {tTools('position')}
                     </Label>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-muted-foreground">
                       ({Math.round(watermarkX * 100)}%, {Math.round(watermarkY * 100)}%)
                     </span>
                   </div>
@@ -903,7 +903,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             {/* Repeat Watermark Options */}
             <Card className="p-6"  >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                <h3 className="text-lg font-medium text-foreground">
                   {tTools('repeatTitle')}
                 </h3>
                 <Label className="flex items-center gap-2 cursor-pointer select-none">
@@ -917,16 +917,16 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     />
                     <div
                       className={`w-11 h-6 rounded-full transition-colors ${
-                        repeatWatermark ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
+                        repeatWatermark ? 'bg-blue-600' : 'bg-muted'
                       }`}
                     />
                     <div
-                      className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
+                      className={`absolute top-0.5 left-0.5 w-5 h-5 bg-background rounded-full shadow transition-transform ${
                         repeatWatermark ? 'translate-x-5' : 'translate-x-0'
                       }`}
                     />
                   </div>
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span className="text-sm font-medium text-foreground">
                     {tTools('repeatEnable')}
                   </span>
                 </Label>
@@ -936,7 +936,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                      <div className="flex justify-between text-xs text-muted-foreground mb-1">
                         <span>{tTools('repeatSpacingX')}</span>
                         <span>{repeatSpacingX}pt</span>
                       </div>
@@ -951,7 +951,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       />
                     </div>
                     <div>
-                      <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                      <div className="flex justify-between text-xs text-muted-foreground mb-1">
                         <span>{tTools('repeatSpacingY')}</span>
                         <span>{repeatSpacingY}pt</span>
                       </div>
@@ -967,12 +967,12 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-800">
+                  <div className="flex items-center justify-between pt-2 border-t border-border">
                     <div>
-                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <p className="text-sm font-medium text-foreground">
                         {tTools('staggerTitle')}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-muted-foreground">
                         {tTools('staggerDescription')}
                       </p>
                     </div>
@@ -987,11 +987,11 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                         />
                         <div
                           className={`w-11 h-6 rounded-full transition-colors ${
-                            staggerWatermark ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
+                            staggerWatermark ? 'bg-blue-600' : 'bg-muted'
                           }`}
                         />
                         <div
-                          className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
+                          className={`absolute top-0.5 left-0.5 w-5 h-5 bg-background rounded-full shadow transition-transform ${
                             staggerWatermark ? 'translate-x-5' : 'translate-x-0'
                           }`}
                         />
@@ -1014,10 +1014,10 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   disabled={isProcessing}
                 />
                 <Label htmlFor="flatten-watermark" className="cursor-pointer">
-                  <span className="block text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <span className="block text-sm font-medium text-foreground">
                     {tTools('flattenTitle')}
                   </span>
-                  <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                  <span className="block text-xs text-muted-foreground mt-0.5">
                     {tTools('flattenDescription')}
                   </span>
                 </Label>
@@ -1026,7 +1026,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
             {/* Page Range Selection */}
             <Card className="p-6"  >
-              <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-medium mb-4 text-foreground">
                 {tTools('rangeTitle')}
               </h3>
 
@@ -1037,7 +1037,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       value="all"
                       disabled={isProcessing} id="page-mode-all"
                     />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-foreground">
                       {tTools('rangeAll')}
                     </span>
                   </Label>
@@ -1046,7 +1046,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       value="odd"
                       disabled={isProcessing} id="page-mode-odd"
                     />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-foreground">
                       {tTools('rangeOdd')}
                     </span>
                   </Label>
@@ -1055,7 +1055,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       value="even"
                       disabled={isProcessing} id="page-mode-even"
                     />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-foreground">
                       {tTools('rangeEven')}
                     </span>
                   </Label>
@@ -1064,7 +1064,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                       value="custom"
                       disabled={isProcessing} id="page-mode-custom"
                     />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-foreground">
                       {tTools('rangeCustom')}
                     </span>
                   </Label>
@@ -1136,7 +1136,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             {/* Page Navigation Header */}
             <div className="w-full flex items-center justify-between px-2">
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                <h3 className="text-base font-semibold text-foreground">
                   {tTools('previewTitle')}
                 </h3>
                 {isRenderingPage && (
@@ -1147,7 +1147,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
               </div>
 
               {totalPages > 1 && (
-                <div className="flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-lg text-sm">
+                <div className="flex items-center gap-1.5 bg-muted px-2 py-1 rounded-lg text-sm">
                   <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -1158,7 +1158,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <UIChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </Button>
 
-                  <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300">
+                  <div className="flex items-center gap-1 text-xs text-foreground">
                     <span>{tTools('page')}</span>
                     <Input
                       type="number"
@@ -1191,13 +1191,13 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
             {/* Hint */}
             {!repeatWatermark && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 self-start px-2">
+              <p className="text-xs text-muted-foreground self-start px-2">
                 <UIEmojiLightbulb className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('dragHint')}
               </p>
             )}
 
             {/* Preview Box & Overlay Container */}
-            <div className="w-full flex justify-center p-3 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-900/40 overflow-auto min-h-[500px]">
+            <div className="w-full flex justify-center p-3 rounded-xl border border-dashed border-border bg-muted overflow-auto min-h-[500px]">
               <div
                 ref={previewContainerRef}
                 className="relative overflow-hidden select-none inline-block shadow-lg rounded bg-white transition-shadow hover:shadow-xl"
@@ -1257,7 +1257,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                           }}
                         />
                       ) : (
-                        <div className="text-xs text-gray-400 p-2 border border-gray-300 rounded bg-white/50">
+                        <div className="text-xs text-muted-foreground p-2 border border-border rounded bg-background">
                           {tTools('selectImage')}
                         </div>
                       )}

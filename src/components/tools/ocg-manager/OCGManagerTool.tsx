@@ -255,7 +255,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                             {layer.visible ? (
                                                 <Eye className="w-4 h-4 text-green-600" />
                                             ) : (
-                                                <EyeOff className="w-4 h-4 text-gray-400" />
+                                                <EyeOff className="w-4 h-4 text-muted-foreground" />
                                             )}
                                         </Button>
 

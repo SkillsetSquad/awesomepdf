@@ -140,8 +140,8 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <RefreshCcw className="w-4 h-4 text-primary" />
                   {t('batchBarcodeInjector.previewTitle')}
                 </span>
@@ -151,11 +151,11 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
               </div>
 
               {/* Align coordinates mockup */}
-              <div className="flex-1 flex flex-col items-center justify-center p-6 relative bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 rounded-2xl">
-                <div className="w-48 h-64 bg-white dark:bg-zinc-950 border-2 border-primary rounded shadow-xl flex items-center justify-center relative">
+              <div className="flex-1 flex flex-col items-center justify-center p-6 relative bg-muted border border-border rounded-2xl">
+                <div className="w-48 h-64 bg-background border-2 border-primary rounded shadow-xl flex items-center justify-center relative">
                   {/* Absolute positioning of QR mockup based on percentage/scaled value */}
                   <div
-                    className="absolute border border-dashed border-primary bg-primary/10 rounded flex items-center justify-center text-[10px] font-black text-primary animate-pulse"
+                    className="absolute border border-dashed border-primary bg-primary/10 rounded flex items-center justify-center text-[10px] font-semibold text-primary animate-pulse"
                     style={{
                       left: `${Math.min(75, (xPos / 595.28) * 100)}%`,
                       bottom: `${Math.min(75, (yPos / 841.89) * 100)}%`,
@@ -166,7 +166,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                     [QR CODE]
                   </div>
                 </div>
-                <span className="text-[10px] text-zinc-400 mt-2">
+                <span className="text-[10px] text-muted-foreground mt-2">
                   {t('batchBarcodeInjector.gridLabel', { xPos, yPos })}
                 </span>
               </div>
@@ -176,9 +176,9 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('batchBarcodeInjector.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('batchBarcodeInjector.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -228,7 +228,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

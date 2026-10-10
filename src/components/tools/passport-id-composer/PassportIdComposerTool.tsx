@@ -116,8 +116,8 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
           {/* Files display & visual effect */}
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-primary" />
                   {t('passportIdComposer.layersCountLabel', { count: files.length })}
                 </span>
@@ -136,14 +136,14 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
                 )}
 
                 {files.map((f, idx) => (
-                  <div key={idx} className="w-48 h-32 bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 relative group overflow-hidden">
-                    <div className="absolute top-2 left-2 text-[10px] font-black text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
+                  <div key={idx} className="w-48 h-32 bg-background border-2 border-border rounded-xl shadow-lg flex flex-col items-center justify-center p-4 relative group overflow-hidden">
+                    <div className="absolute top-2 left-2 text-[10px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
                       {idx === 0 ? t('passportIdComposer.frontLabel') : t('passportIdComposer.backLabel')}
                     </div>
                     <span className="text-xs font-semibold truncate max-w-full text-center mt-4">
                       {f.name}
                     </span>
-                    <span className="text-[10px] text-zinc-400 mt-1">
+                    <span className="text-[10px] text-muted-foreground mt-1">
                       {(f.size / 1024).toFixed(1)} KB
                     </span>
                   </div>
@@ -156,9 +156,9 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('passportIdComposer.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('passportIdComposer.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -188,7 +188,7 @@ export function PassportIdComposerTool({ className = '' }: PassportIdComposerToo
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

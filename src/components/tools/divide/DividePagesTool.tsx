@@ -321,7 +321,7 @@ export function DividePagesTool({ className = '' }: DividePagesToolProps) {
                       {[...Array(9)].map((_, idx) => (
                         <div
                           key={idx}
-                          className={`${idx % 3 !== 2 ? 'border-r' : ''} ${idx < 6 ? 'border-b' : ''} border-current`}
+                          className={`${idx % 3 !== 2 ? 'border-r' : ''}  ${idx < 6 ? 'border-b' : ''} border-current`}
                         />
                       ))}
                     </div>

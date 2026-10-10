@@ -321,7 +321,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
                 <UIFile className="w-8 h-8 text-red-500" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-medium">{stampState.file.name}</p>
-                  <p className="text-xs text-gray-500">{(stampState.file.size / 1024 / 1024).toFixed(2)} MB</p>
+                  <p className="text-xs text-muted-foreground">{(stampState.file.size / 1024 / 1024).toFixed(2)} MB</p>
                 </div>
               </div>
               <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing}>
@@ -351,7 +351,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
               ref={iframeRef}
               src={viewerUrl}
               onLoad={handleIframeLoad}
-              className="w-full bg-gray-100"
+              className="w-full bg-muted"
               style={{ height: '700px', border: 'none' }}
               title="PDF Stamp Editor"
             />

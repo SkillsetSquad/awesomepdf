@@ -978,9 +978,9 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
           {/* Or create blank PDF */}
           <div className="flex items-center gap-4">
-            <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-sm text-gray-400">{tTools('formCreator.orCreateBlank') || 'Or'}</span>
-            <div className="flex-1 h-px bg-gray-200" />
+            <div className="flex-1 h-px bg-muted" />
+            <span className="text-sm text-muted-foreground">{tTools('formCreator.orCreateBlank') || 'Or'}</span>
+            <div className="flex-1 h-px bg-muted" />
           </div>
 
           <Button variant="outline" size="sm"
@@ -988,7 +988,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             className="w-full flex items-center justify-center gap-2"
           >
             <FilePlus2 className="w-5 h-5 text-blue-500" />
-            <span className="text-sm font-medium text-gray-600">{tTools('formCreator.createBlankPdf') || 'Create Blank PDF'}</span>
+            <span className="text-sm font-medium text-foreground">{tTools('formCreator.createBlankPdf') || 'Create Blank PDF'}</span>
           </Button>
 
           {/* Templates */}
@@ -1005,7 +1005,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             ))}
           </div>
 
-          <p className="text-xs text-gray-400 text-center">
+          <p className="text-xs text-muted-foreground text-center">
             {tTools('formCreator.templateHint') || 'Or choose a template to get started quickly'}
           </p>
         </div>
@@ -1022,10 +1022,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
           {/* Visual Editor */}
           <div className="space-y-2">
             {/* Simplified Toolbar */}
-            <div className="flex flex-wrap items-center gap-3 p-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+            <div className="flex flex-wrap items-center gap-3 p-2 bg-background border border-border rounded-lg shadow-sm">
               {/* Tool Selector */}
               <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-gray-500">{tTools('formCreator.addField') || 'Add'}:</span>
+                <span className="text-xs font-medium text-muted-foreground">{tTools('formCreator.addField') || 'Add'}:</span>
                 <NativeSelect
                   aria-label={tTools('formCreator.addField')}
                   value={currentTool}
@@ -1050,7 +1050,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
               {/* Template Selector */}
               <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-gray-500">{tTools('formCreator.templates') || 'Template'}:</span>
+                <span className="text-xs font-medium text-muted-foreground">{tTools('formCreator.templates') || 'Template'}:</span>
                 <NativeSelect
                   aria-label={tTools('formCreator.templates')}
                   value=""
@@ -1081,7 +1081,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 </NativeSelect>
               </div>
 
-              <div className="w-px h-6 bg-gray-200" />
+              <div className="w-px h-6 bg-muted" />
 
               {/* Quick Actions */}
               <div className="flex items-center gap-1">
@@ -1130,7 +1130,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 >
                   <ChevronLeft aria-hidden="true" className="rtl:rotate-180" />
                 </Button>
-                <span className="text-sm text-gray-600 px-2">
+                <span className="text-sm text-foreground px-2">
                   {currentPage} / {totalPages}
                 </span>
                 <Button size="icon-sm" variant="ghost" aria-label={t('buttons.next')}
@@ -1180,7 +1180,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <Card className="p-6"  >
               <div
                 ref={containerRef}
-                className="relative bg-gray-100 rounded-md overflow-auto"
+                className="relative bg-muted rounded-md overflow-auto"
                 style={{ maxHeight: '600px' }}
               >
                 <div
@@ -1231,7 +1231,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               </div>
 
               {/* Simple hint */}
-              <p className="text-xs text-gray-400 text-center mt-2">
+              <p className="text-xs text-muted-foreground text-center mt-2">
                 {currentTool === 'select'
                   ? tTools('formCreator.selectHint')
                   : tTools('formCreator.clickToAdd') || 'Click on PDF to add field'
@@ -1241,12 +1241,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
           </div>
 
           {/* Right Panel - Tabbed Interface */}
-          <Tabs value={activeTab} onValueChange={(value) => { if (value === 'properties' || value === 'fields' || value === 'options') setActiveTab(value); }} className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden flex flex-col" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+          <Tabs value={activeTab} onValueChange={(value) => { if (value === 'properties' || value === 'fields' || value === 'options') setActiveTab(value); }} className="bg-background border border-border rounded-lg shadow-sm overflow-hidden flex flex-col" style={{ maxHeight: 'calc(100vh - 200px)' }}>
             {/* Header with file info */}
-            <div className="flex items-center justify-between px-3 py-2 border-b border-gray-100 bg-gray-50">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-border bg-muted">
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-sm truncate">{file.name}</p>
-                <p className="text-xs text-gray-500">{formatSize(file.size)} • {totalPages} {tTools('formCreator.pages') || 'pages'}</p>
+                <p className="text-xs text-muted-foreground">{formatSize(file.size)} • {totalPages} {tTools('formCreator.pages') || 'pages'}</p>
               </div>
               <Button variant="ghost" size="icon-sm" aria-label={t('buttons.remove')} onClick={handleClearFile} disabled={isProcessing} className="shrink-0 ms-2">
                 <UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
@@ -1273,7 +1273,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   {selectedField ? (
                     <div className="space-y-3">
                       {/* Field header */}
-                      <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
+                      <div className="flex items-center gap-2 pb-2 border-b border-border">
                         <span className="text-xl">{getFieldIcon(selectedField.type)}</span>
                         <Input
                           type="text"
@@ -1316,7 +1316,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       {/* Label Position */}
                       {selectedField.label && (
                         <RadioGroup className="flex flex-wrap items-center gap-2" name="labelPosition" value={selectedField.labelPosition === 'left' ? 'left' : 'above'} onValueChange={(value) => updateSelectedField({ labelPosition: value === 'left' ? 'left' : 'above' })} aria-label={tTools('formCreator.labelPosition')} orientation="horizontal">
-                          <span className="text-sm text-gray-500">{tTools('formCreator.labelPosition') || 'Position'}:</span>
+                          <span className="text-sm text-muted-foreground">{tTools('formCreator.labelPosition') || 'Position'}:</span>
                           <Label className="flex items-center gap-1" htmlFor="labelPosition-above">
                             <RadioGroupItem
                                id="labelPosition-above" value="above"
@@ -1487,7 +1487,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       )}
 
                       {/* Required field option */}
-                      <Label className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                      <Label className="flex items-center gap-2 pt-2 border-t border-border">
                         <Checkbox
 
                           checked={selectedField.required || false}
@@ -1505,7 +1505,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                       </Button>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-gray-400">
+                    <div className="text-center py-8 text-muted-foreground">
                       <p className="text-sm">{tTools('formCreator.noFieldSelected')}</p>
                     </div>
                   )}
@@ -1514,7 +1514,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
               {/* Fields Tab */}
               <TabsContent value="fields"><div className="space-y-2">
                   {fields.length === 0 ? (
-                    <div className="text-center py-8 text-gray-400">
+                    <div className="text-center py-8 text-muted-foreground">
                       <p className="text-sm">{tTools('formCreator.noFieldsYet')}</p>
                     </div>
                   ) : (
@@ -1526,19 +1526,16 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                           setCurrentPage(field.pageNumber);
                           setActiveTab('properties');
                         }}
-                        className={`
-                          p-2 rounded cursor-pointer text-sm flex items-center justify-between
-                          ${field.id === selectedFieldId
+                        className={` p-2 rounded cursor-pointer text-sm flex items-center justify-between ${field.id === selectedFieldId
                             ? 'bg-blue-50 border border-blue-200'
-                            : 'bg-gray-50 hover:bg-gray-100'
-                          }
-                        `}
+                            : 'bg-muted hover:bg-muted'
+                          }  `}
                       >
                         <span className="flex items-center gap-1">
                           <span>{getFieldIcon(field.type)}</span>
                           <span className="truncate">{field.name}</span>
                         </span>
-                        <span className="text-xs text-gray-400 shrink-0">P{field.pageNumber}</span>
+                        <span className="text-xs text-muted-foreground shrink-0">P{field.pageNumber}</span>
                       </div>
                     ))
                   )}
@@ -1556,12 +1553,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                     />
                     <div>
                       <span className="text-sm font-medium">{tTools('formCreator.flattenForm') || 'Flatten Form'}</span>
-                      <p className="text-xs text-gray-500">{tTools('formCreator.flattenFormHint')}</p>
+                      <p className="text-xs text-muted-foreground">{tTools('formCreator.flattenFormHint')}</p>
                     </div>
                   </Label>
 
                   {/* Save Project */}
-                  <div className="pt-3 border-t border-gray-100">
+                  <div className="pt-3 border-t border-border">
                     <Button variant="ghost" size="sm"
                       ref={saveTriggerRef} onClick={() => setShowSaveDialog(true)}
                       disabled={fields.length === 0}
@@ -1575,15 +1572,15 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   {/* Saved Projects List */}
                   {savedProjects.length > 0 && (
                     <div className="space-y-2">
-                      <p className="text-xs text-gray-500 font-medium">{tTools('formCreator.savedProjects')}</p>
+                      <p className="text-xs text-muted-foreground font-medium">{tTools('formCreator.savedProjects')}</p>
                       {savedProjects.map(project => (
                         <div
                           key={project.id}
-                          className="flex items-center justify-between p-2 bg-gray-50 rounded text-xs"
+                          className="flex items-center justify-between p-2 bg-muted rounded text-xs"
                         >
                           <div className="flex-1 min-w-0 mr-2">
                             <p className="font-medium truncate">{project.name}</p>
-                            <p className="text-gray-400 truncate">{project.fields.length} fields</p>
+                            <p className="text-muted-foreground truncate">{project.fields.length} fields</p>
                           </div>
                           <div className="flex gap-1">
                             <Button variant="ghost" size="icon-sm"
@@ -1607,7 +1604,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             </div>
 
             {/* Action Button */}
-            <div className="p-3 border-t border-gray-100 bg-gray-50">
+            <div className="p-3 border-t border-border bg-muted">
               <Button
                 variant="default"
                 size="default"

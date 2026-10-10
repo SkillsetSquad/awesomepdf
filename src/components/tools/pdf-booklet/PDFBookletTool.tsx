@@ -268,12 +268,12 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
                                 {tTools('pdfBooklet.previewLabel') || 'Layout Preview'}
                             </Label>
                             <div
-                                className="relative bg-gray-100 rounded-md p-4 flex items-center justify-center"
+                                className="relative bg-muted rounded-md p-4 flex items-center justify-center"
                                 style={{ minHeight: '200px' }}
                             >
                                 {/* Preview Paper */}
                                 <div
-                                    className="bg-white shadow-lg border border-gray-300 relative"
+                                    className="bg-background shadow-lg border border-border relative"
                                     style={{
                                         width: orientation === 'landscape' ? '280px' : '200px',
                                         height: orientation === 'landscape' ? '200px' : '280px',
@@ -305,7 +305,7 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                                 {/* Preview Info */}
                                 <div className="absolute bottom-2 left-2 right-2 text-center">
-                                    <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded shadow-sm">
+                                    <span className="text-xs text-muted-foreground bg-background px-2 py-1 rounded shadow-sm">
                                         {paperSize.toUpperCase()} • {orientation} • {gridMode} grid
                                     </span>
                                 </div>

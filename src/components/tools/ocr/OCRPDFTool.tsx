@@ -525,7 +525,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                 </div>
 
                 {/* Contrast enhancement toggle */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/50 dark:bg-zinc-800/40 border border-border transition-all hover:border-primary/40">
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-background border border-border transition-all hover:border-primary/40">
                   <div className="space-y-0.5 pr-3">
                     <div className="flex items-center gap-2">
                       <SlidersHorizontal className="w-4 h-4 text-primary" />
@@ -585,12 +585,12 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               </div>
 
               {/* Info text box */}
-              <div className="w-full mt-4 bg-zinc-900/50 border border-zinc-800 rounded-2xl p-4 z-20 space-y-1.5">
-                <h4 className="text-[10px] font-black tracking-widest text-purple-400 uppercase flex items-center gap-1.5">
+              <div className="w-full mt-4 bg-muted border border-border rounded-2xl p-4 z-20 space-y-1.5">
+                <h4 className="text-[10px] font-semibold tracking-widest text-purple-400 uppercase flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-purple-400" />
                   {t('ocr.advantageTitle')}
                 </h4>
-                <p className="text-[10px] text-zinc-400 leading-relaxed pl-1">
+                <p className="text-[10px] text-muted-foreground leading-relaxed pl-1">
                   {t.rich('ocr.advantageDesc', {
                     b: (chunks) => <b>{chunks}</b>
                   })}
@@ -622,7 +622,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           </div>
 
           <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-base font-extrabold text-foreground">{t('ocr.successTitle')}</h3>
+            <h3 className="text-base font-semibold text-foreground">{t('ocr.successTitle')}</h3>
             <p className="text-xs text-muted-foreground">
               {outputFormat === 'searchable-pdf'
                 ? t('ocr.successSearchablePdf')
@@ -634,21 +634,21 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
           {/* Stats Bar */}
           {stats && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto py-1">
-              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-border text-center">
+              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
                 <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsPages')}</p>
-                <p className="text-base font-extrabold text-foreground">{stats.pageCount || 1}</p>
+                <p className="text-base font-semibold text-foreground">{stats.pageCount || 1}</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-border text-center">
+              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
                 <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsWords')}</p>
-                <p className="text-base font-extrabold text-foreground">{stats.totalWords || 0}</p>
+                <p className="text-base font-semibold text-foreground">{stats.totalWords || 0}</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-border text-center">
+              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
                 <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsChars')}</p>
-                <p className="text-base font-extrabold text-foreground">{stats.totalChars || 0}</p>
+                <p className="text-base font-semibold text-foreground">{stats.totalChars || 0}</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-border text-center">
+              <div className="p-3 rounded-2xl bg-muted border border-border text-center">
                 <p className="text-[10px] uppercase font-bold text-muted-foreground">{t('ocr.statsConfidence')}</p>
-                <p className="text-base font-extrabold text-emerald-600 dark:text-emerald-400">{stats.avgConfidence || 92}%</p>
+                <p className="text-base font-semibold text-emerald-600 dark:text-emerald-400">{stats.avgConfidence || 92}%</p>
               </div>
             </div>
           )}
@@ -702,7 +702,7 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
               <h3 className="text-sm font-bold text-foreground">
                 {t('ocr.previewTitle')}
               </h3>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 uppercase">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-muted text-foreground uppercase">
                 {outputFormat}
               </span>
             </div>

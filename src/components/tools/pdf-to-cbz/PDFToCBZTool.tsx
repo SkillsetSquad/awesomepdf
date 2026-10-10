@@ -397,7 +397,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 {/* Writer/Artist */}
                 <div className="space-y-1.5">
                   <Label className="text-muted-foreground flex items-center gap-1">
-                    <User className="w-3.5 h-3.5 text-zinc-400" />
+                    <User className="w-3.5 h-3.5 text-muted-foreground" />
                     {t('pdfToCbz.fieldArtist')}
                   </Label>
                   <Input
@@ -426,7 +426,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 {/* Genre */}
                 <div className="space-y-1.5">
                   <Label className="text-muted-foreground flex items-center gap-1">
-                    <Tag className="w-3.5 h-3.5 text-zinc-400" />
+                    <Tag className="w-3.5 h-3.5 text-muted-foreground" />
                     {t('pdfToCbz.fieldGenre')}
                   </Label>
                   <Input
@@ -441,7 +441,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 {/* Manga LTR/RTL reading order */}
                 <div className="space-y-1.5">
                   <Label className="text-muted-foreground flex items-center gap-1">
-                    <Globe className="w-3.5 h-3.5 text-zinc-400" />
+                    <Globe className="w-3.5 h-3.5 text-muted-foreground" />
                     {t('pdfToCbz.readingOrderLabel')}
                   </Label>
                   <NativeSelect
@@ -469,7 +469,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                       <Label className="text-muted-foreground" htmlFor="pdftocbztool-slider-1">
                         {t('pdfToCbz.qualityLabel')}
                       </Label>
-                      <span className="font-black text-primary">
+                      <span className="font-semibold text-primary">
                         {Math.round(quality * 100)}%
                       </span>
                     </div>
@@ -489,7 +489,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                       <Label className="text-muted-foreground" htmlFor="pdftocbztool-slider-2">
                         {t('pdfToCbz.scaleLabel')}
                       </Label>
-                      <span className="font-black text-primary">
+                      <span className="font-semibold text-primary">
                         {scale.toFixed(1)}x ({Math.round(scale * 72)} DPI)
                       </span>
                     </div>
@@ -525,7 +525,7 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   {/* Grayscale switch */}
                   <div className="flex items-center justify-between p-2 rounded-xl bg-muted/20 border border-input/20">
                     <div className="flex items-center gap-2">
-                      <Eye className="w-4 h-4 text-zinc-400" />
+                      <Eye className="w-4 h-4 text-muted-foreground" />
                       <div>
                         <span className="text-[11px] font-bold text-foreground block">
                           {t('pdfToCbz.einkGreyscale')}

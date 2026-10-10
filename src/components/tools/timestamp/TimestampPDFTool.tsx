@@ -263,7 +263,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                           <div className={`w-4.5 h-4.5 rounded-full border-2 flex items-center justify-center transition-all ${
                             isSelected 
                               ? 'border-primary bg-primary' 
-                              : 'border-zinc-400 dark:border-zinc-600'
+                              : 'border-border'
                           }`}>
                             {isSelected && (
                               <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
@@ -299,7 +299,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
               {!auditLog ? (
                 // Awaiting signing state
                 <div className="text-center space-y-3 p-6 text-muted-foreground">
-                  <div className="w-16 h-16 rounded-full bg-muted/50 border border-border flex items-center justify-center mx-auto text-zinc-400 mb-2">
+                  <div className="w-16 h-16 rounded-full bg-muted/50 border border-border flex items-center justify-center mx-auto text-muted-foreground mb-2">
                     <UIFileText className="w-8 h-8" aria-hidden="true" />
                   </div>
                   <h4 className="text-sm font-bold text-foreground">{tTools('timestampPdf.waitingTitle')}</h4>
@@ -312,18 +312,18 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                 <div className="w-full space-y-5 animate-in zoom-in-95 duration-500 flex flex-col justify-between h-full">
                   
                   {/* Premium Seal Emblem */}
-                  <div className="flex items-start justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
+                  <div className="flex items-start justify-between border-b border-border pb-4">
                     <div className="space-y-1">
                       <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:bg-emerald-950/20 dark:text-emerald-400 font-bold uppercase tracking-wider">
                         TSA Verified & Secured
                       </span>
-                      <h4 className="text-base font-black tracking-tight text-foreground">
+                      <h4 className="text-base font-semibold tracking-tight text-foreground">
                         {tTools('timestampPdf.certificateTitle')}
                       </h4>
                     </div>
                     {/* Golden luxury seal */}
                     <div className="w-14 h-14 rounded-full border-4 border-amber-400/40 bg-amber-400/10 flex items-center justify-center shadow-lg transform rotate-12 relative animate-in fade-in zoom-in-75 duration-700 delay-100">
-                      <div className="text-center font-black text-amber-500 uppercase tracking-tighter" style={{ fontSize: '7px', lineHeight: '1' }}>
+                      <div className="text-center font-semibold text-amber-500 uppercase tracking-tighter" style={{ fontSize: '7px', lineHeight: '1' }}>
                         TSA<br/>
                         <span className="text-[9px]">SEAL</span><br/>
                         RFC 3161
@@ -340,7 +340,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                       </div>
                       <div>
                         <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.tsaTime')}</p>
-                        <p className="text-sm font-extrabold text-foreground mt-0.5">
+                        <p className="text-sm font-semibold text-foreground mt-0.5">
                           {new Date(auditLog.timestamp).toLocaleString()}
                         </p>
                       </div>
@@ -373,7 +373,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
                   {/* Complete Action Area */}
                   {result && (
-                    <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
+                    <div className="pt-4 border-t border-border flex gap-2">
                       <DownloadButton
                         file={result}
                         filename={file.name.replace('.pdf', '_timestamped.pdf')}

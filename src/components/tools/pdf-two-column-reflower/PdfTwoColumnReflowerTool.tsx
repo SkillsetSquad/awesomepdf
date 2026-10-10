@@ -114,8 +114,8 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-primary" />
                   {t('pdfTwoColumnReflower.previewTitle')}
                 </span>
@@ -126,28 +126,28 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
 
               <div className="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 p-6 relative">
                 {/* Visual rendering of Before and After with nice perspective */}
-                <div className="w-44 h-56 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 shadow-lg transform -rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
+                <div className="w-44 h-56 bg-background border border-border rounded-xl p-3 shadow-lg transform -rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
                   <span className="absolute top-2 right-2 text-[8px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-mono font-bold">BEFORE</span>
-                  <div className="h-6 w-1/2 bg-zinc-200 dark:bg-zinc-800 rounded" />
+                  <div className="h-6 w-1/2 bg-muted rounded" />
                   <div className="flex-1 grid grid-cols-2 gap-2 mt-2">
-                    <div className="border-r border-dashed border-zinc-300 dark:border-zinc-700 space-y-1.5 pr-1">
-                      <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                      <div className="h-2 w-3/4 bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                      <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
+                    <div className="border-r border-dashed border-border space-y-1.5 pr-1">
+                      <div className="h-2 w-full bg-muted rounded" />
+                      <div className="h-2 w-3/4 bg-muted rounded" />
+                      <div className="h-2 w-full bg-muted rounded" />
                     </div>
                     <div className="space-y-1.5 pl-1">
-                      <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                      <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                      <div className="h-2 w-2/3 bg-zinc-100 dark:bg-zinc-800/40 rounded" />
+                      <div className="h-2 w-full bg-muted rounded" />
+                      <div className="h-2 w-full bg-muted rounded" />
+                      <div className="h-2 w-2/3 bg-muted rounded" />
                     </div>
                   </div>
                 </div>
 
-                <div className="text-zinc-300 dark:text-zinc-700 text-2xl font-bold animate-pulse"><UIEmojiArrowRight className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></div>
+                <div className="text-foreground text-2xl font-bold animate-pulse"><UIEmojiArrowRight className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></div>
 
-                <div className="w-44 h-56 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
+                <div className="w-44 h-56 bg-background border border-border rounded-xl p-3 shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
                   <span className="absolute top-2 right-2 text-[8px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-mono font-bold">AFTER</span>
-                  <div className="h-6 w-1/2 bg-zinc-200 dark:bg-zinc-800 rounded" />
+                  <div className="h-6 w-1/2 bg-muted rounded" />
                   <div className="flex-1 space-y-2 mt-2">
                     <div className="space-y-1">
                       <div className="h-2 w-full bg-primary/10 rounded" />
@@ -167,9 +167,9 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfTwoColumnReflower.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfTwoColumnReflower.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -202,7 +202,7 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

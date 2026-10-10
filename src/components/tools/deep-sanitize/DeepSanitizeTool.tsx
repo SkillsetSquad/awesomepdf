@@ -442,12 +442,12 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
                   {status === 'processing' ? (
                     <div className="space-y-1">
                       <RefreshCw className="w-6 h-6 text-purple-400 animate-spin mx-auto" />
-                      <span className="text-[10px] font-black text-purple-400 uppercase tracking-widest">Wiping</span>
+                      <span className="text-[10px] font-semibold text-purple-400 uppercase tracking-widest">Wiping</span>
                     </div>
                   ) : (
                     <div className="space-y-1">
-                      <Lock className="w-6 h-6 text-zinc-600 mx-auto" />
-                      <span className="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Secured</span>
+                      <Lock className="w-6 h-6 text-foreground mx-auto" />
+                      <span className="text-[9px] font-bold text-foreground uppercase tracking-widest">Secured</span>
                     </div>
                   )}
                 </div>
@@ -455,14 +455,14 @@ export function DeepSanitizeTool({ className = '' }: DeepSanitizeToolProps) {
 
               {/* Detected findings box */}
               {findings.length > 0 && (
-                <div className="w-full mt-4 bg-zinc-900/50 border border-zinc-800 rounded-2xl p-4 z-20 space-y-2 animate-in slide-in-from-bottom duration-300">
-                  <h4 className="text-[10px] font-black tracking-widest text-purple-400 uppercase flex items-center gap-1.5">
+                <div className="w-full mt-4 bg-muted border border-border rounded-2xl p-4 z-20 space-y-2 animate-in slide-in-from-bottom duration-300">
+                  <h4 className="text-[10px] font-semibold tracking-widest text-purple-400 uppercase flex items-center gap-1.5">
                     <ShieldAlert className="w-4 h-4 text-purple-400" />
                     {t('deepSanitize.riskReport')}
                   </h4>
                   <ul className="space-y-1 pl-1">
                     {findings.map((item, idx) => (
-                      <li key={idx} className="text-[10px] text-zinc-400 leading-normal flex items-start gap-1">
+                      <li key={idx} className="text-[10px] text-muted-foreground leading-normal flex items-start gap-1">
                         <span className="text-purple-500 font-bold">•</span>
                         {item}
                       </li>

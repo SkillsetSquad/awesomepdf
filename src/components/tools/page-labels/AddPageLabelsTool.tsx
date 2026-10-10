@@ -487,12 +487,12 @@ export function AddPageLabelsTool() {
                 {previewList.map((label, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-2 rounded-xl border border-border/40 bg-white/20 dark:bg-zinc-800/10 backdrop-blur-sm select-none transition-all duration-300 hover:border-primary/30"
+                    className="flex items-center justify-between p-2 rounded-xl border border-border/40 bg-background select-none transition-all duration-300 hover:border-primary/30"
                   >
                     <span className="text-[10px] font-bold text-muted-foreground">
                       P.{idx + 1}
                     </span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 text-white shadow-sm shadow-emerald-500/10">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 text-white shadow-sm shadow-emerald-500/10">
                       {label}
                     </span>
                   </div>

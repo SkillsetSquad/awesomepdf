@@ -445,12 +445,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                     onDragOver={(e) => handleDragOver(e, index)}
                     onDrop={(e) => handleDrop(e, index)}
                     onDragEnd={handleDragEnd}
-                    className={`
-                      relative aspect-[3/4] rounded-md border-2 overflow-hidden transition-all
-                      ${draggedIndex === index ? 'opacity-50 border-dashed scale-95' : ''}
-                      ${dragOverIndex === index ? 'border-primary ring-2 ring-primary/30' : 'border-border'}
-                      ${!isProcessing ? 'cursor-grab hover:border-primary/50' : ''}
-                    `}
+                    className={` relative aspect-[3/4] rounded-md border-2 overflow-hidden transition-all ${draggedIndex === index ? 'opacity-50 border-dashed scale-95' : ''}  ${dragOverIndex === index ? 'border-primary ring-2 ring-primary/30' : 'border-border'}  ${!isProcessing ? 'cursor-grab hover:border-primary/50' : ''}  `}
                   >
                     {preview?.thumbnail ? (
                       <img

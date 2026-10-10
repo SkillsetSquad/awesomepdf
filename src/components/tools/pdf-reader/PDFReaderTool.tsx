@@ -188,7 +188,7 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
 
                     {/* PDF Viewer - Using full-featured PDF.js Viewer */}
                     <div
-                        className="relative bg-gray-100 rounded-md overflow-hidden"
+                        className="relative bg-muted rounded-md overflow-hidden"
                         style={{ height: '80vh', minHeight: '600px' }}
                     >
                         <iframe

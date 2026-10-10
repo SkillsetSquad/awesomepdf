@@ -147,7 +147,7 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
                   className="w-full"
                   disabled={isProcessing} id="textcolortool-slider-1" aria-label={t('thresholdLabel')}
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {t('thresholdHint') || 'Adjust to control which pixels are affected'}
                 </p>
               </div>

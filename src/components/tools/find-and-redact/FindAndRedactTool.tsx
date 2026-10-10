@@ -406,8 +406,8 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             <div className="flex items-center gap-3">
                                 <UIFile className="w-10 h-10 text-red-500" aria-hidden="true" />
                                 <div>
-                                    <p className="font-medium text-gray-900 dark:text-gray-100">{file.name}</p>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">{formatSize(file.size)}</p>
+                                    <p className="font-medium text-foreground">{file.name}</p>
+                                    <p className="text-sm text-muted-foreground">{formatSize(file.size)}</p>
                                 </div>
                             </div>
                             <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isProcessing || isSearching}>
@@ -418,14 +418,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                     {/* Search Section */}
                     <Card className="p-6"  >
-                        <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
+                        <h3 className="text-lg font-medium mb-4 text-foreground">
                             {tTools('searchTitle')}
                         </h3>
 
                         {/* Search Input - Multiple Terms */}
                         <div className="space-y-4">
                             <div>
-                                <Label className="block mb-2 dark:text-gray-300" htmlFor="findandredacttool-field-1">
+                                <Label className="block mb-2" htmlFor="findandredacttool-field-1">
                                     {tTools('searchTermLabel')}
                                 </Label>
 
@@ -446,12 +446,12 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         disabled={isProcessing || isSearching} id="findandredacttool-field-1" aria-label={tTools('searchTermLabel')}
                                     />
                                     <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                                        <UISearch className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                                        <UISearch className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
                                     </div>
                                 </div>
 
                                 {/* Help text */}
-                                <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                                <p className="mt-1.5 text-xs text-muted-foreground">
                                     {tTools('searchInputHelp')}
                                 </p>
 
@@ -459,7 +459,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                 {parsedTerms.length > 0 && (
                                     <div className="mt-3">
                                         <div className="flex items-center gap-2 mb-2">
-                                            <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                                            <span className="text-xs font-medium text-foreground">
                                                 {tTools('termsCount', { count: parsedTerms.length })}
                                             </span>
                                             <Button variant="ghost" size="sm"
@@ -498,7 +498,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             </div>
 
                             {/* Search Options */}
-                            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-2 border-t border-gray-200 dark:border-gray-700">
+                            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-2 border-t border-border">
                                 <Label className="flex items-center gap-2 cursor-pointer">
                                     <Checkbox
 
@@ -507,7 +507,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                         disabled={isProcessing || isSearching}
                                     />
-                                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-sm text-foreground">
                                         {tTools('caseSensitive')}
                                     </span>
                                 </Label>
@@ -519,7 +519,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                         disabled={isProcessing || isSearching || useRegex}
                                     />
-                                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-sm text-foreground">
                                         {tTools('wholeWord')}
                                     </span>
                                 </Label>
@@ -534,7 +534,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                         disabled={isProcessing || isSearching}
                                     />
-                                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-sm text-foreground">
                                         {tTools('useRegex')}
                                     </span>
                                 </Label>
@@ -564,7 +564,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             <div className="lg:col-span-3">
                                 <Card   className="h-full">
                                     <div className="flex items-center justify-between mb-3">
-                                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                        <h3 className="text-lg font-medium text-foreground">
                                             {tTools('previewTitle') || 'Preview'}
                                         </h3>
                                         <div className="flex items-center gap-2">
@@ -576,7 +576,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             >
                                                 ←
                                             </Button>
-                                            <span className="text-sm text-gray-600 dark:text-gray-400 min-w-[60px] text-center">
+                                            <span className="text-sm text-foreground min-w-[60px] text-center">
                                                 {previewPage} / {totalPages}
                                             </span>
                                             <Button
@@ -604,7 +604,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     {/* Quick page navigation */}
                                     {pagesWithMatches.length > 1 && (
                                         <div className="mb-3 flex flex-wrap gap-1">
-                                            <span className="text-xs text-gray-500 dark:text-gray-400 mr-2">
+                                            <span className="text-xs text-muted-foreground mr-2">
                                                 {tTools('pagesWithMatches') || 'Pages with matches:'}
                                             </span>
                                             {pagesWithMatches.map(page => (
@@ -626,15 +626,15 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <div className="mb-3 flex gap-4 text-xs">
                                         <div className="flex items-center gap-1">
                                             <span className="inline-block w-4 h-4 bg-red-500/30 border-2 border-red-500 rounded"></span>
-                                            <span className="text-gray-600 dark:text-gray-400">{tTools('selectedMatch') || 'Selected'}</span>
+                                            <span className="text-foreground">{tTools('selectedMatch') || 'Selected'}</span>
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <span className="inline-block w-4 h-4 bg-yellow-500/30 border-2 border-yellow-500 rounded"></span>
-                                            <span className="text-gray-600 dark:text-gray-400">{tTools('unselectedMatch') || 'Not selected'}</span>
+                                            <span className="text-foreground">{tTools('unselectedMatch') || 'Not selected'}</span>
                                         </div>
                                     </div>
 
-                                    <div className="border rounded-lg overflow-auto bg-gray-100 dark:bg-gray-900" style={{ maxHeight: 'calc(100vh - 400px)', minHeight: '400px' }}>
+                                    <div className="border rounded-lg overflow-auto bg-muted" style={{ maxHeight: 'calc(100vh - 400px)', minHeight: '400px' }}>
                                         <canvas ref={canvasRef} className="mx-auto" />
                                     </div>
                                 </Card>
@@ -645,7 +645,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                 {/* Matches Header */}
                                 <Card className="p-6"  >
                                     <div className="flex items-center justify-between mb-3">
-                                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                        <h3 className="text-lg font-medium text-foreground">
                                             {tTools('matchesFound', { count: matches.length })}
                                         </h3>
                                         <div className="flex items-center gap-1">
@@ -701,12 +701,12 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     )}
 
                                     {/* Matches List - Scrollable */}
-                                    <div className="border rounded-lg divide-y dark:border-gray-700 dark:divide-gray-700 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 380px)', minHeight: '300px' }}>
+                                    <div className="border rounded-lg divide-y overflow-y-auto" style={{ maxHeight: 'calc(100vh - 380px)', minHeight: '300px' }}>
                                         {filteredMatches.map((match) => (
                                             <div
                                                 key={match.id}
-                                                className={`flex items-center gap-2 p-2.5 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''
-                                                    } ${previewPage === match.page ? 'border-l-2 border-l-blue-500' : ''}`}
+                                                className={`flex items-center gap-2 p-2.5 cursor-pointer hover:bg-muted transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+                                                    }  ${previewPage === match.page ? 'border-l-2 border-l-blue-500' : ''}`}
                                             >
                                                 <Checkbox
 
@@ -722,10 +722,10 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                         setSelectedPage(match.page);
                                                     }}
                                                 >
-                                                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
+                                                    <p className="text-sm font-medium text-foreground truncate">
                                                         "{match.text}"
                                                     </p>
-                                                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                                                    <p className="text-xs text-muted-foreground">
                                                         {tTools('pageInfo', { page: match.page })}
                                                     </p>
                                                 </div>
@@ -733,7 +733,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         ))}
                                     </div>
 
-                                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                                    <p className="mt-2 text-sm text-muted-foreground">
                                         {tTools('selectedCount', { selected: selectedCount, total: matches.length })}
                                     </p>
                                 </Card>
@@ -745,7 +745,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                     {!showPreview && hasSearched && matches.length > 0 && (
                         <Card className="p-6"  >
                             <div className="flex items-center justify-between mb-4">
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                <h3 className="text-lg font-medium text-foreground">
                                     {tTools('matchesFound', { count: matches.length })}
                                 </h3>
                                 <div className="flex items-center gap-2">
@@ -769,11 +769,11 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                             </div>
 
                             {/* Matches List */}
-                            <div className="max-h-60 overflow-y-auto border rounded-lg divide-y dark:border-gray-700 dark:divide-gray-700">
+                            <div className="max-h-60 overflow-y-auto border rounded-lg divide-y">
                                 {filteredMatches.map((match) => (
                                     <div
                                         key={match.id}
-                                        className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                                        className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-muted transition-colors ${match.selected ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
                                     >
                                         <Checkbox
 
@@ -783,10 +783,10 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             disabled={isProcessing}
                                         />
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
+                                            <p className="text-sm font-medium text-foreground truncate">
                                                 "{match.text}"
                                             </p>
-                                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                            <p className="text-xs text-muted-foreground">
                                                 {tTools('pageInfo', { page: match.page })}
                                             </p>
                                         </div>
@@ -794,7 +794,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                 ))}
                             </div>
 
-                            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                            <p className="mt-2 text-sm text-muted-foreground">
                                 {tTools('selectedCount', { selected: selectedCount, total: matches.length })}
                             </p>
                         </Card>
@@ -803,14 +803,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                     {/* Redaction Options */}
                     {hasSearched && matches.length > 0 && (
                         <Card className="p-6"  >
-                            <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
+                            <h3 className="text-lg font-medium mb-4 text-foreground">
                                 {tTools('redactionOptions')}
                             </h3>
 
                             <div className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <Label className="block mb-1 dark:text-gray-300" htmlFor="findandredacttool-field-2">
+                                        <Label className="block mb-1" htmlFor="findandredacttool-field-2">
                                             {tTools('redactionColor')}
                                         </Label>
                                         <div className="flex items-center gap-2">
@@ -831,7 +831,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         </div>
                                     </div>
                                     <div>
-                                        <Label className="block mb-1 dark:text-gray-300" htmlFor="findandredacttool-field-3">
+                                        <Label className="block mb-1" htmlFor="findandredacttool-field-3">
                                             {tTools('replacementText')}
                                         </Label>
                                         <Input
@@ -853,7 +853,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                         disabled={isProcessing}
                                     />
-                                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-sm text-foreground">
                                         {tTools('addBorder')}
                                     </span>
                                 </Label>

@@ -454,7 +454,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
               {/* Grid visualization */}
               <div className="relative">
                 <div
-                  className="relative border-2 border-primary/30 rounded-lg p-3 bg-white dark:bg-card shadow-sm"
+                  className="relative border-2 border-primary/30 rounded-lg p-3 bg-background dark:bg-card shadow-sm"
                   style={{
                     width: orientation === 'landscape' ? '180px' : '140px',
                     height: orientation === 'landscape' ? '140px' : '180px',
@@ -493,11 +493,11 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
               <div className="flex-1 space-y-3 text-center sm:text-left">
                 {/* Main stats */}
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="p-3 rounded-lg bg-white dark:bg-card border border-border shadow-sm">
+                  <div className="p-3 rounded-lg bg-background dark:bg-card border border-border shadow-sm">
                     <div className="text-2xl font-bold text-primary">{gridCols} × {gridRows}</div>
                     <div className="text-xs text-muted-foreground">{tTools('nUpPdf.gridLabel')}</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-white dark:bg-card border border-border shadow-sm">
+                  <div className="p-3 rounded-lg bg-background dark:bg-card border border-border shadow-sm">
                     <div className="text-2xl font-bold text-foreground">{outputSheets}</div>
                     <div className="text-xs text-muted-foreground">{tTools('nUpPdf.outputPages')}</div>
                   </div>

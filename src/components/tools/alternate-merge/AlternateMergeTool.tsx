@@ -296,13 +296,7 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
-                className={`
-                  flex items-center gap-3 p-3 rounded-md border
-                  transition-all duration-200
-                  ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                  ${dragOverIndex === index ? 'border-primary bg-primary/5' : 'border-border'}
-                  ${!isProcessing ? 'cursor-grab hover:bg-muted/50' : ''}
-                `}
+                className={` flex items-center gap-3 p-3 rounded-md border transition-all duration-200 ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}  ${dragOverIndex === index ? 'border-primary bg-primary/5' : 'border-border'}  ${!isProcessing ? 'cursor-grab hover:bg-muted/50' : ''}  `}
               >
                 {/* Drag Handle */}
                 <div

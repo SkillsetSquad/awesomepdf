@@ -337,7 +337,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       <span className="text-[10px] opacity-60">{t('citationLinker.citationPage', { page: selectedCitation.pageNum })}</span>
                     </div>
 
-                    <p className="text-[11px] leading-relaxed line-clamp-2 text-zinc-500 dark:text-zinc-400">
+                    <p className="text-[11px] leading-relaxed line-clamp-2 text-muted-foreground">
                       {t('citationLinker.citationRef', { ref: selectedCitation.refText })}
                     </p>
 
@@ -377,7 +377,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                       >
                         <div className="flex items-center gap-2">
                           <span className="font-bold text-foreground">{c.marker}</span>
-                          <span className="text-[10px] text-zinc-400">Page {c.pageNum}</span>
+                          <span className="text-[10px] text-muted-foreground">Page {c.pageNum}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                           {c.url ? (
@@ -385,7 +385,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                               <Link2 className="w-3 h-3" /> DOI
                             </span>
                           ) : (
-                            <span className="text-[10px] text-zinc-400 font-medium">{t('citationLinker.gotoPage')}</span>
+                            <span className="text-[10px] text-muted-foreground font-medium">{t('citationLinker.gotoPage')}</span>
                           )}
                         </div>
                       </div>
@@ -478,9 +478,9 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               <div className="w-full h-full relative z-20 flex items-center justify-center">
 
                 {/* Central paper node */}
-                <div className="w-20 h-20 rounded-full border-4 border-primary/60 bg-white dark:bg-zinc-800 shadow-2xl flex flex-col items-center justify-center text-center p-2 z-30 transform hover:scale-105 transition-transform">
+                <div className="w-20 h-20 rounded-full border-4 border-primary/60 bg-background shadow-2xl flex flex-col items-center justify-center text-center p-2 z-30 transform hover:scale-105 transition-transform">
                   <FileText className="w-6 h-6 text-primary" />
-                  <span className="text-[9px] font-black mt-1 leading-none uppercase">Paper</span>
+                  <span className="text-[9px] font-semibold mt-1 leading-none uppercase">Paper</span>
                 </div>
 
                 {/* Circumferential nodes (slice first 10 for layout clarity) */}
@@ -508,7 +508,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                           ? 'border-primary bg-primary/15 ring-2 ring-primary/30'
                           : c.url
                             ? 'border-emerald-500/50 bg-emerald-50/90 dark:bg-emerald-950/20'
-                            : 'border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90'
+                            : 'border-border bg-background'
                       }`}
                     >
                       <span className="text-[10px] font-bold leading-none">{c.marker}</span>
@@ -520,7 +520,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
               </div>
 
               {/* Topology Instructions Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] text-zinc-400 dark:text-zinc-500 z-30">
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] text-muted-foreground z-30">
                 <span>{t('citationLinker.doiExternalLink')}</span>
                 <span>{t('citationLinker.gotoPageLink')}</span>
               </div>
@@ -546,7 +546,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
             {/* Small offset gear */}
             <div
               style={{ transform: `rotate(${-gearAngle * 1.5}deg)` }}
-              className="absolute -top-1 -right-1 w-10 h-10 text-zinc-500 opacity-60"
+              className="absolute -top-1 -right-1 w-10 h-10 text-muted-foreground opacity-60"
             >
               <UISettings className="w-full h-full" aria-hidden="true" />
             </div>
@@ -567,7 +567,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           </div>
 
           <div className="space-y-2 max-w-sm mx-auto">
-            <h3 className="text-base font-extrabold text-foreground">{t('citationLinker.injectLink')}</h3>
+            <h3 className="text-base font-semibold text-foreground">{t('citationLinker.injectLink')}</h3>
             <p className="text-xs text-muted-foreground">
               {t('citationLinker.successDesc', { count: citations.length })}
             </p>

@@ -122,8 +122,8 @@ export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolPro
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Unlink className="w-4 h-4 text-primary" />
                   {t('deadLinkDebugger.previewTitle')}
                 </span>
@@ -135,12 +135,12 @@ export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolPro
               {/* Show list of extracted URLs and allow fast edit */}
               <div className="flex-1 flex flex-col p-4 overflow-y-auto max-h-[360px] space-y-3">
                 {linkList.length === 0 ? (
-                  <div className="text-center py-12 text-zinc-400">
+                  <div className="text-center py-12 text-muted-foreground">
                     {status === 'processing' ? t('deadLinkDebugger.detectingText') : t('deadLinkDebugger.idleText')}
                   </div>
                 ) : (
                   linkList.map((item, idx) => (
-                    <div key={idx} className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex flex-col gap-2 shadow-sm">
+                    <div key={idx} className="p-3 bg-background border border-border rounded-xl flex flex-col gap-2 shadow-sm">
                       <div className="flex justify-between items-center text-[10px] font-bold">
                         <span className="text-primary">{t('deadLinkDebugger.pageNumberLabel', { page: item.pageNumber })}</span>
                         <span className="text-green-500">Status: Detected</span>
@@ -167,19 +167,19 @@ export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolPro
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('deadLinkDebugger.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('deadLinkDebugger.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
-                  <p className="text-zinc-400">
+                  <p className="text-muted-foreground">
                     {t('deadLinkDebugger.emptyStateDescription')}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6 space-y-3">
+              <div className="pt-6 border-t border-border mt-6 space-y-3">
                 <Button
                   variant="secondary"
                   size="lg"

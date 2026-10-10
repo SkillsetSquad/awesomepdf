@@ -497,7 +497,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('ranges')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'ranges' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -518,7 +518,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('even-odd')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'even-odd' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -539,7 +539,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('every-page')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'every-page' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -560,7 +560,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('visual')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'visual' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -581,7 +581,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('bookmarks')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'bookmarks' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>
@@ -607,7 +607,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                   type="button"
                   onClick={() => setSplitMode('n-times')}
                   disabled={isProcessing}
-                  className="group relative flex flex-col items-center h-auto flex-col whitespace-normal p-3"
+                  className="group relative flex flex-col items-center h-auto whitespace-normal p-3"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${splitMode === 'n-times' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/20'
                     }`}>

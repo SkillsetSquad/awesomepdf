@@ -2124,7 +2124,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   className="relative overflow-auto p-4 bg-muted/20 border border-border rounded-xl flex justify-center min-h-[520px] select-none"
                 >
                   {isPageLoading && (
-                    <div className="absolute inset-0 bg-background/50 backdrop-blur-sm z-20 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/50 z-20 flex items-center justify-center">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                         渲染页面中...

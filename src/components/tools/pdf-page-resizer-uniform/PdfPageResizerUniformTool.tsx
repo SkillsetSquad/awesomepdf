@@ -109,8 +109,8 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-primary animate-pulse" />
                   {t('pdfPageResizerUniform.magnifierTitle')}
                 </span>
@@ -122,21 +122,21 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
               <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
                 {/* 3D Stack of cards representation */}
                 <div className="relative w-48 h-36 flex items-center justify-center">
-                  <div className="absolute w-36 h-28 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-lg shadow-md transform rotate-12 scale-90 translate-y-3 z-10" />
-                  <div className="absolute w-44 h-32 bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg transform -rotate-6 translate-y-1 z-20 flex items-center justify-center">
-                    <span className="text-[10px] text-zinc-400 font-mono">Letter / A3</span>
+                  <div className="absolute w-36 h-28 bg-background border border-border rounded-lg shadow-md transform rotate-12 scale-90 translate-y-3 z-10" />
+                  <div className="absolute w-44 h-32 bg-background border border-border rounded-lg shadow-lg transform -rotate-6 translate-y-1 z-20 flex items-center justify-center">
+                    <span className="text-[10px] text-muted-foreground font-mono">Letter / A3</span>
                   </div>
                   <div className="absolute w-40 h-28 border-2 border-primary bg-primary/5 rounded-lg shadow-xl z-30 flex flex-col items-center justify-center animate-pulse">
                     <Zap className="w-5 h-5 text-primary mb-1 animate-bounce" />
-                    <span className="text-[10px] text-primary font-black tracking-widest">{targetSize} UNIFORM</span>
+                    <span className="text-[10px] text-primary font-semibold tracking-widest">{targetSize} UNIFORM</span>
                   </div>
                 </div>
 
                 <div className="max-w-md text-center mt-6 space-y-2">
-                  <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  <h4 className="text-sm font-bold text-foreground">
                     {t('pdfPageResizerUniform.filesLoaded', { count: files.length })}
                   </h4>
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-xs text-muted-foreground">
                     {t('pdfPageResizerUniform.uniformHelp')}
                   </p>
                 </div>
@@ -147,9 +147,9 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfPageResizerUniform.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfPageResizerUniform.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -180,7 +180,7 @@ export function PdfPageResizerUniformTool({ className = '' }: PdfPageResizerUnif
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

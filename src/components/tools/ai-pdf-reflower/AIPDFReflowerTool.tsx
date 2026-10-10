@@ -382,7 +382,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
                 {/* 3D Physical pull rope visual item for wow effect */}
                 <div className="flex flex-col items-center mt-6 pt-4 relative group">
-                  <div className="w-1 bg-zinc-300 dark:bg-zinc-700 h-16 rounded-full relative transition-all duration-300 transform group-hover:h-20"
+                  <div className="w-1 bg-muted h-16 rounded-full relative transition-all duration-300 transform group-hover:h-20"
                        style={{
                          transform: isPulling ? 'translateY(15px) scaleY(0.8)' : 'translateY(0) scaleY(1)'
                        }}
@@ -397,7 +397,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                       <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                     </div>
                   </div>
-                  <span className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-2 tracking-wider">{t('aiPdfReflower.pullToExportHint')}</span>
+                  <span className="text-[10px] text-muted-foreground mt-2 tracking-wider">{t('aiPdfReflower.pullToExportHint')}</span>
                 </div>
               </div>
             </Card>
@@ -407,15 +407,15 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
           <div className="lg:col-span-7 flex justify-center">
 
             {/* Phone Outer container with custom CSS perspective perspective-[1200px] */}
-            <div className="relative w-[340px] h-[640px] rounded-[3.5rem] p-3.5 bg-zinc-800 shadow-[0_30px_70px_rgba(0,0,0,0.45)] border-4 border-zinc-700/80 transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 group overflow-hidden">
+            <div className="relative w-[340px] h-[640px] rounded-[3.5rem] p-3.5 bg-muted shadow-[0_30px_70px_rgba(0,0,0,0.45)] border-4 border-border transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 group overflow-hidden">
 
               {/* Glossy glare reflection overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-20" />
 
               {/* Speaker / Camera Notch */}
               <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-30 flex items-center justify-center">
-                <div className="w-12 h-1 bg-zinc-800 rounded-full" />
-                <div className="w-3 h-3 rounded-full bg-zinc-950 ml-3 border border-zinc-900" />
+                <div className="w-12 h-1 bg-muted rounded-full" />
+                <div className="w-3 h-3 rounded-full bg-muted ml-3 border border-border" />
               </div>
 
               {/* Screen Content */}
@@ -436,7 +436,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                     switch (p.type) {
                       case 'h1':
                         return (
-                          <h1 key={idx} className="font-extrabold text-lg mt-4 mb-2 border-l-4 border-amber-500 pl-2 leading-snug">
+                          <h1 key={idx} className="font-semibold text-lg mt-4 mb-2 border-l-4 border-amber-500 pl-2 leading-snug">
                             {p.text}
                           </h1>
                         );

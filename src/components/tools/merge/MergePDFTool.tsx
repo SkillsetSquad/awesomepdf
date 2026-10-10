@@ -257,7 +257,7 @@ export function MergePDFTool({ className = '' }: MergePDFToolProps) {
           <ul className="space-y-2" aria-label={tTools('mergePdf.filesTitle')}>
             {files.map((file, index) => <li key={file.id} draggable={!isProcessing}
               onDragStart={event => handleDragStart(event, index)} onDragOver={event => handleDragOver(event, index)} onDrop={event => handleDrop(event, index)} onDragEnd={handleDragEnd}
-              className={`flex flex-wrap items-center gap-2 rounded-md border p-3 ${draggedIndex === index ? 'opacity-50' : ''} ${dragOverIndex === index ? 'border-primary bg-accent' : ''} ${!isProcessing ? 'cursor-grab' : ''}`}>
+              className={`flex flex-wrap items-center gap-2 rounded-md border p-3 ${draggedIndex === index ? 'opacity-50' : ''}  ${dragOverIndex === index ? 'border-primary bg-accent' : ''}  ${!isProcessing ? 'cursor-grab' : ''}`}>
               <GripVertical className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
               <Badge variant="secondary" className="tabular-nums">{index + 1}</Badge>
               <FileText className="hidden size-5 shrink-0 text-primary sm:block" aria-hidden="true" />

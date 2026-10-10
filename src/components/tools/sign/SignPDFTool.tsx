@@ -319,13 +319,13 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             <UIPenLine className="w-5 h-5" aria-hidden="true" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
               <span>从已签署 PDF 提取签名 / 印章</span>
               <span className="text-[10px] font-normal px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
                 支持 Adobe Acrobat
               </span>
             </h3>
-            <p className="text-xs text-gray-600 mt-0.5">
+            <p className="text-xs text-foreground mt-0.5">
               上传已签名的 PDF，智能识别笔迹或印章并剥离纸张白底，一键存入签名库随时使用。
             </p>
           </div>
@@ -472,7 +472,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
               ref={iframeRef}
               src={VIEWER_HTML}
               onLoad={handleIframeLoad}
-              className="w-full bg-gray-100"
+              className="w-full bg-muted"
               style={{ height: '600px', border: 'none' }}
               title="PDF Signature Editor"
             />

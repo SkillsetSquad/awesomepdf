@@ -115,8 +115,8 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-primary" />
                   {t('interactiveTocGenerator.previewTitle')}
                 </span>
@@ -136,10 +136,10 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                   <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto text-primary">
                     <UIEmojiScrollText className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                   </div>
-                  <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  <h4 className="text-sm font-bold text-foreground">
                     {file.name}
                   </h4>
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-xs text-muted-foreground">
                     {t('interactiveTocGenerator.emptyStateDescription')}
                   </p>
                 </div>
@@ -150,9 +150,9 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('interactiveTocGenerator.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('interactiveTocGenerator.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -179,7 +179,7 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

@@ -661,22 +661,15 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   onDragOver={(e) => handleDragOver(e, index)}
                   onDrop={(e) => handleDrop(e, index)}
                   onDragEnd={handleDragEnd}
-                  className={`
-                    group relative rounded-lg cursor-grab transition-all duration-200
-                    ${draggedIndex === index ? 'opacity-50 scale-95' : ''}
-                    ${dragOverIndex === index ? 'ring-2 ring-primary ring-offset-2' : ''}
-                  `}
+                  className={` group relative rounded-lg cursor-grab transition-all duration-200 ${draggedIndex === index ? 'opacity-50 scale-95' : ''}  ${dragOverIndex === index ? 'ring-2 ring-primary ring-offset-2' : ''}  `}
                 >
                   {/* Page Card */}
                   <div
                     onClick={() => handleToggleSelect(index)}
-                    className={`
-                      relative aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer
-                      ${page.selected
+                    className={` relative aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer ${page.selected
                         ? 'border-primary ring-2 ring-primary/30'
                         : 'border-border hover:border-primary/50'
-                      }
-                    `}
+                      }  `}
                   >
                     {page.thumbnail ? (
                       <img
@@ -711,7 +704,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         aria-label="Move left"
                         title="Move left"
                       >
-                        <UIChevronLeft className="w-3 h-3 text-slate-700 dark:text-slate-200" aria-hidden="true" />
+                        <UIChevronLeft className="w-3 h-3 text-foreground" aria-hidden="true" />
                       </Button>
                       <Button variant="ghost" size="icon-sm"
                         type="button"
@@ -721,7 +714,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         aria-label="Move right"
                         title="Move right"
                       >
-                        <UIChevronRight className="w-3 h-3 text-slate-700 dark:text-slate-200" aria-hidden="true" />
+                        <UIChevronRight className="w-3 h-3 text-foreground" aria-hidden="true" />
                       </Button>
                     </div>
                   </div>

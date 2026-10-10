@@ -84,7 +84,7 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
 
     const getStatusIcon = (status: BatchFile['status']) => {
         switch (status) {
-            case 'pending': return <div className="w-4 h-4 rounded-full bg-gray-300" />;
+            case 'pending': return <div className="w-4 h-4 rounded-full bg-muted" />;
             case 'processing': return <Loader2 className="w-4 h-4 animate-spin text-blue-500" />;
             case 'completed': return <Check className="w-4 h-4 text-green-500" />;
             case 'error': return <AlertCircle className="w-4 h-4 text-red-500" />;

@@ -125,22 +125,22 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
 
               {/* Wooden magnet pre-flight card desk mockup */}
               <div className="flex-1 flex items-center justify-center p-6 relative">
-                <div className="w-72 h-44 bg-amber-100 dark:bg-zinc-800 border-4 border-amber-900/20 dark:border-zinc-700 shadow-2xl rounded-2xl p-4 relative overflow-hidden flex flex-wrap gap-2 items-center justify-center">
+                <div className="w-72 h-44 bg-amber-100 border-4 border-amber-900/20 shadow-2xl rounded-2xl p-4 relative overflow-hidden flex flex-wrap gap-2 items-center justify-center">
 
                   {/* Photo Matrix grids with strong snapping micro-animations */}
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
+                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
                   </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
+                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
                   </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
+                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
                   </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
+                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
                   </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-white/40 rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
+                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
                     Snapped
                   </div>
 
@@ -155,9 +155,9 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('photoTilingPrepress.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('photoTilingPrepress.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -201,7 +201,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

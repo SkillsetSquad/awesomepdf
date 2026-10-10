@@ -547,20 +547,20 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           onDrop={(e) => handleDrop(e, bookmark.id)}
           onDragEnd={handleDragEnd}
           className={`group flex items-center gap-2 p-2 rounded cursor-pointer transition-all border ${
-            isSelected ? 'bg-blue-100 border-blue-300' : 'border-transparent hover:bg-gray-50'
-          } ${
+            isSelected ? 'bg-blue-100 border-blue-300' : 'border-transparent hover:bg-muted'
+          }  ${
             dragOverNodeId === bookmark.id && dropPosition === 'inside' ? 'bg-blue-50 border-blue-300 border-dashed' : ''
-          } ${
+          }  ${
             dragOverNodeId === bookmark.id && dropPosition === 'before' ? 'border-t-blue-500' : ''
-          } ${
+          }  ${
             dragOverNodeId === bookmark.id && dropPosition === 'after' ? 'border-b-blue-500' : ''
-          } ${
+          }  ${
             draggedNodeId === bookmark.id ? 'opacity-30' : ''
           }`}
           onClick={() => handleBookmarkClick(bookmark)}
         >
           {/* Drag Handle */}
-          <div className="flex-shrink-0 text-gray-400 cursor-grab active:cursor-grabbing">
+          <div className="flex-shrink-0 text-muted-foreground cursor-grab active:cursor-grabbing">
             <UIGripVertical className="w-4 h-4" aria-hidden="true" />
           </div>
 
@@ -577,7 +577,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
           {/* Bookmark content */}
           {isEditing ? (
-            <div className="flex-1 flex flex-col gap-2 p-2 bg-gray-50 rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
+            <div className="flex-1 flex flex-col gap-2 p-2 bg-muted rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
               <div className="flex gap-2">
                 <div className="flex-1">
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-1">{tTools('bookmark.title') || 'Title'}</Label>
@@ -662,7 +662,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               >
                 {bookmark.title}
               </span>
-              <span className="text-xs text-gray-500">p.{bookmark.pageNumber}</span>
+              <span className="text-xs text-muted-foreground">p.{bookmark.pageNumber}</span>
 
               {/* Actions */}
               <div className="flex gap-1 opacity-0 group-hover:opacity-100 hover:opacity-100" style={{ opacity: isSelected ? 1 : undefined }}>
@@ -694,7 +694,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
         {/* Render children */}
         {bookmark.isExpanded && bookmark.children.length > 0 && (
-          <div className="border-l border-gray-200 ml-2">
+          <div className="border-l border-border ml-2">
             {bookmark.children.map(child => renderBookmarkItem(child, depth + 1))}
           </div>
         )}
@@ -758,7 +758,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             </div>
 
             {/* Canvas */}
-            <div className="flex justify-center bg-gray-100 rounded p-4 overflow-auto max-h-[600px]">
+            <div className="flex justify-center bg-muted rounded p-4 overflow-auto max-h-[600px]">
               <canvas ref={canvasRef} className="shadow-lg" />
             </div>
           </Card>
@@ -792,13 +792,13 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             </div>
 
             {isExtractingBookmarks && (
-              <p className="text-sm text-gray-500 mb-4">{tTools('bookmark.extracting') || 'Extracting existing bookmarks...'}</p>
+              <p className="text-sm text-muted-foreground mb-4">{tTools('bookmark.extracting') || 'Extracting existing bookmarks...'}</p>
             )}
 
             {/* Bookmark list */}
             <div className="border rounded max-h-[500px] overflow-y-auto">
               {bookmarks.length === 0 ? (
-                <div className="p-8 text-center text-gray-500">
+                <div className="p-8 text-center text-muted-foreground">
                   <p>{tTools('bookmark.noBookmarks') || 'No bookmarks yet. Click "Add Bookmark" to create one.'}</p>
                 </div>
               ) : (
@@ -810,7 +810,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
             {/* Hint */}
             <div className="mt-2 space-y-1">
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-muted-foreground">
                 {tTools('bookmark.hint') || 'Click a bookmark to preview its page. Use +/✎/× to add child, edit, or delete.'}
               </p>
               <p className="text-xs text-blue-500 font-medium">

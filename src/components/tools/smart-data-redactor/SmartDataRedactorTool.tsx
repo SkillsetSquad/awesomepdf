@@ -134,8 +134,8 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-primary" />
                   {t('smartDataRedactor.previewTitle')}
                 </span>
@@ -156,10 +156,10 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                   <div className="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center mx-auto text-red-500">
                     <UIEmojiEyeOff className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                   </div>
-                  <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  <h4 className="text-sm font-bold text-foreground">
                     {file.name}
                   </h4>
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-xs text-muted-foreground">
                     {t('smartDataRedactor.emptyStateDescription')}
                   </p>
                 </div>
@@ -170,9 +170,9 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <EyeOff className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('smartDataRedactor.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('smartDataRedactor.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -184,7 +184,7 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       onCheckedChange={(checked) => setEmailRedact((checked === true))}
                        aria-label={t('smartDataRedactor.emailRedactLabel')}
                     />
-                    <Label htmlFor="email" className="dark:text-zinc-300">
+                    <Label htmlFor="email" className="">
                       {t('smartDataRedactor.emailRedactLabel')}
                     </Label>
                   </div>
@@ -197,7 +197,7 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       onCheckedChange={(checked) => setPhoneRedact((checked === true))}
                        aria-label={t('smartDataRedactor.phoneRedactLabel')}
                     />
-                    <Label htmlFor="phone" className="dark:text-zinc-300">
+                    <Label htmlFor="phone" className="">
                       {t('smartDataRedactor.phoneRedactLabel')}
                     </Label>
                   </div>
@@ -210,7 +210,7 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                       onCheckedChange={(checked) => setIdRedact((checked === true))}
                        aria-label={t('smartDataRedactor.idRedactLabel')}
                     />
-                    <Label htmlFor="idcard" className="dark:text-zinc-300">
+                    <Label htmlFor="idcard" className="">
                       {t('smartDataRedactor.idRedactLabel')}
                     </Label>
                   </div>
@@ -218,7 +218,7 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                   <div className="space-y-1.5">
                     <Label className="flex items-center gap-1">
                       {t('smartDataRedactor.customKeywordsLabel')}
-                      <HelpCircle className="w-3.5 h-3.5 text-zinc-400" />
+                      <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
                     </Label>
                     <Input
                       type="text"
@@ -231,7 +231,7 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

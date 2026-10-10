@@ -401,7 +401,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                   type="button"
                   onClick={() => setLayoutPreset(preset.value)}
                   disabled={isProcessing}
-                  className="flex flex-col items-center gap-1.5 h-auto flex-col whitespace-normal p-3"
+                  className="flex flex-col items-center gap-1.5 h-auto whitespace-normal p-3"
                 >
                   {/* Mini grid preview */}
                   <div
@@ -496,7 +496,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                   {/* Grid visualization */}
                   <div
-                    className="border-2 border-primary/30 rounded-lg p-3 bg-white"
+                    className="border-2 border-primary/30 rounded-lg p-3 bg-background"
                     style={{ width: '140px', height: '100px' }}
                   >
                     <div

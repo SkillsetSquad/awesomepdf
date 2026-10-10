@@ -162,10 +162,10 @@ export function SignatureLibraryModal({
         </div>
 
         {signatures.length === 0 ? (
-          <div className="py-12 text-center border border-dashed border-border rounded-md bg-gray-50/50">
-            <UIPenLine className="w-12 h-12 mx-auto text-gray-300 mb-3" aria-hidden="true" />
-            <p className="text-sm font-medium text-gray-700 mb-1">暂无已保存的签名</p>
-            <p className="text-xs text-gray-500 mb-4 max-w-sm mx-auto">
+          <div className="py-12 text-center border border-dashed border-border rounded-md bg-muted">
+            <UIPenLine className="w-12 h-12 mx-auto text-foreground mb-3" aria-hidden="true" />
+            <p className="text-sm font-medium text-foreground mb-1">暂无已保存的签名</p>
+            <p className="text-xs text-muted-foreground mb-4 max-w-sm mx-auto">
               您可以直接上传本地透明 PNG / JPG 签名图片，或上传已在 Adobe Acrobat 中签署过的文件提取签名。
             </p>
             <div className="flex items-center justify-center gap-3">
@@ -197,7 +197,7 @@ export function SignatureLibraryModal({
               >
                 <div>
                   <div
-                    className="w-full h-24 rounded border border-gray-200 flex items-center justify-center p-2 mb-2 bg-white overflow-hidden"
+                    className="w-full h-24 rounded border border-border flex items-center justify-center p-2 mb-2 bg-white overflow-hidden"
                     style={{
                       backgroundImage: `linear-gradient(45deg, #f3f4f6 25%, transparent 25%),
                                         linear-gradient(-45deg, #f3f4f6 25%, transparent 25%),

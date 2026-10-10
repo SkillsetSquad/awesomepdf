@@ -126,7 +126,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
         <>
           <Card className="p-6" >
             <div className="flex items-center justify-between">
-              <p className="font-medium text-gray-900 dark:text-gray-100">{file.name}</p>
+              <p className="font-medium text-foreground">{file.name}</p>
               <Button
                 variant="ghost"
                 size="sm"
@@ -143,14 +143,14 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
           </Card>
 
           <Card className="p-6"  >
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            <h3 className="text-lg font-semibold mb-4 text-foreground">
               {tTools('options')}
             </h3>
 
             <div className="space-y-4">
               {/* TOC Title */}
               <div>
-                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-1">
+                <Label className="block mb-1" htmlFor="tableofcontentstool-field-1">
                   {tTools('tocTitle')}
                 </Label>
                 <Input
@@ -165,7 +165,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
 
               {/* Font Size */}
               <div>
-                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-2">
+                <Label className="block mb-1" htmlFor="tableofcontentstool-field-2">
                   {tTools('fontSize')}
                 </Label>
                 <NativeSelect
@@ -186,7 +186,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
 
               {/* Font Family - Dynamic based on OS */}
               <div>
-                <Label className="block mb-1 dark:text-gray-300" htmlFor="tableofcontentstool-field-3">
+                <Label className="block mb-1" htmlFor="tableofcontentstool-field-3">
                   {tTools('fontFamily')}
                 </Label>
                 <NativeSelect
@@ -215,7 +215,7 @@ export function TableOfContentsTool({ className = '' }: TableOfContentsToolProps
                 />
                 <Label
                   htmlFor="addBookmark"
-                  className="dark:text-gray-300"
+                  className=""
                 >
                   {tTools('addBookmark')}
                 </Label>

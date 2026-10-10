@@ -125,8 +125,8 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Eye className="w-4 h-4 text-primary animate-pulse" />
                   {t('handwritingInkContrastBooster.magnifierTitle')}
                 </span>
@@ -148,13 +148,13 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                   <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
 
                   {/* Moldy shadow patch */}
-                  <div className="absolute w-24 h-24 bg-zinc-500/20 rounded-full blur-xl top-8 left-8" />
+                  <div className="absolute w-24 h-24 bg-muted rounded-full blur-xl top-8 left-8" />
 
-                  <div className="space-y-1.5 z-10 text-center text-zinc-400">
-                    <span className="text-sm font-serif font-black italic block text-zinc-700 dark:text-zinc-300">
+                  <div className="space-y-1.5 z-10 text-center text-muted-foreground">
+                    <span className="text-sm font-serif font-semibold italic block text-foreground">
                       {t('handwritingInkContrastBooster.inkTitle')}
                     </span>
-                    <span className="text-[10px] text-zinc-400 block font-mono">
+                    <span className="text-[10px] text-muted-foreground block font-mono">
                       {t('handwritingInkContrastBooster.bleachHelp')}
                     </span>
                   </div>
@@ -162,14 +162,14 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                   {/* Contrast booster magnifying lens window */}
                   {isHovered && (
                     <div
-                      className="absolute w-24 h-24 rounded-full border-2 border-primary bg-white dark:bg-zinc-950 shadow-2xl flex items-center justify-center overflow-hidden pointer-events-none transform -translate-x-12 -translate-y-12 z-30"
+                      className="absolute w-24 h-24 rounded-full border-2 border-primary bg-background shadow-2xl flex items-center justify-center overflow-hidden pointer-events-none transform -translate-x-12 -translate-y-12 z-30"
                       style={{
                         left: `${lensPosition.x}%`,
                         top: `${lensPosition.y}%`,
                         boxShadow: '0 0 15px rgba(var(--primary), 0.3)'
                       }}
                     >
-                      <div className="text-center font-serif font-black italic text-primary scale-125">
+                      <div className="text-center font-serif font-semibold italic text-primary scale-125">
                         Pure Ink
                       </div>
                     </div>
@@ -182,9 +182,9 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('handwritingInkContrastBooster.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('handwritingInkContrastBooster.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -232,7 +232,7 @@ export function HandwritingInkContrastBoosterTool({ className = '' }: Handwritin
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

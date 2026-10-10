@@ -121,10 +121,10 @@ export function EinkOptimizerTool() {
           <SunMoon className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground">
             {tTools('optionsTitle')}
           </h2>
-          <p className="text-xs text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             {tTools('uploadDescription')}
           </p>
         </div>
@@ -139,9 +139,9 @@ export function EinkOptimizerTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-neutral-900 border border-neutral-850">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-neutral-400" />
+              <BookOpen className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
             </div>
             <Button
@@ -158,8 +158,8 @@ export function EinkOptimizerTool() {
             {/* Control Panel */}
             <div className="space-y-6">
               {/* Contrast Threshold Offset Slider */}
-              <div className="space-y-3 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
-                <div className="flex items-center justify-between text-xs text-neutral-400">
+              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span className="flex items-center gap-1.5">
                     <Sliders className="w-3.5 h-3.5 text-teal-400" />
                     {t('einkOptimizer.otsueThresholdSuffix')}
@@ -173,15 +173,15 @@ export function EinkOptimizerTool() {
                   onValueChange={(values) => setContrastOffset(parseInt(String(values[0])))}
                   className="w-full cursor-pointer" id="einkoptimizertool-slider-1" aria-label={t('einkOptimizer.dilationSuffix')}
                 />
-                <div className="flex justify-between text-[9px] text-neutral-500">
+                <div className="flex justify-between text-[9px] text-muted-foreground">
                   {t('einkOptimizer.keepStrokes')}
                   {t('einkOptimizer.stripBackground')}
                 </div>
               </div>
 
               {/* Text Dilation Amount */}
-              <div className="space-y-3 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
-                <Label className="text-neutral-300 flex items-center gap-1.5" htmlFor="einkoptimizertool-slider-1">
+              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+                <Label className="text-foreground flex items-center gap-1.5" htmlFor="einkoptimizertool-slider-1">
                   <Settings className="w-3.5 h-3.5 text-teal-400" />
                   {t('einkOptimizer.dilationSuffix')}
                 </Label>

@@ -112,8 +112,8 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Compass className="w-4 h-4 text-primary animate-spin" style={{ animationDuration: '6s' }} />
                   {t('pdfDeskewAligner.compassTitle')}
                 </span>
@@ -124,15 +124,15 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
 
               <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
                 <div className="w-36 h-36 border-4 border-primary/20 rounded-full flex items-center justify-center relative shadow-inner">
-                  <div className="absolute inset-2 border border-zinc-300 dark:border-zinc-700 rounded-full border-dashed" />
+                  <div className="absolute inset-2 border border-border rounded-full border-dashed" />
                   <div className="absolute w-1.5 h-16 bg-primary rounded-full origin-bottom -translate-y-8 animate-pulse transform" style={{ transform: 'rotate(-4deg)', transition: 'transform 0.5s ease-in-out' }} />
                   <Compass className="w-10 h-10 text-primary/45 absolute" />
                 </div>
                 <div className="max-w-md text-center mt-6 space-y-2">
-                  <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  <h4 className="text-sm font-bold text-foreground">
                     {file.name}
                   </h4>
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-xs text-muted-foreground">
                     {t('pdfDeskewAligner.gyroHelp')}
                   </p>
                 </div>
@@ -143,9 +143,9 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfDeskewAligner.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfDeskewAligner.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -181,7 +181,7 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

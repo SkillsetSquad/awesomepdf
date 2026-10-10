@@ -386,12 +386,12 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           <div className="lg:col-span-7 flex flex-col space-y-4">
             <Card  className="p-4 flex flex-col justify-between h-full min-h-[480px]">
 
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                  <Eye className="w-4 h-4 text-zinc-400" />
+                  <Eye className="w-4 h-4 text-muted-foreground" />
                   {t('compress.sliderTooltip')}
                 </span>
-                <span className="text-[10px] text-zinc-400">
+                <span className="text-[10px] text-muted-foreground">
                   {t('compress.qualityCompare', { quality: quality.toUpperCase() })}
                 </span>
               </div>
@@ -435,7 +435,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                   style={{ left: `${sliderPosition}%` }}
                 >
                   <div className="absolute top-1/2 -translate-y-1/2 -translate-x-3 w-7.5 h-7.5 rounded-full bg-amber-500 border-2 border-white shadow flex items-center justify-center">
-                    <span className="text-[9px] font-black text-white">◀▶</span>
+                    <span className="text-[9px] font-semibold text-white">◀▶</span>
                   </div>
                 </div>
 
@@ -451,7 +451,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                 {/* 4. WOW 3D refractive floating Magnifier loupe */}
                 {magCoords.show && (
                   <div
-                    className="absolute w-32 h-32 rounded-full border-4 border-white/80 bg-white shadow-[0_15px_35px_rgba(0,0,0,0.3)] z-40 pointer-events-none overflow-hidden"
+                    className="absolute w-32 h-32 rounded-full border-4 border-white/80 bg-background shadow-[0_15px_35px_rgba(0,0,0,0.3)] z-40 pointer-events-none overflow-hidden"
                     style={{
                       left: magCoords.x - 64,
                       top: magCoords.y - 64,
@@ -485,7 +485,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               <div className="space-y-6">
 
                 {/* 3D Physics Balance beam representation */}
-                <div className="flex flex-col items-center justify-center p-4 bg-zinc-900/35 border border-zinc-800 rounded-2xl relative overflow-hidden">
+                <div className="flex flex-col items-center justify-center p-4 bg-muted border border-border rounded-2xl relative overflow-hidden">
 
                   {/* Balancing Scale SVG */}
                   <svg className="w-full h-24" viewBox="0 0 200 80">
@@ -538,7 +538,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                     </g>
                   </svg>
 
-                  <div className="flex w-full justify-between px-6 text-[10px] font-bold text-zinc-400">
+                  <div className="flex w-full justify-between px-6 text-[10px] font-bold text-muted-foreground">
                     {t('compress.sizeShrink')}
                     {t('compress.pixelSharpness')}
                   </div>
@@ -564,7 +564,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                       </Button>
                     ))}
                   </div>
-                  <p className="text-[10px] text-zinc-400 leading-normal">
+                  <p className="text-[10px] text-muted-foreground leading-normal">
                     {quality === 'low' && t('compress.descLow')}
                     {quality === 'medium' && t('compress.descMedium')}
                     {quality === 'high' && t('compress.descHigh')}

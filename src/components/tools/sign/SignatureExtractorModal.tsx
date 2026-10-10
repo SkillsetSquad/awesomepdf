@@ -509,11 +509,11 @@ export function SignatureExtractorModal({
 
                 <div
                   ref={canvasContainerRef}
-                  className="relative border border-border rounded-md overflow-auto bg-gray-100 max-h-[460px] flex items-center justify-center select-none"
+                  className="relative border border-border rounded-md overflow-auto bg-muted max-h-[460px] flex items-center justify-center select-none"
                   style={{ minHeight: '340px' }}
                 >
                   {isLoading && (
-                    <div className="absolute inset-0 bg-white/70 backdrop-blur-xs flex items-center justify-center z-20">
+                    <div className="absolute inset-0 bg-background flex items-center justify-center z-20">
                       <div className="flex items-center gap-2 text-sm text-blue-600">
                         <UILoader2 className="animate-spin h-5 w-5 text-blue-600" aria-hidden="true" />
                         <span>正在渲染页面...</span>
@@ -583,7 +583,7 @@ export function SignatureExtractorModal({
                           className="max-h-full max-w-full object-contain drop-shadow-sm select-none"
                         />
                       ) : (
-                        <span className="text-xs text-gray-400">请在左侧框选签名</span>
+                        <span className="text-xs text-muted-foreground">请在左侧框选签名</span>
                       )}
                     </div>
 
@@ -621,7 +621,7 @@ export function SignatureExtractorModal({
                           onClick={() => setColorMode('black')}
                           className="text-left flex items-center gap-1.5"
                         >
-                          <span className="w-3 h-3 rounded-full bg-gray-900 inline-block" />
+                          <span className="w-3 h-3 rounded-full bg-muted inline-block" />
                           <span>纯黑墨水</span>
                         </Button>
 
@@ -650,7 +650,7 @@ export function SignatureExtractorModal({
                       <div>
                         <div className="flex justify-between text-xs text-muted-foreground mb-1">
                           <span>去白底灵敏度：</span>
-                          <span className="font-mono text-gray-700">{threshold}</span>
+                          <span className="font-mono text-foreground">{threshold}</span>
                         </div>
                         <Slider
                           min={160}
@@ -665,7 +665,7 @@ export function SignatureExtractorModal({
                       <div>
                         <div className="flex justify-between text-xs text-muted-foreground mb-1">
                           <span>边缘抗锯齿平滑：</span>
-                          <span className="font-mono text-gray-700">{smoothness}</span>
+                          <span className="font-mono text-foreground">{smoothness}</span>
                         </div>
                         <Slider
                           min={5}

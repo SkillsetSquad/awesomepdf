@@ -127,8 +127,8 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <PenTool className="w-4 h-4 text-primary animate-pulse" />
                   {t('pdfSignatureAnchorHelper.magnifierTitle')}
                 </span>
@@ -142,16 +142,16 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
                 <div 
                   ref={containerRef}
                   onClick={handleCanvasClick}
-                  className="relative w-60 h-80 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl rounded-md cursor-crosshair overflow-hidden"
+                  className="relative w-60 h-80 bg-background border border-border shadow-xl rounded-md cursor-crosshair overflow-hidden"
                 >
                   {/* Fake paragraph mock lines */}
                   <div className="p-4 space-y-3">
-                    <div className="h-4 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded" />
-                    <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-5/6 bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-2/3 bg-zinc-100 dark:bg-zinc-800/40 rounded" />
+                    <div className="h-4 w-3/4 bg-muted rounded" />
+                    <div className="h-2 w-full bg-muted rounded" />
+                    <div className="h-2 w-full bg-muted rounded" />
+                    <div className="h-2 w-5/6 bg-muted rounded" />
+                    <div className="h-2 w-full bg-muted rounded" />
+                    <div className="h-2 w-2/3 bg-muted rounded" />
                   </div>
 
                   {/* Breathing radar pulse target indicator */}
@@ -178,9 +178,9 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfSignatureAnchorHelper.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfSignatureAnchorHelper.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -205,14 +205,14 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 font-mono text-[9px] text-zinc-400">
+                  <div className="grid grid-cols-2 gap-2 font-mono text-[9px] text-muted-foreground">
                     <div>X: {(anchorX * 100).toFixed(0)}%</div>
                     <div>Y: {(anchorY * 100).toFixed(0)}%</div>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

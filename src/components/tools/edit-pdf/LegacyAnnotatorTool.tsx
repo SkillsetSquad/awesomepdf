@@ -1112,7 +1112,7 @@ export function LegacyAnnotatorTool({
           )}
 
           <div
-            className="flex flex-wrap items-center gap-2 rounded-md border border-border bg-white p-2"
+            className="flex flex-wrap items-center gap-2 rounded-md border border-border bg-background p-2"
             aria-label={tTools('textHistory')}
           >
             <span className="mr-1 text-xs font-medium text-muted-foreground">
@@ -1155,7 +1155,7 @@ export function LegacyAnnotatorTool({
           )}
 
           {/* PDF Viewer iframe */}
-          <div className="relative border border-border rounded-md overflow-hidden bg-gray-100">
+          <div className="relative border border-border rounded-md overflow-hidden bg-muted">
             <iframe
               ref={iframeRef}
               src={withBasePath(`/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`)}
@@ -1165,7 +1165,7 @@ export function LegacyAnnotatorTool({
               onLoad={handleIframeLoad}
             />
             {!isEditorReady && (
-              <div className="absolute inset-0 flex items-center justify-center bg-white/80">
+              <div className="absolute inset-0 flex items-center justify-center bg-background">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
                   <p className="text-sm text-muted-foreground">{t('status.loading') || 'Loading...'}</p>
@@ -1173,8 +1173,8 @@ export function LegacyAnnotatorTool({
               </div>
             )}
             {isTextReplacing && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70">
-                <div className="rounded-lg bg-white px-5 py-4 text-center shadow-lg">
+              <div className="absolute inset-0 z-20 flex items-center justify-center bg-background">
+                <div className="rounded-lg bg-background px-5 py-4 text-center shadow-lg">
                   <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-primary" />
                   <p className="text-sm font-medium">Updating PDF text…</p>
                 </div>

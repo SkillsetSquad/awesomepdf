@@ -231,7 +231,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               >
                 {/* 3D Grid container */}
                 <div
-                  className="w-full h-full border border-zinc-700/30 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-2xl"
+                  className="w-full h-full border border-border rounded-2xl flex items-center justify-center transition-all duration-500 shadow-2xl"
                   style={{
                     transform: 'rotateX(55deg) rotateZ(-35deg)',
                     background: 'rgba(15, 15, 18, 0.85)',
@@ -295,7 +295,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               {/* Color Mode Switcher */}
               <div className="space-y-2">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-                  <Sliders className="w-3.5 h-3.5 text-zinc-400" />
+                  <Sliders className="w-3.5 h-3.5 text-muted-foreground" />
                   {t('pdfToTiff.colorModeLabel')}
                 </span>
                 <div className="flex bg-muted/50 p-0.5 rounded-xl border border-input/40">
@@ -319,7 +319,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               {/* Compression Algorithm */}
               <div className="space-y-2">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-                  <Layers className="w-3.5 h-3.5 text-zinc-400" />
+                  <Layers className="w-3.5 h-3.5 text-muted-foreground" />
                   {t('pdfToTiff.compressionLabel')}
                 </span>
                 <div className="flex bg-muted/50 p-0.5 rounded-xl border border-input/40">
@@ -343,10 +343,10 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               <div className="space-y-2.5">
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-bold text-muted-foreground flex items-center gap-1">
-                    <Settings className="w-3.5 h-3.5 text-zinc-400" />
+                    <Settings className="w-3.5 h-3.5 text-muted-foreground" />
                     {t('pdfToTiff.resolutionLabel')}
                   </span>
-                  <span className="font-black text-primary bg-primary/10 px-2 py-0.5 rounded">
+                  <span className="font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded">
                     {t('pdfToTiff.resolutionDpi', { dpi, percent: Math.round(dpi / 72 * 100) })}
                   </span>
                 </div>
@@ -369,11 +369,11 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
               </div>
 
               {/* Halftone / 1-bit logic notice */}
-              <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/20 border border-border/50 text-[10px] text-muted-foreground leading-normal flex gap-2">
+              <div className="p-3 rounded-xl bg-muted border border-border/50 text-[10px] text-muted-foreground leading-normal flex gap-2">
                 <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-foreground">{t('pdfToTiff.tipTitle')}</span>
-                  {t('pdfToTiff.tipDesc') || 'TIFF recommendations:'} <span className="text-primary font-extrabold mx-0.5">{t('pdfToTiff.tipRecommend') || '300 DPI'}</span> {t('pdfToTiff.tipTail') || 'to ensure clean edges.'}
+                  {t('pdfToTiff.tipDesc') || 'TIFF recommendations:'} <span className="text-primary font-semibold mx-0.5">{t('pdfToTiff.tipRecommend') || '300 DPI'}</span> {t('pdfToTiff.tipTail') || 'to ensure clean edges.'}
                 </div>
               </div>
 

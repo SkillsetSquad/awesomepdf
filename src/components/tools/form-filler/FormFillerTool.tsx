@@ -81,7 +81,7 @@ export function FormFillerTool({ className = '' }: FormFillerToolProps) {
               <Label className="flex items-center gap-2 mt-4"><Checkbox  checked={flatten} onCheckedChange={(checked) => setFlatten((checked === true))} disabled={isProcessing}  /><span>Flatten form after filling (make non-editable)</span></Label>
             </Card>
           ) : (
-            <Card className="p-6" ><p className="text-gray-500">No fillable form fields found in this PDF.</p></Card>
+            <Card className="p-6" ><p className="text-muted-foreground">No fillable form fields found in this PDF.</p></Card>
           )}
         </>
       )}

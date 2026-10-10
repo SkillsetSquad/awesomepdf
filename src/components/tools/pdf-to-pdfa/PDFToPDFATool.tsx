@@ -108,7 +108,7 @@ export function PDFToPDFATool({ className = '' }: PDFToPDFAToolProps) {
     const getStatusIcon = (status: BatchFile['status']) => {
         switch (status) {
             case 'pending':
-                return <div className="w-4 h-4 rounded-full bg-gray-300" />;
+                return <div className="w-4 h-4 rounded-full bg-muted" />;
             case 'processing':
                 return <Loader2 className="w-4 h-4 animate-spin text-blue-500" />;
             case 'completed':

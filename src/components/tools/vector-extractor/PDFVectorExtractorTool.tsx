@@ -289,7 +289,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
                 {/* Page Selector */}
                 {totalPages > 1 && (
-                  <div className="flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-0.5 bg-white dark:bg-zinc-900">
+                  <div className="flex items-center gap-1.5 border border-border rounded-lg px-2 py-0.5 bg-background">
                     <Button variant="ghost" size="icon-sm"
                       onClick={() => handlePageChange(targetPage - 1)}
                       disabled={targetPage <= 1}
@@ -324,12 +324,12 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
           <div className="lg:col-span-8 flex flex-col space-y-4">
             <Card  className="p-4 flex-1 flex flex-col justify-between border-2 min-h-[480px]">
 
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                  <Search className="w-4 h-4 text-zinc-400" />
+                  <Search className="w-4 h-4 text-muted-foreground" />
                   {tTools('vectorExtractor.previewHelp')}
                 </span>
-                <span className="text-[10px] text-zinc-400">
+                <span className="text-[10px] text-muted-foreground">
                   {hoveredElementId ? `Hovered: ${hoveredElementId}` : 'Awaiting Selection'}
                 </span>
               </div>
@@ -338,7 +338,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
               <div className="flex-1 flex items-center justify-center p-6 overflow-auto">
                 <div
                   ref={containerRef}
-                  className="w-full max-w-lg aspect-square bg-white border border-zinc-200 dark:border-zinc-800 shadow-md rounded-2xl p-4 overflow-hidden relative"
+                  className="w-full max-w-lg aspect-square bg-white border border-border shadow-md rounded-2xl p-4 overflow-hidden relative"
                   style={{
                     transform: 'perspective(800px) rotateX(8deg)',
                     transformStyle: 'preserve-3d',
@@ -366,7 +366,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
                 {!selectedElementHtml ? (
                   <div className="text-center p-6 text-muted-foreground space-y-2">
-                    <Layers className="w-12 h-12 text-zinc-400 mx-auto opacity-50" />
+                    <Layers className="w-12 h-12 text-muted-foreground mx-auto opacity-50" />
                     <h4 className="text-xs font-bold text-foreground">{tTools('vectorExtractor.emptyTitle')}</h4>
                     <p className="text-[10px]">{tTools('vectorExtractor.emptyDescription')}</p>
                   </div>
@@ -375,7 +375,7 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
 
                     {/* SVG Preview Box */}
                     <div className="border border-border rounded-2xl p-4 bg-white flex items-center justify-center aspect-video shadow-sm relative overflow-hidden">
-                      <div className="absolute top-2 left-2 text-[8px] font-bold text-zinc-400">Preview</div>
+                      <div className="absolute top-2 left-2 text-[8px] font-bold text-muted-foreground">Preview</div>
                       <div
                         className="w-20 h-20 flex items-center justify-center"
                         dangerouslySetInnerHTML={{ __html: `<svg viewBox="0 0 100 100" width="100%" height="100%">${selectedElementHtml}</svg>` }}

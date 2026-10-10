@@ -89,10 +89,10 @@ export function BookletFoldingSimulatorTool() {
           <BookOpen className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground">
             {tTools('optionsTitle')}
           </h2>
-          <p className="text-xs text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             {tTools('uploadDescription')}
           </p>
         </div>
@@ -107,9 +107,9 @@ export function BookletFoldingSimulatorTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-neutral-800 border border-neutral-700">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-neutral-400" />
+              <BookOpen className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
             </div>
             <Button
@@ -126,7 +126,7 @@ export function BookletFoldingSimulatorTool() {
             {/* Control Panel */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <Label className="text-neutral-300 flex items-center gap-2" htmlFor="bookletfoldingsimulatortool-slider-1">
+                <Label className="text-foreground flex items-center gap-2" htmlFor="bookletfoldingsimulatortool-slider-1">
                   <Layers className="w-4 h-4 text-violet-400" />
                   {tTools('foldingMode')}
                 </Label>
@@ -149,8 +149,8 @@ export function BookletFoldingSimulatorTool() {
               </div>
 
               {/* Slider for Folding Progress */}
-              <div className="space-y-3 p-4 rounded-xl bg-neutral-800/40 border border-neutral-800">
-                <div className="flex items-center justify-between text-xs text-neutral-400">
+              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Printer className="w-3.5 h-3.5" />
                     {t('bookletFoldingSimulator.foldingDamping')}
@@ -164,7 +164,7 @@ export function BookletFoldingSimulatorTool() {
                   onValueChange={(values) => setFoldProgress(parseInt(String(values[0])))}
                   className="w-full cursor-pointer" id="bookletfoldingsimulatortool-slider-1" aria-label={tTools('foldingMode')}
                 />
-                <div className="flex justify-between text-[9px] text-neutral-500">
+                <div className="flex justify-between text-[9px] text-muted-foreground">
                   <span>{t('bookletFoldingSimulator.flatUnfold')}</span>
                   <span>{t('bookletFoldingSimulator.fullyFolded')}</span>
                 </div>
@@ -205,7 +205,7 @@ export function BookletFoldingSimulatorTool() {
             </div>
 
             {/* 3D Folding Paper View (WOW FACTOR) */}
-            <div className="relative h-64 md:h-auto min-h-[300px] flex items-center justify-center bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-xl overflow-hidden border border-neutral-800 shadow-inner">
+            <div className="relative h-64 md:h-auto min-h-[300px] flex items-center justify-center bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-xl overflow-hidden border border-border shadow-inner">
               <div className="absolute top-3 right-3 flex gap-2 z-10">
                 <Button variant="outline" size="sm"
                   onClick={() => setIs3DMode(!is3DMode)}

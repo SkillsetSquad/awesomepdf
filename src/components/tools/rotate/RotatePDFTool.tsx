@@ -645,7 +645,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         disabled={isProcessing || selectedPages.size === 0}
                         className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
                       >
-                        <UIRotateCcw className="w-5 h-5 text-zinc-500" aria-hidden="true" />
+                        <UIRotateCcw className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
                         {t('rotate.rotate180')}
                       </Button>
                       <Button
@@ -717,7 +717,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         onPointerUp={handleDialPointerUp}
                         onPointerCancel={handleDialPointerUp}
                         onWheel={handleDialWheel}
-                        className="relative w-36 h-36 rounded-full border-2 border-primary/25 dark:border-zinc-700/60 bg-card shadow-inner flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+                        className="relative w-36 h-36 rounded-full border-2 border-primary/25 bg-card shadow-inner flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
                         style={{ touchAction: 'none' }}
                       >
                         {/* Angular Scale marks background */}
@@ -756,7 +756,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         {/* Inner readout display */}
                         <div className="text-center z-10 pointer-events-none">
                           <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground">{t('rotate.correctionLabel')}</p>
-                          <p className="text-2xl font-black text-foreground tracking-tighter">
+                          <p className="text-2xl font-semibold text-foreground tracking-tighter">
                             {parseFloat(steplessAngle) > 0 ? `+${steplessAngle}` : steplessAngle}°
                           </p>
                           <p className="text-[9px] text-primary font-semibold">{t('rotate.wheelHelp')}</p>
@@ -925,7 +925,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
 
                         {/* Custom Fine-grain rotation degree angle Badge (Gold/Purple premium) */}
                         {isRotated && (
-                          <div className="absolute top-2.5 left-2.5 z-20 px-2 py-0.5 text-[10px] font-black tracking-wider text-amber-950 bg-amber-400 border border-amber-300 dark:text-amber-100 dark:bg-amber-900/80 dark:border-amber-800 rounded-md shadow-md">
+                          <div className="absolute top-2.5 left-2.5 z-20 px-2 py-0.5 text-[10px] font-semibold tracking-wider text-amber-950 bg-amber-400 border border-amber-300 dark:text-amber-100 dark:bg-amber-900/80 dark:border-amber-800 rounded-md shadow-md">
                             {preview.rotation > 0 ? `+${preview.rotation}` : preview.rotation}°
                           </div>
                         )}
@@ -956,7 +956,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
 
                         {/* Footer details & micro quick rotation buttons */}
                         <div className="w-full px-3 py-2.5 bg-card flex items-center justify-between">
-                          <span className="text-xs font-extrabold text-foreground">
+                          <span className="text-xs font-semibold text-foreground">
                             {t('rotate.pageNumber', { page: preview.pageNumber })}
                           </span>
 

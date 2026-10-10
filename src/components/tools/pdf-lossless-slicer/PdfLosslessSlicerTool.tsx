@@ -132,8 +132,8 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Scissors className="w-4 h-4 text-primary animate-pulse" />
                   {t('pdfLosslessSlicer.magnifierTitle')}
                 </span>
@@ -147,7 +147,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
                 <div 
                   ref={containerRef}
                   onMouseMove={handleCropDrag}
-                  className="relative w-80 h-56 bg-zinc-200 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 shadow-inner rounded-md overflow-hidden flex items-center justify-center"
+                  className="relative w-80 h-56 bg-muted border border-border shadow-inner rounded-md overflow-hidden flex items-center justify-center"
                 >
                   {/* Glowing Laser Rays mock decoration */}
                   {status === 'processing' && (
@@ -167,7 +167,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
                       top: `${(1 - sliceHeight) * 50}%`,
                     }}
                   >
-                    <span className="text-[9px] text-green-600 font-mono tracking-widest font-black">
+                    <span className="text-[9px] text-green-600 font-mono tracking-widest font-semibold">
                       LASER SLICER GRID
                     </span>
                   </div>
@@ -179,9 +179,9 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfLosslessSlicer.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfLosslessSlicer.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -197,7 +197,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex justify-between font-mono text-[9px] text-zinc-400">
+                    <div className="flex justify-between font-mono text-[9px] text-muted-foreground">
                       <span>{t('pdfLosslessSlicer.sliceWidth', { width: (sliceWidth * 100).toFixed(0) })}</span>
                       <span>{t('pdfLosslessSlicer.sliceHeight', { height: (sliceHeight * 100).toFixed(0) })}</span>
                     </div>
@@ -205,7 +205,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

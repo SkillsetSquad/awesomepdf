@@ -132,10 +132,10 @@ export function CertCryptorTool() {
           <LockKeyhole className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground">
             {tTools('optionsTitle')}
           </h2>
-          <p className="text-xs text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             {tTools('uploadDescription')}
           </p>
         </div>
@@ -150,9 +150,9 @@ export function CertCryptorTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-neutral-900 border border-neutral-850">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-neutral-400" />
+              <BookOpen className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
             </div>
             <Button
@@ -170,7 +170,7 @@ export function CertCryptorTool() {
             <div className="space-y-6">
               {/* Wax color selection */}
               <div className="space-y-3">
-                <Label className="text-neutral-300 flex items-center gap-1.5">
+                <Label className="text-foreground flex items-center gap-1.5">
                   <Stamp className="w-4 h-4 text-yellow-400" />
                   {tTools('waxColor')}{t('certCryptor.waxStyleSuffix')}
                 </Label>
@@ -192,9 +192,9 @@ export function CertCryptorTool() {
               </div>
 
               {/* Encryption settings */}
-              <div className="space-y-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+              <div className="space-y-4 p-4 rounded-xl bg-muted border border-border">
                 <div className="flex items-center justify-between">
-                  <Label className="text-neutral-300 flex items-center gap-1.5 cursor-pointer">
+                  <Label className="text-foreground flex items-center gap-1.5 cursor-pointer">
                     <Key className="w-4 h-4 text-yellow-400" />
                     {t('certCryptor.enableDoubleKey')}
                   </Label>
@@ -207,8 +207,8 @@ export function CertCryptorTool() {
                 </div>
 
                 {encryptWithCert && (
-                  <div className="space-y-2 pt-2 border-t border-neutral-800">
-                    <Label className="text-[10px] text-neutral-400" htmlFor="certcryptortool-field-1">{t('certCryptor.decryptPasswordHelp')}</Label>
+                  <div className="space-y-2 pt-2 border-t border-border">
+                    <Label className="text-[10px] text-muted-foreground" htmlFor="certcryptortool-field-1">{t('certCryptor.decryptPasswordHelp')}</Label>
                     <Input
                       type="password"
                       placeholder={t('certCryptor.passwordPlaceholder')}
@@ -257,7 +257,7 @@ export function CertCryptorTool() {
 
             {/* Right: PDF Page Preview with 3D Stamp Dropdown Ceremony (WOW FACTOR) */}
             <div className="space-y-3">
-              <div className="text-xs text-neutral-400 flex items-center justify-between">
+              <div className="text-xs text-muted-foreground flex items-center justify-between">
                 <span>{t('certCryptor.sealCoordinates', { x: sealPos.x, y: sealPos.y })}</span>
                 <span>{t('certCryptor.clickToReposition')}</span>
               </div>
@@ -265,17 +265,17 @@ export function CertCryptorTool() {
               <div
                 ref={previewRef}
                 onClick={handlePreviewClick}
-                className="relative w-[300px] h-[400px] bg-white rounded-lg mx-auto overflow-hidden shadow-2xl border border-neutral-750 flex flex-col justify-between p-6 select-none"
+                className="relative w-[300px] h-[400px] bg-white rounded-lg mx-auto overflow-hidden shadow-2xl border border-border flex flex-col justify-between p-6 select-none"
               >
                 {/* Mock document layout */}
                 <div className="space-y-2 pointer-events-none">
-                  <div className="h-4 w-2/3 bg-neutral-200 rounded" />
-                  <div className="h-3 w-5/6 bg-neutral-100 rounded" />
-                  <div className="h-3 w-full bg-neutral-100 rounded" />
-                  <div className="h-3 w-4/5 bg-neutral-100 rounded" />
+                  <div className="h-4 w-2/3 bg-muted rounded" />
+                  <div className="h-3 w-5/6 bg-muted rounded" />
+                  <div className="h-3 w-full bg-muted rounded" />
+                  <div className="h-3 w-4/5 bg-muted rounded" />
                 </div>
 
-                <div className="space-y-2 pointer-events-none mt-12 text-center text-[10px] text-neutral-400 border-t border-neutral-100 pt-10">
+                <div className="space-y-2 pointer-events-none mt-12 text-center text-[10px] text-muted-foreground border-t border-border pt-10">
                   <p className="font-serif italic font-bold">CERTIFICATE OF INTEGRITY & TRUST</p>
                   <p className="scale-90 opacity-75">All properties verified & digitally locked by Public Key Infrastructure.</p>
                 </div>

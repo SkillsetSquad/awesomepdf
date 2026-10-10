@@ -115,8 +115,8 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
             <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 flex items-center gap-1.5">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Columns className="w-4 h-4 text-primary animate-pulse" />
                   {t('pdfScratchpadCanvas.previewTitle')}
                 </span>
@@ -127,13 +127,13 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
 
               {/* 3D notebook unfolding grid margin mockup */}
               <div className="flex-1 flex items-center justify-center p-6 perspective-[1000px]">
-                <div className="flex items-center justify-center relative shadow-xl rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden min-h-[220px]">
+                <div className="flex items-center justify-center relative shadow-xl rounded-lg border border-border bg-background overflow-hidden min-h-[220px]">
                   {/* Left normal page content */}
-                  <div className="w-40 h-52 p-4 space-y-3 border-r border-zinc-200 dark:border-zinc-800">
-                    <div className="h-4 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded" />
-                    <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800/40 rounded" />
-                    <div className="h-2 w-5/6 bg-zinc-100 dark:bg-zinc-800/40 rounded" />
+                  <div className="w-40 h-52 p-4 space-y-3 border-r border-border">
+                    <div className="h-4 w-3/4 bg-muted rounded" />
+                    <div className="h-2 w-full bg-muted rounded" />
+                    <div className="h-2 w-full bg-muted rounded" />
+                    <div className="h-2 w-5/6 bg-muted rounded" />
                   </div>
 
                   {/* Right scratchpad fold margin */}
@@ -152,13 +152,13 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                       )}
                       {gridType === 'ruled' && (
                         <div className="absolute inset-0 flex flex-col justify-between py-4">
-                          <div className="border-b border-zinc-200 dark:border-zinc-800 h-0 w-full" />
-                          <div className="border-b border-zinc-200 dark:border-zinc-800 h-0 w-full" />
-                          <div className="border-b border-zinc-200 dark:border-zinc-800 h-0 w-full" />
+                          <div className="border-b border-border h-0 w-full" />
+                          <div className="border-b border-border h-0 w-full" />
+                          <div className="border-b border-border h-0 w-full" />
                         </div>
                       )}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-[8px] text-zinc-400 font-mono tracking-widest font-black uppercase">
+                        <span className="text-[8px] text-muted-foreground font-mono tracking-widest font-semibold uppercase">
                           {gridType} pad
                         </span>
                       </div>
@@ -172,9 +172,9 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
           <div className="lg:col-span-4 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
-                <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-2">
+                <div className="border-b border-border pb-3 flex items-center gap-2">
                   <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200">{t('pdfScratchpadCanvas.optionsTitle')}</h3>
+                  <h3 className="text-sm font-semibold text-foreground">{t('pdfScratchpadCanvas.optionsTitle')}</h3>
                 </div>
 
                 <div className="space-y-4 text-xs">
@@ -220,7 +220,7 @@ export function PdfScratchpadCanvasTool({ className = '' }: PdfScratchpadCanvasT
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-zinc-150 dark:border-zinc-800 mt-6">
+              <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}

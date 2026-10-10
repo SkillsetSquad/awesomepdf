@@ -413,7 +413,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     </Button>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-1">Click to copy, then paste into any field</p>
+                <p className="text-xs text-muted-foreground mt-1">Click to copy, then paste into any field</p>
               </div>
 
               {/* Style Options */}
@@ -468,7 +468,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                   className="w-full"
                   disabled={isProcessing} id="headerfootertool-field-10" aria-label={"Page Range"}
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Use "all" for all pages, or specify ranges like "1-5, 8, 10-12"
                 </p>
               </div>
@@ -517,7 +517,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                 </div>
               </div>
 
-              <div className="bg-gray-100 rounded-md p-4 flex justify-center">
+              <div className="bg-muted rounded-md p-4 flex justify-center">
                 <canvas
                   ref={previewCanvasRef}
                   className="shadow-lg bg-white max-w-full h-auto"
@@ -533,7 +533,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                     Header/Footer will be added to this page
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 text-sm text-gray-500">
+                  <span className="inline-flex items-center gap-1 text-sm text-muted-foreground">
                     <UIX className="w-4 h-4" aria-hidden="true" />
                     This page will be skipped
                   </span>
@@ -541,7 +541,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
               </div>
 
               {!hasContent && (
-                <p className="text-sm text-center text-gray-500 mt-4">
+                <p className="text-sm text-center text-muted-foreground mt-4">
                   {tTools('headerFooter.previewHint') || 'Enter header or footer text to see preview'}
                 </p>
               )}

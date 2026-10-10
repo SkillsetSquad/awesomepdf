@@ -364,13 +364,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                                 onDragOver={(e) => handleDragOver(e, index)}
                                 onDrop={(e) => handleDrop(e, index)}
                                 onDragEnd={handleDragEnd}
-                                className={`
-                  relative group rounded-md border overflow-hidden
-                  transition-all duration-200
-                  ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}
-                  ${dragOverIndex === index ? 'border-primary ring-2 ring-primary/20' : 'border-border'}
-                  ${!isProcessing ? 'cursor-grab hover:border-primary/50' : ''}
-                `}
+                                className={` relative group rounded-md border overflow-hidden transition-all duration-200 ${draggedIndex === index ? 'opacity-50 border-dashed' : ''}  ${dragOverIndex === index ? 'border-primary ring-2 ring-primary/20' : 'border-border'}  ${!isProcessing ? 'cursor-grab hover:border-primary/50' : ''}  `}
                             >
                                 {/* File Icon/Preview */}
                                 <div className="aspect-square bg-muted/30 flex items-center justify-center p-4">
@@ -398,7 +392,7 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                                 </Button>
 
                                 {/* File Info */}
-                                <div className="p-2 bg-white">
+                                <div className="p-2 bg-background">
                                     <p className="text-xs font-medium text-foreground truncate">
                                         {file.file.name}
                                     </p>

@@ -122,7 +122,7 @@ export function FormLogicDesignerTool() {
         label: (
           <div>
             <div className="font-bold text-violet-400 text-xs truncate">{field.name}</div>
-            <div className="text-[9px] text-neutral-400 mt-0.5">{field.type}</div>
+            <div className="text-[9px] text-muted-foreground mt-0.5">{field.type}</div>
           </div>
         )
       },
@@ -203,10 +203,10 @@ export function FormLogicDesignerTool() {
           <Workflow className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground">
             {tTools('optionsTitle')}
           </h2>
-          <p className="text-xs text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             {tTools('uploadDescription')}
           </p>
         </div>
@@ -221,9 +221,9 @@ export function FormLogicDesignerTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-neutral-900 border border-neutral-850">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
             <div className="flex items-center gap-3">
-              <Workflow className="w-5 h-5 text-neutral-400" />
+              <Workflow className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
               <span className="text-[10px] bg-violet-500/20 text-violet-300 px-2 py-0.5 rounded-full border border-violet-500/30">
                 {t('formLogicDesigner.fieldsReady', { count: detectedFields.length })}
@@ -242,12 +242,12 @@ export function FormLogicDesignerTool() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Control Panel / Instructions */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="space-y-3 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
-                <h3 className="text-xs font-bold text-neutral-300 flex items-center gap-1.5">
+              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+                <h3 className="text-xs font-bold text-foreground flex items-center gap-1.5">
                   <Settings2 className="w-3.5 h-3.5 text-violet-400" />
                   {t('formLogicDesigner.logicIntroTitle')}
                 </h3>
-                <ul className="text-[10px] text-neutral-400 space-y-2 list-disc pl-4 leading-relaxed">
+                <ul className="text-[10px] text-muted-foreground space-y-2 list-disc pl-4 leading-relaxed">
                   <li>{t('formLogicDesigner.logicIntro1')}</li>
                   <li>{t('formLogicDesigner.logicIntro2')}</li>
                   <li>{t('formLogicDesigner.logicIntro3')}</li>
@@ -290,8 +290,8 @@ export function FormLogicDesignerTool() {
             </div>
 
             {/* React Flow Editor (WOW FACTOR CANVAS) */}
-            <div className="lg:col-span-3 h-[400px] border border-neutral-800 rounded-xl overflow-hidden relative bg-neutral-950">
-              <div className="absolute top-3 left-3 bg-neutral-900/80 backdrop-blur border border-neutral-800 text-[10px] text-neutral-400 px-3 py-1 rounded z-15 font-mono shadow-md">
+            <div className="lg:col-span-3 h-[400px] border border-border rounded-xl overflow-hidden relative bg-muted">
+              <div className="absolute top-3 left-3 bg-muted border border-border text-[10px] text-muted-foreground px-3 py-1 rounded z-15 font-mono shadow-md">
                 {tTools('canvasTitle')}
               </div>
               <ReactFlow

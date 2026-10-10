@@ -370,26 +370,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                         {/* Preview Content */}
                         <div className="p-6 max-h-[600px] overflow-y-auto bg-background">
                             <TabsContent value="preview"><div
-                                    className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none
-                                    prose-headings:font-bold prose-headings:tracking-tight
-                                    prose-h1:text-3xl prose-h1:mb-4 prose-h1:mt-6
-                                    prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-5
-                                    prose-h3:text-xl prose-h3:mb-2 prose-h3:mt-4
-                                    prose-p:leading-relaxed prose-p:mb-4
-                                    prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-                                    prose-strong:font-semibold prose-strong:text-foreground
-                                    prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
-                                    prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto
-                                    prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
-                                    prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4
-                                    prose-li:mb-1
-                                    prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic
-                                    prose-img:rounded-lg prose-img:shadow-md
-                                    prose-table:border-collapse prose-table:w-full
-                                    prose-th:bg-gray-100 prose-th:p-2 prose-th:border prose-th:border-gray-300
-                                    prose-td:p-2 prose-td:border prose-td:border-gray-300
-                                    dark:prose-code:bg-gray-800 dark:prose-code:text-gray-200
-                                    dark:prose-th:bg-gray-800 dark:prose-td:border-gray-700 dark:prose-th:border-gray-700"
+                                    className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-3xl prose-h1:mb-4 prose-h1:mt-6 prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-5 prose-h3:text-xl prose-h3:mb-2 prose-h3:mt-4 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none prose-pre:bg-muted prose-pre:text-foreground prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4 prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4 prose-li:mb-1 prose-blockquote:border-l-4 prose-blockquote:border-border prose-blockquote:pl-4 prose-blockquote:italic prose-img:rounded-lg prose-img:shadow-md prose-table:border-collapse prose-table:w-full prose-th:bg-muted prose-th:p-2 prose-th:border prose-th:border-border prose-td:p-2 prose-td:border prose-td:border-border"
                                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(htmlContent) }}
                                 /></TabsContent>
 <TabsContent value="source"><pre className="p-4 rounded-lg bg-muted text-foreground overflow-x-auto text-sm font-mono whitespace-pre-wrap break-words">
