@@ -614,22 +614,24 @@
       "sizeInfo": "Original: {size} MB • Cleaned obsolete fragments and metadata streams locally."
     },
     "deepSanitize": {
-      "uploadLabel": "Upload PDF for Safe Sanitization",
-      "uploadDescription": "Drag & drop contracts, confidential files, or government records. Cleans PieceInfo and rebuilds cross-reference tables.",
-      "prechecking": "Performing deep structural pre-check...",
-      "optionsTitle": "Sanitization Scrub Options",
+      "uploadLabel": "Select a PDF",
+      "uploadDescription": "Choose a PDF and the document data to remove.",
+      "prechecking": "Reading PDF information…",
+      "optionsTitle": "Data removal options",
       "clearXmp": "Erase XMP XML metadata and document descriptions",
       "clearXmpDesc": "Title, Author, Producer, and historical edit summary metadata",
       "clearPieceInfo": "Clean PieceInfo private editor properties",
-      "clearPieceInfoDesc": "Residual markup and edit records left by Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Removes private editor data and document structure tags used for accessibility.",
       "clearOcProperties": "Strip OCProperties optional visible layers",
       "clearOcPropertiesDesc": "Often holds invisible dynamic watermarks used for leak tracking",
       "clearAnnotations": "Wipe all interactive markups and links (Caution)",
       "clearAnnotationsDesc": "Permanently deletes hyperlinks, comment boxes, and stroke annotations",
-      "processButton": "Execute Deep Sanitization",
-      "riskReport": "Discovered Security Risk Report:",
-      "successTitle": "Deep Sanitization Complete!",
-      "successDesc": "Wiped all XMP metadata, edit records, PieceInfo, and optional visible content layers (OCG). The xref table was fully reconstructed."
+      "processButton": "Remove selected data",
+      "riskReport": "Processing report",
+      "successTitle": "PDF is ready",
+      "successDesc": "Download the updated PDF. The report lists the changes made.",
+      "structureTags": "PDF structure tags",
+      "rewrittenDocument": "PDF rewritten"
     },
     "editPdf": {
       "saveBtn": "Save",

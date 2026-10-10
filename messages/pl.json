@@ -614,22 +614,24 @@
       "sizeInfo": "Oryginał: {size} MB • Lokalnie wyczyszczono przestarzałe fragmenty i strumienie metadanych."
     },
     "deepSanitize": {
-      "uploadLabel": "Prześlij plik PDF do bezpiecznego oczyszczenia",
-      "uploadDescription": "Przeciągnij i upuść umowy, poufne pliki lub dokumenty rządowe. Czyści PieceInfo i odbudowuje tabele referencji.",
-      "prechecking": "Przeprowadzanie głębokiej kontroli wstępnej konstrukcji...",
-      "optionsTitle": "Opcje głębokiego oczyszczania",
+      "uploadLabel": "Wybierz PDF",
+      "uploadDescription": "Wybierz PDF i dane dokumentu do usunięcia.",
+      "prechecking": "Odczytywanie informacji PDF…",
+      "optionsTitle": "Opcje usuwania danych",
       "clearXmp": "Usuń metadane XMP XML i opisy dokumentów",
       "clearXmpDesc": "Tytuł, autor, producent i metadane podsumowujące zmiany historyczne",
       "clearPieceInfo": "Wyczyść właściwości prywatnego edytora PieceInfo",
-      "clearPieceInfoDesc": "Pozostałe zapisy dotyczące znaczników i edycji pozostawione przez program Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Usuwa prywatne dane edytora i znaczniki struktury dokumentu używane do zapewnienia dostępności.",
       "clearOcProperties": "Usuń opcjonalne widoczne warstwy OCProperties",
       "clearOcPropertiesDesc": "Często zawiera niewidoczne dynamiczne znaki wodne używane do śledzenia wycieków",
       "clearAnnotations": "Usuń wszystkie interaktywne znaczniki i linki (Uwaga)",
       "clearAnnotationsDesc": "Trwale usuwa hiperłącza, pola komentarzy i adnotacje obrysu",
-      "processButton": "Wykonaj głębokie oczyszczanie",
-      "riskReport": "Raport dotyczący odkrytego zagrożenia bezpieczeństwa:",
-      "successTitle": "Głębokie oczyszczanie zakończone!",
-      "successDesc": "Usunięto metadane XMP, historię edycji, PieceInfo i opcjonalne warstwy treści (OCG). Tabela referencji została całkowicie odbudowana."
+      "processButton": "Usuń wybrane dane",
+      "riskReport": "Raport przetwarzania",
+      "successTitle": "PDF jest gotowy",
+      "successDesc": "Pobierz zaktualizowany PDF. Raport zawiera listę wprowadzonych zmian.",
+      "structureTags": "Znaczniki struktury PDF",
+      "rewrittenDocument": "PDF zapisany ponownie"
     },
     "editPdf": {
       "saveBtn": "Zapisz",

@@ -614,22 +614,24 @@
       "sizeInfo": "Tamaño original: {size} MB • Se limpiaron localmente los fragmentos obsoletos y los flujos de metadatos."
     },
     "deepSanitize": {
-      "uploadLabel": "Subir PDF para una desinfección segura",
-      "uploadDescription": "Arrastre y suelte contratos, archivos confidenciales o registros gubernamentales. Limpia PieceInfo y reconstruye las tablas de referencias cruzadas.",
-      "prechecking": "Realizando verificación previa estructural profunda...",
-      "optionsTitle": "Opciones de limpieza de desinfección",
+      "uploadLabel": "Seleccionar un PDF",
+      "uploadDescription": "Elige un PDF y los datos del documento que deseas eliminar.",
+      "prechecking": "Leyendo información del PDF…",
+      "optionsTitle": "Opciones de eliminación de datos",
       "clearXmp": "Borrar metadatos XMP XML y descripciones de documentos",
       "clearXmpDesc": "Metadatos de título, autor, productor y resumen de edición histórica",
       "clearPieceInfo": "Limpiar propiedades de editor privado PieceInfo",
-      "clearPieceInfoDesc": "Marcas residuales y registros de edición de Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Elimina datos privados del editor y etiquetas de estructura usadas para la accesibilidad.",
       "clearOcProperties": "Eliminar capas visibles opcionales OCProperties",
       "clearOcPropertiesDesc": "A menudo contiene marcas de agua dinámicas invisibles para rastrear filtraciones",
       "clearAnnotations": "Borrar todas las marcas e hipervínculos interactivos (Precaución)",
       "clearAnnotationsDesc": "Elimina permanentemente hipervínculos, cuadros de comentario y anotaciones de trazo",
-      "processButton": "Ejecutar desinfección profunda",
-      "riskReport": "Informe de riesgos de seguridad descubiertos:",
-      "successTitle": "¡Desinfección profunda completa!",
-      "successDesc": "Se eliminaron todos los metadatos XMP, registros de edición, PieceInfo y capas de contenido visible opcionales (OCG). La tabla xref fue completamente reconstruida."
+      "processButton": "Eliminar datos seleccionados",
+      "riskReport": "Informe de procesamiento",
+      "successTitle": "El PDF está listo",
+      "successDesc": "Descarga el PDF actualizado. El informe enumera los cambios realizados.",
+      "structureTags": "Etiquetas de estructura PDF",
+      "rewrittenDocument": "PDF reescrito"
     },
     "editPdf": {
       "saveBtn": "Guardar",

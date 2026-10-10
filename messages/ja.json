@@ -614,22 +614,24 @@
       "sizeInfo": "オリジナル: {size} MB • ローカルで不要なフラグメントとメタデータストリームをクリーンアップしました。"
     },
     "deepSanitize": {
-      "uploadLabel": "安全なクリーンアップ（サニタイズ）用PDFをアップロード",
-      "uploadDescription": "契約書、機密ファイル、または公的文書をドラッグ＆ドロップします。PieceInfo をクリーンアップし、相互参照テーブルを再構築します。",
-      "prechecking": "詳細な構造の事前チェックを実行中...",
-      "optionsTitle": "サニタイズクリーンアップオプション",
+      "uploadLabel": "PDFを選択",
+      "uploadDescription": "PDFと削除する文書データを選択してください。",
+      "prechecking": "PDF情報を読み取り中…",
+      "optionsTitle": "データ削除の設定",
       "clearXmp": "XMP XMLメタデータとドキュメント説明を消去",
       "clearXmpDesc": "タイトル、作成者、プロデューサー、編集履歴のメタデータ",
       "clearPieceInfo": "PieceInfoプライベートエディタプロパティを消去",
-      "clearPieceInfoDesc": "Adobe AcrobatやInDesignによって残されたマークアップや編集記録",
+      "clearPieceInfoDesc": "編集ソフトの内部データと、アクセシビリティに使用される文書構造タグを削除します。",
       "clearOcProperties": "OCPropertiesオプショナル表示レイヤーを削除",
       "clearOcPropertiesDesc": "リーク追跡用の非表示の動的透かしが保存されていることが多いです",
       "clearAnnotations": "インタラクティブなマークアップとリンクをすべて消去 (注意)",
       "clearAnnotationsDesc": "ハイパーリンク、コメントボックス、筆跡注釈を完全に削除します",
-      "processButton": "詳細サニタイズを実行",
-      "riskReport": "検出されたセキュリティリスクレポート:",
-      "successTitle": "詳細サニタイズが完了しました！",
-      "successDesc": "すべてのXMPメタデータ、編集記録、PieceInfo、およびオプション表示レイヤー(OCG)を消去しました。クロスリファレンス表(xref)は完全に再構成されました。"
+      "processButton": "選択したデータを削除",
+      "riskReport": "処理レポート",
+      "successTitle": "PDFの準備ができました",
+      "successDesc": "更新されたPDFをダウンロードしてください。レポートには実施した変更が表示されます。",
+      "structureTags": "PDF構造タグ",
+      "rewrittenDocument": "PDFを再書き込み"
     },
     "editPdf": {
       "saveBtn": "保存",

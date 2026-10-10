@@ -614,22 +614,24 @@
       "sizeInfo": "Dimensione originale: {size} MB • Pulizia locale dei frammenti obsoleti e dei flussi di metadati completata."
     },
     "deepSanitize": {
-      "uploadLabel": "Carica PDF per una rimozione sicura dei metadati",
-      "uploadDescription": "Trascina e rilascia contratti, file riservati o documenti governativi. Pulisce PieceInfo e ricostruisce le tabelle di riferimento incrociato.",
-      "prechecking": "Esecuzione del controllo preventivo strutturale profondo...",
-      "optionsTitle": "Opzioni per la rimozione sicura dei metadati",
+      "uploadLabel": "Seleziona un PDF",
+      "uploadDescription": "Scegli un PDF e i dati del documento da rimuovere.",
+      "prechecking": "Lettura delle informazioni PDF…",
+      "optionsTitle": "Opzioni di rimozione dei dati",
       "clearXmp": "Cancella metadati XMP XML e descrizioni dei documenti",
       "clearXmpDesc": "Titolo, autore, produttore e cronologia delle modifiche",
       "clearPieceInfo": "Pulisci proprietà dell'editor privato PieceInfo",
-      "clearPieceInfoDesc": "Markup residui e record di modifica inseriti da Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Rimuove i dati privati dell’editor e i tag di struttura usati per l’accessibilità.",
       "clearOcProperties": "Rimuovi livelli visibili opzionali OCProperties",
       "clearOcPropertiesDesc": "Spesso contiene filigrane dinamiche invisibili per la tracciabilità",
       "clearAnnotations": "Cancella tutti i markup e i link interattivi (Attenzione)",
       "clearAnnotationsDesc": "Elimina permanentemente collegamenti, caselle di testo e annotazioni a mano",
-      "processButton": "Esegui rimozione sicura profonda",
-      "riskReport": "Rapporto sui rischi per la sicurezza rilevati:",
-      "successTitle": "Rimozione sicura profonda completata!",
-      "successDesc": "Cancellati tutti i metadati XMP, record di modifica, PieceInfo e livelli visibili opzionali (OCG). La tabella xref è stata completamente ricostruita."
+      "processButton": "Rimuovi i dati selezionati",
+      "riskReport": "Rapporto di elaborazione",
+      "successTitle": "Il PDF è pronto",
+      "successDesc": "Scarica il PDF aggiornato. Il rapporto elenca le modifiche apportate.",
+      "structureTags": "Tag di struttura PDF",
+      "rewrittenDocument": "PDF riscritto"
     },
     "editPdf": {
       "saveBtn": "Salva",

@@ -614,22 +614,24 @@
       "sizeInfo": "Tamanho original: {size} MB • Fragmentos obsoletos e fluxos de metadados limpos localmente."
     },
     "deepSanitize": {
-      "uploadLabel": "Enviar PDF para higienização segura",
-      "uploadDescription": "Arraste e solte contratos, arquivos confidenciais ou registros governamentais. Limpa PieceInfo e reconstrói as tabelas de referência cruzada.",
-      "prechecking": "Realizando pré-verificação estrutural profunda...",
-      "optionsTitle": "Opções de limpeza de higienização",
+      "uploadLabel": "Selecionar um PDF",
+      "uploadDescription": "Escolha um PDF e os dados do documento a remover.",
+      "prechecking": "A ler as informações do PDF…",
+      "optionsTitle": "Opções de remoção de dados",
       "clearXmp": "Apagar metadados XMP XML e descrições do documento",
       "clearXmpDesc": "Metadados de título, autor, produtor e histórico de edição",
       "clearPieceInfo": "Limpar propriedades privadas do editor PieceInfo",
-      "clearPieceInfoDesc": "Marcações residuais e registros de edição deixados pelo Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Remove dados privados do editor e etiquetas de estrutura usadas para acessibilidade.",
       "clearOcProperties": "Remover camadas visíveis opcionais OCProperties",
       "clearOcPropertiesDesc": "Frequentemente contém marcas d'água dinâmicas invisíveis para rastreamento de vazamentos",
       "clearAnnotations": "Apagar todas as marcações e links interativos (Atenção)",
       "clearAnnotationsDesc": "Exclui permanentemente hiperlinks, caixas de comentários e anotações manuscritas",
-      "processButton": "Executar higienização profunda",
-      "riskReport": "Relatório de riscos de segurança descobertos:",
-      "successTitle": "Higienização profunda concluída!",
-      "successDesc": "Apagados todos os metadados XMP, registros de edição, PieceInfo e camadas opcionais (OCG). A tabela xref foi completamente reconstruída."
+      "processButton": "Remover dados selecionados",
+      "riskReport": "Relatório de processamento",
+      "successTitle": "O PDF está pronto",
+      "successDesc": "Transfira o PDF atualizado. O relatório lista as alterações efetuadas.",
+      "structureTags": "Etiquetas de estrutura PDF",
+      "rewrittenDocument": "PDF reescrito"
     },
     "editPdf": {
       "saveBtn": "Salvar",

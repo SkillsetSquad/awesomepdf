@@ -614,22 +614,24 @@
       "sizeInfo": "Dung lượng gốc: {size} MB • Đã làm sạch các phân mảnh lỗi thời và luồng siêu dữ liệu dư thừa trên máy khách."
     },
     "deepSanitize": {
-      "uploadLabel": "Tải lên tài liệu PDF để làm sạch an toàn",
-      "uploadDescription": "Kéo & thả hợp đồng, tài liệu mật hoặc hồ sơ chính phủ. Làm sạch PieceInfo và tạo lại bảng tham chiếu chéo (xref).",
-      "prechecking": "Đang thực hiện kiểm tra trước cấu trúc chuyên sâu...",
-      "optionsTitle": "Tùy chọn làm sạch chuyên sâu",
+      "uploadLabel": "Chọn PDF",
+      "uploadDescription": "Chọn PDF và dữ liệu tài liệu cần xóa.",
+      "prechecking": "Đang đọc thông tin PDF…",
+      "optionsTitle": "Tùy chọn xóa dữ liệu",
       "clearXmp": "Xóa siêu dữ liệu XMP XML và mô tả tài liệu",
       "clearXmpDesc": "Siêu dữ liệu về tiêu đề, tác giả, nhà sản xuất và lịch sử sửa",
       "clearPieceInfo": "Làm sạch thuộc tính biên tập riêng PieceInfo",
-      "clearPieceInfoDesc": "Dữ liệu đánh dấu và lịch sử sửa đổi của Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Xóa dữ liệu riêng của trình chỉnh sửa và thẻ cấu trúc tài liệu dùng cho khả năng tiếp cận.",
       "clearOcProperties": "Loại bỏ lớp hiển thị tùy chọn OCProperties",
       "clearOcPropertiesDesc": "Thường chứa đóng dấu động vô hình dùng để truy vết rò rỉ",
       "clearAnnotations": "Xóa toàn bộ đánh dấu tương tác và liên kết (Chú ý)",
       "clearAnnotationsDesc": "Sẽ xóa vĩnh viễn siêu liên kết, khung bình luận và vẽ chú thích",
-      "processButton": "Thực hiện làm sạch bảo mật chuyên sâu",
-      "riskReport": "Báo cáo rủi ro bảo mật phát hiện:",
-      "successTitle": "Hoàn tất làm sạch chuyên sâu!",
-      "successDesc": "Đã xóa toàn bộ siêu dữ liệu XMP, lịch sử sửa, PieceInfo và các lớp hiển thị tùy chọn OCG. Bảng tham chiếu chéo xref đã được dựng lại."
+      "processButton": "Xóa dữ liệu đã chọn",
+      "riskReport": "Báo cáo xử lý",
+      "successTitle": "PDF đã sẵn sàng",
+      "successDesc": "Tải xuống PDF đã cập nhật. Báo cáo liệt kê các thay đổi đã thực hiện.",
+      "structureTags": "Thẻ cấu trúc PDF",
+      "rewrittenDocument": "PDF đã được viết lại"
     },
     "editPdf": {
       "saveBtn": "Lưu lại",

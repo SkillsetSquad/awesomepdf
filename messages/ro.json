@@ -614,22 +614,24 @@
       "sizeInfo": "Dimensiune inițială: {size} MB • S-au curățat fragmentele învechite și fluxurile de metadate local."
     },
     "deepSanitize": {
-      "uploadLabel": "Încărcați PDF-ul pentru dezinfectare sigură",
-      "uploadDescription": "Trageți și plasați contracte, fișiere confidențiale sau înregistrări guvernamentale. Curăță PieceInfo și reconstruiește tabelele de referință încrucișată.",
-      "prechecking": "Se efectuează preverificarea structurală profundă...",
-      "optionsTitle": "Opțiuni de curățare prin dezinfectare",
+      "uploadLabel": "Selectează un PDF",
+      "uploadDescription": "Alege un PDF și datele documentului de eliminat.",
+      "prechecking": "Se citesc informațiile PDF…",
+      "optionsTitle": "Opțiuni de eliminare a datelor",
       "clearXmp": "Ștergeți metadatele XMP XML și descrierile documentului",
       "clearXmpDesc": "Metadate despre titlu, autor, producător și istoric modificări",
       "clearPieceInfo": "Curățați proprietățile de editor privat PieceInfo",
-      "clearPieceInfoDesc": "Marcaje reziduale și înregistrări de editare lăsate de Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Elimină datele private ale editorului și etichetele de structură folosite pentru accesibilitate.",
       "clearOcProperties": "Eliminați straturile opționale vizibile OCProperties",
       "clearOcPropertiesDesc": "Adesea conține filigrane dinamice invizibile folosite pentru urmărirea scurgerilor",
       "clearAnnotations": "Ștergeți toate marcajele și linkurile interactive (Atenție)",
       "clearAnnotationsDesc": "Șterge definitiv hyperlinkurile, casetele de comentarii și adnotările de desen",
-      "processButton": "Execută dezinfectarea profundă",
-      "riskReport": "Raport privind riscurile de securitate descoperite:",
-      "successTitle": "Dezinfectarea profundă s-a finalizat!",
-      "successDesc": "S-au șters toate metadatele XMP, înregistrările de editare, PieceInfo și straturile vizibile opționale (OCG). Tabelul xref a fost reconstruit complet."
+      "processButton": "Elimină datele selectate",
+      "riskReport": "Raport de procesare",
+      "successTitle": "PDF-ul este gata",
+      "successDesc": "Descarcă PDF-ul actualizat. Raportul listează modificările efectuate.",
+      "structureTags": "Etichete de structură PDF",
+      "rewrittenDocument": "PDF rescris"
     },
     "editPdf": {
       "saveBtn": "Salvați",

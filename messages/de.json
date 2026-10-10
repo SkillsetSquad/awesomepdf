@@ -614,22 +614,24 @@
       "sizeInfo": "Original: {size} MB • Veraltete Fragmente und Metadatenströme wurden lokal bereinigt."
     },
     "deepSanitize": {
-      "uploadLabel": "PDF zur sicheren Bereinigung hochladen",
-      "uploadDescription": "Verträge, vertrauliche Dateien oder Behördenakten hierher ziehen. Bereinigt PieceInfo und baut Querverweistabellen neu auf.",
-      "prechecking": "Führe strukturelle Vorprüfung durch...",
-      "optionsTitle": "Bereinigungsoptionen",
+      "uploadLabel": "PDF auswählen",
+      "uploadDescription": "Wählen Sie eine PDF und die zu entfernenden Dokumentdaten aus.",
+      "prechecking": "PDF-Informationen werden gelesen…",
+      "optionsTitle": "Optionen zum Entfernen von Daten",
       "clearXmp": "XMP-XML-Metadaten und Dokumentbeschreibungen löschen",
       "clearXmpDesc": "Titel, Autor, Produzent und Metadaten des Bearbeitungsverlaufs",
       "clearPieceInfo": "Private PieceInfo-Editoreigenschaften bereinigen",
-      "clearPieceInfoDesc": "Verbleibende Markup- und Bearbeitungseinträge von Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Entfernt private Editordaten und Struktur-Tags, die für Barrierefreiheit verwendet werden.",
       "clearOcProperties": "Optionale sichtbare OCProperties-Ebenen entfernen",
       "clearOcPropertiesDesc": "Enthält oft unsichtbare dynamische Wasserzeichen zur Leckortung",
       "clearAnnotations": "Alle interaktiven Markups und Links löschen (Vorsicht)",
       "clearAnnotationsDesc": "Löscht Hyperlinks, Kommentarfelder und handschriftliche Anmerkungen dauerhaft",
-      "processButton": "Tiefenbereinigung ausführen",
-      "riskReport": "Sicherheitsrisikobericht:",
-      "successTitle": "Tiefenbereinigung abgeschlossen!",
-      "successDesc": "Alle XMP-Metadaten, Bearbeitungseinträge, PieceInfo und optionalen sichtbaren Inhaltsebenen (OCG) gelöscht. Die xref-Tabelle wurde vollständig rekonstruiert."
+      "processButton": "Ausgewählte Daten entfernen",
+      "riskReport": "Verarbeitungsbericht",
+      "successTitle": "Die PDF ist bereit",
+      "successDesc": "Laden Sie die aktualisierte PDF herunter. Der Bericht zeigt die vorgenommenen Änderungen.",
+      "structureTags": "PDF-Struktur-Tags",
+      "rewrittenDocument": "PDF neu geschrieben"
     },
     "editPdf": {
       "saveBtn": "Speichern",

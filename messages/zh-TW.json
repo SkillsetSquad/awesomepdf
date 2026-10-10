@@ -614,22 +614,24 @@
       "sizeInfo": "原始大小: {size} MB • 成功在本地清理了非必要廢棄片段和無用元数据流。"
     },
     "deepSanitize": {
-      "uploadLabel": "上傳需要脫敏防溯源的 PDF 文檔",
-      "uploadDescription": "拖放商业合同、机密文件或政府底档。系統将扫描可选图层、PieceInfo 历史并强制重构 xref 树。",
-      "prechecking": "深度結構预检中...",
-      "optionsTitle": "深度擦除控制选项",
+      "uploadLabel": "選擇 PDF",
+      "uploadDescription": "選擇 PDF 及要刪除的文件資料。",
+      "prechecking": "正在讀取 PDF 資訊…",
+      "optionsTitle": "資料刪除選項",
       "clearXmp": "抹除 XMP XML 元数据与常规描述",
       "clearXmpDesc": "Title, Author, Producer, 各种修改历史摘要流",
       "clearPieceInfo": "清理 PieceInfo 专属编辑器私有属性",
-      "clearPieceInfoDesc": "Adobe Acrobat 等软件留存的页面节点修改痕迹",
+      "clearPieceInfoDesc": "刪除編輯器私有資料及用於無障礙存取的文件結構標籤。",
       "clearOcProperties": "剥离 OCProperties 可选内容水印图层",
       "clearOcPropertiesDesc": "很多公司的防泄密动态不可见水印的底层承载层",
       "clearAnnotations": "彻底擦除所有交互式批注与外链 (慎用)",
       "clearAnnotationsDesc": "将删除文檔中的可点击外链、手写文字高亮和备注批注",
-      "processButton": "執行深度净化脫敏",
-      "riskReport": "扫描发现的安全風險排查报告:",
-      "successTitle": "深度元数据净化完成！",
-      "successDesc": "已将原始文檔的 XMP 元数据、描述字典、PieceInfo 缓冲、可选内容图层（OCG）全部剔除，并完成 xref 的物理重构。旧版本修改残留已不具恢复可能。"
+      "processButton": "刪除所選資料",
+      "riskReport": "處理報告",
+      "successTitle": "PDF 已準備好",
+      "successDesc": "下載更新後的 PDF。報告列出了已執行的變更。",
+      "structureTags": "PDF 結構標籤",
+      "rewrittenDocument": "已重新寫入 PDF"
     },
     "editPdf": {
       "saveBtn": "保存",

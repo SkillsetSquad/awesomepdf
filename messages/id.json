@@ -614,22 +614,24 @@
       "sizeInfo": "Ukuran Asli: {size} MB • Berhasil membersihkan fragmen usang dan aliran metadata di penyimpanan lokal."
     },
     "deepSanitize": {
-      "uploadLabel": "Unggah PDF untuk Sanitasi Aman",
-      "uploadDescription": "Seret & lepas kontrak, file rahasia, atau catatan pemerintah. Membersihkan PieceInfo dan membangun kembali tabel referensi silang.",
-      "prechecking": "Melakukan pra-pemeriksaan struktural mendalam...",
-      "optionsTitle": "Opsi Pembersihan Sanitasi",
+      "uploadLabel": "Pilih PDF",
+      "uploadDescription": "Pilih PDF dan data dokumen yang akan dihapus.",
+      "prechecking": "Membaca informasi PDF…",
+      "optionsTitle": "Opsi penghapusan data",
       "clearXmp": "Hapus metadata XMP XML dan deskripsi dokumen",
       "clearXmpDesc": "Metadata Judul, Penulis, Produsen, dan ringkasan riwayat edit",
       "clearPieceInfo": "Bersihkan properti editor pribadi PieceInfo",
-      "clearPieceInfoDesc": "Markup sisa dan catatan edit yang ditinggalkan Adobe Acrobat/InDesign",
+      "clearPieceInfoDesc": "Menghapus data editor pribadi dan tag struktur dokumen yang digunakan untuk aksesibilitas.",
       "clearOcProperties": "Hapus lapisan terlihat opsional OCProperties",
       "clearOcPropertiesDesc": "Sering kali menyimpan watermark dinamis tidak terlihat untuk melacak kebocoran",
       "clearAnnotations": "Hapus semua markup dan tautan interaktif (Perhatian)",
       "clearAnnotationsDesc": "Menghapus permanen tautan, kotak komentar, dan anotasi goresan",
-      "processButton": "Jalankan Sanitasi Mendalam",
-      "riskReport": "Laporan Risiko Keamanan yang Ditemukan:",
-      "successTitle": "Sanitasi Mendalam Selesai!",
-      "successDesc": "Menghapus semua metadata XMP, catatan edit, PieceInfo, dan lapisan konten opsional (OCG). Tabel xref sepenuhnya dibangun kembali."
+      "processButton": "Hapus data yang dipilih",
+      "riskReport": "Laporan pemrosesan",
+      "successTitle": "PDF siap",
+      "successDesc": "Unduh PDF yang diperbarui. Laporan mencantumkan perubahan yang dilakukan.",
+      "structureTags": "Tag struktur PDF",
+      "rewrittenDocument": "PDF ditulis ulang"
     },
     "editPdf": {
       "saveBtn": "Simpan",
