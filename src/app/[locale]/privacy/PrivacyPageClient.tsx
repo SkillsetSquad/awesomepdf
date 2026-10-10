@@ -1,10 +1,9 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
-import { Shield, Lock, Eye, Server, Trash2, Cookie, Globe, Mail } from 'lucide-react';
+import { Shield, Lock, Eye, Server, Trash2 } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Card } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { type Locale } from '@/lib/i18n/config';
 
 interface PrivacyPageClientProps {
@@ -38,21 +37,21 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header locale={locale} />
       
-      <main className="flex-1">
+      <main id="main-content" className="mx-auto w-full max-w-7xl flex-1 px-4 pt-24 pb-12 sm:px-6">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
-                <Shield className="h-8 w-8 text-green-600" />
+        <section className="pb-8">
+          <div className="w-full">
+            <div className="max-w-3xl space-y-3">
+              <div className="text-primary">
+                <Shield className="size-6 text-primary" />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 Privacy Policy
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-muted-foreground">
                 Your privacy is our top priority. {t('common.brand')} is designed from the ground up 
                 to protect your data.
               </p>
@@ -61,22 +60,18 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
         </section>
 
         {/* Privacy Highlights */}
-        <section className="py-12 bg-muted/30">
-          <div className="container mx-auto px-4">
+        <section className="py-8">
+          <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {privacyHighlights.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <Card key={index} className="p-6 text-center" >
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
-                      <Icon className="h-6 w-6 text-green-600" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.description}
-                    </p>
+                  <Card key={index}>
+                    <CardHeader>
+                      <Icon className="size-5 text-primary" aria-hidden="true" />
+                      <CardTitle><h2>{item.title}</h2></CardTitle>
+                      <CardDescription>{item.description}</CardDescription>
+                    </CardHeader>
                   </Card>
                 );
               })}
@@ -85,14 +80,14 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
         </section>
 
         {/* Privacy Policy Content */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto prose prose-lg">
+        <section className="py-8">
+          <div className="w-full">
+            <div className="max-w-3xl space-y-4">
               <p className="text-sm text-muted-foreground mb-8">
                 Last updated: December 2024
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 1. Introduction
               </h2>
               <p className="text-muted-foreground mb-4">
@@ -100,20 +95,20 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 This Privacy Policy explains how we handle your information when you use our PDF tools.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 2. How Our Service Works
               </h2>
               <p className="text-muted-foreground mb-4">
                 {t('common.brand')} is a client-side application. This means:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li>All PDF processing happens directly in your web browser</li>
                 <li>Your files are never uploaded to our servers or any third-party servers</li>
                 <li>We cannot see, access, or store your documents</li>
                 <li>Your files remain on your device at all times</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 3. Information We Collect
               </h2>
               <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">
@@ -130,7 +125,7 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
               <p className="text-muted-foreground mb-4">
                 We may collect anonymous usage statistics to improve our service, such as:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li>Which tools are most popular</li>
                 <li>General geographic region (country level)</li>
                 <li>Browser type and version</li>
@@ -140,13 +135,13 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 This data is aggregated and anonymized. It cannot be used to identify you personally.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 4. Local Storage
               </h2>
               <p className="text-muted-foreground mb-4">
                 {t('common.brand')} may use your browser&apos;s local storage to:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li>Remember your language preference</li>
                 <li>Store your recent tool history</li>
                 <li>Save work-in-progress for interrupted sessions</li>
@@ -155,13 +150,13 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 This data is stored only on your device and is not transmitted to us.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 5. Cookies
               </h2>
               <p className="text-muted-foreground mb-4">
                 We use minimal cookies for essential functionality:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li><strong>Essential cookies:</strong> Required for the website to function properly</li>
                 <li><strong>Preference cookies:</strong> Remember your settings like language preference</li>
               </ul>
@@ -169,33 +164,33 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 We do not use tracking cookies or advertising cookies.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 6. Third-Party Services
               </h2>
               <p className="text-muted-foreground mb-4">
                 {t('common.brand')} does not share your data with third parties. We do not use:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li>Third-party analytics that track individual users</li>
                 <li>Advertising networks</li>
                 <li>Social media tracking pixels</li>
                 <li>External file processing services</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 7. Data Security
               </h2>
               <p className="text-muted-foreground mb-4">
                 Since your files never leave your device, they are protected by your own device&apos;s 
                 security measures. We recommend:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+              <ul className="list-disc ps-6 space-y-2 text-muted-foreground mb-4">
                 <li>Using an up-to-date browser</li>
                 <li>Keeping your operating system updated</li>
                 <li>Using secure networks when handling sensitive documents</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 8. Your Rights
               </h2>
               <p className="text-muted-foreground mb-4">
@@ -204,7 +199,7 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 preferences stored by {t('common.brand')}.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 9. Children&apos;s Privacy
               </h2>
               <p className="text-muted-foreground mb-4">
@@ -212,7 +207,7 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 any information from children.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 10. Changes to This Policy
               </h2>
               <p className="text-muted-foreground mb-4">
@@ -220,7 +215,7 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
                 by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
+              <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
                 11. Contact Us
               </h2>
               <p className="text-muted-foreground mb-4">
@@ -232,20 +227,10 @@ export default function PrivacyPageClient({ locale }: PrivacyPageClientProps) {
         </section>
 
         {/* Privacy Badge */}
-        <section className="py-12 bg-muted/30">
-          <div className="container mx-auto px-4">
+        <section className="py-8">
+          <div className="w-full">
             <div className="max-w-2xl mx-auto text-center">
-              <div className="inline-flex items-center gap-3 px-6 py-4 bg-green-50 border border-green-200 rounded-lg">
-                <Shield className="h-8 w-8 text-green-600" />
-                <div className="text-left">
-                  <p className="font-semibold text-green-800">
-                    {t('common.footer.privacyBadge')}
-                  </p>
-                  <p className="text-sm text-green-600">
-                    Your documents are processed securely in your browser
-                  </p>
-                </div>
-              </div>
+              <Alert className="text-start"><Shield aria-hidden="true" /><AlertTitle>{t('common.footer.privacyBadge')}</AlertTitle><AlertDescription>Your documents are processed securely in your browser</AlertDescription></Alert>
             </div>
           </div>
         </section>
