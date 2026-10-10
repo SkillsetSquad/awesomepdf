@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, cleanup, act } from '@testing-library/react';
 import { DownloadButton } from '@/components/tools/DownloadButton';
 import * as tauriBridge from '@/lib/tauri-bridge';
 
@@ -25,12 +25,14 @@ beforeEach(() => {
   URL.createObjectURL = mockCreateObjectURL;
   URL.revokeObjectURL = mockRevokeObjectURL;
   vi.clearAllMocks();
+  vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
 });
 
 afterEach(() => {
   URL.createObjectURL = originalCreateObjectURL;
   URL.revokeObjectURL = originalRevokeObjectURL;
   cleanup();
+  vi.restoreAllMocks();
 });
 
 /**
@@ -168,7 +170,7 @@ describe('DownloadButton', () => {
       fireEvent.click(screen.getByRole('button'));
       
       // Fast-forward timers
-      vi.advanceTimersByTime(600);
+      await act(async () => { vi.advanceTimersByTime(600); });
       
       expect(mockOnDownloadComplete).toHaveBeenCalled();
       
@@ -235,7 +237,7 @@ describe('DownloadButton', () => {
       render(<DownloadButton file={mockBlob} filename="test.pdf" />);
       
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-[hsl(var(--color-primary))]');
+      expect(button).toHaveAttribute('data-variant', 'default');
     });
 
     it('renders with secondary variant', () => {
@@ -249,7 +251,7 @@ describe('DownloadButton', () => {
       );
       
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-[hsl(var(--color-secondary))]');
+      expect(button).toHaveAttribute('data-variant', 'secondary');
     });
 
     it('renders with different sizes', () => {

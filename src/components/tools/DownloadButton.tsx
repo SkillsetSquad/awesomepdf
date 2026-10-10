@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { Download } from 'lucide-react';
 import { Button, type ButtonProps } from '../ui/button';
 import { addRecentFile } from '@/lib/storage/recent-files';
 import { useToolContext } from '@/lib/contexts/ToolContext';
@@ -179,24 +180,7 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
       aria-label={`${buttonText}${fileSizeText}`}
       {...buttonProps}
     >
-      {/* Download icon */}
-      {!isDownloading && (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-          />
-        </svg>
-      )}
-      
+      {!isDownloading && <Download aria-hidden="true" />}
       <span>
         {buttonText}
         {fileSizeText}
