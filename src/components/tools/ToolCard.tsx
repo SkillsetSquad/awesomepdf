@@ -3,8 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Tool, ToolCategory } from '@/types/tool';
-import { Card } from '@/components/ui/card';
-import { ArrowUpRight } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { getToolIcon } from '@/config/icons';
 import { FavoriteButton } from '@/components/ui/FavoriteButton';
 
@@ -55,61 +55,17 @@ export function ToolCard({ tool, locale, className = '', localizedContent }: Too
   const categoryName = t(`home.categories.${categoryTranslationKeys[tool.category]}`);
 
   return (
-    <Link
-      href={toolUrl}
-      className={`block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg group ${className}`}
-      data-testid="tool-card"
-    >
-      <Card
-        className="h-full glass-card hover:bg-card/80 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden border-border/60"
-        data-testid="tool-card-container"
-      >
-        <div className="absolute top-0 right-0 p-3 z-10">
-          <FavoriteButton toolId={tool.id} size="sm" />
-        </div>
-        <div className="absolute top-0 right-10 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <ArrowUpRight className="w-5 h-5 text-primary" />
-        </div>
-
-        <div className="flex flex-col h-full">
-          <div className="flex items-start gap-4 mb-4">
-            {/* Tool Icon */}
-            <div
-              className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-              data-testid="tool-card-icon"
-              aria-hidden="true"
-            >
-              <IconComponent className="w-7 h-7 text-primary" data-icon={tool.icon} />
-            </div>
-          </div>
-
-          {/* Tool Info */}
-          <div className="flex-1 min-w-0">
-            <h3
-              className="text-lg font-bold text-card-foreground truncate mb-2 group-hover:text-primary transition-colors"
-              data-testid="tool-card-name"
-            >
-              {toolName}
-            </h3>
-            <p
-              className="text-sm text-muted-foreground line-clamp-2 leading-relaxed"
-              data-testid="tool-card-description"
-            >
-              {description}
-            </p>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground">
-            <span className="font-medium bg-secondary/50 px-2 py-1 rounded-md">
-              {categoryName}
-            </span>
-            <span className="group-hover:translate-x-1 transition-transform duration-300 text-primary font-medium opacity-0 group-hover:opacity-100">
-              {t('common.buttons.next') || 'Try now'} {/* Using Next as dummy or keep Try now if no key */}
-            </span>
-          </div>
-        </div>
-      </Card>
-    </Link>
+    <Card className={`relative h-full ${className}`} data-testid="tool-card-container">
+      <CardHeader>
+        <div className="text-primary" data-testid="tool-card-icon" aria-hidden="true"><IconComponent className="size-5" data-icon={tool.icon} /></div>
+        <CardAction className="relative z-10"><FavoriteButton toolId={tool.id} toolName={toolName} size="sm" /></CardAction>
+        <CardTitle className="pt-2 leading-snug"><h3 data-testid="tool-card-name">
+          <Link href={toolUrl} data-testid="tool-card" className="after:absolute after:inset-0 after:rounded-xl hover:underline focus:outline-none focus-visible:after:ring-2 focus-visible:after:ring-ring">{toolName}</Link>
+        </h3></CardTitle>
+        <CardDescription className="line-clamp-3" data-testid="tool-card-description">{description}</CardDescription>
+      </CardHeader>
+      <CardFooter className="mt-auto"><Badge variant="secondary" className="whitespace-normal">{categoryName}</Badge></CardFooter>
+    </Card>
   );
 }
 
