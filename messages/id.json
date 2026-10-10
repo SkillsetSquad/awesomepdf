@@ -85,7 +85,8 @@
       "processing": "Memproses...",
       "complete": "Selesai",
       "error": "Kesalahan",
-      "loading": "Memuat..."
+      "loading": "Memuat...",
+      "skipped": "Dilewati"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. Hak cipta dilindungi undang-undang.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "Gerbang Kondisi",
     "downloadPdf": "Unduh PDF",
     "outputCategory": "Keluaran & Ekspor",
-    "filenameLabel": "Nama file keluaran"
+    "filenameLabel": "Nama file keluaran",
+    "conditionLabels": {
+      "fileCount": "Jumlah file",
+      "fileSize": "Ukuran file",
+      "fileFormat": "Format file",
+      "true": "Benar",
+      "false": "Salah"
+    }
   },
   "tools": {
     "search": {

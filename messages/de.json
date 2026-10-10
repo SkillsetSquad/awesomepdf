@@ -85,7 +85,8 @@
       "processing": "Verarbeitung...",
       "complete": "Abgeschlossen",
       "error": "Fehler",
-      "loading": "Laden..."
+      "loading": "Laden...",
+      "skipped": "Übersprungen"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. Alle Rechte vorbehalten.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "Bedingtes Gateway",
     "downloadPdf": "PDF herunterladen",
     "outputCategory": "Ausgabe & Export",
-    "filenameLabel": "Ausgabedateiname"
+    "filenameLabel": "Ausgabedateiname",
+    "conditionLabels": {
+      "fileCount": "Dateianzahl",
+      "fileSize": "Dateigröße",
+      "fileFormat": "Dateiformat",
+      "true": "Wahr",
+      "false": "Falsch"
+    }
   },
   "tools": {
     "search": {

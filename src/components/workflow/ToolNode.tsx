@@ -152,7 +152,7 @@ const ToolNode = memo(({ id, data, selected = false, isConnectable = true }: Too
     return <Card className={`relative w-72 gap-3 py-4 ${selected ? 'ring-2 ring-ring ring-offset-2 ring-offset-background' : ''} ${data.status === 'skipped' ? 'border-dashed' : ''}`}>
         <Handle type="target" position={Position.Left} isConnectable={isConnectable} className="!size-3 !border-2 !border-background !bg-primary" title={data.acceptedFormats.join(', ')} />
         <CardHeader className="gap-2 px-4">
-            <div className="flex flex-wrap gap-2"><Badge variant="secondary">{category}</Badge><Badge variant={data.status === 'error' ? 'destructive' : 'outline'}><StatusIcon aria-hidden={true} className={data.status === 'processing' ? 'animate-spin' : ''} />{tCommon(`status.${data.status === 'skipped' ? 'idle' : data.status}`)}</Badge></div>
+            <div className="flex flex-wrap gap-2"><Badge variant="secondary">{category}</Badge><Badge variant={data.status === 'error' ? 'destructive' : 'outline'}><StatusIcon aria-hidden={true} className={data.status === 'processing' ? 'animate-spin' : ''} />{tCommon(`status.${data.status}`)}</Badge></div>
             <CardTitle className="flex items-center gap-2 text-sm"><Icon className="size-4 shrink-0" aria-hidden={true} /><span className="min-w-0 break-words">{label}</span></CardTitle>
             <CardAction><Button variant="ghost" size="icon-sm" className="nodrag nopan" aria-label={`${tCommon('buttons.delete')}: ${label}`} onClick={event => { event.stopPropagation(); deleteElements({ nodes: [{ id }] }); }}><LucideIcons.X aria-hidden="true" /></Button></CardAction>
         </CardHeader>

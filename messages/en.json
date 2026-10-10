@@ -85,7 +85,8 @@
       "processing": "Processing...",
       "complete": "Complete",
       "error": "Error",
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "skipped": "Skipped"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. All rights reserved.",
@@ -1503,7 +1504,14 @@
     "downloadIndividually": "Download files individually",
     "flowControl": "Flow Control",
     "conditionGateway": "Condition Gateway",
-    "filenameLabel": "Output Filename"
+    "filenameLabel": "Output Filename",
+    "conditionLabels": {
+      "fileCount": "File count",
+      "fileSize": "File size",
+      "fileFormat": "File format",
+      "true": "True",
+      "false": "False"
+    }
   },
   "tools": {
     "search": {

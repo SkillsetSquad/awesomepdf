@@ -85,7 +85,8 @@
       "processing": "جارٍ المعالجة...",
       "complete": "اكتمل",
       "error": "خطأ",
-      "loading": "جارٍ التحميل..."
+      "loading": "جارٍ التحميل...",
+      "skipped": "تم التخطي"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. جميع الحقوق محفوظة.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "بوابة الشروط",
     "downloadPdf": "تنزيل PDF",
     "outputCategory": "الإخراج والتصدير",
-    "filenameLabel": "اسم ملف الإخراج"
+    "filenameLabel": "اسم ملف الإخراج",
+    "conditionLabels": {
+      "fileCount": "عدد الملفات",
+      "fileSize": "حجم الملفات",
+      "fileFormat": "تنسيق الملف",
+      "true": "صحيح",
+      "false": "خطأ"
+    }
   },
   "tools": {
     "search": {

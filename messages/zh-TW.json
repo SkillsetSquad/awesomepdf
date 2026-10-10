@@ -85,7 +85,8 @@
       "processing": "處理中...",
       "complete": "完成",
       "error": "錯誤",
-      "loading": "載入中..."
+      "loading": "載入中...",
+      "skipped": "已略過"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. 保留所有權利。",
@@ -1485,7 +1486,14 @@
     "conditionGateway": "條件分支",
     "downloadPdf": "下載 PDF",
     "outputCategory": "輸出與導出",
-    "filenameLabel": "輸出檔案名稱"
+    "filenameLabel": "輸出檔案名稱",
+    "conditionLabels": {
+      "fileCount": "檔案數量",
+      "fileSize": "檔案大小",
+      "fileFormat": "檔案格式",
+      "true": "符合",
+      "false": "不符合"
+    }
   },
   "tools": {
     "search": {

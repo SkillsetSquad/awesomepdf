@@ -85,7 +85,8 @@
       "processing": "Traitement...",
       "complete": "Terminé",
       "error": "Erreur",
-      "loading": "Chargement..."
+      "loading": "Chargement...",
+      "skipped": "Ignoré"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. Tous droits réservés.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "Passerelle de condition",
     "downloadPdf": "Télécharger le PDF",
     "outputCategory": "Sortie et Exportation",
-    "filenameLabel": "Nom du fichier de sortie"
+    "filenameLabel": "Nom du fichier de sortie",
+    "conditionLabels": {
+      "fileCount": "Nombre de fichiers",
+      "fileSize": "Taille des fichiers",
+      "fileFormat": "Format de fichier",
+      "true": "Vrai",
+      "false": "Faux"
+    }
   },
   "tools": {
     "search": {

@@ -85,7 +85,8 @@
       "processing": "Đang xử lý...",
       "complete": "Hoàn tất",
       "error": "Lỗi",
-      "loading": "Đang tải..."
+      "loading": "Đang tải...",
+      "skipped": "Đã bỏ qua"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. Bảo lưu mọi quyền.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "Cổng điều kiện",
     "downloadPdf": "Tải xuống PDF",
     "outputCategory": "Đầu ra & Xuất",
-    "filenameLabel": "Tên tệp đầu ra"
+    "filenameLabel": "Tên tệp đầu ra",
+    "conditionLabels": {
+      "fileCount": "Số tệp",
+      "fileSize": "Kích thước tệp",
+      "fileFormat": "Định dạng tệp",
+      "true": "Đúng",
+      "false": "Sai"
+    }
   },
   "tools": {
     "search": {

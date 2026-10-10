@@ -85,7 +85,8 @@
       "processing": "処理中...",
       "complete": "完了",
       "error": "エラー",
-      "loading": "読み込み中..."
+      "loading": "読み込み中...",
+      "skipped": "スキップ"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. All rights reserved.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "条件分岐",
     "downloadPdf": "PDFをダウンロード",
     "outputCategory": "出力とエクスポート",
-    "filenameLabel": "出力ファイル名"
+    "filenameLabel": "出力ファイル名",
+    "conditionLabels": {
+      "fileCount": "ファイル数",
+      "fileSize": "ファイルサイズ",
+      "fileFormat": "ファイル形式",
+      "true": "真",
+      "false": "偽"
+    }
   },
   "tools": {
     "search": {

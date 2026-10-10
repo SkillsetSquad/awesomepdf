@@ -85,7 +85,8 @@
       "processing": "处理中...",
       "complete": "完成",
       "error": "错误",
-      "loading": "加载中..."
+      "loading": "加载中...",
+      "skipped": "已跳过"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. 保留所有权利。",
@@ -1503,7 +1504,14 @@
     "downloadIndividually": "分别下载各文件",
     "flowControl": "流程控制",
     "conditionGateway": "条件分支",
-    "filenameLabel": "输出文件名"
+    "filenameLabel": "输出文件名",
+    "conditionLabels": {
+      "fileCount": "文件数量",
+      "fileSize": "文件大小",
+      "fileFormat": "文件格式",
+      "true": "满足",
+      "false": "不满足"
+    }
   },
   "tools": {
     "search": {

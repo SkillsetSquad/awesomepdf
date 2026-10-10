@@ -85,7 +85,8 @@
       "processing": "처리 중...",
       "complete": "완료",
       "error": "오류",
-      "loading": "로딩 중..."
+      "loading": "로딩 중...",
+      "skipped": "건너뜀"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. All rights reserved.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "조건부 분기",
     "downloadPdf": "PDF 다운로드",
     "outputCategory": "출력 및 내보내기",
-    "filenameLabel": "출력 파일 이름"
+    "filenameLabel": "출력 파일 이름",
+    "conditionLabels": {
+      "fileCount": "파일 수",
+      "fileSize": "파일 크기",
+      "fileFormat": "파일 형식",
+      "true": "참",
+      "false": "거짓"
+    }
   },
   "tools": {
     "search": {

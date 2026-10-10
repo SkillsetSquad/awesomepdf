@@ -85,7 +85,8 @@
       "processing": "Se procesează...",
       "complete": "Finalizat",
       "error": "Eroare",
-      "loading": "Se încarcă..."
+      "loading": "Se încarcă...",
+      "skipped": "Omis"
     },
     "footer": {
       "footer": "© 2025 AwesomePDF. Toate drepturile rezervate.",
@@ -1484,7 +1485,14 @@
     "conditionGateway": "Ramură condițională",
     "downloadPdf": "Descărcare PDF",
     "outputCategory": "Ieșire și Export",
-    "filenameLabel": "Nume fișier de ieșire"
+    "filenameLabel": "Nume fișier de ieșire",
+    "conditionLabels": {
+      "fileCount": "Număr de fișiere",
+      "fileSize": "Dimensiunea fișierelor",
+      "fileFormat": "Formatul fișierului",
+      "true": "Adevărat",
+      "false": "Fals"
+    }
   },
   "tools": {
     "search": {
