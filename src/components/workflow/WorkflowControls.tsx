@@ -218,24 +218,17 @@ export function WorkflowControls({
                             {tWorkflow('selectFiles') || '选择文件'}
                         </Button>
                         {selectedFiles.length > 0 ? (
-                            <button
+                            <Button size="sm" variant="ghost"
                                 onClick={() => setShowFileListPanel(true)}
                                 disabled={isRunning}
-                                className={`
-                                    flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs
-                                    bg-primary/10
-                                    text-primary
-                                    hover:bg-primary/20
-                                    transition-colors whitespace-nowrap shrink-0
-                                    ${isRunning ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-                                `}
+                                className="flex items-center gap-1.5 whitespace-nowrap shrink-0"
                                 title={tWorkflow('viewEditFiles') || '查看已选文件'}
                             >
                                 <span className="font-medium">
                                     {selectedFiles.length} 个文件
                                 </span>
                                 <Edit2 className="w-3 h-3" />
-                            </button>
+                            </Button>
                         ) : nodeFiles.length > 0 ? (
                             <div
                                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-medium cursor-default whitespace-nowrap shrink-0"
@@ -346,17 +339,13 @@ export function WorkflowControls({
                     {/* Sidebar Toggle */}
                     {onToggleRightSidebar && (
                         <div className="flex items-center pl-1.5 border-l border-border">
-                            <button
+                            <Button size="icon-sm" variant={!isRightSidebarCollapsed ? 'default' : 'outline'} aria-pressed={!isRightSidebarCollapsed} aria-label={isRightSidebarCollapsed ? '展开模板库 (宽画布模式)' : '收起模板库 (全景大画布)'}
                                 onClick={onToggleRightSidebar}
-                                className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
-                                    !isRightSidebarCollapsed
-                                        ? 'bg-primary/10 text-primary border-primary/30'
-                                        : 'text-muted-foreground hover:bg-muted border-transparent'
-                                }`}
+
                                 title={isRightSidebarCollapsed ? '展开模板库 (宽画布模式)' : '收起模板库 (全景大画布)'}
                             >
                                 <PanelRight className="w-4 h-4" />
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </div>

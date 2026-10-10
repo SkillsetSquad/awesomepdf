@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui/button';
+
 
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { flushSync } from 'react-dom';
@@ -870,12 +872,12 @@ function WorkflowEditorContent() {
             const nodesWithOutgoing = new Set(edges.map(e => e.source));
             const terminalNodeIds = executionOrder.filter(id => !nodesWithOutgoing.has(id));
             const activeTerminalNodeIds = terminalNodeIds.filter(id => !skippedNodes.has(id));
-            
+
             // If no active terminal nodes found, fall back to any non-skipped completed nodes
-            const outputNodeIds = activeTerminalNodeIds.length > 0 
-                ? activeTerminalNodeIds 
+            const outputNodeIds = activeTerminalNodeIds.length > 0
+                ? activeTerminalNodeIds
                 : executionOrder.filter(id => !skippedNodes.has(id));
-            
+
             const finalOutputs: (Blob | WorkflowOutputFile)[] = [];
             for (const nodeId of outputNodeIds) {
                 const nodeOutput = nodeOutputs.get(nodeId);
@@ -929,16 +931,16 @@ function WorkflowEditorContent() {
                 errorMessage,
                 isCancelled,
             } = deriveWorkflowFailureContext(error, currentExecutingNodeId, localExecutedNodes);
-            
+
             // Find the failed node name for better error reporting
             const failedNode = nodes.find(n => n.id === failedNodeId);
             const failedNodeName = failedNode?.data.label || 'Unknown node';
-            
+
             // Build user-friendly error message
-            const userMessage = isCancelled 
+            const userMessage = isCancelled
                 ? 'Workflow execution was cancelled'
                 : `Workflow failed at "${failedNodeName}": ${errorMessage}`;
-            
+
             // Update execution state with detailed error
             setExecutionState(prev => ({
                 ...prev,
@@ -950,7 +952,7 @@ function WorkflowEditorContent() {
                     message: userMessage,
                 },
             }));
-            
+
             // Update execution history record
             if (executionRecord) {
                 try {
@@ -965,18 +967,18 @@ function WorkflowEditorContent() {
                     logger.warn('[Workflow] Failed to update execution history:', historyError);
                 }
             }
-            
+
             // Ensure the failed node shows error status (if not cancelled)
             if (failedNodeId && !isCancelled) {
                 setNodes((nds) => nds.map(node =>
                     node.id === failedNodeId && node.data.status !== 'error'
-                        ? { 
-                            ...node, 
-                            data: { 
-                                ...node.data, 
+                        ? {
+                            ...node,
+                            data: {
+                                ...node.data,
                                 status: 'error' as const,
                                 error: node.data.error || errorMessage,
-                            } 
+                            }
                           }
                         : node
                 ));
@@ -1006,8 +1008,8 @@ function WorkflowEditorContent() {
         // Reset processing and pending nodes, but keep completed and error states
         setNodes((nds) => nds.map(node => ({
             ...node,
-            data: { 
-                ...node.data, 
+            data: {
+                ...node.data,
                 status: node.data.status === 'processing' ? 'idle' as const : node.data.status,
                 progress: node.data.status === 'processing' ? 0 : node.data.progress,
             },
@@ -1044,18 +1046,18 @@ function WorkflowEditorContent() {
      */
     const clearWorkflowState = useCallback(() => {
         logger.log('[Workflow] Clearing workflow state and cleaning up resources');
-        
+
         // Abort any running execution
         if (executionAbortController.current) {
             executionAbortController.current.abort();
         }
-        
+
         // Cleanup Blob URLs
         cleanupBlobUrls();
 
         // Clear cached node outputs
         completedNodeOutputsRef.current.clear();
-        
+
         // Reset execution state
         setExecutionState({
             status: 'idle',
@@ -1068,9 +1070,9 @@ function WorkflowEditorContent() {
         // Reset all node states and clear outputs
         setNodes((nds) => nds.map(node => ({
             ...node,
-            data: { 
-                ...node.data, 
-                status: 'idle' as const, 
+            data: {
+                ...node.data,
+                status: 'idle' as const,
                 progress: 0,
                 error: undefined,
                 outputFiles: undefined,
@@ -1104,14 +1106,14 @@ function WorkflowEditorContent() {
         // Restore nodes and edges from history snapshot
         setNodes(record.nodes as Node[]);
         setEdges(record.edges as Edge[]);
-        
+
         // Clear execution state
         clearWorkflowState();
-        
+
         // Clear undo/redo history
         clearHistory();
         setIsRightSidebarCollapsed(true);
-        
+
         logger.log('[Workflow] Loaded from history:', record.workflowName || 'Unnamed');
     }, [clearHistory, clearWorkflowState, setNodes, setEdges]);
 
@@ -1217,72 +1219,48 @@ function WorkflowEditorContent() {
                 </div>
 
                 {/* Canvas */}
-                <div 
-                    className="flex-1 relative" 
+                <div
+                    className="flex-1 relative"
                     ref={reactFlowWrapper}
                 >
                     {/* Undo/Redo Floating Island */}
                     <div className="absolute top-3 left-3 z-10 flex items-center gap-1 p-1 rounded-lg bg-background/90 backdrop-blur-md border border-border shadow-md">
-                        <button
+                        <Button size="icon-sm" variant="ghost" aria-label={`${tWorkflow('undo') || '撤销'} (Ctrl+Z)`}
                             onClick={handleUndo}
                             disabled={!canUndo}
-                            className={`
-                                p-1.5 rounded-md transition-colors
-                                ${canUndo
-                                    ? 'hover:bg-muted text-foreground cursor-pointer'
-                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
-                                }
-                            `}
+
                             title={`${tWorkflow('undo') || '撤销'} (Ctrl+Z)`}
                         >
                             <Undo2 className="w-4 h-4" />
-                        </button>
-                        <button
+                        </Button>
+                        <Button size="icon-sm" variant="ghost" aria-label={`${tWorkflow('redo') || '重做'} (Ctrl+Shift+Z)`}
                             onClick={handleRedo}
                             disabled={!canRedo}
-                            className={`
-                                p-1.5 rounded-md transition-colors
-                                ${canRedo
-                                    ? 'hover:bg-muted text-foreground cursor-pointer'
-                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
-                                }
-                            `}
+
                             title={`${tWorkflow('redo') || '重做'} (Ctrl+Shift+Z)`}
                         >
                             <Redo2 className="w-4 h-4" />
-                        </button>
+                        </Button>
 
                         <div className="w-px h-4 bg-border mx-0.5" />
 
-                        <button
+                        <Button size="icon-sm" variant="ghost" aria-label={tWorkflow('autoLayout') || '自动整理布局 (Auto Layout)'}
                             onClick={handleAutoLayout}
                             disabled={nodes.length === 0}
-                            className={`
-                                p-1.5 rounded-md transition-colors
-                                ${nodes.length > 0
-                                    ? 'hover:bg-muted text-foreground cursor-pointer'
-                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
-                                }
-                            `}
+
                             title={tWorkflow('autoLayout') || '自动整理布局 (Auto Layout)'}
                         >
                             <LayoutGrid className="w-4 h-4" />
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button size="icon-sm" variant="ghost" aria-label={`${tWorkflow('duplicateNode') || '复制节点 (Duplicate)'} (Ctrl+D)`}
                             onClick={duplicateSelectedNode}
                             disabled={!selectedNode && !nodes.some(n => n.selected)}
-                            className={`
-                                p-1.5 rounded-md transition-colors
-                                ${(selectedNode || nodes.some(n => n.selected))
-                                    ? 'hover:bg-muted text-foreground cursor-pointer'
-                                    : 'opacity-35 text-muted-foreground cursor-not-allowed'
-                                }
-                            `}
+
                             title={`${tWorkflow('duplicateNode') || '复制节点 (Duplicate)'} (Ctrl+D)`}
                         >
                             <Copy className="w-4 h-4" />
-                        </button>
+                        </Button>
                     </div>
 
                     <ReactFlow

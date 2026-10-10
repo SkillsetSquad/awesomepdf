@@ -202,20 +202,14 @@ export function WorkflowLibrary({
                 {tabs.map(tab => {
                     const Icon = tab.icon;
                     return (
-                        <button
+                        <Button size="sm" variant={activeTab === tab.id ? 'default' : 'outline'} aria-pressed={activeTab === tab.id}
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`
-                flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors
-                ${activeTab === tab.id
-                                    ? 'text-primary border-b-2 border-primary'
-                                    : 'text-muted-foreground hover:text-foreground'
-                                }
-              `}
+                            className="flex-1 flex items-center justify-center gap-2"
                         >
                             <Icon className="w-4 h-4" />
                             {tab.label}
-                        </button>
+                        </Button>
                     );
                 })}
             </div>
@@ -230,20 +224,14 @@ export function WorkflowLibrary({
                             {templateCategories.map(cat => {
                                 const Icon = cat.icon;
                                 return (
-                                    <button
+                                    <Button size="sm" variant={selectedCategory === cat.id ? 'default' : 'outline'} aria-pressed={selectedCategory === cat.id}
                                         key={cat.id}
                                         onClick={() => setSelectedCategory(cat.id)}
-                                        className={`
-                      flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-medium transition-colors
-                      ${selectedCategory === cat.id
-                                                ? 'bg-primary text-white'
-                                                : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                                            }
-                    `}
+                                        className="flex items-center gap-1.5"
                                     >
                                         <Icon className="w-3 h-3" />
                                         {cat.label}
-                                    </button>
+                                    </Button>
                                 );
                             })}
                         </div>

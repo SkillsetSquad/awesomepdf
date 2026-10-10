@@ -253,26 +253,24 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                                     {/* Actions */}
                                     <div className="flex items-center gap-1">
                                         {/* Move Up */}
-                                        <button
+                                        <Button size="icon-sm" variant="ghost" aria-label={tWorkflow('moveUp') || 'Move Up'}
                                             onClick={() => handleMoveUp(index)}
                                             disabled={index === 0}
-                                            className={`p-1.5 rounded hover:bg-muted transition-colors
-                                                ${index === 0 ? 'opacity-30 cursor-not-allowed' : ''}`}
+
                                             title={tWorkflow('moveUp') || 'Move Up'}
                                         >
                                             <ChevronUp className="w-4 h-4 text-muted-foreground" />
-                                        </button>
+                                        </Button>
 
                                         {/* Move Down */}
-                                        <button
+                                        <Button size="icon-sm" variant="ghost" aria-label={tWorkflow('moveDown') || 'Move Down'}
                                             onClick={() => handleMoveDown(index)}
                                             disabled={index === files.length - 1}
-                                            className={`p-1.5 rounded hover:bg-muted transition-colors
-                                                ${index === files.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}`}
+
                                             title={tWorkflow('moveDown') || 'Move Down'}
                                         >
                                             <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                                        </button>
+                                        </Button>
 
                                         {/* Preview */}
                                         <Button variant="ghost" size="icon-sm" aria-label={tWorkflow('preview') || 'Preview'}

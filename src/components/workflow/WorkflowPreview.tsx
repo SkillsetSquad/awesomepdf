@@ -293,23 +293,17 @@ export function WorkflowPreview({ nodes, edges, inputFiles, isVisible, onToggle 
                         {/* Thumbnails sidebar */}
                         <div className="w-20 border-r border-border overflow-y-auto p-2 space-y-2">
                             {previews.map((preview, index) => (
-                                <button
+                                <Button size="icon-sm" variant="outline" aria-pressed={index === selectedPageIndex}
                                     key={index}
                                     onClick={() => setSelectedPageIndex(index)}
-                                    className={`
-                    w-full aspect-[3/4] rounded overflow-hidden border-2 transition-all
-                    ${index === selectedPageIndex
-                                            ? 'border-primary ring-2 ring-primary/30'
-                                            : 'border-border hover:border-primary/50'
-                                        }
-                  `}
+                                    className="w-full aspect-[3/4] overflow-hidden h-auto w-full p-0 aria-pressed:border-primary aria-pressed:ring-2 aria-pressed:ring-primary/30"
                                 >
                                     <img
                                         src={preview.thumbnail}
                                         alt={`Page ${preview.pageNumber}`}
                                         className="w-full h-full object-cover"
                                     />
-                                </button>
+                                </Button>
                             ))}
                         </div>
 

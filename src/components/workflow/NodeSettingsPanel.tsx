@@ -2880,19 +2880,15 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                                         );
                                                     }
                                                     return (
-                                                        <button
+                                                        <Button size="sm" variant={isSelected ? 'default' : 'outline'} aria-pressed={isSelected}
                                                             key={pos.value}
                                                             type="button"
                                                             title={getTranslation(field.options?.find(o => o.value === pos.value)?.labelKey || pos.title)}
                                                             onClick={() => handleFieldChange(field.key, pos.value)}
-                                                            className={`h-7 text-xs font-semibold rounded border transition-all flex items-center justify-center ${
-                                                                isSelected
-                                                                    ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-105'
-                                                                    : 'bg-background text-foreground border-border hover:border-primary/60 hover:bg-primary/5'
-                                                            }`}
+                                                            className="h-7 flex items-center justify-center"
                                                         >
                                                             {pos.label}
-                                                        </button>
+                                                        </Button>
                                                     );
                                                 })}
                                             </div>
