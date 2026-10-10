@@ -96,4 +96,54 @@ describe('TIFF output settings workspace', () => {
     await waitFor(() => expect(screen.getByRole('button', { name: 'Download TIFF' })).toBeEnabled());
     expect(screen.queryByRole('alert')).toBeNull();
   });
+
+  it.each(['result', 'error'] as const)('ignores a cancelled conversion’s late progress and %s after a new conversion starts', async outcome => {
+    let finishOld!: (output: ProcessOutput) => void, failOld!: (error: Error) => void, finishNew!: (output: ProcessOutput) => void;
+    vi.mocked(pdfToTiff)
+      .mockImplementationOnce(() => new Promise((resolve, reject) => { finishOld = resolve; failOld = reject; }))
+      .mockImplementationOnce(() => new Promise(resolve => { finishNew = resolve; }));
+    const user = userEvent.setup();
+    render(<NextIntlClientProvider locale="en" messages={en}><PDFToTIFFTool /></NextIntlClientProvider>);
+    await user.click(screen.getByRole('button', { name: 'Choose TIFF source' }));
+    const process = await screen.findByRole('button', { name: en.common.pdfToTiff.processButton });
+    await user.click(process);
+    await user.click(screen.getByRole('button', { name: en.common.buttons.cancel }));
+    await user.click(process);
+    act(() => vi.mocked(pdfToTiff).mock.calls[0][2]?.(95, 'Cancelled progress'));
+    await act(async () => {
+      if (outcome === 'result') finishOld({ success: true, result: new Blob(['old']) });
+      else failOld(new Error('Cancelled conversion failed'));
+    });
+    expect(screen.queryByRole('button', { name: 'Download TIFF' })).toBeNull();
+    expect(screen.queryByText('Cancelled conversion failed')).toBeNull();
+    expect(screen.queryByText('Cancelled progress')).toBeNull();
+    expect(process).toBeDisabled();
+    const latest = new Blob(['latest']);
+    await act(async () => finishNew({ success: true, result: latest }));
+    await waitFor(() => expect(download).toHaveBeenCalledWith(expect.objectContaining({ file: latest })));
+  });
+
+  it.each(['result', 'error'] as const)('ignores the removed file’s late metadata %s while keeping the current file’s page count', async outcome => {
+    const latestFile = selectedFile;
+    const oldPdf = await PDFDocument.create(); oldPdf.addPage([100, 200]);
+    const oldBytes = await oldPdf.save();
+    let finishOld!: (bytes: ArrayBuffer) => void, failOld!: (error: Error) => void;
+    selectedFile = new File(['%PDF'], 'old.pdf', { type: 'application/pdf' });
+    Object.defineProperty(selectedFile, 'arrayBuffer', { value: () => new Promise<ArrayBuffer>((resolve, reject) => { finishOld = resolve; failOld = reject; }) });
+    const user = userEvent.setup();
+    render(<NextIntlClientProvider locale="en" messages={en}><PDFToTIFFTool /></NextIntlClientProvider>);
+    await user.click(screen.getByRole('button', { name: 'Choose TIFF source' }));
+    await user.click(screen.getByRole('button', { name: en.common.buttons.remove }));
+    selectedFile = latestFile;
+    await user.click(screen.getByRole('button', { name: 'Choose TIFF source' }));
+    await screen.findByRole('radiogroup', { name: en.common.pdfToTiff.colorModeLabel });
+    await act(async () => {
+      if (outcome === 'result') finishOld(new Uint8Array(oldBytes).buffer);
+      else failOld(new Error('Old metadata failed'));
+    });
+    expect(screen.getByText(/^2 page\(s\)/)).toBeInTheDocument();
+    expect(screen.queryByText(/^1 page\(s\)/)).toBeNull();
+    expect(screen.queryByRole('alert')).toBeNull();
+    expect(screen.getByRole('button', { name: en.common.pdfToTiff.processButton })).toBeEnabled();
+  });
 });

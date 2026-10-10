@@ -1,5 +1,5 @@
 'use client';
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CheckCircle2, CircleAlert, FileText, Info, Loader2, Printer, X } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -40,38 +40,51 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Cancellation ref
-  const cancelledRef = useRef(false);
+  const metadataRun = useRef(0);
+  const processingRun = useRef(0);
+  useEffect(() => () => { metadataRun.current++; processingRun.current++; }, []);
 
   /**
    * Handle File Selection and read pages
    */
   const handleFileSelected = async (files: File[]) => {
     if (files.length === 0) return;
+    const run = ++metadataRun.current;
+    processingRun.current++;
     const selectedFile = files[0];
     setFile(selectedFile);
     setTotalPages(0);
     setIsLoadingFile(true);
     setError(null);
     setResult(null);
+    setStatus('idle');
 
     try {
       const { PDFDocument } = await import('pdf-lib');
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      if (run !== metadataRun.current) return;
       setTotalPages(pdf.getPageCount());
     } catch (err) {
+      if (run !== metadataRun.current) return;
       console.error(err);
       setError(t('pdfToTiff.errorMetadata'));
     } finally {
-      setIsLoadingFile(false);
+      if (run === metadataRun.current) setIsLoadingFile(false);
     }
   };
 
   const handleClearFile = () => {
+    metadataRun.current++;
+    processingRun.current++;
     setFile(null);
     setTotalPages(0);
     setResult(null);
+    setError(null);
+    setStatus('idle');
+    setProgress(0);
+    setProgressMessage('');
+    setIsLoadingFile(false);
   };
 
   /**
@@ -83,7 +96,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
       return;
     }
 
-    cancelledRef.current = false;
+    const run = ++processingRun.current;
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -103,17 +116,14 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
           scale: calculatedScale
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || t('pdfToTiff.progressExtracting'));
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResult(output.result as Blob);
@@ -123,7 +133,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : t('pdfToTiff.errorUnknown'));
         setStatus('error');
       }
@@ -131,9 +141,10 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
   };
 
   const handleCancel = () => {
-    cancelledRef.current = true;
+    processingRun.current++;
     setStatus('idle');
     setProgress(0);
+    setProgressMessage('');
   };
 
   const isProcessing = status === 'processing' || status === 'uploading';
