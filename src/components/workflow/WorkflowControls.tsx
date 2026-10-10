@@ -7,9 +7,10 @@ import { Input } from '@/components/ui/input';
 
 
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { WorkflowExecutionState, WorkflowNode, WorkflowEdge, WorkflowValidation, WorkflowOutputFile } from '@/types/workflow';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { FileListPanel } from './FileListPanel';
 import { createZip } from '@/lib/zip';
 import { logger } from '@/lib/utils/logger';
@@ -82,6 +83,7 @@ export function WorkflowControls({
     onToggleRightSidebar,
 }: WorkflowControlsProps) {
     const tWorkflow = useTranslations('workflow');
+    const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
     const tCommon = useTranslations('common');
 
     const [showSaveDialog, setShowSaveDialog] = useState(false);
@@ -193,6 +195,7 @@ export function WorkflowControls({
     };
 
     return (
+        <Dialog open={showSaveDialog} onOpenChange={setShowSaveDialog}>
         <div className="relative">
             <div className="flex items-center justify-between px-3 py-2 bg-background border-b border-border min-h-[46px] gap-2 overflow-x-auto">
                 {/* Left: File input and execute */}
@@ -201,6 +204,7 @@ export function WorkflowControls({
                     <div className="flex items-center gap-1.5">
                         <Input
                             ref={fileInputRef}
+                            aria-label={tWorkflow('selectFiles')}
                             type="file"
                             multiple
                             accept=".pdf,.jpg,.jpeg,.png,.webp,.bmp,.tiff,.tif,.svg,.heic,.heif,.txt,.json,.md,.markdown,.doc,.docx,.odt,.rtf,.xls,.xlsx,.ods,.csv,.ppt,.pptx,.odp,.epub,.mobi,.azw,.azw3,.xps,.djvu,.djv,.fb2,.cbz,.zip,.eml,.msg"
@@ -295,20 +299,22 @@ export function WorkflowControls({
                     </span>
 
                     {/* Save */}
+                    <DialogTrigger asChild>
                     <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setShowSaveDialog(true)}
                         disabled={nodes.length === 0}
                         className="h-8 px-2.5 text-xs whitespace-nowrap shrink-0"
                     >
                         <Save className="w-3.5 h-3.5 mr-1.5" />
                         {tCommon('buttons.save') || '保存'}
                     </Button>
+                    </DialogTrigger>
 
                     {/* Import */}
                     <Input
                         ref={importInputRef}
+                        aria-label={tWorkflow('import')}
                         type="file"
                         accept=".json,.workflow.json"
                         onChange={handleImportFile}
@@ -501,60 +507,27 @@ export function WorkflowControls({
             )}
 
             {/* Save Dialog */}
-            {showSaveDialog && (
-                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                    <div className="bg-background rounded-lg shadow-xl p-6 w-[400px]">
-                        <h3 className="text-lg font-semibold text-foreground mb-4">
-                            {tWorkflow('saveWorkflow') || 'Save Workflow'}
-                        </h3>
-
-                        <div className="space-y-4">
-                            <div>
-                                <Label className="block mb-1" htmlFor="workflowcontrols-field-1">
-                                    {tWorkflow('workflowName') || 'Workflow Name'}
-                                </Label>
-                                <Input
-                                    type="text"
-                                    value={workflowName}
-                                    onChange={(e) => setWorkflowName(e.target.value)}
-                                    placeholder={tWorkflow('enterName') || 'Enter workflow name...'}
-                                    className="w-full"
-                                    autoFocus id="workflowcontrols-field-1" aria-label={tWorkflow('workflowName') || 'Workflow Name'}
-                                />
-                            </div>
-
-                            <div>
-                                <Label className="block mb-1">
-                                    {tWorkflow('description') || 'Description'} ({tWorkflow('optional') || 'optional'})
-                                </Label>
-                                <Textarea
-                                    value={workflowDescription}
-                                    onChange={(e) => setWorkflowDescription(e.target.value)}
-                                    placeholder={tWorkflow('enterDescription') || 'Enter description...'}
-                                    rows={3}
-                                    className="w-full resize-none"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="flex justify-end gap-3 mt-6">
-                            <Button
-                                variant="ghost"
-                                onClick={() => setShowSaveDialog(false)}
-                            >
-                                {tCommon('buttons.cancel') || 'Cancel'}
-                            </Button>
-                            <Button
-                                variant="default"
-                                onClick={handleSave}
-                                disabled={!workflowName.trim()}
-                            >
-                                {tCommon('buttons.save') || 'Save'}
-                            </Button>
-                        </div>
+            <DialogContent dir={direction} showCloseButton={false}>
+                <DialogHeader>
+                    <DialogTitle>{tWorkflow('saveWorkflow')}</DialogTitle>
+                    <DialogDescription>{tWorkflow('enterName')}</DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="workflow-save-name">{tWorkflow('workflowName')}</Label>
+                        <Input id="workflow-save-name" value={workflowName} onChange={(event) => setWorkflowName(event.target.value)} placeholder={tWorkflow('enterName')} autoFocus />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="workflow-save-description">{tWorkflow('description')} ({tWorkflow('optional')})</Label>
+                        <Textarea id="workflow-save-description" value={workflowDescription} onChange={(event) => setWorkflowDescription(event.target.value)} placeholder={tWorkflow('enterDescription')} rows={3} />
                     </div>
                 </div>
-            )}
+                <DialogFooter>
+                    <DialogClose asChild><Button variant="ghost">{tCommon('buttons.cancel')}</Button></DialogClose>
+                    <Button onClick={handleSave} disabled={!workflowName.trim()}>{tCommon('buttons.save')}</Button>
+                </DialogFooter>
+                <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={tCommon('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
+            </DialogContent>
 
             {/* File List Panel */}
             {showFileListPanel && (
@@ -568,6 +541,7 @@ export function WorkflowControls({
                 />
             )}
         </div>
+        </Dialog>
     );
 }
 

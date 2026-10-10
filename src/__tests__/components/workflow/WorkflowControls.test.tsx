@@ -1,11 +1,13 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { WorkflowControls } from '@/components/workflow/WorkflowControls';
 import type { WorkflowExecutionState, WorkflowValidation } from '@/types/workflow';
 
 vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => key,
+  useLocale: () => 'en',
 }));
 
 function createExecutionState(overrides: Partial<WorkflowExecutionState> = {}): WorkflowExecutionState {
@@ -29,6 +31,26 @@ function createValidation(overrides: Partial<WorkflowValidation> = {}): Workflow
 }
 
 describe('WorkflowControls', () => {
+  it('saves a named workflow through an accessible dialog and restores trigger focus', async () => {
+    const onSave = vi.fn();
+    render(<WorkflowControls nodes={[{ id: 'node', position: { x: 0, y: 0 }, data: {
+      toolId: 'merge-pdf', label: 'Merge', icon: 'FileText', category: 'edit',
+      acceptedFormats: ['pdf'], outputFormat: 'pdf', status: 'idle', progress: 0,
+    } }]} edges={[]} executionState={createExecutionState()} validation={createValidation()}
+      onExecute={vi.fn()} onStop={vi.fn()} onSave={onSave} onClear={vi.fn()} onImport={vi.fn()} />);
+    const trigger = screen.getByRole('button', { name: 'buttons.save' });
+    await userEvent.click(trigger);
+    expect(screen.getByRole('dialog', { name: 'saveWorkflow' })).toHaveAttribute('dir', 'ltr');
+    const name = screen.getByLabelText('workflowName');
+    expect(name).toHaveFocus();
+    await userEvent.type(name, '  Local workflow  ');
+    await userEvent.type(screen.getByLabelText(/description/), 'Local settings');
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'buttons.save' }));
+    expect(onSave).toHaveBeenCalledWith('Local workflow', 'Local settings');
+    await waitFor(() => expect(trigger).toHaveFocus());
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
   it('exposes a broad file accept list for workflow inputs', () => {
     const { container } = render(
       <WorkflowControls
