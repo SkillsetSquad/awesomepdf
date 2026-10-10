@@ -7,6 +7,7 @@ import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { DifferenceHighlight, type DifferenceHighlightData } from './DifferenceHighlight';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import {
   FileText,
@@ -53,14 +54,7 @@ interface PDFFile {
   pageDimensions: Array<{ width: number; height: number; scale: number }>;
 }
 
-interface DiffHighlight {
-  type: 'added' | 'deleted' | 'modified' | 'moved';
-  text: string;
-  // Bounding rect relative to the viewport/canvas
-  x: number;
-  y: number;
-  w: number;
-  h: number;
+interface DiffHighlight extends DifferenceHighlightData {
   category: 'text' | 'header-footer' | 'formatting';
   movedToPageIndex?: number;
   movedToCoords?: { x: number; y: number };
@@ -655,41 +649,9 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                     {/* Diff highlights Overlay Layer */}
                     <div className="absolute inset-0 pointer-events-none">
                       {getFilteredHighlights(currentPair.highlights1).map((hl, idx) => (
-                        <div
-                          key={idx}
-                          className="absolute rounded-sm transition-all duration-300 pointer-events-auto cursor-help group"
-                          style={{
-                            left: `${hl.x}px`,
-                            top: `${hl.y}px`,
-                            width: `${hl.w}px`,
-                            height: `${hl.h}px`,
-                            background: hl.type === 'deleted'
-                              ? 'rgba(239, 68, 68, 0.18)'
-                              : hl.type === 'modified'
-                                ? 'rgba(245, 158, 11, 0.18)'
-                                : 'rgba(168, 85, 247, 0.18)', // Moved source
-                            border: hl.type === 'deleted'
-                              ? '1px solid rgba(239, 68, 68, 0.4)'
-                              : hl.type === 'modified'
-                                ? '1px solid rgba(245, 158, 11, 0.4)'
-                                : '1px dashed rgba(168, 85, 247, 0.6)',
-                            boxShadow: hl.type === 'deleted'
-                              ? '0 0 4px rgba(239, 68, 68, 0.15)'
-                              : hl.type === 'modified'
-                                ? '0 0 4px rgba(245, 158, 11, 0.15)'
-                                : '0 0 4px rgba(168, 85, 247, 0.15)',
-                          }}
-                        >
-                          {/* Tooltip widget */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-muted text-foreground text-[9px] font-bold py-1 px-2.5 rounded-lg border border-border shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
-                            {hl.type === 'deleted'
-                              ? t('comparePdfs.removedText')
-                              : hl.type === 'modified'
-                                ? t('comparePdfs.modifiedText')
-                                : t('comparePdfs.paragraphMovedRight')}
-                            <span className="text-muted-foreground block mt-1">"{hl.text}"</span>
-                          </div>
-                        </div>
+                        <DifferenceHighlight key={idx} highlight={hl} label={hl.type === 'deleted'
+                          ? t('comparePdfs.removedText')
+                          : hl.type === 'modified' ? t('comparePdfs.modifiedText') : t('comparePdfs.paragraphMovedRight')} />
                       ))}
                     </div>
                   </div>
@@ -738,41 +700,9 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
                     {/* Diff highlights Overlay Layer */}
                     <div className="absolute inset-0 pointer-events-none">
                       {getFilteredHighlights(currentPair.highlights2).map((hl, idx) => (
-                        <div
-                          key={idx}
-                          className="absolute rounded-sm transition-all duration-300 pointer-events-auto cursor-help group"
-                          style={{
-                            left: `${hl.x}px`,
-                            top: `${hl.y}px`,
-                            width: `${hl.w}px`,
-                            height: `${hl.h}px`,
-                            background: hl.type === 'added'
-                              ? 'rgba(16, 185, 129, 0.18)'
-                              : hl.type === 'modified'
-                                ? 'rgba(245, 158, 11, 0.18)'
-                                : 'rgba(168, 85, 247, 0.18)', // Moved dest
-                            border: hl.type === 'added'
-                              ? '1px solid rgba(16, 185, 129, 0.4)'
-                              : hl.type === 'modified'
-                                ? '1px solid rgba(245, 158, 11, 0.4)'
-                                : '1px dashed rgba(168, 85, 247, 0.6)',
-                            boxShadow: hl.type === 'added'
-                              ? '0 0 4px rgba(16, 185, 129, 0.15)'
-                              : hl.type === 'modified'
-                                ? '0 0 4px rgba(245, 158, 11, 0.15)'
-                                : '0 0 4px rgba(168, 85, 247, 0.15)',
-                          }}
-                        >
-                          {/* Tooltip widget */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-muted text-foreground text-[9px] font-bold py-1 px-2.5 rounded-lg border border-border shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
-                            {hl.type === 'added'
-                              ? t('comparePdfs.addedText')
-                              : hl.type === 'modified'
-                                ? t('comparePdfs.modifiedText')
-                                : t('comparePdfs.paragraphMovedLeft')}
-                            <span className="text-muted-foreground block mt-1">"{hl.text}"</span>
-                          </div>
-                        </div>
+                        <DifferenceHighlight key={idx} highlight={hl} label={hl.type === 'added'
+                          ? t('comparePdfs.addedText')
+                          : hl.type === 'modified' ? t('comparePdfs.modifiedText') : t('comparePdfs.paragraphMovedLeft')} />
                       ))}
                     </div>
                   </div>
