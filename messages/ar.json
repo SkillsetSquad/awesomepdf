@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "افتح ملف PDF",
-      "uploadDescription": "افتح ملف PDF لقراءته وعرضه."
+      "uploadDescription": "افتح ملف PDF لقراءته وعرضه.",
+      "autoCopySelection": "نسخ النص المحدد تلقائيًا"
     },
     "findAndRedact": {
       "uploadLabel": "تحميل ملف PDF",

@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Apri file PDF",
-      "uploadDescription": "Apri un file PDF per leggere e visualizzare."
+      "uploadDescription": "Apri un file PDF per leggere e visualizzare.",
+      "autoCopySelection": "Copia automaticamente il testo selezionato"
     },
     "findAndRedact": {
       "uploadLabel": "Carica file PDF",

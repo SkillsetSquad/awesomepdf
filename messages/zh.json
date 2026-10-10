@@ -3132,7 +3132,8 @@
     },
     "pdfReader": {
       "uploadLabel": "打开PDF文件",
-      "uploadDescription": "打开PDF文件进行阅读和查看。"
+      "uploadDescription": "打开PDF文件进行阅读和查看。",
+      "autoCopySelection": "自动复制选中的文本"
     },
     "findAndRedact": {
       "uploadLabel": "上传PDF文件",

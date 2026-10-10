@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "PDF 파일 열기",
-      "uploadDescription": "읽고 보려면 PDF 파일을 엽니다."
+      "uploadDescription": "읽고 보려면 PDF 파일을 엽니다.",
+      "autoCopySelection": "선택한 텍스트 자동 복사"
     },
     "findAndRedact": {
       "uploadLabel": "PDF 파일 업로드",

@@ -3140,7 +3140,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Otwórz plik PDF",
-      "uploadDescription": "Otwórz plik PDF, aby go przeczytać i wyświetlić."
+      "uploadDescription": "Otwórz plik PDF, aby go przeczytać i wyświetlić.",
+      "autoCopySelection": "Automatycznie kopiuj zaznaczony tekst"
     },
     "findAndRedact": {
       "uploadLabel": "Prześlij plik PDF",

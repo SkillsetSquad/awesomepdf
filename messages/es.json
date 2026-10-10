@@ -3121,7 +3121,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Abrir archivo PDF",
-      "uploadDescription": "Abrir un archivo PDF para leerlo y verlo."
+      "uploadDescription": "Abrir un archivo PDF para leerlo y verlo.",
+      "autoCopySelection": "Copiar automáticamente el texto seleccionado"
     },
     "findAndRedact": {
       "uploadLabel": "Subir archivo PDF",

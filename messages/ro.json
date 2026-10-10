@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Deschideți fișierul PDF",
-      "uploadDescription": "Deschideți un fișier PDF pentru a citi și vizualiza."
+      "uploadDescription": "Deschideți un fișier PDF pentru a citi și vizualiza.",
+      "autoCopySelection": "Copiază automat textul selectat"
     },
     "findAndRedact": {
       "uploadLabel": "Încărcați fișierul PDF",

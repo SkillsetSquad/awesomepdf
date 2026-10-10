@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Buka File PDF",
-      "uploadDescription": "Buka file PDF untuk membaca dan melihat."
+      "uploadDescription": "Buka file PDF untuk membaca dan melihat.",
+      "autoCopySelection": "Salin teks yang dipilih secara otomatis"
     },
     "findAndRedact": {
       "uploadLabel": "Unggah File PDF",

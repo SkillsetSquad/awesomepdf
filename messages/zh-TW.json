@@ -3114,7 +3114,8 @@
     },
     "pdfReader": {
       "uploadLabel": "開啟 PDF 檔案",
-      "uploadDescription": "開啟 PDF 檔案以供閱讀與檢視。"
+      "uploadDescription": "開啟 PDF 檔案以供閱讀與檢視。",
+      "autoCopySelection": "自動複製選取的文字"
     },
     "findAndRedact": {
       "uploadLabel": "上傳 PDF 文件",

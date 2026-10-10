@@ -3140,7 +3140,8 @@
     },
     "pdfReader": {
       "uploadLabel": "Open PDF File",
-      "uploadDescription": "Open a PDF file to read and view."
+      "uploadDescription": "Open a PDF file to read and view.",
+      "autoCopySelection": "Automatically copy selected text"
     },
     "findAndRedact": {
       "uploadLabel": "Upload PDF File",

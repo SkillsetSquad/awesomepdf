@@ -3113,7 +3113,8 @@
     },
     "pdfReader": {
       "uploadLabel": "PDF ファイルを開く",
-      "uploadDescription": "PDF ファイルを開いて読んだり表示したりできます。"
+      "uploadDescription": "PDF ファイルを開いて読んだり表示したりできます。",
+      "autoCopySelection": "選択したテキストを自動コピー"
     },
     "findAndRedact": {
       "uploadLabel": "PDFファイルをアップロード",
