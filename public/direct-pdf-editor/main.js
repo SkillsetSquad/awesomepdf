@@ -197,6 +197,7 @@ function setupHostBridge() {
   }
 
   window.addEventListener('message', async (event) => {
+    if (event.source !== window.parent || event.origin !== window.location.origin) return;
     const { type, payload } = event.data || {};
     if (type === 'PDFCRAFT_THEME_CHANGE') {
       applyTheme(Boolean(payload?.isDark));
@@ -204,7 +205,6 @@ function setupHostBridge() {
     }
     if (type === 'PDFCRAFT_LOAD_PDF' && payload) {
       try {
-        console.log('[DirectEditor] Received PDF payload from parent:', payload);
         let fileObj = null;
         const fileName = payload.name || 'document.pdf';
         if (payload instanceof File) {
@@ -257,7 +257,7 @@ function setupSaveCallback() {
 // Preload bundled Chinese font (Noto Sans SC) for universal CJK editing support
 async function loadBundledChineseFont() {
   try {
-    const res = await fetch('/fonts/NotoSansSC-Regular.ttf');
+    const res = await fetch(new URL('../fonts/NotoSansSC-Regular.ttf', import.meta.url));
     if (!res.ok) {
       console.warn('[DirectEditor] Bundled Chinese font not found (HTTP ' + res.status + ')');
       return;
