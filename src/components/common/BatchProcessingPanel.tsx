@@ -7,7 +7,7 @@
 
 'use client';
 
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import React, { useCallback, useState, useRef, useEffect, useId } from 'react';
 import {
   Files,
   X,
@@ -23,7 +23,11 @@ import {
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { formatFileSize } from '@/lib/storage/recent-files';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardAction, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
+import { useTranslations } from 'next-intl';
 
 export interface BatchProcessingPanelProps {
   translations: {
@@ -50,13 +54,13 @@ export interface BatchProcessingPanelProps {
 const FileStatusIcon: React.FC<{ status: BatchFile['status'] }> = ({ status }) => {
   switch (status) {
     case 'pending':
-      return <Files className="h-4 w-4 text-gray-400" aria-hidden="true" />;
+      return <Files className="h-4 w-4 text-muted-foreground" aria-hidden="true" />;
     case 'processing':
-      return <Loader2 className="h-4 w-4 text-blue-500 animate-spin" aria-hidden="true" />;
+      return <Loader2 className="h-4 w-4 text-primary animate-spin" aria-hidden="true" />;
     case 'completed':
-      return <CheckCircle className="h-4 w-4 text-green-500" aria-hidden="true" />;
+      return <CheckCircle className="h-4 w-4 text-foreground" aria-hidden="true" />;
     case 'error':
-      return <AlertCircle className="h-4 w-4 text-red-500" aria-hidden="true" />;
+      return <AlertCircle className="h-4 w-4 text-destructive" aria-hidden="true" />;
     default:
       return null;
   }
@@ -83,6 +87,9 @@ export const BatchProcessingPanel: React.FC<BatchProcessingPanelProps> = ({
     downloadAsZip,
   } = useBatchProcessing({ maxConcurrent });
 
+  const t = useTranslations('common');
+  const inputId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [focusedFileIndex, setFocusedFileIndex] = useState<number>(-1);
   const fileItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -100,11 +107,11 @@ export const BatchProcessingPanel: React.FC<BatchProcessingPanelProps> = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        setFocusedFileIndex((prev) => (prev < files.length - 1 ? prev + 1 : 0));
+        setFocusedFileIndex(index < files.length - 1 ? index + 1 : 0);
         break;
       case 'ArrowUp':
         event.preventDefault();
-        setFocusedFileIndex((prev) => (prev > 0 ? prev - 1 : files.length - 1));
+        setFocusedFileIndex(index > 0 ? index - 1 : files.length - 1);
         break;
       case 'Home':
         event.preventDefault();
@@ -180,217 +187,76 @@ export const BatchProcessingPanel: React.FC<BatchProcessingPanelProps> = ({
   const hasCompletedFiles = completedCount > 0;
 
   return (
-    <Card className="p-4">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <Files className="h-5 w-5 text-primary" aria-hidden="true" />
-          <h3 className="font-medium text-foreground">
-            {translations.title}
-          </h3>
-          {files.length > 0 && (
-            <span className="text-sm text-muted-foreground">
-              ({files.length} {translations.filesSelected})
-            </span>
-          )}
-        </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex flex-wrap items-center gap-2">
+          <Files className="size-5" aria-hidden="true" />
+          {translations.title}
+          {files.length > 0 && <Badge variant="secondary">{files.length} {translations.filesSelected}</Badge>}
+        </CardTitle>
         {files.length > 0 && !isProcessing && (
-          <button
-            onClick={clearFiles}
-            className="text-xs text-muted-foreground hover:text-destructive transition-colors flex items-center gap-1"
-            aria-label={translations.clearAll}
-          >
-            <Trash2 className="h-3 w-3" aria-hidden="true" />
-            {translations.clearAll}
-          </button>
+          <CardAction><Button variant="ghost" size="sm" onClick={clearFiles}>
+            <Trash2 aria-hidden="true" />{translations.clearAll}
+          </Button></CardAction>
         )}
-      </div>
-
-      {/* Drop Zone */}
-      <div
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer"
-        role="region"
-        aria-label="File drop zone"
-      >
-        <input
-          type="file"
-          id="batch-file-input"
-          multiple
-          accept={acceptedTypes}
-          onChange={handleFileSelect}
-          className="hidden"
-          disabled={isProcessing}
-          aria-label={translations.addFiles}
-        />
-        <label
-          htmlFor="batch-file-input"
-          className="cursor-pointer flex flex-col items-center gap-2"
-        >
-          <Files className="h-8 w-8 text-muted-foreground" aria-hidden="true" />
-          <span className="text-sm text-muted-foreground">
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div onDrop={isProcessing ? undefined : handleDrop} onDragOver={handleDragOver}
+          className="flex flex-col items-center gap-3 rounded-lg border border-dashed p-6 text-center"
+          role="region" aria-label={translations.addFiles}>
+          <Input ref={inputRef} type="file" id={inputId} multiple accept={acceptedTypes}
+            onChange={handleFileSelect} className="hidden" disabled={isProcessing} aria-label={translations.addFiles} />
+          <Files className="size-8 text-muted-foreground" aria-hidden="true" />
+          <Button variant="outline" onClick={() => inputRef.current?.click()} disabled={isProcessing}>
             {translations.addFiles}
-          </span>
-        </label>
-      </div>
-
-      {/* File List */}
-      {files.length > 0 && (
-        <div 
-          className="mt-4 space-y-2 max-h-64 overflow-auto"
-          role="list"
-          aria-label="Files to process"
-        >
-          {files.map((file, index) => (
-            <div
-              key={file.id}
-              ref={(el) => { fileItemRefs.current[index] = el; }}
-              className="flex items-center gap-3 p-2 rounded-md bg-muted focus-within:ring-2 focus-within:ring-ring"
-              role="listitem"
-              onKeyDown={(e) => handleFileKeyDown(e, index)}
-            >
-              <FileStatusIcon status={file.status} />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground truncate">
-                    {file.file.name}
-                  </span>
-                  <span className="text-xs text-muted-foreground ml-2">
-                    {formatFileSize(file.file.size)}
-                  </span>
-                </div>
-                {file.status === 'processing' && (
-                  <div className="mt-1">
-                    <div className="h-1 bg-background rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-primary transition-all"
-                        style={{ width: `${file.progress}%` }}
-                        role="progressbar"
-                        aria-valuenow={file.progress}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                      />
-                    </div>
+          </Button>
+        </div>
+        {files.length > 0 ? (
+          <div className="max-h-64 space-y-2 overflow-auto" role="list" aria-label={translations.filesSelected}>
+            {files.map((file, index) => (
+              <div key={file.id} ref={(el) => { fileItemRefs.current[index] = el; }}
+                className="flex items-center gap-3 rounded-md border p-3" role="listitem"
+                onKeyDown={(event) => handleFileKeyDown(event, index)}>
+                <FileStatusIcon status={file.status} />
+                <div className="min-w-0 flex-1 space-y-1">
+                  <p className="truncate text-sm font-medium">{file.file.name}</p>
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                    <span>{formatFileSize(file.file.size)}</span>
+                    <Badge variant={file.status === 'error' ? 'destructive' : 'secondary'}>{getStatusLabel(file.status)}</Badge>
                   </div>
+                  {file.status === 'processing' && <Progress value={file.progress} aria-label={`${translations.progress}: ${file.file.name}`} />}
+                  {file.status === 'error' && file.error && <p className="text-xs text-destructive" role="alert">{file.error}</p>}
+                </div>
+                {!isProcessing && file.status !== 'processing' && (
+                  <Button variant="ghost" size="icon-sm" onClick={() => removeFile(file.id)}
+                    aria-label={`${t('buttons.remove')} ${file.file.name}`}><X aria-hidden="true" /></Button>
                 )}
-                {file.status === 'error' && file.error && (
-                  <span className="text-xs text-destructive" role="alert">
-                    {file.error}
-                  </span>
-                )}
-                <span className="text-xs text-muted-foreground">
-                  {getStatusLabel(file.status)}
-                </span>
               </div>
-              {!isProcessing && file.status !== 'processing' && (
-                <button
-                  onClick={() => removeFile(file.id)}
-                  className="p-1 text-muted-foreground hover:text-destructive focus:text-destructive transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                  aria-label={`Remove ${file.file.name}`}
-                  tabIndex={focusedFileIndex === index ? 0 : -1}
-                >
-                  <X className="h-4 w-4" aria-hidden="true" />
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Overall Progress */}
-      {isProcessing && (
-        <div className="mt-4">
-          <div className="flex items-center justify-between text-sm text-muted-foreground mb-1">
-            <span>{translations.progress}</span>
-            <span>
-              {completedCount}/{files.length} ({overallProgress}%)
-            </span>
+            ))}
           </div>
-          <div className="h-2 bg-muted rounded-full overflow-hidden">
-            <div
-              className="h-full bg-primary transition-all"
-              style={{ width: `${overallProgress}%` }}
-            />
+        ) : <p className="text-center text-sm text-muted-foreground">{translations.noFiles}</p>}
+        {isProcessing && (
+          <div className="space-y-2" role="status" aria-live="polite">
+            <p className="text-sm text-muted-foreground">{translations.progress}: {completedCount}/{files.length} ({overallProgress}%)</p>
+            <Progress value={overallProgress} aria-label={translations.progress} />
           </div>
-        </div>
-      )}
-
-      {/* Actions */}
+        )}
+        {files.length > 0 && !isProcessing && (completedCount > 0 || errorCount > 0) && (
+          <div className="flex flex-wrap items-center gap-3 text-sm" role="status" aria-live="polite">
+            {completedCount > 0 && <Badge variant="secondary"><CheckCircle aria-hidden="true" />{completedCount} {translations.completed}</Badge>}
+            {errorCount > 0 && <Badge variant="destructive"><AlertCircle aria-hidden="true" />{errorCount} {translations.error}</Badge>}
+          </div>
+        )}
+      </CardContent>
       {files.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {!isProcessing && pendingCount > 0 && (
-            <Button
-              variant="default"
-              size="sm"
-              onClick={handleStartProcessing}
-              className="flex items-center gap-2"
-            >
-              <Play className="h-4 w-4" aria-hidden="true" />
-              {translations.startProcessing}
-            </Button>
-          )}
-          
-          {isProcessing && (
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={cancelProcessing}
-              className="flex items-center gap-2"
-            >
-              <Pause className="h-4 w-4" aria-hidden="true" />
-              {translations.cancelProcessing}
-            </Button>
-          )}
-
-          {hasCompletedFiles && !isProcessing && (
-            <>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => downloadAll()}
-                className="flex items-center gap-2"
-              >
-                <Download className="h-4 w-4" aria-hidden="true" />
-                {translations.downloadAll}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => downloadAsZip()}
-                className="flex items-center gap-2"
-              >
-                <Archive className="h-4 w-4" aria-hidden="true" />
-                {translations.downloadZip}
-              </Button>
-            </>
-          )}
-        </div>
-      )}
-
-      {/* Empty State */}
-      {files.length === 0 && (
-        <p className="mt-4 text-center text-sm text-muted-foreground">
-          {translations.noFiles}
-        </p>
-      )}
-
-      {/* Summary */}
-      {files.length > 0 && !isProcessing && (completedCount > 0 || errorCount > 0) && (
-        <div className="mt-4 flex items-center gap-4 text-sm">
-          {completedCount > 0 && (
-            <span className="flex items-center gap-1 text-green-600">
-              <CheckCircle className="h-4 w-4" aria-hidden="true" />
-              {completedCount} {translations.completed}
-            </span>
-          )}
-          {errorCount > 0 && (
-            <span className="flex items-center gap-1 text-red-600">
-              <AlertCircle className="h-4 w-4" aria-hidden="true" />
-              {errorCount} {translations.error}
-            </span>
-          )}
-        </div>
+        <CardFooter className="flex flex-wrap gap-2">
+          {!isProcessing && pendingCount > 0 && <Button size="sm" onClick={handleStartProcessing}><Play aria-hidden="true" />{translations.startProcessing}</Button>}
+          {isProcessing && <Button variant="secondary" size="sm" onClick={cancelProcessing}><Pause aria-hidden="true" />{translations.cancelProcessing}</Button>}
+          {hasCompletedFiles && !isProcessing && <>
+            <Button variant="secondary" size="sm" onClick={() => downloadAll()}><Download aria-hidden="true" />{translations.downloadAll}</Button>
+            <Button variant="outline" size="sm" onClick={() => downloadAsZip()}><Archive aria-hidden="true" />{translations.downloadZip}</Button>
+          </>}
+        </CardFooter>
       )}
     </Card>
   );
