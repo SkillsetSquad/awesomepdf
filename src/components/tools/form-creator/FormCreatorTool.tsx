@@ -14,7 +14,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2 } from 'lucide-react';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploader } from '../FileUploader';
@@ -22,6 +22,8 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
 import { createForm, FormField } from '@/lib/pdf/processors/form-creator';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -214,6 +216,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
     savedAt: number;
   }>>([]);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const saveTriggerRef = useRef<HTMLButtonElement>(null);
+  const blankTriggerRef = useRef<HTMLButtonElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
   const [projectName, setProjectName] = useState('');
 
   // Undo/Redo history
@@ -963,7 +969,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   };
 
   return (
-    <div className={`space-y-6 ${className}`.trim()}>
+    <div ref={workspaceRef} tabIndex={-1} className={`space-y-6 ${className}`.trim()}>
       {!file && (
         <div className="space-y-4">
           <FileUploader
@@ -985,7 +991,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
           </div>
 
           <Button variant="outline" size="sm"
-            onClick={() => setShowBlankPdfDialog(true)}
+            ref={blankTriggerRef} onClick={() => setShowBlankPdfDialog(true)}
             className="w-full flex items-center justify-center gap-2"
           >
             <FilePlus2 className="w-5 h-5 text-blue-500" />
@@ -1577,7 +1583,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   {/* Save Project */}
                   <div className="pt-3 border-t border-gray-100">
                     <Button variant="ghost" size="sm"
-                      onClick={() => setShowSaveDialog(true)}
+                      ref={saveTriggerRef} onClick={() => setShowSaveDialog(true)}
                       disabled={fields.length === 0}
                       className="w-full flex items-center justify-center gap-2"
                     >
@@ -1664,10 +1670,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       )}
 
       {/* Save Project Dialog */}
-      {showSaveDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card   className="w-full max-w-md mx-4">
-            <h3 className="text-lg font-medium mb-4">{tTools('formCreator.saveProjectTitle') || 'Save Project'}</h3>
+      <Dialog open={showSaveDialog} onOpenChange={open => { setShowSaveDialog(open); if (!open) setProjectName(''); }}>
+          <DialogContent dir={direction} showCloseButton={false} onCloseAutoFocus={event => { event.preventDefault(); (saveTriggerRef.current || workspaceRef.current)?.focus(); }}>
+            <DialogHeader><DialogTitle className="pe-8">{tTools('formCreator.saveProjectTitle')}</DialogTitle><DialogDescription>{tTools('formCreator.saveInfo', { fields: fields.length })}</DialogDescription></DialogHeader>
+            <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={t('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
             <div className="space-y-4">
               <div>
                 <Label className="block mb-1" htmlFor="formcreatortool-field-9">{tTools('formCreator.projectName') || 'Project Name'}</Label>
@@ -1680,10 +1686,8 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   autoFocus id="formcreatortool-field-9" aria-label={tTools('formCreator.projectName') || 'Project Name'}
                 />
               </div>
-              <div className="text-xs text-gray-500">
-                <p>{tTools('formCreator.saveInfo', { fields: fields.length })}</p>
-              </div>
-              <div className="flex justify-end gap-2">
+
+              <DialogFooter>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1703,20 +1707,16 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   <Save className="w-4 h-4 mr-2" />
                   {tTools('formCreator.saveButton') || 'Save'}
                 </Button>
-              </div>
+              </DialogFooter>
             </div>
-          </Card>
-        </div>
-      )}
+          </DialogContent>
+      </Dialog>
 
       {/* Create Blank PDF Dialog */}
-      {showBlankPdfDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Card   className="w-full max-w-md mx-4">
-            <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
-              <FilePlus2 className="w-5 h-5 text-blue-500" />
-              {tTools('formCreator.createBlankPdfTitle') || 'Create Blank PDF'}
-            </h3>
+      <Dialog open={showBlankPdfDialog} onOpenChange={open => { setShowBlankPdfDialog(open); if (!open) { setBlankPdfPageSize('A4'); setBlankPdfPageCount(1); } }}>
+          <DialogContent dir={direction} showCloseButton={false} onCloseAutoFocus={event => { event.preventDefault(); (blankTriggerRef.current || workspaceRef.current)?.focus(); }}>
+            <DialogHeader><DialogTitle className="pe-8">{tTools('formCreator.createBlankPdfTitle')}</DialogTitle><DialogDescription>{tTools('formCreator.blankPdfNote')}</DialogDescription></DialogHeader>
+            <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={t('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
             <div className="space-y-4">
               {/* Page Size */}
               <div>
@@ -1747,11 +1747,9 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 />
               </div>
 
-              <div className="text-xs text-gray-500">
-                <p>{tTools('formCreator.blankPdfNote') || 'A blank PDF will be created for you to add form fields.'}</p>
-              </div>
 
-              <div className="flex justify-end gap-2">
+
+              <DialogFooter>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1771,11 +1769,10 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                   <FilePlus2 className="w-4 h-4 mr-2" />
                   {tTools('formCreator.createButton') || 'Create'}
                 </Button>
-              </div>
+              </DialogFooter>
             </div>
-          </Card>
-        </div>
-      )}
+          </DialogContent>
+      </Dialog>
     </div>
   );
 }
