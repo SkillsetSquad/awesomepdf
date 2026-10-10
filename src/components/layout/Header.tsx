@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
-        ? 'bg-background/8000 backdrop-blur-md border-b border-border/50 shadow-sm'
+        ? 'bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm'
         : 'bg-transparent border-transparent'
         }`}
       role="banner"

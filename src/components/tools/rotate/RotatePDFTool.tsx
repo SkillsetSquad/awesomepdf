@@ -712,7 +712,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             }
                           }}
                           placeholder="e.g. 1, 3-5"
-                          className="flex-1 text-[11px] px-2 py-1 rounded bg-background border border-border text-foreground placeholder:text-muted-foreground/5000 focus:outline-none focus:ring-1 focus:ring-primary"
+                          className="flex-1 text-[11px] px-2 py-1 rounded bg-background border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary"
                         />
                         <button
                           type="button"

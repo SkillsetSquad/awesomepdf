@@ -162,7 +162,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
         <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4">
           <div className="bg-background rounded-lg shadow-xl max-w-md w-full p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-full bg-primary/1000">
+              <div className="p-2 rounded-full bg-primary/10">
                 <HelpCircle className="h-6 w-6 text-primary" />
               </div>
               <h2 className="text-xl font-semibold text-foreground">

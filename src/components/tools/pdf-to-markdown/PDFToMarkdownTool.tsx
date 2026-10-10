@@ -351,7 +351,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
                 <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     <Card  className="overflow-hidden glass-card p-0">
                         {/* Preview Tabs */}
-                        <div className="flex border-b border-border bg-muted/3000">
+                        <div className="flex border-b border-border bg-muted/30">
                             <button
                                 onClick={() => setActiveTab('preview')}
                                 className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${activeTab === 'preview'
