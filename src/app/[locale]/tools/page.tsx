@@ -4,6 +4,9 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { generateToolsListMetadata } from '@/lib/seo';
 import ToolsPageClient from './ToolsPageClient';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,13 +31,13 @@ interface ToolsPageProps {
   params: Promise<{ locale: string }>;
 }
 
-function ToolsPageFallback() {
+function ToolsPageFallback({ label }: { label: string }) {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">
-        Loading...
-      </div>
-    </div>
+    <main id="main-content" aria-label={label} className="mx-auto w-full max-w-7xl flex-1 space-y-8 px-4 pt-24 pb-12 sm:px-6">
+      <Skeleton className="h-10 w-2/3" />
+      <Skeleton className="h-28 w-full" />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{Array.from({ length: 8 }, (_, index) => <Skeleton key={index} className="h-44" />)}</div>
+    </main>
   );
 }
 
@@ -43,6 +46,7 @@ export default async function ToolsPage({ params }: ToolsPageProps) {
 
   // Enable static rendering
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'common.status' });
 
   // Get localized content for tools
   const { tools } = await import('@/config/tools');
@@ -62,8 +66,12 @@ export default async function ToolsPage({ params }: ToolsPageProps) {
   // Note: searchParams are handled client-side in ToolsPageClient
   // because static export doesn't support server-side searchParams
   return (
-    <Suspense fallback={<ToolsPageFallback />}>
-      <ToolsPageClient locale={locale as Locale} localizedToolContent={localizedToolContent} />
-    </Suspense>
+    <div className="flex min-h-screen flex-col bg-background">
+      <Header locale={locale as Locale} />
+      <Suspense fallback={<ToolsPageFallback label={t('loading')} />}>
+        <ToolsPageClient locale={locale as Locale} localizedToolContent={localizedToolContent} />
+      </Suspense>
+      <Footer locale={locale as Locale} />
+    </div>
   );
 }

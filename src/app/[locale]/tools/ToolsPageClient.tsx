@@ -1,23 +1,31 @@
 'use client';
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
-import { Search, X, Filter, Star } from 'lucide-react';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
+import { Search, X, Star } from 'lucide-react';
 import { ToolGrid } from '@/components/tools/ToolGrid';
-import { ToolCard } from '@/components/tools/ToolCard';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { getAllTools, getToolsByCategory, getToolById } from '@/config/tools';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Skeleton } from '@/components/ui/skeleton';
+import { getAllTools } from '@/config/tools';
 import { toolMatchesQuery } from '@/lib/utils/search';
 import { type Locale } from '@/lib/i18n/config';
-import { CATEGORY_INFO, type ToolCategory } from '@/types/tool';
+import { TOOL_CATEGORIES, type ToolCategory } from '@/types/tool';
 import { useFavorites } from '@/hooks/useFavorites';
 
 type CategoryFilter = ToolCategory | 'all' | 'favorites';
-
+const categoryKeys: Record<ToolCategory, string> = {
+  'edit-annotate': 'editAnnotate', 'convert-to-pdf': 'convertToPdf',
+  'convert-from-pdf': 'convertFromPdf', 'organize-manage': 'organizeManage',
+  'optimize-repair': 'optimizeRepair', 'secure-pdf': 'securePdf',
+};
+function parseCategory(value: string | null): CategoryFilter {
+  return value === 'favorites' || TOOL_CATEGORIES.includes(value as ToolCategory) ? value as CategoryFilter : 'all';
+}
 interface ToolsPageClientProps {
   locale: Locale;
   localizedToolContent?: Record<string, { title: string; description: string }>;
@@ -26,274 +34,70 @@ interface ToolsPageClientProps {
 export default function ToolsPageClient({ locale, localizedToolContent }: ToolsPageClientProps) {
   const t = useTranslations();
   const searchParams = useSearchParams();
-  const allTools = getAllTools();
+  const allTools = useMemo(() => getAllTools(), []);
   const { favorites, isLoaded: favoritesLoaded, favoritesCount } = useFavorites();
-
-  const categoryTranslationKeys: Record<ToolCategory, string> = {
-    'edit-annotate': 'editAnnotate',
-    'convert-to-pdf': 'convertToPdf',
-    'convert-from-pdf': 'convertFromPdf',
-    'organize-manage': 'organizeManage',
-    'optimize-repair': 'optimizeRepair',
-    'secure-pdf': 'securePdf',
-  };
-
-  // Read initial values from URL search params (client-side)
-  const initialCategory = searchParams.get('category') || 'all';
-  const initialQuery = searchParams.get('q') || '';
-
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>(
-    (initialCategory as ToolCategory) || 'all'
-  );
-
-  // Sync state with URL params when they change
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>(parseCategory(searchParams.get('category')));
   useEffect(() => {
-    const category = searchParams.get('category') || 'all';
-    const query = searchParams.get('q') || '';
-    setSelectedCategory(category as CategoryFilter);
-    setSearchQuery(query);
+    setSelectedCategory(parseCategory(searchParams.get('category')));
+    setSearchQuery(searchParams.get('q') || '');
   }, [searchParams]);
-  const [showFilters, setShowFilters] = useState(false);
 
-  // Filter tools based on search and category
-  const filteredTools = useMemo(() => {
-    let tools = allTools;
-
-    // Filter by category
-    if (selectedCategory === 'favorites') {
-      // Filter to only show favorite tools
-      tools = favorites
-        .map(id => getToolById(id))
-        .filter((tool): tool is NonNullable<typeof tool> => tool !== undefined);
-    } else if (selectedCategory !== 'all') {
-      tools = getToolsByCategory(selectedCategory as ToolCategory);
-    }
-
-    // Filter by search query (supports current language search)
-    if (searchQuery.trim()) {
-      tools = tools.filter(tool =>
-        toolMatchesQuery(tool, searchQuery, localizedToolContent?.[tool.id])
-      );
-    }
-
-    return tools;
-  }, [allTools, selectedCategory, searchQuery, favorites]);
-
-  // Category options
-  const categories: { value: CategoryFilter; label: string; icon?: React.ReactNode }[] = [
-    { value: 'all', label: t('toolsPage.allTools') },
-    {
-      value: 'favorites',
-      label: t('tools.favorite.title'),
-      icon: <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-    },
-    { value: 'edit-annotate', label: t('home.categories.editAnnotate') },
-    { value: 'convert-to-pdf', label: t('home.categories.convertToPdf') },
-    { value: 'convert-from-pdf', label: t('home.categories.convertFromPdf') },
-    { value: 'organize-manage', label: t('home.categories.organizeManage') },
-    { value: 'optimize-repair', label: t('home.categories.optimizeRepair') },
-    { value: 'secure-pdf', label: t('home.categories.securePdf') },
+  const filteredTools = useMemo(() => allTools.filter(tool =>
+    (selectedCategory === 'all' || (selectedCategory === 'favorites' ? favorites.includes(tool.id) : tool.category === selectedCategory)) &&
+    (!searchQuery.trim() || toolMatchesQuery(tool, searchQuery, localizedToolContent?.[tool.id]))
+  ), [allTools, selectedCategory, searchQuery, favorites, localizedToolContent]);
+  const categories = [
+    { value: 'all', label: t('toolsPage.allTools'), count: allTools.length },
+    { value: 'favorites', label: t('tools.favorite.title'), count: favoritesLoaded ? favoritesCount : undefined },
+    ...TOOL_CATEGORIES.map(category => ({ value: category, label: t(`home.categories.${categoryKeys[category]}`), count: allTools.filter(tool => tool.category === category).length })),
   ];
-
-  const handleClearSearch = useCallback(() => {
-    setSearchQuery('');
-  }, []);
-
-  const handleClearFilters = useCallback(() => {
-    setSearchQuery('');
-    setSelectedCategory('all');
-  }, []);
+  const clearFilters = () => { setSearchQuery(''); setSelectedCategory('all'); };
+  const loadingFavorites = selectedCategory === 'favorites' && !favoritesLoaded;
+  const emptyFavorites = selectedCategory === 'favorites' && !searchQuery.trim();
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Header locale={locale} />
-
-      <main className="flex-1">
-        {/* Page Header */}
-        <section className="relative pt-36 pb-20 overflow-hidden">
-          {/* Animated Background Blobs (Subtle) */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50" />
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                <span className="text-gradient">{t('toolsPage.title')}</span>
-              </h1>
-              <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-                {t('toolsPage.subtitle', { count: allTools.length })}
-              </p>
-
-              {/* Search Bar */}
-              <div className="relative max-w-2xl mx-auto">
-                <div className="relative group">
-                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-primary group-focus-within:text-primary transition-colors z-10" aria-hidden="true" />
-                  <input
-                    type="search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={t('tools.search.placeholder')}
-                    className="w-full pl-14 pr-12 py-4 text-lg rounded-2xl border border-border bg-card dark:bg-card text-foreground placeholder:text-muted-foreground shadow-md focus:outline-none focus:ring-4 focus:ring-primary/15 focus:border-primary transition-all"
-                    aria-label="Search tools"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={handleClearSearch}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 hover:bg-muted rounded-full transition-colors"
-                      aria-label="Clear search"
-                    >
-                      <X className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
-                    </button>
-                  )}
-                </div>
-              </div>
+    <main id="main-content" className="mx-auto w-full max-w-7xl flex-1 space-y-8 px-4 pt-24 pb-12 sm:px-6">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t('toolsPage.title')}</h1>
+        <p className="text-muted-foreground">{t('toolsPage.subtitle', { count: allTools.length })}</p>
+      </div>
+      <Card>
+        <CardContent className="grid items-end gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
+          <div className="space-y-2">
+            <Label htmlFor="tool-search">{t('common.search.placeholder')}</Label>
+            <div className="relative">
+              <Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+              <Input id="tool-search" type="search" value={searchQuery} onChange={event => setSearchQuery(event.target.value)} placeholder={t('tools.search.placeholder')} className="ps-9 pe-10 [&::-webkit-search-cancel-button]:appearance-none" />
+              {searchQuery && <Button variant="ghost" size="icon" className="absolute end-0 top-0" onClick={() => setSearchQuery('')} aria-label={t('common.buttons.clear')}><X /></Button>}
             </div>
           </div>
-        </section>
-
-        {/* Filters and Tools */}
-        <section className="py-8 bg-muted/30 min-h-[500px]">
-          <div className="container mx-auto px-4">
-            {/* Filter Bar */}
-            <div className="flex flex-col md:flex-row items-center gap-6 mb-10 sticky top-20 z-40 py-4 px-6 rounded-2xl glass-card transition-all">
-              {/* Mobile Filter Toggle */}
-              <Button
-                variant="outline"
-                className="md:hidden w-full"
-                onClick={() => setShowFilters(!showFilters)}
-                aria-expanded={showFilters}
-                aria-controls="category-filters"
-              >
-                <Filter className="h-4 w-4 mr-2" aria-hidden="true" />
-                {t('toolsPage.filters')}
-              </Button>
-
-              {/* Category Filters */}
-              <div
-                className={`flex flex-wrap gap-2 ${showFilters ? 'block w-full' : 'hidden md:flex flex-1'}`}
-                role="group"
-                aria-label="Filter by category"
-              >
-                {categories.map((cat) => (
-                  <button
-                    key={cat.value}
-                    onClick={() => setSelectedCategory(cat.value)}
-                    aria-pressed={selectedCategory === cat.value}
-                    className={`
-                      px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5
-                      ${selectedCategory === cat.value
-                        ? cat.value === 'favorites'
-                          ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 shadow-md'
-                          : 'bg-primary text-white shadow-md shadow-primary/25'
-                        : 'bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground'
-                      }
-                    `}
-                  >
-                    {cat.icon}
-                    {cat.label}
-                    {cat.value === 'favorites' && favoritesLoaded && (
-                      <span className={`ml-0.5 text-xs ${selectedCategory === cat.value ? 'opacity-100' : 'opacity-60'}`}>
-                        ({favoritesCount})
-                      </span>
-                    )}
-                    {cat.value !== 'all' && cat.value !== 'favorites' && (
-                      <span className={`ml-0.5 text-xs ${selectedCategory === cat.value ? 'opacity-100' : 'opacity-60'}`}>
-                        ({getToolsByCategory(cat.value as ToolCategory).length})
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              {/* Clear Filters */}
-              {(searchQuery || selectedCategory !== 'all') && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleClearFilters}
-                  className="ml-auto text-sm text-muted-foreground"
-                >
-                  {t('toolsPage.clearAll')}
-                </Button>
-              )}
-            </div>
-
-            {/* Results Count */}
-            <div className="mb-6 px-2">
-              <p className="text-sm text-muted-foreground">
-                {selectedCategory === 'favorites'
-                  ? `${filteredTools.length} ${t('tools.favorite.title').toLowerCase()}`
-                  : filteredTools.length === allTools.length
-                    ? t('toolsPage.showingAll', { count: allTools.length })
-                    : t('toolsPage.showingFiltered', { filtered: filteredTools.length, total: allTools.length })}
-                {searchQuery && ` ${t('toolsPage.forQuery', { query: searchQuery })}`}
-                {selectedCategory !== 'all' && selectedCategory !== 'favorites' && ` ${t('toolsPage.inCategory', { category: t(`home.categories.${categoryTranslationKeys[selectedCategory as ToolCategory]}`) })}`}
-              </p>
-            </div>
-
-            {/* Tools Grid */}
-            {filteredTools.length > 0 ? (
-              selectedCategory === 'all' && !searchQuery ? (
-                // Show grouped by category when no filters
-                <ToolGrid
-                  tools={filteredTools}
-                  locale={locale}
-                  localizedToolContent={localizedToolContent}
-                  showCategoryHeaders
-                />
-              ) : (
-                // Show flat grid when filtered
-                <ToolGrid
-                  tools={filteredTools}
-                  locale={locale}
-                  localizedToolContent={localizedToolContent}
-                />
-              )
-            ) : selectedCategory === 'favorites' ? (
-              // Empty favorites state
-              <Card className="p-16 text-center glass-card border-dashed border-2">
-                <div className="max-w-md mx-auto flex flex-col items-center">
-                  <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mb-6">
-                    <Star className="h-10 w-10 text-amber-500" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {t('tools.favorite.empty')}
-                  </h3>
-                  <p className="text-muted-foreground mb-8">
-                    {t('tools.favorite.hint')}
-                  </p>
-                  <Button variant="outline" onClick={() => setSelectedCategory('all')} className="px-8">
-                    {t('toolsPage.allTools')}
-                  </Button>
-                </div>
-              </Card>
-            ) : (
-              // No results
-              <Card className="p-16 text-center glass-card border-dashed border-2">
-                <div className="max-w-md mx-auto flex flex-col items-center">
-                  <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-6">
-                    <Search className="h-10 w-10 text-muted-foreground" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {t('toolsPage.noToolsFound')}
-                  </h3>
-                  <p className="text-muted-foreground mb-8">
-                    {t('tools.search.noResults', { query: searchQuery })}
-                  </p>
-                  <Button variant="outline" onClick={handleClearFilters} className="px-8">
-                    {t('toolsPage.clearFilters')}
-                  </Button>
-                </div>
-              </Card>
-            )}
+          <div className="space-y-2 [&>[data-slot=native-select-wrapper]]:w-full">
+            <Label htmlFor="tool-category">{t('toolsPage.filters')}</Label>
+            <NativeSelect id="tool-category" value={selectedCategory} onChange={event => setSelectedCategory(parseCategory(event.target.value))}>
+              {categories.map(category => <NativeSelectOption key={category.value} value={category.value}>{category.label}{category.count !== undefined ? ` (${category.count})` : ''}</NativeSelectOption>)}
+            </NativeSelect>
           </div>
-        </section>
-      </main>
-
-      <Footer locale={locale} />
-    </div>
+          <Button variant="outline" onClick={clearFilters} disabled={!searchQuery && selectedCategory === 'all'}>{t('toolsPage.clearAll')}</Button>
+        </CardContent>
+      </Card>
+      <p role="status" className="text-sm text-muted-foreground">
+        {t(filteredTools.length === allTools.length ? 'toolsPage.showingAll' : 'toolsPage.showingFiltered', { count: allTools.length, filtered: filteredTools.length, total: allTools.length })}
+        {searchQuery && ` ${t('toolsPage.forQuery', { query: searchQuery })}`}
+        {TOOL_CATEGORIES.includes(selectedCategory as ToolCategory) && ` ${t('toolsPage.inCategory', { category: t(`home.categories.${categoryKeys[selectedCategory as ToolCategory]}`) })}`}
+      </p>
+      {loadingFavorites ? <div aria-label={t('common.status.loading')} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{Array.from({ length: 4 }, (_, index) => <Skeleton key={index} className="h-44" />)}</div> : filteredTools.length ? (
+        <ToolGrid tools={filteredTools} locale={locale} localizedToolContent={localizedToolContent} showCategoryHeaders={selectedCategory === 'all' && !searchQuery.trim()} />
+      ) : (
+        <Card className="mx-auto max-w-xl text-center">
+          <CardHeader>
+            {emptyFavorites ? <Star className="mx-auto size-8 text-muted-foreground" aria-hidden="true" /> : <Search className="mx-auto size-8 text-muted-foreground" aria-hidden="true" />}
+            <CardTitle><h2>{t(emptyFavorites ? 'tools.favorite.empty' : 'toolsPage.noToolsFound')}</h2></CardTitle>
+            <CardDescription>{emptyFavorites ? t('tools.favorite.hint') : t('tools.search.noResults', { query: searchQuery })}</CardDescription>
+          </CardHeader>
+          <CardContent><Button variant="outline" onClick={clearFilters}>{t(emptyFavorites ? 'toolsPage.allTools' : 'toolsPage.clearFilters')}</Button></CardContent>
+        </Card>
+      )}
+    </main>
   );
 }
