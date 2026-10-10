@@ -6,11 +6,12 @@ import { File as UIFile } from 'lucide-react';
 
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { withBasePath } from '@/lib/utils/path';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { LegacyTextEditDialog } from './LegacyTextEditDialog';
 import {
   replaceExistingText,
   type ReplaceExistingTextDiagnostics,
@@ -40,6 +41,8 @@ export function LegacyAnnotatorTool({
   onClear,
 }: LegacyAnnotatorToolProps) {
   const t = useTranslations('common');
+  const locale = useLocale();
+  const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null);
   const tTools = useTranslations('tools.editPdf');
   
   const [internalFile, setInternalFile] = useState<File | null>(null);
@@ -117,6 +120,7 @@ export function LegacyAnnotatorTool({
   }, [pdfUrl]);
 
   const handleIframeLoad = useCallback(() => {
+    setEditorFrame(iframeRef.current);
     setTimeout(() => {
       setIsEditorReady(true);
       
@@ -260,35 +264,6 @@ export function LegacyAnnotatorTool({
                     color: white; background: #1d4ed8; box-shadow: 0 5px 18px rgba(0,0,0,.2);
                     font: 500 12px/1.2 system-ui, sans-serif; pointer-events: none;
                   }
-                  #pdfcraft-text-edit-popover {
-                    position: fixed; z-index: 100001; width: min(380px, calc(100vw - 24px));
-                    padding: 14px; border: 1px solid #cbd5e1; border-radius: 10px;
-                    background: white; color: #0f172a; box-shadow: 0 16px 40px rgba(15,23,42,.28);
-                    font: 13px/1.4 system-ui, sans-serif;
-                  }
-                  #pdfcraft-text-edit-popover textarea {
-                    box-sizing: border-box; width: 100%; min-height: 62px; resize: vertical;
-                    margin-top: 4px; padding: 8px; border: 1px solid #94a3b8; border-radius: 6px;
-                    color: #0f172a; background: white; font: inherit;
-                  }
-                  #pdfcraft-text-edit-popover .pdfcraft-actions {
-                    display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;
-                  }
-                  #pdfcraft-text-edit-popover button {
-                    padding: 6px 11px; border: 1px solid #94a3b8; border-radius: 6px;
-                    cursor: pointer; background: white; color: #0f172a; font: inherit;
-                  }
-                  #pdfcraft-text-edit-popover button[data-action="apply"] {
-                    border-color: #2563eb; background: #2563eb; color: white;
-                  }
-                  #pdfcraft-text-edit-popover .pdfcraft-overflow {
-                    display: none; margin-top: 8px; padding: 7px 8px; border-radius: 6px;
-                    color: #92400e; background: #fffbeb; border: 1px solid #fde68a;
-                  }
-                  #pdfcraft-text-edit-popover select {
-                    box-sizing: border-box; width: 100%; margin-top: 4px; padding: 7px;
-                    border: 1px solid #94a3b8; border-radius: 6px; background: white;
-                  }
                   .pdfcraft-live-text-preview {
                     outline: 2px dashed #16a34a !important;
                     background: rgba(22, 163, 74, .10) !important;
@@ -297,7 +272,11 @@ export function LegacyAnnotatorTool({
                 document.head.appendChild(style);
 
                 let active = false;
-                let popover = null;
+                let editingText = false;
+                let requestId = 0;
+                let selectionGeometry = null;
+                let originalWidth = 0;
+                let originalHeight = 0;
                 let previewSpan = null;
                 let previewOriginalText = '';
 
@@ -310,17 +289,17 @@ export function LegacyAnnotatorTool({
                   previewOriginalText = '';
                 }
 
-                function closePopover(restore = true) {
-                  if (restore) restorePreview();
-                  if (popover) popover.remove();
-                  popover = null;
+                function closeTextEditor() {
+                  restorePreview();
+                  if (editingText) window.parent.postMessage({ type: 'pdfcraft:cancel-existing-text', payload: { requestId } }, window.location.origin);
+                  editingText = false;
                 }
 
                 function setActive(nextActive) {
                   active = nextActive;
                   document.body.classList.toggle('pdfcraft-text-edit-mode', active);
                   item.classList.toggle('pdfcraft-active', active);
-                  closePopover();
+                  closeTextEditor();
 
                   document.getElementById('pdfcraft-text-edit-hint')?.remove();
                   if (active) {
@@ -338,8 +317,8 @@ export function LegacyAnnotatorTool({
                 });
 
                 document.addEventListener('keydown', function(event) {
-                  if (event.key === 'Escape' && (active || popover)) {
-                    if (popover) closePopover();
+                  if (event.key === 'Escape' && (active || editingText)) {
+                    if (editingText) closeTextEditor();
                     else setActive(false);
                   }
                 });
@@ -364,92 +343,46 @@ export function LegacyAnnotatorTool({
                   const viewport = pdfPage.getViewport({ scale: 1 });
                   const pageRect = pageElement.getBoundingClientRect();
                   const textRect = span.getBoundingClientRect();
-                  const originalWidth = textRect.width;
-                  const originalHeight = textRect.height;
+                  originalWidth = textRect.width;
+                  originalHeight = textRect.height;
                   const x = (textRect.left - pageRect.left) / pageRect.width * viewport.width;
                   const top = (textRect.top - pageRect.top) / pageRect.height * viewport.height;
                   const width = textRect.width / pageRect.width * viewport.width;
                   const height = textRect.height / pageRect.height * viewport.height;
                   const y = viewport.height - top - height;
 
-                  closePopover();
+                  closeTextEditor();
                   previewSpan = span;
                   previewOriginalText = span.textContent;
-                  popover = document.createElement('div');
-                  popover.id = 'pdfcraft-text-edit-popover';
-                  popover.innerHTML =
-                    '<strong>' + labels.heading + '</strong>' +
-                    '<div style="margin-top:8px;color:#64748b">' + labels.original + '</div>' +
-                    '<div style="max-height:48px;overflow:auto">' +
-                      span.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;') +
-                    '</div>' +
-                    '<label style="display:block;margin-top:8px">' + labels.replacement +
-                      '<textarea></textarea>' +
-                    '</label>' +
-                    '<div class="pdfcraft-overflow" role="status">' + labels.overflow + '</div>' +
-                    '<label style="display:block;margin-top:8px">' + labels.fit +
-                      '<select data-fit-mode>' +
-                        '<option value="preserve">' + labels.preserve + '</option>' +
-                        '<option value="shrink">' + labels.shrink + '</option>' +
-                        '<option value="expand">' + labels.expand + '</option>' +
-                      '</select>' +
-                    '</label>' +
-                    '<div style="margin-top:8px;color:#92400e;font-size:11px">' + labels.signature + '</div>' +
-                    '<div class="pdfcraft-actions">' +
-                      '<button type="button" data-action="cancel">' + labels.cancel + '</button>' +
-                      '<button type="button" data-action="apply">' + labels.apply + '</button>' +
-                    '</div>';
+                  requestId += 1;
+                  editingText = true;
+                  selectionGeometry = { page: pageNumber, text: previewOriginalText, x, y, width, height };
+                  window.parent.postMessage({
+                    type: 'pdfcraft:select-existing-text',
+                    payload: { requestId, text: previewOriginalText, labels }
+                  }, window.location.origin);
+                }, true);
 
-                  const left = Math.min(Math.max(12, textRect.left), window.innerWidth - 392);
-                  const topPosition = Math.min(
-                    window.innerHeight - 245,
-                    Math.max(90, textRect.bottom + 8)
-                  );
-                  popover.style.left = left + 'px';
-                  popover.style.top = topPosition + 'px';
-                  document.body.appendChild(popover);
-
-                  const textarea = popover.querySelector('textarea');
-                  textarea.value = span.textContent;
-                  textarea.focus();
-                  textarea.select();
-                  const overflowNotice = popover.querySelector('.pdfcraft-overflow');
-
-                  function updatePreview() {
-                    span.textContent = textarea.value;
-                    span.classList.add('pdfcraft-live-text-preview');
-                    const previewRect = span.getBoundingClientRect();
-                    const lineCount = Math.max(1, textarea.value.split(/\\r?\\n/).length);
-                    const overflow = previewRect.width > originalWidth + 1 ||
-                      lineCount * originalHeight > originalHeight + 1;
-                    overflowNotice.style.display = overflow ? 'block' : 'none';
-                  }
-                  textarea.addEventListener('input', updatePreview);
-                  updatePreview();
-
-                  popover.querySelector('[data-action="cancel"]').addEventListener('click', closePopover);
-                  popover.querySelector('[data-action="apply"]').addEventListener('click', function() {
-                    const newText = textarea.value;
-                    if (newText === previewOriginalText) {
-                      closePopover();
-                      return;
-                    }
-
-                    const applyButton = popover.querySelector('[data-action="apply"]');
-                    applyButton.disabled = true;
-                    applyButton.textContent = '…';
+                window.addEventListener('message', function(event) {
+                  if (event.source !== window.parent || event.origin !== window.location.origin) return;
+                  const { type, payload } = event.data || {};
+                  if (!editingText || payload?.requestId !== requestId) return;
+                  if (type === 'pdfcraft:preview-existing-text' && typeof payload.text === 'string') {
+                    previewSpan.textContent = payload.text;
+                    previewSpan.classList.add('pdfcraft-live-text-preview');
+                    const previewRect = previewSpan.getBoundingClientRect();
+                    const lineCount = Math.max(1, payload.text.split(/\\r?\\n/).length);
+                    const overflow = previewRect.width > originalWidth + 1 || lineCount * originalHeight > originalHeight + 1;
+                    window.parent.postMessage({ type: 'pdfcraft:text-overflow', payload: { requestId, overflow } }, window.location.origin);
+                  } else if (type === 'pdfcraft:close-existing-text') {
+                    closeTextEditor();
+                  } else if (type === 'pdfcraft:apply-existing-text' && typeof payload.replacementText === 'string') {
                     window.parent.postMessage({
                       type: 'pdfcraft:replace-existing-text',
-                      payload: {
-                        page: pageNumber,
-                        text: previewOriginalText,
-                        replacementText: newText,
-                        fitMode: popover.querySelector('[data-fit-mode]').value,
-                        x, y, width, height
-                      }
+                      payload: { ...selectionGeometry, replacementText: payload.replacementText, fitMode: payload.fitMode }
                     }, window.location.origin);
-                    closePopover(false);
-                  });
+                    closeTextEditor();
+                  }
                 }, true);
               }
 
@@ -929,7 +862,7 @@ export function LegacyAnnotatorTool({
         console.warn('Could not access iframe content to inject patches', e);
       }
     }, 1000);
-  }, []);
+  }, [t]);
 
   const handleClear = useCallback(() => {
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
@@ -943,6 +876,7 @@ export function LegacyAnnotatorTool({
     textRedoStackRef.current = [];
     setTextUndoCount(0);
     setTextRedoCount(0);
+    setEditorFrame(null);
     onClear?.();
   }, [pdfUrl, setFile, onClear]);
 
@@ -950,7 +884,7 @@ export function LegacyAnnotatorTool({
     setFile(nextFile);
     setIsEditorReady(false);
     setPdfUrl(URL.createObjectURL(nextFile));
-  }, []);
+  }, [setFile]);
 
   const handleExistingTextReplaced = useCallback((
     result: Blob,
@@ -1066,6 +1000,7 @@ export function LegacyAnnotatorTool({
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
+      <LegacyTextEditDialog key={pdfUrl} iframe={editorFrame} locale={locale} cancelLabel={t('buttons.cancel')} applyLabel={t('buttons.apply')} />
       {!file && (
         <FileUploader
           accept={['application/pdf', '.pdf']}
