@@ -7121,9 +7121,8 @@ function stagePointHandlers() {
         t.closest?.('#toolbar') ||
         t.closest?.('#findbar') ||
         t.closest?.('#contextbar') ||
-        t.closest?.('.dockpanel') ||
-        t.closest?.('.dockrail') ||
-        t.closest?.('.dsheet') ||
+        t.closest?.('[data-slot="dialog-content"]') ||
+        t.closest?.('[data-slot="dropdown-menu-content"]') ||
         t.closest?.('.para-box') ||
         t.closest?.('.para-handle') ||
         t.closest?.('.edit-move') ||
@@ -9469,25 +9468,14 @@ function wireUI() {
     })
   );
 
-  const swatches = [
-    '#000000',
-    '#737373',
-    '#d1d1d1',
-    '#ed5924',
-    '#f2b705',
-    '#3b6ef5',
-  ];
-  for (const c of swatches) {
-    const d = document.createElement('div');
-    d.className = 'swatch';
-    d.style.background = c;
+  for (const d of $('fSwatches').querySelectorAll('[data-color]')) {
+    const c = d.dataset.color;
     d.addEventListener('mousedown', (e) => e.preventDefault());
     d.addEventListener('click', () =>
       styleTargetRuns((s) => {
         s.rgba = cssHexToRgba(c);
       })
     );
-    $('fSwatches').appendChild(d);
   }
 
   for (const b of [...$('fToggles').children, ...$('fAlign').children]) {
@@ -9946,7 +9934,7 @@ function wireUI() {
   stagePointHandlers();
 
   window.addEventListener('keydown', (e) => {
-    if (document.querySelector('[data-slot="dialog-content"]')) return;
+    if (document.querySelector('[data-slot="dialog-content"], [data-slot="dropdown-menu-content"]')) return;
     const meta = e.metaKey || e.ctrlKey;
     const typing =
       document.activeElement &&
