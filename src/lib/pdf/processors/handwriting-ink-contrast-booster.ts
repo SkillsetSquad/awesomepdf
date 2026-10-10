@@ -56,11 +56,13 @@ export class HandwritingInkContrastBoosterProcessor extends BasePDFProcessor {
       const imgBlob = new Blob([arrayBuffer], { type: blobType });
       const imgBitmap = await createImageBitmap(imgBlob);
 
-      canvas.width = imgBitmap.width;
-      canvas.height = imgBitmap.height;
-
-      // Draw original
-      ctx.drawImage(imgBitmap, 0, 0);
+      try {
+        canvas.width = imgBitmap.width;
+        canvas.height = imgBitmap.height;
+        ctx.drawImage(imgBitmap, 0, 0);
+      } finally {
+        imgBitmap.close();
+      }
 
       this.updateProgress(60, 'Performing low-pass ink contrast boosting...');
 
@@ -135,7 +137,7 @@ export class HandwritingInkContrastBoosterProcessor extends BasePDFProcessor {
         canvas.toBlob((b) => {
           if (b) resolve(b);
           else reject(new Error('Canvas conversion to Blob failed.'));
-        }, blobType);
+        }, 'image/png');
       });
 
       this.updateProgress(100, 'Complete!');
