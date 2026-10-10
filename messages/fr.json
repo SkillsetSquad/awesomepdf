@@ -951,6 +951,9 @@
       "downloadStartedNotice": "Téléchargement lancé dans le navigateur ! Sinon, copiez le lien et collez-le dans votre navigateur.",
       "downloadFailedNotice": "Impossible d'ouvrir le navigateur. Veuillez copier le lien et le coller manuellement.",
       "linkCopied": "Lien de téléchargement copié dans le presse-papiers !"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

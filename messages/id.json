@@ -951,6 +951,9 @@
       "downloadStartedNotice": "Unduhan dimulai di browser! Jika belum mulai, salin tautan dan tempel di peramban Anda.",
       "downloadFailedNotice": "Tidak dapat membuka browser secara otomatis. Silakan salin tautan dan unduh secara manual.",
       "linkCopied": "Tautan unduhan berhasil disalin!"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

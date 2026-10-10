@@ -951,6 +951,9 @@
       "downloadStartedNotice": "已喚起瀏覽器開始下載！若未自動彈出，可點擊右側按鈕複製直鏈並在瀏覽器中貼上。",
       "downloadFailedNotice": "無法自動開啟瀏覽器，請點擊複製按鈕手動在瀏覽器中貼上下載。",
       "linkCopied": "下載鏈接已複製到剪貼板！"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

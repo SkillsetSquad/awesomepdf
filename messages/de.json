@@ -951,6 +951,9 @@
       "downloadStartedNotice": "Download im Browser gestartet! Falls nicht, kopieren Sie den Link und fügen Sie ihn in Ihren Browser ein.",
       "downloadFailedNotice": "Browser konnte nicht geöffnet werden. Bitte Link kopieren und manuell im Browser öffnen.",
       "linkCopied": "Download-Link in die Zwischenablage kopiert!"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

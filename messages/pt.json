@@ -951,6 +951,9 @@
       "downloadStartedNotice": "Download iniciado no navegador! Se não começar, copie o link e cole-o no seu navegador.",
       "downloadFailedNotice": "Não foi possível abrir o navegador. Copie o link e cole-o manualmente.",
       "linkCopied": "Link de download copiado para a área de transferência!"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

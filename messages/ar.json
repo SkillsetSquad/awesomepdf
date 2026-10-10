@@ -951,6 +951,9 @@
       "downloadStartedNotice": "بدأ التنزيل في المتصفح! إذا لم يبدأ، انسخ الرابط والصقه في متصفحك.",
       "downloadFailedNotice": "تعذر فتح المتصفح تلقائيًا. يرجى نسخ الرابط والتنزيل يدويًا.",
       "linkCopied": "تم نسخ رابط التنزيل إلى الحافظة!"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

@@ -951,6 +951,9 @@
       "downloadStartedNotice": "ブラウザでダウンロードを開始しました！開始されない場合はリンクをコピーして手動で開いてください。",
       "downloadFailedNotice": "ブラウザを自動で開けませんでした。リンクをコピーしてブラウザに貼り付けてください。",
       "linkCopied": "ダウンロードリンクをクリップボードにコピーしました！"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {

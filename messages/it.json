@@ -951,6 +951,9 @@
       "downloadStartedNotice": "Download avviato nel browser! Se non si avvia, copia il link e incollalo nel tuo browser.",
       "downloadFailedNotice": "Impossibile aprire il browser. Copia il link e incollalo manualmente nel browser.",
       "linkCopied": "Link di download copiato negli appunti!"
+    },
+    "theme": {
+      "toggle": "Toggle color theme"
     }
   },
   "toolsPage": {
