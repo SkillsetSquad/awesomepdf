@@ -31,6 +31,21 @@ function rgbHex(values: number[]): string {
   return `#${values.map(value => Math.round(value).toString(16).padStart(2, '0')).join('')}`;
 }
 
+function viewerColor(value: string): string | null {
+  const hex = hexColor(value.trim());
+  if (hex) return hex;
+  // The annotation engine also stores colors as rgb()/rgba(). Its picker edits opaque RGB.
+  const match = value.trim().match(/^rgba?\(([^)]+)\)$/i);
+  if (!match) return null;
+  const parts = match[1].split(',').map(part => part.trim());
+  if (parts.length !== 3 && parts.length !== 4) return null;
+  if (parts.some(part => !/^\d+(?:\.\d+)?$/.test(part))) return null;
+  const values = parts.map(Number);
+  if (values.slice(0, 3).some(channel => channel < 0 || channel > 255)) return null;
+  if (values.length === 4 && (values[3] < 0 || values[3] > 1)) return null;
+  return rgbHex(values.slice(0, 3));
+}
+
 function channels(value: string, format: ColorFormat): Channels {
   const values = rgb(value);
   if (format !== 'hsb') return values.map(String) as Channels;
@@ -66,14 +81,14 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
   const trigger = useRef<HTMLButtonElement>(null);
   const input = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
-  const [color, setColor] = useState(hexColor(options.value) ?? '#000000');
+  const [color, setColor] = useState(viewerColor(options.value) ?? '#000000');
   const [hex, setHex] = useState(color);
   const [format, setFormat] = useState<ColorFormat>('hex');
   const [values, setValues] = useState<Channels>(() => channels(color, 'rgb'));
   useEffect(() => { if (disabled) setOpen(false); }, [disabled]);
   const apply = (value: string) => { setColor(value); options.onChange(value); };
   const chooseColor = (value: string) => {
-    const normalized = hexColor(value);
+    const normalized = viewerColor(value);
     if (!normalized) return;
     setHex(normalized);
     setValues(channels(normalized, format));
@@ -84,7 +99,7 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
   return <Dialog open={open && !disabled} onOpenChange={value => {
     setOpen(value);
     if (value) {
-      const initial = hexColor(options.value) ?? '#000000';
+      const initial = viewerColor(options.value) ?? '#000000';
       setColor(initial); setHex(initial); setValues(channels(initial, format));
     }
   }}>
@@ -103,7 +118,7 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
       <DialogHeader><DialogTitle>{label}</DialogTitle></DialogHeader>
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2" role="group" aria-label={label}>
-          {options.presets.map(value => <Button key={value} variant="outline" size="icon-sm" aria-label={`${label}: ${value}`} aria-pressed={hexColor(value) === color} onClick={() => chooseColor(value)}>
+          {options.presets.map(value => <Button key={value} variant="outline" size="icon-sm" aria-label={`${label}: ${value}`} aria-pressed={viewerColor(value) === color} onClick={() => chooseColor(value)}>
             <span className="size-4 rounded-sm border" style={{ backgroundColor: value }} aria-hidden="true" />
           </Button>)}
         </div>

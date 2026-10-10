@@ -35,7 +35,7 @@ async function setup(locale: 'en' | 'ar' = 'en') {
   });
   const Menu = new Function('m', '_$', 'Eo', 'ke', 'IE', 'requestAnimationFrame', 'document', 'sL', 'pn', 'hn', 'Po', 'Mn', 'rF', 'Lm', 'OD', 'gx', 'yo', 'po', 'So', `return ${renderer};`)(
     React, (value: unknown) => value, { setting: { COLOR: '#123456', STROKE_WIDTH: 2, OPACITY: 1 }, colors: ['#123456', '#ff0000'] }, () => ({ t: (key: string) => key }),
-    () => ({ Node: { create: (value: string) => ({ children: [{ stroke: () => value === 'second-shape-fixture' ? '#ff0000' : '#123456', strokeWidth: () => value === 'second-shape-fixture' ? 7 : 2, opacity: () => value === 'second-shape-fixture' ? 0.5 : 1 }] }) } }),
+    () => ({ Node: { create: (value: string) => ({ children: [{ stroke: () => /^rgba?\(/.test(value) ? value : value === 'second-shape-fixture' ? '#ff0000' : '#123456', strokeWidth: () => value === 'second-shape-fixture' ? 7 : 2, opacity: () => value === 'second-shape-fixture' ? 0.5 : 1 }] }) } }),
     (callback: FrameRequestCallback) => { callback(0); return 0; }, doc, 'painter', position, () => ({ name: 'flip' }),
     [{ type: 4, styleEditable: { color: true, strokeWidth: true, opacity: true } }, { type: 5, styleEditable: { color: true, opacity: true } }, { type: 99, styleEditable: false }],
     jsxRuntime, (a: string, b: string) => a === b, () => <hr />, Form, NativeSlider, Icon, Icon, Icon,
@@ -165,6 +165,26 @@ describe('Selected annotation action controls', () => {
       expect(onDelete).toHaveBeenCalledOnce();
       expect(onDelete).toHaveBeenCalledWith(next);
       await waitFor(() => expect(doc.getElementById('viewerContainer')).toHaveFocus());
+    } finally { cleanup(); }
+  });
+
+  it.each(['rgb(255, 222, 33)', 'rgba(255, 222, 33, 0.5)'])('opens the native %s color without replacing it with black or dispatching a style change', async value => {
+    const { doc, annotation, styleLabels, onChangeStyle, open, cleanup } = await setup();
+    try {
+      await open({ ...annotation, konvaString: value });
+      const ui = within(doc.body);
+      const user = userEvent.setup({ document: doc });
+      await user.click(await ui.findByRole('button', { name: 'Style' }));
+      await user.click(await ui.findByRole('button', { name: styleLabels.color }));
+      const dialog = await screen.findByRole('dialog', { name: styleLabels.color });
+      expect(within(dialog).getByRole('textbox', { name: `${styleLabels.color} (HEX)` })).toHaveValue('#ffde21');
+      expect(within(dialog).getByLabelText(styleLabels.color, { selector: 'input' })).toHaveValue('#ffde21');
+      expect(onChangeStyle).not.toHaveBeenCalled();
+      await userEvent.setup().keyboard('{Escape}');
+      await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+      expect(ui.getByRole('region', { name: styleLabels.title })).toBeInTheDocument();
+      await waitFor(() => expect(ui.getByRole('button', { name: styleLabels.color })).toHaveFocus());
+      expect(onChangeStyle).not.toHaveBeenCalled();
     } finally { cleanup(); }
   });
 });
