@@ -3,7 +3,9 @@ import { Input } from '@/components/ui/input';
 
 
 import React, { useState, useEffect } from 'react';
-import { Modal } from '@/components/ui/Modal';
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import {
   getSavedSignatures,
@@ -27,6 +29,8 @@ export function SignatureLibraryModal({
   viewerWindow,
   onOpenExtractor,
 }: SignatureLibraryModalProps) {
+  const locale = useLocale();
+  const tCommon = useTranslations('common');
   const [signatures, setSignatures] = useState<PDFCraftSignature[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -115,13 +119,8 @@ export function SignatureLibraryModal({
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title="签名库管理"
-      size="lg"
-      className="!max-w-2xl"
-    >
+    <DialogContent dir={locale === 'ar' ? 'rtl' : 'ltr'} showCloseButton={false} className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-2xl">
+      <DialogHeader><DialogTitle>签名库管理</DialogTitle><DialogDescription className="sr-only">在本机管理和使用已保存的签名。</DialogDescription></DialogHeader>
       <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-1">
         <Input
           ref={fileInputRef}
@@ -274,7 +273,8 @@ export function SignatureLibraryModal({
           </div>
         )}
       </div>
-    </Modal>
+      <DialogClose asChild><Button variant="ghost" size="icon" className="absolute end-4 top-4" onClick={onClose} aria-label={tCommon('buttons.close')}><X /></Button></DialogClose>
+    </DialogContent>
   );
 }
 export default SignatureLibraryModal;

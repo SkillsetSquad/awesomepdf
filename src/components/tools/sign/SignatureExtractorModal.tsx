@@ -6,7 +6,9 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Modal } from '@/components/ui/Modal';
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
@@ -42,6 +44,8 @@ export function SignatureExtractorModal({
   onSignatureExtracted,
   viewerWindow,
 }: SignatureExtractorModalProps) {
+  const locale = useLocale();
+  const tCommon = useTranslations('common');
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -96,6 +100,10 @@ export function SignatureExtractorModal({
     handleReset();
     onClose();
   }, [handleReset, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) handleReset();
+  }, [isOpen, handleReset]);
 
   /**
    * Load and parse selected PDF
@@ -365,13 +373,8 @@ export function SignatureExtractorModal({
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={handleModalClose}
-      title="从已签署 PDF 提取签名 / 印章"
-      size="xl"
-      className="!max-w-5xl"
-    >
+    <DialogContent dir={locale === 'ar' ? 'rtl' : 'ltr'} showCloseButton={false} className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-5xl">
+      <DialogHeader><DialogTitle>从已签署 PDF 提取签名 / 印章</DialogTitle><DialogDescription className="sr-only">提取已签署 PDF 中的签名或印章，保存在本机签名库中。</DialogDescription></DialogHeader>
       <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-1">
         {/* Step 1: Upload signed PDF */}
         {!file && (
@@ -744,7 +747,8 @@ export function SignatureExtractorModal({
           </div>
         )}
       </div>
-    </Modal>
+      <DialogClose asChild><Button variant="ghost" size="icon" className="absolute end-4 top-4" onClick={handleModalClose} aria-label={tCommon('buttons.close')}><X /></Button></DialogClose>
+    </DialogContent>
   );
 }
 export default SignatureExtractorModal;
