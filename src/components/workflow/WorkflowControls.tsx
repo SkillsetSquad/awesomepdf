@@ -1,4 +1,10 @@
 'use client';
+import { Textarea } from '@/components/ui/textarea';
+
+import { Label } from '@/components/ui/label';
+
+import { Input } from '@/components/ui/input';
+
 
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -193,7 +199,7 @@ export function WorkflowControls({
                 <div className="flex items-center gap-2 shrink-0">
                     {/* File selection */}
                     <div className="flex items-center gap-1.5">
-                        <input
+                        <Input
                             ref={fileInputRef}
                             type="file"
                             multiple
@@ -308,7 +314,7 @@ export function WorkflowControls({
                     </Button>
 
                     {/* Import */}
-                    <input
+                    <Input
                         ref={importInputRef}
                         type="file"
                         accept=".json,.workflow.json"
@@ -515,29 +521,29 @@ export function WorkflowControls({
 
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">
+                                <Label className="block mb-1" htmlFor="workflowcontrols-field-1">
                                     {tWorkflow('workflowName') || 'Workflow Name'}
-                                </label>
-                                <input
+                                </Label>
+                                <Input
                                     type="text"
                                     value={workflowName}
                                     onChange={(e) => setWorkflowName(e.target.value)}
                                     placeholder={tWorkflow('enterName') || 'Enter workflow name...'}
-                                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                                    autoFocus
+                                    className="w-full"
+                                    autoFocus id="workflowcontrols-field-1" aria-label={tWorkflow('workflowName') || 'Workflow Name'}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">
+                                <Label className="block mb-1">
                                     {tWorkflow('description') || 'Description'} ({tWorkflow('optional') || 'optional'})
-                                </label>
-                                <textarea
+                                </Label>
+                                <Textarea
                                     value={workflowDescription}
                                     onChange={(e) => setWorkflowDescription(e.target.value)}
                                     placeholder={tWorkflow('enterDescription') || 'Enter description...'}
                                     rows={3}
-                                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                                    className="w-full resize-none"
                                 />
                             </div>
                         </div>

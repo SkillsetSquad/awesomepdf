@@ -1,4 +1,13 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
+import { Checkbox } from '@/components/ui/checkbox';
+
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+
+import { Label } from '@/components/ui/label';
+
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useEffect } from 'react';
 import { useTranslations, useLocale, useMessages } from 'next-intl';
@@ -2632,10 +2641,10 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                         {/* Condition Type */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-foreground">
+                            <Label className="block" htmlFor="nodesettingspanel-field-1">
                                 {locale === 'zh' ? '判断维度 (Type)' : 'Dimension'}
-                            </label>
-                            <select
+                            </Label>
+                            <NativeSelect
                                 value={(settings.conditionType as string) || 'file-count'}
                                 onChange={(e) => {
                                     const nextType = e.target.value;
@@ -2646,90 +2655,90 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                         value: nextType === 'file-format' ? 'pdf' : (nextType === 'file-size' ? 10 : 1),
                                     }));
                                 }}
-                                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full" id="nodesettingspanel-field-1" aria-label={locale === 'zh' ? '判断维度 (Type)' : 'Dimension'}
                             >
-                                <option value="file-count">{locale === 'zh' ? '文件数量 (File Count)' : 'File Count'}</option>
-                                <option value="file-size">{locale === 'zh' ? '总文件体积 (File Size)' : 'Total File Size'}</option>
-                                <option value="file-format">{locale === 'zh' ? '文件格式 (File Format / Ext)' : 'File Format / Ext'}</option>
-                            </select>
+                                <NativeSelectOption value="file-count">{locale === 'zh' ? '文件数量 (File Count)' : 'File Count'}</NativeSelectOption>
+                                <NativeSelectOption value="file-size">{locale === 'zh' ? '总文件体积 (File Size)' : 'Total File Size'}</NativeSelectOption>
+                                <NativeSelectOption value="file-format">{locale === 'zh' ? '文件格式 (File Format / Ext)' : 'File Format / Ext'}</NativeSelectOption>
+                            </NativeSelect>
                         </div>
 
                         {/* Operator */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-foreground">
+                            <Label className="block" htmlFor="nodesettingspanel-field-2">
                                 {locale === 'zh' ? '比较规则 (Operator)' : 'Operator'}
-                            </label>
-                            <select
+                            </Label>
+                            <NativeSelect
                                 value={(settings.operator as string) || (settings.conditionType === 'file-format' ? 'equals' : 'greater-than')}
                                 onChange={(e) => handleFieldChange('operator', e.target.value)}
-                                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="w-full" id="nodesettingspanel-field-2" aria-label={locale === 'zh' ? '比较规则 (Operator)' : 'Operator'}
                             >
                                 {settings.conditionType === 'file-format' ? (
                                     <>
-                                        <option value="equals">{locale === 'zh' ? '等于 (Equals)' : 'Equals'}</option>
-                                        <option value="not-equals">{locale === 'zh' ? '不等于 (Not Equals)' : 'Not Equals'}</option>
-                                        <option value="contains">{locale === 'zh' ? '包含 (Contains)' : 'Contains'}</option>
-                                        <option value="matches">{locale === 'zh' ? '正则匹配 (Regex Matches)' : 'Regex Matches'}</option>
+                                        <NativeSelectOption value="equals">{locale === 'zh' ? '等于 (Equals)' : 'Equals'}</NativeSelectOption>
+                                        <NativeSelectOption value="not-equals">{locale === 'zh' ? '不等于 (Not Equals)' : 'Not Equals'}</NativeSelectOption>
+                                        <NativeSelectOption value="contains">{locale === 'zh' ? '包含 (Contains)' : 'Contains'}</NativeSelectOption>
+                                        <NativeSelectOption value="matches">{locale === 'zh' ? '正则匹配 (Regex Matches)' : 'Regex Matches'}</NativeSelectOption>
                                     </>
                                 ) : (
                                     <>
-                                        <option value="greater-than">{locale === 'zh' ? '> 大于 (Greater Than)' : '> Greater Than'}</option>
-                                        <option value="less-than">{locale === 'zh' ? '< 小于 (Less Than)' : '< Less Than'}</option>
-                                        <option value="greater-or-equal">{locale === 'zh' ? '≥ 大于等于 (Greater or Equal)' : '≥ Greater or Equal'}</option>
-                                        <option value="less-or-equal">{locale === 'zh' ? '≤ 小于等于 (Less or Equal)' : '≤ Less or Equal'}</option>
-                                        <option value="equals">{locale === 'zh' ? '= 等于 (Equals)' : '= Equals'}</option>
-                                        <option value="not-equals">{locale === 'zh' ? '≠ 不等于 (Not Equals)' : '≠ Not Equals'}</option>
+                                        <NativeSelectOption value="greater-than">{locale === 'zh' ? '> 大于 (Greater Than)' : '> Greater Than'}</NativeSelectOption>
+                                        <NativeSelectOption value="less-than">{locale === 'zh' ? '< 小于 (Less Than)' : '< Less Than'}</NativeSelectOption>
+                                        <NativeSelectOption value="greater-or-equal">{locale === 'zh' ? '≥ 大于等于 (Greater or Equal)' : '≥ Greater or Equal'}</NativeSelectOption>
+                                        <NativeSelectOption value="less-or-equal">{locale === 'zh' ? '≤ 小于等于 (Less or Equal)' : '≤ Less or Equal'}</NativeSelectOption>
+                                        <NativeSelectOption value="equals">{locale === 'zh' ? '= 等于 (Equals)' : '= Equals'}</NativeSelectOption>
+                                        <NativeSelectOption value="not-equals">{locale === 'zh' ? '≠ 不等于 (Not Equals)' : '≠ Not Equals'}</NativeSelectOption>
                                     </>
                                 )}
-                            </select>
+                            </NativeSelect>
                         </div>
 
                         {/* Value Input */}
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-foreground">
+                            <Label className="block" htmlFor="nodesettingspanel-field-3">
                                 {locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
-                            </label>
+                            </Label>
 
                             {settings.conditionType === 'file-count' && (
-                                <input
+                                <Input
                                     type="number"
                                     min={0}
                                     step={1}
                                     value={Number(settings.value ?? 1)}
                                     onChange={(e) => handleFieldChange('value', Number(e.target.value))}
-                                    className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                    className="w-full" id="nodesettingspanel-field-3" aria-label={locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
                                 />
                             )}
 
                             {settings.conditionType === 'file-size' && (
                                 <div className="flex gap-2">
-                                    <input
+                                    <Input
                                         type="number"
                                         min={0}
                                         step={0.1}
                                         value={Number(settings.value ?? 10)}
                                         onChange={(e) => handleFieldChange('value', Number(e.target.value))}
-                                        className="flex-1 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                        className="flex-1" aria-label={locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
                                     />
-                                    <select
+                                    <NativeSelect
                                         value={(settings.sizeUnit as string) || 'MB'}
                                         onChange={(e) => handleFieldChange('sizeUnit', e.target.value)}
-                                        className="w-24 px-2 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                        className="w-24" aria-label={locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
                                     >
-                                        <option value="MB">MB</option>
-                                        <option value="KB">KB</option>
-                                        <option value="Bytes">Bytes</option>
-                                    </select>
+                                        <NativeSelectOption value="MB">MB</NativeSelectOption>
+                                        <NativeSelectOption value="KB">KB</NativeSelectOption>
+                                        <NativeSelectOption value="Bytes">Bytes</NativeSelectOption>
+                                    </NativeSelect>
                                 </div>
                             )}
 
                             {settings.conditionType === 'file-format' && (
-                                <input
+                                <Input
                                     type="text"
                                     placeholder="例如: pdf, docx, png, jpg"
                                     value={(settings.value as string) || ''}
                                     onChange={(e) => handleFieldChange('value', e.target.value)}
-                                    className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                    className="w-full" aria-label={locale === 'zh' ? '目标阈值 (Target Value)' : 'Target Value'}
                                 />
                             )}
                         </div>
@@ -2779,9 +2788,9 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                             return (
                             <div key={field.key} className="space-y-1.5">
-                                <label className="block text-sm font-medium text-foreground">
+                                <Label className="block" htmlFor={`workflow-setting-${node.id}-${field.key}`}>
                                     {getTranslation(field.labelKey)}
-                                </label>
+                                </Label>
 
                                 {field.descriptionKey && (
                                     <p className="text-xs text-muted-foreground">
@@ -2791,12 +2800,12 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                                 {field.type === 'text' && (
                                     <>
-                                    <input
+                                    <Input
                                         type="text"
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
+                                        className="w-full" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                     />
                                     {field.key === 'filename' && (
                                         <div className="pt-1">
@@ -2840,14 +2849,14 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                 )}
 
                                 {field.type === 'number' && (
-                                    <input
+                                    <Input
                                         type="number"
                                         value={(settings[field.key] as number) ?? field.defaultValue}
                                         onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
                                         min={field.min}
                                         max={field.max}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
+                                        className="w-full" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                     />
                                 )}
 
@@ -2889,17 +2898,17 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                             </div>
                                         </div>
                                     )}
-                                    <select
+                                    <NativeSelect
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                        className="w-full" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                     >
                                         {field.options?.map(opt => (
-                                            <option key={opt.value} value={opt.value}>
+                                            <NativeSelectOption key={opt.value} value={opt.value}>
                                                 {getTranslation(opt.labelKey, opt.labelKey)}
-                                            </option>
+                                            </NativeSelectOption>
                                         ))}
-                                    </select>
+                                    </NativeSelect>
                                     {(() => {
                                         const selectedOpt = field.options?.find(o => o.value === (settings[field.key] as string));
                                         return selectedOpt?.descriptionKey ? (
@@ -2912,26 +2921,26 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                 )}
 
                                 {field.type === 'checkbox' && (
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input
-                                            type="checkbox"
+                                    <Label className="flex items-center gap-2 cursor-pointer">
+                                        <Checkbox
+
                                             checked={(settings[field.key] as boolean) || false}
-                                            onChange={(e) => handleFieldChange(field.key, e.target.checked)}
-                                            className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+                                            onCheckedChange={(checked) => handleFieldChange(field.key, (checked === true))} id={`workflow-setting-${node.id}-${field.key}`} aria-label={getTranslation(field.labelKey)}
+
                                         />
-                                    </label>
+                                    </Label>
                                 )}
 
                                 {field.type === 'range' && (
                                     <div className="space-y-1">
-                                        <input
-                                            type="range"
-                                            value={(settings[field.key] as number) ?? field.defaultValue}
-                                            onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
+                                        <Slider
+
+                                            value={[(settings[field.key] as number) ?? field.defaultValue]}
+                                            onValueChange={(values) => handleFieldChange(field.key, Number(String(values[0])))}
                                             min={field.min}
                                             max={field.max}
                                             step={field.step}
-                                            className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                            className="w-full cursor-pointer" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                         />
                                         <div className="flex justify-between text-xs text-muted-foreground">
                                             <span>{field.min}</span>
@@ -2948,31 +2957,31 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
 
                                 {field.type === 'color' && (
                                     <div className="flex items-center gap-2">
-                                        <input
+                                        <Input
                                             type="color"
                                             value={(settings[field.key] as string) || '#000000'}
                                             onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                            className="w-10 h-10 rounded border border-border cursor-pointer"
+                                            className="w-10 h-10 cursor-pointer" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                         />
-                                        <input
+                                        <Input
                                             type="text"
                                             value={(settings[field.key] as string) || ''}
                                             onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                            className="flex-1 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                                            className="flex-1" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}-hex`}
                                         />
                                     </div>
                                 )}
 
                                 {field.type === 'file' && (
                                     <div className="space-y-1">
-                                        <input
+                                        <Input
                                             type="file"
                                             accept={field.accept}
                                             onChange={(e) => {
                                                 const file = e.target.files?.[0] || null;
                                                 handleFieldChange(field.key, file);
                                             }}
-                                            className="w-full text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:opacity-90 cursor-pointer"
+                                            className="w-full file:mr-3 file:text-primary-foreground hover:file:opacity-90 cursor-pointer" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                         />
                                         {settings[field.key] instanceof File && (
                                             <p className="text-xs text-muted-foreground">
@@ -2983,12 +2992,12 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
                                 )}
 
                                 {field.type === 'password' && (
-                                    <input
+                                    <Input
                                         type="password"
                                         value={(settings[field.key] as string) || ''}
                                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
                                         placeholder={field.placeholderKey ? getTranslation(field.placeholderKey) : undefined}
-                                        className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
+                                        className="w-full" aria-label={getTranslation(field.labelKey)} id={`workflow-setting-${node.id}-${field.key}`}
                                     />
                                 )}
                             </div>

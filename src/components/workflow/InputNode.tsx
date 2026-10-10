@@ -1,4 +1,6 @@
 'use client';
+import { Input } from '@/components/ui/input';
+
 
 import React, { memo, useState, useRef } from 'react';
 import { Handle, Position, useReactFlow } from 'reactflow';
@@ -201,7 +203,7 @@ const InputNode: React.FC<InputNodeProps> = ({
             {/* Content Area */}
             <div className="p-3 space-y-2.5">
                 {/* Hidden File Input */}
-                <input
+                <Input
                     ref={fileInputRef}
                     type="file"
                     multiple
