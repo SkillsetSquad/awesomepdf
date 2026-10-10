@@ -1,6 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { FileUploader } from '@/components/tools/FileUploader';
 
 // Mock next-intl
@@ -256,6 +255,25 @@ describe('FileUploader', () => {
   });
 
   describe('Validation', () => {
+    it.each([
+      ['invalid.txt', 100, 'text/plain'],
+      ['oversized.pdf', 2048, 'application/pdf'],
+    ])('validates the first dropped file when multiple selection is disabled (%s)', (name, size, type) => {
+      render(<FileUploader onFilesSelected={mockOnFilesSelected} onError={mockOnError} multiple={false} maxSize={1024} />);
+      fireEvent.drop(screen.getByRole('button', { name: /upload/i }), {
+        dataTransfer: createDataTransfer([createMockFile(name, size, type), createMockFile('valid.pdf', 100, 'application/pdf')]),
+      });
+      expect(mockOnError).toHaveBeenCalled();
+      expect(mockOnFilesSelected).not.toHaveBeenCalled();
+    });
+
+    it('rejects a MIME type that only shares the start of a wildcard category', () => {
+      render(<FileUploader onFilesSelected={mockOnFilesSelected} onError={mockOnError} accept={['image/*']} />);
+      fireEvent.drop(screen.getByRole('button', { name: /upload/i }), { dataTransfer: createDataTransfer([createMockFile('invalid.dat', 100, 'image-not-a-category')]) });
+      expect(mockOnError).toHaveBeenCalledWith(expect.stringContaining('Invalid file type'));
+      expect(mockOnFilesSelected).not.toHaveBeenCalled();
+    });
+
     it('rejects files exceeding max size', () => {
       render(
         <FileUploader 

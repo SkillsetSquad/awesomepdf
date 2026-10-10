@@ -35,6 +35,11 @@ export interface FileUploaderProps {
   description?: string;
 }
 
+interface EncryptedFile {
+  file: File;
+  selectionIndex: number;
+}
+
 /**
  * FileUploader Component
  * Requirements: 5.2
@@ -60,7 +65,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   const passwordId = useId();
 
   // Encryption & Decryption states
-  const [encryptPendingFiles, setEncryptPendingFiles] = useState<File[]>([]);
+  const [encryptPendingFiles, setEncryptPendingFiles] = useState<EncryptedFile[]>([]);
   const [encryptCurrentIndex, setEncryptCurrentIndex] = useState<number>(-1);
   const [password, setPassword] = useState<string>('');
   const [decryptError, setDecryptError] = useState<string | null>(null);
@@ -116,12 +121,12 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
     // Check max files
     if (!multiple && files.length > 1) {
-      errors.push('Only one file can be uploaded at a time.');
-      return { valid: [files[0]], errors };
+      errors.push(t('fileUploader.maxFiles', { count: 1 }));
+      files = files.slice(0, 1);
     }
 
     if (files.length > maxFiles) {
-      errors.push(`Maximum ${maxFiles} files allowed.`);
+      errors.push(t('fileUploader.maxFiles', { count: maxFiles }));
       files = files.slice(0, maxFiles);
     }
 
@@ -146,7 +151,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         if (type.endsWith('/*')) {
           // Wildcard MIME type
           const baseType = type.slice(0, -2);
-          return file.type.startsWith(baseType);
+          return file.type.startsWith(`${baseType}/`);
         }
         // Exact MIME type match
         return file.type === type;
@@ -165,7 +170,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     }
 
     return { valid, errors };
-  }, [accept, maxSize, maxFiles, multiple, tErrors]);
+  }, [accept, maxSize, maxFiles, multiple, tErrors, t]);
 
   /**
    * Handle decryption submit action
@@ -174,7 +179,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     if (e) e.preventDefault();
     if (isDecrypting || encryptCurrentIndex === -1) return;
 
-    const fileToDecrypt = encryptPendingFiles[encryptCurrentIndex];
+    const queuedFile = encryptPendingFiles[encryptCurrentIndex];
+    const fileToDecrypt = queuedFile.file;
     setIsDecrypting(true);
     setDecryptError(null);
 
@@ -192,11 +198,11 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       const decryptedBlob = output.result as Blob;
 
       // Create a fresh unlocked virtual File object, fallback to window.File to avoid Node/Browser File type clashes
-      const unlockedFile = new window.File([decryptedBlob], fileToDecrypt.name.replace('.pdf', '_unlocked.pdf'), {
+      const unlockedFile = new window.File([decryptedBlob], fileToDecrypt.name.replace(/\.pdf$/i, '_unlocked.pdf'), {
         type: 'application/pdf',
       }) as File;
 
-      const updatedAccumulator = [...decryptedFilesAccumulator, unlockedFile];
+      const updatedAccumulator = decryptedFilesAccumulator.map((file, index) => index === queuedFile.selectionIndex ? unlockedFile : file);
       setDecryptedFilesAccumulator(updatedAccumulator);
       setPassword('');
 
@@ -233,22 +239,20 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
     if (valid.length > 0) {
       // Async scan for encrypted PDF files
-      const encryptedList: File[] = [];
-      const unencryptedList: File[] = [];
+      const encryptedList: EncryptedFile[] = [];
 
-      for (const file of valid) {
+      for (const [selectionIndex, file] of valid.entries()) {
         const isEncrypted = await checkIsEncrypted(file);
         if (isEncrypted) {
-          encryptedList.push(file);
-        } else {
-          unencryptedList.push(file);
+          encryptedList.push({ file, selectionIndex });
         }
       }
 
       if (encryptedList.length > 0) {
         // Initialize the decryption state machine queue
         setEncryptPendingFiles(encryptedList);
-        setDecryptedFilesAccumulator(unencryptedList);
+        // Keep selection order; replace encrypted entries in place after unlocking.
+        setDecryptedFilesAccumulator(valid);
         setEncryptCurrentIndex(0);
         setPassword('');
         setDecryptError(null);
@@ -518,7 +522,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           <DialogHeader>
             <Lock className="size-5 text-primary" aria-hidden="true" />
             <DialogTitle>{t('fileUploader.encryptedTitle')}</DialogTitle>
-            <DialogDescription className="break-words">{t('fileUploader.enterPasswordHelp').replace(/<br\s*\/?>/g, ' ')}<span className="block font-medium text-foreground">{encryptPendingFiles[encryptCurrentIndex]?.name}</span></DialogDescription>
+            <DialogDescription className="break-words">{t('fileUploader.enterPasswordHelp').replace(/<br\s*\/?>/g, ' ')}<span className="block font-medium text-foreground">{encryptPendingFiles[encryptCurrentIndex]?.file.name}</span></DialogDescription>
           </DialogHeader>
           <form onSubmit={handleDecryptSubmit} className="space-y-4">
             <div className="space-y-2">

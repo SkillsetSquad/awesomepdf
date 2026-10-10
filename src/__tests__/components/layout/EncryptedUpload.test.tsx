@@ -43,4 +43,38 @@ describe('Encrypted uploads', () => {
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
     expect(trigger).toHaveFocus();
   });
+
+  it('retains mixed plain and encrypted selection order through password retry', async () => {
+    const makeFile = (name: string, marker: number) => {
+      const file = new File(['document'], name, { type: 'application/pdf' });
+      Object.defineProperty(file, 'arrayBuffer', { value: async () => new Uint8Array([marker]).buffer });
+      return file;
+    };
+    const files = [makeFile('first.PDF', 1), makeFile('middle.pdf', 0), makeFile('third.pdf', 2), makeFile('last.pdf', 0)];
+    load.mockImplementation(async (data: ArrayBuffer) => { if (new Uint8Array(data)[0]) throw new Error('encrypted document'); return {}; });
+    decryptPDF.mockResolvedValueOnce({ success: false, error: { message: 'INVALID_PASSWORD' } })
+      .mockResolvedValueOnce({ success: true, result: new Blob(['first unlocked']) })
+      .mockResolvedValueOnce({ success: true, result: new Blob(['third unlocked']) });
+    const selected = vi.fn();
+    render(<NextIntlClientProvider locale="en" messages={messages}><FileUploader multiple onFilesSelected={selected} /></NextIntlClientProvider>);
+    fireEvent.drop(screen.getByRole('button', { name: 'Upload Files' }), { dataTransfer: { files } });
+    const user = userEvent.setup();
+    const input = await screen.findByLabelText('Enter document password...');
+    expect(screen.getByRole('dialog')).toHaveTextContent('first.PDF');
+    await user.type(input, 'wrong{Enter}');
+    await screen.findByRole('alert');
+    expect(selected).not.toHaveBeenCalled();
+    await user.clear(input);
+    await user.type(input, 'first-password{Enter}');
+    await waitFor(() => expect(screen.getByRole('dialog')).toHaveTextContent('third.pdf'));
+    expect(selected).not.toHaveBeenCalled();
+    await user.type(input, 'third-password{Enter}');
+    await waitFor(() => expect(selected).toHaveBeenCalledOnce());
+    const ordered: File[] = selected.mock.calls[0][0];
+    expect(ordered.map(file => file.name)).toEqual(['first_unlocked.pdf', 'middle.pdf', 'third_unlocked.pdf', 'last.pdf']);
+    expect(ordered[1]).toBe(files[1]);
+    expect(ordered[3]).toBe(files[3]);
+    expect(decryptPDF).toHaveBeenNthCalledWith(2, files[0], { password: 'first-password' });
+    expect(decryptPDF).toHaveBeenNthCalledWith(3, files[2], { password: 'third-password' });
+  });
 });
