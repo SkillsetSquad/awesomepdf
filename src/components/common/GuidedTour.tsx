@@ -1,7 +1,7 @@
 /**
  * GuidedTour Component
  * Requirements: 10.5
- * 
+ *
  * Provides a guided tour for first-time users with step-by-step tooltips
  */
 
@@ -11,6 +11,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import { useGuidedTour, type TourStep } from '@/lib/hooks/useGuidedTour';
 import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { Progress } from '@/components/ui/progress';
+import { useLocale, useTranslations } from 'next-intl';
 
 export interface GuidedTourProps {
   steps: TourStep[];
@@ -38,6 +42,8 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
   translations,
   autoStart = false,
 }) => {
+  const t = useTranslations('common');
+  const direction = useLocale() === 'ar' ? 'rtl' : 'ltr';
   const {
     isActive,
     currentStep,
@@ -83,9 +89,9 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
       setTargetRect(rect);
 
       const padding = currentStepData.highlightPadding || 8;
-      const tooltipWidth = 320;
-      const tooltipHeight = 200;
       const margin = 12;
+      const tooltipWidth = Math.min(320, window.innerWidth - margin * 2);
+      const tooltipHeight = tooltipRef.current?.getBoundingClientRect().height || 200;
 
       let placement = currentStepData.placement || 'bottom';
       let top = 0;
@@ -125,6 +131,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
         placement = 'top';
       }
 
+      top = Math.max(margin, Math.min(top, window.innerHeight - tooltipHeight - margin));
       setTooltipPosition({ top, left, placement });
 
       // Scroll target into view if needed
@@ -154,35 +161,19 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
   // Welcome dialog for first-time users
   if (showWelcome) {
     return (
-      <>
-        {/* Backdrop */}
-        <div className="fixed inset-0 bg-black/50 z-[9998]" />
-        
-        {/* Welcome Dialog */}
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4">
-          <div className="bg-background rounded-lg shadow-xl max-w-md w-full p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-full bg-primary/10">
-                <HelpCircle className="h-6 w-6 text-primary" />
-              </div>
-              <h2 className="text-xl font-semibold text-foreground">
-                {translations.welcomeTitle}
-              </h2>
-            </div>
-            <p className="text-muted-foreground mb-6">
-              {translations.welcomeMessage}
-            </p>
-            <div className="flex gap-3 justify-end">
-              <Button variant="ghost" onClick={handleSkipWelcome}>
-                {translations.skip}
-              </Button>
-              <Button variant="default" onClick={handleStartTour}>
-                {translations.startTour}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </>
+      <Dialog open={showWelcome} onOpenChange={(open) => { if (!open) handleSkipWelcome(); }}>
+        <DialogContent dir={direction} showCloseButton={false}>
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2"><HelpCircle className="size-5" aria-hidden="true" />{translations.welcomeTitle}</DialogTitle>
+            <DialogDescription>{translations.welcomeMessage}</DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="ghost" onClick={handleSkipWelcome}>{translations.skip}</Button>
+            <Button onClick={handleStartTour}>{translations.startTour}</Button>
+          </DialogFooter>
+          <DialogClose asChild><Button variant="ghost" size="icon-sm" className="absolute end-3 top-3" aria-label={t('buttons.close')}><X aria-hidden="true" /></Button></DialogClose>
+        </DialogContent>
+      </Dialog>
     );
   }
 
@@ -237,111 +228,37 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
         />
       )}
 
-      {/* Tooltip */}
-      <div
-        ref={tooltipRef}
-        className="fixed z-[10000] w-80 bg-background rounded-lg shadow-xl border border-border transition-all duration-300"
-        style={{
-          top: tooltipPosition.top,
-          left: tooltipPosition.left,
-        }}
-      >
-        {/* Close button */}
-        <button
-          onClick={endTour}
-          className="absolute top-2 right-2 p-1 text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Close tour"
-        >
-          <X className="h-4 w-4" aria-hidden="true" />
-        </button>
-
-        {/* Content */}
-        <div className="p-4">
-          <h3 className="font-semibold text-foreground mb-2 pr-6">
-            {currentStepData.title}
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            {currentStepData.content}
-          </p>
-
-          {/* Progress and navigation */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">
-              {currentStep + 1} {translations.stepOf} {totalSteps}
-            </span>
-            <div className="flex gap-2">
-              {!isFirstStep && (
-                <Button variant="ghost" size="sm" onClick={prevStep}>
-                  <ChevronLeft className="h-4 w-4 mr-1" />
-                  {translations.prev}
-                </Button>
-              )}
-              <Button variant="default" size="sm" onClick={nextStep}>
-                {isLastStep ? translations.finish : translations.next}
-                {!isLastStep && <ChevronRight className="h-4 w-4 ml-1" />}
+      <Card ref={tooltipRef} dir={direction} role="region" aria-label={currentStepData.title}
+        className="fixed z-[10000] max-h-[calc(100dvh-1.5rem)] w-80 max-w-[calc(100vw-1.5rem)] gap-4 overflow-auto"
+        style={{ top: tooltipPosition.top, left: tooltipPosition.left }}>
+        <CardHeader>
+          <CardTitle className="pe-8">{currentStepData.title}</CardTitle>
+          <CardDescription>{currentStepData.content}</CardDescription>
+          <Button variant="ghost" size="icon-sm" className="absolute end-2 top-2" onClick={endTour} aria-label={t('buttons.close')}><X aria-hidden="true" /></Button>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <Progress value={((currentStep + 1) / totalSteps) * 100} aria-label={currentStepData.title} />
+          <div className="flex flex-wrap justify-center gap-1" role="group" aria-label={translations.stepOf}>
+            {steps.map((step, index) => (
+              <Button key={index} variant={index === currentStep ? 'secondary' : 'ghost'} size="icon-xs"
+                aria-current={index === currentStep ? 'step' : undefined} aria-label={`${index + 1}: ${step.title}`}
+                onClick={() => {
+                  if (index < currentStep) for (let i = currentStep; i > index; i--) prevStep();
+                  else if (index > currentStep) for (let i = currentStep; i < index; i++) nextStep();
+                }}>
+                {index + 1}
               </Button>
-            </div>
+            ))}
           </div>
-        </div>
-
-        {/* Progress dots */}
-        <div 
-          className="flex justify-center gap-1 pb-3"
-          role="tablist"
-          aria-label="Tour progress"
-        >
-          {steps.map((step, index) => (
-            <button
-              key={index}
-              type="button"
-              role="tab"
-              aria-selected={index === currentStep}
-              aria-label={`Step ${index + 1}: ${step.title}`}
-              tabIndex={index === currentStep ? 0 : -1}
-              onClick={() => {
-                // Navigate to specific step
-                if (index < currentStep) {
-                  for (let i = currentStep; i > index; i--) {
-                    prevStep();
-                  }
-                } else if (index > currentStep) {
-                  for (let i = currentStep; i < index; i++) {
-                    nextStep();
-                  }
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                  e.preventDefault();
-                  if (currentStep < totalSteps - 1) {
-                    nextStep();
-                  }
-                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                  e.preventDefault();
-                  if (currentStep > 0) {
-                    prevStep();
-                  }
-                } else if (e.key === 'Home') {
-                  e.preventDefault();
-                  for (let i = currentStep; i > 0; i--) {
-                    prevStep();
-                  }
-                } else if (e.key === 'End') {
-                  e.preventDefault();
-                  for (let i = currentStep; i < totalSteps - 1; i++) {
-                    nextStep();
-                  }
-                }
-              }}
-              className={`w-2 h-2 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 ${
-                index === currentStep
-                  ? 'bg-primary'
-                  : 'bg-muted hover:bg-muted-foreground'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
+        </CardContent>
+        <CardFooter className="flex flex-wrap justify-between gap-2">
+          <span className="text-xs text-muted-foreground">{currentStep + 1} {translations.stepOf} {totalSteps}</span>
+          <div className="flex gap-2">
+            {!isFirstStep && <Button variant="ghost" size="sm" onClick={prevStep}><ChevronLeft className="rtl:rotate-180" aria-hidden="true" />{translations.prev}</Button>}
+            <Button size="sm" onClick={nextStep}>{isLastStep ? translations.finish : translations.next}{!isLastStep && <ChevronRight className="rtl:rotate-180" aria-hidden="true" />}</Button>
+          </div>
+        </CardFooter>
+      </Card>
     </>
   );
 };
