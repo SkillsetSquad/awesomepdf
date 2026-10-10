@@ -4,7 +4,7 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { createRoot, type Root } from 'react-dom/client';
 import * as jsxRuntime from 'react/jsx-runtime';
-import { act, fireEvent, render, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { LegacyEditorControls } from '@/components/tools/edit-pdf/LegacyEditorControls';
@@ -61,12 +61,12 @@ function setup(exportPdf = true, exportExcel = true, controlLabels?: Record<stri
   const Toolbar = new Function('m', 'Po', 'Ao', 'To', 'tL', 'ke', 'JB', 'Mn', 'ad', '$B', 'bF', 'Eo', 'pS', 'SS', 'AC', 'hm', 'po', 'go', 'vo', 'xF', 'yo', `return ${renderer}`)(
     React, tools, { HIGHLIGHT: 9 }, { STAMP: 13, SIGNATURE: 101 }, (value: unknown) => value,
     () => ({ t: (key: string) => labels[key.split('.').at(-1)!] ?? key }), Object.assign, jsxRuntime, { open: notices }, Graphic, Graphic,
-    { setting: { COLOR: '#000000', SAVE_BUTTON: false, EXPORT_PDF: exportPdf, EXPORT_EXCEL: exportExcel }, colors: [] },
+    { setting: { COLOR: '#000000', SAVE_BUTTON: false, EXPORT_PDF: exportPdf, EXPORT_EXCEL: exportExcel }, colors: ['#ff0000', '#00b445', '#1677ff'] },
     ColorPicker, Space, NativeButton, Popover, Icon, Icon, Icon, Icon, Icon,
   ) as React.ComponentType<ToolbarProps>;
   let root!: Root;
   act(() => { root = createRoot(host); root.render(<Toolbar defaultSidebarOpen={false} onChange={onChange} onSidebarOpen={onSidebarOpen} onExport={onExport} />); });
-  const view = render(<LegacyEditorControls iframe={iframe} locale="ar" undo="Undo" redo="Redo" labels={controlLabels} />);
+  const view = render(<LegacyEditorControls iframe={iframe} locale="ar" undo="Undo" redo="Redo" labels={controlLabels} colorLabels={controlLabels ? { format: ar.common.editPdf.colorFormat, close: ar.common.buttons.close } : undefined} />);
   return { doc, tools, onChange, onSidebarOpen, onExport, notices, cleanup: () => { view.unmount(); act(() => root.unmount()); iframe.remove(); } };
 }
 
@@ -81,7 +81,17 @@ describe('Shipped annotation toolbar integration', () => {
       rectangle.focus();
       await user.keyboard('{Enter}');
       expect(onChange).toHaveBeenLastCalledWith(tools[1], null);
-      expect(ui.getByRole('button', { name: labels.color })).toBeEnabled();
+      const color = ui.getByRole('button', { name: labels.color });
+      expect(color).toBeEnabled();
+      color.focus();
+      await user.keyboard('{Enter}');
+      const dialog = screen.getByRole('dialog', { name: labels.color });
+      expect(dialog).toHaveAttribute('dir', 'rtl');
+      expect(within(dialog).getByRole('combobox', { name: ar.common.editPdf.colorFormat })).toHaveValue('hex');
+      await userEvent.click(within(dialog).getByRole('button', { name: `${labels.color}: #00b445` }));
+      await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ style: { color: '#00b445' } }), null));
+      await userEvent.click(within(dialog).getByRole('button', { name: ar.common.buttons.close }));
+      await waitFor(() => expect(color).toHaveFocus());
       ui.getByRole('button', { name: labels.comments }).focus();
       await user.keyboard(' ');
       expect(onSidebarOpen).toHaveBeenCalledWith(true);
@@ -108,9 +118,13 @@ describe('Shipped annotation toolbar integration', () => {
       const changeCount = onChange.mock.calls.length;
       color.focus();
       await user.keyboard('{Enter}');
-      fireEvent.change(ui.getByLabelText('Native color'), { target: { value: '#abcdef' } });
+      const dialog = screen.getByRole('dialog', { name: 'Color' });
+      expect(ui.queryByLabelText('Native color')).toBeNull();
+      fireEvent.change(within(dialog).getByLabelText('Color', { selector: 'input' }), { target: { value: '#abcdef' } });
       await waitFor(() => expect(onChange).toHaveBeenCalledTimes(changeCount + 1));
       expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ type: 4, style: { color: '#abcdef' } }), null);
+      await userEvent.click(within(dialog).getByRole('button', { name: 'Close' }));
+      await waitFor(() => expect(color).toHaveFocus());
       const comments = ui.getByRole('button', { name: 'Comments' });
       comments.focus();
       await user.keyboard(' ');
@@ -123,6 +137,57 @@ describe('Shipped annotation toolbar integration', () => {
     } finally { cleanup(); }
     expect(doc.querySelector('[data-awesomepdf-mount]')).toBeNull();
     expect(doc.querySelector('[data-awesomepdf-action]')).toBeNull();
+  });
+
+  it('keeps presets and HEX/RGB/HSB editing on the original active-tool color callback', async () => {
+    const { doc, onChange, cleanup } = setup();
+    try {
+      const user = userEvent.setup({ document: doc });
+      const ui = within(doc.body);
+      await user.click(ui.getByRole('button', { name: 'Rectangle' }));
+      const color = ui.getByRole('button', { name: 'Color' });
+      color.focus();
+      await user.keyboard('{Enter}');
+      const dialog = screen.getByRole('dialog', { name: 'Color' });
+      const picker = within(dialog);
+      const hex = picker.getByRole('textbox', { name: 'Color (HEX)' });
+      await waitFor(() => expect(hex).toHaveFocus());
+      expect(hex).toHaveValue('#123456');
+      expect(picker.getAllByRole('button', { name: /^Color: #/ })).toHaveLength(3);
+      await userEvent.click(picker.getByRole('button', { name: 'Color: #ff0000' }));
+      await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ style: { color: '#ff0000' } }), null));
+      expect(picker.getByRole('button', { name: 'Color: #ff0000' })).toHaveAttribute('aria-pressed', 'true');
+      const calls = onChange.mock.calls.length;
+      fireEvent.change(hex, { target: { value: '#not-a-color' } });
+      expect(hex).toHaveAttribute('aria-invalid', 'true');
+      expect(onChange).toHaveBeenCalledTimes(calls);
+      fireEvent.change(hex, { target: { value: '#abc' } });
+      await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ style: { color: '#aabbcc' } }), null));
+      const format = picker.getByRole('combobox', { name: 'Color format' });
+      await userEvent.selectOptions(format, 'rgb');
+      expect(picker.getByRole('spinbutton', { name: 'R' })).toHaveValue(170);
+      expect(picker.getByRole('spinbutton', { name: 'G' })).toHaveValue(187);
+      expect(picker.getByRole('spinbutton', { name: 'B' })).toHaveValue(204);
+      const prior = onChange.mock.calls.length;
+      fireEvent.change(picker.getByRole('spinbutton', { name: 'R' }), { target: { value: '300' } });
+      expect(onChange).toHaveBeenCalledTimes(prior);
+      fireEvent.change(picker.getByRole('spinbutton', { name: 'R' }), { target: { value: '0' } });
+      fireEvent.change(picker.getByRole('spinbutton', { name: 'G' }), { target: { value: '255' } });
+      fireEvent.change(picker.getByRole('spinbutton', { name: 'B' }), { target: { value: '0' } });
+      await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ style: { color: '#00ff00' } }), null));
+      await userEvent.selectOptions(format, 'hsb');
+      expect(picker.getByRole('spinbutton', { name: 'H (°)' })).toHaveValue(120);
+      expect(picker.getByRole('spinbutton', { name: 'S (%)' })).toHaveValue(100);
+      expect(picker.getByRole('spinbutton', { name: 'B (%)' })).toHaveValue(100);
+      fireEvent.change(picker.getByRole('spinbutton', { name: 'B (%)' }), { target: { value: '50' } });
+      await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ style: { color: '#008000' } }), null));
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(color).toHaveFocus());
+      await user.keyboard('{Enter}');
+      expect(screen.getByRole('spinbutton', { name: 'B (%)' })).toHaveValue(50.2);
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(color).toHaveFocus());
+    } finally { cleanup(); }
   });
 
   it('activates native graphic anchors and exposes the engine export callback through an accessible menu', async () => {

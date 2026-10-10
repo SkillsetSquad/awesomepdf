@@ -652,7 +652,8 @@
       "undo": "撤銷",
       "redo": "重做",
       "annDefault": "註釋",
-      "comments": "註解"
+      "comments": "註解",
+      "colorFormat": "色彩格式"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu 閾值偏移)",

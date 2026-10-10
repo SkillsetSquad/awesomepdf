@@ -652,7 +652,8 @@
       "undo": "Annulla",
       "redo": "Ripristina",
       "annDefault": "Annotazione",
-      "comments": "Commenti"
+      "comments": "Commenti",
+      "colorFormat": "Formato del colore"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

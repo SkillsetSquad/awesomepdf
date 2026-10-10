@@ -652,7 +652,8 @@
       "undo": "Anulează",
       "redo": "Refă",
       "annDefault": "Adnotare",
-      "comments": "Comentarii"
+      "comments": "Comentarii",
+      "colorFormat": "Formatul culorii"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

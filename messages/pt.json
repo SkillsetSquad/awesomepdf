@@ -652,7 +652,8 @@
       "undo": "Desfazer",
       "redo": "Refazer",
       "annDefault": "Anotação",
-      "comments": "Comentários"
+      "comments": "Comentários",
+      "colorFormat": "Formato de cor"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desvio Otsu)",

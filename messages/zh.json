@@ -652,7 +652,8 @@
       "undo": "撤销",
       "redo": "重做",
       "annDefault": "注释",
-      "comments": "批注"
+      "comments": "批注",
+      "colorFormat": "颜色格式"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津偏置)",

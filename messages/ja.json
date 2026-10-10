@@ -652,7 +652,8 @@
       "undo": "元に戻す",
       "redo": "やり直す",
       "annDefault": "注釈",
-      "comments": "コメント"
+      "comments": "コメント",
+      "colorFormat": "色の形式"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津しきい値オフセット)",

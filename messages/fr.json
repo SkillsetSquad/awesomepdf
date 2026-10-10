@@ -652,7 +652,8 @@
       "undo": "Annuler",
       "redo": "Rétablir",
       "annDefault": "Annotation",
-      "comments": "Commentaires"
+      "comments": "Commentaires",
+      "colorFormat": "Format de couleur"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Décalage d'Otsu)",

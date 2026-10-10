@@ -652,7 +652,8 @@
       "undo": "Cofnij",
       "redo": "Powtórz",
       "annDefault": "Adnotacja",
-      "comments": "Komentarze"
+      "comments": "Komentarze",
+      "colorFormat": "Format koloru"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Przesunięcie Otsu)",

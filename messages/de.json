@@ -652,7 +652,8 @@
       "undo": "Rückgängig",
       "redo": "Wiederholen",
       "annDefault": "Anmerkung",
-      "comments": "Kommentare"
+      "comments": "Kommentare",
+      "colorFormat": "Farbformat"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu-Offset)",

@@ -652,7 +652,8 @@
       "undo": "Hoàn tác",
       "redo": "Làm lại",
       "annDefault": "Chú thích",
-      "comments": "Nhận xét"
+      "comments": "Nhận xét",
+      "colorFormat": "Định dạng màu"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Độ lệch Otsu)",

@@ -652,7 +652,8 @@
       "undo": "Batal",
       "redo": "Ulangi",
       "annDefault": "Anotasi",
-      "comments": "Komentar"
+      "comments": "Komentar",
+      "colorFormat": "Format warna"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

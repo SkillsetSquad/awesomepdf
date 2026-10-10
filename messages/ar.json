@@ -652,7 +652,8 @@
       "undo": "تراجع",
       "redo": "إعادة",
       "annDefault": "تعليق توضيحي",
-      "comments": "التعليقات"
+      "comments": "التعليقات",
+      "colorFormat": "تنسيق اللون"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (إزاحة أوتسو)",
