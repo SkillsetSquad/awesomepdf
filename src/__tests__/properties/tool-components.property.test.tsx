@@ -1,10 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
 import * as fc from 'fast-check';
-import { render, screen } from '@testing-library/react';
+import { render as renderView, screen, within } from '@testing-library/react';
 import React from 'react';
 import { tools } from '@/config/tools';
 import { locales } from '@/lib/i18n/config';
 import { ToolCard } from '@/components/tools/ToolCard';
+import { TooltipProvider } from '@/components/ui/tooltip';
+
+function render(children: React.ReactNode) {
+  return renderView(<TooltipProvider>{children}</TooltipProvider>);
+}
 
 // Mock next/link
 vi.mock('next/link', () => ({
@@ -308,7 +313,7 @@ describe('Tool Page Property Tests', () => {
             expect(relatedTools).toBeInTheDocument();
             
             const relatedToolsGrid = screen.getByTestId('related-tools-grid');
-            expect(relatedToolsGrid.children.length).toBeGreaterThanOrEqual(2);
+            expect(within(relatedToolsGrid).getAllByTestId('tool-card').length).toBeGreaterThanOrEqual(2);
             
             unmount();
             return true;
