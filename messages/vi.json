@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Còn {seconds} giây",
+      "minutes": "Còn {minutes} phút {seconds} giây",
+      "hours": "Còn {hours} giờ {minutes} phút"
     }
   },
   "toolsPage": {

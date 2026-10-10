@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Restam {seconds} s",
+      "minutes": "Restam {minutes} min {seconds} s",
+      "hours": "Restam {hours} h {minutes} min"
     }
   },
   "toolsPage": {

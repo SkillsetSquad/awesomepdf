@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Quedan {seconds} s",
+      "minutes": "Quedan {minutes} min {seconds} s",
+      "hours": "Quedan {hours} h {minutes} min"
     }
   },
   "toolsPage": {

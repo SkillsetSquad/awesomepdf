@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Au rămas {seconds} s",
+      "minutes": "Au rămas {minutes} min {seconds} s",
+      "hours": "Au rămas {hours} h {minutes} min"
     }
   },
   "toolsPage": {

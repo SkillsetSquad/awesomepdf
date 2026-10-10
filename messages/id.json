@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Tersisa {seconds} dtk",
+      "minutes": "Tersisa {minutes} mnt {seconds} dtk",
+      "hours": "Tersisa {hours} jam {minutes} mnt"
     }
   },
   "toolsPage": {

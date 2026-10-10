@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "残り{seconds}秒",
+      "minutes": "残り{minutes}分{seconds}秒",
+      "hours": "残り{hours}時間{minutes}分"
     }
   },
   "toolsPage": {

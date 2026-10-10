@@ -1,6 +1,9 @@
 'use client';
 
-import React, { useMemo, useEffect, useRef } from 'react';
+import React from 'react';
+import { Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 
 export type ProcessingStatus = 'idle' | 'uploading' | 'processing' | 'complete' | 'error';
@@ -24,225 +27,41 @@ export interface ProcessingProgressProps {
   onCancel?: () => void;
 }
 
-/**
- * ProcessingProgress Component
- * Requirements: 5.3
- * 
- * Displays progress bar with current step and estimated time.
- */
+/** Shared progress, status and cancellation controls for local PDF processing. */
 export const ProcessingProgress: React.FC<ProcessingProgressProps> = ({
-  progress,
-  status,
-  message,
-  estimatedTime,
-  className = '',
-  showPercentage = true,
-  showEstimatedTime = true,
-  onCancel,
+  progress, status, message, estimatedTime, className = '',
+  showPercentage = true, showEstimatedTime = true, onCancel,
 }) => {
   const t = useTranslations('common');
-
-  // Clamp progress between 0 and 100
-  const clampedProgress = Math.max(0, Math.min(100, progress));
-
-  // Format estimated time
-  const formattedTime = useMemo(() => {
-    if (!estimatedTime || estimatedTime <= 0) return null;
-    
-    if (estimatedTime < 60) {
-      return `${Math.ceil(estimatedTime)}s remaining`;
-    }
-    
-    const minutes = Math.floor(estimatedTime / 60);
-    const seconds = Math.ceil(estimatedTime % 60);
-    
-    if (minutes < 60) {
-      return `${minutes}m ${seconds}s remaining`;
-    }
-    
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours}h ${remainingMinutes}m remaining`;
-  }, [estimatedTime]);
-
-  // Get status text
-  const statusText = useMemo(() => {
-    switch (status) {
-      case 'idle':
-        return t('status.idle');
-      case 'uploading':
-        return t('status.uploading');
-      case 'processing':
-        return t('status.processing');
-      case 'complete':
-        return t('status.complete');
-      case 'error':
-        return t('status.error');
-      default:
-        return '';
-    }
-  }, [status, t]);
-
-  // Get progress bar color based on status
-  const progressBarColor = useMemo(() => {
-    switch (status) {
-      case 'complete':
-        return 'bg-green-500';
-      case 'error':
-        return 'bg-red-500';
-      case 'uploading':
-      case 'processing':
-        return 'bg-primary';
-      default:
-        return 'bg-muted';
-    }
-  }, [status]);
-
-  // Determine if we should show the cancel button
-  const showCancel = onCancel && (status === 'uploading' || status === 'processing');
-
-  // Track previous status for announcements
-  const prevStatusRef = useRef(status);
-  const announcementRef = useRef<string>('');
-
-  // Update announcement when status changes
-  useEffect(() => {
-    if (prevStatusRef.current !== status) {
-      if (status === 'complete') {
-        announcementRef.current = `${statusText}. ${message || ''}`;
-      } else if (status === 'error') {
-        announcementRef.current = `${statusText}. ${message || ''}`;
-      } else if (status === 'processing' || status === 'uploading') {
-        announcementRef.current = statusText;
-      }
-      prevStatusRef.current = status;
-    }
-  }, [status, statusText, message]);
-
-  // Don't render if idle
-  if (status === 'idle') {
-    return null;
+  const clampedProgress = Number.isFinite(progress) ? Math.max(0, Math.min(100, progress)) : 0;
+  const active = status === 'uploading' || status === 'processing';
+  const statusText = t(`status.${status}`);
+  let formattedTime: string | null = null;
+  if (estimatedTime && estimatedTime > 0 && Number.isFinite(estimatedTime)) {
+    const seconds = Math.ceil(estimatedTime);
+    if (seconds < 60) formattedTime = t('processingTime.seconds', { seconds });
+    else if (seconds < 3600) formattedTime = t('processingTime.minutes', { minutes: Math.floor(seconds / 60), seconds: seconds % 60 });
+    else formattedTime = t('processingTime.hours', { hours: Math.floor(seconds / 3600), minutes: Math.floor((seconds % 3600) / 60) });
   }
-
+  if (status === 'idle') return null;
+  const Icon = active ? Loader2 : status === 'complete' ? CheckCircle2 : AlertCircle;
   return (
-    <div
-      className={`w-full ${className}`.trim()}
-      role="progressbar"
-      aria-valuenow={clampedProgress}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-label={`${statusText}: ${clampedProgress}%`}
-    >
-      {/* Screen reader announcement for status changes */}
-      <div 
-        role="status" 
-        aria-live="polite" 
-        aria-atomic="true" 
-        className="sr-only"
-      >
-        {announcementRef.current}
-      </div>
-      {/* Status and percentage header */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          {/* Status indicator */}
-          {(status === 'uploading' || status === 'processing') && (
-            <div className="relative">
-              <div className="w-4 h-4 rounded-full bg-primary/30" />
-              <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary animate-ping opacity-75" />
-            </div>
-          )}
-          {status === 'complete' && (
-            <svg
-              className="w-5 h-5 text-green-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          )}
-          {status === 'error' && (
-            <svg
-              className="w-5 h-5 text-red-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          )}
-          
-          {/* Status text */}
-          <span className="text-sm font-medium text-foreground">
-            {statusText}
-          </span>
+    <div className={`w-full space-y-3 ${className}`}>
+      <div className="flex items-start justify-between gap-3">
+        <div role="status" aria-live="polite" aria-atomic="true" className="min-w-0 space-y-1">
+          <div className="flex items-center gap-2 text-sm font-medium">
+            <Icon aria-hidden="true" className={`size-4 shrink-0 ${active ? 'animate-spin' : status === 'error' ? 'text-destructive' : 'text-primary'}`} />
+            <span>{statusText}</span>
+          </div>
+          {message && <p className="text-sm text-muted-foreground">{message}</p>}
         </div>
-
-        {/* Percentage */}
-        {showPercentage && (
-          <span className="text-sm font-medium text-muted-foreground">
-            {Math.round(clampedProgress)}%
-          </span>
-        )}
+        {showPercentage && <span className="text-sm tabular-nums text-muted-foreground">{Math.round(clampedProgress)}%</span>}
       </div>
-
-      {/* Progress bar */}
-      <div className="relative w-full h-2 bg-muted rounded-full overflow-hidden">
-        <div
-          className={`absolute left-0 top-0 h-full transition-all duration-300 ease-out rounded-full ${progressBarColor}`}
-          style={{ width: `${clampedProgress}%` }}
-        />
-        
-        {/* Animated shimmer for active states */}
-        {(status === 'uploading' || status === 'processing') && clampedProgress < 100 && (
-          <div
-            className="absolute left-0 top-0 h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent motion-safe:animate-shimmer"
-            style={{ width: `${clampedProgress}%` }}
-          />
-        )}
-      </div>
-
-      {/* Message and estimated time */}
-      <div className="flex items-center justify-between mt-2">
-        {/* Current step message */}
-        <p className="text-sm text-muted-foreground truncate flex-1">
-          {message || ''}
-        </p>
-
-        {/* Estimated time */}
-        {showEstimatedTime && formattedTime && (status === 'uploading' || status === 'processing') && (
-          <span className="text-xs text-muted-foreground ml-4 whitespace-nowrap">
-            {formattedTime}
-          </span>
-        )}
-      </div>
-
-      {/* Cancel button */}
-      {showCancel && (
-        <div className="mt-3">
-          <button
-            type="button"
-            onClick={onCancel}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            aria-label={t('buttons.cancel')}
-          >
-            {t('buttons.cancel')}
-          </button>
-        </div>
-      )}
+      <Progress value={clampedProgress} aria-label={`${statusText}: ${clampedProgress}%`} className={status === 'error' ? '[&>[data-slot=progress-indicator]]:bg-destructive' : undefined} />
+      {(onCancel && active || showEstimatedTime && formattedTime && active) && <div className="flex flex-wrap items-center justify-between gap-3">
+        {showEstimatedTime && formattedTime && active && <span className="text-xs text-muted-foreground">{formattedTime}</span>}
+        {onCancel && active && <Button variant="outline" size="sm" onClick={onCancel}>{t('buttons.cancel')}</Button>}
+      </div>}
     </div>
   );
 };

@@ -977,6 +977,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "剩余{seconds}秒",
+      "minutes": "剩余{minutes}分{seconds}秒",
+      "hours": "剩余{hours}小时{minutes}分"
     }
   },
   "toolsPage": {

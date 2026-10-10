@@ -963,6 +963,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "متبقي {seconds} ثانية",
+      "minutes": "متبقي {minutes} دقيقة و{seconds} ثانية",
+      "hours": "متبقي {hours} ساعة و{minutes} دقيقة"
     }
   },
   "toolsPage": {

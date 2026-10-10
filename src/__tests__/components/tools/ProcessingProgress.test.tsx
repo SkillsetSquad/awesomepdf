@@ -4,7 +4,10 @@ import { ProcessingProgress } from '@/components/tools/ProcessingProgress';
 
 // Mock next-intl
 vi.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => {
+  useTranslations: () => (key: string, values?: Record<string, number>) => {
+    if (key === 'processingTime.seconds') return `${values?.seconds}s remaining`;
+    if (key === 'processingTime.minutes') return `${values?.minutes}m ${values?.seconds}s remaining`;
+    if (key === 'processingTime.hours') return `${values?.hours}h ${values?.minutes}m remaining`;
     const translations: Record<string, string> = {
       'status.idle': 'Ready',
       'status.uploading': 'Uploading',
@@ -316,7 +319,7 @@ describe('ProcessingProgress', () => {
       );
       
       const progressbar = screen.getByRole('progressbar');
-      expect(progressbar).toHaveClass('custom-class');
+      expect(progressbar.parentElement).toHaveClass('custom-class');
     });
   });
 });

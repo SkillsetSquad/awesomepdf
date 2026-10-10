@@ -977,6 +977,11 @@
     },
     "theme": {
       "toggle": "Toggle color theme"
+    },
+    "processingTime": {
+      "seconds": "Pozostało {seconds} s",
+      "minutes": "Pozostało {minutes} min {seconds} s",
+      "hours": "Pozostało {hours} godz. {minutes} min"
     }
   },
   "toolsPage": {
