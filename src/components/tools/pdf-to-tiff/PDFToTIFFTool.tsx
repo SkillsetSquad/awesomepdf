@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -147,7 +149,7 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
     <div className={`space-y-6 ${className}`.trim()}>
       {/* File Upload Zone */}
       <div className="space-y-3">
-        <Label className="block">
+        <Label className="block" htmlFor="pdftotifftool-slider-1">
           {t('pdfToTiff.uploadLabel')}
         </Label>
         {file ? (
@@ -356,14 +358,13 @@ export function PDFToTIFFTool({ className = '' }: PDFToTIFFToolProps) {
                   </span>
                 </div>
 
-                <input
-                  type="range"
-                  min="72"
-                  max="600"
-                  step="6"
-                  value={dpi}
-                  onChange={(e) => setDpi(parseInt(e.target.value, 10))}
-                  className="w-full accent-primary bg-muted h-1.5 rounded-lg appearance-none cursor-pointer"
+                <Slider
+                  min={72}
+                  max={600}
+                  step={6}
+                  value={[dpi]}
+                  onValueChange={(values) => setDpi(parseInt(String(values[0]), 10))}
+                  className="w-full cursor-pointer" id="pdftotifftool-slider-1" aria-label={t('pdfToTiff.uploadLabel')}
                 />
 
                 <div className="flex justify-between text-[9px] text-muted-foreground font-semibold">

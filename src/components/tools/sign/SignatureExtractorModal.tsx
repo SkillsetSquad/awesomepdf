@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -676,14 +678,13 @@ export function SignatureExtractorModal({
                           <span>去白底灵敏度：</span>
                           <span className="font-mono text-gray-700">{threshold}</span>
                         </div>
-                        <input
-                          type="range"
-                          min="160"
-                          max="245"
-                          step="1"
-                          value={threshold}
-                          onChange={(e) => setThreshold(Number(e.target.value))}
-                          className="w-full accent-blue-600"
+                        <Slider
+                          min={160}
+                          max={245}
+                          step={1}
+                          value={[threshold]}
+                          onValueChange={(values) => setThreshold(Number(String(values[0])))}
+                          className="w-full" aria-label={"去白底灵敏度"}
                         />
                       </div>
 
@@ -692,14 +693,13 @@ export function SignatureExtractorModal({
                           <span>边缘抗锯齿平滑：</span>
                           <span className="font-mono text-gray-700">{smoothness}</span>
                         </div>
-                        <input
-                          type="range"
-                          min="5"
-                          max="40"
-                          step="1"
-                          value={smoothness}
-                          onChange={(e) => setSmoothness(Number(e.target.value))}
-                          className="w-full accent-blue-600"
+                        <Slider
+                          min={5}
+                          max={40}
+                          step={1}
+                          value={[smoothness]}
+                          onValueChange={(values) => setSmoothness(Number(String(values[0])))}
+                          className="w-full" aria-label={"边缘抗锯齿平滑"}
                         />
                       </div>
                     </div>

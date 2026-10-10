@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -441,13 +443,12 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                 </div>
 
                 {/* Split line cover panel for dragging */}
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={sliderPosition}
-                  onChange={(e) => setSliderPosition(Number(e.target.value))}
-                  className="absolute inset-0 opacity-0 cursor-ew-resize z-30"
+                <Slider
+                  min={0}
+                  max={100}
+                  value={[sliderPosition]}
+                  onValueChange={(values) => setSliderPosition(Number(String(values[0])))}
+                  className="absolute inset-0 opacity-0 cursor-ew-resize z-30 focus-within:opacity-100" aria-label={t('compress.sliderTooltip')}
                 />
 
                 {/* 4. WOW 3D refractive floating Magnifier loupe */}

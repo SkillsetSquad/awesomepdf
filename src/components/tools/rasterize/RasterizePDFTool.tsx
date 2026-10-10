@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -225,17 +227,16 @@ export function RasterizePDFTool({ className = '' }: RasterizePDFToolProps) {
                         {/* Quality (for JPEG/WebP) */}
                         {(format === 'jpeg' || format === 'webp' || format === 'pdf') && (
                             <div>
-                                <Label className="block mb-2">
+                                <Label className="block mb-2" htmlFor="rasterizepdftool-slider-1">
                                     {tTools('rasterizePdf.qualityLabel') || 'Quality'}: {quality}%
                                 </Label>
-                                <input
-                                    type="range"
-                                    min="10"
-                                    max="100"
-                                    value={quality}
-                                    onChange={(e) => setQuality(Number(e.target.value))}
+                                <Slider
+                                    min={10}
+                                    max={100}
+                                    value={[quality]}
+                                    onValueChange={(values) => setQuality(Number(String(values[0])))}
                                     disabled={isProcessing}
-                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                    className="w-full cursor-pointer" id="rasterizepdftool-slider-1" aria-label={tTools('rasterizePdf.qualityLabel')}
                                 />
                             </div>
                         )}

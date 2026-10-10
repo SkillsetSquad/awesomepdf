@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useRef } from 'react';
@@ -121,7 +123,7 @@ export function BookletFoldingSimulatorTool() {
             {/* Control Panel */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <Label className="text-neutral-300 flex items-center gap-2">
+                <Label className="text-neutral-300 flex items-center gap-2" htmlFor="bookletfoldingsimulatortool-slider-1">
                   <Layers className="w-4 h-4 text-violet-400" />
                   {tTools('foldingMode')}
                 </Label>
@@ -160,13 +162,12 @@ export function BookletFoldingSimulatorTool() {
                   </span>
                   <span>{foldProgress}%</span>
                 </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={foldProgress}
-                  onChange={(e) => setFoldProgress(parseInt(e.target.value))}
-                  className="w-full h-1 bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-violet-500"
+                <Slider
+                  min={0}
+                  max={100}
+                  value={[foldProgress]}
+                  onValueChange={(values) => setFoldProgress(parseInt(String(values[0])))}
+                  className="w-full cursor-pointer" id="bookletfoldingsimulatortool-slider-1" aria-label={tTools('foldingMode')}
                 />
                 <div className="flex justify-between text-[9px] text-neutral-500">
                   <span>{t('bookletFoldingSimulator.flatUnfold')}</span>

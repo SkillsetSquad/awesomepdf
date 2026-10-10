@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -213,31 +215,29 @@ export function ExtractTablesTool({ className = '' }: ExtractTablesToolProps) {
                         {/* Min Columns/Rows */}
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <Label className="block mb-2">
+                                <Label className="block mb-2" htmlFor="extracttablestool-slider-1">
                                     {tTools('extractTables.minColumnsLabel') || 'Min Columns'}: {minColumns}
                                 </Label>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="10"
-                                    value={minColumns}
-                                    onChange={(e) => setMinColumns(Number(e.target.value))}
+                                <Slider
+                                    min={1}
+                                    max={10}
+                                    value={[minColumns]}
+                                    onValueChange={(values) => setMinColumns(Number(String(values[0])))}
                                     disabled={isProcessing}
-                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                    className="w-full cursor-pointer" id="extracttablestool-slider-1" aria-label={tTools('extractTables.minColumnsLabel')}
                                 />
                             </div>
                             <div>
-                                <Label className="block mb-2">
+                                <Label className="block mb-2" htmlFor="extracttablestool-slider-2">
                                     {tTools('extractTables.minRowsLabel') || 'Min Rows'}: {minRows}
                                 </Label>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="10"
-                                    value={minRows}
-                                    onChange={(e) => setMinRows(Number(e.target.value))}
+                                <Slider
+                                    min={1}
+                                    max={10}
+                                    value={[minRows]}
+                                    onValueChange={(values) => setMinRows(Number(String(values[0])))}
                                     disabled={isProcessing}
-                                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                    className="w-full cursor-pointer" id="extracttablestool-slider-2" aria-label={tTools('extractTables.minRowsLabel')}
                                 />
                             </div>
                         </div>

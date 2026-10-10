@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -181,17 +183,16 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                   </div>
 
                   <div className="space-y-1">
-                    <Label className="flex justify-between">
+                    <Label className="flex justify-between" htmlFor="phototilingprepresstool-slider-1">
                       <span>{t('photoTilingPrepress.gapPtLabel')}</span>
                       <span className="font-mono text-primary font-bold">{gapPt} pt</span>
                     </Label>
-                    <input
-                      type="range"
-                      min="2"
-                      max="20"
-                      value={gapPt}
-                      onChange={(e) => setGapPt(parseInt(e.target.value))}
-                      className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-primary"
+                    <Slider
+                      min={2}
+                      max={20}
+                      value={[gapPt]}
+                      onValueChange={(values) => setGapPt(parseInt(String(values[0])))}
+                      className="w-full cursor-pointer" id="phototilingprepresstool-slider-1" aria-label={t('photoTilingPrepress.gapPtLabel')}
                     />
                   </div>
                 </div>

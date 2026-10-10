@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
@@ -253,17 +255,16 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                     <div className="space-y-4">
                         {/* Threshold Setting */}
                         <div>
-                            <Label className="block mb-2">
+                            <Label className="block mb-2" htmlFor="deskewpdftool-slider-1">
                                 {tTools('deskewPdf.thresholdLabel') || 'Sensitivity Level'}: {threshold}
                             </Label>
-                            <input
-                                type="range"
-                                min="1"
-                                max="30"
-                                value={threshold}
-                                onChange={(e) => setThreshold(Number(e.target.value))}
+                            <Slider
+                                min={1}
+                                max={30}
+                                value={[threshold]}
+                                onValueChange={(values) => setThreshold(Number(String(values[0])))}
                                 disabled={isProcessing}
-                                className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                className="w-full cursor-pointer" id="deskewpdftool-slider-1" aria-label={tTools('deskewPdf.thresholdLabel')}
                             />
                             <p className="mt-1 text-xs text-muted-foreground">
                                 {tTools('deskewPdf.thresholdDesc') || 'Higher values detect more subtle skew angles. Lower values only correct obvious tilts. Default: 10'}

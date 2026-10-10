@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelectOption } from '@/components/ui/native-select';
@@ -328,18 +330,17 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
             {/* Quality (for lossy formats) */}
             {['jpg', 'jpeg', 'webp'].includes(format) && (
               <div>
-                <Label className="block mb-2">
+                <Label className="block mb-2" htmlFor="pdftoimagetool-slider-1">
                   {tTools('pdfToImage.quality') || 'Quality'} ({Math.round(quality * 100)}%)
                 </Label>
-                <input
-                  type="range"
-                  min="0.1"
-                  max="1"
-                  step="0.05"
-                  value={quality}
-                  onChange={(e) => setQuality(parseFloat(e.target.value))}
+                <Slider
+                  min={0.1}
+                  max={1}
+                  step={0.05}
+                  value={[quality]}
+                  onValueChange={(values) => setQuality(parseFloat(String(values[0])))}
                   disabled={isProcessing}
-                  className="w-full"
+                  className="w-full" id="pdftoimagetool-slider-1" aria-label={tTools('pdfToImage.quality')}
                 />
               </div>
             )}

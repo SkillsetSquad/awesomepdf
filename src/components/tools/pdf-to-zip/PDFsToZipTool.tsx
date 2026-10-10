@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -268,15 +270,15 @@ export function PDFsToZipTool({ className = '' }: PDFsToZipToolProps) {
                 {tTools('pdfToZip.compressionLevel') || 'Compression Level'}
               </Label>
               <div className="flex items-center gap-4">
-                <input
+                <Slider
                   id="compression-level"
-                  type="range"
-                  min="0"
-                  max="9"
-                  value={compressionLevel}
-                  onChange={(e) => setCompressionLevel(Number(e.target.value))}
+
+                  min={0}
+                  max={9}
+                  value={[compressionLevel]}
+                  onValueChange={(values) => setCompressionLevel(Number(String(values[0])))}
                   disabled={isProcessing}
-                  className="flex-1 h-2 bg-muted rounded-lg appearance-none cursor-pointer" aria-label={tTools('pdfToZip.compressionLevel') || 'Compression Level'}
+                  className="flex-1 cursor-pointer" aria-label={tTools('pdfToZip.compressionLevel') || 'Compression Level'}
                 />
                 <span className="text-sm text-muted-foreground w-8 text-center">
                   {compressionLevel}

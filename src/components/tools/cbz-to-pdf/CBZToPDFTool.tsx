@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -146,17 +148,16 @@ export function CBZToPDFTool({ className = '' }: CBZToPDFToolProps) {
                         </div>
 
                         <div>
-                            <Label className="block mb-2">
+                            <Label className="block mb-2" htmlFor="cbztopdftool-slider-1">
                                 {tTools('cbzToPdf.qualityLabel') || 'Image Quality'}: {quality}%
                             </Label>
-                            <input
-                                type="range"
-                                min="50"
-                                max="100"
-                                value={quality}
-                                onChange={(e) => setQuality(Number(e.target.value))}
+                            <Slider
+                                min={50}
+                                max={100}
+                                value={[quality]}
+                                onValueChange={(values) => setQuality(Number(String(values[0])))}
                                 disabled={isProcessing}
-                                className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                className="w-full cursor-pointer" id="cbztopdftool-slider-1" aria-label={tTools('cbzToPdf.qualityLabel')}
                             />
                         </div>
 

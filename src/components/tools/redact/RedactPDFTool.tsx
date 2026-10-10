@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -1634,15 +1636,14 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      <input
-                        type="range"
-                        min="4"
-                        max="64"
-                        step="2"
-                        value={brushWidth}
-                        onChange={(e) => setBrushWidth(Number(e.target.value))}
-                        className="w-24 cursor-pointer accent-primary"
-                        title="滑动调节画笔粗细"
+                      <Slider
+                        min={4}
+                        max={64}
+                        step={2}
+                        value={[brushWidth]}
+                        onValueChange={(values) => setBrushWidth(Number(String(values[0])))}
+                        className="w-24 cursor-pointer"
+                        title="滑动调节画笔粗细" aria-label={"画笔粗细"}
                       />
                       <span className="font-mono text-xs font-semibold w-8 text-foreground">{brushWidth}px</span>
 
@@ -1667,14 +1668,13 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 {activeStyle === 'mosaic' && (
                   <div className={`flex items-center gap-2 ${activeTool === 'brush' ? 'pl-3 border-l border-border/70' : ''}`}>
                     <span className="text-muted-foreground font-medium whitespace-nowrap">马赛克颗粒:</span>
-                    <input
-                      type="range"
-                      min="4"
-                      max="24"
-                      step="2"
-                      value={activeBlockSize}
-                      onChange={(e) => setActiveBlockSize(Number(e.target.value))}
-                      className="w-20 cursor-pointer accent-primary"
+                    <Slider
+                      min={4}
+                      max={24}
+                      step={2}
+                      value={[activeBlockSize]}
+                      onValueChange={(values) => setActiveBlockSize(Number(String(values[0])))}
+                      className="w-20 cursor-pointer" aria-label={"马赛克颗粒"}
                     />
                     <span className="font-mono text-xs font-semibold w-7 text-foreground">{activeBlockSize}px</span>
                   </div>
@@ -1684,14 +1684,13 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 {activeStyle === 'blur' && (
                   <div className={`flex items-center gap-2 ${activeTool === 'brush' ? 'pl-3 border-l border-border/70' : ''}`}>
                     <span className="text-muted-foreground font-medium whitespace-nowrap">模糊强度:</span>
-                    <input
-                      type="range"
-                      min="2"
-                      max="16"
-                      step="1"
-                      value={activeBlurRadius}
-                      onChange={(e) => setActiveBlurRadius(Number(e.target.value))}
-                      className="w-20 cursor-pointer accent-primary"
+                    <Slider
+                      min={2}
+                      max={16}
+                      step={1}
+                      value={[activeBlurRadius]}
+                      onValueChange={(values) => setActiveBlurRadius(Number(String(values[0])))}
+                      className="w-20 cursor-pointer" aria-label={"模糊强度"}
                     />
                     <span className="font-mono text-xs font-semibold w-7 text-foreground">{activeBlurRadius}px</span>
                   </div>

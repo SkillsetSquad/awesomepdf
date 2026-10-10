@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { NativeSelect } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -161,17 +163,16 @@ export function PdfDeskewAlignerTool({ className = '' }: PdfDeskewAlignerToolPro
                   </div>
 
                   <div className="space-y-1">
-                    <Label className="flex justify-between">
+                    <Label className="flex justify-between" htmlFor="pdfdeskewalignertool-slider-1">
                       {t('pdfDeskewAligner.thresholdLabel')}
                       <span className="font-mono text-primary font-bold">{threshold}°</span>
                     </Label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="30"
-                      value={threshold}
-                      onChange={(e) => setThreshold(parseInt(e.target.value))}
-                      className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-primary"
+                    <Slider
+                      min={1}
+                      max={30}
+                      value={[threshold]}
+                      onValueChange={(values) => setThreshold(parseInt(String(values[0])))}
+                      className="w-full cursor-pointer" id="pdfdeskewalignertool-slider-1" aria-label={t('pdfDeskewAligner.thresholdLabel')}
                     />
                   </div>
                 </div>

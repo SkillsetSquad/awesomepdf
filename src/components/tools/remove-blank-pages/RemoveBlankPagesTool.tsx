@@ -1,4 +1,5 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -10,14 +11,14 @@ import { Card } from '@/components/ui/card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import { removeBlankPages } from '@/lib/pdf/processors/remove-blank-pages';
 import type { ProcessOutput } from '@/types/pdf';
-import { 
-  Trash2, 
-  RefreshCw, 
-  Check, 
-  AlertCircle, 
-  Loader2, 
-  X, 
-  Sliders, 
+import {
+  Trash2,
+  RefreshCw,
+  Check,
+  AlertCircle,
+  Loader2,
+  X,
+  Sliders,
   FileText,
   Eye,
   Settings2,
@@ -32,8 +33,8 @@ interface PageInfo {
   aspectRatio: number;
 }
 
-export interface RemoveBlankPagesToolProps { 
-  className?: string; 
+export interface RemoveBlankPagesToolProps {
+  className?: string;
 }
 
 export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolProps) {
@@ -65,7 +66,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
     const data = imageData.data;
     const totalPixels = data.length / 4;
     const histogram = new Float32Array(256);
-    
+
     for (let i = 0; i < data.length; i += 4) {
       const r = data[i];
       const g = data[i + 1];
@@ -76,7 +77,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
     let entropy = 0;
     const eps = 1e-10;
-    
+
     for (let i = 0; i < 256; i++) {
       const prob = histogram[i] / totalPixels;
       if (prob > 0) {
@@ -127,7 +128,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        
+
         if (context) {
           canvas.width = viewport.width;
           canvas.height = viewport.height;
@@ -148,7 +149,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
             aspectRatio: viewport.width / viewport.height,
           });
         }
-        
+
         setAnalyzingProgress(Math.round((i / totalPages) * 100));
         // Progressive update for responsive loading feel
         setPages([...loadedPages]);
@@ -207,10 +208,10 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
   const handleProcess = useCallback(async () => {
     if (!file || pages.length === 0) return;
     cancelledRef.current = false;
-    setStatus('processing'); 
-    setProgress(0); 
-    setError(null); 
-    setResult(null); 
+    setStatus('processing');
+    setProgress(0);
+    setError(null);
+    setResult(null);
     setRemovedCount(0);
 
     // Collect 1-indexed pages that are flagged for deletion
@@ -226,10 +227,10 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
     try {
       const output: ProcessOutput = await removeBlankPages(
-        file, 
-        { explicitPagesToRemove }, 
-        (prog) => { 
-          if (!cancelledRef.current) setProgress(prog); 
+        file,
+        { explicitPagesToRemove },
+        (prog) => {
+          if (!cancelledRef.current) setProgress(prog);
         }
       );
 
@@ -242,13 +243,13 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
         setResult(output.result as Blob);
         setRemovedCount(explicitPagesToRemove.length);
         setStatus('complete');
-      } else { 
-        setError(output.error?.message || 'Failed to apply blank page filter.'); 
-        setStatus('error'); 
+      } else {
+        setError(output.error?.message || 'Failed to apply blank page filter.');
+        setStatus('error');
       }
-    } catch (err) { 
-      setError(err instanceof Error ? err.message : 'Error processing PDF'); 
-      setStatus('error'); 
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error processing PDF');
+      setStatus('error');
     }
   }, [file, pages, isPageRemoved]);
 
@@ -277,18 +278,18 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
-      
+
       {/* Upload Zone */}
       {!file && (
-        <FileUploader 
-          accept={['application/pdf', '.pdf']} 
-          multiple={false} 
-          maxFiles={1} 
-          onFilesSelected={handleFileSelected} 
-          onError={setError} 
-          disabled={isProcessing} 
-          label={tTools('removeBlankPages.uploadLabel')} 
-          description={tTools('removeBlankPages.uploadDescription')} 
+        <FileUploader
+          accept={['application/pdf', '.pdf']}
+          multiple={false}
+          maxFiles={1}
+          onFilesSelected={handleFileSelected}
+          onError={setError}
+          disabled={isProcessing}
+          label={tTools('removeBlankPages.uploadLabel')}
+          description={tTools('removeBlankPages.uploadDescription')}
         />
       )}
 
@@ -317,7 +318,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               {analyzingProgress}% Completed
             </p>
             <div className="w-full bg-zinc-200 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-300"
                 style={{ width: `${analyzingProgress}%` }}
               />
@@ -329,7 +330,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
       {/* Main Workspace (After file loaded and analyzed) */}
       {file && !isAnalyzing && status !== 'complete' && (
         <div className="space-y-6">
-          
+
           {/* File Header Bar */}
           <Card  className="p-4 flex flex-wrap items-center justify-between border border-zinc-200 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-950/20 backdrop-blur-sm rounded-2xl gap-4">
             <div className="flex items-center gap-3">
@@ -345,7 +346,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 </p>
               </div>
             </div>
-            
+
             <Button variant="ghost" size="sm" onClick={handleClear} disabled={isProcessing} className="hover:bg-red-500/10 hover:text-red-500">
               {t('buttons.remove') || 'Remove'}
             </Button>
@@ -353,31 +354,30 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
           {/* Control Workshop Controls */}
           <Card  className="p-6 border border-zinc-200/60 dark:border-zinc-800/40 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md rounded-[2rem] shadow-xl space-y-6">
-            
+
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-              
+
               {/* Left Column: Sensitivity Threshold Slider */}
               <div className="md:col-span-7 space-y-3.5">
                 <h4 className="text-sm font-bold text-foreground flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-primary" />
                   {tTools('removeBlankPages.sensitivity')}
                 </h4>
-                
+
                 <div className="flex items-center gap-4">
-                  <input 
-                    type="range" 
-                    value={threshold} 
-                    onChange={(e) => setThreshold(parseInt(e.target.value))} 
-                    min={90} 
-                    max={100} 
-                    className="flex-1 accent-primary cursor-pointer h-2 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none" 
-                    disabled={isProcessing} 
+                  <Slider
+                    value={[threshold]}
+                    onValueChange={(values) => setThreshold(parseInt(String(values[0])))}
+                    min={90}
+                    max={100}
+                    className="flex-1 cursor-pointer"
+                    disabled={isProcessing} aria-label={tTools('removeBlankPages.sensitivity')}
                   />
                   <span className="font-mono text-sm px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-md font-bold text-primary">
                     {threshold}%
                   </span>
                 </div>
-                
+
                 <p className="text-[11px] text-muted-foreground leading-relaxed">
                   {tTools('removeBlankPages.sensitivityHint')}
                 </p>
@@ -415,7 +415,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                   </Button>
                 </div>
               </div>
-              
+
             </div>
 
             {/* View filter mode tabs */}
@@ -424,8 +424,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 <button
                   onClick={() => setFilterMode('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'all' 
-                      ? 'bg-white dark:bg-zinc-800 text-foreground shadow-sm' 
+                    filterMode === 'all'
+                      ? 'bg-white dark:bg-zinc-800 text-foreground shadow-sm'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
@@ -434,8 +434,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 <button
                   onClick={() => setFilterMode('blanks')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'blanks' 
-                      ? 'bg-red-500 text-white shadow-sm' 
+                    filterMode === 'blanks'
+                      ? 'bg-red-500 text-white shadow-sm'
                       : 'text-red-500/80 hover:text-red-500'
                   }`}
                 >
@@ -444,8 +444,8 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 <button
                   onClick={() => setFilterMode('keeps')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    filterMode === 'keeps' 
-                      ? 'bg-emerald-500 text-white shadow-sm' 
+                    filterMode === 'keeps'
+                      ? 'bg-emerald-500 text-white shadow-sm'
                       : 'text-emerald-500/80 hover:text-emerald-500'
                   }`}
                 >
@@ -455,11 +455,11 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
               {/* Apply action triggers */}
               <div className="flex gap-2">
-                <Button 
-                  variant="default" 
-                  size="default" 
-                  onClick={handleProcess} 
-                  disabled={isProcessing || keepPagesCount === 0} 
+                <Button
+                  variant="default"
+                  size="default"
+                  onClick={handleProcess}
+                  disabled={isProcessing || keepPagesCount === 0}
                   loading={isProcessing}
                   className="font-bold shadow-lg shadow-primary-500/10 flex items-center gap-1.5"
                 >
@@ -468,7 +468,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 </Button>
               </div>
             </div>
-            
+
           </Card>
 
           {/* 3D Pages Queue Grid */}
@@ -485,7 +485,7 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
                 const autoIsBlank = isPageBlankAuto(page.entropy, threshold);
                 const removed = isPageRemoved(page);
                 const override = userOverrides[page.pageNumber];
-                
+
                 const isManualKeep = override === false;
                 const isManualRemove = override === true;
 
@@ -519,21 +519,21 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
               {tTools('removeBlankPages.successMessage')}
             </h3>
             <p className="text-xs text-muted-foreground">
-              {removedCount > 0 
-                ? t('removeBlankPages.successPurged', { count: removedCount }) 
+              {removedCount > 0
+                ? t('removeBlankPages.successPurged', { count: removedCount })
                 : t('removeBlankPages.successNoChange')
               }
             </p>
           </div>
 
           <div className="flex gap-3 justify-center max-w-xs mx-auto">
-            <DownloadButton 
-              file={result} 
-              filename={file?.name.replace('.pdf', '_no_blanks.pdf') || 'cleaned_document.pdf'} 
-              variant="default" 
-              size="lg" 
+            <DownloadButton
+              file={result}
+              filename={file?.name.replace('.pdf', '_no_blanks.pdf') || 'cleaned_document.pdf'}
+              variant="default"
+              size="lg"
               className="flex-1 font-bold shadow-lg"
-              showFileSize 
+              showFileSize
             />
             <Button variant="ghost" size="lg" onClick={handleClear} className="border border-zinc-200 dark:border-zinc-800">
               {t('removeBlankPages.processNewFile') || 'Process New File'}
@@ -544,14 +544,14 @@ export function RemoveBlankPagesTool({ className = '' }: RemoveBlankPagesToolPro
 
       {/* In-processing spinner overlay */}
       {isProcessing && (
-        <ProcessingProgress 
-          progress={progress} 
-          status={status} 
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }} 
-          showPercentage 
+        <ProcessingProgress
+          progress={progress}
+          status={status}
+          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          showPercentage
         />
       )}
-      
+
     </div>
   );
 }
@@ -572,18 +572,18 @@ interface PageCardProps {
 function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, onToggle }: PageCardProps) {
   const t = useTranslations('common');
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
+
     // Physical spring factor: tilt up to 25deg
     const rX = -(y / rect.height) * 25;
     const rY = (x / rect.width) * 25;
-    
+
     card.style.transform = `perspective(1000px) rotateX(${rX}deg) rotateY(${rY}deg) scale3d(1.05, 1.05, 1.05) translateZ(10px)`;
   };
 
@@ -601,8 +601,8 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
       onMouseLeave={handleMouseLeave}
       onClick={onToggle}
       className={`relative group cursor-pointer transition-all duration-300 ease-out rounded-2xl overflow-hidden select-none bg-white dark:bg-zinc-900 border ${
-        isRemoved 
-          ? 'border-red-500/40 shadow-inner ring-2 ring-red-500/25' 
+        isRemoved
+          ? 'border-red-500/40 shadow-inner ring-2 ring-red-500/25'
           : 'border-zinc-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700'
       }`}
       style={{
@@ -610,13 +610,13 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
       }}
     >
       {/* Aspect Ratio Box */}
-      <div 
+      <div
         className="w-full relative overflow-hidden bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-3"
         style={{ aspectRatio: page.aspectRatio ? `${page.aspectRatio}` : '0.707' }}
       >
-        <img 
-          src={page.dataUrl} 
-          alt={`Page ${page.pageNumber}`} 
+        <img
+          src={page.dataUrl}
+          alt={`Page ${page.pageNumber}`}
           className={`w-full h-auto object-contain rounded shadow-sm select-none pointer-events-none transition-transform duration-500 ${
             isRemoved ? 'filter grayscale opacity-30 scale-[0.98]' : 'group-hover:scale-[1.02]'
           }`}
@@ -645,14 +645,14 @@ function PageCard({ page, isRemoved, isAutoBlank, isManualKeep, isManualRemove, 
 
       {/* Card Header & Page Number Indicator */}
       <div className={`p-2 flex items-center justify-between text-[11px] font-bold border-t ${
-        isRemoved 
-          ? 'bg-red-50/50 dark:bg-red-950/10 border-red-100 dark:border-red-950/40' 
+        isRemoved
+          ? 'bg-red-50/50 dark:bg-red-950/10 border-red-100 dark:border-red-950/40'
           : 'bg-zinc-50 dark:bg-zinc-900/60 border-zinc-100 dark:border-zinc-800'
       }`}>
         <span className={isRemoved ? 'text-red-500' : 'text-zinc-500'}>
           {t('removeBlankPages.pageNumberLabel', { num: page.pageNumber })}
         </span>
-        
+
         {/* Entropy Tag */}
         <span className="text-[9px] font-medium text-zinc-400 font-mono tracking-tighter" title={`Shannon Entropy: ${page.entropy.toFixed(4)}`}>
           {t('removeBlankPages.entropyLabel', { val: page.entropy.toFixed(3) })}

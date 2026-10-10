@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback } from 'react';
@@ -279,17 +281,16 @@ export function PDFBookletTool({ className = '' }: PDFBookletToolProps) {
 
                         {/* Padding */}
                         <div>
-                            <Label className="block mb-2">
+                            <Label className="block mb-2" htmlFor="pdfbooklettool-slider-1">
                                 {tTools('pdfBooklet.paddingLabel') || 'Padding'}: {padding}pt
                             </Label>
-                            <input
-                                type="range"
-                                min="0"
-                                max="50"
-                                value={padding}
-                                onChange={(e) => setPadding(Number(e.target.value))}
+                            <Slider
+                                min={0}
+                                max={50}
+                                value={[padding]}
+                                onValueChange={(values) => setPadding(Number(String(values[0])))}
                                 disabled={isProcessing}
-                                className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-muted"
+                                className="w-full cursor-pointer" id="pdfbooklettool-slider-1" aria-label={tTools('pdfBooklet.paddingLabel')}
                             />
                         </div>
 

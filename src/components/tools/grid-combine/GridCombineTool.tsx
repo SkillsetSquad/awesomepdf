@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -674,16 +676,15 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
                                     <Label htmlFor="spacing" className="block mb-1">
                                         {tTools('gridCombine.spacing') || 'Spacing'} ({spacing}px)
                                     </Label>
-                                    <input
-                                        type="range"
+                                    <Slider
                                         id="spacing"
-                                        min="0"
-                                        max="50"
-                                        step="1"
-                                        value={spacing}
-                                        onChange={(e) => setSpacing(Number(e.target.value))}
+                                        min={0}
+                                        max={50}
+                                        step={1}
+                                        value={[spacing]}
+                                        onValueChange={(values) => setSpacing(Number(String(values[0])))}
                                         disabled={isProcessing}
-                                        className="w-full"
+                                        className="w-full" aria-label={tTools('gridCombine.spacing')}
                                     />
                                 </div>
 

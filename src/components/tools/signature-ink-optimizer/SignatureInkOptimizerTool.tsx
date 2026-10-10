@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -167,33 +169,31 @@ export function SignatureInkOptimizerTool({ className = '' }: SignatureInkOptimi
                   </div>
 
                   <div className="space-y-1">
-                    <Label className="flex justify-between">
+                    <Label className="flex justify-between" htmlFor="signatureinkoptimizertool-slider-1">
                       <span>{t('signatureInkOptimizer.thresholdLabel')}</span>
                       <span className="font-mono text-primary font-bold">{threshold}</span>
                     </Label>
-                    <input
-                      type="range"
-                      min="100"
-                      max="245"
-                      value={threshold}
-                      onChange={(e) => setThreshold(parseInt(e.target.value))}
-                      className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-primary"
+                    <Slider
+                      min={100}
+                      max={245}
+                      value={[threshold]}
+                      onValueChange={(values) => setThreshold(parseInt(String(values[0])))}
+                      className="w-full cursor-pointer" id="signatureinkoptimizertool-slider-1" aria-label={t('signatureInkOptimizer.thresholdLabel')}
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <Label className="flex justify-between">
+                    <Label className="flex justify-between" htmlFor="signatureinkoptimizertool-slider-2">
                       <span>{t('signatureInkOptimizer.contrastLabel')}</span>
                       <span className="font-mono text-primary font-bold">{contrast.toFixed(1)}x</span>
                     </Label>
-                    <input
-                      type="range"
-                      min="1.0"
-                      max="3.0"
-                      step="0.1"
-                      value={contrast}
-                      onChange={(e) => setContrast(parseFloat(e.target.value))}
-                      className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-primary"
+                    <Slider
+                      min={1}
+                      max={3}
+                      step={0.1}
+                      value={[contrast]}
+                      onValueChange={(values) => setContrast(parseFloat(String(values[0])))}
+                      className="w-full cursor-pointer" id="signatureinkoptimizertool-slider-2" aria-label={t('signatureInkOptimizer.contrastLabel')}
                     />
                   </div>
                 </div>

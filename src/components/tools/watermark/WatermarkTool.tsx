@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
@@ -711,19 +713,18 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300">
+                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-1">
                           {tTools('fontSize')}
                         </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{fontSize}pt</span>
                       </div>
-                      <input
-                        type="range"
+                      <Slider
                         min={10}
                         max={200}
-                        value={fontSize}
-                        onChange={(e) => setFontSize(parseInt(e.target.value) || 72)}
+                        value={[fontSize]}
+                        onValueChange={(values) => setFontSize(parseInt(String(values[0])) || 72)}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} id="watermarktool-slider-1" aria-label={tTools('fontSize')}
                       />
                     </div>
                     <div>
@@ -752,38 +753,36 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300">
+                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-2">
                           {tTools('opacity')}
                         </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(textOpacity * 100)}%</span>
                       </div>
-                      <input
-                        type="range"
-                        value={textOpacity}
-                        onChange={(e) => setTextOpacity(parseFloat(e.target.value))}
+                      <Slider
+                        value={[textOpacity]}
+                        onValueChange={(values) => setTextOpacity(parseFloat(String(values[0])))}
                         min={0.05}
                         max={1}
                         step={0.05}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} id="watermarktool-slider-2" aria-label={tTools('opacity')}
                       />
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300">
+                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-3">
                           {tTools('angle')}
                         </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{textAngle}°</span>
                       </div>
-                      <input
-                        type="range"
-                        value={textAngle}
-                        onChange={(e) => setTextAngle(parseInt(e.target.value))}
+                      <Slider
+                        value={[textAngle]}
+                        onValueChange={(values) => setTextAngle(parseInt(String(values[0])))}
                         min={-90}
                         max={90}
                         step={5}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} id="watermarktool-slider-3" aria-label={tTools('angle')}
                       />
                     </div>
                   </div>
@@ -814,58 +813,55 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300">
+                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-4">
                           {tTools('scale')}
                         </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{imageScale}%</span>
                       </div>
-                      <input
-                        type="range"
-                        value={imageScale}
-                        onChange={(e) => setImageScale(parseInt(e.target.value) || 50)}
+                      <Slider
+                        value={[imageScale]}
+                        onValueChange={(values) => setImageScale(parseInt(String(values[0])) || 50)}
                         min={10}
                         max={200}
                         step={5}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} id="watermarktool-slider-4" aria-label={tTools('scale')}
                       />
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <Label className="dark:text-gray-300">
+                        <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-5">
                           {tTools('opacity')}
                         </Label>
                         <span className="text-xs text-gray-500 dark:text-gray-400">{Math.round(imageOpacity * 100)}%</span>
                       </div>
-                      <input
-                        type="range"
-                        value={imageOpacity}
-                        onChange={(e) => setImageOpacity(parseFloat(e.target.value))}
+                      <Slider
+                        value={[imageOpacity]}
+                        onValueChange={(values) => setImageOpacity(parseFloat(String(values[0])))}
                         min={0.05}
                         max={1}
                         step={0.05}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} id="watermarktool-slider-5" aria-label={tTools('opacity')}
                       />
                     </div>
                   </div>
 
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <Label className="dark:text-gray-300">
+                      <Label className="dark:text-gray-300" htmlFor="watermarktool-slider-6">
                         {tTools('angle')}
                       </Label>
                       <span className="text-xs text-gray-500 dark:text-gray-400">{imageAngle}°</span>
                     </div>
-                    <input
-                      type="range"
-                      value={imageAngle}
-                      onChange={(e) => setImageAngle(parseInt(e.target.value))}
+                    <Slider
+                      value={[imageAngle]}
+                      onValueChange={(values) => setImageAngle(parseInt(String(values[0])))}
                       min={-90}
                       max={90}
                       step={5}
                       className="w-full"
-                      disabled={isProcessing}
+                      disabled={isProcessing} id="watermarktool-slider-6" aria-label={tTools('angle')}
                     />
                   </div>
                 </div>
@@ -949,15 +945,14 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                         <span>{tTools('repeatSpacingX')}</span>
                         <span>{repeatSpacingX}pt</span>
                       </div>
-                      <input
-                        type="range"
-                        value={repeatSpacingX}
-                        onChange={(e) => setRepeatSpacingX(parseInt(e.target.value))}
+                      <Slider
+                        value={[repeatSpacingX]}
+                        onValueChange={(values) => setRepeatSpacingX(parseInt(String(values[0])))}
                         min={20}
                         max={600}
                         step={10}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} aria-label={tTools('repeatSpacingX')}
                       />
                     </div>
                     <div>
@@ -965,15 +960,14 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                         <span>{tTools('repeatSpacingY')}</span>
                         <span>{repeatSpacingY}pt</span>
                       </div>
-                      <input
-                        type="range"
-                        value={repeatSpacingY}
-                        onChange={(e) => setRepeatSpacingY(parseInt(e.target.value))}
+                      <Slider
+                        value={[repeatSpacingY]}
+                        onValueChange={(values) => setRepeatSpacingY(parseInt(String(values[0])))}
                         min={20}
                         max={600}
                         step={10}
                         className="w-full"
-                        disabled={isProcessing}
+                        disabled={isProcessing} aria-label={tTools('repeatSpacingY')}
                       />
                     </div>
                   </div>

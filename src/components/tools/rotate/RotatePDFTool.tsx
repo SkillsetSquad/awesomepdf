@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
+import { Slider } from '@/components/ui/slider';
 
+import { Input } from '@/components/ui/input';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
@@ -40,7 +41,7 @@ const normalizeInputAngle = (value: string | number, fallbackValue: number = 0):
 
 /**
  * RotatePDFTool Component
- * 
+ *
  * Provides an extremely premium, smooth UI for rotating PDF pages by 90-degree steps or arbitrary angles.
  * Includes interactive dials, smooth sliders, angle input validation, multi-selection, and elastic transitions.
  */
@@ -331,7 +332,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
     let angleRad = Math.atan2(dy, dx);
     let angleDeg = (angleRad * 180) / Math.PI;
 
-    // Offset standard mathematical angle (0 is positive x axis) 
+    // Offset standard mathematical angle (0 is positive x axis)
     // to put 0 at positive y axis (top) and make it clockwise
     angleDeg = angleDeg + 90;
 
@@ -412,8 +413,8 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
   /**
    * Sync range slider input
    */
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const parsed = parseFloat(e.target.value) || 0;
+  const handleSliderChange = (values: number[]) => {
+    const parsed = values[0] || 0;
     setSteplessAngle(parsed.toString());
     handleApplyAbsoluteRotation(parsed);
   };
@@ -567,7 +568,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
           {/* LEFT: Rotational Calibration Hub (Glassmorphism Control Area) */}
           <div className="lg:col-span-4 space-y-6">
             <Card
-              
+
               className="backdrop-blur-md border border-white/20 dark:border-zinc-800/40 shadow-xl overflow-hidden"
             >
               {/* Header */}
@@ -796,15 +797,14 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         <span className="text-primary font-bold">{t('rotate.sliderTitle')}</span>
                         <span>{t('rotate.sliderRight')}</span>
                       </div>
-                      <input
-                        type="range"
-                        min="-180"
-                        max="180"
-                        step="0.5"
-                        value={parseFloat(steplessAngle) || 0}
-                        onChange={handleSliderChange}
+                      <Slider
+                        min={-180}
+                        max={180}
+                        step={0.5}
+                        value={[parseFloat(steplessAngle) || 0]}
+                        onValueChange={handleSliderChange}
                         disabled={isProcessing || selectedPages.size === 0}
-                        className="w-full h-1.5 rounded-lg appearance-none bg-muted accent-primary outline-none cursor-pointer"
+                        className="w-full cursor-pointer" aria-label={t('rotate.sliderTitle')}
                       />
                     </div>
 

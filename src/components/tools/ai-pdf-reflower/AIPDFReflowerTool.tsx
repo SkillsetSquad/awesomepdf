@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -326,7 +328,7 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
 
               {/* Font Size adjustments */}
               <div className="space-y-2">
-                <Label className="uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+                <Label className="uppercase tracking-wider text-muted-foreground flex items-center justify-between" htmlFor="aipdfreflowertool-slider-1">
                   <span className="flex items-center gap-1.5"><Type className="w-4 h-4" /> {t('aiPdfReflower.fontSizeLabel')}</span>
                   <span className="font-mono font-bold text-xs">{fontSize}px</span>
                 </Label>
@@ -339,13 +341,12 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
                   >
                     A-
                   </Button>
-                  <input
-                    type="range"
-                    min="12"
-                    max="28"
-                    value={fontSize}
-                    onChange={(e) => setFontSize(Number(e.target.value))}
-                    className="flex-[2] h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer"
+                  <Slider
+                    min={12}
+                    max={28}
+                    value={[fontSize]}
+                    onValueChange={(values) => setFontSize(Number(String(values[0])))}
+                    className="flex-[2] cursor-pointer" id="aipdfreflowertool-slider-1" aria-label={t('aiPdfReflower.fontSizeLabel')}
                   />
                   <Button
                     variant="secondary"

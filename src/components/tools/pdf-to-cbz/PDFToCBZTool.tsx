@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -463,42 +465,40 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                   {/* Quality slider */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center text-xs">
-                      <Label className="text-muted-foreground">
+                      <Label className="text-muted-foreground" htmlFor="pdftocbztool-slider-1">
                         {t('pdfToCbz.qualityLabel')}
                       </Label>
                       <span className="font-black text-primary">
                         {Math.round(quality * 100)}%
                       </span>
                     </div>
-                    <input
-                      type="range"
-                      min="0.5"
-                      max="1"
-                      step="0.05"
-                      value={quality}
-                      onChange={(e) => setQuality(parseFloat(e.target.value))}
-                      className="w-full accent-primary bg-muted h-1 rounded-lg appearance-none cursor-pointer"
+                    <Slider
+                      min={0.5}
+                      max={1}
+                      step={0.05}
+                      value={[quality]}
+                      onValueChange={(values) => setQuality(parseFloat(String(values[0])))}
+                      className="w-full cursor-pointer" id="pdftocbztool-slider-1" aria-label={t('pdfToCbz.qualityLabel')}
                     />
                   </div>
 
                   {/* Scale slider */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center text-xs">
-                      <Label className="text-muted-foreground">
+                      <Label className="text-muted-foreground" htmlFor="pdftocbztool-slider-2">
                         {t('pdfToCbz.scaleLabel')}
                       </Label>
                       <span className="font-black text-primary">
                         {scale.toFixed(1)}x ({Math.round(scale * 72)} DPI)
                       </span>
                     </div>
-                    <input
-                      type="range"
-                      min="1.0"
-                      max="2.5"
-                      step="0.1"
-                      value={scale}
-                      onChange={(e) => setScale(parseFloat(e.target.value))}
-                      className="w-full accent-primary bg-muted h-1 rounded-lg appearance-none cursor-pointer"
+                    <Slider
+                      min={1}
+                      max={2.5}
+                      step={0.1}
+                      value={[scale]}
+                      onValueChange={(values) => setScale(parseFloat(String(values[0])))}
+                      className="w-full cursor-pointer" id="pdftocbztool-slider-2" aria-label={t('pdfToCbz.scaleLabel')}
                     />
                   </div>
 

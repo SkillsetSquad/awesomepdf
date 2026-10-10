@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { NativeSelect } from '@/components/ui/native-select';
 
 import { Label } from '@/components/ui/label';
@@ -167,18 +169,17 @@ export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowe
 
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1">
-                    <Label className="flex justify-between">
+                    <Label className="flex justify-between" htmlFor="pdftwocolumnreflowertool-slider-1">
                       {t('pdfTwoColumnReflower.splitRatio')}
                       <span className="font-mono text-primary font-bold">{(middleGapRatio * 100).toFixed(0)}%</span>
                     </Label>
-                    <input
-                      type="range"
-                      min="0.4"
-                      max="0.6"
-                      step="0.01"
-                      value={middleGapRatio}
-                      onChange={(e) => setMiddleGapRatio(parseFloat(e.target.value))}
-                      className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-primary"
+                    <Slider
+                      min={0.4}
+                      max={0.6}
+                      step={0.01}
+                      value={[middleGapRatio]}
+                      onValueChange={(values) => setMiddleGapRatio(parseFloat(String(values[0])))}
+                      className="w-full cursor-pointer" id="pdftwocolumnreflowertool-slider-1" aria-label={t('pdfTwoColumnReflower.splitRatio')}
                     />
                   </div>
 

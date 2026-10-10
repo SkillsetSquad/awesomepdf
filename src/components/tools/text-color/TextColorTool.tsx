@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
@@ -135,17 +137,16 @@ export function TextColorTool({ className = '' }: TextColorToolProps) {
               </div>
 
               <div>
-                <Label className="block mb-2">
+                <Label className="block mb-2" htmlFor="textcolortool-slider-1">
                   {t('thresholdLabel') || 'Threshold'}: {threshold}
                 </Label>
-                <input
-                  type="range"
-                  min="0"
-                  max="255"
-                  value={threshold}
-                  onChange={(e) => setThreshold(Number(e.target.value))}
+                <Slider
+                  min={0}
+                  max={255}
+                  value={[threshold]}
+                  onValueChange={(values) => setThreshold(Number(String(values[0])))}
                   className="w-full"
-                  disabled={isProcessing}
+                  disabled={isProcessing} id="textcolortool-slider-1" aria-label={t('thresholdLabel')}
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   {t('thresholdHint') || 'Adjust to control which pixels are affected'}

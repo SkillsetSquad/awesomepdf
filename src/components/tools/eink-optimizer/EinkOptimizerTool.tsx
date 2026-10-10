@@ -1,4 +1,6 @@
 'use client';
+import { Slider } from '@/components/ui/slider';
+
 import { Label } from '@/components/ui/label';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -161,13 +163,12 @@ export function EinkOptimizerTool() {
                   </span>
                   <span className="font-mono text-teal-400">{contrastOffset > 0 ? `+${contrastOffset}` : contrastOffset}</span>
                 </div>
-                <input
-                  type="range"
-                  min="-50"
-                  max="50"
-                  value={contrastOffset}
-                  onChange={(e) => setContrastOffset(parseInt(e.target.value))}
-                  className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-teal-500"
+                <Slider
+                  min={-50}
+                  max={50}
+                  value={[contrastOffset]}
+                  onValueChange={(values) => setContrastOffset(parseInt(String(values[0])))}
+                  className="w-full cursor-pointer" id="einkoptimizertool-slider-1" aria-label={t('einkOptimizer.dilationSuffix')}
                 />
                 <div className="flex justify-between text-[9px] text-neutral-500">
                   {t('einkOptimizer.keepStrokes')}
@@ -177,7 +178,7 @@ export function EinkOptimizerTool() {
 
               {/* Text Dilation Amount */}
               <div className="space-y-3 p-4 rounded-xl bg-neutral-900 border border-neutral-800">
-                <Label className="text-neutral-300 flex items-center gap-1.5">
+                <Label className="text-neutral-300 flex items-center gap-1.5" htmlFor="einkoptimizertool-slider-1">
                   <Settings className="w-3.5 h-3.5 text-teal-400" />
                   {t('einkOptimizer.dilationSuffix')}
                 </Label>
