@@ -10,7 +10,9 @@
 
 import React from 'react';
 import { usePdfLibrary, type LibraryType } from '@/lib/hooks/usePdfLibrary';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 export interface PdfLibraryLoaderProps {
   /** Which library to load */
@@ -29,8 +31,8 @@ export interface PdfLibraryLoaderProps {
  * Default loading component
  */
 const DefaultLoading: React.FC<{ message?: string }> = ({ message }) => (
-  <div className="flex flex-col items-center justify-center p-8 gap-4">
-    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+  <div className="flex flex-col items-center justify-center p-8 gap-4" role="status">
+    <Loader2 className="size-6 animate-spin" aria-hidden="true" />
     <p className="text-sm text-muted-foreground">
       {message || 'Loading PDF tools...'}
     </p>
@@ -41,25 +43,14 @@ const DefaultLoading: React.FC<{ message?: string }> = ({ message }) => (
  * Default error component
  */
 const DefaultError: React.FC<{ error: Error; retry: () => void }> = ({ error, retry }) => (
-  <div className="flex flex-col items-center justify-center p-8 gap-4 text-center">
-    <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-      <span className="text-2xl">⚠️</span>
-    </div>
-    <div>
-      <h3 className="font-semibold text-foreground">
-        Failed to load PDF tools
-      </h3>
-      <p className="text-sm text-muted-foreground mt-1">
-        {error.message}
-      </p>
-    </div>
-    <button
-      onClick={retry}
-      className="px-4 py-2 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-    >
-      Try Again
-    </button>
-  </div>
+  <Alert variant="destructive">
+    <AlertCircle aria-hidden="true" />
+    <AlertTitle>Failed to load PDF tools</AlertTitle>
+    <AlertDescription className="space-y-3">
+      <p>{error.message}</p>
+      <Button variant="outline" onClick={retry}>Try Again</Button>
+    </AlertDescription>
+  </Alert>
 );
 
 /**

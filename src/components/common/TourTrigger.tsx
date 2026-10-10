@@ -24,21 +24,20 @@ export const TourTrigger: React.FC<TourTriggerProps> = ({
 }) => {
   if (variant === 'link') {
     return (
-      <button
+      <Button variant="link" size="sm"
         onClick={onClick}
-        className="text-sm text-primary hover:underline flex items-center gap-1"
         aria-label={label}
       >
         <HelpCircle className="h-4 w-4" aria-hidden="true" />
         {label}
-      </button>
+      </Button>
     );
   }
 
   if (variant === 'button') {
     return (
       <Button variant="outline" size="sm" onClick={onClick}>
-        <HelpCircle className="h-4 w-4 mr-2" aria-hidden="true" />
+        <HelpCircle className="size-4" aria-hidden="true" />
         {label}
       </Button>
     );
@@ -48,10 +47,9 @@ export const TourTrigger: React.FC<TourTriggerProps> = ({
   return (
     <Button
       variant="ghost"
-      size="sm"
+      size="icon-sm"
       onClick={onClick}
       aria-label={label}
-      className="p-2"
     >
       <HelpCircle className="h-5 w-5" aria-hidden="true" />
     </Button>
