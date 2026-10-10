@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count, plural, one {# strona} few {# strony} many {# stron} other {# strony}} • {size} MB",
       "uploadLayerButton": "Prześlij nakładkę PDF",
       "uploadLayerDesc": "Pieczęcie, strukturalne marginesy bezpieczeństwa, siatki lub nagłówki",
-      "previewTitle": "Podgląd nałożenia warstwy 3D",
+      "previewTitle": "Kolejność rysowania (od tyłu do przodu)",
       "basePageLabel": "Strona podstawowa",
       "layerPageLabel": "Strona warstwy",
       "placementModeOverlay": "Pierwszy plan (nakładka): Warstwa nakładki jest renderowana na wierzchu zawartości podstawowej.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Pozostaw puste, aby zastosować je do wszystkich stron podstawowych",
       "targetRangePlaceholder": "np. 1-5, 8, nieparzyste, parzyste",
       "loopOverlayLabel": "C. Powtarzanie pętli (dokument nakładki z krótszą pętlą)",
-      "loopOverlayDesc": "Zapętla powtarzanie dokumentu nakładki, jeśli jest krótszy niż dokument bazowy. Jeżeli opcja ta nie jest zaznaczona, pozostałe strony pozostaną puste.",
+      "loopOverlayDesc": "Powtarza dokument warstwy, jeśli ma mniej stron niż dokument bazowy. Po wyłączeniu pozostałe strony bazowe pozostają bez zmian.",
       "processButton": "Wykonaj nakładkę warstwy",
-      "successMessage": "🎉 PDF warstwy zostały nałożone pomyślnie! Kliknij pobierz powyżej, aby zapisać."
+      "successMessage": "PDF warstwy zostały nałożone pomyślnie! Kliknij pobierz powyżej, aby zapisać."
     },
     "pageLabels": {
       "errorMetadata": "Nie udało się przeanalizować metadanych PDF. Plik może być uszkodzony.",

@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} pagina/e • {size} MB",
       "uploadLayerButton": "Carica PDF di sovrapposizione",
       "uploadLayerDesc": "Timbri, margini di fiducia strutturali, griglie o intestazioni",
-      "previewTitle": "Anteprima di imposizione del livello 3D",
+      "previewTitle": "Ordine di disegno (dal fondo al primo piano)",
       "basePageLabel": "Pagina di base",
       "layerPageLabel": "Pagina di livello",
       "placementModeOverlay": "Primo piano (Sovrapposizione): Il livello di sovrapposizione viene renderizzato sopra il contenuto di base.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Lascia vuoto per applicare a tutte le pagine di base",
       "targetRangePlaceholder": "es. 1-5, 8, dispari, pari",
       "loopOverlayLabel": "C. Ripetizione ciclica (Ripeti ciclicamente il documento di sovrapposizione più corto)",
-      "loopOverlayDesc": "Ripete ciclicamente il documento di sovrapposizione se è più corto del documento di base. Se deselezionato, le pagine rimanenti rimangono vuote.",
+      "loopOverlayDesc": "Ripete il documento del livello se ha meno pagine del documento base. Se disattivato, le pagine base rimanenti restano invariate.",
       "processButton": "Esegui sovrapposizione livello",
-      "successMessage": "🎉 Livelli PDF sovrapposti con successo! Clicca su scarica in alto per salvare."
+      "successMessage": "Livelli PDF sovrapposti con successo! Clicca su scarica in alto per salvare."
     },
     "pageLabels": {
       "errorMetadata": "Impossibile analizzare i metadati PDF. Il file potrebbe essere danneggiato.",

@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} ページ • {size} MB",
       "uploadLayerButton": "オーバーレイPDFをアップロード",
       "uploadLayerDesc": "押印、構造用グリッド、またはヘッダーなど",
-      "previewTitle": "3Dレイヤー面付けプレビュー",
+      "previewTitle": "描画順（背景から前景へ）",
       "basePageLabel": "ベースページ",
       "layerPageLabel": "レイヤーページ",
       "placementModeOverlay": "前面 (オーバーレイ): オーバーレイレイヤーはベースコンテンツの上に描画されます。",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "空白のまますると、すべてのベースページに適用されます",
       "targetRangePlaceholder": "例：1-5, 8, odd, even",
       "loopOverlayLabel": "C. 繰り返しループ (ベースより短いオーバーレイドキュメントをループ)",
-      "loopOverlayDesc": "オーバーレイドキュメントがベースドキュメントより短い場合、ループして繰り返します。オフの場合、残りのページは空白のままになります。",
+      "loopOverlayDesc": "レイヤーのページ数が基本文書より少ない場合に繰り返します。オフの場合、残りの基本ページは変更しません。",
       "processButton": "レイヤーオーバーレイを実行",
-      "successMessage": "🎉 PDFレイヤーの重ね合わせが正常に完了しました！上のダウンロードをクリックして保存してください。"
+      "successMessage": "PDFレイヤーの重ね合わせが正常に完了しました！上のダウンロードをクリックして保存してください。"
     },
     "pageLabels": {
       "errorMetadata": "PDFメタデータの解析に失敗しました。ファイルが破損している可能性があります。",

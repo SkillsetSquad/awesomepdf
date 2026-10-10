@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} página(s) • {size} MB",
       "uploadLayerButton": "Subir PDF de superposición",
       "uploadLayerDesc": "Sellos estampados, márgenes de confianza estructurales, cuadrículas o encabezados",
-      "previewTitle": "Vista previa de imposición de capas 3D",
+      "previewTitle": "Orden de dibujo (de fondo a frente)",
       "basePageLabel": "Página base",
       "layerPageLabel": "Página de capa",
       "placementModeOverlay": "Primer plano (Superposición): La capa de superposición se representa encima del contenido base.",
@@ -757,7 +757,7 @@
       "targetRangeHelp": "Dejar en blanco para aplicar a todas las páginas base",
       "targetRangePlaceholder": "p. ej., 1-5, 8, impares, pares",
       "loopOverlayLabel": "C. Repetición en bucle (Bucle de documento de superposición más corto)",
-      "loopOverlayDesc": "Repite en bucle el documento de superposición si es más corto que el documento base. Si no se marca, las páginas restantes se dejan en blanco.",
+      "loopOverlayDesc": "Repite el documento de capa si tiene menos páginas que el documento base. Si se desactiva, las páginas base restantes no cambian.",
       "processButton": "Ejecutar superposición de capas",
       "successMessage": "¡🎉 Capas PDF superpuestas con éxito! Haga clic en descargar arriba para guardar."
     },

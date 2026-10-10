@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} page(s) • {size} Mo",
       "uploadLayerButton": "Télécharger le PDF de superposition",
       "uploadLayerDesc": "Sceaux de tampon, marges de confiance structurelles, grilles ou en-têtes",
-      "previewTitle": "Aperçu de l'imposition de couches 3D",
+      "previewTitle": "Ordre de dessin (arrière vers avant)",
       "basePageLabel": "Page de base",
       "layerPageLabel": "Page de couche",
       "placementModeOverlay": "Premier plan (Superposition) : La couche de superposition est rendue au-dessus du contenu de base.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Laisser vide pour appliquer à toutes les pages de base",
       "targetRangePlaceholder": "ex. 1-5, 8, impairs, pairs",
       "loopOverlayLabel": "C. Répétition en boucle (Boucle du document de superposition plus court)",
-      "loopOverlayDesc": "Répète en boucle le document de superposition s'il est plus court que le document de base. Si décoché, les pages restantes restent vierges.",
+      "loopOverlayDesc": "Répète le document de calque s’il a moins de pages que le document de base. Sinon, les pages de base restantes sont conservées.",
       "processButton": "Exécuter la superposition de couches",
-      "successMessage": "🎉 Couches PDF superposées avec succès ! Cliquez sur télécharger ci-dessus pour enregistrer."
+      "successMessage": "Couches PDF superposées avec succès ! Cliquez sur télécharger ci-dessus pour enregistrer."
     },
     "pageLabels": {
       "errorMetadata": "Échec de l'analyse des métadonnées PDF. Le fichier est peut-être corrompu.",

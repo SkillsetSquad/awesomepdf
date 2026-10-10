@@ -1,448 +1,149 @@
 'use client';
-import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
+import { useEffect, useId, useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { CircleAlert, FileCheck, FileText, Layers, Loader2, X } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
-
-import { FileText as UIFileText, X as UIX } from 'lucide-react';
-
-import { Label } from '@/components/ui/label';
-
-import { Input } from '@/components/ui/input';
-
-import React, { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { overlayPDF } from '@/lib/pdf/processors/overlay';
-import type { ProcessOutput } from '@/types/pdf';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Switch } from '@/components/ui/switch';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
+import { loadPdfLib } from '@/lib/pdf/loader';
+import { overlayPDF, type OverlayOptions } from '@/lib/pdf/processors/overlay';
 
-export interface OverlayPDFToolProps {
-  className?: string;
-}
+export interface OverlayPDFToolProps { className?: string }
+type Slot = 'base' | 'layer';
+type Document = { file: File; pages: number | null; loading: boolean };
 
 export function OverlayPDFTool({ className = '' }: OverlayPDFToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
-
-  // Files state
-  const [baseFile, setBaseFile] = useState<File | null>(null);
-  const [layerFile, setLayerFile] = useState<File | null>(null);
-
-  // Loaded state
-  const [basePages, setBasePages] = useState<number>(0);
-  const [layerPages, setLayerPages] = useState<number>(0);
-  const [isLoadingBase, setIsLoadingBase] = useState(false);
-  const [isLoadingLayer, setIsLoadingLayer] = useState(false);
-
-  // Configuration options
+  const tErrors = useTranslations('errors');
+  const locale = useLocale();
+  const id = useId();
+  const [documents, setDocuments] = useState<Record<Slot, Document | null>>({ base: null, layer: null });
   const [mode, setMode] = useState<'overlay' | 'underlay'>('overlay');
-  const [pageRange, setPageRange] = useState<string>('');
-  const [loop, setLoop] = useState<boolean>(true);
-
-  // Processing & result states
+  const [pageRange, setPageRange] = useState('');
+  const [loop, setLoop] = useState(true);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('overlay.pdf');
   const [error, setError] = useState<string | null>(null);
+  const metadataRun = useRef({ base: 0, layer: 0 });
+  const processingRun = useRef(0);
+  useEffect(() => () => { metadataRun.current.base++; metadataRun.current.layer++; processingRun.current++; }, []);
 
-  // Cancellation ref
-  const cancelledRef = useRef(false);
-
-  /**
-   * Load metadata for Base PDF
-   */
-  const handleBaseSelected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    const file = files[0];
-    setBaseFile(file);
-    setIsLoadingBase(true);
-    setError(null);
-    setResult(null);
-
-    try {
-      const { PDFDocument } = await import('pdf-lib');
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
-      setBasePages(pdf.getPageCount());
-    } catch (err) {
-      console.error(err);
-      setError('Failed to parse main base PDF metadata. The file may be corrupt.');
-    } finally {
-      setIsLoadingBase(false);
-    }
-  }, []);
-
-  /**
-   * Load metadata for Layer PDF
-   */
-  const handleLayerSelected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    const file = files[0];
-    setLayerFile(file);
-    setIsLoadingLayer(true);
-    setError(null);
-    setResult(null);
-
-    try {
-      const { PDFDocument } = await import('pdf-lib');
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
-      setLayerPages(pdf.getPageCount());
-    } catch (err) {
-      console.error(err);
-      setError('Failed to parse overlay layer PDF metadata. The file may be corrupt.');
-    } finally {
-      setIsLoadingLayer(false);
-    }
-  }, []);
-
-  const handleClearBase = () => {
-    setBaseFile(null);
-    setBasePages(0);
-    setResult(null);
+  const clearOutput = (clearError = true) => {
+    processingRun.current++; setResult(null); setStatus('idle'); setProgress(0); setProgressMessage('');
+    if (clearError) setError(null);
   };
-
-  const handleClearLayer = () => {
-    setLayerFile(null);
-    setLayerPages(0);
-    setResult(null);
+  const handleSelect = async (slot: Slot, files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const run = ++metadataRun.current[slot];
+    clearOutput();
+    setDocuments(previous => ({ ...previous, [slot]: { file, pages: null, loading: true } }));
+    try {
+      const { PDFDocument } = await loadPdfLib();
+      const pdf = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
+      if (run === metadataRun.current[slot]) setDocuments(previous => ({ ...previous, [slot]: { file, pages: pdf.getPageCount(), loading: false } }));
+    } catch (err) {
+      if (run === metadataRun.current[slot]) {
+        setDocuments(previous => ({ ...previous, [slot]: { file, pages: null, loading: false } }));
+        setError(err instanceof Error ? err.message : tErrors('processingFailed'));
+      }
+    }
   };
-
+  const handleClear = (slot: Slot) => {
+    metadataRun.current[slot]++; clearOutput();
+    setDocuments(previous => ({ ...previous, [slot]: null }));
+  };
+  const isProcessing = status === 'processing';
+  const ready = !!documents.base?.pages && !!documents.layer?.pages && !documents.base.loading && !documents.layer.loading;
   const handleProcess = async () => {
-    if (!baseFile || !layerFile) {
-      setError('Please upload both the main PDF and overlay layer PDF.');
-      return;
-    }
-
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setError(null);
-    setResult(null);
-
+    if (!ready || !documents.base || !documents.layer || isProcessing) return;
+    const run = ++processingRun.current;
+    const base = documents.base.file, layer = documents.layer.file;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing')); setError(null); setResult(null);
+    const options: OverlayOptions = { mode, pageRange, loop };
     try {
-      const output: ProcessOutput = await overlayPDF(
-        [baseFile, layerFile],
-        { mode, pageRange, loop },
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Processing page composition...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
+      const output = await overlayPDF([base, layer], options, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
+      });
+      if (run !== processingRun.current) return;
       if (output.success && output.result) {
-        setResult(output.result as Blob);
-        setStatus('complete');
-      } else {
-        setError(output.error?.message || 'Failed to overlay pages.');
-        setStatus('error');
-      }
+        setResult(output.result as Blob); setFilename(output.filename || base.name.replace(/\.pdf$/i, '_overlay.pdf')); setStatus('complete');
+      } else { setError(output.error?.details || output.error?.message || tErrors('processingFailed')); setStatus('error'); }
     } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
-        setStatus('error');
-      }
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
   };
+  const slots = [
+    { slot: 'base', label: 'uploadBaseLabel', button: 'uploadBaseButton', description: 'uploadBaseDesc', summary: 'uploadBaseSuccess' },
+    { slot: 'layer', label: 'uploadLayerLabel', button: 'uploadLayerButton', description: 'uploadLayerDesc', summary: 'uploadLayerSuccess' },
+  ] as const;
+  const order: Slot[] = mode === 'overlay' ? ['base', 'layer'] : ['layer', 'base'];
 
-  const handleCancel = () => {
-    cancelledRef.current = true;
-    setStatus('idle');
-    setProgress(0);
-  };
-
-  const isProcessing = status === 'processing' || status === 'uploading';
-
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {/* File Upload Zone (Double layout) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        {/* Slot A: Base/Underlay PDF */}
-        <div className="space-y-3">
-          <Label className="block">
-            {t('overlayPdf.uploadBaseLabel')}
-          </Label>
-          {baseFile ? (
-            <Card  className="relative group p-4 flex items-center justify-between border-2 border-primary/30 bg-muted/15">
-              <div className="flex items-center gap-3">
-                <UIFileText className="w-10 h-10 text-primary" aria-hidden="true" />
-                <div>
-                  <p className="font-semibold text-sm text-foreground truncate max-w-[200px]" title={baseFile.name}>
-                    {baseFile.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {basePages > 0 ? t('overlayPdf.uploadBaseSuccess', { count: basePages, size: (baseFile.size / (1024 * 1024)).toFixed(2) }) : (t('aiPdfReflower.scanningMetadata') || 'Loading...')}
-                  </p>
-                </div>
-              </div>
-              <Button variant="ghost" size="icon-sm"
-                onClick={handleClearBase}
-                disabled={isProcessing}
-
-              >
-                <UIX className="w-5 h-5" aria-hidden="true" />
-              </Button>
-            </Card>
-          ) : (
-            <FileUploader
-              accept={['application/pdf']}
-              multiple={false}
-              onFilesSelected={handleBaseSelected}
-              onError={setError}
-              disabled={isProcessing || isLoadingBase}
-              label={t('overlayPdf.uploadBaseButton')}
-              description={t('overlayPdf.uploadBaseDesc')}
-              className="min-h-[160px] p-6 rounded-2xl"
-            />
-          )}
-        </div>
-
-        {/* Slot B: Overlay Layer PDF */}
-        <div className="space-y-3">
-          <Label className="block">
-            {t('overlayPdf.uploadLayerLabel')}
-          </Label>
-          {layerFile ? (
-            <Card  className="relative group p-4 flex items-center justify-between border-2">
-              <div className="flex items-center gap-3">
-                <UIFileText className="w-10 h-10 text-emerald-500" aria-hidden="true" />
-                <div>
-                  <p className="font-semibold text-sm text-foreground truncate max-w-[200px]" title={layerFile.name}>
-                    {layerFile.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {layerPages > 0 ? t('overlayPdf.uploadLayerSuccess', { count: layerPages, size: (layerFile.size / (1024 * 1024)).toFixed(2) }) : (t('aiPdfReflower.scanningMetadata') || 'Loading...')}
-                  </p>
-                </div>
-              </div>
-              <Button variant="ghost" size="icon-sm"
-                onClick={handleClearLayer}
-                disabled={isProcessing}
-
-              >
-                <UIX className="w-5 h-5" aria-hidden="true" />
-              </Button>
-            </Card>
-          ) : (
-            <FileUploader
-              accept={['application/pdf']}
-              multiple={false}
-              onFilesSelected={handleLayerSelected}
-              onError={setError}
-              disabled={isProcessing || isLoadingLayer}
-              label={t('overlayPdf.uploadLayerButton')}
-              description={t('overlayPdf.uploadLayerDesc')}
-              className="min-h-[160px] p-6 rounded-2xl border-emerald-500/25 hover:border-emerald-500"
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          <p className="text-sm font-semibold">{error}</p>
-        </AlertDescription></Alert>
-      )}
-
-      {/* Main Workspace Configuration Panel */}
-      {baseFile && layerFile && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-          {/* LEFT: 3D Visualization layer layout preview (Pure CSS awesome show) */}
-          <div className="lg:col-span-5 space-y-4">
-            <Card  className="p-6 bg-card flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
-              <span className="text-xs font-bold text-muted-foreground mb-8">
-                {t('overlayPdf.previewTitle')}
-              </span>
-
-              {/* 3D Paper Layer frame container */}
-              <div
-                className="relative w-44 h-48 transform-gpu transition-all duration-700 ease-in-out"
-                style={{
-                  perspective: '800px',
-                  transformStyle: 'preserve-3d',
-                }}
-              >
-                {/* Layer A (Base PDF sheet) */}
-                <div
-                  className="absolute inset-0 bg-background border-2 border-primary shadow-xl rounded-xl flex items-center justify-center font-semibold text-primary select-none transition-all duration-700 ease-in-out"
-                  style={{
-                    transform: mode === 'overlay'
-                      ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(0px)'
-                      : 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(40px)',
-                    opacity: 0.95,
-                    boxShadow: mode === 'underlay' ? '0 20px 40px rgba(0,0,0,0.3)' : '0 4px 10px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  <div className="text-center">
-                    <p className="text-sm">{t('overlayPdf.basePageLabel')}</p>
-                    <p className="text-[10px] opacity-60">Base Document</p>
-                  </div>
-                </div>
-
-                {/* Layer B (Overlay PDF sheet) */}
-                <div
-                  className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-950/20 border-2 border-emerald-500 shadow-2xl rounded-xl flex items-center justify-center font-semibold text-emerald-500 select-none transition-all duration-700 ease-in-out"
-                  style={{
-                    transform: mode === 'overlay'
-                      ? 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(40px)'
-                      : 'rotateX(55deg) rotateY(-10deg) rotateZ(-25deg) translateZ(0px)',
-                    opacity: 0.9,
-                    boxShadow: mode === 'overlay' ? '0 20px 40px rgba(16,185,129,0.35)' : '0 4px 10px rgba(16,185,129,0.1)'
-                  }}
-                >
-                  <div className="text-center">
-                    <p className="text-sm">{t('overlayPdf.layerPageLabel')}</p>
-                    <p className="text-[10px] opacity-70">Overlay Layer</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center max-w-xs">
-                <p className="text-xs font-semibold text-foreground">
-                  {mode === 'overlay'
-                    ? t('overlayPdf.placementModeOverlay')
-                    : t('overlayPdf.placementModeUnderlay')
-                  }
-                </p>
-              </div>
-            </Card>
-          </div>
-
-          {/* RIGHT: Parameter adjustments */}
-          <div className="lg:col-span-7 space-y-6">
-            <Card  className="p-6 gap-6 border">
-              <h3 className="text-md font-bold text-foreground border-b border-border pb-3">
-                {t('overlayPdf.optionsTitle')}
-              </h3>
-
-              {/* Mode Button Switcher */}
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-muted-foreground">
-                  {t('overlayPdf.placementModeLabel')}
-                </span>
-                <div className="flex bg-muted/50 p-1 rounded-xl">
-                  <Button size="sm" variant={mode === 'overlay' ? 'default' : 'outline'} aria-pressed={mode === 'overlay'}
-                    onClick={() => setMode('overlay')}
-                    className="flex-1"
-                  >
-                    {t('overlayPdf.placementOverlayBtn')}
-                  </Button>
-                  <Button size="sm" variant={mode === 'underlay' ? 'default' : 'outline'} aria-pressed={mode === 'underlay'}
-                    onClick={() => setMode('underlay')}
-                    className="flex-1"
-                  >
-                    {t('overlayPdf.placementUnderlayBtn')}
-                  </Button>
-                </div>
-              </div>
-
-              {/* Target Page Range */}
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold text-muted-foreground">
-                    {t('overlayPdf.targetRangeLabel')}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground">
-                    {t('overlayPdf.targetRangeHelp')}
-                  </span>
-                </div>
-                <Input
-                  type="text"
-                  placeholder={t('overlayPdf.targetRangePlaceholder')}
-                  value={pageRange}
-                  onChange={(e) => setPageRange(e.target.value)}
-                  className="w-full transition-all"
-                />
-              </div>
-
-              {/* Loop Switch Toggle */}
-              <div className="flex items-center justify-between pt-2 border-t border-border">
-                <div>
-                  <span className="text-xs font-bold text-foreground block">
-                    {t('overlayPdf.loopOverlayLabel')}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground mt-0.5 block leading-normal max-w-md">
-                    {t('overlayPdf.loopOverlayDesc')}
-                  </span>
-                </div>
-                <Button size="icon-sm" variant={loop ? 'default' : 'outline'} aria-pressed={loop}
-                  onClick={() => setLoop(prev => !prev)}
-                  className="relative"
-                >
-                  <div
-                    className={`absolute top-0.5 left-0.5 bg-background w-5.5 h-5.5 rounded-full shadow transition-transform duration-300 ${
-                      loop ? 'translate-x-5.5' : 'translate-x-0'
-                    }`}
-                  />
-                </Button>
-              </div>
-
-            </Card>
-
-            {/* Run Button */}
-            <div className="space-y-3">
-              <Button
-                variant="default"
-                size="lg"
-                onClick={handleProcess}
-                disabled={isProcessing}
-                className="w-full py-4"
-              >
-                {isProcessing ? (t('overlayPdf.processing') || 'Processing...') : t('overlayPdf.processButton')}
-              </Button>
-
-              {result && (
-                <DownloadButton
-                  file={result}
-                  filename={baseFile.name.replace('.pdf', '_overlay.pdf')}
-                  variant="secondary"
-                  size="lg"
-                  className="w-full py-4"
-                  showFileSize
-                />
-              )}
+  return <div className={`space-y-6 ${className}`.trim()}>
+    <div className="grid gap-6 md:grid-cols-2">{slots.map(({ slot, label, button, description, summary }) => {
+      const document = documents[slot];
+      return <section key={slot} className="space-y-3" aria-labelledby={`${id}-${slot}-title`}>
+        <h3 id={`${id}-${slot}-title`} className="text-base font-semibold">{t(`overlayPdf.${label}`)}</h3>
+        {document ? <Card className="flex flex-row items-center justify-between gap-4 p-4">
+          <div className="flex min-w-0 items-center gap-3"><FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />
+            <div className="min-w-0"><p className="truncate text-sm font-medium" title={document.file.name}>{document.file.name}</p>
+              {document.loading ? <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 aria-hidden="true" className="size-4 animate-spin" />{t('status.loading')}</p>
+                : document.pages !== null && <p className="text-sm text-muted-foreground">{t(`overlayPdf.${summary}`, { count: document.pages, size: (document.file.size / (1024 * 1024)).toFixed(2) })}</p>}
             </div>
-
-            {/* Complete Prompt */}
-            {status === 'complete' && result && (
-              <Alert role="status" ><UICheckCircle2 aria-hidden="true" /><AlertDescription>
-                <p className="text-sm font-semibold">
-                  {t('overlayPdf.successMessage')}
-                </p>
-              </AlertDescription></Alert>
-            )}
           </div>
-
+          <Button variant="ghost" size="icon-sm" disabled={isProcessing} aria-label={`${t('buttons.remove')}: ${t(`overlayPdf.${button}`)}`} onClick={() => handleClear(slot)}><X aria-hidden="true" /></Button>
+        </Card> : <FileUploader accept={['application/pdf', '.pdf']} multiple={false} maxFiles={1} disabled={isProcessing}
+          label={t(`overlayPdf.${button}`)} description={t(`overlayPdf.${description}`)} onError={setError} onFilesSelected={files => void handleSelect(slot, files)} />}
+      </section>;
+    })}</div>
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {documents.base && documents.layer && <div className="grid gap-6 lg:grid-cols-2">
+      <Card className="p-6">
+        <h3 className="text-base font-semibold">{t('overlayPdf.optionsTitle')}</h3>
+        <div className="space-y-3"><Label id={`${id}-mode-label`}>{t('overlayPdf.placementModeLabel')}</Label>
+          <RadioGroup value={mode} disabled={isProcessing} dir={locale === 'ar' ? 'rtl' : 'ltr'} aria-labelledby={`${id}-mode-label`}
+            onValueChange={value => { if (value === 'overlay' || value === 'underlay') { setMode(value); clearOutput(false); } }}>
+            {(['overlay', 'underlay'] as const).map(value => <div key={value} className="flex items-center gap-2"><RadioGroupItem id={`${id}-${value}`} value={value} />
+              <Label htmlFor={`${id}-${value}`}>{t(value === 'overlay' ? 'overlayPdf.placementOverlayBtn' : 'overlayPdf.placementUnderlayBtn')}</Label></div>)}
+          </RadioGroup>
         </div>
-      )}
-
-      {/* Processing Progress */}
-      {isProcessing && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={handleCancel}
-          showPercentage
-        />
-      )}
-    </div>
-  );
+        <div className="space-y-2"><Label htmlFor={`${id}-range`}>{t('overlayPdf.targetRangeLabel')}</Label>
+          <Input id={`${id}-range`} value={pageRange} placeholder={t('overlayPdf.targetRangePlaceholder')} disabled={isProcessing} aria-describedby={`${id}-range-help`}
+            onChange={event => { setPageRange(event.target.value); clearOutput(false); }} />
+          <p id={`${id}-range-help`} className="text-sm text-muted-foreground">{t('overlayPdf.targetRangeHelp')}</p>
+        </div>
+        <div className="flex items-start gap-3"><Switch id={`${id}-loop`} checked={loop} disabled={isProcessing} aria-describedby={`${id}-loop-help`}
+          onCheckedChange={value => { setLoop(value); clearOutput(false); }} />
+          <div className="space-y-1"><Label htmlFor={`${id}-loop`}>{t('overlayPdf.loopOverlayLabel')}</Label>
+            <p id={`${id}-loop-help`} className="text-sm text-muted-foreground">{t('overlayPdf.loopOverlayDesc')}</p></div>
+        </div>
+        <Button onClick={handleProcess} disabled={isProcessing || !ready} loading={isProcessing} className="w-full whitespace-normal sm:w-fit"><Layers aria-hidden="true" />{t('overlayPdf.processButton')}</Button>
+      </Card>
+      <Card className="p-6" role="region" aria-labelledby={`${id}-order-title`}>
+        <h3 id={`${id}-order-title`} className="text-base font-semibold">{t('overlayPdf.previewTitle')}</h3>
+        <p className="text-sm text-muted-foreground">{t(mode === 'overlay' ? 'overlayPdf.placementModeOverlay' : 'overlayPdf.placementModeUnderlay')}</p>
+        <ol className="list-decimal space-y-3 ps-5">{order.map(slot => <li key={slot} className="ps-1 text-sm">
+          <p className="font-medium">{t(slot === 'base' ? 'overlayPdf.basePageLabel' : 'overlayPdf.layerPageLabel')}</p>
+          <p className="break-all text-muted-foreground">{documents[slot]?.file.name}</p>
+        </li>)}</ol>
+      </Card>
+    </div>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={() => { processingRun.current++; setStatus('idle'); setProgress(0); setProgressMessage(''); }} />}
+    {status === 'complete' && result && <Card className="p-6"><div role="status" className="flex items-start gap-3"><FileCheck aria-hidden="true" className="size-5 shrink-0 text-primary" /><p className="text-sm">{t('overlayPdf.successMessage')}</p></div>
+      <DownloadButton file={result} filename={filename} showFileSize />
+    </Card>}
+  </div>;
 }
 
 export default OverlayPDFTool;

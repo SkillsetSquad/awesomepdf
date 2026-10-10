@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} 페이지 • {size} MB",
       "uploadLayerButton": "오버레이 PDF 업로드",
       "uploadLayerDesc": "인감/직인, 디자인 배경 격자, 또는 머리글 등",
-      "previewTitle": "3D 레이어 병합 미리보기",
+      "previewTitle": "그리기 순서 (뒤에서 앞으로)",
       "basePageLabel": "기본 페이지",
       "layerPageLabel": "레이어 페이지",
       "placementModeOverlay": "전경 모드 (Overlay): 오버레이 레이어가 기본 페이지 내용 위에 그려집니다.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "비워 두면 모든 기본 페이지에 적용됩니다",
       "targetRangePlaceholder": "예: 1-5, 8, odd, even",
       "loopOverlayLabel": "C. 반복 루프 (오버레이 문서 페이지 수가 더 짧은 경우 자동 반복)",
-      "loopOverlayDesc": "오버레이 문서가 기본 문서보다 짧은 경우 페이지를 순환하며 반복 적용합니다. 선택 해제 시, 남은 페이지에는 오버레이가 적용되지 않습니다.",
+      "loopOverlayDesc": "레이어 문서의 페이지가 기본 문서보다 적으면 반복합니다. 끄면 나머지 기본 페이지는 그대로 유지됩니다.",
       "processButton": "레이어 오버레이 병합 실행",
-      "successMessage": "🎉 PDF 레이어 오버레이 합성이 완료되었습니다! 저장하려면 위의 다운로드 버튼을 클릭하십시오."
+      "successMessage": "PDF 레이어 오버레이 합성이 완료되었습니다! 저장하려면 위의 다운로드 버튼을 클릭하십시오."
     },
     "pageLabels": {
       "errorMetadata": "PDF 메타데이터 분석에 실패했습니다. 파일이 손상되었을 수 있습니다.",

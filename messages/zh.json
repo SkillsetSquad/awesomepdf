@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} 页 • {size} MB",
       "uploadLayerButton": "点击上传图层 PDF",
       "uploadLayerDesc": "如公章、带有设计背景的信托网格、信笺等",
-      "previewTitle": "3D 层叠层级动态预览",
+      "previewTitle": "绘制顺序（由后向前）",
       "basePageLabel": "主页面",
       "layerPageLabel": "图层面",
       "placementModeOverlay": "前景层模式 (Overlay)：图层文档渲染在主文档的页面内容之上。",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "空表示应用至全部主页面",
       "targetRangePlaceholder": "例如：1-5, 8, odd, even",
       "loopOverlayLabel": "C. 循环重复图层文档 (Loop Shorter Overlay Document)",
-      "loopOverlayDesc": "当图层文件总页数短于主 PDF 时，自动循环重复套用该图层（例如信笺背景）。若关闭，则超出页数的页面不再应用覆叠。",
+      "loopOverlayDesc": "当图层文档页数少于主文档时重复图层。关闭时，剩余主文档页面保持不变。",
       "processButton": "开始应用覆叠生成 PDF",
-      "successMessage": "🎉 PDF 覆叠拼版处理成功！点击上方按钮进行下载。"
+      "successMessage": "PDF 覆叠拼版处理成功！点击上方按钮进行下载。"
     },
     "pageLabels": {
       "errorMetadata": "无法解析主 PDF 的元数据，该文件可能已损坏。",

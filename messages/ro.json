@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} pagină(e) • {size} MB",
       "uploadLayerButton": "Încărcați PDF-ul de strat",
       "uploadLayerDesc": "Ștampile de sigiliu, margini de încredere structurale, grile sau anteturi",
-      "previewTitle": "Previzualizare impunere straturi 3D",
+      "previewTitle": "Ordine de desenare (din spate în față)",
       "basePageLabel": "Pagina de bază",
       "layerPageLabel": "Pagina de strat",
       "placementModeOverlay": "Prim-plan (Overlay): Stratul de suprapunere este redat deasupra conținutului de bază.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Lăsați gol pentru a aplica tuturor paginilor de bază",
       "targetRangePlaceholder": "ex. 1-5, 8, odd, even",
       "loopOverlayLabel": "C. Repetare în buclă (Repetă documentul de suprapunere mai scurt)",
-      "loopOverlayDesc": "Repetă în buclă documentul de suprapunere dacă este mai scurt decât documentul de bază. Dacă este nebifat, paginile rămase rămân necompletate.",
+      "loopOverlayDesc": "Repetă documentul stratului dacă are mai puține pagini decât documentul de bază. Dacă opțiunea este dezactivată, paginile de bază rămase nu se schimbă.",
       "processButton": "Execută suprapunerea straturilor",
-      "successMessage": "🎉 Straturile PDF au fost suprapuse cu succes! Faceți clic pe descărcare de mai sus pentru a salva."
+      "successMessage": "Straturile PDF au fost suprapuse cu succes! Faceți clic pe descărcare de mai sus pentru a salva."
     },
     "pageLabels": {
       "errorMetadata": "Eroare la analizarea metadatelor PDF. Fișierul ar putea fi corupt.",

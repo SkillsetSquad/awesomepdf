@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} trang • {size} MB",
       "uploadLayerButton": "Tải lên Layer PDF",
       "uploadLayerDesc": "Con dấu, biên bảo mật cấu trúc, lưới hoặc tiêu đề trang",
-      "previewTitle": "Xem trước xếp lớp 3D động",
+      "previewTitle": "Thứ tự vẽ (từ sau ra trước)",
       "basePageLabel": "Trang chính",
       "layerPageLabel": "Trang lớp đè",
       "placementModeOverlay": "Lớp trước (Overlay): Lớp phủ được hiển thị phía trên nội dung chính.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Để trống để áp dụng cho tất cả trang chính",
       "targetRangePlaceholder": "VD: 1-5, 8, lẻ, chẵn",
       "loopOverlayLabel": "C. Lặp lại tuần hoàn (Lặp lại tài liệu lớp đè ngắn hơn)",
-      "loopOverlayDesc": "Lặp lại tài liệu lớp đè nếu nó ngắn hơn tài liệu chính. Nếu không tích chọn, các trang còn lại sẽ không áp dụng.",
+      "loopOverlayDesc": "Lặp lại tài liệu lớp nếu có ít trang hơn tài liệu gốc. Khi tắt, các trang gốc còn lại giữ nguyên.",
       "processButton": "Thực hiện ghép lớp đè",
-      "successMessage": "🎉 Ghép các lớp PDF thành công! Nhấp vào tải xuống phía trên để lưu."
+      "successMessage": "Ghép các lớp PDF thành công! Nhấp vào tải xuống phía trên để lưu."
     },
     "pageLabels": {
       "errorMetadata": "Không thể phân tích siêu dữ liệu PDF. Tệp có thể bị hỏng.",

@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} halaman • {size} MB",
       "uploadLayerButton": "Unggah PDF Lapisan",
       "uploadLayerDesc": "Stempel segel, margin kepercayaan struktural, kisi, atau header",
-      "previewTitle": "Pratinjau Impose Lapisan 3D",
+      "previewTitle": "Urutan gambar (belakang ke depan)",
       "basePageLabel": "Halaman Utama",
       "layerPageLabel": "Halaman Lapisan",
       "placementModeOverlay": "Latar Depan (Overlay): Lapisan overlay dirender di atas konten utama.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Kosongkan untuk menerapkan ke semua halaman utama",
       "targetRangePlaceholder": "misal. 1-5, 8, ganjil, genap",
       "loopOverlayLabel": "C. Pengulangan Loop (Loop Dokumen Overlay yang Lebih Pendek)",
-      "loopOverlayDesc": "Mengulangi dokumen overlay secara loop jika lebih pendek dari dokumen utama. Jika tidak dicentang, halaman yang tersisa dibiarkan kosong.",
+      "loopOverlayDesc": "Ulangi dokumen lapisan jika halamannya lebih sedikit dari dokumen dasar. Jika dimatikan, halaman dasar yang tersisa tetap tidak berubah.",
       "processButton": "Jalankan Overlay Lapisan",
-      "successMessage": "🎉 Lapisan PDF berhasil dilapisi! Klik unduh di atas untuk menyimpan."
+      "successMessage": "Lapisan PDF berhasil dilapisi! Klik unduh di atas untuk menyimpan."
     },
     "pageLabels": {
       "errorMetadata": "Gagal mengurai metadata PDF. File mungkin rusak.",

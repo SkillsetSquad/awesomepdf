@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} page(s) • {size} MB",
       "uploadLayerButton": "Upload Overlay PDF",
       "uploadLayerDesc": "Stamp seals, structural trust margins, grids, or headers",
-      "previewTitle": "3D Layer Imposition Preview",
+      "previewTitle": "Painting order (back to front)",
       "basePageLabel": "Base Page",
       "layerPageLabel": "Layer Page",
       "placementModeOverlay": "Foreground (Overlay): Overlay layer is rendered on top of the base contents.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Leave blank to apply to all base pages",
       "targetRangePlaceholder": "e.g. 1-5, 8, odd, even",
       "loopOverlayLabel": "C. Loop Repeating (Loop Shorter Overlay Document)",
-      "loopOverlayDesc": "Loop-repeats the overlay document if it is shorter than the base document. If unchecked, remaining pages are left blank.",
+      "loopOverlayDesc": "Repeat the layer document if it has fewer pages than the base. When off, remaining base pages stay unchanged.",
       "processButton": "Execute Layer Overlay",
-      "successMessage": "🎉 PDF layers overlaid successfully! Click download above to save."
+      "successMessage": "PDF layers overlaid successfully! Click download above to save."
     },
     "pageLabels": {
       "errorMetadata": "Failed to parse PDF metadata. File might be corrupted.",

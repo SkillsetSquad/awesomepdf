@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} Seite(n) • {size} MB",
       "uploadLayerButton": "Ebenen-PDF hochladen",
       "uploadLayerDesc": "Stempel, Konstruktionsraster, Briefköpfe oder Kopfzeilen",
-      "previewTitle": "3D-Ebenenvorschau",
+      "previewTitle": "Zeichenreihenfolge (hinten nach vorne)",
       "basePageLabel": "Basisseite",
       "layerPageLabel": "Ebenenseite",
       "placementModeOverlay": "Vordergrund (Overlay): Die Ebene wird über dem Inhalt des Basisdokuments platziert.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Leer lassen, um auf alle Basisseiten anzuwenden",
       "targetRangePlaceholder": "z.B. 1-5, 8, odd, even",
       "loopOverlayLabel": "C. Schleife wiederholen (Kürzere Ebene wiederholen)",
-      "loopOverlayDesc": "Wiederholt die Ebene, wenn sie kürzer als das Basisdokument ist. Wenn deaktiviert, bleiben die restlichen Seiten leer.",
+      "loopOverlayDesc": "Wiederholt das Ebenendokument, wenn es weniger Seiten als das Basisdokument hat. Ohne Wiederholung bleiben die übrigen Basisseiten unverändert.",
       "processButton": "Ebenenüberlagerung ausführen",
-      "successMessage": "🎉 PDF-Ebenen erfolgreich überlagert! Klicken Sie oben auf Download, um zu speichern."
+      "successMessage": "PDF-Ebenen erfolgreich überlagert! Klicken Sie oben auf Download, um zu speichern."
     },
     "pageLabels": {
       "errorMetadata": "PDF-Metadaten konnten nicht analysiert werden. Die Datei ist möglicherweise beschädigt.",

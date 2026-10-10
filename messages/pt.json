@@ -744,7 +744,7 @@
       "uploadLayerSuccess": "{count} página(s) • {size} MB",
       "uploadLayerButton": "Enviar PDF de sobreposição",
       "uploadLayerDesc": "Carimbos de selos, margens de confiança estruturais, grades ou cabeçalhos",
-      "previewTitle": "Visualização de imposição de camada 3D",
+      "previewTitle": "Ordem de desenho (do fundo para a frente)",
       "basePageLabel": "Página base",
       "layerPageLabel": "Página de camada",
       "placementModeOverlay": "Primeiro plano (Sobreposição): A camada de sobreposição é renderizada sobre o conteúdo base.",
@@ -757,9 +757,9 @@
       "targetRangeHelp": "Deixe em branco para aplicar a todas as páginas base",
       "targetRangePlaceholder": "ex., 1-5, 8, ímpares, pares",
       "loopOverlayLabel": "C. Repetição em loop (Loop do documento de sobreposição mais curto)",
-      "loopOverlayDesc": "Repete em loop o documento de sobreposição se ele for mais curto que o documento base. Se desmarcado, as páginas restantes ficam em branco.",
+      "loopOverlayDesc": "Repete o documento da camada se tiver menos páginas que o documento base. Se desativado, as páginas base restantes permanecem inalteradas.",
       "processButton": "Executar sobreposição de camada",
-      "successMessage": "🎉 Camadas de PDF sobrepostas com sucesso! Clique em baixar acima para salvar."
+      "successMessage": "Camadas de PDF sobrepostas com sucesso! Clique em baixar acima para salvar."
     },
     "pageLabels": {
       "errorMetadata": "Falha ao analisar metadados do PDF. O arquivo pode estar corrompido.",
