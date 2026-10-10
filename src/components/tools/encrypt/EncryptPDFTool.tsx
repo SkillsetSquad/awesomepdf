@@ -246,14 +246,14 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   aria-describedby="user-password-hint"
                   className="w-full pr-10" aria-label={tTools('encryptPdf.userPasswordLabel') || 'User Password (to open document)'}
                 />
-                <button
+                <Button variant="ghost" size="sm"
                   type="button"
                   onClick={() => setShowUserPassword(!showUserPassword)}
                   aria-label={showUserPassword ? 'Hide user password' : 'Show user password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  className="absolute right-2 top-1/2 -translate-y-1/2"
                 >
                   {showUserPassword ? '🙈' : '👁️'}
-                </button>
+                </Button>
               </div>
               <p id="user-password-hint" className="mt-1 text-xs text-muted-foreground">
                 {tTools('encryptPdf.userPasswordHint') || 'Required to open and view the PDF.'}
@@ -276,14 +276,14 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                   aria-describedby="owner-password-hint"
                   className="w-full pr-10" aria-label={tTools('encryptPdf.ownerPasswordLabel') || 'Owner Password (to change permissions)'}
                 />
-                <button
+                <Button variant="ghost" size="sm"
                   type="button"
                   onClick={() => setShowOwnerPassword(!showOwnerPassword)}
                   aria-label={showOwnerPassword ? 'Hide owner password' : 'Show owner password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  className="absolute right-2 top-1/2 -translate-y-1/2"
                 >
                   {showOwnerPassword ? '🙈' : '👁️'}
-                </button>
+                </Button>
               </div>
               <p id="owner-password-hint" className="mt-1 text-xs text-muted-foreground">
                 {tTools('encryptPdf.ownerPasswordHint') || 'Required to modify permissions or remove encryption.'}

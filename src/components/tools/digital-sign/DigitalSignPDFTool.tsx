@@ -355,14 +355,14 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                       placeholder={tTool('enterPassword')}
                       className="w-full pr-10" aria-label={tTool('certificatePasswordLabel')}
                     />
-                    <button
+                    <Button variant="ghost" size="icon-sm"
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className="absolute right-2 top-1/2 -translate-y-1/2"
                     >
                       <EyeIcon open={showPassword} />
-                    </button>
+                    </Button>
                   </div>
                   <Button variant="default" size="default" onClick={handlePasswordSubmit} disabled={!password}>
                     {tTool('unlockButton')}
@@ -455,7 +455,7 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                     {sigImageFile && (
                       <div className="flex items-center gap-2 mt-1">
                         <p className="text-xs text-green-600 dark:text-green-400">{sigImageFile.name}</p>
-                        <button type="button" onClick={() => { setSigImageFile(null); setSigImageData(null); setSigImageType(null); }} className="text-xs text-red-500 hover:text-red-700 cursor-pointer">{t('buttons.remove')}</button>
+                        <Button variant="ghost" size="sm" type="button" onClick={() => { setSigImageFile(null); setSigImageData(null); setSigImageType(null); }} className="cursor-pointer">{t('buttons.remove')}</Button>
                       </div>
                     )}
                   </div>

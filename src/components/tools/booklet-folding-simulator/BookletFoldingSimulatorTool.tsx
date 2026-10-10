@@ -212,13 +212,13 @@ export function BookletFoldingSimulatorTool() {
             {/* 3D Folding Paper View (WOW FACTOR) */}
             <div className="relative h-64 md:h-auto min-h-[300px] flex items-center justify-center bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-xl overflow-hidden border border-neutral-800 shadow-inner">
               <div className="absolute top-3 right-3 flex gap-2 z-10">
-                <button
+                <Button variant="outline" size="sm"
                   onClick={() => setIs3DMode(!is3DMode)}
-                  className="p-1.5 rounded-lg bg-neutral-800/80 hover:bg-neutral-700 text-neutral-400 hover:text-white text-xs flex items-center gap-1 border border-neutral-700"
+                  className="flex items-center gap-1"
                 >
                   {is3DMode ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
                   {is3DMode ? t('bookletFoldingSimulator.view2D') : t('bookletFoldingSimulator.view3D')}
-                </button>
+                </Button>
               </div>
 
               {/* 3D Paper Model */}

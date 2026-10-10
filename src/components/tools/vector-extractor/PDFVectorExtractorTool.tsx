@@ -289,21 +289,21 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
                 {/* Page Selector */}
                 {totalPages > 1 && (
                   <div className="flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-0.5 bg-white dark:bg-zinc-900">
-                    <button
+                    <Button variant="ghost" size="icon-sm"
                       onClick={() => handlePageChange(targetPage - 1)}
                       disabled={targetPage <= 1}
-                      className="text-xs font-black px-1 opacity-60 hover:opacity-100 disabled:opacity-30"
+                      className="opacity-60"
                     >
                       ◀
-                    </button>
+                    </Button>
                     <span className="text-[11px] font-bold">{t('comparePdfs.pageNumber', { page: targetPage })}</span>
-                    <button
+                    <Button variant="ghost" size="icon-sm"
                       onClick={() => handlePageChange(targetPage + 1)}
                       disabled={targetPage >= totalPages}
-                      className="text-xs font-black px-1 opacity-60 hover:opacity-100 disabled:opacity-30"
+                      className="opacity-60"
                     >
                       ▶
-                    </button>
+                    </Button>
                   </div>
                 )}
               </div>

@@ -460,39 +460,39 @@ export function GridCombineTool({ className = '' }: GridCombineToolProps) {
 
                                         {/* Reorder Buttons */}
                                         <div className="flex-shrink-0 flex items-center gap-1">
-                                            <button
+                                            <Button variant="ghost" size="icon-sm"
                                                 type="button"
                                                 onClick={() => handleMoveUp(index)}
                                                 disabled={index === 0 || isProcessing}
-                                                className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
+
                                             >
                                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                     <path d="M18 15l-6-6-6 6" />
                                                 </svg>
-                                            </button>
-                                            <button
+                                            </Button>
+                                            <Button variant="ghost" size="icon-sm"
                                                 type="button"
                                                 onClick={() => handleMoveDown(index)}
                                                 disabled={index === files.length - 1 || isProcessing}
-                                                className="p-1 rounded hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
+
                                             >
                                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                     <path d="M6 9l6 6 6-6" />
                                                 </svg>
-                                            </button>
+                                            </Button>
                                         </div>
 
                                         {/* Remove Button */}
-                                        <button
+                                        <Button variant="ghost" size="icon-sm"
                                             type="button"
                                             onClick={() => handleRemoveFile(file.id)}
                                             disabled={isProcessing}
-                                            className="flex-shrink-0 p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                                            className="flex-shrink-0"
                                         >
                                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                 <path d="M18 6L6 18M6 6l12 12" />
                                             </svg>
-                                        </button>
+                                        </Button>
                                     </li>
                                 ))}
                             </ul>

@@ -199,15 +199,15 @@ export function PDFToCBZTool({ className = '' }: PDFToCBZToolProps) {
                 </p>
               </div>
             </div>
-            <button
+            <Button variant="ghost" size="icon-sm"
               onClick={handleClearFile}
               disabled={isProcessing}
-              className="p-1 rounded-full hover:bg-muted text-zinc-400 hover:text-red-500 transition-colors"
+
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            </button>
+            </Button>
           </Card>
         ) : (
           <FileUploader

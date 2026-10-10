@@ -463,50 +463,50 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
               {/* Zoom Controls - positioned at bottom center of cropper */}
               {state.pageImage && (
                 <div className={`${isFullscreen ? 'fixed' : 'absolute'} left-1/2 bottom-4 -translate-x-1/2 z-10 flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 border border-gray-200`}>
-                  <button
+                  <Button variant="ghost" size="icon-sm" aria-label={tTools('cropPdf.zoomOut') || 'Zoom Out'}
                     type="button"
                     onClick={handleZoomOut}
                     disabled={isProcessing}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center justify-center"
                     title={tTools('cropPdf.zoomOut') || 'Zoom Out'}
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
                     </svg>
-                  </button>
+                  </Button>
 
                   <span className="px-2 text-sm font-medium text-gray-600 min-w-[60px] text-center">
                     {Math.round(currentZoom * 100)}%
                   </span>
 
-                  <button
+                  <Button variant="ghost" size="sm"
                     type="button"
                     onClick={handleResetZoom}
                     disabled={isProcessing}
-                    className="px-3 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+
                     title={tTools('cropPdf.resetZoom') || 'Reset Zoom'}
                   >
                     {tTools('cropPdf.reset') || 'Reset'}
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button variant="ghost" size="icon-sm" aria-label={tTools('cropPdf.zoomIn') || 'Zoom In'}
                     type="button"
                     onClick={handleZoomIn}
                     disabled={isProcessing}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center justify-center"
                     title={tTools('cropPdf.zoomIn') || 'Zoom In'}
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                     </svg>
-                  </button>
+                  </Button>
 
                   <div className="w-px h-6 bg-gray-300 mx-1"></div>
 
-                  <button
+                  <Button variant="ghost" size="sm"
                     type="button"
                     onClick={handleToggleFullscreen}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                    className="w-10 h-10 flex items-center justify-center"
                     title={isFullscreen ? (tTools('cropPdf.exitFullscreen') || 'Exit Fullscreen') : (tTools('cropPdf.fullscreen') || 'Fullscreen')}
                   >
                     {isFullscreen ? (
@@ -518,23 +518,23 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                       </svg>
                     )}
-                  </button>
+                  </Button>
                 </div>
               )}
 
               {/* Fullscreen page navigation */}
               {isFullscreen && state.pageImage && (
                 <div className="fixed top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 border border-gray-200">
-                  <button
+                  <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => changePage(-1)}
                     disabled={state.currentPage <= 1 || isProcessing}
-                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center justify-center"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
-                  </button>
+                  </Button>
                   <div className="flex items-center gap-1 text-sm font-medium text-gray-600">
                     <Input
                       type="text"
@@ -548,16 +548,16 @@ export function CropPDFTool({ className = '' }: CropPDFToolProps) {
                     />
                     <span>/ {state.numPages}</span>
                   </div>
-                  <button
+                  <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => changePage(1)}
                     disabled={state.currentPage >= state.numPages || isProcessing}
-                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center justify-center"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

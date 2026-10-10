@@ -140,9 +140,9 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
                                     <DownloadButton file={batchFile.result} filename={`${batchFile.file.name.replace('.pdf', '')}_outlined.pdf`} variant="ghost" size="sm" />
                                 )}
                                 {batchFile.status === 'pending' && !isProcessing && (
-                                    <button onClick={() => removeFile(batchFile.id)} className="p-1 text-muted-foreground hover:text-red-500 transition-colors">
+                                    <Button variant="ghost" size="icon-sm" onClick={() => removeFile(batchFile.id)} >
                                         <X className="w-4 h-4" />
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         ))}

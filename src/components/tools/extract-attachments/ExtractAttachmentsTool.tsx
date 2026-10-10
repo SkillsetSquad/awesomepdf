@@ -30,13 +30,13 @@ export interface ExtractAttachmentsToolProps {
 /**
  * ExtractAttachmentsTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for extracting attachments from PDF files.
  */
 export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -44,7 +44,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
   const [progressMessage, setProgressMessage] = useState('');
   const [extractedAttachments, setExtractedAttachments] = useState<AttachmentInfo[]>([]);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -189,7 +189,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-md bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -233,17 +233,17 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
                     {formatSize(item.file.size)}
                   </p>
                 </div>
-                <button
+                <Button variant="ghost" size="icon-sm"
                   type="button"
                   onClick={() => handleRemoveFile(item.id)}
                   disabled={isProcessing}
-                  className="p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600"
+
                   aria-label={`Remove ${item.file.name}`}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 6L6 18M6 6l12 12" />
                   </svg>
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -270,8 +270,8 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
           disabled={!canExtract}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('extractAttachments.extractButton') || 'Extract Attachments')
           }
         </Button>
@@ -326,7 +326,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
 
       {/* Success Message */}
       {status === 'complete' && extractedAttachments.length > 0 && (
-        <div 
+        <div
           className="p-4 rounded-md bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

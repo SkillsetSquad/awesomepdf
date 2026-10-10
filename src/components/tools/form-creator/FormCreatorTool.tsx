@@ -982,25 +982,25 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          <button
+          <Button variant="outline" size="sm"
             onClick={() => setShowBlankPdfDialog(true)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors"
+            className="w-full flex items-center justify-center gap-2"
           >
             <FilePlus2 className="w-5 h-5 text-blue-500" />
             <span className="text-sm font-medium text-gray-600">{tTools('formCreator.createBlankPdf') || 'Create Blank PDF'}</span>
-          </button>
+          </Button>
 
           {/* Templates */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {formTemplates.map(template => (
-              <button
+              <Button variant="outline" size="sm"
                 key={template.id}
                 onClick={() => createFromTemplate(template)}
-                className="flex flex-col items-center justify-center gap-2 p-4 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors group"
+                className="flex flex-col items-center justify-center gap-2 group"
               >
                 <span className="text-2xl">{template.icon}</span>
                 <span className="text-xs font-medium text-gray-600 text-center group-hover:text-blue-600">{tTools(`formCreator.template.${template.id}`) || template.name}</span>
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -1100,20 +1100,20 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                 </button>
                 {selectedFieldId && (
                   <>
-                    <button
+                    <Button variant="ghost" size="icon-sm" aria-label={tTools('formCreator.duplicate') || 'Duplicate'}
                       onClick={handleDuplicateField}
-                      className="p-1.5 rounded hover:bg-gray-100 text-gray-600 transition-colors"
+
                       title={tTools('formCreator.duplicate') || 'Duplicate'}
                     >
                       <Copy className="w-4 h-4" />
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="icon-sm" aria-label={tTools('formCreator.deleteTool') || 'Delete'}
                       onClick={handleDeleteField}
-                      className="p-1.5 rounded hover:bg-red-50 text-red-500 transition-colors"
+
                       title={tTools('formCreator.deleteTool') || 'Delete'}
                     >
                       <Trash2 className="w-4 h-4" />
-                    </button>
+                    </Button>
                   </>
                 )}
               </div>
@@ -1164,27 +1164,27 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                     <FilePlus2 className="w-4 h-4" />
                   </button>
                   <div className={`absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[140px] z-10 transition-opacity duration-150 ${showAddPageMenu && !isAddingPage ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                    <button
+                    <Button variant="ghost" size="sm"
                       onClick={() => { addBlankPage('before'); setShowAddPageMenu(false); }}
                       disabled={isAddingPage}
-                      className="w-full px-3 py-1.5 text-left text-sm hover:bg-gray-50 disabled:opacity-50"
+                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageBefore') || 'Before current'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="sm"
                       onClick={() => { addBlankPage('after'); setShowAddPageMenu(false); }}
                       disabled={isAddingPage}
-                      className="w-full px-3 py-1.5 text-left text-sm hover:bg-gray-50 disabled:opacity-50"
+                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageAfter') || 'After current'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="sm"
                       onClick={() => { addBlankPage('end'); setShowAddPageMenu(false); }}
                       disabled={isAddingPage}
-                      className="w-full px-3 py-1.5 text-left text-sm hover:bg-gray-50 disabled:opacity-50"
+                      className="w-full text-left"
                     >
                       {tTools('formCreator.addPageEnd') || 'At end'}
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -1528,12 +1528,12 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                         <span className="text-sm">{tTools('formCreator.required') || 'Required field'}</span>
                       </Label>
 
-                      <button
+                      <Button variant="outline" size="sm"
                         onClick={handleDeleteField}
-                        className="w-full py-1.5 text-sm text-red-500 hover:bg-red-50 rounded border border-red-200"
+                        className="w-full"
                       >
                         {tTools('formCreator.deleteField')}
-                      </button>
+                      </Button>
                     </div>
                   ) : (
                     <div className="text-center py-8 text-gray-400">
@@ -1597,14 +1597,14 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
 
                   {/* Save Project */}
                   <div className="pt-3 border-t border-gray-100">
-                    <button
+                    <Button variant="ghost" size="sm"
                       onClick={() => setShowSaveDialog(true)}
                       disabled={fields.length === 0}
-                      className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-2"
                     >
                       <Save className="w-4 h-4" />
                       {tTools('formCreator.saveProject') || 'Save Project'}
-                    </button>
+                    </Button>
                   </div>
 
                   {/* Saved Projects List */}
@@ -1621,18 +1621,18 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
                             <p className="text-gray-400 truncate">{project.fields.length} fields</p>
                           </div>
                           <div className="flex gap-1">
-                            <button
+                            <Button variant="ghost" size="icon-sm"
                               onClick={() => handleLoadProject(project)}
-                              className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+
                             >
                               <FolderOpen className="w-3.5 h-3.5" />
-                            </button>
-                            <button
+                            </Button>
+                            <Button variant="ghost" size="icon-sm"
                               onClick={() => handleDeleteProject(project.id)}
-                              className="p-1 text-red-500 hover:bg-red-50 rounded"
+
                             >
                               <Trash2 className="w-3.5 h-3.5" />
-                            </button>
+                            </Button>
                           </div>
                         </div>
                       ))}

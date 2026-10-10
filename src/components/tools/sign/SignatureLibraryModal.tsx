@@ -207,9 +207,9 @@ export function SignatureLibraryModal({
                   <div
                     className="w-full h-24 rounded border border-gray-200 flex items-center justify-center p-2 mb-2 bg-white overflow-hidden"
                     style={{
-                      backgroundImage: `linear-gradient(45deg, #f3f4f6 25%, transparent 25%), 
-                                        linear-gradient(-45deg, #f3f4f6 25%, transparent 25%), 
-                                        linear-gradient(45deg, transparent 75%, #f3f4f6 75%), 
+                      backgroundImage: `linear-gradient(45deg, #f3f4f6 25%, transparent 25%),
+                                        linear-gradient(-45deg, #f3f4f6 25%, transparent 25%),
+                                        linear-gradient(45deg, transparent 75%, #f3f4f6 75%),
                                         linear-gradient(-45deg, transparent 75%, #f3f4f6 75%)`,
                       backgroundSize: '12px 12px',
                       backgroundPosition: '0 0, 0 6px, 6px -6px, -6px 0px',
@@ -225,14 +225,14 @@ export function SignatureLibraryModal({
                     <span className="text-xs font-semibold text-foreground truncate" title={sig.name}>
                       {sig.name}
                     </span>
-                    <button
+                    <Button variant="ghost" size="icon-sm" aria-label="删除"
                       type="button"
                       onClick={() => handleDelete(sig.id)}
-                      className="text-gray-400 hover:text-red-500 text-xs px-1"
+
                       title="删除"
                     >
                       ✕
-                    </button>
+                    </Button>
                   </div>
                   <div className="text-[10px] text-muted-foreground flex items-center justify-between">
                     <span>{new Date(sig.createdAt).toLocaleDateString()}</span>

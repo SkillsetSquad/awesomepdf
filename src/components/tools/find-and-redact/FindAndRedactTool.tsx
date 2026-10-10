@@ -459,14 +459,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                             <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                                                 {tTools('termsCount', { count: parsedTerms.length })}
                                             </span>
-                                            <button
+                                            <Button variant="ghost" size="sm"
                                                 type="button"
                                                 onClick={() => setSearchTermsInput('')}
-                                                className="text-xs text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+
                                                 disabled={isProcessing || isSearching}
                                             >
                                                 {t('buttons.clearAll')}
-                                            </button>
+                                            </Button>
                                         </div>
                                         <div className="flex flex-wrap gap-2">
                                             {parsedTerms.map((term, index) => (
@@ -478,19 +478,19 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                     </svg>
                                                     {term}
-                                                    <button
+                                                    <Button variant="ghost" size="icon-sm"
                                                         type="button"
                                                         onClick={() => {
                                                             const newTerms = parsedTerms.filter((_, i) => i !== index);
                                                             setSearchTermsInput(newTerms.join(', '));
                                                         }}
-                                                        className="ml-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+                                                        className="ml-1"
                                                         disabled={isProcessing || isSearching}
                                                     >
                                                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                                         </svg>
-                                                    </button>
+                                                    </Button>
                                                 </span>
                                             ))}
                                         </div>

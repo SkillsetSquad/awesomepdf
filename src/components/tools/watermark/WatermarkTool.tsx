@@ -1145,17 +1145,17 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
 
               {totalPages > 1 && (
                 <div className="flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-lg text-sm">
-                  <button
+                  <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage <= 1 || isRenderingPage}
-                    className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed"
+
                     aria-label="Previous Page"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
-                  </button>
+                  </Button>
 
                   <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300">
                     <span>{tTools('page')}</span>
@@ -1175,17 +1175,17 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     <span>{tTools('of')} {totalPages} {tTools('pages')}</span>
                   </div>
 
-                  <button
+                  <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage >= totalPages || isRenderingPage}
-                    className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed"
+
                     aria-label="Next Page"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

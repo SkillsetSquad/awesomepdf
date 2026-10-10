@@ -38,7 +38,7 @@ interface PDFPageInfo {
 /**
  * FilePreview Component
  * Requirements: 5.4
- * 
+ *
  * Displays PDF thumbnail preview with zoom and navigation support.
  */
 export const FilePreview: React.FC<FilePreviewProps> = ({
@@ -55,7 +55,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
   onZoomChange,
 }) => {
   const t = useTranslations('common');
-  
+
   const [zoom, setZoom] = useState(initialZoom);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -63,7 +63,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pdfDoc, setPdfDoc] = useState<any>(null);
-  
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -86,7 +86,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
       try {
         // Dynamically import pdfjs-dist
         const pdfjsLib = await import('pdfjs-dist');
-        
+
         // Set worker source
         configurePdfjsWorker(pdfjsLib);
 
@@ -97,11 +97,11 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
         // Load PDF document
         const loadingTask = pdfjsLib.getDocument(url);
         const pdf = await loadingTask.promise;
-        
+
         setPdfDoc(pdf);
         setTotalPages(pdf.numPages);
         setCurrentPage(1);
-        
+
         onPageChange?.(1, pdf.numPages);
       } catch (err) {
         console.error('Failed to load PDF:', err);
@@ -321,15 +321,15 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                 </svg>
               </Button>
-              
-              <button
+
+              <Button variant="ghost" size="sm"
                 onClick={handleResetZoom}
-                className="px-2 py-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+
                 aria-label={`Zoom: ${Math.round(zoom * 100)}%`}
               >
                 {Math.round(zoom * 100)}%
-              </button>
-              
+              </Button>
+
               <Button
                 variant="ghost"
                 size="sm"
@@ -358,11 +358,11 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </Button>
-              
+
               <span className="text-xs text-muted-foreground whitespace-nowrap">
                 {currentPage} / {totalPages}
               </span>
-              
+
               <Button
                 variant="ghost"
                 size="sm"

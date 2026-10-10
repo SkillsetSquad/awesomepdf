@@ -712,30 +712,30 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
                     {/* Move buttons */}
                     <div className="absolute bottom-1 left-1 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button
+                      <Button variant="ghost" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleMovePage(index, index - 1); }}
                         disabled={index === 0 || isProcessing}
-                        className="w-5 h-5 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Move left"
                         title="Move left"
                       >
                         <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
-                      </button>
-                      <button
+                      </Button>
+                      <Button variant="ghost" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleMovePage(index, index + 1); }}
                         disabled={index === pagePreviews.length - 1 || isProcessing}
-                        className="w-5 h-5 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Move right"
                         title="Move right"
                       >
                         <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
 
@@ -754,43 +754,43 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
                   {/* Hover Actions */}
                   <div className="absolute top-1 right-1 flex flex-col gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button
+                    <Button variant="ghost" size="icon-sm" aria-label="Rotate left"
                       onClick={(e) => { e.stopPropagation(); handleRotatePage(index, -90); }}
-                      className="w-6 h-6 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700"
+                      className="flex items-center justify-center"
                       title="Rotate left"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8M3 3v5h5" />
                       </svg>
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="icon-sm" aria-label="Rotate right"
                       onClick={(e) => { e.stopPropagation(); handleRotatePage(index, 90); }}
-                      className="w-6 h-6 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700"
+                      className="flex items-center justify-center"
                       title="Rotate right"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-9-9 9.75 9.75 0 016.74 2.74L21 8M21 3v5h-5" />
                       </svg>
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="ghost" size="icon-sm" aria-label="Duplicate"
                       onClick={(e) => { e.stopPropagation(); handleDuplicatePage(index); }}
-                      className="w-6 h-6 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700"
+                      className="flex items-center justify-center"
                       title="Duplicate"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <rect x="9" y="9" width="13" height="13" rx="2" strokeWidth={2} />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
                       </svg>
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="destructive" size="icon-sm" aria-label="Delete"
                       onClick={(e) => { e.stopPropagation(); handleDeletePage(index); }}
-                      className="w-6 h-6 bg-red-500/90 rounded shadow flex items-center justify-center hover:bg-red-600 text-white"
+                      className="flex items-center justify-center"
                       title="Delete"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               ))}

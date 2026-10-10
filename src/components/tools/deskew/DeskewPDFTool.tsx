@@ -231,13 +231,13 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
 
                                 {/* Remove button for pending files */}
                                 {batchFile.status === 'pending' && !isProcessing && (
-                                    <button
+                                    <Button variant="ghost" size="icon-sm"
                                         onClick={() => removeFile(batchFile.id)}
-                                        className="p-1 text-muted-foreground hover:text-red-500 transition-colors"
+
                                         aria-label="Remove file"
                                     >
                                         <X className="w-4 h-4" />
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         ))}

@@ -591,18 +591,18 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                   {t('rotate.selectedPages', { selected: selectedPages.size, total: totalPages })}
                 </span>
                 <div className="flex gap-1.5">
-                  <button
+                  <Button variant="outline" size="sm"
                     onClick={handleSelectAll}
-                    className="text-[10px] px-2 py-1 rounded bg-card border border-border hover:bg-muted text-foreground font-medium transition-colors"
+
                   >
                     {t('buttons.selectAll')}
-                  </button>
-                  <button
+                  </Button>
+                  <Button variant="outline" size="sm"
                     onClick={handleClearSelection}
-                    className="text-[10px] px-2 py-1 rounded bg-card border border-border hover:bg-muted text-foreground font-medium transition-colors"
+
                   >
                     {t('buttons.clear')}
-                  </button>
+                  </Button>
                 </div>
               </div>
 
@@ -688,20 +688,20 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                     <div className="pt-2 border-t border-border">
                       <p className="text-[11px] font-semibold text-muted-foreground mb-2">{t('rotate.quickSelectLabel')}</p>
                       <div className="flex gap-1.5">
-                        <button
+                        <Button variant="secondary" size="sm"
                           type="button"
                           onClick={handleSelectOdd}
-                          className="flex-1 text-[11px] py-1 rounded bg-muted hover:bg-muted-foreground/20 text-foreground transition-colors font-medium"
+                          className="flex-1"
                         >
                           {t('rotate.selectOdd')}
-                        </button>
-                        <button
+                        </Button>
+                        <Button variant="secondary" size="sm"
                           type="button"
                           onClick={handleSelectEven}
-                          className="flex-1 text-[11px] py-1 rounded bg-muted hover:bg-muted-foreground/20 text-foreground transition-colors font-medium"
+                          className="flex-1"
                         >
                           {t('rotate.selectEven')}
-                        </button>
+                        </Button>
                       </div>
                       <div className="mt-2 flex gap-1.5">
                         <Input
@@ -717,14 +717,14 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                           placeholder="e.g. 1, 3-5"
                           className="flex-1 text-[11px]"
                         />
-                        <button
+                        <Button variant="default" size="sm"
                           type="button"
                           onClick={handleApplyCustomPages}
                           disabled={!customPageInput.trim()}
-                          className="text-[11px] px-3 py-1 rounded bg-primary text-white hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+
                         >
                           Select
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -813,7 +813,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                       <span className="text-xs font-semibold text-muted-foreground">{t('rotate.preciseInput')}</span>
 
                       <div className="flex items-center bg-muted/40 border border-input rounded-md overflow-hidden pr-2">
-                        <button
+                        <Button variant="ghost" size="icon-sm"
                           type="button"
                           onClick={() => {
                             const val = Math.max(-180, (parseFloat(steplessAngle) || 0) - 0.5);
@@ -821,10 +821,10 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             handleApplyAbsoluteRotation(val);
                           }}
                           disabled={isProcessing || selectedPages.size === 0}
-                          className="w-8 h-8 font-bold text-sm flex items-center justify-center hover:bg-muted text-foreground transition-colors"
+                          className="flex items-center justify-center"
                         >
                           -
-                        </button>
+                        </Button>
 
                         <div className="relative flex items-center max-w-[70px]">
                           <Input
@@ -839,7 +839,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                           <span className="absolute right-0.5 text-xs text-muted-foreground select-none">°</span>
                         </div>
 
-                        <button
+                        <Button variant="ghost" size="icon-sm"
                           type="button"
                           onClick={() => {
                             const val = Math.min(180, (parseFloat(steplessAngle) || 0) + 0.5);
@@ -847,10 +847,10 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             handleApplyAbsoluteRotation(val);
                           }}
                           disabled={isProcessing || selectedPages.size === 0}
-                          className="w-8 h-8 font-bold text-sm flex items-center justify-center hover:bg-muted text-foreground transition-colors"
+                          className="flex items-center justify-center"
                         >
                           +
-                        </button>
+                        </Button>
                       </div>
                     </div>
 
@@ -999,29 +999,29 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                             className="flex items-center gap-1 z-10"
                             onClick={(e) => e.stopPropagation()} // Prevent card selecting toggle when clicking buttons
                           >
-                            <button
+                            <Button variant="secondary" size="icon-sm"
                               type="button"
                               onClick={() => updateRotationOnPages([preview.pageNumber], current => current - 90)}
                               disabled={isProcessing}
-                              className="w-6 h-6 flex items-center justify-center rounded bg-muted hover:bg-muted-foreground/20 text-foreground transition-colors disabled:opacity-50"
+                              className="flex items-center justify-center"
                               aria-label={`Rotate page ${preview.pageNumber} left`}
                             >
                               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                               </svg>
-                            </button>
+                            </Button>
 
-                            <button
+                            <Button variant="secondary" size="icon-sm"
                               type="button"
                               onClick={() => updateRotationOnPages([preview.pageNumber], current => current + 90)}
                               disabled={isProcessing}
-                              className="w-6 h-6 flex items-center justify-center rounded bg-muted hover:bg-muted-foreground/20 text-foreground transition-colors disabled:opacity-50"
+                              className="flex items-center justify-center"
                               aria-label={`Rotate page ${preview.pageNumber} right`}
                             >
                               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
                               </svg>
-                            </button>
+                            </Button>
                           </div>
                         </div>
                       </div>

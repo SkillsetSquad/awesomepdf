@@ -26,7 +26,7 @@ interface PagePreview {
 
 /**
  * RotateCustomTool Component
- * 
+ *
  * Provides the UI for rotating PDF pages by arbitrary degrees.
  */
 export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
@@ -416,26 +416,26 @@ export function RotateCustomTool({ className = '' }: RotateCustomToolProps) {
 
                                     {/* Per-page rotation controls */}
                                     <div className="p-2 flex items-center justify-center gap-1 border-t border-border bg-muted/30">
-                                        <button
+                                        <Button variant="ghost" size="icon-sm"
                                             type="button"
                                             onClick={() => adjustPageRotation(preview.pageNumber, -1)}
-                                            className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted"
+                                            className="flex items-center justify-center"
                                         >
                                             -
-                                        </button>
+                                        </Button>
                                         <Input
                                             type="number"
                                             className="w-12 h-6 text-center"
                                             value={preview.rotation}
                                             onChange={(e) => updatePageRotation(preview.pageNumber, parseFloat(e.target.value) || 0)}
                                         />
-                                        <button
+                                        <Button variant="ghost" size="icon-sm"
                                             type="button"
                                             onClick={() => adjustPageRotation(preview.pageNumber, 1)}
-                                            className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted"
+                                            className="flex items-center justify-center"
                                         >
                                             +
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             ))}

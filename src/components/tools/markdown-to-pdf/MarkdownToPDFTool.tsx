@@ -251,17 +251,17 @@ Enjoy converting your Markdown to PDF!
 
                     {/* Preview Toggle */}
                     <div className="flex justify-end">
-                        <button
+                        <Button variant="ghost" size="sm"
                             type="button"
                             onClick={() => setShowPreview(!showPreview)}
-                            className="flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            className="flex items-center gap-2"
                         >
                             {showPreview ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             {showPreview
                                 ? (tTools('markdownToPdf.hidePreview') || 'Hide Preview')
                                 : (tTools('markdownToPdf.showPreview') || 'Show Preview')
                             }
-                        </button>
+                        </Button>
                     </div>
 
                     {/* Editor and Preview Container */}

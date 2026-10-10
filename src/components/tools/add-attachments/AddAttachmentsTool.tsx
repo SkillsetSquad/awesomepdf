@@ -213,17 +213,17 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
                 {formatSize(pdfFile.size)}
               </p>
             </div>
-            <button
+            <Button variant="ghost" size="icon-sm"
               type="button"
               onClick={() => setPdfFile(null)}
               disabled={isProcessing}
-              className="p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600"
+
               aria-label="Remove PDF"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
-            </button>
+            </Button>
           </div>
         )}
       </Card>
@@ -276,17 +276,17 @@ export function AddAttachmentsTool({ className = '' }: AddAttachmentsToolProps) 
                       {formatSize(item.file.size)}
                     </p>
                   </div>
-                  <button
+                  <Button variant="ghost" size="icon-sm"
                     type="button"
                     onClick={() => handleRemoveAttachment(item.id)}
                     disabled={isProcessing}
-                    className="p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600"
+
                     aria-label={`Remove ${item.file.name}`}
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>

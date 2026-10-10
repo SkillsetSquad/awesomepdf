@@ -243,10 +243,10 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                     className="flex items-center justify-between p-3 rounded-md border border-border bg-muted/30"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <button
+                                        <Button variant="ghost" size="sm"
                                             onClick={() => handleToggleLayer(layer.id, layer.visible)}
                                             disabled={isProcessing}
-                                            className="p-1 rounded hover:bg-muted"
+
                                             title={layer.visible ? 'Hide layer' : 'Show layer'}
                                         >
                                             {layer.visible ? (
@@ -254,7 +254,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                             ) : (
                                                 <EyeOff className="w-4 h-4 text-gray-400" />
                                             )}
-                                        </button>
+                                        </Button>
 
                                         {editingLayer === layer.id ? (
                                             <Input
@@ -296,25 +296,25 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                             </>
                                         ) : (
                                             <>
-                                                <button
+                                                <Button variant="ghost" size="icon-sm" aria-label="Rename layer"
                                                     onClick={() => {
                                                         setEditingLayer(layer.id);
                                                         setEditName(layer.name);
                                                     }}
                                                     disabled={isProcessing}
-                                                    className="p-1 rounded hover:bg-muted"
+
                                                     title="Rename layer"
                                                 >
                                                     <Edit2 className="w-4 h-4 text-muted-foreground" />
-                                                </button>
-                                                <button
+                                                </Button>
+                                                <Button variant="ghost" size="icon-sm" aria-label="Delete layer"
                                                     onClick={() => handleDeleteLayer(layer.id)}
                                                     disabled={isProcessing}
-                                                    className="p-1 rounded hover:bg-red-100"
+
                                                     title="Delete layer"
                                                 >
                                                     <Trash2 className="w-4 h-4 text-red-500" />
-                                                </button>
+                                                </Button>
                                             </>
                                         )}
                                     </div>

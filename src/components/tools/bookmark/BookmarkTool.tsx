@@ -561,12 +561,12 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
           {/* Expand/collapse toggle */}
           {bookmark.children.length > 0 && (
-            <button
+            <Button variant="ghost" size="sm"
               onClick={(e) => { e.stopPropagation(); handleToggleExpand(bookmark.id); }}
-              className="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-gray-700"
+              className="w-5 h-5 flex items-center justify-center"
             >
               {bookmark.isExpanded ? '▼' : '▶'}
-            </button>
+            </Button>
           )}
           {bookmark.children.length === 0 && <span className="w-5" />}
 
@@ -604,14 +604,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                       className="w-14 h-8"
                       placeholder="1" id="bookmarktool-field-2" aria-label={tTools('bookmark.page') || 'Page'}
                     />
-                    <button
+                    <Button variant="outline" size="icon-sm" aria-label={tTools('bookmark.setToCurrentPage') || 'Set to current page'}
                       type="button"
                       onClick={() => setEditingBookmark({ ...editingBookmark, pageNumber: currentPage })}
-                      className="p-1 text-blue-500 hover:text-blue-700 bg-white border rounded h-8 w-8 flex items-center justify-center transition-colors"
+                      className="flex items-center justify-center"
                       title={tTools('bookmark.setToCurrentPage') || 'Set to current page'}
                     >
                       📍
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -661,27 +661,27 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
               {/* Actions */}
               <div className="flex gap-1 opacity-0 group-hover:opacity-100 hover:opacity-100" style={{ opacity: isSelected ? 1 : undefined }}>
-                <button
+                <Button variant="ghost" size="icon-sm" aria-label="Edit"
                   onClick={(e) => { e.stopPropagation(); setEditingBookmark(bookmark); }}
-                  className="p-1 text-gray-400 hover:text-blue-500"
+
                   title="Edit"
                 >
                   ✎
-                </button>
-                <button
+                </Button>
+                <Button variant="ghost" size="icon-sm" aria-label="Add child"
                   onClick={(e) => { e.stopPropagation(); handleAddChild(bookmark.id); }}
-                  className="p-1 text-gray-400 hover:text-green-500"
+
                   title="Add child"
                 >
                   +
-                </button>
-                <button
+                </Button>
+                <Button variant="ghost" size="icon-sm" aria-label="Delete"
                   onClick={(e) => { e.stopPropagation(); handleDeleteBookmark(bookmark.id); }}
-                  className="p-1 text-gray-400 hover:text-red-500"
+
                   title="Delete"
                 >
                   ×
-                </button>
+                </Button>
               </div>
             </>
           )}

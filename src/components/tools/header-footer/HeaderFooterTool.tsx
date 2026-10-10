@@ -399,14 +399,14 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
                 <Label className="block mb-2">Quick Insert</Label>
                 <div className="flex flex-wrap gap-2">
                   {quickInserts.map((item) => (
-                    <button
+                    <Button variant="ghost" size="sm"
                       key={item.label}
                       onClick={() => navigator.clipboard.writeText(item.label)}
-                      className="px-3 py-1.5 text-xs bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+
                       title={`Copy "${item.label}" - ${item.desc}`}
                     >
                       <code>{item.label}</code>
-                    </button>
+                    </Button>
                   ))}
                 </div>
                 <p className="text-xs text-gray-500 mt-1">Click to copy, then paste into any field</p>

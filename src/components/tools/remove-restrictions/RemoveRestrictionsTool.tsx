@@ -268,13 +268,13 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
                   placeholder={tTools('removeRestrictions.ownerPasswordPlaceholder') || 'Enter owner password if known'}
                   className="w-full pr-10 disabled:opacity-50" id="removerestrictionstool-field-1" aria-label={tTools('removeRestrictions.ownerPasswordLabel') || 'Owner Password (optional)'}
                 />
-                <button
+                <Button variant="ghost" size="sm"
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  className="absolute right-2 top-1/2 -translate-y-1/2"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
+                </Button>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">
                 {tTools('removeRestrictions.ownerPasswordHint') || 'If the PDF has an owner password, enter it here for better results.'}

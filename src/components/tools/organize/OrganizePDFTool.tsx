@@ -24,7 +24,7 @@ interface PagePreview {
 /**
  * OrganizePDFTool Component
  * Requirements: 5.1, 5.2
- * 
+ *
  * Provides the UI for reordering PDF pages with drag-and-drop functionality.
  */
 export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
@@ -481,37 +481,37 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
 
                     {/* Move buttons */}
                     <div className="absolute top-1 right-1 flex flex-col gap-0.5">
-                      <button
+                      <Button variant="ghost" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleMovePage(index, index - 1); }}
                         disabled={index === 0 || isProcessing}
-                        className="w-5 h-5 bg-white/90 rounded flex items-center justify-center hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Move up"
                       >
                         <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                           <path d="M18 15l-6-6-6 6" />
                         </svg>
-                      </button>
-                      <button
+                      </Button>
+                      <Button variant="ghost" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleMovePage(index, index + 1); }}
                         disabled={index === pageOrder.length - 1 || isProcessing}
-                        className="w-5 h-5 bg-white/90 rounded flex items-center justify-center hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Move down"
                       >
                         <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                           <path d="M6 9l6 6 6-6" />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
 
                     {/* Duplicate and Delete buttons */}
                     <div className="absolute bottom-6 right-1 flex gap-0.5">
-                      <button
+                      <Button variant="ghost" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleDuplicatePage(index); }}
                         disabled={isProcessing}
-                        className="w-5 h-5 bg-blue-500/90 rounded flex items-center justify-center hover:bg-blue-600 text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Duplicate page"
                         title="Duplicate"
                       >
@@ -519,12 +519,12 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                           <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                         </svg>
-                      </button>
-                      <button
+                      </Button>
+                      <Button variant="destructive" size="icon-sm"
                         type="button"
                         onClick={(e) => { e.stopPropagation(); handleDeletePage(index); }}
                         disabled={pageOrder.length <= 1 || isProcessing}
-                        className="w-5 h-5 bg-red-500/90 rounded flex items-center justify-center hover:bg-red-600 text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="flex items-center justify-center"
                         aria-label="Delete page"
                         title="Delete"
                       >
@@ -534,7 +534,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                           <line x1="10" y1="11" x2="10" y2="17" />
                           <line x1="14" y1="11" x2="14" y2="17" />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 );

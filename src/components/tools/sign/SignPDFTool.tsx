@@ -389,13 +389,13 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             </svg>
             <span>{toastMessage}</span>
           </div>
-          <button
+          <Button variant="ghost" size="icon-sm"
             type="button"
             onClick={() => setToastMessage(null)}
-            className="text-emerald-600 hover:text-emerald-900 text-xs px-2"
+
           >
             ✕
-          </button>
+          </Button>
         </div>
       )}
 

@@ -245,14 +245,14 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                   aria-describedby="decrypt-password-hint"
                   className="w-full pr-10" aria-label={tTools('decryptPdf.passwordLabel') || 'PDF Password'}
                 />
-                <button
+                <Button variant="ghost" size="sm"
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  className="absolute right-2 top-1/2 -translate-y-1/2"
                 >
                   {showPassword ? '🙈' : '👁️'}
-                </button>
+                </Button>
               </div>
               <p id="decrypt-password-hint" className="mt-1 text-xs text-muted-foreground">
                 {tTools('decryptPdf.passwordHint') || 'Leave empty if the PDF only has owner password restrictions.'}

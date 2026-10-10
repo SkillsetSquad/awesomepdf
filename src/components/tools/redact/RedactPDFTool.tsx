@@ -2185,25 +2185,25 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 {/* Floating Previous & Next Page Chevrons */}
                 {numPages > 1 && (
                   <>
-                    <button
+                    <Button variant="outline" size="icon-sm" aria-label="上一页 (PageUp / ←)"
                       type="button"
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage <= 1}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-background/85 hover:bg-background shadow-lg backdrop-blur border border-border text-foreground transition-all opacity-40 group-hover:opacity-90 hover:!opacity-100 disabled:opacity-0 disabled:pointer-events-none hover:scale-110 active:scale-95"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-30 backdrop-blur opacity-40 group-hover:opacity-90 active:scale-95"
                       title="上一页 (PageUp / ←)"
                     >
                       <ChevronLeft className="w-5 h-5" />
-                    </button>
+                    </Button>
 
-                    <button
+                    <Button variant="outline" size="icon-sm" aria-label="下一页 (PageDown / →)"
                       type="button"
                       onClick={() => setCurrentPage((p) => Math.min(numPages, p + 1))}
                       disabled={currentPage >= numPages}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-background/85 hover:bg-background shadow-lg backdrop-blur border border-border text-foreground transition-all opacity-40 group-hover:opacity-90 hover:!opacity-100 disabled:opacity-0 disabled:pointer-events-none hover:scale-110 active:scale-95"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-30 backdrop-blur opacity-40 group-hover:opacity-90 active:scale-95"
                       title="下一页 (PageDown / →)"
                     >
                       <ChevronRight className="w-5 h-5" />
-                    </button>
+                    </Button>
                   </>
                 )}
               </div>

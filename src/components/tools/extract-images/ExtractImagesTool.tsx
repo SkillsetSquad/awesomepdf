@@ -311,17 +311,17 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                         {formatSize(item.file.size)}
                                     </p>
                                 </div>
-                                <button
+                                <Button variant="ghost" size="icon-sm"
                                     type="button"
                                     onClick={() => handleRemoveFile(item.id)}
                                     disabled={isProcessing}
-                                    className="p-1 rounded hover:bg-red-100 text-muted-foreground hover:text-red-600"
+
                                     aria-label={`Remove ${item.file.name}`}
                                 >
                                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M18 6L6 18M6 6l12 12" />
                                     </svg>
-                                </button>
+                                </Button>
                             </li>
                         ))}
                     </ul>
@@ -473,13 +473,13 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                 </div>
 
                                 {/* Download Button Overlay */}
-                                <button
+                                <Button variant="outline" size="icon-sm"
                                     type="button"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         handleDownloadImage(image);
                                     }}
-                                    className="absolute top-2 right-2 p-1.5 rounded-md bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:text-white"
+                                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
                                     aria-label={`Download ${image.name}`}
                                 >
                                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -487,7 +487,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                                         <polyline points="7 10 12 15 17 10" />
                                         <line x1="12" y1="15" x2="12" y2="3" />
                                     </svg>
-                                </button>
+                                </Button>
                             </div>
                         ))}
                     </div>
@@ -517,14 +517,14 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
-                        <button
-                            className="absolute -top-12 right-0 p-2 text-white hover:text-white/80 transition-colors"
+                        <Button variant="ghost" size="icon-sm"
+                            className="absolute -top-12 right-0"
                             onClick={() => setSelectedImage(null)}
                         >
                             <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M18 6L6 18M6 6l12 12" />
                             </svg>
-                        </button>
+                        </Button>
 
                         {/* Image */}
                         <img

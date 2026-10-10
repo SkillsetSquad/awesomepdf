@@ -389,17 +389,17 @@ export function PSDToPDFTool({ className = '' }: PSDToPDFToolProps) {
                                 </span>
 
                                 {/* Remove Button */}
-                                <button
+                                <Button variant="ghost" size="icon-sm"
                                     type="button"
                                     onClick={() => handleRemoveFile(file.id)}
                                     disabled={isProcessing}
-                                    className="absolute top-2 right-2 p-1 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
                                     aria-label={`Remove ${file.file.name}`}
                                 >
                                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M18 6L6 18M6 6l12 12" />
                                     </svg>
-                                </button>
+                                </Button>
 
                                 {/* File Info */}
                                 <div className="p-2 bg-white">
