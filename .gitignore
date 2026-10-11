@@ -96,3 +96,7 @@ public/source-manifest.json
 # Local documentation, SEO evidence and image briefs
 /docs/*
 
+# Local agent instructions
+/AGENTS.md
+/agents.md
+
