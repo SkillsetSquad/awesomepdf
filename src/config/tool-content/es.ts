@@ -1,4 +1,3 @@
-import { toolContentEn } from './en';
 /**
  * Spanish Tool Content / Contenido de Herramientas en Español
  * Requirements: 3.1 - Multi-language support
@@ -3300,7 +3299,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       "diferencias pdf",
       "comparación documentos"
     ],
-    "description": "<p>Comparar PDFs muestra dos documentos lado a lado y resalta las diferencias entre ellos.</p><p>Procesamiento local.</p>",
+    "description": "<p>Comparar PDFs muestra dos documentos lado a lado y resalta las diferencias entre ellos.</p>\n      <p>Vea las páginas una junto a otra, navegue entre pares de páginas y filtre los cambios resaltados. Compara el texto extraído y los nombres de fuentes. No compara imágenes escaneadas ni otros cambios visuales.</p><p>Procesamiento local.</p>",
     "howToUse": [
       {
         "step": 1,
@@ -3309,13 +3308,13 @@ export const toolContentEs: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Revisa Diferencias",
-        "description": "Ve las diferencias resaltadas."
+        "title": "Comparar PDF",
+        "description": "Vea las páginas una junto a otra, navegue entre pares de páginas y filtre los cambios resaltados."
       },
       {
         "step": 3,
-        "title": "Exporta Resultados",
-        "description": "Descarga el informe de comparación."
+        "title": "Filtros de resaltado",
+        "description": "Cambios de texto · Cambios de fuente · Encabezados y pies de página · Texto movido"
       }
     ],
     "useCases": [
@@ -3338,15 +3337,15 @@ export const toolContentEs: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "¿Qué diferencias detecta?",
-        "answer": "Cambios en texto, imágenes, formato y estructura."
+        "answer": "Cambios de texto · Cambios de fuente · Encabezados y pies de página · Texto movido"
       },
       {
         "question": "¿Funciona con PDFs escaneados?",
-        "answer": "Mejor con PDFs de texto. Para escaneados, usa OCR primero."
+        "answer": "Compara el texto extraído y los nombres de fuentes. No compara imágenes escaneadas ni otros cambios visuales."
       },
       {
         "question": "¿Puedo comparar más de dos PDFs?",
-        "answer": "Esta herramienta compara dos PDFs a la vez."
+        "answer": "Vea las páginas una junto a otra, navegue entre pares de páginas y filtre los cambios resaltados. Compara el texto extraído y los nombres de fuentes. No compara imágenes escaneadas ni otros cambios visuales."
       }
     ]
   },
@@ -5967,13 +5966,13 @@ export const toolContentEs: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "Corrección de Escaneos Torcidos",
-    "metaDescription": "Detecte automáticamente ángulos de inclinación en PDFs escaneados y corríjalos físicamente para un diseño plano.",
+    "metaDescription": "Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original.",
     "keywords": [
       "corregir inclinacion pdf",
       "alinear escaneo pdf",
       "deskew automatico"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original.</p>\n      <p>Las páginas en blanco, los escaneos inciertos y las páginas con anotaciones se conservan sin cambios.</p>\n      <p>Las resoluciones altas tardan más. Las páginas muy grandes usan una resolución de análisis menor.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -5982,13 +5981,13 @@ export const toolContentEs: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "Ajustes de alineación",
+        "description": "Resolución de análisis · Ángulo máximo de corrección"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "Analizar y enderezar",
+        "description": "Descargar · PDF alineado"
       }
     ],
     "useCases": [
@@ -6011,15 +6010,15 @@ export const toolContentEs: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "Las páginas en blanco, los escaneos inciertos y las páginas con anotaciones se conservan sin cambios."
       }
     ]
   },

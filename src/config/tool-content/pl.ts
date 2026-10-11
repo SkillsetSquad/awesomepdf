@@ -1662,11 +1662,11 @@ export const toolContentPl: Record<string, ToolContent> = {
     title: "Porównaj pliki PDF",
     metaDescription: "Porównaj dwa dokumenty PDF. Podkreśl różnice pomiędzy wersjami.",
     keywords: ["porównaj pliki PDF", "pdf różnica", "porównanie dokumentów", "porównanie wersji"],
-    description: "\n      <p>Porównaj pliki PDF analizuje dwa dokumenty PDF i podkreśla różnice między nimi. Świetnie nadaje się do przeglądania wersji dokumentów, sprawdzania zmian w umowie lub weryfikowania zmian.</p>\n      <p>Wyświetlaj dokumenty obok siebie lub w trybie nakładki z wyróżnionymi różnicami. Narzędzie identyfikuje zmiany, uzupełnienia i usunięcia tekstu.</p>\n      <p>Całe porównywanie odbywa się w Twojej przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne.</p>\n    ",
+    description: "\n      <p>Porównaj pliki PDF analizuje dwa dokumenty PDF i podkreśla różnice między nimi. Świetnie nadaje się do przeglądania wersji dokumentów, sprawdzania zmian w umowie lub weryfikowania zmian.</p>\n      <p>Wyświetlaj strony obok siebie, przechodź między parami stron i filtruj wyróżnione zmiany. Porównuje wyodrębniony tekst i nazwy czcionek. Zeskanowane obrazy i inne zmiany wizualne nie są porównywane.</p>\n      <p>Całe porównywanie odbywa się w Twojej przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne.</p>\n    ",
     howToUse: [
       { step: 1, title: "Prześlij dwa pliki PDF", description: "Prześlij oryginalne i zmodyfikowane dokumenty PDF." },
-      { step: 2, title: "Porównaj dokumenty", description: "Wyświetl różnice wyróżnione w trybie obok siebie lub w trybie nakładki." },
-      { step: 3, title: "Eksportuj wyniki", description: "Pobierz raport porównawczy lub plik PDF z adnotacjami." },
+      { step: 2, title: "Porównaj PDF", description: "Wyświetlaj strony obok siebie, przechodź między parami stron i filtruj wyróżnione zmiany." },
+      { step: 3, title: "Zaznacz filtry", description: "Zmiany tekstu · Zmiany czcionki · Nagłówki i stopki · Przeniesiony tekst" },
     ],
     useCases: [
       { title: "Przegląd umowy", description: "Porównaj wersje umów, aby zidentyfikować zmiany.", icon: 'file-text' },
@@ -1674,9 +1674,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { title: "Zapewnienie jakości", description: "Sprawdź, czy wprowadzono wyłącznie zamierzone zmiany.", icon: 'check-circle' },
     ],
     faq: [
-      { question: "Jakie rodzaje różnic są wykrywane?", answer: "Dodawanie, usuwanie, modyfikowanie i zmiany formatowania tekstu." },
-      { question: "Czy mogę porównać zeskanowane dokumenty?", answer: "Zeskanowane dokumenty należy najpierw poddać procesowi OCR w celu porównania tekstu." },
-      { question: "Czy dostępne jest porównanie wizualne?", answer: "Tak, tryb nakładki pokazuje różnice wizualne pomiędzy stronami." },
+      { question: "Jakie rodzaje różnic są wykrywane?", answer: "Zmiany tekstu · Zmiany czcionki · Nagłówki i stopki · Przeniesiony tekst" },
+      { question: "Czy mogę porównać zeskanowane dokumenty?", answer: "Porównuje wyodrębniony tekst i nazwy czcionek. Zeskanowane obrazy i inne zmiany wizualne nie są porównywane." },
+      { question: "Czy dostępne jest porównanie wizualne?", answer: "Wyświetlaj strony obok siebie, przechodź między parami stron i filtruj wyróżnione zmiany. Porównuje wyodrębniony tekst i nazwy czcionek. Zeskanowane obrazy i inne zmiany wizualne nie są porównywane." },
     ],
   },
 
@@ -2737,13 +2737,13 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-deskew-aligner': {
     title: "Automatyczne prostowanie skanów",
-    metaDescription: "Natychmiast wykrywaj i automatycznie koryguj obroty i wyrównania stron na zdjęciach mobilnych lub zeskanowanych arkuszach PDF.",
+    metaDescription: "Wykrywa lokalnie pochylone wiersze i dopasowuje poprawioną treść do oryginalnej strony.",
     keywords: ["prostowanie PDF", "wyrównywanie zeskanowanych stron", "automatyczne obracanie strony PDF", "wyprostuj zeskanowany dokument", "narzędzie do wyrównywania dokumentów"],
-    description: "\n      <p>Narzędzie do wyrównywania skanów PDF pomaga prostować przechylone dokumenty cyfrowe i zdjęcia wykonane telefonem.</p>\n      <p>Dokumenty skanowane na skanerze płaskim lub szybko sfotografowane smartfonem często są lekko obrócone. Przechylone strony wyglądają nieprofesjonalnie, utrudniają czytanie i mogą powodować obcinanie marginesów podczas drukowania.</p>\n      <p>Narzędzie wykorzystuje <strong>algorytmy transformacji Radona i wykrywania linii Hougha</strong> do analizy gradientów i wierszy tekstu w czasie poniżej 20 ms. Precyzyjnie mierzy przechylenie do 0.01 stopnia i obraca obraz strony na poziomie pikseli, przywracając akapitom, umowom i broszurom poprawne wyrównanie geometryczne.</p>\n    ",
+    description: "\n      <p>Wykrywa lokalnie pochylone wiersze i dopasowuje poprawioną treść do oryginalnej strony.</p>\n      <p>Puste strony, niepewne skany i strony z adnotacjami pozostają bez zmian.</p>\n      <p>Wyższe rozdzielczości wymagają więcej czasu. Bardzo duże strony używają niższej rozdzielczości analizy.</p>\n    ",
     howToUse: [
       { step: 1, title: "Prześlij przechylony plik PDF", description: "Prześlij dowolny arkusz PDF zawierający obrócone lub źle wyrównane zeskanowane dokumenty." },
-      { step: 2, title: "Analizuj i poprawiaj", description: "Silnik automatycznie wykrywa kąt pochylenia i wyświetla prowadnice wyrównania. W razie potrzeby zmień kąt ręcznie." },
-      { step: 3, title: "Wyprostuj i pobierz", description: "Kliknij Wykonaj, aby obrócić strony w płynnym przejściu i pobrać wyrównany plik PDF." },
+      { step: 2, title: "Ustawienia wyrównania", description: "Rozdzielczość analizy · Maksymalny kąt korekcji" },
+      { step: 3, title: "Analizuj i wyprostuj", description: "Pobierz · Wyrównany PDF" },
     ],
     useCases: [
       { title: "Archiwizacja paragonów i umów", description: "Wyprostuj szybkie, ręczne skany umów zapisane na urządzeniu mobilnym, zanim zapiszesz je jako formalne cyfrowe archiwa PDF.", icon: 'file-text' },
@@ -2751,9 +2751,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { title: "Ocena pracy domowej ucznia", description: "Popraw zdjęcia zadań domowych zrobione telefonami uczniów, ułatwiając nauczycielom ocenianie.", icon: 'edit-3' },
     ],
     faq: [
-      { question: "Jak wykrywane jest przechylenie dokumentu?", answer: "Prowadzimy szybkie projekcje Hough Line na liniach tekstowych. Ponieważ wydruki formalne mają wyraźne wzory odstępów w poziomie, znalezienie kąta o maksymalnej wariancji izoluje obrót." },
-      { question: "Czy ten proces przytnie krawędzie strony?", answer: "Nie. Silnik oblicza obróconą granicę i rozciąga płótno, korzystając z automatycznego dopełniania, dzięki czemu cały tekst na marginesach pozostaje zachowany w całości bez przycinania." },
-      { question: "Czy obsługuje dokumenty wypełnione diagramami?", answer: "Tak, jeśli istnieje podstawowa struktura wierszy lub ogólnych akapitów, nasze algorytmy mogą dokładnie dopasować się do głównego kąta czytania." },
+      { question: "Jak wykrywane jest przechylenie dokumentu?", answer: "Wykrywa lokalnie pochylone wiersze i dopasowuje poprawioną treść do oryginalnej strony." },
+      { question: "Czy ten proces przytnie krawędzie strony?", answer: "Wykrywa lokalnie pochylone wiersze i dopasowuje poprawioną treść do oryginalnej strony." },
+      { question: "Czy obsługuje dokumenty wypełnione diagramami?", answer: "Puste strony, niepewne skany i strony z adnotacjami pozostają bez zmian." },
     ],
   },
   'pdf-two-column-reflower': {

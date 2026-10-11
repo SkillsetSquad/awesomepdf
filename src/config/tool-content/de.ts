@@ -4,7 +4,6 @@
  */
 
 import { ToolContent } from '@/types/tool';
-import { toolContentEn } from './en';
 
 /**
  * Deutsche Tool-Inhalts-Map
@@ -2862,7 +2861,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       "versionskontrolle pdf",
       "änderungen finden"
     ],
-    "description": "\n      <p>Analysieren Sie zwei Versionen eines Dokuments auf einen Blick. Das Tool markiert Textänderungen, Hinzufügungen und Löschungen farblich, sodass Sie Revisionen sofort prüfen können.</p>\n    ",
+    "description": "\n      <p>Analysieren Sie zwei Versionen eines Dokuments auf einen Blick. Das Tool markiert Textänderungen, Hinzufügungen und Löschungen farblich, sodass Sie Revisionen sofort prüfen können.</p>\n      <p>Zeigen Sie gerenderte Seiten nebeneinander an, wechseln Sie zwischen Seitenpaaren und filtern Sie hervorgehobene Änderungen. Vergleicht extrahierten Text und Schriftnamen. Gescannte Bilder und andere visuelle Änderungen werden nicht verglichen.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -2871,13 +2870,13 @@ export const toolContentDe: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Vergleich starten",
-        "description": "Das Tool analysiert beide Dateien auf Text- und Layout-Differenzen."
+        "title": "PDFs vergleichen",
+        "description": "Zeigen Sie gerenderte Seiten nebeneinander an, wechseln Sie zwischen Seitenpaaren und filtern Sie hervorgehobene Änderungen."
       },
       {
         "step": 3,
-        "title": "Ergebnisse prüfen",
-        "description": "Betrachten Sie die Highlights direkt im Browser oder laden Sie einen Bericht herunter."
+        "title": "Hervorhebungsfilter",
+        "description": "Textänderungen · Schriftänderungen · Kopf- und Fußzeilen · Verschobener Text"
       }
     ],
     "useCases": [
@@ -2900,15 +2899,15 @@ export const toolContentDe: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "Was wird erkannt?",
-        "answer": "Textänderungen, gelöschte Abschnitte und oft auch verschobene Bilder."
+        "answer": "Textänderungen · Schriftänderungen · Kopf- und Fußzeilen · Verschobener Text"
       },
       {
         "question": "Geht das auch bei Scans?",
-        "answer": "Dafür müssen die Scans zuerst per OCR lesbar gemacht werden."
+        "answer": "Vergleicht extrahierten Text und Schriftnamen. Gescannte Bilder und andere visuelle Änderungen werden nicht verglichen."
       },
       {
         "question": "Wie werden Unterschiede gezeigt?",
-        "answer": "Meist durch farbige Unterlegungen (Rot für gelöscht, Grün für neu)."
+        "answer": "Zeigen Sie gerenderte Seiten nebeneinander an, wechseln Sie zwischen Seitenpaaren und filtern Sie hervorgehobene Änderungen. Vergleicht extrahierten Text und Schriftnamen. Gescannte Bilder und andere visuelle Änderungen werden nicht verglichen."
       }
     ]
   },
@@ -5562,14 +5561,14 @@ export const toolContentDe: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "PDF-Scans geraderichten",
-    "metaDescription": "Erkennen Sie Neigungswinkel in gescannten PDFs automatisch und richten Sie schiefe Seiten exakt horizontal aus.",
+    "metaDescription": "Erkennt geneigte Textzeilen lokal und passt korrigierten Inhalt in die Originalseite ein.",
     "keywords": [
       "pdf gerade richten",
       "deskew scan",
       "seite ausrichten",
       "schiefe scans"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>Erkennt geneigte Textzeilen lokal und passt korrigierten Inhalt in die Originalseite ein.</p>\n      <p>Leere Seiten, unklare Scans und Seiten mit Anmerkungen bleiben unverändert.</p>\n      <p>Höhere Auflösungen dauern länger. Sehr große Seiten verwenden eine niedrigere Analyseauflösung.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -5578,13 +5577,13 @@ export const toolContentDe: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "Scan-Ausrichtung",
+        "description": "Analyseauflösung · Maximaler Korrekturwinkel"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "Analysieren und begradigen",
+        "description": "Herunterladen · Ausgerichtetes PDF"
       }
     ],
     "useCases": [
@@ -5607,15 +5606,15 @@ export const toolContentDe: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "Erkennt geneigte Textzeilen lokal und passt korrigierten Inhalt in die Originalseite ein."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "Erkennt geneigte Textzeilen lokal und passt korrigierten Inhalt in die Originalseite ein."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "Leere Seiten, unklare Scans und Seiten mit Anmerkungen bleiben unverändert."
       }
     ]
   },

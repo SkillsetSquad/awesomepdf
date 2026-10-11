@@ -5,7 +5,6 @@
  */
 
 import { ToolContent } from '@/types/tool';
-import { toolContentEn } from './en';
 
 /**
  * Carte du contenu des outils en français
@@ -3309,7 +3308,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       "comparaison documents",
       "comparaison versions"
     ],
-    "description": "\n      <p>Comparer des PDF analyse deux documents PDF et met en évidence les différences entre eux. Parfait pour réviser les versions de documents, vérifier les modifications de contrats ou vérifier les éditions.</p>\n      <p>Visualisez les documents côte à côte ou en mode superposition avec les différences mises en évidence. L'outil identifie les changements de texte, les ajouts et les suppressions.</p>\n      <p>Toute la comparaison se produit dans votre navigateur, garantissant que vos documents restent privés.</p>\n    ",
+    "description": "\n      <p>Comparer des PDF analyse deux documents PDF et met en évidence les différences entre eux. Parfait pour réviser les versions de documents, vérifier les modifications de contrats ou vérifier les éditions.</p>\n      <p>Affichez les pages côte à côte, parcourez les paires de pages et filtrez les changements surlignés. Compare le texte extrait et les noms des polices. Les images numérisées et les autres changements visuels ne sont pas comparés.</p>\n      <p>Toute la comparaison se produit dans votre navigateur, garantissant que vos documents restent privés.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -3318,13 +3317,13 @@ export const toolContentFr: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Comparez les documents",
-        "description": "Visualisez les différences mises en évidence en mode côte à côte ou superposition."
+        "title": "Comparer les PDF",
+        "description": "Affichez les pages côte à côte, parcourez les paires de pages et filtrez les changements surlignés."
       },
       {
         "step": 3,
-        "title": "Exportez les résultats",
-        "description": "Téléchargez un rapport de comparaison ou un PDF annoté."
+        "title": "Filtres de surbrillance",
+        "description": "Modifications de texte · Changements de police · En-têtes et pieds de page · Texte déplacé"
       }
     ],
     "useCases": [
@@ -3347,15 +3346,15 @@ export const toolContentFr: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "Quels types de différences sont détectés ?",
-        "answer": "Ajouts de texte, suppressions, modifications et changements de formatage."
+        "answer": "Modifications de texte · Changements de police · En-têtes et pieds de page · Texte déplacé"
       },
       {
         "question": "Puis-je comparer des documents numérisés ?",
-        "answer": "Les documents numérisés doivent d'abord être traités par OCR pour la comparaison de texte."
+        "answer": "Compare le texte extrait et les noms des polices. Les images numérisées et les autres changements visuels ne sont pas comparés."
       },
       {
         "question": "La comparaison visuelle est-elle disponible ?",
-        "answer": "Oui, le mode superposition montre les différences visuelles entre les pages."
+        "answer": "Affichez les pages côte à côte, parcourez les paires de pages et filtrez les changements surlignés. Compare le texte extrait et les noms des polices. Les images numérisées et les autres changements visuels ne sont pas comparés."
       }
     ]
   },
@@ -6163,13 +6162,13 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "Redresser un scan penché",
-    "metaDescription": "Détectez automatiquement l'angle d'inclinaison des pages scannées et redressez-les pour un alignement horizontal parfait.",
+    "metaDescription": "Détecte localement les lignes inclinées et ajuste le contenu corrigé à la page originale.",
     "keywords": [
       "redresser pdf scan",
       "corriger inclinaison",
       "alignement horizontal"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>Détecte localement les lignes inclinées et ajuste le contenu corrigé à la page originale.</p>\n      <p>Les pages vides, les scans incertains et les pages avec annotations restent inchangés.</p>\n      <p>Les résolutions élevées prennent plus de temps. Les très grandes pages utilisent une résolution d’analyse réduite.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -6178,13 +6177,13 @@ export const toolContentFr: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "Réglages de l’alignement",
+        "description": "Résolution d’analyse · Angle maximal de correction"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "Analyser et redresser",
+        "description": "Télécharger · PDF aligné"
       }
     ],
     "useCases": [
@@ -6207,15 +6206,15 @@ export const toolContentFr: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "Détecte localement les lignes inclinées et ajuste le contenu corrigé à la page originale."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "Détecte localement les lignes inclinées et ajuste le contenu corrigé à la page originale."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "Les pages vides, les scans incertains et les pages avec annotations restent inchangés."
       }
     ]
   },

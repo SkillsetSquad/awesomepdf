@@ -1849,15 +1849,11 @@ export const toolContentId: Record<string, ToolContent> = {
     title: 'Bandingkan PDF',
     metaDescription: 'Bandingkan dua dokumen PDF. Sorot perbedaan antara beberapa versi.',
     keywords: ['bandingkan pdf', 'pdf diff', 'perbandingan dokumen', 'perbandingan versi'],
-    description: `
-      <p>Bandingkan PDF akan menganalisis dua dokumen PDF dan menyorot perbedaan yang ada di antara keduanya. Sempurna untuk meninjau revisi dokumen, memeriksa perubahan kontrak, atau memverifikasi pengeditan.</p>
-      <p>Lihat dokumen secara berdampingan atau dalam mode tumpang tindih (overlay) dengan setiap perbedaannya disorot. Alat ini akan mengidentifikasi perubahan teks, penambahan, maupun penghapusan.</p>
-      <p>Semua perbandingan terjadi di browser Anda, memastikan dokumen Anda tetap privat.</p>
-    `,
+    description: "\n      <p>Bandingkan PDF akan menganalisis dua dokumen PDF dan menyorot perbedaan yang ada di antara keduanya. Sempurna untuk meninjau revisi dokumen, memeriksa perubahan kontrak, atau memverifikasi pengeditan.</p>\n      <p>Lihat halaman berdampingan, berpindah antar pasangan halaman, dan saring perubahan yang disorot. Membandingkan teks yang diekstrak dan nama font. Gambar pindaian dan perubahan visual lain tidak dibandingkan.</p>\n      <p>Semua perbandingan terjadi di browser Anda, memastikan dokumen Anda tetap privat.</p>\n    ",
     howToUse: [
       { step: 1, title: 'Unggah Dua PDF', description: 'Unggah dokumen PDF versi asli dan versi yang dimodifikasi.' },
-      { step: 2, title: 'Bandingkan Dokumen', description: 'Lihat perbedaannya yang disorot dalam mode berdampingan (side-by-side) atau tumpang tindih (overlay).' },
-      { step: 3, title: 'Ekspor Hasil', description: 'Unduh laporan perbandingan atau PDF yang telah dianotasi.' },
+      { step: 2, title: "Bandingkan PDF", description: "Lihat halaman berdampingan, berpindah antar pasangan halaman, dan saring perubahan yang disorot." },
+      { step: 3, title: "Filter Sorotan", description: "Perubahan Teks · Perubahan font · Header dan footer · Teks yang dipindahkan" },
     ],
     useCases: [
       { title: 'Tinjauan Kontrak', description: 'Bandingkan berbagai versi kontrak untuk mengidentifikasi perubahan yang ada.', icon: 'file-text' },
@@ -1865,9 +1861,9 @@ export const toolContentId: Record<string, ToolContent> = {
       { title: 'Jaminan Kualitas', description: 'Pastikan bahwa hanya perubahan yang diinginkan saja yang telah dilakukan.', icon: 'check-circle' },
     ],
     faq: [
-      { question: 'Jenis perbedaan apa saja yang dapat dideteksi?', answer: 'Penambahan, penghapusan, modifikasi teks, serta perubahan format.' },
-      { question: 'Bisakah saya membandingkan dokumen hasil pindaian?', answer: 'Dokumen pindaian harus diproses menggunakan OCR terlebih dahulu agar teksnya bisa dibandingkan.' },
-      { question: 'Apakah perbandingan visual (gambar) juga tersedia?', answer: 'Ya, mode overlay (tumpang tindih) akan menunjukkan perbedaan visual antar halamannya.' },
+      { question: 'Jenis perbedaan apa saja yang dapat dideteksi?', answer: "Perubahan Teks · Perubahan font · Header dan footer · Teks yang dipindahkan" },
+      { question: 'Bisakah saya membandingkan dokumen hasil pindaian?', answer: "Membandingkan teks yang diekstrak dan nama font. Gambar pindaian dan perubahan visual lain tidak dibandingkan." },
+      { question: 'Apakah perbandingan visual (gambar) juga tersedia?', answer: "Lihat halaman berdampingan, berpindah antar pasangan halaman, dan saring perubahan yang disorot. Membandingkan teks yang diekstrak dan nama font. Gambar pindaian dan perubahan visual lain tidak dibandingkan." },
     ],
   },
 
@@ -2947,9 +2943,9 @@ export const toolContentId: Record<string, ToolContent> = {
 
   'pdf-deskew-aligner': {
     title: 'Koreksi Kemiringan Scan',
-    metaDescription: 'Deteksi otomatis sudut kemiringan pada PDF hasil scan atau foto dan luruskan halamannya ke posisi horizontal sempurna.',
+    metaDescription: "Deteksi garis teks miring secara lokal dan sesuaikan konten yang dikoreksi di dalam halaman asli.",
     keywords: ["luruskan scan pdf","koreksi miring dokumen","deskew otomatis"],
-    description: toolContentEn['pdf-deskew-aligner'].description,
+    description: "\n      <p>Deteksi garis teks miring secara lokal dan sesuaikan konten yang dikoreksi di dalam halaman asli.</p>\n      <p>Halaman kosong, pindaian yang tidak jelas, dan halaman beranotasi tetap tidak berubah.</p>\n      <p>Resolusi lebih tinggi membutuhkan waktu lebih lama. Halaman sangat besar memakai resolusi analisis lebih rendah.</p>\n    ",
     howToUse: toolContentEn['pdf-deskew-aligner'].howToUse,
     useCases: toolContentEn['pdf-deskew-aligner'].useCases,
     faq: toolContentEn['pdf-deskew-aligner'].faq,

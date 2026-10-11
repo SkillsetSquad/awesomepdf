@@ -4,7 +4,6 @@
  */
 
 import { ToolContent } from '@/types/tool';
-import { toolContentEn } from './en';
 
 /**
  * Arabic tool content map
@@ -4185,7 +4184,7 @@ export const toolContentAr: Record<string, ToolContent> = {
       "مقارنة المستندات",
       "مقارنة الإصدارات"
     ],
-    "description": "\n      <p>تحلل هذه الأداة مستندين من نوع PDF وتبرز الاختلافات بينهما. مثالية لمراجعة مراجعات المستندات، أو التحقق من تغييرات العقود، أو التأكد من التعديلات.</p>\n      <p>اعرض المستندات جنباً إلى جنب أو في وضع التراكب (Overlay) مع إبراز الاختلافات. تحدد الأداة التغييرات في النص، والإضافات، والحذف.</p>\n      <p>تتم عملية المقارنة في متصفحك لضمان خصوصية مستنداتك.</p>\n    ",
+    "description": "\n      <p>تحلل هذه الأداة مستندين من نوع PDF وتبرز الاختلافات بينهما. مثالية لمراجعة مراجعات المستندات، أو التحقق من تغييرات العقود، أو التأكد من التعديلات.</p>\n      <p>اعرض الصفحات جنبًا إلى جنب، وتنقل بين أزواج الصفحات، وصفِّ التغييرات المميزة. يقارن النص المستخرج وأسماء الخطوط. لا تتم مقارنة الصور الممسوحة ضوئيًا أو التغييرات المرئية الأخرى.</p>\n      <p>تتم عملية المقارنة في متصفحك لضمان خصوصية مستنداتك.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -4194,13 +4193,13 @@ export const toolContentAr: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "مقارنة المستندات",
-        "description": "شاهد الاختلافات مبرزة في وضع الجنباً إلى جنب أو التراكب."
+        "title": "مقارنة ملفات PDF",
+        "description": "اعرض الصفحات جنبًا إلى جنب، وتنقل بين أزواج الصفحات، وصفِّ التغييرات المميزة."
       },
       {
         "step": 3,
-        "title": "تصدير النتائج",
-        "description": "حمل تقرير مقارنة أو ملف PDF معلم بالاختلافات."
+        "title": "فلتر التمييز",
+        "description": "تغييرات النص · تغييرات الخط · الرؤوس والتذييلات · النص المنقول"
       }
     ],
     "useCases": [
@@ -4223,15 +4222,15 @@ export const toolContentAr: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "ما هي أنواع الاختلافات المكتشفة؟",
-        "answer": "إضافات النصوص، الحذف، التعديلات، وتغييرات التنسيق."
+        "answer": "تغييرات النص · تغييرات الخط · الرؤوس والتذييلات · النص المنقول"
       },
       {
         "question": "هل يمكنني مقارنة المستندات الممسوحة ضوئياً؟",
-        "answer": "يجب معالجة المستندات الممسوحة بتقنية OCR أولاً للمقارنة النصية."
+        "answer": "يقارن النص المستخرج وأسماء الخطوط. لا تتم مقارنة الصور الممسوحة ضوئيًا أو التغييرات المرئية الأخرى."
       },
       {
         "question": "هل المقارنة البصرية متاحة؟",
-        "answer": "نعم، يظهر وضع التراكب الاختلافات البصرية بين الصفحات."
+        "answer": "اعرض الصفحات جنبًا إلى جنب، وتنقل بين أزواج الصفحات، وصفِّ التغييرات المميزة. يقارن النص المستخرج وأسماء الخطوط. لا تتم مقارنة الصور الممسوحة ضوئيًا أو التغييرات المرئية الأخرى."
       }
     ]
   },
@@ -7136,13 +7135,13 @@ export const toolContentAr: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "ضبط انحراف المسح تلقائياً",
-    "metaDescription": "اكتشاف زاوية انحراف مستندات PDF الممسوحة ضوئيًا أو المصورة وتعديلها في وضع أفقي مستقيم تمامًا.",
+    "metaDescription": "اكتشف ميل خطوط الحبر محليًا واحتوِ المحتوى المصحح داخل الصفحة الأصلية.",
     "keywords": [
       "تعديل ميلان pdf",
       "محاذاة الصفحات المائلة",
       "ضبط انحراف سري"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>اكتشف ميل خطوط الحبر محليًا واحتوِ المحتوى المصحح داخل الصفحة الأصلية.</p>\n      <p>تبقى الصفحات الفارغة وعمليات المسح غير الواضحة والصفحات ذات التعليقات التوضيحية دون تغيير.</p>\n      <p>تستغرق الدقة الأعلى وقتًا أطول. تستخدم الصفحات الكبيرة جدًا دقة تحليل أقل.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -7151,13 +7150,13 @@ export const toolContentAr: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "إعدادات محاذاة المسح",
+        "description": "دقة التحليل · أقصى زاوية تصحيح"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "تحليل وتقويم",
+        "description": "تنزيل · ملف PDF المحاذى"
       }
     ],
     "useCases": [
@@ -7180,15 +7179,15 @@ export const toolContentAr: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "اكتشف ميل خطوط الحبر محليًا واحتوِ المحتوى المصحح داخل الصفحة الأصلية."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "اكتشف ميل خطوط الحبر محليًا واحتوِ المحتوى المصحح داخل الصفحة الأصلية."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "تبقى الصفحات الفارغة وعمليات المسح غير الواضحة والصفحات ذات التعليقات التوضيحية دون تغيير."
       }
     ]
   },

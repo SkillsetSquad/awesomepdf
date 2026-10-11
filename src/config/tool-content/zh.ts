@@ -1927,15 +1927,11 @@ export const toolContentZh: Record<string, ToolContent> = {
     title: '比较PDF',
     metaDescription: '比较两个PDF文档。高亮显示版本之间的差异。',
     keywords: ['比较pdf', 'pdf差异', '文档比较', '版本比较'],
-    description: `
-      <p>比较PDF分析两个PDF文档并高亮显示它们之间的差异。非常适合审阅文档修订、检查合同更改或验证编辑。</p>
-      <p>以并排或叠加模式查看文档，差异会高亮显示。该工具识别文本更改、添加和删除。</p>
-      <p>所有比较都在您的浏览器中进行，确保您的文档保持私密。</p>
-    `,
+    description: "\n      <p>比较PDF分析两个PDF文档并高亮显示它们之间的差异。非常适合审阅文档修订、检查合同更改或验证编辑。</p>\n      <p>并排查看渲染的页面，切换页面对，并筛选高亮显示的变化。 比较提取的文本和字体名称。不比较扫描图像和其他视觉变化。</p>\n      <p>所有比较都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
     howToUse: [
       { step: 1, title: '上传两个PDF', description: '上传原始和修改后的PDF文档。' },
-      { step: 2, title: '比较文档', description: '以并排或叠加模式查看高亮显示的差异。' },
-      { step: 3, title: '导出结果', description: '下载比较报告或带注释的PDF。' },
+      { step: 2, title: "比较 PDF", description: "并排查看渲染的页面，切换页面对，并筛选高亮显示的变化。" },
+      { step: 3, title: "高亮过滤 (Filter)", description: "文字增删 · 字体变化 · 页眉和页脚 · 移动的文本" },
     ],
     useCases: [
       { title: '合同审阅', description: '比较合同版本以识别更改。', icon: 'file-text' },
@@ -1943,9 +1939,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { title: '质量保证', description: '验证只进行了预期的更改。', icon: 'check-circle' },
     ],
     faq: [
-      { question: '检测哪些类型的差异？', answer: '文本添加、删除、修改和格式更改。' },
-      { question: '可以比较扫描的文档吗？', answer: '扫描的文档应先进行OCR处理以进行文本比较。' },
-      { question: '有视觉比较吗？', answer: '是的，叠加模式显示页面之间的视觉差异。' },
+      { question: '检测哪些类型的差异？', answer: "文字增删 · 字体变化 · 页眉和页脚 · 移动的文本" },
+      { question: '可以比较扫描的文档吗？', answer: "比较提取的文本和字体名称。不比较扫描图像和其他视觉变化。" },
+      { question: '有视觉比较吗？', answer: "并排查看渲染的页面，切换页面对，并筛选高亮显示的变化。 比较提取的文本和字体名称。不比较扫描图像和其他视觉变化。" },
     ],
   },
 
@@ -3284,17 +3280,13 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-deskew-aligner': {
     title: '扫描件自动纠偏',
-    metaDescription: '智能检测手机拍摄或扫描版 PDF 的倾斜角度，物理纠偏并重新水平对齐，恢复完美排版。',
+    metaDescription: "在本地检测倾斜的文字行，并将校正后的内容适配到原始页面内。",
     keywords: ['pdf纠偏', '扫描件对齐', '自动旋转对齐', 'pdf水平校正', '纠正歪斜文档'],
-    description: `
-      <p>扫描件自动纠偏工具是数字化纸质档案和处理手机照片 PDF 的“强迫症终结者”。</p>
-      <p>当您使用手机摄像头快速拍摄合同，或从老旧扫描仪中导出一叠文件时，页面往往会有几度的微小倾斜。这不仅影响屏显阅读体验，在重新打印时更会使版面杂乱无章。</p>
-      <p>本工具采用顶尖的<strong>拉东变换（Radon Transform）与霍夫直线提取算法</strong>。系统在后台以毫秒级对页面图像的投影梯度和边缘直角特征进行扫射，计算出精细到 0.01 度的倾斜角 $\theta$，并在 Canvas 离线沙箱中完成像素级的反向旋转纠偏，瞬间让您的合同、收据和手稿重归完美的水平几何线。</p>
-    `,
+    description: "\n      <p>在本地检测倾斜的文字行，并将校正后的内容适配到原始页面内。</p>\n      <p>空白页、不确定的扫描页以及有注释的页面保持不变。</p>\n      <p>更高分辨率需要更多时间。非常大的页面会使用较低的分析分辨率。</p>\n    ",
     howToUse: [
       { step: 1, title: '上传歪斜的扫描 PDF', description: '拖入手机拍摄倾斜、或扫描仪导出的任意 PDF 文档。' },
-      { step: 2, title: '自动检测与微调', description: '系统将瞬间检测倾斜角度并投射几何网格。您可以一键对齐，也可微调角度。' },
-      { step: 3, title: '执行纠偏并下载', description: '点击执行，页面伴随丝滑物理陀螺仪摆动，下载完美水平对齐的 PDF。' },
+      { step: 2, title: "扫描对齐设置", description: "分析分辨率 · 最大校正角度" },
+      { step: 3, title: "分析并校正", description: "下载 · 对齐后的 PDF" },
     ],
     useCases: [
       { title: '合同及收据归档', description: '将随手用手机拍摄的倾斜合同照片，极速一键拉直归档，复印打印如原件般整洁。', icon: 'file-text' },
@@ -3302,9 +3294,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { title: '考卷及作业扫描', description: '自动校正学生拍摄上传的歪斜作业，大大降低批改时的视觉疲劳。', icon: 'edit-3' },
     ],
     faq: [
-      { question: '“拉东变换检测”的原理是什么？', answer: '它通过对页面进行多角度的积分投影，寻找投影方差最大的那个特定角度。由于印刷排版在水平方向上的文字行具有极强的梯度，这个最大方差角就是精准的倾斜角。' },
-      { question: '校正后会裁剪掉页面边缘的内容吗？', answer: '算法采用“自适应外接圆扩展”机制。旋转后会自动略微扩大画布尺寸并进行智能白边补全，绝对不会裁剪或丢失任何原本的文字或图片边缘信息。' },
-      { question: '支持带有复杂图表的页面吗？', answer: '支持。只要页面上有规整的横向文字行或明显的边界线，算法就能高精度提取水平基线，完美进行倾斜校正。' },
+      { question: '“拉东变换检测”的原理是什么？', answer: "在本地检测倾斜的文字行，并将校正后的内容适配到原始页面内。" },
+      { question: '校正后会裁剪掉页面边缘的内容吗？', answer: "在本地检测倾斜的文字行，并将校正后的内容适配到原始页面内。" },
+      { question: '支持带有复杂图表的页面吗？', answer: "空白页、不确定的扫描页以及有注释的页面保持不变。" },
     ],
   },
   'pdf-two-column-reflower': {

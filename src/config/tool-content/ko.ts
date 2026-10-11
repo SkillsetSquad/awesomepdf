@@ -5,7 +5,6 @@
  */
 
 import { ToolContent } from '@/types/tool';
-import { toolContentEn } from './en';
 
 /**
  * Korean tool content map
@@ -4648,13 +4647,13 @@ export const toolContentKo: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "스캔 자동 기울기 보정",
-    "metaDescription": "모바일 카메라 촬영이나 스캔 중 삐뚤어진 PDF 페이지들을 지능형 라인 픽셀 분석을 통해 수평 상태로 바로잡습니다.",
+    "metaDescription": "기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다.",
     "keywords": [
       "pdf 수평 보정",
       "스캔 기울기 교정",
       "텍스트 라인 정렬"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다.</p>\n      <p>빈 페이지, 불확실한 스캔 및 주석이 있는 페이지는 변경하지 않습니다.</p>\n      <p>해상도가 높으면 시간이 더 걸립니다. 매우 큰 페이지는 낮은 분석 해상도를 사용합니다.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -4663,13 +4662,13 @@ export const toolContentKo: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "스캔 정렬 설정",
+        "description": "분석 해상도 · 최대 보정 각도"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "분석하고 바로잡기",
+        "description": "다운로드 · 정렬된 PDF"
       }
     ],
     "useCases": [
@@ -4692,15 +4691,15 @@ export const toolContentKo: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "빈 페이지, 불확실한 스캔 및 주석이 있는 페이지는 변경하지 않습니다."
       }
     ]
   },
@@ -6564,7 +6563,7 @@ export const toolContentKo: Record<string, ToolContent> = {
       "문서 비교",
       "버전 비교"
     ],
-    "description": "\n      <p>PDF 비교 도구는 두 개의 PDF 문서를 분석하고 두 문서 사이의 차이점을 강조 표시합니다. 문서 개정본 검토, 계약서 변경 사항 확인 또는 수정 사항 검증에 이상적입니다.</p>\n      <p>문서를 나란히 보거나(Side-by-Side) 오버레이 모드로 보며 차이점을 확인할 수 있습니다. 텍스트 변경, 추가 및 삭제 항목이 감지됩니다.</p>\n      <p>모든 비교 작업은 브라우저 내에서 직접 수행되므로 문서의 보안이 유지됩니다.</p>\n    ",
+    "description": "\n      <p>PDF 비교 도구는 두 개의 PDF 문서를 분석하고 두 문서 사이의 차이점을 강조 표시합니다. 문서 개정본 검토, 계약서 변경 사항 확인 또는 수정 사항 검증에 이상적입니다.</p>\n      <p>렌더링된 페이지를 나란히 보고 페이지 쌍 사이를 이동하며 강조된 변경을 필터링하세요. 추출된 텍스트와 글꼴 이름을 비교합니다. 스캔 이미지 및 기타 시각적 변경은 비교하지 않습니다.</p>\n      <p>모든 비교 작업은 브라우저 내에서 직접 수행되므로 문서의 보안이 유지됩니다.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -6573,13 +6572,13 @@ export const toolContentKo: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "문서 비교",
-        "description": "나란히 보기 또는 오버레이 모드에서 강조 표시된 차이점을 확인합니다."
+        "title": "PDF 비교",
+        "description": "렌더링된 페이지를 나란히 보고 페이지 쌍 사이를 이동하며 강조된 변경을 필터링하세요."
       },
       {
         "step": 3,
-        "title": "결과 내보내기",
-        "description": "비교 보고서나 주석이 추가된 PDF를 다운로드합니다."
+        "title": "강조 필터",
+        "description": "텍스트 변경 사항 · 글꼴 변경 · 머리글과 바닥글 · 이동한 텍스트"
       }
     ],
     "useCases": [
@@ -6602,15 +6601,15 @@ export const toolContentKo: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "어떤 종류의 차이점이 감지되나요?",
-        "answer": "텍스트 추가, 삭제, 수정 및 서식 변경이 감지됩니다."
+        "answer": "텍스트 변경 사항 · 글꼴 변경 · 머리글과 바닥글 · 이동한 텍스트"
       },
       {
         "question": "스캔된 문서도 비교할 수 있나요?",
-        "answer": "텍스트 비교를 위해서는 스캔된 문서에 먼저 OCR 처리를 적용해야 합니다."
+        "answer": "추출된 텍스트와 글꼴 이름을 비교합니다. 스캔 이미지 및 기타 시각적 변경은 비교하지 않습니다."
       },
       {
         "question": "시각적 비교도 가능한가요?",
-        "answer": "네, 오버레이 모드를 통해 페이지 간의 시각적인 차이를 볼 수 있습니다."
+        "answer": "렌더링된 페이지를 나란히 보고 페이지 쌍 사이를 이동하며 강조된 변경을 필터링하세요. 추출된 텍스트와 글꼴 이름을 비교합니다. 스캔 이미지 및 기타 시각적 변경은 비교하지 않습니다."
       }
     ]
   },

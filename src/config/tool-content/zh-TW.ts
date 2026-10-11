@@ -1823,15 +1823,11 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     title: '比較PDF',
     metaDescription: '比較兩個PDF文檔。高亮顯示版本之間的差異。',
     keywords: ['比較pdf', 'pdf差異', '文檔比較', '版本比較'],
-    description: `
-      <p>比較PDF分析兩個PDF文檔並高亮顯示它們之間的差異。非常適合審閱文檔修訂、檢查合同更改或驗證編輯。</p>
-      <p>以並排或疊加模式查看文檔，差異會高亮顯示。該工具識別文本更改、新增和刪除。</p>
-      <p>所有比較都在您的瀏覽器中進行，確保您的文檔保持隱私。</p>
-    `,
+    description: "\n      <p>比較PDF分析兩個PDF文檔並高亮顯示它們之間的差異。非常適合審閱文檔修訂、檢查合同更改或驗證編輯。</p>\n      <p>並排查看算繪的頁面，切換頁面對，並篩選反白顯示的變更。 比較擷取的文字和字型名稱。不比較掃描影像和其他視覺變更。</p>\n      <p>所有比較都在您的瀏覽器中進行，確保您的文檔保持隱私。</p>\n    ",
     howToUse: [
       { step: 1, title: '上傳兩個PDF', description: '上傳原始和修改後的PDF文檔。' },
-      { step: 2, title: '比較文檔', description: '以並排或疊加模式查看高亮顯示的差異。' },
-      { step: 3, title: '導出結果', description: '下載比較報告或帶注釋的PDF。' },
+      { step: 2, title: "比較 PDF", description: "並排查看算繪的頁面，切換頁面對，並篩選反白顯示的變更。" },
+      { step: 3, title: "高亮過濾項", description: "文本內容變更 · 字型變更 · 頁首和頁尾 · 移動的文字" },
     ],
     useCases: [
       { title: '合同審閱', description: '比較合同版本以識別更改。', icon: 'file-text' },
@@ -1839,9 +1835,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { title: '品質保證', description: '驗證只進行了預期的更改。', icon: 'check-circle' },
     ],
     faq: [
-      { question: '檢測哪些類型的差異？', answer: '文本新增、刪除、修改和格式更改。' },
-      { question: '可以比較掃描的文檔嗎？', answer: '掃描的文檔應先進行OCR處理以進行文本比較。' },
-      { question: '有視覺比較嗎？', answer: '是的，疊加模式顯示頁面之間的視覺差異。' },
+      { question: '檢測哪些類型的差異？', answer: "文本內容變更 · 字型變更 · 頁首和頁尾 · 移動的文字" },
+      { question: '可以比較掃描的文檔嗎？', answer: "比較擷取的文字和字型名稱。不比較掃描影像和其他視覺變更。" },
+      { question: '有視覺比較嗎？', answer: "並排查看算繪的頁面，切換頁面對，並篩選反白顯示的變更。 比較擷取的文字和字型名稱。不比較掃描影像和其他視覺變更。" },
     ],
   },
 
@@ -3008,9 +3004,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
 
   'pdf-deskew-aligner': {
     title: '掃描件自動糾偏',
-    metaDescription: '智能檢測手機拍攝或掃描版 PDF 的傾斜角度，物理糾偏並重新水平對齊，恢復完美排版。',
+    metaDescription: "在本機偵測傾斜的文字行，並將校正後的內容適配到原始頁面內。",
     keywords: ["pdf 傾斜校正","掃描糾偏","水平對齊","自動糾偏"],
-    description: toolContentEn['pdf-deskew-aligner'].description,
+    description: "\n      <p>在本機偵測傾斜的文字行，並將校正後的內容適配到原始頁面內。</p>\n      <p>空白頁、不確定的掃描頁以及有註解的頁面保持不變。</p>\n      <p>較高解析度需要更多時間。非常大的頁面會使用較低的分析解析度。</p>\n    ",
     howToUse: toolContentEn['pdf-deskew-aligner'].howToUse,
     useCases: toolContentEn['pdf-deskew-aligner'].useCases,
     faq: toolContentEn['pdf-deskew-aligner'].faq,

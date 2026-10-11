@@ -1,4 +1,3 @@
-import { toolContentEn } from './en';
 /**
  * Vietnamese Tool Content
  * Requirements: 3.1 - Multi-language support
@@ -4229,7 +4228,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       "so sánh tài liệu",
       "so sánh phiên bản"
     ],
-    "description": "\n      <p>So sánh PDF phân tích hai tài liệu PDF và làm nổi bật sự khác biệt giữa chúng. Hoàn hảo để xem xét sửa đổi tài liệu, kiểm tra thay đổi hợp đồng hoặc xác minh chỉnh sửa.</p>\n      <p>Xem tài liệu cạnh nhau hoặc chế độ chồng lên với sự khác biệt được làm nổi bật. Công cụ xác định thay đổi văn bản, bổ sung và xóa.</p>\n      <p>Tất cả so sánh diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n    ",
+    "description": "\n      <p>So sánh PDF phân tích hai tài liệu PDF và làm nổi bật sự khác biệt giữa chúng. Hoàn hảo để xem xét sửa đổi tài liệu, kiểm tra thay đổi hợp đồng hoặc xác minh chỉnh sửa.</p>\n      <p>Xem các trang cạnh nhau, chuyển giữa các cặp trang và lọc những thay đổi được tô sáng. So sánh văn bản trích xuất và tên phông chữ. Không so sánh ảnh quét hoặc các thay đổi trực quan khác.</p>\n      <p>Tất cả so sánh diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -4238,13 +4237,13 @@ export const toolContentVn: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "So sánh tài liệu",
-        "description": "Xem sự khác biệt được làm nổi bật ở chế độ cạnh nhau hoặc chồng lên."
+        "title": "So sánh PDF",
+        "description": "Xem các trang cạnh nhau, chuyển giữa các cặp trang và lọc những thay đổi được tô sáng."
       },
       {
         "step": 3,
-        "title": "Xuất kết quả",
-        "description": "Tải xuống báo cáo so sánh hoặc PDF có chú thích."
+        "title": "Bộ lọc làm nổi bật",
+        "description": "Thay đổi văn bản · Thay đổi phông chữ · Đầu trang và chân trang · Văn bản đã di chuyển"
       }
     ],
     "useCases": [
@@ -4267,15 +4266,15 @@ export const toolContentVn: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "Loại sự khác biệt nào được phát hiện?",
-        "answer": "Bổ sung văn bản, xóa, sửa đổi và thay đổi định dạng."
+        "answer": "Thay đổi văn bản · Thay đổi phông chữ · Đầu trang và chân trang · Văn bản đã di chuyển"
       },
       {
         "question": "Tôi có thể so sánh tài liệu đã quét không?",
-        "answer": "Tài liệu đã quét nên được xử lý OCR trước để so sánh văn bản."
+        "answer": "So sánh văn bản trích xuất và tên phông chữ. Không so sánh ảnh quét hoặc các thay đổi trực quan khác."
       },
       {
         "question": "So sánh trực quan có sẵn không?",
-        "answer": "Có, chế độ chồng lên hiển thị sự khác biệt trực quan giữa các trang."
+        "answer": "Xem các trang cạnh nhau, chuyển giữa các cặp trang và lọc những thay đổi được tô sáng. So sánh văn bản trích xuất và tên phông chữ. Không so sánh ảnh quét hoặc các thay đổi trực quan khác."
       }
     ]
   },
@@ -7081,13 +7080,13 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "Tự động thẳng trang quét",
-    "metaDescription": "Tự động phát hiện góc nghiêng trong tài liệu quét hoặc ảnh chụp PDF, xoay chỉnh về hướng thẳng ngang hoàn hảo.",
+    "metaDescription": "Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc.",
     "keywords": [
       "chỉnh thẳng trang pdf",
       "sửa nghiêng tài liệu quét",
       "căn thẳng lề"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc.</p>\n      <p>Trang trống, bản quét không rõ và trang có chú thích được giữ nguyên.</p>\n      <p>Độ phân giải cao hơn mất nhiều thời gian hơn. Trang rất lớn dùng độ phân giải phân tích thấp hơn.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -7096,13 +7095,13 @@ export const toolContentVn: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "Cài đặt căn chỉnh bản quét",
+        "description": "Độ phân giải phân tích · Góc chỉnh tối đa"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "Phân tích và làm thẳng",
+        "description": "Tải xuống · PDF đã căn chỉnh"
       }
     ],
     "useCases": [
@@ -7125,15 +7124,15 @@ export const toolContentVn: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc."
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc."
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "Trang trống, bản quét không rõ và trang có chú thích được giữ nguyên."
       }
     ]
   },

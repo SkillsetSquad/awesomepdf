@@ -5,7 +5,6 @@
  */
 
 import { ToolContent } from '@/types/tool';
-import { toolContentEn } from './en';
 
 /**
  * Japanese tool content map
@@ -3242,7 +3241,7 @@ export const toolContentJa: Record<string, ToolContent> = {
       "ドキュメント比較",
       "バージョン比較"
     ],
-    "description": "<p>2つのPDFドキュメントを分析し、それらの間の違いをハイライトします。ドキュメントの改訂をレビューしたり、契約の変更を確認したり、編集を検証したりするのに最適です。</p>",
+    "description": "<p>2つのPDFドキュメントを分析し、それらの間の違いをハイライトします。ドキュメントの改訂をレビューしたり、契約の変更を確認したり、編集を検証したりするのに最適です。</p>\n      <p>描画されたページを並べて表示し、ページの組を切り替えて、強調表示する変更を絞り込みます。 抽出したテキストとフォント名を比較します。スキャン画像やその他の見た目の変更は比較しません。</p>",
     "howToUse": [
       {
         "step": 1,
@@ -3251,13 +3250,13 @@ export const toolContentJa: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "ドキュメントを比較",
-        "description": "並べて表示またはオーバーレイモードでハイライトされた違いを確認します。"
+        "title": "PDFを比較",
+        "description": "描画されたページを並べて表示し、ページの組を切り替えて、強調表示する変更を絞り込みます。"
       },
       {
         "step": 3,
-        "title": "結果をエクスポート",
-        "description": "比較レポートまたは注釈付きPDFをダウンロードします。"
+        "title": "ハイライトフィルター",
+        "description": "テキストの変更 · フォントの変更 · ヘッダーとフッター · 移動したテキスト"
       }
     ],
     "useCases": [
@@ -3280,15 +3279,15 @@ export const toolContentJa: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "どのタイプの違いが検出されますか？",
-        "answer": "テキストの追加、削除、変更、およびフォーマットの変更。"
+        "answer": "テキストの変更 · フォントの変更 · ヘッダーとフッター · 移動したテキスト"
       },
       {
         "question": "スキャンしたドキュメントを比較できますか？",
-        "answer": "スキャンしたドキュメントはテキスト比較のために最初にOCR処理する必要があります。"
+        "answer": "抽出したテキストとフォント名を比較します。スキャン画像やその他の見た目の変更は比較しません。"
       },
       {
         "question": "ビジュアル比較は利用可能ですか？",
-        "answer": "はい、オーバーレイモードはページ間のビジュアルの違いを表示します。"
+        "answer": "描画されたページを並べて表示し、ページの組を切り替えて、強調表示する変更を絞り込みます。 抽出したテキストとフォント名を比較します。スキャン画像やその他の見た目の変更は比較しません。"
       }
     ]
   },
@@ -6941,14 +6940,14 @@ export const toolContentJa: Record<string, ToolContent> = {
   },
   "pdf-deskew-aligner": {
     "title": "スキャン自動傾き補正",
-    "metaDescription": "スキャナーやスマホカメラで傾いて入力されたPDFを高度な画像解析で角度検出し、自動で真っ直ぐに水平補正します。",
+    "metaDescription": "傾いた文字の行をローカルで検出し、補正した内容を元のページ内に収めます。",
     "keywords": [
       "pdf 傾き補正",
       "スキャン歪み",
       "水平対向",
       "自動デスキュー"
     ],
-    "description": "\n      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>\n      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>\n      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>\n    ",
+    "description": "\n      <p>傾いた文字の行をローカルで検出し、補正した内容を元のページ内に収めます。</p>\n      <p>空白ページ、不確かなスキャン、注釈のあるページは変更しません。</p>\n      <p>高解像度ほど時間がかかります。非常に大きいページは解析解像度を下げます。</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -6957,13 +6956,13 @@ export const toolContentJa: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Analyze and tweak",
-        "description": "The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed."
+        "title": "スキャン整列設定",
+        "description": "解析解像度 · 最大補正角度"
       },
       {
         "step": 3,
-        "title": "Straighten & download",
-        "description": "Click execute to swing pages through a smooth gyroscope transition and download aligned PDF."
+        "title": "解析して傾きを補正",
+        "description": "ダウンロード · 整列したPDF"
       }
     ],
     "useCases": [
@@ -6986,15 +6985,15 @@ export const toolContentJa: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "How is document skew detected?",
-        "answer": "We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation."
+        "answer": "傾いた文字の行をローカルで検出し、補正した内容を元のページ内に収めます。"
       },
       {
         "question": "Will this process crop away page edges?",
-        "answer": "No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping."
+        "answer": "傾いた文字の行をローカルで検出し、補正した内容を元のページ内に収めます。"
       },
       {
         "question": "Does it support documents filled with diagrams?",
-        "answer": "Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle."
+        "answer": "空白ページ、不確かなスキャン、注釈のあるページは変更しません。"
       }
     ]
   },

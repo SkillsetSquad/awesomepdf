@@ -1958,15 +1958,11 @@ export const toolContentEn: Record<string, ToolContent> = {
     title: 'Compare PDFs',
     metaDescription: 'Compare two PDF documents. Highlight differences between versions.',
     keywords: ['compare pdfs', 'pdf diff', 'document comparison', 'version comparison'],
-    description: `
-      <p>Compare PDFs analyzes two PDF documents and highlights the differences between them. Perfect for reviewing document revisions, checking contract changes, or verifying edits.</p>
-      <p>View documents side-by-side or in overlay mode with differences highlighted. The tool identifies text changes, additions, and deletions.</p>
-      <p>All comparison happens in your browser, ensuring your documents remain private.</p>
-    `,
+    description: "\n      <p>Compare PDFs analyzes two PDF documents and highlights the differences between them. Perfect for reviewing document revisions, checking contract changes, or verifying edits.</p>\n      <p>View rendered pages side by side, move between page pairs, and filter highlighted changes. Compares extracted text and font names. Scanned images and other visual changes are not compared.</p>\n      <p>All comparison happens in your browser, ensuring your documents remain private.</p>\n    ",
     howToUse: [
       { step: 1, title: 'Upload Two PDFs', description: 'Upload the original and modified PDF documents.' },
-      { step: 2, title: 'Compare Documents', description: 'View differences highlighted in side-by-side or overlay mode.' },
-      { step: 3, title: 'Export Results', description: 'Download a comparison report or annotated PDF.' },
+      { step: 2, title: "Compare PDFs", description: "View rendered pages side by side, move between page pairs, and filter highlighted changes." },
+      { step: 3, title: "Highlight Filters", description: "Text Changes · Font changes · Headers and footers · Moved text" },
     ],
     useCases: [
       { title: 'Contract Review', description: 'Compare contract versions to identify changes.', icon: 'file-text' },
@@ -1974,9 +1970,9 @@ export const toolContentEn: Record<string, ToolContent> = {
       { title: 'Quality Assurance', description: 'Verify that only intended changes were made.', icon: 'check-circle' },
     ],
     faq: [
-      { question: 'What types of differences are detected?', answer: 'Text additions, deletions, modifications, and formatting changes.' },
-      { question: 'Can I compare scanned documents?', answer: 'Scanned documents should be OCR processed first for text comparison.' },
-      { question: 'Is visual comparison available?', answer: 'Yes, overlay mode shows visual differences between pages.' },
+      { question: 'What types of differences are detected?', answer: "Text Changes · Font changes · Headers and footers · Moved text" },
+      { question: 'Can I compare scanned documents?', answer: "Compares extracted text and font names. Scanned images and other visual changes are not compared." },
+      { question: 'Is visual comparison available?', answer: "View rendered pages side by side, move between page pairs, and filter highlighted changes. Compares extracted text and font names. Scanned images and other visual changes are not compared." },
     ],
   },
 
@@ -3230,17 +3226,13 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-deskew-aligner': {
     title: 'Auto Scan Deskew',
-    metaDescription: 'Detect and auto-correct page rotations and alignments on mobile-photo or scanned PDF sheets instantly.',
+    metaDescription: "Detect tilted ink lines locally and fit corrected content inside the original page.",
     keywords: ['pdf deskew', 'scanned page alignment', 'auto rotate pdf page', 'straighten scanned paper', 'document alignment tool'],
-    description: `
-      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>
-      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>
-      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>
-    `,
+    description: "\n      <p>Detect tilted ink lines locally and fit corrected content inside the original page.</p>\n      <p>Blank pages, uncertain scans and pages with annotations stay unchanged.</p>\n      <p>Higher resolutions take longer. Very large pages use a lower analysis resolution.</p>\n    ",
     howToUse: [
       { step: 1, title: 'Provide skew PDF', description: 'Upload any PDF sheet carrying rotated or poorly aligned scanned documents.' },
-      { step: 2, title: 'Analyze and tweak', description: 'The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed.' },
-      { step: 3, title: 'Straighten & download', description: 'Click execute to swing pages through a smooth gyroscope transition and download aligned PDF.' },
+      { step: 2, title: "Scan alignment settings", description: "Analysis resolution · Maximum correction angle" },
+      { step: 3, title: "Analyze and straighten", description: "Download · Aligned PDF" },
     ],
     useCases: [
       { title: 'Receipt & Contract Archiving', description: 'Straighten quick hand-held mobile contract scans before saving them as formal digital PDF archives.', icon: 'file-text' },
@@ -3248,9 +3240,9 @@ export const toolContentEn: Record<string, ToolContent> = {
       { title: 'Student Homework Grading', description: 'Correct homework snapshots taken by student phones, relaxing the eyes of grading teachers.', icon: 'edit-3' },
     ],
     faq: [
-      { question: 'How is document skew detected?', answer: 'We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation.' },
-      { question: 'Will this process crop away page edges?', answer: 'No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping.' },
-      { question: 'Does it support documents filled with diagrams?', answer: 'Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle.' },
+      { question: 'How is document skew detected?', answer: "Detect tilted ink lines locally and fit corrected content inside the original page." },
+      { question: 'Will this process crop away page edges?', answer: "Detect tilted ink lines locally and fit corrected content inside the original page." },
+      { question: 'Does it support documents filled with diagrams?', answer: "Blank pages, uncertain scans and pages with annotations stay unchanged." },
     ],
   },
   'pdf-two-column-reflower': {
