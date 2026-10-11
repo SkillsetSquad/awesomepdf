@@ -48,7 +48,7 @@ describe('replaceExistingText', () => {
       blob: output,
       diagnostics,
     });
-    vi.mocked(loadPyMuPDF).mockResolvedValue({
+    vi.mocked(loadPyMuPDF, { partial: true }).mockResolvedValue({
       replaceExistingText: replaceExistingTextMock,
     });
     const file = new File(['pdf'], 'sample.pdf', { type: 'application/pdf' });
@@ -83,7 +83,7 @@ describe('replaceExistingText', () => {
       blob: output,
       diagnostics,
     });
-    vi.mocked(loadPyMuPDF).mockResolvedValue({
+    vi.mocked(loadPyMuPDF, { partial: true }).mockResolvedValue({
       replaceExistingText: replaceExistingTextMock,
     });
 
@@ -120,7 +120,7 @@ describe('replaceExistingText', () => {
   });
 
   it('reports engine errors without returning a partial PDF', async () => {
-    vi.mocked(loadPyMuPDF).mockResolvedValue({
+    vi.mocked(loadPyMuPDF, { partial: true }).mockResolvedValue({
       replaceExistingText: vi.fn().mockRejectedValue(new Error('WASM failed')),
     });
     const file = new File(['pdf'], 'sample.pdf', { type: 'application/pdf' });

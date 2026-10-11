@@ -1,10 +1,10 @@
+import { createTextPDFFile, readBlobBytes } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   SmartDataRedactorProcessor,
   createSmartDataRedactorProcessor,
   redactSmartData
 } from '@/lib/pdf/processors/smart-data-redactor';
-import { PDFErrorCode } from '@/types/pdf';
 
 vi.mock('@/lib/pdf/loader', () => {
   const mockPdfjs = {
@@ -26,53 +26,17 @@ vi.mock('@/lib/pdf/loader', () => {
     }),
   };
 
-  const mockPage = {
-    getSize: () => ({ width: 600, height: 800 }),
-    drawRectangle: vi.fn(),
-    node: {
-      get: vi.fn().mockReturnValue([{}]),
-    },
-  };
-
-  const mockContentStream = {
-    getUncompressedContents: () => new TextEncoder().encode('(test@example.com) Tj'),
-    setContent: vi.fn(),
-  };
-
-  const mockPdfLib = {
-    PDFName: { of: (n: string) => ({ name: n }) },
-    rgb: (r: number, g: number, b: number) => ({ r, g, b }),
-    PDFStream: class {},
-    PDFDocument: {
-      load: vi.fn().mockImplementation(async () => {
-        return {
-          getPageCount: () => 1,
-          getPage: () => mockPage,
-          context: {
-            lookup: () => Object.create(mockContentStream),
-          },
-          save: vi.fn().mockResolvedValue(new Uint8Array([1, 2, 3])),
-        };
-      }),
-    },
-  };
-
   return {
     loadPdfjs: vi.fn().mockResolvedValue(mockPdfjs),
-    loadPdfLib: vi.fn().mockResolvedValue(mockPdfLib),
+    loadPdfLib: vi.fn(async () => import('pdf-lib')),
   };
 });
 
 describe('SmartDataRedactorProcessor', () => {
   let mockFile: File;
 
-  beforeEach(() => {
-    mockFile = {
-      name: 'secure.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+  beforeEach(async () => {
+    mockFile = await createTextPDFFile('secure.pdf', 'test@example.com');
   });
 
   it('should instantiate correctly', () => {
@@ -87,5 +51,16 @@ describe('SmartDataRedactorProcessor', () => {
     expect(result.success).toBe(true);
     expect(result.filename).toBe('secure_redacted.pdf');
     expect(result.metadata?.redactionsApplied).toBe(1);
+    const { PDFDocument, PDFArray, PDFRawStream, decodePDFRawStream, PDFName } = await import('pdf-lib');
+    const output = await PDFDocument.load(await readBlobBytes(result.result as Blob));
+    const contents = output.context.lookup(output.getPage(0).node.get(PDFName.of('Contents')), PDFArray);
+    const decoded = contents.asArray().map(ref => {
+      const stream = output.context.lookup(ref);
+      expect(stream).toBeInstanceOf(PDFRawStream);
+      if (!(stream instanceof PDFRawStream)) throw new Error('Expected a saved content stream');
+      return new TextDecoder().decode(decodePDFRawStream(stream).decode());
+    }).join('\n');
+    expect(decoded).not.toContain('test@example.com');
+    expect(decoded).toContain('([REDACTED]) Tj');
   });
 });

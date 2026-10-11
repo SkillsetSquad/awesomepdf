@@ -121,7 +121,8 @@ describe('OCRProcessor', () => {
       const origCreateElement = document.createElement.bind(document);
       vi.spyOn(document, 'createElement').mockImplementation((tagName: string) => {
         if (tagName === 'canvas') {
-          return {
+          const canvas = origCreateElement('canvas');
+          return Object.assign(canvas, {
             width: 600,
             height: 800,
             getContext: () => ({
@@ -132,7 +133,7 @@ describe('OCRProcessor', () => {
             toBlob: (cb: (b: Blob) => void) => {
               cb(new Blob([new Uint8Array([0x89, 0x50, 0x4E, 0x47])], { type: 'image/png' }));
             },
-          } as any;
+          });
         }
         return origCreateElement(tagName);
       });
@@ -258,7 +259,7 @@ describe('OCRProcessor', () => {
         options: {
           language: 'chi_sim',
           outputFormat: 'text',
-        } as any,
+        },
       });
 
       expect(result.success).toBe(true);

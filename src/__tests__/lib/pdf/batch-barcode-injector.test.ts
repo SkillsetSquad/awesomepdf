@@ -1,10 +1,10 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   BatchBarcodeInjectorProcessor,
   createBatchBarcodeInjectorProcessor,
   injectBatchBarcodes
 } from '@/lib/pdf/processors/batch-barcode-injector';
-import { PDFErrorCode } from '@/types/pdf';
 
 vi.mock('@/lib/pdf/loader', () => {
   const mockPage = {
@@ -34,12 +34,7 @@ describe('BatchBarcodeInjectorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'invoice.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('invoice.pdf', 100, 'application/pdf');
 
     // Mock HTMLCanvasElement for jsdom
     if (typeof window !== 'undefined' || typeof global !== 'undefined') {

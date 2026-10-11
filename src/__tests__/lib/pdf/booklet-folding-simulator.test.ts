@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   BookletFoldingSimulatorProcessor,
@@ -24,7 +25,7 @@ vi.mock('@/lib/pdf/loader', () => {
         };
       }),
       create: vi.fn().mockImplementation(async () => {
-        const pages: any[] = [];
+        const pages: Array<typeof mockPage> = [];
         return {
           addPage: vi.fn().mockImplementation((size) => {
             const newPage = {
@@ -57,12 +58,7 @@ describe('BookletFoldingSimulatorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'test_book.pdf',
-      size: 500,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(500),
-    } as any;
+    mockFile = createFileFixture('test_book.pdf', 500, 'application/pdf');
   });
 
   it('should instantiate booklet folding processor correctly', () => {

@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   CertCryptorProcessor,
@@ -51,8 +52,8 @@ vi.mock('@/lib/pdf/loader', () => {
             set: vi.fn(),
           },
           context: {
-            obj: (props: any) => props,
-            register: (obj: any) => obj,
+            obj: <T>(props: T) => props,
+            register: <T>(obj: T) => obj,
           },
           encrypt: vi.fn(),
           save: vi.fn().mockResolvedValue(new Uint8Array([4, 4, 4])),
@@ -70,12 +71,7 @@ describe('CertCryptorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'diploma.pdf',
-      size: 300,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(300),
-    } as any;
+    mockFile = createFileFixture('diploma.pdf', 300, 'application/pdf');
   });
 
   it('should instantiate cert cryptor processor correctly', () => {

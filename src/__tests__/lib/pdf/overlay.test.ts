@@ -23,9 +23,9 @@ async function createRealPDFFile(name: string, pageCount: number = 1): Promise<F
 
   const pdfBytes = await pdfDoc.save();
   const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
-  const file = new File([blob], name, { type: 'application/pdf' }) as any;
+  const file = new File([blob], name, { type: 'application/pdf' });
   file.arrayBuffer = async () => pdfBytes.buffer.slice(0) as ArrayBuffer;
-  return file as File;
+  return file;
 }
 
 describe('OverlayPDFProcessor', () => {

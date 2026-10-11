@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   GlobalInvoiceParserProcessor,
@@ -59,12 +60,7 @@ describe('GlobalInvoiceParserProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'invoice_en.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('invoice_en.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate correctly', () => {

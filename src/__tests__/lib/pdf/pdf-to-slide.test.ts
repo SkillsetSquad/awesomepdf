@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   PDFToSlideProcessor,
@@ -38,12 +39,7 @@ describe('PDFToSlideProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'paper.pdf',
-      size: 1024,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(1024),
-    } as any;
+    mockFile = createFileFixture('paper.pdf', 1024, 'application/pdf');
   });
 
   it('should instantiate slide reconstructor correctly', () => {
@@ -66,13 +62,14 @@ describe('PDFToSlideProcessor', () => {
     expect(result.success).toBe(true);
     expect(result.filename).toBe('paper.pptx');
     
-    const metadata = result.metadata as any;
+    const metadata = result.metadata;
+    const slides = metadata?.slides as Array<{ title: string; bullets: string[] }>;
     expect(metadata?.pageCount).toBe(2);
     expect(metadata?.slides).toBeDefined();
-    expect(metadata?.slides.length).toBe(2);
+    expect(slides.length).toBe(2);
     
     // Check first slide title extracted by largest font heuristic
-    expect(metadata?.slides[0].title).toContain('Introduction to Artificial Intelligence');
-    expect(metadata?.slides[0].bullets[0]).toContain('Neural Networks are powerful models.');
+    expect(slides[0].title).toContain('Introduction to Artificial Intelligence');
+    expect(slides[0].bullets[0]).toContain('Neural Networks are powerful models.');
   });
 });

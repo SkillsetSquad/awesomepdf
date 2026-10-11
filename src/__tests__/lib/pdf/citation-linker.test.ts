@@ -1,3 +1,4 @@
+import { createTextPDFFile, readBlobBytes } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { 
   CitationLinkerProcessor, 
@@ -5,46 +6,10 @@ import {
   linkCitations 
 } from '@/lib/pdf/processors/citation-linker';
 import { PDFErrorCode } from '@/types/pdf';
+import type { CitationLinkerOptions } from '@/lib/pdf/processors/citation-linker';
 
 // Mock loader libraries
 vi.mock('@/lib/pdf/loader', () => {
-  const mockPdfName = {
-    of: (name: string) => ({ name }),
-  };
-
-  const mockPdfLib = {
-    PDFName: mockPdfName,
-    PDFDocument: {
-      load: vi.fn().mockImplementation(async () => {
-        const mockAnnotsArray = {
-          push: vi.fn(),
-        };
-        const mockPage = {
-          node: {
-            has: vi.fn().mockReturnValue(true),
-            get: vi.fn().mockImplementation((key) => {
-              if (key.name === 'Annots') {
-                return mockAnnotsArray;
-              }
-              return null;
-            }),
-            set: vi.fn(),
-          },
-          ref: { num: 10, gen: 0 },
-        };
-        return {
-          getPageCount: () => 2,
-          getPage: vi.fn().mockImplementation(() => mockPage),
-          context: {
-            obj: vi.fn().mockImplementation((data) => data),
-            register: vi.fn().mockImplementation((item) => item),
-          },
-          save: vi.fn().mockResolvedValue(new Uint8Array([1, 2, 3])),
-        };
-      }),
-    },
-  };
-
   const mockPdfjs = {
     getDocument: vi.fn().mockImplementation(() => {
       return {
@@ -79,20 +44,15 @@ vi.mock('@/lib/pdf/loader', () => {
 
   return {
     loadPdfjs: vi.fn().mockResolvedValue(mockPdfjs),
-    loadPdfLib: vi.fn().mockResolvedValue(mockPdfLib),
+    loadPdfLib: vi.fn(async () => import('pdf-lib')),
   };
 });
 
 describe('CitationLinkerProcessor', () => {
   let mockFile: File;
 
-  beforeEach(() => {
-    mockFile = {
-      name: 'sample.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+  beforeEach(async () => {
+    mockFile = await createTextPDFFile('sample.pdf', ['This is a claim [1] that needs backing.', 'References [1] Scientist Name. Study on stuff. DOI: 10.1234/test.doi.path']);
   });
 
   it('should instantiate processor correctly', () => {
@@ -112,10 +72,10 @@ describe('CitationLinkerProcessor', () => {
     expect(result.success).toBe(true);
     expect(result.filename).toBe('sample_citations_linked.pdf');
 
-    const metadata = result.metadata as any;
+    const metadata = result.metadata;
     expect(metadata?.pageCount).toBe(2);
     
-    const citations = metadata?.citations;
+    const citations = metadata?.citations as NonNullable<CitationLinkerOptions['citationsList']>;
     expect(citations).toBeDefined();
     expect(citations.length).toBeGreaterThan(0);
 
@@ -124,5 +84,15 @@ describe('CitationLinkerProcessor', () => {
     expect(firstCitation.pageNum).toBe(1);
     expect(firstCitation.url).toBe('https://doi.org/10.1234/test.doi.path');
     expect(firstCitation.refText).toContain('Scientist Name. Study on stuff.');
+    const { PDFDocument, PDFArray, PDFDict, PDFName, PDFString } = await import('pdf-lib');
+    const output = await PDFDocument.load(await readBlobBytes(result.result as Blob));
+    expect(output.getPageCount()).toBe(2);
+    const annotations = output.getPage(0).node.lookup(PDFName.of('Annots'), PDFArray);
+    expect(annotations.size()).toBe(1);
+    const annotation = output.context.lookup(annotations.get(0), PDFDict);
+    expect(annotation.lookup(PDFName.of('Subtype'), PDFName)).toBe(PDFName.of('Link'));
+    const action = annotation.lookup(PDFName.of('A'), PDFDict);
+    expect(action.lookup(PDFName.of('S'), PDFName)).toBe(PDFName.of('URI'));
+    expect(action.lookup(PDFName.of('URI'), PDFString).asString()).toBe('https://doi.org/10.1234/test.doi.path');
   });
 });

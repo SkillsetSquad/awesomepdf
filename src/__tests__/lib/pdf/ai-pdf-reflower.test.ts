@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { 
   AIPDFReflowerProcessor, 
@@ -5,6 +6,7 @@ import {
   reflowPDF 
 } from '@/lib/pdf/processors/ai-pdf-reflower';
 import { PDFErrorCode } from '@/types/pdf';
+import type { ReflowParagraph } from '@/lib/pdf/processors/ai-pdf-reflower';
 
 // Mock the pdf loader
 vi.mock('@/lib/pdf/loader', () => {
@@ -58,12 +60,7 @@ describe('AIPDFReflowerProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'sample.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('sample.pdf', 100, 'application/pdf');
   });
 
   it('should create independent processor instances', () => {
@@ -93,10 +90,10 @@ describe('AIPDFReflowerProcessor', () => {
     expect(result.success).toBe(true);
     expect(result.filename).toBe('sample_reflowed.json');
 
-    const metadata = result.metadata as any;
+    const metadata = result.metadata;
     expect(metadata?.pageCount).toBe(2);
     
-    const paragraphs = metadata?.paragraphs;
+    const paragraphs = metadata?.paragraphs as ReflowParagraph[];
     expect(paragraphs).toBeDefined();
     
     // First paragraph (Title)
@@ -104,9 +101,9 @@ describe('AIPDFReflowerProcessor', () => {
     expect(paragraphs[0].pageNum).toBe(1);
 
     // Second paragraph should contain the LaTeX MathJax formatting
-    const mathPara = paragraphs.find((p: any) => p.text.includes('$'));
+    const mathPara = paragraphs.find((p) => p.text.includes('$'));
     expect(mathPara).toBeDefined();
-    expect(mathPara.text).toContain('$Formula \\sum_{i=1}^n x_i represents math.$');
+    expect(mathPara?.text).toContain('$Formula \\sum_{i=1}^n x_i represents math.$');
   });
 
   it('should export to Markdown format correctly', async () => {

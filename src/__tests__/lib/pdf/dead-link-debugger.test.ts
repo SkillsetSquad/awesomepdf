@@ -1,10 +1,10 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   DeadLinkDebuggerProcessor,
   createDeadLinkDebuggerProcessor,
   debugDeadLinks
 } from '@/lib/pdf/processors/dead-link-debugger';
-import { PDFErrorCode } from '@/types/pdf';
 
 vi.mock('@/lib/pdf/loader', () => {
   const mockAnnotRef = { id: 'annot-ref' };
@@ -15,8 +15,8 @@ vi.mock('@/lib/pdf/loader', () => {
   }
 
   class MockPDFDict {
-    constructor(public getFn: (n: any) => any) {}
-    get(n: any) {
+    constructor(public getFn: (n: string | { name: string } | null | undefined) => unknown) {}
+    get(n: string | { name: string } | null | undefined) {
       return this.getFn(n);
     }
     set = vi.fn();
@@ -31,19 +31,19 @@ vi.mock('@/lib/pdf/loader', () => {
   const pdfNameCache: Record<string, { name: string }> = {};
   const getPDFName = (n: string) => {
     if (!pdfNameCache[n]) {
-      pdfNameCache[n] = { name: n } as any;
+      pdfNameCache[n] = { name: n };
     }
     return pdfNameCache[n];
   };
 
-  const mockAction = new MockPDFDict((n: any) => {
+  const mockAction = new MockPDFDict((n: string | { name: string } | null | undefined) => {
     const name = typeof n === 'string' ? n : (n && n.name);
     if (name === 'S') return getPDFName('URI');
     if (name === 'URI') return {}; // returns a ref for lookup
     return null;
   });
 
-  const mockAnnot = new MockPDFDict((n: any) => {
+  const mockAnnot = new MockPDFDict((n: string | { name: string } | null | undefined) => {
     const name = typeof n === 'string' ? n : (n && n.name);
     if (name === 'Subtype') return getPDFName('Link');
     if (name === 'A') return mockAction;
@@ -53,7 +53,7 @@ vi.mock('@/lib/pdf/loader', () => {
   const mockAnnotsArray = new MockPDFArray();
 
   const mockPage = {
-    node: new MockPDFDict((n: any) => {
+    node: new MockPDFDict((n: string | { name: string } | null | undefined) => {
       const name = typeof n === 'string' ? n : (n && n.name);
       if (name === 'Annots') return mockAnnotsArray;
       return null;
@@ -72,7 +72,7 @@ vi.mock('@/lib/pdf/loader', () => {
           getPageCount: () => 1,
           getPages: () => [mockPage],
           context: {
-            lookup: (ref: any) => {
+            lookup: (ref: unknown) => {
               if (ref === mockAnnotRef) {
                 return mockAnnot;
               }
@@ -97,12 +97,7 @@ describe('DeadLinkDebuggerProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'broken.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('broken.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate correctly', () => {

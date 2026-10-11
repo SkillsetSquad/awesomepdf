@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { 
   DeepSanitizeProcessor, 
@@ -25,7 +26,7 @@ vi.mock('@/lib/pdf/loader', () => {
         // Tracker maps for testing deletion
         const deletedCatalogKeys: string[] = [];
         const deletedPageKeys: string[] = [];
-        const infoDictSets: Record<string, any> = {};
+        const infoDictSets: Record<string, string> = {};
 
         const mockCatalog = {
           has: vi.fn().mockReturnValue(true),
@@ -86,12 +87,7 @@ describe('DeepSanitizeProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'sample.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('sample.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate deep sanitizer correctly', () => {

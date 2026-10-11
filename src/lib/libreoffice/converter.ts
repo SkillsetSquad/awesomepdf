@@ -26,7 +26,7 @@
  * - They must NOT run from a Blob URL parent, or nested Worker creation breaks
  */
 
-import { WorkerBrowserConverter } from '@matbee/libreoffice-converter/browser';
+import { WorkerBrowserConverter, EXTENSION_TO_FORMAT, type OutputFormat } from '@matbee/libreoffice-converter/browser';
 import { fetchAssembledBlob } from '../utils/asset-loader';
 import { withBasePath } from '../utils/path';
 import { isTauri } from '../tauri-bridge';
@@ -271,7 +271,7 @@ export class LibreOfficeConverter {
                             window.location.reload();
                         }
                     }).catch(() => {});
-                } catch (_) {}
+                } catch {}
             }
 
             const errorMsg = [
@@ -354,7 +354,7 @@ export class LibreOfficeConverter {
         return this.initialized && this.converter !== null;
     }
 
-    async convert(file: File, outputFormat: string): Promise<Blob> {
+    async convert(file: File, outputFormat: OutputFormat): Promise<Blob> {
         if (!this.converter) {
             throw new Error('Converter not initialized');
         }
@@ -371,8 +371,8 @@ export class LibreOfficeConverter {
 
             const startTime = Date.now();
             const result = await this.converter.convert(uint8Array, {
-                outputFormat: outputFormat as any,
-                inputFormat: ext as any,
+                outputFormat,
+                inputFormat: EXTENSION_TO_FORMAT[ext],
             }, file.name);
 
             const duration = Date.now() - startTime;

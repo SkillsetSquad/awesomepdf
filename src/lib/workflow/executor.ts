@@ -898,12 +898,12 @@ export async function executeNode(
                 const processor = new OCRProcessor();
                 const rawLangs = settings.languages || settings.language || 'eng';
                 const languages = Array.isArray(rawLangs)
-                    ? (rawLangs as any)
+                    ? rawLangs
                     : String(rawLangs).split('+').map((s: string) => s.trim());
                 const options = {
                     languages,
                     language: Array.isArray(rawLangs) ? rawLangs.join('+') : String(rawLangs),
-                    outputFormat: (['text', 'markdown', 'json'].includes(settings.outputFormat as string) ? settings.outputFormat : 'searchable-pdf') as any,
+                    outputFormat: ['text', 'markdown', 'json'].includes(settings.outputFormat as string) ? settings.outputFormat : 'searchable-pdf',
                     scale: Number(settings.scale) || 2,
                 };
                 return await processor.process(createProcessInput(files, options), onProgress);

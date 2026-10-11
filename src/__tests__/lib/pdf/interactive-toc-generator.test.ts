@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   InteractiveTocGeneratorProcessor,
@@ -57,8 +58,8 @@ vi.mock('@/lib/pdf/loader', () => {
             widthOfTextAtSize: (text: string, size: number) => text.length * size * 0.6,
           }),
           context: {
-            obj: (props: any) => props,
-            register: (obj: any) => obj,
+            obj: <T>(props: T) => props,
+            register: <T>(obj: T) => obj,
           },
           save: vi.fn().mockResolvedValue(new Uint8Array([1, 2, 3])),
         };
@@ -76,12 +77,7 @@ describe('InteractiveTocGeneratorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'book.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('book.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate correctly', () => {

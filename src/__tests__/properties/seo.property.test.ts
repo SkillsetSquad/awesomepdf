@@ -24,8 +24,8 @@ import {
   validateSoftwareApplicationSchema,
   validateFAQPageSchema,
 } from '@/lib/seo/structured-data';
-import { locales, type Locale } from '@/lib/i18n/config';
-import { tools, getAllTools } from '@/config/tools';
+import { locales } from '@/lib/i18n/config';
+import { tools } from '@/config/tools';
 import type { Tool, ToolContent, FAQ } from '@/types/tool';
 
 /**
@@ -124,9 +124,9 @@ describe('SEO Property Tests', () => {
             expect(metadata.openGraph?.title).toBeTruthy();
             expect(metadata.openGraph?.description).toBeTruthy();
             expect(metadata.twitter).toBeDefined();
-            expect((metadata.twitter as any)?.card).toBeTruthy();
-            expect((metadata.twitter as any)?.title).toBeTruthy();
-            expect((metadata.twitter as any)?.description).toBeTruthy();
+            expect((metadata.twitter && 'card' in metadata.twitter ? metadata.twitter.card : undefined)).toBeTruthy();
+            expect(metadata.twitter?.title).toBeTruthy();
+            expect(metadata.twitter?.description).toBeTruthy();
             
             return true;
           }

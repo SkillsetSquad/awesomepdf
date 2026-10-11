@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   FormLogicDesignerProcessor,
@@ -37,8 +38,8 @@ vi.mock('@/lib/pdf/loader', () => {
             getFields: () => [mockField],
           }),
           context: {
-            obj: (props: any) => props,
-            register: (obj: any) => obj,
+            obj: <T>(props: T) => props,
+            register: <T>(obj: T) => obj,
           },
           save: vi.fn().mockResolvedValue(new Uint8Array([5, 5, 5])),
         };
@@ -55,12 +56,7 @@ describe('FormLogicDesignerProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'interactive_form.pdf',
-      size: 200,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(200),
-    } as any;
+    mockFile = createFileFixture('interactive_form.pdf', 200, 'application/pdf');
   });
 
   it('should instantiate form logic designer processor correctly', () => {

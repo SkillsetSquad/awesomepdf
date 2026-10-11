@@ -1,10 +1,10 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   BookmarksAutoGeneratorProcessor,
   createBookmarksAutoGeneratorProcessor,
   autoGenerateBookmarks
 } from '@/lib/pdf/processors/bookmarks-auto-generator';
-import { PDFErrorCode } from '@/types/pdf';
 
 vi.mock('@/lib/pdf/loader', () => {
   const mockPdfjs = {
@@ -53,8 +53,8 @@ vi.mock('@/lib/pdf/loader', () => {
             set: vi.fn(),
           },
           context: {
-            obj: (props: any) => props,
-            register: (obj: any) => obj,
+            obj: <T>(props: T) => props,
+            register: <T>(obj: T) => obj,
             lookup: () => ({
               set: vi.fn(),
             }),
@@ -75,12 +75,7 @@ describe('BookmarksAutoGeneratorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'plain.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('plain.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate correctly', () => {

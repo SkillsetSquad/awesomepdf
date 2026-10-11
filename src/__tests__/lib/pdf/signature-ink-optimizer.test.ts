@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
+import { describe, it, expect, vi, beforeEach, afterAll } from 'vitest';
 import {
   SignatureInkOptimizerProcessor,
   createSignatureInkOptimizerProcessor,
@@ -7,7 +8,7 @@ import {
 
 // Setup Mock global browser APIs for canvas
 if (typeof window === 'undefined') {
-  (global as any).window = {};
+  vi.stubGlobal('window', {});
 }
 
 const mockCanvas = {
@@ -23,28 +24,25 @@ const mockCanvas = {
   toBlob: vi.fn().mockImplementation((callback) => callback(new Blob())),
 };
 
-(global as any).document = {
+vi.stubGlobal('document', {
   createElement: (tag: string) => {
     if (tag === 'canvas') return mockCanvas;
     return {};
   },
-};
+});
 
-(global as any).createImageBitmap = vi.fn().mockResolvedValue({
+vi.stubGlobal('createImageBitmap', vi.fn().mockResolvedValue({
   width: 100,
   height: 100,
-});
+}));
+
+afterAll(() => vi.unstubAllGlobals());
 
 describe('SignatureInkOptimizerProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'signature.png',
-      size: 100,
-      type: 'image/png',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('signature.png', 100, 'image/png');
   });
 
   it('should instantiate correctly', () => {

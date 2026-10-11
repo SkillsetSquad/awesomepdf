@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   EinkOptimizerProcessor,
@@ -53,12 +54,7 @@ describe('EinkOptimizerProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'gray_scan.pdf',
-      size: 400,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(400),
-    } as any;
+    mockFile = createFileFixture('gray_scan.pdf', 400, 'application/pdf');
   });
 
   it('should instantiate eink optimizer processor correctly', () => {

@@ -1,10 +1,10 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   AnnotationExporterProcessor,
   createAnnotationExporterProcessor,
   exportAnnotations
 } from '@/lib/pdf/processors/annotation-exporter';
-import { PDFErrorCode } from '@/types/pdf';
 
 vi.mock('@/lib/pdf/loader', () => {
   const mockPdfjs = {
@@ -12,7 +12,7 @@ vi.mock('@/lib/pdf/loader', () => {
       return {
         promise: Promise.resolve({
           numPages: 2,
-          getPage: vi.fn().mockImplementation(async (pageNum) => {
+          getPage: vi.fn().mockImplementation(async () => {
             return {
               getAnnotations: () => Promise.resolve([
                 { subtype: 'Highlight', contents: 'This is highlight', color: [1, 1, 0] },
@@ -34,12 +34,7 @@ describe('AnnotationExporterProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'notes.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('notes.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate correctly', () => {

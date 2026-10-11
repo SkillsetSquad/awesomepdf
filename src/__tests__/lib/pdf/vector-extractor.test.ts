@@ -1,3 +1,4 @@
+import { createFileFixture } from '@/__tests__/helpers/file-fixture';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { 
   VectorExtractorProcessor, 
@@ -19,7 +20,7 @@ vi.mock('@/lib/pdf/loader-legacy', () => {
       return {
         promise: Promise.resolve({
           numPages: 5,
-          getPage: vi.fn().mockImplementation(async (pageNum) => {
+          getPage: vi.fn().mockImplementation(async () => {
             return {
               getViewport: () => ({ width: 400, height: 600 }),
               getOperatorList: () => Promise.resolve({}),
@@ -47,12 +48,7 @@ describe('VectorExtractorProcessor', () => {
   let mockFile: File;
 
   beforeEach(() => {
-    mockFile = {
-      name: 'sample.pdf',
-      size: 100,
-      type: 'application/pdf',
-      arrayBuffer: async () => new ArrayBuffer(100),
-    } as any;
+    mockFile = createFileFixture('sample.pdf', 100, 'application/pdf');
   });
 
   it('should instantiate vector extractor correctly', () => {

@@ -2,16 +2,17 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   isTauri,
   getFiltersForFilename,
-  saveFile,
   saveBlobFile,
   writeFileBytes,
 } from '@/lib/tauri-bridge';
 
+const tauriWindow: Window & { __TAURI__?: unknown; __TAURI_INTERNALS__?: unknown } = window;
+
 describe('tauri-bridge', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    delete (window as any).__TAURI__;
-    delete (window as any).__TAURI_INTERNALS__;
+    delete tauriWindow.__TAURI__;
+    delete tauriWindow.__TAURI_INTERNALS__;
   });
 
   describe('isTauri', () => {
@@ -20,12 +21,12 @@ describe('tauri-bridge', () => {
     });
 
     it('returns true when __TAURI__ is present on window', () => {
-      (window as any).__TAURI__ = {};
+      tauriWindow.__TAURI__ = {};
       expect(isTauri()).toBe(true);
     });
 
     it('returns true when __TAURI_INTERNALS__ is present on window', () => {
-      (window as any).__TAURI_INTERNALS__ = {};
+      tauriWindow.__TAURI_INTERNALS__ = {};
       expect(isTauri()).toBe(true);
     });
   });
