@@ -596,7 +596,9 @@
       "doiExternalLink": "Linie verde continuă: Link extern DOI",
       "gotoPageLink": "Linie gri punctată: Link salt la pagină",
       "injectingMessage": "Se injectează adnotările de citare active în catalogul PDF...",
-      "successDesc": "S-au injectat cu succes linkuri active și acțiuni de salt la pagină pentru {count} citări. Complet interactiv în orice cititor PDF."
+      "successDesc": "S-au injectat cu succes linkuri active și acțiuni de salt la pagină pentru {count} citări. Complet interactiv în orice cititor PDF.",
+      "emptyTitle": "Nu au fost detectate citări",
+      "emptyDescription": "Nu au fost găsiți marcatori de citare corespunzători în acest document."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Se analizează și se extrage macheta PDF-ului original...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Localizați nodurile de control (de exemplu, caseta de bifare) pe macheta transparentă.",
       "logicIntro2": "Trageți o linie de conexiune de la punct la câmpul dependent țintă.",
       "logicIntro3": "Pentru casetele de bifare, aceasta generează un script de validare AcrobatJS activ.",
-      "logicIntro4": "Impulsuri de lumină violetă vor pulsa pe linia de conexiune după ce a fost legată cu succes."
+      "logicIntro4": "Impulsuri de lumină violetă vor pulsa pe linia de conexiune după ce a fost legată cu succes.",
+      "noFields": "Acest PDF nu are câmpuri de formular interactive. Creați câmpuri înainte de a adăuga conexiuni.",
+      "sourceField": "Câmp sursă",
+      "targetField": "Câmp țintă",
+      "addConnection": "Adaugă conexiune",
+      "removeConnection": "Elimină conexiunea"
     },
     "nUpPdf": {
       "orientationLandscape": "Peisaj",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Ora certificată TSA de ceas atomic (UTC)",
       "tsaHash": "Sumă de control hash criptografică SHA-256",
       "tsaName": "Emitent autoritate TSA",
-      "tsaSerial": "Serie token marcă temporală TSA"
+      "tsaSerial": "Serie token marcă temporală TSA",
+      "localNotice": "Acest instrument creează o marcă temporală locală autosemnată folosind ceasul dispozitivului. Nu solicită și nu verifică o marcă de la TSA selectată.",
+      "localCertificateTitle": "Detalii despre marca temporală locală",
+      "deviceTime": "Ora dispozitivului",
+      "selectedAuthority": "Numele autorității selectate",
+      "localProcessButton": "Adaugă marcă temporală locală",
+      "localUploadLabel": "Încarcă PDF",
+      "localUploadDescription": "Selectați un PDF pentru a adăuga o marcă temporală locală."
     },
     "vectorExtractor": {
       "uploadLabel": "Încărcați PDF pentru a extrage vectori",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Pre-completare culoare RGB",
       "codeCopied": "Codul SVG a fost copiat în clipboard",
       "copyCode": "Copiați codul SVG",
-      "downloadSvg": "Descărcați resursa SVG"
+      "downloadSvg": "Descărcați resursa SVG",
+      "previewHelp": "Selectați un vector prin clic sau cu tastatura."
     },
     "updater": {
       "title": "Actualizare software",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Alternează 90° în sens orar / antiorar",
       "layoutHelp": "Celule numerotate și margini interioare. Previzualizarea PDF-ului generat arată ordinea și rotirea efective ale paginilor.",
       "outputSheets": "Pagini rezultate: {count}"
+    },
+    "documentPreview": {
+      "source": "Document sursă",
+      "result": "Document procesat"
     }
   },
   "toolsPage": {

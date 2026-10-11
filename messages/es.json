@@ -596,7 +596,9 @@
       "doiExternalLink": "Verde sólido: Enlace externo DOI",
       "gotoPageLink": "Gris discontinuo: Enlace de salto de página",
       "injectingMessage": "Inyectando anotaciones de citas activas en el catálogo PDF...",
-      "successDesc": "¡Se inyectaron con éxito enlaces activos y acciones de salto de página para {count} citas. Totalmente interactivo en cualquier lector de PDF!"
+      "successDesc": "¡Se inyectaron con éxito enlaces activos y acciones de salto de página para {count} citas. Totalmente interactivo en cualquier lector de PDF!",
+      "emptyTitle": "No se detectaron citas",
+      "emptyDescription": "No se encontraron marcadores de citas coincidentes en este documento."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Analizando y extrayendo diseño del PDF original...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Ubique los nodos de control (p. ej., casilla de verificación) en el lienzo de glassmorphism.",
       "logicIntro2": "Arrastre una línea de conexión desde el punto hasta el campo dependiente de destino.",
       "logicIntro3": "Para las casillas de verificación, esto genera un script de validación AcrobatJS activo.",
-      "logicIntro4": "Destellos de luz púrpura se propagan por la línea una vez vinculada con éxito."
+      "logicIntro4": "Destellos de luz púrpura se propagan por la línea una vez vinculada con éxito.",
+      "noFields": "Este PDF no tiene campos de formulario interactivos. Cree campos antes de añadir conexiones.",
+      "sourceField": "Campo de origen",
+      "targetField": "Campo de destino",
+      "addConnection": "Añadir conexión",
+      "removeConnection": "Eliminar conexión"
     },
     "nUpPdf": {
       "orientationLandscape": "Horizontal",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Hora atómica certificada por la TSA (UTC)",
       "tsaHash": "Suma de comprobación de hash criptográfico SHA-256",
       "tsaName": "Emisor de la autoridad de la TSA",
-      "tsaSerial": "Serie del token de marca de tiempo de la TSA"
+      "tsaSerial": "Serie del token de marca de tiempo de la TSA",
+      "localNotice": "Esta herramienta crea un sello de tiempo local autofirmado con el reloj del dispositivo. No solicita ni verifica un sello de la TSA seleccionada.",
+      "localCertificateTitle": "Detalles del sello de tiempo local",
+      "deviceTime": "Hora del dispositivo",
+      "selectedAuthority": "Etiqueta de autoridad seleccionada",
+      "localProcessButton": "Añadir sello de tiempo local",
+      "localUploadLabel": "Subir PDF",
+      "localUploadDescription": "Seleccione un PDF para añadir un sello de tiempo local."
     },
     "vectorExtractor": {
       "uploadLabel": "Cargar PDF para extraer vectores",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Precarga de color RGB",
       "codeCopied": "Código SVG copiado al portapapeles",
       "copyCode": "Copiar código SVG",
-      "downloadSvg": "Descargar recurso SVG"
+      "downloadSvg": "Descargar recurso SVG",
+      "previewHelp": "Seleccione un vector con un clic o el teclado."
     },
     "updater": {
       "title": "Actualización de software",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Alternar 90° en sentido horario / antihorario",
       "layoutHelp": "Celdas numeradas y márgenes internos. La vista previa del PDF generado muestra el orden y la rotación reales.",
       "outputSheets": "Páginas de salida: {count}"
+    },
+    "documentPreview": {
+      "source": "Documento original",
+      "result": "Documento procesado"
     }
   },
   "toolsPage": {

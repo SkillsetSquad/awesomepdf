@@ -596,7 +596,9 @@
       "doiExternalLink": "Garis Hijau Tebal: Tautan Eksternal DOI",
       "gotoPageLink": "Garis Abu-abu Putus-putus: Tautan Lompat Halaman",
       "injectingMessage": "Menyuntikkan anotasi kutipan aktif ke dalam katalog PDF...",
-      "successDesc": "Berhasil menyuntikkan tautan aktif dan tindakan lompat halaman untuk {count} kutipan. Kompatibel secara interaktif di pembaca PDF mana pun."
+      "successDesc": "Berhasil menyuntikkan tautan aktif dan tindakan lompat halaman untuk {count} kutipan. Kompatibel secara interaktif di pembaca PDF mana pun.",
+      "emptyTitle": "Tidak ada kutipan terdeteksi",
+      "emptyDescription": "Tidak ada penanda kutipan yang cocok di dokumen ini."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Menganalisis dan mengekstrak tata letak PDF Asli...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Temukan simpul kontrol (misal, kotak centang) di kanvas glassmorphism.",
       "logicIntro2": "Seret garis penghubung dari titik ke bidang dependen target.",
       "logicIntro3": "Untuk kotak centang, ini menghasilkan skrip validasi AcrobatJS yang aktif.",
-      "logicIntro4": "Denyut cahaya ungu pada garis penghubung setelah berhasil ditautkan."
+      "logicIntro4": "Denyut cahaya ungu pada garis penghubung setelah berhasil ditautkan.",
+      "noFields": "PDF ini tidak memiliki kolom formulir interaktif. Buat kolom sebelum menambahkan hubungan.",
+      "sourceField": "Kolom sumber",
+      "targetField": "Kolom tujuan",
+      "addConnection": "Tambah hubungan",
+      "removeConnection": "Hapus hubungan"
     },
     "nUpPdf": {
       "orientationLandscape": "Lanskap",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Waktu Bersertifikasi Jam Atom TSA (UTC)",
       "tsaHash": "Checksum Hash Kriptografis SHA-256",
       "tsaName": "Penerbit Otoritas TSA",
-      "tsaSerial": "Serial Token Stempel Waktu TSA"
+      "tsaSerial": "Serial Token Stempel Waktu TSA",
+      "localNotice": "Alat ini membuat stempel waktu lokal yang ditandatangani sendiri menggunakan jam perangkat. Alat ini tidak meminta atau memverifikasi stempel waktu dari TSA yang dipilih.",
+      "localCertificateTitle": "Detail stempel waktu lokal",
+      "deviceTime": "Waktu perangkat",
+      "selectedAuthority": "Label otoritas yang dipilih",
+      "localProcessButton": "Tambah stempel waktu lokal",
+      "localUploadLabel": "Unggah PDF",
+      "localUploadDescription": "Pilih PDF untuk menambahkan stempel waktu lokal."
     },
     "vectorExtractor": {
       "uploadLabel": "Unggah PDF untuk Mengekstrak Vektor",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Pra-isi Warna RGB",
       "codeCopied": "Kode SVG disalin ke papan klip",
       "copyCode": "Salin Kode SVG",
-      "downloadSvg": "Unduh Aset SVG"
+      "downloadSvg": "Unduh Aset SVG",
+      "previewHelp": "Pilih vektor dengan klik atau papan ketik."
     },
     "updater": {
       "title": "Pembaruan Perangkat Lunak",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Bergantian 90° searah / berlawanan jarum jam",
       "layoutHelp": "Sel bernomor dan margin dalam. Pratinjau PDF hasil menampilkan urutan dan rotasi halaman yang sebenarnya.",
       "outputSheets": "Halaman keluaran: {count}"
+    },
+    "documentPreview": {
+      "source": "Dokumen sumber",
+      "result": "Dokumen hasil"
     }
   },
   "toolsPage": {

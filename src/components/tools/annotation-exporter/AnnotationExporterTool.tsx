@@ -1,5 +1,5 @@
 'use client';
-import { PenLine as UIEmojiPenLine } from 'lucide-react';
+
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
@@ -8,16 +8,18 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 import { Label } from '@/components/ui/label';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { exportAnnotations, type AnnotationExportOptions } from '@/lib/pdf/processors/annotation-exporter';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { TextFilePreview } from '../TextFilePreview';
+import { exportAnnotations } from '@/lib/pdf/processors/annotation-exporter';
 import type { ProcessOutput } from '@/types/pdf';
-import { BookOpen, CheckSquare, Layers, Download } from 'lucide-react';
+import { BookOpen, CheckSquare } from 'lucide-react';
 
 export interface AnnotationExporterToolProps {
   className?: string;
@@ -35,19 +37,28 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const processingRun = useRef(0);
+  useEffect(() => () => { processingRun.current++; }, []);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++;
+    setStatus('idle');
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
   const handleExport = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -62,27 +73,25 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
           includeUnderlines: incUnderlines,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Extracting comments...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || (format === 'json' ? `${file.name.replace(/\.pdf$/i, '')}_notes.json` : `${file.name.replace(/\.pdf$/i, '')}_notes.md`));
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to parse page annotations.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error extracting annotations.');
         setStatus('error');
       }
@@ -90,6 +99,8 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
   };
 
   const handleClear = () => {
+    focusUpload.current = true;
+    resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -98,7 +109,7 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['application/pdf']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -106,7 +117,7 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
           disabled={status === 'processing'}
           label={t('annotationExporter.uploadLabel')}
           description={t('annotationExporter.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -117,41 +128,24 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-primary" />
-                  {t('annotationExporter.previewTitle')}
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
                   {t('annotationExporter.clearButton')}
                 </Button>
               </div>
 
-              {/* Glowing notebooks flying trail animation mockup */}
-              <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
-                {status === 'processing' && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-24 h-24 rounded-full border-4 border-dashed border-primary animate-spin" />
-                  </div>
-                )}
-                <div className="max-w-md text-center space-y-3">
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto text-primary animate-[bounce_2s_infinite]">
-                    <UIEmojiPenLine className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
-                  </div>
-                  <h4 className="text-sm font-bold text-foreground">
-                    {file.name}
-                  </h4>
-                  <p className="text-xs text-muted-foreground">
-                    {t('annotationExporter.emptyStateTitle')}
-                  </p>
-                </div>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{t('documentPreview.source')}</p><PDFPagePreview file={file} label={t('documentPreview.source')} /></div>
+              {resultBlob && <TextFilePreview file={resultBlob} label={t('documentPreview.result')} />}
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -165,8 +159,8 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
 
                       id="highlights"
                       checked={incHighlights}
-                      onCheckedChange={(checked) => setIncHighlights((checked === true))}
-                       aria-label={t('annotationExporter.incHighlightsLabel')}
+                      onCheckedChange={(checked) => { resetOutput(); setIncHighlights((checked === true)); }}
+                       aria-label={t('annotationExporter.incHighlightsLabel')} disabled={status === 'processing'}
                     />
                     <Label htmlFor="highlights" className="">
                       {t('annotationExporter.incHighlightsLabel')}
@@ -178,13 +172,15 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
 
                       id="notes"
                       checked={incNotes}
-                      onCheckedChange={(checked) => setIncNotes((checked === true))}
-                       aria-label={t('annotationExporter.incNotesLabel')}
+                      onCheckedChange={(checked) => { resetOutput(); setIncNotes((checked === true)); }}
+                       aria-label={t('annotationExporter.incNotesLabel')} disabled={status === 'processing'}
                     />
                     <Label htmlFor="notes" className="">
                       {t('annotationExporter.incNotesLabel')}
                     </Label>
                   </div>
+
+                  <div className="flex items-center gap-2.5"><Checkbox id="underlines" checked={incUnderlines} onCheckedChange={checked => { resetOutput(); setIncUnderlines(checked === true); }} disabled={status === 'processing'} /><Label htmlFor="underlines">{t('annotationExporter.incUnderlinesLabel')}</Label></div>
 
                   <div className="space-y-2">
                     <Label className="">{t('annotationExporter.formatLabel')}</Label>
@@ -192,18 +188,18 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
                       <Button
                         variant={format === 'md' ? 'default' : 'secondary'}
                         size="sm"
-                        onClick={() => setFormat('md')}
+                        onClick={() => { resetOutput(); setFormat('md'); }} disabled={status === 'processing'} aria-pressed={format === 'md'}
                         className="text-xs"
                       >
-                        Markdown
+                        {t('annotationExporter.formatMd')}
                       </Button>
                       <Button
                         variant={format === 'json' ? 'default' : 'secondary'}
                         size="sm"
-                        onClick={() => setFormat('json')}
+                        onClick={() => { resetOutput(); setFormat('json'); }} disabled={status === 'processing'} aria-pressed={format === 'json'}
                         className="text-xs"
                       >
-                        JSON Data
+                        {t('annotationExporter.formatJson')}
                       </Button>
                     </div>
                   </div>
@@ -214,7 +210,7 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename={format === 'json' ? `${file.name.replace(/\.pdf$/i, '')}_notes.json` : `${file.name.replace(/\.pdf$/i, '')}_notes.md`}
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -242,7 +238,7 @@ export function AnnotationExporterTool({ className = '' }: AnnotationExporterToo
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}

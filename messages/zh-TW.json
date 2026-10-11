@@ -596,7 +596,9 @@
       "doiExternalLink": "绿实线: DOI 外部鏈接",
       "gotoPageLink": "灰虚线: 参考文献页内跳轉",
       "injectingMessage": "正在注入高强可点击引文注釋...",
-      "successDesc": "共为 {count} 处引文符号注入了关联鏈接和页内跳轉跳轉点，文檔可在任意符合标准的 PDF 阅读器中完美交互。"
+      "successDesc": "共为 {count} 处引文符号注入了关联鏈接和页内跳轉跳轉点，文檔可在任意符合标准的 PDF 阅读器中完美交互。",
+      "emptyTitle": "未偵測到引用",
+      "emptyDescription": "此文件中未找到相符的引用標記。"
     },
     "comparePdfs": {
       "progressExtractingOriginal": "正在分析並提取原始 PDF 的版面結構...",
@@ -796,7 +798,12 @@
       "logicIntro1": "在毛玻璃畫布上定位控制節點（如複選框）。",
       "logicIntro2": "從圓點拖動一條連接線到目標依賴欄位。",
       "logicIntro3": "對於複選框，這將生成一段處於激活狀態的 AcrobatJS 驗證腳本。",
-      "logicIntro4": "成功連接後，連接線上將產生紫色的脈衝光流。"
+      "logicIntro4": "成功連接後，連接線上將產生紫色的脈衝光流。",
+      "noFields": "此 PDF 沒有互動式表單欄位。請先建立欄位，再新增連線。",
+      "sourceField": "來源欄位",
+      "targetField": "目標欄位",
+      "addConnection": "新增連線",
+      "removeConnection": "移除連線"
     },
     "nUpPdf": {
       "orientationLandscape": "橫向",
@@ -1059,7 +1066,14 @@
       "tsaTime": "TSA 原子钟授时时间 (UTC)",
       "tsaHash": "安全文件哈希校验和 (SHA-256)",
       "tsaName": "授时权威商 (TSA)",
-      "tsaSerial": "證書序列号 (Serial)"
+      "tsaSerial": "證書序列号 (Serial)",
+      "localNotice": "此工具使用裝置時鐘建立本機自我簽署的時間戳記。它不會向所選 TSA 要求或驗證時間戳記。",
+      "localCertificateTitle": "本機時間戳記詳情",
+      "deviceTime": "裝置時間",
+      "selectedAuthority": "所選機構名稱",
+      "localProcessButton": "新增本機時間戳記",
+      "localUploadLabel": "上傳 PDF",
+      "localUploadDescription": "選擇 PDF 以新增本機時間戳記。"
     },
     "vectorExtractor": {
       "uploadLabel": "上傳需要提取矢量的 PDF 文件",
@@ -1073,7 +1087,8 @@
       "rgbColor": "色彩预填充 (RGB)",
       "codeCopied": "代码已複製",
       "copyCode": "複製 SVG 源代码",
-      "downloadSvg": "下载選中矢量图"
+      "downloadSvg": "下载選中矢量图",
+      "previewHelp": "透過點擊或鍵盤選取向量圖形。"
     },
     "updater": {
       "title": "軟體更新",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "交替順時針 / 逆時針 90°",
       "layoutHelp": "編號網格和內部邊距。產生的 PDF 預覽顯示實際頁面順序和旋轉。",
       "outputSheets": "輸出頁數：{count}"
+    },
+    "documentPreview": {
+      "source": "原始文件",
+      "result": "處理後的文件"
     }
   },
   "toolsPage": {

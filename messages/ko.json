@@ -596,7 +596,9 @@
       "doiExternalLink": "녹색 실선: DOI 외부 링크",
       "gotoPageLink": "회색 점선: 페이지 이동 링크",
       "injectingMessage": "PDF 카탈로그에 대화형 인용 주석을 삽입하는 중...",
-      "successDesc": "{count}개의 인용 표시에 대화형 링크 및 페이지 이동을 성공적으로 삽입했습니다. 모든 표준 PDF 뷰어에서 양방향 동작을 지원합니다."
+      "successDesc": "{count}개의 인용 표시에 대화형 링크 및 페이지 이동을 성공적으로 삽입했습니다. 모든 표준 PDF 뷰어에서 양방향 동작을 지원합니다.",
+      "emptyTitle": "인용이 감지되지 않았습니다",
+      "emptyDescription": "이 문서에서 일치하는 인용 표시를 찾을 수 없습니다."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "원본 PDF 레이아웃 분석 및 추출 중...",
@@ -796,7 +798,12 @@
       "logicIntro1": "글래스모피즘 캔버스에서 제어 노드(예: 체크박스)를 찾습니다.",
       "logicIntro2": "점으로부터 대상 의존 필드까지 연결선을 드래그합니다.",
       "logicIntro3": "체크박스의 경우 활성화된 AcrobatJS 유효성 검사 스크립트가 생성됩니다.",
-      "logicIntro4": "성공적으로 연결되면 연결선 위에 보라색 맥박 표시광이 깜빡입니다."
+      "logicIntro4": "성공적으로 연결되면 연결선 위에 보라색 맥박 표시광이 깜빡입니다.",
+      "noFields": "이 PDF에는 대화형 양식 필드가 없습니다. 연결을 추가하기 전에 필드를 만드세요.",
+      "sourceField": "원본 필드",
+      "targetField": "대상 필드",
+      "addConnection": "연결 추가",
+      "removeConnection": "연결 삭제"
     },
     "nUpPdf": {
       "orientationLandscape": "가로 방향",
@@ -1059,7 +1066,14 @@
       "tsaTime": "원자 TSA 인증 시간(UTC)",
       "tsaHash": "SHA-256 암호화 해시 체크섬",
       "tsaName": "TSA 기관 발급자",
-      "tsaSerial": "TSA 타임스탬프 토큰 시리얼"
+      "tsaSerial": "TSA 타임스탬프 토큰 시리얼",
+      "localNotice": "이 도구는 기기 시계로 자체 서명된 로컬 타임스탬프를 만듭니다. 선택한 TSA에 타임스탬프를 요청하거나 검증하지 않습니다.",
+      "localCertificateTitle": "로컬 타임스탬프 세부 정보",
+      "deviceTime": "기기 시간",
+      "selectedAuthority": "선택한 기관 이름",
+      "localProcessButton": "로컬 타임스탬프 추가",
+      "localUploadLabel": "PDF 업로드",
+      "localUploadDescription": "로컬 타임스탬프를 추가할 PDF를 선택하세요."
     },
     "vectorExtractor": {
       "uploadLabel": "PDF를 업로드하여 벡터 추출",
@@ -1073,7 +1087,8 @@
       "rgbColor": "RGB 색상 사전 채우기",
       "codeCopied": "클립보드에 복사된 SVG 코드",
       "copyCode": "SVG 코드 복사",
-      "downloadSvg": "SVG 자산 다운로드"
+      "downloadSvg": "SVG 자산 다운로드",
+      "previewHelp": "클릭이나 키보드로 벡터를 선택하세요."
     },
     "updater": {
       "title": "소프트웨어 업데이트",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "시계 / 반시계 방향 90° 교대",
       "layoutHelp": "번호가 있는 격자 셀과 내부 여백입니다. 생성된 PDF 미리보기에서 실제 페이지 순서와 회전을 확인하세요.",
       "outputSheets": "출력 페이지: {count}"
+    },
+    "documentPreview": {
+      "source": "원본 문서",
+      "result": "처리된 문서"
     }
   },
   "toolsPage": {

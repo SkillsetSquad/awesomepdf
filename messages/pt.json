@@ -596,7 +596,9 @@
       "doiExternalLink": "Verde contínuo: Link externo DOI",
       "gotoPageLink": "Cinza tracejado: Link de salto de página",
       "injectingMessage": "Injetando anotações de citações ativas no catálogo do PDF...",
-      "successDesc": "Links ativos e ações de salto de página injetados com sucesso para {count} citações. Totalmente interativo em qualquer leitor de PDF!"
+      "successDesc": "Links ativos e ações de salto de página injetados com sucesso para {count} citações. Totalmente interativo em qualquer leitor de PDF!",
+      "emptyTitle": "Nenhuma citação detectada",
+      "emptyDescription": "Não foram encontrados marcadores de citação correspondentes neste documento."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Analisando e extraindo o layout do PDF original...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Localize os nós de controle (por exemplo, caixa de seleção) na tela de glassmorphism.",
       "logicIntro2": "Arraste uma linha de conexão do ponto até o campo dependente de destino.",
       "logicIntro3": "Para caixas de seleção, isso gera um script de validação AcrobatJS ativo.",
-      "logicIntro4": "Pulsos de luz roxa piscam na linha de conexão uma vez vinculada com sucesso."
+      "logicIntro4": "Pulsos de luz roxa piscam na linha de conexão uma vez vinculada com sucesso.",
+      "noFields": "Este PDF não tem campos de formulário interativos. Crie campos antes de adicionar ligações.",
+      "sourceField": "Campo de origem",
+      "targetField": "Campo de destino",
+      "addConnection": "Adicionar ligação",
+      "removeConnection": "Remover ligação"
     },
     "nUpPdf": {
       "orientationLandscape": "Paisagem",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Hora Certificada Atômica TSA (UTC)",
       "tsaHash": "Soma de verificação de hash criptográfico SHA-256",
       "tsaName": "Emissor de autoridade TSA",
-      "tsaSerial": "Série de token de carimbo de data/hora TSA"
+      "tsaSerial": "Série de token de carimbo de data/hora TSA",
+      "localNotice": "Esta ferramenta cria um carimbo de tempo local autoassinado usando o relógio do dispositivo. Não solicita nem verifica um carimbo da TSA selecionada.",
+      "localCertificateTitle": "Detalhes do carimbo de tempo local",
+      "deviceTime": "Hora do dispositivo",
+      "selectedAuthority": "Nome da autoridade selecionada",
+      "localProcessButton": "Adicionar carimbo de tempo local",
+      "localUploadLabel": "Carregar PDF",
+      "localUploadDescription": "Selecione um PDF para adicionar um carimbo de tempo local."
     },
     "vectorExtractor": {
       "uploadLabel": "Carregar PDF para extrair vetores",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Pré-preenchimento de cores RGB",
       "codeCopied": "Código SVG copiado para a área de transferência",
       "copyCode": "Copiar código SVG",
-      "downloadSvg": "Baixar recurso SVG"
+      "downloadSvg": "Baixar recurso SVG",
+      "previewHelp": "Selecione um vetor com um clique ou pelo teclado."
     },
     "updater": {
       "title": "Atualização de software",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Alternar 90° no sentido horário / anti-horário",
       "layoutHelp": "Células numeradas e margens internas. A pré-visualização do PDF gerado mostra a ordem e a rotação reais das páginas.",
       "outputSheets": "Páginas de saída: {count}"
+    },
+    "documentPreview": {
+      "source": "Documento original",
+      "result": "Documento processado"
     }
   },
   "toolsPage": {

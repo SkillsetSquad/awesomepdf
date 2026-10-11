@@ -8,16 +8,17 @@ import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { injectBatchBarcodes, type BatchBarcodeOptions } from '@/lib/pdf/processors/batch-barcode-injector';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { injectBatchBarcodes } from '@/lib/pdf/processors/batch-barcode-injector';
 import type { ProcessOutput } from '@/types/pdf';
-import { RefreshCcw, Sliders, CheckSquare, Sparkles } from 'lucide-react';
+import { RefreshCcw, Sliders } from 'lucide-react';
 
 export interface BatchBarcodeInjectorToolProps {
   className?: string;
@@ -30,45 +31,39 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
   const [value, setValue] = useState('https://pdfcraft.org');
   const [xPos, setXPos] = useState(50);
   const [yPos, setYPos] = useState(50);
-  const [width, setWidth] = useState(80);
-  const [height, setHeight] = useState(80);
-  const [pageRange, setPageRange] = useState<'all' | 'first' | 'last'>('all');
+  const [width] = useState(80);
+  const [height] = useState(80);
+  const [pageRange] = useState<'all' | 'first' | 'last'>('all');
 
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const processingRun = useRef(0);
+  useEffect(() => () => { processingRun.current++; }, []);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++;
+    setStatus('idle');
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
   const handleInject = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
-
-    // Audio scanning effect
-    try {
-      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.frequency.setValueAtTime(1000, audioCtx.currentTime); // 1kHz beep
-      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.12);
-    } catch {
-      // Audio context might be blocked or unsupported, ignore silently
-    }
 
     try {
       const output: ProcessOutput = await injectBatchBarcodes(
@@ -83,27 +78,25 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
           pages: pageRange,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Injecting code layers...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || (`${file.name.replace(/\.pdf$/i, '')}_barcoded.pdf`));
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to inject barcodes into PDF.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error injecting barcodes.');
         setStatus('error');
       }
@@ -111,6 +104,8 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
   };
 
   const handleClear = () => {
+    focusUpload.current = true;
+    resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -119,7 +114,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['application/pdf']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -127,7 +122,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
           disabled={status === 'processing'}
           label={t('batchBarcodeInjector.uploadLabel')}
           description={t('batchBarcodeInjector.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -138,42 +133,23 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <RefreshCcw className="w-4 h-4 text-primary" />
-                  {t('batchBarcodeInjector.previewTitle')}
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
                   {t('batchBarcodeInjector.clearButton')}
                 </Button>
               </div>
 
-              {/* Align coordinates mockup */}
-              <div className="flex-1 flex flex-col items-center justify-center p-6 relative bg-muted border border-border rounded-2xl">
-                <div className="w-48 h-64 bg-background border-2 border-primary rounded shadow-xl flex items-center justify-center relative">
-                  {/* Absolute positioning of QR mockup based on percentage/scaled value */}
-                  <div
-                    className="absolute border border-dashed border-primary bg-primary/10 rounded flex items-center justify-center text-[10px] font-semibold text-primary animate-pulse"
-                    style={{
-                      left: `${Math.min(75, (xPos / 595.28) * 100)}%`,
-                      bottom: `${Math.min(75, (yPos / 841.89) * 100)}%`,
-                      width: `${Math.min(60, (width / 595.28) * 200)}px`,
-                      height: `${Math.min(60, (height / 841.89) * 260)}px`,
-                    }}
-                  >
-                    [QR CODE]
-                  </div>
-                </div>
-                <span className="text-[10px] text-muted-foreground mt-2">
-                  {t('batchBarcodeInjector.gridLabel', { xPos, yPos })}
-                </span>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{resultBlob ? t('documentPreview.result') : t('documentPreview.source')}</p><PDFPagePreview file={resultBlob ?? file} label={resultBlob ? t('documentPreview.result') : t('documentPreview.source')} /></div>
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -186,8 +162,8 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                     <Label className="" htmlFor="batchbarcodeinjectortool-field-1">{t('batchBarcodeInjector.barcodeTypeLabel')}</Label>
                     <NativeSelect
                       value={barcodeType}
-                      onChange={(e) => setBarcodeType(e.target.value as any)}
-                      className="w-full" id="batchbarcodeinjectortool-field-1" aria-label={t('batchBarcodeInjector.barcodeTypeLabel')}
+                      onChange={(e) => { resetOutput(); setBarcodeType(e.target.value as typeof barcodeType); }}
+                      className="w-full" id="batchbarcodeinjectortool-field-1" aria-label={t('batchBarcodeInjector.barcodeTypeLabel')} disabled={status === 'processing'}
                     >
                       <NativeSelectOption value="qr">{t('batchBarcodeInjector.barcodeTypeQr')}</NativeSelectOption>
                       <NativeSelectOption value="code128">{t('batchBarcodeInjector.barcodeTypeBar')}</NativeSelectOption>
@@ -199,9 +175,9 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                     <Input
                       type="text"
                       value={value}
-                      onChange={(e) => setValue(e.target.value)}
+                      onChange={(e) => { resetOutput(); setValue(e.target.value); }}
                       placeholder="e.g. https://pdfcraft.org"
-                      className="w-full" id="batchbarcodeinjectortool-field-2" aria-label={t('batchBarcodeInjector.barcodeValueLabel')}
+                      className="w-full" id="batchbarcodeinjectortool-field-2" aria-label={t('batchBarcodeInjector.barcodeValueLabel')} disabled={status === 'processing'}
                     />
                   </div>
 
@@ -211,8 +187,8 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                       <Input
                         type="number"
                         value={xPos}
-                        onChange={(e) => setXPos(parseInt(e.target.value) || 0)}
-                        className="w-full" id="batchbarcodeinjectortool-field-3" aria-label={t('batchBarcodeInjector.xPosLabel')}
+                        onChange={(e) => { resetOutput(); setXPos(parseInt(e.target.value) || 0); }}
+                        className="w-full" id="batchbarcodeinjectortool-field-3" aria-label={t('batchBarcodeInjector.xPosLabel')} disabled={status === 'processing'}
                       />
                     </div>
                     <div className="space-y-1">
@@ -220,8 +196,8 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                       <Input
                         type="number"
                         value={yPos}
-                        onChange={(e) => setYPos(parseInt(e.target.value) || 0)}
-                        className="w-full" id="batchbarcodeinjectortool-field-4" aria-label={t('batchBarcodeInjector.yPosLabel')}
+                        onChange={(e) => { resetOutput(); setYPos(parseInt(e.target.value) || 0); }}
+                        className="w-full" id="batchbarcodeinjectortool-field-4" aria-label={t('batchBarcodeInjector.yPosLabel')} disabled={status === 'processing'}
                       />
                     </div>
                   </div>
@@ -232,7 +208,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename={`${file.name.replace(/\.pdf$/i, '')}_barcoded.pdf`}
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -260,7 +236,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}

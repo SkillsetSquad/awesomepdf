@@ -596,7 +596,9 @@
       "doiExternalLink": "Stałe zielone: łącze zewnętrzne DOI",
       "gotoPageLink": "Przerywana szarość: Link do przeskoku strony",
       "injectingMessage": "Wstrzykiwanie aktywnych adnotacji o cytatach do katalogu PDF...",
-      "successDesc": "Pomyślnie dodano aktywne linki i akcje przejścia do strony dla {count, plural, one {# cytatu} few {# cytatów} many {# cytatów} other {# cytatu}}. Są w pełni interaktywne w każdym czytniku PDF."
+      "successDesc": "Pomyślnie dodano aktywne linki i akcje przejścia do strony dla {count, plural, one {# cytatu} few {# cytatów} many {# cytatów} other {# cytatu}}. Są w pełni interaktywne w każdym czytniku PDF.",
+      "emptyTitle": "Nie wykryto cytowań",
+      "emptyDescription": "W tym dokumencie nie znaleziono pasujących oznaczeń cytowań."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Analizowanie i wyodrębnianie oryginalnego układu PDF...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Zlokalizuj węzły kontrolne (np. pole wyboru) na kanwie szklanomorficznym.",
       "logicIntro2": "Przeciągnij linię łączącą od kropki do pola zależnego od celu.",
       "logicIntro3": "W przypadku pól wyboru powoduje to wygenerowanie aktywnego skryptu sprawdzającego AcrobatJS.",
-      "logicIntro4": "Po pomyślnym połączeniu na linii połączenia zacznie migać fioletowe światło."
+      "logicIntro4": "Po pomyślnym połączeniu na linii połączenia zacznie migać fioletowe światło.",
+      "noFields": "Ten PDF nie ma interaktywnych pól formularza. Utwórz pola przed dodaniem połączeń.",
+      "sourceField": "Pole źródłowe",
+      "targetField": "Pole docelowe",
+      "addConnection": "Dodaj połączenie",
+      "removeConnection": "Usuń połączenie"
     },
     "nUpPdf": {
       "orientationLandscape": "Krajobraz",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Czas certyfikowany Atomic TSA (UTC)",
       "tsaHash": "Kryptograficzna suma kontrolna skrótu SHA-256",
       "tsaName": "Wystawca organu TSA",
-      "tsaSerial": "Numer seryjny tokena znacznika czasu TSA"
+      "tsaSerial": "Numer seryjny tokena znacznika czasu TSA",
+      "localNotice": "To narzędzie tworzy lokalny, samopodpisany znacznik czasu z zegara urządzenia. Nie żąda ani nie weryfikuje znacznika od wybranego TSA.",
+      "localCertificateTitle": "Szczegóły lokalnego znacznika czasu",
+      "deviceTime": "Czas urządzenia",
+      "selectedAuthority": "Nazwa wybranego organu",
+      "localProcessButton": "Dodaj lokalny znacznik czasu",
+      "localUploadLabel": "Prześlij PDF",
+      "localUploadDescription": "Wybierz PDF, aby dodać lokalny znacznik czasu."
     },
     "vectorExtractor": {
       "uploadLabel": "Prześlij PDF, aby wyodrębnić wektory",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Wstępne wypełnienie kolorem RGB",
       "codeCopied": "Kod SVG został skopiowany do schowka",
       "copyCode": "Skopiuj kod SVG",
-      "downloadSvg": "Pobierz zasób SVG"
+      "downloadSvg": "Pobierz zasób SVG",
+      "previewHelp": "Wybierz wektor kliknięciem lub klawiaturą."
     },
     "updater": {
       "title": "Aktualizacja oprogramowania",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Naprzemiennie 90° zgodnie / przeciwnie do wskazówek",
       "layoutHelp": "Ponumerowane komórki i marginesy wewnętrzne. Podgląd wygenerowanego PDF pokazuje rzeczywistą kolejność i obrót stron.",
       "outputSheets": "Strony wynikowe: {count}"
+    },
+    "documentPreview": {
+      "source": "Dokument źródłowy",
+      "result": "Przetworzony dokument"
     }
   },
   "toolsPage": {

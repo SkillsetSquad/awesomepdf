@@ -596,7 +596,9 @@
       "doiExternalLink": "Vert continu : Lien externe DOI",
       "gotoPageLink": "Gris pointillé : Lien de saut de page",
       "injectingMessage": "Injection d'annotations de citations actives dans le catalogue PDF...",
-      "successDesc": "Liens actifs et actions de saut de page injectés avec succès pour {count} citations. Entièrement interactif dans n'importe quel lecteur PDF !"
+      "successDesc": "Liens actifs et actions de saut de page injectés avec succès pour {count} citations. Entièrement interactif dans n'importe quel lecteur PDF !",
+      "emptyTitle": "Aucune citation détectée",
+      "emptyDescription": "Aucun marqueur de citation correspondant n’a été trouvé dans ce document."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Analyse et extraction de la mise en page du PDF original...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Repérez les nœuds de contrôle (ex. case à cocher) sur le canevas effet verre dépoli.",
       "logicIntro2": "Glissez une ligne de connexion depuis le point vers le champ dépendant cible.",
       "logicIntro3": "Pour les cases à cocher, cela génère un script de validation AcrobatJS actif.",
-      "logicIntro4": "Des impulsions lumineuses violettes s'affichent sur la ligne une fois connectée avec succès."
+      "logicIntro4": "Des impulsions lumineuses violettes s'affichent sur la ligne une fois connectée avec succès.",
+      "noFields": "Ce PDF ne contient aucun champ de formulaire interactif. Créez des champs avant d’ajouter des connexions.",
+      "sourceField": "Champ source",
+      "targetField": "Champ cible",
+      "addConnection": "Ajouter une connexion",
+      "removeConnection": "Supprimer la connexion"
     },
     "nUpPdf": {
       "orientationLandscape": "Paysage",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Heure atomique certifiée TSA (UTC)",
       "tsaHash": "Somme de contrôle de hachage cryptographique SHA-256",
       "tsaName": "Émetteur de l'autorité TSA",
-      "tsaSerial": "Série de jetons d'horodatage TSA"
+      "tsaSerial": "Série de jetons d'horodatage TSA",
+      "localNotice": "Cet outil crée un horodatage local autosigné avec l’horloge de votre appareil. Il ne demande ni ne vérifie un horodatage auprès de la TSA sélectionnée.",
+      "localCertificateTitle": "Détails de l’horodatage local",
+      "deviceTime": "Heure de l’appareil",
+      "selectedAuthority": "Nom de l’autorité sélectionnée",
+      "localProcessButton": "Ajouter un horodatage local",
+      "localUploadLabel": "Importer un PDF",
+      "localUploadDescription": "Sélectionnez un PDF pour ajouter un horodatage local."
     },
     "vectorExtractor": {
       "uploadLabel": "Télécharger un PDF pour extraire des vecteurs",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Pré-remplissage de couleur RVB",
       "codeCopied": "Code SVG copié dans le presse-papiers",
       "copyCode": "Copier le code SVG",
-      "downloadSvg": "Télécharger l'actif SVG"
+      "downloadSvg": "Télécharger l'actif SVG",
+      "previewHelp": "Sélectionnez un vecteur avec un clic ou le clavier."
     },
     "updater": {
       "title": "Mise à jour du logiciel",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Alterner 90° dans le sens horaire / antihoraire",
       "layoutHelp": "Cellules numérotées et marges intérieures. L’aperçu du PDF généré montre l’ordre et la rotation réels des pages.",
       "outputSheets": "Pages de sortie : {count}"
+    },
+    "documentPreview": {
+      "source": "Document source",
+      "result": "Document traité"
     }
   },
   "toolsPage": {

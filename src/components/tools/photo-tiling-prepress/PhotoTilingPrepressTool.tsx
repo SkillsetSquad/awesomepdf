@@ -8,16 +8,18 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 
 import { Label } from '@/components/ui/label';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { prepressPhotoTiling, type PhotoTilingPrepressOptions } from '@/lib/pdf/processors/photo-tiling-prepress';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { ImageFilePreview } from '../ImageFilePreview';
+import { prepressPhotoTiling } from '@/lib/pdf/processors/photo-tiling-prepress';
 import type { ProcessOutput } from '@/types/pdf';
-import { Sliders, Layout, RefreshCw, Sparkles, AlertCircle } from 'lucide-react';
+import { Sliders, Layout, RefreshCw } from 'lucide-react';
 
 export interface PhotoTilingPrepressToolProps {
   className?: string;
@@ -34,19 +36,28 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const processingRun = useRef(0);
+  useEffect(() => () => { processingRun.current++; }, []);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++;
+    setStatus('idle');
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
   const handlePrepress = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -56,27 +67,25 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
         [file],
         { photoSpec, paperSize, gapPt },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Engraving prepress tiled grids...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || ("prepress_photos_matrix.pdf"));
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to arrange photo prepress.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error processing photo tiling.');
         setStatus('error');
       }
@@ -84,6 +93,8 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
   };
 
   const handleClear = () => {
+    focusUpload.current = true;
+    resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -92,7 +103,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['image/png', 'image/jpeg', 'image/jpg']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -100,7 +111,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
           disabled={status === 'processing'}
           label={t('photoTilingPrepress.uploadLabel')}
           description={t('photoTilingPrepress.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -111,48 +122,23 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
-              <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 pointer-events-none">
-                <span className="text-xs font-bold text-amber-800 dark:text-amber-600 flex items-center gap-1.5">
-                  <Layout className="w-4 h-4 text-amber-700 animate-pulse" />
-                  {t('photoTilingPrepress.previewTitle')}
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
+              <div className="flex items-center justify-between pb-3 border-b border-border ">
+                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
+                  <Layout className="w-4 h-4 text-primary" />
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" className="" onClick={handleClear} disabled={status === 'processing'}>
                   {t('photoTilingPrepress.clearButton')}
                 </Button>
               </div>
 
-              {/* Wooden magnet pre-flight card desk mockup */}
-              <div className="flex-1 flex items-center justify-center p-6 relative">
-                <div className="w-72 h-44 bg-amber-100 border-4 border-amber-900/20 shadow-2xl rounded-2xl p-4 relative overflow-hidden flex flex-wrap gap-2 items-center justify-center">
-
-                  {/* Photo Matrix grids with strong snapping micro-animations */}
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
-                    Snapped
-                  </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
-                    Snapped
-                  </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
-                    Snapped
-                  </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
-                    Snapped
-                  </div>
-                  <div className="w-12 h-16 border border-dashed border-amber-900/20 bg-background rounded flex items-center justify-center text-[8px] text-amber-900/40 transform hover:scale-105 duration-200 shadow-sm">
-                    Snapped
-                  </div>
-
-                  <div className="absolute top-2 right-2 text-[7px] text-amber-800 font-mono font-bold">
-                    GRID snaps ON
-                  </div>
-                </div>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{resultBlob ? t('documentPreview.result') : t('documentPreview.source')}</p><>{resultBlob ? <PDFPagePreview file={resultBlob} label={t('documentPreview.result')} /> : <ImageFilePreview file={file} label={file.name} />}</></div>
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -165,8 +151,8 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                     <Label className="" htmlFor="phototilingprepresstool-field-1">{t('photoTilingPrepress.photoSpecLabel')}</Label>
                     <NativeSelect
                       value={photoSpec}
-                      onChange={(e) => setPhotoSpec(e.target.value as any)}
-                      className="w-full" id="phototilingprepresstool-field-1" aria-label={t('photoTilingPrepress.photoSpecLabel')}
+                      onChange={(e) => { resetOutput(); setPhotoSpec(e.target.value as typeof photoSpec); }}
+                      className="w-full" id="phototilingprepresstool-field-1" aria-label={t('photoTilingPrepress.photoSpecLabel')} disabled={status === 'processing'}
                     >
                       <NativeSelectOption value="1-inch">{t('photoTilingPrepress.photoSpec1Inch')}</NativeSelectOption>
                       <NativeSelectOption value="2-inch">{t('photoTilingPrepress.photoSpec2Inch')}</NativeSelectOption>
@@ -177,8 +163,8 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                     <Label className="" htmlFor="phototilingprepresstool-field-2">{t('photoTilingPrepress.paperSizeLabel')}</Label>
                     <NativeSelect
                       value={paperSize}
-                      onChange={(e) => setPaperSize(e.target.value as any)}
-                      className="w-full" id="phototilingprepresstool-field-2" aria-label={t('photoTilingPrepress.paperSizeLabel')}
+                      onChange={(e) => { resetOutput(); setPaperSize(e.target.value as typeof paperSize); }}
+                      className="w-full" id="phototilingprepresstool-field-2" aria-label={t('photoTilingPrepress.paperSizeLabel')} disabled={status === 'processing'}
                     >
                       <NativeSelectOption value="5-inch">{t('photoTilingPrepress.paperSize5Inch')}</NativeSelectOption>
                       <NativeSelectOption value="6-inch">{t('photoTilingPrepress.paperSize6Inch')}</NativeSelectOption>
@@ -194,8 +180,8 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                       min={2}
                       max={20}
                       value={[gapPt]}
-                      onValueChange={(values) => setGapPt(parseInt(String(values[0])))}
-                      className="w-full cursor-pointer" id="phototilingprepresstool-slider-1" aria-label={t('photoTilingPrepress.gapPtLabel')}
+                      onValueChange={(values) => { resetOutput(); setGapPt(parseInt(String(values[0]))); }}
+                      className="w-full cursor-pointer" id="phototilingprepresstool-slider-1" aria-label={t('photoTilingPrepress.gapPtLabel')} disabled={status === 'processing'}
                     />
                   </div>
                 </div>
@@ -205,7 +191,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename="prepress_photos_matrix.pdf"
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -234,7 +220,7 @@ export function PhotoTilingPrepressTool({ className = '' }: PhotoTilingPrepressT
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}

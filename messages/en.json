@@ -596,7 +596,9 @@
       "doiExternalLink": "Solid Green: DOI External Link",
       "gotoPageLink": "Dashed Grey: Page-Jump Link",
       "injectingMessage": "Injecting active citation annotations into PDF catalog...",
-      "successDesc": "Successfully injected active links and page-jump actions for {count} citations. Fully interactive in any PDF reader."
+      "successDesc": "Successfully injected active links and page-jump actions for {count} citations. Fully interactive in any PDF reader.",
+      "emptyTitle": "No citations detected",
+      "emptyDescription": "No matching citation markers were found in this document."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Analyzing and extracting Original PDF layout...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Locate control nodes (e.g. checkbox) on the glassmorphic canvas.",
       "logicIntro2": "Drag a connecting line from the dot to the target dependent field.",
       "logicIntro3": "For checkboxes, this generates an active AcrobatJS validation script.",
-      "logicIntro4": "Purple light pulses on the connection line once successfully linked."
+      "logicIntro4": "Purple light pulses on the connection line once successfully linked.",
+      "noFields": "This PDF has no interactive form fields. Create fields before adding connections.",
+      "sourceField": "Source field",
+      "targetField": "Target field",
+      "addConnection": "Add connection",
+      "removeConnection": "Remove connection"
     },
     "nUpPdf": {
       "orientationLandscape": "Landscape",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Atomic TSA Certified Time (UTC)",
       "tsaHash": "SHA-256 Cryptographic Hash Checksum",
       "tsaName": "TSA Authority Issuer",
-      "tsaSerial": "TSA Timestamp Token Serial"
+      "tsaSerial": "TSA Timestamp Token Serial",
+      "localNotice": "This tool creates a local, self-signed timestamp using your device clock. It does not request or verify a timestamp from the selected TSA.",
+      "localCertificateTitle": "Local timestamp details",
+      "deviceTime": "Device time",
+      "selectedAuthority": "Selected authority label",
+      "localProcessButton": "Add local timestamp",
+      "localUploadLabel": "Upload PDF",
+      "localUploadDescription": "Select a PDF to add a local timestamp."
     },
     "vectorExtractor": {
       "uploadLabel": "Upload PDF to Extract Vectors",
@@ -1073,7 +1087,8 @@
       "rgbColor": "RGB Color Pre-fill",
       "codeCopied": "SVG code copied to clipboard",
       "copyCode": "Copy SVG Code",
-      "downloadSvg": "Download SVG Asset"
+      "downloadSvg": "Download SVG Asset",
+      "previewHelp": "Select a vector with a click or the keyboard."
     },
     "updater": {
       "title": "Software Update",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Alternate 90° clockwise / counterclockwise",
       "layoutHelp": "Numbered grid cells and inner margins. The generated PDF preview shows the actual page order and rotation.",
       "outputSheets": "Output pages: {count}"
+    },
+    "documentPreview": {
+      "source": "Source document",
+      "result": "Processed document"
     }
   },
   "toolsPage": {

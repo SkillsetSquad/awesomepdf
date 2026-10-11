@@ -596,7 +596,9 @@
       "doiExternalLink": "Đường nét liền xanh lá: Liên kết ngoài DOI",
       "gotoPageLink": "Đường nét đứt màu xám: Liên kết chuyển trang",
       "injectingMessage": "Đang nhúng các chú thích trích dẫn hoạt động vào danh mục PDF...",
-      "successDesc": "Nhúng thành công liên kết hoạt động và hành động chuyển trang cho {count} trích dẫn. Hoàn toàn tương thích tương tác trong mọi trình đọc PDF."
+      "successDesc": "Nhúng thành công liên kết hoạt động và hành động chuyển trang cho {count} trích dẫn. Hoàn toàn tương thích tương tác trong mọi trình đọc PDF.",
+      "emptyTitle": "Không phát hiện trích dẫn",
+      "emptyDescription": "Không tìm thấy dấu trích dẫn phù hợp trong tài liệu này."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Đang phân tích và trích xuất bố cục PDF gốc...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Xác định các nút điều khiển (ví dụ: hộp kiểm) trên khung hình giả kính.",
       "logicIntro2": "Kéo một đường kết nối từ dấu chấm đến trường phụ thuộc đích.",
       "logicIntro3": "Đối với các hộp kiểm, tính năng này sẽ tạo tập lệnh xác thực AcrobatJS hoạt động.",
-      "logicIntro4": "Tia sáng tím sẽ chạy dọc đường kết nối sau khi liên kết thành công."
+      "logicIntro4": "Tia sáng tím sẽ chạy dọc đường kết nối sau khi liên kết thành công.",
+      "noFields": "PDF này không có trường biểu mẫu tương tác. Hãy tạo trường trước khi thêm kết nối.",
+      "sourceField": "Trường nguồn",
+      "targetField": "Trường đích",
+      "addConnection": "Thêm kết nối",
+      "removeConnection": "Xóa kết nối"
     },
     "nUpPdf": {
       "orientationLandscape": "Ngang",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Thời gian được chứng nhận bởi đồng hồ nguyên tử TSA (UTC)",
       "tsaHash": "Mã băm kiểm tra mật mã SHA-256",
       "tsaName": "Nhà phát hành chứng thực TSA",
-      "tsaSerial": "Số sê-ri mã dấu thời gian TSA"
+      "tsaSerial": "Số sê-ri mã dấu thời gian TSA",
+      "localNotice": "Công cụ này tạo dấu thời gian cục bộ tự ký bằng đồng hồ thiết bị. Công cụ không yêu cầu hoặc xác minh dấu thời gian từ TSA đã chọn.",
+      "localCertificateTitle": "Chi tiết dấu thời gian cục bộ",
+      "deviceTime": "Giờ thiết bị",
+      "selectedAuthority": "Tên cơ quan đã chọn",
+      "localProcessButton": "Thêm dấu thời gian cục bộ",
+      "localUploadLabel": "Tải PDF lên",
+      "localUploadDescription": "Chọn PDF để thêm dấu thời gian cục bộ."
     },
     "vectorExtractor": {
       "uploadLabel": "Tải lên PDF để trích xuất Vector",
@@ -1073,7 +1087,8 @@
       "rgbColor": "Điền sẵn màu RGB",
       "codeCopied": "Đã sao chép mã SVG vào bộ nhớ tạm",
       "copyCode": "Sao chép mã SVG",
-      "downloadSvg": "Tải xuống tài sản SVG"
+      "downloadSvg": "Tải xuống tài sản SVG",
+      "previewHelp": "Chọn một vector bằng cách nhấp hoặc dùng bàn phím."
     },
     "updater": {
       "title": "Cập nhật phần mềm",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Luân phiên 90° thuận / ngược chiều kim đồng hồ",
       "layoutHelp": "Các ô được đánh số và lề trong. Bản xem trước PDF được tạo hiển thị thứ tự và góc xoay trang thực tế.",
       "outputSheets": "Số trang đầu ra: {count}"
+    },
+    "documentPreview": {
+      "source": "Tài liệu gốc",
+      "result": "Tài liệu đã xử lý"
     }
   },
   "toolsPage": {

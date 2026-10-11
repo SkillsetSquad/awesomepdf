@@ -3,18 +3,21 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { loadPdfLib } from '@/lib/pdf/loader';
 
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { injectSignatureAnchors, type PdfSignatureAnchorHelperOptions } from '@/lib/pdf/processors/pdf-signature-anchor-helper';
+import { injectSignatureAnchors } from '@/lib/pdf/processors/pdf-signature-anchor-helper';
 import type { ProcessOutput } from '@/types/pdf';
-import { Sliders, HelpCircle, PenTool, RefreshCw } from 'lucide-react';
+import { Sliders, PenTool, RefreshCw } from 'lucide-react';
 
 export interface PdfSignatureAnchorHelperToolProps {
   className?: string;
@@ -33,29 +36,36 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const processingRun = useRef(0);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => () => { processingRun.current++; }, []);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [pageSizes, setPageSizes] = useState<{ width: number; height: number }[]>([]);
+  useEffect(() => {
+    let active = true; setPageSizes([]);
+    if (file) void (async () => {
+      try { const { PDFDocument } = await loadPdfLib(); const pdf = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true }); if (active) setPageSizes(pdf.getPages().map(page => page.getSize())); }
+      catch (error) { if (active) setError(error instanceof Error ? error.message : t('status.error')); }
+    })();
+    return () => { active = false; };
+  }, [file, t]);
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++; setStatus('idle'); setPageNumber(1);
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
-  const handleCanvasClick = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    setAnchorX(parseFloat(x.toFixed(3)));
-    setAnchorY(parseFloat(y.toFixed(3)));
-  };
-
   const handleInject = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -70,27 +80,25 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
           anchorLabel,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Injecting visual signature coordinates...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || `${file.name.replace(/\.pdf$/i, '')}_anchored.pdf`);
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to inject signature guides.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error injecting guides.');
         setStatus('error');
       }
@@ -98,6 +106,7 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
   };
 
   const handleClear = () => {
+    focusUpload.current = true; resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -106,7 +115,7 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['application/pdf']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -114,7 +123,7 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
           disabled={status === 'processing'}
           label={t('pdfSignatureAnchorHelper.uploadLabel')}
           description={t('pdfSignatureAnchorHelper.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -125,57 +134,23 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                  <PenTool className="w-4 h-4 text-primary animate-pulse" />
-                  {t('pdfSignatureAnchorHelper.magnifierTitle')}
+                  <PenTool className="w-4 h-4 text-primary " />
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
-                  {t('pdfTwoColumnReflower.clearButton')}
+                  {t('buttons.reset')}
                 </Button>
               </div>
 
-              {/* Interactive clickable preview layout with radar ripple */}
-              <div className="flex-1 flex items-center justify-center p-6 relative">
-                <div 
-                  ref={containerRef}
-                  onClick={handleCanvasClick}
-                  className="relative w-60 h-80 bg-background border border-border shadow-xl rounded-md cursor-crosshair overflow-hidden"
-                >
-                  {/* Fake paragraph mock lines */}
-                  <div className="p-4 space-y-3">
-                    <div className="h-4 w-3/4 bg-muted rounded" />
-                    <div className="h-2 w-full bg-muted rounded" />
-                    <div className="h-2 w-full bg-muted rounded" />
-                    <div className="h-2 w-5/6 bg-muted rounded" />
-                    <div className="h-2 w-full bg-muted rounded" />
-                    <div className="h-2 w-2/3 bg-muted rounded" />
-                  </div>
-
-                  {/* Breathing radar pulse target indicator */}
-                  <div 
-                    className="absolute w-6 h-6 -translate-x-3 -translate-y-3 pointer-events-none"
-                    style={{ left: `${anchorX * 100}%`, top: `${anchorY * 100}%` }}
-                  >
-                    <div className="absolute inset-0 bg-red-500 rounded-full animate-ping opacity-75" />
-                    <div className="absolute inset-1.5 bg-red-600 rounded-full border border-white shadow" />
-                  </div>
-
-                  {/* Floated tip text next to radar */}
-                  <div 
-                    className="absolute bg-red-50 border border-red-200 text-red-600 text-[8px] px-2 py-0.5 rounded shadow pointer-events-none -translate-x-1/2 -translate-y-9 whitespace-nowrap"
-                    style={{ left: `${anchorX * 100}%`, top: `${anchorY * 100}%` }}
-                  >
-                    {anchorLabel}
-                  </div>
-                </div>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{resultBlob ? t('documentPreview.result') : t('documentPreview.source')}</p><PDFPagePreview disabled={status === 'processing'} file={resultBlob ?? file} label={resultBlob ? t('documentPreview.result') : t('documentPreview.source')} selectedPage={pageNumber} onPageChange={page => { resetOutput(); setPageNumber(page); }} onPointSelect={point => { if (status === 'processing') return; const size = pageSizes[point.page - 1]; if (!size) return; resetOutput(); setAnchorX(point.x / size.width); setAnchorY(1 - point.y / size.height); }} /></div>
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -183,40 +158,19 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
                   <h3 className="text-sm font-semibold text-foreground">{t('pdfSignatureAnchorHelper.optionsTitle')}</h3>
                 </div>
 
-                <div className="space-y-4 text-xs">
-                  <div className="space-y-1">
-                    {t('pdfSignatureAnchorHelper.anchorLabelLabel')}
-                    <Input
-                      type="text"
-                      value={anchorLabel}
-                      onChange={(e) => setAnchorLabel(e.target.value)}
-                      className="w-full"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    {t('pdfSignatureAnchorHelper.targetPageLabel')}
-                    <Input
-                      type="number"
-                      min={1}
-                      value={pageNumber}
-                      onChange={(e) => setPageNumber(parseInt(e.target.value) || 1)}
-                      className="w-full"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2 font-mono text-[9px] text-muted-foreground">
-                    <div>X: {(anchorX * 100).toFixed(0)}%</div>
-                    <div>Y: {(anchorY * 100).toFixed(0)}%</div>
-                  </div>
-                </div>
+                <fieldset disabled={status === 'processing'} className="space-y-4">
+                  <div className="space-y-2"><Label htmlFor="pdfSignatureAnchorHelper-page">{t('pdfSignatureAnchorHelper.targetPageLabel')}</Label><Input id="pdfSignatureAnchorHelper-page" type="number" min={1} value={pageNumber} onChange={event => { resetOutput(); setPageNumber(Math.max(1, parseInt(event.target.value) || 1)); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfSignatureAnchorHelper-label">{t('pdfSignatureAnchorHelper.anchorLabelLabel')}</Label><Input id="pdfSignatureAnchorHelper-label" value={anchorLabel} onChange={event => { resetOutput(); setAnchorLabel(event.target.value); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfSignatureAnchorHelper-anchorX">X (%)</Label><Input id="pdfSignatureAnchorHelper-anchorX" type="number" min={0} max={100} step={1} value={Number((anchorX * 100).toFixed(2))} onChange={event => { resetOutput(); setAnchorX(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfSignatureAnchorHelper-anchorY">Y (%)</Label><Input id="pdfSignatureAnchorHelper-anchorY" type="number" min={0} max={100} step={1} value={Number((anchorY * 100).toFixed(2))} onChange={event => { resetOutput(); setAnchorY(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                </fieldset>
               </div>
 
               <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename={`${file.name.replace(/\.[^/.]+$/, '')}_signed_guide.pdf`}
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -245,7 +199,7 @@ export function PdfSignatureAnchorHelperTool({ className = '' }: PdfSignatureAnc
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}

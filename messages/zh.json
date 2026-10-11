@@ -596,7 +596,9 @@
       "doiExternalLink": "绿实线: DOI 外部链接",
       "gotoPageLink": "灰虚线: 参考文献页内跳转",
       "injectingMessage": "正在注入高强可点击引文注释...",
-      "successDesc": "共为 {count} 处引文符号注入了关联链接和页内跳转跳转点，文档可在任意符合标准的 PDF 阅读器中完美交互。"
+      "successDesc": "共为 {count} 处引文符号注入了关联链接和页内跳转跳转点，文档可在任意符合标准的 PDF 阅读器中完美交互。",
+      "emptyTitle": "未检测到引用",
+      "emptyDescription": "此文档中未找到匹配的引用标记。"
     },
     "comparePdfs": {
       "progressExtractingOriginal": "正在解构并提取源文档 (Original PDF)...",
@@ -796,7 +798,12 @@
       "logicIntro1": "在毛玻璃画布上定位控制节点（如复选框）。",
       "logicIntro2": "从圆点拖动一条连接线到目标依赖字段。",
       "logicIntro3": "对于复选框，这将生成一段处于激活状态的 AcrobatJS 验证脚本。",
-      "logicIntro4": "成功连接后，连接线上将产生紫色的脉冲光流。"
+      "logicIntro4": "成功连接后，连接线上将产生紫色的脉冲光流。",
+      "noFields": "此 PDF 没有交互式表单字段。请先创建字段，再添加连接。",
+      "sourceField": "来源字段",
+      "targetField": "目标字段",
+      "addConnection": "添加连接",
+      "removeConnection": "移除连接"
     },
     "nUpPdf": {
       "orientationLandscape": "横向",
@@ -1059,7 +1066,14 @@
       "tsaTime": "TSA 原子钟授时时间 (UTC)",
       "tsaHash": "安全文件哈希校验和 (SHA-256)",
       "tsaName": "授时权威商 (TSA)",
-      "tsaSerial": "证书序列号 (Serial)"
+      "tsaSerial": "证书序列号 (Serial)",
+      "localNotice": "此工具使用设备时钟创建本地自签名时间戳。它不会向所选 TSA 请求或验证时间戳。",
+      "localCertificateTitle": "本地时间戳详情",
+      "deviceTime": "设备时间",
+      "selectedAuthority": "所选机构名称",
+      "localProcessButton": "添加本地时间戳",
+      "localUploadLabel": "上传 PDF",
+      "localUploadDescription": "选择 PDF 以添加本地时间戳。"
     },
     "vectorExtractor": {
       "uploadLabel": "上传需要提取矢量的 PDF 文件",
@@ -1073,7 +1087,8 @@
       "rgbColor": "色彩预填充 (RGB)",
       "codeCopied": "代码已复制",
       "copyCode": "复制 SVG 源代码",
-      "downloadSvg": "下载选中矢量图"
+      "downloadSvg": "下载选中矢量图",
+      "previewHelp": "通过点击或键盘选择矢量图形。"
     },
     "updater": {
       "title": "软件更新",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "交替顺时针 / 逆时针 90°",
       "layoutHelp": "编号网格和内部边距。生成的 PDF 预览显示实际页面顺序和旋转。",
       "outputSheets": "输出页数：{count}"
+    },
+    "documentPreview": {
+      "source": "原始文档",
+      "result": "处理后的文档"
     }
   },
   "toolsPage": {

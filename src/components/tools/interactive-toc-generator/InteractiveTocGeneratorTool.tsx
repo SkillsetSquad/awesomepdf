@@ -1,5 +1,5 @@
 'use client';
-import { ScrollText as UIEmojiScrollText } from 'lucide-react';
+
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
@@ -8,16 +8,17 @@ import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { generateInteractiveToc, type InteractiveTocOptions } from '@/lib/pdf/processors/interactive-toc-generator';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { generateInteractiveToc } from '@/lib/pdf/processors/interactive-toc-generator';
 import type { ProcessOutput } from '@/types/pdf';
-import { Layers, Sliders, CheckSquare, Sparkles } from 'lucide-react';
+import { Layers, Sliders } from 'lucide-react';
 
 export interface InteractiveTocGeneratorToolProps {
   className?: string;
@@ -33,19 +34,28 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
+  const processingRun = useRef(0);
+  useEffect(() => () => { processingRun.current++; }, []);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++;
+    setStatus('idle');
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
   const handleGenerate = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -58,27 +68,25 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
           insertIndex,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Weaving interactive paths...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || (`${file.name.replace(/\.pdf$/i, '')}_toc_interactive.pdf`));
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to generate interactive TOC.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error generating TOC.');
         setStatus('error');
       }
@@ -86,6 +94,8 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
   };
 
   const handleClear = () => {
+    focusUpload.current = true;
+    resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -94,7 +104,7 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['application/pdf']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -102,7 +112,7 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
           disabled={status === 'processing'}
           label={t('interactiveTocGenerator.uploadLabel')}
           description={t('interactiveTocGenerator.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -113,41 +123,23 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2">
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-primary" />
-                  {t('interactiveTocGenerator.previewTitle')}
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
                   {t('interactiveTocGenerator.clearButton')}
                 </Button>
               </div>
 
-              {/* Origami fly out overlay motion mockup */}
-              <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
-                {status === 'processing' && (
-                  <div className="absolute inset-0 bg-primary/5 flex flex-col items-center justify-center pointer-events-none">
-                    <Sparkles className="w-12 h-12 text-primary animate-spin" />
-                  </div>
-                )}
-                <div className="max-w-md text-center space-y-3">
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto text-primary">
-                    <UIEmojiScrollText className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
-                  </div>
-                  <h4 className="text-sm font-bold text-foreground">
-                    {file.name}
-                  </h4>
-                  <p className="text-xs text-muted-foreground">
-                    {t('interactiveTocGenerator.emptyStateDescription')}
-                  </p>
-                </div>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{resultBlob ? t('documentPreview.result') : t('documentPreview.source')}</p><PDFPagePreview file={resultBlob ?? file} label={resultBlob ? t('documentPreview.result') : t('documentPreview.source')} /></div>
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -161,9 +153,9 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                     <Input
                       type="text"
                       value={title}
-                      onChange={(e) => setTitle(e.target.value)}
+                      onChange={(e) => { resetOutput(); setTitle(e.target.value); }}
                       placeholder="Table of Contents"
-                      className="w-full" id="interactivetocgeneratortool-field-1" aria-label={t('interactiveTocGenerator.tocTitleLabel')}
+                      className="w-full" id="interactivetocgeneratortool-field-1" aria-label={t('interactiveTocGenerator.tocTitleLabel')} disabled={status === 'processing'}
                     />
                   </div>
 
@@ -172,8 +164,8 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                     <Input
                       type="number"
                       value={insertIndex}
-                      onChange={(e) => setInsertIndex(parseInt(e.target.value) || 0)}
-                      className="w-full" id="interactivetocgeneratortool-field-2" aria-label={t('interactiveTocGenerator.insertPageLabel')}
+                      onChange={(e) => { resetOutput(); setInsertIndex(parseInt(e.target.value) || 0); }}
+                      className="w-full" id="interactivetocgeneratortool-field-2" aria-label={t('interactiveTocGenerator.insertPageLabel')} disabled={status === 'processing'}
                     />
                   </div>
                 </div>
@@ -183,7 +175,7 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename={`${file.name.replace(/\.pdf$/i, '')}_toc_interactive.pdf`}
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -211,7 +203,7 @@ export function InteractiveTocGeneratorTool({ className = '' }: InteractiveTocGe
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}

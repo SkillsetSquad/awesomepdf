@@ -596,7 +596,9 @@
       "doiExternalLink": "Durchgezogen grün: DOI-Externer Link",
       "gotoPageLink": "Gestrichelt grau: Seitensprung-Link",
       "injectingMessage": "Bette aktive Zitat-Anmerkungen in das PDF-Verzeichnis ein...",
-      "successDesc": "Erfolgreich aktive Links und Seitensprünge für {count} Zitate eingebettet. Vollständig interaktiv in jedem PDF-Reader."
+      "successDesc": "Erfolgreich aktive Links und Seitensprünge für {count} Zitate eingebettet. Vollständig interaktiv in jedem PDF-Reader.",
+      "emptyTitle": "Keine Zitate erkannt",
+      "emptyDescription": "In diesem Dokument wurden keine passenden Zitatmarkierungen gefunden."
     },
     "comparePdfs": {
       "progressExtractingOriginal": "Original-PDF-Layout wird analysiert und extrahiert...",
@@ -796,7 +798,12 @@
       "logicIntro1": "Lokalisieren Sie Steuerungsknoten (z. B. Kontrollkästchen) auf der Milchglas-Leinwand.",
       "logicIntro2": "Ziehen Sie eine Verbindungslinie vom Punkt zum abhängigen Zielfeld.",
       "logicIntro3": "Für Kontrollkästchen generiert dies ein aktives AcrobatJS-Validierungsskript.",
-      "logicIntro4": "Nach erfolgreicher Verbindung blinkt ein lila Licht auf der Verbindungslinie."
+      "logicIntro4": "Nach erfolgreicher Verbindung blinkt ein lila Licht auf der Verbindungslinie.",
+      "noFields": "Dieses PDF enthält keine interaktiven Formularfelder. Erstellen Sie Felder, bevor Sie Verbindungen hinzufügen.",
+      "sourceField": "Quellfeld",
+      "targetField": "Zielfeld",
+      "addConnection": "Verbindung hinzufügen",
+      "removeConnection": "Verbindung entfernen"
     },
     "nUpPdf": {
       "orientationLandscape": "Querformat",
@@ -1059,7 +1066,14 @@
       "tsaTime": "Atomic TSA-zertifizierte Zeit (UTC)",
       "tsaHash": "SHA-256 Kryptografische Hash-Prüfsumme",
       "tsaName": "Aussteller der TSA-Behörde",
-      "tsaSerial": "TSA-Zeitstempel-Token-Seriennummer"
+      "tsaSerial": "TSA-Zeitstempel-Token-Seriennummer",
+      "localNotice": "Dieses Werkzeug erstellt einen lokalen, selbstsignierten Zeitstempel mit Ihrer Geräteuhr. Es fordert keinen Zeitstempel bei der ausgewählten TSA an und prüft keinen.",
+      "localCertificateTitle": "Lokale Zeitstempeldetails",
+      "deviceTime": "Gerätezeit",
+      "selectedAuthority": "Bezeichnung der ausgewählten Stelle",
+      "localProcessButton": "Lokalen Zeitstempel hinzufügen",
+      "localUploadLabel": "PDF hochladen",
+      "localUploadDescription": "Wählen Sie ein PDF für einen lokalen Zeitstempel aus."
     },
     "vectorExtractor": {
       "uploadLabel": "Laden Sie PDF hoch, um Vektoren zu extrahieren",
@@ -1073,7 +1087,8 @@
       "rgbColor": "RGB-Farbvorfüllung",
       "codeCopied": "SVG-Code in die Zwischenablage kopiert",
       "copyCode": "SVG-Code kopieren",
-      "downloadSvg": "Laden Sie SVG Asset herunter"
+      "downloadSvg": "Laden Sie SVG Asset herunter",
+      "previewHelp": "Wählen Sie einen Vektor per Klick oder Tastatur aus."
     },
     "updater": {
       "title": "Software-Aktualisierung",
@@ -1131,6 +1146,10 @@
       "rotationAlternate": "Abwechselnd 90° im / gegen den Uhrzeigersinn",
       "layoutHelp": "Nummerierte Rasterzellen und Innenränder. Die erzeugte PDF-Vorschau zeigt die tatsächliche Seitenfolge und Drehung.",
       "outputSheets": "Ausgabeseiten: {count}"
+    },
+    "documentPreview": {
+      "source": "Quelldokument",
+      "result": "Verarbeitetes Dokument"
     }
   },
   "toolsPage": {

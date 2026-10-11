@@ -3,18 +3,20 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { PDFPagePreview } from '../PDFPagePreview';
 
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { slicePDFLossless, type PdfLosslessSlicerOptions } from '@/lib/pdf/processors/pdf-lossless-slicer';
+import { slicePDFLossless } from '@/lib/pdf/processors/pdf-lossless-slicer';
 import type { ProcessOutput } from '@/types/pdf';
-import { Sliders, Scissors, RefreshCw, Layers } from 'lucide-react';
+import { Sliders, Scissors, RefreshCw } from 'lucide-react';
 
 export interface PdfLosslessSlicerToolProps {
   className?: string;
@@ -34,32 +36,26 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
   const [progressMessage, setProgressMessage] = useState('');
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isResizing, setIsResizing] = useState(false);
+  const processingRun = useRef(0);
+  const [filename, setFilename] = useState('output.pdf');
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => () => { processingRun.current++; }, []);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
+  const resetOutput = () => { processingRun.current++; setResultBlob(null); setStatus('idle'); setError(null); };
 
   const handleFileSelected = useCallback((selectedFiles: File[]) => {
     if (selectedFiles.length === 0) return;
+    processingRun.current++; setStatus('idle'); setPageNumber(1);
     setFile(selectedFiles[0]);
     setError(null);
     setResultBlob(null);
   }, []);
 
-  const handleCropDrag = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
-
-    // Basic drag resize logic: dragging will expand the crop width and height relative to center
-    setSliceWidth(parseFloat(Math.max(0.2, Math.min(0.9, Math.abs(x - sliceX) * 2)).toFixed(2)));
-    setSliceHeight(parseFloat(Math.max(0.2, Math.min(0.9, Math.abs(y - sliceY) * 2)).toFixed(2)));
-  };
-
   const handleSlicing = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
+    if (!file || status === 'processing') return;
+    const run = ++processingRun.current;
+    setResultBlob(null);
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -75,27 +71,25 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
           pageNumber,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (run === processingRun.current) {
             setProgress(prog);
             setProgressMessage(message || 'Engraving laser slicing beams...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (run !== processingRun.current) return;
 
       if (output.success && output.result) {
         setResultBlob(output.result as Blob);
+        setFilename(output.filename || `${file.name.replace(/\.pdf$/i, '')}_sliced.pdf`);
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to slice document.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (run === processingRun.current) {
         setError(err instanceof Error ? err.message : 'Error slicing blueprint.');
         setStatus('error');
       }
@@ -103,6 +97,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
   };
 
   const handleClear = () => {
+    focusUpload.current = true; resetOutput();
     setFile(null);
     setResultBlob(null);
     setStatus('idle');
@@ -111,7 +106,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       {!file && (
-        <FileUploader
+        <div ref={uploadRegion} tabIndex={-1}><FileUploader
           accept={['application/pdf']}
           multiple={false}
           onFilesSelected={handleFileSelected}
@@ -119,7 +114,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
           disabled={status === 'processing'}
           label={t('pdfLosslessSlicer.uploadLabel')}
           description={t('pdfLosslessSlicer.uploadDescription')}
-        />
+        /></div>
       )}
 
       {error && (
@@ -130,53 +125,23 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
 
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
+          <div className="lg:col-span-8 min-w-0 space-y-4">
+            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                  <Scissors className="w-4 h-4 text-primary animate-pulse" />
-                  {t('pdfLosslessSlicer.magnifierTitle')}
+                  <Scissors className="w-4 h-4 text-primary " />
+                  {resultBlob ? t('documentPreview.result') : t('documentPreview.source')}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
-                  {t('pdfTwoColumnReflower.clearButton')}
+                  {t('buttons.reset')}
                 </Button>
               </div>
 
-              {/* Glowing Laser Cutting Crop Grid */}
-              <div className="flex-1 flex items-center justify-center p-6 relative">
-                <div 
-                  ref={containerRef}
-                  onMouseMove={handleCropDrag}
-                  className="relative w-80 h-56 bg-muted border border-border shadow-inner rounded-md overflow-hidden flex items-center justify-center"
-                >
-                  {/* Glowing Laser Rays mock decoration */}
-                  {status === 'processing' && (
-                    <>
-                      <div className="absolute top-0 bottom-0 w-0.5 bg-green-500 animate-pulse left-[45%] shadow-[0_0_8px_#22c55e]" />
-                      <div className="absolute left-0 right-0 h-0.5 bg-green-500 animate-pulse top-[50%] shadow-[0_0_8px_#22c55e]" />
-                    </>
-                  )}
-
-                  {/* Crop boundary selector box */}
-                  <div 
-                    className="absolute border border-green-500 bg-green-500/5 shadow-[0_0_10px_rgba(34,197,94,0.2)] rounded cursor-move flex items-center justify-center"
-                    style={{
-                      width: `${sliceWidth * 100}%`,
-                      height: `${sliceHeight * 100}%`,
-                      left: `${(1 - sliceWidth) * 50}%`,
-                      top: `${(1 - sliceHeight) * 50}%`,
-                    }}
-                  >
-                    <span className="text-[9px] text-green-600 font-mono tracking-widest font-semibold">
-                      LASER SLICER GRID
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <div className="min-w-0 space-y-3 pt-4"><p className="break-words text-sm font-medium">{file.name}</p><p className="text-sm text-muted-foreground">{resultBlob ? t('documentPreview.result') : t('documentPreview.source')}</p><PDFPagePreview disabled={status === 'processing'} file={resultBlob ?? file} label={resultBlob ? t('documentPreview.result') : t('documentPreview.source')} selectedPage={resultBlob ? undefined : pageNumber} onPageChange={page => { resetOutput(); setPageNumber(page); }}  /></div>
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 min-w-0 space-y-6">
             <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
               <div className="space-y-6">
                 <div className="border-b border-border pb-3 flex items-center gap-2">
@@ -184,32 +149,20 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
                   <h3 className="text-sm font-semibold text-foreground">{t('pdfLosslessSlicer.optionsTitle')}</h3>
                 </div>
 
-                <div className="space-y-4 text-xs">
-                  <div className="space-y-1">
-                    {t('pdfLosslessSlicer.targetPageLabel')}
-                    <Input
-                      type="number"
-                      min={1}
-                      value={pageNumber}
-                      onChange={(e) => setPageNumber(parseInt(e.target.value) || 1)}
-                      className="w-full"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="flex justify-between font-mono text-[9px] text-muted-foreground">
-                      <span>{t('pdfLosslessSlicer.sliceWidth', { width: (sliceWidth * 100).toFixed(0) })}</span>
-                      <span>{t('pdfLosslessSlicer.sliceHeight', { height: (sliceHeight * 100).toFixed(0) })}</span>
-                    </div>
-                  </div>
-                </div>
+                <fieldset disabled={status === 'processing'} className="space-y-4">
+                  <div className="space-y-2"><Label htmlFor="pdfLosslessSlicer-page">{t('pdfLosslessSlicer.targetPageLabel')}</Label><Input id="pdfLosslessSlicer-page" type="number" min={1} value={pageNumber} onChange={event => { resetOutput(); setPageNumber(Math.max(1, parseInt(event.target.value) || 1)); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfLosslessSlicer-sliceX">X (%)</Label><Input id="pdfLosslessSlicer-sliceX" type="number" min={0} max={100} step={1} value={Number((sliceX * 100).toFixed(2))} onChange={event => { resetOutput(); setSliceX(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfLosslessSlicer-sliceY">Y (%)</Label><Input id="pdfLosslessSlicer-sliceY" type="number" min={0} max={100} step={1} value={Number((sliceY * 100).toFixed(2))} onChange={event => { resetOutput(); setSliceY(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfLosslessSlicer-sliceWidth">{t('pdfLosslessSlicer.sliceWidth', { percent: (sliceWidth * 100).toFixed(0) })}</Label><Input id="pdfLosslessSlicer-sliceWidth" type="number" min={0} max={100} step={1} value={Number((sliceWidth * 100).toFixed(2))} onChange={event => { resetOutput(); setSliceWidth(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                  <div className="space-y-2"><Label htmlFor="pdfLosslessSlicer-sliceHeight">{t('pdfLosslessSlicer.sliceHeight', { percent: (sliceHeight * 100).toFixed(0) })}</Label><Input id="pdfLosslessSlicer-sliceHeight" type="number" min={0} max={100} step={1} value={Number((sliceHeight * 100).toFixed(2))} onChange={event => { resetOutput(); setSliceHeight(Math.max(0, Math.min(100, Number(event.target.value) || 0)) / 100); }} /></div>
+                </fieldset>
               </div>
 
               <div className="pt-6 border-t border-border mt-6">
                 {status === 'complete' && resultBlob ? (
                   <DownloadButton
                     file={resultBlob}
-                    filename={`${file.name.replace(/\.[^/.]+$/, '')}_laser_sliced.pdf`}
+                    filename={filename}
                     variant="default"
                     size="lg"
                     className="w-full py-4"
@@ -238,7 +191,7 @@ export function PdfLosslessSlicerTool({ className = '' }: PdfLosslessSlicerToolP
           progress={progress}
           status={status}
           message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { resetOutput(); }}
           showPercentage
         />
       )}
