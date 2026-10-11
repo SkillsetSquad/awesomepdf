@@ -16,6 +16,7 @@ import { LegacyEditorControls } from './LegacyEditorControls';
 import { annotationCommentLabels } from './annotation-comment-labels';
 import { AnnotationExportDialog } from './AnnotationExportDialog';
 import { AnnotationHistoryControls } from './AnnotationHistoryControls';
+import { AnnotationDrawingControls } from './AnnotationDrawingControls';
 import { PDFViewerControls } from '../PDFViewerControls';
 import {
   replaceExistingText,
@@ -186,10 +187,6 @@ export function LegacyAnnotatorTool({
                 if (ext) {
                   clearInterval(initInterval);
                   console.log('[PDFCraft Patch] pdfjsAnnotationExtensionInstance found! Setting up patches...');
-                  setupCloudFix();
-                  setupColorPickerAndStroke();
-                  setupSnapping();
-                  setupChineseFontPatch();
                   setupExistingTextEditing();
                 }
               }, 200);
@@ -382,319 +379,7 @@ export function LegacyAnnotatorTool({
                 }, true);
               }
 
-              function setupSnapping() {
-                const ext = window.pdfjsAnnotationExtensionInstance;
-                const stage = ext?.stage || ext?.konvaStage || (window.Konva && window.Konva.stages[0]);
-                if (!stage) return;
-                
-                console.log('[PDFCraft Patch] Setting up Konva Snapping Alignment...');
-                
-                stage.on('dragmove', function(e) {
-                  const activeShape = e.target;
-                  if (!activeShape || activeShape === stage) return;
-                  
-                  const shapes = stage.find('.annotation') || stage.find('Group') || stage.getChildren();
-                  const snapOffset = 8;
-                  let snapX = null;
-                  let snapY = null;
-                  
-                  const activeBox = activeShape.getClientRect();
-                  if (!activeBox) return;
-
-                  shapes.forEach(shape => {
-                    if (shape === activeShape || shape.name() === 'guideline') return;
-                    const box = shape.getClientRect();
-                    if (!box) return;
-                    
-                    // X-axis alignment
-                    if (Math.abs(activeBox.x - box.x) < snapOffset) snapX = box.x;
-                    if (Math.abs((activeBox.x + activeBox.width/2) - (box.x + box.width/2)) < snapOffset) {
-                      snapX = box.x + box.width/2 - activeBox.width/2;
-                    }
-                    if (Math.abs((activeBox.x + activeBox.width) - (box.x + box.width)) < snapOffset) {
-                      snapX = box.x + box.width - activeBox.width;
-                    }
-                    
-                    // Y-axis alignment
-                    if (Math.abs(activeBox.y - box.y) < snapOffset) snapY = box.y;
-                    if (Math.abs((activeBox.y + activeBox.height/2) - (box.y + box.height/2)) < snapOffset) {
-                      snapY = box.y + box.height/2 - activeBox.height/2;
-                    }
-                    if (Math.abs((activeBox.y + activeBox.height) - (box.y + box.height)) < snapOffset) {
-                      snapY = box.y + box.height - activeBox.height;
-                    }
-                  });
-                  
-                  // Snap coordinates
-                  if (snapX !== null) activeShape.x(snapX);
-                  if (snapY !== null) activeShape.y(snapY);
-                  
-                  // Render red guide dashed lines as DOM overlays
-                  drawGuides(stage, snapX, snapY);
-                });
-                
-                stage.on('dragend', function() {
-                  clearGuides();
-                });
-                
-                function drawGuides(stg, sx, sy) {
-                  let container = document.getElementById('pdfcraft-alignment-guides');
-                  if (!container) {
-                    container = document.createElement('div');
-                    container.id = 'pdfcraft-alignment-guides';
-                    container.style.cssText = 'position:absolute; inset:0; pointer-events:none; z-index:99999;';
-                    stg.container().appendChild(container);
-                  }
-                  container.innerHTML = '';
-                  
-                  if (sx !== null) {
-                    const l = document.createElement('div');
-                    l.style.cssText = 'position:absolute; left:' + sx + 'px; top:0; bottom:0; border-left:1.5px dashed red;';
-                    container.appendChild(l);
-                  }
-                  if (sy !== null) {
-                    const l = document.createElement('div');
-                    l.style.cssText = 'position:absolute; top:' + sy + 'px; left:0; right:0; border-top:1.5px dashed red;';
-                    container.appendChild(l);
-                  }
-                }
-                
-                function clearGuides() {
-                  const container = document.getElementById('pdfcraft-alignment-guides');
-                  if (container) container.innerHTML = '';
-                }
-              }
-
-              function setupChineseFontPatch() {
-                const ext = window.pdfjsAnnotationExtensionInstance;
-                const pdfLib = window.pdfLib || ext?.pdfLib;
-                if (!pdfLib) return;
-
-                const originalSave = pdfLib.PDFDocument.prototype.save;
-                pdfLib.PDFDocument.prototype.save = async function(saveOptions) {
-                  console.log('[PDFCraft Patch] Intercepting save to inspect for Chinese text...');
-                  
-                  let hasChinese = false;
-                  
-                  // Inspect the annotation store inside PDFJS Annotation Extension
-                  const annotationExtension = window.pdfjsAnnotationExtensionInstance;
-                  const store = typeof annotationExtension?.getAnnotationStore === 'function'
-                    ? annotationExtension.getAnnotationStore()
-                    : null;
-                  if (store && store.annotations) {
-                    store.annotations.forEach(ann => {
-                      if (ann.name === 'freeText' && /[\u4e00-\u9fa5]/.test(ann.text || '')) {
-                        hasChinese = true;
-                      }
-                    });
-                  }
-
-                  if (hasChinese) {
-                    try {
-                      console.log('[PDFCraft Patch] Chinese text found. Embedding NotoSansSC-Regular font...');
-                      const fontBytes = await fetch(${JSON.stringify(withBasePath('/fonts/NotoSansSC-Regular.ttf'))}).then(res => res.arrayBuffer());
-                      const customFont = await this.embedFont(fontBytes, { subset: true });
-                      
-                      // Intercept subsequent font loading requests for Helvetica inside pdf-lib
-                      const originalEmbedFont = this.embedFont;
-                      this.embedFont = async function(fontToEmbed, embedOpts) {
-                        if (fontToEmbed === pdfLib.StandardFonts.Helvetica || fontToEmbed === 'Helvetica') {
-                          console.log('[PDFCraft Patch] Redirected Helvetica embed to NotoSansSC font');
-                          return customFont;
-                        }
-                        return originalEmbedFont.call(this, fontToEmbed, embedOpts);
-                      };
-                    } catch (e) {
-                      console.error('[PDFCraft Patch] Failed to embed Chinese font subset', e);
-                    }
-                  }
-
-                  return originalSave.call(this, saveOptions);
-                };
-              }
-
-              function setupCloudFix() {
-                // Ensure double-click bypasses text layer blocking to complete drawing
-                document.addEventListener('dblclick', function(e) {
-                  const ext = window.pdfjsAnnotationExtensionInstance;
-                  const activeTool = ext?.activeAnnotation?.name;
-                  if (activeTool === 'cloud') {
-                    const konvaContent = document.querySelector('.konvajs-content');
-                    if (konvaContent) {
-                      console.log('[PDFCraft Patch] Intercepted dblclick for cloud tool, dispatching to Konva stage.');
-                      const dblEvent = new MouseEvent('dblclick', {
-                        bubbles: true,
-                        cancelable: true,
-                        view: window,
-                        clientX: e.clientX,
-                        clientY: e.clientY
-                      });
-                      konvaContent.dispatchEvent(dblEvent);
-                    }
-                  }
-                }, true);
-
-                // Add Enter key support to elegantly complete and close polygon drawing
-                document.addEventListener('keydown', function(e) {
-                  if (e.key === 'Enter') {
-                    const ext = window.pdfjsAnnotationExtensionInstance;
-                    const activeTool = ext?.activeAnnotation?.name;
-                    if (activeTool === 'cloud') {
-                      const konvaContent = document.querySelector('.konvajs-content');
-                      if (konvaContent) {
-                        console.log('[PDFCraft Patch] Intercepted Enter key for cloud tool, dispatching dblclick to end drawing.');
-                        const dblEvent = new MouseEvent('dblclick', {
-                          bubbles: true,
-                          cancelable: true,
-                          view: window
-                        });
-                        konvaContent.dispatchEvent(dblEvent);
-                      }
-                    }
-                  }
-                });
-              }
-
-              function setupColorPickerAndStroke() {
-                // Inject picker for Highlight tool
-                const hlColorPicker = document.getElementById('editorHighlightColorPicker');
-                if (hlColorPicker) {
-                  if (!hlColorPicker.querySelector('.pdfcraft-custom-hl-picker')) {
-                    const picker = document.createElement('input');
-                    picker.type = 'color';
-                    picker.className = 'pdfcraft-custom-hl-picker';
-                    picker.style.cssText = 'width:28px; height:28px; border:2px solid #ccc; border-radius:50%; padding:0; cursor:pointer; margin-left:8px; vertical-align:middle; background:none;';
-                    
-                    picker.addEventListener('input', function(e) {
-                      const ext = window.pdfjsAnnotationExtensionInstance;
-                      const selected = ext?.selectedAnnotation;
-                      if (selected) {
-                        ext.updateAnnotationStyle(selected, { color: e.target.value });
-                      }
-                    });
-                    hlColorPicker.appendChild(picker);
-                  }
-                }
-
-                // Dynamically observe CustomAnnotationMenu popups to inject controls
-                const observer = new MutationObserver(function() {
-                  const menu = document.querySelector('.CustomAnnotationMenu');
-                  if (menu && menu.style.display !== 'none') {
-                    injectCustomMenuControls(menu);
-                  }
-                });
-
-                observer.observe(document.body, {
-                  childList: true,
-                  subtree: true,
-                  attributes: true,
-                  attributeFilter: ['style', 'class']
-                });
-              }
-
-              function injectCustomMenuControls(menu) {
-                if (menu.querySelector('.pdfcraft-custom-controls')) return;
-
-                console.log('[PDFCraft Patch] CustomAnnotationMenu opened, injecting custom controls...');
-
-                const container = document.createElement('div');
-                container.className = 'pdfcraft-custom-controls';
-                container.style.cssText = 'border-top:1px solid #ccc; margin-top:8px; padding-top:8px; font-size:12px; display:flex; flex-direction:column; gap:8px; color:var(--toolbar-fg-color, #333);';
-
-                const ext = window.pdfjsAnnotationExtensionInstance;
-                const selected = ext?.selectedAnnotation;
-                if (!selected) return;
-
-                // 1. Custom Stroke Color Picker
-                const colorRow = document.createElement('div');
-                colorRow.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:8px;';
-                
-                const colorLabel = document.createElement('span');
-                colorLabel.textContent = ${JSON.stringify(t('editPdf.strokeColorLabel'))};
-                
-                const colorPicker = document.createElement('input');
-                colorPicker.type = 'color';
-                colorPicker.style.cssText = 'width:50px; height:24px; border:1px solid #ccc; border-radius:4px; padding:0; cursor:pointer;';
-                colorPicker.value = selected.style?.color || '#ff0000';
-
-                colorPicker.addEventListener('change', function(e) {
-                  const curSelected = window.pdfjsAnnotationExtensionInstance?.selectedAnnotation;
-                  if (curSelected) {
-                    window.pdfjsAnnotationExtensionInstance.updateAnnotationStyle(curSelected, { color: e.target.value });
-                  }
-                });
-
-                colorRow.appendChild(colorLabel);
-                colorRow.appendChild(colorPicker);
-                container.appendChild(colorRow);
-
-                // 2. Allow stroke width of 0 by adjusting native slider min
-                const nativeSliders = menu.querySelectorAll('input[type="range"]');
-                nativeSliders.forEach(slider => {
-                  if (slider.getAttribute('min') === '1') {
-                    slider.setAttribute('min', '0');
-                    console.log('[PDFCraft Patch] Stroke width slider updated min to 0');
-                  }
-                });
-
-                // 3. Shape Fill support (Rectangle, Circle, Cloud)
-                const allowedFillTools = ['rectangle', 'circle', 'cloud'];
-                if (allowedFillTools.includes(selected.name)) {
-                  const fillRow = document.createElement('div');
-                  fillRow.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:8px;';
-                  
-                  const leftPart = document.createElement('div');
-                  leftPart.style.cssText = 'display:flex; align-items:center; gap:6px;';
-                  
-                  const fillCheckbox = document.createElement('input');
-                  fillCheckbox.type = 'checkbox';
-                  fillCheckbox.id = 'pdfcraft-fill-enabled';
-                  fillCheckbox.style.cssText = 'cursor:pointer;';
-                  fillCheckbox.checked = selected.style?.fillEnabled || false;
-                  
-                  const fillLabel = document.createElement('label');
-                  fillLabel.htmlFor = 'pdfcraft-fill-enabled';
-                  fillLabel.textContent = ${JSON.stringify(t('editPdf.fillColorLabel'))};
-                  fillLabel.style.cssText = 'cursor:pointer; user-select:none;';
-
-                  leftPart.appendChild(fillCheckbox);
-                  leftPart.appendChild(fillLabel);
-
-                  const fillColorPicker = document.createElement('input');
-                  fillColorPicker.type = 'color';
-                  fillColorPicker.style.cssText = 'width:50px; height:24px; border:1px solid #ccc; border-radius:4px; padding:0; cursor:pointer;';
-                  fillColorPicker.value = selected.style?.fillColor || '#ffffff';
-                  fillColorPicker.disabled = !fillCheckbox.checked;
-
-                  fillCheckbox.addEventListener('change', function(e) {
-                    fillColorPicker.disabled = !e.target.checked;
-                    const curSelected = window.pdfjsAnnotationExtensionInstance?.selectedAnnotation;
-                    if (curSelected) {
-                      window.pdfjsAnnotationExtensionInstance.updateAnnotationStyle(curSelected, {
-                        fillEnabled: e.target.checked,
-                        fillColor: fillColorPicker.value
-                      });
-                    }
-                  });
-
-                  fillColorPicker.addEventListener('change', function(e) {
-                    const curSelected = window.pdfjsAnnotationExtensionInstance?.selectedAnnotation;
-                    if (curSelected && fillCheckbox.checked) {
-                      window.pdfjsAnnotationExtensionInstance.updateAnnotationStyle(curSelected, {
-                        fillColor: e.target.value
-                      });
-                    }
-                  });
-
-                  fillRow.appendChild(leftPart);
-                  fillRow.appendChild(fillColorPicker);
-                  container.appendChild(fillRow);
-                }
-
-                const styleContainer = menu.querySelector('.styleContainer') || menu;
-                styleContainer.appendChild(container);
-              }
-
+              // Drawing helpers and history are mounted by the parent against the shipped painter.
               // D. Annotation history is mounted by the parent using the shipped painter/store API.
             })();
           `;
@@ -705,7 +390,7 @@ export function LegacyAnnotatorTool({
         console.warn('Could not access iframe content to inject patches', e);
       }
     }, 1000);
-  }, [t]);
+  }, []);
 
   const handleClear = useCallback(() => {
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
@@ -844,6 +529,7 @@ export function LegacyAnnotatorTool({
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
+      <AnnotationDrawingControls iframe={editorFrame} onError={handleAnnotationHistoryError} />
       <AnnotationHistoryControls iframe={editorFrame} undo={t('editPdf.undo')} redo={t('editPdf.redo')} onError={handleAnnotationHistoryError} />
       <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels} signatureLabels={signatureLabels} stampLabels={stampLabels} commentLabels={commentLabels}
         colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }}
