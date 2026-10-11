@@ -3425,7 +3425,12 @@
       "layersTitle": "PDF图层",
       "noLayers": "此PDF没有图层（OCG）。",
       "addLayerLabel": "添加新图层",
-      "successMessage": "图层更改保存成功！"
+      "successMessage": "图层更改保存成功！",
+      "deleteConfirm": "删除图层“{name}”？",
+      "refreshLayers": "刷新图层",
+      "hideLayer": "隐藏{name}",
+      "showLayer": "显示{name}",
+      "layerName": "图层名称"
     },
     "pdfReader": {
       "uploadLabel": "打开PDF文件",

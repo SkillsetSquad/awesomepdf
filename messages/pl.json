@@ -3433,7 +3433,12 @@
       "layersTitle": "PDF Warstwy",
       "noLayers": "To PDF nie ma warstw (OCG).",
       "addLayerLabel": "Dodaj nową warstwę",
-      "successMessage": "Zmiany warstw zostały pomyślnie zapisane!"
+      "successMessage": "Zmiany warstw zostały pomyślnie zapisane!",
+      "deleteConfirm": "Usunąć warstwę „{name}”?",
+      "refreshLayers": "Odśwież warstwy",
+      "hideLayer": "Ukryj {name}",
+      "showLayer": "Pokaż {name}",
+      "layerName": "Nazwa warstwy"
     },
     "pdfReader": {
       "uploadLabel": "Otwórz plik PDF",

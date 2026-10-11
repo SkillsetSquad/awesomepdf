@@ -3428,7 +3428,12 @@
       "layersTitle": "Capas del PDF",
       "noLayers": "Este PDF no tiene capas (OCG).",
       "addLayerLabel": "Añadir nueva capa",
-      "successMessage": "¡Cambios de capa guardados con éxito!"
+      "successMessage": "¡Cambios de capa guardados con éxito!",
+      "deleteConfirm": "¿Eliminar la capa «{name}»?",
+      "refreshLayers": "Actualizar capas",
+      "hideLayer": "Ocultar {name}",
+      "showLayer": "Mostrar {name}",
+      "layerName": "Nombre de la capa"
     },
     "pdfReader": {
       "uploadLabel": "Abrir archivo PDF",

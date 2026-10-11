@@ -6,13 +6,14 @@ import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { manageOCGLayers, listOCGLayers, type OCGLayer } from '@/lib/pdf/processors/ocg-manager';
 import { Layers, Eye, EyeOff, Plus, Trash2, Edit2, RefreshCw } from 'lucide-react';
 
@@ -23,6 +24,7 @@ export interface OCGManagerToolProps {
 export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
     const t = useTranslations('common');
     const tTools = useTranslations('tools');
+    const tErrors = useTranslations('errors');
 
     const [file, setFile] = useState<File | null>(null);
     const [layers, setLayers] = useState<OCGLayer[]>([]);
@@ -34,6 +36,9 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
     const [newLayerName, setNewLayerName] = useState('');
     const [editingLayer, setEditingLayer] = useState<string | null>(null);
     const [editName, setEditName] = useState('');
+    const [pendingDelete, setPendingDelete] = useState<OCGLayer | null>(null);
+    const deleteTriggerRef = useRef<HTMLButtonElement | null>(null);
+    const newLayerInputRef = useRef<HTMLInputElement>(null);
 
     const handleFilesSelected = useCallback((files: File[]) => {
         if (files.length > 0) {
@@ -41,6 +46,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
             setLayers([]);
             setResultBlob(null);
             setError(null);
+            setPendingDelete(null);
         }
     }, []);
 
@@ -131,8 +137,6 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
     const handleDeleteLayer = useCallback(async (layerId: string) => {
         if (!file) return;
 
-        if (!confirm('Are you sure you want to delete this layer?')) return;
-
         setIsProcessing(true);
         setError(null);
 
@@ -145,15 +149,16 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
             if (output.success && output.result) {
                 setResultBlob(output.result as Blob);
                 setLayers(prev => prev.filter(l => l.id !== layerId));
+                setPendingDelete(null);
             } else {
-                setError(output.error?.message || 'Failed to delete layer.');
+                setError(output.error?.message || tErrors('processingFailed'));
             }
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An error occurred.');
+            setError(err instanceof Error ? err.message : tErrors('processingFailed'));
         } finally {
             setIsProcessing(false);
         }
-    }, [file]);
+    }, [file, tErrors]);
 
     const handleRenameLayer = useCallback(async (layerId: string) => {
         if (!file || !editName.trim()) return;
@@ -191,6 +196,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
         setResultBlob(null);
         setError(null);
         setProgress(0);
+        setPendingDelete(null);
     }, []);
 
     const hasFile = file !== null;
@@ -209,11 +215,30 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                 description={tTools('ocgManager.uploadDescription') || 'Drag and drop a PDF to manage its layers (OCG).'}
             />
 
-            {error && (
+            {error && !pendingDelete && (
                 <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
                     <p className="text-sm">{error}</p>
                 </AlertDescription></Alert>
             )}
+
+            <AlertDialog open={pendingDelete !== null} onOpenChange={(open) => { if (!open && !isProcessing) setPendingDelete(null); }}>
+                <AlertDialogContent onCloseAutoFocus={(event) => {
+                    event.preventDefault();
+                    if (deleteTriggerRef.current?.isConnected) deleteTriggerRef.current.focus();
+                    else newLayerInputRef.current?.focus();
+                }}>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>{t('buttons.delete')}</AlertDialogTitle>
+                        <AlertDialogDescription>{tTools('ocgManager.deleteConfirm', { name: pendingDelete?.name || '' })}</AlertDialogDescription>
+                    </AlertDialogHeader>
+                    {error && <Alert variant="destructive"><UICircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+                    {isProcessing && <p role="status">{t('status.processing')}</p>}
+                    <AlertDialogFooter>
+                        <AlertDialogCancel disabled={isProcessing}>{t('buttons.cancel')}</AlertDialogCancel>
+                        <Button variant="destructive" disabled={isProcessing} onClick={() => { if (pendingDelete) void handleDeleteLayer(pendingDelete.id); }}>{t('buttons.delete')}</Button>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
 
             {hasFile && (
                 <Card className="p-6" >
@@ -225,7 +250,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                             </h3>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Button variant="ghost" size="sm" onClick={loadLayers} disabled={isLoading || isProcessing}>
+                            <Button variant="ghost" size="sm" aria-label={tTools('ocgManager.refreshLayers')} onClick={loadLayers} disabled={isLoading || isProcessing}>
                                 <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
                             </Button>
                             <Button variant="ghost" size="sm" onClick={handleReset} disabled={isProcessing}>
@@ -236,7 +261,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
 
                     {isLoading ? (
                         <div className="py-8 text-center text-muted-foreground">
-                            Loading layers...
+                            {t('status.loading')}
                         </div>
                     ) : hasLayers ? (
                         <div className="space-y-2">
@@ -250,7 +275,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                             onClick={() => handleToggleLayer(layer.id, layer.visible)}
                                             disabled={isProcessing}
 
-                                            title={layer.visible ? 'Hide layer' : 'Show layer'}
+                                            aria-label={tTools(layer.visible ? 'ocgManager.hideLayer' : 'ocgManager.showLayer', { name: layer.name })}
                                         >
                                             {layer.visible ? (
                                                 <Eye className="w-4 h-4 text-green-600" />
@@ -262,6 +287,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                         {editingLayer === layer.id ? (
                                             <Input
                                                 type="text"
+                                                aria-label={tTools('ocgManager.layerName')}
                                                 value={editName}
                                                 onChange={(e) => setEditName(e.target.value)}
                                                 onKeyDown={(e) => e.key === 'Enter' && handleRenameLayer(layer.id)}
@@ -284,7 +310,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                                     onClick={() => handleRenameLayer(layer.id)}
                                                     disabled={isProcessing}
                                                 >
-                                                    Save
+                                                    {t('buttons.save')}
                                                 </Button>
                                                 <Button
                                                     variant="ghost"
@@ -294,27 +320,25 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                                         setEditName('');
                                                     }}
                                                 >
-                                                    Cancel
+                                                    {t('buttons.cancel')}
                                                 </Button>
                                             </>
                                         ) : (
                                             <>
-                                                <Button variant="ghost" size="icon-sm" aria-label="Rename layer"
+                                                <Button variant="ghost" size="icon-sm" aria-label={`${t('buttons.edit')} ${layer.name}`}
                                                     onClick={() => {
                                                         setEditingLayer(layer.id);
                                                         setEditName(layer.name);
                                                     }}
                                                     disabled={isProcessing}
 
-                                                    title="Rename layer"
                                                 >
                                                     <Edit2 className="w-4 h-4 text-muted-foreground" />
                                                 </Button>
-                                                <Button variant="ghost" size="icon-sm" aria-label="Delete layer"
-                                                    onClick={() => handleDeleteLayer(layer.id)}
+                                                <Button variant="ghost" size="icon-sm" aria-label={`${t('buttons.delete')} ${layer.name}`}
+                                                    onClick={(event) => { deleteTriggerRef.current = event.currentTarget; setError(null); setPendingDelete(layer); }}
                                                     disabled={isProcessing}
 
-                                                    title="Delete layer"
                                                 >
                                                     <Trash2 className="w-4 h-4 text-red-500" />
                                                 </Button>
@@ -337,10 +361,11 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                         </Label>
                         <div className="flex gap-2">
                             <Input
+                                ref={newLayerInputRef}
                                 type="text"
                                 value={newLayerName}
                                 onChange={(e) => setNewLayerName(e.target.value)}
-                                placeholder="Layer name..."
+                                placeholder={tTools('ocgManager.layerName')}
                                 disabled={isProcessing}
                                 className="flex-1" id="ocgmanagertool-field-1" aria-label={tTools('ocgManager.addLayerLabel') || 'Add New Layer'}
                             />
@@ -349,8 +374,8 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
                                 onClick={handleAddLayer}
                                 disabled={isProcessing || !newLayerName.trim()}
                             >
-                                <Plus className="w-4 h-4 mr-1" />
-                                Add
+                                <Plus className="w-4 h-4 me-1" />
+                                {t('buttons.add')}
                             </Button>
                         </div>
                     </div>
@@ -358,7 +383,7 @@ export function OCGManagerTool({ className = '' }: OCGManagerToolProps) {
             )}
 
             {isProcessing && (
-                <ProcessingProgress progress={progress} status="processing" message="Processing layers..." showPercentage />
+                <ProcessingProgress progress={progress} status="processing" message={t('status.processing')} showPercentage />
             )}
 
             {resultBlob && (

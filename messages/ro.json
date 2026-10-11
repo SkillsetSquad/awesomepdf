@@ -3420,7 +3420,12 @@
       "layersTitle": "Straturi PDF",
       "noLayers": "Acest PDF nu are straturi (OCG).",
       "addLayerLabel": "Adăugați un strat nou",
-      "successMessage": "Modificările stratului au fost salvate cu succes!"
+      "successMessage": "Modificările stratului au fost salvate cu succes!",
+      "deleteConfirm": "Ștergeți stratul „{name}”?",
+      "refreshLayers": "Reîmprospătați straturile",
+      "hideLayer": "Ascundeți {name}",
+      "showLayer": "Afișați {name}",
+      "layerName": "Numele stratului"
     },
     "pdfReader": {
       "uploadLabel": "Deschideți fișierul PDF",

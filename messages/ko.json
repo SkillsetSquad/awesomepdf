@@ -3420,7 +3420,12 @@
       "layersTitle": "PDF 레이어",
       "noLayers": "이 PDF에는 레이어(OCG)가 없습니다.",
       "addLayerLabel": "새 레이어 추가",
-      "successMessage": "레이어 변경 사항이 성공적으로 저장되었습니다!"
+      "successMessage": "레이어 변경 사항이 성공적으로 저장되었습니다!",
+      "deleteConfirm": "“{name}” 레이어를 삭제하시겠습니까?",
+      "refreshLayers": "레이어 새로 고침",
+      "hideLayer": "{name} 숨기기",
+      "showLayer": "{name} 표시",
+      "layerName": "레이어 이름"
     },
     "pdfReader": {
       "uploadLabel": "PDF 파일 열기",

@@ -3420,7 +3420,12 @@
       "layersTitle": "Lớp PDF",
       "noLayers": "Bản PDF này không có lớp (OCG).",
       "addLayerLabel": "Thêm lớp mới",
-      "successMessage": "Đã lưu thành công các thay đổi lớp!"
+      "successMessage": "Đã lưu thành công các thay đổi lớp!",
+      "deleteConfirm": "Xóa lớp “{name}”?",
+      "refreshLayers": "Làm mới các lớp",
+      "hideLayer": "Ẩn {name}",
+      "showLayer": "Hiện {name}",
+      "layerName": "Tên lớp"
     },
     "pdfReader": {
       "uploadLabel": "Mở tệp PDF",

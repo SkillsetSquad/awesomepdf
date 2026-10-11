@@ -3420,7 +3420,12 @@
       "layersTitle": "Livelli PDF",
       "noLayers": "Questo PDF non ha livelli (OCG).",
       "addLayerLabel": "Aggiungi nuovo livello",
-      "successMessage": "Modifiche ai livelli salvate con successo!"
+      "successMessage": "Modifiche ai livelli salvate con successo!",
+      "deleteConfirm": "Eliminare il livello «{name}»?",
+      "refreshLayers": "Aggiorna livelli",
+      "hideLayer": "Nascondi {name}",
+      "showLayer": "Mostra {name}",
+      "layerName": "Nome del livello"
     },
     "pdfReader": {
       "uploadLabel": "Apri file PDF",

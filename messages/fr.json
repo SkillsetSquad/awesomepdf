@@ -3420,7 +3420,12 @@
       "layersTitle": "Calques PDF",
       "noLayers": "Ce PDF n'a pas de calques (OCG).",
       "addLayerLabel": "Ajouter un nouveau calque",
-      "successMessage": "Modifications de calque enregistrées avec succès !"
+      "successMessage": "Modifications de calque enregistrées avec succès !",
+      "deleteConfirm": "Supprimer le calque « {name} » ?",
+      "refreshLayers": "Actualiser les calques",
+      "hideLayer": "Masquer {name}",
+      "showLayer": "Afficher {name}",
+      "layerName": "Nom du calque"
     },
     "pdfReader": {
       "uploadLabel": "Ouvrir un fichier PDF",

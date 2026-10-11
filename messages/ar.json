@@ -3420,7 +3420,12 @@
       "layersTitle": "طبقات قوات الدفاع الشعبي",
       "noLayers": "لا يحتوي ملف PDF هذا على طبقات (OCG).",
       "addLayerLabel": "أضف طبقة جديدة",
-      "successMessage": "تم حفظ تغييرات الطبقة بنجاح!"
+      "successMessage": "تم حفظ تغييرات الطبقة بنجاح!",
+      "deleteConfirm": "هل تريد حذف الطبقة «{name}»؟",
+      "refreshLayers": "تحديث الطبقات",
+      "hideLayer": "إخفاء {name}",
+      "showLayer": "إظهار {name}",
+      "layerName": "اسم الطبقة"
     },
     "pdfReader": {
       "uploadLabel": "افتح ملف PDF",

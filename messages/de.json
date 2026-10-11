@@ -3420,7 +3420,12 @@
       "layersTitle": "PDF-Ebenen",
       "noLayers": "Dieses PDF hat keine Ebenen (OCG).",
       "addLayerLabel": "Neue Ebene hinzufügen",
-      "successMessage": "Ebenenänderungen erfolgreich gespeichert!"
+      "successMessage": "Ebenenänderungen erfolgreich gespeichert!",
+      "deleteConfirm": "Ebene „{name}“ löschen?",
+      "refreshLayers": "Ebenen aktualisieren",
+      "hideLayer": "{name} ausblenden",
+      "showLayer": "{name} einblenden",
+      "layerName": "Ebenenname"
     },
     "pdfReader": {
       "uploadLabel": "PDF-Datei öffnen",

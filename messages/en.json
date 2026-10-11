@@ -3433,7 +3433,12 @@
       "layersTitle": "PDF Layers",
       "noLayers": "This PDF has no layers (OCG).",
       "addLayerLabel": "Add New Layer",
-      "successMessage": "Layer changes saved successfully!"
+      "successMessage": "Layer changes saved successfully!",
+      "deleteConfirm": "Delete the layer “{name}”?",
+      "refreshLayers": "Refresh layers",
+      "hideLayer": "Hide {name}",
+      "showLayer": "Show {name}",
+      "layerName": "Layer name"
     },
     "pdfReader": {
       "uploadLabel": "Open PDF File",

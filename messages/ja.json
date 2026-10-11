@@ -3420,7 +3420,12 @@
       "layersTitle": "PDF レイヤー",
       "noLayers": "この PDF にはレイヤー (OCG) がありません。",
       "addLayerLabel": "新しいレイヤーを追加",
-      "successMessage": "レイヤーの変更は正常に保存されました。"
+      "successMessage": "レイヤーの変更は正常に保存されました。",
+      "deleteConfirm": "レイヤー「{name}」を削除しますか？",
+      "refreshLayers": "レイヤーを更新",
+      "hideLayer": "{name}を非表示",
+      "showLayer": "{name}を表示",
+      "layerName": "レイヤー名"
     },
     "pdfReader": {
       "uploadLabel": "PDF ファイルを開く",

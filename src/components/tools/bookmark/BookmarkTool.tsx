@@ -21,8 +21,10 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { processBookmarks, BookmarkItem, BookmarkOptions } from '@/lib/pdf/processors/bookmark';
 import type { ProcessOutput } from '@/types/pdf';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 
 // Store pdfjs module reference
 let pdfjsModule: typeof import('pdfjs-dist') | null = null;
@@ -56,6 +58,82 @@ interface BookmarkNode {
   isExpanded?: boolean;
 }
 
+type BookmarkDraft = Omit<BookmarkNode, 'pageNumber'> & { pageNumber: number | '' };
+
+// Parse PDF outline to bookmark nodes
+const parseOutline = async (
+  outline: NonNullable<Awaited<ReturnType<PDFDocumentProxy['getOutline']>>>,
+  doc: PDFDocumentProxy
+): Promise<BookmarkNode[]> => {
+  const result: BookmarkNode[] = [];
+
+  for (const item of outline) {
+    let pageNumber = 1;
+
+    // Get destination page
+    if (item.dest) {
+      try {
+        const dest = typeof item.dest === 'string'
+          ? await doc.getDestination(item.dest)
+          : item.dest;
+        if (dest && dest[0]) {
+          const pageRef = dest[0];
+          const pageIndex = await doc.getPageIndex(pageRef);
+          pageNumber = pageIndex + 1;
+        }
+      } catch {
+        console.warn('Failed to get destination for bookmark:', item.title);
+      }
+    }
+
+    // Handle style
+    let style: 'bold' | 'italic' | 'bold-italic' | undefined = undefined;
+    if (item.bold && item.italic) style = 'bold-italic';
+    else if (item.bold) style = 'bold';
+    else if (item.italic) style = 'italic';
+
+    // Handle color (pdfjs color is [r, g, b] 0-255)
+    let color: string | undefined = undefined;
+    if (item.color && item.color.length === 3) {
+      const r = item.color[0].toString(16).padStart(2, '0');
+      const g = item.color[1].toString(16).padStart(2, '0');
+      const b = item.color[2].toString(16).padStart(2, '0');
+      color = `#${r}${g}${b}`;
+    }
+
+    const node: BookmarkNode = {
+      id: `bm-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      title: item.title || 'Untitled',
+      pageNumber,
+      children: [],
+      color,
+      style,
+      isExpanded: true,
+    };
+
+    // Parse children recursively
+    if (item.items && item.items.length > 0) {
+      node.children = await parseOutline(item.items, doc);
+    }
+
+    result.push(node);
+  }
+
+  return result;
+};
+
+// Convert BookmarkNode[] to BookmarkItem[] for processor
+const convertToBookmarkItems = (nodes: BookmarkNode[]): BookmarkItem[] => {
+  return nodes.map(node => ({
+    id: node.id,
+    title: node.title,
+    pageNumber: node.pageNumber,
+    color: node.color,
+    style: node.style,
+    children: node.children.length > 0 ? convertToBookmarkItems(node.children) : undefined,
+  }));
+};
+
 /**
  * BookmarkTool Component - Visual Bookmark Editor
  * Provides a visual interface for editing PDF bookmarks with PDF preview
@@ -66,14 +144,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // File state
   const [file, setFile] = useState<File | null>(null);
-  const [pdfDoc, setPdfDoc] = useState<any>(null);
+  const [pdfDoc, setPdfDoc] = useState<PDFDocumentProxy | null>(null);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Bookmark state
   const [bookmarks, setBookmarks] = useState<BookmarkNode[]>([]);
   const [selectedBookmarkId, setSelectedBookmarkId] = useState<string | null>(null);
-  const [editingBookmark, setEditingBookmark] = useState<BookmarkNode | null>(null);
+  const [editingBookmark, setEditingBookmark] = useState<BookmarkDraft | null>(null);
 
   // Processing state
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -83,6 +161,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // UI state
   const [isExtractingBookmarks, setIsExtractingBookmarks] = useState(false);
+  const [confirmExtraction, setConfirmExtraction] = useState(false);
+  const [extractionNotice, setExtractionNotice] = useState<string | null>(null);
+  const extractButtonRef = useRef<HTMLButtonElement>(null);
   const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null);
   const [dragOverNodeId, setDragOverNodeId] = useState<string | null>(null);
   const [dropPosition, setDropPosition] = useState<'before' | 'after' | 'inside' | null>(null);
@@ -122,91 +203,36 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   }, []);
 
   // Manually extract bookmarks from the current PDF
-  const handleExtractBookmarks = useCallback(async () => {
-    if (!pdfDoc) return;
-
-    if (bookmarks.length > 0) {
-      if (!confirm(tTools('bookmark.replaceConfirm') || 'This will replace current bookmarks. Continue?')) {
-        return;
-      }
-    }
-
+  const extractExistingBookmarks = async () => {
+    if (!pdfDoc || isExtractingBookmarks) return;
+    setError(null);
+    setExtractionNotice(null);
     setIsExtractingBookmarks(true);
     try {
       const outline = await pdfDoc.getOutline();
       if (outline && outline.length > 0) {
         const extracted = await parseOutline(outline, pdfDoc);
         setBookmarks(extracted);
+        setResult(null);
       } else {
-        alert(tTools('bookmark.noBookmarksFound') || 'No bookmarks found in this PDF.');
+        setExtractionNotice(tTools('bookmark.noBookmarksFound'));
       }
+      setConfirmExtraction(false);
     } catch (err) {
       console.warn('Failed to extract bookmarks:', err);
-      alert(tTools('bookmark.failedExtract') || 'Failed to extract bookmarks.');
+      setError(tTools('bookmark.failedExtract'));
+    } finally {
+      setIsExtractingBookmarks(false);
     }
-    setIsExtractingBookmarks(false);
-  }, [pdfDoc, bookmarks, tTools]);
+  };
 
-  // Parse PDF outline to bookmark nodes
-  const parseOutline = async (
-    outline: any[], // PDF.js outline structure
-    doc: any
-  ): Promise<BookmarkNode[]> => {
-    const result: BookmarkNode[] = [];
-
-    for (const item of outline) {
-      let pageNumber = 1;
-
-      // Get destination page
-      if (item.dest) {
-        try {
-          const dest = typeof item.dest === 'string'
-            ? await doc.getDestination(item.dest)
-            : item.dest;
-          if (dest && dest[0]) {
-            const pageRef = dest[0];
-            const pageIndex = await doc.getPageIndex(pageRef);
-            pageNumber = pageIndex + 1;
-          }
-        } catch (e) {
-          console.warn('Failed to get destination for bookmark:', item.title);
-        }
-      }
-
-      // Handle style
-      let style: 'bold' | 'italic' | 'bold-italic' | undefined = undefined;
-      if (item.bold && item.italic) style = 'bold-italic';
-      else if (item.bold) style = 'bold';
-      else if (item.italic) style = 'italic';
-
-      // Handle color (pdfjs color is [r, g, b] 0-255)
-      let color: string | undefined = undefined;
-      if (item.color && item.color.length === 3) {
-        const r = item.color[0].toString(16).padStart(2, '0');
-        const g = item.color[1].toString(16).padStart(2, '0');
-        const b = item.color[2].toString(16).padStart(2, '0');
-        color = `#${r}${g}${b}`;
-      }
-
-      const node: BookmarkNode = {
-        id: `bm-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-        title: item.title || 'Untitled',
-        pageNumber,
-        children: [],
-        color,
-        style,
-        isExpanded: true,
-      };
-
-      // Parse children recursively
-      if (item.items && item.items.length > 0) {
-        node.children = await parseOutline(item.items, doc);
-      }
-
-      result.push(node);
+  const handleExtractBookmarks = () => {
+    if (bookmarks.length > 0) {
+      setError(null);
+      setConfirmExtraction(true);
+    } else {
+      void extractExistingBookmarks();
     }
-
-    return result;
   };
 
   // Render current page to canvas
@@ -249,6 +275,8 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     if (files.length > 0) {
       setFile(files[0]);
       setError(null);
+      setExtractionNotice(null);
+      setConfirmExtraction(false);
       setResult(null);
       setBookmarks([]);
       loadPdf(files[0]);
@@ -261,6 +289,8 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setBookmarks([]);
     setResult(null);
     setError(null);
+    setExtractionNotice(null);
+    setConfirmExtraction(false);
     setStatus('idle');
     setCurrentPage(1);
     setTotalPages(0);
@@ -326,7 +356,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   }, [selectedBookmarkId]);
 
   // Update bookmark
-  const handleUpdateBookmark = useCallback((updated: BookmarkNode) => {
+  const handleUpdateBookmark = useCallback((updated: BookmarkDraft) => {
     // Ensure pageNumber is a valid number
     const pageNum = typeof updated.pageNumber === 'string' ? 1 : (updated.pageNumber || 1);
     const finalUpdate = { ...updated, pageNumber: pageNum };
@@ -480,18 +510,6 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setResult(null);
   }, []);
 
-  // Convert BookmarkNode[] to BookmarkItem[] for processor
-  const convertToBookmarkItems = (nodes: BookmarkNode[]): BookmarkItem[] => {
-    return nodes.map(node => ({
-      id: node.id,
-      title: node.title,
-      pageNumber: node.pageNumber,
-      color: node.color,
-      style: node.style,
-      children: node.children.length > 0 ? convertToBookmarkItems(node.children) : undefined,
-    }));
-  };
-
   // Process and save bookmarks
   const handleProcess = useCallback(async () => {
     if (!file || bookmarks.length === 0) return;
@@ -603,7 +621,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                           setEditingBookmark({
                             ...editingBookmark,
                             pageNumber: val === '' ? '' : Math.min(totalPages, parseInt(val))
-                          } as any);
+                          });
                         }
                       }}
                       className="w-14 h-8"
@@ -635,7 +653,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-4">{tTools('bookmark.style') || 'Style'}</Label>
                   <NativeSelect
                     value={editingBookmark.style || ''}
-                    onChange={(e) => setEditingBookmark({ ...editingBookmark, style: e.target.value as any || undefined })}
+                    onChange={(e) => setEditingBookmark({ ...editingBookmark, style: (e.target.value || undefined) as BookmarkNode['style'] })}
                     className="w-full h-8" id="bookmarktool-field-4" aria-label={tTools('bookmark.style') || 'Style'}
                   >
                     <NativeSelectOption value="">{tTools('bookmark.normal') || 'Normal'}</NativeSelectOption>
@@ -717,11 +735,28 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         />
       )}
 
-      {error && (
+      {error && !confirmExtraction && (
         <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
           <p className="text-sm">{error}</p>
         </AlertDescription></Alert>
       )}
+
+      {extractionNotice && <Alert role="status"><AlertDescription>{extractionNotice}</AlertDescription></Alert>}
+
+      <AlertDialog open={confirmExtraction} onOpenChange={(open) => { if (!isExtractingBookmarks) setConfirmExtraction(open); }}>
+        <AlertDialogContent onCloseAutoFocus={(event) => { event.preventDefault(); extractButtonRef.current?.focus(); }}>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{tTools('bookmark.extractExisting')}</AlertDialogTitle>
+            <AlertDialogDescription>{tTools('bookmark.replaceConfirm')}</AlertDialogDescription>
+          </AlertDialogHeader>
+          {error && <Alert variant="destructive"><UICircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+          {isExtractingBookmarks && <p role="status">{tTools('bookmark.extracting')}</p>}
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isExtractingBookmarks}>{t('buttons.cancel')}</AlertDialogCancel>
+            <Button onClick={() => void extractExistingBookmarks()} disabled={isExtractingBookmarks}>{t('buttons.confirm')}</Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       {file && pdfDoc && (
         <div className="grid lg:grid-cols-2 gap-6">
@@ -729,7 +764,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.pdfPreview') || 'PDF Preview'}</h3>
-              <Button variant="ghost" size="sm" onClick={handleClearFile}>
+              <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isExtractingBookmarks || isProcessing}>
                 {t('buttons.close') || 'Close'}
               </Button>
             </div>
@@ -769,9 +804,11 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               <h3 className="font-medium">{tTools('bookmark.bookmarksTitle') || 'Bookmarks'}</h3>
               <div className="flex gap-1">
                 <Button
+                  ref={extractButtonRef}
                   variant="secondary"
                   size="sm"
                   onClick={handleExtractBookmarks}
+                  disabled={isExtractingBookmarks || isProcessing}
                   title={tTools('bookmark.extractExisting') || 'Extract Existing Bookmarks'}
                 >
                   <UIEmojiDownload className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('bookmark.extractExisting') || 'Extract'}

@@ -3420,7 +3420,12 @@
       "layersTitle": "Lapisan PDF",
       "noLayers": "PDF ini tidak memiliki lapisan (OCG).",
       "addLayerLabel": "Tambahkan Lapisan Baru",
-      "successMessage": "Perubahan lapisan berhasil disimpan!"
+      "successMessage": "Perubahan lapisan berhasil disimpan!",
+      "deleteConfirm": "Hapus lapisan “{name}”?",
+      "refreshLayers": "Muat ulang lapisan",
+      "hideLayer": "Sembunyikan {name}",
+      "showLayer": "Tampilkan {name}",
+      "layerName": "Nama lapisan"
     },
     "pdfReader": {
       "uploadLabel": "Buka File PDF",

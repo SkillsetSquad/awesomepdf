@@ -3420,7 +3420,12 @@
       "layersTitle": "Camadas de PDF",
       "noLayers": "Este PDF não tem camadas (OCG).",
       "addLayerLabel": "Adicionar nova camada",
-      "successMessage": "Alterações de camada salvas com sucesso!"
+      "successMessage": "Alterações de camada salvas com sucesso!",
+      "deleteConfirm": "Excluir a camada “{name}”?",
+      "refreshLayers": "Atualizar camadas",
+      "hideLayer": "Ocultar {name}",
+      "showLayer": "Mostrar {name}",
+      "layerName": "Nome da camada"
     },
     "pdfReader": {
       "uploadLabel": "Abrir arquivo PDF",
