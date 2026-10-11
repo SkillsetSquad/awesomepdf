@@ -1,7 +1,7 @@
-# PDFCraft
+# AwesomePDF
 
 <div align="center">
-  <img src="public/images/logo.png" alt="PDFCraft Logo" width="120" height="120" />
+  <img src="public/images/logo.png" alt="AwesomePDF logo" width="120" height="120" />
   <h1>Professional PDF Tools</h1>
   <p>
     <strong>Free, Private & Browser-Based</strong>
@@ -13,27 +13,56 @@
 
 <div align="center">
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fpdfcraft.devtoolcafe.com%2Fen%2F)](https://pdfcraft.devtoolcafe.com/en/)
+[![PDFCraft](https://img.shields.io/website?url=https%3A%2F%2Fpdfcraft.devtoolcafe.com%2Fen%2F&label=PDFCraft)](https://pdfcraft.devtoolcafe.com/en/)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?style=flat-square&logo=tailwindcss)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-new--york-black?style=flat-square)
 
 </div>
 
+> **AwesomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
+>
+> We have reworked the interface to use **[shadcn/ui](https://ui.shadcn.com/)** instead of PDFCraft's custom theme and component set. **Bigger changes are underway**, so expect this project to keep diverging from upstream.
+
 ## 📖 About
 
-**PDFCraft** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, PDFCraft processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
+**AwesomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
 
-This project is built with modern web technologies to provide a slick, app-like experience directly in the browser.
+The processing engine and tool set come from PDFCraft. What differs in this fork is the interface layer and where the project is headed (see below).
+
+## 🔀 Relationship to PDFCraft
+
+| | PDFCraft (upstream) | AwesomePDF (this fork) |
+|---|---|---|
+| Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awesomepdf](https://github.com/SkillsetSquad/awesomepdf) |
+| Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | Not yet announced |
+| UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
+| Status | Upstream project | Actively diverging |
+
+### What has changed so far
+
+- Replaced PDFCraft's custom Button, Card, Modal, Tabs, form-field and theme-toggle components with standard shadcn/ui primitives.
+- Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer.
+- Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
+- Added a real open-source page with source, license and notice downloads for each deployed build.
+
+### Work in progress
+
+- The UI migration is not finished. Many individual tool workspaces (settings panels, previews and editors) are still being moved to shadcn/ui one at a time.
+- Larger changes beyond the UI are underway. This README will be updated as they land.
+- While the migration is in progress, the default `npm run build` can fail on the existing lint baseline. `npm run build -- --no-lint` skips linting.
+
+Progress details live in [docs/ui-migration.md](docs/ui-migration.md).
 
 ## ✨ Key Features
 
 - **🔒 100% Private**: All processing happens client-side. No file uploads to external servers.
 - **🚀 Fast & Responsive**: Powered by Next.js and WebAssembly for near-native performance.
-- **🛠️ Comprehensive Toolset**: Over 80+ tools to handle any PDF task.
-- **🎨 Modern UI**: Clean, accessible, and responsive design built with Tailwind CSS.
-- **🌐 Multi-language**: Supports English, Spanish, French, German, Portuguese, Japanese, Korean, and Chinese.
+- **🛠️ Comprehensive Toolset**: 90+ tools to handle any PDF task.
+- **🎨 Modern UI**: Clean, accessible, responsive design built with shadcn/ui and Tailwind CSS, with light and dark themes.
+- **🌐 Multi-language**: 15 languages: English, Japanese, Korean, Spanish, French, German, Simplified and Traditional Chinese, Portuguese, Arabic, Italian, Indonesian, Vietnamese, Romanian and Polish.
 
 ## 🧰 Complete Tool List (90+ Tools)
 
@@ -158,6 +187,7 @@ This project is built with modern web technologies to provide a slick, app-like 
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **UI**: [shadcn/ui](https://ui.shadcn.com/) (new-york style, built on [Radix UI](https://www.radix-ui.com/) and [Lucide](https://lucide.dev/))
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **PDF Processing**:
   - [PDF.js](https://github.com/mozilla/pdf.js)
@@ -178,8 +208,8 @@ To run this project locally, follow these steps:
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/PDFCraftTool/pdfcraft.git
-    cd pdfcraft
+    git clone https://github.com/SkillsetSquad/awesomepdf.git
+    cd awesomepdf
     ```
 
 2.  **Install dependencies**
@@ -205,39 +235,12 @@ To run this project locally, follow these steps:
 
 ### 🐳 Docker
 
-PDFCraft provides both pre-built Docker images and Docker Compose for flexible deployment options.
-
-#### Option 1: Use Pre-built Image (Recommended)
-
-The easiest way to run PDFCraft is using our pre-built image from GitHub Container Registry:
-
-```bash
-# Pull the latest image
-docker pull ghcr.io/pdfcrafttool/pdfcraft:latest
-
-# Run the container
-docker run -d -p 8080:80 --name pdfcraft ghcr.io/pdfcrafttool/pdfcraft:latest
-```
-
-Open [http://localhost:8080](http://localhost:8080) to access PDFCraft.
-
-**Available tags:**
-| Tag | Description |
-|-----|-------------|
-| `latest` | Latest stable release from main branch |
-| `v1.0.0` | Specific version (semantic versioning) |
-| `sha-abc1234` | Specific commit |
-
-#### Option 2: Build from Source with Docker Compose
-
-If you want to build from source or need to modify the code:
-
-> ⚠️ **Note**: This method requires cloning the repository first.
+> ℹ️ The pre-built image published by upstream (`ghcr.io/pdfcrafttool/pdfcraft`) is the original PDFCraft and does **not** include the shadcn/ui rework. To run AwesomePDF, build from source as below.
 
 ```bash
 # Clone the repository
-git clone https://github.com/PDFCraftTool/pdfcraft.git
-cd pdfcraft
+git clone https://github.com/SkillsetSquad/awesomepdf.git
+cd awesomepdf
 
 # Development mode (with hot reload)
 docker compose --profile dev up
@@ -255,28 +258,20 @@ To stop containers:
 docker compose down
 ```
 
-#### 🌐 Subpath Deployment (basePath Support)
+#### 🌐 Site URL and Subpath Deployment
 
-PDFCraft supports deployment under a subpath (e.g., `https://your-domain.com/pdfcraft/`). To enable this, you must specify the base path during the build process.
+Sitemap, `robots.txt`, canonical and structured-data URLs are built from the site origin, which is fixed at build time because the app is statically exported. Set `NEXT_PUBLIC_SITE_URL` (for Docker, the build argument of the same name) to your production origin. See [DEPLOYMENT.md](DEPLOYMENT.md) for how it is resolved when unset.
 
-**Using Docker Build:**
+To deploy under a subpath (e.g., `https://your-domain.com/awesomepdf/`), specify the base path during the build:
+
 ```bash
-docker build --build-arg BASE_PATH=/pdfcraft -t pdfcraft .
+docker build \
+  --build-arg BASE_PATH=/awesomepdf \
+  --build-arg NEXT_PUBLIC_SITE_URL=https://your-domain.com \
+  -t awesomepdf .
 ```
 
-**Using Docker Compose:**
-```yaml
-services:
-  pdfcraft:
-    build:
-      context: .
-      args:
-        - BASE_PATH=/pdfcraft
-    environment:
-      - BASE_PATH=/pdfcraft
-```
-
-*Note: Since the app is statically exported, the `BASE_PATH` must be provided during the build stage.*
+*Note: Since the app is statically exported, `BASE_PATH` and `NEXT_PUBLIC_SITE_URL` must be provided during the build stage.*
 
 ## 📜 Scripts
 
@@ -288,7 +283,7 @@ services:
 
 ## 🚀 Production Deployment Guide
 
-PDFCraft is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
+AwesomePDF is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
 
 > 📖 **For comprehensive deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
 
@@ -340,18 +335,22 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4.  Push to the branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
-## 🤝 Acknowledgements
+Because this is a fork, changes to the core PDF tools that are not specific to the shadcn/ui rework may also be worth contributing back to [PDFCraft](https://github.com/PDFCraftTool/pdfcraft).
 
-PDFCraft stands on the shoulders of giants. We gratefully acknowledge [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools.
+## 🙏 Acknowledgements
 
-Their project served as a significant inspiration and reference for our core logic. While PDFCraft has been re-engineered for the Next.js ecosystem, we deeply respect the foundation laid by the BentoPDF team.
+AwesomePDF is a fork of **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
+
+PDFCraft itself stands on the shoulders of giants. It gratefully acknowledges [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools, which served as a significant inspiration and reference for its core logic. We share that respect for the foundation laid by the BentoPDF team.
+
+Third-party components keep their original notices. They are generated at build time and published with each deployed build on the site's open-source page.
 
 ## 📄 License
 
-This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details. As a modified version of PDFCraft, the complete corresponding source of each deployed build is available from the site's open-source page.
 
 ---
 
 <div align="center">
-  Built with ❤️ by the PDFCraft Team
+  Maintained by <a href="https://github.com/SkillsetSquad">Skillset Squad</a> · Forked from <a href="https://github.com/PDFCraftTool/pdfcraft">PDFCraft</a> by the PDFCraft Team
 </div>
