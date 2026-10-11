@@ -260,7 +260,7 @@
       "optionsTitle": "胶装书脊压痕线计算",
       "processButton": "设计并导出书脊封套",
       "successMessage": "胶装书脊厚度估算及印刷折叠封面生成成功！",
-      "magnifierTitle": "3D 书籍胶装折页模型 (按住鼠标左键任意旋转)",
+      "magnifierTitle": "封面预览",
       "spineWidthText": "预测书脊厚度: {width} mm",
       "spineTextLabel": "书脊版面铭刻文字",
       "spineTextPlaceholder": "例如: 毕业设计论文 / 商业合同",
@@ -270,7 +270,17 @@
       "gsm80": "80g 复印纸 (每面厚 0.05mm)",
       "gsm100": "100g 铜版纸 (每面厚 0.06mm)",
       "gsm120": "120g 哑粉纸 (每面厚 0.07mm)",
-      "gsm150": "150g 重型艺术纸 (每面厚 0.09mm)"
+      "gsm150": "150g 重型艺术纸 (每面厚 0.09mm)",
+      "estimateHelp": "宽度按各纸张克重的固定厚度计算。实际纸张厚度可能不同。",
+      "modelView": "书本模型",
+      "flatView": "打印版面",
+      "backCover": "封底",
+      "frontCover": "封面",
+      "modelHelp": "拖动模型或使用旋转控件。这是示意图；PDF 只会在书脊够宽时印上书脊文字。",
+      "rotateHorizontal": "水平旋转",
+      "rotateVertical": "垂直旋转",
+      "resetView": "重置视角",
+      "layoutDescription": "估计版面：封底、{width} mm 书脊及封面。"
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "上传待签署的合同或 PDF 协议",

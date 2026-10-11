@@ -260,7 +260,7 @@
       "optionsTitle": "Pengaturan Punggung Buku Penjilidan",
       "processButton": "Kompilasi Sampul Lipatan Penjilid",
       "successMessage": "Ketebalan jilid punggung buku dihitung dan amplop garis lipat berhasil dibuat!",
-      "magnifierTitle": "Model Lipatan Penjilidan Buku 3D (Seret mouse untuk memutar)",
+      "magnifierTitle": "Pratinjau sampul",
       "spineWidthText": "Perkiraan Ketebalan Punggung Buku: {width} mm",
       "spineTextLabel": "Teks Ukiran Punggung Buku",
       "spineTextPlaceholder": "misal, Tesis / Perjanjian Komersial",
@@ -270,7 +270,17 @@
       "gsm80": "Kertas Kantor Standar 80g (0,05mm/halaman)",
       "gsm100": "Kertas Coated Halus 100g (0,06mm/halaman)",
       "gsm120": "Kertas Seni Matte 120g (0,07mm/halaman)",
-      "gsm150": "Karton Matte Tebal 150g (0,09mm/halaman)"
+      "gsm150": "Karton Matte Tebal 150g (0,09mm/halaman)",
+      "estimateHelp": "Lebar dihitung dengan ketebalan lembar tetap untuk setiap berat kertas. Ketebalan kertas sebenarnya bervariasi.",
+      "modelView": "Model buku",
+      "flatView": "Tata letak cetak",
+      "backCover": "Sampul belakang",
+      "frontCover": "Sampul depan",
+      "modelHelp": "Seret model atau gunakan kontrol rotasi. Ini ilustrasi; PDF mencetak teks pada punggung hanya jika lebarnya cukup.",
+      "rotateHorizontal": "Rotasi horizontal",
+      "rotateVertical": "Rotasi vertikal",
+      "resetView": "Atur ulang tampilan",
+      "layoutDescription": "Perkiraan tata letak: sampul belakang, punggung {width} mm, dan sampul depan."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Unggah Kontrak atau Perjanjian PDF",

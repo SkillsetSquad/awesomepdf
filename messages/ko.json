@@ -260,7 +260,7 @@
       "optionsTitle": "제본 책등 설정",
       "processButton": "제본 책등 커버 컴파일",
       "successMessage": "책등 제본 두께 계산 및 접지선 템플릿이 성공적으로 생성되었습니다!",
-      "magnifierTitle": "3D 도서 제본 주름 모델 (마우스로 드래그하여 회전)",
+      "magnifierTitle": "표지 미리보기",
       "spineWidthText": "예상 책등 두께: {width} mm",
       "spineTextLabel": "책등 새김 텍스트",
       "spineTextPlaceholder": "예: 학위 논문 / 상업 협정",
@@ -270,7 +270,17 @@
       "gsm80": "80g 표준 사무용 종이 (단면 0.05mm)",
       "gsm100": "100g 부드러운 코팅지 (단면 0.06mm)",
       "gsm120": "120g 무광 아트지 (단면 0.07mm)",
-      "gsm150": "150g 두꺼운 무광 카드보드 (단면 0.09mm)"
+      "gsm150": "150g 두꺼운 무광 카드보드 (단면 0.09mm)",
+      "estimateHelp": "용지 무게별 고정 두께로 너비를 계산합니다. 실제 용지 두께는 다를 수 있습니다.",
+      "modelView": "책 모형",
+      "flatView": "인쇄 레이아웃",
+      "backCover": "뒤표지",
+      "frontCover": "앞표지",
+      "modelHelp": "모형을 드래그하거나 회전 컨트롤을 사용하세요. 설명용 그림이며, PDF는 책등이 충분히 넓을 때만 책등에 텍스트를 인쇄합니다.",
+      "rotateHorizontal": "수평 회전",
+      "rotateVertical": "수직 회전",
+      "resetView": "보기 초기화",
+      "layoutDescription": "예상 레이아웃: 뒤표지, {width} mm 책등, 앞표지."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "계약서 또는 PDF 합의서 업로드",

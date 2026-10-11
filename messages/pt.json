@@ -260,7 +260,7 @@
       "optionsTitle": "Configurações do lomo de encadernação",
       "processButton": "Compilar capa de encadernação",
       "successMessage": "Espessura da lombada de encadernação calculada e gabarito de linhas de dobra gerado com sucesso!",
-      "magnifierTitle": "Modelo de dobra de encadernação de livros 3D (Arraste para girar)",
+      "magnifierTitle": "Prévia da capa",
       "spineWidthText": "Espessura estimada da lombada: {width} mm",
       "spineTextLabel": "Texto gravado no lomo",
       "spineTextPlaceholder": "ex. Tese / Contrato comercial",
@@ -270,7 +270,17 @@
       "gsm80": "Papel de escritório padrão 80g (0,05mm/lado)",
       "gsm100": "Papel revestido liso 100g (0,06mm/lado)",
       "gsm120": "Papel mate artístico 120g (0,07mm/lado)",
-      "gsm150": "Cartolina mate pesada 150g (0,09mm/lado)"
+      "gsm150": "Cartolina mate pesada 150g (0,09mm/lado)",
+      "estimateHelp": "A largura usa uma espessura fixa por gramatura. A espessura real do papel varia.",
+      "modelView": "Modelo do livro",
+      "flatView": "Layout de impressão",
+      "backCover": "Contracapa",
+      "frontCover": "Capa",
+      "modelHelp": "Arraste o modelo ou use os controles de rotação. É uma ilustração; o PDF imprime texto na lombada apenas se ela for larga o suficiente.",
+      "rotateHorizontal": "Rotação horizontal",
+      "rotateVertical": "Rotação vertical",
+      "resetView": "Redefinir visualização",
+      "layoutDescription": "Layout estimado: contracapa, lombada de {width} mm e capa."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Enviar contrato ou acordo PDF",

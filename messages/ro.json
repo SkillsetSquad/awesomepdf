@@ -260,7 +260,7 @@
       "optionsTitle": "Setări cotor pentru legarea cărților",
       "processButton": "Compilați coperta pentru legarea cărților",
       "successMessage": "Grosimea cotorului de legare a fost calculată și coperta cu linii de pliere a fost generată cu succes!",
-      "magnifierTitle": "Model 3D de pliere pentru legarea cărților (Trageți cu mouse-ul pentru a roti)",
+      "magnifierTitle": "Previzualizarea copertei",
       "spineWidthText": "Grosime estimată cotor: {width} mm",
       "spineTextLabel": "Text gravat pe cotor",
       "spineTextPlaceholder": "ex. Teză / Acord comercial",
@@ -270,7 +270,17 @@
       "gsm80": "Hârtie de birou standard 80g (0,05mm/pagină)",
       "gsm100": "Hârtie lucioasă 100g (0,06mm/pagină)",
       "gsm120": "Hârtie mată artă 120g (0,07mm/pagină)",
-      "gsm150": "Carton mat gros 150g (0,09mm/pagină)"
+      "gsm150": "Carton mat gros 150g (0,09mm/pagină)",
+      "estimateHelp": "Lățimea folosește o grosime fixă pentru fiecare gramaj. Grosimea reală a hârtiei variază.",
+      "modelView": "Modelul cărții",
+      "flatView": "Aspect de tipărire",
+      "backCover": "Coperta din spate",
+      "frontCover": "Coperta din față",
+      "modelHelp": "Trageți modelul sau folosiți comenzile de rotire. Este o ilustrație; PDF-ul imprimă text pe cotor doar dacă acesta este suficient de lat.",
+      "rotateHorizontal": "Rotire orizontală",
+      "rotateVertical": "Rotire verticală",
+      "resetView": "Resetați vizualizarea",
+      "layoutDescription": "Aspect estimat: coperta din spate, cotor de {width} mm și coperta din față."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Încărcați contractul sau acordul PDF",

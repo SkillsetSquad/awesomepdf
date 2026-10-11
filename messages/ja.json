@@ -260,7 +260,7 @@
       "optionsTitle": "ブックバインダー背表紙設定",
       "processButton": "製本折り目カバーを作成",
       "successMessage": "背表紙の製本厚さが計算され、折り線付きカバーが正常に生成されました！",
-      "magnifierTitle": "3D製本折り目モデル (マウスドラッグで回転)",
+      "magnifierTitle": "表紙プレビュー",
       "spineWidthText": "予想される背幅: {width} mm",
       "spineTextLabel": "背表紙の刻印テキスト",
       "spineTextPlaceholder": "例：学位論文 / 商業協定",
@@ -270,7 +270,17 @@
       "gsm80": "80g 標準コピー用紙 (片面0.05mm)",
       "gsm100": "100g 上質紙 (片面0.06mm)",
       "gsm120": "120g マットアート紙 (片面0.07mm)",
-      "gsm150": "150g 厚手マットコート紙 (片面0.09mm)"
+      "gsm150": "150g 厚手マットコート紙 (片面0.09mm)",
+      "estimateHelp": "幅は紙の坪量ごとの固定厚さで計算します。実際の紙の厚さは異なります。",
+      "modelView": "本のモデル",
+      "flatView": "印刷レイアウト",
+      "backCover": "裏表紙",
+      "frontCover": "表表紙",
+      "modelHelp": "モデルをドラッグするか回転コントロールを使ってください。これは図示です。PDFでは背幅が十分な場合のみ背に文字を印刷します。",
+      "rotateHorizontal": "水平方向の回転",
+      "rotateVertical": "垂直方向の回転",
+      "resetView": "表示をリセット",
+      "layoutDescription": "推定レイアウト：裏表紙、幅{width} mmの背、表表紙。"
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "契約書またはPDF合意書をアップロード",

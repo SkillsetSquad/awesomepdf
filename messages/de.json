@@ -260,7 +260,7 @@
       "optionsTitle": "Buchbinder-Buchrücken-Einstellungen",
       "processButton": "Bindungsfalz-Cover kompilieren",
       "successMessage": "Buchrückenstärke berechnet und Umschlag-Falzlinien erfolgreich generiert!",
-      "magnifierTitle": "3D-Buchbindung-Falzmodell (Zum Drehen ziehen)",
+      "magnifierTitle": "Umschlagvorschau",
       "spineWidthText": "Geschätzte Buchrückenstärke: {width} mm",
       "spineTextLabel": "Buchrücken-Prägungstext",
       "spineTextPlaceholder": "z.B. Abschlussarbeit / Handelsvertrag",
@@ -270,7 +270,17 @@
       "gsm80": "80g Standard-Büropapier (0,05mm/Seite)",
       "gsm100": "100g Glattes gestrichenes Papier (0,06mm/Seite)",
       "gsm120": "120g Mattes Bilderdruckpapier (0,07mm/Seite)",
-      "gsm150": "150g Schwerer matter Karton (0,09mm/Seite)"
+      "gsm150": "150g Schwerer matter Karton (0,09mm/Seite)",
+      "estimateHelp": "Die Breite verwendet eine feste Blattdicke je Papiergewicht. Die tatsächliche Papierdicke variiert.",
+      "modelView": "Buchmodell",
+      "flatView": "Drucklayout",
+      "backCover": "Rückseite",
+      "frontCover": "Vorderseite",
+      "modelHelp": "Ziehen Sie das Modell oder verwenden Sie die Drehregler. Dies ist eine Illustration; im PDF steht Text nur auf einem ausreichend breiten Rücken.",
+      "rotateHorizontal": "Horizontale Drehung",
+      "rotateVertical": "Vertikale Drehung",
+      "resetView": "Ansicht zurücksetzen",
+      "layoutDescription": "Geschätztes Layout: Rückseite, {width} mm Rücken und Vorderseite."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Vertrag oder PDF-Vereinbarung hochladen",

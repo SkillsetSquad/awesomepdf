@@ -260,7 +260,7 @@
       "optionsTitle": "書脊裝訂參數設置",
       "processButton": "生成裝訂書脊封面",
       "successMessage": "膠裝書脊厚度估算及印刷折疊封面生成成功！",
-      "magnifierTitle": "3D 裝訂折痕模型 (拖動滑鼠旋轉)",
+      "magnifierTitle": "封面預覽",
       "spineWidthText": "预测书脊厚度: {width} mm",
       "spineTextLabel": "書脊刻印文字",
       "spineTextPlaceholder": "例如：畢業論文 / 商業合同",
@@ -270,7 +270,17 @@
       "gsm80": "80g 標準複印紙 (單頁 0.05mm)",
       "gsm100": "100g 高檔雙膠紙 (單頁 0.06mm)",
       "gsm120": "120g 啞粉紙/藝術紙 (單頁 0.07mm)",
-      "gsm150": "150g 厚塗布紙/輕卡紙 (單頁 0.09mm)"
+      "gsm150": "150g 厚塗布紙/輕卡紙 (單頁 0.09mm)",
+      "estimateHelp": "寬度依各紙張克重的固定厚度計算。實際紙張厚度可能不同。",
+      "modelView": "書本模型",
+      "flatView": "列印版面",
+      "backCover": "封底",
+      "frontCover": "封面",
+      "modelHelp": "拖曳模型或使用旋轉控制。這是示意圖；PDF 只會在書背夠寬時印上書背文字。",
+      "rotateHorizontal": "水平旋轉",
+      "rotateVertical": "垂直旋轉",
+      "resetView": "重設視角",
+      "layoutDescription": "估計版面：封底、{width} mm 書背及封面。"
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "上傳待簽署的合同或 PDF 協議",

@@ -260,7 +260,7 @@
       "optionsTitle": "Configuración del lomo de encuadernación",
       "processButton": "Compilar portada de encuadernación",
       "successMessage": "¡Espesor del lomo de encuadernación calculado y plantilla de líneas de pliegue generada con éxito!",
-      "magnifierTitle": "Modelo de pliegue de encuadernación de libros 3D (Arrastrar para girar)",
+      "magnifierTitle": "Vista previa de la cubierta",
       "spineWidthText": "Espesor estimado del lomo: {width} mm",
       "spineTextLabel": "Texto grabado en el lomo",
       "spineTextPlaceholder": "ej. Tesis / Acuerdo comercial",
@@ -270,7 +270,17 @@
       "gsm80": "Papel de oficina estándar 80g (0.05mm/lado)",
       "gsm100": "Papel estucado suave 100g (0.06mm/lado)",
       "gsm120": "Papel mate artístico 120g (0.07mm/lado)",
-      "gsm150": "Cartulina mate pesada 150g (0.09mm/lado)"
+      "gsm150": "Cartulina mate pesada 150g (0.09mm/lado)",
+      "estimateHelp": "El ancho usa un grosor fijo por gramaje. El grosor real del papel varía.",
+      "modelView": "Modelo del libro",
+      "flatView": "Diseño de impresión",
+      "backCover": "Contraportada",
+      "frontCover": "Portada",
+      "modelHelp": "Arrastra el modelo o usa los controles de rotación. Es una ilustración; el PDF imprime texto en el lomo solo si tiene suficiente ancho.",
+      "rotateHorizontal": "Rotación horizontal",
+      "rotateVertical": "Rotación vertical",
+      "resetView": "Restablecer vista",
+      "layoutDescription": "Diseño estimado: contraportada, lomo de {width} mm y portada."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Subir contrato o acuerdo PDF",

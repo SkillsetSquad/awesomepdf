@@ -260,7 +260,7 @@
       "optionsTitle": "Thiết lập gáy sách",
       "processButton": "Tạo bìa nếp gấp đóng sách",
       "successMessage": "Đã tính toán độ dày gáy sách và tạo bìa nếp gấp thành công!",
-      "magnifierTitle": "Mô hình nếp gấp gáy sách 3D (Kéo chuột để xoay)",
+      "magnifierTitle": "Xem trước bìa",
       "spineWidthText": "Độ dày gáy sách ước tính: {width} mm",
       "spineTextLabel": "Chữ khắc trên gáy sách",
       "spineTextPlaceholder": "Ví dụ: Luận văn / Hợp đồng thương mại",
@@ -270,7 +270,17 @@
       "gsm80": "Giấy văn phòng chuẩn 80g (0.05mm/trang)",
       "gsm100": "Giấy couche mịn 100g (0.06mm/trang)",
       "gsm120": "Giấy mỹ thuật mờ 120g (0.07mm/trang)",
-      "gsm150": "Bìa giấy mờ dày 150g (0.09mm/trang)"
+      "gsm150": "Bìa giấy mờ dày 150g (0.09mm/trang)",
+      "estimateHelp": "Chiều rộng dùng độ dày tờ cố định cho từng định lượng giấy. Độ dày giấy thực tế có thể khác.",
+      "modelView": "Mô hình sách",
+      "flatView": "Bố cục in",
+      "backCover": "Bìa sau",
+      "frontCover": "Bìa trước",
+      "modelHelp": "Kéo mô hình hoặc dùng điều khiển xoay. Đây là hình minh họa; PDF chỉ in chữ trên gáy khi gáy đủ rộng.",
+      "rotateHorizontal": "Xoay ngang",
+      "rotateVertical": "Xoay dọc",
+      "resetView": "Đặt lại góc nhìn",
+      "layoutDescription": "Bố cục ước tính: bìa sau, gáy {width} mm và bìa trước."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Tải lên hợp đồng hoặc thỏa thuận PDF",

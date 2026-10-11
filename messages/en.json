@@ -260,7 +260,7 @@
       "optionsTitle": "Bookbinder Spine Settings",
       "processButton": "Compile Binder Crease Cover",
       "successMessage": "Spine binding thickness computed and fold-line envelope generated successfully!",
-      "magnifierTitle": "3D Book Binding Crease Model (Drag mouse to rotate)",
+      "magnifierTitle": "Cover preview",
       "spineWidthText": "Estimated Spine Thickness: {width} mm",
       "spineTextLabel": "Spine Engraving Text",
       "spineTextPlaceholder": "e.g., Thesis / Commercial Agreement",
@@ -270,7 +270,17 @@
       "gsm80": "80g Standard Office Paper (0.05mm/side)",
       "gsm100": "100g Smooth Coated Paper (0.06mm/side)",
       "gsm120": "120g Matte Art Paper (0.07mm/side)",
-      "gsm150": "150g Heavy Matte Cardboard (0.09mm/side)"
+      "gsm150": "150g Heavy Matte Cardboard (0.09mm/side)",
+      "estimateHelp": "Width uses a fixed sheet thickness for each paper weight. Actual paper thickness varies.",
+      "modelView": "Book model",
+      "flatView": "Print layout",
+      "backCover": "Back cover",
+      "frontCover": "Front cover",
+      "modelHelp": "Drag the model or use the rotation controls. This is an illustration; the PDF prints text on the spine only when it is wide enough.",
+      "rotateHorizontal": "Horizontal rotation",
+      "rotateVertical": "Vertical rotation",
+      "resetView": "Reset view",
+      "layoutDescription": "Estimated layout: back cover, {width} mm spine, and front cover."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Upload Contract or PDF Agreement",

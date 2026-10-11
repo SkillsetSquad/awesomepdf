@@ -260,7 +260,7 @@
       "optionsTitle": "Impostazioni dorso del rilegatore",
       "processButton": "Genera copertina della rilegatura",
       "successMessage": "Spessore del dorso di rilegatura calcolato e modello delle linee di piega generato con successo!",
-      "magnifierTitle": "Modello di piegatura della rilegatura in 3D (Trascina il mouse per ruotare)",
+      "magnifierTitle": "Anteprima della copertina",
       "spineWidthText": "Spessore stimato del dorso: {width} mm",
       "spineTextLabel": "Testo incisione dorso",
       "spineTextPlaceholder": "es. Tesi / Accordo commerciale",
@@ -270,7 +270,17 @@
       "gsm80": "Carta standard da ufficio da 80g (0,05mm/pagina)",
       "gsm100": "Carta patinata liscia da 100g (0,06mm/pagina)",
       "gsm120": "Carta patinata opaca da 120g (0,07mm/pagina)",
-      "gsm150": "Cartoncino opaco pesante da 150g (0,09mm/pagina)"
+      "gsm150": "Cartoncino opaco pesante da 150g (0,09mm/pagina)",
+      "estimateHelp": "La larghezza usa uno spessore fisso per ogni grammatura. Lo spessore reale della carta varia.",
+      "modelView": "Modello del libro",
+      "flatView": "Layout di stampa",
+      "backCover": "Copertina posteriore",
+      "frontCover": "Copertina anteriore",
+      "modelHelp": "Trascina il modello o usa i controlli di rotazione. È un’illustrazione; il PDF stampa il testo sul dorso solo se è abbastanza largo.",
+      "rotateHorizontal": "Rotazione orizzontale",
+      "rotateVertical": "Rotazione verticale",
+      "resetView": "Reimposta vista",
+      "layoutDescription": "Layout stimato: copertina posteriore, dorso di {width} mm e copertina anteriore."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Carica contratto o accordo PDF",

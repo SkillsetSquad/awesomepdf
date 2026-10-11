@@ -260,7 +260,7 @@
       "optionsTitle": "Paramètres du dos de reliure",
       "processButton": "Générer la couverture de reliure",
       "successMessage": "Épaisseur du dos de reliure calculée et gabarit des lignes de pliage généré avec succès !",
-      "magnifierTitle": "Modèle de pli de reliure 3D (Glisser la souris pour tourner)",
+      "magnifierTitle": "Aperçu de la couverture",
       "spineWidthText": "Épaisseur estimée du dos : {width} mm",
       "spineTextLabel": "Texte gravé sur le dos",
       "spineTextPlaceholder": "ex. Thèse / Contrat commercial",
@@ -270,7 +270,17 @@
       "gsm80": "Papier de bureau standard 80g (0,05mm/page)",
       "gsm100": "Papier couché lisse 100g (0,06mm/page)",
       "gsm120": "Papier couché mat 120g (0,07mm/page)",
-      "gsm150": "Carton mat lourd 150g (0,09mm/page)"
+      "gsm150": "Carton mat lourd 150g (0,09mm/page)",
+      "estimateHelp": "La largeur utilise une épaisseur fixe par grammage. L’épaisseur réelle du papier varie.",
+      "modelView": "Modèle du livre",
+      "flatView": "Plan d’impression",
+      "backCover": "Dos de couverture",
+      "frontCover": "Face de couverture",
+      "modelHelp": "Faites glisser le modèle ou utilisez les commandes de rotation. Il s’agit d’une illustration ; le PDF imprime le texte sur le dos seulement s’il est assez large.",
+      "rotateHorizontal": "Rotation horizontale",
+      "rotateVertical": "Rotation verticale",
+      "resetView": "Réinitialiser la vue",
+      "layoutDescription": "Plan estimé : dos de couverture, tranche de {width} mm et face de couverture."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Télécharger le contrat ou l'accord PDF",

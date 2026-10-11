@@ -1,276 +1,137 @@
 'use client';
-import { Slider } from '@/components/ui/slider';
 
-import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
-
-import { Label } from '@/components/ui/label';
-
-import { Input } from '@/components/ui/input';
-
-import React, { useState, useRef } from 'react';
+import { useEffect, useId, useRef, useState, type PointerEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { BookOpen, CircleAlert, FileCheck, RotateCcw } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
 import { designPDFSpine, type PdfSpineBookbinderOptions } from '@/lib/pdf/processors/pdf-spine-bookbinder';
-import type { ProcessOutput } from '@/types/pdf';
-import { Sliders, Book, RefreshCw, Compass, Shield } from 'lucide-react';
 
-export interface PdfSpineBookbinderToolProps {
-  className?: string;
-}
+export interface PdfSpineBookbinderToolProps { className?: string }
+const coverWidth = 595.27;
+const coverHeight = 841.89;
+const initialRotation = { x: -20, y: -30 };
 
 export function PdfSpineBookbinderTool({ className = '' }: PdfSpineBookbinderToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
+  const id = useId();
   const [pageCount, setPageCount] = useState(100);
-  const [paperGsm, setPaperGsm] = useState<80 | 100 | 120 | 150>(80);
-  const [bookTitle, setBookTitle] = useState('PDFCraft Design');
-
+  const [paperGsm, setPaperGsm] = useState<PdfSpineBookbinderOptions['paperGsm']>(80);
+  const [bookTitle, setBookTitle] = useState('AwesomePDF Design');
+  const [rotation, setRotation] = useState(initialRotation);
+  const dragStart = useRef<{ x: number; y: number; pointer: number } | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
-  const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('book_cover_spine_layout.pdf');
+  const [resultWidth, setResultWidth] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
-
-  // 3D rotation mockup control
-  const [rotation, setRotation] = useState({ x: -20, y: -30 });
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const mouseStart = useRef({ x: 0, y: 0 });
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsMouseDown(true);
-    mouseStart.current = { x: e.clientX, y: e.clientY };
+  const processingRun = useRef(0);
+  useEffect(() => () => { processingRun.current++; }, []);
+  const isProcessing = status === 'processing';
+  const sheetThickness = { 80: 0.1, 100: 0.12, 120: 0.14, 150: 0.18 }[paperGsm];
+  const spineWidthMm = Math.ceil(pageCount / 2) * sheetThickness;
+  const spineWidthPt = spineWidthMm * 2.83465;
+  const totalWidth = coverWidth * 2 + spineWidthPt;
+  const clearOutput = () => { processingRun.current++; setResult(null); setResultWidth(null); setStatus('idle'); setError(null); setProgress(0); setProgressMessage(''); };
+  const rotateModel = (event: PointerEvent<HTMLDivElement>) => {
+    const start = dragStart.current;
+    if (!start || event.pointerId !== start.pointer) return;
+    if (event.buttons === 0) { dragStart.current = null; return; }
+    const dx = event.clientX - start.x, dy = event.clientY - start.y;
+    setRotation(previous => ({ x: Math.max(-60, Math.min(60, previous.x - dy * 0.5)), y: ((previous.y + dx * 0.5 + 180) % 360 + 360) % 360 - 180 }));
+    dragStart.current = { x: event.clientX, y: event.clientY, pointer: event.pointerId };
   };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isMouseDown) return;
-    const deltaX = e.clientX - mouseStart.current.x;
-    const deltaY = e.clientY - mouseStart.current.y;
-    setRotation((prev) => ({
-      x: Math.max(-60, Math.min(60, prev.x - deltaY * 0.5)),
-      y: prev.y + deltaX * 0.5,
-    }));
-    mouseStart.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handleMouseUp = () => {
-    setIsMouseDown(false);
-  };
-
-  // Calculate simulated spine width
-  let sheetThick = 0.1;
-  if (paperGsm === 100) sheetThick = 0.12;
-  else if (paperGsm === 120) sheetThick = 0.14;
-  else if (paperGsm === 150) sheetThick = 0.18;
-  const sheets = Math.ceil(pageCount / 2);
-  const spineWidthMm = sheets * sheetThick;
-
   const handleDesign = async () => {
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setError(null);
-
+    if (isProcessing) return;
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing')); setError(null); setResult(null); setResultWidth(null);
     try {
-      const output: ProcessOutput = await designPDFSpine(
-        [],
-        {
-          pageCount,
-          paperGsm,
-          coverWidthPt: 595.27,
-          coverHeightPt: 841.89,
-          bookTitle,
-        },
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Engraving spine creasing folds...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
+      const output = await designPDFSpine([], { pageCount, paperGsm, coverWidthPt: coverWidth, coverHeightPt: coverHeight, bookTitle }, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
+      });
+      if (run !== processingRun.current) return;
       if (output.success && output.result) {
-        setResultBlob(output.result as Blob);
-        setStatus('complete');
-      } else {
-        setError(output.error?.message || 'Failed to design spine layout.');
-        setStatus('error');
-      }
+        setResult(output.result as Blob); setFilename(output.filename || 'book_cover_spine_layout.pdf'); setStatus('complete');
+        const width = output.metadata?.calculatedSpineWidthMm;
+        setResultWidth(typeof width === 'number' && Number.isFinite(width) && width >= 0 ? width : null);
+      } else { setError(output.error?.details || output.error?.message || tErrors('processingFailed')); setStatus('error'); }
     } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'Error designing spine.');
-        setStatus('error');
-      }
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
   };
 
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-8 space-y-4">
-          <Card
-
-            className="p-6 relative overflow-hidden min-h-[400px] flex flex-col justify-between border-2 border-dashed select-none"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
-            <div className="flex items-center justify-between pb-3 border-b border-border pointer-events-none">
-              <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                <Compass className="w-4 h-4 text-primary animate-spin" style={{ animationDuration: '8s' }} />
-                {t('pdfSpineBookbinder.magnifierTitle')}
-              </span>
-              <span className="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded-full font-bold">
-                {t('pdfSpineBookbinder.spineWidthText', { width: spineWidthMm.toFixed(2) })}
-              </span>
-            </div>
-
-            {/* 3D rotate book viewport */}
-            <div className="flex-1 flex items-center justify-center p-6 perspective-[1000px]">
-              <div
-                className="w-40 h-56 relative transform-style-3d transition-transform duration-100 ease-out"
-                style={{
-                  transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-                }}
-              >
-                {/* Back Cover */}
-                <div className="absolute w-36 h-52 bg-muted border border-border rounded-l-md origin-right -translate-x-36 z-10 flex items-center justify-center text-[10px] text-foreground font-bold"
-                  style={{ transform: 'rotateY(180deg) translateZ(0px)', transformOrigin: 'right' }}
-                >
-                  BACK COVER
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    <div className="grid gap-6 lg:grid-cols-2">
+      <Card className="min-w-0" role="region" aria-labelledby={`${id}-preview-title`}>
+        <CardHeader>
+        <h3 id={`${id}-preview-title`} className="text-base font-semibold">{t('pdfSpineBookbinder.magnifierTitle')}</h3>
+        <p className="text-sm font-medium tabular-nums">{t('pdfSpineBookbinder.spineWidthText', { width: spineWidthMm.toFixed(2) })}</p>
+        <CardDescription>{t('pdfSpineBookbinder.estimateHelp')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+        <Tabs defaultValue="model">
+          <TabsList aria-label={t('pdfSpineBookbinder.magnifierTitle')} className="max-w-full">
+            <TabsTrigger value="model">{t('pdfSpineBookbinder.modelView')}</TabsTrigger><TabsTrigger value="layout">{t('pdfSpineBookbinder.flatView')}</TabsTrigger>
+          </TabsList>
+          <TabsContent value="model" className="space-y-4">
+            <div className="flex min-h-72 touch-none items-center justify-center overflow-hidden [perspective:1000px]" role="img" aria-label={t('pdfSpineBookbinder.modelView')}
+              onPointerDown={event => { if (event.button !== 0) return; dragStart.current = { x: event.clientX, y: event.clientY, pointer: event.pointerId }; event.currentTarget.setPointerCapture?.(event.pointerId); }}
+              onPointerMove={rotateModel} onPointerUp={() => { dragStart.current = null; }} onPointerCancel={() => { dragStart.current = null; }} onLostPointerCapture={() => { dragStart.current = null; }}>
+              <div className="relative h-52 w-36 [transform-style:preserve-3d]" style={{ transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` }}>
+                <div className="absolute flex h-52 w-36 items-center justify-center border bg-muted p-3 text-center text-sm" style={{ left: -144, transform: 'rotateY(180deg)', transformOrigin: 'right' }}>{t('pdfSpineBookbinder.backCover')}</div>
+                <div className="absolute flex h-52 items-center justify-center overflow-hidden border bg-muted text-xs" style={{ width: Math.max(4, spineWidthMm * 2), transform: `rotateY(90deg) translateZ(18px) translateX(-${Math.max(2, spineWidthMm)}px)` }}>
+                  <span className="rotate-90 whitespace-nowrap">{bookTitle}</span>
                 </div>
-
-                {/* Spine side */}
-                <div
-                  className="absolute h-52 bg-primary border-t border-b border-primary-hover flex items-center justify-center text-white text-[9px] font-bold overflow-hidden"
-                  style={{
-                    width: `${Math.max(4, spineWidthMm * 2)}px`,
-                    transform: `rotateY(90deg) translateZ(18px) translateX(-${Math.max(2, spineWidthMm)}px)`,
-                    boxShadow: '0 0 10px rgba(var(--primary), 0.5)'
-                  }}
-                >
-                  <div className="transform rotate-90 whitespace-nowrap tracking-wider font-mono">
-                    {bookTitle || 'SPINE'}
-                  </div>
-                </div>
-
-                {/* Front Cover */}
-                <div className="absolute w-36 h-52 bg-background border-2 border-primary rounded-r-md z-20 flex flex-col items-center justify-center p-4"
-                  style={{ transform: 'translateZ(1px)' }}
-                >
-                  <Book className="w-8 h-8 text-primary mb-2" />
-                  <span className="text-[10px] text-center font-semibold line-clamp-2 text-foreground">
-                    {bookTitle || 'Untitled Book'}
-                  </span>
-                  <span className="text-[8px] text-muted-foreground mt-2 font-mono">
-                    {pageCount} Pages
-                  </span>
+                <div className="absolute flex h-52 w-36 flex-col items-center justify-center gap-3 border bg-background p-4 text-center" style={{ transform: 'translateZ(1px)' }}>
+                  <BookOpen aria-hidden="true" className="size-8 text-muted-foreground" /><span className="text-sm">{t('pdfSpineBookbinder.frontCover')}</span><span className="text-xs text-muted-foreground">{t('pdfSpineBookbinder.totalPagesUnit', { count: pageCount })}</span>
                 </div>
               </div>
             </div>
-          </Card>
-        </div>
-
-        <div className="lg:col-span-4 space-y-6">
-          <Card  className="p-6 border flex flex-col justify-between min-h-[400px]">
-            <div className="space-y-6">
-              <div className="border-b border-border pb-3 flex items-center gap-2">
-                <Sliders className="w-5 h-5 text-primary" />
-                <h3 className="text-sm font-semibold text-foreground">{t('pdfSpineBookbinder.optionsTitle')}</h3>
-              </div>
-
-              <div className="space-y-4 text-xs">
-                <div className="space-y-1">
-                  {t('pdfSpineBookbinder.spineTextLabel')}
-                  <Input
-                    type="text"
-                    value={bookTitle}
-                    onChange={(e) => setBookTitle(e.target.value)}
-                    placeholder={t('pdfSpineBookbinder.spineTextPlaceholder')}
-                    className="w-full"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <Label className="flex justify-between" htmlFor="pdfspinebookbindertool-slider-1">
-                    {t('pdfSpineBookbinder.totalPagesLabel')}
-                    <span className="font-mono text-primary font-bold">{t('pdfSpineBookbinder.totalPagesUnit', { count: pageCount })}</span>
-                  </Label>
-                  <Slider
-                    min={10}
-                    max={1000}
-                    step={2}
-                    value={[pageCount]}
-                    onValueChange={(values) => setPageCount(parseInt(String(values[0])))}
-                    className="w-full cursor-pointer" id="pdfspinebookbindertool-slider-1" aria-label={t('pdfSpineBookbinder.totalPagesLabel')}
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  {t('pdfSpineBookbinder.gsmLabel')}
-                  <NativeSelect
-                    value={paperGsm}
-                      aria-label={t('pdfSpineBookbinder.gsmLabel')}
-                      disabled={status === 'processing'}
-                    onChange={(e) => setPaperGsm(parseInt(e.target.value, 10) as PdfSpineBookbinderOptions['paperGsm'])}
-                    className="w-full"
-                  >
-                    <NativeSelectOption value="80">{t('pdfSpineBookbinder.gsm80')}</NativeSelectOption>
-                    <NativeSelectOption value="100">{t('pdfSpineBookbinder.gsm100')}</NativeSelectOption>
-                    <NativeSelectOption value="120">{t('pdfSpineBookbinder.gsm120')}</NativeSelectOption>
-                    <NativeSelectOption value="150">{t('pdfSpineBookbinder.gsm150')}</NativeSelectOption>
-                  </NativeSelect>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-border mt-6">
-              {status === 'complete' && resultBlob ? (
-                <DownloadButton
-                  file={resultBlob}
-                  filename="spine_cover_binding_crease.pdf"
-                  variant="default"
-                  size="lg"
-                  className="w-full py-4"
-                  showFileSize
-                />
-              ) : (
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="w-full py-4 flex items-center justify-center gap-2"
-                  onClick={handleDesign}
-                  disabled={status === 'processing'}
-                >
-                  <RefreshCw className={`w-4 h-4 ${status === 'processing' ? 'animate-spin' : ''}`} />
-                  {t('pdfSpineBookbinder.processButton')}
-                </Button>
-              )}
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      {status === 'processing' && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
-          showPercentage
-        />
-      )}
+            <p className="text-sm text-muted-foreground">{t('pdfSpineBookbinder.modelHelp')}</p>
+            <div className="space-y-2"><Label htmlFor={`${id}-yaw`}>{t('pdfSpineBookbinder.rotateHorizontal')}: {Math.round(rotation.y)}°</Label><Slider id={`${id}-yaw`} aria-label={t('pdfSpineBookbinder.rotateHorizontal')} min={-180} max={180} step={1} value={[rotation.y]} onValueChange={([y]) => setRotation(previous => ({ ...previous, y }))} /></div>
+            <div className="space-y-2"><Label htmlFor={`${id}-pitch`}>{t('pdfSpineBookbinder.rotateVertical')}: {Math.round(rotation.x)}°</Label><Slider id={`${id}-pitch`} aria-label={t('pdfSpineBookbinder.rotateVertical')} min={-60} max={60} step={1} value={[rotation.x]} onValueChange={([x]) => setRotation(previous => ({ ...previous, x }))} /></div>
+            <Button variant="outline" size="sm" onClick={() => setRotation(initialRotation)}><RotateCcw aria-hidden="true" />{t('pdfSpineBookbinder.resetView')}</Button>
+          </TabsContent>
+          <TabsContent value="layout" className="space-y-3">
+            <svg className="w-full border bg-white" viewBox={`0 0 ${totalWidth} ${coverHeight}`} role="img" aria-label={t('pdfSpineBookbinder.layoutDescription', { width: spineWidthMm.toFixed(2) })}>
+              <rect x={coverWidth} y="0" width={spineWidthPt} height={coverHeight} fill="rgb(245,245,250)" />
+              {[coverWidth, coverWidth + spineWidthPt].map(x => <line key={x} x1={x} x2={x} y1="0" y2={coverHeight} stroke="rgb(204,204,217)" strokeWidth="1" strokeDasharray="4 4" />)}
+            </svg>
+            <div className="flex justify-between gap-3 text-sm text-muted-foreground" dir="ltr"><span>{t('pdfSpineBookbinder.backCover')}</span><span>{t('pdfSpineBookbinder.frontCover')}</span></div>
+          </TabsContent>
+        </Tabs>
+        </CardContent>
+      </Card>
+      <Card role="region" aria-labelledby={`${id}-settings-title`}>
+        <CardHeader><h3 id={`${id}-settings-title`} className="text-base font-semibold">{t('pdfSpineBookbinder.optionsTitle')}</h3></CardHeader>
+        <CardContent className="space-y-6">
+        <div className="space-y-2"><Label htmlFor={`${id}-title`}>{t('pdfSpineBookbinder.spineTextLabel')}</Label><Input id={`${id}-title`} value={bookTitle} placeholder={t('pdfSpineBookbinder.spineTextPlaceholder')} disabled={isProcessing} onChange={event => { clearOutput(); setBookTitle(event.target.value); }} /></div>
+        <div className="space-y-2"><Label htmlFor={`${id}-pages`}>{t('pdfSpineBookbinder.totalPagesLabel')}: {t('pdfSpineBookbinder.totalPagesUnit', { count: pageCount })}</Label><Slider id={`${id}-pages`} aria-label={t('pdfSpineBookbinder.totalPagesLabel')} min={10} max={1000} step={2} value={[pageCount]} disabled={isProcessing} onValueChange={([count]) => { clearOutput(); setPageCount(count); }} /></div>
+        <div className="space-y-2"><Label htmlFor={`${id}-gsm`}>{t('pdfSpineBookbinder.gsmLabel')}</Label><NativeSelect id={`${id}-gsm`} value={paperGsm} disabled={isProcessing} onChange={event => { clearOutput(); setPaperGsm(Number(event.target.value) as PdfSpineBookbinderOptions['paperGsm']); }} className="w-full">
+          {[80, 100, 120, 150].map(gsm => <NativeSelectOption key={gsm} value={gsm}>{t(`pdfSpineBookbinder.gsm${gsm}`)}</NativeSelectOption>)}
+        </NativeSelect></div>
+        <Button className="w-full" onClick={handleDesign} disabled={isProcessing}><BookOpen aria-hidden="true" />{t('pdfSpineBookbinder.processButton')}</Button>
+        </CardContent>
+      </Card>
     </div>
-  );
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={clearOutput} />}
+    {result && <Card><CardHeader><p role="status" className="flex items-center gap-2 text-sm"><FileCheck aria-hidden="true" className="size-4 shrink-0" />{t('pdfSpineBookbinder.successMessage')}</p>
+      {resultWidth !== null && <p className="text-sm tabular-nums">{t('pdfSpineBookbinder.spineWidthText', { width: resultWidth.toFixed(2) })}</p>}
+      </CardHeader><CardFooter><DownloadButton file={result} filename={filename} showFileSize /></CardFooter>
+    </Card>}
+  </div>;
 }
 
 export default PdfSpineBookbinderTool;

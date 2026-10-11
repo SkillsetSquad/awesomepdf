@@ -260,7 +260,7 @@
       "optionsTitle": "Ustawienia grzbietu introligatora",
       "processButton": "Przygotuj układ okładki z grzbietem",
       "successMessage": "Obliczono grubość grzbietu i utworzono układ linii zagięcia!",
-      "magnifierTitle": "Model zagięcia oprawy książki 3D (przeciągnij myszą, aby obrócić)",
+      "magnifierTitle": "Podgląd okładki",
       "spineWidthText": "Szacunkowa grubość grzbietu: {width} mm",
       "spineTextLabel": "Tekst grawerowany na grzbiecie",
       "spineTextPlaceholder": "np. praca dyplomowa / umowa handlowa",
@@ -270,7 +270,17 @@
       "gsm80": "Standardowy papier biurowy 80 g (0,05 mm/stronę)",
       "gsm100": "100 g gładkiego papieru powlekanego (0,06 mm/stronę)",
       "gsm120": "Papier matowy 120 g (0,07 mm/stronę)",
-      "gsm150": "150 g grubego matowego kartonu (0,09 mm/stronę)"
+      "gsm150": "150 g grubego matowego kartonu (0,09 mm/stronę)",
+      "estimateHelp": "Szerokość wykorzystuje stałą grubość arkusza dla każdej gramatury. Rzeczywista grubość papieru może się różnić.",
+      "modelView": "Model książki",
+      "flatView": "Układ wydruku",
+      "backCover": "Tylna okładka",
+      "frontCover": "Przednia okładka",
+      "modelHelp": "Przeciągnij model lub użyj suwaków obrotu. To ilustracja; PDF drukuje tekst na grzbiecie tylko wtedy, gdy jest dostatecznie szeroki.",
+      "rotateHorizontal": "Obrót poziomy",
+      "rotateVertical": "Obrót pionowy",
+      "resetView": "Resetuj widok",
+      "layoutDescription": "Szacowany układ: tylna okładka, grzbiet {width} mm i przednia okładka."
     },
     "pdfSignatureAnchorHelper": {
       "uploadLabel": "Prześlij umowę lub dokument PDF",
