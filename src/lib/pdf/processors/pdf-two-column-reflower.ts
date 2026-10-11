@@ -9,10 +9,28 @@ import type { ProcessInput, ProcessOutput, ProgressCallback } from '@/types/pdf'
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
 import { loadPdfLib } from '../loader';
+import type { PDFPage } from 'pdf-lib';
 
 export interface PdfTwoColumnReflowerOptions {
-  middleGapRatio: number; // The relative split line (0.45 - 0.55, default 0.5)
-  horizontalReading: boolean; // default false (vertical layout)
+  middleGapRatio: number; // Displayed split line (UI range 0.4-0.6, default 0.5)
+  horizontalReading: boolean; // Reader layout preference; page order stays left then right.
+}
+
+type PageBox = { x: number; y: number; width: number; height: number };
+
+function columnBoxes(page: PDFPage, ratio: number): [PageBox, PageBox] {
+  const media = page.getMediaBox(), crop = page.getCropBox();
+  const x = Math.max(media.x, crop.x), y = Math.max(media.y, crop.y);
+  const width = Math.min(media.x + media.width, crop.x + crop.width) - x;
+  const height = Math.min(media.y + media.height, crop.y + crop.height) - y;
+  if (width <= 0 || height <= 0) throw new Error('The page has no visible area inside its crop and media boxes.');
+  const rotation = (page.getRotation().angle % 360 + 360) % 360;
+  // Crop in PDF coordinates while keeping left/right relative to the displayed page.
+  if (rotation === 0) return [{ x, y, width: width * ratio, height }, { x: x + width * ratio, y, width: width * (1 - ratio), height }];
+  if (rotation === 180) return [{ x: x + width * (1 - ratio), y, width: width * ratio, height }, { x, y, width: width * (1 - ratio), height }];
+  if (rotation === 90) return [{ x, y, width, height: height * ratio }, { x, y: y + height * ratio, width, height: height * (1 - ratio) }];
+  if (rotation === 270) return [{ x, y: y + height * (1 - ratio), width, height: height * ratio }, { x, y, width, height: height * (1 - ratio) }];
+  throw new Error('Page rotation must be a multiple of 90 degrees.');
 }
 
 export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
@@ -34,6 +52,10 @@ export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
       );
     }
 
+    if (!Number.isFinite(reflowOptions.middleGapRatio) || reflowOptions.middleGapRatio <= 0 || reflowOptions.middleGapRatio >= 1 || typeof reflowOptions.horizontalReading !== 'boolean') {
+      return this.createErrorOutput(PDFErrorCode.INVALID_OPTIONS, 'Choose a split ratio between 0 and 1 and a valid reader layout.');
+    }
+
     const file = files[0];
 
     try {
@@ -44,6 +66,8 @@ export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
       const arrayBuffer = await file.arrayBuffer();
       const srcDoc = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
       const destDoc = await pdfLib.PDFDocument.create();
+      const readerLayout = reflowOptions.horizontalReading ? 'TwoColumnLeft' : 'OneColumn';
+      destDoc.catalog.set(pdfLib.PDFName.of('PageLayout'), pdfLib.PDFName.of(readerLayout));
 
       const pageCount = srcDoc.getPageCount();
       
@@ -58,15 +82,14 @@ export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
         const [pageLeft] = await destDoc.copyPages(srcDoc, [i]);
         const [pageRight] = await destDoc.copyPages(srcDoc, [i]);
 
-        const { width, height } = pageLeft.getSize();
-        const splitX = width * reflowOptions.middleGapRatio;
+        const [left, right] = columnBoxes(pageLeft, reflowOptions.middleGapRatio);
 
         // Set crop boxes for left column
-        pageLeft.setCropBox(0, 0, splitX, height);
+        pageLeft.setCropBox(left.x, left.y, left.width, left.height);
         destDoc.addPage(pageLeft);
 
         // Set crop boxes for right column
-        pageRight.setCropBox(splitX, 0, width - splitX, height);
+        pageRight.setCropBox(right.x, right.y, right.width, right.height);
         destDoc.addPage(pageRight);
 
         this.updateProgress(40 + Math.floor((i / pageCount) * 50), `Processing page ${i + 1}/${pageCount}...`);
@@ -74,7 +97,7 @@ export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
 
       this.updateProgress(90, 'Assembling single-column reflowed document...');
       const outputBytes = await destDoc.save();
-      const blob = new Blob([outputBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(outputBytes)], { type: 'application/pdf' });
 
       this.updateProgress(100, 'Complete!');
       
@@ -86,6 +109,7 @@ export class PdfTwoColumnReflowerProcessor extends BasePDFProcessor {
         originalPagesCount: pageCount,
         reflowedPagesCount: destDoc.getPageCount(),
         appliedGapRatio: reflowOptions.middleGapRatio,
+        readerLayout,
       });
 
     } catch (error) {
