@@ -34,12 +34,16 @@ export function engineFixture(initial: StoredAnnotation[] = [annotation('origina
         const group = { serialized, destroy: () => { stage.groups.delete(id); } };
         stage.groups.set(id, group); shapeGroupStore.set(id, group);
       },
+      deleteGroup: vi.fn((id: string, stage: ReturnType<typeof makeStage>) => {
+        stage.groups.get(id)?.destroy(); shapeGroupStore.delete(id);
+      }),
     };
     return [`${pageNumber}_5` as string, editor] as const;
   }));
   const painter = {
     store: {
       get annotations() { return [...records.values()]; },
+      annotation: (id: string) => records.get(id),
       getByPage: (page: number) => [...records.values()].filter(item => item.pageNumber === page),
       save: (item: StoredAnnotation, original: boolean) => { records.set(item.id, item); if (original) originals.set(item.id, item); return item; },
       delete: (id: string) => { records.delete(id); },
@@ -49,13 +53,14 @@ export function engineFixture(initial: StoredAnnotation[] = [annotation('origina
     saveToStore: shippedMethod('saveToStore', ['Po'], [definitions]) as (item: StoredAnnotation, original?: boolean) => void,
     updateStore: shippedMethod('updateStore') as (id: string, changes: Partial<StoredAnnotation>) => void,
     update: shippedMethod('update') as AnnotationHistoryEngine['painter']['update'],
-    delete: (id: string, emit = false) => { records.delete(id); if (emit) painter.onStoreDelete(id); },
+    delete: shippedMethod('delete') as AnnotationHistoryEngine['painter']['delete'],
+    deleteAnnotation: shippedMethod('deleteAnnotation') as (id: string, emit?: boolean) => void,
     reDrawAnnotation: shippedMethod('reDrawAnnotation', ['Po'], [definitions]) as AnnotationHistoryEngine['painter']['reDrawAnnotation'],
     findEditor: (page: number, type: number) => editorStore.get(`${page}_${type}`),
     enableEditor: vi.fn(),
     editorStore,
     konvaCanvasStore: new Map([...stages].map(([page, konvaStage]) => [page, { konvaStage }])),
-    selector: { clear: vi.fn() },
+    selector: { clear: vi.fn(), delete: vi.fn() },
     onStoreAdd: vi.fn((item: StoredAnnotation) => { comments.set(item.id, item); }),
     onStoreDelete: vi.fn((id: string) => { comments.delete(id); }),
     onAnnotationChange: vi.fn((item: StoredAnnotation) => { comments.set(item.id, item); }),
