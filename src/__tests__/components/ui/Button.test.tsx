@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 describe('Button', () => {
   it('runs actions with the keyboard', async () => {
@@ -21,7 +22,7 @@ describe('Button', () => {
     expect(action).not.toHaveBeenCalled();
   });
   it('composes a link without nesting interactive elements', () => {
-    render(<Button asChild><a href="/en/tools">Browse tools</a></Button>);
+    render(<Button asChild><Link href="/en/tools">Browse tools</Link></Button>);
     expect(screen.getByRole('link')).toHaveAttribute('href', '/en/tools');
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });

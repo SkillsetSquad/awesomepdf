@@ -16,9 +16,8 @@ import { BasePDFProcessor } from '../processor';
 /**
  * PDF to DOCX options
  */
-export interface PDFToDocxOptions {
-    /** Unused options for consistency */
-}
+/** No processor-specific options are currently required. */
+export type PDFToDocxOptions = Record<string, unknown>;
 
 /**
  * PDF to DOCX Processor

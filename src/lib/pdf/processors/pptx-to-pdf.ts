@@ -17,9 +17,8 @@ const MAX_FILE_SIZE = 50 * 1024 * 1024;
 /** Conversion timeout: 5 minutes */
 const CONVERT_TIMEOUT_MS = 5 * 60 * 1000;
 
-export interface PPTXToPDFOptions {
-    /** Reserved for future options */
-}
+/** No processor-specific options are currently required. */
+export type PPTXToPDFOptions = Record<string, unknown>;
 
 import { getSharedLibreOfficeConverter } from '@/lib/libreoffice/shared-converter';
 

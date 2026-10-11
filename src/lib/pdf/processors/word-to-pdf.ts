@@ -21,9 +21,8 @@ const MAX_FILE_SIZE = 50 * 1024 * 1024;
 /** Conversion timeout: 5 minutes */
 const CONVERT_TIMEOUT_MS = 5 * 60 * 1000;
 
-export interface WordToPDFOptions {
-    /** Reserved for future options */
-}
+/** No processor-specific options are currently required. */
+export type WordToPDFOptions = Record<string, unknown>;
 
 export class WordToPDFProcessor extends BasePDFProcessor {
     private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;

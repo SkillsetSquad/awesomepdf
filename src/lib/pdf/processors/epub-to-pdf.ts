@@ -21,9 +21,8 @@ import { BasePDFProcessor } from '../processor';
 /**
  * EPUB to PDF options
  */
-export interface EPUBToPDFOptions {
-    // Reserved for future options
-}
+/** No processor-specific options are currently required. */
+export type EPUBToPDFOptions = Record<string, unknown>;
 
 /**
  * EPUB to PDF Processor

@@ -123,7 +123,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       const AnchorProto = (win as any).HTMLAnchorElement?.prototype;
       const originalClick = AnchorProto ? AnchorProto.click : null;
       if (AnchorProto && typeof originalClick === 'function') {
-        AnchorProto.click = function patchedClick(this: HTMLAnchorElement) {
+        AnchorProto.click = function patchedClick(this: HTMLAnchorElement, ...args: Parameters<HTMLAnchorElement['click']>) {
           try {
             const href = this.getAttribute('href') || (this as any).href;
             const dl = this.getAttribute('download');
@@ -135,7 +135,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
           } catch (e) {
             console.warn('[stamps] anchor.click hook error:', e);
           }
-          return originalClick.apply(this, arguments as any);
+          return originalClick.apply(this, args);
         };
       }
 

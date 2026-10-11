@@ -21,9 +21,8 @@ import { BasePDFProcessor } from '../processor';
 /**
  * FB2 to PDF options
  */
-export interface FB2ToPDFOptions {
-    // Reserved for future options
-}
+/** No processor-specific options are currently required. */
+export type FB2ToPDFOptions = Record<string, unknown>;
 
 /**
  * FB2 to PDF Processor

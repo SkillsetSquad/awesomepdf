@@ -29,9 +29,8 @@ import {
     isExcelPyodideReady,
 } from './excel-to-pdf-pyodide';
 
-export interface ExcelToPDFOptions {
-    /** Reserved for future options */
-}
+/** No processor-specific options are currently required. */
+export type ExcelToPDFOptions = Record<string, unknown>;
 
 export class ExcelToPDFProcessor extends BasePDFProcessor {
     private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;

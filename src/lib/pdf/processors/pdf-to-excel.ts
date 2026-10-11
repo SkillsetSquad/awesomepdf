@@ -16,9 +16,8 @@ import { BasePDFProcessor } from '../processor';
 /**
  * PDF to Excel options
  */
-export interface PDFToExcelOptions {
-    // Add options if needed later (e.g., merge sheets)
-}
+/** No processor-specific options are currently required. */
+export type PDFToExcelOptions = Record<string, unknown>;
 
 /**
  * PDF to Excel Processor

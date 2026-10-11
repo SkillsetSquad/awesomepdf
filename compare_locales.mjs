@@ -1,5 +1,5 @@
 
-const fs = require('fs');
+import fs from 'node:fs';
 
 function getKeys(obj, prefix = '') {
     let keys = [];

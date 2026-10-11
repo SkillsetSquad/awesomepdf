@@ -723,7 +723,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                     }}
                                                 >
                                                     <p className="text-sm font-medium text-foreground truncate">
-                                                        "{match.text}"
+                                                        &quot;{match.text}&quot;
                                                     </p>
                                                     <p className="text-xs text-muted-foreground">
                                                         {tTools('pageInfo', { page: match.page })}
@@ -784,7 +784,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                         />
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-medium text-foreground truncate">
-                                                "{match.text}"
+                                                &quot;{match.text}&quot;
                                             </p>
                                             <p className="text-xs text-muted-foreground">
                                                 {tTools('pageInfo', { page: match.page })}

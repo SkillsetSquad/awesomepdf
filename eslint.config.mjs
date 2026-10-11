@@ -8,7 +8,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'dist/**', 'coverage/**', 'scratch/**', 'public/**', 'src-tauri/target/**'],
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts', 'dist/**', 'coverage/**', 'scratch/**', 'public/**', 'src-tauri/target/**'],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 ];
