@@ -128,7 +128,7 @@ describe('Shared navigation', () => {
 
   it('keeps the search palette out of the page until it is used', () => {
     wrap(<ToolSearch locale="en" content={getToolSummaries('en')} />);
-    expect(screen.getByRole('button', { name: 'Search tools...' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: messages.common.search.placeholder })).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
   });

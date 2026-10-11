@@ -166,9 +166,17 @@
       "helpButton": "Help Tour"
     },
     "search": {
-      "placeholder": "Search tools...",
+      "placeholder": "Search tools and files...",
       "hint": "Press Enter to select, ↑↓ to navigate",
-      "noResults": "No tools found"
+      "noResults": "No tools or files found",
+      "tools": "Tools",
+      "files": "Files on this device",
+      "recentFile": "Recent file",
+      "projectFile": "Project file",
+      "loadingFiles": "Loading saved files...",
+      "filesUnavailable": "Some saved file records could not be loaded.",
+      "fileHint": "File history stores names, not documents. Select a file to open its tool, then choose the original file.",
+      "toolUnavailable": "Tool unavailable"
     },
     "fileUploader": {
       "dragDrop": "Drag and drop files here, or click to browse",

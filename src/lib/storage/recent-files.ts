@@ -5,6 +5,8 @@
  * Stores and retrieves recent file history from localStorage
  */
 
+import { notifyLocalFileRecordsChanged } from './events';
+
 export interface RecentFile {
   id: string;
   name: string;
@@ -88,6 +90,7 @@ export function addRecentFile(
     const updated = [newFile, ...filtered].slice(0, MAX_RECENT_FILES);
     
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    notifyLocalFileRecordsChanged();
     return newFile;
   } catch {
     return newFile;
@@ -104,6 +107,7 @@ export function removeRecentFile(id: string): void {
     const files = getRecentFiles();
     const updated = files.filter((f) => f.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    notifyLocalFileRecordsChanged();
   } catch {
     // Silently fail
   }
@@ -117,6 +121,7 @@ export function clearRecentFiles(): void {
   
   try {
     localStorage.removeItem(STORAGE_KEY);
+    notifyLocalFileRecordsChanged();
   } catch {
     // Silently fail
   }

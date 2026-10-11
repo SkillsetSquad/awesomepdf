@@ -166,9 +166,17 @@
       "helpButton": "Tur Bantuan"
     },
     "search": {
-      "placeholder": "Cari alat...",
+      "placeholder": "Cari alat dan file...",
       "hint": "Tekan Enter untuk memilih, ↑↓ untuk menavigasi",
-      "noResults": "Alat tidak ditemukan"
+      "noResults": "Tidak ada alat atau file yang ditemukan",
+      "tools": "Alat",
+      "files": "File di perangkat ini",
+      "recentFile": "File terbaru",
+      "projectFile": "File proyek",
+      "loadingFiles": "Memuat file tersimpan...",
+      "filesUnavailable": "Beberapa catatan file tersimpan tidak dapat dimuat.",
+      "fileHint": "Riwayat hanya menyimpan nama, bukan dokumen. Pilih file untuk membuka alatnya, lalu pilih file asli.",
+      "toolUnavailable": "Alat tidak tersedia"
     },
     "fileUploader": {
       "dragDrop": "Seret dan lepas file di sini, atau klik untuk memilih",

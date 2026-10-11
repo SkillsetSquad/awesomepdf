@@ -166,9 +166,17 @@
       "helpButton": "ヘルプツアー"
     },
     "search": {
-      "placeholder": "ツールを検索...",
+      "placeholder": "ツールとファイルを検索...",
       "hint": "Enterで選択、↑↓で移動",
-      "noResults": "ツールが見つかりません"
+      "noResults": "ツールやファイルが見つかりません",
+      "tools": "ツール",
+      "files": "この端末のファイル",
+      "recentFile": "最近のファイル",
+      "projectFile": "プロジェクトのファイル",
+      "loadingFiles": "保存済みファイルを読み込み中...",
+      "filesUnavailable": "一部の保存済みファイル情報を読み込めませんでした。",
+      "fileHint": "履歴に保存されるのは名前のみです。ファイルを選択してツールを開き、元のファイルを選んでください。",
+      "toolUnavailable": "ツールを利用できません"
     },
     "fileUploader": {
       "dragDrop": "ファイルをここにドラッグ＆ドロップするか、クリックして選択してください",

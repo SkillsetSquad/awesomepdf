@@ -166,9 +166,17 @@
       "helpButton": "Visite Guidée"
     },
     "search": {
-      "placeholder": "Rechercher des outils...",
+      "placeholder": "Rechercher des outils et des fichiers...",
       "hint": "Entrée pour sélectionner, ↑↓ pour naviguer",
-      "noResults": "Aucun outil trouvé"
+      "noResults": "Aucun outil ni fichier trouvé",
+      "tools": "Outils",
+      "files": "Fichiers sur cet appareil",
+      "recentFile": "Fichier récent",
+      "projectFile": "Fichier de projet",
+      "loadingFiles": "Chargement des fichiers enregistrés...",
+      "filesUnavailable": "Certains fichiers enregistrés n’ont pas pu être chargés.",
+      "fileHint": "L’historique conserve les noms, pas les documents. Sélectionnez un fichier pour ouvrir son outil, puis choisissez le fichier original.",
+      "toolUnavailable": "Outil indisponible"
     },
     "fileUploader": {
       "dragDrop": "Glissez-déposez des fichiers ici, ou cliquez pour parcourir",

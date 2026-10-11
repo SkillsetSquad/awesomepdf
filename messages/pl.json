@@ -166,9 +166,17 @@
       "helpButton": "Przewodnik po aplikacji"
     },
     "search": {
-      "placeholder": "Wyszukaj narzędzia...",
+      "placeholder": "Szukaj narzędzi i plików...",
       "hint": "Naciśnij Enter, aby wybrać, ↑↓, aby nawigować",
-      "noResults": "Nie znaleziono żadnych narzędzi"
+      "noResults": "Nie znaleziono narzędzi ani plików",
+      "tools": "Narzędzia",
+      "files": "Pliki na tym urządzeniu",
+      "recentFile": "Ostatni plik",
+      "projectFile": "Plik projektu",
+      "loadingFiles": "Ładowanie zapisanych plików...",
+      "filesUnavailable": "Nie udało się wczytać niektórych zapisanych informacji o plikach.",
+      "fileHint": "Historia zapisuje nazwy, nie dokumenty. Wybierz plik, aby otworzyć jego narzędzie, a następnie wybierz plik oryginalny.",
+      "toolUnavailable": "Narzędzie niedostępne"
     },
     "fileUploader": {
       "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby przeglądać",

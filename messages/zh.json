@@ -166,9 +166,17 @@
       "helpButton": "帮助导览"
     },
     "search": {
-      "placeholder": "搜索工具...",
+      "placeholder": "搜索工具和文件...",
       "hint": "按Enter选择，↑↓导航",
-      "noResults": "未找到工具"
+      "noResults": "未找到工具或文件",
+      "tools": "工具",
+      "files": "此设备上的文件",
+      "recentFile": "最近的文件",
+      "projectFile": "项目文件",
+      "loadingFiles": "正在加载已保存的文件...",
+      "filesUnavailable": "部分已保存的文件记录无法加载。",
+      "fileHint": "文件历史仅保存名称，不保存文档。选择文件以打开相应工具，然后选择原始文件。",
+      "toolUnavailable": "工具不可用"
     },
     "fileUploader": {
       "dragDrop": "Drag and drop files here, or click to browse",

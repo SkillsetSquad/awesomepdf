@@ -166,9 +166,17 @@
       "helpButton": "도움말 투어"
     },
     "search": {
-      "placeholder": "도구 검색...",
+      "placeholder": "도구 및 파일 검색...",
       "hint": "Enter로 선택, ↑↓로 이동",
-      "noResults": "도구를 찾을 수 없습니다"
+      "noResults": "도구 또는 파일을 찾을 수 없습니다",
+      "tools": "도구",
+      "files": "이 기기의 파일",
+      "recentFile": "최근 파일",
+      "projectFile": "프로젝트 파일",
+      "loadingFiles": "저장된 파일 불러오는 중...",
+      "filesUnavailable": "일부 저장된 파일 기록을 불러오지 못했습니다.",
+      "fileHint": "파일 기록에는 이름만 저장됩니다. 파일을 선택해 도구를 연 다음 원본 파일을 선택하세요.",
+      "toolUnavailable": "도구를 사용할 수 없음"
     },
     "fileUploader": {
       "dragDrop": "파일을 여기로 드래그 앤 드롭하거나 클릭하여 찾아보기",

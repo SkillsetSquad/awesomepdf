@@ -166,9 +166,17 @@
       "helpButton": "Hướng dẫn Trợ giúp"
     },
     "search": {
-      "placeholder": "Tìm kiếm công cụ...",
+      "placeholder": "Tìm công cụ và tệp...",
       "hint": "Nhấn Enter để chọn, ↑↓ để di chuyển",
-      "noResults": "Không tìm thấy công cụ nào"
+      "noResults": "Không tìm thấy công cụ hoặc tệp",
+      "tools": "Công cụ",
+      "files": "Tệp trên thiết bị này",
+      "recentFile": "Tệp gần đây",
+      "projectFile": "Tệp dự án",
+      "loadingFiles": "Đang tải tệp đã lưu...",
+      "filesUnavailable": "Không thể tải một số thông tin tệp đã lưu.",
+      "fileHint": "Lịch sử chỉ lưu tên, không lưu tài liệu. Chọn tệp để mở công cụ, sau đó chọn tệp gốc.",
+      "toolUnavailable": "Công cụ không khả dụng"
     },
     "fileUploader": {
       "dragDrop": "Kéo và thả tệp vào đây, hoặc nhấp để tìm kiếm",

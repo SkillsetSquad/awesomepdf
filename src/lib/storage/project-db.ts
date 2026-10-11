@@ -5,6 +5,8 @@
  * Saves and loads project state for resuming interrupted operations
  */
 
+import { notifyLocalFileRecordsChanged } from './events';
+
 export interface ProjectState {
   id: string;
   name: string;
@@ -102,6 +104,7 @@ export async function saveProject(project: Omit<ProjectState, 'id' | 'createdAt'
 
     transaction.oncomplete = () => {
       db.close();
+      notifyLocalFileRecordsChanged();
     };
   });
 }
@@ -145,6 +148,7 @@ export async function updateProject(id: string, updates: Partial<Omit<ProjectSta
 
     transaction.oncomplete = () => {
       db.close();
+      notifyLocalFileRecordsChanged();
     };
   });
 }
@@ -285,6 +289,7 @@ export async function deleteProject(id: string): Promise<void> {
 
     transaction.oncomplete = () => {
       db.close();
+      notifyLocalFileRecordsChanged();
     };
   });
 }
@@ -310,6 +315,7 @@ export async function clearAllProjects(): Promise<void> {
 
     transaction.oncomplete = () => {
       db.close();
+      notifyLocalFileRecordsChanged();
     };
   });
 }

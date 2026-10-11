@@ -166,9 +166,17 @@
       "helpButton": "Hilfe-Tour"
     },
     "search": {
-      "placeholder": "Werkzeuge suchen...",
+      "placeholder": "Tools und Dateien suchen...",
       "hint": "Enter zum Auswählen, ↑↓ zum Navigieren",
-      "noResults": "Keine Werkzeuge gefunden"
+      "noResults": "Keine Tools oder Dateien gefunden",
+      "tools": "Tools",
+      "files": "Dateien auf diesem Gerät",
+      "recentFile": "Zuletzt verwendete Datei",
+      "projectFile": "Projektdatei",
+      "loadingFiles": "Gespeicherte Dateien werden geladen...",
+      "filesUnavailable": "Einige gespeicherte Dateieinträge konnten nicht geladen werden.",
+      "fileHint": "Der Verlauf speichert Namen, keine Dokumente. Wählen Sie eine Datei, um ihr Tool zu öffnen, und anschließend die Originaldatei.",
+      "toolUnavailable": "Tool nicht verfügbar"
     },
     "fileUploader": {
       "dragDrop": "Dateien hierher ziehen und ablegen oder zum Durchsuchen klicken",

@@ -166,9 +166,17 @@
       "helpButton": "Tur de Ajutor"
     },
     "search": {
-      "placeholder": "Caută instrumente...",
+      "placeholder": "Caută instrumente și fișiere...",
       "hint": "Apasă Enter pentru a selecta, ↑↓ pentru navigare",
-      "noResults": "Niciun instrument găsit"
+      "noResults": "Nu s-au găsit instrumente sau fișiere",
+      "tools": "Instrumente",
+      "files": "Fișiere pe acest dispozitiv",
+      "recentFile": "Fișier recent",
+      "projectFile": "Fișier de proiect",
+      "loadingFiles": "Se încarcă fișierele salvate...",
+      "filesUnavailable": "Unele înregistrări ale fișierelor salvate nu au putut fi încărcate.",
+      "fileHint": "Istoricul păstrează numele, nu documentele. Selectează un fișier pentru a deschide instrumentul, apoi alege fișierul original.",
+      "toolUnavailable": "Instrument indisponibil"
     },
     "fileUploader": {
       "dragDrop": "Trageți și plasați fișierele aici, sau faceți clic pentru a răsfoi",

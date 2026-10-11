@@ -166,9 +166,17 @@
       "helpButton": "Tour de Ajuda"
     },
     "search": {
-      "placeholder": "Pesquisar ferramentas...",
+      "placeholder": "Pesquisar ferramentas e arquivos...",
       "hint": "Enter para selecionar, ↑↓ para navegar",
-      "noResults": "Nenhuma ferramenta encontrada"
+      "noResults": "Nenhuma ferramenta ou arquivo encontrado",
+      "tools": "Ferramentas",
+      "files": "Arquivos neste dispositivo",
+      "recentFile": "Arquivo recente",
+      "projectFile": "Arquivo de projeto",
+      "loadingFiles": "Carregando arquivos salvos...",
+      "filesUnavailable": "Não foi possível carregar alguns registros de arquivos.",
+      "fileHint": "O histórico guarda nomes, não documentos. Selecione um arquivo para abrir sua ferramenta e depois escolha o arquivo original.",
+      "toolUnavailable": "Ferramenta indisponível"
     },
     "fileUploader": {
       "dragDrop": "Arraste e solte arquivos aqui, ou clique para procurar",

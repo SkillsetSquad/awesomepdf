@@ -44,7 +44,7 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 ### What has changed so far
 
 - Replaced PDFCraft's custom Button, Card, Modal, Tabs, form-field and theme-toggle components with standard shadcn/ui primitives.
-- Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer.
+- Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer. Cmd+K / Ctrl+K now searches tool names and locally saved file records from recent-file history and saved projects.
 - Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
 - Added a real open-source page with source, license and notice downloads for each deployed build.
 - Changed Redact PDF, Find and Redact, and Smart Data Redactor in this fork to use local PDF content removal with a full rewrite, rather than overlays or text-stream replacement. Selected glyphs, overlapping image pixels and touched graphics are removed; other text stays selectable. Secure export uses solid fills and strips ancillary content that can retain copies.
@@ -65,6 +65,12 @@ Development notes are kept locally in the ignored `docs/` directory.
 - **🎨 Modern UI**: Clean, accessible, responsive design built with shadcn/ui and Tailwind CSS, with light and dark themes.
 - **Permanent redaction**: Select areas or text matches and export a PDF with the selected content removed. Black and white fills replace blur/mosaic in secure redaction.
 - **🌐 Multi-language**: 15 languages: English, Japanese, Korean, Spanish, French, German, Simplified and Traditional Chinese, Portuguese, Arabic, Italian, Indonesian, Vietnamese, Romanian and Polish.
+
+### Searching tools and file history
+
+Press **Cmd+K** (Mac) or **Ctrl+K**, or use the header search button, to find tools and file records saved in this browser. Search matches filenames, saved project names and related tool names. Filename matches appear before tool results; otherwise tools come first. The palette reads recent-file history from localStorage and project file lists from IndexedDB when opened, and refreshes when file records change, when reopened or when the window regains focus.
+
+File results show their source and open the corresponding tool. These stores contain names and metadata, not document bytes; choose the original file from your device to continue. Search does not inspect document contents, send filenames to a server or read unrelated browser storage. Results are limited to eight tools and eight files per query. Browser storage can be cleared or unavailable.
 
 ### Redacting sensitive content
 

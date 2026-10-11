@@ -166,9 +166,17 @@
       "helpButton": "Tour guida"
     },
     "search": {
-      "placeholder": "Cerca strumenti…",
+      "placeholder": "Cerca strumenti e file...",
       "hint": "Premi Invio per selezionare, ↑↓ per navigare",
-      "noResults": "Nessuno strumento trovato"
+      "noResults": "Nessuno strumento o file trovato",
+      "tools": "Strumenti",
+      "files": "File su questo dispositivo",
+      "recentFile": "File recente",
+      "projectFile": "File di progetto",
+      "loadingFiles": "Caricamento dei file salvati...",
+      "filesUnavailable": "Impossibile caricare alcuni dati dei file salvati.",
+      "fileHint": "La cronologia salva i nomi, non i documenti. Seleziona un file per aprire il suo strumento, poi scegli il file originale.",
+      "toolUnavailable": "Strumento non disponibile"
     },
     "fileUploader": {
       "dragDrop": "Trascina e rilascia i file qui, o fai clic per sfogliare",

@@ -166,9 +166,17 @@
       "helpButton": "幫助導覽"
     },
     "search": {
-      "placeholder": "搜尋工具...",
+      "placeholder": "搜尋工具和檔案...",
       "hint": "按Enter選擇，↑↓導航",
-      "noResults": "未找到工具"
+      "noResults": "找不到工具或檔案",
+      "tools": "工具",
+      "files": "此裝置上的檔案",
+      "recentFile": "最近的檔案",
+      "projectFile": "專案檔案",
+      "loadingFiles": "正在載入已儲存的檔案...",
+      "filesUnavailable": "部分已儲存的檔案記錄無法載入。",
+      "fileHint": "檔案歷史只儲存名稱，不儲存文件。選取檔案以開啟對應工具，再選取原始檔案。",
+      "toolUnavailable": "工具無法使用"
     },
     "fileUploader": {
       "dragDrop": "Drag and drop files here, or click to browse",
