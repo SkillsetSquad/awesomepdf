@@ -12,14 +12,14 @@ When you run `npm run build`, Next.js generates a static site in the `out/` dire
 
 ## 🔧 Prerequisites
 
-- Node.js 18.17 or later
-- npm, yarn, or pnpm
+- Node.js 22 (matching the Docker image and build workflow)
+- npm with the committed `package-lock.json`
 
 ## 🏗️ Build the Project
 
 ```bash
 # Install dependencies
-npm install
+npm ci
 
 # Build for production
 npm run build
@@ -27,7 +27,7 @@ npm run build
 
 The static output will be in the `out/` directory.
 
-> **Note:** The `postbuild` script automatically decompresses LibreOffice WASM `.gz` files in `out/libreoffice-wasm/` (e.g. `soffice.wasm.gz` → `soffice.wasm`). This ensures compatibility across all hosting platforms. See [LibreOffice WASM Architecture](#-libreoffice-wasm-architecture) for details.
+> **Note:** The normal `postbuild` lifecycle decompresses LibreOffice assets (for example, `soffice.wasm.bin.gz` → `soffice.wasm.bin`) and can split large assets for static hosts. Docker sets `DOCKER_BUILD=true`, keeps the compressed assets, and serves them through Nginx. See [LibreOffice WASM Architecture](#-libreoffice-wasm-architecture) for details.
 
 ## 🚀 Deployment Options
 
@@ -109,24 +109,51 @@ wrangler pages deploy out
 
 ### 5. Docker + Nginx (Self-hosted)
 
-The project includes `docker-compose.yml` and `nginx.conf` for containerized deployment.
+The project includes a multi-stage `Dockerfile`, `docker-compose.yml`, and `nginx.conf`. Production builds the static export into the Nginx image before starting the application. It does not install packages or build the site in a runtime container, mount the repository, or share an output volume.
 
 **Development Mode:**
 ```bash
-docker compose --profile dev up
+docker compose --profile dev up web-dev
 ```
 Open http://localhost:3000
 
-**Production Mode (Static Export + Nginx):**
+**Local production preview (Static Export + Nginx):**
 ```bash
-docker compose --profile prod up --build
+docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d
 ```
-Open http://localhost:8080
+Open http://localhost:8080. The local override binds only to `127.0.0.1`; set `AWESOMEPDF_HTTP_PORT` to use another local port. The base Compose file exposes port 80 internally without publishing a host port, so Coolify can route through its proxy without host-port conflicts.
 
 **Stop and remove containers:**
 ```bash
-docker compose down
+docker compose -f docker-compose.yml -f docker-compose.local.yml down
 ```
+
+#### Coolify
+
+1. Select the **Docker Compose** build pack for the Git application. Set **Base Directory** to `/` and **Docker Compose Location** to `/docker-compose.yml`.
+2. Reload the Compose definition after updating the repository. The production service is **`web`**, enabled without a profile. Remove an earlier `COMPOSE_PROFILES=prod` workaround and leave custom build/start commands empty. `web-dev` is an optional local development service; do not assign it a production domain.
+3. Assign `https://awsomepdf.com` to **`web`**, internal port **80**. Do not add host port `8080` or the local override file to the Coolify application.
+4. Configure any overrides below as **build-time variables**, then deploy. Changing them requires rebuilding the image because the site is statically exported.
+
+| Build variable | Default / purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | `https://awsomepdf.com`; canonical origin without a path |
+| `BASE_PATH` | Empty for root hosting; a prefix such as `/awesomepdf` for subpath hosting |
+| `APP_VERSION` | Optional visible build version; Git-less images otherwise use the package version |
+| `DISABLE_UPDATE_CHECK` | `false`; set to `true` to disable automatic update checks |
+| `SOURCE_REVISION` | Optional Git revision recorded in the source manifest |
+
+The Dockerfile declares these arguments and Compose forwards them. Runtime environment changes cannot change exported URLs. If assigning Coolify's `SOURCE_COMMIT` to `SOURCE_REVISION`, enable the Coolify setting that makes the source commit available during builds.
+
+Production includes the site and both Nginx configuration files in the image, so **Preserve Repository During Deployment** and the former `static_out` volume are no longer required. Keep existing volumes until you have verified the new deployment; this change does not remove them. The Nginx image checks its localized `/en/` page (including `BASE_PATH`) and uses `restart: unless-stopped` in Compose. Set Compose health checks in the file or image; Coolify's standard application Healthcheck page does not apply to Compose applications.
+
+Deployments now show dependency installation, asset preparation and Next.js compilation under **build logs** before starting Nginx. A cold build can take several minutes, depending on CPU, memory, network and cache state. A long wait alone does not establish a failure; inspect the build output and server resource usage. In the former Compose layout, `builder ... Waiting` meant `web` was waiting for `npm ci && npm run build` to finish in a runtime container, whose output appeared in that container's logs.
+
+The Docker build explicitly runs the app's `postinstall` after copying the source to synchronize PDF.js workers and generate viewer compatibility files, then runs the full npm build lifecycle. Docker keeps LibreOffice assets compressed; Nginx serves their `.gz` counterparts with the WASM MIME type and cross-origin isolation headers, including for subpath exports. Local scratch files, environment files and generated downloads/assets are excluded from the image build context.
+
+Verify the `web` container is healthy, `/en/` and a tool page load, the source/license downloads work, and PDF workers and WASM assets return the expected MIME types and COOP/COEP headers. Confirm the public domain uses the same headers after passing through Coolify's proxy.
+
+See [Coolify's Compose deployment guide](https://coolify.io/docs/applications/builds/docker-compose) for domains, build arguments, health checks and generated service configuration.
 
 ---
 
@@ -185,7 +212,7 @@ server {
     }
 
     # LibreOffice WASM files - gzip_static auto-serves .gz with correct headers
-    # Requires both soffice.wasm and soffice.wasm.gz on disk (postbuild handles this)
+    # The normal npm build prepares soffice.wasm.bin and soffice.wasm.bin.gz.
     location /libreoffice-wasm/ {
         gzip_static on;
         expires 1y;
@@ -199,6 +226,13 @@ server {
         add_header Cross-Origin-Opener-Policy "same-origin" always;
         add_header Cross-Origin-Embedder-Policy "require-corp" always;
         add_header Cross-Origin-Resource-Policy "cross-origin" always;
+
+        location ~* soffice\.wasm\.bin$ {
+            default_type application/wasm;
+        }
+        location ~* soffice\.data\.bin$ {
+            default_type application/octet-stream;
+        }
     }
 
     # HTML pages - no cache
@@ -433,7 +467,7 @@ docker build --build-arg BASE_PATH=/pdfcraft -t pdfcraft .
 Update your workflow to include the environment variable in the build step:
 ```yaml
 - name: Build with Next.js
-  run: npx next build
+  run: npm run build
   env:
     BASE_PATH: /pdfcraft
 ```
@@ -519,8 +553,8 @@ PDFCraft uses [LibreOffice WASM](https://github.com/nichdiekuh/libreoffice-wasm)
 
 The `public/libreoffice-wasm/` directory (Git-tracked):
 ```
-soffice.wasm.gz   (~47MB, gzip-compressed WASM binary)
-soffice.data.gz   (~29MB, gzip-compressed data file)
+soffice.wasm.bin.gz (~47MB, gzip-compressed WASM binary)
+soffice.data.bin.gz (~29MB, gzip-compressed data file)
 soffice.js        (Emscripten JS glue code)
 soffice.worker.js (Web Worker for WASM execution)
 browser.worker.global.js (Browser worker communication)
@@ -528,29 +562,29 @@ browser.worker.global.js (Browser worker communication)
 
 The decompressed files (`.gitignore`-d, generated by scripts):
 ```
-soffice.wasm      (~147MB, raw WASM binary)
-soffice.data      (~100MB, raw data file)
+soffice.wasm.bin  (~147MB, raw WASM binary)
+soffice.data.bin  (~100MB, raw data file)
 ```
 
 ### Why `.gz` Only in Git?
 
-The raw WASM binary (`soffice.wasm`, ~147MB) exceeds GitHub's 100MB file size limit. Only `.gz` compressed versions are committed to Git. The decompressed files are generated automatically:
+The raw WASM binary (`soffice.wasm.bin`, ~147MB) exceeds GitHub's 100MB file size limit. Only `.gz` compressed versions are committed to Git. The decompressed files are generated automatically:
 
 | Environment | Script | Target Directory |
 |---|---|---|
-| Development (`npm run dev`) | `predev` → `scripts/decompress-wasm-dev.mjs` | `public/libreoffice-wasm/` |
+| Development (`npm run dev`) | `predev` → `scripts/decompress-wasm.mjs public` | `public/libreoffice-wasm/` |
 | Production Build (`npm run build`) | `postbuild` → `scripts/decompress-wasm.mjs` | `out/libreoffice-wasm/` |
-| Docker Build | Dockerfile `RUN gunzip -k` | `/website/pdfcraft/libreoffice-wasm/` |
+| Docker Build | `DOCKER_BUILD=true` skips decompression/chunking; Nginx serves tracked `.bin.gz` files | `/website/pdfcraft${BASE_PATH}/libreoffice-wasm/` |
 
 ### How Each Platform Serves These Files
 
-The converter requests **uncompressed paths** (`soffice.wasm`, `soffice.data`). Each platform handles them as follows:
+The converter requests **uncompressed paths** (`soffice.wasm.bin`, `soffice.data.bin`). Each platform handles them as follows:
 
 | Platform | Mechanism |
 |---|---|
-| **Next.js Dev** | Serves `soffice.wasm` from `public/` with `Content-Type: application/wasm` |
-| **Nginx (Docker)** | `gzip_static on` auto-detects `soffice.wasm.gz` alongside `soffice.wasm`, serves compressed version with `Content-Encoding: gzip` and correct `Content-Type: application/wasm` |
-| **Vercel / Netlify** | Serves the decompressed `soffice.wasm` from `out/`, applies CDN-level compression |
+| **Next.js Dev** | Serves `soffice.wasm.bin` from `public/`; development headers specify `Content-Type: application/wasm` |
+| **Nginx (Docker)** | `gzip_static always` serves `soffice.wasm.bin.gz` for requests to `soffice.wasm.bin`, with `Content-Encoding: gzip` and `Content-Type: application/wasm`; raw decompressed files are not required |
+| **Vercel / Netlify** | Serves the decompressed `soffice.wasm.bin` from `out/`, applies CDN-level compression |
 | **Cloudflare Pages** | Same as Vercel/Netlify, with `_headers` file for COOP/COEP |
 | **Apache** | `mod_deflate` compresses on-the-fly, `AddType application/wasm .wasm` sets MIME type |
 
@@ -585,10 +619,10 @@ Content-Type: application/wasm
 ```
 
 ### Issue: WebAssembly streaming compilation error / `failed to match magic number`
-**Solution:** This typically means the browser received gzip-compressed data instead of raw WASM bytes. The converter requests uncompressed paths (`soffice.wasm`, not `soffice.wasm.gz`). Make sure:
-1. The decompressed `soffice.wasm` file exists on disk (run `npm run build` which auto-decompresses via `postbuild`)
-2. Your server sends `Content-Type: application/wasm` for `.wasm` files
-3. For Nginx: use `gzip_static on` so Nginx can auto-serve the `.gz` version to gzip-capable clients while keeping the correct MIME type
+**Solution:** Inspect the response body and headers: a missing asset can return HTML, and gzip bytes require `Content-Encoding: gzip` so the browser decodes them. The converter requests `soffice.wasm.bin`, not `soffice.wasm.bin.gz`. Make sure:
+1. The requested asset URL returns 200 and points beneath the configured `BASE_PATH`.
+2. The WASM response sends `Content-Type: application/wasm`, including for the `.bin` filename.
+3. Normal static exports use the build's decompressed files or chunked assets. Docker intentionally has no raw Office binary; its Nginx configuration uses `gzip_static always` with the tracked `.bin.gz` files and sends `Content-Encoding: gzip`.
 
 ### Issue: LibreOffice WASM stuck on `wasm-instantiate` / SharedArrayBuffer not available
 **Solution:** LibreOffice WASM uses Emscripten pthreads (multi-threading), which requires `SharedArrayBuffer`. Browsers only enable `SharedArrayBuffer` in [Cross-Origin Isolated](https://web.dev/cross-origin-isolation-guide/) contexts. Your server **must** return these headers on **all** responses (HTML pages, JS, WASM):
@@ -605,7 +639,7 @@ Cross-Origin-Resource-Policy: cross-origin
 ### Issue: Document conversion tools not working in development
 **Solution:** The `predev` script automatically decompresses LibreOffice WASM `.gz` files in `public/libreoffice-wasm/` before starting the dev server. If the decompressed files are missing:
 ```bash
-node scripts/decompress-wasm-dev.mjs
+node scripts/decompress-wasm.mjs public
 ```
 Then restart the dev server with `npm run dev`.
 

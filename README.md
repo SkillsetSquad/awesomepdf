@@ -47,13 +47,14 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 - Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer. Cmd+K / Ctrl+K now searches tool names and locally saved file records from recent-file history and saved projects.
 - Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
 - Added a real open-source page with source, license and notice downloads for each deployed build.
+- Reworked Docker deployment in this fork for Coolify: production builds the static site into a self-contained Nginx image before startup, with a health check and no production source mounts or required Compose profile. Local preview ports use a separate Compose override.
 - Changed Redact PDF, Find and Redact, and Smart Data Redactor in this fork to use local PDF content removal with a full rewrite, rather than overlays or text-stream replacement. Selected glyphs, overlapping image pixels and touched graphics are removed; other text stays selectable. Secure export uses solid fills and strips ancillary content that can retain copies.
 
 ### Work in progress
 
 - The UI migration is not finished. Many individual tool workspaces (settings panels, previews and editors) are still being moved to shadcn/ui one at a time.
 - Larger changes beyond the UI are underway. This README will be updated as they land.
-- While the migration is in progress, the default `npm run build` can fail on the existing lint baseline. `npm run build -- --no-lint` skips linting.
+- Some existing ESLint warnings remain. Production builds enforce lint and TypeScript checks.
 
 Development notes are kept locally in the ignored `docs/` directory.
 
@@ -263,11 +264,11 @@ To run this project locally, follow these steps:
 git clone https://github.com/SkillsetSquad/awesomepdf.git
 cd awesomepdf
 
-# Development mode (with hot reload)
-docker compose --profile dev up
+# Development mode (with hot reload; only start the development service)
+docker compose --profile dev up web-dev
 
-# Production mode (static build + Nginx)
-docker compose --profile prod up --build
+# Local production preview (build the image, then serve on localhost:8080)
+docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d
 ```
 
 - Development: [http://localhost:3000](http://localhost:3000)
@@ -276,8 +277,10 @@ docker compose --profile prod up --build
 To stop containers:
 
 ```bash
-docker compose down
+docker compose -f docker-compose.yml -f docker-compose.local.yml down
 ```
+
+For **Coolify**, use the Docker Compose build pack with `docker-compose.yml`, reload the Compose definition, and assign the domain to service **`web`**, internal port **80**. Production is enabled by default; remove the earlier `COMPOSE_PROFILES=prod` workaround and leave custom build/start commands empty. The base Compose file publishes no host ports and needs no repository preservation or static-output volume. See [DEPLOYMENT.md](DEPLOYMENT.md#coolify) for build variables and troubleshooting. Image builds can still take several minutes on a cold cache or a small server; progress appears in the build logs before Nginx starts.
 
 #### 🌐 Site URL and Subpath Deployment
 
@@ -323,7 +326,7 @@ AwesomePDF is configured for static export (`output: 'export'`), which means it 
    - **Netlify**: `netlify deploy --prod --dir=out`
    - **GitHub Pages**: Push to `main` branch (uses GitHub Actions)
    - **Cloudflare Pages**: `wrangler pages deploy out`
-   - **Docker + Nginx**: `docker compose --profile prod up --build`
+   - **Docker + Nginx**: `docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d` for local preview; use the base Compose file for Coolify
 
 ### Deployment Files Included
 
@@ -334,6 +337,7 @@ AwesomePDF is configured for static export (`output: 'export'`), which means it 
 | `.github/workflows/deploy.yml` | GitHub Pages |
 | `public/_headers` | Cloudflare Pages / Netlify |
 | `docker-compose.yml` + `nginx.conf` | Docker / Self-hosted |
+| `docker-compose.local.yml` | Local Docker production preview on port 8080 |
 | `.htaccess` | Apache |
 
 ### Important Notes

@@ -1,0 +1,5 @@
+# Local production preview. Coolify uses docker-compose.yml without this file.
+services:
+  web:
+    ports:
+      - "127.0.0.1:${AWESOMEPDF_HTTP_PORT:-8080}:80"
