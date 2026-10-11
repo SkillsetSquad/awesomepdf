@@ -28,13 +28,14 @@ export function engineFixture(initial: StoredAnnotation[] = [annotation('origina
   const stages = new Map([[1, makeStage()], [2, makeStage()]]);
   const editorStore = new Map([...stages].map(([pageNumber]) => {
     const shapeGroupStore = new Map<string, unknown>();
-    return [`${pageNumber}_5` as string, { shapeGroupStore, currentShapeGroup: null as unknown, isPainting: false,
+    const editor = { shapeGroupStore, currentShapeGroup: null as unknown, isPainting: false,
       addSerializedGroupToLayer: (stage: ReturnType<typeof makeStage>, serialized: string) => {
         const id = JSON.parse(serialized).attrs.id;
         const group = { serialized, destroy: () => { stage.groups.delete(id); } };
         stage.groups.set(id, group); shapeGroupStore.set(id, group);
       },
-    }] as const;
+    };
+    return [`${pageNumber}_5` as string, editor] as const;
   }));
   const painter = {
     store: {
