@@ -1045,6 +1045,16 @@
       "seconds": "Restam {seconds} s",
       "minutes": "Restam {minutes} min {seconds} s",
       "hours": "Restam {hours} h {minutes} min"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF original",
+      "resultTitle": "PDF do livreto",
+      "rotationNone": "Manter a rotação original",
+      "rotationClockwise": "90° no sentido horário",
+      "rotationCounterclockwise": "90° no sentido anti-horário",
+      "rotationAlternate": "Alternar 90° no sentido horário / anti-horário",
+      "layoutHelp": "Células numeradas e margens internas. A pré-visualização do PDF gerado mostra a ordem e a rotação reais das páginas.",
+      "outputSheets": "Páginas de saída: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Arraste e solte um arquivo PDF para criar um layout de livreto.",
       "optionsTitle": "Opções de livreto",
       "gridModeLabel": "Modo grade",
-      "gridModeDesc": "1x2 é o padrão para livretos. Use grades maiores para economizar papel.",
+      "gridModeDesc": "Linhas × colunas. 1 × 2 ordena as páginas para dobrar; grades maiores mantêm a ordem original.",
       "paperSizeLabel": "Tamanho do papel",
       "orientationLabel": "Orientação",
       "rotationLabel": "Rotação da página",

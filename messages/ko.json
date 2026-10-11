@@ -1045,6 +1045,16 @@
       "seconds": "{seconds}초 남음",
       "minutes": "{minutes}분 {seconds}초 남음",
       "hours": "{hours}시간 {minutes}분 남음"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "원본 PDF",
+      "resultTitle": "소책자 PDF",
+      "rotationNone": "원래 회전 유지",
+      "rotationClockwise": "시계 방향 90°",
+      "rotationCounterclockwise": "반시계 방향 90°",
+      "rotationAlternate": "시계 / 반시계 방향 90° 교대",
+      "layoutHelp": "번호가 있는 격자 셀과 내부 여백입니다. 생성된 PDF 미리보기에서 실제 페이지 순서와 회전을 확인하세요.",
+      "outputSheets": "출력 페이지: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "PDF 파일을 끌어서 놓아 소책자 레이아웃을 만듭니다.",
       "optionsTitle": "소책자 옵션",
       "gridModeLabel": "그리드 모드",
-      "gridModeDesc": "소책자의 경우 1x2가 표준입니다. 더 큰 그리드를 사용하여 종이를 절약하세요.",
+      "gridModeDesc": "행 × 열. 1 × 2는 접기용으로 페이지를 배치하며 더 큰 격자는 원본 순서를 유지합니다.",
       "paperSizeLabel": "용지 크기",
       "orientationLabel": "용지 방향",
       "rotationLabel": "페이지 회전",

@@ -1045,6 +1045,16 @@
       "seconds": "Còn {seconds} giây",
       "minutes": "Còn {minutes} phút {seconds} giây",
       "hours": "Còn {hours} giờ {minutes} phút"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF gốc",
+      "resultTitle": "PDF tập sách",
+      "rotationNone": "Giữ góc xoay gốc",
+      "rotationClockwise": "90° theo chiều kim đồng hồ",
+      "rotationCounterclockwise": "90° ngược chiều kim đồng hồ",
+      "rotationAlternate": "Luân phiên 90° thuận / ngược chiều kim đồng hồ",
+      "layoutHelp": "Các ô được đánh số và lề trong. Bản xem trước PDF được tạo hiển thị thứ tự và góc xoay trang thực tế.",
+      "outputSheets": "Số trang đầu ra: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Kéo và thả tệp PDF để tạo bố cục tập sách.",
       "optionsTitle": "Tùy chọn tập sách",
       "gridModeLabel": "Chế độ lưới",
-      "gridModeDesc": "1x2 là tiêu chuẩn cho tập sách nhỏ. Sử dụng lưới lớn hơn để tiết kiệm giấy.",
+      "gridModeDesc": "Hàng × cột. 1 × 2 sắp xếp trang để gấp; lưới lớn hơn giữ thứ tự gốc.",
       "paperSizeLabel": "Khổ giấy",
       "orientationLabel": "Hướng",
       "rotationLabel": "Xoay trang",

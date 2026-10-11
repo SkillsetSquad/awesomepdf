@@ -1045,6 +1045,16 @@
       "seconds": "{seconds} s restantes",
       "minutes": "{minutes} min {seconds} s restantes",
       "hours": "{hours} h {minutes} min restantes"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF original",
+      "resultTitle": "PDF du livret",
+      "rotationNone": "Conserver la rotation originale",
+      "rotationClockwise": "90° dans le sens horaire",
+      "rotationCounterclockwise": "90° dans le sens antihoraire",
+      "rotationAlternate": "Alterner 90° dans le sens horaire / antihoraire",
+      "layoutHelp": "Cellules numérotées et marges intérieures. L’aperçu du PDF généré montre l’ordre et la rotation réels des pages.",
+      "outputSheets": "Pages de sortie : {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Glissez-déposez un fichier PDF pour créer une mise en page de livret.",
       "optionsTitle": "Options de livret",
       "gridModeLabel": "Mode grille",
-      "gridModeDesc": "1x2 est le format standard pour les livrets. Utilisez des grilles plus grandes pour économiser du papier.",
+      "gridModeDesc": "Lignes × colonnes. 1 × 2 ordonne les pages pour le pliage ; les grilles plus grandes conservent l’ordre original.",
       "paperSizeLabel": "Taille du papier",
       "orientationLabel": "Orientation",
       "rotationLabel": "Rotation de la page",

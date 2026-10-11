@@ -1045,6 +1045,16 @@
       "seconds": "{seconds}s remaining",
       "minutes": "{minutes}m {seconds}s remaining",
       "hours": "{hours}h {minutes}m remaining"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "Source PDF",
+      "resultTitle": "Booklet PDF",
+      "rotationNone": "Keep original rotation",
+      "rotationClockwise": "90° clockwise",
+      "rotationCounterclockwise": "90° counterclockwise",
+      "rotationAlternate": "Alternate 90° clockwise / counterclockwise",
+      "layoutHelp": "Numbered grid cells and inner margins. The generated PDF preview shows the actual page order and rotation.",
+      "outputSheets": "Output pages: {count}"
     }
   },
   "toolsPage": {
@@ -3096,7 +3106,7 @@
       "uploadDescription": "Drag and drop a PDF file to create a booklet layout.",
       "optionsTitle": "Booklet Options",
       "gridModeLabel": "Grid Mode",
-      "gridModeDesc": "1x2 is standard for booklets. Use larger grids to save paper.",
+      "gridModeDesc": "Rows × columns. 1 × 2 orders pages for folding; larger grids keep source order.",
       "paperSizeLabel": "Paper Size",
       "orientationLabel": "Orientation",
       "rotationLabel": "Page Rotation",

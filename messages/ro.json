@@ -1045,6 +1045,16 @@
       "seconds": "Au rămas {seconds} s",
       "minutes": "Au rămas {minutes} min {seconds} s",
       "hours": "Au rămas {hours} h {minutes} min"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF sursă",
+      "resultTitle": "PDF broșură",
+      "rotationNone": "Păstrează rotirea originală",
+      "rotationClockwise": "90° în sens orar",
+      "rotationCounterclockwise": "90° în sens antiorar",
+      "rotationAlternate": "Alternează 90° în sens orar / antiorar",
+      "layoutHelp": "Celule numerotate și margini interioare. Previzualizarea PDF-ului generat arată ordinea și rotirea efective ale paginilor.",
+      "outputSheets": "Pagini rezultate: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Trageți și plasați un fișier PDF pentru a crea un aspect de broșură.",
       "optionsTitle": "Opțiuni pentru broșuri",
       "gridModeLabel": "Modul grilă",
-      "gridModeDesc": "1x2 este standard pentru broșuri. Utilizați grile mai mari pentru a economisi hârtie.",
+      "gridModeDesc": "Rânduri × coloane. 1 × 2 ordonează paginile pentru pliere; grilele mai mari păstrează ordinea sursei.",
       "paperSizeLabel": "Dimensiunea hârtiei",
       "orientationLabel": "Orientare",
       "rotationLabel": "Rotirea paginii",

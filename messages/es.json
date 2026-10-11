@@ -1045,6 +1045,16 @@
       "seconds": "Quedan {seconds} s",
       "minutes": "Quedan {minutes} min {seconds} s",
       "hours": "Quedan {hours} h {minutes} min"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF original",
+      "resultTitle": "PDF del cuadernillo",
+      "rotationNone": "Mantener la rotación original",
+      "rotationClockwise": "90° en sentido horario",
+      "rotationCounterclockwise": "90° en sentido antihorario",
+      "rotationAlternate": "Alternar 90° en sentido horario / antihorario",
+      "layoutHelp": "Celdas numeradas y márgenes internos. La vista previa del PDF generado muestra el orden y la rotación reales.",
+      "outputSheets": "Páginas de salida: {count}"
     }
   },
   "toolsPage": {
@@ -3091,7 +3101,7 @@
       "uploadDescription": "Arrastre y suelte un archivo PDF para crear un diseño de cuadernillo.",
       "optionsTitle": "Opciones de cuadernillo",
       "gridModeLabel": "Modo de cuadrícula",
-      "gridModeDesc": "1x2 es el estándar para cuadernillos. Use cuadrículas más grandes para ahorrar papel.",
+      "gridModeDesc": "Filas × columnas. 1 × 2 ordena las páginas para plegarlas; las cuadrículas mayores conservan el orden original.",
       "paperSizeLabel": "Tamaño del papel",
       "orientationLabel": "Orientación",
       "rotationLabel": "Rotación de página",

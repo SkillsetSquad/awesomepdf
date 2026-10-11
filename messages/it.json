@@ -1045,6 +1045,16 @@
       "seconds": "{seconds} s rimanenti",
       "minutes": "{minutes} min {seconds} s rimanenti",
       "hours": "{hours} h {minutes} min rimanenti"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF originale",
+      "resultTitle": "PDF opuscolo",
+      "rotationNone": "Mantieni la rotazione originale",
+      "rotationClockwise": "90° in senso orario",
+      "rotationCounterclockwise": "90° in senso antiorario",
+      "rotationAlternate": "Alterna 90° in senso orario / antiorario",
+      "layoutHelp": "Celle numerate e margini interni. L’anteprima del PDF generato mostra l’ordine e la rotazione effettivi delle pagine.",
+      "outputSheets": "Pagine di output: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Trascina e rilascia un file PDF per creare un layout per opuscolo.",
       "optionsTitle": "Opzioni opuscolo",
       "gridModeLabel": "Modalità griglia",
-      "gridModeDesc": "Il formato 1x2 è lo standard per gli opuscoli. Usa griglie più grandi per risparmiare carta.",
+      "gridModeDesc": "Righe × colonne. 1 × 2 ordina le pagine per la piegatura; le griglie più grandi mantengono l’ordine originale.",
       "paperSizeLabel": "Formato carta",
       "orientationLabel": "Orientamento",
       "rotationLabel": "Rotazione pagina",

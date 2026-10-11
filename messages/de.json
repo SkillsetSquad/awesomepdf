@@ -1045,6 +1045,16 @@
       "seconds": "Noch {seconds} s",
       "minutes": "Noch {minutes} min {seconds} s",
       "hours": "Noch {hours} h {minutes} min"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "Original-PDF",
+      "resultTitle": "Broschüren-PDF",
+      "rotationNone": "Originaldrehung beibehalten",
+      "rotationClockwise": "90° im Uhrzeigersinn",
+      "rotationCounterclockwise": "90° gegen den Uhrzeigersinn",
+      "rotationAlternate": "Abwechselnd 90° im / gegen den Uhrzeigersinn",
+      "layoutHelp": "Nummerierte Rasterzellen und Innenränder. Die erzeugte PDF-Vorschau zeigt die tatsächliche Seitenfolge und Drehung.",
+      "outputSheets": "Ausgabeseiten: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Ziehen Sie eine PDF-Datei per Drag-and-Drop, um ein Broschürenlayout zu erstellen.",
       "optionsTitle": "Broschürenoptionen",
       "gridModeLabel": "Rastermodus",
-      "gridModeDesc": "1x2 ist Standard für Broschüren. Verwenden Sie größere Raster, um Papier zu sparen.",
+      "gridModeDesc": "Zeilen × Spalten. 1 × 2 ordnet Seiten zum Falten; größere Raster behalten die Originalfolge.",
       "paperSizeLabel": "Papierformat",
       "orientationLabel": "Ausrichtung",
       "rotationLabel": "Seitendrehung",

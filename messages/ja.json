@@ -1045,6 +1045,16 @@
       "seconds": "残り{seconds}秒",
       "minutes": "残り{minutes}分{seconds}秒",
       "hours": "残り{hours}時間{minutes}分"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "元のPDF",
+      "resultTitle": "小冊子PDF",
+      "rotationNone": "元の回転を維持",
+      "rotationClockwise": "時計回りに90°",
+      "rotationCounterclockwise": "反時計回りに90°",
+      "rotationAlternate": "時計回り・反時計回りの90°を交互に適用",
+      "layoutHelp": "番号付きのセルと内側の余白です。生成されたPDFのプレビューに実際のページ順と回転が表示されます。",
+      "outputSheets": "出力ページ数：{count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "PDFファイルをドラッグ＆ドロップして小冊子のレイアウトを作成します。",
       "optionsTitle": "小冊子オプション",
       "gridModeLabel": "グリッドモード",
-      "gridModeDesc": "小冊子は 1x2 が標準です。用紙を節約するには、大きなグリッドを使用します。",
+      "gridModeDesc": "行 × 列。1 × 2 は折りたたみ用のページ順になり、大きいグリッドは元の順序を維持します。",
       "paperSizeLabel": "用紙サイズ",
       "orientationLabel": "用紙の向き",
       "rotationLabel": "ページの回転",

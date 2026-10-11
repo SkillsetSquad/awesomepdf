@@ -1045,6 +1045,16 @@
       "seconds": "剩余{seconds}秒",
       "minutes": "剩余{minutes}分{seconds}秒",
       "hours": "剩余{hours}小时{minutes}分"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "原始 PDF",
+      "resultTitle": "小册子 PDF",
+      "rotationNone": "保留原始旋转",
+      "rotationClockwise": "顺时针 90°",
+      "rotationCounterclockwise": "逆时针 90°",
+      "rotationAlternate": "交替顺时针 / 逆时针 90°",
+      "layoutHelp": "编号网格和内部边距。生成的 PDF 预览显示实际页面顺序和旋转。",
+      "outputSheets": "输出页数：{count}"
     }
   },
   "toolsPage": {
@@ -3088,7 +3098,7 @@
       "uploadDescription": "拖放PDF文件以创建小册子布局。",
       "optionsTitle": "小册子选项",
       "gridModeLabel": "网格模式",
-      "gridModeDesc": "1x2是标准小册子格式，使用更大网格可节省纸张。",
+      "gridModeDesc": "行 × 列。1 × 2 按折叠顺序排列页面；更大的网格保留原始顺序。",
       "paperSizeLabel": "纸张大小",
       "orientationLabel": "方向",
       "rotationLabel": "页面旋转",

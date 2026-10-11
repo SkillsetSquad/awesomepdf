@@ -1045,6 +1045,16 @@
       "seconds": "Tersisa {seconds} dtk",
       "minutes": "Tersisa {minutes} mnt {seconds} dtk",
       "hours": "Tersisa {hours} jam {minutes} mnt"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "PDF sumber",
+      "resultTitle": "PDF buklet",
+      "rotationNone": "Pertahankan rotasi asli",
+      "rotationClockwise": "90° searah jarum jam",
+      "rotationCounterclockwise": "90° berlawanan arah jarum jam",
+      "rotationAlternate": "Bergantian 90° searah / berlawanan jarum jam",
+      "layoutHelp": "Sel bernomor dan margin dalam. Pratinjau PDF hasil menampilkan urutan dan rotasi halaman yang sebenarnya.",
+      "outputSheets": "Halaman keluaran: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "Seret dan lepas file PDF untuk membuat tata letak buklet.",
       "optionsTitle": "Pilihan Buku",
       "gridModeLabel": "Modus Jaringan",
-      "gridModeDesc": "1x2 adalah standar untuk buklet. Gunakan grid yang lebih besar untuk menghemat kertas.",
+      "gridModeDesc": "Baris × kolom. 1 × 2 mengurutkan halaman untuk dilipat; grid lebih besar mempertahankan urutan sumber.",
       "paperSizeLabel": "Ukuran Kertas",
       "orientationLabel": "Orientasi",
       "rotationLabel": "Rotasi Halaman",

@@ -1045,6 +1045,16 @@
       "seconds": "剩餘{seconds}秒",
       "minutes": "剩餘{minutes}分{seconds}秒",
       "hours": "剩餘{hours}小時{minutes}分"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "原始 PDF",
+      "resultTitle": "小冊子 PDF",
+      "rotationNone": "保留原始旋轉",
+      "rotationClockwise": "順時針 90°",
+      "rotationCounterclockwise": "逆時針 90°",
+      "rotationAlternate": "交替順時針 / 逆時針 90°",
+      "layoutHelp": "編號網格和內部邊距。產生的 PDF 預覽顯示實際頁面順序和旋轉。",
+      "outputSheets": "輸出頁數：{count}"
     }
   },
   "toolsPage": {
@@ -3084,7 +3094,7 @@
       "uploadDescription": "拖放 PDF 檔案以建立小冊子版面。",
       "optionsTitle": "小冊子選項",
       "gridModeLabel": "網格模式",
-      "gridModeDesc": "1x2 是小冊子的標準格式。使用更大的網格以節省紙張。",
+      "gridModeDesc": "列 × 欄。1 × 2 按摺疊順序排列頁面；較大的網格保留原始順序。",
       "paperSizeLabel": "紙張大小",
       "orientationLabel": "方向",
       "rotationLabel": "頁面旋轉",

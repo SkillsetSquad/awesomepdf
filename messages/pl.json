@@ -1045,6 +1045,16 @@
       "seconds": "Pozostało {seconds} s",
       "minutes": "Pozostało {minutes} min {seconds} s",
       "hours": "Pozostało {hours} godz. {minutes} min"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "Źródłowy PDF",
+      "resultTitle": "PDF broszury",
+      "rotationNone": "Zachowaj oryginalny obrót",
+      "rotationClockwise": "90° zgodnie z ruchem wskazówek zegara",
+      "rotationCounterclockwise": "90° przeciwnie do ruchu wskazówek zegara",
+      "rotationAlternate": "Naprzemiennie 90° zgodnie / przeciwnie do wskazówek",
+      "layoutHelp": "Ponumerowane komórki i marginesy wewnętrzne. Podgląd wygenerowanego PDF pokazuje rzeczywistą kolejność i obrót stron.",
+      "outputSheets": "Strony wynikowe: {count}"
     }
   },
   "toolsPage": {
@@ -3096,7 +3106,7 @@
       "uploadDescription": "Przeciągnij i upuść plik PDF, aby utworzyć układ broszury.",
       "optionsTitle": "Opcje broszury",
       "gridModeLabel": "Tryb siatki",
-      "gridModeDesc": "Standardem w przypadku broszur jest format 1x2. Aby zaoszczędzić papier, użyj większych siatek.",
+      "gridModeDesc": "Wiersze × kolumny. 1 × 2 układa strony do składania; większe siatki zachowują kolejność źródła.",
       "paperSizeLabel": "Rozmiar papieru",
       "orientationLabel": "Orientacja",
       "rotationLabel": "Obrót strony",

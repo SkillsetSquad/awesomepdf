@@ -1045,6 +1045,16 @@
       "seconds": "متبقي {seconds} ثانية",
       "minutes": "متبقي {minutes} دقيقة و{seconds} ثانية",
       "hours": "متبقي {hours} ساعة و{minutes} دقيقة"
+    },
+    "pdfBooklet": {
+      "sourceTitle": "ملف PDF الأصلي",
+      "resultTitle": "ملف PDF للكتيب",
+      "rotationNone": "الحفاظ على الدوران الأصلي",
+      "rotationClockwise": "90° مع عقارب الساعة",
+      "rotationCounterclockwise": "90° عكس عقارب الساعة",
+      "rotationAlternate": "التناوب بين 90° مع وعكس عقارب الساعة",
+      "layoutHelp": "خلايا الشبكة مرقمة مع الهوامش الداخلية. تعرض معاينة ملف PDF الناتج ترتيب الصفحات ودورانها الفعليين.",
+      "outputSheets": "عدد الصفحات الناتجة: {count}"
     }
   },
   "toolsPage": {
@@ -3083,7 +3093,7 @@
       "uploadDescription": "قم بسحب وإسقاط ملف PDF لإنشاء تخطيط كتيب.",
       "optionsTitle": "خيارات الكتيب",
       "gridModeLabel": "وضع الشبكة",
-      "gridModeDesc": "1x2 هو المعيار للكتيبات. استخدم شبكات أكبر لتوفير الورق.",
+      "gridModeDesc": "صفوف × أعمدة. يرتب 1 × 2 الصفحات للطي؛ وتحافظ الشبكات الأكبر على ترتيب المصدر.",
       "paperSizeLabel": "حجم الورق",
       "orientationLabel": "الاتجاه",
       "rotationLabel": "دوران الصفحة",
