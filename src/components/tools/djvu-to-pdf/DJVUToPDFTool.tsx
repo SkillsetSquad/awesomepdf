@@ -146,7 +146,7 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
             )}
 
             {file && (
-                <Card   className="glass-card">
+                <Card>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
@@ -165,7 +165,7 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
             )}
 
             {/* Options */}
-            <Card   className="glass-card">
+            <Card>
                 <div className="flex items-center gap-2 mb-4">
                     <Settings2 className="w-5 h-5 text-primary" />
                     <h3 className="font-semibold text-foreground">

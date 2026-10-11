@@ -149,7 +149,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
             )}
 
             {files.length > 0 && (
-                <Card   className="glass-card">
+                <Card>
                     <div className="space-y-3">
                         <h3 className="font-semibold text-foreground">
                             {files.length} {files.length === 1 ? 'File' : 'Files'} Selected

@@ -174,7 +174,7 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
 
             {/* File Info */}
             {file && (
-                <Card   className="glass-card">
+                <Card>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">

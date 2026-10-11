@@ -102,7 +102,7 @@ export function EmptyFavoritesCard({ className = '' }: { className?: string }) {
     }
 
     return (
-        <Card className={`glass-card text-center py-8 px-6 ${className}`}>
+        <Card className={`text-center py-8 px-6 ${className}`}>
             <div className="flex flex-col items-center gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-secondary/50 flex items-center justify-center">
                     <Star className="w-8 h-8 text-muted-foreground" />
