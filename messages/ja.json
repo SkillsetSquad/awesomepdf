@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - プロフェッショナルPDFツール",
-      "description": "無料、プライベート、ブラウザベース。サーバーにアップロードせずにPDFファイルをオンラインで結合・編集。"
+      "title": "AwesomePDF – 結合・圧縮・編集ができる無料のPDFツール",
+      "description": "PDFの結合、圧縮、変換、編集、整理を数秒で。ブラウザで動く無料のシンプルなPDFツール。登録は不要です。"
     },
     "tools": {
       "title": "すべてのPDFツール",
@@ -46,7 +46,16 @@
       "privacy": "プライバシー",
       "contact": "お問い合わせ",
       "mainMenu": "メインナビゲーション",
-      "openMenu": "メニューを開く"
+      "openMenu": "メニューを開く",
+      "allTools": "すべてのツール",
+      "edit": "編集",
+      "convert": "変換",
+      "organize": "整理",
+      "shareFiles": "ファイル共有",
+      "comingSoon": "近日公開",
+      "browseAll": "{count}個のツールをすべて見る",
+      "language": "言語",
+      "search": "検索"
     },
     "buttons": {
       "duplicate": "複製",
@@ -101,7 +110,15 @@
       "openSource": "オープンソースの通知",
       "basedOn": "基になったプロジェクト：",
       "downloadError": "ソースのダウンロードに失敗しました。もう一度お試しください。",
-      "sourceDescription": "この版のAwesomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。"
+      "sourceDescription": "この版のAwesomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。",
+      "description": "ブラウザで使える無料のPDFツール。アカウントを作成せずに、PDFの結合、圧縮、変換、編集、整理ができます。",
+      "brandOf": "Skillset Squad Private Limited のブランドです。",
+      "toolsHeading": "PDFツール",
+      "companyHeading": "会社とリソース",
+      "legalHeading": "オープンソースと法的情報",
+      "convertPdf": "PDF変換",
+      "privacyPolicy": "プライバシーポリシー",
+      "copyrightLine": "© {year} AwesomePDF. Skillset Squad Private Limited のブランドです。"
     },
     "recentFiles": {
       "title": "最近のファイル",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "プロフェッショナルPDFツール",
-      "highlight": "プロフェッショナルツール",
-      "subtitle": "ブラウザで無料で使える、プライバシー重視の強力なPDF処理ツール",
-      "cta": "始める"
+      "title": "必要なPDFツールが、ひとつの場所に。",
+      "subtitle": "PDFの結合、圧縮、変換、編集、整理を数秒で。無料で、シンプルで、プライバシーを大切に設計されています。"
     },
-    "features": {
-      "privacy": {
-        "title": "100% プライベート",
-        "description": "すべての処理はブラウザ内で行われます。ファイルがデバイスから送信されることはありません。"
+    "upload": {
+      "title": "ここにファイルをドロップ",
+      "titleActive": "ドロップしてファイルを追加",
+      "subtitle": "PDF、画像、対応ドキュメントを選択",
+      "choose": "ファイルを選択",
+      "privacy": "ここで選んだファイルはブラウザ内にとどまり、サーバーにはアップロードされません。",
+      "shortcuts": "人気のツール",
+      "summary": {
+        "pdf": "{count, plural, other {PDFファイルを#件選択しました}}",
+        "image": "{count, plural, other {画像を#件選択しました}}",
+        "document": "{count, plural, other {ファイルを#件選択しました}} ({extension})",
+        "mixed": "{count, plural, other {ファイルを#件選択しました}}"
       },
-      "free": {
-        "title": "完全無料",
-        "description": "登録不要、制限なし、隠れた費用なし。"
+      "moreFiles": "ほか{count}件",
+      "suggestionsTitle": "何をしますか？",
+      "chooseDifferent": "別のファイルを選ぶ",
+      "mixedNotice": "ファイルの種類が異なるため、すべてに対応する1つのツールはありません。PDFだけ、画像だけなど、同じ種類のファイルを選んでください。",
+      "noToolNotice": "この組み合わせのファイルを開けるツールはありません。ファイル数を減らすか、別の種類のファイルをお試しください。",
+      "noneUsable": "選択したファイルはどれも使用できません。AwesomePDFはPDF、画像、Word・Excel・PowerPointなどの一般的なドキュメントに対応しています。",
+      "skipped": "一部のファイルをスキップしました",
+      "readFailed": "ファイルを読み込めませんでした。もう一度お試しください。",
+      "errors": {
+        "empty": "{name} は空のファイルです。",
+        "unsupported": "{name} は未対応のファイル形式です。",
+        "notPdf": "{name} は有効なPDFファイルではありません。"
       },
-      "powerful": {
-        "title": "強力なツール",
-        "description": "あらゆるニーズに対応する67以上のプロフェッショナルPDFツール。"
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "共有やアップロードのためにファイルサイズを小さくします。"
+          },
+          "edit-pdf": {
+            "description": "テキストや画像を変更したり、注釈を追加したりします。"
+          },
+          "split-pdf": {
+            "description": "ページや範囲を新しいファイルに分けます。"
+          },
+          "sign-pdf": {
+            "description": "ドキュメントに署名を追加します。"
+          },
+          "organize-pdf": {
+            "description": "ページの並べ替え、回転、削除を行います。"
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "{count}個のファイルを1つのPDFにまとめます。"
+          },
+          "pdf-multi-tool": {
+            "title": "結合して整理",
+            "description": "結合、並べ替え、ページの整理をまとめて行えます。"
+          },
+          "compress-pdf": {
+            "title": "一括圧縮",
+            "description": "{count}個のファイルのサイズをまとめて小さくします。"
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "この画像をPDFドキュメントに変換します。"
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "画像をPDFに",
+            "description": "{count}枚の画像を1つのPDFにまとめます。"
+          }
+        },
+        "convert": {
+          "description": "{extension}をPDFに変換します。"
+        }
       }
     },
     "popularTools": {
-      "badge": "最も人気",
       "title": "人気のPDFツール",
-      "description": "作業を効率化するために最も使用されているツール。"
+      "description": "PDFに必要な機能が、ワンクリックですぐに使えます。",
+      "viewAll": "すべてのツールを見る",
+      "items": {
+        "merge-pdf": "複数のPDFを1つのドキュメントにまとめます。",
+        "compress-pdf": "大きなPDFファイルのサイズを小さくします。",
+        "pdf-to-docx": "PDFを編集可能なWord文書に変換します。",
+        "edit-pdf": "テキストや画像を編集したり、注釈を追加したりします。",
+        "split-pdf": "PDFをページやセクションごとに分割します。",
+        "sign-pdf": "PDFに署名を追加します。",
+        "jpg-to-pdf": "JPG画像をPDFに変換します。",
+        "organize-pdf": "ページの並べ替え、回転、削除ができます。"
+      }
     },
-    "categoriesSection": {
-      "title": "すべてのツールカテゴリを見る",
-      "description": "カテゴリ別に整理された{count}以上のプロフェッショナルPDFツール",
-      "toolsCount": "{count} ツール"
+    "directory": {
+      "title": "すべてのPDFツールを探す",
+      "description": "PDFのあらゆる作業に合ったツールが見つかります。",
+      "searchLabel": "PDFツールを検索",
+      "searchPlaceholder": "作業内容で検索（例：結合、回転、変換）",
+      "clearSearch": "検索をクリア",
+      "filterLabel": "カテゴリで絞り込む",
+      "all": "すべて",
+      "toolsCount": "{count, plural, other {#個のツール}}",
+      "seeAll": "{count}個すべて見る",
+      "status": "{count, plural, other {#個のツールが見つかりました}}",
+      "empty": "検索に一致するツールがありません。",
+      "emptyHint": "別のキーワードを試すか、絞り込みを解除してすべてのツールを表示してください。",
+      "clearFilters": "絞り込みを解除"
     },
-    "categoriesDescription": {
-      "editAnnotate": "PDFコンテンツの編集、注釈、変更",
-      "convertToPdf": "様々な形式からPDFへの変換",
-      "convertFromPdf": "PDFから他の形式への変換",
-      "organizeManage": "PDFページの整理、結合、分割、管理",
-      "optimizeRepair": "PDFファイルの圧縮、最適化、修復",
-      "securePdf": "PDFファイルの暗号化、復号化、保護"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "ファイルを直接共有。クラウド保存なし。",
+      "badge": "近日公開",
+      "subtitle": "ピアツーピア技術で、PDFなどのファイルをブラウザ間で直接送信。アカウントは不要で、クラウドへの永続的な保存もありません。",
+      "planned": "AwesomePDF Share は計画中の機能で、まだ利用できません。ここでは想定している仕組みをご紹介しています。",
+      "stepsTitle": "想定している仕組み",
+      "steps": {
+        "choose": "送信するファイルを選びます。",
+        "link": "共有リンクを取得して、相手に送ります。",
+        "open": "相手がリンクを開いてファイルが暗号化された接続で転送される間、このブラウザのタブを開いたままにします。"
+      },
+      "benefits": {
+        "direct": {
+          "title": "ブラウザ間の直接共有",
+          "description": "ネットワークが許す限り、ファイルは受信者へ直接届く設計です。"
+        },
+        "noAccount": {
+          "title": "アカウント不要",
+          "description": "リンクを共有するだけ。誰も登録する必要はありません。"
+        },
+        "noStorage": {
+          "title": "クラウドへの永続保存なし",
+          "description": "ファイルをサーバーに保管しない設計です。"
+        }
+      },
+      "note": "直接接続は双方のネットワークに左右されます。制限の厳しいネットワークで接続がブロックされる場合、将来のバージョンでオプションの中継を提供する可能性があります。その場合は、使用する前に明確にお知らせします。",
+      "cta": "ファイルを共有 — 近日公開",
+      "preview": "計画中の機能のプレビュー",
+      "sender": "送信者",
+      "receiver": "受信者",
+      "connection": "暗号化されたピアツーピア接続",
+      "illustration": "計画中の機能のイメージ：送信者のデバイスと受信者のデバイスが、暗号化されたピアツーピア接続でつながっています。まだ利用できません。"
     },
-    "stats": {
-      "pdfTools": "PDFツール",
-      "freeToUse": "無料で使用可能",
-      "languages": "言語",
-      "filesUploaded": "アップロードされたファイル"
+    "trust": {
+      "title": "あなたのドキュメント。あなたのコントロール。",
+      "description": "対応するPDF操作はブラウザ内でローカルに実行されるため、アカウントを作成せずに機密性の高いファイルも扱えます。プライバシーはAwesomePDFの基本原則であり、仕組みが異なる場合は率直にお伝えします。",
+      "items": {
+        "private": {
+          "title": "プライバシー重視の設計",
+          "description": "対応する操作では、ファイルはローカルで処理されます。"
+        },
+        "free": {
+          "title": "無料で利用可能",
+          "description": "登録を必須とせず、無料のPDFユーティリティを利用できます。"
+        },
+        "simple": {
+          "title": "シンプルで高速",
+          "description": "すっきりとわかりやすいインターフェースでPDFを扱えます。"
+        }
+      },
+      "note": "ご注意：一部のツールは、初回利用時にフォント、言語データ、補助スクリプトをダウンロードします。ドキュメントがそれらのダウンロードに含まれることはありません。",
+      "privacyLink": "プライバシーポリシーを読む",
+      "sourceLink": "ソースコードを確認する"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "description": "AwesomePDFに関する簡単な回答です。",
+      "seeAll": "すべてのFAQを見る",
+      "items": {
+        "free": {
+          "question": "AwesomePDFは無料で使えますか？",
+          "answer": "はい。AwesomePDFのPDFツールは無料で、サブスクリプションも登録も必要ありません。"
+        },
+        "upload": {
+          "question": "PDFファイルはサーバーにアップロードされますか？",
+          "answer": "いいえ。対応するツールは、JavaScriptとWebAssemblyを使ってブラウザ内でファイルを処理し、AwesomePDFがドキュメントをサーバーにアップロードすることはありません。一部のツールは初回利用時にフォント、言語データ、補助スクリプトをダウンロードしますが、ドキュメントはそれらに含まれません。また、最近使ったファイル名の短いリストがお使いのデバイスに保存されます。ヘッダーの時計アイコンからいつでも消去できます。"
+        },
+        "account": {
+          "question": "アカウントを作成せずに使えますか？",
+          "answer": "はい。ツールを開いてすぐに作業を始められます。ログインや登録は不要です。"
+        },
+        "tools": {
+          "question": "どのPDFツールが利用できますか？",
+          "answer": "AwesomePDFには、編集と注釈、PDFへの変換、PDFからの変換、整理と管理、最適化と修復、PDFのセキュリティの6つのグループに{count}個のツールがあります。人気のツールには、結合、分割、圧縮、PDFからWord、編集、署名などがあります。上のディレクトリで探すか、検索をご利用ください。"
+        },
+        "mobile": {
+          "question": "モバイルデバイスでも使えますか？",
+          "answer": "はい。AwesomePDFは最新のモバイルブラウザで動作します。ファイルはお使いのデバイス上で処理されるため、大きなドキュメントや、OCR、Office変換などの負荷の高い作業はスマートフォンでは時間がかかることがあります。"
+        },
+        "scanned": {
+          "question": "スキャンしたドキュメントに対応していますか？",
+          "answer": "はい。OCR PDFツールは、スキャンしたページ内のテキストを認識し、PDFを検索可能にします。結果はスキャンの品質や言語によって異なり、OCRの言語データは初回利用時にダウンロードされます。"
+        },
+        "share": {
+          "question": "AwesomePDF Shareとは何ですか？",
+          "answer": "AwesomePDF Shareは、暗号化されたピアツーピア接続で、ブラウザからブラウザへファイルを直接送信する、近日公開予定の機能です。まだ利用できず、上に表示されているツールには含まれません。"
+        }
+      }
     },
     "categories": {
       "popular": "人気のツール",
@@ -1375,6 +1545,14 @@
       "organizeManage": "整理 & 管理",
       "optimizeRepair": "最適化 & 修復",
       "securePdf": "PDFセキュリティ"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "PDFコンテンツの編集、注釈、変更",
+      "convertToPdf": "様々な形式からPDFへの変換",
+      "convertFromPdf": "PDFから他の形式への変換",
+      "organizeManage": "PDFページの整理、結合、分割、管理",
+      "optimizeRepair": "PDFファイルの圧縮、最適化、修復",
+      "securePdf": "PDFファイルの暗号化、復号化、保護"
     }
   },
   "workflow": {

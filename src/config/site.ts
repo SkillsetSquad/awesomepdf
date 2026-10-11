@@ -23,7 +23,7 @@ function resolveSiteUrl(): string {
  */
 export const siteConfig = {
   name: 'AwesomePDF',
-  description: 'Professional PDF Tools - Free, Private & Browser-Based. Merge, split, compress, convert, and edit PDF files online without uploading to servers.',
+  description: 'Free online PDF tools that run in your browser. Merge, split, compress, convert, and edit PDF files with no sign-up required.',
   url: resolveSiteUrl(),
   ogImage: '/images/og-image.png',
   links: {
@@ -47,7 +47,7 @@ export const siteConfig = {
   // SEO-related settings
   seo: {
     titleTemplate: '%s | AwesomePDF',
-    defaultTitle: 'AwesomePDF - Professional PDF Tools',
+    defaultTitle: 'AwesomePDF - Free Online PDF Tools',
     locale: 'en_US',
   },
 };

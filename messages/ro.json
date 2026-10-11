@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - Instrumente PDF Profesionale",
-      "description": "Gratuit, Privat și Bazat pe Browser. Combină, editează și modifică fișiere PDF online fără a le încărca pe servere."
+      "title": "AwesomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
+      "description": "Îmbină, comprimă, convertește, editează și organizează PDF-uri în câteva secunde. Instrumente PDF gratuite și simple, care rulează în browser, fără înregistrare."
     },
     "tools": {
       "title": "Toate Instrumentele PDF",
@@ -46,7 +46,16 @@
       "privacy": "Confidențialitate",
       "contact": "Contact",
       "mainMenu": "Navigare principală",
-      "openMenu": "Deschide meniul"
+      "openMenu": "Deschide meniul",
+      "allTools": "Toate instrumentele",
+      "edit": "Editare",
+      "convert": "Conversie",
+      "organize": "Organizare",
+      "shareFiles": "Partajare fișiere",
+      "comingSoon": "În curând",
+      "browseAll": "Vezi toate cele {count} instrumente",
+      "language": "Limbă",
+      "search": "Căutare"
     },
     "buttons": {
       "duplicate": "Duplică",
@@ -101,7 +110,15 @@
       "openSource": "Notificări open source",
       "basedOn": "Bazat pe",
       "downloadError": "Descărcarea codului sursă a eșuat. Încercați din nou.",
-      "sourceDescription": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale."
+      "sourceDescription": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale.",
+      "description": "Instrumente PDF gratuite în browser pentru munca de zi cu zi. Îmbină, comprimă, convertește, editează și organizează PDF-uri fără să creezi un cont.",
+      "brandOf": "O marcă Skillset Squad Private Limited.",
+      "toolsHeading": "Instrumente PDF",
+      "companyHeading": "Companie și resurse",
+      "legalHeading": "Open source și informații legale",
+      "convertPdf": "Convertire PDF",
+      "privacyPolicy": "Politica de confidențialitate",
+      "copyrightLine": "© {year} AwesomePDF. O marcă Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "Fișiere Recente",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "Instrumente PDF Profesionale",
-      "highlight": "Instrumente Profesionale",
-      "subtitle": "Procesare PDF gratuită, privată și puternică în browser-ul tău",
-      "cta": "Începe Acum"
+      "title": "Toate instrumentele PDF de care ai nevoie. Într-un singur loc.",
+      "subtitle": "Îmbină, comprimă, convertește, editează și organizează PDF-uri în câteva secunde. Gratuit, simplu și gândit pentru confidențialitate."
     },
-    "features": {
-      "privacy": {
-        "title": "100% Privat",
-        "description": "Toată procesarea are loc în browser-ul tău. Fișierele tale nu părăsesc niciodată dispozitivul."
+    "upload": {
+      "title": "Trage fișierele aici",
+      "titleActive": "Eliberează pentru a adăuga fișierele",
+      "subtitle": "Alege PDF-uri, imagini sau documente compatibile",
+      "choose": "Alege fișiere",
+      "privacy": "Fișierele alese aici rămân în browserul tău. Nimic nu este încărcat pe un server.",
+      "shortcuts": "Instrumente populare",
+      "summary": {
+        "pdf": "{count, plural, one {# fișier PDF selectat} few {# fișiere PDF selectate} other {# de fișiere PDF selectate}}",
+        "image": "{count, plural, one {# imagine selectată} few {# imagini selectate} other {# de imagini selectate}}",
+        "document": "{count, plural, one {# fișier selectat} few {# fișiere selectate} other {# de fișiere selectate}} ({extension})",
+        "mixed": "{count, plural, one {# fișier selectat} few {# fișiere selectate} other {# de fișiere selectate}}"
       },
-      "free": {
-        "title": "Complet Gratuit",
-        "description": "Fără înregistrare, fără limite, fără costuri ascunse."
+      "moreFiles": "+{count} în plus",
+      "suggestionsTitle": "Ce vrei să faci?",
+      "chooseDifferent": "Alege alte fișiere",
+      "mixedNotice": "Aceste fișiere sunt de tipuri diferite, așa că niciun instrument nu se potrivește pentru toate. Alege fișiere de un singur tip, de exemplu doar PDF-uri sau doar imagini.",
+      "noToolNotice": "Niciun instrument nu poate deschide această combinație de fișiere. Încearcă cu mai puține fișiere sau cu alt tip de fișier.",
+      "noneUsable": "Niciunul dintre fișierele selectate nu poate fi folosit. AwesomePDF funcționează cu PDF-uri, imagini și documente uzuale precum Word, Excel și PowerPoint.",
+      "skipped": "Unele fișiere au fost omise",
+      "readFailed": "Nu am putut citi aceste fișiere. Încearcă din nou.",
+      "errors": {
+        "empty": "{name} este gol.",
+        "unsupported": "{name} nu este un tip de fișier acceptat.",
+        "notPdf": "{name} nu este un fișier PDF valid."
       },
-      "powerful": {
-        "title": "Instrumente Puternice",
-        "description": "Peste 67 de instrumente PDF profesionale pentru toate nevoile tale."
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "Redu dimensiunea fișierului pentru a-l partaja sau încărca."
+          },
+          "edit-pdf": {
+            "description": "Modifică textul și imaginile sau adaugă adnotări."
+          },
+          "split-pdf": {
+            "description": "Separă paginile sau intervalele în fișiere noi."
+          },
+          "sign-pdf": {
+            "description": "Adaugă-ți semnătura în document."
+          },
+          "organize-pdf": {
+            "description": "Reordonează, rotește sau șterge pagini."
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "Combină {count} fișiere într-un singur PDF."
+          },
+          "pdf-multi-tool": {
+            "title": "Combină și organizează",
+            "description": "Îmbină, reordonează și curăță paginile într-un singur loc."
+          },
+          "compress-pdf": {
+            "title": "Comprimare în lot",
+            "description": "Redu dimensiunea tuturor celor {count} fișiere deodată."
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "Convertește această imagine într-un document PDF."
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "Imagini în PDF",
+            "description": "Combină {count} imagini într-un singur PDF."
+          }
+        },
+        "convert": {
+          "description": "Convertește {extension} în PDF."
+        }
       }
     },
     "popularTools": {
-      "badge": "Cele Mai Populare",
-      "title": "Instrumente PDF Populare",
-      "description": "Cele mai utilizate instrumente ale noastre pentru a te ajuta să îți termini treaba mai repede."
+      "title": "Instrumente PDF populare",
+      "description": "Tot ce îți trebuie pentru a lucra cu PDF-uri, la un clic distanță.",
+      "viewAll": "Vezi toate instrumentele",
+      "items": {
+        "merge-pdf": "Combină mai multe PDF-uri într-un singur document.",
+        "compress-pdf": "Redu dimensiunea fișierelor PDF mari.",
+        "pdf-to-docx": "Transformă un PDF într-un document Word editabil.",
+        "edit-pdf": "Editează textul și imaginile sau adaugă adnotări.",
+        "split-pdf": "Împarte un PDF în pagini sau secțiuni.",
+        "sign-pdf": "Adaugă-ți semnătura la orice PDF.",
+        "jpg-to-pdf": "Transformă imaginile JPG într-un PDF.",
+        "organize-pdf": "Reordonează, rotește și șterge pagini."
+      }
     },
-    "categoriesSection": {
-      "title": "Explorează Toate Categoriile de Instrumente",
-      "description": "{count}+ instrumente PDF profesionale organizate pe categorii",
-      "toolsCount": "{count} instrumente"
+    "directory": {
+      "title": "Explorează toate instrumentele PDF",
+      "description": "Găsește instrumentul potrivit pentru orice sarcină cu PDF-uri.",
+      "searchLabel": "Caută instrumente PDF",
+      "searchPlaceholder": "Caută după sarcină, de exemplu îmbinare, rotire sau conversie",
+      "clearSearch": "Șterge căutarea",
+      "filterLabel": "Filtrează după categorie",
+      "all": "Toate",
+      "toolsCount": "{count, plural, one {# instrument} few {# instrumente} other {# de instrumente}}",
+      "seeAll": "Vezi toate cele {count}",
+      "status": "{count, plural, one {# instrument găsit} few {# instrumente găsite} other {# de instrumente găsite}}",
+      "empty": "Niciun instrument nu se potrivește căutării tale.",
+      "emptyHint": "Încearcă alt cuvânt sau șterge filtrele pentru a vedea toate instrumentele.",
+      "clearFilters": "Șterge filtrele"
     },
-    "categoriesDescription": {
-      "editAnnotate": "Editează, adnotează și modifică conținutul PDF",
-      "convertToPdf": "Convertește diverse formate în PDF",
-      "convertFromPdf": "Convertește PDF în alte formate",
-      "organizeManage": "Organizează, combină, divizează și gestionează paginile PDF",
-      "optimizeRepair": "Comprimă, optimizează și repară fișierele PDF",
-      "securePdf": "Criptează, decriptează și securizează fișierele PDF"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "Partajează fișiere direct. Fără stocare în cloud.",
+      "badge": "În curând",
+      "subtitle": "Trimite PDF-uri și alte fișiere direct între browsere, folosind tehnologia peer-to-peer. Fără cont și fără stocare permanentă în cloud.",
+      "planned": "AwesomePDF Share este o funcție planificată și nu este încă disponibilă. Aceasta este o previzualizare a modului în care ar urma să funcționeze.",
+      "stepsTitle": "Cum este planificat să funcționeze",
+      "steps": {
+        "choose": "Alege un fișier de trimis.",
+        "link": "Obține un link de partajare și trimite-l destinatarului.",
+        "open": "Ține această filă de browser deschisă cât timp destinatarul deschide linkul și fișierul se transferă printr-o conexiune criptată."
+      },
+      "benefits": {
+        "direct": {
+          "title": "Partajare directă de la browser la browser",
+          "description": "Fișierele sunt gândite să ajungă direct la destinatar ori de câte ori rețeaua permite."
+        },
+        "noAccount": {
+          "title": "Fără cont",
+          "description": "Partajează un link. Nimeni nu trebuie să se înregistreze."
+        },
+        "noStorage": {
+          "title": "Fără stocare permanentă în cloud",
+          "description": "Conceput astfel încât fișierele tale să nu fie păstrate pe un server."
+        }
+      },
+      "note": "Conexiunile directe depind de ambele rețele. Dacă o rețea restrictivă le blochează, o versiune viitoare ar putea oferi un releu opțional. Dacă va fi cazul, te vom anunța clar înainte de a fi folosit.",
+      "cta": "Partajează fișiere — În curând",
+      "preview": "Previzualizarea unei funcții planificate",
+      "sender": "Expeditor",
+      "receiver": "Destinatar",
+      "connection": "Conexiune peer-to-peer criptată",
+      "illustration": "Ilustrație a unei funcții planificate: dispozitivul unui expeditor conectat la cel al unui destinatar printr-o conexiune peer-to-peer criptată. Încă indisponibil."
     },
-    "stats": {
-      "pdfTools": "Instrumente PDF",
-      "freeToUse": "Gratuit de Folosit",
-      "languages": "Limbi",
-      "filesUploaded": "Fișiere Încărcate"
+    "trust": {
+      "title": "Documentele tale. Controlul tău.",
+      "description": "Operațiunile PDF acceptate rulează local în browser, deci poți lucra cu fișiere sensibile fără să creezi un cont. Confidențialitatea este un principiu de bază al AwesomePDF, iar spunem clar când ceva funcționează diferit.",
+      "items": {
+        "private": {
+          "title": "Confidențial prin concepție",
+          "description": "Fișierele sunt procesate local pentru operațiunile acceptate."
+        },
+        "free": {
+          "title": "Gratuit",
+          "description": "Folosește utilitare PDF gratuite, fără înregistrare obligatorie."
+        },
+        "simple": {
+          "title": "Simplu și rapid",
+          "description": "Lucrează cu PDF-uri printr-o interfață curată și directă."
+        }
+      },
+      "note": "Bine de știut: câteva instrumente descarcă fonturi, date lingvistice sau scripturi auxiliare la prima utilizare. Documentele tale nu fac parte din aceste descărcări.",
+      "privacyLink": "Citește politica de confidențialitate",
+      "sourceLink": "Vezi codul sursă"
+    },
+    "faq": {
+      "title": "Întrebări frecvente",
+      "description": "Răspunsuri rapide despre AwesomePDF.",
+      "seeAll": "Vezi toate întrebările",
+      "items": {
+        "free": {
+          "question": "Este AwesomePDF gratuit?",
+          "answer": "Da. Instrumentele PDF din AwesomePDF sunt gratuite, fără abonament și fără înregistrare."
+        },
+        "upload": {
+          "question": "Sunt fișierele mele PDF încărcate pe un server?",
+          "answer": "Nu. Instrumentele acceptate îți procesează fișierele în browser, folosind JavaScript și WebAssembly, iar AwesomePDF nu încarcă documentele tale pe un server. Câteva instrumente descarcă fonturi, date lingvistice sau scripturi auxiliare la prima utilizare; documentele tale nu fac parte din aceste descărcări. Aplicația păstrează pe dispozitivul tău și o scurtă listă cu numele fișierelor folosite recent, pe care o poți șterge oricând din pictograma ceas din antet."
+        },
+        "account": {
+          "question": "Pot folosi AwesomePDF fără să creez un cont?",
+          "answer": "Da. Deschide orice instrument și începe imediat. Nu există autentificare sau înregistrare."
+        },
+        "tools": {
+          "question": "Ce instrumente PDF sunt disponibile?",
+          "answer": "AwesomePDF include {count} de instrumente în șase grupe: editare și adnotare, conversie în PDF, conversie din PDF, organizare și gestionare, optimizare și reparare, securizare PDF. Printre cele populare se numără îmbinarea, împărțirea, comprimarea, PDF în Word, editarea și semnarea. Răsfoiește-le în directorul de mai sus sau folosește căutarea."
+        },
+        "mobile": {
+          "question": "Pot folosi AwesomePDF pe dispozitive mobile?",
+          "answer": "Da. AwesomePDF funcționează în browserele mobile moderne. Deoarece fișierele sunt procesate pe dispozitivul tău, documentele mari și sarcinile solicitante, precum OCR sau conversiile Office, pot fi mai lente pe telefon."
+        },
+        "scanned": {
+          "question": "Acceptă AwesomePDF documente scanate?",
+          "answer": "Da. Instrumentul OCR PDF poate recunoaște textul din paginile scanate, astfel încât PDF-ul să devină căutabil. Rezultatele depind de calitatea scanării și de limbă, iar datele lingvistice pentru OCR se descarcă la prima utilizare."
+        },
+        "share": {
+          "question": "Ce este AwesomePDF Share?",
+          "answer": "AwesomePDF Share este o funcție planificată, disponibilă în curând, pentru trimiterea fișierelor direct de la un browser la altul printr-o conexiune peer-to-peer criptată. Nu este încă disponibilă și nu face parte din instrumentele enumerate mai sus."
+        }
+      }
     },
     "categories": {
       "popular": "Instrumente Populare",
@@ -1375,6 +1545,14 @@
       "organizeManage": "Organizare și Gestionare",
       "optimizeRepair": "Optimizare și Reparare",
       "securePdf": "Securizare PDF"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "Editează, adnotează și modifică conținutul PDF",
+      "convertToPdf": "Convertește diverse formate în PDF",
+      "convertFromPdf": "Convertește PDF în alte formate",
+      "organizeManage": "Organizează, combină, divizează și gestionează paginile PDF",
+      "optimizeRepair": "Comprimă, optimizează și repară fișierele PDF",
+      "securePdf": "Criptează, decriptează și securizează fișierele PDF"
     }
   },
   "workflow": {

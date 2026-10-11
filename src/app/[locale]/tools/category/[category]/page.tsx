@@ -1,6 +1,9 @@
-import { setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
-import { TOOL_CATEGORIES, type ToolCategory } from '@/types/tool';
+import { CATEGORY_MESSAGE_KEYS, TOOL_CATEGORIES, type ToolCategory } from '@/types/tool';
+import { getToolsByCategory } from '@/config/tools';
+import { generateBaseMetadata } from '@/lib/seo/metadata';
 import CategoryPageClient from './CategoryPageClient';
 import { notFound } from 'next/navigation';
 
@@ -13,18 +16,22 @@ export function generateStaticParams() {
     );
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string }> }) {
-    const { category } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string }> }): Promise<Metadata> {
+    const { locale, category } = await params;
+    if (!TOOL_CATEGORIES.includes(category as ToolCategory)) return {};
 
-    const formattedCategory = category
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+    const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : 'en';
+    const t = await getTranslations({ locale: validLocale });
+    const key = CATEGORY_MESSAGE_KEYS[category as ToolCategory];
+    const count = getToolsByCategory(category as ToolCategory).length;
 
-    return {
-        title: `${formattedCategory} Tools - AwesomePDF`,
-        description: `Free online ${formattedCategory} tools. Secure, fast, and easy to use.`,
-    };
+    return generateBaseMetadata({
+        locale: validLocale,
+        path: `/tools/category/${category}`,
+        title: `${t(`home.categories.${key}`)} - ${t('metadata.tools.title')}`,
+        description: `${t(`home.categoriesDescription.${key}`)} · ${t('home.directory.toolsCount', { count })}`,
+        keywords: [t(`home.categories.${key}`)],
+    });
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {

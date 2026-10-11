@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - 专业 PDF 工具",
-      "description": "免费、私密、基于浏览器。在线合并、编辑 PDF 文件，无需上传到服务器。"
+      "title": "AwesomePDF – 免费的 PDF 合并、压缩与编辑工具",
+      "description": "几秒钟内合并、压缩、转换、编辑和整理 PDF。免费、简单、在浏览器中运行的 PDF 工具，无需注册。"
     },
     "tools": {
       "title": "所有 PDF 工具",
@@ -46,7 +46,16 @@
       "privacy": "隐私",
       "contact": "联系我们",
       "mainMenu": "主导航",
-      "openMenu": "打开菜单"
+      "openMenu": "打开菜单",
+      "allTools": "全部工具",
+      "edit": "编辑",
+      "convert": "转换",
+      "organize": "整理",
+      "shareFiles": "文件共享",
+      "comingSoon": "即将推出",
+      "browseAll": "浏览全部 {count} 个工具",
+      "language": "语言",
+      "search": "搜索"
     },
     "buttons": {
       "duplicate": "复制",
@@ -101,7 +110,15 @@
       "openSource": "开源声明",
       "basedOn": "基于",
       "downloadError": "源代码下载失败，请重试。",
-      "sourceDescription": "下载此部署版本的 AwesomePDF 源代码，包括构建配置和原始声明。"
+      "sourceDescription": "下载此部署版本的 AwesomePDF 源代码，包括构建配置和原始声明。",
+      "description": "适合日常使用的免费浏览器 PDF 工具。无需创建账户，即可合并、压缩、转换、编辑和整理 PDF。",
+      "brandOf": "Skillset Squad Private Limited 旗下品牌。",
+      "toolsHeading": "PDF 工具",
+      "companyHeading": "公司与资源",
+      "legalHeading": "开源与法律信息",
+      "convertPdf": "PDF 转换",
+      "privacyPolicy": "隐私政策",
+      "copyrightLine": "© {year} AwesomePDF。Skillset Squad Private Limited 旗下品牌。"
     },
     "recentFiles": {
       "title": "最近文件",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "专业PDF工具",
-      "highlight": "专业工具",
-      "subtitle": "在浏览器中免费、私密、强大的PDF处理",
-      "cta": "开始使用"
+      "title": "您需要的所有 PDF 工具，尽在一处。",
+      "subtitle": "几秒钟内合并、压缩、转换、编辑和整理 PDF。免费、简单，并以保护隐私为出发点。"
     },
-    "features": {
-      "privacy": {
-        "title": "100%私密",
-        "description": "所有处理都在您的浏览器中进行。您的文件永远不会离开您的设备。"
+    "upload": {
+      "title": "将文件拖放到此处",
+      "titleActive": "松开即可添加文件",
+      "subtitle": "选择 PDF、图片或受支持的文档",
+      "choose": "选择文件",
+      "privacy": "您在此选择的文件只会留在浏览器中，不会上传到服务器。",
+      "shortcuts": "热门工具",
+      "summary": {
+        "pdf": "{count, plural, other {已选择 # 个 PDF 文件}}",
+        "image": "{count, plural, other {已选择 # 张图片}}",
+        "document": "{count, plural, other {已选择 # 个文件}}（{extension}）",
+        "mixed": "{count, plural, other {已选择 # 个文件}}"
       },
-      "free": {
-        "title": "完全免费",
-        "description": "无需注册，无限制，无隐藏费用。"
+      "moreFiles": "另有 {count} 个",
+      "suggestionsTitle": "您想做什么？",
+      "chooseDifferent": "选择其他文件",
+      "mixedNotice": "这些文件类型不同，没有一个工具能同时处理所有文件。请选择同一类型的文件，例如只选 PDF 或只选图片。",
+      "noToolNotice": "没有工具可以打开这种文件组合。请减少文件数量或使用其他类型的文件。",
+      "noneUsable": "所选文件均无法使用。AwesomePDF 支持 PDF、图片，以及 Word、Excel 和 PowerPoint 等常见文档。",
+      "skipped": "部分文件已被跳过",
+      "readFailed": "无法读取这些文件，请重试。",
+      "errors": {
+        "empty": "{name} 是空文件。",
+        "unsupported": "{name} 不是受支持的文件类型。",
+        "notPdf": "{name} 不是有效的 PDF 文件。"
       },
-      "powerful": {
-        "title": "强大工具",
-        "description": "67+专业PDF工具满足您的所有需求。"
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "缩小文件体积，便于分享或上传。"
+          },
+          "edit-pdf": {
+            "description": "修改文字和图片，或添加批注。"
+          },
+          "split-pdf": {
+            "description": "将页面或页码范围拆分为新文件。"
+          },
+          "sign-pdf": {
+            "description": "为文档添加您的签名。"
+          },
+          "organize-pdf": {
+            "description": "重新排序、旋转或删除页面。"
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "将 {count} 个文件合并为一个 PDF。"
+          },
+          "pdf-multi-tool": {
+            "title": "合并并整理",
+            "description": "在一个地方合并、重新排序并整理页面。"
+          },
+          "compress-pdf": {
+            "title": "批量压缩",
+            "description": "一次缩小全部 {count} 个文件的体积。"
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "将此图片转换为 PDF 文档。"
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "图片转 PDF",
+            "description": "将 {count} 张图片合并为一个 PDF。"
+          }
+        },
+        "convert": {
+          "description": "将 {extension} 转换为 PDF。"
+        }
       }
     },
     "popularTools": {
-      "badge": "最热门",
       "title": "热门 PDF 工具",
-      "description": "我们最常用的工具，帮助您更快地完成工作。"
+      "description": "处理 PDF 所需的一切，一键即达。",
+      "viewAll": "查看全部工具",
+      "items": {
+        "merge-pdf": "将多个 PDF 合并为一个文档。",
+        "compress-pdf": "缩小大型 PDF 文件的体积。",
+        "pdf-to-docx": "将 PDF 转换为可编辑的 Word 文档。",
+        "edit-pdf": "修改文字和图片，或添加批注。",
+        "split-pdf": "将 PDF 拆分为页面或章节。",
+        "sign-pdf": "为任意 PDF 添加您的签名。",
+        "jpg-to-pdf": "将 JPG 图片转换为 PDF。",
+        "organize-pdf": "重新排序、旋转并删除页面。"
+      }
     },
-    "categoriesSection": {
-      "title": "浏览所有工具分类",
-      "description": "{count}+ 个按类别组织的专业 PDF 工具",
-      "toolsCount": "{count} 个工具"
+    "directory": {
+      "title": "浏览全部 PDF 工具",
+      "description": "为任何 PDF 任务找到合适的工具。",
+      "searchLabel": "搜索 PDF 工具",
+      "searchPlaceholder": "按任务搜索，例如合并、旋转或转换",
+      "clearSearch": "清除搜索",
+      "filterLabel": "按类别筛选",
+      "all": "全部",
+      "toolsCount": "{count, plural, other {# 个工具}}",
+      "seeAll": "查看全部 {count} 个",
+      "status": "{count, plural, other {找到 # 个工具}}",
+      "empty": "没有与搜索匹配的工具。",
+      "emptyHint": "试试其他关键词，或清除筛选以查看所有工具。",
+      "clearFilters": "清除筛选"
     },
-    "categoriesDescription": {
-      "editAnnotate": "编辑、注释和修改 PDF 内容",
-      "convertToPdf": "将各种格式转换为 PDF",
-      "convertFromPdf": "将 PDF 转换为其他格式",
-      "organizeManage": "组织、合并、拆分和管理 PDF 页面",
-      "optimizeRepair": "压缩、优化和修复 PDF 文件",
-      "securePdf": "加密、解密和保护 PDF 文件"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "直接分享文件，无需云存储。",
+      "badge": "即将推出",
+      "subtitle": "借助点对点技术，在浏览器之间直接发送 PDF 和其他文件。无需账户，也不会在云端永久存储。",
+      "planned": "AwesomePDF Share 是计划中的功能，目前尚不可用。以下是它预期工作方式的预览。",
+      "stepsTitle": "预期的工作方式",
+      "steps": {
+        "choose": "选择要发送的文件。",
+        "link": "获取分享链接并发送给接收方。",
+        "open": "在接收方打开链接、文件通过加密连接传输期间，请保持此浏览器标签页打开。"
+      },
+      "benefits": {
+        "direct": {
+          "title": "浏览器之间直接分享",
+          "description": "只要网络允许，文件将直接传送给接收方。"
+        },
+        "noAccount": {
+          "title": "无需账户",
+          "description": "分享一个链接即可，任何人都无需注册。"
+        },
+        "noStorage": {
+          "title": "无永久云存储",
+          "description": "设计目标是不在服务器上保留您的文件。"
+        }
+      },
+      "note": "直接连接取决于双方的网络。如果受限的网络阻止了直接连接，未来版本可能会提供可选的中继服务。若如此，我们会在使用前明确告知。",
+      "cta": "分享文件 — 即将推出",
+      "preview": "计划中功能的预览",
+      "sender": "发送方",
+      "receiver": "接收方",
+      "connection": "加密的点对点连接",
+      "illustration": "计划中功能的示意图：发送方的设备通过加密的点对点连接与接收方的设备相连。目前尚不可用。"
     },
-    "stats": {
-      "pdfTools": "PDF 工具",
-      "freeToUse": "免费使用",
-      "languages": "支持语言",
-      "filesUploaded": "文件上传"
+    "trust": {
+      "title": "您的文档，由您掌控。",
+      "description": "受支持的 PDF 操作在浏览器中本地运行，因此无需创建账户即可处理敏感文件。隐私是 AwesomePDF 的核心原则，当某些功能的工作方式不同时，我们会坦诚说明。",
+      "items": {
+        "private": {
+          "title": "隐私优先的设计",
+          "description": "受支持的操作在本地处理文件。"
+        },
+        "free": {
+          "title": "免费使用",
+          "description": "无需强制注册，即可使用免费的 PDF 实用工具。"
+        },
+        "simple": {
+          "title": "简单快捷",
+          "description": "通过简洁直观的界面处理 PDF。"
+        }
+      },
+      "note": "温馨提示：少数工具会在首次使用时下载字体、语言数据或辅助脚本。您的文档不包含在这些下载中。",
+      "privacyLink": "阅读隐私政策",
+      "sourceLink": "查看源代码"
+    },
+    "faq": {
+      "title": "常见问题",
+      "description": "关于 AwesomePDF 的快速解答。",
+      "seeAll": "查看全部常见问题",
+      "items": {
+        "free": {
+          "question": "AwesomePDF 可以免费使用吗？",
+          "answer": "可以。AwesomePDF 的 PDF 工具可免费使用，无需订阅，也无需注册。"
+        },
+        "upload": {
+          "question": "我的 PDF 文件会上传到服务器吗？",
+          "answer": "不会。受支持的工具使用 JavaScript 和 WebAssembly 在您的浏览器中处理文件，AwesomePDF 不会将您的文档上传到服务器。少数工具会在首次使用时下载字体、语言数据或辅助脚本，您的文档不包含在这些下载中。应用还会在您的设备上保存一份简短的最近使用文件名列表，您可以随时通过页眉中的时钟图标清除。"
+        },
+        "account": {
+          "question": "不创建账户也能使用 AwesomePDF 吗？",
+          "answer": "可以。打开任意工具即可立即开始使用，无需登录或注册。"
+        },
+        "tools": {
+          "question": "有哪些 PDF 工具可用？",
+          "answer": "AwesomePDF 共有 {count} 个工具，分为六组：编辑与注释、转换为 PDF、从 PDF 转换、整理与管理、优化与修复，以及 PDF 安全。热门工具包括合并、拆分、压缩、PDF 转 Word、编辑和签名。您可以在上方的目录中浏览，也可以使用搜索。"
+        },
+        "mobile": {
+          "question": "可以在移动设备上使用 AwesomePDF 吗？",
+          "answer": "可以。AwesomePDF 可在现代移动浏览器中运行。由于文件在您的设备上处理，较大的文档以及 OCR、Office 转换等繁重任务在手机上可能会更慢。"
+        },
+        "scanned": {
+          "question": "AwesomePDF 支持扫描文档吗？",
+          "answer": "支持。OCR PDF 工具可以识别扫描页面中的文字，使 PDF 变得可搜索。结果取决于扫描质量和语言，且 OCR 语言数据会在首次使用时下载。"
+        },
+        "share": {
+          "question": "什么是 AwesomePDF Share？",
+          "answer": "AwesomePDF Share 是即将推出的计划功能，可通过加密的点对点连接，将文件从一个浏览器直接发送到另一个浏览器。该功能目前尚不可用，也不属于上方列出的工具。"
+        }
+      }
     },
     "categories": {
       "popular": "热门工具",
@@ -1375,6 +1545,14 @@
       "organizeManage": "整理与管理",
       "optimizeRepair": "优化与修复",
       "securePdf": "PDF安全"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "编辑、注释和修改 PDF 内容",
+      "convertToPdf": "将各种格式转换为 PDF",
+      "convertFromPdf": "将 PDF 转换为其他格式",
+      "organizeManage": "组织、合并、拆分和管理 PDF 页面",
+      "optimizeRepair": "压缩、优化和修复 PDF 文件",
+      "securePdf": "加密、解密和保护 PDF 文件"
     }
   },
   "workflow": {

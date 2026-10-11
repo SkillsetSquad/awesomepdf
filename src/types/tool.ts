@@ -22,6 +22,18 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
 ];
 
 /**
+ * Message-catalog key for each category, e.g. `home.categories.${CATEGORY_MESSAGE_KEYS[category]}`
+ */
+export const CATEGORY_MESSAGE_KEYS: Record<ToolCategory, string> = {
+  'edit-annotate': 'editAnnotate',
+  'convert-to-pdf': 'convertToPdf',
+  'convert-from-pdf': 'convertFromPdf',
+  'organize-manage': 'organizeManage',
+  'optimize-repair': 'optimizeRepair',
+  'secure-pdf': 'securePdf',
+};
+
+/**
  * Category display information
  */
 export interface CategoryInfo {

@@ -9,6 +9,7 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { getAllTools } from '@/config/tools';
+import { TOOL_CATEGORIES } from '@/types/tool';
 
 // Required for static export
 export const dynamic = 'force-static';
@@ -44,6 +45,11 @@ const STATIC_PAGES = [
   { path: '/privacy', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
   { path: '/contact', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
   { path: '/open-source', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
+  ...TOOL_CATEGORIES.map((category) => ({
+    path: `/tools/category/${category}`,
+    priority: PRIORITY.tools,
+    changeFrequency: CHANGE_FREQUENCY.tools,
+  })),
 ];
 
 /**

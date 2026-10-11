@@ -16,7 +16,11 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
  * Used for body text and UI elements
  */
 export const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+  // Only the Latin subset is preloaded: the 85 kB latin-ext file would otherwise be fetched
+  // on every page, including English ones that never use it. next/font still self-hosts the
+  // extended faces, and the browser loads them by unicode-range when a page needs them
+  // (Polish, Romanian, Vietnamese and similar text).
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
   preload: true,

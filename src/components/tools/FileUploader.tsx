@@ -11,6 +11,8 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { isTauri } from '@/lib/tauri-bridge';
+import { useToolContext } from '@/lib/contexts/ToolContext';
+import { takeStagedFiles } from '@/lib/file-handoff';
 
 export interface FileUploaderProps {
   /** Accepted file types (MIME types or extensions) */
@@ -262,6 +264,20 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       }
     }
   }, [disabled, validateFiles, onError, onFilesSelected]);
+
+  /**
+   * Pick up files the user already chose on the homepage for this tool. They
+   * go through the same validation (and password prompt) as any other
+   * selection, and are delivered once.
+   */
+  const toolSlug = useToolContext()?.toolSlug;
+  const handoffChecked = useRef(false);
+  useEffect(() => {
+    if (handoffChecked.current || disabled || !toolSlug) return;
+    handoffChecked.current = true;
+    const stagedFiles = takeStagedFiles(toolSlug);
+    if (stagedFiles) void handleFiles(stagedFiles);
+  }, [disabled, toolSlug, handleFiles]);
 
   const handleDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();

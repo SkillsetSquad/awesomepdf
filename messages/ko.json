@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - 전문 PDF 도구",
-      "description": "무료, 비공개, 브라우저 기반. 서버에 업로드하지 않고 온라인으로 PDF 파일을 병합하고 편집하세요."
+      "title": "AwesomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
+      "description": "PDF를 몇 초 만에 병합, 압축, 변환, 편집, 정리하세요. 브라우저에서 실행되는 무료의 간단한 PDF 도구이며 가입이 필요 없습니다."
     },
     "tools": {
       "title": "모든 PDF 도구",
@@ -46,7 +46,16 @@
       "privacy": "은둔",
       "contact": "문의하기",
       "mainMenu": "주 탐색",
-      "openMenu": "메뉴 열기"
+      "openMenu": "메뉴 열기",
+      "allTools": "모든 도구",
+      "edit": "편집",
+      "convert": "변환",
+      "organize": "정리",
+      "shareFiles": "파일 공유",
+      "comingSoon": "출시 예정",
+      "browseAll": "도구 {count}개 모두 보기",
+      "language": "언어",
+      "search": "검색"
     },
     "buttons": {
       "duplicate": "복제",
@@ -101,7 +110,15 @@
       "openSource": "오픈 소스 고지",
       "basedOn": "기반 프로젝트:",
       "downloadError": "소스 다운로드에 실패했습니다. 다시 시도하세요.",
-      "sourceDescription": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요."
+      "sourceDescription": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요.",
+      "description": "일상 업무를 위한 브라우저 기반 무료 PDF 도구입니다. 계정 없이 PDF를 병합, 압축, 변환, 편집, 정리하세요.",
+      "brandOf": "Skillset Squad Private Limited의 브랜드입니다.",
+      "toolsHeading": "PDF 도구",
+      "companyHeading": "회사 및 자료",
+      "legalHeading": "오픈 소스 및 법적 고지",
+      "convertPdf": "PDF 변환",
+      "privacyPolicy": "개인정보 처리방침",
+      "copyrightLine": "© {year} AwesomePDF. Skillset Squad Private Limited의 브랜드입니다."
     },
     "recentFiles": {
       "title": "최근 파일",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "전문 PDF 도구",
-      "highlight": "전문 도구",
-      "subtitle": "브라우저에서 무료로 안전하고 강력하게 PDF 처리",
-      "cta": "시작하기"
+      "title": "필요한 모든 PDF 도구를 한곳에서.",
+      "subtitle": "PDF를 몇 초 만에 병합, 압축, 변환, 편집, 정리하세요. 무료이며 간단하고, 개인정보 보호를 위해 만들어졌습니다."
     },
-    "features": {
-      "privacy": {
-        "title": "100% 비공개",
-        "description": "모든 처리는 브라우저에서 이루어집니다. 파일은 기기를 벗어나지 않습니다."
+    "upload": {
+      "title": "파일을 여기에 놓으세요",
+      "titleActive": "놓아서 파일 추가",
+      "subtitle": "PDF, 이미지 또는 지원되는 문서를 선택하세요",
+      "choose": "파일 선택",
+      "privacy": "여기서 선택한 파일은 브라우저 안에만 있으며 서버로 업로드되지 않습니다.",
+      "shortcuts": "인기 도구",
+      "summary": {
+        "pdf": "{count, plural, other {PDF 파일 #개 선택됨}}",
+        "image": "{count, plural, other {이미지 #개 선택됨}}",
+        "document": "{count, plural, other {파일 #개 선택됨}} ({extension})",
+        "mixed": "{count, plural, other {파일 #개 선택됨}}"
       },
-      "free": {
-        "title": "완전 무료",
-        "description": "등록 없음, 제한 없음, 숨겨진 비용 없음."
+      "moreFiles": "외 {count}개",
+      "suggestionsTitle": "무엇을 하시겠어요?",
+      "chooseDifferent": "다른 파일 선택",
+      "mixedNotice": "파일 형식이 서로 달라 모든 파일에 맞는 단일 도구가 없습니다. PDF만 또는 이미지만처럼 같은 형식의 파일을 선택하세요.",
+      "noToolNotice": "이 파일 조합을 열 수 있는 도구가 없습니다. 파일 수를 줄이거나 다른 형식의 파일을 사용해 보세요.",
+      "noneUsable": "선택한 파일을 사용할 수 없습니다. AwesomePDF는 PDF, 이미지, Word·Excel·PowerPoint 같은 일반 문서를 지원합니다.",
+      "skipped": "일부 파일을 건너뛰었습니다",
+      "readFailed": "파일을 읽을 수 없습니다. 다시 시도해 주세요.",
+      "errors": {
+        "empty": "{name} 파일이 비어 있습니다.",
+        "unsupported": "{name} 파일은 지원되지 않는 형식입니다.",
+        "notPdf": "{name} 파일은 올바른 PDF가 아닙니다."
       },
-      "powerful": {
-        "title": "강력한 도구",
-        "description": "모든 필요를 충족하는 67개 이상의 전문 PDF 도구."
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "공유하거나 업로드하기 쉽게 파일 크기를 줄입니다."
+          },
+          "edit-pdf": {
+            "description": "텍스트와 이미지를 수정하거나 주석을 추가합니다."
+          },
+          "split-pdf": {
+            "description": "페이지나 범위를 새 파일로 나눕니다."
+          },
+          "sign-pdf": {
+            "description": "문서에 서명을 추가합니다."
+          },
+          "organize-pdf": {
+            "description": "페이지 순서를 바꾸고 회전하거나 삭제합니다."
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "파일 {count}개를 하나의 PDF로 합칩니다."
+          },
+          "pdf-multi-tool": {
+            "title": "병합 및 정리",
+            "description": "페이지 병합, 순서 변경, 정리를 한곳에서 처리합니다."
+          },
+          "compress-pdf": {
+            "title": "일괄 압축",
+            "description": "파일 {count}개의 크기를 한 번에 줄입니다."
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "이 이미지를 PDF 문서로 변환합니다."
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "이미지를 PDF로",
+            "description": "이미지 {count}개를 하나의 PDF로 합칩니다."
+          }
+        },
+        "convert": {
+          "description": "{extension} 파일을 PDF로 변환합니다."
+        }
       }
     },
     "popularTools": {
-      "badge": "가장 인기 있는",
       "title": "인기 PDF 도구",
-      "description": "작업을 더 빨리 완료하는 데 도움이 되는 가장 많이 사용되는 도구입니다."
+      "description": "PDF 작업에 필요한 모든 것을 클릭 한 번으로.",
+      "viewAll": "모든 도구 보기",
+      "items": {
+        "merge-pdf": "여러 PDF를 하나의 문서로 합칩니다.",
+        "compress-pdf": "큰 PDF 파일의 크기를 줄입니다.",
+        "pdf-to-docx": "PDF를 편집 가능한 Word 문서로 변환합니다.",
+        "edit-pdf": "텍스트와 이미지를 수정하거나 주석을 추가합니다.",
+        "split-pdf": "PDF를 페이지나 섹션으로 나눕니다.",
+        "sign-pdf": "모든 PDF에 서명을 추가합니다.",
+        "jpg-to-pdf": "JPG 이미지를 PDF로 변환합니다.",
+        "organize-pdf": "페이지 순서를 바꾸고 회전하거나 삭제합니다."
+      }
     },
-    "categoriesSection": {
-      "title": "모든 도구 카테고리 탐색",
-      "description": "카테고리별로 정리된 {count}개 이상의 전문 PDF 도구",
-      "toolsCount": "{count}개 도구"
+    "directory": {
+      "title": "모든 PDF 도구 살펴보기",
+      "description": "어떤 PDF 작업이든 알맞은 도구를 찾아보세요.",
+      "searchLabel": "PDF 도구 검색",
+      "searchPlaceholder": "작업으로 검색 (예: 병합, 회전, 변환)",
+      "clearSearch": "검색어 지우기",
+      "filterLabel": "카테고리별 필터",
+      "all": "전체",
+      "toolsCount": "{count, plural, other {도구 #개}}",
+      "seeAll": "{count}개 모두 보기",
+      "status": "{count, plural, other {도구 #개를 찾았습니다}}",
+      "empty": "검색과 일치하는 도구가 없습니다.",
+      "emptyHint": "다른 단어로 검색하거나 필터를 지워 모든 도구를 확인하세요.",
+      "clearFilters": "필터 지우기"
     },
-    "categoriesDescription": {
-      "editAnnotate": "PDF 콘텐츠 편집, 주석 및 수정",
-      "convertToPdf": "다양한 형식을 PDF로 변환",
-      "convertFromPdf": "PDF를 다른 형식으로 변환",
-      "organizeManage": "PDF 페이지 정리, 병합, 분할 및 관리",
-      "optimizeRepair": "PDF 파일 압축, 최적화 및 복구",
-      "securePdf": "PDF 파일 암호화, 복호화 및 보안"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "파일을 직접 공유하세요. 클라우드 저장 없이.",
+      "badge": "출시 예정",
+      "subtitle": "P2P 기술로 PDF와 기타 파일을 브라우저 간에 직접 보내세요. 계정이 필요 없고 클라우드에 영구 저장되지 않습니다.",
+      "planned": "AwesomePDF Share는 계획 중인 기능이며 아직 사용할 수 없습니다. 작동 방식을 미리 보여 드리는 것입니다.",
+      "stepsTitle": "예정된 작동 방식",
+      "steps": {
+        "choose": "보낼 파일을 선택합니다.",
+        "link": "공유 링크를 받아 받는 사람에게 보냅니다.",
+        "open": "받는 사람이 링크를 열어 암호화된 연결로 파일이 전송되는 동안 이 브라우저 탭을 열어 둡니다."
+      },
+      "benefits": {
+        "direct": {
+          "title": "브라우저 간 직접 공유",
+          "description": "네트워크가 허용하는 한 파일이 받는 사람에게 곧바로 전달되도록 설계됩니다."
+        },
+        "noAccount": {
+          "title": "계정 불필요",
+          "description": "링크만 공유하면 됩니다. 누구도 가입할 필요가 없습니다."
+        },
+        "noStorage": {
+          "title": "클라우드 영구 저장 없음",
+          "description": "파일이 서버에 보관되지 않도록 설계되었습니다."
+        }
+      },
+      "note": "직접 연결은 양쪽 네트워크에 따라 달라집니다. 제한적인 네트워크에서 연결이 차단되면 향후 버전에서 선택형 릴레이를 제공할 수 있습니다. 그런 경우 사용하기 전에 명확히 알려 드리겠습니다.",
+      "cta": "파일 공유 — 출시 예정",
+      "preview": "계획 중인 기능 미리 보기",
+      "sender": "보내는 사람",
+      "receiver": "받는 사람",
+      "connection": "암호화된 P2P 연결",
+      "illustration": "계획 중인 기능의 그림: 보내는 사람의 기기가 암호화된 P2P 연결로 받는 사람의 기기와 연결되어 있습니다. 아직 사용할 수 없습니다."
     },
-    "stats": {
-      "pdfTools": "PDF 도구",
-      "freeToUse": "무료 사용",
-      "languages": "언어",
-      "filesUploaded": "파일 업로드됨"
+    "trust": {
+      "title": "당신의 문서. 당신의 통제.",
+      "description": "지원되는 PDF 작업은 브라우저에서 로컬로 실행되므로 계정을 만들지 않고도 민감한 파일을 다룰 수 있습니다. 개인정보 보호는 AwesomePDF의 핵심 원칙이며, 방식이 다른 부분은 분명히 알려 드립니다.",
+      "items": {
+        "private": {
+          "title": "설계부터 프라이빗",
+          "description": "지원되는 작업에서는 파일이 로컬에서 처리됩니다."
+        },
+        "free": {
+          "title": "무료 이용",
+          "description": "필수 가입 없이 무료 PDF 유틸리티를 사용하세요."
+        },
+        "simple": {
+          "title": "간단하고 빠르게",
+          "description": "깔끔하고 직관적인 인터페이스로 PDF를 다루세요."
+        }
+      },
+      "note": "참고: 일부 도구는 처음 사용할 때 글꼴, 언어 데이터 또는 보조 스크립트를 다운로드합니다. 문서는 이러한 다운로드에 포함되지 않습니다.",
+      "privacyLink": "개인정보 처리방침 읽기",
+      "sourceLink": "소스 코드 확인"
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "description": "AwesomePDF에 대한 간단한 답변입니다.",
+      "seeAll": "모든 FAQ 보기",
+      "items": {
+        "free": {
+          "question": "AwesomePDF는 무료인가요?",
+          "answer": "네. AwesomePDF의 PDF 도구는 무료이며 구독이나 가입이 필요 없습니다."
+        },
+        "upload": {
+          "question": "내 PDF 파일이 서버에 업로드되나요?",
+          "answer": "아니요. 지원되는 도구는 JavaScript와 WebAssembly를 사용해 브라우저에서 파일을 처리하며, AwesomePDF는 문서를 서버에 업로드하지 않습니다. 일부 도구는 처음 사용할 때 글꼴, 언어 데이터 또는 보조 스크립트를 다운로드하지만 문서는 여기에 포함되지 않습니다. 또한 앱은 최근 사용한 파일 이름의 짧은 목록을 기기에 저장하며, 헤더의 시계 아이콘에서 언제든지 지울 수 있습니다."
+        },
+        "account": {
+          "question": "계정 없이 사용할 수 있나요?",
+          "answer": "네. 도구를 열고 바로 작업을 시작하세요. 로그인이나 가입이 없습니다."
+        },
+        "tools": {
+          "question": "어떤 PDF 도구를 사용할 수 있나요?",
+          "answer": "AwesomePDF에는 편집 및 주석, PDF로 변환, PDF에서 변환, 정리 및 관리, 최적화 및 복구, PDF 보안의 6개 그룹에 {count}개의 도구가 있습니다. 병합, 분할, 압축, PDF를 Word로, 편집, 서명이 인기 있습니다. 위의 디렉터리에서 둘러보거나 검색을 이용하세요."
+        },
+        "mobile": {
+          "question": "모바일 기기에서도 사용할 수 있나요?",
+          "answer": "네. AwesomePDF는 최신 모바일 브라우저에서 작동합니다. 파일이 기기에서 처리되기 때문에 큰 문서나 OCR, Office 변환 같은 무거운 작업은 휴대폰에서 더 느릴 수 있습니다."
+        },
+        "scanned": {
+          "question": "스캔한 문서도 지원하나요?",
+          "answer": "네. OCR PDF 도구는 스캔한 페이지의 텍스트를 인식해 PDF를 검색 가능하게 만듭니다. 결과는 스캔 품질과 언어에 따라 다르며, OCR 언어 데이터는 처음 사용할 때 다운로드됩니다."
+        },
+        "share": {
+          "question": "AwesomePDF Share란 무엇인가요?",
+          "answer": "AwesomePDF Share는 암호화된 P2P 연결로 한 브라우저에서 다른 브라우저로 파일을 직접 보내는, 곧 출시될 예정인 기능입니다. 아직 사용할 수 없으며 위에 나열된 도구에는 포함되지 않습니다."
+        }
+      }
     },
     "categories": {
       "popular": "인기 도구",
@@ -1375,6 +1545,14 @@
       "organizeManage": "정리 및 관리",
       "optimizeRepair": "최적화 및 복구",
       "securePdf": "PDF 보안"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "PDF 콘텐츠 편집, 주석 및 수정",
+      "convertToPdf": "다양한 형식을 PDF로 변환",
+      "convertFromPdf": "PDF를 다른 형식으로 변환",
+      "organizeManage": "PDF 페이지 정리, 병합, 분할 및 관리",
+      "optimizeRepair": "PDF 파일 압축, 최적화 및 복구",
+      "securePdf": "PDF 파일 암호화, 복호화 및 보안"
     }
   },
   "workflow": {

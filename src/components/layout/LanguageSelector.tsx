@@ -12,6 +12,8 @@ import {
 
 export interface LanguageSelectorProps {
   currentLocale: Locale;
+  /** `compact` shows the locale code (EN, DE) to save room in the header. */
+  variant?: 'full' | 'compact';
 }
 
 // Storage key for language preference
@@ -45,11 +47,12 @@ export function getLanguagePreference(): Locale | null {
   return null;
 }
 
-export function LanguageSelector({ currentLocale }: LanguageSelectorProps) {
+export function LanguageSelector({ currentLocale, variant = 'full' }: LanguageSelectorProps) {
   const t = useTranslations('common.buttons');
   const router = useRouter();
   const pathname = usePathname();
   const currentConfig = localeConfig[currentLocale];
+  const visibleName = variant === 'compact' ? currentLocale.toUpperCase() : currentConfig.nativeName;
 
   const selectLanguage = (value: string) => {
     if (!locales.includes(value as Locale)) return;
@@ -61,9 +64,11 @@ export function LanguageSelector({ currentLocale }: LanguageSelectorProps) {
   return (
     <DropdownMenu dir={currentConfig.direction}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" aria-label={t('selectLanguage')}>
+        <Button variant="ghost" size="sm" aria-label={`${visibleName}: ${t('selectLanguage')}`}>
           <Globe aria-hidden="true" />
-          <span className="hidden sm:inline">{currentConfig.nativeName}</span>
+          {variant === 'compact'
+            ? <span className="text-xs font-semibold tracking-wide">{visibleName}</span>
+            : <span className="hidden sm:inline">{visibleName}</span>}
           <ChevronDown aria-hidden="true" />
         </Button>
       </DropdownMenuTrigger>

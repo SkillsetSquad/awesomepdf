@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - Alat PDF Profesional",
-      "description": "Gratis, Pribadi & Berbasis Browser. Gabung, edit, dan ubah file PDF secara online tanpa mengunggah ke server."
+      "title": "AwesomePDF – alat PDF gratis untuk menggabung, mengompres, dan mengedit",
+      "description": "Gabungkan, kompres, konversi, edit, dan atur PDF dalam hitungan detik. Alat PDF gratis dan sederhana yang berjalan di browser, tanpa perlu mendaftar."
     },
     "tools": {
       "title": "Semua Alat PDF",
@@ -46,7 +46,16 @@
       "privacy": "Pribadi",
       "contact": "Hubungi",
       "mainMenu": "Navigasi utama",
-      "openMenu": "Buka menu"
+      "openMenu": "Buka menu",
+      "allTools": "Semua Alat",
+      "edit": "Edit",
+      "convert": "Konversi",
+      "organize": "Atur",
+      "shareFiles": "Bagikan File",
+      "comingSoon": "Segera Hadir",
+      "browseAll": "Jelajahi semua {count} alat",
+      "language": "Bahasa",
+      "search": "Cari"
     },
     "buttons": {
       "duplicate": "Duplikat",
@@ -101,7 +110,15 @@
       "openSource": "Pemberitahuan sumber terbuka",
       "basedOn": "Berdasarkan",
       "downloadError": "Unduhan kode sumber gagal. Silakan coba lagi.",
-      "sourceDescription": "Unduh kode sumber versi AwesomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli."
+      "sourceDescription": "Unduh kode sumber versi AwesomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli.",
+      "description": "Alat PDF gratis di browser untuk pekerjaan sehari-hari. Gabungkan, kompres, konversi, edit, dan atur PDF tanpa membuat akun.",
+      "brandOf": "Merek dari Skillset Squad Private Limited.",
+      "toolsHeading": "Alat PDF",
+      "companyHeading": "Perusahaan & Sumber Daya",
+      "legalHeading": "Sumber Terbuka & Hukum",
+      "convertPdf": "Konversi PDF",
+      "privacyPolicy": "Kebijakan Privasi",
+      "copyrightLine": "© {year} AwesomePDF. Merek dari Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "File Terbaru",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "Alat PDF Profesional",
-      "highlight": "Alat Profesional",
-      "subtitle": "Pemrosesan PDF gratis, pribadi, dan kuat di browser Anda",
-      "cta": "Mulai Sekarang"
+      "title": "Semua alat PDF yang Anda butuhkan. Di satu tempat.",
+      "subtitle": "Gabungkan, kompres, konversi, edit, dan atur PDF dalam hitungan detik. Gratis, sederhana, dan dibuat dengan mengutamakan privasi."
     },
-    "features": {
-      "privacy": {
-        "title": "100% Pribadi",
-        "description": "Semua pemrosesan terjadi di browser Anda. File Anda tidak pernah meninggalkan perangkat Anda."
+    "upload": {
+      "title": "Letakkan file Anda di sini",
+      "titleActive": "Lepaskan untuk menambahkan file",
+      "subtitle": "Pilih PDF, gambar, atau dokumen yang didukung",
+      "choose": "Pilih File",
+      "privacy": "File yang Anda pilih di sini tetap berada di browser Anda. Tidak ada yang diunggah ke server.",
+      "shortcuts": "Alat populer",
+      "summary": {
+        "pdf": "{count, plural, other {# file PDF dipilih}}",
+        "image": "{count, plural, other {# gambar dipilih}}",
+        "document": "{count, plural, other {# file dipilih}} ({extension})",
+        "mixed": "{count, plural, other {# file dipilih}}"
       },
-      "free": {
-        "title": "Sepenuhnya Gratis",
-        "description": "Tanpa registrasi, tanpa batasan, tanpa biaya tersembunyi."
+      "moreFiles": "+{count} lagi",
+      "suggestionsTitle": "Apa yang ingin Anda lakukan?",
+      "chooseDifferent": "Pilih file lain",
+      "mixedNotice": "Jenis file-file ini berbeda, sehingga tidak ada satu alat yang cocok untuk semuanya. Pilih file dengan satu jenis, misalnya hanya PDF atau hanya gambar.",
+      "noToolNotice": "Tidak ada alat yang dapat membuka kombinasi file ini. Coba dengan lebih sedikit file atau jenis file yang lain.",
+      "noneUsable": "Tidak ada file yang dipilih yang dapat digunakan. AwesomePDF mendukung PDF, gambar, dan dokumen umum seperti Word, Excel, dan PowerPoint.",
+      "skipped": "Beberapa file dilewati",
+      "readFailed": "Kami tidak dapat membaca file tersebut. Silakan coba lagi.",
+      "errors": {
+        "empty": "{name} kosong.",
+        "unsupported": "{name} bukan jenis file yang didukung.",
+        "notPdf": "{name} bukan file PDF yang valid."
       },
-      "powerful": {
-        "title": "Alat yang Kuat",
-        "description": "67+ alat PDF profesional untuk semua kebutuhan Anda."
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "Perkecil ukuran file untuk dibagikan atau diunggah."
+          },
+          "edit-pdf": {
+            "description": "Ubah teks dan gambar, atau tambahkan anotasi."
+          },
+          "split-pdf": {
+            "description": "Pisahkan halaman atau rentang menjadi file baru."
+          },
+          "sign-pdf": {
+            "description": "Tambahkan tanda tangan Anda ke dokumen."
+          },
+          "organize-pdf": {
+            "description": "Ubah urutan, putar, atau hapus halaman."
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "Gabungkan {count} file menjadi satu PDF."
+          },
+          "pdf-multi-tool": {
+            "title": "Gabungkan & Atur",
+            "description": "Gabungkan, ubah urutan, dan rapikan halaman di satu tempat."
+          },
+          "compress-pdf": {
+            "title": "Kompres Massal",
+            "description": "Perkecil ukuran semua {count} file sekaligus."
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "Ubah gambar ini menjadi dokumen PDF."
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "Gambar ke PDF",
+            "description": "Gabungkan {count} gambar menjadi satu PDF."
+          }
+        },
+        "convert": {
+          "description": "Konversi {extension} ke PDF."
+        }
       }
     },
     "popularTools": {
-      "badge": "Paling Populer",
       "title": "Alat PDF Populer",
-      "description": "Alat yang paling sering digunakan untuk membantu Anda menyelesaikan pekerjaan lebih cepat."
+      "description": "Semua yang Anda butuhkan untuk bekerja dengan PDF, hanya satu klik.",
+      "viewAll": "Lihat Semua Alat",
+      "items": {
+        "merge-pdf": "Gabungkan beberapa PDF menjadi satu dokumen.",
+        "compress-pdf": "Perkecil ukuran file PDF yang besar.",
+        "pdf-to-docx": "Ubah PDF menjadi dokumen Word yang dapat diedit.",
+        "edit-pdf": "Edit teks dan gambar, atau tambahkan anotasi.",
+        "split-pdf": "Pisahkan PDF menjadi halaman atau bagian.",
+        "sign-pdf": "Tambahkan tanda tangan Anda ke PDF apa pun.",
+        "jpg-to-pdf": "Ubah gambar JPG menjadi PDF.",
+        "organize-pdf": "Ubah urutan, putar, dan hapus halaman."
+      }
     },
-    "categoriesSection": {
-      "title": "Jelajahi Semua Kategori Alat",
-      "description": "{count}+ alat PDF profesional yang diatur berdasarkan kategori",
-      "toolsCount": "{count} alat"
+    "directory": {
+      "title": "Jelajahi Semua Alat PDF",
+      "description": "Temukan alat yang tepat untuk setiap tugas PDF.",
+      "searchLabel": "Cari alat PDF",
+      "searchPlaceholder": "Cari berdasarkan tugas, seperti gabung, putar, atau konversi",
+      "clearSearch": "Hapus pencarian",
+      "filterLabel": "Filter berdasarkan kategori",
+      "all": "Semua",
+      "toolsCount": "{count, plural, other {# alat}}",
+      "seeAll": "Lihat semua {count}",
+      "status": "{count, plural, other {# alat ditemukan}}",
+      "empty": "Tidak ada alat yang cocok dengan pencarian Anda.",
+      "emptyHint": "Coba kata lain, atau hapus filter untuk melihat semua alat.",
+      "clearFilters": "Hapus filter"
     },
-    "categoriesDescription": {
-      "editAnnotate": "Edit, beri anotasi, dan ubah konten PDF",
-      "convertToPdf": "Konversi berbagai format ke PDF",
-      "convertFromPdf": "Konversi PDF ke format lain",
-      "organizeManage": "Atur, gabung, pisah, dan kelola halaman PDF",
-      "optimizeRepair": "Kompres, optimalkan, dan perbaiki file PDF",
-      "securePdf": "Enkripsi, dekripsi, dan amankan file PDF"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "Bagikan file langsung. Tanpa penyimpanan cloud.",
+      "badge": "Segera Hadir",
+      "subtitle": "Kirim PDF dan file lain langsung antar browser dengan teknologi peer-to-peer. Tanpa akun dan tanpa penyimpanan cloud permanen.",
+      "planned": "AwesomePDF Share adalah fitur yang direncanakan dan belum tersedia. Ini adalah pratinjau cara kerjanya.",
+      "stepsTitle": "Rencana cara kerjanya",
+      "steps": {
+        "choose": "Pilih file yang akan dikirim.",
+        "link": "Dapatkan tautan berbagi dan kirimkan kepada penerima.",
+        "open": "Biarkan tab browser ini tetap terbuka selama penerima membuka tautan dan file ditransfer melalui koneksi terenkripsi."
+      },
+      "benefits": {
+        "direct": {
+          "title": "Berbagi langsung antar browser",
+          "description": "File dirancang untuk langsung menuju penerima selama jaringan memungkinkan."
+        },
+        "noAccount": {
+          "title": "Tanpa akun",
+          "description": "Bagikan tautan. Tidak ada yang perlu mendaftar."
+        },
+        "noStorage": {
+          "title": "Tanpa penyimpanan cloud permanen",
+          "description": "Dirancang agar file Anda tidak disimpan di server."
+        }
+      },
+      "note": "Koneksi langsung bergantung pada kedua jaringan. Jika jaringan yang ketat memblokirnya, versi mendatang mungkin menawarkan relay opsional. Jika itu terjadi, kami akan memberi tahu Anda dengan jelas sebelum digunakan.",
+      "cta": "Bagikan File — Segera Hadir",
+      "preview": "Pratinjau fitur yang direncanakan",
+      "sender": "Pengirim",
+      "receiver": "Penerima",
+      "connection": "Koneksi peer-to-peer terenkripsi",
+      "illustration": "Ilustrasi fitur yang direncanakan: perangkat pengirim terhubung ke perangkat penerima melalui koneksi peer-to-peer terenkripsi. Belum tersedia."
     },
-    "stats": {
-      "pdfTools": "Alat PDF",
-      "freeToUse": "Gratis Digunakan",
-      "languages": "Bahasa",
-      "filesUploaded": "File Diunggah"
+    "trust": {
+      "title": "Dokumen Anda. Kendali Anda.",
+      "description": "Operasi PDF yang didukung berjalan secara lokal di browser Anda, sehingga Anda dapat bekerja dengan file sensitif tanpa membuat akun. Privasi adalah prinsip utama AwesomePDF, dan kami menyampaikannya dengan jelas ketika ada yang bekerja secara berbeda.",
+      "items": {
+        "private": {
+          "title": "Privat Sejak Desain",
+          "description": "File diproses secara lokal untuk operasi yang didukung."
+        },
+        "free": {
+          "title": "Gratis Digunakan",
+          "description": "Gunakan utilitas PDF gratis tanpa kewajiban mendaftar."
+        },
+        "simple": {
+          "title": "Sederhana & Cepat",
+          "description": "Bekerja dengan PDF melalui antarmuka yang bersih dan mudah."
+        }
+      },
+      "note": "Perlu diketahui: beberapa alat mengunduh font, data bahasa, atau skrip pendukung saat pertama kali digunakan. Dokumen Anda tidak termasuk dalam unduhan tersebut.",
+      "privacyLink": "Baca kebijakan privasi",
+      "sourceLink": "Tinjau kode sumber"
+    },
+    "faq": {
+      "title": "Pertanyaan yang sering diajukan",
+      "description": "Jawaban singkat tentang AwesomePDF.",
+      "seeAll": "Lihat semua FAQ",
+      "items": {
+        "free": {
+          "question": "Apakah AwesomePDF gratis?",
+          "answer": "Ya. Alat PDF di AwesomePDF gratis digunakan, tanpa langganan dan tanpa perlu mendaftar."
+        },
+        "upload": {
+          "question": "Apakah file PDF saya diunggah ke server?",
+          "answer": "Tidak. Alat yang didukung memproses file Anda di browser menggunakan JavaScript dan WebAssembly, dan AwesomePDF tidak mengunggah dokumen Anda ke server. Beberapa alat mengunduh font, data bahasa, atau skrip pendukung saat pertama kali digunakan; dokumen Anda tidak termasuk dalam unduhan tersebut. Aplikasi juga menyimpan daftar singkat nama file yang baru digunakan di perangkat Anda, yang dapat Anda hapus kapan saja melalui ikon jam di header."
+        },
+        "account": {
+          "question": "Bisakah saya menggunakan AwesomePDF tanpa membuat akun?",
+          "answer": "Bisa. Buka alat apa pun dan langsung mulai bekerja. Tidak ada login atau pendaftaran."
+        },
+        "tools": {
+          "question": "Alat PDF apa saja yang tersedia?",
+          "answer": "AwesomePDF memiliki {count} alat dalam enam grup: edit dan anotasi, konversi ke PDF, konversi dari PDF, atur dan kelola, optimalkan dan perbaiki, serta amankan PDF. Yang populer antara lain gabung, pisah, kompres, PDF ke Word, edit, dan tanda tangan. Jelajahi di direktori di atas atau gunakan pencarian."
+        },
+        "mobile": {
+          "question": "Bisakah saya menggunakan AwesomePDF di perangkat seluler?",
+          "answer": "Bisa. AwesomePDF berjalan di browser seluler modern. Karena file diproses di perangkat Anda, dokumen besar dan tugas berat seperti OCR atau konversi Office bisa lebih lambat di ponsel."
+        },
+        "scanned": {
+          "question": "Apakah AwesomePDF mendukung dokumen hasil pindaian?",
+          "answer": "Ya. Alat OCR PDF dapat mengenali teks pada halaman hasil pindaian sehingga PDF dapat dicari. Hasilnya bergantung pada kualitas pindaian dan bahasa, dan data bahasa OCR diunduh saat pertama kali Anda menggunakannya."
+        },
+        "share": {
+          "question": "Apa itu AwesomePDF Share?",
+          "answer": "AwesomePDF Share adalah fitur yang direncanakan dan segera hadir untuk mengirim file langsung dari satu browser ke browser lain melalui koneksi peer-to-peer terenkripsi. Fitur ini belum tersedia dan bukan bagian dari alat yang tercantum di atas."
+        }
+      }
     },
     "categories": {
       "popular": "Alat Populer",
@@ -1375,6 +1545,14 @@
       "organizeManage": "Atur & Kelola",
       "optimizeRepair": "Optimalkan & Perbaiki",
       "securePdf": "Amankan PDF"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "Edit, beri anotasi, dan ubah konten PDF",
+      "convertToPdf": "Konversi berbagai format ke PDF",
+      "convertFromPdf": "Konversi PDF ke format lain",
+      "organizeManage": "Atur, gabung, pisah, dan kelola halaman PDF",
+      "optimizeRepair": "Kompres, optimalkan, dan perbaiki file PDF",
+      "securePdf": "Enkripsi, dekripsi, dan amankan file PDF"
     }
   },
   "workflow": {

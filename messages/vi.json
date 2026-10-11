@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - Công cụ PDF Chuyên nghiệp",
-      "description": "Miễn phí, Riêng tư & Hoàn toàn trên Trình duyệt. Hợp nhất, chỉnh sửa PDF trực tuyến mà không cần tải lên máy chủ."
+      "title": "AwesomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
+      "description": "Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF chỉ trong vài giây. Công cụ PDF miễn phí, đơn giản, chạy ngay trên trình duyệt và không cần đăng ký."
     },
     "tools": {
       "title": "Tất cả Công cụ PDF",
@@ -46,7 +46,16 @@
       "privacy": "Sự riêng tư",
       "contact": "Liên hệ",
       "mainMenu": "Điều hướng chính",
-      "openMenu": "Mở menu"
+      "openMenu": "Mở menu",
+      "allTools": "Tất cả công cụ",
+      "edit": "Chỉnh sửa",
+      "convert": "Chuyển đổi",
+      "organize": "Sắp xếp",
+      "shareFiles": "Chia sẻ tệp",
+      "comingSoon": "Sắp ra mắt",
+      "browseAll": "Xem tất cả {count} công cụ",
+      "language": "Ngôn ngữ",
+      "search": "Tìm kiếm"
     },
     "buttons": {
       "duplicate": "Nhân bản",
@@ -101,7 +110,15 @@
       "openSource": "Thông báo nguồn mở",
       "basedOn": "Dựa trên",
       "downloadError": "Không tải được mã nguồn. Vui lòng thử lại.",
-      "sourceDescription": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc."
+      "sourceDescription": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc.",
+      "description": "Công cụ PDF miễn phí chạy trên trình duyệt cho công việc hằng ngày. Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF mà không cần tạo tài khoản.",
+      "brandOf": "Một thương hiệu của Skillset Squad Private Limited.",
+      "toolsHeading": "Công cụ PDF",
+      "companyHeading": "Công ty & tài nguyên",
+      "legalHeading": "Mã nguồn mở & pháp lý",
+      "convertPdf": "Chuyển đổi PDF",
+      "privacyPolicy": "Chính sách quyền riêng tư",
+      "copyrightLine": "© {year} AwesomePDF. Một thương hiệu của Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "Tệp Gần đây",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "Công cụ PDF Chuyên nghiệp",
-      "highlight": "Công cụ Chuyên nghiệp",
-      "subtitle": "Xử lý PDF miễn phí, riêng tư và mạnh mẽ ngay trong trình duyệt",
-      "cta": "Bắt đầu Ngay"
+      "title": "Mọi công cụ PDF bạn cần. Tại một nơi.",
+      "subtitle": "Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF chỉ trong vài giây. Miễn phí, đơn giản và được xây dựng vì quyền riêng tư."
     },
-    "features": {
-      "privacy": {
-        "title": "100% Riêng tư",
-        "description": "Mọi xử lý diễn ra trong trình duyệt. Tệp của bạn không bao giờ rời khỏi thiết bị."
+    "upload": {
+      "title": "Thả tệp của bạn vào đây",
+      "titleActive": "Thả để thêm tệp",
+      "subtitle": "Chọn PDF, hình ảnh hoặc tài liệu được hỗ trợ",
+      "choose": "Chọn tệp",
+      "privacy": "Các tệp bạn chọn ở đây chỉ nằm trong trình duyệt của bạn. Không có gì được tải lên máy chủ.",
+      "shortcuts": "Công cụ phổ biến",
+      "summary": {
+        "pdf": "{count, plural, other {Đã chọn # tệp PDF}}",
+        "image": "{count, plural, other {Đã chọn # hình ảnh}}",
+        "document": "{count, plural, other {Đã chọn # tệp}} ({extension})",
+        "mixed": "{count, plural, other {Đã chọn # tệp}}"
       },
-      "free": {
-        "title": "Hoàn toàn Miễn phí",
-        "description": "Không đăng ký, không giới hạn, không chi phí ẩn."
+      "moreFiles": "+{count} tệp nữa",
+      "suggestionsTitle": "Bạn muốn làm gì?",
+      "chooseDifferent": "Chọn tệp khác",
+      "mixedNotice": "Các tệp này thuộc nhiều loại khác nhau nên không có công cụ nào phù hợp với tất cả. Hãy chọn các tệp cùng một loại, chẳng hạn chỉ PDF hoặc chỉ hình ảnh.",
+      "noToolNotice": "Không có công cụ nào mở được tổ hợp tệp này. Hãy thử với ít tệp hơn hoặc loại tệp khác.",
+      "noneUsable": "Không thể sử dụng bất kỳ tệp nào đã chọn. AwesomePDF hỗ trợ PDF, hình ảnh và các tài liệu phổ biến như Word, Excel và PowerPoint.",
+      "skipped": "Một số tệp đã bị bỏ qua",
+      "readFailed": "Chúng tôi không thể đọc các tệp đó. Vui lòng thử lại.",
+      "errors": {
+        "empty": "{name} là tệp trống.",
+        "unsupported": "{name} không phải loại tệp được hỗ trợ.",
+        "notPdf": "{name} không phải tệp PDF hợp lệ."
       },
-      "powerful": {
-        "title": "Công cụ Mạnh mẽ",
-        "description": "Hơn 67 công cụ PDF chuyên nghiệp cho mọi nhu cầu."
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "Giảm dung lượng tệp để chia sẻ hoặc tải lên."
+          },
+          "edit-pdf": {
+            "description": "Thay đổi văn bản và hình ảnh, hoặc thêm chú thích."
+          },
+          "split-pdf": {
+            "description": "Tách các trang hoặc phạm vi trang thành tệp mới."
+          },
+          "sign-pdf": {
+            "description": "Thêm chữ ký của bạn vào tài liệu."
+          },
+          "organize-pdf": {
+            "description": "Sắp xếp lại, xoay hoặc xóa trang."
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "Gộp {count} tệp thành một PDF."
+          },
+          "pdf-multi-tool": {
+            "title": "Gộp & sắp xếp",
+            "description": "Gộp, sắp xếp lại và dọn dẹp các trang ở một nơi."
+          },
+          "compress-pdf": {
+            "title": "Nén hàng loạt",
+            "description": "Giảm dung lượng của cả {count} tệp cùng lúc."
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "Chuyển hình ảnh này thành tài liệu PDF."
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "Hình ảnh sang PDF",
+            "description": "Gộp {count} hình ảnh thành một PDF."
+          }
+        },
+        "convert": {
+          "description": "Chuyển {extension} sang PDF."
+        }
       }
     },
     "popularTools": {
-      "badge": "Phổ biến Nhất",
-      "title": "Công cụ PDF Phổ biến",
-      "description": "Những công cụ được sử dụng nhiều nhất để giúp bạn hoàn thành công việc nhanh hơn."
+      "title": "Công cụ PDF phổ biến",
+      "description": "Mọi thứ bạn cần để làm việc với PDF, chỉ cách một cú nhấp chuột.",
+      "viewAll": "Xem tất cả công cụ",
+      "items": {
+        "merge-pdf": "Gộp nhiều PDF thành một tài liệu.",
+        "compress-pdf": "Giảm dung lượng các tệp PDF lớn.",
+        "pdf-to-docx": "Chuyển PDF thành tài liệu Word có thể chỉnh sửa.",
+        "edit-pdf": "Chỉnh sửa văn bản và hình ảnh, hoặc thêm chú thích.",
+        "split-pdf": "Tách PDF thành các trang hoặc phần.",
+        "sign-pdf": "Thêm chữ ký của bạn vào bất kỳ PDF nào.",
+        "jpg-to-pdf": "Chuyển hình ảnh JPG thành PDF.",
+        "organize-pdf": "Sắp xếp lại, xoay và xóa trang."
+      }
     },
-    "categoriesSection": {
-      "title": "Khám phá Tất cả Danh mục Công cụ",
-      "description": "Hơn {count} công cụ PDF chuyên nghiệp được sắp xếp theo danh mục",
-      "toolsCount": "{count} công cụ"
+    "directory": {
+      "title": "Khám phá tất cả công cụ PDF",
+      "description": "Tìm công cụ phù hợp cho mọi tác vụ PDF.",
+      "searchLabel": "Tìm công cụ PDF",
+      "searchPlaceholder": "Tìm theo tác vụ, như gộp, xoay hoặc chuyển đổi",
+      "clearSearch": "Xóa tìm kiếm",
+      "filterLabel": "Lọc theo danh mục",
+      "all": "Tất cả",
+      "toolsCount": "{count, plural, other {# công cụ}}",
+      "seeAll": "Xem cả {count}",
+      "status": "{count, plural, other {Tìm thấy # công cụ}}",
+      "empty": "Không có công cụ nào khớp với tìm kiếm của bạn.",
+      "emptyHint": "Hãy thử từ khác, hoặc xóa bộ lọc để xem tất cả công cụ.",
+      "clearFilters": "Xóa bộ lọc"
     },
-    "categoriesDescription": {
-      "editAnnotate": "Chỉnh sửa, chú thích và sửa đổi nội dung PDF",
-      "convertToPdf": "Chuyển đổi nhiều định dạng sang PDF",
-      "convertFromPdf": "Chuyển đổi PDF sang các định dạng khác",
-      "organizeManage": "Sắp xếp, hợp nhất, tách và quản lý trang PDF",
-      "optimizeRepair": "Nén, tối ưu và sửa chữa tệp PDF",
-      "securePdf": "Mã hóa, giải mã và bảo mật tệp PDF"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "Chia sẻ tệp trực tiếp. Không lưu trữ đám mây.",
+      "badge": "Sắp ra mắt",
+      "subtitle": "Gửi PDF và các tệp khác trực tiếp giữa các trình duyệt bằng công nghệ ngang hàng. Không cần tài khoản và không lưu trữ đám mây vĩnh viễn.",
+      "planned": "AwesomePDF Share là tính năng đang được lên kế hoạch và chưa khả dụng. Đây là bản xem trước cách tính năng dự kiến hoạt động.",
+      "stepsTitle": "Dự kiến hoạt động như thế nào",
+      "steps": {
+        "choose": "Chọn một tệp để gửi.",
+        "link": "Nhận liên kết chia sẻ và gửi cho người nhận.",
+        "open": "Giữ tab trình duyệt này mở trong khi người nhận mở liên kết và tệp được truyền qua kết nối được mã hóa."
+      },
+      "benefits": {
+        "direct": {
+          "title": "Chia sẻ trực tiếp giữa các trình duyệt",
+          "description": "Tệp được thiết kế để đến thẳng người nhận bất cứ khi nào mạng cho phép."
+        },
+        "noAccount": {
+          "title": "Không cần tài khoản",
+          "description": "Chỉ cần chia sẻ một liên kết. Không ai phải đăng ký."
+        },
+        "noStorage": {
+          "title": "Không lưu trữ đám mây vĩnh viễn",
+          "description": "Được thiết kế để tệp của bạn không bị lưu trên máy chủ."
+        }
+      },
+      "note": "Kết nối trực tiếp phụ thuộc vào cả hai mạng. Nếu một mạng hạn chế chặn chúng, phiên bản tương lai có thể cung cấp tùy chọn chuyển tiếp. Nếu có, chúng tôi sẽ thông báo rõ ràng trước khi sử dụng.",
+      "cta": "Chia sẻ tệp — Sắp ra mắt",
+      "preview": "Xem trước một tính năng đang lên kế hoạch",
+      "sender": "Người gửi",
+      "receiver": "Người nhận",
+      "connection": "Kết nối ngang hàng được mã hóa",
+      "illustration": "Hình minh họa tính năng đang lên kế hoạch: thiết bị của người gửi được nối với thiết bị của người nhận bằng kết nối ngang hàng được mã hóa. Chưa khả dụng."
     },
-    "stats": {
-      "pdfTools": "Công cụ PDF",
-      "freeToUse": "Miễn phí Sử dụng",
-      "languages": "Ngôn ngữ",
-      "filesUploaded": "Tệp Đã Tải lên"
+    "trust": {
+      "title": "Tài liệu của bạn. Quyền kiểm soát của bạn.",
+      "description": "Các thao tác PDF được hỗ trợ chạy cục bộ trong trình duyệt của bạn, nên bạn có thể làm việc với tệp nhạy cảm mà không cần tạo tài khoản. Quyền riêng tư là nguyên tắc cốt lõi của AwesomePDF, và chúng tôi nói rõ khi có điều gì hoạt động khác đi.",
+      "items": {
+        "private": {
+          "title": "Riêng tư từ thiết kế",
+          "description": "Tệp được xử lý cục bộ cho các thao tác được hỗ trợ."
+        },
+        "free": {
+          "title": "Miễn phí sử dụng",
+          "description": "Dùng các tiện ích PDF miễn phí mà không bắt buộc đăng ký."
+        },
+        "simple": {
+          "title": "Đơn giản & nhanh",
+          "description": "Làm việc với PDF qua giao diện gọn gàng, dễ hiểu."
+        }
+      },
+      "note": "Cần biết: một vài công cụ tải phông chữ, dữ liệu ngôn ngữ hoặc tập lệnh hỗ trợ trong lần dùng đầu tiên. Tài liệu của bạn không nằm trong các lượt tải đó.",
+      "privacyLink": "Đọc chính sách quyền riêng tư",
+      "sourceLink": "Xem mã nguồn"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "description": "Giải đáp nhanh về AwesomePDF.",
+      "seeAll": "Xem tất cả câu hỏi thường gặp",
+      "items": {
+        "free": {
+          "question": "AwesomePDF có miễn phí không?",
+          "answer": "Có. Các công cụ PDF trên AwesomePDF miễn phí sử dụng, không cần đăng ký gói hay tạo tài khoản."
+        },
+        "upload": {
+          "question": "Tệp PDF của tôi có bị tải lên máy chủ không?",
+          "answer": "Không. Các công cụ được hỗ trợ xử lý tệp của bạn ngay trong trình duyệt bằng JavaScript và WebAssembly, và AwesomePDF không tải tài liệu của bạn lên máy chủ. Một vài công cụ tải phông chữ, dữ liệu ngôn ngữ hoặc tập lệnh hỗ trợ trong lần dùng đầu tiên; tài liệu của bạn không nằm trong các lượt tải đó. Ứng dụng cũng lưu trên thiết bị của bạn một danh sách ngắn tên các tệp dùng gần đây, bạn có thể xóa bất cứ lúc nào bằng biểu tượng đồng hồ trên đầu trang."
+        },
+        "account": {
+          "question": "Tôi có thể dùng AwesomePDF mà không cần tạo tài khoản không?",
+          "answer": "Có. Mở bất kỳ công cụ nào và bắt đầu làm việc ngay. Không cần đăng nhập hay đăng ký."
+        },
+        "tools": {
+          "question": "Có những công cụ PDF nào?",
+          "answer": "AwesomePDF có {count} công cụ trong sáu nhóm: chỉnh sửa và chú thích, chuyển sang PDF, chuyển từ PDF, sắp xếp và quản lý, tối ưu và sửa chữa, và bảo mật PDF. Các công cụ phổ biến gồm gộp, tách, nén, PDF sang Word, chỉnh sửa và ký. Hãy duyệt trong danh mục phía trên hoặc dùng tìm kiếm."
+        },
+        "mobile": {
+          "question": "Tôi có thể dùng AwesomePDF trên thiết bị di động không?",
+          "answer": "Có. AwesomePDF chạy trên các trình duyệt di động hiện đại. Vì tệp được xử lý trên thiết bị của bạn, các tài liệu lớn và tác vụ nặng như OCR hay chuyển đổi Office có thể chậm hơn trên điện thoại."
+        },
+        "scanned": {
+          "question": "AwesomePDF có hỗ trợ tài liệu quét không?",
+          "answer": "Có. Công cụ OCR PDF có thể nhận dạng văn bản trên các trang đã quét để PDF có thể tìm kiếm được. Kết quả phụ thuộc vào chất lượng bản quét và ngôn ngữ, và dữ liệu ngôn ngữ OCR được tải về trong lần dùng đầu tiên."
+        },
+        "share": {
+          "question": "AwesomePDF Share là gì?",
+          "answer": "AwesomePDF Share là tính năng đang được lên kế hoạch và sắp ra mắt, cho phép gửi tệp trực tiếp từ trình duyệt này sang trình duyệt khác qua kết nối ngang hàng được mã hóa. Tính năng này chưa khả dụng và không nằm trong các công cụ được liệt kê ở trên."
+        }
+      }
     },
     "categories": {
       "popular": "Công cụ Phổ biến",
@@ -1375,6 +1545,14 @@
       "organizeManage": "Sắp xếp & Quản lý",
       "optimizeRepair": "Tối ưu & Sửa chữa",
       "securePdf": "Bảo mật PDF"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "Chỉnh sửa, chú thích và sửa đổi nội dung PDF",
+      "convertToPdf": "Chuyển đổi nhiều định dạng sang PDF",
+      "convertFromPdf": "Chuyển đổi PDF sang các định dạng khác",
+      "organizeManage": "Sắp xếp, hợp nhất, tách và quản lý trang PDF",
+      "optimizeRepair": "Nén, tối ưu và sửa chữa tệp PDF",
+      "securePdf": "Mã hóa, giải mã và bảo mật tệp PDF"
     }
   },
   "workflow": {

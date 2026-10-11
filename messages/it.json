@@ -1,8 +1,8 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF - Strumenti PDF Professionali",
-      "description": "Gratuito, privato e basato sul browser. Unisci, modifica e gestisci file PDF online senza caricarli su server."
+      "title": "AwesomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
+      "description": "Unisci, comprimi, converti, modifica e organizza i PDF in pochi secondi. Strumenti PDF gratuiti e semplici, nel browser e senza registrazione."
     },
     "tools": {
       "title": "Tutti gli Strumenti PDF",
@@ -46,7 +46,16 @@
       "privacy": "Privacy",
       "contact": "Contatto",
       "mainMenu": "Navigazione principale",
-      "openMenu": "Apri menu"
+      "openMenu": "Apri menu",
+      "allTools": "Tutti gli strumenti",
+      "edit": "Modifica",
+      "convert": "Converti",
+      "organize": "Organizza",
+      "shareFiles": "Condividi file",
+      "comingSoon": "In arrivo",
+      "browseAll": "Sfoglia tutti i {count} strumenti",
+      "language": "Lingua",
+      "search": "Cerca"
     },
     "buttons": {
       "duplicate": "Duplica",
@@ -101,7 +110,15 @@
       "openSource": "Avvisi open source",
       "basedOn": "Basato su",
       "downloadError": "Download del codice sorgente non riuscito. Riprova.",
-      "sourceDescription": "Scarica il codice sorgente di questa versione di AwesomePDF, inclusi la configurazione di compilazione e gli avvisi originali."
+      "sourceDescription": "Scarica il codice sorgente di questa versione di AwesomePDF, inclusi la configurazione di compilazione e gli avvisi originali.",
+      "description": "Strumenti PDF gratuiti nel browser per il lavoro di ogni giorno. Unisci, comprimi, converti, modifica e organizza i PDF senza creare un account.",
+      "brandOf": "Un marchio di Skillset Squad Private Limited.",
+      "toolsHeading": "Strumenti PDF",
+      "companyHeading": "Azienda e risorse",
+      "legalHeading": "Open source e note legali",
+      "convertPdf": "Converti PDF",
+      "privacyPolicy": "Informativa sulla privacy",
+      "copyrightLine": "© {year} AwesomePDF. Un marchio di Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "File recenti",
@@ -1324,48 +1341,201 @@
   },
   "home": {
     "hero": {
-      "title": "Strumenti PDF Professionali",
-      "highlight": "Strumenti Professionali",
-      "subtitle": "Elaborazione PDF gratuita, privata e potente nel tuo browser",
-      "cta": "Inizia"
+      "title": "Tutti gli strumenti PDF che ti servono. In un unico posto.",
+      "subtitle": "Unisci, comprimi, converti, modifica e organizza i PDF in pochi secondi. Gratuito, semplice e pensato per la privacy."
     },
-    "features": {
-      "privacy": {
-        "title": "100% Privato",
-        "description": "Tutto avviene nel tuo browser. I file non lasciano mai il tuo dispositivo."
+    "upload": {
+      "title": "Trascina qui i tuoi file",
+      "titleActive": "Rilascia per aggiungere i file",
+      "subtitle": "Scegli PDF, immagini o documenti supportati",
+      "choose": "Scegli i file",
+      "privacy": "I file scelti qui restano nel tuo browser. Non viene caricato nulla su un server.",
+      "shortcuts": "Strumenti popolari",
+      "summary": {
+        "pdf": "{count, plural, one {# file PDF selezionato} other {# file PDF selezionati}}",
+        "image": "{count, plural, one {# immagine selezionata} other {# immagini selezionate}}",
+        "document": "{count, plural, one {# file selezionato} other {# file selezionati}} ({extension})",
+        "mixed": "{count, plural, one {# file selezionato} other {# file selezionati}}"
       },
-      "free": {
-        "title": "Completamente gratuito",
-        "description": "Nessuna registrazione, nessun limite, nessun costo nascosto."
+      "moreFiles": "+{count} altri",
+      "suggestionsTitle": "Cosa vuoi fare?",
+      "chooseDifferent": "Scegli altri file",
+      "mixedNotice": "Questi file sono di tipi diversi, quindi nessuno strumento è adatto a tutti. Scegli file di un solo tipo, ad esempio solo PDF o solo immagini.",
+      "noToolNotice": "Nessuno strumento può aprire questa combinazione di file. Prova con meno file o con un altro tipo di file.",
+      "noneUsable": "Nessuno dei file selezionati può essere usato. AwesomePDF funziona con PDF, immagini e documenti comuni come Word, Excel e PowerPoint.",
+      "skipped": "Alcuni file sono stati ignorati",
+      "readFailed": "Impossibile leggere questi file. Riprova.",
+      "errors": {
+        "empty": "{name} è vuoto.",
+        "unsupported": "{name} non è un tipo di file supportato.",
+        "notPdf": "{name} non è un file PDF valido."
       },
-      "powerful": {
-        "title": "Strumenti potenti",
-        "description": "Oltre 67 strumenti professionali per tutte le tue esigenze."
+      "suggestions": {
+        "single": {
+          "compress-pdf": {
+            "description": "Riduci le dimensioni del file per condividerlo o caricarlo."
+          },
+          "edit-pdf": {
+            "description": "Modifica testo e immagini o aggiungi annotazioni."
+          },
+          "split-pdf": {
+            "description": "Separa pagine o intervalli in nuovi file."
+          },
+          "sign-pdf": {
+            "description": "Aggiungi la tua firma al documento."
+          },
+          "organize-pdf": {
+            "description": "Riordina, ruota o elimina le pagine."
+          }
+        },
+        "multiple": {
+          "merge-pdf": {
+            "description": "Combina {count} file in un unico PDF."
+          },
+          "pdf-multi-tool": {
+            "title": "Combina e organizza",
+            "description": "Unisci, riordina e ripulisci le pagine in un unico posto."
+          },
+          "compress-pdf": {
+            "title": "Compressione in blocco",
+            "description": "Riduci le dimensioni di tutti i {count} file in una volta."
+          }
+        },
+        "image": {
+          "image-to-pdf": {
+            "description": "Converti questa immagine in un documento PDF."
+          }
+        },
+        "images": {
+          "image-to-pdf": {
+            "title": "Immagini in PDF",
+            "description": "Combina {count} immagini in un unico PDF."
+          }
+        },
+        "convert": {
+          "description": "Converti {extension} in PDF."
+        }
       }
     },
     "popularTools": {
-      "badge": "Più usati",
       "title": "Strumenti PDF popolari",
-      "description": "I nostri strumenti più utilizzati per aiutarti a lavorare più velocemente."
+      "description": "Tutto ciò che serve per lavorare con i PDF, a portata di clic.",
+      "viewAll": "Vedi tutti gli strumenti",
+      "items": {
+        "merge-pdf": "Combina più PDF in un unico documento.",
+        "compress-pdf": "Riduci le dimensioni dei file PDF di grandi dimensioni.",
+        "pdf-to-docx": "Trasforma un PDF in un documento Word modificabile.",
+        "edit-pdf": "Modifica testo e immagini o aggiungi annotazioni.",
+        "split-pdf": "Separa un PDF in pagine o sezioni.",
+        "sign-pdf": "Aggiungi la tua firma a qualsiasi PDF.",
+        "jpg-to-pdf": "Trasforma le immagini JPG in un PDF.",
+        "organize-pdf": "Riordina, ruota ed elimina le pagine."
+      }
     },
-    "categoriesSection": {
-      "title": "Esplora tutte le categorie",
-      "description": "{count}+ strumenti PDF professionali organizzati per categoria",
-      "toolsCount": "{count} strumenti"
+    "directory": {
+      "title": "Esplora tutti gli strumenti PDF",
+      "description": "Trova lo strumento giusto per qualsiasi attività sui PDF.",
+      "searchLabel": "Cerca strumenti PDF",
+      "searchPlaceholder": "Cerca per attività, ad esempio unire, ruotare o convertire",
+      "clearSearch": "Cancella ricerca",
+      "filterLabel": "Filtra per categoria",
+      "all": "Tutti",
+      "toolsCount": "{count, plural, one {# strumento} other {# strumenti}}",
+      "seeAll": "Vedi tutti i {count}",
+      "status": "{count, plural, one {# strumento trovato} other {# strumenti trovati}}",
+      "empty": "Nessuno strumento corrisponde alla ricerca.",
+      "emptyHint": "Prova con un’altra parola oppure cancella i filtri per vedere tutti gli strumenti.",
+      "clearFilters": "Cancella filtri"
     },
-    "categoriesDescription": {
-      "editAnnotate": "Modifica, annota e modifica i contenuti PDF",
-      "convertToPdf": "Converti vari formati in PDF",
-      "convertFromPdf": "Converti PDF in altri formati",
-      "organizeManage": "Organizza, unisci, dividi e gestisci le pagine PDF",
-      "optimizeRepair": "Comprimi, ottimizza e ripara i file PDF",
-      "securePdf": "Cripta, decripta e proteggi i PDF"
+    "share": {
+      "name": "AwesomePDF Share",
+      "title": "Condividi i file direttamente. Senza archiviazione cloud.",
+      "badge": "In arrivo",
+      "subtitle": "Invia PDF e altri file direttamente da browser a browser con la tecnologia peer-to-peer. Nessun account richiesto e nessuna archiviazione permanente nel cloud.",
+      "planned": "AwesomePDF Share è una funzione pianificata e non è ancora disponibile. Questa è un’anteprima di come dovrebbe funzionare.",
+      "stepsTitle": "Come dovrebbe funzionare",
+      "steps": {
+        "choose": "Scegli un file da inviare.",
+        "link": "Ottieni un link di condivisione e invialo al destinatario.",
+        "open": "Tieni aperta questa scheda del browser mentre il destinatario apre il link e il file viene trasferito tramite una connessione cifrata."
+      },
+      "benefits": {
+        "direct": {
+          "title": "Condivisione diretta da browser a browser",
+          "description": "I file sono pensati per andare direttamente al destinatario, quando la rete lo consente."
+        },
+        "noAccount": {
+          "title": "Nessun account richiesto",
+          "description": "Condividi un link. Nessuno deve registrarsi."
+        },
+        "noStorage": {
+          "title": "Nessuna archiviazione cloud permanente",
+          "description": "Progettato perché i tuoi file non vengano conservati su un server."
+        }
+      },
+      "note": "Le connessioni dirette dipendono da entrambe le reti. Se una rete restrittiva le blocca, una versione futura potrebbe offrire un relay facoltativo. In tal caso, te lo diremo chiaramente prima di usarlo.",
+      "cta": "Condividi file — In arrivo",
+      "preview": "Anteprima di una funzione pianificata",
+      "sender": "Mittente",
+      "receiver": "Destinatario",
+      "connection": "Connessione peer-to-peer cifrata",
+      "illustration": "Illustrazione di una funzione pianificata: il dispositivo di un mittente collegato a quello di un destinatario da una connessione peer-to-peer cifrata. Non ancora disponibile."
     },
-    "stats": {
-      "pdfTools": "Strumenti PDF",
-      "freeToUse": "Gratis da usare",
-      "languages": "Lingue",
-      "filesUploaded": "File caricati"
+    "trust": {
+      "title": "I tuoi documenti. Il tuo controllo.",
+      "description": "Le operazioni PDF supportate vengono eseguite localmente nel browser, così puoi lavorare con file sensibili senza creare un account. La privacy è un principio fondamentale di AwesomePDF e lo diciamo chiaramente quando qualcosa funziona in modo diverso.",
+      "items": {
+        "private": {
+          "title": "Privato per progettazione",
+          "description": "Per le operazioni supportate i file vengono elaborati localmente."
+        },
+        "free": {
+          "title": "Gratuito",
+          "description": "Usa utilità PDF gratuite senza registrazione obbligatoria."
+        },
+        "simple": {
+          "title": "Semplice e veloce",
+          "description": "Lavora con i PDF tramite un’interfaccia pulita e lineare."
+        }
+      },
+      "note": "Da sapere: alcuni strumenti scaricano caratteri, dati linguistici o script di supporto al primo utilizzo. I tuoi documenti non fanno parte di questi download.",
+      "privacyLink": "Leggi l’informativa sulla privacy",
+      "sourceLink": "Consulta il codice sorgente"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "description": "Risposte rapide su AwesomePDF.",
+      "seeAll": "Vedi tutte le domande",
+      "items": {
+        "free": {
+          "question": "AwesomePDF è gratuito?",
+          "answer": "Sì. Gli strumenti PDF di AwesomePDF sono gratuiti, senza abbonamento e senza obbligo di registrazione."
+        },
+        "upload": {
+          "question": "I miei file PDF vengono caricati su un server?",
+          "answer": "No. Gli strumenti supportati elaborano i tuoi file nel browser con JavaScript e WebAssembly, e AwesomePDF non carica i tuoi documenti su un server. Alcuni strumenti scaricano caratteri, dati linguistici o script di supporto al primo utilizzo; i tuoi documenti non fanno parte di quei download. L’app conserva inoltre sul tuo dispositivo un breve elenco dei nomi dei file usati di recente, che puoi cancellare in qualsiasi momento dall’icona dell’orologio nell’intestazione."
+        },
+        "account": {
+          "question": "Posso usare AwesomePDF senza creare un account?",
+          "answer": "Sì. Apri uno strumento qualsiasi e inizia subito a lavorare. Non ci sono login né registrazioni."
+        },
+        "tools": {
+          "question": "Quali strumenti PDF sono disponibili?",
+          "answer": "AwesomePDF comprende {count} strumenti in sei gruppi: modificare e annotare, convertire in PDF, convertire da PDF, organizzare e gestire, ottimizzare e riparare, proteggere i PDF. Tra i più popolari ci sono unire, dividere, comprimere, PDF in Word, modificare e firmare. Sfogliali nell’elenco qui sopra o usa la ricerca."
+        },
+        "mobile": {
+          "question": "Posso usare AwesomePDF sui dispositivi mobili?",
+          "answer": "Sì. AwesomePDF funziona nei browser mobili moderni. Poiché i file vengono elaborati sul tuo dispositivo, i documenti di grandi dimensioni e le attività più pesanti, come l’OCR o le conversioni Office, possono essere più lenti su uno smartphone."
+        },
+        "scanned": {
+          "question": "AwesomePDF supporta i documenti scansionati?",
+          "answer": "Sì. Lo strumento OCR PDF può riconoscere il testo delle pagine scansionate per rendere il PDF ricercabile. I risultati dipendono dalla qualità della scansione e dalla lingua, e i dati linguistici dell’OCR vengono scaricati al primo utilizzo."
+        },
+        "share": {
+          "question": "Che cos’è AwesomePDF Share?",
+          "answer": "AwesomePDF Share è una funzione pianificata, in arrivo, per inviare file direttamente da un browser a un altro tramite una connessione peer-to-peer cifrata. Non è ancora disponibile e non fa parte degli strumenti elencati sopra."
+        }
+      }
     },
     "categories": {
       "popular": "Strumenti popolari",
@@ -1375,6 +1545,14 @@
       "organizeManage": "Organizza e gestisci",
       "optimizeRepair": "Ottimizza e ripara",
       "securePdf": "Proteggi PDF"
+    },
+    "categoriesDescription": {
+      "editAnnotate": "Modifica, annota e modifica i contenuti PDF",
+      "convertToPdf": "Converti vari formati in PDF",
+      "convertFromPdf": "Converti PDF in altri formati",
+      "organizeManage": "Organizza, unisci, dividi e gestisci le pagine PDF",
+      "optimizeRepair": "Comprimi, ottimizza e ripara i file PDF",
+      "securePdf": "Cripta, decripta e proteggi i PDF"
     }
   },
   "workflow": {
