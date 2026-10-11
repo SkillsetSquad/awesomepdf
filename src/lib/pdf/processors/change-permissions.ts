@@ -1,3 +1,5 @@
+import type { QpdfModule, QpdfGlobals } from '../qpdf-types';
+
 /**
  * PDF Change Permissions Processor
  * Requirements: 5.1
@@ -76,8 +78,8 @@ const DEFAULT_OPTIONS: ChangePermissionsOptions = {
 };
 
 // QPDF instance singleton
-let qpdfInstance: any = null;
-let qpdfLoadPromise: Promise<any> | null = null;
+let qpdfInstance: QpdfModule | null = null;
+let qpdfLoadPromise: Promise<QpdfModule> | null = null;
 
 // Store captured stderr output
 let capturedStderr: string[] = [];
@@ -86,7 +88,7 @@ let capturedStderr: string[] = [];
  * Initialize qpdf-wasm singleton
  * Uses script tag loading to avoid Next.js SSR bundling issues
  */
-async function initializeQpdf(): Promise<any> {
+async function initializeQpdf(): Promise<QpdfModule> {
   // Return cached instance if available
   if (qpdfInstance) {
     return qpdfInstance;
@@ -104,7 +106,7 @@ async function initializeQpdf(): Promise<any> {
 
   qpdfLoadPromise = new Promise((resolve, reject) => {
     // Check if Module is already available
-    if ((window as any).Module && typeof (window as any).Module === 'function') {
+    if ((window as unknown as QpdfGlobals).Module && typeof (window as unknown as QpdfGlobals).Module === 'function') {
       initQpdfModule(resolve, reject);
       return;
     }
@@ -132,9 +134,9 @@ async function initializeQpdf(): Promise<any> {
 /**
  * Initialize the QPDF module after script is loaded
  */
-function initQpdfModule(resolve: (value: any) => void, reject: (reason: any) => void) {
+function initQpdfModule(resolve: (value: QpdfModule) => void, reject: (reason: unknown) => void) {
   try {
-    const createModule = (window as any).Module;
+    const createModule = (window as unknown as QpdfGlobals).Module;
     
     if (!createModule || typeof createModule !== 'function') {
       reject(new Error('QPDF module not found after script load'));
@@ -148,10 +150,10 @@ function initQpdfModule(resolve: (value: any) => void, reject: (reason: any) => 
         }
         return path;
       },
-    }).then((instance: any) => {
+    }).then((instance: QpdfModule) => {
       qpdfInstance = instance;
       resolve(instance);
-    }).catch((err: any) => {
+    }).catch((err: unknown) => {
       qpdfLoadPromise = null;
       reject(err);
     });
@@ -198,7 +200,7 @@ export class ChangePermissionsProcessor extends BasePDFProcessor {
     const file = files[0];
     const inputPath = '/input.pdf';
     const outputPath = '/output.pdf';
-    let qpdf: any;
+    let qpdf: QpdfModule | undefined;
 
     try {
       this.updateProgress(5, 'Initializing PDF engine...');
@@ -289,17 +291,17 @@ export class ChangePermissionsProcessor extends BasePDFProcessor {
       // Capture stderr by temporarily overriding console.error
       capturedStderr = [];
       const originalConsoleError = console.error;
-      console.error = (...errorArgs: any[]) => {
+      console.error = (...errorArgs: unknown[]) => {
         const message = errorArgs.map(a => String(a)).join(' ');
         capturedStderr.push(message);
         originalConsoleError.apply(console, errorArgs);
       };
 
       // Execute qpdf
-      let qpdfError: Error | null = null;
+      let qpdfError: unknown = null;
       try {
         qpdf.callMain(args);
-      } catch (err: any) {
+      } catch (err: unknown) {
         qpdfError = err;
       } finally {
         // Restore console.error
@@ -326,7 +328,7 @@ export class ChangePermissionsProcessor extends BasePDFProcessor {
           stderrOutput.includes('wrong password');
 
         if (hasPasswordError || qpdfError) {
-          const errorMessage = qpdfError ? String(qpdfError.message || qpdfError || '').toLowerCase() : '';
+          const errorMessage = qpdfError ? String((typeof qpdfError === 'object' && qpdfError !== null && 'message' in qpdfError ? qpdfError.message : undefined) || qpdfError || '').toLowerCase() : '';
           if (
             hasPasswordError ||
             errorMessage.includes('invalid password') ||

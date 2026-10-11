@@ -1,3 +1,5 @@
+import type { QpdfModule, QpdfGlobals } from './qpdf-types';
+
 /**
  * QPDF WASM Loader
  * 
@@ -6,13 +8,13 @@
  */
 
 // QPDF instance singleton
-let qpdfInstance: any = null;
-let loadingPromise: Promise<any> | null = null;
+let qpdfInstance: QpdfModule | null = null;
+let loadingPromise: Promise<QpdfModule> | null = null;
 
 /**
  * Load the QPDF WASM module dynamically
  */
-export async function loadQpdf(): Promise<any> {
+export async function loadQpdf(): Promise<QpdfModule> {
   // Return cached instance if available
   if (qpdfInstance) {
     return qpdfInstance;
@@ -31,8 +33,9 @@ export async function loadQpdf(): Promise<any> {
   loadingPromise = new Promise(async (resolve, reject) => {
     try {
       // Check if createModule is already available (script already loaded)
-      if ((window as any).createQpdfModule) {
-        qpdfInstance = await (window as any).createQpdfModule({
+      const existingFactory = (window as unknown as QpdfGlobals).createQpdfModule;
+      if (existingFactory) {
+        qpdfInstance = await existingFactory({
           locateFile: (path: string) => {
             if (path.endsWith('.wasm')) {
               return '/qpdf.wasm';
@@ -52,7 +55,7 @@ export async function loadQpdf(): Promise<any> {
       script.onload = async () => {
         try {
           // The script should expose createModule or similar
-          const createModule = (window as any).createQpdfModule || (window as any).Module;
+          const createModule = (window as unknown as QpdfGlobals).createQpdfModule || (window as unknown as QpdfGlobals).Module;
           
           if (!createModule) {
             throw new Error('QPDF module not found after script load');
