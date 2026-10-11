@@ -10,6 +10,7 @@ import { AnnotationColorControl, type AnnotationColorOptions } from './Annotatio
 import { AnnotationStyleControls, type AnnotationStyleLabels, type AnnotationStyleOptions } from './AnnotationStyleControls';
 import { AnnotationSignatureControl, type AnnotationSignatureOptions, type AnnotationSignatureLabels } from './AnnotationSignatureControl';
 import { AnnotationStampControl, type AnnotationStampOptions, type AnnotationStampLabels } from './AnnotationStampControl';
+import { AnnotationCommentControls, type AnnotationCommentOptions, type AnnotationCommentLabels } from './AnnotationCommentControls';
 
 const annotationIcons: Record<string, LucideIcon> = {
   select: MousePointer2, rectangle: Square, circle: Circle, note: StickyNote,
@@ -21,7 +22,7 @@ const annotationIcons: Record<string, LucideIcon> = {
 interface ViewerControl {
   item: HTMLElement;
   mount: HTMLElement;
-  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation' | 'annotation-action' | 'annotation-style';
+  kind: 'edit' | 'undo' | 'redo' | 'hint' | 'annotation' | 'annotation-action' | 'annotation-style' | 'annotation-comments';
   key: string;
   Icon: LucideIcon;
   toggle: boolean;
@@ -30,6 +31,7 @@ interface ViewerControl {
   styleOptions?: AnnotationStyleOptions;
   signatureOptions?: AnnotationSignatureOptions;
   stampOptions?: AnnotationStampOptions;
+  commentOptions?: AnnotationCommentOptions;
   onExport?: AnnotationExportAction;
   exportFormats?: AnnotationExportFormat[];
   label: string;
@@ -38,7 +40,7 @@ interface ViewerControl {
   action: HTMLElement;
 }
 
-export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, styleLabels, signatureLabels, stampLabels, exportError = 'Export failed. Please try again.' }: {
+export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, styleLabels, signatureLabels, stampLabels, commentLabels, exportError = 'Export failed. Please try again.' }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   undo: string;
@@ -48,17 +50,24 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
   styleLabels?: AnnotationStyleLabels;
   signatureLabels?: AnnotationSignatureLabels;
   stampLabels?: AnnotationStampLabels;
+  commentLabels?: AnnotationCommentLabels;
   exportError?: string;
 }) {
   const [controls, setControls] = useState<ViewerControl[]>([]);
   useEffect(() => {
     const doc = iframe?.contentDocument;
     if (!doc?.body) return;
-    const viewer = doc.defaultView as (Window & { awesomepdfSignatureControls?: boolean; awesomepdfStampControls?: boolean }) | null;
+    const viewer = doc.defaultView as (Window & { awesomepdfSignatureControls?: boolean; awesomepdfStampControls?: boolean; awesomepdfCommentControls?: boolean }) | null;
     const previousSignatureControls = viewer?.awesomepdfSignatureControls;
     const previousStampControls = viewer?.awesomepdfStampControls;
+    const previousCommentControls = viewer?.awesomepdfCommentControls;
     if (viewer) viewer.awesomepdfSignatureControls = !!signatureLabels;
     if (viewer) viewer.awesomepdfStampControls = !!stampLabels;
+    const refreshComments = () => {
+      for (const item of doc.querySelectorAll<HTMLElement>('[data-comment-control]')) (item as HTMLElement & { awesomepdfComment?: AnnotationCommentOptions }).awesomepdfComment?.refreshControls();
+    };
+    if (viewer) viewer.awesomepdfCommentControls = !!commentLabels;
+    if (!!previousCommentControls !== !!commentLabels) refreshComments();
     const sheets = Array.from(document.querySelectorAll('link[rel="stylesheet"], style')).map(node => {
       const clone = node.cloneNode(true) as HTMLElement;
       clone.removeAttribute('id');
@@ -79,6 +88,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       .CustomAnnotationMenu { background: var(--popover); color: var(--popover-foreground); border-color: var(--border); }
       .CustomAnnotationMenu .buttons { display: flex; gap: .25rem; }
       .CustomAnnotationMenu .buttons li[data-awesomepdf-control] { background: transparent; border: 0; padding: 0; margin: 0; width: auto; height: auto; }
+      .CustomComment[data-awesomepdf-control] > [data-awesomepdf-mount] { display: block; }
       [data-awesomepdf-mount] { display: inline-flex; }
     `;
     doc.head.appendChild(style);
@@ -112,6 +122,10 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       const next: ViewerControl[] = [];
       for (const [item, { mount, parent }] of registry) {
         if (!doc.body.contains(item)) { mount.remove(); delete parent.dataset.awesomepdfAction; delete item.dataset.awesomepdfControl; registry.delete(item); }
+      }
+      if (commentLabels) for (const item of doc.querySelectorAll<HTMLElement>('.CustomComment[data-comment-control]')) {
+        const commentOptions = (item as HTMLElement & { awesomepdfComment?: AnnotationCommentOptions }).awesomepdfComment;
+        if (commentOptions) next.push({ item, mount: mountControl(item), action: item, key: 'comments-panel', kind: 'annotation-comments', Icon: MessageSquare, toggle: false, label: commentLabels.title, disabled: false, pressed: false, commentOptions });
       }
       for (const [selector, kind] of [
         ['#pdfcraft-edit-existing-text', 'edit'], ['.pdfcraft-undo-btn', 'undo'],
@@ -159,12 +173,12 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       }
       setControls(previous => previous.length === next.length && next.every((control, index) => {
         const old = previous[index];
-        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.styleOptions === control.styleOptions && old.signatureOptions === control.signatureOptions && old.stampOptions === control.stampOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
+        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.styleOptions === control.styleOptions && old.signatureOptions === control.signatureOptions && old.stampOptions === control.stampOptions && old.commentOptions === control.commentOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
       }) ? previous : next);
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel', 'data-annotation-style', 'data-color', 'data-stroke-width', 'data-opacity', 'data-signature-revision', 'data-stamp-revision'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel', 'data-annotation-style', 'data-color', 'data-stroke-width', 'data-opacity', 'data-signature-revision', 'data-stamp-revision', 'data-comment-revision'] });
     return () => {
       observer.disconnect();
       if (viewer) {
@@ -172,16 +186,21 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         else viewer.awesomepdfSignatureControls = previousSignatureControls;
         if (previousStampControls === undefined) delete viewer.awesomepdfStampControls;
         else viewer.awesomepdfStampControls = previousStampControls;
+        if (previousCommentControls === undefined) delete viewer.awesomepdfCommentControls;
+        else viewer.awesomepdfCommentControls = previousCommentControls;
+        if (iframe?.isConnected && !!previousCommentControls !== !!commentLabels) refreshComments();
       }
       theme.disconnect();
       for (const [item, { mount, parent }] of registry) { mount.remove(); delete parent.dataset.awesomepdfAction; delete item.dataset.awesomepdfControl; }
       style.remove();
       sheets.forEach(sheet => sheet.remove());
     };
-  }, [iframe, locale, undo, redo, labels, signatureLabels, stampLabels]);
+  }, [iframe, locale, undo, redo, labels, signatureLabels, stampLabels, commentLabels]);
 
   return controls.map(control => createPortal(control.kind === 'hint'
     ? <Alert className="pointer-events-none fixed top-20 left-1/2 z-[100000] w-[calc(100%-2rem)] max-w-md -translate-x-1/2" role="status" dir={locale === 'ar' ? 'rtl' : 'ltr'}><Info aria-hidden="true" /><AlertDescription>{control.label}</AlertDescription></Alert>
+    : control.kind === 'annotation-comments' && control.commentOptions && commentLabels
+    ? <AnnotationCommentControls options={control.commentOptions} labels={commentLabels} container={control.item} direction={locale === 'ar' ? 'rtl' : 'ltr'} />
     : control.kind === 'annotation-style' && control.styleOptions
     ? <AnnotationStyleControls options={control.styleOptions} direction={locale === 'ar' ? 'rtl' : 'ltr'} labels={styleLabels ?? { title: 'Annotation style', color: labels?.color ?? 'Color', strokeWidth: 'Stroke width', opacity: 'Opacity', back: 'Back', format: colorLabels?.format ?? 'Color format', close: colorLabels?.close ?? 'Close' }} />
     : control.key === 'color' && control.colorOptions

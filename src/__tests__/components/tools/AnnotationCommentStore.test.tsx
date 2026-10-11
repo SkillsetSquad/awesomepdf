@@ -25,9 +25,9 @@ function setup() {
   const onDelete = vi.fn((id: string) => painter.delete(id)); const onSelected = vi.fn();
   const Native = () => null; const statuses = Object.fromEntries(['Accepted', 'Rejected', 'Cancelled', 'Completed', 'Closed', 'None'].map(key => [key, { labelKey: `comment.status.${key.toLowerCase()}`, icon: null }]));
   let sequence = 0;
-  const Comment = new Function('m', 'OK', 'EK', 'kK', 'ke', 'Mn', 'XN', 'UN', 'YN', 'jo', 'RK', 'PK', 'gB', 'SS', '_K', 'AC', 'IK', 'Gq', 'sU', 'bK', 'hm', 'xK', `return ${renderer};`)(
+  const Comment = new Function('m', 'OK', 'EK', 'kK', 'ke', 'Mn', 'XN', 'UN', 'YN', 'jo', 'RK', 'PK', 'gB', 'SS', '_K', 'AC', 'IK', 'Gq', 'sU', 'bK', 'hm', 'xK', 'window', `return ${renderer};`)(
     React, (values: unknown[]) => values, Array.from, Object.assign, () => ({ t: (key: string) => key }), jsxRuntime, () => 'new-date', () => `reply-${++sequence}`, (date: string) => date, { None: 'None' }, statuses,
-    Native, Native, Native, Native, Native, Native, Native, Native, Native, Native, Native,
+    Native, Native, Native, Native, Native, Native, Native, Native, Native, Native, Native, window,
   ) as React.ForwardRefExoticComponent<{ userName: string; onUpdate: typeof onUpdate; onDelete: typeof onDelete; onSelected: typeof onSelected } & React.RefAttributes<{ addAnnotation(annotation: RecordData): void; updateAnnotation(annotation: RecordData): void; selectedAnnotation(annotation: RecordData, isClick: boolean): void }>>;
   const ref = React.createRef<React.ComponentRef<typeof Comment>>(); const root = createRoot(host);
   act(() => root.render(<React.StrictMode><Comment ref={ref} userName="Reviewer" onUpdate={onUpdate} onDelete={onDelete} onSelected={onSelected} /></React.StrictMode>));
