@@ -38,12 +38,13 @@ function viewerColor(value: string): string | null {
   if (/^#[\da-f]{4}$/i.test(value.trim())) return hexColor(value.trim().slice(0, 4));
   const hex = hexColor(value.trim());
   if (hex) return hex;
-  // The annotation engine also stores colors as rgb()/rgba(). Its picker edits opaque RGB.
+  // The annotation engine also stores colors as rgb()/rgba(). Normalize RGB separately
+  // so alpha-aware stamp controls can retain transparency while editing channels.
   const match = value.trim().match(/^rgba?\(([^)]+)\)$/i);
   if (!match) return null;
   const parts = match[1].split(',').map(part => part.trim());
   if (parts.length !== 3 && parts.length !== 4) return null;
-  if (parts.some(part => !/^\d+(?:\.\d+)?$/.test(part))) return null;
+  if (parts.some(part => !/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(part))) return null;
   const values = parts.map(Number);
   if (values.slice(0, 3).some(channel => channel < 0 || channel > 255)) return null;
   if (values.length === 4 && (values[3] < 0 || values[3] > 1)) return null;
@@ -54,7 +55,7 @@ function viewerOpacity(value: string): number {
   const input = value.trim();
   if (/^#[\da-f]{8}$/i.test(input)) return parseInt(input.slice(7), 16) / 255;
   if (/^#[\da-f]{4}$/i.test(input)) return parseInt(input.slice(4), 16) / 15;
-  const match = input.match(/^rgba\([^,]+,[^,]+,[^,]+,\s*(\d+(?:\.\d+)?)\s*\)$/i);
+  const match = input.match(/^rgba\([^,]+,[^,]+,[^,]+,\s*((?:\d+(?:\.\d*)?|\.\d+))\s*\)$/i);
   const opacity = match ? Number(match[1]) : 1;
   return opacity >= 0 && opacity <= 1 ? opacity : 1;
 }
@@ -85,7 +86,7 @@ function channelColor(values: Channels, format: ColorFormat): string | null {
   return rgbHex(base.map(value => (value + m) * 255));
 }
 
-/** The toolbar's original callback receives opaque colors; document style processing stays native. */
+/** Keep the toolbar opaque by default; stamp fields may explicitly retain alpha. */
 export function AnnotationColorControl({ options, label, disabled, direction, formatLabel, closeLabel, opacityLabel = 'Opacity' }: {
   options: AnnotationColorOptions;
   label: string;

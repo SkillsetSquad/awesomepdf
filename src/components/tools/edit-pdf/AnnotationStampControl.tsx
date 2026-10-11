@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Stamp, Plus, CircleAlert, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -71,7 +71,7 @@ export function AnnotationStampControl({ options, label, labels, direction, pres
   const current = useRef(options); current.current = options;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     upload.current?.abort(); upload.current = null; setError(false); setLoading(false);
     return () => upload.current?.abort();
   }, [options.open, options.gallery, options.creating]);
@@ -109,8 +109,8 @@ export function AnnotationStampControl({ options, label, labels, direction, pres
           <StampColor value={options.values.borderColor} optional defaultValue="#000000" label={labels.border} labels={labels} colors={options.colors} direction={direction} onChange={value => update({ borderColor: value })} />
           <div className="space-y-2"><Label htmlFor={`${id}-border`}>{labels.borderStyle}</Label><NativeSelect id={`${id}-border`} value={options.values.borderStyle} onChange={event => update({ borderStyle: event.target.value as StampValues['borderStyle'] })}><NativeSelectOption value="solid">{labels.solid}</NativeSelectOption><NativeSelectOption value="dashed">{labels.dashed}</NativeSelectOption></NativeSelect></div>
         </div>
-        <div className="flex flex-wrap gap-4">{(['username', 'date'] as const).map(part => <div key={part} className="flex items-center gap-2"><Checkbox id={`${id}-${part}`} checked={options.values.timestamp.includes(part)} onCheckedChange={checked => toggle('timestamp', part, checked === true)} /><Label htmlFor={`${id}-${part}`}>{part === 'username' ? labels.author : labels.date}</Label></div>)}</div>
-        <div className="space-y-2"><Label htmlFor={`${id}-date`}>{labels.dateFormat}</Label><NativeSelect id={`${id}-date`} value={options.values.dateFormat} onChange={event => update({ dateFormat: event.target.value })}>{options.dateFormats.map(format => <NativeSelectOption key={format.value} value={format.value}>{format.label}</NativeSelectOption>)}</NativeSelect></div>
+        <div className="flex flex-wrap gap-4">{(['username', 'date'] as const).map(part => <div key={part} className="flex items-center gap-2"><Checkbox id={`${id}-timestamp-${part}`} checked={options.values.timestamp.includes(part)} onCheckedChange={checked => toggle('timestamp', part, checked === true)} /><Label htmlFor={`${id}-timestamp-${part}`}>{part === 'username' ? labels.author : labels.date}</Label></div>)}</div>
+        <div className="space-y-2"><Label htmlFor={`${id}-date-format`}>{labels.dateFormat}</Label><NativeSelect id={`${id}-date-format`} value={options.values.dateFormat} onChange={event => update({ dateFormat: event.target.value })}>{options.dateFormats.map(format => <NativeSelectOption key={format.value} value={format.value}>{format.label}</NativeSelectOption>)}</NativeSelect></div>
         <div className="space-y-2"><Label htmlFor={`${id}-timestamp`}>{labels.customTimestamp}</Label><Input id={`${id}-timestamp`} value={options.values.customTimestampText} onChange={event => update({ customTimestampText: event.target.value })} /></div>
       </div> : <Tabs value={options.gallery} onValueChange={options.onGalleryChange} dir={direction}>
         <TabsList className="w-full"><TabsTrigger value="default">{labels.defaults}</TabsTrigger><TabsTrigger value="custom">{labels.saved}</TabsTrigger><TabsTrigger value="upload">{labels.upload}</TabsTrigger></TabsList>
