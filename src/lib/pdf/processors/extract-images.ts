@@ -180,7 +180,7 @@ export class ExtractImagesPDFProcessor extends BasePDFProcessor {
 
                 try {
                     // Extract images using Worker
-                    const fileImages = await new Promise<any[]>((resolve, reject) => {
+                    const fileImages = await new Promise<Array<Omit<ExtractedImage, 'data'> & { data: ArrayBuffer | Uint8Array }>>((resolve, reject) => {
                         if (!this.worker) {
                             reject(new Error('Worker not initialized'));
                             return;
@@ -237,7 +237,7 @@ export class ExtractImagesPDFProcessor extends BasePDFProcessor {
                             ...rawImg,
                             index: currentImageIndex,
                             // Ensure data is ArrayBuffer (Worker might return Uint8Array)
-                            data: rawImg.data instanceof Uint8Array ? rawImg.data.buffer : rawImg.data,
+                            data: rawImg.data instanceof Uint8Array ? new Uint8Array(rawImg.data).buffer : rawImg.data,
                             name: `image_${currentImageIndex}.${rawImg.ext}`
                         });
                     }

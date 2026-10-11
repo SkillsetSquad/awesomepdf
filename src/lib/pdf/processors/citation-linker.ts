@@ -23,6 +23,7 @@ export interface CitationLinkerOptions {
     rect: number[]; // [x1, y1, x2, y2]
     url: string;
     refText: string;
+    refPage?: number;
   }>;
 }
 
@@ -60,14 +61,14 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
       const pdfjsDoc = await pdfjs.getDocument({ data: arrayBuffer.slice(0) }).promise;
       const totalPages = pdfjsDoc.numPages;
 
-      const detectedCitations: any[] = [];
+      const detectedCitations: NonNullable<CitationLinkerOptions['citationsList']> = [];
       let referencesPageNum = totalPages; // Default to last page for references search
       
       // Page analysis to find where "References" section starts
       for (let pageNum = totalPages; pageNum >= 1; pageNum--) {
         const page = await pdfjsDoc.getPage(pageNum);
         const textContent = await page.getTextContent();
-        const fullText = textContent.items.map((item: any) => item.str).join(' ');
+        const fullText = textContent.items.filter(item => 'str' in item).map((item) => item.str).join(' ');
         if (fullText.match(/references|bibliography|参考文献/i)) {
           referencesPageNum = pageNum;
           break;
@@ -79,7 +80,7 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
       for (let p = referencesPageNum; p <= totalPages; p++) {
         const page = await pdfjsDoc.getPage(p);
         const textContent = await page.getTextContent();
-        const pageText = textContent.items.map((item: any) => item.str).join(' ');
+        const pageText = textContent.items.filter(item => 'str' in item).map((item) => item.str).join(' ');
         
         // Match patterns like [1] or 1.
         const refRegex = /(?:\[(\d+)\]|(\d+)\.)\s+([^\[\n]+)/g;
@@ -114,7 +115,7 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
         const page = await pdfjsDoc.getPage(pageNum);
         const textContent = await page.getTextContent();
 
-        textContent.items.forEach((item: any) => {
+        textContent.items.filter(item => 'str' in item).forEach((item) => {
           const text = item.str.trim();
           // Find standard "[1]" or "[1-3]" or "[1, 2]" style markers
           const markerRegex = /\[(\d+(?:\s*,\s*\d+|\s*-\s*\d+)*)\]/g;
@@ -178,7 +179,7 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
               A: {
                 Type: 'Action',
                 S: 'URI',
-                URI: url,
+                URI: pdfLib.PDFString.of(url),
               },
             });
           } else if (linkerOptions.fallbackToPageJump && refPage) {
@@ -196,7 +197,7 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
 
           if (linkAnnot) {
             // Retrieve or create page annotations array
-            let annots = pdfLibPage.node.get(pdfLib.PDFName.of('Annots')) as any;
+            let annots = pdfLibPage.node.lookupMaybe(pdfLib.PDFName.of('Annots'), pdfLib.PDFArray);
             if (!annots) {
               annots = pdfDoc.context.obj([]);
               pdfLibPage.node.set(pdfLib.PDFName.of('Annots'), annots);

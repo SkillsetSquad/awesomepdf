@@ -151,7 +151,7 @@ export class FormLogicDesignerProcessor extends BasePDFProcessor {
 
       this.updateProgress(85, 'Serializing customized PDF...');
       const pdfBytes = await pdfDoc.save();
-      const outputBlob = new Blob([pdfBytes as any], { type: 'application/pdf' });
+      const outputBlob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const outputFilename = file.name.replace(/\.pdf$/i, '_smart.pdf');
 
       this.updateProgress(100, 'Form logic injection complete!');

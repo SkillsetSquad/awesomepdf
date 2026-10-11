@@ -12,7 +12,7 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
-import { loadPyMuPDF } from '../pymupdf-loader';
+import { loadPyMuPDF, type PyMuPDF } from '../pymupdf-loader';
 
 /**
  * OCG Layer information
@@ -148,8 +148,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
     /**
      * List all OCG layers in the PDF
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private async listLayers(file: File, pymupdf: any): Promise<ProcessOutput> {
+    private async listLayers(file: File, pymupdf: PyMuPDF): Promise<ProcessOutput> {
         this.updateProgress(50, 'Reading layer information...');
 
         const layers = await pymupdf.getOCGLayers(file);
@@ -170,8 +169,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
     /**
      * Toggle layer visibility
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private async toggleLayer(file: File, pymupdf: any, options: OCGManagerOptions): Promise<ProcessOutput> {
+    private async toggleLayer(file: File, pymupdf: PyMuPDF, options: OCGManagerOptions): Promise<ProcessOutput> {
         if (!options.layerId) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -190,7 +188,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
 
         const outputFilename = generateOCGFilename(file.name);
 
-        return this.createSuccessOutput(result, outputFilename, {
+        return this.createSuccessOutput(result.pdf, outputFilename, {
             action: 'toggle',
             layerId: options.layerId,
             visible: options.visible,
@@ -200,8 +198,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
     /**
      * Add a new layer
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private async addLayer(file: File, pymupdf: any, options: OCGManagerOptions): Promise<ProcessOutput> {
+    private async addLayer(file: File, pymupdf: PyMuPDF, options: OCGManagerOptions): Promise<ProcessOutput> {
         if (!options.layerName) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -219,7 +216,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
 
         const outputFilename = generateOCGFilename(file.name);
 
-        return this.createSuccessOutput(result, outputFilename, {
+        return this.createSuccessOutput(result.pdf, outputFilename, {
             action: 'add',
             layerName: options.layerName,
         });
@@ -228,8 +225,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
     /**
      * Delete a layer
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private async deleteLayer(file: File, pymupdf: any, options: OCGManagerOptions): Promise<ProcessOutput> {
+    private async deleteLayer(file: File, pymupdf: PyMuPDF, options: OCGManagerOptions): Promise<ProcessOutput> {
         if (!options.layerId) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -247,7 +243,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
 
         const outputFilename = generateOCGFilename(file.name);
 
-        return this.createSuccessOutput(result, outputFilename, {
+        return this.createSuccessOutput(result.pdf, outputFilename, {
             action: 'delete',
             layerId: options.layerId,
         });
@@ -256,8 +252,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
     /**
      * Rename a layer
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private async renameLayer(file: File, pymupdf: any, options: OCGManagerOptions): Promise<ProcessOutput> {
+    private async renameLayer(file: File, pymupdf: PyMuPDF, options: OCGManagerOptions): Promise<ProcessOutput> {
         if (!options.layerId || !options.layerName) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -276,7 +271,7 @@ export class OCGManagerProcessor extends BasePDFProcessor {
 
         const outputFilename = generateOCGFilename(file.name);
 
-        return this.createSuccessOutput(result, outputFilename, {
+        return this.createSuccessOutput(result.pdf, outputFilename, {
             action: 'rename',
             layerId: options.layerId,
             newName: options.layerName,

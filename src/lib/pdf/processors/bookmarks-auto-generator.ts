@@ -1,3 +1,4 @@
+import type { PDFDocument, PDFRef } from 'pdf-lib';
 /**
  * Bookmarks Auto Generator Processor
  * 
@@ -154,14 +155,14 @@ export class BookmarksAutoGeneratorProcessor extends BasePDFProcessor {
   }
 
   private async injectBookmarksToDoc(
-    pdfDoc: Awaited<ReturnType<typeof loadPdfLib>>['PDFDocument'] extends { create(): Promise<infer T> } ? T : any,
+    pdfDoc: PDFDocument,
     bookmarks: DeducedBookmark[],
     pdfLib: Awaited<ReturnType<typeof loadPdfLib>>
   ): Promise<void> {
     const context = pdfDoc.context;
     const catalog = pdfDoc.catalog;
 
-    const outlineEntryRefs: any[] = [];
+    const outlineEntryRefs: PDFRef[] = [];
 
     // Create entry dictionaries
     for (let i = 0; i < bookmarks.length; i++) {
@@ -194,7 +195,7 @@ export class BookmarksAutoGeneratorProcessor extends BasePDFProcessor {
     // Wire up sibling nodes
     for (let i = 0; i < outlineEntryRefs.length; i++) {
       const entryRef = outlineEntryRefs[i];
-      const entryDict = context.lookup(entryRef) as any;
+      const entryDict = context.lookup(entryRef, pdfLib.PDFDict);
 
       entryDict.set(pdfLib.PDFName.of('Parent'), outlineRef);
 

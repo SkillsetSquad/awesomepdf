@@ -4,13 +4,19 @@
  */
 
 declare module 'pdfjs-dist-legacy' {
-    export * from 'pdfjs-dist';
+    export * from 'pdfjs-dist-legacy/types/src/pdf';
 }
 
 declare module 'pdfjs-dist-legacy/lib/display/svg' {
     export class SVGGraphics {
-        constructor(commonObjs: any, objs: any);
+        constructor(
+          commonObjs: import('pdfjs-dist-legacy/types/src/display/api').PDFPageProxy['commonObjs'],
+          objs: import('pdfjs-dist-legacy/types/src/display/api').PDFPageProxy['objs']
+        );
         embedFonts: boolean;
-        getSVG(operatorList: any, viewport: any): Promise<SVGElement>;
+        getSVG(
+          operatorList: import('pdfjs-dist-legacy/types/src/display/api').PDFOperatorList,
+          viewport: import('pdfjs-dist-legacy/types/src/display/display_utils').PageViewport
+        ): Promise<SVGElement>;
     }
 }

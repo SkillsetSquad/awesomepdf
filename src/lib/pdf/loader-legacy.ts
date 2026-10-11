@@ -1,3 +1,5 @@
+import type { PDFPageProxy, PDFOperatorList } from 'pdfjs-dist-legacy/types/src/display/api';
+import type { PageViewport } from 'pdfjs-dist-legacy/types/src/display/display_utils';
 /**
  * PDF.js Legacy Library Loader
  * 
@@ -65,11 +67,11 @@ export async function loadPdfjsLegacy(): Promise<PDFJSLegacyModule> {
  */
 export interface SVGGraphicsInstance {
     embedFonts: boolean;
-    getSVG(operatorList: any, viewport: any): Promise<SVGElement>;
+    getSVG(operatorList: PDFOperatorList, viewport: PageViewport): Promise<SVGElement>;
 }
 
 export interface SVGGraphicsConstructor {
-    new(commonObjs: any, objs: any): SVGGraphicsInstance;
+    new(commonObjs: PDFPageProxy['commonObjs'], objs: PDFPageProxy['objs']): SVGGraphicsInstance;
 }
 
 /**

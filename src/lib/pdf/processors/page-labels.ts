@@ -1,3 +1,4 @@
+import type { PDFObject } from 'pdf-lib';
 /**
  * PDF Page Labels Processor
  * 
@@ -99,7 +100,7 @@ export class PageLabelsProcessor extends BasePDFProcessor {
       }
 
       // 2. Build the Nums array for the /PageLabels dictionary
-      const Nums: any[] = [];
+      const Nums: PDFObject[] = [];
       const context = pdfDoc.context;
 
       // Keep track of how many pages have been assigned to each rule so far
@@ -127,7 +128,7 @@ export class PageLabelsProcessor extends BasePDFProcessor {
             const startValBase = currentRule.startValue !== undefined ? currentRule.startValue : 1;
             const finalStartVal = startValBase + countSoFar;
 
-            const dictProperties: Record<string, any> = {};
+            const dictProperties: Record<string, PDFObject> = {};
             
             if (currentRule.style !== 'none') {
               dictProperties['S'] = pdfLib.PDFName.of(currentRule.style);
@@ -145,7 +146,7 @@ export class PageLabelsProcessor extends BasePDFProcessor {
             // Transitioning into an un-mapped section -> Restore natural decimal indexing
             const finalStartVal = i + 1;
             
-            const dictProperties: Record<string, any> = {
+            const dictProperties: Record<string, PDFObject> = {
               S: pdfLib.PDFName.of('D'),
             };
             if (finalStartVal !== 1) {

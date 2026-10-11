@@ -1,3 +1,4 @@
+import type { PDFImage } from 'pdf-lib';
 /**
  * Photo Tiling Prepress Processor
  * 
@@ -55,7 +56,7 @@ export class PhotoTilingPrepressProcessor extends BasePDFProcessor {
       this.updateProgress(35, 'Encoding photo payload into PDF streams...');
       const photoBytes = await file.arrayBuffer();
       
-      let image: any;
+      let image: PDFImage;
       if (file.type === 'image/png') {
         image = await pdfDoc.embedPng(photoBytes);
       } else {

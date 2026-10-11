@@ -5,7 +5,7 @@
  * with irreversible physical rasterization and deep metadata sanitization.
  */
 
-import { PDFDocument, PDFName, rgb } from 'pdf-lib';
+import { PDFDocument, PDFDict, PDFName, rgb } from 'pdf-lib';
 import { loadPdfjs } from '../loader';
 import { PDFJS_CONFIG } from '../config';
 import { withBasePath } from '../../utils/path';
@@ -614,10 +614,10 @@ export async function redactPDF(
   // Deep sanitization: strip metadata & XMP streams
   if (stripMetadata) {
     try {
-      const infoDict = (newPdfDoc as any).getInfoDict?.();
+      const infoDict = newPdfDoc.context.lookupMaybe(newPdfDoc.context.trailerInfo.Info, PDFDict);
       if (infoDict) {
         const allKeys = infoDict.keys?.() || [];
-        allKeys.forEach((key: any) => {
+        allKeys.forEach((key) => {
           try {
             infoDict.delete(key);
           } catch {
@@ -635,7 +635,7 @@ export async function redactPDF(
 
       // Purge XMP Metadata stream from catalog
       try {
-        const catalogDict = (newPdfDoc.catalog as any).dict;
+        const catalogDict = newPdfDoc.catalog;
         if (catalogDict?.has(PDFName.of('Metadata'))) {
           catalogDict.delete(PDFName.of('Metadata'));
         }
@@ -660,7 +660,7 @@ export async function redactPDF(
       }
 
       try {
-        const catalogDict = (newPdfDoc.catalog as any).dict;
+        const catalogDict = newPdfDoc.catalog;
         if (catalogDict?.has(PDFName.of('AcroForm'))) {
           catalogDict.delete(PDFName.of('AcroForm'));
         }

@@ -17,6 +17,15 @@ import { BasePDFProcessor } from '../processor';
 /**
  * DJVU to PDF options
  */
+interface DjVuLibrary {
+    Document: new (bytes: ArrayBuffer) => {
+        getPagesQuantity(): number;
+        getPage(pageNumber: number): { getImageData(): ImageData | null } | Promise<{ getImageData(): ImageData | null }>;
+    };
+}
+
+type DjVuWindow = Window & { DjVu?: DjVuLibrary };
+
 export interface DJVUToPDFOptions {
     /** DPI for rendering (default: 150) */
     dpi?: number;
@@ -227,12 +236,13 @@ export class DJVUToPDFProcessor extends BasePDFProcessor {
     /**
      * Load djvu.js library dynamically
      */
-    private async loadDjVuLibrary(): Promise<any> {
+    private async loadDjVuLibrary(): Promise<DjVuLibrary> {
         // Try to load from CDN or local bundle
         return new Promise((resolve, reject) => {
             // Check if already loaded
-            if ((window as any).DjVu) {
-                resolve((window as any).DjVu);
+            const existingLibrary = (window as DjVuWindow).DjVu;
+            if (existingLibrary) {
+                resolve(existingLibrary);
                 return;
             }
 
@@ -243,8 +253,9 @@ export class DJVUToPDFProcessor extends BasePDFProcessor {
             script.async = true;
 
             script.onload = () => {
-                if ((window as any).DjVu) {
-                    resolve((window as any).DjVu);
+                const loadedLibrary = (window as DjVuWindow).DjVu;
+                if (loadedLibrary) {
+                    resolve(loadedLibrary);
                 } else {
                     reject(new Error('DjVu library loaded but not available'));
                 }

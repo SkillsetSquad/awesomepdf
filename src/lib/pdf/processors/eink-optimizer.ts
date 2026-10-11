@@ -134,7 +134,7 @@ export class EinkOptimizerProcessor extends BasePDFProcessor {
         }
 
         // 4. Morphological Dilation (Text Bolding)
-        let finalPixels: any = binarized;
+        let finalPixels: Uint8Array = binarized;
         const radius = einkOptions.dilationAmount || 0;
         if (radius > 0) {
           finalPixels = dilateBlackPixels(binarized, width, height, radius);
@@ -153,7 +153,7 @@ export class EinkOptimizerProcessor extends BasePDFProcessor {
         // Convert canvas page back to JPEG image bytes to embed in output PDF
         // JPEG format shrinks file size significantly compared to PNG
         const imgDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-        const imgBytes = dataURIToUint8Array(imgDataUrl) as any;
+        const imgBytes = dataURIToUint8Array(imgDataUrl);
 
         const embeddedImage = await outputDoc.embedJpg(imgBytes);
         const outPage = outputDoc.addPage([viewport.width / 2, viewport.height / 2]); // scale back
@@ -167,7 +167,7 @@ export class EinkOptimizerProcessor extends BasePDFProcessor {
 
       this.updateProgress(90, 'Packing monochrome optimized e-Ink PDF...');
       const pdfBytes = await outputDoc.save();
-      const outputBlob = new Blob([pdfBytes as any], { type: 'application/pdf' });
+      const outputBlob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const outputFilename = file.name.replace(/\.pdf$/i, '_eink.pdf');
 
       this.updateProgress(100, 'e-Ink optimization complete!');

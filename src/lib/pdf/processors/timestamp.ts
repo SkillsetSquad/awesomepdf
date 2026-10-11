@@ -1,9 +1,8 @@
 /**
- * PDF Trusted Timestamp Processor (RFC 3161)
+ * Local PDF timestamp processor
  * 
- * Implements adding RFC 3161 trusted timestamps to PDF documents.
- * Utilizes node-forge for PKCS#7 / CMS cryptographic signature generation
- * to prove document existence at a precise instant without user certificates.
+ * Creates a local self-signed PKCS#7 record using the device clock.
+ * No external timestamp authority is contacted; this is not an RFC 3161 proof.
  */
 
 import type {
@@ -17,7 +16,7 @@ import { loadPdfLib } from '../loader';
 import forge from 'node-forge';
 
 export interface TimestampOptions {
-  /** The selected TSA Authority server name */
+  /** Authority label retained for compatibility; no server is contacted */
   tsaServer?: string;
 }
 
@@ -60,14 +59,14 @@ function safeBinaryEncode(bytes: Uint8Array): string {
   for (let i = 0; i < bytes.length; i += chunkSize) {
     const chunk = bytes.subarray(i, i + chunkSize);
     // Use apply in safe chunks
-    chunks.push(String.fromCharCode.apply(null, chunk as any));
+    chunks.push(String.fromCharCode(...chunk));
   }
   return chunks.join('');
 }
 
 export class TimestampPDFProcessor extends BasePDFProcessor {
   /**
-   * Process and apply RFC 3161 timestamp signature
+   * Create the existing local self-signed timestamp record
    */
   async process(
     input: ProcessInput,
@@ -85,7 +84,7 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
     if (files.length !== 1) {
       return this.createErrorOutput(
         PDFErrorCode.INVALID_OPTIONS,
-        'Exactly 1 PDF file is required for trusted timestamping.'
+        'Exactly 1 PDF file is required for local timestamping.'
       );
     }
 
@@ -111,13 +110,12 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
         );
       }
 
-      this.updateProgress(30, 'Preparing trusted signature fields...');
+      this.updateProgress(30, 'Preparing local signature fields...');
       
       const tsaName = timestampOptions.tsaServer || 'MeSign';
       const timestampDate = new Date();
       
-      // 1. Generate keys & certificate for our virtual TSA on the fly using node-forge
-      // This guarantees legal math proof and runs 100% locally avoiding CORS TSA cross-origin blocks
+      // Generate a local self-signed certificate. Its name is a label, not external authority endorsement.
       const keys = forge.pki.rsa.generateKeyPair(2048);
       const cert = forge.pki.createCertificate();
       cert.publicKey = keys.publicKey;
@@ -128,7 +126,7 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
       
       const attrs = [{
         name: 'commonName',
-        value: `PDFCraft Trusted TSA Authority (${tsaName})`
+        value: `PDFCraft Local Timestamp (${tsaName})`
       }, {
         name: 'organizationName',
         value: 'PDFCraft Secure Group'
@@ -157,17 +155,17 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
         Type: 'Sig',
         Filter: 'Adobe.PPKLite',
         SubFilter: 'adbe.pkcs7.detached',
-        Contents: (pdfLib as any).PDFHexString.of('0'.repeat(8192)), // Pre-allocate 8192 characters (4096 bytes)
+        Contents: pdfLib.PDFHexString.of('0'.repeat(8192)), // Pre-allocate 8192 characters (4096 bytes)
         ByteRange: [0, 0, 0, 0], // Placeholders to fill in later
-        Name: pdfLib.PDFString.of(`Trusted TSA Server: ${tsaName}`),
+        Name: pdfLib.PDFString.of(`Local timestamp label: ${tsaName}`),
         M: pdfLib.PDFString.fromDate(timestampDate),
-        Reason: pdfLib.PDFString.of('RFC 3161 Trusted Timestamp Proof of Existence'),
+        Reason: pdfLib.PDFString.of('Local self-signed device-clock timestamp'),
       });
 
       const sigRef = pdfDoc.context.register(signatureDict);
       
       // Add signature to catalog /InteractiveForm
-      let acroForm = pdfDoc.catalog.get(pdfLib.PDFName.of('AcroForm')) as any;
+      let acroForm = pdfDoc.catalog.lookupMaybe(pdfLib.PDFName.of('AcroForm'), pdfLib.PDFDict);
       if (!acroForm) {
         const acroFormDict = pdfDoc.context.obj({
           Fields: [],
@@ -180,7 +178,7 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
         acroForm.set(pdfLib.PDFName.of('SigFlags'), pdfDoc.context.obj(3));
       }
 
-      const fieldsArray = acroForm.get(pdfLib.PDFName.of('Fields')) as any;
+      const fieldsArray = acroForm.lookupMaybe(pdfLib.PDFName.of('Fields'), pdfLib.PDFArray);
       if (fieldsArray) {
         fieldsArray.push(sigRef);
       }
@@ -219,8 +217,8 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
       this.updateProgress(75, 'Signing cryptographically via PKCS#7...');
 
       // Create PKCS#7 signature (SignedData)
-      const p7 = forge.pkcs7.createSignedData() as any;
-      const oids = (forge as any).oids;
+      const p7 = forge.pkcs7.createSignedData();
+      const oids = forge.pki.oids;
       p7.content = fileDigest;
       p7.addCertificate(cert);
       p7.addSigner({
@@ -237,7 +235,7 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
           },
           {
             type: oids.signingTime,
-            value: timestampDate
+            value: timestampDate.toISOString()
           }
         ]
       });
@@ -301,7 +299,7 @@ export class TimestampPDFProcessor extends BasePDFProcessor {
       console.error('Timestamping error:', err);
       return this.createErrorOutput(
         PDFErrorCode.PROCESSING_FAILED,
-        'Failed to apply trusted timestamp.',
+        'Failed to apply local timestamp.',
         err instanceof Error ? err.message : 'Unknown cryptographic signing error'
       );
     }

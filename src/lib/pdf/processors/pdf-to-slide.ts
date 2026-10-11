@@ -75,7 +75,7 @@ export class PDFToSlideProcessor extends BasePDFProcessor {
         const textContent = await page.getTextContent();
         
         // Group text items by y coordinates or fonts to extract Title & Bullet points
-        const items = textContent.items as any[];
+        const items = textContent.items.filter(item => 'str' in item);
         
         if (items.length === 0) {
           slides.push({

@@ -88,7 +88,7 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
 
       // Load pdf-lib
       const pdfLib = await loadPdfLib();
-      const { PDFName } = pdfLib;
+      const { PDFName, PDFDict, PDFArray } = pdfLib;
 
       if (this.checkCancelled()) {
         return this.createErrorOutput(
@@ -155,10 +155,10 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
             form.flatten();
             removedItems.push('form fields (flattened)');
           }
-        } catch (e: any) {
+        } catch (e) {
           // Try to remove AcroForm if flatten fails
           try {
-            const catalogDict = (pdfDoc.catalog as any).dict;
+            const catalogDict = pdfDoc.catalog;
             if (catalogDict.has(PDFName.of('AcroForm'))) {
               catalogDict.delete(PDFName.of('AcroForm'));
               removedItems.push('form fields');
@@ -175,10 +175,10 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
       if (sanitizeOptions.removeMetadata) {
         try {
           // Clear info dict
-          const infoDict = (pdfDoc as any).getInfoDict();
-          const allKeys = infoDict.keys();
-          allKeys.forEach((key: any) => {
-            infoDict.delete(key);
+          const infoDict = pdfDoc.context.lookupMaybe(pdfDoc.context.trailerInfo.Info, PDFDict);
+          const allKeys = infoDict?.keys() || [];
+          allKeys.forEach((key) => {
+            infoDict?.delete(key);
           });
 
           pdfDoc.setTitle('');
@@ -190,7 +190,7 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
 
           // Remove XMP metadata
           try {
-            const catalogDict = (pdfDoc.catalog as any).dict;
+            const catalogDict = pdfDoc.catalog;
             if (catalogDict.has(PDFName.of('Metadata'))) {
               catalogDict.delete(PDFName.of('Metadata'));
             }
@@ -224,13 +224,13 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
       // Remove JavaScript
       if (sanitizeOptions.removeJavaScript) {
         try {
-          const catalogDict = (pdfDoc.catalog as any).dict;
+          const catalogDict = pdfDoc.catalog;
 
           // Remove from Names/JavaScript
           const namesRef = catalogDict.get(PDFName.of('Names'));
           if (namesRef) {
             try {
-              const namesDict = pdfDoc.context.lookup(namesRef) as any;
+              const namesDict = pdfDoc.context.lookup(namesRef, PDFDict);
               if (namesDict.has(PDFName.of('JavaScript'))) {
                 namesDict.delete(PDFName.of('JavaScript'));
               }
@@ -273,13 +273,13 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
       // Remove embedded files/attachments
       if (sanitizeOptions.removeAttachments) {
         try {
-          const catalogDict = (pdfDoc.catalog as any).dict;
+          const catalogDict = pdfDoc.catalog;
 
           // Remove from Names/EmbeddedFiles
           const namesRef = catalogDict.get(PDFName.of('Names'));
           if (namesRef) {
             try {
-              const namesDict = pdfDoc.context.lookup(namesRef) as any;
+              const namesDict = pdfDoc.context.lookup(namesRef, PDFDict);
               if (namesDict.has(PDFName.of('EmbeddedFiles'))) {
                 namesDict.delete(PDFName.of('EmbeddedFiles'));
               }
@@ -309,13 +309,13 @@ export class SanitizePDFProcessor extends BasePDFProcessor {
               const annotsRef = pageDict.get(PDFName.of('Annots'));
               if (!annotsRef) continue;
 
-              const annotsArray = pdfDoc.context.lookup(annotsRef) as any;
+              const annotsArray = pdfDoc.context.lookup(annotsRef, PDFArray);
               const annotRefs = annotsArray.asArray();
               const annotsToKeep = [];
 
               for (const ref of annotRefs) {
                 try {
-                  const annot = pdfDoc.context.lookup(ref) as any;
+                  const annot = pdfDoc.context.lookup(ref, PDFDict);
                   const subtype = annot.get(PDFName.of('Subtype'))?.toString().substring(1);
 
                   // Keep non-link annotations

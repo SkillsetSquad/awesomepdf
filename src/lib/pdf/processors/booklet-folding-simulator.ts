@@ -182,7 +182,7 @@ export class BookletFoldingSimulatorProcessor extends BasePDFProcessor {
 
       this.updateProgress(80, 'Saving print-imposed PDF data...');
       const pdfBytes = await outputDoc.save();
-      const outputBlob = new Blob([pdfBytes as any], { type: 'application/pdf' });
+      const outputBlob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const outputFilename = file.name.replace(/\.pdf$/i, '_imposed.pdf');
 
       this.updateProgress(100, 'Booklet imposition complete!');

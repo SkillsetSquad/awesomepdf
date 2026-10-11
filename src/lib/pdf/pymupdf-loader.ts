@@ -1,8 +1,42 @@
 import { withBasePath } from '../utils/path';
 
 // Singleton instance
-let pymupdfInstance: any = null;
-let loadingPromise: Promise<any> | null = null;
+export type PyMuPDF = Awaited<ReturnType<typeof initializePyMuPDF>>;
+let pymupdfInstance: PyMuPDF | null = null;
+let loadingPromise: Promise<PyMuPDF> | null = null;
+
+interface PyodideRuntime {
+  loadPackage(url: string): Promise<void>;
+  runPython(code: string): unknown;
+  runPythonAsync(code: string): Promise<unknown>;
+  FS: { writeFile(path: string, bytes: Uint8Array): void; unlink(path: string): void };
+}
+
+interface HTMLPDFOptions {
+  pageSize?: string;
+  margins?: { top: number; right: number; bottom: number; left: number };
+  attachments?: Array<{ filename: string; contentType: string; content?: ArrayBuffer }>;
+}
+
+interface DeskewData {
+  totalPages: number;
+  correctedPages: number;
+  angles: number[];
+  corrected: boolean[];
+}
+
+export interface PyMuPDFLayer {
+  id: string;
+  name: string;
+  visible: boolean;
+  locked: boolean;
+}
+
+async function runPythonString(pyodide: PyodideRuntime, code: string): Promise<string> {
+  const result = await pyodide.runPythonAsync(code);
+  if (typeof result !== 'string') throw new Error('Python operation did not return a string');
+  return result;
+}
 
 function resolvePublicAssetPath(assetPath: string): string {
   if (typeof window === 'undefined') return assetPath;
@@ -32,7 +66,7 @@ function resolvePublicAssetPath(assetPath: string): string {
 /**
  * Load PyMuPDF using Pyodide directly
  */
-export async function loadPyMuPDF(): Promise<any> {
+export async function loadPyMuPDF(): Promise<PyMuPDF> {
   if (pymupdfInstance) {
     return pymupdfInstance;
   }
@@ -41,7 +75,14 @@ export async function loadPyMuPDF(): Promise<any> {
     return loadingPromise;
   }
 
-  loadingPromise = (async () => {
+  loadingPromise = initializePyMuPDF().then((instance) => {
+    pymupdfInstance = instance;
+    return instance;
+  });
+  return loadingPromise;
+}
+
+async function initializePyMuPDF() {
     try {
       const basePath = new URL(
         resolvePublicAssetPath('/pymupdf-wasm/'),
@@ -49,7 +90,9 @@ export async function loadPyMuPDF(): Promise<any> {
       ).toString();
 
       // Dynamically import Pyodide as ES module
-      const pyodideModule = await import(/* webpackIgnore: true */ `${basePath}pyodide.js`);
+      const pyodideModule = await import(/* webpackIgnore: true */ `${basePath}pyodide.js`) as {
+        loadPyodide(options: { indexURL: string; fullStdLib: boolean }): Promise<PyodideRuntime>;
+      };
       const loadPyodide = pyodideModule.loadPyodide;
 
       // Initialize Pyodide
@@ -92,7 +135,7 @@ sys.modules["fire"] = fire_mod
       await pyodide.runPythonAsync('import pymupdf');
 
       // Create a wrapper object with pdfToDocx method
-      pymupdfInstance = {
+      const instance = {
         pyodide,
         async pdfToDocx(file: File): Promise<Blob> {
           const arrayBuffer = await file.arrayBuffer();
@@ -107,7 +150,7 @@ sys.modules["fire"] = fire_mod
           pyodide.FS.writeFile(inputPath, pdfData);
 
           // Convert using pdf2docx
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import base64
 from pdf2docx import Converter
 
@@ -141,7 +184,7 @@ base64.b64encode(docx_data).decode('ascii')
           });
         },
 
-        async pdfToPdfa(file: File, options: any): Promise<{ pdf: Blob }> {
+        async pdfToPdfa(file: File, options: Record<string, unknown>): Promise<{ pdf: Blob }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           // Options are available for future use (level, embedFonts, flattenTransparency)
@@ -154,7 +197,7 @@ base64.b64encode(docx_data).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -197,7 +240,7 @@ base64.b64encode(pdf_data).decode('ascii')
           };
         },
 
-        async htmlToPdf(html: string, options: any): Promise<Blob> {
+        async htmlToPdf(html: string, options: HTMLPDFOptions): Promise<Blob> {
           const { pageSize = 'a4', margins = { top: 50, right: 50, bottom: 50, left: 50 }, attachments = [] } = options || {};
 
           // Page dimensions in points (72 points per inch)
@@ -223,14 +266,14 @@ base64.b64encode(pdf_data).decode('ascii')
           }
 
           // Build attachments info for Python
-          const attachmentsJson = JSON.stringify(attachments.map((att: any, idx: number) => ({
+          const attachmentsJson = JSON.stringify(attachments.map((att, idx: number) => ({
             filename: att.filename,
             contentType: att.contentType,
             path: `/attachment_${idx}`,
             hasContent: !!att.content
           })));
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 import json
@@ -341,7 +384,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return new Blob([bytes], { type: 'application/pdf' });
         },
 
-        async deskewPdf(file: File, options: any): Promise<{ pdf: Blob; result: any }> {
+        async deskewPdf(file: File, options: { threshold?: number; dpi?: number }): Promise<{ pdf: Blob; result: DeskewData }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { threshold = 0.5, dpi = 150 } = options || {};
@@ -352,7 +395,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import numpy as np
 import base64
@@ -576,7 +619,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
 `);
 
           const [resultJson, pdfBase64] = result.split('|||');
-          const resultData = JSON.parse(resultJson);
+          const resultData = JSON.parse(resultJson) as DeskewData;
 
           try {
             pyodide.FS.unlink(inputPath);
@@ -596,7 +639,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
           };
         },
 
-        async fontToOutline(file: File, options: any): Promise<{ pdf: Blob; fontsConverted: number; pagesProcessed: number; totalPages: number }> {
+        async fontToOutline(file: File, options: { dpi?: number; preserveSelectableText?: boolean; pageRange?: string }): Promise<{ pdf: Blob; fontsConverted: number; pagesProcessed: number; totalPages: number }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { dpi = 300, preserveSelectableText = false, pageRange = '' } = options || {};
@@ -607,7 +650,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 import json
@@ -757,7 +800,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
 `);
 
           const [resultJson, pdfBase64] = result.split('|||');
-          const resultData = JSON.parse(resultJson);
+          const resultData = JSON.parse(resultJson) as { fontsConverted: number; pagesProcessed: number; totalPages: number };
 
           try {
             pyodide.FS.unlink(inputPath);
@@ -779,7 +822,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
           };
         },
 
-        async getOCGLayers(file: File): Promise<any[]> {
+        async getOCGLayers(file: File): Promise<PyMuPDFLayer[]> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
 
@@ -789,7 +832,7 @@ json.dumps(result_data) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import json
 
@@ -821,7 +864,7 @@ json.dumps(layers)
           return JSON.parse(result);
         },
 
-        async toggleOCGLayer(file: File, options: any): Promise<{ pdf: Blob }> {
+        async toggleOCGLayer(file: File, options: { layerId: string; visible?: boolean }): Promise<{ pdf: Blob }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { layerId, visible } = options;
@@ -832,7 +875,7 @@ json.dumps(layers)
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -862,7 +905,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return { pdf: new Blob([bytes], { type: 'application/pdf' }) };
         },
 
-        async addOCGLayer(file: File, options: any): Promise<{ pdf: Blob; layerId: string }> {
+        async addOCGLayer(file: File, options: { name?: string }): Promise<{ pdf: Blob; layerId: string }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { name } = options;
@@ -873,7 +916,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -908,7 +951,7 @@ str(xref) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
           };
         },
 
-        async deleteOCGLayer(file: File, options: any): Promise<{ pdf: Blob }> {
+        async deleteOCGLayer(file: File, options: { layerId: string }): Promise<{ pdf: Blob }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
 
@@ -918,7 +961,7 @@ str(xref) + "|||" + base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -948,7 +991,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return { pdf: new Blob([bytes], { type: 'application/pdf' }) };
         },
 
-        async renameOCGLayer(file: File, options: any): Promise<{ pdf: Blob }> {
+        async renameOCGLayer(file: File, options: { layerId: string; newName: string }): Promise<{ pdf: Blob }> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
 
@@ -958,7 +1001,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -988,7 +1031,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return { pdf: new Blob([bytes], { type: 'application/pdf' }) };
         },
 
-        async compress(file: File, options: any): Promise<Blob> {
+        async compress(file: File, options: { quality?: string; removeMetadata?: boolean }): Promise<Blob> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { quality = 'medium', removeMetadata = false } = options || {};
@@ -1008,7 +1051,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 import io
@@ -1115,7 +1158,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return new Blob([bytes], { type: 'application/pdf' });
         },
 
-        async photonCompress(file: File, options: any): Promise<Blob> {
+        async photonCompress(file: File, options: { dpi?: number; format?: string; quality?: number }): Promise<Blob> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
           const { dpi = 150, format = 'jpeg', quality = 85 } = options || {};
@@ -1126,7 +1169,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
 
           pyodide.FS.writeFile(inputPath, pdfData);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -1198,7 +1241,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           // Convert 1-based to 0-based
           const pageIndices = pages.map(p => p - 1);
 
-          const result = await pyodide.runPythonAsync(`
+          const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -1272,7 +1315,7 @@ base64.b64encode(pdf_bytes).decode('ascii')
           }
 
           try {
-            const result = await pyodide.runPythonAsync(`
+            const result = await runPythonString(pyodide, `
 import base64
 import json
 import os
@@ -1547,7 +1590,7 @@ json.dumps({
 
           for (let i = 0; i < ranges.length; i++) {
             const range = ranges[i];
-            const result = await pyodide.runPythonAsync(`
+            const result = await runPythonString(pyodide, `
 import pymupdf
 import base64
 
@@ -1584,14 +1627,11 @@ base64.b64encode(pdf_bytes).decode('ascii')
         },
       };
 
-      return pymupdfInstance;
+      return instance;
     } catch (error) {
       loadingPromise = null;
       throw error;
     }
-  })();
-
-  return loadingPromise;
 }
 
 /**

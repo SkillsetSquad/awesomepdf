@@ -1,3 +1,4 @@
+import { rewritePageContent } from '../rewrite-page-content';
 /**
  * Smart Data Redactor Processor
  * 
@@ -150,24 +151,9 @@ export class SmartDataRedactorProcessor extends BasePDFProcessor {
             });
 
             // Physical scrub: search and replace contents in the page content stream
-            const contents = pdfLibPage.node.get(pdfLib.PDFName.of('Contents'));
-            if (contents) {
-              const contentStreams = Array.isArray(contents) ? contents : [contents];
-              for (const contentStreamRef of contentStreams) {
-                const contentStream = pdfLibDoc.context.lookup(contentStreamRef);
-                if (contentStream instanceof pdfLib.PDFStream) {
-                  const rawData = (contentStream as any).getUncompressedContents();
-                  const contentText = new TextDecoder('utf-8').decode(rawData);
-                  
-                  // Replace the exact matching string with masked chars inside Tj/TJ
-                  const escapedText = match.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                  const searchRegex = new RegExp(`\\([^\\)]*${escapedText}[^\\)]*\\)\\s*(Tj|TJ)`, 'gi');
-                  const redactedStreamText = contentText.replace(searchRegex, '([REDACTED]) Tj');
-                  
-                  (contentStream as any).setContent(new TextEncoder().encode(redactedStreamText));
-                }
-              }
-            }
+            const escapedText = match.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const searchRegex = new RegExp(`\\([^\\)]*${escapedText}[^\\)]*\\)\\s*(Tj|TJ)`, 'gi');
+            rewritePageContent(pdfLib, pdfLibDoc, pdfLibPage, content => content.replace(searchRegex, '([REDACTED]) Tj'));
           }
         }
       }

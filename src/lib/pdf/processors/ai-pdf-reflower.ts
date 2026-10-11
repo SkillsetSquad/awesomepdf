@@ -80,7 +80,7 @@ export class AIPDFReflowerProcessor extends BasePDFProcessor {
         const pageWidth = viewport.width;
 
         // Group text items by raw coordinates
-        const items = textContent.items.map((item: any) => {
+        const items = textContent.items.filter(item => 'str' in item).map((item) => {
           // transform matrix: [scaleX, skewX, skewY, scaleY, x, y]
           const matrix = item.transform;
           return {
@@ -120,7 +120,7 @@ export class AIPDFReflowerProcessor extends BasePDFProcessor {
           const rightItems = items.filter((item) => item.x + item.width / 2 >= middleX);
 
           // Sorting logic: Sort by Y desc (top to bottom), then by X asc (left to right)
-          const sortByCoords = (a: any, b: any) => {
+          const sortByCoords = (a: (typeof items)[number], b: (typeof items)[number]) => {
             if (Math.abs(a.y - b.y) < 4) {
               return a.x - b.x;
             }
@@ -143,7 +143,7 @@ export class AIPDFReflowerProcessor extends BasePDFProcessor {
 
         // Reconstruct paragraphs
         let currentParaText = '';
-        let lastItem: any = null;
+        let lastItem: (typeof items)[number] | null = null;
         const avgFontSize = sortedItems.reduce((acc, item) => acc + item.fontSize, 0) / sortedItems.length;
 
         for (let i = 0; i < sortedItems.length; i++) {

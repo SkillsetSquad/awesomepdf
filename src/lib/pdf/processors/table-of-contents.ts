@@ -45,11 +45,12 @@ export class TableOfContentsProcessor extends BasePDFProcessor {
         tocOptions.addBookmark ?? true
       );
 
+      const returnedBytes = result.status === 'success' ? result.pdfBytes : undefined;
       console.log('[TOC Processor] Worker returned result:', {
         status: result.status,
         hasPdfBytes: 'pdfBytes' in result,
-        pdfBytesType: (result as any).pdfBytes ? (result as any).pdfBytes.constructor.name : 'N/A',
-        byteLength: (result as any).pdfBytes ? (result as any).pdfBytes.byteLength : 0
+        pdfBytesType: returnedBytes?.constructor.name ?? 'N/A',
+        byteLength: returnedBytes?.byteLength ?? 0
       });
 
       if (result.status === 'error') {
@@ -59,8 +60,8 @@ export class TableOfContentsProcessor extends BasePDFProcessor {
         );
       }
 
-      const blobResult = (result as any).pdfBlob;
-      const bytesResult = (result as any).pdfBytes;
+      const blobResult = ('pdfBlob' in result ? result.pdfBlob : undefined);
+      const bytesResult = ('pdfBytes' in result ? result.pdfBytes : undefined);
 
       let finalBlob: Blob;
 
@@ -99,7 +100,7 @@ export class TableOfContentsProcessor extends BasePDFProcessor {
     fontSize: number,
     fontFamily: string,
     addBookmark: boolean
-  ): Promise<{ status: 'success'; pdfBytes: ArrayBuffer } | { status: 'error'; message: string }> {
+  ): Promise<{ status: 'success'; pdfBytes?: ArrayBuffer; pdfBlob?: Blob } | { status: 'error'; message: string }> {
     return new Promise((resolve) => {
       // Use V2 worker to bypass cache and use robust byte handling
       this.worker = new Worker('/workers/table-of-contents-v2.worker.js', { type: 'module' });

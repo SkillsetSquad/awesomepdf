@@ -1,3 +1,4 @@
+import { rewritePageContent } from '../rewrite-page-content';
 /**
  * Batch Watermark Remover Processor
  * 
@@ -92,30 +93,9 @@ export class BatchWatermarkRemoverProcessor extends BasePDFProcessor {
 
         // If target watermark text is provided, scrub text operators from content streams
         if (targetText) {
-          const contents = page.node.get(pdfLib.PDFName.of('Contents'));
-          if (contents) {
-            const contentStreams = Array.isArray(contents) ? contents : [contents];
-            for (const contentStreamRef of contentStreams) {
-              const contentStream = pdfDoc.context.lookup(contentStreamRef);
-              if (contentStream instanceof pdfLib.PDFStream) {
-                // Get decoded content stream data
-                const rawData = (contentStream as any).getUncompressedContents();
-                const contentText = new TextDecoder('utf-8').decode(rawData);
-                
-                // Scrub target text TJ/Tj operators
-                // Watermark text might be represented in PDF like (Confidential) Tj or [ (Con) -20 (fidential) ] TJ
-                // Simple physical regex matching can scrub targetText
-                const escapedText = targetText.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                
-                // Remove operators containing the text
-                const searchRegex = new RegExp(`\\([^\\)]*${escapedText}[^\\)]*\\)\\s*(Tj|TJ)`, 'gi');
-                const scrubbedText = contentText.replace(searchRegex, '() Tj');
-                
-                // Set the scrubbed contents back
-                (contentStream as any).setContent(new TextEncoder().encode(scrubbedText));
-              }
-            }
-          }
+          const escapedText = targetText.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+          const searchRegex = new RegExp(`\\([^\\)]*${escapedText}[^\\)]*\\)\\s*(Tj|TJ)`, 'gi');
+          rewritePageContent(pdfLib, pdfDoc, page, content => content.replace(searchRegex, '() Tj'));
         }
       }
 

@@ -1,3 +1,4 @@
+import type { PDFDocument, PDFContext, PDFRef, PDFDict } from 'pdf-lib';
 /**
  * PDF Bookmark Processor
  * Requirements: 5.1
@@ -121,14 +122,14 @@ export class BookmarkProcessor extends BasePDFProcessor {
     }
   }
 
-  private async extractBookmarks(_pdf: any): Promise<BookmarkItem[]> {
+  private async extractBookmarks(_pdf: PDFDocument): Promise<BookmarkItem[]> {
     const bookmarks: BookmarkItem[] = [];
     // pdf-lib doesn't have direct bookmark extraction API
     // This is a simplified implementation
     return bookmarks;
   }
 
-  private async addBookmarks(pdf: any, pdfLib: any, bookmarks: BookmarkItem[]): Promise<void> {
+  private async addBookmarks(pdf: PDFDocument, pdfLib: Awaited<ReturnType<typeof loadPdfLib>>, bookmarks: BookmarkItem[]): Promise<void> {
     // Get the PDF's catalog and create outline structure
     const context = pdf.context;
     const catalog = pdf.catalog;
@@ -175,18 +176,18 @@ export class BookmarkProcessor extends BasePDFProcessor {
   }
 
   private async buildOutlineTree(
-    pdf: any,
-    pdfLib: any,
-    context: any,
+    pdf: PDFDocument,
+    pdfLib: Awaited<ReturnType<typeof loadPdfLib>>,
+    context: PDFContext,
     bookmarks: BookmarkItem[],
-    parentRef: any
-  ): Promise<{ first: any; last: any }> {
+    parentRef: PDFRef
+  ): Promise<{ first: PDFRef | null; last: PDFRef | null }> {
     if (bookmarks.length === 0) {
       return { first: null, last: null };
     }
 
     const pages = pdf.getPages();
-    const outlineItems: any[] = [];
+    const outlineItems: Array<{ dict: PDFDict; ref: PDFRef }> = [];
 
     // Create outline item dictionaries
     for (const bookmark of bookmarks) {

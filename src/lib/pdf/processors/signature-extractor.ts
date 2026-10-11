@@ -1,3 +1,4 @@
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 /**
  * PDF Signature Extractor
  * Extracts signatures from signed PDF documents (including Adobe Acrobat signed files),
@@ -123,7 +124,7 @@ export async function scanPdfForSignatures(
  * Render a specific page of a PDF to an offscreen Canvas
  */
 export async function renderPdfPage(
-  pdfDoc: any,
+  pdfDoc: PDFDocumentProxy,
   pageNumber: number,
   scale = 2.0
 ): Promise<{ canvas: HTMLCanvasElement; width: number; height: number }> {

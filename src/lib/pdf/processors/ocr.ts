@@ -1,3 +1,6 @@
+import type { PDFDocument, PDFFont } from 'pdf-lib';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
+import type { Worker as TesseractWorker, Page as TesseractPage, Bbox } from 'tesseract.js';
 /**
  * OCR PDF Processor
  * Requirements: 5.1
@@ -69,21 +72,29 @@ export const OCR_LANGUAGE_NAMES: Record<OCRLanguage, string> = {
   hun: 'Hungarian',
 };
 
-// Tesseract worker type
-type TesseractWorker = {
-  loadLanguage?: (lang: string) => Promise<void>;
-  initialize?: (lang: string) => Promise<void>;
-  recognize: (image: string | HTMLCanvasElement, options?: any, output?: any) => Promise<{ data: { text: string; words?: any[]; blocks?: any[] } }>;
-  terminate: () => Promise<void>;
-};
+export interface OCRWord {
+  text: string;
+  confidence?: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  fontSize: number;
+}
+
+/** Older workers expose words directly; Tesseract 6 exposes the blocks hierarchy. */
+export function getOCRWords(data: TesseractPage): Array<{ text: string; confidence?: number; bbox?: Bbox }> {
+  const legacyData: TesseractPage & { words?: Array<{ text: string; confidence?: number; bbox?: Bbox }> } = data;
+  return legacyData.words ?? data.blocks?.flatMap(block => block.paragraphs.flatMap(paragraph => paragraph.lines.flatMap(line => line.words))) ?? [];
+}
 
 /**
  * Read File or Blob as Uint8Array reliably across browsers, Node, and jsdom
  */
 export async function readFileAsUint8Array(file: File | Blob): Promise<Uint8Array> {
-  if (typeof (file as any).arrayBuffer === 'function') {
+  if (typeof file.arrayBuffer === 'function') {
     try {
-      const buf = await (file as any).arrayBuffer();
+      const buf = await file.arrayBuffer();
       return new Uint8Array(buf);
     } catch {
       // fallback to FileReader if arrayBuffer() throws
@@ -158,7 +169,7 @@ export function preprocessCanvas(canvas: HTMLCanvasElement): void {
  * Generate clean Markdown text from OCR results preserving paragraphs and page breaks
  */
 export function generateMarkdownOutput(
-  pagesData: Array<{ pageNum: number; text: string; words: any[] }>,
+  pagesData: Array<{ pageNum: number; text: string; words: Pick<OCRWord, 'text'>[] }>,
   docTitle: string
 ): string {
   const sections: string[] = [
@@ -185,7 +196,7 @@ export function generateMarkdownOutput(
  * Generate structured JSON output with word bounding boxes and confidence metrics
  */
 export function generateJsonOutput(
-  pagesData: Array<{ pageNum: number; text: string; words: any[] }>,
+  pagesData: Array<{ pageNum: number; text: string; words: Omit<OCRWord, 'fontSize'>[] }>,
   meta: {
     fileName: string;
     languages: string[];
@@ -311,7 +322,7 @@ export class OCRProcessor extends BasePDFProcessor {
     this.onProgress = onProgress;
 
     const { files, options } = input;
-    const rawOptions = (options || {}) as any;
+    const rawOptions = (options || {}) as Partial<OCROptions>;
 
     // Resolve languages (support both languages array and language string)
     let languages: OCRLanguage[] = DEFAULT_OPTIONS.languages;
@@ -411,7 +422,7 @@ export class OCRProcessor extends BasePDFProcessor {
       this.updateProgress(25, `Processing ${pagesToOCR.length} page(s)...`);
 
       const textResults: string[] = [];
-      const ocrPagesData: Array<{ pageNum: number; words: any[] }> = [];
+      const ocrPagesData: Array<{ pageNum: number; words: OCRWord[] }> = [];
       const progressPerPage = 70 / pagesToOCR.length;
 
       for (let i = 0; i < pagesToOCR.length; i++) {
@@ -530,7 +541,7 @@ export class OCRProcessor extends BasePDFProcessor {
   /**
    * Convert an image File to a single-page PDFDocument and return its bytes
    */
-  private async convertImageToPDF(file: File): Promise<{ pdfBytes: Uint8Array; pdfDoc: any }> {
+  private async convertImageToPDF(file: File): Promise<{ pdfBytes: Uint8Array; pdfDoc: PDFDocument }> {
     const pdfLib = await loadPdfLib();
     const pdfDoc = await pdfLib.PDFDocument.create();
     const bytes = await readFileAsUint8Array(file);
@@ -596,7 +607,7 @@ export class OCRProcessor extends BasePDFProcessor {
     const langString = languages && languages.length > 0 ? languages.join('+') : 'eng';
 
     this.tesseractWorker = await Tesseract.createWorker(langString, 1, {
-      logger: (m: any) => {
+      logger: (m) => {
         if (m && m.status) {
           const percent = typeof m.progress === 'number' ? Math.round(m.progress * 100) : 0;
           this.updateProgress(
@@ -605,7 +616,7 @@ export class OCRProcessor extends BasePDFProcessor {
           );
         }
       },
-    }) as unknown as TesseractWorker;
+    });
   }
 
   /**
@@ -622,10 +633,10 @@ export class OCRProcessor extends BasePDFProcessor {
    * Perform OCR on a single page and return text with word coordinates
    */
   private async ocrPage(
-    pdf: any,
+    pdf: PDFDocumentProxy,
     pageNum: number,
     options: OCROptions
-  ): Promise<{ text: string; words: any[] }> {
+  ): Promise<{ text: string; words: OCRWord[] }> {
     if (!this.tesseractWorker) {
       throw new Error('Tesseract worker not initialized');
     }
@@ -659,7 +670,7 @@ export class OCRProcessor extends BasePDFProcessor {
     }
 
     // Perform OCR with explicit blocks/hocr requests to ensure word coordinates are extracted
-    const result = await (this.tesseractWorker as any).recognize(
+    const result = await this.tesseractWorker.recognize(
       canvas,
       {},
       { text: true, blocks: true, hocr: true }
@@ -669,8 +680,8 @@ export class OCRProcessor extends BasePDFProcessor {
     const pdfViewport = page.getViewport({ scale: 1.0 });
     const pageHeight = pdfViewport.height;
 
-    const rawWords = result.data.words || [];
-    const words = rawWords.map((w: any) => {
+    const rawWords = getOCRWords(result.data);
+    const words = rawWords.map((w) => {
       const bbox = w.bbox || { x0: 0, y0: 0, x1: 0, y1: 0 };
       const { x0, y0, x1, y1 } = bbox;
       const scale = options.scale;
@@ -702,7 +713,7 @@ export class OCRProcessor extends BasePDFProcessor {
    */
   private async createSearchablePDF(
     originalFile: File,
-    ocrPagesData: Array<{ pageNum: number; words: any[] }>,
+    ocrPagesData: Array<{ pageNum: number; words: OCRWord[] }>,
     options: OCROptions
   ): Promise<Blob> {
     const pdfLib = await loadPdfLib();
@@ -712,7 +723,7 @@ export class OCRProcessor extends BasePDFProcessor {
     const pdfDoc = await pdfLib.PDFDocument.load(fileBytes);
 
     // Register fontkit and load Unicode font for non-Latin characters (Chinese, Japanese, Korean, etc.)
-    let unicodeFont: any = null;
+    let unicodeFont: PDFFont | null = null;
     try {
       const fontkit = await import('@pdf-lib/fontkit');
       pdfDoc.registerFontkit(fontkit.default || fontkit);
