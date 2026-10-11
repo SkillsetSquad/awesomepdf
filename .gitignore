@@ -94,4 +94,5 @@ public/THIRD_PARTY_NOTICES.txt
 public/source-manifest.json
 
 # Local documentation, SEO evidence and image briefs
-/docs/
+/docs/*
+
