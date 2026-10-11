@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "上传学术论文或双栏排版 PDF",
-      "uploadDescription": "中缝智能矢量对齐切分。无损提取页面左右子栏并自动垂直串联，一键输出单栏排版适合移动端直接畅读。",
+      "uploadDescription": "按所选位置将每个来源页面裁切成两个列页面。",
       "optionsTitle": "论文单栏重排设置",
-      "processButton": "智能单栏矢量重排",
-      "successMessage": "学术论文双栏排版无损单栏重排成功！",
-      "previewTitle": "3D 微折叠透视渲染预览页",
+      "processButton": "分割列",
+      "successMessage": "已创建列页面。",
+      "previewTitle": "来源 PDF",
       "clearButton": "清空",
       "splitRatio": "中缝定位分栏比例",
-      "readingFlowLabel": "阅读流平铺方向",
-      "flowVertical": "纵向瀑布流平铺 (推荐)",
-      "flowHorizontal": "横向折页式流"
+      "readingFlowLabel": "PDF 阅读器布局",
+      "flowVertical": "一列",
+      "flowHorizontal": "两列",
+      "splitHelp": "每个来源页面会成为两页：先是显示的左列，再是右列。",
+      "flowHelp": "设置支持此功能的 PDF 阅读器布局。阅读器可能覆盖此偏好。",
+      "resultPreviewTitle": "结果 PDF",
+      "outputPages": "输出页数：{count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "上传一个或多个不同尺寸规格的 PDF 文档",

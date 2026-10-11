@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Enviar artigo acadêmico / PDF de 2 colunas",
-      "uploadDescription": "Divide de forma inteligente a medianiz central e distribui verticalmente as colunas esquerda e direita em layouts legíveis e confortáveis de coluna única.",
+      "uploadDescription": "Divida cada página original em duas páginas de colunas recortadas na posição escolhida.",
       "optionsTitle": "Configurações de layout do redistribuidor",
-      "processButton": "Executar redistribuição sem perdas",
-      "successMessage": "O fluxo de duas colunas do artigo acadêmico foi redistribuído com sucesso para coluna única!",
-      "previewTitle": "Visualização de simulação de página dobrada em 3D",
+      "processButton": "Dividir colunas",
+      "successMessage": "Páginas de colunas criadas.",
+      "previewTitle": "PDF original",
       "clearButton": "Limpar",
       "splitRatio": "Proporção de deslocamento da medianiz central",
-      "readingFlowLabel": "Direção do fluxo de leitura",
-      "flowVertical": "Layout de cascata vertical (Recomendado)",
-      "flowHorizontal": "Esquema de livro horizontal"
+      "readingFlowLabel": "Layout do leitor PDF",
+      "flowVertical": "Uma coluna",
+      "flowHorizontal": "Duas colunas",
+      "splitHelp": "Cada página original vira duas páginas: primeiro a coluna esquerda exibida, depois a direita.",
+      "flowHelp": "Define o layout nos leitores PDF compatíveis. Os leitores podem substituir esta preferência.",
+      "resultPreviewTitle": "PDF resultante",
+      "outputPages": "Páginas de saída: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Carregar documentos PDF para redimensionar",

@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Wissenschaftliche Arbeit / 2-spaltiges PDF hochladen",
-      "uploadDescription": "Teilt den Mittelsteg intelligent auf und führt die linke und rechte Spalte vertikal zu einem komfortabel lesbaren einspaltigen Layout zusammen.",
+      "uploadDescription": "Teilen Sie jede Quellseite an der gewählten Position in zwei zugeschnittene Spaltenseiten.",
       "optionsTitle": "Einstellungen für Textfluss-Layout",
-      "processButton": "Verlustfreien Textfluss ausführen",
-      "successMessage": "Zweispaltiges Layout der wissenschaftlichen Arbeit erfolgreich in einspaltiges Layout umgebrochen!",
-      "previewTitle": "3D-Simulationsansicht gefalteter Seiten",
+      "processButton": "Spalten teilen",
+      "successMessage": "Spaltenseiten erstellt.",
+      "previewTitle": "Quell-PDF",
       "clearButton": "Löschen",
       "splitRatio": "Mittelsteg-Versatzverhältnis",
-      "readingFlowLabel": "Leserichtung",
-      "flowVertical": "Vertikales Wasserfall-Layout (Empfohlen)",
-      "flowHorizontal": "Horizontales Buchschema"
+      "readingFlowLabel": "PDF-Leselayout",
+      "flowVertical": "Eine Spalte",
+      "flowHorizontal": "Zwei Spalten",
+      "splitHelp": "Jede Quellseite wird zu zwei Seiten: zuerst die angezeigte linke Spalte, dann die rechte.",
+      "flowHelp": "Legt das Layout in unterstützten PDF-Programmen fest. Programme können diese Vorgabe überschreiben.",
+      "resultPreviewTitle": "Ergebnis-PDF",
+      "outputPages": "Ausgabeseiten: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "PDF-Dokumente zum Anpassen hochladen",

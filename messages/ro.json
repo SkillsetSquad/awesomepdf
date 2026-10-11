@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Încărcați lucrare academică / PDF pe 2 coloane",
-      "uploadDescription": "Împarte inteligent pliul din mijloc și redistribuie coloanele din stânga și dreapta pe verticală într-un aspect lizibil cu o singură coloană.",
+      "uploadDescription": "Împărțiți fiecare pagină sursă în două pagini de coloane decupate la poziția aleasă.",
       "optionsTitle": "Setări de redistribuire a aspectului",
-      "processButton": "Execută redistribuirea fără pierderi",
-      "successMessage": "Fluxul pe două coloane al lucrării academice a fost redistribuit cu succes pe o singură coloană!",
-      "previewTitle": "Vizualizare simulare pagină pliată 3D",
+      "processButton": "Împărțiți coloanele",
+      "successMessage": "Paginile coloanelor au fost create.",
+      "previewTitle": "PDF sursă",
       "clearButton": "Curăță",
       "splitRatio": "Raport de decalaj al pliului din mijloc",
-      "readingFlowLabel": "Direcția fluxului de citire",
-      "flowVertical": "Aspect cascadă verticală (Recomandat)",
-      "flowHorizontal": "Schemă de carte orizontală"
+      "readingFlowLabel": "Aspectul cititorului PDF",
+      "flowVertical": "O coloană",
+      "flowHorizontal": "Două coloane",
+      "splitHelp": "Fiecare pagină sursă devine două pagini: întâi coloana stângă afișată, apoi cea dreaptă.",
+      "flowHelp": "Setează aspectul în cititoarele PDF compatibile. Cititoarele pot ignora această preferință.",
+      "resultPreviewTitle": "PDF rezultat",
+      "outputPages": "Pagini rezultate: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Încărcați documente PDF pentru redimensionare",

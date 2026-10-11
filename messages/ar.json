@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "تحميل ورقة أكاديمية / مستند PDF ذو عمودين",
-      "uploadDescription": "تقسيم الهامش الأوسط بذكاء وتدفق العمودين الأيمن والأيسر رأسياً إلى تخطيط مريح أحادي العمود قابل للقراءة.",
+      "uploadDescription": "قسّم كل صفحة مصدر إلى صفحتين مقتصتين للعمودين عند الموضع الذي تختاره.",
       "optionsTitle": "إعدادات إعادة تدفق التخطيط",
-      "processButton": "تنفيذ إعادة التدفق دون فقدان للجودة",
-      "successMessage": "تم إعادة تدفق الورقة الأكاديمية ذات العمودين إلى عمود واحد بنجاح!",
-      "previewTitle": "عرض محاكاة الصفحة المطوية ثلاثية الأبعاد",
+      "processButton": "تقسيم الأعمدة",
+      "successMessage": "تم إنشاء صفحات الأعمدة.",
+      "previewTitle": "ملف PDF المصدر",
       "clearButton": "مسح",
       "splitRatio": "نسبة إزاحة الهامش الأوسط",
-      "readingFlowLabel": "اتجاه تدفق القراءة",
-      "flowVertical": "تخطيط التدفق الرأسي المتتالي (موصى به)",
-      "flowHorizontal": "مخطط كتاب أفقي"
+      "readingFlowLabel": "تخطيط قارئ PDF",
+      "flowVertical": "عمود واحد",
+      "flowHorizontal": "عمودان",
+      "splitHelp": "تصبح كل صفحة مصدر صفحتين: العمود الأيسر المعروض أولاً، ثم الأيمن.",
+      "flowHelp": "يحدد التخطيط في قارئات PDF الداعمة. قد تتجاوز القارئات هذا التفضيل.",
+      "resultPreviewTitle": "ملف PDF الناتج",
+      "outputPages": "صفحات الناتج: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "تحميل مستندات PDF لتغيير حجمها",

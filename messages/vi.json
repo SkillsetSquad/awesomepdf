@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Tải lên tài liệu học thuật / PDF 2 cột",
-      "uploadDescription": "Chia đôi gáy trang thông minh và chuyển dòng dọc các cột trái và phải thành bố cục một cột dễ đọc và thoải mái.",
+      "uploadDescription": "Chia mỗi trang nguồn thành hai trang cột được cắt tại vị trí bạn chọn.",
       "optionsTitle": "Cài đặt bố cục dàn lại dòng",
-      "processButton": "Thực hiện dàn lại dòng không hao tổn",
-      "successMessage": "Đã chuyển đổi thành công tài liệu học thuật từ hai cột sang một cột!",
-      "previewTitle": "Xem mô phỏng trang gấp 3D",
+      "processButton": "Chia cột",
+      "successMessage": "Đã tạo các trang cột.",
+      "previewTitle": "PDF nguồn",
       "clearButton": "Xóa sạch",
       "splitRatio": "Tỷ lệ dịch gáy giữa",
-      "readingFlowLabel": "Hướng luồng đọc",
-      "flowVertical": "Bố cục thác nước dọc (Khuyên dùng)",
-      "flowHorizontal": "Sơ đồ sách ngang"
+      "readingFlowLabel": "Bố cục trình đọc PDF",
+      "flowVertical": "Một cột",
+      "flowHorizontal": "Hai cột",
+      "splitHelp": "Mỗi trang nguồn thành hai trang: cột trái đang hiển thị trước, rồi đến cột phải.",
+      "flowHelp": "Đặt bố cục trong trình đọc PDF có hỗ trợ. Trình đọc có thể ghi đè tùy chọn này.",
+      "resultPreviewTitle": "PDF kết quả",
+      "outputPages": "Trang đầu ra: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Tải lên tài liệu PDF để đổi kích thước",

@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "学術論文/2カラムPDFをアップロード",
-      "uploadDescription": "中央の余白をインテリジェントに分割し、左右のカラムを垂直に流し込んで、読みやすい1カラムのレイアウトに変換します。",
+      "uploadDescription": "指定した位置で各元ページを切り分け、2つの列のページを作成します。",
       "optionsTitle": "リフローレイアウト設定",
-      "processButton": "无劣化リフローを実行",
-      "successMessage": "学術論文の2カラム構成が正常に1カラムにリフローされました！",
-      "previewTitle": "3D折りたたみページシミュレーション表示",
+      "processButton": "列を分割",
+      "successMessage": "列のページを作成しました。",
+      "previewTitle": "元のPDF",
       "clearButton": "クリア",
       "splitRatio": "中央余白オフセット比率",
-      "readingFlowLabel": "読書の流れ方向",
-      "flowVertical": "垂直ウォーターフォールレイアウト (推奨)",
-      "flowHorizontal": "水平ブック方式"
+      "readingFlowLabel": "PDFリーダーの表示配置",
+      "flowVertical": "1列",
+      "flowHorizontal": "2列",
+      "splitHelp": "各元ページから2ページを作成します。表示上の左列が先、右列が後です。",
+      "flowHelp": "対応するPDFリーダーの表示配置を設定します。リーダーがこの設定を上書きする場合があります。",
+      "resultPreviewTitle": "出力PDF",
+      "outputPages": "出力ページ数：{count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "サイズ変更するPDFドキュメントをアップロード",

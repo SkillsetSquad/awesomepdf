@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Prześlij artykuł naukowy / dwukolumnowy PDF",
-      "uploadDescription": "Automatycznie rozdziela środkowy margines i układa lewą oraz prawą kolumnę pionowo w czytelnym układzie jednokolumnowym.",
+      "uploadDescription": "Podziel każdą stronę źródłową na dwie przycięte strony kolumn w wybranym miejscu.",
       "optionsTitle": "Ustawienia układu tekstu",
-      "processButton": "Uruchom bezstratne przekształcanie układu",
-      "successMessage": "Dwukolumnowy artykuł został pomyślnie przekształcony do układu jednokolumnowego!",
-      "previewTitle": "Widok symulacji złożonej strony 3D",
+      "processButton": "Podziel kolumny",
+      "successMessage": "Utworzono strony kolumn.",
+      "previewTitle": "Źródłowy PDF",
       "clearButton": "Wyczyść",
       "splitRatio": "Współczynnik przesunięcia środkowej rynny",
-      "readingFlowLabel": "Kierunek czytania",
-      "flowVertical": "Układ pionowy (zalecany)",
-      "flowHorizontal": "Układ poziomy jak w książce"
+      "readingFlowLabel": "Układ czytnika PDF",
+      "flowVertical": "Jedna kolumna",
+      "flowHorizontal": "Dwie kolumny",
+      "splitHelp": "Każda strona źródłowa staje się dwiema stronami: najpierw wyświetlana lewa kolumna, potem prawa.",
+      "flowHelp": "Ustawia układ w zgodnych czytnikach PDF. Czytniki mogą zignorować to ustawienie.",
+      "resultPreviewTitle": "Wynikowy PDF",
+      "outputPages": "Strony wyjściowe: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Prześlij dokumenty PDF do zmiany rozmiaru",

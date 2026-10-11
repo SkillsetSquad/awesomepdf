@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Upload Academic Paper / 2-Column PDF",
-      "uploadDescription": "Intelligently split the middle gutter and vertically flow left and right columns to comfortable single-column readable layouts.",
+      "uploadDescription": "Split each source page into two cropped column pages at the position you choose.",
       "optionsTitle": "Reflower Layout Settings",
-      "processButton": "Execute Lossless Reflow",
-      "successMessage": "Academic paper double-column flow successfully reflowed to single-column!",
-      "previewTitle": "3D Folded Page Simulation View",
+      "processButton": "Split columns",
+      "successMessage": "Column pages created.",
+      "previewTitle": "Source PDF",
       "clearButton": "Clear",
       "splitRatio": "Middle Gutter Offset Ratio",
-      "readingFlowLabel": "Reading Flow Direction",
-      "flowVertical": "Vertical Waterfall Layout (Recommended)",
-      "flowHorizontal": "Horizontal Book Scheme"
+      "readingFlowLabel": "PDF reader layout",
+      "flowVertical": "One column",
+      "flowHorizontal": "Two columns",
+      "splitHelp": "Each source page becomes two pages: the displayed left column first, then the right.",
+      "flowHelp": "Sets the layout in supported PDF readers. Readers may override this preference.",
+      "resultPreviewTitle": "Result PDF",
+      "outputPages": "Output pages: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Upload PDF Documents to Resize",

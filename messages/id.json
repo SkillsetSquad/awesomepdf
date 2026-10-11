@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Unggah Makalah Akademik / PDF 2 Kolom",
-      "uploadDescription": "Membagi lipatan tengah secara cerdas dan mengalirkan kolom kiri dan kanan secara vertikal menjadi tata letak satu kolom yang nyaman dibaca.",
+      "uploadDescription": "Pisahkan setiap halaman sumber menjadi dua halaman kolom yang dipotong pada posisi pilihan Anda.",
       "optionsTitle": "Pengaturan Tata Letak Alir Ulang",
-      "processButton": "Jalankan Alir Ulang Tanpa Penurunan Kualitas",
-      "successMessage": "Alur dua kolom makalah akademik berhasil diubah menjadi satu kolom!",
-      "previewTitle": "Tampilan Simulasi Halaman Lipat 3D",
+      "processButton": "Pisahkan kolom",
+      "successMessage": "Halaman kolom dibuat.",
+      "previewTitle": "PDF sumber",
       "clearButton": "Bersihkan",
       "splitRatio": "Rasio Pergeseran Lipatan Tengah",
-      "readingFlowLabel": "Arah Aliran Membaca",
-      "flowVertical": "Tata Letak Air Terjun Vertikal (Direkomendasikan)",
-      "flowHorizontal": "Skema Buku Horizontal"
+      "readingFlowLabel": "Tata letak pembaca PDF",
+      "flowVertical": "Satu kolom",
+      "flowHorizontal": "Dua kolom",
+      "splitHelp": "Setiap halaman sumber menjadi dua halaman: kolom kiri yang ditampilkan terlebih dahulu, lalu kanan.",
+      "flowHelp": "Mengatur tata letak di pembaca PDF yang mendukungnya. Pembaca dapat mengabaikan preferensi ini.",
+      "resultPreviewTitle": "PDF hasil",
+      "outputPages": "Halaman keluaran: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Unggah Dokumen PDF untuk Diubah Ukurannya",

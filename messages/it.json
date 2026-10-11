@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Carica articolo accademico / PDF a 2 colonne",
-      "uploadDescription": "Divide intelligentemente lo spazio centrale e distribuisce verticalmente le colonne sinistra e destra in layout leggibili a colonna singola.",
+      "uploadDescription": "Dividi ogni pagina originale in due pagine di colonne ritagliate nella posizione scelta.",
       "optionsTitle": "Impostazioni layout del riflusso",
-      "processButton": "Esegui riflusso senza perdita",
-      "successMessage": "Il layout a due colonne dell'articolo accademico è stato convertito con successo a colonna singola!",
-      "previewTitle": "Vista di simulazione di pagina piegata 3D",
+      "processButton": "Dividi colonne",
+      "successMessage": "Pagine delle colonne create.",
+      "previewTitle": "PDF originale",
       "clearButton": "Cancella",
       "splitRatio": "Rapporto di scostamento dello spazio centrale",
-      "readingFlowLabel": "Direzione del flusso di lettura",
-      "flowVertical": "Layout a cascata verticale (Consigliato)",
-      "flowHorizontal": "Schema di libro orizzontale"
+      "readingFlowLabel": "Layout del lettore PDF",
+      "flowVertical": "Una colonna",
+      "flowHorizontal": "Due colonne",
+      "splitHelp": "Ogni pagina originale diventa due pagine: prima la colonna sinistra visualizzata, poi la destra.",
+      "flowHelp": "Imposta il layout nei lettori PDF compatibili. I lettori possono ignorare questa preferenza.",
+      "resultPreviewTitle": "PDF risultante",
+      "outputPages": "Pagine prodotte: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Carica documenti PDF da ridimensionare",

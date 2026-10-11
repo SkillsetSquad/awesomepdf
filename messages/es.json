@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Subir artículo académico / PDF de 2 columnas",
-      "uploadDescription": "Divide de forma inteligente el espacio intermedio y distribuye verticalmente las columnas izquierda y derecha en diseños legibles cómodos de una sola columna.",
+      "uploadDescription": "Divide cada página original en dos páginas recortadas por columnas en la posición elegida.",
       "optionsTitle": "Ajustes de diseño de redistribución",
-      "processButton": "Ejecutar redistribución sin pérdidas",
-      "successMessage": "¡El flujo de doble columna del artículo académico se ha redistribuído con éxito a una sola columna!",
-      "previewTitle": "Vista de simulación de página plegada en 3D",
+      "processButton": "Dividir columnas",
+      "successMessage": "Páginas de columnas creadas.",
+      "previewTitle": "PDF original",
       "clearButton": "Limpiar",
       "splitRatio": "Relación de desplazamiento del espacio intermedio",
-      "readingFlowLabel": "Dirección del flujo de lectura",
-      "flowVertical": "Diseño de cascada vertical (Recomendado)",
-      "flowHorizontal": "Esquema de libro horizontal"
+      "readingFlowLabel": "Diseño del lector PDF",
+      "flowVertical": "Una columna",
+      "flowHorizontal": "Dos columnas",
+      "splitHelp": "Cada página original genera dos páginas: primero la columna izquierda visible y luego la derecha.",
+      "flowHelp": "Establece el diseño en lectores PDF compatibles. Los lectores pueden ignorar esta preferencia.",
+      "resultPreviewTitle": "PDF resultante",
+      "outputPages": "Páginas de salida: {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Subir documentos PDF para cambiar tamaño",

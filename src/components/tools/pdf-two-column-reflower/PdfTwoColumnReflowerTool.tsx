@@ -1,248 +1,95 @@
 'use client';
-import { ArrowRight as UIEmojiArrowRight } from 'lucide-react';
 
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
-
-import { Slider } from '@/components/ui/slider';
-
-import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
-
-import { Label } from '@/components/ui/label';
-
-import React, { useState, useCallback, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { CircleAlert, Columns2, FileCheck } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { reflowTwoColumnPDF, type PdfTwoColumnReflowerOptions } from '@/lib/pdf/processors/pdf-two-column-reflower';
-import type { ProcessOutput } from '@/types/pdf';
-import { Sliders, BookOpen, Layers, Sparkles, RefreshCw } from 'lucide-react';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Slider } from '@/components/ui/slider';
+import { FileUploader } from '../FileUploader';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
+import { reflowTwoColumnPDF } from '@/lib/pdf/processors/pdf-two-column-reflower';
 
-export interface PdfTwoColumnReflowerToolProps {
-  className?: string;
-}
+export interface PdfTwoColumnReflowerToolProps { className?: string }
 
 export function PdfTwoColumnReflowerTool({ className = '' }: PdfTwoColumnReflowerToolProps) {
   const t = useTranslations('common');
+  const tErrors = useTranslations('errors');
+  const id = useId();
   const [file, setFile] = useState<File | null>(null);
   const [middleGapRatio, setMiddleGapRatio] = useState(0.5);
   const [horizontalReading, setHorizontalReading] = useState(false);
-
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
-  const [resultBlob, setResultBlob] = useState<Blob | null>(null);
+  const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('single_column.pdf');
+  const [pageCount, setPageCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const cancelledRef = useRef(false);
-
-  const handleFileSelected = useCallback((selectedFiles: File[]) => {
-    if (selectedFiles.length === 0) return;
-    setFile(selectedFiles[0]);
-    setError(null);
-    setResultBlob(null);
-  }, []);
-
-  const handleReflow = async () => {
-    if (!file) return;
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setError(null);
-
+  const processingRun = useRef(0);
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => () => { processingRun.current++; }, []);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
+  const isProcessing = status === 'processing';
+  const clearOutput = () => { processingRun.current++; setResult(null); setPageCount(null); setStatus('idle'); setProgress(0); setProgressMessage(''); setError(null); };
+  const handleProcess = async () => {
+    if (!file || isProcessing) return;
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing')); setResult(null); setPageCount(null); setError(null);
     try {
-      const output: ProcessOutput = await reflowTwoColumnPDF(
-        [file],
-        { middleGapRatio, horizontalReading },
-        (prog, message) => {
-          if (!cancelledRef.current) {
-            setProgress(prog);
-            setProgressMessage(message || 'Rearranging layout grids...');
-          }
-        }
-      );
-
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
-
+      const output = await reflowTwoColumnPDF([file], { middleGapRatio, horizontalReading }, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
+      });
+      if (run !== processingRun.current) return;
       if (output.success && output.result) {
-        setResultBlob(output.result as Blob);
-        setStatus('complete');
-      } else {
-        setError(output.error?.message || 'Failed to reflow double columns.');
-        setStatus('error');
-      }
+        setResult(output.result as Blob); setFilename(output.filename || `${file.name.replace(/\.[^/.]+$/, '')}_single_column.pdf`); setStatus('complete');
+        const count = output.metadata?.reflowedPagesCount;
+        setPageCount(typeof count === 'number' && Number.isInteger(count) && count >= 0 ? count : null);
+      } else { setError(output.error?.details || output.error?.message || tErrors('processingFailed')); setStatus('error'); }
     } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'Error reflowing layout.');
-        setStatus('error');
-      }
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
   };
-
-  const handleClear = () => {
-    setFile(null);
-    setResultBlob(null);
-    setStatus('idle');
-  };
-
-  return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {!file && (
-        <FileUploader
-          accept={['application/pdf']}
-          multiple={false}
-          onFilesSelected={handleFileSelected}
-          onError={setError}
-          disabled={status === 'processing'}
-          label={t('pdfTwoColumnReflower.uploadLabel')}
-          description={t('pdfTwoColumnReflower.uploadDescription')}
-        />
-      )}
-
-      {error && (
-        <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-          {error}
-        </AlertDescription></Alert>
-      )}
-
-      {file && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 space-y-4">
-            <Card  className="p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between border-2 border-dashed">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-                  <BookOpen className="w-4 h-4 text-primary" />
-                  {t('pdfTwoColumnReflower.previewTitle')}
-                </span>
-                <Button variant="ghost" size="sm" onClick={handleClear} disabled={status === 'processing'}>
-                  {t('pdfTwoColumnReflower.clearButton')}
-                </Button>
-              </div>
-
-              <div className="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 p-6 relative">
-                {/* Visual rendering of Before and After with nice perspective */}
-                <div className="w-44 h-56 bg-background border border-border rounded-xl p-3 shadow-lg transform -rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
-                  <span className="absolute top-2 right-2 text-[8px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-mono font-bold">BEFORE</span>
-                  <div className="h-6 w-1/2 bg-muted rounded" />
-                  <div className="flex-1 grid grid-cols-2 gap-2 mt-2">
-                    <div className="border-r border-dashed border-border space-y-1.5 pr-1">
-                      <div className="h-2 w-full bg-muted rounded" />
-                      <div className="h-2 w-3/4 bg-muted rounded" />
-                      <div className="h-2 w-full bg-muted rounded" />
-                    </div>
-                    <div className="space-y-1.5 pl-1">
-                      <div className="h-2 w-full bg-muted rounded" />
-                      <div className="h-2 w-full bg-muted rounded" />
-                      <div className="h-2 w-2/3 bg-muted rounded" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-foreground text-2xl font-bold animate-pulse"><UIEmojiArrowRight className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></div>
-
-                <div className="w-44 h-56 bg-background border border-border rounded-xl p-3 shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300 relative flex flex-col gap-2">
-                  <span className="absolute top-2 right-2 text-[8px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-mono font-bold">AFTER</span>
-                  <div className="h-6 w-1/2 bg-muted rounded" />
-                  <div className="flex-1 space-y-2 mt-2">
-                    <div className="space-y-1">
-                      <div className="h-2 w-full bg-primary/10 rounded" />
-                      <div className="h-2 w-3/4 bg-primary/10 rounded" />
-                    </div>
-                    <div className="border-t border-dashed border-primary/20 my-1" />
-                    <div className="space-y-1">
-                      <div className="h-2 w-full bg-primary/10 rounded" />
-                      <div className="h-2 w-2/3 bg-primary/10 rounded" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {!file && <div ref={uploadRegion} tabIndex={-1}><FileUploader accept={['application/pdf', '.pdf']} multiple={false} disabled={isProcessing}
+      onFilesSelected={selected => { if (selected[0]) { clearOutput(); setFile(selected[0]); } }} onError={setError}
+      label={t('pdfTwoColumnReflower.uploadLabel')} description={t('pdfTwoColumnReflower.uploadDescription')} /></div>}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {file && <div className="grid items-start gap-6 lg:grid-cols-2">
+      <Card className="min-w-0" role="region" aria-labelledby={`${id}-source-title`}>
+        <CardHeader><h3 id={`${id}-source-title`} className="font-semibold">{t('pdfTwoColumnReflower.previewTitle')}</h3>
+          <CardDescription className="break-words">{file.name}</CardDescription>
+          <CardAction><Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => { focusUpload.current = true; clearOutput(); setFile(null); }}>{t('pdfTwoColumnReflower.clearButton')}</Button></CardAction>
+        </CardHeader>
+        <CardContent><PDFPagePreview file={file} label={t('pdfTwoColumnReflower.previewTitle')} overlay={<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-0.5 bg-primary" style={{ left: `${middleGapRatio * 100}%` }} />} /></CardContent>
+      </Card>
+      <Card role="region" aria-labelledby={`${id}-settings-title`}>
+        <CardHeader><h3 id={`${id}-settings-title`} className="font-semibold">{t('pdfTwoColumnReflower.optionsTitle')}</h3><CardDescription>{t('pdfTwoColumnReflower.splitHelp')}</CardDescription></CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-2"><Label htmlFor={`${id}-split`}>{t('pdfTwoColumnReflower.splitRatio')}: {(middleGapRatio * 100).toFixed(0)}%</Label>
+            <Slider id={`${id}-split`} aria-label={t('pdfTwoColumnReflower.splitRatio')} min={0.4} max={0.6} step={0.01} value={[middleGapRatio]} disabled={isProcessing} onValueChange={([ratio]) => { clearOutput(); setMiddleGapRatio(ratio); }} />
           </div>
-
-          <div className="lg:col-span-4 space-y-6">
-            <Card  className="p-6 border flex flex-col justify-between min-h-[380px]">
-              <div className="space-y-6">
-                <div className="border-b border-border pb-3 flex items-center gap-2">
-                  <Sliders className="w-5 h-5 text-primary" />
-                  <h3 className="text-sm font-semibold text-foreground">{t('pdfTwoColumnReflower.optionsTitle')}</h3>
-                </div>
-
-                <div className="space-y-4 text-xs">
-                  <div className="space-y-1">
-                    <Label className="flex justify-between" htmlFor="pdftwocolumnreflowertool-slider-1">
-                      {t('pdfTwoColumnReflower.splitRatio')}
-                      <span className="font-mono text-primary font-bold">{(middleGapRatio * 100).toFixed(0)}%</span>
-                    </Label>
-                    <Slider
-                      min={0.4}
-                      max={0.6}
-                      step={0.01}
-                      value={[middleGapRatio]}
-                      onValueChange={(values) => setMiddleGapRatio(parseFloat(String(values[0])))}
-                      className="w-full cursor-pointer" id="pdftwocolumnreflowertool-slider-1" aria-label={t('pdfTwoColumnReflower.splitRatio')}
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    {t('pdfTwoColumnReflower.readingFlowLabel')}
-                    <NativeSelect
-                      value={horizontalReading ? 'horizontal' : 'vertical'}
-                      aria-label={t('pdfTwoColumnReflower.readingFlowLabel')}
-                      disabled={status === 'processing'}
-                      onChange={(e) => setHorizontalReading(e.target.value === 'horizontal')}
-                      className="w-full"
-                    >
-                      <NativeSelectOption value="vertical">{t('pdfTwoColumnReflower.flowVertical')}</NativeSelectOption>
-                      <NativeSelectOption value="horizontal">{t('pdfTwoColumnReflower.flowHorizontal')}</NativeSelectOption>
-                    </NativeSelect>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-border mt-6">
-                {status === 'complete' && resultBlob ? (
-                  <DownloadButton
-                    file={resultBlob}
-                    filename={`${file.name.replace(/\.[^/.]+$/, '')}_single_column.pdf`}
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4"
-                    showFileSize
-                  />
-                ) : (
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="w-full py-4 flex items-center justify-center gap-2"
-                    onClick={handleReflow}
-                    disabled={status === 'processing'}
-                  >
-                    <RefreshCw className={`w-4 h-4 ${status === 'processing' ? 'animate-spin' : ''}`} />
-                    {t('pdfTwoColumnReflower.processButton')}
-                  </Button>
-                )}
-              </div>
-            </Card>
+          <div className="space-y-2"><Label htmlFor={`${id}-flow`}>{t('pdfTwoColumnReflower.readingFlowLabel')}</Label>
+            <NativeSelect id={`${id}-flow`} value={horizontalReading ? 'horizontal' : 'vertical'} disabled={isProcessing} aria-describedby={`${id}-flow-help`} onChange={event => { clearOutput(); setHorizontalReading(event.target.value === 'horizontal'); }} className="w-full">
+              <NativeSelectOption value="vertical">{t('pdfTwoColumnReflower.flowVertical')}</NativeSelectOption><NativeSelectOption value="horizontal">{t('pdfTwoColumnReflower.flowHorizontal')}</NativeSelectOption>
+            </NativeSelect><p id={`${id}-flow-help`} className="text-sm text-muted-foreground">{t('pdfTwoColumnReflower.flowHelp')}</p>
           </div>
-        </div>
-      )}
-
-      {status === 'processing' && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
-          showPercentage
-        />
-      )}
-    </div>
-  );
+        </CardContent>
+        <CardFooter><Button className="w-full" onClick={handleProcess} disabled={isProcessing}><Columns2 aria-hidden="true" />{t('pdfTwoColumnReflower.processButton')}</Button></CardFooter>
+      </Card>
+    </div>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={clearOutput} />}
+    {result && <Card className="min-w-0" role="region" aria-labelledby={`${id}-result-title`}>
+      <CardHeader><h3 id={`${id}-result-title`} className="font-semibold">{t('pdfTwoColumnReflower.resultPreviewTitle')}</h3><p role="status" className="flex items-center gap-2 text-sm"><FileCheck aria-hidden="true" className="size-4 shrink-0" />{t('pdfTwoColumnReflower.successMessage')}</p>
+        {pageCount !== null && <CardDescription>{t('pdfTwoColumnReflower.outputPages', { count: pageCount })}</CardDescription>}
+      </CardHeader><CardContent><div className="mx-auto max-w-xl"><PDFPagePreview file={result} label={t('pdfTwoColumnReflower.resultPreviewTitle')} /></div></CardContent><CardFooter><DownloadButton file={result} filename={filename} showFileSize /></CardFooter>
+    </Card>}
+  </div>;
 }
-
 export default PdfTwoColumnReflowerTool;

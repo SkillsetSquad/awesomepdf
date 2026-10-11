@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "上傳學術論文或雙欄排版 PDF",
-      "uploadDescription": "中縫智能矢量對齊切分。無損提取頁面左右子欄並自動垂直串聯，一鍵輸出單欄排版適合移動端直接暢讀。",
+      "uploadDescription": "依所選位置將每個來源頁面裁切成兩個欄頁面。",
       "optionsTitle": "論文單欄重排設置",
-      "processButton": "智能單欄矢量重排",
-      "successMessage": "學術論文雙欄排版無損單欄重排成功！",
-      "previewTitle": "3D 微折叠透视渲染预览页",
+      "processButton": "分割欄位",
+      "successMessage": "已建立欄頁面。",
+      "previewTitle": "來源 PDF",
       "clearButton": "清空",
       "splitRatio": "中縫定位分栏比例",
-      "readingFlowLabel": "阅读流平铺方向",
-      "flowVertical": "纵向瀑布流平铺 (推荐)",
-      "flowHorizontal": "横向折页式流"
+      "readingFlowLabel": "PDF 閱讀器版面",
+      "flowVertical": "一欄",
+      "flowHorizontal": "兩欄",
+      "splitHelp": "每個來源頁面會成為兩頁：先是顯示的左欄，再是右欄。",
+      "flowHelp": "設定支援此功能的 PDF 閱讀器版面。閱讀器可能覆寫此偏好。",
+      "resultPreviewTitle": "結果 PDF",
+      "outputPages": "輸出頁數：{count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "上傳需要調整尺寸的 PDF 文檔",

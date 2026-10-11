@@ -19,6 +19,7 @@ vi.mock('@/lib/pdf/processors/pdf-two-column-reflower', () => ({ reflowTwoColumn
 const file = new File(['processor contract fixture'], 'source.pdf');
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: (props: { onFilesSelected: (files: File[]) => void }) => <button onClick={() => props.onFilesSelected([file])}>Select contract fixture</button> }));
 vi.mock('@/components/tools/DownloadButton', () => ({ DownloadButton: () => <button>Download fixture</button> }));
+vi.mock('@/components/tools/PDFPagePreview', () => ({ PDFPagePreview: () => <div>Preview fixture</div> }));
 beforeEach(() => { vi.clearAllMocks(); for (const processor of [ink, deskew, resize, spine, reflow]) processor.mockResolvedValue({ success: true, result: new Blob(['fixture']) }); });
 
 const cases = [

@@ -207,16 +207,20 @@
     },
     "pdfTwoColumnReflower": {
       "uploadLabel": "Télécharger un article universitaire / PDF à 2 colonnes",
-      "uploadDescription": "Divise intelligemment la gouttière centrale et fait défiler verticalement les colonnes gauche et droite vers des mises en page lisibles et confortables sur une seule colonne.",
+      "uploadDescription": "Divisez chaque page source en deux pages de colonnes recadrées à la position choisie.",
       "optionsTitle": "Paramètres de mise en page du redimensionnement",
-      "processButton": "Exécuter le redimensionnement sans perte",
-      "successMessage": "La mise en page en double colonne de l'article universitaire a été convertie avec succès en colonne unique !",
-      "previewTitle": "Vue de simulation de page pliée en 3D",
+      "processButton": "Diviser les colonnes",
+      "successMessage": "Pages de colonnes créées.",
+      "previewTitle": "PDF source",
       "clearButton": "Effacer",
       "splitRatio": "Ratio de décalage de la gouttière centrale",
-      "readingFlowLabel": "Sens de lecture",
-      "flowVertical": "Disposition en cascade verticale (Recommandé)",
-      "flowHorizontal": "Schéma de livre horizontal"
+      "readingFlowLabel": "Disposition du lecteur PDF",
+      "flowVertical": "Une colonne",
+      "flowHorizontal": "Deux colonnes",
+      "splitHelp": "Chaque page source devient deux pages : la colonne gauche affichée d’abord, puis la droite.",
+      "flowHelp": "Définit la disposition dans les lecteurs PDF compatibles. Les lecteurs peuvent ignorer cette préférence.",
+      "resultPreviewTitle": "PDF résultat",
+      "outputPages": "Pages produites : {count}"
     },
     "pdfPageResizerUniform": {
       "uploadLabel": "Téléverser les documents PDF à redimensionner",
