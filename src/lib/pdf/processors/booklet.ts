@@ -12,7 +12,7 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
-import { PDFDocument, PageSizes, degrees } from 'pdf-lib';
+import { PDFArray, PDFDocument, PageSizes, degrees, type PDFPage } from 'pdf-lib';
 
 /**
  * Grid mode options
@@ -108,6 +108,34 @@ function getSheetDimensions(
     return { width: pageDims[0], height: pageDims[1] };
 }
 
+/** Sheet geometry shared by the imposition processor and its layout illustration. */
+export function getBookletSheetLayout(options: Pick<BookletPDFOptions, 'gridMode' | 'paperSize' | 'orientation'>) {
+    return {
+        ...getGridDimensions(options.gridMode),
+        ...getSheetDimensions(options.paperSize, options.orientation, options.gridMode === '1x2'),
+    };
+}
+
+function visiblePageBox(page: PDFPage) {
+    const media = page.getMediaBox();
+    const crop = page.getCropBox();
+    const left = Math.max(media.x, crop.x);
+    const bottom = Math.max(media.y, crop.y);
+    const right = Math.min(media.x + media.width, crop.x + crop.width);
+    const top = Math.min(media.y + media.height, crop.y + crop.height);
+    if (![left, bottom, right, top].every(Number.isFinite) || right <= left || top <= bottom) {
+        throw new Error('The source page has an invalid visible page box.');
+    }
+    return { left, bottom, right, top };
+}
+
+function displayedRotation(page: PDFPage, mode: BookletRotation, pageIndex: number) {
+    const extra = mode === '90cw' ? 90 : mode === '90ccw' ? -90 : mode === 'alternate' ? pageIndex % 2 === 0 ? 90 : -90 : 0;
+    const angle = page.getRotation().angle + extra;
+    if (!Number.isFinite(angle) || angle % 90 !== 0) throw new Error('The source page has an unsupported rotation.');
+    return ((angle % 360) + 360) % 360;
+}
+
 /**
  * PDF Booklet Processor
  * Creates booklet layouts from PDF files.
@@ -138,6 +166,20 @@ export class BookletPDFProcessor extends BasePDFProcessor {
             );
         }
 
+        if (!['1x2', '2x2', '2x4', '4x4'].includes(bookletOptions.gridMode)
+            || !Object.prototype.hasOwnProperty.call(PAPER_SIZES, bookletOptions.paperSize)
+            || !['auto', 'portrait', 'landscape'].includes(bookletOptions.orientation)
+            || !['none', '90cw', '90ccw', 'alternate'].includes(bookletOptions.rotation)) {
+            return this.createErrorOutput(PDFErrorCode.INVALID_OPTIONS, 'Please choose a supported booklet layout.');
+        }
+        const { rows, cols, width: sheetWidth, height: sheetHeight } = getBookletSheetLayout(bookletOptions);
+        const cellWidth = sheetWidth / cols;
+        const cellHeight = sheetHeight / rows;
+        const padding = bookletOptions.padding;
+        if (!Number.isFinite(padding) || padding < 0 || padding * 2 >= Math.min(cellWidth, cellHeight)) {
+            return this.createErrorOutput(PDFErrorCode.INVALID_OPTIONS, 'Padding must leave space for a page in each grid cell.');
+        }
+
         const file = files[0];
 
         try {
@@ -162,7 +204,6 @@ export class BookletPDFProcessor extends BasePDFProcessor {
             this.updateProgress(15, 'Analyzing pages...');
 
             const totalPages = sourceDoc.getPageCount();
-            const { rows, cols } = getGridDimensions(bookletOptions.gridMode);
             const pagesPerSheet = rows * cols;
             const isBookletMode = rows === 1 && cols === 2;
 
@@ -178,26 +219,10 @@ export class BookletPDFProcessor extends BasePDFProcessor {
                 numSheets = Math.ceil(totalPages / pagesPerSheet);
             }
 
-            // Get sheet dimensions
-            const { width: sheetWidth, height: sheetHeight } = getSheetDimensions(
-                bookletOptions.paperSize,
-                bookletOptions.orientation,
-                isBookletMode
-            );
-
             // Create output document
             const outputDoc = await PDFDocument.create();
 
-            const cellWidth = sheetWidth / cols;
-            const cellHeight = sheetHeight / rows;
-            const padding = bookletOptions.padding;
-
             this.updateProgress(25, 'Creating booklet layout...');
-
-            // Apply rotation to source document if needed
-            if (bookletOptions.rotation !== 'none') {
-                this.applyRotation(sourceDoc, bookletOptions.rotation);
-            }
 
             // Create each output sheet
             for (let sheetIndex = 0; sheetIndex < numSheets; sheetIndex++) {
@@ -235,29 +260,27 @@ export class BookletPDFProcessor extends BasePDFProcessor {
 
                         // Only embed if page exists
                         if (pageNumber >= 1 && pageNumber <= totalPages) {
-                            try {
-                                const [embeddedPage] = await outputDoc.embedPdf(sourceDoc, [pageNumber - 1]);
-                                const { width: srcW, height: srcH } = embeddedPage;
-
-                                const availableWidth = cellWidth - padding * 2;
-                                const availableHeight = cellHeight - padding * 2;
-                                const scale = Math.min(availableWidth / srcW, availableHeight / srcH);
-
-                                const scaledWidth = srcW * scale;
-                                const scaledHeight = srcH * scale;
-
-                                const x = c * cellWidth + padding + (availableWidth - scaledWidth) / 2;
-                                const y = sheetHeight - (r + 1) * cellHeight + padding + (availableHeight - scaledHeight) / 2;
-
-                                outputPage.drawPage(embeddedPage, {
-                                    x,
-                                    y,
-                                    width: scaledWidth,
-                                    height: scaledHeight,
-                                });
-                            } catch (embedError) {
-                                console.warn(`Failed to embed page ${pageNumber}:`, embedError);
-                            }
+                            const sourcePage = sourceDoc.getPage(pageNumber - 1);
+                            const contents = sourcePage.node.Contents();
+                            // Valid blank pages keep their assigned slot without an empty-page embedder.
+                            if (!contents || contents instanceof PDFArray && contents.size() === 0) continue;
+                            const box = visiblePageBox(sourcePage);
+                            const angle = displayedRotation(sourcePage, bookletOptions.rotation, pageNumber - 1);
+                            const embeddedPage = await outputDoc.embedPage(sourcePage, box);
+                            const srcW = angle % 180 === 0 ? embeddedPage.width : embeddedPage.height;
+                            const srcH = angle % 180 === 0 ? embeddedPage.height : embeddedPage.width;
+                            const scale = Math.min((cellWidth - padding * 2) / srcW, (cellHeight - padding * 2) / srcH);
+                            const scaledWidth = srcW * scale;
+                            const scaledHeight = srcH * scale;
+                            const left = c * cellWidth + (cellWidth - scaledWidth) / 2;
+                            const bottom = sheetHeight - (r + 1) * cellHeight + (cellHeight - scaledHeight) / 2;
+                            outputPage.drawPage(embeddedPage, {
+                                x: left + (angle === 180 || angle === 270 ? scaledWidth : 0),
+                                y: bottom + (angle === 90 || angle === 180 ? scaledHeight : 0),
+                                xScale: scale,
+                                yScale: scale,
+                                rotate: degrees(-angle),
+                            });
                         }
                     }
                 }
@@ -267,7 +290,7 @@ export class BookletPDFProcessor extends BasePDFProcessor {
 
             // Save output document
             const outputBytes = await outputDoc.save();
-            const blob = new Blob([outputBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+            const blob = new Blob([new Uint8Array(outputBytes)], { type: 'application/pdf' });
 
             this.updateProgress(100, 'Complete!');
 
@@ -296,25 +319,6 @@ export class BookletPDFProcessor extends BasePDFProcessor {
                 error instanceof Error ? error.message : 'Unknown error'
             );
         }
-    }
-
-    /**
-     * Apply rotation to all pages in source document
-     */
-    private applyRotation(doc: PDFDocument, mode: BookletRotation): void {
-        const pages = doc.getPages();
-        pages.forEach((page, index) => {
-            let rotation = 0;
-            switch (mode) {
-                case '90cw': rotation = 90; break;
-                case '90ccw': rotation = -90; break;
-                case 'alternate': rotation = (index % 2 === 0) ? 90 : -90; break;
-                default: rotation = 0;
-            }
-            if (rotation !== 0) {
-                page.setRotation(degrees(page.getRotation().angle + rotation));
-            }
-        });
     }
 
     /**
