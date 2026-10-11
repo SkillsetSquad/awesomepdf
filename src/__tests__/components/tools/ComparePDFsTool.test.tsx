@@ -124,5 +124,11 @@ describe('PDF comparison workspace', () => {
     expect(fullscreen).toContainElement(toggle); expect(fullscreen).toContainElement(screen.getByRole('button', { name: t.prevPair })); expect(fullscreen).toContainElement(screen.getByRole('button', { name: t.resetButton }));
     await user.click(toggle); expect(exit).toHaveBeenCalledTimes(1); expect(toggle).toHaveAttribute('aria-pressed', 'false'); expect(toggle).toHaveFocus();
     enter.mockRejectedValueOnce(new Error('Unavailable')); await user.click(toggle); expect(screen.getByRole('alert')).toHaveTextContent(t.errorFullscreen);
+    await user.click(toggle); await user.click(screen.getByRole('button', { name: t.resetButton }));
+    fullscreen = null; act(() => document.dispatchEvent(new Event('fullscreenchange')));
+    uploadQueues[0].push(file('original.pdf')); uploadQueues[1].push(file('modified.pdf', 2)); fixture(); fixture();
+    await uploadBoth(user);
+    const freshToggle = screen.getByRole('button', { name: t.fullscreenTooltip });
+    expect(freshToggle).toHaveAttribute('aria-pressed', 'false'); expect(freshToggle.closest('nav')!.parentElement).not.toHaveClass('h-screen');
   });
 });

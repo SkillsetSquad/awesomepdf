@@ -339,7 +339,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
 
   useEffect(() => {
     const handleFsChange = () => {
-      const active = document.fullscreenElement === comparisonContainerRef.current;
+      const active = !!comparisonContainerRef.current && document.fullscreenElement === comparisonContainerRef.current;
       setIsFullscreen(active);
       if (!active) fullscreenButton.current?.focus();
     };
