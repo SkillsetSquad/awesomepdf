@@ -1,14 +1,11 @@
 /**
  * Redact PDF Processor
  *
- * Implements visual redaction, pixelation (mosaic), and blur features
- * with irreversible physical rasterization and deep metadata sanitization.
+ * Removes selected PDF content through the local PyMuPDF engine.
+ * Canvas effects below are preview helpers only.
  */
 
-import { PDFDocument, PDFDict, PDFName, rgb } from 'pdf-lib';
-import { loadPdfjs } from '../loader';
-import { PDFJS_CONFIG } from '../config';
-import { withBasePath } from '../../utils/path';
+import { removePDFContent, type EngineRedaction, type RedactionRect } from '../redaction-engine';
 
 export type RedactionStyle = 'blackout' | 'whiteout' | 'mosaic' | 'blur' | 'custom-color';
 
@@ -68,44 +65,25 @@ export function validateRedactionAreas(
   totalPages: number
 ): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
-
-  if (!areas || areas.length === 0) {
-    return { valid: false, errors: ['No redaction areas specified'] };
-  }
-
+  if (!areas?.length) return { valid: false, errors: ['No redaction areas specified'] };
   areas.forEach((area, index) => {
-    const areaIndex = index + 1;
-    if (area.page < 1 || area.page > totalPages) {
-      errors.push(`Invalid page number ${area.page} at area #${areaIndex} (must be between 1 and ${totalPages})`);
+    const at = `at area #${index + 1}`;
+    if (!Number.isInteger(area.page) || area.page < 1 || area.page > totalPages) errors.push(`Invalid page number ${area.page} ${at}`);
+    for (const [name, value] of Object.entries({ 'X coordinate': area.x, 'Y coordinate': area.y, Width: area.width, Height: area.height })) {
+      if (!Number.isFinite(value) || value < 0) errors.push(`${name} cannot be negative or non-finite ${at}`);
     }
-
     if (area.type === 'brush') {
-      if (!area.path || area.path.length === 0) {
-        errors.push(`Brush path cannot be empty at area #${areaIndex}`);
-      }
-      if (area.strokeWidth !== undefined && area.strokeWidth <= 0) {
-        errors.push(`Brush stroke width must be positive at area #${areaIndex}`);
-      }
-    } else {
-      if (area.width < 0) {
-        errors.push(`Width cannot be negative at area #${areaIndex}`);
-      }
-      if (area.height < 0) {
-        errors.push(`Height cannot be negative at area #${areaIndex}`);
-      }
-      if (area.x < 0) {
-        errors.push(`X coordinate cannot be negative at area #${areaIndex}`);
-      }
-      if (area.y < 0) {
-        errors.push(`Y coordinate cannot be negative at area #${areaIndex}`);
-      }
+      if (!area.path?.length) errors.push(`Brush path cannot be empty ${at}`);
+      if (area.path?.some(pt => !Number.isFinite(pt.x) || !Number.isFinite(pt.y) || pt.x < 0 || pt.y < 0)) errors.push(`Invalid brush coordinates ${at}`);
+      if (area.strokeWidth !== undefined && (!Number.isFinite(area.strokeWidth) || area.strokeWidth <= 0)) errors.push(`Brush stroke width must be positive ${at}`);
+    } else if (area.width === 0 || area.height === 0) {
+      errors.push(`Width and height must be positive ${at}`);
     }
+    if ([area.pageWidth, area.pageHeight].some(v => v !== undefined && (!Number.isFinite(v) || v <= 0))) errors.push(`Invalid reference page dimensions ${at}`);
+    if (area.style === 'mosaic' || area.style === 'blur') errors.push(`Blur and mosaic cannot permanently redact content ${at}`);
+    if (area.color && !/^#[\da-f]{6}$/i.test(area.color)) errors.push(`Invalid opaque redaction color ${at}`);
   });
-
-  return {
-    valid: errors.length === 0,
-    errors,
-  };
+  return { valid: errors.length === 0, errors };
 }
 
 /**
@@ -114,19 +92,16 @@ export function validateRedactionAreas(
 export interface RedactOptions {
   /**
    * If true, rasterizes all pages for maximum uniformity.
-   * If false, only rasterizes pages that contain redaction areas,
-   * keeping untouched pages as vector for smaller file size.
+   * If false, preserves remaining text and vector content on all pages.
    * Default: false
    */
   flattenAllPages?: boolean;
   /**
-   * Strip document info (Title, Author, Producer, Creation/Mod dates) & XMP metadata
-   * Default: true
+   * @deprecated Metadata stripping is always enforced for redaction outputs.
    */
   stripMetadata?: boolean;
   /**
-   * Remove annotations and interactive form fields
-   * Default: true
+   * @deprecated Annotation and form removal is always enforced for redaction outputs.
    */
   purgeAnnotations?: boolean;
   /**
@@ -134,9 +109,26 @@ export interface RedactOptions {
    */
   renderScale?: number;
   /**
-   * JPEG compression quality for rasterized pages (0.8 ~ 1.0, default: 0.95)
+   * @deprecated Flattened output uses lossless PNG images.
    */
   outputQuality?: number;
+}
+
+/** The same conservative brush coverage is used by preview and export. */
+export function getBrushRedactionRects(area: RedactionArea): RedactionRect[] {
+  const radius = (area.strokeWidth ?? 20) / 2;
+  return (area.path ?? []).flatMap((point, index, path) => {
+    const previous = path[Math.max(0, index - 1)];
+    const steps = Math.max(1, Math.ceil(Math.hypot(point.x - previous.x, point.y - previous.y) / radius));
+    return Array.from({ length: steps }, (_, step): RedactionRect => {
+      const x0 = previous.x + (point.x - previous.x) * step / steps;
+      const y0 = previous.y + (point.y - previous.y) * step / steps;
+      const x1 = previous.x + (point.x - previous.x) * (step + 1) / steps;
+      const y1 = previous.y + (point.y - previous.y) * (step + 1) / steps;
+      return [Math.min(x0, x1) - radius, Math.min(y0, y1) - radius,
+        Math.max(x0, x1) + radius, Math.max(y0, y1) + radius];
+    });
+  });
 }
 
 /**
@@ -489,194 +481,30 @@ export async function redactPDF(
   options: RedactOptions = {},
   onProgress?: (percent: number, message: string) => void
 ): Promise<Uint8Array> {
-  const {
-    flattenAllPages = false,
-    stripMetadata = true,
-    purgeAnnotations = true,
-    renderScale = 2.0,
-    outputQuality = 0.95,
-  } = options;
-
-  onProgress?.(5, 'Loading PDF documents...');
-
-  const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
-  const pdfjsLib = await loadPdfjs();
-  const pdfDocProxy = await pdfjsLib.getDocument({
-    data: arrayBuffer.slice(0),
-    cMapUrl: withBasePath(PDFJS_CONFIG.cMapUrl),
-    cMapPacked: PDFJS_CONFIG.cMapPacked,
-    standardFontDataUrl: withBasePath(PDFJS_CONFIG.standardFontDataUrl),
-    disableFontFace: false,
-    useSystemFonts: true,
-  }).promise;
-
-  let originalPdfDoc: PDFDocument | null = null;
-  try {
-    originalPdfDoc = await PDFDocument.load(arrayBuffer.slice(0), { ignoreEncryption: true });
-  } catch (loadErr) {
-    console.warn('pdf-lib failed to load original vector document, falling back to full rasterization:', loadErr);
-  }
-
-  const newPdfDoc = await PDFDocument.create();
-  const totalPages = pdfDocProxy.numPages;
-
-  for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-    const pageIndex = pageNum - 1;
-    const progressPercent = Math.round(10 + (pageIndex / totalPages) * 75);
-    onProgress?.(progressPercent, `正在处理第 ${pageNum} / ${totalPages} 页...`);
-
-    const pageRedactions = redactionsByPage[pageNum] || [];
-    const shouldRasterize = pageRedactions.length > 0 || flattenAllPages || !originalPdfDoc;
-
-    if (!shouldRasterize && originalPdfDoc) {
-      try {
-        const [copiedPage] = await newPdfDoc.copyPages(originalPdfDoc, [pageIndex]);
-        newPdfDoc.addPage(copiedPage);
-        continue;
-      } catch (copyErr) {
-        console.warn(`Vector copy failed for page ${pageNum}, falling back to rasterization:`, copyErr);
-      }
-    }
-
-    // Rasterize with PDF.js to guarantee 100% irreversible destruction of underlying text/objects
-    const pageProxy = await pdfDocProxy.getPage(pageNum);
-    const defaultViewport = pageProxy.getViewport({ scale: 1.0 });
-
-    // Guard against oversized canvas exceeding browser texture limits
-    const MAX_CANVAS_DIM = 4096;
-    let actualScale = renderScale;
-    const maxDim = Math.max(defaultViewport.width, defaultViewport.height) * actualScale;
-    if (maxDim > MAX_CANVAS_DIM) {
-      actualScale = MAX_CANVAS_DIM / Math.max(defaultViewport.width, defaultViewport.height);
-    }
-
-    const viewport = pageProxy.getViewport({ scale: actualScale });
-
-    const offscreenCanvas = document.createElement('canvas');
-    offscreenCanvas.width = Math.floor(viewport.width);
-    offscreenCanvas.height = Math.floor(viewport.height);
-
-    const ctx = offscreenCanvas.getContext('2d', {
-      alpha: false,
-      willReadFrequently: true,
-    });
-
-    if (!ctx) {
-      throw new Error(`Failed to initialize 2D context for page ${pageNum}`);
-    }
-
-    // Fill white background
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, offscreenCanvas.width, offscreenCanvas.height);
-
-    // Render original page
-    await pageProxy.render({
-      canvasContext: ctx,
-      viewport,
-      intent: 'display',
-    }).promise;
-
-    // Apply all redactions
-    for (const area of pageRedactions) {
-      renderRedactionAreaOnCanvas(ctx, area, offscreenCanvas.width, offscreenCanvas.height);
-    }
-
-    // Export canvas to JPEG blob
-    const blob = await new Promise<Blob>((resolve, reject) => {
-      offscreenCanvas.toBlob(
-        (b) => {
-          if (b) resolve(b);
-          else reject(new Error('Canvas image conversion failed'));
-        },
-        'image/jpeg',
-        outputQuality
-      );
-    });
-
-    const imageBytes = await blob.arrayBuffer();
-    const embeddedImage = await newPdfDoc.embedJpg(imageBytes);
-
-    // Get original PDF page dimensions in points (rotation-aware)
-    const origW = defaultViewport.width;
-    const origH = defaultViewport.height;
-
-    const newPage = newPdfDoc.addPage([origW, origH]);
-    newPage.drawImage(embeddedImage, {
-      x: 0,
-      y: 0,
-      width: origW,
-      height: origH,
-    });
-  }
-
-  onProgress?.(88, 'Enforcing security and cleaning metadata...');
-
-  // Deep sanitization: strip metadata & XMP streams
-  if (stripMetadata) {
-    try {
-      const infoDict = newPdfDoc.context.lookupMaybe(newPdfDoc.context.trailerInfo.Info, PDFDict);
-      if (infoDict) {
-        const allKeys = infoDict.keys?.() || [];
-        allKeys.forEach((key) => {
-          try {
-            infoDict.delete(key);
-          } catch {
-            // Ignore individual key deletion errors
-          }
-        });
-      }
-
-      newPdfDoc.setTitle('');
-      newPdfDoc.setAuthor('');
-      newPdfDoc.setSubject('');
-      newPdfDoc.setKeywords([]);
-      newPdfDoc.setCreator('');
-      newPdfDoc.setProducer('PDFCraft');
-
-      // Purge XMP Metadata stream from catalog
-      try {
-        const catalogDict = newPdfDoc.catalog;
-        if (catalogDict?.has(PDFName.of('Metadata'))) {
-          catalogDict.delete(PDFName.of('Metadata'));
-        }
-      } catch (xmpErr) {
-        console.warn('XMP cleanup error:', xmpErr);
-      }
-    } catch (metaErr) {
-      console.warn('Metadata stripping failed:', metaErr);
+  const areas = Object.entries(redactionsByPage).flatMap(([page, redactions]) => {
+    if (redactions.some(area => area.page !== Number(page))) throw new Error('Redaction page does not match its page group');
+    return redactions;
+  });
+  const validation = validateRedactionAreas(areas, Number.MAX_SAFE_INTEGER);
+  if (!validation.valid) throw new Error(validation.errors.join('; '));
+  const engineAreas: EngineRedaction[] = [];
+  for (const area of areas) {
+    const color = area.style === 'whiteout' ? '#ffffff' : area.style === 'custom-color' ? area.color ?? '#000000' : '#000000';
+    const base = { page: area.page, coordinates: 'display' as const, pageWidth: area.pageWidth, pageHeight: area.pageHeight, color, label: area.label };
+    if (area.type === 'brush' && area.path) {
+      // Conservative rectangular envelopes cover every brush segment, including round caps.
+      engineAreas.push(...getBrushRedactionRects(area).map(rect => ({ ...base, rect })));
+    } else {
+      engineAreas.push({ ...base, rect: [area.x, area.y, area.x + area.width, area.y + area.height] });
     }
   }
-
-  // Purge annotations & interactive form scripts
-  if (purgeAnnotations) {
-    try {
-      const pages = newPdfDoc.getPages();
-      for (const page of pages) {
-        try {
-          page.node.delete(PDFName.of('Annots'));
-        } catch {
-          // Page may not have Annots
-        }
-      }
-
-      try {
-        const catalogDict = newPdfDoc.catalog;
-        if (catalogDict?.has(PDFName.of('AcroForm'))) {
-          catalogDict.delete(PDFName.of('AcroForm'));
-        }
-      } catch {
-        // Ignore AcroForm deletion failure
-      }
-    } catch (annotErr) {
-      console.warn('Annotation cleanup error:', annotErr);
-    }
-  }
-
-  onProgress?.(95, 'Generating finalized secure PDF...');
-  const finalPdfBytes = await newPdfDoc.save();
-
+  onProgress?.(10, 'Loading the local redaction engine...');
+  const result = await removePDFContent(file, engineAreas, {
+    flattenAllPages: options.flattenAllPages,
+    renderScale: options.renderScale,
+  });
   onProgress?.(100, 'Redaction completed successfully!');
-  return finalPdfBytes;
+  return result;
 }
 
 export type RedactionOptions = RedactOptions;

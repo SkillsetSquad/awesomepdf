@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "上传需要脱敏/隐藏敏感词的 PDF",
-      "uploadDescription": "系统采用 NLP 正则与坐标流检测。自动发现电话、邮箱、身份证等隐私，盖印黑色并抹除文本流防提取。",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "脱敏规则设定",
       "processButton": "一键扫描并脱敏敏感隐私",
-      "successMessage": "PDF隐私敏感数据脱敏成功！",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "智能脱敏沙盘舱",
       "clearButton": "清空",
-      "emptyStateDescription": "一键分析并用黑色图块完美掩盖敏感模式，从底层 PDF 字符流中完全擦除对应文本块，防止提取。",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "自动匹配电子邮箱",
       "phoneRedactLabel": "自动匹配电话号码",
-      "idRedactLabel": "自动匹配身份证件/护照号",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "自定义敏感词过滤",
       "customKeywordsPlaceholder": "逗号分隔自定义词"
     },
@@ -3565,10 +3565,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "上传待脱敏PDF",
-      "uploadDescription": "拖放PDF文件到此处进行隐私脱敏。",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "智能脱敏规则",
       "processButton": "自动扫描并脱敏敏感词",
-      "successMessage": "PDF隐私数据脱敏成功！"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "上传无大纲的PDF",
@@ -3611,6 +3611,20 @@
       "optionsTitle": "全球发票折算汇率选项",
       "processButton": "一键发票翻译与折算",
       "successMessage": "外币发票翻译与本地折算账本印盖成功！"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

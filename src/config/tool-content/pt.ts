@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Conteúdo das ferramentas em Português para SEO
  * Contém descrições detalhadas, passos, casos de uso e FAQs
@@ -3821,64 +3822,7 @@ export const toolContentPt: Record<string, ToolContent> = {
       }
     ]
   },
-  "smart-data-redactor": {
-    "title": "Redigir Dados Sensíveis",
-    "metaDescription": "Encontre endereços de e-mail, números de telefone e padrões de identificação em PDFs. Revise as correspondências e edite conteúdo confidencial localmente.",
-    "keywords": [
-      "censurar pdf",
-      "ocultar dados sensiveis",
-      "redacao de documentos"
-    ],
-    "description": "<p>O Smart Privacy Data Redactor é uma ferramenta automatizada projetada para garantir conformidade robusta com a privacidade dos documentos.</p>\n      <p>Simplesmente sobrepor caixas pretas em editores normais não é seguro porque o texto subjacente ainda pode ser copiado. Esta ferramenta implementa uma verdadeira <strong>correspondência de padrões de PNL e limpeza de fluxo de conteúdo físico</strong>.</p>\n      <p>Ele verifica o documento em busca de e-mails, números de telefone, SSNs ou palavras-chave personalizadas, coloca uma máscara preta fosca premium sobre as coordenadas e substitui permanentemente o fluxo de caracteres por <code>[REDIGIDO]</code>, bloqueando vazamentos de copiar e colar.</p>",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Carregar PDF de destino",
-        "description": "Forneça o contrato ou declaração mostrando detalhes confidenciais do cliente."
-      },
-      {
-        "step": 2,
-        "title": "Selecione regras de redação",
-        "description": "Verifique os padrões de destino (e-mail, telefone, ID) ou defina palavras confidenciais personalizadas."
-      },
-      {
-        "step": 3,
-        "title": "Redação e download automáticos",
-        "description": "Clique em executar para sobrepor máscaras seguras e limpar os fluxos de texto."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Compartilhamento de acordos comerciais",
-        "description": "Publique documentos comerciais com segurança, ocultando salários pessoais, números de telefone ou e-mails.",
-        "icon": "file-signature"
-      },
-      {
-        "title": "Retomar anonimato do banco de dados",
-        "description": "Retire os nomes dos candidatos, informações de contato ou endereços para cumprir regulamentos rígidos de privacidade.",
-        "icon": "user-check"
-      },
-      {
-        "title": "Distribuição das demonstrações financeiras",
-        "description": "Ocultar números contábeis específicos ou nomes de acionistas antes de publicar relatórios.",
-        "icon": "pie-chart"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Os detalhes redigidos são realmente incopiáveis?",
-        "answer": "Sim. Reescrevemos o fluxo de conteúdo da página para apagar os caracteres. Copiar e colar da caixa redigida extrairá apenas a string \"[REDACTED]\"."
-      },
-      {
-        "question": "Funciona para PDFs de imagens digitalizadas?",
-        "answer": "Esta ferramenta tem como alvo fluxos de texto vetorial. Para arquivos de imagem digitalizados, use primeiro nossa ferramenta OCR ou corte manualmente."
-      },
-      {
-        "question": "O escopo de destino vermelho do HUD está salvo no arquivo?",
-        "answer": "Não, esse é um lindo efeito de carregamento interativo de frontend. O PDF de saída exibe retângulos pretos limpos padrão."
-      }
-    ]
-  },
+  "smart-data-redactor": localizedRedactionContent('pt', 'smart-data-redactor', "Redigir Dados Sensíveis"),
   "bookmarks-auto-generator": {
     "title": "Gerar Favoritos",
     "metaDescription": "Gere marcadores de PDF a partir de títulos e padrões de texto. Adicione um esboço navegável a documentos, manuais e relatórios longos.",
@@ -7022,76 +6966,7 @@ export const toolContentPt: Record<string, ToolContent> = {
       }
     ]
   },
-  "find-and-redact": {
-    "title": "Localizar e Censurar",
-    "metaDescription": "Pesquise e censure textos em todas as páginas de um PDF. Remova em lote informações confidenciais como números de conta, nomes e muito mais.",
-    "keywords": [
-      "censurar pdf",
-      "localizar e censurar",
-      "censura em lote",
-      "remover texto",
-      "censura de pdf",
-      "ocultar dados confidenciais"
-    ],
-    "description": "\n      <p>O Localizar e Censurar permite pesquisar textos, números ou padrões específicos em todas as páginas do seu PDF e ocultar todas as ocorrências correspondentes de uma só vez. Perfeito para remover informações confidenciais como números de contas, nomes, endereços ou quaisquer dados sigilosos.</p>\n      <p>Visualize todas as correspondências antes de aplicar a censura e selecione quais ocorrências deseja ocultar. Suporta pesquisa que diferencia maiúsculas de minúsculas, correspondência de palavras inteiras e expressões regulares para correspondência avançada de padrões.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Carregar seu PDF",
-        "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
-      },
-      {
-        "step": 2,
-        "title": "Buscar por Texto",
-        "description": "Digite o texto, número ou padrão regex que você deseja encontrar e censurar."
-      },
-      {
-        "step": 3,
-        "title": "Revisar e Selecionar",
-        "description": "Visualize todas as correspondências e selecione quais deseja ocultar."
-      },
-      {
-        "step": 4,
-        "title": "Aplicar Censura",
-        "description": "Personalize a aparência da marcação e aplique às correspondências selecionadas."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Conformidade com Privacidade",
-        "description": "Censure informações pessoais para estar em conformidade com o GDPR, HIPAA ou outros regulamentos.",
-        "icon": "shield"
-      },
-      {
-        "title": "Documentos Jurídicos",
-        "description": "Remova dados confidenciais de documentos jurídicos antes de compartilhá-los.",
-        "icon": "scale"
-      },
-      {
-        "title": "Registros Financeiros",
-        "description": "Censure números de contas, CPFs ou dados financeiros de extratos.",
-        "icon": "credit-card"
-      }
-    ],
-    "faq": [
-      {
-        "question": "A censura é permanente?",
-        "answer": "Sim, a censura remove permanentemente o texto subjacente. O conteúdo original não pode ser recuperado. Sempre mantenha um backup do arquivo original."
-      },
-      {
-        "question": "Posso censurar imagens ou texto digitalizado?",
-        "answer": "Esta ferramenta funciona com PDFs baseados em texto. Para documentos digitalizados, você precisará usar a censura manual baseada em área."
-      },
-      {
-        "question": "Posso personalizar a aparência da censura?",
-        "answer": "Sim, você pode definir a cor da marcação de ocultação, adicionar bordas e, opcionalmente, incluir um texto de substituição como \"[CENSURADO]\"."
-      },
-      {
-        "question": "Como funciona a busca por regex?",
-        "answer": "Ative \"Usar Expressão Regular\" para pesquisar usando padrões regex. For exemplo, \\d{4}-\\d{4}-\\d{4}-\\d{4} para encontrar números de cartão de crédito."
-      }
-    ]
-  },
+  "find-and-redact": localizedRedactionContent('pt', 'find-and-redact', "Localizar e Censurar"),
   "flatten-pdf": {
     "title": "Achatar PDF",
     "metaDescription": "Achatamento de formulários e anotações do PDF. Torne o conteúdo não editável.",
@@ -7833,75 +7708,5 @@ export const toolContentPt: Record<string, ToolContent> = {
     ]
   }
 ,
-"redact-pdf": {
-  "title": "Ocultar dados do PDF",
-  "metaDescription": "Oculte, desfoque ou pixelize o conteúdo PDF sensível. Exporte páginas niveladas e remova metadados localmente em seu navegador.",
-  "keywords": [
-    "redigir pdf",
-    "apagão pdf",
-    "mosaico pdf",
-    "desfocar pdf",
-    "privacidade de pdf",
-    "remover dados confidenciais",
-    "editor de PDF seguro"
-  ],
-  "description": "<p>Redact PDF fornece um editor visual e interativo para ocultar e proteger permanentemente dados confidenciais em seus documentos PDF. Arraste para marcar qualquer área confidencial, como nomes, endereços, números de identificação, assinaturas, selos oficiais, números financeiros ou retratos, e aplique efeitos de escurecimento, branqueamento, mosaico ou desfoque.</p>\n      <p>Ao contrário dos editores de PDF padrão que simplesmente sobrepõem retângulos pretos superficiais sobre o texto existente, esta ferramenta realiza uma <strong>rasterização irreversível de pixels físicos</strong>. As camadas de texto, gráficos vetoriais e fluxos de OCR subjacentes são completamente destruídos e não podem ser recuperados por cópia e colagem ou engenharia reversa.</p>\n      <p>Além disso, a ferramenta realiza uma limpeza profunda de metadados, eliminando informações do autor, histórico de criação e fluxos XMP. Todo o processamento é executado 100% localmente no seu navegador, sem nenhum upload no servidor.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "Carregar documento PDF",
-      "description": "Selecione ou arraste e solte o arquivo PDF que deseja editar."
-    },
-    {
-      "step": 2,
-      "title": "Marcar áreas sensíveis",
-      "description": "Clique e arraste em qualquer página para desenhar caixas de redação em torno do conteúdo confidencial."
-    },
-    {
-      "step": 3,
-      "title": "Escolha o estilo de redação",
-      "description": "Selecione blackout, whiteout, mosaico (tamanho de pixel ajustável) ou desfoque. Alterne a visualização em tempo real para inspecionar o resultado."
-    },
-    {
-      "step": 4,
-      "title": "Exportar PDF seguro",
-      "description": "Clique em \"Gerar PDF seguro\" para executar nivelamento irreversível, limpeza de metadados e baixar seu documento seguro."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Privacidade e conformidade regulatória",
-      "description": "Oculte com segurança informações de identificação pessoal (PII) para cumprir os requisitos do GDPR, HIPAA ou CCPA.",
-      "icon": "shield"
-    },
-    {
-      "title": "Compartilhamento confidencial, jurídico e comercial",
-      "description": "Segredos comerciais, termos de liquidação, assinaturas e carimbos obscuros antes da divulgação pública ou distribuição externa.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Proteção Financeira e de Identidade",
-      "description": "Oculte números de contas bancárias, identificação fiscal, detalhes de cartão de crédito e números de cartão de identificação de extratos e faturas.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "Alguém pode recuperar informações editadas copiando texto ou inspecionando camadas?",
-      "answer": "Não. As áreas editadas sofrem achatamento físico de queima de pixels. Texto, vetores e objetos subjacentes são completamente removidos da estrutura do arquivo, impossibilitando a recuperação."
-    },
-    {
-      "question": "Qual é a diferença entre blackout, mosaico e desfoque?",
-      "answer": "Blackout cria uma máscara preta sólida (padrão para documentos legais); o whiteout fornece uma máscara branca e limpa; o mosaico cria uma grade pixelizada; e o desfoque produz um efeito de vidro fosco suave."
-    },
-    {
-      "question": "Os arquivos são enviados para seus servidores?",
-      "answer": "Não. Toda a renderização, redação, nivelamento e geração de PDF ocorrem inteiramente na memória do seu navegador. Seus documentos nunca saem do seu dispositivo."
-    },
-    {
-      "question": "Quais metadados são removidos?",
-      "answer": "Título do documento, autor, assunto, palavras-chave, criador, produtor, CreationDate, ModDate e fluxos de metadados XMP estendidos são completamente apagados."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('pt', 'redact-pdf', "Ocultar dados do PDF")
 };

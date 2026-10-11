@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Konten alat berbahasa Indonesia untuk SEO
  * Berisi deskripsi mendetail, langkah penggunaan, contoh penggunaan, dan FAQ untuk semua 67 alat
@@ -2076,33 +2077,7 @@ export const toolContentId: Record<string, ToolContent> = {
     ],
   },
 
-  'find-and-redact': {
-    title: 'Cari dan Redaksi',
-    metaDescription: 'Cari dan redaksi teks di seluruh halaman PDF. Lakukan redaksi massal pada informasi sensitif seperti nomor rekening, nama, dan lain-lain.',
-    keywords: ['redaksi pdf', 'cari dan redaksi', 'redaksi massal', 'hapus teks', 'sensor pdf', 'sembunyikan data sensitif'],
-    description: `
-      <p>Cari dan Redaksi memungkinkan Anda mencari teks, angka, atau pola tertentu di seluruh halaman PDF Anda dan meredaksi (menyensor/menghapus) semua kecocokannya secara sekaligus. Sangat sempurna untuk menyembunyikan informasi sensitif seperti nomor rekening, nama, alamat, maupun data rahasia lainnya.</p>
-      <p>Pratinjau semua kecocokan (matches) sebelum redaksinya diterapkan, lalu pilih secara selektif mana saja yang benar-benar ingin Anda redaksi. Alat ini mendukung pencarian case-sensitive, kecocokan kata secara utuh (whole word), dan regular expressions (regex) untuk pencarian pola tingkat lanjut.</p>
-      <p>Semua pemrosesan terjadi di browser Anda, memastikan dokumen Anda tetap privat dan aman.</p>
-    `,
-    howToUse: [
-      { step: 1, title: 'Unggah PDF Anda', description: 'Tarik dan lepas file PDF Anda atau klik untuk memilih.' },
-      { step: 2, title: 'Cari Teks', description: 'Masukkan teks, angka, atau pola regex yang ingin Anda temukan dan redaksi.' },
-      { step: 3, title: 'Tinjau dan Pilih', description: 'Pratinjau semua kecocokan yang ditemukan dan tentukan mana yang ingin disensor (redact).' },
-      { step: 4, title: 'Terapkan Redaksi', description: 'Sesuaikan tampilan redaksinya lalu terapkan ke kecocokan teks yang Anda pilih.' },
-    ],
-    useCases: [
-      { title: 'Kepatuhan Privasi', description: 'Redaksi informasi personal demi memenuhi standar regulasi seperti GDPR, HIPAA, dll.', icon: "shield" },
-      { title: 'Dokumen Hukum', description: 'Hapus data rahasia dari berbagai dokumen legal sebelum membagikannya.', icon: "scale" },
-      { title: 'Catatan Keuangan', description: 'Redaksi nomor rekening, NIK (SSN), atau data finansial dari rekening koran.', icon: "credit-card" },
-    ],
-    faq: [
-      { question: 'Apakah redaksinya bersifat permanen?', answer: 'Ya, redaksi (redaction) menghapus teks yang mendasarinya secara permanen. Konten aslinya tidak akan dapat dipulihkan. Selalu simpan file cadangannya.' },
-      { question: 'Bisakah saya meredaksi gambar atau teks hasil pindaian (scan)?', answer: 'Alat ini bekerja pada PDF berbasis teks. Untuk dokumen hasil scan, Anda memerlukan alat redaksi manual berbasis area gambar.' },
-      { question: 'Bisakah saya menyesuaikan tampilan kotak redaksinya?', answer: 'Ya, Anda dapat mengatur warnanya, menambahkan bingkai, serta menambahkan teks pengganti seperti "[DIREDAKSI]".' },
-      { question: 'Bagaimana cara kerja pencarian regex?', answer: 'Aktifkan "Gunakan Regular Expression" untuk melakukan pencarian berpola regex. Contohnya, menggunakan \\d{4}-\\d{4}-\\d{4}-\\d{4} untuk mencari kumpulan nomor kartu kredit.' },
-    ],
-  },
+  'find-and-redact': localizedRedactionContent('id', 'find-and-redact', 'Cari dan Redaksi'),
 
   'decrypt-pdf': {
     title: 'Dekripsi PDF',
@@ -3574,60 +3549,7 @@ export const toolContentId: Record<string, ToolContent> = {
 ],
   },
 
-  'smart-data-redactor': {
-    title: 'Redaksi Data Sensitif',
-    metaDescription: "Temukan alamat email, nomor telepon, dan pola ID dalam PDF. Tinjau kecocokan dan edit konten sensitif secara lokal.",
-    keywords: ["redaksi data pdf","masking data sensitif","keamanan informasi"],
-    description: "<p>Smart Privacy Data Redactor adalah alat otomatis yang dirancang untuk memastikan kepatuhan privasi dokumen yang kuat.</p>\n      <p>Menampilkan kotak hitam pada editor normal saja tidak aman karena teks di bawahnya masih dapat disalin. Alat ini menerapkan <strong>pencocokan pola NLP dan sanitasi aliran konten fisik</strong> yang sebenarnya.</p>\n      <p>Ini memindai dokumen untuk mencari email, nomor telepon, SSN, atau kata kunci khusus, menempatkan topeng hitam matte premium di atas koordinat, dan secara permanen menimpa aliran karakter dengan <code>[DISUNTING]</code>, memblokir kebocoran salin-tempel.</p>",
-    howToUse: [
-  {
-    "step": 1,
-    "title": "Unggah PDF target",
-    "description": "Berikan kontrak atau pernyataan yang menunjukkan detail sensitif pelanggan."
-  },
-  {
-    "step": 2,
-    "title": "Pilih aturan redaksi",
-    "description": "Periksa pola target (email, telepon, ID) atau tentukan kata-kata sensitif khusus."
-  },
-  {
-    "step": 3,
-    "title": "Redaksi & unduh otomatis",
-    "description": "Klik jalankan untuk melapisi masker aman dan menghapus aliran teks."
-  }
-],
-    useCases: [
-  {
-    "title": "Pembagian perjanjian komersial",
-    "description": "Publikasikan dokumen bisnis secara aman dengan menyembunyikan gaji pribadi, nomor telepon, atau email.",
-    "icon": "file-signature"
-  },
-  {
-    "title": "Lanjutkan anonimisasi basis data",
-    "description": "Hapus nama pelamar, info kontak, atau alamat untuk mematuhi peraturan privasi yang ketat.",
-    "icon": "user-check"
-  },
-  {
-    "title": "Distribusi laporan keuangan",
-    "description": "Menyembunyikan nomor buku besar atau nama pemegang saham tertentu sebelum menerbitkan laporan.",
-    "icon": "pie-chart"
-  }
-],
-    faq: [
-  {
-    "question": "Apakah detail yang disunting benar-benar tidak dapat disalin?",
-    "answer": "Ya. Kami menulis ulang aliran konten halaman untuk menghapus karakter. Copy-paste dari kotak yang disunting hanya akan mengekstrak string \"[DISUNTING]\"."
-  },
-  {
-    "question": "Apakah ini berfungsi untuk gambar PDF yang dipindai?",
-    "answer": "Alat ini menargetkan aliran teks vektor. Untuk file gambar yang dipindai, gunakan alat OCR kami terlebih dahulu atau potong secara manual."
-  },
-  {
-    "question": "Apakah cakupan target HUD merah disimpan dalam file?",
-    "answer": "Tidak, itu adalah efek pemuatan interaktif frontend yang cantik. Output PDF menampilkan persegi panjang hitam bersih standar."
-  }
-],
-  },
+  'smart-data-redactor': localizedRedactionContent('id', 'smart-data-redactor', 'Redaksi Data Sensitif'),
 
   'bookmarks-auto-generator': {
     title: 'Buat Buku Petunjuk',
@@ -4400,75 +4322,5 @@ export const toolContentId: Record<string, ToolContent> = {
   },
 
 
-"redact-pdf": {
-  "title": "Sensor PDF",
-  "metaDescription": "Gelapkan, buramkan, atau pikselkan konten PDF yang sensitif. Ekspor halaman yang diratakan dan hapus metadata secara lokal di browser Anda.",
-  "keywords": [
-    "menyunting pdf",
-    "pemadaman pdf",
-    "mosaik pdf",
-    "mengaburkan pdf",
-    "privasi pdf",
-    "menghapus data sensitif",
-    "editor pdf yang aman"
-  ],
-  "description": "<p>Redact PDF menyediakan editor visual dan interaktif untuk menyembunyikan dan melindungi data sensitif dalam dokumen PDF Anda secara permanen. Tarik untuk menandai area rahasia apa pun—seperti nama, alamat, nomor ID, tanda tangan, stempel resmi, angka keuangan, atau potret—dan terapkan efek gelap, putih, mosaik, atau buram.</p>\n      <p>Tidak seperti editor PDF standar yang hanya menempatkan persegi panjang hitam dangkal di atas teks yang ada, alat ini melakukan <strong>rasterisasi piksel fisik yang tidak dapat diubah</strong>. Lapisan teks, grafik vektor, dan aliran OCR yang mendasarinya telah dimusnahkan sepenuhnya dan tidak dapat dipulihkan dengan menyalin-menempel atau melakukan rekayasa balik.</p>\n      <p>Selain itu, alat ini melakukan penghapusan metadata mendalam, menghilangkan informasi penulis, riwayat pembuatan, dan aliran XMP. Semua pemrosesan berjalan 100% secara lokal di browser Anda tanpa upload server.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "Unggah Dokumen PDF",
-      "description": "Pilih atau drag-and-drop file PDF yang ingin Anda edit."
-    },
-    {
-      "step": 2,
-      "title": "Tandai Area Sensitif",
-      "description": "Klik dan seret halaman mana pun untuk menggambar kotak redaksi seputar konten rahasia."
-    },
-    {
-      "step": 3,
-      "title": "Pilih Gaya Redaksi",
-      "description": "Pilih blackout, whiteout, mosaik (ukuran piksel yang dapat disesuaikan), atau blur. Alihkan pratinjau waktu nyata untuk memeriksa hasilnya."
-    },
-    {
-      "step": 4,
-      "title": "Ekspor PDF Aman",
-      "description": "Klik \"Hasilkan PDF Aman\" untuk melakukan perataan permanen, penghapusan metadata, dan mengunduh dokumen aman Anda."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Privasi & Kepatuhan Terhadap Peraturan",
-      "description": "Sembunyikan Informasi Identifikasi Pribadi (PII) dengan aman untuk mematuhi persyaratan GDPR, HIPAA, atau CCPA.",
-      "icon": "shield"
-    },
-    {
-      "title": "Berbagi Hukum & Bisnis Rahasia",
-      "description": "Mengaburkan rahasia dagang, persyaratan penyelesaian, tanda tangan, dan stempel sebelum diungkapkan kepada publik atau didistribusikan ke pihak eksternal.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Perlindungan Finansial & Identitas",
-      "description": "Sembunyikan nomor rekening bank, nomor pajak, rincian kartu kredit, dan nomor kartu identitas dari laporan dan faktur.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "Adakah yang bisa memulihkan informasi yang telah disunting dengan menyalin teks atau memeriksa lapisan?",
-      "answer": "Tidak. Area yang disunting mengalami perataan fisik piksel. Teks, vektor, dan objek yang mendasarinya dihapus seluruhnya dari struktur file, sehingga pemulihan tidak mungkin dilakukan."
-    },
-    {
-      "question": "Apa perbedaan antara pemadaman, mosaik, dan buram?",
-      "answer": "Pemadaman menghasilkan topeng hitam pekat (standar untuk dokumen hukum); whiteout memberikan topeng putih bersih; mosaik menciptakan kisi-kisi berpiksel; dan blur menghasilkan efek kaca buram yang lembut."
-    },
-    {
-      "question": "Apakah file diunggah ke server Anda?",
-      "answer": "Tidak. Semua rendering, redaksi, perataan, dan pembuatan PDF sepenuhnya dilakukan dalam memori browser Anda. Dokumen Anda tidak pernah meninggalkan perangkat Anda."
-    },
-    {
-      "question": "Metadata apa yang dihapus?",
-      "answer": "Judul Dokumen, Penulis, Subjek, Kata Kunci, Pencipta, Produser, Tanggal Pembuatan, Tanggal Modifikasi, dan aliran metadata XMP yang diperluas dihapus seluruhnya."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('id', 'redact-pdf', "Sensor PDF")
 };

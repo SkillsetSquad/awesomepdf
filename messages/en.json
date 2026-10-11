@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Upload PDF Documents to Redact",
-      "uploadDescription": "Employs regex matching. Automatically discovers emails, phone numbers, and IDs, placing solid black barriers to obscure data.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Redaction Filters Settings",
       "processButton": "Execute Privacy Redaction",
-      "successMessage": "All sensitive privacy data masked and purged successfully!",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "Privacy Data Redaction Sandtable",
       "clearButton": "Clear",
-      "emptyStateDescription": "Discover and obscure target sensitive categories, completely clearing corresponding glyph text streams from PDF.",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "Filter Email Addresses",
       "phoneRedactLabel": "Filter Phone Numbers",
-      "idRedactLabel": "Filter Passport & ID Cards",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "Custom Redaction Phrases",
       "customKeywordsPlaceholder": "Comma-separated phrases"
     },
@@ -3573,10 +3573,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Upload PDF to Redact",
-      "uploadDescription": "Drag & drop PDF here to automatically scan & redact privacy data.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Smart Redaction Rules",
       "processButton": "Redact Sensitive Data",
-      "successMessage": "PDF privacy data redacted successfully!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "Upload PDF",
@@ -3619,6 +3619,20 @@
       "optionsTitle": "Exchange Rates Options",
       "processButton": "Translate & Convert Invoice",
       "successMessage": "Foreign invoice translated and local conversion ledger stamped successfully!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

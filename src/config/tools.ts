@@ -1080,7 +1080,7 @@ export const tools: Tool[] = [
     outputFormat: 'pdf',
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
-    features: ['visual-redaction', 'blackout', 'mosaic-pixelate', 'blur-redaction', 'metadata-removal', 'irreversible-flattening', 'privacy-protection'],
+    features: ['permanent-content-removal', 'blackout', 'whiteout', 'metadata-removal', 'optional-flattening', 'privacy-protection'],
     relatedTools: ['find-and-redact', 'sanitize-pdf', 'edit-pdf', 'flatten-pdf'],
   },
   {
@@ -1442,7 +1442,7 @@ export const tools: Tool[] = [
     outputFormat: 'pdf',
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
-    features: ['nlp-regex-recognition', 'binary-stream-erase', 'black-redact-mask', 'privacy-sanitization'],
+    features: ['regex-recognition', 'permanent-content-removal', 'blackout', 'privacy-sanitization'],
     relatedTools: ['encrypt-pdf', 'sanitize-pdf', 'cert-cryptor'],
   },
   {

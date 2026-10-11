@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Vietnamese Tool Content
  * Requirements: 3.1 - Multi-language support
@@ -6730,64 +6731,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       }
     ]
   },
-  "smart-data-redactor": {
-    "title": "Che dữ liệu nhạy cảm",
-    "metaDescription": "Tìm địa chỉ email, số điện thoại và mẫu ID trong tệp PDF. Xem lại các kết quả trùng khớp và biên tập lại nội dung nhạy cảm tại địa phương.",
-    "keywords": [
-      "che phủ dữ liệu nhạy cảm",
-      "mã hóa thông tin cá nhân",
-      "bảo mật thông tin"
-    ],
-    "description": "<p>Trình biên tập dữ liệu về quyền riêng tư thông minh là một công cụ tự động được thiết kế để đảm bảo tuân thủ mạnh mẽ về quyền riêng tư của tài liệu.</p>\n      <p>Chỉ phủ các hộp đen trong trình soạn thảo thông thường là không an toàn vì văn bản bên dưới vẫn có thể được sao chép. Công cụ này triển khai <strong>khớp mẫu NLP thực sự và dọn dẹp luồng nội dung vật lý</strong>.</p>\n      <p>Nó quét tài liệu để tìm email, số điện thoại, SSN hoặc từ khóa tùy chỉnh, đặt mặt nạ đen mờ cao cấp lên tọa độ và ghi đè vĩnh viễn luồng ký tự bằng <code>[REDACTED]</code>, chặn rò rỉ sao chép-dán.</p>",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Tải lên bản PDF mục tiêu",
-        "description": "Cung cấp hợp đồng hoặc tuyên bố thể hiện thông tin chi tiết nhạy cảm của khách hàng."
-      },
-      {
-        "step": 2,
-        "title": "Chọn quy tắc biên tập",
-        "description": "Kiểm tra các mẫu mục tiêu (email, điện thoại, ID) hoặc xác định các từ nhạy cảm tùy chỉnh."
-      },
-      {
-        "step": 3,
-        "title": "Tự động biên tập lại và tải xuống",
-        "description": "Nhấp vào thực thi để phủ các mặt nạ bảo mật và xóa luồng văn bản."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Chia sẻ thỏa thuận thương mại",
-        "description": "Xuất bản an toàn các tài liệu kinh doanh bằng cách ẩn lương cá nhân, số điện thoại hoặc email.",
-        "icon": "file-signature"
-      },
-      {
-        "title": "Tiếp tục ẩn danh cơ sở dữ liệu",
-        "description": "Loại bỏ tên, thông tin liên hệ hoặc địa chỉ của người nộp đơn để tuân thủ các quy định nghiêm ngặt về quyền riêng tư.",
-        "icon": "user-check"
-      },
-      {
-        "title": "Phân phối báo cáo tài chính",
-        "description": "Che giấu số sổ cái hoặc tên cổ đông cụ thể trước khi công bố báo cáo.",
-        "icon": "pie-chart"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Các chi tiết bị loại bỏ có thực sự không thể sao chép được không?",
-        "answer": "Vâng. Chúng ta viết lại dòng nội dung trang để xóa ký tự. Việc dán sao chép từ hộp đã được xử lý lại sẽ chỉ trích xuất chuỗi \"[THÔNG TIN ĐÃ GIẤU]\"."
-      },
-      {
-        "question": "Nó có hoạt động đối với các tệp PDF hình ảnh được quét không?",
-        "answer": "Công cụ này nhắm mục tiêu các luồng văn bản vector. Đối với các tệp hình ảnh được quét, trước tiên hãy sử dụng công cụ OCR của chúng tôi hoặc cắt thủ công."
-      },
-      {
-        "question": "Phạm vi mục tiêu HUD màu đỏ có được lưu trong tệp không?",
-        "answer": "Không, đó là hiệu ứng tải tương tác giao diện người dùng tuyệt đẹp. Tệp PDF đầu ra hiển thị các hình chữ nhật màu đen sạch sẽ tiêu chuẩn."
-      }
-    ]
-  },
+  "smart-data-redactor": localizedRedactionContent('vi', 'smart-data-redactor', "Che dữ liệu nhạy cảm"),
   "bookmarks-auto-generator": {
     "title": "Tự động tạo mục lục",
     "metaDescription": "Tạo dấu trang PDF từ tiêu đề và mẫu văn bản. Thêm dàn bài có thể điều hướng vào các tài liệu, sổ tay và báo cáo dài.",
@@ -7584,76 +7528,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       }
     ]
   },
-  "find-and-redact": {
-    "title": "Tìm và Che khuất",
-    "metaDescription": "Tìm kiếm và che khuất văn bản trên tất cả các trang của PDF. Che khuất hàng loạt thông tin nhạy cảm như số tài khoản, tên, v.v.",
-    "keywords": [
-      "che khuất pdf",
-      "tìm và che khuất",
-      "che khuất hàng loạt",
-      "xóa văn bản",
-      "kiểm duyệt pdf",
-      "ẩn dữ liệu nhạy cảm"
-    ],
-    "description": "\n      <p>Công cụ Tìm và Che khuất cho phép bạn tìm kiếm văn bản, số hoặc mẫu cụ thể trên tất cả các trang của tài liệu PDF và che khuất tất cả các kết quả trùng khớp cùng một lúc. Rất phù hợp để loại bỏ thông tin nhạy cảm như số tài khoản, tên, địa chỉ hoặc bất kỳ dữ liệu bảo mật nào.</p>\n      <p>Xem trước tất cả các kết quả trùng khớp trước khi áp dụng che khuất và chọn lọc những vị trí cần che khuất. Hỗ trợ tìm kiếm phân biệt chữ hoa chữ thường, khớp toàn bộ từ và biểu thức chính quy (regex) để khớp mẫu nâng cao.</p>\n      <p>Mọi quá trình xử lý đều diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu luôn riêng tư và an toàn.</p>\n    ",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Tải lên tệp PDF",
-        "description": "Kéo và thả tệp PDF của bạn hoặc nhấp để chọn tệp."
-      },
-      {
-        "step": 2,
-        "title": "Tìm kiếm văn bản",
-        "description": "Nhập văn bản, số hoặc mẫu biểu thức chính quy (regex) mà bạn muốn tìm và che khuất."
-      },
-      {
-        "step": 3,
-        "title": "Xem lại và lựa chọn",
-        "description": "Xem trước tất cả kết quả khớp và chọn các mục bạn muốn che khuất."
-      },
-      {
-        "step": 4,
-        "title": "Áp dụng che khuất",
-        "description": "Tùy chỉnh giao diện che khuất và áp dụng cho các kết quả đã chọn."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Tuân thủ quyền riêng tư",
-        "description": "Che khuất thông tin cá nhân để tuân thủ GDPR, HIPAA hoặc các quy định khác.",
-        "icon": "shield"
-      },
-      {
-        "title": "Tài liệu pháp lý",
-        "description": "Loại bỏ dữ liệu mật khỏi các tài liệu pháp lý trước khi chia sẻ.",
-        "icon": "scale"
-      },
-      {
-        "title": "Bản ghi tài chính",
-        "description": "Che khuất số tài khoản, số định danh cá nhân (SSN) hoặc dữ liệu tài chính khỏi các bản sao kê.",
-        "icon": "credit-card"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Việc che khuất có vĩnh viễn không?",
-        "answer": "Có, việc che khuất sẽ xóa vĩnh viễn văn bản nằm bên dưới. Nội dung gốc không thể khôi phục lại được. Hãy luôn sao lưu tệp gốc trước khi thực hiện."
-      },
-      {
-        "question": "Tôi có thể che khuất hình ảnh hoặc văn bản quét (scanned text) không?",
-        "answer": "Công cụ này hoạt động trên các tệp PDF dạng văn bản. Đối với tài liệu quét, bạn cần sử dụng tính năng che khuất vùng thủ công."
-      },
-      {
-        "question": "Tôi có thể tùy chỉnh giao diện của phần che khuất không?",
-        "answer": "Có, bạn có thể thiết lập màu sắc của vùng che khuất, thêm viền và tùy chọn thêm văn bản thay thế như \"[ĐÃ CHE]\" hoặc \"[ĐÃ KIỂM DUYỆT]\"."
-      },
-      {
-        "question": "Tìm kiếm bằng biểu thức chính quy (regex) hoạt động thế nào?",
-        "answer": "Bật \"Sử dụng biểu thức chính quy\" để tìm kiếm bằng các mẫu regex. Ví dụ: sử dụng \\d{4}-\\d{4}-\\d{4}-\\d{4} để tìm số thẻ tín dụng."
-      }
-    ]
-  },
+  "find-and-redact": localizedRedactionContent('vi', 'find-and-redact', "Tìm và Che khuất"),
   "pdf-to-markdown": {
     "title": "Chuyển PDF sang Markdown",
     "metaDescription": "Chuyển đổi PDF sang định dạng Markdown. Trích xuất văn bản và giữ nguyên các định dạng như tiêu đề và danh sách.",
@@ -7845,75 +7720,5 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   }
 ,
-"redact-pdf": {
-  "title": "Che thông tin trong PDF",
-  "metaDescription": "Bôi đen, làm mờ hoặc tạo pixel cho nội dung PDF nhạy cảm. Xuất các trang phẳng và xóa siêu dữ liệu cục bộ trong trình duyệt của bạn.",
-  "keywords": [
-    "biên tập lại pdf",
-    "mất điện pdf",
-    "khảm pdf",
-    "mờ pdf",
-    "quyền riêng tư pdf",
-    "xóa dữ liệu nhạy cảm",
-    "trình soạn thảo pdf an toàn"
-  ],
-  "description": "<p>Redact PDF cung cấp trình chỉnh sửa tương tác, trực quan để che giấu và bảo vệ vĩnh viễn dữ liệu nhạy cảm trong tài liệu PDF của bạn. Kéo để đánh dấu bất kỳ khu vực bí mật nào—chẳng hạn như tên, địa chỉ, số ID, chữ ký, con dấu chính thức, số liệu tài chính hoặc chân dung—và áp dụng các hiệu ứng bôi đen, bôi trắng, khảm hoặc làm mờ.</p>\n      <p>Không giống như các trình chỉnh sửa PDF tiêu chuẩn chỉ chồng các hình chữ nhật màu đen bề ngoài lên văn bản hiện có, công cụ này thực hiện <strong>tạo điểm ảnh vật lý không thể đảo ngược</strong>. Các lớp văn bản, đồ họa vector và luồng OCR bên dưới bị phá hủy hoàn toàn và không thể khôi phục được bằng cách dán sao chép hoặc kỹ thuật đảo ngược.</p>\n      <p>Ngoài ra, công cụ này còn thực hiện xóa siêu dữ liệu chuyên sâu, loại bỏ thông tin tác giả, lịch sử sáng tạo và luồng XMP. Tất cả quá trình xử lý diễn ra cục bộ 100% trong trình duyệt của bạn mà không cần tải lên máy chủ.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "Tải lên tài liệu PDF",
-      "description": "Chọn hoặc kéo và thả tệp PDF bạn muốn biên tập lại."
-    },
-    {
-      "step": 2,
-      "title": "Đánh dấu vùng nhạy cảm",
-      "description": "Nhấp và kéo trên bất kỳ trang nào để vẽ các hộp biên tập xung quanh nội dung bí mật."
-    },
-    {
-      "step": 3,
-      "title": "Chọn kiểu soạn thảo",
-      "description": "Chọn bôi đen, làm trắng, khảm (kích thước pixel có thể điều chỉnh) hoặc làm mờ. Chuyển đổi xem trước thời gian thực để kiểm tra kết quả."
-    },
-    {
-      "step": 4,
-      "title": "Xuất PDF bảo mật",
-      "description": "Nhấp vào \"Tạo PDF bảo mật\" để thực hiện làm phẳng, xóa siêu dữ liệu không thể đảo ngược và tải xuống tài liệu được bảo mật của bạn."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Quyền riêng tư và tuân thủ quy định",
-      "description": "Che dấu thông tin nhận dạng cá nhân (PII) một cách an toàn để tuân thủ các yêu cầu của GDPR, HIPAA hoặc CCPA.",
-      "icon": "shield"
-    },
-    {
-      "title": "Bí mật pháp lý & chia sẻ kinh doanh",
-      "description": "Che giấu bí mật thương mại, điều khoản giải quyết, chữ ký và tem trước khi tiết lộ công khai hoặc phân phối ra bên ngoài.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Bảo vệ tài chính và danh tính",
-      "description": "Che giấu số tài khoản ngân hàng, mã số thuế, chi tiết thẻ tín dụng và số CMND khỏi bảng sao kê và hóa đơn.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "Có ai có thể khôi phục thông tin đã được biên tập lại bằng cách sao chép văn bản hoặc kiểm tra các lớp không?",
-      "answer": "Không. Các khu vực được xử lý lại trải qua quá trình làm phẳng điểm ảnh vật lý. Văn bản, vectơ và đối tượng bên dưới bị xóa hoàn toàn khỏi cấu trúc tệp, khiến việc khôi phục không thể thực hiện được."
-    },
-    {
-      "question": "Sự khác biệt giữa mất điện, khảm và mờ là gì?",
-      "answer": "Blackout tạo ra một mặt nạ đen đặc (tiêu chuẩn cho văn bản pháp luật); Whiteout cung cấp một lớp mặt nạ trắng sạch; khảm tạo ra một lưới pixel; và độ mờ tạo ra hiệu ứng kính mờ mềm mại."
-    },
-    {
-      "question": "Tệp có được tải lên máy chủ của bạn không?",
-      "answer": "Không. Tất cả quá trình hiển thị, biên tập, làm phẳng và tạo PDF diễn ra hoàn toàn trong bộ nhớ trình duyệt của bạn. Tài liệu của bạn không bao giờ rời khỏi thiết bị của bạn."
-    },
-    {
-      "question": "Siêu dữ liệu nào bị xóa?",
-      "answer": "Tiêu đề tài liệu, Tác giả, Chủ đề, Từ khóa, Người tạo, Nhà sản xuất, Ngày tạo, Ngày sửa đổi và các luồng siêu dữ liệu XMP mở rộng đều bị xóa hoàn toàn."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('vi', 'redact-pdf', "Che thông tin trong PDF")
 };

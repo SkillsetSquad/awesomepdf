@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Chinese Tool Content
  * Requirements: 3.1 - Multi-language support
@@ -2188,60 +2189,10 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
 
-  'find-and-redact': {
-    title: '查找并遮盖',
-    metaDescription: '搜索并批量遮盖PDF中的敏感文本。支持正则表达式匹配账号、姓名等敏感信息。',
-    keywords: ['遮盖pdf', '查找并遮盖', '批量遮盖', '删除文本', 'pdf脱敏', '隐藏敏感数据'],
-    description: `
-      <p>查找并遮盖允许您在PDF的所有页面中搜索特定文本、数字或模式，并一次性遮盖所有匹配项。非常适合删除敏感信息，如账号、姓名、地址或任何机密数据。</p>
-      <p>在应用遮盖前预览所有匹配项，并选择性地选择要遮盖的出现次数。支持区分大小写搜索、全词匹配和正则表达式以进行高级模式匹配。</p>
-      <p>所有处理都在您的浏览器中进行，确保您的文档保持私密和安全。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上传PDF文件', description: '拖放您的PDF文件或点击选择。' },
-      { step: 2, title: '搜索文本', description: '输入要查找和遮盖的文本、数字或正则表达式模式。' },
-      { step: 3, title: '审查并选择', description: '预览所有匹配项并选择要遮盖的项目。' },
-      { step: 4, title: '应用遮盖', description: '自定义遮盖外观并应用于所选匹配项。' },
-    ],
-    useCases: [
-      { title: '隐私合规', description: '遮盖个人信息以符合GDPR、HIPAA或其他法规。', icon: "shield" },
-      { title: '法律文档', description: '在共享前从法律文档中删除机密数据。', icon: "scale" },
-      { title: '财务记录', description: '从报表中遮盖账号、社保号或财务数据。', icon: "credit-card" },
-    ],
-    faq: [
-      { question: '遮盖是永久的吗？', answer: '是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。' },
-      { question: '可以遮盖图像或扫描文本吗？', answer: '此工具适用于基于文本的PDF。对于扫描文档，您需要使用基于区域的手动遮盖。' },
-      { question: '可以自定义遮盖外观吗？', answer: '是的，您可以设置遮盖颜色、添加边框，并可选择包含替换文本如"[已遮盖]"。' },
-      { question: '正则表达式搜索如何工作？', answer: '启用"使用正则表达式"以使用正则模式搜索。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡号。' },
-    ],
-  },
-  'redact-pdf': {
-    title: 'PDF 涂黑与马赛克脱敏',
-    metaDescription: "遮蔽、模糊或像素化敏感的 PDF 内容。导出扁平化页面并在浏览器中本地删除元数据。",
-    keywords: ['PDF脱敏', 'PDF抹黑', 'PDF打码', 'PDF马赛克', 'PDF隐私保护', 'PDF涂黑', '安全PDF编辑器'],
-    description: `
-      <p>PDF 涂黑与马赛克脱敏工具为您提供直观的可视化交互编辑能力，帮助您永久遮蔽并清除文档中的各类隐私与涉密信息。只需使用鼠标拖拽框选敏感内容（如身份证号、姓名、住址、公章、签名、财务流水、证件照等），即可应用纯黑遮蔽、白条遮盖、马赛克或高斯模糊效果。</p>
-      <p>与仅在文字上方覆盖矢量矩形的常规工具不同，本工具采用<strong>物理像素级不可逆固化与栅格化技术</strong>，将遮蔽区域直接融合烧录进页面，彻底销毁底层的文字对象、矢量路径与 OCR 文本流，任何人均无法通过复制、文本提取或反编译逆向还原原始内容。</p>
-      <p>同时，工具提供深度元数据清理功能，彻底抹除作者、软件历史指纹与 XMP 扩展流。所有运算均在您的浏览器本地内存中完成，零文件上传，全面满足企业与法务的严苛合规要求。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上传 PDF 文档', description: '拖拽或点击选择需要进行隐私脱敏的 PDF 文件。' },
-      { step: 2, title: '框选敏感区域', description: '在页面上按住鼠标左键拖拽画出需要遮蔽的区域，支持拖拽手柄缩放调整与移动。' },
-      { step: 3, title: '选择脱敏效果', description: '选择涂黑遮蔽、白条遮盖、马赛克打码（可调颗粒度）或高斯模糊，可随时开启实时预览验证效果。' },
-      { step: 4, title: '生成并下载安全文档', description: '点击“生成脱敏安全 PDF”，系统自动完成物理像素固化与元数据深度清理，即可一键下载。' },
-    ],
-    useCases: [
-      { title: '法规合规与隐私保护', description: '对身份证号、手机号、人脸肖像等敏感个人信息 (PII) 进行合规脱敏，满足数据保护法规。', icon: "shield" },
-      { title: '涉密与法务公文披露', description: '在向外部共享合同、法务文书或调查报告前，对商业机密、签名公章与调解条款进行永久遮蔽。', icon: "file-text" },
-      { title: '财务凭证与票据分享', description: '对银行回单、薪资表、发票流水等财务单据中的敏感账号与金额进行安全打码。', icon: "lock" },
-    ],
-    faq: [
-      { question: '脱敏后的内容能否被复制或技术手段还原？', answer: '绝对无法还原。工具采用了物理不可逆像素栅格化技术，底层的文本图元已被彻底物理抹除，复制文本或使用反编译软件也无法提取任何底层信息。' },
-      { question: '涂黑遮蔽、马赛克与高斯模糊有什么区别？', answer: '涂黑为标准的公文涉密黑框（最严肃正规）；白条遮盖保持页面底色干净；马赛克具有现代化数码打码效果；高斯模糊则带来柔和的毛玻璃磨砂质感。' },
-      { question: '我的文件会被上传到云端服务器吗？', answer: '不会。整个渲染、打码、元数据清理和新文档生成过程 100% 运行在您本地浏览器的内存中，无任何网络上传请求。' },
-      { question: '系统会清理哪些文档元数据？', answer: '包括文档标题 (Title)、作者 (Author)、主题 (Subject)、关键词 (Keywords)、制作者 (Producer)、创建与修改时间，以及 XMP 扩展元数据流。' },
-    ],
-  },
+  'find-and-redact': localizedRedactionContent('zh', 'find-and-redact', '查找并遮盖'),
+
+  'redact-pdf': localizedRedactionContent('zh', 'redact-pdf', 'PDF 涂黑与马赛克脱敏'),
+
   'decrypt-pdf': {
     title: '解密PDF',
     metaDescription: '从PDF文件中删除密码。解锁受密码保护的文档。',
@@ -3136,31 +3087,8 @@ export const toolContentZh: Record<string, ToolContent> = {
       { question: '会破坏 PDF 中的原有文字和排版吗？', answer: '不会。擦除动作仅仅针对匹配水印特性的操作码，非匹配的主体文字和矢量插图会得到 100% 的保留。' },
     ],
   },
-  'smart-data-redactor': {
-    title: '敏感信息脱敏',
-    metaDescription: "在 PDF 中查找电子邮件地址、电话号码和 ID 模式。在本地查看匹配项并编辑敏感内容。",
-    keywords: ['自动脱敏', '敏感词模糊', 'pdf隐私遮蔽', '内容流物理擦除', '电话号码脱敏'],
-    description: `
-      <p>敏感信息自动模糊与脱敏引擎是一款保障信息安全与合规的利器。</p>
-      <p>简单在 PDF 上画个黑框，别人通过复制依然能拿到遮挡下的文字。本工具采用高阶的 <strong>NLP 敏感词提取与物理流擦除</strong> 技术。</p>
-      <p>自动扫描 PDF 中的手机号、身份证、电子邮箱、银行卡号等，在指定坐标绘制极其高级的暗黑磨砂遮蔽 mask，同时深入 PDF 对象流中，将对应坐标的敏感底层文本块直接写为空或 <code>[REDACTED]</code>，完全隔绝复制泄漏漏洞。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上传待脱敏PDF', description: '导入包含员工薪酬、客户电话或隐私信息的合同和发票 PDF。' },
-      { step: 2, title: '选择自动识别规则', description: '勾选需要脱敏的类型（邮箱、电话、身份证），或填入自定义敏感字词。' },
-      { step: 3, title: '一键扫描覆盖', description: '点击执行，敏感词瞬间被红外交叉准星锁定，物理覆盖并彻底脱敏。' },
-    ],
-    useCases: [
-      { title: '敏感商业合同公开', description: '在向第三方公开合同前，自动擦除其中的产品价格、核心人员联系方式等隐私。', icon: "file-signature" },
-      { title: '简历库去标识化', description: '对批量简历进行处理，隐藏求职者的真实姓名、手机、家庭住址，符合 GDPR 规范。', icon: "user-check" },
-      { title: '财务报表对外发布', description: '隐藏非公开财务报表中的特定股东姓名及敏感利润数字，防止竞争对手搜集。', icon: "pie-chart" },
-    ],
-    faq: [
-      { question: '脱敏后的 PDF 真的无法通过复制获取隐私吗？', answer: '真的。我们不仅画了黑盒，而且在 PDF 页面流（Page Stream）中将原敏感字串彻底重写为了 `[REDACTED]`。即使他人用文本提取工具，也绝对无法获取。' },
-      { question: '支持扫描版 PDF（纯图片）的敏感遮蔽吗？', answer: '本工具专门用于矢量 PDF 的深度字符流擦除。如果是扫描版 PDF，建议先使用我们的 OCR 识别工具，或手动裁剪工具。' },
-      { question: '“红外交叉准星”是最终文件里的效果吗？', answer: '不是。这只是我们在前端展示分析进度时的 HUD 全息动效。导出的 PDF 中会按照您的设置，显示为标准的规整黑盒。' },
-    ],
-  },
+  'smart-data-redactor': localizedRedactionContent('zh', 'smart-data-redactor', '敏感信息脱敏'),
+
   'bookmarks-auto-generator': {
     title: '自动生成书签',
     metaDescription: "从标题和文本模式生成 PDF 书签。为长文档、手册和报告添加可导航的大纲。",

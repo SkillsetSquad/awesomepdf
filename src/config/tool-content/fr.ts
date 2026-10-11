@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Contenu des outils en français pour le SEO
  * Contient des descriptions détaillées, des instructions, des cas d'utilisation et des FAQ pour les 67 outils
@@ -5812,64 +5813,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       }
     ]
   },
-  "smart-data-redactor": {
-    "title": "Masquer les données sensibles",
-    "metaDescription": "Recherchez des adresses e-mail, des numéros de téléphone et des modèles d'identification dans les PDF. Examinez les correspondances et rédigez le contenu sensible localement.",
-    "keywords": [
-      "censure pdf",
-      "masquer donnee sensible",
-      "anonymisation pdf"
-    ],
-    "description": "<p>Le Smart Privacy Data Redactor est un outil automatisé conçu pour garantir une conformité rigoureuse en matière de confidentialité des documents.</p>\n      <p>La simple superposition de cases noires dans les éditeurs normaux n'est pas sûre car le texte sous-jacent peut toujours être copié. Cet outil met en œuvre une véritable <strong>correspondance de modèles NLP et une désinfection du flux de contenu physique</strong>.</p>\n      <p>Il analyse le document à la recherche d'e-mails, de numéros de téléphone, de SSN ou de mots-clés personnalisés, place un masque noir mat de qualité supérieure sur les coordonnées et écrase définitivement le flux de caractères avec <code>[SUPPRIMÉ]</code>, bloquant ainsi les fuites de copier-coller.</p>",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Télécharger le PDF cible",
-        "description": "Fournissez le contrat ou la déclaration indiquant les détails sensibles du client."
-      },
-      {
-        "step": 2,
-        "title": "Sélectionnez les règles de rédaction",
-        "description": "Vérifiez les modèles de cible (e-mail, téléphone, pièce d'identité) ou définissez des mots sensibles personnalisés."
-      },
-      {
-        "step": 3,
-        "title": "Rédaction et téléchargement automatiques",
-        "description": "Cliquez sur Exécuter pour superposer les masques sécurisés et effacer les flux de texte."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Partage d'accords commerciaux",
-        "description": "Publiez en toute sécurité des documents professionnels en masquant les salaires personnels, les numéros de téléphone ou les e-mails.",
-        "icon": "file-signature"
-      },
-      {
-        "title": "Reprendre l'anonymisation de la base de données",
-        "description": "Supprimez les noms, coordonnées ou adresses des candidats pour vous conformer aux réglementations strictes en matière de confidentialité.",
-        "icon": "user-check"
-      },
-      {
-        "title": "Distribution des états financiers",
-        "description": "Dissimulez les numéros de grand livre spécifiques ou les noms d'actionnaires avant de publier des rapports.",
-        "icon": "pie-chart"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Les détails expurgés sont-ils vraiment illisibles ?",
-        "answer": "Oui. Nous réécrivons le flux de contenu de la page pour effacer les caractères. Le copier-coller à partir de la zone expurgée extraira uniquement la chaîne \"[SUPPRIMÉ]\"."
-      },
-      {
-        "question": "Est-ce que cela fonctionne pour les PDF d'images numérisées ?",
-        "answer": "Cet outil cible les flux de texte vectoriel. Pour les fichiers d'images numérisés, utilisez d'abord notre outil OCR ou recadrez manuellement."
-      },
-      {
-        "question": "La portée cible rouge du HUD est-elle enregistrée dans le fichier ?",
-        "answer": "Non, c'est un magnifique effet de chargement interactif frontal. Le PDF de sortie affiche des rectangles noirs propres et standards."
-      }
-    ]
-  },
+  "smart-data-redactor": localizedRedactionContent('fr', 'smart-data-redactor', "Masquer les données sensibles"),
   "bookmarks-auto-generator": {
     "title": "Générer les signets",
     "metaDescription": "Générez des signets PDF à partir de titres et de modèles de texte. Ajoutez un plan navigable aux longs documents, manuels et rapports.",
@@ -7342,76 +7286,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       }
     ]
   },
-  "find-and-redact": {
-    "title": "Rechercher et masquer",
-    "metaDescription": "Recherchez et masquez du texte sur toutes les pages d'un PDF. Masquez par lots les informations sensibles telles que les numéros de compte, les noms, etc.",
-    "keywords": [
-      "masquer pdf",
-      "rechercher et masquer",
-      "masquage par lots",
-      "supprimer du texte",
-      "censure pdf",
-      "masquer donnees sensibles"
-    ],
-    "description": "\n      <p>L'outil Rechercher et masquer vous permet de rechercher des textes, des numéros ou des motifs spécifiques sur toutes les pages de votre PDF et de masquer toutes les occurrences correspondantes en une seule fois. Parfait pour supprimer des informations sensibles comme des numéros de compte, des noms, des adresses ou toute donnée confidentielle.</p>\n      <p>Prévisualisez toutes les correspondances avant d'appliquer les masquages, et choisissez de manière sélective les occurrences à masquer. Prise en charge de la recherche sensible à la casse, de la correspondance de mots entiers et des expressions régulières pour une recherche avancée de motifs.</p>\n      <p>Tout le traitement s'effectue dans votre navigateur, garantissant la confidentialité et la sécurité de vos documents.</p>\n    ",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Téléverser votre PDF",
-        "description": "Faites glisser et déposez votre fichier PDF ou cliquez pour le sélectionner."
-      },
-      {
-        "step": 2,
-        "title": "Rechercher du texte",
-        "description": "Saisissez le texte, le numéro ou le motif regex que vous souhaitez rechercher et masquer."
-      },
-      {
-        "step": 3,
-        "title": "Revoir et sélectionner",
-        "description": "Prévisualisez toutes les correspondances et sélectionnez celles à masquer."
-      },
-      {
-        "step": 4,
-        "title": "Appliquer le masquage",
-        "description": "Personnalisez l'apparence du masquage et appliquez-le aux correspondances sélectionnées."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Conformité de la confidentialité",
-        "description": "Masquez les informations personnelles pour vous conformer au RGPD, à la HIPAA ou à d'autres réglementations.",
-        "icon": "shield"
-      },
-      {
-        "title": "Documents juridiques",
-        "description": "Supprimez les données confidentielles des documents juridiques avant de les partager.",
-        "icon": "scale"
-      },
-      {
-        "title": "Dossiers financiers",
-        "description": "Masquez les numéros de compte, de sécurité sociale ou les données financières des relevés.",
-        "icon": "credit-card"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Le masquage est-il permanent ?",
-        "answer": "Oui, le masquage supprime définitivement le texte sous-jacent. Le contenu d'origine ne peut pas être récupéré. Conservez toujours une sauvegarde du fichier d'origine."
-      },
-      {
-        "question": "Puis-je masquer des images ou du texte scanné ?",
-        "answer": "Cet outil fonctionne avec des PDF basés sur du texte. Pour les documents scannés, vous devrez utiliser un masquage manuel basé sur une zone."
-      },
-      {
-        "question": "Puis-je personnaliser l'apparence du masquage ?",
-        "answer": "Oui, vous pouvez définir la couleur du masquage, ajouter des bordures et éventuellement inclure un texte de remplacement comme « [MASQUÉ] »."
-      },
-      {
-        "question": "Comment fonctionne la recherche par expression régulière ?",
-        "answer": "Activez « Utiliser une expression régulière » pour effectuer des recherches à l'aide de motifs regex. Par exemple, \\d{4}-\\d{4}-\\d{4}-\\d{4} pour trouver des numéros de carte de crédit."
-      }
-    ]
-  },
+  "find-and-redact": localizedRedactionContent('fr', 'find-and-redact', "Rechercher et masquer"),
   "pdf-to-markdown": {
     "title": "PDF en Markdown",
     "metaDescription": "Convertissez des PDF au format Markdown. Extrayez le texte et préservez la mise en forme comme les titres et les listes.",
@@ -7976,75 +7851,5 @@ export const toolContentFr: Record<string, ToolContent> = {
     ]
   }
 ,
-"redact-pdf": {
-  "title": "Caviarder un PDF",
-  "metaDescription": "Noircissez, floutez ou pixellisez le contenu PDF sensible. Exportez les pages aplaties et supprimez les métadonnées localement dans votre navigateur.",
-  "keywords": [
-    "rédiger le pdf",
-    "blackout pdf",
-    "mosaïque pdf",
-    "flou pdf",
-    "confidentialité des pdf",
-    "supprimer les données sensibles",
-    "éditeur de pdf sécurisé"
-  ],
-  "description": "<p>Redact PDF fournit un éditeur visuel et interactif pour masquer et protéger en permanence les données sensibles dans vos documents PDF. Faites glisser pour marquer n'importe quelle zone confidentielle (telle que des noms, des adresses, des numéros d'identification, des signatures, des sceaux officiels, des chiffres financiers ou des portraits) et appliquez des effets de noircissement, de voile blanc, de mosaïque ou de flou.</p>\n      <p>Contrairement aux éditeurs PDF standards qui superposent simplement des rectangles noirs superficiels sur le texte existant, cet outil effectue une <strong>rastérisation physique irréversible des pixels</strong>. Les calques de texte sous-jacents, les graphiques vectoriels et les flux OCR sont complètement détruits et ne peuvent pas être récupérés par copier-coller ou par ingénierie inverse.</p>\n      <p>De plus, l'outil effectue un nettoyage approfondi des métadonnées, éliminant les informations sur l'auteur, l'historique de création et les flux XMP. Tous les traitements s'exécutent à 100 % localement dans votre navigateur, sans aucun téléchargement sur le serveur.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "Télécharger un document PDF",
-      "description": "Sélectionnez ou glissez-déposez le fichier PDF que vous souhaitez expurger."
-    },
-    {
-      "step": 2,
-      "title": "Marquer les zones sensibles",
-      "description": "Cliquez et faites glisser sur n'importe quelle page pour dessiner des zones de rédaction autour du contenu confidentiel."
-    },
-    {
-      "step": 3,
-      "title": "Choisissez le style de rédaction",
-      "description": "Sélectionnez noircissement, voile blanc, mosaïque (taille de pixel réglable) ou flou. Activez l'aperçu en temps réel pour inspecter le résultat."
-    },
-    {
-      "step": 4,
-      "title": "Exporter un PDF sécurisé",
-      "description": "Cliquez sur « Générer un PDF sécurisé » pour exécuter un aplatissement irréversible, un effacement des métadonnées et télécharger votre document sécurisé."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Confidentialité et conformité réglementaire",
-      "description": "Masquez en toute sécurité les informations personnelles identifiables (PII) pour vous conformer aux exigences du RGPD, de la HIPAA ou du CCPA.",
-      "icon": "shield"
-    },
-    {
-      "title": "Partage juridique et commercial confidentiel",
-      "description": "Secrets commerciaux obscurs, conditions de règlement, signatures et cachets avant leur divulgation publique ou leur distribution externe.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Protection financière et d'identité",
-      "description": "Dissimulez les numéros de compte bancaire, les numéros d'identification fiscale, les détails de carte de crédit et les numéros de carte d'identité sur les relevés et les factures.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "Quelqu'un peut-il récupérer des informations expurgées en copiant du texte ou en inspectant des calques ?",
-      "answer": "Non. Les zones expurgées subissent un aplatissement physique des pixels. Le texte, les vecteurs et les objets sous-jacents sont complètement supprimés de la structure du fichier, rendant la récupération impossible."
-    },
-    {
-      "question": "Quelle est la différence entre le noircissement, la mosaïque et le flou ?",
-      "answer": "Blackout crée un masque noir uni (standard pour les documents juridiques) ; le voile blanc fournit un masque blanc propre ; la mosaïque crée une grille pixelisée ; et le flou produit un doux effet de verre dépoli."
-    },
-    {
-      "question": "Les fichiers sont-ils téléchargés sur vos serveurs ?",
-      "answer": "Non. Tous les rendus, rédactions, aplatissements et générations de PDF se produisent entièrement dans la mémoire de votre navigateur. Vos documents ne quittent jamais votre appareil."
-    },
-    {
-      "question": "Quelles métadonnées sont supprimées ?",
-      "answer": "Le titre du document, l'auteur, le sujet, les mots-clés, le créateur, le producteur, la date de création, la date de modification et les flux de métadonnées XMP étendus sont complètement effacés."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('fr', 'redact-pdf', "Caviarder un PDF")
 };

@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Încărcați documente PDF pentru redactare",
-      "uploadDescription": "Utilizează potrivirea prin regex. Descoperă automat e-mailuri, numere de telefon și ID-uri, aplicând blocuri negre opace pentru a ascunde datele.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Setări filtre de redactare",
       "processButton": "Execută redactarea confidențialității",
-      "successMessage": "Toate datele confidențiale sensibile au fost mascate și eliminate cu succes!",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "Masă de previzualizare redactare date confidențiale",
       "clearButton": "Curăță",
-      "emptyStateDescription": "Descoperă și ascunde categoriile sensibile vizate, eliminând complet fluxurile de text ale glyph-urilor corespunzătoare din PDF.",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "Filtrează adresele de e-mail",
       "phoneRedactLabel": "Filtrează numerele de telefon",
-      "idRedactLabel": "Filtrează pașapoartele și cardurile de identitate",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "Fraze de redactare personalizate",
       "customKeywordsPlaceholder": "Fraze separate prin virgulă"
     },
@@ -3560,10 +3560,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Încărcați PDF pentru redactare",
-      "uploadDescription": "Trageți și plasați PDF-ul aici pentru a scana și redacta automat datele confidențiale.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Reguli de redactare inteligentă",
       "processButton": "Redactează datele sensibile",
-      "successMessage": "Datele confidențiale din PDF au fost redactate cu succes!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "Încărcați PDF",
@@ -3606,6 +3606,20 @@
       "optionsTitle": "Opțiuni rate de schimb",
       "processButton": "Traduce și convertește factura",
       "successMessage": "Factura străină a fost tradusă și registrul de conversie local a fost ștampilat cu succes!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

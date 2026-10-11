@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Traditional Chinese Tool Content
  * Requirements: 3.1 - Multi-language support
@@ -2050,33 +2051,8 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     ],
   },
 
-  'find-and-redact': {
-    title: '查找並遮蓋',
-    metaDescription: '搜尋並批量遮蓋PDF中的敏感文本。支援正規表達式匹配賬號、姓名等敏感信息。',
-    keywords: ['遮蓋pdf', '查找並遮蓋', '批量遮蓋', '刪除文本', 'pdf脫敏', '隱藏敏感數據'],
-    description: `
-      <p>查找並遮蓋允許您在PDF的所有頁面中搜尋特定文本、數字或模式，並一次性遮蓋所有匹配項。非常適合刪除敏感信息，如賬號、姓名、地址或任何機密數據。</p>
-      <p>在應用遮蓋前預覽所有匹配項，並選擇性地選擇要遮蓋的出現次數。支援區分大小寫搜尋、全詞匹配和正規表達式以進行高級模式匹配。</p>
-      <p>所有處理都在您的瀏覽器中進行，確保您的文檔保持隱私和安全。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上傳PDF文件', description: '拖放您的PDF文件或點擊選擇。' },
-      { step: 2, title: '搜尋文本', description: '輸入要查找和遮蓋的文本、數字或正規表達式模式。' },
-      { step: 3, title: '審查並選擇', description: '預覽所有匹配項並選擇要遮蓋的項目。' },
-      { step: 4, title: '應用遮蓋', description: '自定義遮蓋外觀並應用於所選匹配項。' },
-    ],
-    useCases: [
-      { title: '隱私合規', description: '遮蓋個人信息以符合GDPR、HIPAA或其他法規。', icon: "shield" },
-      { title: '法律文檔', description: '在共享前從法律文檔中刪除機密數據。', icon: "scale" },
-      { title: '財務記錄', description: '從報表中遮蓋賬號、社保號或財務數據。', icon: "credit-card" },
-    ],
-    faq: [
-      { question: '遮蓋是永久的嗎？', answer: '是的，遮蓋會永久刪除底層文本。原始內容無法恢復。請始終保留原始文件的備份。' },
-      { question: '可以遮蓋圖像或掃描文本嗎？', answer: '此工具適用於基於文本的PDF。對於掃描文檔，您需要使用基於區域的手動遮蓋。' },
-      { question: '可以自定義遮蓋外觀嗎？', answer: '是的，您可以設置遮蓋顏色、新增邊框，並可選擇包含替換文本如"[已遮蓋]"。' },
-      { question: '正規表達式搜尋如何工作？', answer: '啟用"使用正規表達式"以使用正則模式搜尋。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡號。' },
-    ],
-  },
+  'find-and-redact': localizedRedactionContent('zh-TW', 'find-and-redact', '查找並遮蓋'),
+
   'decrypt-pdf': {
     title: '解密PDF',
     metaDescription: '從PDF文件中刪除密碼。解鎖受密碼保護的文檔。',
@@ -3635,60 +3611,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
 ],
   },
 
-  'smart-data-redactor': {
-    title: '敏感訊息脫敏',
-    metaDescription: "在 PDF 中尋找電子郵件地址、電話號碼和 ID 模式。在本地查看匹配項並編輯敏感內容。",
-    keywords: ["pdf 隱私遮罩","安全脫敏","物理擦除","數據合規"],
-    description: "<p>智慧隱私資料編輯器是一款自動化工具，旨在確保可靠的文件隱私合規性。 </p>\n      <p>在普通編輯器中簡單地覆蓋黑框是不安全的，因為底層文字仍然可以被複製。該工具實現了真正的<strong>NLP 模式匹配和物理內容流清理</strong>。 </p>\n      <p>它會掃描文件中的電子郵件、電話號碼、SSN 或自訂關鍵字，在座標上放置高級啞光黑色遮罩，並使用<code>[已編輯]</code>永久覆蓋字元流，從而阻止複製貼上洩漏。 </p>",
-    howToUse: [
-  {
-    "step": 1,
-    "title": "上傳目標PDF",
-    "description": "提供顯示敏感客戶詳細資料的合約或聲明。"
-  },
-  {
-    "step": 2,
-    "title": "選擇密文規則",
-    "description": "檢查目標模式（電子郵件、電話、ID）或定義自訂敏感字詞。"
-  },
-  {
-    "step": 3,
-    "title": "自動編輯與下載",
-    "description": "按一下「執行」以覆寫安全遮罩並擦除文字流。"
-  }
-],
-    useCases: [
-  {
-    "title": "商業協議共享",
-    "description": "透過隱藏個人薪資、電話號碼或電子郵件來安全地發布商業文件。",
-    "icon": "file-signature"
-  },
-  {
-    "title": "恢復資料庫匿名化",
-    "description": "刪除申請人姓名、聯絡資訊或地址，以遵守嚴格的隱私法規。",
-    "icon": "user-check"
-  },
-  {
-    "title": "財務報表分佈",
-    "description": "在發布報告之前隱藏具體帳本編號或股東姓名。",
-    "icon": "pie-chart"
-  }
-],
-    faq: [
-  {
-    "question": "編輯過的細節真的無法複製嗎？",
-    "answer": "是的。我們重寫頁面內容流以擦除字元。從編輯框中複製貼上只會提取字串「[REDACTED]」。"
-  },
-  {
-    "question": "它適用於掃描影像 PDF 嗎？",
-    "answer": "此工具針對向量文字流。對於掃描的影像文件，請先使用我們的 OCR 工具或手動裁剪。"
-  },
-  {
-    "question": "紅色HUD目標範圍是否保存在文件中？",
-    "answer": "不，那是華麗的前端互動加載效果。輸出 PDF 顯示標準的乾淨黑色矩形。"
-  }
-],
-  },
+  'smart-data-redactor': localizedRedactionContent('zh-TW', 'smart-data-redactor', '敏感訊息脫敏'),
 
   'bookmarks-auto-generator': {
     title: '自動生成書籤',
@@ -4460,33 +4383,6 @@ export const toolContentZhTW: Record<string, ToolContent> = {
 ],
   },
 
-  'redact-pdf': {
-    title: 'PDF塗黑與馬賽克脫敏',
-    metaDescription: "遮蔽、模糊或像素化敏感的 PDF 內容。匯出扁平化頁面並在瀏覽器中本機刪除元資料。",
-    keywords: ['pdf塗黑', 'pdf馬賽克', 'pdf打碼', 'pdf脫敏', 'pdf遮蓋', '隱私保護', '抹黑pdf', '模糊pdf'],
-    description: `
-      <p>PDF塗黑與馬賽克脫敏工具是一款專為高隱私敏感場景設計的安全脫敏利器。不同於常見PDF閱讀器只是在文字上方疊加黑色矩形矢量形狀（底層文字依然可被複制或提取），本工具採用<strong>物理像素級不可逆柵格化銷毀</strong>技術，徹底消滅選區下方的原始文字流和字體信息。</p>
-      <p>支援多種脫敏樣式：<strong>實心塗黑/遮蓋</strong>（可選黑、白、紅、灰或自定義安全標籤）、<strong>像素化馬賽克</strong>（可調顆粒大小）以及<strong>平滑高斯模糊</strong>。同時具備深度隱私清理功能，自動清除文檔作者、標題、修改歷史、XMP擴展元數據及批註表單交互對象。</p>
-      <p>所有處理100%在您的本地瀏覽器中完成，無需上傳任何文件至雲端伺服器，嚴格守護商業機密與個人隱私。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上傳PDF文檔', description: '將需要脫敏的PDF拖放至編輯區域，100%純本地離線加載。' },
-      { step: 2, title: '框選脫敏區域', description: '使用鼠標拖拽繪製脫敏矩形，支援隨時拖拽手柄調整大小或移動位置。' },
-      { step: 3, title: '選擇脫敏樣式與安全選項', description: '可選實心塗黑（黑/白/灰）、像素馬賽克或高斯模糊，並勾選清除元數據和批註。' },
-      { step: 4, title: '實時預覽並導出', description: '點擊「預覽脫敏效果」查看真實輸出效果，確認無誤後點擊「應用脫敏並導出」。' },
-    ],
-    useCases: [
-      { title: '商業合約與標書脫敏', description: '對合同中的報價、客戶名稱、簽字印章進行不可逆打碼抹黑，防止商業機密洩露。', icon: "file-text" },
-      { title: '個人隱私合規（GDPR / 個資法）', description: '抹去身份證號、手機號、家庭住址、銀行卡號等敏感私密數據。', icon: "shield" },
-      { title: '醫療病歷與司法材料歸檔', description: '對病患隱私、案件證人姓名進行無痕馬賽克或抹黑，符合司法與醫療公開標準。', icon: "lock" },
-      { title: '公開技術報告與截圖展示', description: '隱藏文檔中的內部伺服器IP、API密鑰或內部組織架構。', icon: "eye-off" },
-    ],
-    faq: [
-      { question: '塗黑或馬賽克處理後，底層文字還能被複制或還原嗎？', answer: '絕對不能。我們對脫敏頁面進行了物理像素級柵格化重構，選區下方的文字和矢量流被徹底覆蓋重繪，生成的PDF中已不存在原始文本字元，任何工具都無法複製或反向提取。' },
-      { question: '我的PDF文件會被上傳到伺服器嗎？', answer: '完全不會！PDFCraft的脫敏處理全部依賴瀏覽器的Canvas與WebAssembly引擎在本地離線運行，您的私密文檔永遠不會離開您的本機設備。' },
-      { question: '什麼是「深度元數據擦除」？', answer: 'PDF文檔通常隱藏有作者姓名、所用操作系統、編輯歷史、GPS位置和XMP元數據。本工具會徹底清空Info字典和元數據流，抹除數字隱私指紋。' },
-      { question: '塗黑和馬賽克有什麼區別？', answer: '實心塗黑會使用純色（如純黑或白色）完全覆蓋內容，適合最嚴苛的審查場景；馬賽克和高斯模糊則在視覺上將內容打碼不可讀，適合需要保留排版輪廓的演示場景。' },
-    ],
-  },
+  'redact-pdf': localizedRedactionContent('zh-TW', 'redact-pdf', 'PDF塗黑與馬賽克脫敏'),
 };
 

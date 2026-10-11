@@ -14,11 +14,41 @@ import {
   renderRedactionAreaOnCanvas,
   renderBrushOnCanvas,
   redactPDF,
+  getBrushRedactionRects,
   type RedactionArea,
 } from '@/lib/pdf/processors/redact';
+import { removePDFContent } from '@/lib/pdf/redaction-engine';
+
+vi.mock('@/lib/pdf/redaction-engine', () => ({ removePDFContent: vi.fn().mockResolvedValue(new Uint8Array([37, 80, 68, 70])) }));
 
 describe('Redact Processor', () => {
   describe('validateRedactionAreas', () => {
+    it('rejects zero-sized, non-finite, fractional-page and information-retaining selections', () => {
+      const base: RedactionArea = { page: 1, x: 10, y: 10, width: 30, height: 20 };
+      for (const area of [{ ...base, width: 0 }, { ...base, x: NaN }, { ...base, page: 1.5 },
+        { ...base, pageWidth: Infinity }, { ...base, style: 'blur' as const }, { ...base, style: 'mosaic' as const },
+        { ...base, color: 'transparent' }]) {
+        expect(validateRedactionAreas([area], 2).valid).toBe(false);
+      }
+    });
+
+    it('passes selected display coordinates to content removal and rejects mismatched page groups', async () => {
+      const area: RedactionArea = { page: 1, x: 10, y: 20, width: 30, height: 40, pageWidth: 600, pageHeight: 800, style: 'whiteout' };
+      const input = new ArrayBuffer(4);
+      await redactPDF(input, { 1: [area] }, { stripMetadata: false, purgeAnnotations: false });
+      expect(removePDFContent).toHaveBeenCalledWith(input, [expect.objectContaining({
+        rect: [10, 20, 40, 60], coordinates: 'display', pageWidth: 600, pageHeight: 800, color: '#ffffff',
+      })], { flattenAllPages: undefined, renderScale: undefined });
+      await expect(redactPDF(input, { 2: [area] })).rejects.toThrow('page group');
+    });
+
+    it('covers brush caps and diagonal strokes with the same bounded envelopes used by export', () => {
+      const rects = getBrushRedactionRects({ page: 1, x: 0, y: 0, width: 80, height: 80,
+        type: 'brush', path: [{ x: 10, y: 10 }, { x: 90, y: 90 }], strokeWidth: 20 });
+      expect(rects[0]).toEqual([0, 0, 20, 20]);
+      expect(rects.at(-1)?.slice(2)).toEqual([100, 100]);
+      expect(rects.every(rect => rect[2] - rect[0] <= 30 && rect[3] - rect[1] <= 30)).toBe(true);
+    });
     it('returns invalid when no areas are provided', () => {
       const result = validateRedactionAreas([], 5);
 

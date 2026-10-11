@@ -6,8 +6,7 @@
  * Useful for batch redacting sensitive information like account numbers, names, etc.
  */
 
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import { loadPdfjs } from '../loader';
+import { extractRedactionText, removePDFContent, type RedactionRect } from '../redaction-engine';
 
 /**
  * Text match found in the PDF
@@ -27,6 +26,8 @@ export interface TextMatch {
     height: number;
     /** Unique identifier for this match */
     id: string;
+    /** Exact glyph bounds in native PDF coordinates, including descenders. */
+    bounds?: RedactionRect;
     /** Whether this match is selected for redaction */
     selected: boolean;
 }
@@ -68,7 +69,7 @@ export interface FindAndRedactOptions extends SearchOptions {
     addBorder?: boolean;
     /** Replacement text to show in redacted areas */
     replacementText?: string;
-    /** Array of match IDs to redact (if empty, redact all matches) */
+    /** Explicit selection. An empty array selects nothing. */
     selectedMatchIds?: string[];
 }
 
@@ -108,183 +109,45 @@ export async function searchTextInPDF(
     onProgress?: ProgressCallback
 ): Promise<SearchResult> {
     try {
-        if (!file) {
-            return {
-                success: false,
-                matches: [],
-                totalCount: 0,
-                pagesWithMatches: [],
-                error: 'No file provided',
-            };
-        }
-
-        // Get search terms array
-        const searchTerms: string[] = options.searchTerms && options.searchTerms.length > 0
-            ? options.searchTerms
-            : options.searchTerm
-                ? [options.searchTerm]
-                : [];
-
-        if (searchTerms.length === 0 || searchTerms.every(t => t.trim() === '')) {
-            return {
-                success: false,
-                matches: [],
-                totalCount: 0,
-                pagesWithMatches: [],
-                error: 'Search term is required',
-            };
-        }
-
-        onProgress?.(5, 'Loading PDF library...');
-
-        const pdfjs = await loadPdfjs();
-        const arrayBuffer = await file.arrayBuffer();
-
-        onProgress?.(10, 'Loading PDF document...');
-
-        const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
-        const totalPages = pdf.numPages;
+        if (!file) throw new Error('No file provided');
+        const terms = options.searchTerms?.length ? options.searchTerms : options.searchTerm ? [options.searchTerm] : [];
+        const patterns = terms.filter(term => term.trim()).map(term => {
+            let source = options.useRegex ? term : term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            if (options.wholeWord) source = `\\b(?:${source})\\b`;
+            return new RegExp(source, options.caseSensitive ? 'g' : 'gi');
+        });
+        if (!patterns.length) throw new Error('Search term is required');
+        onProgress?.(10, 'Loading the local text engine...');
+        const lines = await extractRedactionText(file);
         const matches: TextMatch[] = [];
-        const pagesWithMatches: Set<number> = new Set();
-
-        // Build search patterns for all terms
-        const searchPatterns: { pattern: RegExp; term: string }[] = [];
-        try {
-            for (const term of searchTerms) {
-                if (!term.trim()) continue;
-
-                let pattern: RegExp;
-                if (options.useRegex) {
-                    pattern = new RegExp(
-                        term,
-                        options.caseSensitive ? 'g' : 'gi'
-                    );
-                } else {
-                    // Escape special regex characters for literal search
-                    let escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                    if (options.wholeWord) {
-                        escapedTerm = `\\b${escapedTerm}\\b`;
-                    }
-                    pattern = new RegExp(
-                        escapedTerm,
-                        options.caseSensitive ? 'g' : 'gi'
-                    );
+        const seen = new Set<string>();
+        for (const line of lines) {
+            // JS regex offsets count UTF-16 units; glyphs can contain surrogate pairs.
+            const glyphs = line.chars.flatMap(char => Array.from({ length: char.text.length }, () => char));
+            const text = line.chars.map(char => char.text).join('');
+            for (const pattern of patterns) {
+                pattern.lastIndex = 0;
+                let match: RegExpExecArray | null;
+                while ((match = pattern.exec(text)) !== null) {
+                    if (!match[0].length) { pattern.lastIndex++; continue; }
+                    const chars = glyphs.slice(match.index, match.index + match[0].length);
+                    const bounds: RedactionRect = [Math.min(...chars.map(c => c.rect[0])), Math.min(...chars.map(c => c.rect[1])),
+                        Math.max(...chars.map(c => c.rect[2])), Math.max(...chars.map(c => c.rect[3]))];
+                    const key = `${line.page}:${bounds.join(':')}:${match[0]}`;
+                    if (seen.has(key)) continue;
+                    seen.add(key);
+                    matches.push({ page: line.page, text: match[0], x: bounds[0], y: chars[0].origin[1],
+                        width: bounds[2] - bounds[0], height: bounds[3] - bounds[1], bounds,
+                        id: `match-${matches.length}`, selected: true });
                 }
-                searchPatterns.push({ pattern, term });
-            }
-        } catch (regexError) {
-            return {
-                success: false,
-                matches: [],
-                totalCount: 0,
-                pagesWithMatches: [],
-                error: `Invalid search pattern: ${regexError instanceof Error ? regexError.message : 'Unknown error'}`,
-            };
-        }
-
-        if (searchPatterns.length === 0) {
-            return {
-                success: false,
-                matches: [],
-                totalCount: 0,
-                pagesWithMatches: [],
-                error: 'No valid search terms provided',
-            };
-        }
-
-        const progressPerPage = 85 / totalPages;
-
-        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-            const pageProgress = 10 + (pageNum - 1) * progressPerPage;
-            onProgress?.(pageProgress, `Searching page ${pageNum} of ${totalPages}...`);
-
-            try {
-                const page = await pdf.getPage(pageNum);
-                const viewport = page.getViewport({ scale: 1 });
-                const textContent = await page.getTextContent();
-
-                // Process text items to find matches
-                for (const item of textContent.items) {
-                    if (!('str' in item) || !('transform' in item)) continue;
-
-                    const textItem = item as {
-                        str: string;
-                        transform: number[];
-                        width: number;
-                        height: number;
-                        fontName?: string;
-                    };
-
-                    const text = textItem.str;
-                    if (!text) continue;
-
-                    // Search for each pattern in the text
-                    for (const { pattern: searchPattern } of searchPatterns) {
-                        // Find all matches in this text item
-                        let match: RegExpExecArray | null;
-                        searchPattern.lastIndex = 0; // Reset regex state
-
-                        while ((match = searchPattern.exec(text)) !== null) {
-                            // Calculate approximate position of the match within the text item
-                            const matchStart = match.index;
-                            const matchText = match[0];
-                            const fullTextWidth = textItem.width;
-                            const charWidth = fullTextWidth / text.length;
-
-                            // Transform matrix: [scaleX, skewX, skewY, scaleY, translateX, translateY]
-                            const transform = textItem.transform;
-                            const x = transform[4] + matchStart * charWidth;
-                            const y = transform[5];
-                            const width = matchText.length * charWidth;
-                            const height = Math.abs(textItem.height) || Math.abs(transform[0]) * 0.8;
-
-                            // Convert to PDF coordinates (origin at bottom-left)
-                            // The y-coordinate from getTextContent is already in PDF coordinates
-                            const pdfY = y;
-
-                            matches.push({
-                                page: pageNum,
-                                text: matchText,
-                                x: x,
-                                y: pdfY,
-                                width: width,
-                                height: height,
-                                id: `match-${pageNum}-${x.toFixed(2)}-${pdfY.toFixed(2)}-${matches.length}`,
-                                selected: true, // Selected by default
-                            });
-
-                            pagesWithMatches.add(pageNum);
-
-                            // Prevent infinite loop for zero-length matches
-                            if (match[0].length === 0) {
-                                searchPattern.lastIndex++;
-                            }
-                        }
-                    }
-                }
-            } catch (pageError) {
-                console.warn(`Error processing page ${pageNum}:`, pageError);
-                // Continue with other pages
             }
         }
-
         onProgress?.(100, 'Search complete');
-
-        return {
-            success: true,
-            matches,
-            totalCount: matches.length,
-            pagesWithMatches: Array.from(pagesWithMatches).sort((a, b) => a - b),
-        };
+        return { success: true, matches, totalCount: matches.length,
+            pagesWithMatches: [...new Set(matches.map(match => match.page))].sort((a, b) => a - b) };
     } catch (error) {
-        console.error('Search error:', error);
-        return {
-            success: false,
-            matches: [],
-            totalCount: 0,
-            pagesWithMatches: [],
-            error: error instanceof Error ? error.message : 'Failed to search PDF',
-        };
+        return { success: false, matches: [], totalCount: 0, pagesWithMatches: [],
+            error: error instanceof Error ? error.message : 'Failed to search PDF' };
     }
 }
 
@@ -298,137 +161,26 @@ export async function applyFindAndRedact(
     onProgress?: ProgressCallback
 ): Promise<RedactionResult> {
     try {
-        if (!file) {
-            return {
-                success: false,
-                error: 'No file provided',
-                redactedCount: 0,
-            };
-        }
-
-        // Filter to only selected matches
-        const selectedMatches = options.selectedMatchIds && options.selectedMatchIds.length > 0
-            ? matches.filter(m => options.selectedMatchIds!.includes(m.id))
-            : matches.filter(m => m.selected);
-
-        if (selectedMatches.length === 0) {
-            return {
-                success: false,
-                error: 'No matches selected for redaction',
-                redactedCount: 0,
-            };
-        }
-
-        onProgress?.(10, 'Loading PDF...');
-
-        // Load the PDF with pdf-lib
-        const arrayBuffer = await file.arrayBuffer();
-        const pdfDoc = await PDFDocument.load(arrayBuffer, {
-            ignoreEncryption: true,
-        });
-
-        const pages = pdfDoc.getPages();
-        const pageCount = pages.length;
-
-        // Default redaction color (black)
-        const redactionColor = options.color
-            ? rgb(options.color.r / 255, options.color.g / 255, options.color.b / 255)
-            : rgb(0, 0, 0);
-
-        let redactedCount = 0;
-        const progressPerMatch = 80 / selectedMatches.length;
-
-        // Embed font for replacement text
-        let font = null;
-        if (options.replacementText) {
-            font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-        }
-
-        for (let i = 0; i < selectedMatches.length; i++) {
-            const match = selectedMatches[i];
-            const progress = 10 + i * progressPerMatch;
-            onProgress?.(progress, `Redacting ${i + 1} of ${selectedMatches.length}...`);
-
-            // Validate page number
-            if (match.page < 1 || match.page > pageCount) {
-                console.warn(`Invalid page number: ${match.page}. Skipping.`);
-                continue;
-            }
-
-            const page = pages[match.page - 1];
-            const { height: pageHeight } = page.getSize();
-
-            // The y-coordinate is already in PDF coordinates (from bottom)
-            // We need to draw the rectangle at this position
-            const pdfY = match.y;
-
-            // Draw filled rectangle over the matched text
-            page.drawRectangle({
-                x: match.x,
-                y: pdfY,
-                width: match.width,
-                height: match.height,
-                color: redactionColor,
-                opacity: 1, // Fully opaque
-            });
-
-            // Add border if requested
-            if (options.addBorder) {
-                page.drawRectangle({
-                    x: match.x,
-                    y: pdfY,
-                    width: match.width,
-                    height: match.height,
-                    borderColor: rgb(0.3, 0.3, 0.3),
-                    borderWidth: 0.5,
-                });
-            }
-
-            // Add replacement text if specified
-            if (options.replacementText && font) {
-                const fontSize = Math.min(match.height * 0.7, 10);
-                const textWidth = font.widthOfTextAtSize(options.replacementText, fontSize);
-
-                // Center the text in the redaction box
-                const textX = match.x + (match.width - textWidth) / 2;
-                const textY = pdfY + (match.height - fontSize) / 2;
-
-                page.drawText(options.replacementText, {
-                    x: textX,
-                    y: textY,
-                    size: fontSize,
-                    font,
-                    color: rgb(1, 1, 1), // White text on black background
-                });
-            }
-
-            redactedCount++;
-        }
-
-        onProgress?.(95, 'Saving PDF...');
-
-        // Save the modified PDF
-        const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
-        const outputBuffer = pdfBytes.buffer.slice(
-            pdfBytes.byteOffset,
-            pdfBytes.byteOffset + pdfBytes.byteLength
-        ) as ArrayBuffer;
-        const blob = new Blob([outputBuffer], { type: 'application/pdf' });
-
+        if (!file) throw new Error('No file provided');
+        const selected = options.selectedMatchIds !== undefined
+            ? matches.filter(match => options.selectedMatchIds!.includes(match.id))
+            : matches.filter(match => match.selected);
+        if (!selected.length) throw new Error('No matches selected for redaction');
+        if (selected.some(match => !match.bounds)) throw new Error('Search again to obtain exact redaction bounds');
+        const color = options.color ?? { r: 0, g: 0, b: 0 };
+        const channels = [color.r, color.g, color.b];
+        if (channels.some(c => !Number.isFinite(c) || c < 0 || c > 255)) throw new Error('Invalid redaction color');
+        const hex = '#' + channels.map(c => Math.round(c).toString(16).padStart(2, '0')).join('');
+        onProgress?.(10, 'Removing selected PDF content...');
+        const bytes = await removePDFContent(file, selected.map(match => ({
+            page: match.page, coordinates: 'pdf',
+            rect: match.bounds!,
+            color: hex, label: options.replacementText, border: options.addBorder,
+        })));
         onProgress?.(100, 'Complete!');
-
-        return {
-            success: true,
-            result: blob,
-            redactedCount,
-        };
+        return { success: true, result: new Blob([bytes], { type: 'application/pdf' }), redactedCount: selected.length };
     } catch (error) {
-        console.error('Redaction error:', error);
-        return {
-            success: false,
-            error: error instanceof Error ? error.message : 'Failed to apply redactions',
-            redactedCount: 0,
-        };
+        return { success: false, redactedCount: 0, error: error instanceof Error ? error.message : 'Failed to apply redactions' };
     }
 }
 
@@ -445,6 +197,7 @@ export async function findAndRedact(
         file,
         {
             searchTerm: options.searchTerm,
+            searchTerms: options.searchTerms,
             caseSensitive: options.caseSensitive,
             useRegex: options.useRegex,
             wholeWord: options.wholeWord,

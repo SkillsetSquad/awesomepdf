@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "민감 정보 블라인드 처리(Redact)할 PDF 문서 업로드",
-      "uploadDescription": "정규식 매칭을 적용합니다. 이메일, 전화번호, 주민등록번호/여권번호 등을 자동으로 감지하여 검은색 마스킹 블록으로 가립니다.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "민감 정보 필터 설정",
       "processButton": "개인정보 블라인드 처리 실행",
-      "successMessage": "모든 민감 정보 개인 데이터가 성공적으로 마스킹 및 제거되었습니다!",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "민감 정보 제거 시뮬레이션 보드",
       "clearButton": "초기화",
-      "emptyStateDescription": "지정된 민감 정보 카테고리를 탐색하여 마스킹하고, 이에 해당하는 PDF 텍스트 문자열 정보를 완전히 소거합니다.",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "이메일 주소 필터링",
       "phoneRedactLabel": "전화번호 필터링",
-      "idRedactLabel": "여권 및 신분증 번호 필터링",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "사용자 지정 민감 단어 필터링",
       "customKeywordsPlaceholder": "쉼표로 구분된 단어들"
     },
@@ -3560,10 +3560,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "개인정보를 삭제할 PDF 업로드",
-      "uploadDescription": "여기에 PDF를 드래그 앤 드롭하여 개인정보 및 민감 데이터를 자동으로 스캔하고 비식별화(마스킹) 처리하십시오.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "스마트 비식별화 규칙",
       "processButton": "민감 데이터 마스킹 처리",
-      "successMessage": "PDF 개인정보 및 민감 데이터가 성공적으로 마스킹 처리되었습니다!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "PDF 업로드",
@@ -3606,6 +3606,20 @@
       "optionsTitle": "글로벌 송장 외환 변환 옵션",
       "processButton": "송장 자동 번역 및 환산 실행",
       "successMessage": "외화 송장의 번역 및 로컬 통화 환산 장부 스탬프 적용이 성공적으로 완료되었습니다!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

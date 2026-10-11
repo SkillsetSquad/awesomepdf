@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Spanish Tool Content / Contenido de Herramientas en Español
  * Requirements: 3.1 - Multi-language support
@@ -5616,64 +5617,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       }
     ]
   },
-  "smart-data-redactor": {
-    "title": "Redactar Datos Sensibles",
-    "metaDescription": "Encuentre direcciones de correo electrónico, números de teléfono y patrones de identificación en archivos PDF. Revise coincidencias y redacte contenido confidencial localmente.",
-    "keywords": [
-      "censurar pdf",
-      "ocultar datos sensibles",
-      "redaccion de documentos"
-    ],
-    "description": "<p>Smart Privacy Data Redactor es una herramienta automatizada diseñada para garantizar un sólido cumplimiento de la privacidad de los documentos.</p>\n      <p>Simplemente superponer cuadros negros en editores normales no es seguro porque el texto subyacente aún se puede copiar. Esta herramienta implementa una verdadera <strong>coincidencia de patrones de PNL y desinfección del flujo de contenido físico</strong>.</p>\n      <p>Escanea el documento en busca de correos electrónicos, números de teléfono, números de seguridad social o palabras clave personalizadas, coloca una máscara negra mate premium sobre las coordenadas y sobrescribe permanentemente el flujo de caracteres con <code>[REDACTED]</code>, bloqueando las filtraciones de copiar y pegar.</p>",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Subir PDF de destino",
-        "description": "Proporcione el contrato o declaración que muestre detalles confidenciales del cliente."
-      },
-      {
-        "step": 2,
-        "title": "Seleccionar reglas de redacción",
-        "description": "Verifique los patrones de destino (correo electrónico, teléfono, identificación) o defina palabras confidenciales personalizadas."
-      },
-      {
-        "step": 3,
-        "title": "Redacción y descarga automáticas",
-        "description": "Haga clic en ejecutar para superponer máscaras seguras y borrar los flujos de texto."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Intercambio de acuerdos comerciales",
-        "description": "Publique de forma segura documentos comerciales ocultando salarios personales, números de teléfono o correos electrónicos.",
-        "icon": "file-signature"
-      },
-      {
-        "title": "Reanudar la anonimización de la base de datos",
-        "description": "Elimina los nombres, la información de contacto o las direcciones de los solicitantes para cumplir con estrictas normas de privacidad.",
-        "icon": "user-check"
-      },
-      {
-        "title": "Distribución de estados financieros",
-        "description": "Ocultar números de libro mayor específicos o nombres de accionistas antes de publicar informes.",
-        "icon": "pie-chart"
-      }
-    ],
-    "faq": [
-      {
-        "question": "¿Los detalles redactados realmente no se pueden copiar?",
-        "answer": "Sí. Reescribimos el flujo de contenido de la página para borrar los caracteres. Copiar y pegar desde el cuadro redactado solo extraerá la cadena \"[ELIMINADO]\"."
-      },
-      {
-        "question": "¿Funciona con archivos PDF de imágenes escaneadas?",
-        "answer": "Esta herramienta apunta a flujos de texto vectoriales. Para archivos de imágenes escaneadas, utilice primero nuestra herramienta OCR o recórtela manualmente."
-      },
-      {
-        "question": "¿Está guardado el alcance objetivo del HUD rojo en el archivo?",
-        "answer": "No, ese es un magnífico efecto de carga interactivo en la interfaz. El PDF de salida muestra rectángulos negros limpios estándar."
-      }
-    ]
-  },
+  "smart-data-redactor": localizedRedactionContent('es', 'smart-data-redactor', "Redactar Datos Sensibles"),
   "bookmarks-auto-generator": {
     "title": "Generar Marcadores",
     "metaDescription": "Genere marcadores PDF a partir de títulos y patrones de texto. Agregue un esquema navegable a documentos, manuales e informes extensos.",
@@ -7087,76 +7031,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       }
     ]
   },
-  "find-and-redact": {
-    "title": "Buscar y censurar",
-    "metaDescription": "Busca y censura texto en todas las páginas de un PDF. Realice censura por lotes de información confidencial como números de cuenta, nombres y más.",
-    "keywords": [
-      "censurar pdf",
-      "buscar y censurar",
-      "censurar por lotes",
-      "eliminar texto de pdf",
-      "ofuscar pdf",
-      "ocultar datos confidenciales"
-    ],
-    "description": "\n      <p>Buscar y censurar le permite buscar texto, números o patrones específicos en todas las páginas de su PDF y ofuscar todas las coincidencias a la vez. Es perfecto para eliminar información confidencial como números de cuenta, nombres, direcciones o cualquier dato confidencial.</p>\n      <p>Previsualice todas las coincidencias antes de aplicar la censura y elija selectivamente qué elementos desea ocultar. Admite búsqueda con distinción de mayúsculas y minúsculas, coincidencia de palabras completas y expresiones regulares para patrones de búsqueda avanzados.</p>\n      <p>Todo el procesamiento se realiza en su navegador, garantizando que sus documentos permanezcan privados y seguros.</p>\n    ",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Subir su PDF",
-        "description": "Arrastre y suelte su archivo PDF o haga clic para seleccionarlo."
-      },
-      {
-        "step": 2,
-        "title": "Buscar texto",
-        "description": "Introduzca el texto, número o patrón de expresión regular que desea buscar y censurar."
-      },
-      {
-        "step": 3,
-        "title": "Revisar y seleccionar",
-        "description": "Previsualice todas las coincidencias encontradas y seleccione cuáles desea censurar."
-      },
-      {
-        "step": 4,
-        "title": "Aplicar censura",
-        "description": "Personalice la apariencia del bloque de censura y aplíquelo a las coincidencias seleccionadas."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Cumplimiento de privacidad",
-        "description": "Censure información personal para cumplir con normativas como RGPD, HIPAA u otras regulaciones.",
-        "icon": "shield"
-      },
-      {
-        "title": "Documentos legales",
-        "description": "Elimine datos confidenciales de documentos legales antes de compartirlos públicamente.",
-        "icon": "scale"
-      },
-      {
-        "title": "Registros financieros",
-        "description": "Oculte números de cuenta, números de seguridad social o datos financieros en extractos bancarios.",
-        "icon": "credit-card"
-      }
-    ],
-    "faq": [
-      {
-        "question": "¿La censura es permanente?",
-        "answer": "Sí, la censura elimina de forma permanente el texto subyacente. El contenido original no se puede recuperar. Mantenga siempre una copia de seguridad del archivo original."
-      },
-      {
-        "question": "¿Puedo censurar imágenes o texto escaneado?",
-        "answer": "Esta herramienta funciona con archivos PDF basados en texto digital. Para documentos escaneados, necesitará utilizar la censura manual basada en áreas."
-      },
-      {
-        "question": "¿Puedo personalizar la apariencia de la censura?",
-        "answer": "Sí, puede establecer el color de la censura (usualmente negro), añadir bordes y, opcionalmente, incluir un texto de reemplazo como \"[CENSURADO]\"."
-      },
-      {
-        "question": "¿Cómo funciona la búsqueda por expresiones regulares (regex)?",
-        "answer": "Active la opción \"Usar expresión regular\" para buscar utilizando patrones de regex. Por ejemplo, \\d{4}-\\d{4}-\\d{4}-\\d{4} para encontrar números de tarjetas de crédito."
-      }
-    ]
-  },
+  "find-and-redact": localizedRedactionContent('es', 'find-and-redact', "Buscar y censurar"),
   "pdf-to-docx": {
     "title": "PDF a Word",
     "metaDescription": "Convierte PDF a documentos de Word (DOCX) editables. Preserva el formato y el diseño original.",
@@ -7781,75 +7656,5 @@ export const toolContentEs: Record<string, ToolContent> = {
     ]
   }
 ,
-"redact-pdf": {
-  "title": "Censurar PDF",
-  "metaDescription": "Oscurece, difumina o pixela contenido PDF sensible. Exporte páginas aplanadas y elimine metadatos localmente en su navegador.",
-  "keywords": [
-    "redactar pdf",
-    "apagón pdf",
-    "mosaico pdf",
-    "desenfocar pdf",
-    "privacidad del pdf",
-    "eliminar datos confidenciales",
-    "editor de pdf seguro"
-  ],
-  "description": "<p>Redact PDF proporciona un editor visual e interactivo para ocultar y proteger permanentemente datos confidenciales en sus documentos PDF. Arrastra para marcar cualquier área confidencial (como nombres, direcciones, números de identificación, firmas, sellos oficiales, cifras financieras o retratos) y aplica efectos de oscurecimiento, oscurecimiento, mosaico o desenfoque.</p>\n      <p>A diferencia de los editores de PDF estándar que simplemente superponen rectángulos negros superficiales sobre el texto existente, esta herramienta realiza una <strong>rasterización física irreversible de píxeles</strong>. Las capas de texto subyacentes, los gráficos vectoriales y las secuencias de OCR se destruyen por completo y no se pueden recuperar copiando y pegando ni aplicando ingeniería inversa.</p>\n      <p>Además, la herramienta realiza una limpieza profunda de metadatos, eliminando la información del autor, el historial de creación y las transmisiones XMP. Todo el procesamiento se ejecuta 100% localmente en su navegador sin cargas en el servidor.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "Subir documento PDF",
-      "description": "Seleccione o arrastre y suelte el archivo PDF que desea redactar."
-    },
-    {
-      "step": 2,
-      "title": "Marcar áreas sensibles",
-      "description": "Haga clic y arrastre en cualquier página para dibujar cuadros de redacción alrededor del contenido confidencial."
-    },
-    {
-      "step": 3,
-      "title": "Elija estilo de redacción",
-      "description": "Seleccione oscurecimiento, oscurecimiento, mosaico (tamaño de píxel ajustable) o desenfoque. Cambie la vista previa en tiempo real para inspeccionar el resultado."
-    },
-    {
-      "step": 4,
-      "title": "Exportar PDF seguro",
-      "description": "Haga clic en \"Generar PDF seguro\" para ejecutar el acoplamiento irreversible, la eliminación de metadatos y descargar su documento seguro."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Privacidad y cumplimiento normativo",
-      "description": "Enmascare de forma segura la información de identificación personal (PII) para cumplir con los requisitos de GDPR, HIPAA o CCPA.",
-      "icon": "shield"
-    },
-    {
-      "title": "Intercambio confidencial legal y comercial",
-      "description": "Secretos comerciales oscuros, términos de acuerdos, firmas y sellos antes de su divulgación pública o distribución externa.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Protección financiera y de identidad",
-      "description": "Ocultar números de cuentas bancarias, identificaciones fiscales, detalles de tarjetas de crédito y números de tarjetas de identificación en extractos y facturas.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "¿Alguien puede recuperar información redactada copiando texto o inspeccionando capas?",
-      "answer": "No. Las áreas redactadas se someten a un aplanamiento físico de los píxeles. El texto, los vectores y los objetos subyacentes se eliminan por completo de la estructura del archivo, lo que imposibilita la recuperación."
-    },
-    {
-      "question": "¿Cuál es la diferencia entre oscurecimiento, mosaico y desenfoque?",
-      "answer": "Blackout crea una máscara negra sólida (estándar para documentos legales); whiteout proporciona una máscara blanca y limpia; el mosaico crea una cuadrícula pixelada; y el desenfoque produce un suave efecto de vidrio esmerilado."
-    },
-    {
-      "question": "¿Se cargan archivos en sus servidores?",
-      "answer": "No. Todo el procesamiento, la redacción, el acoplamiento y la generación de PDF se realizan completamente dentro de la memoria de su navegador. Tus documentos nunca salen de tu dispositivo."
-    },
-    {
-      "question": "¿Qué metadatos se eliminan?",
-      "answer": "El título del documento, el autor, el asunto, las palabras clave, el creador, el productor, la fecha de creación, la fecha de modificación y los flujos de metadatos XMP extendidos se borran por completo."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('es', 'redact-pdf', "Censurar PDF")
 };

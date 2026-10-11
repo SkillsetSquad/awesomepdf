@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "تحميل مستندات PDF لإجراء التعتيم/إخفاء البيانات",
-      "uploadDescription": "يستخدم مطابقة التعبيرات النمطية (Regex). يكتشف تلقائياً رسائل البريد الإلكتروني وأرقام الهواتف والهويات، ويضع حواجز سوداء داكنة لإخفاء البيانات.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "إعدادات مرشحات تعتيم البيانات",
       "processButton": "تنفيذ تعتيم البيانات الشخصية",
-      "successMessage": "تم قناع وإزالة جميع البيانات الشخصية الحساسة بنجاح!",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "لوحة معاينة تعتيم البيانات الشخصية",
       "clearButton": "مسح",
-      "emptyStateDescription": "اكتشف واخفِ الفئات الحساسة المستهدفة، مع إزالة تدفقات نصوص الحروف الرسومية المقابلة تماماً من ملف PDF.",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "تصفية عناوين البريد الإلكتروني",
       "phoneRedactLabel": "تصفية أرقام الهواتف",
-      "idRedactLabel": "تصفية جوازات السفر وبطاقات الهوية",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "عبارات التعتيم المخصصة",
       "customKeywordsPlaceholder": "عبارات مفصولة بفاصلة"
     },
@@ -3560,10 +3560,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "تحميل ملف PDF للتعمية",
-      "uploadDescription": "قم بسحب وإسقاط ملف PDF هنا لمسح وتعتيم بيانات الخصوصية تلقائيًا.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "قواعد التعمية الذكية",
       "processButton": "تعمية البيانات الحساسة",
-      "successMessage": "تم تعمية بيانات خصوصية PDF بنجاح!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "تحميل PDF",
@@ -3606,6 +3606,20 @@
       "optionsTitle": "خيارات أسعار الصرف",
       "processButton": "ترجمة وتحويل الفاتورة",
       "successMessage": "تم ترجمة الفاتورة الأجنبية وختم دفتر التحويل المحلي بنجاح!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

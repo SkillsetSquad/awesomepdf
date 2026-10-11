@@ -16,14 +16,12 @@ import {
   Shield,
   Eye,
   EyeOff,
-  Layers,
   Trash2,
   Undo2,
   Redo2,
   Download,
   ZoomIn,
   ZoomOut,
-  RotateCcw,
   ChevronLeft,
   ChevronRight,
   ChevronFirst,
@@ -32,14 +30,10 @@ import {
   List,
   Maximize2,
   Lock,
-  Sparkles,
   Palette,
-  Sliders,
   CheckCircle2,
   AlertTriangle,
-  Info,
   Maximize,
-  FileCheck,
   Paintbrush,
   Square,
 } from 'lucide-react';
@@ -55,10 +49,7 @@ import { withBasePath } from '@/lib/utils/path';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import {
   redactPDF,
-  renderRedactionAreaOnCanvas,
-  applyPixelate,
-  applyBlur,
-  applySolidFill,
+  getBrushRedactionRects,
   type RedactionArea,
   type RedactionStyle,
   type RedactOptions,
@@ -111,7 +102,7 @@ const DRAFT_COLORS = [
 ];
 
 export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
-  const t = useTranslations('common');
+  const tRedaction = useTranslations('tools.trueRedaction');
 
   // File state
   const [file, setFile] = useState<File | null>(null);
@@ -120,6 +111,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const processingRun = useRef(0);
 
   // PDF Document state
   const [numPages, setNumPages] = useState(0);
@@ -143,7 +135,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   const [historyIndex, setHistoryIndex] = useState(-1);
 
   // Active redaction tool settings
-  const [activeTool, setActiveTool] = useState<'brush' | 'rect'>('brush');
+  const [activeTool, setActiveTool] = useState<'brush' | 'rect'>('rect');
   const [brushWidth, setBrushWidth] = useState<number>(20);
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
   const activeBrushPathRef = useRef<Point[]>([]);
@@ -151,15 +143,23 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   const [activeStyle, setActiveStyle] = useState<RedactionStyle>('blackout');
   const [activeColor, setActiveColor] = useState('#000000');
   const [activeDraftColor, setActiveDraftColor] = useState('red');
-  const [activeBlockSize, setActiveBlockSize] = useState(10);
-  const [activeBlurRadius, setActiveBlurRadius] = useState(8);
+  const activeBlockSize = 10;
+  const activeBlurRadius = 8;
   const [previewMode, setPreviewMode] = useState(false);
 
   // Security & Privacy options
-  const [stripMetadata, setStripMetadata] = useState(true);
+
   const [flattenAllPages, setFlattenAllPages] = useState(false);
-  const [purgeAnnotations, setPurgeAnnotations] = useState(true);
-  const [renderScale, setRenderScale] = useState(2.0);
+
+  useEffect(() => {
+    processingRun.current++;
+    setResult(null);
+    setStatus('idle');
+    setError(null);
+  }, [file, redactions, flattenAllPages]);
+  useEffect(() => () => { processingRun.current++; }, []);
+
+
 
   // Canvas Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -510,19 +510,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                 : style === 'custom-color'
                 ? areaToDraw.color || '#000000'
                 : '#000000';
-            ctx.strokeStyle = fillCol;
             ctx.fillStyle = fillCol;
-            ctx.lineWidth = sw;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            ctx.beginPath();
-            if (pts.length === 1) {
-              ctx.arc(pts[0].x, pts[0].y, sw / 2, 0, Math.PI * 2);
-              ctx.fill();
-            } else {
-              ctx.moveTo(pts[0].x, pts[0].y);
-              for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
-              ctx.stroke();
+            for (const rect of getBrushRedactionRects(areaToDraw)) {
+              ctx.fillRect(rect[0] * scaleX, rect[1] * scaleY, (rect[2] - rect[0]) * scaleX, (rect[3] - rect[1]) * scaleY);
             }
             ctx.restore();
           } else {
@@ -1388,19 +1378,18 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   // Process and download redacted PDF
   const handleProcess = useCallback(async () => {
     if (!file) return;
+    const run = ++processingRun.current;
 
     try {
       setStatus('processing');
+      setResult(null);
       setProgress(5);
-      setProgressMessage('正在准备文档与安全选项...');
+      setProgressMessage(tRedaction('preparing'));
       setError(null);
 
       const options: RedactOptions = {
         flattenAllPages,
-        stripMetadata,
-        purgeAnnotations,
-        renderScale,
-        outputQuality: 0.95,
+        renderScale: 2,
       };
 
       const resultBytes = await redactPDF(
@@ -1408,16 +1397,20 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
         redactions,
         options,
         (pct, msg) => {
-          setProgress(pct);
-          setProgressMessage(msg);
+          if (run === processingRun.current) {
+            setProgress(pct);
+            setProgressMessage(msg);
+          }
         }
       );
 
-      const outputBlob = new Blob([resultBytes as unknown as BlobPart], { type: 'application/pdf' });
+      if (run !== processingRun.current) return;
+
+      const outputBlob = new Blob([new Uint8Array(resultBytes)], { type: 'application/pdf' });
       setResult(outputBlob);
       setStatus('complete');
       setProgress(100);
-      setProgressMessage('脱敏完成，正在启动下载...');
+      setProgressMessage(tRedaction('complete'));
 
       // Automatically trigger file download
       const downloadFilename = file.name
@@ -1425,11 +1418,11 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
         : 'redacted.pdf';
       await saveBlobFile(outputBlob, downloadFilename);
     } catch (err) {
-      console.error('Redaction failed:', err);
-      setError((typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string' ? err.message : '') || '处理脱敏 PDF 时出错');
+      if (run !== processingRun.current) return;
+      setError((typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string' ? err.message : '') || tRedaction('failed'));
       setStatus('error');
     }
-  }, [file, redactions, flattenAllPages, stripMetadata, purgeAnnotations, renderScale]);
+  }, [file, redactions, flattenAllPages, tRedaction]);
 
   return (
     <div className={`w-full max-w-7xl mx-auto p-4 space-y-6 ${className}`}>
@@ -1514,7 +1507,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     className="gap-1.5 text-xs h-8"
                   >
                     <span className="w-3 h-3 bg-black rounded-sm border border-neutral-600 inline-block" />
-                    涂黑遮蔽
+                    {tRedaction('blackout')}
                   </Button>
                   <Button
                     size="sm"
@@ -1523,26 +1516,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     className="gap-1.5 text-xs h-8"
                   >
                     <span className="w-3 h-3 bg-white rounded-sm border border-neutral-400 inline-block" />
-                    白条遮盖
+                    {tRedaction('whiteout')}
                   </Button>
-                  <Button
-                    size="sm"
-                    variant={activeStyle === 'mosaic' ? 'default' : 'ghost'}
-                    onClick={() => setActiveStyle('mosaic')}
-                    className="gap-1.5 text-xs h-8"
-                  >
-                    <Sliders className="w-3.5 h-3.5" />
-                    马赛克
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={activeStyle === 'blur' ? 'default' : 'ghost'}
-                    onClick={() => setActiveStyle('blur')}
-                    className="gap-1.5 text-xs h-8"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    高斯模糊
-                  </Button>
+
                 </div>
               </div>
 
@@ -1663,40 +1639,8 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                   </div>
                 )}
 
-                {/* Mosaic Block Size Slider */}
-                {activeStyle === 'mosaic' && (
-                  <div className={`flex items-center gap-2 ${activeTool === 'brush' ? 'pl-3 border-l border-border/70' : ''}`}>
-                    <span className="text-muted-foreground font-medium whitespace-nowrap">马赛克颗粒:</span>
-                    <Slider
-                      min={4}
-                      max={24}
-                      step={2}
-                      value={[activeBlockSize]}
-                      onValueChange={(values) => setActiveBlockSize(Number(String(values[0])))}
-                      className="w-20 cursor-pointer" aria-label={"马赛克颗粒"}
-                    />
-                    <span className="font-mono text-xs font-semibold w-7 text-foreground">{activeBlockSize}px</span>
-                  </div>
-                )}
-
-                {/* Blur Radius Slider */}
-                {activeStyle === 'blur' && (
-                  <div className={`flex items-center gap-2 ${activeTool === 'brush' ? 'pl-3 border-l border-border/70' : ''}`}>
-                    <span className="text-muted-foreground font-medium whitespace-nowrap">模糊强度:</span>
-                    <Slider
-                      min={2}
-                      max={16}
-                      step={1}
-                      value={[activeBlurRadius]}
-                      onValueChange={(values) => setActiveBlurRadius(Number(String(values[0])))}
-                      className="w-20 cursor-pointer" aria-label={"模糊强度"}
-                    />
-                    <span className="font-mono text-xs font-semibold w-7 text-foreground">{activeBlurRadius}px</span>
-                  </div>
-                )}
-
                 {/* Hint for Rect mode without sliders */}
-                {activeTool === 'rect' && activeStyle !== 'mosaic' && activeStyle !== 'blur' && (
+                {activeTool === 'rect' && (
                   <span className="text-muted-foreground text-[11px] flex items-center gap-1">
                     <span className="text-primary font-bold"><UIEmojiLightbulb className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></span>
                     <span>按住鼠标左键在页面拖拽可绘制矩形遮盖区，点击选区可拖动或通过手柄缩放。</span>
@@ -1914,7 +1858,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
                     ) : (
                       <>
                         <Download className="w-4 h-4" />
-                        <span>生成脱敏安全 PDF</span>
+                        <span>{tRedaction('export')}</span>
                       </>
                     )}
                   </Button>
@@ -1933,63 +1877,16 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
               {/* 3. Security Configuration Panel */}
               <Card className="p-4 bg-card border border-border gap-3">
                 <div className="flex items-center gap-2 pb-2 border-b border-border">
-                  <Shield className="w-4 h-4 text-emerald-500" />
-                  <span className="text-xs font-bold uppercase tracking-wider">安全与隐私加固</span>
+                  <Shield className="w-4 h-4 text-primary" />
+                  <span className="text-xs font-bold">{tRedaction('title')}</span>
                 </div>
-
-                <div className="space-y-2.5 text-xs">
-                  <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <Checkbox
-
-                      checked={true}
-                      disabled={true}
-                      className="mt-0.5"
-                    />
-                    <div>
-                      <span className="font-semibold text-foreground">物理不可逆销毁 (必选)</span>
-                      <p className="text-[11px] text-muted-foreground">脱敏区域以像素合并烧录，彻底清除底层文字与对象流</p>
-                    </div>
-                  </Label>
-
-                  <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <Checkbox
-
-                      checked={stripMetadata}
-                      onCheckedChange={(checked) => setStripMetadata((checked === true))}
-                      className="mt-0.5"
-                    />
-                    <div>
-                      <span className="font-medium text-foreground">深度擦除元数据</span>
-                      <p className="text-[11px] text-muted-foreground">清空作者、标题、修改日期及 XMP 扩展隐私指纹</p>
-                    </div>
-                  </Label>
-
-                  <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <Checkbox
-
-                      checked={purgeAnnotations}
-                      onCheckedChange={(checked) => setPurgeAnnotations((checked === true))}
-                      className="mt-0.5"
-                    />
-                    <div>
-                      <span className="font-medium text-foreground">清除残留批注与脚本</span>
-                      <p className="text-[11px] text-muted-foreground">移除浮动注释、AcroForm 脚本与潜在外链泄露</p>
-                    </div>
-                  </Label>
-
-                  <Label className="flex items-start gap-2 cursor-pointer select-none">
-                    <Checkbox
-
-                      checked={flattenAllPages}
-                      onCheckedChange={(checked) => setFlattenAllPages((checked === true))}
-                      className="mt-0.5"
-                    />
-                    <div>
-                      <span className="font-medium text-foreground">全局统一栅格化</span>
-                      <p className="text-[11px] text-muted-foreground">将未涂黑页面也全部光栅化（体积增大但安全最高）</p>
-                    </div>
-                  </Label>
-                </div>
+                <p className="text-xs text-muted-foreground">{tRedaction('description')}</p>
+                <p className="text-xs text-muted-foreground">{tRedaction('cleanup')}</p>
+                <p className="text-xs text-muted-foreground">{tRedaction('brushNotice')}</p>
+                <Label className="flex items-start gap-2 cursor-pointer text-xs">
+                  <Checkbox checked={flattenAllPages} onCheckedChange={checked => setFlattenAllPages(checked === true)} />
+                  <span>{tRedaction('flatten')}</span>
+                </Label>
               </Card>
             </div>
 
@@ -2135,11 +2032,12 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
 
                   <div className="relative shadow-md border border-border rounded overflow-hidden">
                     {/* Base PDF Render Canvas */}
-                    <canvas ref={setBaseCanvas} className="block" />
+                    <canvas ref={setBaseCanvas} dir="ltr" className="block" />
 
                     {/* Interactive Redaction Overlay Canvas */}
                     <canvas
                       ref={overlayCanvasRef}
+                      dir="ltr"
                       onMouseDown={handleMouseDown}
                       onMouseMove={handleMouseMove}
                       onMouseUp={handleMouseUp}

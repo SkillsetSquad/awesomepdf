@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Deutsche Tool-Inhalte für SEO
  * Enthält detaillierte Beschreibungen, Anleitungen, Anwendungsfälle und FAQs für alle Tools
@@ -5209,65 +5210,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       }
     ]
   },
-  "smart-data-redactor": {
-    "title": "Daten schwärzen",
-    "metaDescription": "Finden Sie E-Mail-Adressen, Telefonnummern und ID-Muster in PDFs. Überprüfen Sie Übereinstimmungen und schwärzen Sie vertrauliche Inhalte lokal.",
-    "keywords": [
-      "pdf schwaerzen",
-      "datenschutz pdf",
-      "zensieren",
-      "anonymisieren"
-    ],
-    "description": "<p>Der Smart Privacy Data Redactor ist ein automatisiertes Tool, das eine strenge Einhaltung des Datenschutzes bei Dokumenten gewährleistet.</p>\n      <p>Das einfache Überlagern von Blackboxen in normalen Editoren ist unsicher, da der darunter liegende Text weiterhin kopiert werden kann. Dieses Tool implementiert echten <strong>NLP-Mustervergleich und die Bereinigung physischer Inhaltsströme</strong>.</p>\n      <p>Es durchsucht das Dokument nach E-Mails, Telefonnummern, SSNs oder benutzerdefinierten Schlüsselwörtern, platziert eine hochwertige mattschwarze Maske über den Koordinaten und überschreibt den Zeichenstrom dauerhaft mit <code>[ZENSIERT]</code>, wodurch Lecks beim Kopieren und Einfügen blockiert werden.</p>",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "Ziel-PDF hochladen",
-        "description": "Legen Sie den Vertrag oder die Abrechnung mit sensiblen Kundendaten vor."
-      },
-      {
-        "step": 2,
-        "title": "Schwärzungsregeln auswählen",
-        "description": "Überprüfen Sie Zielmuster (E-Mail, Telefon, ID) oder definieren Sie benutzerdefinierte sensible Wörter."
-      },
-      {
-        "step": 3,
-        "title": "Automatische Schwärzung und Download",
-        "description": "Klicken Sie auf „Ausführen“, um sichere Masken zu überlagern und die Textströme zu löschen."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Austausch von Handelsvereinbarungen",
-        "description": "Veröffentlichen Sie Geschäftsdokumente sicher, indem Sie persönliche Gehälter, Telefonnummern oder E-Mails verbergen.",
-        "icon": "file-signature"
-      },
-      {
-        "title": "Datenbankanonymisierung fortsetzen",
-        "description": "Entfernen Sie Bewerbernamen, Kontaktinformationen oder Adressen, um strenge Datenschutzbestimmungen einzuhalten.",
-        "icon": "user-check"
-      },
-      {
-        "title": "Verteilung des Jahresabschlusses",
-        "description": "Verbergen Sie bestimmte Buchnummern oder Aktionärsnamen, bevor Sie Berichte veröffentlichen.",
-        "icon": "pie-chart"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Sind redigierte Details wirklich nicht kopierbar?",
-        "answer": "Ja. Wir schreiben den Seiteninhaltsstrom neu, um die Zeichen zu löschen. Beim Kopieren und Einfügen aus dem geschwärzten Feld wird nur die Zeichenfolge „[GEschwärzte]“ extrahiert."
-      },
-      {
-        "question": "Funktioniert es für gescannte Bild-PDFs?",
-        "answer": "Dieses Tool zielt auf Vektortextströme ab. Verwenden Sie für gescannte Bilddateien zunächst unser OCR-Tool oder schneiden Sie sie manuell zu."
-      },
-      {
-        "question": "Ist das rote HUD-Zielfernrohr in der Datei gespeichert?",
-        "answer": "Nein, das ist ein großartiger interaktiver Frontend-Ladeeffekt. Das Ausgabe-PDF zeigt standardmäßig saubere schwarze Rechtecke an."
-      }
-    ]
-  },
+  "smart-data-redactor": localizedRedactionContent('de', 'smart-data-redactor', "Daten schwärzen"),
   "bookmarks-auto-generator": {
     "title": "Lesezeichen generieren",
     "metaDescription": "Generieren Sie PDF-Lesezeichen aus Überschriften und Textmustern. Fügen Sie langen Dokumenten, Handbüchern und Berichten eine navigierbare Gliederung hinzu.",
@@ -7405,76 +7348,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       }
     ]
   },
-  "find-and-redact": {
-    "title": "Suchen und schwärzen",
-    "metaDescription": "Suchen und schwärzen Sie Text über alle Seiten einer PDF hinweg. Schwärzen Sie sensible Informationen wie Kontonummern, Namen und mehr im Stapelverfahren.",
-    "keywords": [
-      "PDF schwärzen",
-      "suchen und schwärzen",
-      "Stapelweise schwärzen",
-      "Text entfernen",
-      "PDF-Zensur",
-      "sensible Daten verbergen"
-    ],
-    "description": "\n      <p>Mit „Suchen und schwärzen“ können Sie nach bestimmtem Text, Nummern oder Mustern auf allen Seiten Ihrer PDF suchen und alle übereinstimmenden Vorkommen auf einmal schwärzen. Perfekt zum Entfernen sensibler Informationen wie Kontonummern, Namen, Adressen oder anderen vertraulichen Daten.</p>\n      <p>Überprüfen Sie alle Übereinstimmungen in der Vorschau, bevor Sie die Schwärzungen anwenden, und wählen Sie gezielt aus, welche Vorkommen geschwärzt werden sollen. Unterstützt die Suche mit Beachtung der Groß-/Kleinschreibung, Ganzwortsuche und reguläre Ausdrücke (Regex) für erweiterte Mustersuchen.</p>\n      <p>Die gesamte Verarbeitung erfolgt in Ihrem Browser, wodurch Ihre Dokumente privat und sicher bleiben.</p>\n    ",
-    "howToUse": [
-      {
-        "step": 1,
-        "title": "PDF hochladen",
-        "description": "Ziehen Sie Ihre PDF-Datei per Drag-and-Drop hierher oder klicken Sie, um sie auszuwählen."
-      },
-      {
-        "step": 2,
-        "title": "Nach Text suchen",
-        "description": "Geben Sie den Text, die Nummer oder das Regex-Muster ein, das Sie suchen und schwärzen möchten."
-      },
-      {
-        "step": 3,
-        "title": "Prüfen und auswählen",
-        "description": "Prüfen Sie alle Übereinstimmungen in der Vorschau und wählen Sie die zu schwärzenden Vorkommen aus."
-      },
-      {
-        "step": 4,
-        "title": "Schwärzung anwenden",
-        "description": "Passen Sie das Erscheinungsbild der Schwärzung an und wenden Sie sie auf die ausgewählten Übereinstimmungen an."
-      }
-    ],
-    "useCases": [
-      {
-        "title": "Datenschutz-Compliance",
-        "description": "Schwärzen Sie personenbezogene Daten zur Einhaltung der DSGVO (GDPR), HIPAA oder anderer Vorschriften.",
-        "icon": "shield"
-      },
-      {
-        "title": "Rechtsdokumente",
-        "description": "Entfernen Sie vertrauliche Daten aus juristischen Dokumenten, bevor Sie diese teilen.",
-        "icon": "scale"
-      },
-      {
-        "title": "Finanzunterlagen",
-        "description": "Schwärzen Sie Kontonummern, Sozialversicherungsnummern oder Finanzdaten auf Abrechnungen.",
-        "icon": "credit-card"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Ist die Schwärzung dauerhaft?",
-        "answer": "Ja, die Schwärzung löscht den darunter liegenden Text unwiderruflich. Der ursprüngliche Inhalt kann nicht wiederhergestellt werden. Behalten Sie immer eine Sicherungskopie der Originaldatei."
-      },
-      {
-        "question": "Kann ich Bilder oder gescannten Text schwärzen?",
-        "answer": "Dieses Werkzeug ist für textbasierte PDFs konzipiert. Für gescannte Dokumente müssen Sie die manuelle, bereichsbasierte Schwärzung verwenden."
-      },
-      {
-        "question": "Kann ich das Erscheinungsbild der Schwärzung anpassen?",
-        "answer": "Ja, Sie können die Schwärzungsfarbe festlegen, Rahmen hinzufügen und optional einen Platzhaltertext wie „[GESCHWÄRZT]“ einfügen."
-      },
-      {
-        "question": "Wie funktioniert die Suche mit regulären Ausdrücken?",
-        "answer": "Aktivieren Sie „Regulären Ausdruck verwenden“, um mit Regex-Mustern zu suchen. Beispielsweise sucht \\d{4}-\\d{4}-\\d{4}-\\d{4} nach Kreditkartennummern."
-      }
-    ]
-  },
+  "find-and-redact": localizedRedactionContent('de', 'find-and-redact', "Suchen und schwärzen"),
   "flatten-pdf": {
     "title": "PDF reduzieren",
     "metaDescription": "Reduzieren Sie PDF-Formulare und -Kommentare. Machen Sie Inhalte uneditierbar.",
@@ -7843,75 +7717,5 @@ export const toolContentDe: Record<string, ToolContent> = {
     ]
   }
 ,
-"redact-pdf": {
-  "title": "PDF schwärzen",
-  "metaDescription": "Schwärzen, verwischen oder verpixeln Sie sensible PDF-Inhalte. Exportieren Sie reduzierte Seiten und entfernen Sie Metadaten lokal in Ihrem Browser.",
-  "keywords": [
-    "PDF redigieren",
-    "Blackout-PDF",
-    "Mosaik-PDF",
-    "PDF verwischen",
-    "PDF-Datenschutz",
-    "Entfernen Sie vertrauliche Daten",
-    "sicherer PDF-Editor"
-  ],
-  "description": "<p>Redact PDF bietet einen visuellen, interaktiven Editor, um vertrauliche Daten in Ihren PDF-Dokumenten dauerhaft zu verbergen und zu schützen. Ziehen Sie, um vertrauliche Bereiche wie Namen, Adressen, Ausweisnummern, Unterschriften, offizielle Siegel, Finanzzahlen oder Porträts zu markieren, und wenden Sie Schwarz-, Weiß-, Mosaik- oder Unschärfeeffekte an.</p>\n      <p>Im Gegensatz zu Standard-PDF-Editoren, die lediglich oberflächliche schwarze Rechtecke über vorhandenen Text legen, führt dieses Tool eine <strong>unumkehrbare physische Pixelrasterung</strong> durch. Die zugrunde liegenden Textebenen, Vektorgrafiken und OCR-Streams werden vollständig zerstört und können nicht durch Kopieren, Einfügen oder Reverse Engineering wiederhergestellt werden.</p>\n      <p>Darüber hinaus führt das Tool eine umfassende Metadatenlöschung durch und löscht Autoreninformationen, den Erstellungsverlauf und XMP-Streams. Die gesamte Verarbeitung erfolgt zu 100 % lokal in Ihrem Browser, ohne Server-Uploads.</p>",
-  "howToUse": [
-    {
-      "step": 1,
-      "title": "PDF-Dokument hochladen",
-      "description": "Wählen Sie die PDF-Datei aus, die Sie schwärzen möchten, oder ziehen Sie sie per Drag-and-Drop."
-    },
-    {
-      "step": 2,
-      "title": "Markieren Sie sensible Bereiche",
-      "description": "Klicken und ziehen Sie auf einer beliebigen Seite, um Schwärzungsrahmen um vertrauliche Inhalte zu zeichnen."
-    },
-    {
-      "step": 3,
-      "title": "Wählen Sie den Schwärzungsstil",
-      "description": "Wählen Sie Blackout, Whiteout, Mosaik (anpassbare Pixelgröße) oder Unschärfe. Schalten Sie die Echtzeitvorschau um, um das Ergebnis zu überprüfen."
-    },
-    {
-      "step": 4,
-      "title": "Gesichertes PDF exportieren",
-      "description": "Klicken Sie auf „Gesichertes PDF generieren“, um eine irreversible Reduzierung, Metadatenlöschung und den Download Ihres gesicherten Dokuments durchzuführen."
-    }
-  ],
-  "useCases": [
-    {
-      "title": "Datenschutz und Einhaltung gesetzlicher Vorschriften",
-      "description": "Maskieren Sie personenbezogene Daten (PII) sicher, um den DSGVO-, HIPAA- oder CCPA-Anforderungen zu entsprechen.",
-      "icon": "shield"
-    },
-    {
-      "title": "Vertrauliche rechtliche und geschäftliche Weitergabe",
-      "description": "Verschleiern Sie Geschäftsgeheimnisse, Vertragsbedingungen, Unterschriften und Stempel vor der Veröffentlichung oder externen Verbreitung.",
-      "icon": "file-text"
-    },
-    {
-      "title": "Finanz- und Identitätsschutz",
-      "description": "Verbergen Sie Bankkontonummern, Steuer-IDs, Kreditkartendaten und Personalausweisnummern aus Kontoauszügen und Rechnungen.",
-      "icon": "lock"
-    }
-  ],
-  "faq": [
-    {
-      "question": "Kann jemand geschwärzte Informationen wiederherstellen, indem er Text kopiert oder Ebenen überprüft?",
-      "answer": "Nein. Die geschwärzten Bereiche werden einer physikalischen Pixel-Einbrenn-Reduzierung unterzogen. Der zugrunde liegende Text, die Vektoren und die Objekte werden vollständig aus der Dateistruktur entfernt, sodass eine Wiederherstellung unmöglich ist."
-    },
-    {
-      "question": "Was ist der Unterschied zwischen Blackout, Mosaik und Unschärfe?",
-      "answer": "Blackout erzeugt eine durchgehend schwarze Maske (Standard für juristische Dokumente); Whiteout sorgt für eine saubere weiße Maske; Mosaik erzeugt ein pixeliges Raster; und Unschärfe erzeugen einen weichen Milchglaseffekt."
-    },
-    {
-      "question": "Werden Dateien auf Ihre Server hochgeladen?",
-      "answer": "Nein. Das gesamte Rendern, Schwärzen, Reduzieren und PDF-Generieren erfolgt vollständig im Speicher Ihres Browsers. Ihre Dokumente verlassen niemals Ihr Gerät."
-    },
-    {
-      "question": "Welche Metadaten werden entfernt?",
-      "answer": "Dokumenttitel, Autor, Betreff, Schlüsselwörter, Ersteller, Produzent, Erstellungsdatum, ModDatum und erweiterte XMP-Metadatenströme werden vollständig gelöscht."
-    }
-  ]
-}
+"redact-pdf": localizedRedactionContent('de', 'redact-pdf', "PDF schwärzen")
 };

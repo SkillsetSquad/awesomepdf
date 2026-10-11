@@ -47,6 +47,7 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 - Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer.
 - Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
 - Added a real open-source page with source, license and notice downloads for each deployed build.
+- Changed Redact PDF, Find and Redact, and Smart Data Redactor in this fork to use local PDF content removal with a full rewrite, rather than overlays or text-stream replacement. Selected glyphs, overlapping image pixels and touched graphics are removed; other text stays selectable. Secure export uses solid fills and strips ancillary content that can retain copies.
 
 ### Work in progress
 
@@ -62,7 +63,18 @@ Development notes are kept locally in the ignored `docs/` directory.
 - **🚀 Fast & Responsive**: Powered by Next.js and WebAssembly for near-native performance.
 - **🛠️ Comprehensive Toolset**: 90+ tools to handle any PDF task.
 - **🎨 Modern UI**: Clean, accessible, responsive design built with shadcn/ui and Tailwind CSS, with light and dark themes.
+- **Permanent redaction**: Select areas or text matches and export a PDF with the selected content removed. Black and white fills replace blur/mosaic in secure redaction.
 - **🌐 Multi-language**: 15 languages: English, Japanese, Korean, Spanish, French, German, Simplified and Traditional Chinese, Portuguese, Arabic, Italian, Indonesian, Vietnamese, Romanian and Polish.
+
+### Redacting sensitive content
+
+Use **Redact PDF** to select rectangles or brush areas, **Find and Redact** to review exact text matches, or **Smart Data Redactor** to remove matches for email, phone, SSN/ID patterns and custom keywords. Apply redaction to create a new PDF; the original file remains unchanged. Text search works on extractable text, including matches split across font spans on the same line, and does not run OCR or match across separate lines. Use manual rectangles for scans. PDF previews respect page cropping and rotation and keep document geometry stable in RTL interfaces.
+
+The output removes selected text, overlapping image pixels, touched graphics, previous revisions and unused objects. It also removes metadata, attachments, bookmarks, annotations, links and forms; digital signatures are invalidated. A touched vector object can disappear beyond the selection, and brush envelopes may remove nearby content. Other unselected copies can remain, including content reused on other pages. Review every page of the downloaded PDF before sharing. Optional full-page rasterization removes all selectable text. Engine assets load lazily; document bytes stay on your device.
+
+Run `node scripts/verify-redaction.mjs` to verify synthetic redaction outputs using the bundled PyMuPDF WASM engine, including extraction, decoded objects, image pixels, and page geometry.
+
+Redaction summaries and titles are localized in all 15 languages. Updated detailed instructions, FAQs and safety controls currently use English fallback in non-English catalogs.
 
 ## 🧰 Complete Tool List (90+ Tools)
 
@@ -173,7 +185,7 @@ Development notes are kept locally in the ignored `docs/` directory.
 | **Rasterize PDF** | Convert vector elements to images for compatibility |
 | **Font to Outline** | Convert text fonts to vector outlines |
 
-### 🔒 Secure PDF (6 tools)
+### 🔒 Secure PDF (9 tools)
 | Tool | Description |
 |------|-------------|
 | **Encrypt PDF** | Add password protection and encryption |
@@ -182,6 +194,9 @@ Development notes are kept locally in the ignored `docs/` directory.
 | **Flatten PDF** | Merge annotations and form fields into content |
 | **Remove Metadata** | Strip author, dates, and other metadata |
 | **Change Permissions** | Set print, copy, and edit permissions |
+| **Redact PDF** | Permanently remove selected text, image pixels and touched graphics with solid fills |
+| **Find and Redact** | Review exact text matches and permanently remove selected occurrences |
+| **Smart Data Redactor** | Permanently remove text matching email, phone, SSN/ID patterns or custom keywords |
 
 ## 💻 Tech Stack
 

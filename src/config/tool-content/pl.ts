@@ -1,3 +1,4 @@
+import { localizedRedactionContent } from './redaction-locales';
 /**
  * Polskie treści narzędzi do celów SEO
  * Zawiera szczegółowe opisy, instrukcje, zastosowania i często zadawane pytania dla wszystkich narzędzi
@@ -1895,52 +1896,9 @@ export const toolContentPl: Record<string, ToolContent> = {
     ],
   },
 
-  'find-and-redact': {
-    title: "Znajdź i zaciemnij",
-    metaDescription: "Wyszukuj i redaguj tekst na wszystkich stronach pliku PDF. Zbiorcze zaciemnianie poufnych informacji, takich jak numery kont, nazwiska i inne.",
-    keywords: ["ukryj dane w PDF", "znajdź i ukryj dane", "zbiorcze ukrywanie danych", "usuń tekst", "trwałe usuwanie danych z PDF", "ukryj wrażliwe dane"],
-    description: "\n      <p>Znajdź i zaciemnij umożliwia wyszukiwanie określonego tekstu, liczb lub wzorców na wszystkich stronach pliku PDF i jednoczesne zaciemnianie wszystkich pasujących wystąpień. Świetnie nadaje się do usuwania poufnych informacji, takich jak numery kont, nazwiska, adresy lub wszelkie poufne dane.</p>\n      <p>Przed zastosowaniem zaciemniania przejrzyj podgląd wszystkich dopasowań i wybiórczo wybierz wystąpienia, które chcesz zaciemnić. Obsługuje wyszukiwanie z uwzględnieniem wielkości liter, dopasowywanie całych słów i wyrażenia regularne w celu zaawansowanego dopasowywania wzorców.</p>\n      <p>Całe przetwarzanie odbywa się w Twojej przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne i bezpieczne.</p>\n    ",
-    howToUse: [
-      { step: 1, title: "Prześlij swój plik PDF", description: "Przeciągnij i upuść plik PDF lub kliknij, aby wybrać." },
-      { step: 2, title: "Wyszukaj tekst", description: "Wprowadź tekst, liczbę lub wzór wyrażenia regularnego, który chcesz znaleźć i zaciemnić." },
-      { step: 3, title: "Przejrzyj i wybierz", description: "Wyświetl podgląd wszystkich dopasowań i wybierz, które chcesz zaciemnić." },
-      { step: 4, title: "Zastosuj redakcję", description: "Dostosuj wygląd zaciemniania i zastosuj do wybranych dopasowań." },
-    ],
-    useCases: [
-      { title: "Zgodność z przepisami dotyczącymi prywatności", description: "Redaguj dane osobowe, aby zachować zgodność z RODO, HIPAA lub innymi przepisami.", icon: "shield" },
-      { title: "Dokumenty prawne", description: "Przed udostępnieniem usuń poufne dane z dokumentów prawnych.", icon: "scale" },
-      { title: "Dokumentacja finansowa", description: "Redaguj numery kont, numery SSN lub dane finansowe z wyciągów.", icon: "credit-card" },
-    ],
-    faq: [
-      { question: "Czy redakcja jest trwała?", answer: "Tak, redakcja trwale usuwa tekst źródłowy. Oryginalnej zawartości nie można odzyskać. Zawsze twórz kopię zapasową oryginalnego pliku." },
-      { question: "Czy mogę zaciemnić obrazy lub zeskanowany tekst?", answer: "To narzędzie działa z tekstowymi plikami PDF. W przypadku zeskanowanych dokumentów należy zastosować ręczną redakcję opartą na obszarze." },
-      { question: "Czy mogę dostosować wygląd zaciemniania?", answer: "Tak, możesz ustawić kolor zaciemniania, dodać obramowania i opcjonalnie dołączyć tekst zastępczy, np. „[REDACTED]”." },
-      { question: "Jak działa wyszukiwanie wyrażeń regularnych?", answer: "Włącz opcję „Użyj wyrażenia regularnego”, aby wyszukiwać przy użyciu wzorców wyrażeń regularnych. Na przykład \\d{4}-\\d{4}-\\d{4}-\\d{4}, aby znaleźć numery kart kredytowych." },
-    ],
-  },
+  'find-and-redact': localizedRedactionContent('pl', 'find-and-redact', "Znajdź i zaciemnij"),
 
-  'redact-pdf': {
-    title: "Zaciemnij i zamaskuj PDF",
-    metaDescription: "Treść PDF zamazana, zamazana lub pikselowana. Eksportuj spłaszczone strony i usuwaj metadane lokalnie w przeglądarce.",
-    keywords: ["zaciemnij pdf", "cenzura pdf", "mozaika pdf", "rozmycie pdf", "ochrona prywatności pdf", "bezpieczny edytor pdf"],
-    description: "\n      <p>Zaciemnij i zamaskuj PDF pozwala na trwałe i bezpieczne ukrywanie wrażliwych danych w dokumentach PDF. Zaznacz obszary na stronach i zastosuj zaciemnienie, biały pasek, mozaikę lub rozmycie.</p>\n      <p>Narzędzie trwale usuwa podlegający tekst i obiekty wektorowe poprzez nieodwracalną fizyczną rasteryzację pikseli, uniemożliwiając odzyskanie treści.</p>\n      <p>Wszystko odbywa się lokalnie w przeglądarce bez wysyłania plików na serwer.</p>\n    ",
-    howToUse: [
-      { step: 1, title: "Prześlij plik PDF", description: "Wybierz lub przeciągnij plik PDF na stronę." },
-      { step: 2, title: "Zaznacz poufne obszary", description: "Przeciągnij myszką, aby zaznaczyć obszary do ukrycia." },
-      { step: 3, title: "Wybierz styl zaciemnienia", description: "Wybierz czarny pasek, biały pasek, mozaikę lub rozmycie z podglądem na żywo." },
-      { step: 4, title: "Pobierz zabezpieczony PDF", description: "Kliknij przycisk generowania i pobierz zanonimizowany plik." },
-    ],
-    useCases: [
-      { title: "Zgodność z RODO", description: "Usuwanie danych osobowych przed udostępnieniem dokumentów.", icon: "shield" },
-      { title: "Dokumenty prawne", description: "Ukrywanie poufnych danych w umowach i pismach procesowych.", icon: "file-text" },
-      { title: "Dane finansowe", description: "Cenzurowanie numerów kont bankowych i kwot na wyciągach.", icon: "credit-card" },
-    ],
-    faq: [
-      { question: "Czy ukryte dane można odzyskać?", answer: "Nie, proces jest w 100% nieodwracalny, a tekst pod spodem zostaje całkowicie zniszczony." },
-      { question: "Czy pliki są wysyłane na serwer?", answer: "Nie, przetwarzanie odbywa się wyłącznie lokalnie w przeglądarce." },
-      { question: "Jakie metadane są usuwane?", answer: "Usuwane są informacje o autorze, dacie utworzenia, tytule oraz strumienie XMP." },
-    ],
-  },
+  'redact-pdf': localizedRedactionContent('pl', 'redact-pdf', "Zaciemnij i zamaskuj PDF"),
 
   'decrypt-pdf': {
     title: "Odszyfruj plik PDF",
@@ -2625,27 +2583,8 @@ export const toolContentPl: Record<string, ToolContent> = {
       { question: "Czy zmodyfikuje normalny tekst strony?", answer: "Nie. Mechanizm czyszczenia obejmuje wyłącznie operatory pasujące do określonego podpisu znaku wodnego; zwykły tekst pozostaje niezmieniony." },
     ],
   },
-  'smart-data-redactor': {
-    title: "Redaguj dane wrażliwe",
-    metaDescription: "Znajdź adresy e-mail, numery telefonów i wzory dokumentów tożsamości w plikach PDF. Przeglądaj dopasowania i lokalnie redaguj wrażliwe treści.",
-    keywords: ["automatyczna redakcja", "redagowanie danych wrażliwych w PDF", "usuń adres e-mail z PDF", "ukrywanie numerów telefonów", "narzędzie zgodne z RODO"],
-    description: "\n      <p>Automatyczny redaktor danych wrażliwych pomaga bezpiecznie usuwać dane osobowe z dokumentów zgodnie z zasadami prywatności.</p>\n      <p>Samo nakładanie czarnych skrzynek w zwykłych edytorach jest niebezpieczne, ponieważ tekst znajdujący się pod nimi nadal może zostać skopiowany. To narzędzie implementuje prawdziwe <strong>wykrywanie wzorców NLP i trwałe oczyszczanie strumienia treści</strong>.</p>\n      <p>Skanuje dokument w poszukiwaniu e-maili, numerów telefonów, numerów SSN lub niestandardowych słów kluczowych, nakłada w odpowiednich miejscach nieprzezroczyste, czarne maski i trwale nadpisuje strumień znaków kodem <code>[REDACTED]</code>, blokując wycieki typu „kopiuj-wklej”.</p>\n    ",
-    howToUse: [
-      { step: 1, title: "Prześlij docelowy plik PDF", description: "Podaj umowę lub oświadczenie zawierające wrażliwe dane klienta." },
-      { step: 2, title: "Wybierz reguły usuwania danych", description: "Wybierz wzorce docelowe (e-mail, telefon, identyfikator) lub zdefiniuj własne wrażliwe słowa." },
-      { step: 3, title: "Redaguj i pobierz", description: "Kliknij przycisk Wykonaj, aby nałożyć bezpieczne maski i wyczyścić strumienie tekstu." },
-    ],
-    useCases: [
-      { title: "Udostępnianie umów handlowych", description: "Bezpiecznie publikuj dokumenty biznesowe, ukrywając osobiste zarobki, numery telefonów i e-maile.", icon: "file-signature" },
-      { title: "Anonimizacja bazy CV", description: "Usuń nazwiska kandydatów, dane kontaktowe lub adresy, aby zachować zgodność z rygorystycznymi przepisami dotyczącymi prywatności.", icon: "user-check" },
-      { title: "Dystrybucja sprawozdań finansowych", description: "Przed publikacją raportów ukryj określone numery ksiąg rachunkowych lub nazwiska akcjonariuszy.", icon: "pie-chart" },
-    ],
-    faq: [
-      { question: "Czy zaciemnionych szczegółów naprawdę nie da się skopiować?", answer: "Tak. Przepisujemy strumień zawartości strony, aby usunąć znaki. Kopiowanie i wklejanie z zamaskowanego pola spowoduje wyodrębnienie jedynie ciągu „[REDACTED]”." },
-      { question: "Czy to działa w przypadku zeskanowanych plików PDF?", answer: "To narzędzie jest przeznaczone do strumieni tekstu wektorowego. W przypadku zeskanowanych plików obrazów użyj najpierw naszego narzędzia OCR lub przytnij ręcznie." },
-      { question: "Czy czerwony celownik HUD jest zapisany w pliku?", answer: "Nie, to tylko element interfejsu widoczny podczas przetwarzania. W wyjściowym pliku PDF wyświetlane są standardowe, czyste czarne prostokąty." },
-    ],
-  },
+  'smart-data-redactor': localizedRedactionContent('pl', 'smart-data-redactor', "Redaguj dane wrażliwe"),
+
   'bookmarks-auto-generator': {
     title: "Automatyczne generowanie zakładek",
     metaDescription: "Generuj zakładki PDF na podstawie nagłówków i wzorów tekstowych. Dodaj nawigacyjny zarys do długich dokumentów, podręczników i raportów.",

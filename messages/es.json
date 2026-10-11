@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Subir documentos PDF para redactar",
-      "uploadDescription": "Emplea la coincidencia de expresiones regulares. Descubre automáticamente correos electrónicos, números de teléfono e identificaciones, colocando barreras negras sólidas para ocultar los datos.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Ajustes de filtros de redacción",
       "processButton": "Ejecutar redacción de privacidad",
-      "successMessage": "¡Todos los datos de privacidad confidenciales se enmascararon y purgaron con éxito!",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "Panel de redacción de datos de privacidad",
       "clearButton": "Limpiar",
-      "emptyStateDescription": "Descubra y oculte las categorías confidenciales de destino, borrando por completo los flujos de texto de glifos correspondientes del PDF.",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "Filtrar direcciones de correo electrónico",
       "phoneRedactLabel": "Filtrar números de teléfono",
-      "idRedactLabel": "Filtrar pasaportes y tarjetas de identificación",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "Frases de redacción personalizadas",
       "customKeywordsPlaceholder": "Frases separadas por comas"
     },
@@ -3568,10 +3568,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Cargar PDF para redactar",
-      "uploadDescription": "Arrastre y suelte el PDF aquí para escanear y redactar automáticamente los datos de privacidad.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Reglas de redacción inteligentes",
       "processButton": "Redactar datos confidenciales",
-      "successMessage": "¡Datos de privacidad en PDF redactados con éxito!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "Subir PDF",
@@ -3614,6 +3614,20 @@
       "optionsTitle": "Opciones de tipos de cambio",
       "processButton": "Traducir y convertir facturas",
       "successMessage": "¡Factura extranjera traducida y libro de conversión local sellado exitosamente!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

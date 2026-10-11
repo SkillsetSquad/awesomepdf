@@ -28,6 +28,7 @@ export interface SmartDataRedactorToolProps {
 
 export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolProps) {
   const t = useTranslations('common');
+  const tRedaction = useTranslations('tools.trueRedaction');
   const [file, setFile] = useState<File | null>(null);
   const [emailRedact, setEmailRedact] = useState(true);
   const [phoneRedact, setPhoneRedact] = useState(true);
@@ -140,6 +141,9 @@ export function SmartDataRedactorTool({ className = '' }: SmartDataRedactorToolP
         </AlertDescription></Alert>
       )}
 
+      {file && (
+        <p className="text-sm text-muted-foreground" role="note">{tRedaction('description')} {tRedaction('cleanup')}</p>
+      )}
       {file && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 min-w-0 space-y-4">

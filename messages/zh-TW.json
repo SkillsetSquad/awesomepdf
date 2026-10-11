@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "上傳需要脫敏/隱藏敏感詞的 PDF",
-      "uploadDescription": "系統採用 NLP 正則與坐標流檢測。自動發現電話、郵箱、身份證等隱私，蓋印黑色並抹除文本流防提取。",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "脫敏規則設定",
       "processButton": "一鍵掃描並脫敏敏感隱私",
-      "successMessage": "PDF隱私敏感數據脫敏成功！",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "智能脫敏沙盤艙",
       "clearButton": "清空",
-      "emptyStateDescription": "一鍵分析並用黑色圖塊完美掩蓋敏感模式，從底層 PDF 字符流中完全擦除對應文本塊，防止提取。",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "自動匹配電子郵箱",
       "phoneRedactLabel": "自動匹配電話號碼",
-      "idRedactLabel": "自動匹配身份證件/護照號",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "自定義敏感詞過濾",
       "customKeywordsPlaceholder": "逗號分隔自定義詞"
     },
@@ -3561,10 +3561,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "Upload PDF to Redact",
-      "uploadDescription": "Drag & drop PDF here to automatically scan & redact privacy data.",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "Smart Redaction Rules",
       "processButton": "Redact Sensitive Data",
-      "successMessage": "PDF privacy data redacted successfully!"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "上傳 PDF",
@@ -3607,6 +3607,20 @@
       "optionsTitle": "Exchange Rates Options",
       "processButton": "Translate & Convert Invoice",
       "successMessage": "Foreign invoice translated and local conversion ledger stamped successfully!"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

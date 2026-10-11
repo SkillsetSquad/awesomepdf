@@ -1,5 +1,5 @@
 'use client';
-import type { PDFDocumentProxy } from 'pdfjs-dist';
+import type { PDFDocumentProxy, PDFDocumentLoadingTask, RenderTask } from 'pdfjs-dist';
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -44,6 +44,7 @@ export interface FindAndRedactToolProps {
 export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
     const t = useTranslations('common');
     const tTools = useTranslations('tools.findAndRedact');
+    const tRedaction = useTranslations('tools.trueRedaction');
 
     // File state
     const [file, setFile] = useState<File | null>(null);
@@ -79,6 +80,25 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
     const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
 
     const cancelledRef = useRef(false);
+    const redactionRun = useRef(0);
+    const searchRun = useRef(0);
+    useEffect(() => {
+        redactionRun.current++;
+        setResult(null);
+        setStatus('idle');
+    }, [file, matches, redactionColor, addBorder, replacementText]);
+    useEffect(() => {
+        const searches = searchRun;
+        const redactions = redactionRun;
+        searches.current++;
+        setIsSearching(false);
+        return () => {
+            searches.current++;
+            redactions.current++;
+            void pdfDocRef.current?.destroy();
+            pdfDocRef.current = null;
+        };
+    }, [file]);
 
     // Parse search terms from input
     const parsedTerms = useMemo(() => parseSearchTerms(searchTermsInput), [searchTermsInput]);
@@ -92,6 +112,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
             setHasSearched(false);
             setShowPreview(false);
             setPreviewPage(1);
+            void pdfDocRef.current?.destroy();
             pdfDocRef.current = null;
         }
     }, []);
@@ -105,126 +126,72 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
         setHasSearched(false);
         setSearchTermsInput('');
         setShowPreview(false);
+        void pdfDocRef.current?.destroy();
         pdfDocRef.current = null;
     }, []);
 
-    // Load PDF for preview
-    const loadPdfForPreview = useCallback(async () => {
-        if (!file) return;
+    // Own one render at a time, and discard loads from an obsolete file or view.
+    useEffect(() => {
+        if (!file || !showPreview) return;
+        let disposed = false;
+        let loadingTask: PDFDocumentLoadingTask | null = null;
+        let renderTask: RenderTask | null = null;
 
-        try {
-            const pdfjs = await loadPdfjs();
-            const arrayBuffer = await file.arrayBuffer();
-            const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
-            pdfDocRef.current = pdf;
-            setTotalPages(pdf.numPages);
-
-            // Immediately render the first page after loading
-            if (canvasRef.current) {
-                const canvas = canvasRef.current;
-                const context = canvas.getContext('2d');
-                if (context) {
-                    const page = await pdf.getPage(previewPage);
-                    const viewport = page.getViewport({ scale: previewScale });
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    context.clearRect(0, 0, canvas.width, canvas.height);
-                    await page.render({
-                        canvasContext: context,
-                        viewport: viewport,
-                    }).promise;
-
-                    // Draw match highlights
-                    const pageMatches = matches.filter(m => m.page === previewPage);
-                    for (const match of pageMatches) {
-                        const x = match.x * previewScale;
-                        const y = (viewport.height / previewScale - match.y - match.height) * previewScale;
-                        const width = match.width * previewScale;
-                        const height = match.height * previewScale;
-
-                        if (match.selected) {
-                            context.fillStyle = 'rgba(255, 0, 0, 0.3)';
-                        } else {
-                            context.fillStyle = 'rgba(255, 200, 0, 0.3)';
-                        }
-                        context.fillRect(x, y, width, height);
-
-                        context.strokeStyle = match.selected ? 'rgba(255, 0, 0, 0.8)' : 'rgba(255, 200, 0, 0.8)';
-                        context.lineWidth = 2;
-                        context.strokeRect(x, y, width, height);
+        const render = async () => {
+            try {
+                let pdf = pdfDocRef.current;
+                if (!pdf) {
+                    const pdfjs = await loadPdfjs();
+                    if (disposed) return;
+                    const data = await file.arrayBuffer();
+                    if (disposed) return;
+                    loadingTask = pdfjs.getDocument({ data });
+                    pdf = await loadingTask.promise;
+                    loadingTask = null;
+                    if (disposed) {
+                        await pdf.destroy();
+                        return;
                     }
+                    pdfDocRef.current = pdf;
                 }
-            }
-        } catch (err) {
-            console.error('Failed to load PDF for preview:', err);
-        }
-    }, [file, previewPage, previewScale, matches]);
+                setTotalPages(pdf.numPages);
+                const canvas = canvasRef.current;
+                const context = canvas?.getContext('2d');
+                if (!canvas || !context) return;
+                const page = await pdf.getPage(previewPage);
+                if (disposed) return;
+                const viewport = page.getViewport({ scale: previewScale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                renderTask = page.render({ canvasContext: context, viewport });
+                await renderTask.promise;
+                if (disposed) return;
 
-    // Render preview page with match highlights
-    const renderPreviewPage = useCallback(async () => {
-        if (!pdfDocRef.current || !canvasRef.current) return;
-
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-        if (!context) return;
-
-        try {
-            const page = await pdfDocRef.current.getPage(previewPage);
-            const viewport = page.getViewport({ scale: previewScale });
-
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            // Clear canvas
-            context.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Render the PDF page
-            await page.render({
-                canvasContext: context,
-                viewport: viewport,
-            }).promise;
-
-            // Draw match highlights
-            const pageMatches = matches.filter(m => m.page === previewPage);
-            for (const match of pageMatches) {
-                // Convert PDF coordinates to canvas coordinates
-                // PDF has origin at bottom-left, canvas has origin at top-left
-                const x = match.x * previewScale;
-                const y = (viewport.height / previewScale - match.y - match.height) * previewScale;
-                const width = match.width * previewScale;
-                const height = match.height * previewScale;
-
-                // Draw highlight rectangle
-                if (match.selected) {
-                    context.fillStyle = 'rgba(255, 0, 0, 0.3)';
-                } else {
-                    context.fillStyle = 'rgba(255, 200, 0, 0.3)';
+                for (const match of matches.filter(m => m.page === previewPage)) {
+                    const bounds = match.bounds ?? [match.x, match.y, match.x + match.width, match.y + match.height];
+                    const [x0, y0, x1, y1] = viewport.convertToViewportRectangle(bounds);
+                    const x = Math.min(x0, x1);
+                    const y = Math.min(y0, y1);
+                    const width = Math.abs(x1 - x0);
+                    const height = Math.abs(y1 - y0);
+                    context.fillStyle = match.selected ? 'rgba(255, 0, 0, 0.3)' : 'rgba(255, 200, 0, 0.3)';
+                    context.fillRect(x, y, width, height);
+                    context.strokeStyle = match.selected ? 'rgba(255, 0, 0, 0.8)' : 'rgba(255, 200, 0, 0.8)';
+                    context.lineWidth = 2;
+                    context.strokeRect(x, y, width, height);
                 }
-                context.fillRect(x, y, width, height);
-
-                // Draw border
-                context.strokeStyle = match.selected ? 'rgba(255, 0, 0, 0.8)' : 'rgba(255, 200, 0, 0.8)';
-                context.lineWidth = 2;
-                context.strokeRect(x, y, width, height);
+            } catch {
+                if (!disposed) setError(tRedaction('previewFailed'));
             }
-        } catch (err) {
-            console.error('Failed to render preview page:', err);
-        }
-    }, [previewPage, previewScale, matches]);
-
-    // Load PDF when file changes and preview is enabled
-    useEffect(() => {
-        if (file && showPreview) {
-            loadPdfForPreview();
-        }
-    }, [file, showPreview, loadPdfForPreview]);
-
-    // Render preview when page or matches change (only if PDF is already loaded)
-    useEffect(() => {
-        if (showPreview && pdfDocRef.current) {
-            renderPreviewPage();
-        }
-    }, [showPreview, previewPage, matches, previewScale, renderPreviewPage]);
+        };
+        void render();
+        return () => {
+            disposed = true;
+            renderTask?.cancel();
+            void loadingTask?.destroy();
+        };
+    }, [file, showPreview, previewPage, previewScale, matches, tRedaction]);
 
     // Search for matches
     const handleSearch = useCallback(async () => {
@@ -233,6 +200,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
             return;
         }
 
+        const run = ++searchRun.current;
         setIsSearching(true);
         setError(null);
         setMatches([]);
@@ -248,10 +216,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                     wholeWord,
                 },
                 (prog, message) => {
-                    setProgress(prog);
-                    setProgressMessage(message || '');
+                    if (run === searchRun.current) {
+                        setProgress(prog);
+                        setProgressMessage(message || '');
+                    }
                 }
             );
+
+            if (run !== searchRun.current) return;
 
             if (searchResult.success) {
                 setMatches(searchResult.matches);
@@ -270,10 +242,12 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                 setError(searchResult.error || tTools('searchFailed'));
             }
         } catch (err) {
-            setError(err instanceof Error ? err.message : tTools('searchFailed'));
+            if (run === searchRun.current) setError(err instanceof Error ? err.message : tTools('searchFailed'));
         } finally {
-            setIsSearching(false);
-            setProgress(0);
+            if (run === searchRun.current) {
+                setIsSearching(false);
+                setProgress(0);
+            }
         }
     }, [file, parsedTerms, caseSensitive, useRegex, wholeWord, tTools]);
 
@@ -311,6 +285,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
         }
 
         cancelledRef.current = false;
+        const run = ++redactionRun.current;
         setStatus('processing');
         setProgress(0);
         setError(null);
@@ -335,12 +310,14 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                     selectedMatchIds: selectedMatches.map(m => m.id),
                 },
                 (prog, message) => {
-                    if (!cancelledRef.current) {
+                    if (!cancelledRef.current && run === redactionRun.current) {
                         setProgress(prog);
                         setProgressMessage(message || '');
                     }
                 }
             );
+
+            if (run !== redactionRun.current) return;
 
             if (cancelledRef.current) {
                 setStatus('idle');
@@ -355,7 +332,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                 setStatus('error');
             }
         } catch (err) {
-            if (!cancelledRef.current) {
+            if (!cancelledRef.current && run === redactionRun.current) {
                 setError(err instanceof Error ? err.message : tTools('redactFailed'));
                 setStatus('error');
             }
@@ -636,7 +613,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     </div>
 
                                     <div className="border rounded-lg overflow-auto bg-muted" style={{ maxHeight: 'calc(100vh - 400px)', minHeight: '400px' }}>
-                                        <canvas ref={canvasRef} className="mx-auto" />
+                                        <canvas ref={canvasRef} dir="ltr" className="mx-auto" />
                                     </div>
                                 </Card>
                             </div>
@@ -801,6 +778,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                         </Card>
                     )}
 
+                    <p className="text-sm text-muted-foreground" role="note">{tRedaction('description')} {tRedaction('cleanup')}</p>
                     {/* Redaction Options */}
                     {hasSearched && matches.length > 0 && (
                         <Card className="p-6"  >

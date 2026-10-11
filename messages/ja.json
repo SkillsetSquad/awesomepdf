@@ -440,16 +440,16 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "黒塗り（墨消し）処理するPDFドキュメントをアップロード",
-      "uploadDescription": "正規表現マッチングを採用。メールアドレス、電話番号、IDを自动的に検出し、黒いマスクでデータを隠します。",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "墨消しフィルター設定",
       "processButton": "プライバシー墨消しを実行",
-      "successMessage": "すべての機密プライバシーデータが正常にマスクおよびパージされました！",
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies.",
       "previewTitle": "个人情報墨消しサンドテーブル",
       "clearButton": "クリア",
-      "emptyStateDescription": "対象の機密カテゴリを検出して隠し、対応するグリフテキストストリームをPDFから完全にクリアします。",
+      "emptyStateDescription": "Find matching extractable text and permanently remove it. Use manual redaction for scans and review the output before sharing.",
       "emailRedactLabel": "メールアドレスをフィルタリング",
       "phoneRedactLabel": "電話番号をフィルタリング",
-      "idRedactLabel": "パスポート・身分証明書番号をフィルタリング",
+      "idRedactLabel": "Filter SSN / 18-digit ID patterns",
       "customKeywordsLabel": "カスタム墨消しワード",
       "customKeywordsPlaceholder": "カンマ区切りのワード"
     },
@@ -3560,10 +3560,10 @@
     },
     "smartDataRedactor": {
       "uploadLabel": "黒塗り（墨消し）するPDFのアップロード",
-      "uploadDescription": "PDFファイルをここにドラッグ＆ドロップして、個人情報や機密データを自動でスキャンし黒塗り（墨消し）します。",
+      "uploadDescription": "Find and permanently remove matching email, phone and ID text locally. Scanned images require manual area redaction.",
       "optionsTitle": "スマート黒塗りルール",
       "processButton": "機密データを黒塗りする",
-      "successMessage": "PDFの個人情報・機密データが正常に黒塗り（墨消し）されました！"
+      "successMessage": "Matching sensitive text removed. Review the downloaded PDF for unselected copies."
     },
     "bookmarksAutoGenerator": {
       "uploadLabel": "PDFをアップロード",
@@ -3606,6 +3606,20 @@
       "optionsTitle": "外貨換算レートオプション",
       "processButton": "インボイスの翻訳と為替換算を実行",
       "successMessage": "インボイスの翻訳と現地通貨換算の元帳スタンプが正常に適用されました！"
+    },
+    "trueRedaction": {
+      "title": "Permanent redaction",
+      "description": "Export permanently removes selected text, image pixels and overlapping graphics. Remaining text stays selectable. Review every page of the downloaded PDF before sharing.",
+      "cleanup": "The output also removes metadata, attachments, bookmarks, annotations, links and forms. Redaction invalidates digital signatures. Other unselected copies remain.",
+      "brushNotice": "Brush strokes remove rectangular envelopes around each stroke segment and may remove nearby content. Use rectangles for precise selection. Blur and mosaic are not supported for permanent redaction.",
+      "flatten": "Rasterize all pages (removes selectable text and reduces editability)",
+      "blackout": "Black fill",
+      "whiteout": "White fill",
+      "export": "Apply permanent redaction",
+      "preparing": "Preparing permanent redaction...",
+      "complete": "Redaction complete. Review the downloaded PDF.",
+      "failed": "Unable to redact this PDF.",
+      "previewFailed": "Unable to preview this PDF. Please try loading the file again."
     }
   }
 }

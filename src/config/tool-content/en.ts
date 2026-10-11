@@ -2226,13 +2226,13 @@ export const toolContentEn: Record<string, ToolContent> = {
     description: `
       <p>Find and Redact allows you to search for specific text, numbers, or patterns across all pages of your PDF and redact all matching occurrences at once. Perfect for removing sensitive information like account numbers, names, addresses, or any confidential data.</p>
       <p>Preview all matches before applying redactions, and selectively choose which occurrences to redact. Supports case-sensitive search, whole word matching, and regular expressions for advanced pattern matching.</p>
-      <p>All processing happens in your browser, ensuring your documents remain private and secure.</p>
+      <p>Export permanently removes the selected glyphs, overlapping image pixels and touched graphics, preserving other selectable text. The new PDF removes metadata, attachments, bookmarks, annotations, links and forms, and invalidates signatures. Search only finds extractable text; manually redact scans and review unselected copies before sharing. Processing stays in your browser.</p>
     `,
     howToUse: [
       { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select.' },
       { step: 2, title: 'Search for Text', description: 'Enter the text, number, or regex pattern you want to find and redact.' },
       { step: 3, title: 'Review and Select', description: 'Preview all matches and select which ones to redact.' },
-      { step: 4, title: 'Apply Redaction', description: 'Customize redaction appearance and apply to selected matches.' },
+      { step: 4, title: 'Apply Redaction', description: 'Apply permanent content removal to selected matches, then review the downloaded PDF.' },
     ],
     useCases: [
       { title: 'Privacy Compliance', description: 'Redact personal information to comply with GDPR, HIPAA, or other regulations.', icon: 'shield' },
@@ -2240,7 +2240,7 @@ export const toolContentEn: Record<string, ToolContent> = {
       { title: 'Financial Records', description: 'Redact account numbers, SSNs, or financial data from statements.', icon: 'credit-card' },
     ],
     faq: [
-      { question: 'Is redaction permanent?', answer: 'Yes, redaction permanently removes the underlying text. The original content cannot be recovered. Always keep a backup of the original file.' },
+      { question: 'Is redaction permanent?', answer: 'Yes, redaction permanently removes the underlying text. The output is a full rewrite without previous revisions. Unselected copies elsewhere can remain; review the result and keep a backup of the original file.' },
       { question: 'Can I redact images or scanned text?', answer: 'This tool works with text-based PDFs. For scanned documents, you would need to use manual area-based redaction.' },
       { question: 'Can I customize the redaction appearance?', answer: 'Yes, you can set the redaction color, add borders, and optionally include replacement text like "[REDACTED]".' },
       { question: 'How does regex search work?', answer: 'Enable "Use Regular Expression" to search using regex patterns. For example, \\d{4}-\\d{4}-\\d{4}-\\d{4} to find credit card numbers.' },
@@ -2249,29 +2249,29 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'redact-pdf': {
     title: 'Redact PDF',
-    metaDescription: "Black out, blur or pixelate sensitive PDF content. Export flattened pages and remove metadata locally in your browser.",
-    keywords: ['redact pdf', 'blackout pdf', 'mosaic pdf', 'blur pdf', 'pdf privacy', 'remove sensitive data', 'secure pdf editor'],
+    metaDescription: 'Permanently remove selected PDF text, image pixels and graphics locally. Export a new PDF with metadata and ancillary content removed.',
+    keywords: ['redact pdf', 'blackout pdf', 'permanent redaction', 'pdf privacy', 'remove sensitive data'],
     description: `
-      <p>Redact PDF provides a visual, interactive editor to permanently conceal and protect sensitive data in your PDF documents. Drag to mark any confidential area—such as names, addresses, ID numbers, signatures, official seals, financial figures, or portraits—and apply blackout, whiteout, mosaic, or blur effects.</p>
-      <p>Unlike standard PDF editors that simply superimpose superficial black rectangles over existing text, this tool performs <strong>irreversible physical pixel rasterization</strong>. The underlying text layers, vector graphics, and OCR streams are completely destroyed and cannot be recovered by copy-pasting or reverse-engineering.</p>
-      <p>Additionally, the tool performs deep metadata wiping, eliminating author information, creation history, and XMP streams. All processing runs 100% locally in your browser with zero server uploads.</p>
+      <p>Mark sensitive areas with rectangles or a brush. Export removes the underlying text, overlapping image pixels and touched vector graphics through the local PDF engine, then adds a solid black or white fill.</p>
+      <p>Remaining text stays selectable unless you choose to rasterize all pages. Blur and mosaic are excluded because they retain information. Brush strokes use conservative rectangular envelopes and may remove nearby content.</p>
+      <p>The new file excludes previous revisions, metadata, attachments, bookmarks, annotations, links and forms. Digital signatures are invalidated. All document processing stays on your device; engine assets may need to load first.</p>
     `,
     howToUse: [
-      { step: 1, title: 'Upload PDF Document', description: 'Select or drag-and-drop the PDF file you wish to redact.' },
-      { step: 2, title: 'Mark Sensitive Areas', description: 'Click and drag on any page to draw redaction boxes around confidential content.' },
-      { step: 3, title: 'Choose Redaction Style', description: 'Select blackout, whiteout, mosaic (adjustable pixel size), or blur. Toggle real-time preview to inspect the result.' },
-      { step: 4, title: 'Export Secured PDF', description: 'Click "Generate Secured PDF" to execute irreversible flattening, metadata wiping, and download your secured document.' },
+      { step: 1, title: 'Upload PDF', description: 'Choose a PDF. Decrypt password-protected files first and keep the original separately.' },
+      { step: 2, title: 'Mark Sensitive Areas', description: 'Use rectangles for precise selection or a brush for larger areas. Check every relevant page.' },
+      { step: 3, title: 'Preview', description: 'Choose a solid black or white fill and review your selections. Optional full-page rasterization removes all selectable text.' },
+      { step: 4, title: 'Apply and Review', description: 'Apply permanent redaction, download the new PDF, and inspect every page before sharing.' },
     ],
     useCases: [
-      { title: 'Privacy & Regulatory Compliance', description: 'Safely mask Personally Identifiable Information (PII) to comply with GDPR, HIPAA, or CCPA requirements.', icon: 'shield' },
-      { title: 'Confidential Legal & Business Sharing', description: 'Obscure trade secrets, settlement terms, signatures, and stamps prior to public disclosure or external distribution.', icon: 'file-text' },
-      { title: 'Financial & Identity Protection', description: 'Conceal bank account numbers, tax IDs, credit card details, and ID card numbers from statements and invoices.', icon: 'lock' },
+      { title: 'Document Sharing', description: 'Remove selected personal information before sharing documents.', icon: 'shield' },
+      { title: 'Business Records', description: 'Remove confidential text, image regions and drawings from records.', icon: 'file-text' },
+      { title: 'Scanned Documents', description: 'Manually select sensitive image regions in scans.', icon: 'lock' },
     ],
     faq: [
-      { question: 'Can anyone recover redacted information by copying text or inspecting layers?', answer: 'No. The redacted areas undergo physical pixel burn-in flattening. Underlying text, vectors, and objects are completely removed from the file structure, making recovery impossible.' },
-      { question: 'What is the difference between blackout, mosaic, and blur?', answer: 'Blackout creates a solid black mask (standard for legal documents); whiteout provides a clean white mask; mosaic creates a pixelated grid; and blur produces a soft frosted glass effect.' },
-      { question: 'Are files uploaded to your servers?', answer: 'No. All rendering, redaction, flattening, and PDF generation occur entirely within your browser memory. Your documents never leave your device.' },
-      { question: 'What metadata is removed?', answer: 'Document Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate, and extended XMP metadata streams are thoroughly erased.' },
+      { question: 'Is the selected content permanently removed?', answer: 'Yes. Export applies content removal and writes a new PDF with old revisions and unused objects discarded. Other unselected occurrences can remain, so review every page.' },
+      { question: 'Can I use blur or mosaic?', answer: 'No. These effects retain visual information. Permanent redaction uses a solid fill after removing content.' },
+      { question: 'What else changes?', answer: 'Metadata, attachments, bookmarks, annotations, links and forms are removed. Touched vector objects may disappear beyond the selection boundary. Digital signatures are invalidated.' },
+      { question: 'Can I search scanned text?', answer: 'Use manual rectangles for scans. Text search and automatic patterns only find extractable text and do not run OCR.' },
     ],
   },
 
@@ -3084,17 +3084,17 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'smart-data-redactor': {
     title: 'Sensitive Data Redaction',
-    metaDescription: "Find email addresses, phone numbers and ID patterns in PDFs. Review matches and redact sensitive content locally.",
-    keywords: ['automatic redaction', 'redact privacy pdf', 'erase email pdf', 'mask phone numbers', 'gdpr compliance tool'],
+    metaDescription: "Automatically remove email, phone and SSN/ID pattern matches using local PDF content removal. Review the downloaded file.",
+    keywords: ['automatic redaction', 'redact privacy pdf', 'erase email pdf', 'mask phone numbers', 'local pdf redaction'],
     description: `
-      <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>
-      <p>Simply overlaying black boxes in normal editors is unsafe because the underlying text can still be copied. This tool implements true <strong>NLP pattern matching and physical content stream sanitization</strong>.</p>
-      <p>It scans the document for emails, phone numbers, SSNs, or custom keywords, places a premium matte black mask over the coordinates, and permanently overwrites the character stream with <code>[REDACTED]</code>, blocking copy-paste leaks.</p>
+      <p>Smart Data Redactor finds extractable text matching email, phone, SSN/ID patterns or custom keywords and permanently removes those matches using the local PDF engine.</p>
+      <p>Detection uses regular expressions and literal custom keywords. The PDF engine removes matched content before adding a solid fill.</p>
+      <p>Matching glyphs, overlapping image pixels and touched graphics are removed before solid fills are added. Metadata, attachments, bookmarks, annotations, links and forms are removed, and digital signatures are invalidated. Patterns do not find every kind of sensitive data or run OCR; use manual redaction for scans and review the result before sharing.</p>
     `,
     howToUse: [
       { step: 1, title: 'Upload target PDF', description: 'Provide the contract or statement showing sensitive customer details.' },
       { step: 2, title: 'Select redaction rules', description: 'Check target patterns (email, phone, ID) or define custom sensitive words.' },
-      { step: 3, title: 'Auto redact & download', description: 'Click execute to overlay secure masks and wipe the text streams.' },
+      { step: 3, title: 'Auto redact & download', description: 'Apply permanent content removal, download the new PDF, and review every page.' },
     ],
     useCases: [
       { title: 'Commercial agreements sharing', description: 'Safely publish business documents by hiding personal salaries, phone numbers, or emails.', icon: 'file-signature' },
@@ -3102,9 +3102,9 @@ export const toolContentEn: Record<string, ToolContent> = {
       { title: 'Financial statement distribution', description: 'Conceal specific ledger numbers or shareholder names before publishing reports.', icon: 'pie-chart' },
     ],
     faq: [
-      { question: 'Are redacted details truly un-copyable?', answer: 'Yes. We rewrite the page content stream to erase the characters. Copy-pasting from the redacted box will only extract the string "[REDACTED]".' },
-      { question: 'Does it work for scanned image PDFs?', answer: 'This tool targets vector text streams. For scanned image files, use our OCR tool first or crop manually.' },
-      { question: 'Is the red HUD target scope saved in the file?', answer: 'No, that is a gorgeous frontend interactive loading effect. The output PDF displays standard clean black rectangles.' },
+      { question: 'Are redacted details truly un-copyable?', answer: 'Matched glyphs are removed, and the output excludes old revisions and unused objects. Unmatched or unselected copies may remain; review every page before sharing.' },
+      { question: 'Does it work for scanned image PDFs?', answer: 'This tool searches extractable text. Use Redact PDF to select and remove sensitive image regions in scans.' },
+      { question: 'Is the red HUD target scope saved in the file?', answer: 'The output shows solid fills after underlying content has been removed. Review the downloaded PDF before sharing.' },
     ],
   },
   'bookmarks-auto-generator': {
