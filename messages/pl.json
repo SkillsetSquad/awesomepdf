@@ -851,12 +851,16 @@
       "successMessage": "Komiks CBZ został pomyślnie utworzony! Dodano metadata.opf i ComicInfo.xml. Plik jest gotowy do pobrania."
     },
     "pdfToSlide": {
-      "themeLabel": "Schemat motywu tła PPT",
-      "progressReconstructing": "Analiza warstw semantycznych i rekonstrukcja PPTX slajdów…",
+      "themeLabel": "Kolor akcentu slajdów",
+      "progressReconstructing": "Wyodrębnianie tekstu i tworzenie slajdów...",
       "prevPage": "Poprzedni zarys",
       "nextPage": "Następny zarys",
-      "outlinePreviewTitle": "Podgląd kart slajdów i zarysów diagramów",
-      "outlinePreviewDesc": "Wybierz motyw kolorystyczny i kliknij przycisk Generuj, aby rozpocząć rekonstrukcję slajdów."
+      "outlinePreviewTitle": "Konspekty slajdów",
+      "outlinePreviewDesc": "Wybierz motyw kolorystyczny i kliknij przycisk Generuj, aby rozpocząć rekonstrukcję slajdów.",
+      "sourceHelp": "Tworzy edytowalne tytuły i listy punktowane z czytelnego tekstu każdej strony.",
+      "previewHelp": "Ten podgląd pokazuje wyodrębniony tekst. Sprawdź układ pobranej prezentacji w edytorze slajdów.",
+      "outlineUnavailable": "Nie zwrócono konspektów slajdów. Prezentacja jest gotowa do pobrania.",
+      "slidePosition": "Slajd {current} z {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Nie udało się przeanalizować metadanych PDF. Plik może być uszkodzony.",

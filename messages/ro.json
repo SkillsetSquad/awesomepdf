@@ -851,12 +851,16 @@
       "successMessage": "Banda desenată CBZ a fost compilată cu succes! metadata.opf și ComicInfo.xml au fost injectate. Descărcare disponibilă."
     },
     "pdfToSlide": {
-      "themeLabel": "Schemă temă fundal PPT",
-      "progressReconstructing": "Se analizează straturile semantice și se reconstruiesc diapozitivele PPTX...",
+      "themeLabel": "Culoarea de accent a diapozitivelor",
+      "progressReconstructing": "Se extrage textul și se creează diapozitivele...",
       "prevPage": "Schiță anterioară",
       "nextPage": "Schiță următoare",
-      "outlinePreviewTitle": "Previzualizare schițe diapozitive și diagrame",
-      "outlinePreviewDesc": "Selectați o temă de culoare și faceți clic pe generare pentru a începe reconstruirea diapozitivelor."
+      "outlinePreviewTitle": "Schițele diapozitivelor",
+      "outlinePreviewDesc": "Selectați o temă de culoare și faceți clic pe generare pentru a începe reconstruirea diapozitivelor.",
+      "sourceHelp": "Creează titluri și liste cu marcatori editabile din textul lizibil al fiecărei pagini.",
+      "previewHelp": "Această previzualizare arată textul extras. Verificați aspectul prezentării descărcate în editorul de diapozitive.",
+      "outlineUnavailable": "Nu au fost returnate schițe de diapozitive. Prezentarea este gata de descărcare.",
+      "slidePosition": "Diapozitivul {current} din {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Eroare la analizarea metadatelor PDF. Fișierul ar putea fi corupt.",

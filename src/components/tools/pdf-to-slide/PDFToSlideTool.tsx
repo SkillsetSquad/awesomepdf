@@ -1,299 +1,98 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Label } from '@/components/ui/label';
-
-import React, { useState, useEffect } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { ChevronLeft, ChevronRight, CircleAlert, FileCheck, Presentation } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
+import { FileUploader } from '../FileUploader';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
 import { reconstructPDFToSlide } from '@/lib/pdf/processors/pdf-to-slide';
-import {
-  Presentation,
-  Palette,
-  Sparkles,
-  ChevronRight,
-  Download,
-  BookOpen
-} from 'lucide-react';
 
-interface SlidePreview {
-  title: string;
-  bullets: string[];
+interface SlidePreview { title: string; bullets: string[] }
+function outlines(value: unknown): SlidePreview[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((slide): slide is SlidePreview => slide !== null && typeof slide === 'object' && typeof slide.title === 'string' && Array.isArray(slide.bullets) && slide.bullets.every((bullet: unknown) => typeof bullet === 'string'));
 }
+const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#ef4444'];
 
 export function PDFToSlideTool() {
   const t = useTranslations('common');
   const tTools = useTranslations('tools.pdfToSlide');
-
+  const tErrors = useTranslations('errors');
+  const id = useId();
   const [file, setFile] = useState<File | null>(null);
-  const [themeColor, setThemeColor] = useState('#6366f1'); // Indigo default
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [themeColor, setThemeColor] = useState('#6366f1');
   const [activeSlideIdx, setActiveSlideIdx] = useState(0);
-
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
+  const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('slides.pptx');
   const [error, setError] = useState<string | null>(null);
   const [slides, setSlides] = useState<SlidePreview[]>([]);
-
-  const handleUpload = (uploadedFiles: File[]) => {
-    if (uploadedFiles.length > 0) {
-      setFile(uploadedFiles[0]);
-      setResult(null);
-      setError(null);
-      setStatus('idle');
-      setSlides([]);
-    }
-  };
-
+  const processingRun = useRef(0);
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => () => { processingRun.current++; }, []);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
+  const isProcessing = status === 'processing';
+  const clearOutput = () => { processingRun.current++; setResult(null); setSlides([]); setActiveSlideIdx(0); setStatus('idle'); setProgress(0); setProgressMessage(''); setError(null); };
   const handleProcess = async () => {
-    if (!file) return;
-
-    setStatus('processing');
-    setProgress(10);
-    setError(null);
-    setIsAnimating(true);
-
+    if (!file || isProcessing) return;
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('pdfToSlide.progressReconstructing')); setError(null); setResult(null); setSlides([]); setActiveSlideIdx(0);
     try {
-      const output = await reconstructPDFToSlide(
-        file,
-        { themeColor },
-        (p) => setProgress(p)
-      );
-
+      const output = await reconstructPDFToSlide(file, { themeColor }, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('pdfToSlide.progressReconstructing')); }
+      });
+      if (run !== processingRun.current) return;
       if (output.success && output.result) {
-        setResult(output.result as Blob);
-        setStatus('complete');
-        // Extract slides metadata returned from processor
-        if (output.metadata && output.metadata.slides) {
-          setSlides(output.metadata.slides as SlidePreview[]);
-        }
-      } else {
-        setError(output.error?.message || 'Failed to reconstruct slides.');
-        setStatus('error');
-      }
+        setResult(output.result as Blob); setFilename(output.filename || `${file.name.replace(/\.[^/.]+$/, '')}.pptx`); setSlides(outlines(output.metadata?.slides)); setStatus('complete');
+      } else { setError(output.error?.details || output.error?.message || tErrors('processingFailed')); setStatus('error'); }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred.');
-      setStatus('error');
-    } finally {
-      // Keep animation running briefly for WOW effect
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 1500);
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
   };
-
-  const handleReset = () => {
-    setFile(null);
-    setResult(null);
-    setError(null);
-    setStatus('idle');
-    setSlides([]);
-    setActiveSlideIdx(0);
-  };
-
-  return (
-    <Card className="p-6 max-w-4xl mx-auto">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 rounded-lg bg-indigo-600/20 text-indigo-400">
-          <Presentation className="w-6 h-6" />
+  const slide = slides[activeSlideIdx];
+  const position = t('pdfToSlide.slidePosition', { current: activeSlideIdx + 1, total: slides.length });
+  return <div className="space-y-6">
+    {!file && <div ref={uploadRegion} tabIndex={-1}><FileUploader accept={['application/pdf', '.pdf']} multiple={false} disabled={isProcessing}
+      onFilesSelected={files => { if (files[0]) { clearOutput(); setFile(files[0]); } }} onError={setError} label={tTools('uploadLabel')} description={t('pdfToSlide.sourceHelp')} /></div>}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {file && <Card role="region" aria-labelledby={`${id}-settings-title`}>
+      <CardHeader><h3 id={`${id}-settings-title`} className="font-semibold">{tTools('optionsTitle')}</h3><CardDescription className="break-words">{file.name}</CardDescription>
+        <CardAction><Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => { focusUpload.current = true; clearOutput(); setFile(null); }}>{t('buttons.reset')}</Button></CardAction>
+      </CardHeader>
+      <CardContent className="space-y-4"><p className="text-sm text-muted-foreground">{t('pdfToSlide.sourceHelp')}</p>
+        <fieldset disabled={isProcessing} className="space-y-3"><legend className="text-sm font-medium">{t('pdfToSlide.themeLabel')}</legend>
+          <div className="flex flex-wrap gap-2">{colors.map(color => <Button key={color} variant="outline" size="icon" disabled={isProcessing} aria-pressed={themeColor === color}
+            aria-label={`${t('pdfToSlide.themeLabel')}: ${color}`} className="aria-pressed:border-primary aria-pressed:ring-1 aria-pressed:ring-primary"
+            onClick={() => { clearOutput(); setThemeColor(color); }}><span aria-hidden="true" className="size-5 rounded-sm" style={{ backgroundColor: color }} /></Button>)}</div>
+        </fieldset>
+      </CardContent><CardFooter><Button disabled={isProcessing} onClick={handleProcess}><Presentation aria-hidden="true" />{tTools('processButton')}</Button></CardFooter>
+    </Card>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={clearOutput} />}
+    {result && <Card role="region" aria-labelledby={`${id}-result-title`}>
+      <CardHeader><h3 id={`${id}-result-title`} className="font-semibold">{t('pdfToSlide.outlinePreviewTitle')}</h3><p role="status" className="flex items-center gap-2 text-sm"><FileCheck aria-hidden="true" className="size-4 shrink-0" />{tTools('successMessage')}</p>
+        <CardDescription>{t('pdfToSlide.previewHelp')}</CardDescription>
+      </CardHeader>
+      <CardContent>{slide ? <div className="space-y-4">
+        <article aria-label={position} className="min-h-48 space-y-4 rounded-md border p-4 sm:p-6">
+          <div aria-hidden="true" className="h-1 w-12 rounded" style={{ backgroundColor: themeColor }} />
+          <h4 className="break-words text-lg font-semibold">{slide.title}</h4>
+          <ul className="list-disc space-y-2 ps-5 text-sm">{slide.bullets.map((bullet, index) => <li key={index} className="break-words">{bullet}</li>)}</ul>
+        </article>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Button variant="outline" size="sm" disabled={activeSlideIdx === 0} onClick={() => setActiveSlideIdx(index => index - 1)}><ChevronLeft aria-hidden="true" className="rtl:rotate-180" />{t('pdfToSlide.prevPage')}</Button>
+          <span className="text-sm tabular-nums" aria-live="polite">{position}</span>
+          <Button variant="outline" size="sm" disabled={activeSlideIdx === slides.length - 1} onClick={() => setActiveSlideIdx(index => index + 1)}>{t('pdfToSlide.nextPage')}<ChevronRight aria-hidden="true" className="rtl:rotate-180" /></Button>
         </div>
-        <div>
-          <h2 className="text-xl font-bold text-foreground">
-            {tTools('optionsTitle')}
-          </h2>
-          <p className="text-xs text-muted-foreground">
-            {tTools('uploadDescription')}
-          </p>
-        </div>
-      </div>
-
-      {!file ? (
-        <FileUploader
-          accept={['.pdf']}
-          onFilesSelected={handleUpload}
-          label={tTools('uploadLabel')}
-          description={tTools('uploadDescription')}
-        />
-      ) : (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
-            <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-muted-foreground" />
-              <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleReset}
-              className="text-xs"
-            >
-              {t('buttons.reset')}
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Left Column: Color Picker & Action */}
-            <div className="space-y-6 md:col-span-1">
-              <div className="space-y-3">
-                <Label className="text-foreground flex items-center gap-2">
-                  <Palette className="w-4 h-4 text-indigo-400" />
-                  {t('pdfToSlide.themeLabel')}
-                </Label>
-                <div className="grid grid-cols-5 gap-2">
-                  {['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#ef4444'].map((color) => (
-                    <Button key={color} size="icon-sm" variant={themeColor === color ? 'default' : 'outline'}
-                      onClick={() => setThemeColor(color)} aria-pressed={themeColor === color}
-                      aria-label={`${t('pdfToSlide.themeLabel')}: ${color}`}>
-                      <span className="size-4 rounded-sm" style={{ backgroundColor: color }} aria-hidden="true" />
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              {status === 'idle' && (
-                <Button
-                  onClick={handleProcess}
-                  className="w-full flex items-center justify-center gap-2"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  {tTools('processButton')}
-                </Button>
-              )}
-
-              {status === 'processing' && (
-                <ProcessingProgress progress={progress} status={status} />
-              )}
-
-              {status === 'complete' && result && (
-                <div className="space-y-3">
-                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm text-center">
-                    {tTools('successMessage')}
-                  </div>
-                  <DownloadButton
-                    file={result}
-                    filename={file.name.replace(/\.pdf$/i, '.pptx')}
-                    className="w-full"
-                  />
-                </div>
-              )}
-
-              {status === 'error' && error && (
-                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-                  {error}
-                </AlertDescription></Alert>
-              )}
-            </div>
-
-            {/* Right Column: Slide Outlines & WOW Transition View */}
-            <div className="md:col-span-2 space-y-4">
-              {isAnimating ? (
-                /* Starfield Flow Transition (WOW Effect) */
-                <div className="relative h-64 bg-muted rounded-xl overflow-hidden flex flex-col items-center justify-center border border-indigo-900/30">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/40 via-neutral-950 to-neutral-950 -z-10" />
-
-                  {/* Floating particles */}
-                  <div className="absolute top-10 left-12 h-2 w-2 rounded-full bg-indigo-500 blur-sm animate-ping" />
-                  <div className="absolute bottom-10 right-20 h-3 w-3 rounded-full bg-pink-500 blur-sm animate-ping" />
-
-                  {/* Flowing Outlines Card */}
-                  <div className="space-y-3 text-center z-10">
-                    <div className="flex gap-2 justify-center">
-                      <div className="p-4 rounded-xl bg-muted border border-indigo-500/30 shadow-lg shadow-indigo-500/10 animate-bounce">
-                        <span className="text-xs font-semibold text-indigo-400 font-mono">TEXT OBJECTS</span>
-                      </div>
-                      <div className="flex items-center text-foreground">
-                        <ChevronRight className="w-5 h-5 animate-pulse" />
-                      </div>
-                      <div className="p-4 rounded-xl bg-muted border border-pink-500/30 shadow-lg shadow-pink-500/10 animate-pulse">
-                        <span className="text-xs font-semibold text-pink-400 font-mono">OOXML PPT SLIDE</span>
-                      </div>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-4 animate-pulse">
-                      {t('pdfToSlide.progressReconstructing')}
-                    </p>
-                  </div>
-                </div>
-              ) : slides.length > 0 ? (
-                /* Slide Previews Panel */
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>RECONSTRUCTED OUTLINES ({slides.length} SLIDES)</span>
-                    <span>SLIDE {activeSlideIdx + 1} OF {slides.length}</span>
-                  </div>
-
-                  {/* Modern Glassmorphic PPT Slide Preview Card */}
-                  <div
-                    className="p-6 rounded-xl border min-h-[220px] flex flex-col justify-between transition-all duration-300"
-                    style={{
-                      backgroundColor: 'rgba(23, 23, 23, 0.75)',
-                      borderColor: themeColor,
-                      boxShadow: `0 8px 32px rgba(0, 0, 0, 0.2), 0 0 16px ${themeColor}15`
-                    }}
-                  >
-                    <div>
-                      {/* Accent indicator */}
-                      <div
-                        className="w-12 h-1.5 rounded mb-4"
-                        style={{ backgroundColor: themeColor }}
-                      />
-                      <h3 className="text-lg font-bold text-foreground leading-snug">
-                        {slides[activeSlideIdx].title}
-                      </h3>
-                      <ul className="mt-4 space-y-2">
-                        {slides[activeSlideIdx].bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="text-xs text-muted-foreground flex items-start gap-2">
-                            <span className="text-indigo-400 mt-1">•</span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Pagination buttons */}
-                    <div className="flex gap-2 justify-end mt-6 border-t border-border pt-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        disabled={activeSlideIdx === 0}
-                        onClick={() => setActiveSlideIdx(p => p - 1)}
-                        className="text-xs"
-                      >
-                        {t('pdfToSlide.prevPage')}
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        disabled={activeSlideIdx === slides.length - 1}
-                        onClick={() => setActiveSlideIdx(p => p + 1)}
-                        className="text-xs"
-                      >
-                        {t('pdfToSlide.nextPage')}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                /* Idle/Help display */
-                <div className="h-64 rounded-xl border border-border bg-muted flex items-center justify-center p-6 text-center">
-                  <div className="space-y-2">
-                    <Sparkles className="w-8 h-8 text-foreground mx-auto" />
-                    {t('pdfToSlide.outlinePreviewTitle')}
-                    {t('pdfToSlide.outlinePreviewDesc')}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-    </Card>
-  );
+      </div> : <p className="text-sm text-muted-foreground">{t('pdfToSlide.outlineUnavailable')}</p>}</CardContent>
+      <CardFooter><DownloadButton file={result} filename={filename} showFileSize /></CardFooter>
+    </Card>}
+  </div>;
 }
-
 export default PDFToSlideTool;

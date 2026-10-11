@@ -851,12 +851,16 @@
       "successMessage": "CBZ del fumetto compilato con successo! metadata.opf e ComicInfo.xml inseriti. Download pronto."
     },
     "pdfToSlide": {
-      "themeLabel": "Schema del tema di sfondo PPT",
-      "progressReconstructing": "Analisi dei livelli semantici e ricostruzione delle diapositive PPTX...",
+      "themeLabel": "Colore di accento delle diapositive",
+      "progressReconstructing": "Estrazione del testo e creazione delle diapositive...",
       "prevPage": "Schema precedente",
       "nextPage": "Schema successivo",
-      "outlinePreviewTitle": "Anteprima delle schede e degli schemi dei diagrammi delle diapositive",
-      "outlinePreviewDesc": "Seleziona un tema di colore e fai clic su genera per iniziare a ricostruire le diapositive."
+      "outlinePreviewTitle": "Strutture delle diapositive",
+      "outlinePreviewDesc": "Seleziona un tema di colore e fai clic su genera per iniziare a ricostruire le diapositive.",
+      "sourceHelp": "Crea titoli ed elenchi puntati modificabili dal testo leggibile di ogni pagina.",
+      "previewHelp": "Questa anteprima mostra il testo estratto. Controlla il layout della presentazione scaricata nel tuo editor di diapositive.",
+      "outlineUnavailable": "Non sono state restituite strutture di diapositive. La presentazione è pronta per il download.",
+      "slidePosition": "Diapositiva {current} di {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Impossibile analizzare i metadati PDF. Il file potrebbe essere danneggiato.",

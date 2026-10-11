@@ -851,12 +851,16 @@
       "successMessage": "Comic-CBZ erfolgreich kompiliert! metadata.opf und ComicInfo.xml wurden eingebettet. Der Download steht bereit."
     },
     "pdfToSlide": {
-      "themeLabel": "PPT-Hintergrundthema",
-      "progressReconstructing": "Analysiere semantische Ebenen und rekonstruiere PPTX-Folien...",
+      "themeLabel": "Akzentfarbe der Folien",
+      "progressReconstructing": "Text wird extrahiert und Folien werden erstellt...",
       "prevPage": "Vorherige Gliederung",
       "nextPage": "Nächste Gliederung",
-      "outlinePreviewTitle": "Vorschau der Folienkarten & Diagrammgliederungen",
-      "outlinePreviewDesc": "Wählen Sie ein Farbthema und klicken Sie auf Generieren, um mit der Rekonstruktion der Folien zu beginnen."
+      "outlinePreviewTitle": "Foliengliederung",
+      "outlinePreviewDesc": "Wählen Sie ein Farbthema und klicken Sie auf Generieren, um mit der Rekonstruktion der Folien zu beginnen.",
+      "sourceHelp": "Erstellt bearbeitbare Titel und Stichpunkte aus dem lesbaren Text jeder Seite.",
+      "previewHelp": "Diese Vorschau zeigt den extrahierten Text. Prüfen Sie das Layout der heruntergeladenen Präsentation in Ihrem Folieneditor.",
+      "outlineUnavailable": "Es wurden keine Foliengliederungen zurückgegeben. Die Präsentation steht zum Download bereit.",
+      "slidePosition": "Folie {current} von {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "PDF-Metadaten konnten nicht analysiert werden. Die Datei ist möglicherweise beschädigt.",

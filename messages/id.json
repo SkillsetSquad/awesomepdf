@@ -851,12 +851,16 @@
       "successMessage": "CBZ Komik berhasil disusun! metadata.opf dan ComicInfo.xml disuntikkan. Siap diunduh."
     },
     "pdfToSlide": {
-      "themeLabel": "Skema Tema Latar Belakang PPT",
-      "progressReconstructing": "Menganalisis lapisan semantik dan merekonstruksi slide PPTX...",
+      "themeLabel": "Warna aksen slide",
+      "progressReconstructing": "Mengekstrak teks dan membuat slide...",
       "prevPage": "Garis Besar Sebelumnya",
       "nextPage": "Garis Besar Berikutnya",
-      "outlinePreviewTitle": "Pratinjau Garis Besar Slide & Diagram",
-      "outlinePreviewDesc": "Pilih tema warna dan klik buat untuk mulai merekonstruksi slide."
+      "outlinePreviewTitle": "Kerangka slide",
+      "outlinePreviewDesc": "Pilih tema warna dan klik buat untuk mulai merekonstruksi slide.",
+      "sourceHelp": "Membuat judul dan poin yang dapat diedit dari teks yang terbaca pada setiap halaman.",
+      "previewHelp": "Pratinjau ini menampilkan teks yang diekstrak. Periksa tata letak presentasi yang diunduh di editor slide Anda.",
+      "outlineUnavailable": "Tidak ada kerangka slide yang dikembalikan. Presentasi siap diunduh.",
+      "slidePosition": "Slide {current} dari {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Gagal mengurai metadata PDF. File mungkin rusak.",

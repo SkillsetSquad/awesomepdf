@@ -851,12 +851,16 @@
       "successMessage": "¡🎉 Cómic CBZ compilado con éxito! Se inyectaron metadata.opf y ComicInfo.xml. Descarga lista."
     },
     "pdfToSlide": {
-      "themeLabel": "Esquema de tema de fondo de PPT",
-      "progressReconstructing": "Analizando capas semánticas y reconstruyendo diapositivas PPTX...",
+      "themeLabel": "Color de acento de las diapositivas",
+      "progressReconstructing": "Extrayendo texto y creando diapositivas...",
       "prevPage": "Esquema anterior",
       "nextPage": "Siguiente esquema",
-      "outlinePreviewTitle": "Vista previa de esquemas de diagramas y tarjetas de diapositivas",
-      "outlinePreviewDesc": "Seleccione un tema de color y haga clic en generar para comenzar a reconstruir las diapositivas."
+      "outlinePreviewTitle": "Esquemas de diapositivas",
+      "outlinePreviewDesc": "Seleccione un tema de color y haga clic en generar para comenzar a reconstruir las diapositivas.",
+      "sourceHelp": "Crea títulos y viñetas editables a partir del texto legible de cada página.",
+      "previewHelp": "Esta vista previa muestra el texto extraído. Revisa el diseño de la presentación descargada en tu editor de diapositivas.",
+      "outlineUnavailable": "No se devolvieron esquemas de diapositivas. La presentación está lista para descargar.",
+      "slidePosition": "Diapositiva {current} de {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Error al analizar los metadatos del PDF. El archivo podría estar dañado.",

@@ -851,12 +851,16 @@
       "successMessage": "漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。"
     },
     "pdfToSlide": {
-      "themeLabel": "PPT 主题基色",
-      "progressReconstructing": "正在解构页面层次并重建幻灯片大纲...",
+      "themeLabel": "幻灯片强调色",
+      "progressReconstructing": "正在提取文字并创建幻灯片...",
       "prevPage": "上一页",
       "nextPage": "下一页",
-      "outlinePreviewTitle": "大纲与图表将在这里渲染为卡片大纲预览",
-      "outlinePreviewDesc": "选择您的主题色并点击生成开始大纲幻灯片重建"
+      "outlinePreviewTitle": "幻灯片大纲",
+      "outlinePreviewDesc": "选择您的主题色并点击生成开始大纲幻灯片重建",
+      "sourceHelp": "从每页可读取的文字创建可编辑的标题和项目符号。",
+      "previewHelp": "此预览显示提取的文字。请在幻灯片编辑器中检查下载演示文稿的布局。",
+      "outlineUnavailable": "未返回幻灯片大纲。演示文稿已可下载。",
+      "slidePosition": "幻灯片 {current} / {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "无法解析主 PDF 元数据，该文件可能已损坏。",

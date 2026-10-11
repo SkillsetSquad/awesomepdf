@@ -851,12 +851,16 @@
       "successMessage": "Quadrinho CBZ compilado com sucesso! metadata.opf e ComicInfo.xml injetados. Download pronto."
     },
     "pdfToSlide": {
-      "themeLabel": "Esquema de tema de fundo do PPT",
-      "progressReconstructing": "Analisando camadas semânticas e reconstruindo slides PPTX...",
+      "themeLabel": "Cor de destaque dos slides",
+      "progressReconstructing": "Extraindo texto e criando slides...",
       "prevPage": "Esquema anterior",
       "nextPage": "Próximo esquema",
-      "outlinePreviewTitle": "Visualização de esquemas de diagramas e cartões de slides",
-      "outlinePreviewDesc": "Selecione um tema de cor e clique em gerar para começar a reconstruir os slides."
+      "outlinePreviewTitle": "Estruturas dos slides",
+      "outlinePreviewDesc": "Selecione um tema de cor e clique em gerar para começar a reconstruir os slides.",
+      "sourceHelp": "Cria títulos e listas com marcadores editáveis a partir do texto legível de cada página.",
+      "previewHelp": "Esta prévia mostra o texto extraído. Confira o layout da apresentação baixada no seu editor de slides.",
+      "outlineUnavailable": "Nenhuma estrutura de slide foi retornada. A apresentação está pronta para download.",
+      "slidePosition": "Slide {current} de {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Falha ao analisar metadados do PDF. O arquivo pode estar corrompido.",

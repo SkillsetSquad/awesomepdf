@@ -851,12 +851,16 @@
       "successMessage": "Comic CBZ compiled successfully! metadata.opf and ComicInfo.xml injected. Download ready."
     },
     "pdfToSlide": {
-      "themeLabel": "PPT Background Theme Scheme",
-      "progressReconstructing": "Analyzing semantic layers and reconstructing PPTX slides...",
+      "themeLabel": "Slide accent color",
+      "progressReconstructing": "Extracting text and creating slides...",
       "prevPage": "Previous Outline",
       "nextPage": "Next Outline",
-      "outlinePreviewTitle": "Slide Cards & Diagram Outlines Preview",
-      "outlinePreviewDesc": "Select a color theme and click generate to begin reconstructing slides."
+      "outlinePreviewTitle": "Slide outlines",
+      "outlinePreviewDesc": "Select a color theme and click generate to begin reconstructing slides.",
+      "sourceHelp": "Creates editable titles and bullet points from each page’s readable text.",
+      "previewHelp": "This preview shows extracted text. Check the downloaded presentation’s layout in your slide editor.",
+      "outlineUnavailable": "No slide outlines were returned. The presentation is ready to download.",
+      "slidePosition": "Slide {current} of {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Failed to parse PDF metadata. File may be corrupted.",

@@ -851,12 +851,16 @@
       "successMessage": "Biên dịch gói CBZ thành công! Đã nhúng metadata.opf và ComicInfo.xml. Sẵn sàng tải xuống."
     },
     "pdfToSlide": {
-      "themeLabel": "Chủ đề màu nền PPT",
-      "progressReconstructing": "Đang phân tích lớp ngữ nghĩa và xây dựng lại trang trình bày PPTX...",
+      "themeLabel": "Màu nhấn của trang chiếu",
+      "progressReconstructing": "Đang trích xuất văn bản và tạo trang chiếu...",
       "prevPage": "Bố cục trước",
       "nextPage": "Bố cục tiếp theo",
-      "outlinePreviewTitle": "Xem trước bố cục trang trình bày & sơ đồ",
-      "outlinePreviewDesc": "Chọn chủ đề màu sắc và nhấp vào tạo để bắt đầu xây dựng lại trang trình bày."
+      "outlinePreviewTitle": "Dàn ý trang chiếu",
+      "outlinePreviewDesc": "Chọn chủ đề màu sắc và nhấp vào tạo để bắt đầu xây dựng lại trang trình bày.",
+      "sourceHelp": "Tạo tiêu đề và danh sách gạch đầu dòng có thể chỉnh sửa từ văn bản đọc được trên mỗi trang.",
+      "previewHelp": "Bản xem trước này hiển thị văn bản đã trích xuất. Kiểm tra bố cục của bản trình bày đã tải xuống trong trình chỉnh sửa trang chiếu.",
+      "outlineUnavailable": "Không có dàn ý trang chiếu được trả về. Bản trình bày đã sẵn sàng để tải xuống.",
+      "slidePosition": "Trang chiếu {current} / {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Không thể phân tích siêu dữ liệu PDF. Tệp có thể bị hỏng.",

@@ -851,12 +851,16 @@
       "successMessage": "Manga CBZ compilé avec succès ! metadata.opf et ComicInfo.xml injectés. Téléchargement prêt."
     },
     "pdfToSlide": {
-      "themeLabel": "Thème de fond de la présentation PPT",
-      "progressReconstructing": "Analyse des couches sémantiques et reconstruction des diapositives PPTX...",
+      "themeLabel": "Couleur d’accent des diapositives",
+      "progressReconstructing": "Extraction du texte et création des diapositives...",
       "prevPage": "Plan précédent",
       "nextPage": "Plan suivant",
-      "outlinePreviewTitle": "Aperçu des plans de diagrammes et cartes de diapositives",
-      "outlinePreviewDesc": "Sélectionnez un thème de couleur et cliquez sur générer pour commencer à reconstruire les diapositives."
+      "outlinePreviewTitle": "Plans des diapositives",
+      "outlinePreviewDesc": "Sélectionnez un thème de couleur et cliquez sur générer pour commencer à reconstruire les diapositives.",
+      "sourceHelp": "Crée des titres et des listes à puces modifiables à partir du texte lisible de chaque page.",
+      "previewHelp": "Cet aperçu affiche le texte extrait. Vérifiez la mise en page de la présentation téléchargée dans votre éditeur de diapositives.",
+      "outlineUnavailable": "Aucun plan de diapositive n’a été renvoyé. La présentation est prête à être téléchargée.",
+      "slidePosition": "Diapositive {current} sur {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "Échec de l'analyse des métadonnées PDF. Le fichier est peut-être corrompu.",

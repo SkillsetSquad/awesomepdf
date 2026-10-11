@@ -851,12 +851,16 @@
       "successMessage": "만화 CBZ 파일이 성공적으로 빌드되었습니다! metadata.opf 및 ComicInfo.xml 메타데이터가 삽입되었습니다. 다운로드할 수 있습니다."
     },
     "pdfToSlide": {
-      "themeLabel": "PPT 배경 테마",
-      "progressReconstructing": "의미론적 문서 구조를 분석하고 PPTX 슬라이드를 재구성하는 중...",
+      "themeLabel": "슬라이드 강조 색상",
+      "progressReconstructing": "텍스트를 추출하고 슬라이드를 만드는 중...",
       "prevPage": "이전 아웃라인",
       "nextPage": "다음 아웃라인",
-      "outlinePreviewTitle": "슬라이드 카드 및 다이어그램 개요 미리보기",
-      "outlinePreviewDesc": "컬러 테마를 선택하고 생성을 클릭하면 슬라이드 재구성을 시작합니다."
+      "outlinePreviewTitle": "슬라이드 개요",
+      "outlinePreviewDesc": "컬러 테마를 선택하고 생성을 클릭하면 슬라이드 재구성을 시작합니다.",
+      "sourceHelp": "각 페이지에서 읽을 수 있는 텍스트로 편집 가능한 제목과 글머리 기호를 만듭니다.",
+      "previewHelp": "이 미리보기는 추출된 텍스트를 표시합니다. 다운로드한 프레젠테이션의 레이아웃을 슬라이드 편집기에서 확인하세요.",
+      "outlineUnavailable": "슬라이드 개요가 반환되지 않았습니다. 프레젠테이션을 다운로드할 수 있습니다.",
+      "slidePosition": "슬라이드 {current} / {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "PDF 메타데이터 분석에 실패했습니다. 파일이 손상되었을 수 있습니다.",

@@ -851,12 +851,16 @@
       "successMessage": "コミックCBZが正常にコンパイルされました！ metadata.opf と ComicInfo.xml が注入されました。ダウンロード可能です。"
     },
     "pdfToSlide": {
-      "themeLabel": "PPT背景テーマ設定",
-      "progressReconstructing": "セマンティックレイヤーを解析し、PPTXスライドを再構築中...",
+      "themeLabel": "スライドのアクセントカラー",
+      "progressReconstructing": "テキストを抽出してスライドを作成中...",
       "prevPage": "前のアウトライン",
       "nextPage": "次のアウトライン",
-      "outlinePreviewTitle": "スライドカードと図表アウトラインのプレビュー",
-      "outlinePreviewDesc": "カラーテーマを選択し、生成をクリックしてスライドの再構築を開始します。"
+      "outlinePreviewTitle": "スライドのアウトライン",
+      "outlinePreviewDesc": "カラーテーマを選択し、生成をクリックしてスライドの再構築を開始します。",
+      "sourceHelp": "各ページの読み取り可能なテキストから、編集可能なタイトルと箇条書きを作成します。",
+      "previewHelp": "このプレビューは抽出されたテキストを表示します。ダウンロードしたプレゼンテーションのレイアウトをスライド編集ソフトで確認してください。",
+      "outlineUnavailable": "スライドのアウトラインが返されませんでした。プレゼンテーションをダウンロードできます。",
+      "slidePosition": "スライド {current} / {total}"
     },
     "pdfToTiff": {
       "errorMetadata": "PDFメタデータの解析に失敗しました。ファイルが破損している可能性があります。",
