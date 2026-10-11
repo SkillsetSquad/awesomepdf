@@ -62,6 +62,20 @@ export function LegacyAnnotatorTool({
     saved: t('editPdf.signatureSaved'), text: t('editPdf.signatureText'), font: t('editPdf.signatureFont'), image: t('editPdf.signatureImage'),
     upload: t('buttons.upload'), color: tBookmark('color'), clear: t('buttons.clear'), add: t('buttons.add'), cancel: t('buttons.cancel'), error: tErrors('processingFailed'),
   }), [t, tBookmark, tErrors]);
+  // Reload checkpoint: finish the 15-locale stamp labels and native-engine integration
+  // tests before enabling this draft. Until then, retain the existing stamp controls.
+  const stampLabels = useMemo(() => {
+    const enableStandardStampControls = false;
+    if (!enableStandardStampControls) return undefined;
+    return {
+      description: t('editPdf.stampDescription'), defaults: t('editPdf.stampDefaults'), saved: t('editPdf.stampSaved'), create: t('editPdf.stampCreate'), text: t('editPdf.stampText'),
+      font: t('editPdf.signatureFont'), textColor: t('editPdf.stampTextColor'), background: t('editPdf.stampBackground'), border: t('editPdf.stampBorder'), borderStyle: t('editPdf.stampBorderStyle'), solid: t('editPdf.stampSolid'), dashed: t('editPdf.stampDashed'),
+      bold: t('editPdf.stampBold'), italic: t('editPdf.stampItalic'), underline: t('editPdf.stampUnderline'), strikeout: t('editPdf.stampStrikeout'),
+      author: t('editPdf.stampAuthor'), date: t('editPdf.stampDate'), dateFormat: t('editPdf.stampDateFormat'), customTimestamp: t('editPdf.stampCustomTimestamp'), empty: t('editPdf.stampEmpty'),
+      upload: t('buttons.upload'), back: t('buttons.back'), cancel: t('buttons.cancel'), add: t('buttons.add'), error: tErrors('processingFailed'), retry: tErrors('tryAgain'),
+      colorFormat: t('editPdf.colorFormat'), opacity: t('editPdf.opacity'), close: t('buttons.close'),
+    };
+  }, [t, tErrors]);
   
   const [internalFile, setInternalFile] = useState<File | null>(null);
   const file = externalFile !== undefined ? externalFile : internalFile;
@@ -835,7 +849,7 @@ export function LegacyAnnotatorTool({
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
       <AnnotationHistoryControls iframe={editorFrame} undo={t('editPdf.undo')} redo={t('editPdf.redo')} onError={handleAnnotationHistoryError} />
-      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels} signatureLabels={signatureLabels}
+      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels} signatureLabels={signatureLabels} stampLabels={stampLabels}
         colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }}
         styleLabels={{ title: t('editPdf.annotationStyle'), color: tBookmark('color'), strokeWidth: t('editPdf.strokeWidth'), opacity: t('editPdf.opacity'), back: t('buttons.back'), format: t('editPdf.colorFormat'), close: t('buttons.close') }}
         exportError={tErrors('processingFailed')} />

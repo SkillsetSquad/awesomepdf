@@ -7,11 +7,13 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogT
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Slider } from '@/components/ui/slider';
 
 export interface AnnotationColorOptions {
   value: string;
   presets: string[];
   onChange: (color: string) => void;
+  allowAlpha?: boolean;
 }
 
 type ColorFormat = 'hex' | 'rgb' | 'hsb';
@@ -32,6 +34,8 @@ function rgbHex(values: number[]): string {
 }
 
 function viewerColor(value: string): string | null {
+  if (/^#[\da-f]{8}$/i.test(value.trim())) return value.trim().slice(0, 7).toLowerCase();
+  if (/^#[\da-f]{4}$/i.test(value.trim())) return hexColor(value.trim().slice(0, 4));
   const hex = hexColor(value.trim());
   if (hex) return hex;
   // The annotation engine also stores colors as rgb()/rgba(). Its picker edits opaque RGB.
@@ -44,6 +48,19 @@ function viewerColor(value: string): string | null {
   if (values.slice(0, 3).some(channel => channel < 0 || channel > 255)) return null;
   if (values.length === 4 && (values[3] < 0 || values[3] > 1)) return null;
   return rgbHex(values.slice(0, 3));
+}
+
+function viewerOpacity(value: string): number {
+  const input = value.trim();
+  if (/^#[\da-f]{8}$/i.test(input)) return parseInt(input.slice(7), 16) / 255;
+  if (/^#[\da-f]{4}$/i.test(input)) return parseInt(input.slice(4), 16) / 15;
+  const match = input.match(/^rgba\([^,]+,[^,]+,[^,]+,\s*(\d+(?:\.\d+)?)\s*\)$/i);
+  const opacity = match ? Number(match[1]) : 1;
+  return opacity >= 0 && opacity <= 1 ? opacity : 1;
+}
+
+function colorWithOpacity(color: string, opacity: number): string {
+  return opacity < 1 ? `${color}${Math.round(opacity * 255).toString(16).padStart(2, '0')}` : color;
 }
 
 function channels(value: string, format: ColorFormat): Channels {
@@ -69,13 +86,14 @@ function channelColor(values: Channels, format: ColorFormat): string | null {
 }
 
 /** The toolbar's original callback receives opaque colors; document style processing stays native. */
-export function AnnotationColorControl({ options, label, disabled, direction, formatLabel, closeLabel }: {
+export function AnnotationColorControl({ options, label, disabled, direction, formatLabel, closeLabel, opacityLabel = 'Opacity' }: {
   options: AnnotationColorOptions;
   label: string;
   disabled: boolean;
   direction: 'ltr' | 'rtl';
   formatLabel: string;
   closeLabel: string;
+  opacityLabel?: string;
 }) {
   const id = useId();
   const trigger = useRef<HTMLButtonElement>(null);
@@ -85,22 +103,25 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
   const [hex, setHex] = useState(color);
   const [format, setFormat] = useState<ColorFormat>('hex');
   const [values, setValues] = useState<Channels>(() => channels(color, 'rgb'));
+  const [opacity, setOpacity] = useState(viewerOpacity(options.value));
   useEffect(() => { if (disabled) setOpen(false); }, [disabled]);
-  const apply = (value: string) => { setColor(value); options.onChange(value); };
-  const chooseColor = (value: string) => {
+  const apply = (value: string, alpha = opacity) => { setColor(value); options.onChange(options.allowAlpha ? colorWithOpacity(value, alpha) : value); };
+  const chooseColor = (value: string, preserveOpacity = false) => {
     const normalized = viewerColor(value);
     if (!normalized) return;
     setHex(normalized);
     setValues(channels(normalized, format));
-    apply(normalized);
+    const alpha = preserveOpacity ? opacity : viewerOpacity(value);
+    setOpacity(alpha); apply(normalized, alpha);
   };
-  const invalid = format === 'hex' ? !hexColor(hex) : !channelColor(values, format);
+  const alphaHex = options.allowAlpha && /^#(?:[\da-f]{4}|[\da-f]{8})$/i.test(hex);
+  const invalid = format === 'hex' ? !hexColor(hex) && !alphaHex : !channelColor(values, format);
   const names = format === 'rgb' ? ['R', 'G', 'B'] : ['H (°)', 'S (%)', 'B (%)'];
   return <Dialog open={open && !disabled} onOpenChange={value => {
     setOpen(value);
     if (value) {
       const initial = viewerColor(options.value) ?? '#000000';
-      setColor(initial); setHex(initial); setValues(channels(initial, format));
+      setColor(initial); setHex(initial); setValues(channels(initial, format)); setOpacity(viewerOpacity(options.value));
     }
   }}>
     <DialogTrigger asChild><Button ref={trigger} size="sm" variant="ghost" disabled={disabled} dir={direction}
@@ -118,19 +139,23 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
       <DialogHeader><DialogTitle>{label}</DialogTitle></DialogHeader>
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2" role="group" aria-label={label}>
-          {options.presets.map(value => <Button key={value} variant="outline" size="icon-sm" aria-label={`${label}: ${value}`} aria-pressed={viewerColor(value) === color} onClick={() => chooseColor(value)}>
+          {options.presets.map(value => <Button key={value} variant="outline" size="icon-sm" aria-label={`${label}: ${value}`} aria-pressed={viewerColor(value) === color && (!options.allowAlpha || viewerOpacity(value) === opacity)} onClick={() => chooseColor(value)}>
             <span className="size-4 rounded-sm border" style={{ backgroundColor: value }} aria-hidden="true" />
           </Button>)}
         </div>
-        <div className="space-y-2"><Label htmlFor={`${id}-color`}>{label}</Label><Input type="color" id={`${id}-color`} value={color} onChange={event => chooseColor(event.target.value)} /></div>
+        <div className="space-y-2"><Label htmlFor={`${id}-color`}>{label}</Label><Input type="color" id={`${id}-color`} value={color} onChange={event => chooseColor(event.target.value, true)} /></div>
         <div className="space-y-2"><Label htmlFor={`${id}-format`}>{formatLabel}</Label><NativeSelect id={`${id}-format`} value={format} onChange={event => {
           const next = event.target.value as ColorFormat;
           setFormat(next); setHex(color); setValues(channels(color, next));
         }}><NativeSelectOption value="hex">HEX</NativeSelectOption><NativeSelectOption value="rgb">RGB</NativeSelectOption><NativeSelectOption value="hsb">HSB</NativeSelectOption></NativeSelect></div>
         {format === 'hex' ? <div className="space-y-2"><Label htmlFor={`${id}-hex`}>{label} (HEX)</Label><Input ref={input} id={`${id}-hex`} value={hex} dir="ltr" aria-invalid={invalid} onChange={event => {
           setHex(event.target.value);
-          const value = hexColor(event.target.value);
-          if (value) apply(value);
+          const alphaValue = options.allowAlpha && /^#(?:[\da-f]{4}|[\da-f]{8})$/i.test(event.target.value);
+          const value = hexColor(event.target.value) ?? (alphaValue ? viewerColor(event.target.value) : null);
+          if (value) {
+            const alpha = alphaValue ? viewerOpacity(event.target.value) : opacity;
+            setOpacity(alpha); apply(value, alpha);
+          }
         }} /></div> : <div className="grid grid-cols-3 gap-3">
           {names.map((name, index) => <div key={`${format}-${name}`} className="space-y-2"><Label htmlFor={`${id}-${index}`}>{name}</Label><Input ref={index === 0 ? input : undefined} id={`${id}-${index}`} type="number" dir="ltr" min={0} max={format === 'rgb' ? 255 : index === 0 ? 360 : 100} step={format === 'rgb' ? 1 : 'any'} value={values[index]} aria-invalid={invalid} onChange={event => {
             const next: Channels = [...values];
@@ -140,6 +165,9 @@ export function AnnotationColorControl({ options, label, disabled, direction, fo
             if (value) apply(value);
           }} /></div>)}
         </div>}
+        {options.allowAlpha && <div className="space-y-2"><Label id={`${id}-opacity`}>{opacityLabel} ({Math.round(opacity * 100)}%)</Label><Slider dir={direction} min={0} max={100} step={1} value={[Math.round(opacity * 100)]} aria-labelledby={`${id}-opacity`} onValueChange={([value]) => {
+          const alpha = value / 100; setOpacity(alpha); setHex(color); apply(color, alpha);
+        }} /></div>}
       </div>
       <DialogFooter><Button onClick={() => setOpen(false)}>{closeLabel}</Button></DialogFooter>
     </DialogContent>
