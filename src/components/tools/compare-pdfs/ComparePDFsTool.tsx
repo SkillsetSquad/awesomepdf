@@ -1,26 +1,23 @@
 'use client';
 import { Label } from '@/components/ui/label';
 
-import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardAction, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
+import { Checkbox } from '@/components/ui/checkbox';
 import { DifferenceHighlight, type DifferenceHighlightData } from './DifferenceHighlight';
-import { configurePdfjsWorker } from '@/lib/pdf/loader';
+import { loadPdfjs } from '@/lib/pdf/loader';
+import type { RenderTask } from 'pdfjs-dist';
 import {
-  FileText,
-  HelpCircle,
-  Check,
   AlertCircle,
   ChevronLeft,
   ChevronRight,
   Shuffle,
-  Eye,
-  Settings,
-  Filter,
-  Download,
   Minimize,
   Maximize2
 } from 'lucide-react';
@@ -42,7 +39,6 @@ interface TextWordInfo {
 interface PageTextContent {
   rawText: string;
   words: TextWordInfo[];
-  originalItems: any[];
 }
 
 interface PDFFile {
@@ -71,11 +67,20 @@ interface PageComparisonResult {
 
 export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
+  const id = useId();
+  const uploadRegion1 = useRef<HTMLDivElement>(null);
+  const uploadRegion2 = useRef<HTMLDivElement>(null);
+  const resultHeading = useRef<HTMLHeadingElement>(null);
+  const fullscreenButton = useRef<HTMLButtonElement>(null);
+  const focusUpload = useRef<1 | 2 | null>(null);
 
   // Files state
   const [file1, setFile1] = useState<PDFFile | null>(null);
   const [file2, setFile2] = useState<PDFFile | null>(null);
+  useEffect(() => {
+    if (focusUpload.current === 1 && !file1) { focusUpload.current = null; uploadRegion1.current?.focus(); }
+    if (focusUpload.current === 2 && !file2) { focusUpload.current = null; uploadRegion2.current?.focus(); }
+  }, [file1, file2]);
 
   // Configuration options (Categories)
   const [filterPills, setFilterPills] = useState({
@@ -91,199 +96,153 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [error, setError] = useState<string | null>(null);
 
+  const processingRun = useRef(0);
+  const cancelLoad = useRef<(() => void) | null>(null);
+  useEffect(() => () => { processingRun.current++; cancelLoad.current?.(); }, []);
   const isProcessing = status === 'processing';
   const handleCancel = useCallback(() => {
-    cancelledRef.current = true;
+    processingRun.current++;
+    cancelLoad.current?.();
     setStatus('idle');
     setProgress(0);
+    setProgressMessage('');
+    setError(null);
   }, []);
 
   // Pagination & pairing outcomes
   const [pairedPages, setPairedPages] = useState<PageComparisonResult[]>([]);
   const [currentPairIdx, setCurrentPairIdx] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  useEffect(() => { if (pairedPages.length) resultHeading.current?.focus(); }, [pairedPages]);
 
   // Synced scroll refs
   const scrollContainer1Ref = useRef<HTMLDivElement>(null);
   const scrollContainer2Ref = useRef<HTMLDivElement>(null);
   const isScrollingSyncRef = useRef(false);
+  const scrollFrame = useRef<number | null>(null);
+  useEffect(() => () => { if (scrollFrame.current !== null) cancelAnimationFrame(scrollFrame.current); }, []);
+  useEffect(() => {
+    for (const container of [scrollContainer1Ref.current, scrollContainer2Ref.current]) { if (container) { container.scrollTop = 0; container.scrollLeft = 0; } }
+  }, [currentPairIdx]);
   const comparisonContainerRef = useRef<HTMLDivElement>(null);
-  const cancelledRef = useRef(false);
 
   /**
    * Load PDF, render pages to DataURL, and extract all words with Bounding Box coordinates
    */
-  const loadPDF = useCallback(async (file: File, slotNum: 1 | 2): Promise<PDFFile | null> => {
+  const loadPDF = useCallback(async (file: File, run: number): Promise<PDFFile | null> => {
+    const [pdfjsLib, arrayBuffer] = await Promise.all([loadPdfjs(), file.arrayBuffer()]);
+    if (run !== processingRun.current) return null;
+    const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(arrayBuffer) });
+    let renderTask: RenderTask | null = null;
+    let destroyed: Promise<void> | undefined;
+    const dispose = () => {
+      if (destroyed) return destroyed;
+      renderTask?.cancel();
+      destroyed = loadingTask.destroy().catch(() => {});
+      return destroyed;
+    };
+    const cancel = () => { void dispose(); };
+    cancelLoad.current = cancel;
     try {
-      const pdfjsLib = await import('pdfjs-dist');
-      configurePdfjsWorker(pdfjsLib);
-
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      const pageCount = pdf.numPages;
-
+      const pdf = await loadingTask.promise;
+      if (run !== processingRun.current) return null;
       const pageTextContents: PageTextContent[] = [];
       const pagesImages: string[] = [];
-      const pageDimensions: Array<{ width: number; height: number; scale: number }> = [];
-
-      const renderScale = 1.5; // Render at high clarity
-
-      for (let i = 1; i <= pageCount; i++) {
-        if (cancelledRef.current) return null;
-
-        // Progress breakdown: slot 1 occupies 0-50%, slot 2 occupies 50-100%
-        const baseProg = slotNum === 1 ? 0 : 50;
-        setProgress(baseProg + Math.round((i / pageCount) * 45));
-
+      const pageDimensions: PDFFile['pageDimensions'] = [];
+      const renderScale = 1.5;
+      for (let i = 1; i <= pdf.numPages; i++) {
+        if (run !== processingRun.current) return null;
+        setProgress(Math.round((i - 1) / pdf.numPages * 100));
         const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: renderScale });
-        pageDimensions.push({ width: viewport.width, height: viewport.height, scale: renderScale });
-
-        // 1. Render page to DataURL
         const canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        const ctx = canvas.getContext('2d')!;
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        await page.render({ canvasContext: ctx, viewport }).promise;
-        pagesImages.push(canvas.toDataURL('image/jpeg', 0.85));
-
-        // 2. Extract Bounding Box coordinates for text items
-        const textContent = await page.getTextContent();
-        const words: TextWordInfo[] = [];
-        let rawText = '';
-
-        textContent.items.forEach((item: any, itemIdx: number) => {
-          if (!item.str || item.str.trim() === '') return;
-
-          const strVal = item.str;
-          const tx = item.transform[4];
-          const ty = item.transform[5];
-          const itemWidth = item.width || 0;
-          const itemHeight = item.height || parseInt(item.transform[3], 10) || 12;
-          const fontName = item.fontName || '';
-
-          // High accuracy coordinates conversion
-          const ptTopLeft = viewport.convertToViewportPoint(tx, ty + itemHeight);
-          const ptBottomRight = viewport.convertToViewportPoint(tx + itemWidth, ty);
-
-          const canvasX = ptTopLeft[0];
-          const canvasY = ptTopLeft[1];
-          const canvasW = Math.max(2, ptBottomRight[0] - ptTopLeft[0]);
-          const canvasH = Math.max(2, ptBottomRight[1] - ptTopLeft[1]);
-
-          // CJK character splitting or English word splitting
-          const isChinese = /[\u4e00-\u9fa5]/.test(strVal);
-
-          if (isChinese) {
-            // For CJK languages, map per character coordinates proportionally
-            const chars = strVal.split('');
-            const charW = canvasW / chars.length;
-            chars.forEach((char: string, charIdx: number) => {
-              words.push({
-                text: char,
-                x: canvasX + (charIdx * charW),
-                y: canvasY,
-                w: charW,
-                h: canvasH,
-                fontName,
-                itemIdx
+        try {
+          if (run !== processingRun.current) return null;
+          const viewport = page.getViewport({ scale: renderScale });
+          pageDimensions.push({ width: viewport.width, height: viewport.height, scale: renderScale });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Cannot create the PDF comparison preview.');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          renderTask = page.render({ canvasContext: ctx, viewport });
+          await renderTask.promise;
+          renderTask = null;
+          if (run !== processingRun.current) return null;
+          pagesImages.push(canvas.toDataURL('image/jpeg', 0.85));
+          const textContent = await page.getTextContent();
+          if (run !== processingRun.current) return null;
+          const words: TextWordInfo[] = [];
+          let rawText = '';
+          textContent.items.forEach((item, itemIdx) => {
+            if (!('str' in item) || item.str.trim() === '') return;
+            const strVal = item.str, tx = item.transform[4], ty = item.transform[5];
+            const itemWidth = item.width || 0;
+            const itemHeight = item.height || Math.abs(item.transform[3]) || 12;
+            const corners = [[tx, ty], [tx + itemWidth, ty], [tx, ty + itemHeight], [tx + itemWidth, ty + itemHeight]]
+              .map(([x, y]) => viewport.convertToViewportPoint(x, y));
+            const canvasX = Math.min(...corners.map(point => point[0]));
+            const canvasY = Math.min(...corners.map(point => point[1]));
+            const canvasW = Math.max(2, Math.max(...corners.map(point => point[0])) - canvasX);
+            const canvasH = Math.max(2, Math.max(...corners.map(point => point[1])) - canvasY);
+            const fontName = item.fontName || '';
+            if (/[\u4e00-\u9fa5]/.test(strVal)) {
+              const chars = strVal.split(''), charW = canvasW / chars.length;
+              chars.forEach((char, charIdx) => words.push({ text: char, x: canvasX + charIdx * charW, y: canvasY, w: charW, h: canvasH, fontName, itemIdx }));
+              rawText += strVal;
+            } else {
+              const tokens = strVal.split(/(\s+)/);
+              let currentTokenX = canvasX;
+              const pxPerChar = canvasW / (strVal.length || 1);
+              tokens.forEach(token => {
+                const tokenW = token.length * pxPerChar;
+                if (token.trim() !== '') words.push({ text: token, x: currentTokenX, y: canvasY, w: tokenW, h: canvasH, fontName, itemIdx });
+                currentTokenX += tokenW;
               });
-            });
-            rawText += strVal;
-          } else {
-            // For space-separated English/Latin words
-            const tokens = strVal.split(/(\s+)/);
-            let currentTokenX = canvasX;
-            const totalChars = strVal.length || 1;
-            const pxPerChar = canvasW / totalChars;
-
-            tokens.forEach((token: string) => {
-              const tokenW = token.length * pxPerChar;
-              if (token.trim() !== '') {
-                words.push({
-                  text: token,
-                  x: currentTokenX,
-                  y: canvasY,
-                  w: tokenW,
-                  h: canvasH,
-                  fontName,
-                  itemIdx
-                });
-              }
-              currentTokenX += tokenW;
-            });
-            rawText += strVal + ' ';
-          }
-        });
-
-        pageTextContents.push({
-          rawText,
-          words,
-          originalItems: textContent.items
-        });
+              rawText += strVal + ' ';
+            }
+          });
+          pageTextContents.push({ rawText, words });
+          setProgress(Math.round(i / pdf.numPages * 100));
+        } finally {
+          page.cleanup();
+          canvas.width = 0; canvas.height = 0;
+        }
       }
-
-      return {
-        file,
-        pageCount,
-        pageTextContents,
-        pagesImages,
-        pageDimensions
-      };
-    } catch (err) {
-      console.error('PDF parsing error:', err);
-      throw err;
+      return { file, pageCount: pdf.numPages, pageTextContents, pagesImages, pageDimensions };
+    } finally {
+      if (cancelLoad.current === cancel) cancelLoad.current = null;
+      await dispose();
     }
   }, []);
 
-  const handleFile1Selected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setProgressMessage(t('comparePdfs.progressExtractingOriginal'));
-    setError(null);
-    setPairedPages([]);
-
+  const handleFileSelected = useCallback(async (files: File[], slot: 1 | 2) => {
+    if (!files[0] || isProcessing) return;
+    cancelLoad.current?.();
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setError(null); setPairedPages([]); setCurrentPairIdx(0);
+    setProgressMessage(t(slot === 1 ? 'comparePdfs.progressExtractingOriginal' : 'comparePdfs.progressExtractingModified'));
     try {
-      const loaded = await loadPDF(files[0], 1);
-      if (loaded) setFile1(loaded);
+      const loaded = await loadPDF(files[0], run);
+      if (run !== processingRun.current) return;
+      if (loaded) { if (slot === 1) setFile1(loaded); else setFile2(loaded); }
       setStatus('idle');
     } catch (err) {
-      setError(err instanceof Error ? err.message : t('comparePdfs.errorExtractingOriginal'));
+      if (run !== processingRun.current) return;
+      setError(err instanceof Error ? err.message : t(slot === 1 ? 'comparePdfs.errorExtractingOriginal' : 'comparePdfs.errorExtractingModified'));
       setStatus('error');
     }
-  }, [loadPDF, t]);
-
-  const handleFile2Selected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(50);
-    setProgressMessage(t('comparePdfs.progressExtractingModified'));
-    setError(null);
-    setPairedPages([]);
-
-    try {
-      const loaded = await loadPDF(files[0], 2);
-      if (loaded) setFile2(loaded);
-      setStatus('idle');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t('comparePdfs.errorExtractingModified'));
-      setStatus('error');
-    }
-  }, [loadPDF, t]);
+  }, [isProcessing, loadPDF, t]);
+  const handleFile1Selected = (files: File[]) => handleFileSelected(files, 1);
+  const handleFile2Selected = (files: File[]) => handleFileSelected(files, 2);
 
   /**
-   * World-class Semantic Diff & smart pairing orchestrator
+   * Align pages and compare their extracted words
    */
   const handleCompare = useCallback(() => {
-    if (!file1 || !file2) return;
+    if (!file1 || !file2 || isProcessing) return;
 
-    cancelledRef.current = false;
+    setError(null);
     setStatus('processing');
     setProgress(95);
     setProgressMessage(t('comparePdfs.progressRunningDiff'));
@@ -332,9 +291,11 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
       setError(t('comparePdfs.errorDiffFailed'));
       setStatus('error');
     }
-  }, [file1, file2, t]);
+  }, [file1, file2, isProcessing, t]);
 
   const handleClearAll = () => {
+    focusUpload.current = 1;
+    handleCancel();
     setFile1(null);
     setFile2(null);
     setPairedPages([]);
@@ -353,7 +314,7 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
     isScrollingSyncRef.current = true;
     scrollContainer2Ref.current.scrollTop = scrollContainer1Ref.current.scrollTop;
     scrollContainer2Ref.current.scrollLeft = scrollContainer1Ref.current.scrollLeft;
-    requestAnimationFrame(() => { isScrollingSyncRef.current = false; });
+    scrollFrame.current = requestAnimationFrame(() => { isScrollingSyncRef.current = false; scrollFrame.current = null; });
   }, []);
 
   const handleScroll2 = useCallback(() => {
@@ -362,26 +323,26 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
     isScrollingSyncRef.current = true;
     scrollContainer1Ref.current.scrollTop = scrollContainer2Ref.current.scrollTop;
     scrollContainer1Ref.current.scrollLeft = scrollContainer2Ref.current.scrollLeft;
-    requestAnimationFrame(() => { isScrollingSyncRef.current = false; });
+    scrollFrame.current = requestAnimationFrame(() => { isScrollingSyncRef.current = false; scrollFrame.current = null; });
   }, []);
 
   const toggleFullscreen = useCallback(async () => {
-    if (!comparisonContainerRef.current) return;
+    const container = comparisonContainerRef.current;
+    if (!container) return;
     try {
-      if (!document.fullscreenElement) {
-        await comparisonContainerRef.current.requestFullscreen();
-        setIsFullscreen(true);
-      } else {
-        await document.exitFullscreen();
-        setIsFullscreen(false);
-      }
-    } catch (err) {
-      console.error(err);
+      if (document.fullscreenElement === container) await document.exitFullscreen();
+      else await container.requestFullscreen();
+    } catch {
+      setError(t('comparePdfs.errorFullscreen'));
     }
-  }, []);
+  }, [t]);
 
   useEffect(() => {
-    const handleFsChange = () => { setIsFullscreen(!!document.fullscreenElement); };
+    const handleFsChange = () => {
+      const active = document.fullscreenElement === comparisonContainerRef.current;
+      setIsFullscreen(active);
+      if (!active) fullscreenButton.current?.focus();
+    };
     document.addEventListener('fullscreenchange', handleFsChange);
     return () => document.removeEventListener('fullscreenchange', handleFsChange);
   }, []);
@@ -399,331 +360,89 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
 
   const currentPair = pairedPages[currentPairIdx];
 
-  return (
-    <div className={`space-y-6 ${className}`}>
-      {/* File Upload zones */}
-      {pairedPages.length === 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* File 1 */}
-          <div className="space-y-3">
-            <Label className="block">
-              {t('comparePdfs.originalPdfTitle')}
-            </Label>
-            {file1 ? (
-              <Card  className="p-4 flex items-center justify-between border-2 border-primary/35 bg-muted/15">
-                <div className="flex items-center gap-3">
-                  <FileText className="w-10 h-10 text-primary" />
-                  <div>
-                    <p className="font-semibold text-sm truncate max-w-[200px]" title={file1.file.name}>{file1.file.name}</p>
-                    <p className="text-xs text-muted-foreground">{file1.pageCount} {t('pdfToCbz.pagesLabel') || 'pages'} • {(file1.file.size / (1024 * 1024)).toFixed(2)} MB</p>
-                  </div>
-                </div>
-                <Button variant="ghost" size="sm" onClick={() => setFile1(null)}>{t('comparePdfs.removeButton')}</Button>
-              </Card>
-            ) : (
-              <FileUploader
-                accept={['application/pdf']}
-                multiple={false}
-                onFilesSelected={handleFile1Selected}
-                onError={setError}
-                disabled={isProcessing}
-                label={t('comparePdfs.originalPdfLabel')}
-                description={t('comparePdfs.originalPdfDesc')}
-                className="min-h-[160px] p-6 rounded-2xl"
-              />
-            )}
-          </div>
-
-          {/* File 2 */}
-          <div className="space-y-3">
-            <Label className="block">
-              {t('comparePdfs.modifiedPdfTitle')}
-            </Label>
-            {file2 ? (
-              <Card  className="p-4 flex items-center justify-between border-2">
-                <div className="flex items-center gap-3">
-                  <FileText className="w-10 h-10 text-emerald-500" />
-                  <div>
-                    <p className="font-semibold text-sm truncate max-w-[200px]" title={file2.file.name}>{file2.file.name}</p>
-                    <p className="text-xs text-muted-foreground">{file2.pageCount} {t('pdfToCbz.pagesLabel') || 'pages'} • {(file2.file.size / (1024 * 1024)).toFixed(2)} MB</p>
-                  </div>
-                </div>
-                <Button variant="ghost" size="sm" onClick={() => setFile2(null)}>{t('comparePdfs.removeButton')}</Button>
-              </Card>
-            ) : (
-              <FileUploader
-                accept={['application/pdf']}
-                multiple={false}
-                onFilesSelected={handleFile2Selected}
-                onError={setError}
-                disabled={isProcessing}
-                label={t('comparePdfs.modifiedPdfLabel')}
-                description={t('comparePdfs.modifiedPdfDesc')}
-                className="min-h-[160px] p-6 rounded-2xl border-emerald-500/20 hover:border-emerald-500"
-              />
-            )}
-          </div>
+  return <div className={`space-y-6 ${className}`.trim()}>
+    {error && <Alert variant="destructive"><AlertCircle aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {pairedPages.length === 0 && <>
+      <p className="text-sm text-muted-foreground">{t('comparePdfs.comparisonHelp')}</p>
+      <div className="grid items-start gap-6 md:grid-cols-2">
+        {([1, 2] as const).map(slot => {
+          const loaded = slot === 1 ? file1 : file2;
+          const prefix = slot === 1 ? 'original' : 'modified';
+          return <Card key={slot} className="min-w-0">
+            <CardHeader><h3 className="font-semibold">{t(`comparePdfs.${prefix}PdfTitle`)}</h3>
+              {loaded && <><CardDescription className="break-words">{loaded.file.name}</CardDescription>
+                <CardAction><Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => {
+                  focusUpload.current = slot; handleCancel(); if (slot === 1) setFile1(null); else setFile2(null);
+                }}>{t('comparePdfs.removeButton')}</Button></CardAction></>}
+            </CardHeader><CardContent>
+              {loaded ? <div className="space-y-3"><img src={loaded.pagesImages[0]} alt={t(`comparePdfs.${prefix}PdfTitle`)} className="mx-auto max-h-64 w-full object-contain" />
+                <p className="text-sm text-muted-foreground">{t('accessibility.pageOf', { current: 1, total: loaded.pageCount })} · {(loaded.file.size / 1024 / 1024).toFixed(2)} MB</p>
+              </div> : <div ref={slot === 1 ? uploadRegion1 : uploadRegion2} tabIndex={-1}>
+                <FileUploader accept={['application/pdf', '.pdf']} multiple={false} maxFiles={1} disabled={isProcessing}
+                  onFilesSelected={slot === 1 ? handleFile1Selected : handleFile2Selected} onError={setError}
+                  label={t(`comparePdfs.${prefix}PdfLabel`)} description={t(`comparePdfs.${prefix}PdfDesc`)} />
+              </div>}
+            </CardContent>
+          </Card>;
+        })}
+      </div>
+      {file1 && file2 && <Button onClick={handleCompare} disabled={isProcessing}><Shuffle aria-hidden="true" />{t('comparePdfs.startCompare')}</Button>}
+    </>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} />}
+    {currentPair && file1 && file2 && <div ref={comparisonContainerRef} className={`space-y-4 ${isFullscreen ? 'h-screen overflow-auto bg-background p-4' : ''}`}>
+      <Card>
+        <CardHeader><h3 ref={resultHeading} tabIndex={-1} className="font-semibold">{t('comparePdfs.successTitle')}</h3>
+          <CardDescription role="status">{t('comparePdfs.compareStats', { total: pairedPages.length, diff: pairedPages.filter(pair => pair.hasDifference).length })}</CardDescription>
+          <CardAction><Button variant="outline" size="sm" onClick={handleClearAll}>{t('comparePdfs.resetButton')}</Button></CardAction>
+        </CardHeader><CardContent>
+          <fieldset className="space-y-3"><legend className="mb-3 text-sm font-medium">{t('comparePdfs.filterLabel')}</legend>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {([['text', 'filterText'], ['formatting', 'filterFont'], ['headerFooter', 'filterHeaderFooter'], ['moved', 'filterMoved']] as const).map(([key, label]) => <div key={key} className="flex items-center gap-2">
+                <Checkbox id={`${id}-filter-${key}`} checked={filterPills[key]} onCheckedChange={checked => setFilterPills(filters => ({ ...filters, [key]: checked === true }))} />
+                <Label htmlFor={`${id}-filter-${key}`}>{t(`comparePdfs.${label}`)}</Label>
+              </div>)}
+            </div>
+          </fieldset>
+        </CardContent>
+      </Card>
+      <nav aria-label={t('comparePdfs.pageNavigation')} className="flex flex-wrap items-center justify-between gap-3">
+        <Button variant="outline" size="sm" onClick={() => setCurrentPairIdx(index => Math.max(0, index - 1))} disabled={currentPairIdx === 0}><ChevronLeft aria-hidden="true" className="rtl:rotate-180" />{t('comparePdfs.prevPair')}</Button>
+        <div aria-live="polite" className="flex flex-wrap items-center gap-2 text-sm"><span>{t('comparePdfs.pagePairIndex', { current: currentPairIdx + 1, total: pairedPages.length })}</span>
+          <Badge variant={currentPair.hasDifference ? 'secondary' : 'outline'}>
+            {currentPair.pageIndex1 === -1 ? t('comparePdfs.insertedPage') : currentPair.pageIndex2 === -1 ? t('comparePdfs.deletedPage') : currentPair.hasDifference ? t('comparePdfs.detectedDiff', { percent: currentPair.diffPercentage.toFixed(1) }) : t('comparePdfs.noDiff')}
+          </Badge>
         </div>
-      )}
-
-      {/* Start trigger */}
-      {file1 && file2 && pairedPages.length === 0 && !isProcessing && (
-        <div className="flex justify-center pt-3">
-          <Button
-            variant="default"
-            size="lg"
-            onClick={handleCompare}
-            className="px-12 py-4 flex items-center gap-2"
-          >
-            <Shuffle className="w-5 h-5 animate-pulse" />
-            {t('comparePdfs.startCompare')}
-          </Button>
-        </div>
-      )}
-
-      {/* Processing */}
-      {isProcessing && (
-        <ProcessingProgress
-          progress={progress}
-          status={status}
-          message={progressMessage}
-          onCancel={handleCancel}
-          showPercentage
-        />
-      )}
-
-      {/* Results Workspace */}
-      {pairedPages.length > 0 && (
-        <div className="space-y-4">
-
-          {/* Header Panel */}
-          <Card
-
-            className="p-5 flex flex-wrap items-center justify-between gap-4 border"
-          >
-            <div>
-              <h3 className="text-md font-bold text-foreground">
-                {t('comparePdfs.successTitle')}
-              </h3>
-              <p className="text-xs text-muted-foreground mt-1">
-                {t('comparePdfs.totalAligned', { count: pairedPages.length })} •
-                {t.rich('comparePdfs.diffSummary', { count: pairedPages.filter(p => p.hasDifference).length, red: (chunks) => <span className="font-bold text-red-500 mx-1">{chunks}</span> })}
-              </p>
-            </div>
-
-            {/* Filter pills bar */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] font-semibold text-muted-foreground flex items-center gap-1 uppercase tracking-wider mr-2">
-                <Filter className="w-3.5 h-3.5" />
-                {t('comparePdfs.filterLabel')}
-              </span>
-
-              <Button size="sm" variant={filterPills.text ? 'default' : 'outline'} aria-pressed={filterPills.text}
-                onClick={() => setFilterPills(p => ({ ...p, text: !p.text }))}
-
-              >
-                {t('comparePdfs.filterText')}
-              </Button>
-
-              <Button size="sm" variant={filterPills.formatting ? 'default' : 'outline'} aria-pressed={filterPills.formatting}
-                onClick={() => setFilterPills(p => ({ ...p, formatting: !p.formatting }))}
-
-              >
-                {t('comparePdfs.filterFont')}
-              </Button>
-
-              <Button size="sm" variant={filterPills.headerFooter ? 'default' : 'outline'} aria-pressed={filterPills.headerFooter}
-                onClick={() => setFilterPills(p => ({ ...p, headerFooter: !p.headerFooter }))}
-
-              >
-                {t('comparePdfs.filterHeaderFooter')}
-              </Button>
-
-              <Button size="sm" variant={filterPills.moved ? 'default' : 'outline'} aria-pressed={filterPills.moved}
-                onClick={() => setFilterPills(p => ({ ...p, moved: !p.moved }))}
-
-              >
-                {t('comparePdfs.filterMoved')}
-              </Button>
-
-              <Button variant="outline" size="sm" onClick={handleClearAll} className="ml-4 py-2 text-xs">
-                {t('comparePdfs.resetButton')}
-              </Button>
-            </div>
-          </Card>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between px-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrentPairIdx(prev => Math.max(0, prev - 1))}
-              disabled={currentPairIdx === 0}
-              className="flex items-center gap-1 py-2"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              {t('comparePdfs.prevPair')}
-            </Button>
-
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-foreground">
-                {t('comparePdfs.alignSequence', { current: currentPairIdx + 1, total: pairedPages.length })}
-              </span>
-              {currentPair && (
-                <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg ${
-                  currentPair.hasDifference
-                    ? 'bg-red-500/15 text-red-500 border border-red-500/25'
-                    : 'bg-green-500/15 text-green-500 border border-green-500/25'
-                }`}>
-                  {currentPair.pageIndex1 === -1 && t('comparePdfs.insertedPage')}
-                  {currentPair.pageIndex2 === -1 && t('comparePdfs.deletedPage')}
-                  {currentPair.pageIndex1 !== -1 && currentPair.pageIndex2 !== -1 && (
-                    currentPair.hasDifference
-                      ? t('comparePdfs.diffPercentage', { percent: currentPair.diffPercentage.toFixed(1) })
-                      : t('comparePdfs.noDiff')
-                  )}
-                </span>
-              )}
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={toggleFullscreen}
-                className="p-2"
-                title={t('comparePdfs.fullscreenTooltip')}
-              >
-                {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-              </Button>
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPairIdx(prev => Math.min(pairedPages.length - 1, prev + 1))}
-                disabled={currentPairIdx >= pairedPages.length - 1}
-                className="flex items-center gap-1 py-2"
-              >
-                {t('comparePdfs.nextPair')}
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Double View Panels Workspace */}
-          <div
-            ref={comparisonContainerRef}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
-              isFullscreen ? 'fixed inset-0 z-50 p-4 bg-muted overflow-y-auto' : ''
-            }`}
-          >
-            {/* LEFT Version (Original / Deleted Page) */}
-            <div className="flex flex-col space-y-2">
-              <div className="flex justify-between items-center px-1">
-                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                  {t('comparePdfs.originalVersion')}
-                </span>
-                <span className="text-[10px] font-bold text-muted-foreground">
-                  {currentPair?.pageIndex1 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex1 + 1 }) : '---'}
-                </span>
+        <div className="flex items-center gap-2"><Button ref={fullscreenButton} variant="outline" size="icon" onClick={toggleFullscreen} aria-pressed={isFullscreen} aria-label={t('comparePdfs.fullscreenTooltip')}>
+          {isFullscreen ? <Minimize aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}
+        </Button><Button variant="outline" size="sm" onClick={() => setCurrentPairIdx(index => Math.min(pairedPages.length - 1, index + 1))} disabled={currentPairIdx >= pairedPages.length - 1}>{t('comparePdfs.nextPair')}<ChevronRight aria-hidden="true" className="rtl:rotate-180" /></Button></div>
+      </nav>
+      <div className="grid items-start gap-4 md:grid-cols-2">
+        {([1, 2] as const).map(slot => {
+          const loaded = slot === 1 ? file1 : file2;
+          const pageIndex = slot === 1 ? currentPair.pageIndex1 : currentPair.pageIndex2;
+          const title = t(slot === 1 ? 'comparePdfs.originalPdfTitle' : 'comparePdfs.modifiedPdfTitle');
+          const highlights = slot === 1 ? currentPair.highlights1 : currentPair.highlights2;
+          const dimension = loaded.pageDimensions[pageIndex];
+          return <Card key={slot} className="min-w-0">
+            <CardHeader><h3 className="font-semibold">{title}</h3><CardDescription className="break-words">{loaded.file.name}</CardDescription>
+              {pageIndex !== -1 && <p className="text-sm text-muted-foreground">{t('comparePdfs.pageIndex', { page: pageIndex + 1 })}</p>}
+            </CardHeader><CardContent>
+              <div ref={slot === 1 ? scrollContainer1Ref : scrollContainer2Ref} onScroll={slot === 1 ? handleScroll1 : handleScroll2} role="region" aria-label={title} tabIndex={0}
+                className="max-h-[70vh] min-h-64 overflow-auto rounded-md border border-border bg-muted p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                {pageIndex !== -1 ? <div className="relative" style={{ width: dimension.width, height: dimension.height }}>
+                  <img src={loaded.pagesImages[pageIndex]} alt={`${title}: ${t('comparePdfs.pageIndex', { page: pageIndex + 1 })}`} className="block h-full w-full max-w-none" />
+                  <div className="pointer-events-none absolute inset-0">{getFilteredHighlights(highlights).map((highlight, index) => <DifferenceHighlight key={index} highlight={highlight} label={t(highlight.type === 'deleted' ? 'comparePdfs.removedText' : highlight.type === 'added' ? 'comparePdfs.addedText' : highlight.type === 'modified' ? 'comparePdfs.modifiedText' : slot === 1 ? 'comparePdfs.paragraphMovedRight' : 'comparePdfs.paragraphMovedLeft')} />)}</div>
+                </div> : <div className="flex min-h-64 flex-col items-center justify-center gap-2 p-4 text-center">
+                  <AlertCircle aria-hidden="true" className="size-6 text-muted-foreground" /><p className="font-medium">{t(slot === 1 ? 'comparePdfs.insertedPageTitle' : 'comparePdfs.deletedPageTitle')}</p>
+                  <p className="max-w-sm text-sm text-muted-foreground">{t(slot === 1 ? 'comparePdfs.insertedPageDesc' : 'comparePdfs.deletedPageDesc')}</p>
+                </div>}
               </div>
-
-              <div
-                ref={scrollContainer1Ref}
-                onScroll={handleScroll1}
-                className="border border-border rounded-2xl bg-muted overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
-              >
-                {currentPair?.pageIndex1 !== -1 ? (
-                  <div className="relative transform-gpu">
-                    {/* Rendered PDF base canvas image */}
-                    <img
-                      src={file1?.pagesImages[currentPair.pageIndex1]}
-                      alt="Original Page"
-                      className="max-w-none shadow-md rounded-lg"
-                      style={{
-                        width: `${file1?.pageDimensions[currentPair.pageIndex1].width}px`,
-                        height: `${file1?.pageDimensions[currentPair.pageIndex1].height}px`,
-                      }}
-                    />
-
-                    {/* Diff highlights Overlay Layer */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      {getFilteredHighlights(currentPair.highlights1).map((hl, idx) => (
-                        <DifferenceHighlight key={idx} highlight={hl} label={hl.type === 'deleted'
-                          ? t('comparePdfs.removedText')
-                          : hl.type === 'modified' ? t('comparePdfs.modifiedText') : t('comparePdfs.paragraphMovedRight')} />
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  /* Deleted Page placeholder blank board */
-                  <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground w-full min-h-[500px] border border-dashed border-border rounded-xl bg-muted">
-                    <AlertCircle className="w-10 h-10 text-emerald-500/70 mb-4 animate-bounce" />
-                    {t('comparePdfs.insertedPageTitle')}
-                    <p className="text-[10px] text-foreground mt-1 max-w-xs">
-                      {t('comparePdfs.insertedPageDesc')}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* RIGHT Version (Modified / Inserted Page) */}
-            <div className="flex flex-col space-y-2">
-              <div className="flex justify-between items-center px-1">
-                <span className="text-[10px] font-semibold text-emerald-500 uppercase tracking-widest">
-                  {t('comparePdfs.modifiedVersion')}
-                </span>
-                <span className="text-[10px] font-bold text-muted-foreground">
-                  {currentPair?.pageIndex2 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex2 + 1 }) : '---'}
-                </span>
-              </div>
-
-              <div
-                ref={scrollContainer2Ref}
-                onScroll={handleScroll2}
-                className="border border-border rounded-2xl bg-muted overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
-              >
-                {currentPair?.pageIndex2 !== -1 ? (
-                  <div className="relative transform-gpu">
-                    {/* Rendered PDF base canvas image */}
-                    <img
-                      src={file2?.pagesImages[currentPair.pageIndex2]}
-                      alt="Modified Page"
-                      className="max-w-none shadow-md rounded-lg"
-                      style={{
-                        width: `${file2?.pageDimensions[currentPair.pageIndex2].width}px`,
-                        height: `${file2?.pageDimensions[currentPair.pageIndex2].height}px`,
-                      }}
-                    />
-
-                    {/* Diff highlights Overlay Layer */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      {getFilteredHighlights(currentPair.highlights2).map((hl, idx) => (
-                        <DifferenceHighlight key={idx} highlight={hl} label={hl.type === 'added'
-                          ? t('comparePdfs.addedText')
-                          : hl.type === 'modified' ? t('comparePdfs.modifiedText') : t('comparePdfs.paragraphMovedLeft')} />
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  /* Inserted Page placeholder blank board */
-                  <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground w-full min-h-[500px] border border-dashed border-border rounded-xl bg-muted">
-                    <AlertCircle className="w-10 h-10 text-red-500/70 mb-4 animate-bounce" />
-                    {t('comparePdfs.deletedPageTitle')}
-                    <p className="text-[10px] text-foreground mt-1 max-w-xs">
-                      {t('comparePdfs.deletedPageDesc')}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      )}
-    </div>
-  );
+            </CardContent>
+          </Card>;
+        })}
+      </div>
+    </div>}
+  </div>;
 }
 
 /**
@@ -949,8 +668,8 @@ function diffSinglePageWords(
   });
 
   // Consolidate adjacent highlights to reduce bounding box DOM nodes
-  const compact1 = compactAdjacentHighlights(highlights1, 'deleted');
-  const compact2 = compactAdjacentHighlights(highlights2, 'added');
+  const compact1 = compactAdjacentHighlights(highlights1);
+  const compact2 = compactAdjacentHighlights(highlights2);
 
   const totalWords = Math.max(words1.length, words2.length, 1);
   const diffPercentage = (wordCountDiff / totalWords) * 100;
@@ -966,7 +685,7 @@ function diffSinglePageWords(
 /**
  * Compact contiguous text highlights into single bounding boxes to save DOM render overhead
  */
-function compactAdjacentHighlights(highlights: DiffHighlight[], type: 'added' | 'deleted' | 'modified'): DiffHighlight[] {
+function compactAdjacentHighlights(highlights: DiffHighlight[]): DiffHighlight[] {
   if (highlights.length === 0) return [];
 
   const result: DiffHighlight[] = [];
