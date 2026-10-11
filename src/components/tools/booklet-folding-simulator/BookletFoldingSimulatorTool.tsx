@@ -1,276 +1,103 @@
 'use client';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Slider } from '@/components/ui/slider';
-
-import { Label } from '@/components/ui/label';
-
-import React, { useState, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { FileUploader } from '../FileUploader';
-import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
-import { DownloadButton } from '../DownloadButton';
+import { BookOpen, CircleAlert, FileCheck } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { imposeBookletFolding, BookletFoldingOptions } from '@/lib/pdf/processors/booklet-folding-simulator';
-import {
-  BookOpen,
-  Layers,
-  Printer,
-  ChevronRight,
-  Maximize2,
-  Minimize2,
-  RefreshCw
-} from 'lucide-react';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { FileUploader } from '../FileUploader';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { ProcessingProgress, type ProcessingStatus } from '../ProcessingProgress';
+import { DownloadButton } from '../DownloadButton';
+import { imposeBookletFolding, type BookletFoldingOptions } from '@/lib/pdf/processors/booklet-folding-simulator';
 
 export function BookletFoldingSimulatorTool() {
   const t = useTranslations('common');
   const tTools = useTranslations('tools.bookletFoldingSimulator');
-
+  const tErrors = useTranslations('errors');
+  const id = useId();
   const [file, setFile] = useState<File | null>(null);
   const [foldingMode, setFoldingMode] = useState<'4-page-fold' | '8-page-saddle'>('4-page-fold');
-  const [foldProgress, setFoldProgress] = useState(0); // 0 to 100 for folding simulation
-  const [is3DMode, setIs3DMode] = useState(true);
-
+  const [foldProgress, setFoldProgress] = useState(0);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
+  const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState('booklet_imposed.pdf');
   const [error, setError] = useState<string | null>(null);
-
-  const handleUpload = (uploadedFiles: File[]) => {
-    if (uploadedFiles.length > 0) {
-      setFile(uploadedFiles[0]);
-      setResult(null);
-      setError(null);
-      setStatus('idle');
-    }
-  };
-
+  const processingRun = useRef(0);
+  const uploadRegion = useRef<HTMLDivElement>(null);
+  const focusUpload = useRef(false);
+  useEffect(() => () => { processingRun.current++; }, []);
+  useEffect(() => { if (!file && focusUpload.current) { focusUpload.current = false; uploadRegion.current?.focus(); } }, [file]);
+  const isProcessing = status === 'processing';
+  const firstPair = foldingMode === '4-page-fold' ? [4, 1] : [8, 1];
+  const clearOutput = () => { processingRun.current++; setResult(null); setStatus('idle'); setProgress(0); setProgressMessage(''); setError(null); };
   const handleProcess = async () => {
-    if (!file) return;
-
-    setStatus('processing');
-    setProgress(10);
-    setError(null);
-
+    if (!file || isProcessing) return;
+    const run = ++processingRun.current;
+    setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing')); setError(null); setResult(null);
     try {
-      const output = await imposeBookletFolding(
-        file,
-        { foldingMode },
-        (p) => setProgress(p)
-      );
-
-      if (output.success && output.result) {
-        setResult(output.result as Blob);
-        setStatus('complete');
-      } else {
-        setError(output.error?.message || 'Failed to generate booklet layout.');
-        setStatus('error');
-      }
+      const options: BookletFoldingOptions = { foldingMode };
+      const output = await imposeBookletFolding(file, options, (value, message) => {
+        if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
+      });
+      if (run !== processingRun.current) return;
+      if (output.success && output.result) { setResult(output.result as Blob); setFilename(output.filename || `${file.name.replace(/\.[^/.]+$/, '')}_imposed.pdf`); setStatus('complete'); }
+      else { setError(output.error?.details || output.error?.message || tErrors('processingFailed')); setStatus('error'); }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred during processing.');
-      setStatus('error');
+      if (run === processingRun.current) { setError(err instanceof Error ? err.message : tErrors('processingFailed')); setStatus('error'); }
     }
   };
-
-  const handleReset = () => {
-    setFile(null);
-    setResult(null);
-    setError(null);
-    setStatus('idle');
-    setFoldProgress(0);
-  };
-
-  return (
-    <Card className="p-6 max-w-4xl mx-auto">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 rounded-lg bg-violet-600/20 text-violet-400">
-          <BookOpen className="w-6 h-6" />
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-foreground">
-            {tTools('optionsTitle')}
-          </h2>
-          <p className="text-xs text-muted-foreground">
-            {tTools('uploadDescription')}
-          </p>
-        </div>
-      </div>
-
-      {!file ? (
-        <FileUploader
-          accept={['.pdf']}
-          onFilesSelected={handleUpload}
-          label={tTools('uploadLabel')}
-          description={tTools('uploadDescription')}
-        />
-      ) : (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
-            <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-muted-foreground" />
-              <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleReset}
-              className="text-xs"
-            >
-              {t('buttons.reset')}
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Control Panel */}
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <Label className="text-foreground flex items-center gap-2" htmlFor="bookletfoldingsimulatortool-slider-1">
-                  <Layers className="w-4 h-4 text-violet-400" />
-                  {tTools('foldingMode')}
-                </Label>
-                <div className="grid grid-cols-2 gap-3">
-                  <Button size="sm" variant={foldingMode === '4-page-fold' ? 'default' : 'outline'} aria-pressed={foldingMode === '4-page-fold'}
-                    onClick={() => setFoldingMode('4-page-fold')}
-                    className="text-left h-auto flex-col whitespace-normal p-3"
-                  >
-                    <div className="font-bold text-sm">{t('bookletFoldingSimulator.fourPagesFold')}</div>
-                    <div className="text-[10px] opacity-75 mt-1">{t('bookletFoldingSimulator.oneSheetDoubleSide')}</div>
-                  </Button>
-                  <Button size="sm" variant={foldingMode === '8-page-saddle' ? 'default' : 'outline'} aria-pressed={foldingMode === '8-page-saddle'}
-                    onClick={() => setFoldingMode('8-page-saddle')}
-                    className="text-left h-auto flex-col whitespace-normal p-3"
-                  >
-                    <div className="font-bold text-sm">{t('bookletFoldingSimulator.eightPagesSaddle')}</div>
-                    <div className="text-[10px] opacity-75 mt-1">{t('bookletFoldingSimulator.twoSheetsMiddleStitch')}</div>
-                  </Button>
-                </div>
+  return <div className="space-y-6">
+    {!file && <div ref={uploadRegion} tabIndex={-1}><FileUploader accept={['application/pdf', '.pdf']} multiple={false} disabled={isProcessing}
+      onFilesSelected={files => { if (files[0]) { clearOutput(); setFile(files[0]); setFoldProgress(0); } }} onError={setError} label={tTools('uploadLabel')} description={tTools('uploadDescription')} /></div>}
+    {error && <Alert variant="destructive"><CircleAlert aria-hidden="true" /><AlertDescription>{error}</AlertDescription></Alert>}
+    {file && <div className="grid items-start gap-6 lg:grid-cols-2">
+      <Card role="region" aria-labelledby={`${id}-settings-title`}>
+        <CardHeader><h3 id={`${id}-settings-title`} className="font-semibold">{tTools('optionsTitle')}</h3><CardDescription className="break-words">{file.name}</CardDescription>
+          <CardAction><Button variant="ghost" size="sm" disabled={isProcessing} onClick={() => { focusUpload.current = true; clearOutput(); setFile(null); setFoldProgress(0); }}>{t('buttons.reset')}</Button></CardAction>
+        </CardHeader><CardContent className="space-y-4">
+          <fieldset className="space-y-3" disabled={isProcessing}><legend id={`${id}-mode-label`} className="text-sm font-medium">{tTools('foldingMode')}</legend>
+            <RadioGroup value={foldingMode} disabled={isProcessing} aria-labelledby={`${id}-mode-label`} onValueChange={value => { clearOutput(); setFoldingMode(value as typeof foldingMode); }}>
+              <div className="flex items-start gap-3"><RadioGroupItem id={`${id}-four`} value="4-page-fold" className="mt-0.5" /><div className="space-y-1"><Label htmlFor={`${id}-four`}>{t('bookletFoldingSimulator.fourPagesFold')}</Label><p className="text-sm text-muted-foreground">{t('bookletFoldingSimulator.oneSheetDoubleSide')}</p></div></div>
+              <div className="flex items-start gap-3"><RadioGroupItem id={`${id}-eight`} value="8-page-saddle" className="mt-0.5" /><div className="space-y-1"><Label htmlFor={`${id}-eight`}>{t('bookletFoldingSimulator.eightPagesSaddle')}</Label><p className="text-sm text-muted-foreground">{t('bookletFoldingSimulator.twoSheetsMiddleStitch')}</p></div></div>
+            </RadioGroup>
+          </fieldset>
+        </CardContent><CardFooter><Button disabled={isProcessing} onClick={handleProcess}><BookOpen aria-hidden="true" />{tTools('processButton')}</Button></CardFooter>
+      </Card>
+      <Card className="min-w-0" role="region" aria-labelledby={`${id}-model-title`}>
+        <CardHeader><h3 id={`${id}-model-title`} className="font-semibold">{t('bookletFoldingSimulator.modelTitle')}</h3><CardDescription id={`${id}-model-help`}>{t('bookletFoldingSimulator.modelHelp')}</CardDescription></CardHeader>
+        <CardContent className="space-y-4"><Tabs defaultValue="model">
+          <TabsList aria-label={t('bookletFoldingSimulator.modelTitle')} className="max-w-full"><TabsTrigger value="model">{t('bookletFoldingSimulator.view3D')}</TabsTrigger><TabsTrigger value="flat">{t('bookletFoldingSimulator.view2D')}</TabsTrigger></TabsList>
+          <TabsContent value="model"><div role="img" aria-label={t('bookletFoldingSimulator.view3D')} aria-describedby={`${id}-model-help`} className="flex min-h-72 items-center justify-center overflow-hidden rounded-md border bg-muted [perspective:1200px]" dir="ltr">
+            <div className="relative h-56 w-48 [transform-style:preserve-3d]" style={{ transform: 'rotateX(30deg) rotateY(-25deg) rotateZ(5deg)' }}>
+              <div className="absolute inset-y-0 start-0 flex w-24 flex-col items-center justify-between border border-gray-300 bg-white p-3 text-gray-800 [backface-visibility:hidden]">
+                <span className="text-xs">{t('bookletFoldingSimulator.sheetFront')}</span><span className="font-semibold">{t('bookletFoldingSimulator.pageLabel', { number: firstPair[0] })}</span><span className="text-xs">{t('bookletFoldingSimulator.leftPageHalf')}</span>
               </div>
-
-              {/* Slider for Folding Progress */}
-              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <Printer className="w-3.5 h-3.5" />
-                    {t('bookletFoldingSimulator.foldingDamping')}
-                  </span>
-                  <span>{foldProgress}%</span>
-                </div>
-                <Slider
-                  min={0}
-                  max={100}
-                  value={[foldProgress]}
-                  onValueChange={(values) => setFoldProgress(parseInt(String(values[0])))}
-                  className="w-full cursor-pointer" id="bookletfoldingsimulatortool-slider-1" aria-label={tTools('foldingMode')}
-                />
-                <div className="flex justify-between text-[9px] text-muted-foreground">
-                  <span>{t('bookletFoldingSimulator.flatUnfold')}</span>
-                  <span>{t('bookletFoldingSimulator.fullyFolded')}</span>
-                </div>
-              </div>
-
-              {/* Process Button */}
-              {status === 'idle' && (
-                <Button
-                  onClick={handleProcess}
-                  className="w-full"
-                >
-                  {tTools('processButton')}
-                </Button>
-              )}
-
-              {status === 'processing' && (
-                <ProcessingProgress progress={progress} status={status} />
-              )}
-
-              {status === 'complete' && result && (
-                <div className="space-y-3">
-                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm text-center">
-                    {tTools('successMessage')}
-                  </div>
-                  <DownloadButton
-                    file={result}
-                    filename={file.name.replace(/\.pdf$/i, '_imposed.pdf')}
-                    className="w-full"
-                  />
-                </div>
-              )}
-
-              {status === 'error' && error && (
-                <Alert variant="destructive" ><UICircleAlert aria-hidden="true" /><AlertDescription>
-                  {error}
-                </AlertDescription></Alert>
-              )}
-            </div>
-
-            {/* 3D Folding Paper View (WOW FACTOR) */}
-            <div className="relative h-64 md:h-auto min-h-[300px] flex items-center justify-center bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-xl overflow-hidden border border-border shadow-inner">
-              <div className="absolute top-3 right-3 flex gap-2 z-10">
-                <Button variant="outline" size="sm"
-                  onClick={() => setIs3DMode(!is3DMode)}
-                  className="flex items-center gap-1"
-                >
-                  {is3DMode ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
-                  {is3DMode ? t('bookletFoldingSimulator.view2D') : t('bookletFoldingSimulator.view3D')}
-                </Button>
-              </div>
-
-              {/* 3D Paper Model */}
-              <div
-                className="w-48 h-64 relative transition-transform duration-300"
-                style={{
-                  perspective: '1200px',
-                  transformStyle: 'preserve-3d',
-                  transform: is3DMode
-                    ? 'rotateX(30deg) rotateY(-25deg) rotateZ(5deg)'
-                    : 'none',
-                }}
-              >
-                {/* Left Page (Static base) */}
-                <div
-                  className="absolute top-0 left-0 w-24 h-64 bg-neutral-100 rounded-l shadow-lg origin-right border-r border-neutral-300 flex flex-col justify-between p-3 text-neutral-800 transition-all duration-300"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                  }}
-                >
-                  <div className="text-[10px] text-neutral-400 border-b pb-1 font-mono">SHEET FRONT</div>
-                  <div className="text-center font-bold text-lg">P4</div>
-                  <div className="text-[9px] text-neutral-400 text-center">{t('bookletFoldingSimulator.leftPageHalf')}</div>
-                </div>
-
-                {/* Right Page (Folds over Left Page) */}
-                <div
-                  className="absolute top-0 left-24 w-24 h-64 bg-neutral-200 rounded-r shadow-lg origin-left flex flex-col justify-between p-3 text-neutral-800 transition-transform"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    transform: `rotateY(${-foldProgress * 1.8}deg)`,
-                    boxShadow: foldProgress > 50
-                      ? 'inset 10px 0 15px rgba(0,0,0,0.1)'
-                      : '0 4px 6px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  <div className="text-[10px] text-neutral-400 border-b pb-1 text-right font-mono">PAGE 1</div>
-                  <div className="text-center font-bold text-lg">P1</div>
-                  <div className="text-[9px] text-neutral-400 text-center">{t('bookletFoldingSimulator.rightPageHalf')}</div>
-                </div>
-
-                {/* 3D Binding shadow */}
-                {is3DMode && (
-                  <div
-                    className="absolute top-4 -left-4 w-56 h-72 bg-black/10 blur-xl pointer-events-none -z-10 rounded-xl transition-all"
-                    style={{
-                      transform: `translateZ(-20px) scale(${1 - foldProgress * 0.003})`,
-                    }}
-                  />
-                )}
+              <div className="absolute inset-y-0 start-24 flex w-24 origin-left flex-col items-center justify-between border border-gray-300 bg-gray-100 p-3 text-gray-800 [backface-visibility:hidden]" style={{ transform: `rotateY(${-foldProgress * 1.8}deg)` }}>
+                <span className="text-xs">{t('bookletFoldingSimulator.sheetFront')}</span><span className="font-semibold">{t('bookletFoldingSimulator.pageLabel', { number: firstPair[1] })}</span><span className="text-xs">{t('bookletFoldingSimulator.rightPageHalf')}</span>
               </div>
             </div>
-          </div>
-        </div>
-      )}
-    </Card>
-  );
+          </div></TabsContent>
+          <TabsContent value="flat"><div role="img" aria-label={t('bookletFoldingSimulator.view2D')} aria-describedby={`${id}-model-help`} className="flex min-h-72 items-center justify-center rounded-md border bg-muted p-4" dir="ltr">
+            <div className="grid w-full max-w-sm grid-cols-2 border border-gray-300 bg-white text-gray-800">{firstPair.map(number => <div key={number} className="flex min-h-40 items-center justify-center border-e border-gray-300 p-3 text-center last:border-e-0">{t('bookletFoldingSimulator.pageLabel', { number })}</div>)}</div>
+          </div></TabsContent>
+        </Tabs><div className="space-y-2"><Label htmlFor={`${id}-fold`}>{t('bookletFoldingSimulator.foldingDamping')}: {foldProgress}%</Label><Slider id={`${id}-fold`} aria-label={t('bookletFoldingSimulator.foldingDamping')} min={0} max={100} step={1} value={[foldProgress]} onValueChange={([value]) => setFoldProgress(value)} />
+          <div className="flex justify-between gap-3 text-xs text-muted-foreground"><span>{t('bookletFoldingSimulator.flatUnfold')}</span><span>{t('bookletFoldingSimulator.fullyFolded')}</span></div>
+        </div></CardContent>
+      </Card>
+    </div>}
+    {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={clearOutput} />}
+    {result && <Card className="min-w-0" role="region" aria-labelledby={`${id}-result-title`}>
+      <CardHeader><h3 id={`${id}-result-title`} className="font-semibold">{t('bookletFoldingSimulator.resultTitle')}</h3><p role="status" className="flex items-center gap-2 text-sm"><FileCheck aria-hidden="true" className="size-4 shrink-0" />{tTools('successMessage')}</p></CardHeader>
+      <CardContent><div className="mx-auto max-w-2xl"><PDFPagePreview file={result} label={t('bookletFoldingSimulator.resultTitle')} /></div></CardContent><CardFooter><DownloadButton file={result} filename={filename} showFileSize /></CardFooter>
+    </Card>}
+  </div>;
 }
-
 export default BookletFoldingSimulatorTool;

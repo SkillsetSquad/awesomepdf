@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 tờ in hai mặt",
       "eightPagesSaddle": "Đóng ghim lồng 8 trang",
       "twoSheetsMiddleStitch": "2 tờ khâu chỉ giữa",
-      "foldingDamping": "Hệ số cản gấp 3D",
+      "foldingDamping": "Tiến trình gấp",
       "flatUnfold": "Mở phẳng",
       "fullyFolded": "Gấp hoàn toàn",
       "view2D": "Bố cục 2D",
       "view3D": "Mô phỏng 3D",
       "leftPageHalf": "Bên trái (Bình bản & Đóng gáy)",
-      "rightPageHalf": "Bên phải"
+      "rightPageHalf": "Bên phải",
+      "modelTitle": "Minh họa cách gấp",
+      "modelHelp": "Minh họa mặt trước đầu tiên của nhóm bốn hoặc tám trang. Xem trước PDF đã tạo để kiểm tra thứ tự trang trong tài liệu.",
+      "sheetFront": "Mặt trước của tờ",
+      "pageLabel": "Trang {number}",
+      "resultTitle": "PDF đã bình trang"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Phong cách dấu sáp vật lý)",

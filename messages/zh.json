@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1张印张双面",
       "eightPagesSaddle": "8页骑马钉",
       "twoSheetsMiddleStitch": "2张印张中缝装订",
-      "foldingDamping": "3D 折叠阻尼系数",
+      "foldingDamping": "折叠进度",
       "flatUnfold": "纯平展开",
       "fullyFolded": "完全折合",
       "view2D": "2D 视图",
       "view3D": "3D 仿真",
       "leftPageHalf": "左半版面 (对折装订)",
-      "rightPageHalf": "右半版面"
+      "rightPageHalf": "右半版面",
+      "modelTitle": "折叠示意图",
+      "modelHelp": "示意四页或八页组的第一个正面。请预览生成的 PDF，检查文档的页面顺序。",
+      "sheetFront": "纸张正面",
+      "pageLabel": "第 {number} 页",
+      "resultTitle": "拼版 PDF"
     },
     "certCryptor": {
       "waxStyleSuffix": " (物理火漆风格)",

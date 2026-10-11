@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1枚両面",
       "eightPagesSaddle": "8ページ中綴じ",
       "twoSheetsMiddleStitch": "2枚中綴じ",
-      "foldingDamping": "3D折りたたみ減衰係数",
+      "foldingDamping": "折りたたみの進行",
       "flatUnfold": "平坦に広げる",
       "fullyFolded": "完全に折りたたむ",
       "view2D": "2Dレイアウト",
       "view3D": "3Dシミュレーション",
       "leftPageHalf": "左側 (面付けと製本)",
-      "rightPageHalf": "右側"
+      "rightPageHalf": "右側",
+      "modelTitle": "折りたたみ図",
+      "modelHelp": "4ページまたは8ページのグループの最初の表面を示します。生成されたPDFのプレビューで文書のページ順を確認してください。",
+      "sheetFront": "用紙の表面",
+      "pageLabel": "ページ {number}",
+      "resultTitle": "面付けPDF"
     },
     "certCryptor": {
       "waxStyleSuffix": " (物理シーリングワックス風)",

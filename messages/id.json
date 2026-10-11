@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 Lembar Bolak-Balik",
       "eightPagesSaddle": "Jilid Kawat 8 Halaman",
       "twoSheetsMiddleStitch": "2 Lembar Dijahit Tengah",
-      "foldingDamping": "Faktor Redaman Lipat 3D",
+      "foldingDamping": "Progres lipatan",
       "flatUnfold": "Bentangkan Datar",
       "fullyFolded": "Dilipat Sepenuhnya",
       "view2D": "Tata Letak 2D",
       "view3D": "Simulasi 3D",
       "leftPageHalf": "Sisi Kiri (Ditata & Dijilid)",
-      "rightPageHalf": "Sisi Kanan"
+      "rightPageHalf": "Sisi Kanan",
+      "modelTitle": "Ilustrasi lipatan",
+      "modelHelp": "Menggambarkan sisi depan pertama dari kelompok empat atau delapan halaman. Pratinjau PDF yang dibuat untuk memeriksa urutan halaman dokumen Anda.",
+      "sheetFront": "Sisi depan lembar",
+      "pageLabel": "Halaman {number}",
+      "resultTitle": "PDF yang diimposisi"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Gaya Segel Lilin Fisik)",

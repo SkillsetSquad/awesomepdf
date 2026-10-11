@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 feuille recto-verso",
       "eightPagesSaddle": "Reliure cahier de 8 pages",
       "twoSheetsMiddleStitch": "2 feuilles cousues au milieu",
-      "foldingDamping": "Facteur d'amortissement de pliage 3D",
+      "foldingDamping": "Progression du pliage",
       "flatUnfold": "Dépliage plat",
       "fullyFolded": "Complètement plié",
       "view2D": "Disposition 2D",
       "view3D": "Simulation 3D",
       "leftPageHalf": "Côté gauche (Imposé et relié)",
-      "rightPageHalf": "Côté droit"
+      "rightPageHalf": "Côté droit",
+      "modelTitle": "Illustration du pliage",
+      "modelHelp": "Illustre le premier recto d’un groupe de quatre ou huit pages. Prévisualisez le PDF généré pour vérifier l’ordre des pages de votre document.",
+      "sheetFront": "Recto de la feuille",
+      "pageLabel": "Page {number}",
+      "resultTitle": "PDF imposé"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Style de sceau de cire physique)",

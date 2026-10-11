@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 Blatt doppelseitig",
       "eightPagesSaddle": "8-Seiten-Rückenstichheftung",
       "twoSheetsMiddleStitch": "2 Blätter rückstichgeheftet",
-      "foldingDamping": "3D-Falzdämpfungsfaktor",
+      "foldingDamping": "Faltfortschritt",
       "flatUnfold": "Flach entfalten",
       "fullyFolded": "Vollständig gefaltet",
       "view2D": "2D-Layout",
       "view3D": "3D-Simulation",
       "leftPageHalf": "Linke Seite (Ausschießung & Bindung)",
-      "rightPageHalf": "Rechte Seite"
+      "rightPageHalf": "Rechte Seite",
+      "modelTitle": "Faltillustration",
+      "modelHelp": "Zeigt die erste Vorderseite einer Gruppe aus vier oder acht Seiten. Prüfen Sie die Seitenreihenfolge Ihres Dokuments in der Vorschau des erzeugten PDFs.",
+      "sheetFront": "Blattvorderseite",
+      "pageLabel": "Seite {number}",
+      "resultTitle": "Ausgeschossenes PDF"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Physischer Siegellack-Stil)",

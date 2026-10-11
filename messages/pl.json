@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 arkusz dwustronny",
       "eightPagesSaddle": "Zszywanie zeszytowe — 8 stron",
       "twoSheetsMiddleStitch": "2 arkusze szyte na środku",
-      "foldingDamping": "Współczynnik tłumienia składania 3D",
+      "foldingDamping": "Postęp składania",
       "flatUnfold": "Rozłóż na płasko",
       "fullyFolded": "Całkowicie złożony",
       "view2D": "Układ 2D",
       "view3D": "Symulacja 3D",
       "leftPageHalf": "Lewa strona (narzucona i związana)",
-      "rightPageHalf": "Prawa strona"
+      "rightPageHalf": "Prawa strona",
+      "modelTitle": "Ilustracja składania",
+      "modelHelp": "Pokazuje pierwszą przednią stronę grupy czterech lub ośmiu stron. Sprawdź kolejność stron dokumentu w podglądzie wygenerowanego PDF.",
+      "sheetFront": "Przód arkusza",
+      "pageLabel": "Strona {number}",
+      "resultTitle": "PDF po impozycji"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Styl realistycznej pieczęci woskowej)",

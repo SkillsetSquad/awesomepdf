@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1장 양면 인쇄",
       "eightPagesSaddle": "8페이지 중철 제본 (Saddle Stitch)",
       "twoSheetsMiddleStitch": "2장 중철 제본",
-      "foldingDamping": "3D 접기 감쇠 계수",
+      "foldingDamping": "접기 진행",
       "flatUnfold": "평평하게 펼치기",
       "fullyFolded": "완전히 접힘",
       "view2D": "2D 레이아웃",
       "view3D": "3D 시뮬레이션",
       "leftPageHalf": "왼쪽 (면맞춤 및 제본)",
-      "rightPageHalf": "오른쪽"
+      "rightPageHalf": "오른쪽",
+      "modelTitle": "접기 설명 그림",
+      "modelHelp": "4페이지 또는 8페이지 그룹의 첫 앞면을 보여줍니다. 생성된 PDF를 미리 보고 문서의 페이지 순서를 확인하세요.",
+      "sheetFront": "용지 앞면",
+      "pageLabel": "페이지 {number}",
+      "resultTitle": "면배치 PDF"
     },
     "certCryptor": {
       "waxStyleSuffix": " (물리적 실링 왁스 스타일)",

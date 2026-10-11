@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 coală față-verso",
       "eightPagesSaddle": "Cusătură pe 8 pagini",
       "twoSheetsMiddleStitch": "2 coli cusute la mijloc",
-      "foldingDamping": "Factor de amortizare a plierii 3D",
+      "foldingDamping": "Progresul plierii",
       "flatUnfold": "Desfășurare plată",
       "fullyFolded": "Pliat complet",
       "view2D": "Aspect 2D",
       "view3D": "Simulare 3D",
       "leftPageHalf": "Partea stângă (Impusă și legată)",
-      "rightPageHalf": "Partea dreaptă"
+      "rightPageHalf": "Partea dreaptă",
+      "modelTitle": "Ilustrarea plierii",
+      "modelHelp": "Ilustrează prima față a unui grup de patru sau opt pagini. Previzualizați PDF-ul generat pentru a verifica ordinea paginilor documentului.",
+      "sheetFront": "Fața colii",
+      "pageLabel": "Pagina {number}",
+      "resultTitle": "PDF cu impoziție"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Stil sigiliu fizic de ceară)",

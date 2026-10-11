@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 hoja a doble cara",
       "eightPagesSaddle": "Encuadernación grapada de 8 páginas",
       "twoSheetsMiddleStitch": "2 hojas cosidas al medio",
-      "foldingDamping": "Factor de amortiguación de plegado 3D",
+      "foldingDamping": "Progreso del plegado",
       "flatUnfold": "Desplegado plano",
       "fullyFolded": "Completamente plegado",
       "view2D": "Diseño 2D",
       "view3D": "Simulación 3D",
       "leftPageHalf": "Lado izquierdo (Impuesto y encuadernado)",
-      "rightPageHalf": "Lado derecho"
+      "rightPageHalf": "Lado derecho",
+      "modelTitle": "Ilustración del plegado",
+      "modelHelp": "Ilustra la primera cara de un grupo de cuatro u ocho páginas. Previsualiza el PDF generado para comprobar el orden de tu documento.",
+      "sheetFront": "Anverso de la hoja",
+      "pageLabel": "Página {number}",
+      "resultTitle": "PDF impuesto"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Estilo de sello de lacre físico)",

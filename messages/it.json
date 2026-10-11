@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 foglio fronte-retro",
       "eightPagesSaddle": "Rilegatura a sella di 8 pagine",
       "twoSheetsMiddleStitch": "2 fogli rilegati al centro",
-      "foldingDamping": "Fattore di smorzamento della piegatura 3D",
+      "foldingDamping": "Avanzamento della piega",
       "flatUnfold": "Spiegatura piatta",
       "fullyFolded": "Completamente piegato",
       "view2D": "Layout 2D",
       "view3D": "Simulazione 3D",
       "leftPageHalf": "Lato sinistro (Imposto e rilegato)",
-      "rightPageHalf": "Lato destro"
+      "rightPageHalf": "Lato destro",
+      "modelTitle": "Illustrazione della piega",
+      "modelHelp": "Illustra il primo fronte di un gruppo di quattro o otto pagine. Visualizza il PDF generato per verificare l’ordine delle pagine del documento.",
+      "sheetFront": "Fronte del foglio",
+      "pageLabel": "Pagina {number}",
+      "resultTitle": "PDF impaginato per la stampa"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Stile sigillo in ceralacca fisica)",

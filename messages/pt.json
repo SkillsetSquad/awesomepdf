@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "1 folha frente e verso",
       "eightPagesSaddle": "Costura canoa de 8 páginas",
       "twoSheetsMiddleStitch": "2 folhas costuradas no meio",
-      "foldingDamping": "Fator de amortecimento de dobra 3D",
+      "foldingDamping": "Progresso da dobra",
       "flatUnfold": "Desdobramento plano",
       "fullyFolded": "Totalmente dobrado",
       "view2D": "Layout 2D",
       "view3D": "Simulação 3D",
       "leftPageHalf": "Lado esquerdo (Imposto e encadernado)",
-      "rightPageHalf": "Lado direito"
+      "rightPageHalf": "Lado direito",
+      "modelTitle": "Ilustração da dobra",
+      "modelHelp": "Ilustra a primeira frente de um grupo de quatro ou oito páginas. Visualize o PDF gerado para conferir a ordem das páginas do documento.",
+      "sheetFront": "Frente da folha",
+      "pageLabel": "Página {number}",
+      "resultTitle": "PDF imposto"
     },
     "certCryptor": {
       "waxStyleSuffix": " (Estilo de selo de lacre físico)",

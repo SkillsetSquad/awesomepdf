@@ -523,13 +523,18 @@
       "oneSheetDoubleSide": "ورقة واحدة بوجهين",
       "eightPagesSaddle": "تدبيس كراسة 8 صفحات",
       "twoSheetsMiddleStitch": "ورقتين مخيطتين في المنتصف",
-      "foldingDamping": "عامل تخميد الطي ثلاثي الأبعاد",
+      "foldingDamping": "تقدم الطي",
       "flatUnfold": "بسط مسطح",
       "fullyFolded": "مطوي بالكامل",
       "view2D": "تخطيط ثنائي الأبعاد",
       "view3D": "محاكاة ثلاثية الأبعاد",
       "leftPageHalf": "الجانب الأيسر (مرتب ومجلد)",
-      "rightPageHalf": "الجانب الأيمن"
+      "rightPageHalf": "الجانب الأيمن",
+      "modelTitle": "رسم توضيحي للطي",
+      "modelHelp": "يوضح أول وجه أمامي لمجموعة من أربع أو ثماني صفحات. عاين ملف PDF الناتج للتحقق من ترتيب صفحات مستندك.",
+      "sheetFront": "الوجه الأمامي للورقة",
+      "pageLabel": "الصفحة {number}",
+      "resultTitle": "ملف PDF المرتب للطباعة"
     },
     "certCryptor": {
       "waxStyleSuffix": " (نمط ختم الشمع الفيزيائي)",
