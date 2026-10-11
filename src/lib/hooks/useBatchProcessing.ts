@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface BatchFile {
@@ -37,6 +37,7 @@ export interface UseBatchProcessingReturn {
   addFiles: (files: File[]) => void;
   removeFile: (id: string) => void;
   clearFiles: () => void;
+  resetFiles: () => void;
   startProcessing: (
     processor: (file: File, onProgress: (progress: number) => void) => Promise<Blob>
   ) => Promise<void>;
@@ -54,8 +55,23 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
   
   const [files, setFiles] = useState<BatchFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  const cancelledRef = useRef(false);
+  const filesRef = useRef<BatchFile[]>([]);
+  const processingRun = useRef(0);
   const processingRef = useRef(false); // Track processing state with ref
+  useEffect(() => () => { processingRun.current++; processingRef.current = false; }, []);
+
+  const changeFiles = useCallback((update: (current: BatchFile[]) => BatchFile[]) => {
+    const next = update(filesRef.current);
+    filesRef.current = next;
+    setFiles(next);
+  }, []);
+
+  const cancelProcessing = useCallback(() => {
+    processingRun.current++;
+    processingRef.current = false;
+    setIsProcessing(false);
+    changeFiles(current => current.map(file => file.status === 'processing' ? { ...file, status: 'pending', progress: 0, result: undefined, error: undefined } : file));
+  }, [changeFiles]);
 
   const addFiles = useCallback((newFiles: File[]) => {
     const batchFiles: BatchFile[] = newFiles.map((file) => ({
@@ -65,126 +81,72 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
       progress: 0,
     }));
     
-    setFiles((prev) => [...prev, ...batchFiles]);
-  }, []);
+    changeFiles((prev) => [...prev, ...batchFiles]);
+  }, [changeFiles]);
 
   const removeFile = useCallback((id: string) => {
-    setFiles((prev) => prev.filter((f) => f.id !== id));
-  }, []);
+    changeFiles((prev) => prev.filter((f) => f.id !== id));
+  }, [changeFiles]);
 
   const clearFiles = useCallback(() => {
-    setFiles([]);
-  }, []);
+    cancelProcessing();
+    changeFiles(() => []);
+  }, [cancelProcessing, changeFiles]);
+
+  const resetFiles = useCallback(() => {
+    cancelProcessing();
+    changeFiles(current => current.map(file => ({ ...file, status: 'pending', progress: 0, result: undefined, error: undefined })));
+  }, [cancelProcessing, changeFiles]);
 
   const updateFile = useCallback((id: string, updates: Partial<BatchFile>) => {
-    setFiles((prev) =>
+    changeFiles((prev) =>
       prev.map((f) => (f.id === id ? { ...f, ...updates } : f))
     );
-  }, []);
+  }, [changeFiles]);
 
   const startProcessing = useCallback(
-    async (
-      processor: (file: File, onProgress: (progress: number) => void) => Promise<Blob>
-    ) => {
-      // Check ref to avoid race condition
+    async (processor: (file: File, onProgress: (progress: number) => void) => Promise<Blob>) => {
       if (processingRef.current) return;
-      
+      const run = ++processingRun.current;
       processingRef.current = true;
       setIsProcessing(true);
-      cancelledRef.current = false;
-
-      // Capture current files snapshot
-      const currentFiles = await new Promise<BatchFile[]>((resolve) => {
-        setFiles((f) => {
-          resolve(f);
-          return f;
-        });
-      });
-
-      const pendingFiles = currentFiles.filter((f) => f.status === 'pending');
-      const queue = [...pendingFiles];
-      const processing: Promise<void>[] = [];
-
+      const queue = filesRef.current.filter(file => file.status === 'pending' || file.status === 'error');
+      const isCurrent = () => run === processingRun.current;
+      const isPresent = (id: string) => filesRef.current.some(file => file.id === id);
       const processFile = async (batchFile: BatchFile) => {
-        if (cancelledRef.current) return;
-
-        updateFile(batchFile.id, { status: 'processing', progress: 0 });
-
+        if (!isCurrent() || !isPresent(batchFile.id)) return;
+        updateFile(batchFile.id, { status: 'processing', progress: 0, error: undefined, result: undefined });
         try {
-          const result = await processor(batchFile.file, (progress) => {
-            updateFile(batchFile.id, { progress });
+          const result = await processor(batchFile.file, progress => {
+            if (isCurrent()) updateFile(batchFile.id, { progress: Number.isFinite(progress) ? Math.max(0, Math.min(100, progress)) : 0 });
           });
-
-          const completedFile: BatchFile = {
-            ...batchFile,
-            status: 'completed',
-            progress: 100,
-            result,
-          };
-
-          updateFile(batchFile.id, {
-            status: 'completed',
-            progress: 100,
-            result,
-          });
-
+          if (!isCurrent() || !isPresent(batchFile.id)) return;
+          const completedFile: BatchFile = { ...batchFile, status: 'completed', progress: 100, result, error: undefined };
+          updateFile(batchFile.id, completedFile);
           onFileComplete?.(completedFile);
         } catch (err) {
+          if (!isCurrent() || !isPresent(batchFile.id)) return;
           const error = err instanceof Error ? err : new Error('Processing failed');
-          
-          updateFile(batchFile.id, {
-            status: 'error',
-            error: error.message,
-          });
-
+          updateFile(batchFile.id, { status: 'error', error: error.message });
           onError?.({ ...batchFile, status: 'error', error: error.message }, error);
         }
       };
-
-      const processQueue = async () => {
-        while (queue.length > 0 && !cancelledRef.current) {
-          // Wait if we're at max concurrent
-          while (processing.length >= maxConcurrent) {
-            await Promise.race(processing);
-          }
-
+      const worker = async () => {
+        while (isCurrent() && queue.length > 0) {
           const file = queue.shift();
-          if (!file) break;
-
-          const promise = processFile(file).finally(() => {
-            const index = processing.indexOf(promise);
-            if (index > -1) {
-              processing.splice(index, 1);
-            }
-          });
-
-          processing.push(promise);
+          if (file) await processFile(file);
         }
-
-        // Wait for all remaining to complete
-        await Promise.all(processing);
       };
-
-      await processQueue();
-
-      // Mark as complete
-      processingRef.current = false;
-      setIsProcessing(false);
-
-      // Get final state and trigger callback
-      setFiles((finalFiles) => {
-        onAllComplete?.(finalFiles);
-        return finalFiles;
-      });
+      const concurrency = Number.isFinite(maxConcurrent) ? Math.max(1, Math.floor(maxConcurrent)) : 2;
+      try {
+        await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, worker));
+        if (isCurrent()) onAllComplete?.(filesRef.current);
+      } finally {
+        if (isCurrent()) { processingRef.current = false; setIsProcessing(false); }
+      }
     },
     [maxConcurrent, updateFile, onFileComplete, onAllComplete, onError]
   );
-
-  const cancelProcessing = useCallback(() => {
-    cancelledRef.current = true;
-    processingRef.current = false;
-    setIsProcessing(false);
-  }, []);
 
   const downloadAll = useCallback((filenamePrefix = 'processed') => {
     const completedFiles = files.filter((f) => f.status === 'completed' && f.result);
@@ -243,6 +205,7 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
     addFiles,
     removeFile,
     clearFiles,
+    resetFiles,
     startProcessing,
     cancelProcessing,
     downloadAll,
