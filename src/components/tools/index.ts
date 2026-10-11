@@ -7,7 +7,6 @@ export { ToolPage, type ToolPageProps } from './ToolPage';
 export { FileUploader, type FileUploaderProps } from './FileUploader';
 export { ProcessingProgress, type ProcessingProgressProps, type ProcessingStatus } from './ProcessingProgress';
 export { DownloadButton, type DownloadButtonProps } from './DownloadButton';
-export { FilePreview, type FilePreviewProps } from './FilePreview';
 
 // Tool-specific Components
 export { MergePDFTool, type MergePDFToolProps } from './merge';
