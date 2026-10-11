@@ -6,7 +6,8 @@
  */
 
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/config/site';
+import { getAbsoluteUrl } from '@/lib/seo/urls';
+import { withBasePath } from '@/lib/utils/path';
 
 // Required for static export
 export const dynamic = 'force-static';
@@ -18,12 +19,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/api/',
-          '/_next/',
-          '/static/',
+          withBasePath('/api/'),
         ],
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: getAbsoluteUrl('/sitemap.xml'),
   };
 }

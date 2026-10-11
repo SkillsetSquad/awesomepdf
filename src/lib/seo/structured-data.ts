@@ -8,6 +8,8 @@
 import { siteConfig } from '@/config/site';
 import type { Tool, ToolContent, FAQ, HowToStep } from '@/types/tool';
 import type { Locale } from '@/lib/i18n/config';
+import { getAbsoluteUrl, getCanonicalUrl } from './urls';
+import seoCopy from './copy.json';
 
 /**
  * SoftwareApplication schema for tool pages
@@ -164,7 +166,7 @@ export function generateSoftwareApplicationSchema(
     '@type': 'SoftwareApplication',
     name: content.title,
     description: content.metaDescription,
-    url: `${siteConfig.url}/${locale}/tools/${tool.slug}`,
+    url: getCanonicalUrl(locale, `/tools/${tool.slug}`),
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Windows, macOS, Linux, iOS, Android, Chrome OS',
     offers: {
@@ -172,18 +174,9 @@ export function generateSoftwareApplicationSchema(
       price: '0',
       priceCurrency: 'USD',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '1250',
-    },
     keywords: content.keywords ? content.keywords.join(', ') : undefined,
   };
 
-  // Add feature list if available
-  if (tool.features && tool.features.length > 0) {
-    schema.featureList = tool.features;
-  }
 
   return schema;
 }
@@ -203,13 +196,12 @@ export function generateHowToSchema(
   return {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `How to ${content.title}`,
+    name: `${seoCopy[locale].howTo}: ${content.title}`,
     description: content.metaDescription,
-    totalTime: 'PT5M', // Estimated 5 minutes for most PDF operations
     tool: [
       {
         '@type': 'HowToTool',
-        name: 'Web Browser',
+        name: siteConfig.name,
       },
     ],
     step: content.howToUse.map((step: HowToStep) => ({
@@ -217,7 +209,7 @@ export function generateHowToSchema(
       position: step.step,
       name: step.title,
       text: step.description,
-      url: `${siteConfig.url}/${locale}/tools/${tool.slug}#step-${step.step}`,
+      url: `${getCanonicalUrl(locale, `/tools/${tool.slug}`)}#step-${step.step}`,
     })),
   };
 }
@@ -230,35 +222,18 @@ export function generateWebPageSchema(
   content: ToolContent,
   locale: Locale
 ): WebPageSchema {
-  const languageMap: Record<Locale, string> = {
-    en: 'en-US',
-    ja: 'ja-JP',
-    ko: 'ko-KR',
-    es: 'es-ES',
-    fr: 'fr-FR',
-    de: 'de-DE',
-    zh: 'zh-CN',
-    'zh-TW': 'zh-TW',
-    pt: 'pt-BR',
-    ar: 'ar-AR',
-    it: 'it-IT',
-    id: 'id-ID',
-    vi: 'vi-VN',
-    ro: 'ro-RO',
-    pl: 'pl-PL',
-  };
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: content.title,
     description: content.metaDescription,
-    url: `${siteConfig.url}/${locale}/tools/${tool.slug}`,
-    inLanguage: languageMap[locale] || 'en-US',
+    url: getCanonicalUrl(locale, `/tools/${tool.slug}`),
+    inLanguage: locale,
     isPartOf: {
       '@type': 'WebSite',
       name: siteConfig.name,
-      url: siteConfig.url,
+      url: getAbsoluteUrl('/', true),
     },
     about: {
       '@type': 'Thing',
@@ -297,16 +272,8 @@ export function generateWebSiteSchema(locale: Locale): WebSiteSchema {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteConfig.name,
-    url: `${siteConfig.url}/${locale}`,
-    description: siteConfig.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteConfig.url}/${locale}/tools?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    url: getCanonicalUrl(locale),
+    description: seoCopy[locale].home.description,
   };
 }
 
@@ -318,8 +285,8 @@ export function generateOrganizationSchema(): OrganizationSchema {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/images/logo.png`,
+    url: getAbsoluteUrl('/', true),
+    logo: getAbsoluteUrl('/images/logo.png'),
     sameAs: siteConfig.links.github ? [siteConfig.links.github] : [],
   };
 }
@@ -338,7 +305,7 @@ export function generateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${siteConfig.url}/${locale}${item.path}`,
+      item: getCanonicalUrl(locale, item.path),
     })),
   };
 }
@@ -368,8 +335,8 @@ export function generateToolPageStructuredData(
 
   const breadcrumb = generateBreadcrumbSchema(
     [
-      { name: 'Home', path: '' },
-      { name: 'Tools', path: '/tools' },
+      { name: seoCopy[locale].navigation.home, path: '' },
+      { name: seoCopy[locale].navigation.tools, path: '/tools' },
       { name: content.title, path: `/tools/${tool.slug}` },
     ],
     locale
@@ -388,7 +355,7 @@ export function generateToolPageStructuredData(
  * Serialize structured data to JSON-LD script tag content
  */
 export function serializeStructuredData(data: object): string {
-  return JSON.stringify(data, null, 0);
+  return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
 /**

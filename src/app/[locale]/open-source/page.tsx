@@ -1,3 +1,4 @@
+import { PageSeo } from '@/components/seo/PageSeo';
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -35,6 +36,7 @@ export default async function OpenSourcePage({ params }: { params: Promise<{ loc
   const manifest: { generatedAt: string } = JSON.parse(manifestText);
 
   return <div className="flex min-h-screen flex-col">
+    <PageSeo locale={locale as Locale} path="/open-source" title={t('openSource')} description={t('sourceDescription')} />
     <Header locale={locale as Locale} />
     <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl flex-1 space-y-6 px-4 pb-12 pt-24">
       <div className="space-y-2"><h1 className="text-3xl font-semibold tracking-tight">{t('openSource')}</h1><p className="text-muted-foreground" lang="en">A brand of Skillset Squad Private Limited.</p></div>

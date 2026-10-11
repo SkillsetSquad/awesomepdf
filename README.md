@@ -37,7 +37,7 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 | | PDFCraft (upstream) | AwesomePDF (this fork) |
 |---|---|---|
 | Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awesomepdf](https://github.com/SkillsetSquad/awesomepdf) |
-| Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | Not yet announced |
+| Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
 | UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
 | Status | Upstream project | Actively diverging |
 
@@ -54,7 +54,7 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 - Larger changes beyond the UI are underway. This README will be updated as they land.
 - While the migration is in progress, the default `npm run build` can fail on the existing lint baseline. `npm run build -- --no-lint` skips linting.
 
-Progress details live in [docs/ui-migration.md](docs/ui-migration.md).
+Development notes are kept locally in the ignored `docs/` directory.
 
 ## ✨ Key Features
 
@@ -261,6 +261,8 @@ docker compose down
 #### 🌐 Site URL and Subpath Deployment
 
 Sitemap, `robots.txt`, canonical and structured-data URLs are built from the site origin, which is fixed at build time because the app is statically exported. Set `NEXT_PUBLIC_SITE_URL` (for Docker, the build argument of the same name) to your production origin. See [DEPLOYMENT.md](DEPLOYMENT.md) for how it is resolved when unset.
+
+The default production origin is `https://awsomepdf.com`. Use `npm run audit:seo` after a build to verify every public page and language. Local SEO reports and image sources are saved in the ignored `docs/seo/` directory.
 
 To deploy under a subpath (e.g., `https://your-domain.com/awesomepdf/`), specify the base path during the build:
 

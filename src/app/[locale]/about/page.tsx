@@ -1,3 +1,5 @@
+import { PageSeo } from '@/components/seo/PageSeo';
+import seoCopy from '@/lib/seo/copy.json';
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
@@ -33,5 +35,5 @@ export default async function AboutPage({ params }: AboutPageProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  return <AboutPageClient locale={locale as Locale} />;
+  return <><PageSeo locale={locale as Locale} path="/about" title={seoCopy[locale as Locale].about.title} description={seoCopy[locale as Locale].about.description} type="AboutPage" /><AboutPageClient locale={locale as Locale} /></>;
 }

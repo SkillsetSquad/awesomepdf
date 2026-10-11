@@ -12,21 +12,18 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { type Locale } from '@/lib/i18n/config';
+import { FAQ_CATEGORY_ITEMS as categoryItems, getFaqValues } from '@/config/faq';
 
-const categoryItems = {
-  general: ['whatIs', 'isFree', 'account'], privacy: ['uploaded', 'safe', 'storage'],
-  features: ['operations', 'merge', 'images', 'edit'], technical: ['browsers', 'sizeLimit', 'slow', 'offline'],
-  languages: ['supported', 'change'],
-};
 export default function FAQPageClient({ locale }: { locale: Locale }) {
   const t = useTranslations('faqPage');
   const common = useTranslations('common');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const values = getFaqValues();
   const faqs = Object.entries(categoryItems).flatMap(([category, keys]) => keys.map(key => ({
     id: `${category}-${key}`, category, categoryLabel: t(`categories.${category}`),
-    question: t(`sections.${category}.${key}.question`), answer: t(`sections.${category}.${key}.answer`),
+    question: t(`sections.${category}.${key}.question`, values), answer: t(`sections.${category}.${key}.answer`, values),
   })));
   const query = searchQuery.trim().toLocaleLowerCase(locale);
   const filteredFaqs = faqs.filter(faq => (selectedCategory === 'all' || faq.category === selectedCategory) && (!query || `${faq.question} ${faq.answer}`.toLocaleLowerCase(locale).includes(query)));

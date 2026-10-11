@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { Suspense, useState, useMemo, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { Search, X, Star } from 'lucide-react';
@@ -31,17 +31,25 @@ interface ToolsPageClientProps {
   localizedToolContent?: Record<string, { title: string; description: string }>;
 }
 
+/** Isolate the static-export search-parameter bailout from the visible directory. */
+function ToolsQuerySync({ onQueryChange, onCategoryChange }: {
+  onQueryChange: (query: string) => void;
+  onCategoryChange: (category: CategoryFilter) => void;
+}) {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    onCategoryChange(parseCategory(searchParams.get('category')));
+    onQueryChange(searchParams.get('q') || '');
+  }, [searchParams, onQueryChange, onCategoryChange]);
+  return null;
+}
+
 export default function ToolsPageClient({ locale, localizedToolContent }: ToolsPageClientProps) {
   const t = useTranslations();
-  const searchParams = useSearchParams();
   const allTools = useMemo(() => getAllTools(), []);
   const { favorites, isLoaded: favoritesLoaded, favoritesCount } = useFavorites();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
-  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>(parseCategory(searchParams.get('category')));
-  useEffect(() => {
-    setSelectedCategory(parseCategory(searchParams.get('category')));
-    setSearchQuery(searchParams.get('q') || '');
-  }, [searchParams]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
 
   const filteredTools = useMemo(() => allTools.filter(tool =>
     (selectedCategory === 'all' || (selectedCategory === 'favorites' ? favorites.includes(tool.id) : tool.category === selectedCategory)) &&
@@ -58,6 +66,7 @@ export default function ToolsPageClient({ locale, localizedToolContent }: ToolsP
 
   return (
     <main id="main-content" className="mx-auto w-full max-w-7xl flex-1 space-y-8 px-4 pt-24 pb-12 sm:px-6">
+      <Suspense fallback={null}><ToolsQuerySync onQueryChange={setSearchQuery} onCategoryChange={setSelectedCategory} /></Suspense>
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t('toolsPage.title')}</h1>
         <p className="text-muted-foreground">{t('toolsPage.subtitle', { count: allTools.length })}</p>

@@ -2,11 +2,11 @@
   "metadata": {
     "home": {
       "title": "AwesomePDF – Free PDF Tools to Merge, Compress & Edit",
-      "description": "Merge, compress, convert, edit, and organize PDFs in seconds. Free, simple PDF tools that run in your browser, with no sign-up required."
+      "description": "Merge, split, compress, convert and edit PDFs free online. Private browser processing, no registration and no file uploads to a server."
     },
     "tools": {
       "title": "All PDF Tools",
-      "description": "Browse all 67+ professional PDF tools. Merge, split, compress, convert, edit, and secure your PDF files for free."
+      "description": "Free PDF tools to merge, split, compress, convert, edit and protect documents in your browser. No account or file upload to a server required."
     },
     "about": {
       "title": "About",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "What languages are supported?",
-          "answer": "AwesomePDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support)."
+          "answer": "AwesomePDF is available in {languages} languages: {languageNames}. Arabic supports a right-to-left layout."
         },
         "change": {
           "question": "How do I change the language?",

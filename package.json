@@ -17,7 +17,8 @@
     "predev": "node scripts/prepare-source.mjs && node scripts/decompress-wasm.mjs public && node scripts/ensure-pdfjs-viewer-js.js public",
     "postinstall": "node scripts/sync-pdfjs-workers.js && node scripts/decompress-wasm.mjs public && node scripts/ensure-pdfjs-viewer-js.js public",
     "postbuild": "node scripts/decompress-wasm.mjs && node scripts/chunk-assets.mjs && node scripts/ensure-pdfjs-viewer-js.js out",
-    "prebuild": "node scripts/prepare-source.mjs"
+    "prebuild": "node scripts/prepare-source.mjs",
+    "audit:seo": "python3 scripts/audit-seo.py"
   },
   "dependencies": {
     "@matbee/libreoffice-converter": "^2.5.0",

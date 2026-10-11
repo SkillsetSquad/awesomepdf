@@ -1,3 +1,5 @@
+import { PageSeo } from '@/components/seo/PageSeo';
+import seoCopy from '@/lib/seo/copy.json';
 import { useTranslations } from 'next-intl';
 import { getAllTools } from '@/config/tools';
 import type { Locale } from '@/lib/i18n/config';
@@ -44,6 +46,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <JsonLd data={[generateWebSiteSchema(locale), generateOrganizationSchema(), generateFAQPageSchema(faqs)]} />
+      <PageSeo locale={locale} path="" title={seoCopy[locale].home.title} description={seoCopy[locale].home.description} />
       <Header locale={locale} />
       <main id="main-content" tabIndex={-1} className="flex-1 pt-16 outline-none">
         <HeroSection locale={locale} />

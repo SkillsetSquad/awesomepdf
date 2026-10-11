@@ -1,3 +1,5 @@
+import { PageSeo } from '@/components/seo/PageSeo';
+import seoCopy from '@/lib/seo/copy.json';
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
@@ -33,5 +35,5 @@ export default async function ContactPage({ params }: ContactPageProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  return <ContactPageClient locale={locale as Locale} />;
+  return <><PageSeo locale={locale as Locale} path="/contact" title={seoCopy[locale as Locale].contact.title} description={seoCopy[locale as Locale].contact.description} type="ContactPage" /><ContactPageClient locale={locale as Locale} /></>;
 }

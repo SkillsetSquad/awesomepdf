@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Todas las Herramientas PDF",
-      "description": "Explora más de 67 herramientas PDF profesionales. Combina, divide, comprime, convierte, edita y protege tus archivos PDF gratis."
+      "description": "Herramientas PDF gratis para unir, dividir, comprimir, convertir, editar y proteger documentos en tu navegador. Sin cuenta ni subir archivos a un servidor."
     },
     "about": {
       "title": "Acerca de Nosotros",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "¿Qué idiomas son compatibles?",
-          "answer": "AwesomePDF está disponible en 9 idiomas: inglés, japonés, coreano, español, francés, alemán, chino, portugués y árabe (con soporte RTL)."
+          "answer": "AwesomePDF está disponible en {languages} idiomas: {languageNames}. El árabe admite un diseño de derecha a izquierda."
         },
         "change": {
           "question": "¿Cómo cambio el idioma?",

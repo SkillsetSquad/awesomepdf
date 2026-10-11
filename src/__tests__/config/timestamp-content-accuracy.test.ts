@@ -5,10 +5,8 @@ import { locales } from '@/lib/i18n/config';
 
 describe('Timestamp content agrees with the local signer', () => {
   it.each(locales)('describes local device time throughout the served %s page', locale => {
-    // Romanian currently uses the configured English content fallback.
-    const contentLocale = locale === 'ro' ? 'en' : locale;
     const messages: { common: { timestamp: { localNotice: string; localUploadDescription: string } } } =
-      JSON.parse(readFileSync(`messages/${contentLocale}.json`, 'utf8'));
+      JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8'));
     const content = getToolContent(locale, 'timestamp-pdf');
     expect(content).toBeDefined();
     expect(content?.description).toContain(messages.common.timestamp.localNotice);

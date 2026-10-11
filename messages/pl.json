@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Wszystkie narzędzia PDF",
-      "description": "Przeglądaj wszystkie ponad 67 profesjonalnych narzędzi PDF. Łącz, dziel, kompresuj, konwertuj, edytuj i zabezpieczaj swoje pliki PDF za darmo."
+      "description": "Darmowe narzędzia PDF do łączenia, dzielenia, kompresji, konwersji, edycji i ochrony dokumentów w przeglądarce. Bez konta i przesyłania plików na serwer."
     },
     "about": {
       "title": "O AwesomePDF",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Jakie języki są obsługiwane?",
-          "answer": "AwesomePDF jest dostępny w 9 językach: angielskim, japońskim, koreańskim, hiszpańskim, francuskim, niemieckim, chińskim, portugalskim i arabskim (z obsługą RTL)."
+          "answer": "AwesomePDF jest dostępny w {languages} językach: {languageNames}. Język arabski obsługuje układ od prawej do lewej."
         },
         "change": {
           "question": "Jak zmienić język?",

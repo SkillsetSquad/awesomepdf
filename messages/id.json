@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Semua Alat PDF",
-      "description": "Jelajahi lebih dari 67 alat PDF profesional. Gabungkan, pisahkan, kompres, konversi, edit, dan amankan file PDF Anda secara gratis."
+      "description": "Alat PDF gratis untuk menggabungkan, memisahkan, mengompres, mengonversi, mengedit, dan melindungi dokumen di browser. Tanpa akun atau unggahan ke server."
     },
     "about": {
       "title": "Tentang",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Bahasa apa saja yang didukung?",
-          "answer": "AwesomePDF tersedia dalam 9 bahasa: Inggris, Jepang, Korea, Spanyol, Prancis, Jerman, Mandarin, Portugis, dan Arab (dengan dukungan RTL)."
+          "answer": "AwesomePDF tersedia dalam {languages} bahasa: {languageNames}. Bahasa Arab mendukung tata letak dari kanan ke kiri."
         },
         "change": {
           "question": "Bagaimana cara mengubah bahasa?",

@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Tất cả Công cụ PDF",
-      "description": "Khám phá hơn 67+ công cụ PDF chuyên nghiệp. Hợp nhất, tách, nén, chuyển đổi, chỉnh sửa và bảo mật tệp PDF miễn phí."
+      "description": "Công cụ PDF miễn phí để gộp, tách, nén, chuyển đổi, chỉnh sửa và bảo vệ tài liệu ngay trong trình duyệt. Không cần tài khoản hay tải tệp lên máy chủ."
     },
     "about": {
       "title": "Giới thiệu",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Những ngôn ngữ nào được hỗ trợ?",
-          "answer": "AwesomePDF có sẵn bằng 9 ngôn ngữ: tiếng Anh, tiếng Nhật, tiếng Hàn, tiếng Tây Ban Nha, tiếng Pháp, tiếng Đức, tiếng Trung, tiếng Bồ Đào Nha và tiếng Ả Rập (có hỗ trợ viết từ phải sang trái - RTL)."
+          "answer": "AwesomePDF hỗ trợ {languages} ngôn ngữ: {languageNames}. Tiếng Ả Rập hỗ trợ bố cục từ phải sang trái."
         },
         "change": {
           "question": "Làm thế nào để tôi thay đổi ngôn ngữ?",

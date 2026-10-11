@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Toate Instrumentele PDF",
-      "description": "Răsfoiește peste 67 de instrumente PDF profesionale. Combină, divizează, comprimă, convertește, editează și securizează fișierele PDF gratuit."
+      "description": "Instrumente PDF gratuite pentru îmbinare, împărțire, comprimare, conversie, editare și protecție în browser. Fără cont sau încărcare pe un server."
     },
     "about": {
       "title": "Despre",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Ce limbi sunt acceptate?",
-          "answer": "AwesomePDF este disponibil în 9 limbi: engleză, japoneză, coreeană, spaniolă, franceză, germană, chineză, portugheză și arabă (cu suport RTL)."
+          "answer": "AwesomePDF este disponibil în {languages} limbi: {languageNames}. Araba acceptă afișarea de la dreapta la stânga."
         },
         "change": {
           "question": "Cum schimb limba?",

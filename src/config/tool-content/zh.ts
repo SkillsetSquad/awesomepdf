@@ -25,9 +25,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '处理并下载', description: '点击处理按钮，操作完成后下载修改后的PDF。' },
     ],
     useCases: [
-      { title: '文档准备', description: '通过删除不必要的页面、重新排序内容和合并多个文件来准备提交文档。', icon: 'file-check' },
-      { title: '报告汇编', description: '合并多个报告部分，添加封面页，将章节整理成一个专业文档。', icon: 'book-open' },
-      { title: '档案管理', description: '将大型档案文件拆分成可管理的部分，提取相关页面，重新整理历史文档。', icon: 'archive' },
+      { title: '文档准备', description: '通过删除不必要的页面、重新排序内容和合并多个文件来准备提交文档。', icon: "file-check" },
+      { title: '报告汇编', description: '合并多个报告部分，添加封面页，将章节整理成一个专业文档。', icon: "book-open" },
+      { title: '档案管理', description: '将大型档案文件拆分成可管理的部分，提取相关页面，重新整理历史文档。', icon: "archive" },
     ],
     faq: [
       { question: '一次可以处理多少个PDF？', answer: '您可以同时上传和处理最多10个PDF文件，合并最大大小为500MB。' },
@@ -51,9 +51,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '合并并下载', description: '点击合并按钮组合所有文件，然后下载合并后的PDF。' },
     ],
     useCases: [
-      { title: '合并报告', description: '将月度或季度报告合并成一个年度文档，便于分发和存档。', icon: 'file-text' },
-      { title: '组装作品集', description: '将多个项目文档、证书或工作样本合并成专业作品集。', icon: 'briefcase' },
-      { title: '整合发票', description: '将多张发票或收据合并成一个文档，用于会计和记录保存。', icon: 'receipt' },
+      { title: '合并报告', description: '将月度或季度报告合并成一个年度文档，便于分发和存档。', icon: "file-text" },
+      { title: '组装作品集', description: '将多个项目文档、证书或工作样本合并成专业作品集。', icon: "briefcase" },
+      { title: '整合发票', description: '将多张发票或收据合并成一个文档，用于会计和记录保存。', icon: "receipt" },
     ],
     faq: [
       { question: '可以合并多少个PDF？', answer: '您可以一次合并最多100个PDF文件，总大小最高可达500MB。' },
@@ -78,9 +78,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '应用并下载', description: '点击旋转应用更改并下载校正后的PDF。' },
     ],
     useCases: [
-      { title: '扫描文档', description: '校正扫描时进纸倾斜的页面。', icon: 'scan' },
-      { title: '技术图纸', description: '精确调整技术图表和平面图的方向。', icon: 'ruler' },
-      { title: '创意排版', description: '通过将页面旋转到特定艺术角度来创建独特的布局。', icon: 'pen-tool' },
+      { title: '扫描文档', description: '校正扫描时进纸倾斜的页面。', icon: "scan" },
+      { title: '技术图纸', description: '精确调整技术图表和平面图的方向。', icon: "ruler" },
+      { title: '创意排版', description: '通过将页面旋转到特定艺术角度来创建独特的布局。', icon: "pen-tool" },
     ],
     faq: [
       { question: '可以按小数旋转吗，例如45.5度？', answer: '目前工具支持整数度数，但我们正在努力启用小数精度。' },
@@ -92,7 +92,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   'grid-combine': {
     title: '网格组合 PDF',
     metaDescription: '将多个PDF文件组合到单页面上的灵活网格布局中。每页排列2、4、6、9个或更多PDF，支持边框和间距。',
-    keywords: ['网格组合', '合并pdf网格', 'pdf拼贴', '多pdf一页', 'pdf n-up', '组合pdf网格'],
+    keywords: ['网格组合', '合并pdf网格', 'pdf拼贴', '多pdf一页', "pdf 合一", '组合pdf网格'],
     description: `
       <p>网格组合工具提供了一种将多个独立的PDF文件合并到单页面上的独特方式。与简单追加页面的标准“合并PDF”工具或重新排列单个文档页面的“N-Up”工具不同，网格组合获取多个输入文件并将它们并排排列在可自定义的网格布局中。</p>
       <p>您可以选择各种网格配置，如2x1、2x2、3x3等。这非常适合比较多个文档、从不同来源创建讲义或打印多个文件的紧凑版本。</p>
@@ -105,9 +105,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '组合并下载', description: '点击“组合PDF”生成您的新网格布局文档并下载结果。' },
     ],
     useCases: [
-      { title: '视觉比较', description: '将设计或文档的不同版本并排放置在单个页面上以便于比较。', icon: 'layout-grid' },
-      { title: '打印讲义', description: '将多个短文档或幻灯片合并到单张纸上以节省打印成本。', icon: 'printer' },
-      { title: '作品集创建', description: '在清晰、有组织的网格概览中展示多个项目文件。', icon: 'image' },
+      { title: '视觉比较', description: '将设计或文档的不同版本并排放置在单个页面上以便于比较。', icon: "layout-grid" },
+      { title: '打印讲义', description: '将多个短文档或幻灯片合并到单张纸上以节省打印成本。', icon: "printer" },
+      { title: '作品集创建', description: '在清晰、有组织的网格概览中展示多个项目文件。', icon: "image" },
     ],
     faq: [
       { question: '这与N-Up有什么不同？', answer: 'N-Up从一个PDF中获取页面并将它们放在一张纸上。网格组合获取多个不同的PDF文件并将它们放在一张纸上。' },
@@ -132,9 +132,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '拆分并下载', description: '点击拆分创建新的PDF文件，单独下载或作为ZIP压缩包下载。' },
     ],
     useCases: [
-      { title: '提取章节', description: '将书籍或手册拆分成单独的章节，便于阅读或分发。', icon: 'book' },
-      { title: '分离合并扫描', description: '将批量扫描的文档分成每个原始文档的单独文件。', icon: 'copy' },
-      { title: '创建讲义', description: '从演示文稿中提取特定幻灯片或页面以创建重点讲义。', icon: 'presentation' },
+      { title: '提取章节', description: '将书籍或手册拆分成单独的章节，便于阅读或分发。', icon: "book" },
+      { title: '分离合并扫描', description: '将批量扫描的文档分成每个原始文档的单独文件。', icon: "copy" },
+      { title: '创建讲义', description: '从演示文稿中提取特定幻灯片或页面以创建重点讲义。', icon: "presentation" },
     ],
     faq: [
       { question: '可以将PDF拆分成单独的页面吗？', answer: '是的，您可以通过选择"每页拆分"选项将PDF拆分成单独的单页文件。' },
@@ -158,9 +158,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '压缩并下载', description: '点击压缩以减小文件大小，然后下载优化后的PDF。' },
     ],
     useCases: [
-      { title: '电子邮件附件', description: '减小PDF大小以满足电子邮件附件限制并确保更快的发送。', icon: 'mail' },
-      { title: '网络发布', description: '优化PDF以供网络下载，提高页面加载时间和用户体验。', icon: 'globe' },
-      { title: '存储优化', description: '压缩存档文档以节省磁盘空间同时保持可访问性。', icon: 'hard-drive' },
+      { title: '电子邮件附件', description: '减小PDF大小以满足电子邮件附件限制并确保更快的发送。', icon: "mail" },
+      { title: '网络发布', description: '优化PDF以供网络下载，提高页面加载时间和用户体验。', icon: "globe" },
+      { title: '存储优化', description: '压缩存档文档以节省磁盘空间同时保持可访问性。', icon: "hard-drive" },
     ],
     faq: [
       { question: '可以减少多少文件大小？', answer: '压缩结果因PDF内容而异。图像密集的PDF通常可以减少50-80%，而纯文本PDF可能减少较少。' },
@@ -185,9 +185,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '保存并下载', description: '点击右上方“保存修改”按钮，即可导出完美保持原始排版的新 PDF。' },
     ],
     useCases: [
-      { title: '直接修改正文错误', description: '无需重新导出源文件，直接在 PDF 原位更正错别字、日期或金额。', icon: 'edit-3' },
-      { title: '全文档查找替换', description: '跨页面批量查找关键词并一键原位替换，大幅提升合同修改效率。', icon: 'search' },
-      { title: '图片替换与排版', description: '一键替换 PDF 中的老旧图片、印章或 Logo，保持版面规范整齐。', icon: 'image' },
+      { title: '直接修改正文错误', description: '无需重新导出源文件，直接在 PDF 原位更正错别字、日期或金额。', icon: "edit-3" },
+      { title: '全文档查找替换', description: '跨页面批量查找关键词并一键原位替换，大幅提升合同修改效率。', icon: "search" },
+      { title: '图片替换与排版', description: '一键替换 PDF 中的老旧图片、印章或 Logo，保持版面规范整齐。', icon: "image" },
     ],
     faq: [
       { question: '可以直接修改PDF现有的文字吗？', answer: '是的！本工具现已全面支持原位正文直接编辑。点击任意正文段落即可直接光标输入编辑，系统会自动计算字距并进行实时排版重排。' },
@@ -211,9 +211,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF并下载结果。' },
     ],
     useCases: [
-      { title: '照片相册', description: '从假期照片或活动照片创建PDF相册，便于分享。', icon: 'image' },
-      { title: '文档扫描', description: '将手机拍摄的文档照片转换为正式的PDF文件。', icon: 'camera' },
-      { title: '作品集创建', description: '将摄影作品或设计样本编译成专业的PDF作品集。', icon: 'folder' },
+      { title: '照片相册', description: '从假期照片或活动照片创建PDF相册，便于分享。', icon: "image" },
+      { title: '文档扫描', description: '将手机拍摄的文档照片转换为正式的PDF文件。', icon: "camera" },
+      { title: '作品集创建', description: '将摄影作品或设计样本编译成专业的PDF作品集。', icon: "folder" },
     ],
     faq: [
       { question: '可以转换多少张图像？', answer: '您可以将最多100张JPG图像转换成一个PDF文档。' },
@@ -238,9 +238,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '保存并下载', description: '点击保存应用签名并下载已签名的PDF。' },
     ],
     useCases: [
-      { title: '合同签署', description: '电子签署合同和协议，无需打印和扫描。', icon: 'file-signature' },
-      { title: '表单填写', description: '为申请表、同意书和官方文档添加签名。', icon: 'clipboard' },
-      { title: '审批流程', description: '作为审阅和审批流程的一部分签署文档。', icon: 'check-circle' },
+      { title: '合同签署', description: '电子签署合同和协议，无需打印和扫描。', icon: "file-signature" },
+      { title: '表单填写', description: '为申请表、同意书和官方文档添加签名。', icon: "clipboard" },
+      { title: '审批流程', description: '作为审阅和审批流程的一部分签署文档。', icon: "check-circle" },
     ],
     faq: [
       { question: '电子签名具有法律效力吗？', answer: '电子签名在大多数国家都被法律认可。但是，某些文档可能需要特定类型的数字签名。请查阅当地法规。' },
@@ -265,9 +265,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '裁剪并下载', description: '点击裁剪应用更改并下载裁剪后的PDF。' },
     ],
     useCases: [
-      { title: '删除边距', description: '修剪扫描文档或具有大边框的PDF的过多边距。', icon: 'maximize-2' },
-      { title: '聚焦内容', description: '裁剪以突出特定内容区域，删除页眉、页脚或侧边栏。', icon: 'target' },
-      { title: '标准化页面', description: '通过裁剪到统一尺寸使所有页面大小相同。', icon: 'square' },
+      { title: '删除边距', description: '修剪扫描文档或具有大边框的PDF的过多边距。', icon: "maximize-2" },
+      { title: '聚焦内容', description: '裁剪以突出特定内容区域，删除页眉、页脚或侧边栏。', icon: "target" },
+      { title: '标准化页面', description: '通过裁剪到统一尺寸使所有页面大小相同。', icon: "square" },
     ],
     faq: [
       { question: '裁剪会永久删除内容吗？', answer: '是的，裁剪会删除裁剪区域外的内容。请确保保留原始文件的备份。' },
@@ -291,9 +291,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '提取并下载', description: '点击提取创建包含所选页面的新PDF并下载。' },
     ],
     useCases: [
-      { title: '创建摘录', description: '从报告或书籍中提取相关页面以创建重点参考文档。', icon: 'file-minus' },
-      { title: '分享特定内容', description: '提取特定页面进行分享，无需发送整个文档。', icon: 'share-2' },
-      { title: '存档重要页面', description: '提取并保存文档中的关键页面以供长期存档。', icon: 'archive' },
+      { title: '创建摘录', description: '从报告或书籍中提取相关页面以创建重点参考文档。', icon: "file-minus" },
+      { title: '分享特定内容', description: '提取特定页面进行分享，无需发送整个文档。', icon: "share-2" },
+      { title: '存档重要页面', description: '提取并保存文档中的关键页面以供长期存档。', icon: "archive" },
     ],
     faq: [
       { question: '可以提取不连续的页面吗？', answer: '是的，您可以选择任意页面组合，无论是连续的还是分散在整个文档中的。' },
@@ -317,9 +317,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存应用更改并下载重新整理的PDF。' },
     ],
     useCases: [
-      { title: '修复页面顺序', description: '纠正扫描或合并错误的页面顺序。', icon: 'arrow-up-down' },
-      { title: '创建自定义顺序', description: '为演示文稿或报告按特定顺序排列页面。', icon: 'list' },
-      { title: '删除不需要的页面', description: '从文档中删除空白页、重复页或不相关的内容。', icon: 'trash-2' },
+      { title: '修复页面顺序', description: '纠正扫描或合并错误的页面顺序。', icon: "arrow-up-down" },
+      { title: '创建自定义顺序', description: '为演示文稿或报告按特定顺序排列页面。', icon: "list" },
+      { title: '删除不需要的页面', description: '从文档中删除空白页、重复页或不相关的内容。', icon: "trash-2" },
     ],
     faq: [
       { question: '可以复制页面吗？', answer: '是的，您可以复制任何页面并将副本放置在文档中的任何位置。' },
@@ -343,9 +343,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '删除并下载', description: '点击删除移除所选页面并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '删除空白页', description: '通过删除意外包含的空白页来清理文档。', icon: 'file-x' },
-      { title: '删除敏感内容', description: '在共享文档前删除包含机密信息的页面。', icon: 'shield' },
-      { title: '精简文档', description: '删除过时或不相关的页面以创建更集中的文档。', icon: 'filter' },
+      { title: '删除空白页', description: '通过删除意外包含的空白页来清理文档。', icon: "file-x" },
+      { title: '删除敏感内容', description: '在共享文档前删除包含机密信息的页面。', icon: "shield" },
+      { title: '精简文档', description: '删除过时或不相关的页面以创建更集中的文档。', icon: "filter" },
     ],
     faq: [
       { question: '可以恢复已删除的页面吗？', answer: '删除在输出文件中是永久的。如果以后可能需要这些页面，请保留原始文档的备份。' },
@@ -370,9 +370,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存应用更改并下载带有更新书签的PDF。' },
     ],
     useCases: [
-      { title: '创建导航', description: '为长文档添加书签，帮助读者快速导航到特定部分。', icon: 'navigation' },
-      { title: '整理章节', description: '创建反映文档章节组织的层次书签结构。', icon: 'book-open' },
-      { title: '提高可访问性', description: '添加书签使文档更易于访问和用户友好。', icon: 'accessibility' },
+      { title: '创建导航', description: '为长文档添加书签，帮助读者快速导航到特定部分。', icon: "navigation" },
+      { title: '整理章节', description: '创建反映文档章节组织的层次书签结构。', icon: "book-open" },
+      { title: '提高可访问性', description: '添加书签使文档更易于访问和用户友好。', icon: "accessibility" },
     ],
     faq: [
       { question: '可以创建嵌套书签吗？', answer: '是的，您可以创建具有父书签和子书签的层次结构。' },
@@ -396,9 +396,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '生成并下载', description: '点击生成创建目录并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '学术论文', description: '为论文、学位论文和研究报告添加专业目录。', icon: 'graduation-cap' },
-      { title: '商业报告', description: '为利益相关者创建具有清晰章节列表的可导航报告。', icon: 'bar-chart' },
-      { title: '用户手册', description: '为技术文档和用户指南生成全面的目录。', icon: 'book' },
+      { title: '学术论文', description: '为论文、学位论文和研究报告添加专业目录。', icon: "graduation-cap" },
+      { title: '商业报告', description: '为利益相关者创建具有清晰章节列表的可导航报告。', icon: "bar-chart" },
+      { title: '用户手册', description: '为技术文档和用户指南生成全面的目录。', icon: "book" },
     ],
     faq: [
       { question: '可以自定义目录外观吗？', answer: '是的，您可以为目录选择不同的样式、字体和布局。' },
@@ -422,9 +422,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用添加页码并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '专业文档', description: '为报告、提案和商业文档添加页码。', icon: 'file-text' },
-      { title: '学术论文', description: '根据学术格式要求编号页面。', icon: 'graduation-cap' },
-      { title: '法律文档', description: '为合同和法律文件添加正确的分页。', icon: 'scale' },
+      { title: '专业文档', description: '为报告、提案和商业文档添加页码。', icon: "file-text" },
+      { title: '学术论文', description: '根据学术格式要求编号页面。', icon: "graduation-cap" },
+      { title: '法律文档', description: '为合同和法律文件添加正确的分页。', icon: "scale" },
     ],
     faq: [
       { question: '可以跳过第一页吗？', answer: '是的，您可以指定要编号的页面和要跳过的页面，如标题页或封面页。' },
@@ -448,9 +448,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用添加水印并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '文档保护', description: '添加"机密"或"草稿"水印以指示文档状态。', icon: 'shield' },
-      { title: '品牌文档', description: '为官方文档添加公司标志或名称。', icon: 'award' },
-      { title: '版权声明', description: '添加版权信息以保护知识产权。', icon: 'copyright' },
+      { title: '文档保护', description: '添加"机密"或"草稿"水印以指示文档状态。', icon: "shield" },
+      { title: '品牌文档', description: '为官方文档添加公司标志或名称。', icon: "award" },
+      { title: '版权声明', description: '添加版权信息以保护知识产权。', icon: "copyright" },
     ],
     faq: [
       { question: '可以使用图像作为水印吗？', answer: '是的，您可以上传PNG、JPG或SVG图像作为水印。' },
@@ -474,9 +474,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用添加页眉/页脚并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '商业文档', description: '为专业文档添加公司名称和页码。', icon: 'briefcase' },
-      { title: '法律文档', description: '在法律文件中包含案件编号、日期和页面引用。', icon: 'scale' },
-      { title: '学术论文', description: '添加带有论文标题和作者姓名的页眉。', icon: 'graduation-cap' },
+      { title: '商业文档', description: '为专业文档添加公司名称和页码。', icon: "briefcase" },
+      { title: '法律文档', description: '在法律文件中包含案件编号、日期和页面引用。', icon: "scale" },
+      { title: '学术论文', description: '添加带有论文标题和作者姓名的页眉。', icon: "graduation-cap" },
     ],
     faq: [
       { question: '可以在奇数页和偶数页上有不同的页眉吗？', answer: '是的，您可以为奇数页和偶数页配置不同的内容。' },
@@ -500,9 +500,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '反转并下载', description: '点击反转处理文档并下载结果。' },
     ],
     useCases: [
-      { title: '夜间阅读', description: '创建文档的暗模式版本，便于夜间舒适阅读。', icon: 'moon' },
-      { title: '减少眼睛疲劳', description: '反转明亮的文档以减少长时间阅读时的眼睛疲劳。', icon: 'eye' },
-      { title: '节省打印', description: '反转文档以减少打印草稿时的墨水使用。', icon: 'printer' },
+      { title: '夜间阅读', description: '创建文档的暗模式版本，便于夜间舒适阅读。', icon: "moon" },
+      { title: '减少眼睛疲劳', description: '反转明亮的文档以减少长时间阅读时的眼睛疲劳。', icon: "eye" },
+      { title: '节省打印', description: '反转文档以减少打印草稿时的墨水使用。', icon: "printer" },
     ],
     faq: [
       { question: '图像也会被反转吗？', answer: '默认情况下会。您可以选择在反转文本和背景的同时保留原始图像。' },
@@ -526,9 +526,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用添加背景并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '提高可读性', description: '添加浅奶油色或棕褐色背景以减少眼睛疲劳。', icon: 'eye' },
-      { title: '品牌文档', description: '使用品牌颜色作为营销材料的背景。', icon: 'palette' },
-      { title: '突出部分', description: '使用不同的背景颜色来区分文档部分。', icon: 'layers' },
+      { title: '提高可读性', description: '添加浅奶油色或棕褐色背景以减少眼睛疲劳。', icon: "eye" },
+      { title: '品牌文档', description: '使用品牌颜色作为营销材料的背景。', icon: "palette" },
+      { title: '突出部分', description: '使用不同的背景颜色来区分文档部分。', icon: "layers" },
     ],
     faq: [
       { question: '背景会覆盖现有内容吗？', answer: '不会，背景添加在现有内容后面，保留所有文本和图像。' },
@@ -552,9 +552,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用更改文本颜色并下载更新后的PDF。' },
     ],
     useCases: [
-      { title: '改善对比度', description: '更改文本颜色以提高与背景的可读性。', icon: 'contrast' },
-      { title: '品牌一致性', description: '更新文本颜色以匹配品牌指南。', icon: 'palette' },
-      { title: '无障碍性', description: '调整文本颜色以满足无障碍对比度要求。', icon: 'accessibility' },
+      { title: '改善对比度', description: '更改文本颜色以提高与背景的可读性。', icon: "contrast" },
+      { title: '品牌一致性', description: '更新文本颜色以匹配品牌指南。', icon: "palette" },
+      { title: '无障碍性', description: '调整文本颜色以满足无障碍对比度要求。', icon: "accessibility" },
     ],
     faq: [
       { question: '所有文本都会被更改吗？', answer: '是的，该工具更改文档中所有文本元素的颜色。' },
@@ -578,9 +578,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '定位并应用', description: '点击放置印章，调整位置和大小，然后下载。' },
     ],
     useCases: [
-      { title: '文档审批', description: '在审阅工作流程中为文档添加"已批准"或"已拒绝"印章。', icon: 'check-circle' },
-      { title: '状态指示', description: '将文档标记为"草稿"、"最终版"或"机密"。', icon: 'tag' },
-      { title: '质量控制', description: '添加质检印章以指示检查或审阅完成。', icon: 'clipboard-check' },
+      { title: '文档审批', description: '在审阅工作流程中为文档添加"已批准"或"已拒绝"印章。', icon: "check-circle" },
+      { title: '状态指示', description: '将文档标记为"草稿"、"最终版"或"机密"。', icon: "tag" },
+      { title: '质量控制', description: '添加质检印章以指示检查或审阅完成。', icon: "clipboard-check" },
     ],
     faq: [
       { question: '有哪些预设印章可用？', answer: '预设包括已批准、已拒绝、草稿、最终版、机密、副本等。' },
@@ -604,9 +604,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '删除并下载', description: '点击删除去除注释并下载干净的PDF。' },
     ],
     useCases: [
-      { title: '完成文档', description: '在发布最终文档前删除审阅评论和标记。', icon: 'file-check' },
-      { title: '隐私保护', description: '在共享前删除可能包含敏感信息的评论。', icon: 'shield' },
-      { title: '干净分发', description: '创建已注释文档的干净副本以供分发。', icon: 'copy' },
+      { title: '完成文档', description: '在发布最终文档前删除审阅评论和标记。', icon: "file-check" },
+      { title: '隐私保护', description: '在共享前删除可能包含敏感信息的评论。', icon: "shield" },
+      { title: '干净分发', description: '创建已注释文档的干净副本以供分发。', icon: "copy" },
     ],
     faq: [
       { question: '可以删除哪些类型的注释？', answer: '评论、高亮、下划线、删除线、便签、印章和链接都可以删除。' },
@@ -630,9 +630,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存保留您的输入并下载已填写的表单。' },
     ],
     useCases: [
-      { title: '申请表', description: '完成工作申请、许可申请和注册表单。', icon: 'clipboard' },
-      { title: '税务表单', description: '电子填写税务文件和财务表单。', icon: 'file-text' },
-      { title: '合同', description: '在签署前用您的信息完成合同表单。', icon: 'file-signature' },
+      { title: '申请表', description: '完成工作申请、许可申请和注册表单。', icon: "clipboard" },
+      { title: '税务表单', description: '电子填写税务文件和财务表单。', icon: "file-text" },
+      { title: '合同', description: '在签署前用您的信息完成合同表单。', icon: "file-signature" },
     ],
     faq: [
       { question: '可以保存进度吗？', answer: '是的，您可以保存部分填写的表单并稍后继续。' },
@@ -656,9 +656,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '配置并保存', description: '设置字段属性，然后保存并下载可填写的PDF表单。' },
     ],
     useCases: [
-      { title: '申请表', description: '创建可填写的工作申请、会员表单和注册表。', icon: 'user-plus' },
-      { title: '调查问卷', description: '构建用于数据收集的交互式调查和问卷。', icon: 'clipboard-list' },
-      { title: '订单表', description: '创建带有数量字段和复选框的产品订单表。', icon: 'shopping-cart' },
+      { title: '申请表', description: '创建可填写的工作申请、会员表单和注册表。', icon: "user-plus" },
+      { title: '调查问卷', description: '构建用于数据收集的交互式调查和问卷。', icon: "clipboard-list" },
+      { title: '订单表', description: '创建带有数量字段和复选框的产品订单表。', icon: "shopping-cart" },
     ],
     faq: [
       { question: '可以添加哪些字段类型？', answer: '文本字段、复选框、单选按钮、下拉菜单、日期选择器和签名字段。' },
@@ -682,9 +682,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '删除并下载', description: '点击删除删除空白页并下载清理后的PDF。' },
     ],
     useCases: [
-      { title: '清理扫描文档', description: '从批量扫描的文档中删除空白页。', icon: 'scan' },
-      { title: '删除分隔符', description: '从合并文档中删除空白分隔页。', icon: 'minus' },
-      { title: '减小文件大小', description: '删除不必要的空白页以减小文档大小。', icon: 'minimize-2' },
+      { title: '清理扫描文档', description: '从批量扫描的文档中删除空白页。', icon: "scan" },
+      { title: '删除分隔符', description: '从合并文档中删除空白分隔页。', icon: "minus" },
+      { title: '减小文件大小', description: '删除不必要的空白页以减小文档大小。', icon: "minimize-2" },
     ],
     faq: [
       { question: '空白检测如何工作？', answer: '该工具分析页面内容，将内容最少或没有可见内容的页面视为空白。' },
@@ -709,9 +709,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF并下载结果。' },
     ],
     useCases: [
-      { title: '照片集', description: '将来自各种来源的照片合并成一个PDF相册。', icon: 'images' },
-      { title: '混合格式文档', description: '将不同格式的图像转换为统一的PDF。', icon: 'file-stack' },
-      { title: '存档创建', description: '从图像集创建PDF存档以供长期存储。', icon: 'archive' },
+      { title: '照片集', description: '将来自各种来源的照片合并成一个PDF相册。', icon: "images" },
+      { title: '混合格式文档', description: '将不同格式的图像转换为统一的PDF。', icon: "file-stack" },
+      { title: '存档创建', description: '从图像集创建PDF存档以供长期存储。', icon: "archive" },
     ],
     faq: [
       { question: '支持哪些图像格式？', answer: '支持JPG、JPEG、PNG、WebP、BMP、TIFF、TIF、SVG、HEIC和HEIF格式。' },
@@ -735,9 +735,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF并下载。' },
     ],
     useCases: [
-      { title: '图形作品集', description: '将PNG图形和设计编译成专业作品集。', icon: 'palette' },
-      { title: '截图文档', description: '将截图转换为PDF文档。', icon: 'monitor' },
-      { title: '标志集', description: '创建标志和品牌资产的PDF目录。', icon: 'award' },
+      { title: '图形作品集', description: '将PNG图形和设计编译成专业作品集。', icon: "palette" },
+      { title: '截图文档', description: '将截图转换为PDF文档。', icon: "monitor" },
+      { title: '标志集', description: '创建标志和品牌资产的PDF目录。', icon: "award" },
     ],
     faq: [
       { question: '透明度会保留吗？', answer: 'PNG透明度在PDF输出中会保留。' },
@@ -761,9 +761,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF。' },
     ],
     useCases: [
-      { title: '网络内容存档', description: '将网络图像转换为PDF以供离线存档。', icon: 'globe' },
-      { title: '打印准备', description: '将WebP图像转换为PDF以供打印。', icon: 'printer' },
-      { title: '格式标准化', description: '将现代WebP转换为通用兼容的PDF。', icon: 'file-check' },
+      { title: '网络内容存档', description: '将网络图像转换为PDF以供离线存档。', icon: "globe" },
+      { title: '打印准备', description: '将WebP图像转换为PDF以供打印。', icon: "printer" },
+      { title: '格式标准化', description: '将现代WebP转换为通用兼容的PDF。', icon: "file-check" },
     ],
     faq: [
       { question: '什么是WebP格式？', answer: 'WebP是Google开发的现代图像格式，为网络图像提供卓越的压缩。' },
@@ -787,9 +787,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建矢量PDF。' },
     ],
     useCases: [
-      { title: '标志转换', description: '将SVG标志转换为PDF以供印刷材料使用。', icon: 'award' },
-      { title: '技术图纸', description: '将CAD导出和技术插图转换为PDF。', icon: 'ruler' },
-      { title: '图标集', description: '创建图标集和图形的PDF目录。', icon: 'grid' },
+      { title: '标志转换', description: '将SVG标志转换为PDF以供印刷材料使用。', icon: "award" },
+      { title: '技术图纸', description: '将CAD导出和技术插图转换为PDF。', icon: "ruler" },
+      { title: '图标集', description: '创建图标集和图形的PDF目录。', icon: "grid" },
     ],
     faq: [
       { question: '矢量质量会保留吗？', answer: '是的，SVG矢量质量在PDF输出中完全保留。' },
@@ -813,9 +813,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF。' },
     ],
     useCases: [
-      { title: '传统文件转换', description: '将旧的BMP文件转换为现代PDF格式。', icon: 'history' },
-      { title: 'Windows截图', description: '将Windows位图截图转换为PDF。', icon: 'monitor' },
-      { title: '存档现代化', description: '将传统图像存档更新为PDF格式。', icon: 'archive' },
+      { title: '传统文件转换', description: '将旧的BMP文件转换为现代PDF格式。', icon: "history" },
+      { title: 'Windows截图', description: '将Windows位图截图转换为PDF。', icon: "monitor" },
+      { title: '存档现代化', description: '将传统图像存档更新为PDF格式。', icon: "archive" },
     ],
     faq: [
       { question: '文件大小会减小吗？', answer: '是的，BMP文件在转换为PDF时通常会显著压缩。' },
@@ -839,9 +839,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF。' },
     ],
     useCases: [
-      { title: 'iPhone照片相册', description: '从iPhone照片创建PDF相册以供分享。', icon: 'smartphone' },
-      { title: '文档扫描', description: '将iPhone文档扫描转换为PDF格式。', icon: 'scan' },
-      { title: '跨平台分享', description: '将HEIC转换为PDF以实现通用兼容性。', icon: 'share-2' },
+      { title: 'iPhone照片相册', description: '从iPhone照片创建PDF相册以供分享。', icon: "smartphone" },
+      { title: '文档扫描', description: '将iPhone文档扫描转换为PDF格式。', icon: "scan" },
+      { title: '跨平台分享', description: '将HEIC转换为PDF以实现通用兼容性。', icon: "share-2" },
     ],
     faq: [
       { question: '什么是HEIC格式？', answer: 'HEIC（高效图像容器）是Apple的图像格式，比JPEG提供更好的压缩。' },
@@ -865,9 +865,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PDF。' },
     ],
     useCases: [
-      { title: '扫描文档', description: '将高质量扫描从TIFF转换为PDF。', icon: 'scan' },
-      { title: '专业图形', description: '转换专业TIFF图形以供分发。', icon: 'image' },
-      { title: '存档转换', description: '将TIFF存档转换为更易访问的PDF格式。', icon: 'archive' },
+      { title: '扫描文档', description: '将高质量扫描从TIFF转换为PDF。', icon: "scan" },
+      { title: '专业图形', description: '转换专业TIFF图形以供分发。', icon: "image" },
+      { title: '存档转换', description: '将TIFF存档转换为更易访问的PDF格式。', icon: "archive" },
     ],
     faq: [
       { question: '支持多页TIFF吗？', answer: '是的，多页TIFF文件自动转换为多页PDF。' },
@@ -891,9 +891,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建格式化的PDF。' },
     ],
     useCases: [
-      { title: '代码文档', description: '将源代码文件转换为PDF以供文档使用。', icon: 'code' },
-      { title: '日志存档', description: '将日志文件转换为PDF以供存档。', icon: 'file-text' },
-      { title: '笔记转换', description: '将纯文本笔记转换为格式化的PDF文档。', icon: 'sticky-note' },
+      { title: '代码文档', description: '将源代码文件转换为PDF以供文档使用。', icon: "code" },
+      { title: '日志存档', description: '将日志文件转换为PDF以供存档。', icon: "file-text" },
+      { title: '笔记转换', description: '将纯文本笔记转换为格式化的PDF文档。', icon: "sticky-note" },
     ],
     faq: [
       { question: '有哪些字体可用？', answer: '有多种字体可用，包括用于代码的等宽字体。' },
@@ -917,9 +917,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建格式化的PDF。' },
     ],
     useCases: [
-      { title: 'API文档', description: '将API响应转换为PDF以供文档使用。', icon: 'code' },
-      { title: '配置存档', description: '以可读的PDF格式存档配置文件。', icon: 'settings' },
-      { title: '数据报告', description: '从JSON数据导出创建PDF报告。', icon: 'bar-chart' },
+      { title: 'API文档', description: '将API响应转换为PDF以供文档使用。', icon: "code" },
+      { title: '配置存档', description: '以可读的PDF格式存档配置文件。', icon: "settings" },
+      { title: '数据报告', description: '从JSON数据导出创建PDF报告。', icon: "bar-chart" },
     ],
     faq: [
       { question: '包含语法高亮吗？', answer: '是的，JSON语法用颜色高亮显示键、值和类型。' },
@@ -943,9 +943,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '文档分享', description: '将Word文档转换为PDF以便通用分享和查看。', icon: 'share-2' },
-      { title: '打印准备', description: '从Word文档创建可打印的PDF。', icon: 'printer' },
-      { title: '文档存档', description: '以稳定的PDF格式存档Word文档以供长期保存。', icon: 'archive' },
+      { title: '文档分享', description: '将Word文档转换为PDF以便通用分享和查看。', icon: "share-2" },
+      { title: '打印准备', description: '从Word文档创建可打印的PDF。', icon: "printer" },
+      { title: '文档存档', description: '以稳定的PDF格式存档Word文档以供长期保存。', icon: "archive" },
     ],
     faq: [
       { question: '支持.doc格式吗？', answer: '目前仅支持.docx格式。请先使用Microsoft Word或LibreOffice将.doc文件转换为.docx。' },
@@ -969,9 +969,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '报告分享', description: '将Excel报告转换为PDF以供利益相关者分发。', icon: 'file-text' },
-      { title: '数据存档', description: '以稳定的PDF格式存档电子表格数据。', icon: 'archive' },
-      { title: '打印准备', description: '从Excel工作表创建可打印的PDF。', icon: 'printer' },
+      { title: '报告分享', description: '将Excel报告转换为PDF以供利益相关者分发。', icon: "file-text" },
+      { title: '数据存档', description: '以稳定的PDF格式存档电子表格数据。', icon: "archive" },
+      { title: '打印准备', description: '从Excel工作表创建可打印的PDF。', icon: "printer" },
     ],
     faq: [
       { question: '支持多个工作表吗？', answer: '是的，工作簿中的所有工作表都会被转换并包含在PDF中。' },
@@ -995,9 +995,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '演示文稿分享', description: '与任何人分享演示文稿，无需PowerPoint。', icon: 'share-2' },
-      { title: '讲义创建', description: '从演示幻灯片创建PDF讲义。', icon: 'file-text' },
-      { title: '存档演示文稿', description: '以稳定的PDF格式存档演示文稿。', icon: 'archive' },
+      { title: '演示文稿分享', description: '与任何人分享演示文稿，无需PowerPoint。', icon: "share-2" },
+      { title: '讲义创建', description: '从演示幻灯片创建PDF讲义。', icon: "file-text" },
+      { title: '存档演示文稿', description: '以稳定的PDF格式存档演示文稿。', icon: "archive" },
     ],
     faq: [
       { question: '动画会保留吗？', answer: 'PDF是静态格式，因此动画和过渡不会保留。每张幻灯片变成静态页面。' },
@@ -1021,9 +1021,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '实时预览与下载', description: '在下方预览每一页被注入的最终标签效果，确认无误后点击开始，即可一键下载已注入标签的 PDF。' },
     ],
     useCases: [
-      { title: '正规书籍与论文排版', description: '为前言/目录部分应用罗马数字 (i, ii, iii)，为主体部分恢复阿拉伯数字，呈现极其专业的排版效果。', icon: 'book' },
-      { title: '工程图纸与分册前缀', description: '在图纸中为指定页面添加如 "A-100", "E-200" 等大类前缀，便于工程师在阅读器中极速检索。', icon: 'layout' },
-      { title: '特殊页码跳跃与奇偶映射', description: '为奇数页与偶数页或 disjoint 的页码段映射完全不同的前缀与编码，极富定制自由度。', icon: 'shuffle' },
+      { title: '正规书籍与论文排版', description: '为前言/目录部分应用罗马数字 (i, ii, iii)，为主体部分恢复阿拉伯数字，呈现极其专业的排版效果。', icon: "book" },
+      { title: '工程图纸与分册前缀', description: '在图纸中为指定页面添加如 "A-100", "E-200" 等大类前缀，便于工程师在阅读器中极速检索。', icon: "layout" },
+      { title: '特殊页码跳跃与奇偶映射', description: '为奇数页与偶数页或 disjoint 的页码段映射完全不同的前缀与编码，极富定制自由度。', icon: "shuffle" },
     ],
     faq: [
       { question: '什么是页面标签？它和普通的页码（Page Numbers）有什么区别？', answer: '普通的页码是在 PDF 页面内容层直接绘制的文本（打印可见）；而页面标签则是写入 PDF 字典的元数据（物理标签）。它决定了用户在使用 Adobe Acrobat 等 PDF 阅读器时，缩略图下方以及顶部页码跳转框内显示什么，更方便电子化检索。' },
@@ -1047,9 +1047,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '格式转换', description: '将XPS文档转换为更广泛支持的PDF格式。', icon: 'file' },
-      { title: '文档分享', description: '与没有XPS查看器的用户分享XPS文档。', icon: 'share-2' },
-      { title: '存档迁移', description: '将XPS存档迁移到PDF格式以获得更好的兼容性。', icon: 'archive' },
+      { title: '格式转换', description: '将XPS文档转换为更广泛支持的PDF格式。', icon: "file" },
+      { title: '文档分享', description: '与没有XPS查看器的用户分享XPS文档。', icon: "share-2" },
+      { title: '存档迁移', description: '将XPS存档迁移到PDF格式以获得更好的兼容性。', icon: "archive" },
     ],
     faq: [
       { question: '什么是XPS格式？', answer: 'XPS（XML纸规范）是Microsoft的固定文档格式，类似于PDF。它常用于Windows打印。' },
@@ -1073,9 +1073,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '旧版转换', description: '将旧的RTF文档转换为现代PDF格式。', icon: 'history' },
-      { title: '文档分享', description: '以通用可查看的PDF格式分享RTF文档。', icon: 'share-2' },
-      { title: '存档文档', description: '以稳定的PDF格式存档RTF文件以供长期保存。', icon: 'archive' },
+      { title: '旧版转换', description: '将旧的RTF文档转换为现代PDF格式。', icon: "history" },
+      { title: '文档分享', description: '以通用可查看的PDF格式分享RTF文档。', icon: "share-2" },
+      { title: '存档文档', description: '以稳定的PDF格式存档RTF文件以供长期保存。', icon: "archive" },
     ],
     faq: [
       { question: '保留哪些格式？', answer: '包括字体、段落和样式在内的基本文本格式会被转换。复杂的RTF功能可能会被简化。' },
@@ -1099,9 +1099,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '打印电子书', description: '将电子书转换为PDF以便物理打印。', icon: 'printer' },
-      { title: '存档书籍', description: '以长期稳定的PDF格式存储电子书。', icon: 'archive' },
-      { title: '分享文档', description: '与任何人分享电子书，即使没有电子阅读器。', icon: 'share-2' },
+      { title: '打印电子书', description: '将电子书转换为PDF以便物理打印。', icon: "printer" },
+      { title: '存档书籍', description: '以长期稳定的PDF格式存储电子书。', icon: "archive" },
+      { title: '分享文档', description: '与任何人分享电子书，即使没有电子阅读器。', icon: "share-2" },
     ],
     faq: [
       { question: '格式会保留吗？', answer: '是的！此工具使用原生EPUB渲染，以高保真度保留文本格式、图片和布局。' },
@@ -1125,9 +1125,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载PDF', description: '点击下载保存转换后的PDF文档。' },
     ],
     useCases: [
-      { title: '打印Kindle书籍', description: '将Kindle电子书转换为PDF以便物理打印。', icon: 'printer' },
-      { title: '存档书籍', description: '以通用PDF格式存储Kindle书籍。', icon: 'archive' },
-      { title: '跨设备阅读', description: '在只支持PDF的设备上阅读Kindle书籍。', icon: 'tablet-smartphone' },
+      { title: '打印Kindle书籍', description: '将Kindle电子书转换为PDF以便物理打印。', icon: "printer" },
+      { title: '存档书籍', description: '以通用PDF格式存储Kindle书籍。', icon: "archive" },
+      { title: '跨设备阅读', description: '在只支持PDF的设备上阅读Kindle书籍。', icon: "tablet-smartphone" },
     ],
     faq: [
       { question: '支持哪些MOBI格式？', answer: '此工具支持.mobi、.azw和.azw3文件（非DRM版本）。' },
@@ -1151,9 +1151,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换为PDF并下载转换后的文档。' },
     ],
     useCases: [
-      { title: '存档文档', description: '将DJVU档案转换为通用PDF格式。', icon: 'archive' },
-      { title: '分享扫描书籍', description: '以PDF格式分享扫描书籍以获得更广泛的兼容性。', icon: 'share-2' },
-      { title: '打印文档', description: '将DJVU转换为高质量PDF以进行打印。', icon: 'printer' },
+      { title: '存档文档', description: '将DJVU档案转换为通用PDF格式。', icon: "archive" },
+      { title: '分享扫描书籍', description: '以PDF格式分享扫描书籍以获得更广泛的兼容性。', icon: "share-2" },
+      { title: '打印文档', description: '将DJVU转换为高质量PDF以进行打印。', icon: "printer" },
     ],
     faq: [
       { question: '什么是DJVU格式？', answer: 'DjVu是一种文件格式，设计用于存储扫描文档，特别是包含文本、图形和图像的文档。它为扫描内容提供比PDF更好的压缩。' },
@@ -1177,9 +1177,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换为PDF并下载转换后的文档。' },
     ],
     useCases: [
-      { title: '打印电子书', description: '将FB2电子书转换为PDF以便物理打印。', icon: 'printer' },
-      { title: '批量转换', description: '一次将多个FB2文件转换为PDF。', icon: 'layers' },
-      { title: '通用格式', description: '以适用于任何设备的PDF格式分享电子书。', icon: 'share-2' },
+      { title: '打印电子书', description: '将FB2电子书转换为PDF以便物理打印。', icon: "printer" },
+      { title: '批量转换', description: '一次将多个FB2文件转换为PDF。', icon: "layers" },
+      { title: '通用格式', description: '以适用于任何设备的PDF格式分享电子书。', icon: "share-2" },
     ],
     faq: [
       { question: '可以一次转换多个FB2文件吗？', answer: '可以！此工具支持同时批量转换最多20个FB2文件。' },
@@ -1205,9 +1205,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换提取图像并作为ZIP下载。' },
     ],
     useCases: [
-      { title: '网络发布', description: '将PDF页面转换为图像以供网站使用。', icon: 'globe' },
-      { title: '社交媒体', description: '提取页面作为图像以供社交媒体分享。', icon: 'share-2' },
-      { title: '演示文稿', description: '将PDF幻灯片转换为图像以供演示。', icon: 'presentation' },
+      { title: '网络发布', description: '将PDF页面转换为图像以供网站使用。', icon: "globe" },
+      { title: '社交媒体', description: '提取页面作为图像以供社交媒体分享。', icon: "share-2" },
+      { title: '演示文稿', description: '将PDF幻灯片转换为图像以供演示。', icon: "presentation" },
     ],
     faq: [
       { question: '有哪些质量设置可用？', answer: '您可以设置72到300的DPI和1-100的JPEG质量。' },
@@ -1231,9 +1231,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换提取PNG图像。' },
     ],
     useCases: [
-      { title: '图形提取', description: '以完美质量提取图表和图形。', icon: 'image' },
-      { title: '设计资产', description: '将PDF设计转换为PNG以供编辑软件使用。', icon: 'palette' },
-      { title: '文档', description: '为技术文档创建高质量图像。', icon: 'file-text' },
+      { title: '图形提取', description: '以完美质量提取图表和图形。', icon: "image" },
+      { title: '设计资产', description: '将PDF设计转换为PNG以供编辑软件使用。', icon: "palette" },
+      { title: '文档', description: '为技术文档创建高质量图像。', icon: "file-text" },
     ],
     faq: [
       { question: '为什么选择PNG而不是JPG？', answer: 'PNG提供无损压缩和透明度支持，非常适合图形和文本。' },
@@ -1257,9 +1257,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建WebP图像。' },
     ],
     useCases: [
-      { title: '网络优化', description: '从PDF内容创建网络优化的图像。', icon: 'globe' },
-      { title: '带宽节省', description: '减小图像文件大小以加快加载速度。', icon: 'zap' },
-      { title: '现代网站', description: '为现代网络项目使用现代图像格式。', icon: 'layout' },
+      { title: '网络优化', description: '从PDF内容创建网络优化的图像。', icon: "globe" },
+      { title: '带宽节省', description: '减小图像文件大小以加快加载速度。', icon: "zap" },
+      { title: '现代网站', description: '为现代网络项目使用现代图像格式。', icon: "layout" },
     ],
     faq: [
       { question: '什么是WebP格式？', answer: 'WebP是Google的现代图像格式，提供卓越的压缩。' },
@@ -1283,9 +1283,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建BMP图像。' },
     ],
     useCases: [
-      { title: '传统系统', description: '创建与旧软件兼容的图像。', icon: 'history' },
-      { title: 'Windows应用程序', description: '为Windows特定应用程序生成BMP文件。', icon: 'monitor' },
-      { title: '未压缩存档', description: '从PDF创建未压缩的图像存档。', icon: 'archive' },
+      { title: '传统系统', description: '创建与旧软件兼容的图像。', icon: "history" },
+      { title: 'Windows应用程序', description: '为Windows特定应用程序生成BMP文件。', icon: "monitor" },
+      { title: '未压缩存档', description: '从PDF创建未压缩的图像存档。', icon: "archive" },
     ],
     faq: [
       { question: '为什么使用BMP格式？', answer: 'BMP提供未压缩的质量和与传统系统的最大兼容性。' },
@@ -1309,9 +1309,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建TIFF图像。' },
     ],
     useCases: [
-      { title: '专业打印', description: '从PDF文档创建可打印的TIFF文件。', icon: 'printer' },
-      { title: '文档存档', description: '以高质量TIFF格式存档文档。', icon: 'archive' },
-      { title: '出版', description: '将PDF转换为TIFF以供出版工作流程使用。', icon: 'book' },
+      { title: '专业打印', description: '从PDF文档创建可打印的TIFF文件。', icon: "printer" },
+      { title: '文档存档', description: '以高质量TIFF格式存档文档。', icon: "archive" },
+      { title: '出版', description: '将PDF转换为TIFF以供出版工作流程使用。', icon: "book" },
     ],
     faq: [
       { question: '可以创建多页TIFF吗？', answer: '是的，您可以将所有PDF页面合并成一个多页TIFF。' },
@@ -1335,9 +1335,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '生成并下载', description: '点击开始打包，转换出的 .cbz 文件可导入任意漫画阅读器或 Calibre 中完美归类。' },
     ],
     useCases: [
-      { title: '漫画与画集转档', description: '将扫描版的 PDF 格式漫画极速转换为各大漫画软件完美兼容 of CBZ 归档格式。', icon: 'book' },
-      { title: 'Calibre 漫画柜完美管理', description: '自动生成的 metadata.opf 可让 Calibre 完美提取分类，避免手动刮削，强迫症福音。', icon: 'database' },
-      { title: '墨水屏阅读器深度优化', description: '开启灰度脱色功能，预先过滤电子书色彩，大幅提升墨水屏阅读器在刷新和对比度上的视觉表现。', icon: 'eye' },
+      { title: '漫画与画集转档', description: '将扫描版的 PDF 格式漫画极速转换为各大漫画软件完美兼容 of CBZ 归档格式。', icon: "book" },
+      { title: 'Calibre 漫画柜完美管理', description: '自动生成的 metadata.opf 可让 Calibre 完美提取分类，避免手动刮削，强迫症福音。', icon: "database" },
+      { title: '墨水屏阅读器深度优化', description: '开启灰度脱色功能，预先过滤电子书色彩，大幅提升墨水屏阅读器在刷新和对比度上的视觉表现。', icon: "eye" },
     ],
     faq: [
       { question: '什么是 .cbz 格式？', answer: 'CBZ (Comic Book Zip) 是标准的漫画图像归档文件，本质上是一个包含图像序列以及元数据 XML 文件的 ZIP 压缩包，被主流电子书和漫画阅读器普遍采用。' },
@@ -1362,10 +1362,10 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '下载', description: '下载单个SVG文件或将所有页面打包为ZIP压缩包。' },
     ],
     useCases: [
-      { title: '标志和图形', description: '从PDF中提取标志和矢量图形，用于设计软件。', icon: 'pen-tool' },
-      { title: '技术图纸', description: '将技术图纸和图表转换为可缩放的SVG格式。', icon: 'ruler' },
-      { title: '网页开发', description: '从PDF内容创建网页友好的SVG文件，用于响应式网站。', icon: 'globe' },
-      { title: '任意尺寸打印', description: '生成可以任意尺寸完美打印的矢量图形。', icon: 'printer' },
+      { title: '标志和图形', description: '从PDF中提取标志和矢量图形，用于设计软件。', icon: "pen-tool" },
+      { title: '技术图纸', description: '将技术图纸和图表转换为可缩放的SVG格式。', icon: "ruler" },
+      { title: '网页开发', description: '从PDF内容创建网页友好的SVG文件，用于响应式网站。', icon: "globe" },
+      { title: '任意尺寸打印', description: '生成可以任意尺寸完美打印的矢量图形。', icon: "printer" },
     ],
     faq: [
       { question: '什么是SVG格式？', answer: 'SVG（可缩放矢量图形）是一种可以缩放到任意尺寸而不损失质量的矢量图像格式。它广泛用于标志、图标和网页图形。' },
@@ -1390,9 +1390,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建灰度PDF。' },
     ],
     useCases: [
-      { title: '节省打印', description: '转换为灰度以节省彩色打印成本。', icon: 'printer' },
-      { title: '草稿文档', description: '创建黑白草稿以供审阅。', icon: 'file-text' },
-      { title: '减小文件大小', description: '通过删除颜色信息减小PDF大小。', icon: 'minimize-2' },
+      { title: '节省打印', description: '转换为灰度以节省彩色打印成本。', icon: "printer" },
+      { title: '草稿文档', description: '创建黑白草稿以供审阅。', icon: "file-text" },
+      { title: '减小文件大小', description: '通过删除颜色信息减小PDF大小。', icon: "minimize-2" },
     ],
     faq: [
       { question: '文本会保持可读吗？', answer: '是的，灰度转换过程中文本清晰度得以保留。' },
@@ -1416,9 +1416,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '提取并下载', description: '点击提取生成JSON并下载。' },
     ],
     useCases: [
-      { title: '数据提取', description: '从PDF文档中提取结构化数据。', icon: 'database' },
-      { title: '文档分析', description: '以编程方式分析PDF结构和内容。', icon: 'search' },
-      { title: '集成', description: '通过JSON将PDF内容导入应用程序。', icon: 'plug' },
+      { title: '数据提取', description: '从PDF文档中提取结构化数据。', icon: "database" },
+      { title: '文档分析', description: '以编程方式分析PDF结构和内容。', icon: "search" },
+      { title: '集成', description: '通过JSON将PDF内容导入应用程序。', icon: "plug" },
     ],
     faq: [
       { question: '提取哪些数据？', answer: '文本内容、元数据、页面尺寸、字体和文档结构。' },
@@ -1442,9 +1442,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换创建PowerPoint演示文稿。' },
     ],
     useCases: [
-      { title: '创建演示', description: '将PDF文档转换为会议幻灯片。', icon: 'presentation' },
-      { title: '培训材料', description: '将教材转换为交互式演示文稿。', icon: 'book-open' },
-      { title: '内容复用', description: '将现有内容转换为可编辑幻灯片。', icon: 'refresh-cw' },
+      { title: '创建演示', description: '将PDF文档转换为会议幻灯片。', icon: "presentation" },
+      { title: '培训材料', description: '将教材转换为交互式演示文稿。', icon: "book-open" },
+      { title: '内容复用', description: '将现有内容转换为可编辑幻灯片。', icon: "refresh-cw" },
     ],
     faq: [
       { question: '幻灯片可编辑吗？', answer: '每张幻灯片包含PDF页面的图像。您可以在顶部添加内容。' },
@@ -1468,9 +1468,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载Excel', description: '下载包含提取表格的文件。' },
     ],
     useCases: [
-      { title: '财务分析', description: '转换银行账单或发票。', icon: 'trending-up' },
-      { title: '数据提取', description: '从报告中提取数据表。', icon: 'database' },
-      { title: '清单转换', description: '将PDF库存清单转换为表格。', icon: 'clipboard' },
+      { title: '财务分析', description: '转换银行账单或发票。', icon: "trending-up" },
+      { title: '数据提取', description: '从报告中提取数据表。', icon: "database" },
+      { title: '清单转换', description: '将PDF库存清单转换为表格。', icon: "clipboard" },
     ],
     faq: [
       { question: '如何处理表格？', answer: '每页的表格提取到对应的Excel工作表中。' },
@@ -1494,9 +1494,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载', description: '立即下载转换后的PDF文件。' },
     ],
     useCases: [
-      { title: '客户预览', description: '以通用的PDF格式向客户发送设计稿。', icon: 'image' },
-      { title: '作品集创建', description: '将Photoshop作品编译成PDF作品集以供求职申请。', icon: 'briefcase' },
-      { title: '打印准备', description: '将PSD设计转换为PDF，以便打印服务更好地处理。', icon: 'printer' },
+      { title: '客户预览', description: '以通用的PDF格式向客户发送设计稿。', icon: "image" },
+      { title: '作品集创建', description: '将Photoshop作品编译成PDF作品集以供求职申请。', icon: "briefcase" },
+      { title: '打印准备', description: '将PSD设计转换为PDF，以便打印服务更好地处理。', icon: "printer" },
     ],
     faq: [
       { question: '需要安装Photoshop吗？', answer: '不需要，此工具完全在浏览器中运行，无需Adobe Photoshop。' },
@@ -1521,9 +1521,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '处理并下载', description: '点击处理运行OCR并下载可搜索的PDF。' },
     ],
     useCases: [
-      { title: '数字化存档', description: '使扫描的文档存档可搜索。', icon: 'archive' },
-      { title: '文档搜索', description: '在扫描文档中启用文本搜索。', icon: 'search' },
-      { title: '文本提取', description: '从扫描文档中提取文本以供编辑。', icon: 'type' },
+      { title: '数字化存档', description: '使扫描的文档存档可搜索。', icon: "archive" },
+      { title: '文档搜索', description: '在扫描文档中启用文本搜索。', icon: "search" },
+      { title: '文本提取', description: '从扫描文档中提取文本以供编辑。', icon: "type" },
     ],
     faq: [
       { question: '支持哪些语言？', answer: '支持100多种语言，包括英语、中文、日语、韩语等。' },
@@ -1547,9 +1547,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '合并并下载', description: '点击合并交错页面并下载。' },
     ],
     useCases: [
-      { title: '双面扫描', description: '合并分别扫描的正面和背面页面。', icon: 'copy' },
-      { title: '文档组装', description: '交错来自两个相关文档的页面。', icon: 'layers' },
-      { title: '书籍扫描', description: '将奇数页和偶数页扫描合并成完整的书籍。', icon: 'book' },
+      { title: '双面扫描', description: '合并分别扫描的正面和背面页面。', icon: "copy" },
+      { title: '文档组装', description: '交错来自两个相关文档的页面。', icon: "layers" },
+      { title: '书籍扫描', description: '将奇数页和偶数页扫描合并成完整的书籍。', icon: "book" },
     ],
     faq: [
       { question: '如果文档页数不同怎么办？', answer: '较长文档的额外页面会附加在末尾。' },
@@ -1573,9 +1573,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存嵌入附件并下载。' },
     ],
     useCases: [
-      { title: '项目包', description: '将项目文件与文档PDF捆绑在一起。', icon: 'package' },
-      { title: '报告分发', description: '将源数据文件附加到报告PDF。', icon: 'paperclip' },
-      { title: '合同包', description: '在合同中包含支持文档。', icon: 'file-text' },
+      { title: '项目包', description: '将项目文件与文档PDF捆绑在一起。', icon: "package" },
+      { title: '报告分发', description: '将源数据文件附加到报告PDF。', icon: "paperclip" },
+      { title: '合同包', description: '在合同中包含支持文档。', icon: "file-text" },
     ],
     faq: [
       { question: '可以附加哪些文件类型？', answer: '任何文件类型都可以附加到PDF。' },
@@ -1599,9 +1599,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '提取并下载', description: '下载单个文件或全部作为ZIP。' },
     ],
     useCases: [
-      { title: '访问源文件', description: '从PDF报告中提取原始数据文件。', icon: 'download' },
-      { title: '恢复附件', description: '从PDF包中检索嵌入的文件。', icon: 'folder-open' },
-      { title: '批量提取', description: '一次从多个PDF中提取附件。', icon: 'layers' },
+      { title: '访问源文件', description: '从PDF报告中提取原始数据文件。', icon: "download" },
+      { title: '恢复附件', description: '从PDF包中检索嵌入的文件。', icon: "folder-open" },
+      { title: '批量提取', description: '一次从多个PDF中提取附件。', icon: "layers" },
     ],
     faq: [
       { question: '如果没有附件怎么办？', answer: '如果没有找到嵌入文件，工具会提示。' },
@@ -1625,9 +1625,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存应用更改并下载。' },
     ],
     useCases: [
-      { title: '清理PDF', description: '从PDF包中删除不必要的附件。', icon: 'trash-2' },
-      { title: '重命名文件', description: '更新附件名称以提高清晰度。', icon: 'edit' },
-      { title: '审阅内容', description: '在分发前审核嵌入的文件。', icon: 'eye' },
+      { title: '清理PDF', description: '从PDF包中删除不必要的附件。', icon: "trash-2" },
+      { title: '重命名文件', description: '更新附件名称以提高清晰度。', icon: "edit" },
+      { title: '审阅内容', description: '在分发前审核嵌入的文件。', icon: "eye" },
     ],
     faq: [
       { question: '可以在这里添加新附件吗？', answer: '使用添加附件工具嵌入新文件。' },
@@ -1651,9 +1651,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '分割并下载', description: '点击分割拆分页面并下载。' },
     ],
     useCases: [
-      { title: '分割扫描', description: '分割包含多个文档的扫描页面。', icon: 'scissors' },
-      { title: '调整页面大小', description: '将大页面分割成标准纸张尺寸。', icon: 'maximize-2' },
-      { title: '创建卡片', description: '将页面分割成卡片大小的部分以供打印。', icon: 'grid' },
+      { title: '分割扫描', description: '分割包含多个文档的扫描页面。', icon: "scissors" },
+      { title: '调整页面大小', description: '将大页面分割成标准纸张尺寸。', icon: "maximize-2" },
+      { title: '创建卡片', description: '将页面分割成卡片大小的部分以供打印。', icon: "grid" },
     ],
     faq: [
       { question: '可以分割成不等的部分吗？', answer: '目前分割是等分的。使用裁剪PDF进行自定义部分。' },
@@ -1677,9 +1677,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '添加并下载', description: '点击添加插入页面并下载。' },
     ],
     useCases: [
-      { title: '笔记空间', description: '添加空白页以供手写笔记。', icon: 'edit-3' },
-      { title: '章节分隔符', description: '在文档章节之间插入空白页。', icon: 'minus' },
-      { title: '打印准备', description: '添加页面以对齐双面打印。', icon: 'printer' },
+      { title: '笔记空间', description: '添加空白页以供手写笔记。', icon: "edit-3" },
+      { title: '章节分隔符', description: '在文档章节之间插入空白页。', icon: "minus" },
+      { title: '打印准备', description: '添加页面以对齐双面打印。', icon: "printer" },
     ],
     faq: [
       { question: '可以选择页面大小吗？', answer: '是的，空白页可以匹配现有页面或使用自定义尺寸。' },
@@ -1703,9 +1703,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '反转并下载', description: '点击反转翻转页面顺序并下载。' },
     ],
     useCases: [
-      { title: '修复扫描顺序', description: '纠正以相反顺序扫描的文档。', icon: 'refresh-cw' },
-      { title: '打印准备', description: '为特定打印要求反转页面。', icon: 'printer' },
-      { title: '文档重新排序', description: '快速翻转文档顺序以供审阅。', icon: 'arrow-up-down' },
+      { title: '修复扫描顺序', description: '纠正以相反顺序扫描的文档。', icon: "refresh-cw" },
+      { title: '打印准备', description: '为特定打印要求反转页面。', icon: "printer" },
+      { title: '文档重新排序', description: '快速翻转文档顺序以供审阅。', icon: "arrow-up-down" },
     ],
     faq: [
       { question: '书签会更新吗？', answer: '是的，书签会更新以指向正确的反转页面。' },
@@ -1729,9 +1729,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '旋转并下载', description: '点击旋转应用更改并下载。' },
     ],
     useCases: [
-      { title: '修复扫描', description: '纠正扫描文档的方向。', icon: 'rotate-cw' },
-      { title: '横向页面', description: '旋转横向页面以正确查看。', icon: 'monitor' },
-      { title: '混合方向', description: '标准化混合文档中的页面方向。', icon: 'layout' },
+      { title: '修复扫描', description: '纠正扫描文档的方向。', icon: "rotate-cw" },
+      { title: '横向页面', description: '旋转横向页面以正确查看。', icon: "monitor" },
+      { title: '混合方向', description: '标准化混合文档中的页面方向。', icon: "layout" },
     ],
     faq: [
       { question: '可以对不同页面进行不同的旋转吗？', answer: '是的，您可以对不同页面应用不同的旋转。' },
@@ -1756,9 +1756,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '拼版编译并下载', description: '点击开始按钮，生成覆叠好的 PDF 并一键下载。' },
     ],
     useCases: [
-      { title: '公司正规信笺抬头', description: '将发票或报告内容完美覆叠到标准的信头信尾模版上。', icon: 'file-text' },
-      { title: '电子签章与水印', description: '在指定的页面上覆叠公章、签名印记或防伪背景。', icon: 'shield' },
-      { title: '设计草稿比对', description: '将背景网格或测绘底图垫在文字和图表下方以供校验。', icon: 'layout' },
+      { title: '公司正规信笺抬头', description: '将发票或报告内容完美覆叠到标准的信头信尾模版上。', icon: "file-text" },
+      { title: '电子签章与水印', description: '在指定的页面上覆叠公章、签名印记或防伪背景。', icon: "shield" },
+      { title: '设计草稿比对', description: '将背景网格或测绘底图垫在文字和图表下方以供校验。', icon: "layout" },
     ],
     faq: [
       { question: '前景覆叠 (Overlay) 和背景垫底 (Underlay) 有什么区别？', answer: '前景覆叠会将图层覆盖在您原有的文字和图像上方；背景垫底则是将图层放在最底层作为背景图版，原有的文字和图形会在其上方显示。' },
@@ -1841,9 +1841,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '创建并下载', description: '点击创建生成N合一PDF并下载。' },
     ],
     useCases: [
-      { title: '节省纸张', description: '每张纸打印多页以减少纸张使用。', icon: 'leaf' },
-      { title: '创建讲义', description: '从演示幻灯片制作紧凑的讲义。', icon: 'file-text' },
-      { title: '审阅文档', description: '以缩小尺寸打印文档以供审阅。', icon: 'eye' },
+      { title: '节省纸张', description: '每张纸打印多页以减少纸张使用。', icon: "leaf" },
+      { title: '创建讲义', description: '从演示幻灯片制作紧凑的讲义。', icon: "file-text" },
+      { title: '审阅文档', description: '以缩小尺寸打印文档以供审阅。', icon: "eye" },
     ],
     faq: [
       { question: '有哪些布局可用？', answer: '2合1、4合1、6合1、9合1和自定义网格布局可用。' },
@@ -1867,9 +1867,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '合并并下载', description: '点击合并创建单页PDF。' },
     ],
     useCases: [
-      { title: '网络文档', description: '创建可滚动的PDF以供网页嵌入。', icon: 'globe' },
-      { title: '连续阅读', description: '将分页文档转换为连续滚动。', icon: 'scroll' },
-      { title: '长篇内容', description: '合并页面以实现无缝的长篇阅读。', icon: 'file-text' },
+      { title: '网络文档', description: '创建可滚动的PDF以供网页嵌入。', icon: "globe" },
+      { title: '连续阅读', description: '将分页文档转换为连续滚动。', icon: "scroll" },
+      { title: '长篇内容', description: '合并页面以实现无缝的长篇阅读。', icon: "file-text" },
     ],
     faq: [
       { question: '有页数限制吗？', answer: '非常长的文档可能受浏览器内存限制。' },
@@ -1893,9 +1893,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '如需导出', description: '可选择将元数据导出为JSON。' },
     ],
     useCases: [
-      { title: '文档审核', description: '审阅文档属性以确保合规性。', icon: 'clipboard-check' },
-      { title: '验证真实性', description: '检查创建日期和作者信息。', icon: 'shield' },
-      { title: '文件信息', description: '获取PDF文件的详细信息。', icon: 'info' },
+      { title: '文档审核', description: '审阅文档属性以确保合规性。', icon: "clipboard-check" },
+      { title: '验证真实性', description: '检查创建日期和作者信息。', icon: "shield" },
+      { title: '文件信息', description: '获取PDF文件的详细信息。', icon: "info" },
     ],
     faq: [
       { question: '显示哪些元数据？', answer: '标题、作者、主题、关键词、创建者、生产者、日期和PDF版本。' },
@@ -1919,9 +1919,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '保存并下载', description: '点击保存应用更改并下载。' },
     ],
     useCases: [
-      { title: '添加归属', description: '设置正确的作者和创建者信息。', icon: 'user' },
-      { title: 'SEO优化', description: '添加关键词和描述以提高可搜索性。', icon: 'search' },
-      { title: '文档准备', description: '在共享前准备具有正确元数据的文档。', icon: 'file-check' },
+      { title: '添加归属', description: '设置正确的作者和创建者信息。', icon: "user" },
+      { title: 'SEO优化', description: '添加关键词和描述以提高可搜索性。', icon: "search" },
+      { title: '文档准备', description: '在共享前准备具有正确元数据的文档。', icon: "file-check" },
     ],
     faq: [
       { question: '可以编辑哪些字段？', answer: '标题、作者、主题、关键词、创建者和生产者字段。' },
@@ -1945,9 +1945,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '创建并下载', description: '点击创建生成ZIP压缩包。' },
     ],
     useCases: [
-      { title: '文件共享', description: '捆绑多个PDF以便于共享。', icon: 'share-2' },
-      { title: '创建备份', description: '创建PDF集合的压缩备份。', icon: 'archive' },
-      { title: '电子邮件附件', description: '将PDF合并成一个附件以供电子邮件使用。', icon: 'mail' },
+      { title: '文件共享', description: '捆绑多个PDF以便于共享。', icon: "share-2" },
+      { title: '创建备份', description: '创建PDF集合的压缩备份。', icon: "archive" },
+      { title: '电子邮件附件', description: '将PDF合并成一个附件以供电子邮件使用。', icon: "mail" },
     ],
     faq: [
       { question: '应用多少压缩？', answer: 'ZIP压缩通常将总大小减少10-30%。' },
@@ -1967,9 +1967,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: "高亮过滤 (Filter)", description: "文字增删 · 字体变化 · 页眉和页脚 · 移动的文本" },
     ],
     useCases: [
-      { title: '合同审阅', description: '比较合同版本以识别更改。', icon: 'file-text' },
-      { title: '文档修订', description: '审阅文档版本之间的编辑。', icon: 'git-compare' },
-      { title: '质量保证', description: '验证只进行了预期的更改。', icon: 'check-circle' },
+      { title: '合同审阅', description: '比较合同版本以识别更改。', icon: "file-text" },
+      { title: '文档修订', description: '审阅文档版本之间的编辑。', icon: "git-compare" },
+      { title: '质量保证', description: '验证只进行了预期的更改。', icon: "check-circle" },
     ],
     faq: [
       { question: '检测哪些类型的差异？', answer: "文字增删 · 字体变化 · 页眉和页脚 · 移动的文本" },
@@ -1993,9 +1993,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '创建并下载', description: '点击创建生成可打印的瓷砖。' },
     ],
     useCases: [
-      { title: '海报打印', description: '在标准纸张上打印大型海报。', icon: 'maximize-2' },
-      { title: '地图打印', description: '分段打印大型地图以供组装。', icon: 'map' },
-      { title: '艺术品复制', description: '从PDF艺术品创建大型打印品。', icon: 'image' },
+      { title: '海报打印', description: '在标准纸张上打印大型海报。', icon: "maximize-2" },
+      { title: '地图打印', description: '分段打印大型地图以供组装。', icon: "map" },
+      { title: '艺术品复制', description: '从PDF艺术品创建大型打印品。', icon: "image" },
     ],
     faq: [
       { question: '应该使用多少重叠？', answer: '建议10-20mm的重叠以便于组装时对齐。' },
@@ -2020,9 +2020,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '点击应用标准化页面并下载。' },
     ],
     useCases: [
-      { title: '打印准备', description: '标准化页面以实现一致的打印。', icon: 'printer' },
-      { title: '文档清理', description: '修复页面大小不一致的文档。', icon: 'file-check' },
-      { title: '专业文档', description: '创建统一的文档以供分发。', icon: 'briefcase' },
+      { title: '打印准备', description: '标准化页面以实现一致的打印。', icon: "printer" },
+      { title: '文档清理', description: '修复页面大小不一致的文档。', icon: "file-check" },
+      { title: '专业文档', description: '创建统一的文档以供分发。', icon: "briefcase" },
     ],
     faq: [
       { question: '内容如何处理？', answer: '内容会缩放以适应或居中在新页面大小上。' },
@@ -2046,9 +2046,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载', description: '下载优化后的PDF。' },
     ],
     useCases: [
-      { title: '网络发布', description: '优化PDF以供网站下载。', icon: 'globe' },
-      { title: '电子邮件附件', description: '创建为收件人更快打开的PDF。', icon: 'mail' },
-      { title: '在线文档', description: '改善在线文档的查看体验。', icon: 'cloud' },
+      { title: '网络发布', description: '优化PDF以供网站下载。', icon: "globe" },
+      { title: '电子邮件附件', description: '创建为收件人更快打开的PDF。', icon: "mail" },
+      { title: '在线文档', description: '改善在线文档的查看体验。', icon: "cloud" },
     ],
     faq: [
       { question: '什么是线性化？', answer: '线性化重新组织PDF数据以实现渐进式加载。' },
@@ -2072,9 +2072,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '导出报告', description: '可选择将尺寸导出为JSON。' },
     ],
     useCases: [
-      { title: '打印规划', description: '打印前检查页面大小。', icon: 'printer' },
-      { title: '文档分析', description: '识别尺寸异常的页面。', icon: 'search' },
-      { title: '质量控制', description: '验证页面大小符合规格。', icon: 'check-circle' },
+      { title: '打印规划', description: '打印前检查页面大小。', icon: "printer" },
+      { title: '文档分析', description: '识别尺寸异常的页面。', icon: "search" },
+      { title: '质量控制', description: '验证页面大小符合规格。', icon: "check-circle" },
     ],
     faq: [
       { question: '有哪些单位可用？', answer: '英寸、毫米、厘米和点。' },
@@ -2098,9 +2098,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载', description: '下载不受限制的PDF。' },
     ],
     useCases: [
-      { title: '启用打印', description: '解锁阻止打印的PDF。', icon: 'printer' },
-      { title: '启用复制', description: '允许文本选择和复制。', icon: 'copy' },
-      { title: '启用编辑', description: '删除文档编辑限制。', icon: 'edit' },
+      { title: '启用打印', description: '解锁阻止打印的PDF。', icon: "printer" },
+      { title: '启用复制', description: '允许文本选择和复制。', icon: "copy" },
+      { title: '启用编辑', description: '删除文档编辑限制。', icon: "edit" },
     ],
     faq: [
       { question: '这合法吗？', answer: '从您拥有或有权使用的文档中删除限制通常是合法的。' },
@@ -2124,9 +2124,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载', description: '如果成功，下载修复后的PDF。' },
     ],
     useCases: [
-      { title: '恢复文件', description: '恢复无法正常打开的PDF。', icon: 'refresh-cw' },
-      { title: '修复错误', description: '修复显示错误消息的文件。', icon: 'wrench' },
-      { title: '恢复内容', description: '从部分损坏的文件中恢复内容。', icon: 'file-check' },
+      { title: '恢复文件', description: '恢复无法正常打开的PDF。', icon: "refresh-cw" },
+      { title: '修复错误', description: '修复显示错误消息的文件。', icon: "wrench" },
+      { title: '恢复内容', description: '从部分损坏的文件中恢复内容。', icon: "file-check" },
     ],
     faq: [
       { question: '所有PDF都可以修复吗？', answer: '成功取决于损坏的类型和程度。' },
@@ -2151,9 +2151,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '加密并下载', description: '点击加密保护您的PDF并下载。' },
     ],
     useCases: [
-      { title: '机密文档', description: '保护敏感的商业文档。', icon: 'lock' },
-      { title: '个人文件', description: '保护个人文档如税务申报表。', icon: 'shield' },
-      { title: '受控分发', description: '限制收件人对文档的操作。', icon: 'key' },
+      { title: '机密文档', description: '保护敏感的商业文档。', icon: "lock" },
+      { title: '个人文件', description: '保护个人文档如税务申报表。', icon: "shield" },
+      { title: '受控分发', description: '限制收件人对文档的操作。', icon: "key" },
     ],
     faq: [
       { question: '用户密码和所有者密码有什么区别？', answer: '用户密码防止打开；所有者密码控制权限。' },
@@ -2177,9 +2177,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '清理并下载', description: '点击清理清洁PDF并下载。' },
     ],
     useCases: [
-      { title: '公开发布', description: '准备文档以供公开分发。', icon: 'globe' },
-      { title: '隐私保护', description: '在共享前删除个人信息。', icon: 'shield' },
-      { title: '安全合规', description: '满足文档处理的安全要求。', icon: 'check-circle' },
+      { title: '公开发布', description: '准备文档以供公开分发。', icon: "globe" },
+      { title: '隐私保护', description: '在共享前删除个人信息。', icon: "shield" },
+      { title: '安全合规', description: '满足文档处理的安全要求。', icon: "check-circle" },
     ],
     faq: [
       { question: '删除哪些隐藏数据？', answer: '元数据、脚本、附件、评论、表单数据和隐藏图层。' },
@@ -2204,9 +2204,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '应用遮盖', description: '自定义遮盖外观并应用于所选匹配项。' },
     ],
     useCases: [
-      { title: '隐私合规', description: '遮盖个人信息以符合GDPR、HIPAA或其他法规。', icon: 'shield' },
-      { title: '法律文档', description: '在共享前从法律文档中删除机密数据。', icon: 'scale' },
-      { title: '财务记录', description: '从报表中遮盖账号、社保号或财务数据。', icon: 'credit-card' },
+      { title: '隐私合规', description: '遮盖个人信息以符合GDPR、HIPAA或其他法规。', icon: "shield" },
+      { title: '法律文档', description: '在共享前从法律文档中删除机密数据。', icon: "scale" },
+      { title: '财务记录', description: '从报表中遮盖账号、社保号或财务数据。', icon: "credit-card" },
     ],
     faq: [
       { question: '遮盖是永久的吗？', answer: '是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。' },
@@ -2217,7 +2217,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'redact-pdf': {
     title: 'PDF 涂黑与马赛克脱敏',
-    metaDescription: '可视化对 PDF 进行抹黑遮盖、马赛克打码或高斯模糊。物理像素级不可逆销毁与深度元数据清理，100% 本地离线保障隐私安全。',
+    metaDescription: "遮蔽、模糊或像素化敏感的 PDF 内容。导出扁平化页面并在浏览器中本地删除元数据。",
     keywords: ['PDF脱敏', 'PDF抹黑', 'PDF打码', 'PDF马赛克', 'PDF隐私保护', 'PDF涂黑', '安全PDF编辑器'],
     description: `
       <p>PDF 涂黑与马赛克脱敏工具为您提供直观的可视化交互编辑能力，帮助您永久遮蔽并清除文档中的各类隐私与涉密信息。只需使用鼠标拖拽框选敏感内容（如身份证号、姓名、住址、公章、签名、财务流水、证件照等），即可应用纯黑遮蔽、白条遮盖、马赛克或高斯模糊效果。</p>
@@ -2231,9 +2231,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '生成并下载安全文档', description: '点击“生成脱敏安全 PDF”，系统自动完成物理像素固化与元数据深度清理，即可一键下载。' },
     ],
     useCases: [
-      { title: '法规合规与隐私保护', description: '对身份证号、手机号、人脸肖像等敏感个人信息 (PII) 进行合规脱敏，满足数据保护法规。', icon: 'shield' },
-      { title: '涉密与法务公文披露', description: '在向外部共享合同、法务文书或调查报告前，对商业机密、签名公章与调解条款进行永久遮蔽。', icon: 'file-text' },
-      { title: '财务凭证与票据分享', description: '对银行回单、薪资表、发票流水等财务单据中的敏感账号与金额进行安全打码。', icon: 'lock' },
+      { title: '法规合规与隐私保护', description: '对身份证号、手机号、人脸肖像等敏感个人信息 (PII) 进行合规脱敏，满足数据保护法规。', icon: "shield" },
+      { title: '涉密与法务公文披露', description: '在向外部共享合同、法务文书或调查报告前，对商业机密、签名公章与调解条款进行永久遮蔽。', icon: "file-text" },
+      { title: '财务凭证与票据分享', description: '对银行回单、薪资表、发票流水等财务单据中的敏感账号与金额进行安全打码。', icon: "lock" },
     ],
     faq: [
       { question: '脱敏后的内容能否被复制或技术手段还原？', answer: '绝对无法还原。工具采用了物理不可逆像素栅格化技术，底层的文本图元已被彻底物理抹除，复制文本或使用反编译软件也无法提取任何底层信息。' },
@@ -2257,9 +2257,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '解密并下载', description: '点击解密删除保护并下载。' },
     ],
     useCases: [
-      { title: '删除旧密码', description: '当不再需要密码时解锁文档。', icon: 'unlock' },
-      { title: '简化访问', description: '创建不受保护的副本以便于共享。', icon: 'share-2' },
-      { title: '存档文档', description: '在长期存档前删除密码。', icon: 'archive' },
+      { title: '删除旧密码', description: '当不再需要密码时解锁文档。', icon: "unlock" },
+      { title: '简化访问', description: '创建不受保护的副本以便于共享。', icon: "share-2" },
+      { title: '存档文档', description: '在长期存档前删除密码。', icon: "archive" },
     ],
     faq: [
       { question: '可以破解未知密码吗？', answer: '不能，您必须知道当前密码才能解密。' },
@@ -2283,9 +2283,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '扁平化并下载', description: '点击扁平化创建静态PDF。' },
     ],
     useCases: [
-      { title: '完成表单', description: '锁定已填写的表单数据以防止更改。', icon: 'lock' },
-      { title: '保留注释', description: '使注释在文档中永久化。', icon: 'check-circle' },
-      { title: '存档文档', description: '创建不可编辑的版本以供存档。', icon: 'archive' },
+      { title: '完成表单', description: '锁定已填写的表单数据以防止更改。', icon: "lock" },
+      { title: '保留注释', description: '使注释在文档中永久化。', icon: "check-circle" },
+      { title: '存档文档', description: '创建不可编辑的版本以供存档。', icon: "archive" },
     ],
     faq: [
       { question: '扁平化是可逆的吗？', answer: '不，扁平化是永久的。保留原件的备份。' },
@@ -2333,9 +2333,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载', description: '下载无元数据的PDF。' },
     ],
     useCases: [
-      { title: '隐私保护', description: '在共享前删除个人信息。', icon: 'shield' },
-      { title: '匿名文档', description: '创建没有作者归属的文档。', icon: 'user-x' },
-      { title: '干净分发', description: '分发没有内部元数据的文档。', icon: 'send' },
+      { title: '隐私保护', description: '在共享前删除个人信息。', icon: "shield" },
+      { title: '匿名文档', description: '创建没有作者归属的文档。', icon: "user-x" },
+      { title: '干净分发', description: '分发没有内部元数据的文档。', icon: "send" },
     ],
     faq: [
       { question: '删除哪些元数据？', answer: '作者、标题、主题、关键词、日期、创建者和生产者信息。' },
@@ -2359,9 +2359,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '应用并下载', description: '设置所有者密码并下载受限PDF。' },
     ],
     useCases: [
-      { title: '防止复制', description: '禁用文本复制以保护内容。', icon: 'copy' },
-      { title: '控制打印', description: '限制或允许文档打印。', icon: 'printer' },
-      { title: '限制编辑', description: '防止对文档的修改。', icon: 'edit-3' },
+      { title: '防止复制', description: '禁用文本复制以保护内容。', icon: "copy" },
+      { title: '控制打印', description: '限制或允许文档打印。', icon: "printer" },
+      { title: '限制编辑', description: '防止对文档的修改。', icon: "edit-3" },
     ],
     faq: [
       { question: '需要密码吗？', answer: '需要所有者密码来强制执行权限。' },
@@ -2384,9 +2384,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载Word文档', description: '点击下载生成的DOCX文件，并在Microsoft Word或WPS中打开。' },
     ],
     useCases: [
-      { title: '合同修改', description: '将PDF格式的合同转回Word，以便进行条款修订和版本对比。', icon: 'file-text' },
-      { title: '简历更新', description: '找回以前制作的PDF简历，转换为Word格式快速更新工作经历。', icon: 'user' },
-      { title: '资料整理', description: '从大型PDF报告中提取文本和表格，用于撰写新的文档或分析报告。', icon: 'copy' },
+      { title: '合同修改', description: '将PDF格式的合同转回Word，以便进行条款修订和版本对比。', icon: "file-text" },
+      { title: '简历更新', description: '找回以前制作的PDF简历，转换为Word格式快速更新工作经历。', icon: "user" },
+      { title: '资料整理', description: '从大型PDF报告中提取文本和表格，用于撰写新的文档或分析报告。', icon: "copy" },
     ],
     faq: [
       { question: '转换后的排版会乱吗？', answer: '对于标准文档，我们的算法能实现极高的还原度。但如果原PDF是由图片生成的扫描件，建议先使用OCR工具。' },
@@ -2437,9 +2437,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '处理并下载', description: '点击校正以拉直页面并下载校正后的PDF。' },
     ],
     useCases: [
-      { title: '扫描文档', description: '修复从文档进纸器以一定角度扫描的页面。', icon: 'scan' },
-      { title: '手机扫描', description: '校正使用智能手机拍摄的倾斜文档照片。', icon: 'smartphone' },
-      { title: '档案修复', description: '拉直旧扫描档案以提高可读性。', icon: 'archive' },
+      { title: '扫描文档', description: '修复从文档进纸器以一定角度扫描的页面。', icon: "scan" },
+      { title: '手机扫描', description: '校正使用智能手机拍摄的倾斜文档照片。', icon: "smartphone" },
+      { title: '档案修复', description: '拉直旧扫描档案以提高可读性。', icon: "archive" },
     ],
     faq: [
       { question: '角度检测有多准确？', answer: '该工具使用投影轮廓方差分析来检测高达±10度的倾斜角度，具有高精度。它会自动跳过角度小于0.3度的页面。' },
@@ -2463,9 +2463,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '下载存档文件', description: '获取适用于政府、法律或学术要求的存档PDF。' },
     ],
     useCases: [
-      { title: '法律文书存档', description: '将合同和裁决书转换为PDF/A，确保长期司法效力。', icon: 'scale' },
-      { title: '政府公文递交', description: '满足政府部门对递交文件必须为PDF/A格式的要求。', icon: 'landmark' },
-      { title: '论文提交', description: '高校图书馆通常要求毕业论文采用PDF/A格式以进行永久馆藏。', icon: 'graduation-cap' },
+      { title: '法律文书存档', description: '将合同和裁决书转换为PDF/A，确保长期司法效力。', icon: "scale" },
+      { title: '政府公文递交', description: '满足政府部门对递交文件必须为PDF/A格式的要求。', icon: "landmark" },
+      { title: '论文提交', description: '高校图书馆通常要求毕业论文采用PDF/A格式以进行永久馆藏。', icon: "graduation-cap" },
     ],
     faq: [
       { question: 'PDF/A有什么好处？', answer: '它具有自包含性，这意味着显示文档所需的所有信息（如字体）都已保存在文件内，不依赖外部链接。' },
@@ -2515,9 +2515,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '下载', description: '单独下载每张图片，或将所有图片打包成ZIP压缩包下载。' },
     ],
     useCases: [
-      { title: '图片恢复', description: '从PDF文档中提取照片和图片，用于重复使用或存档。', icon: 'image' },
-      { title: '素材收集', description: '收集PDF报告、演示文稿或宣传册中的所有图形和图片。', icon: 'folder' },
-      { title: '内容再利用', description: '从PDF中提取图片，用于其他文档、网站或演示文稿。', icon: 'refresh-cw' },
+      { title: '图片恢复', description: '从PDF文档中提取照片和图片，用于重复使用或存档。', icon: "image" },
+      { title: '素材收集', description: '收集PDF报告、演示文稿或宣传册中的所有图形和图片。', icon: "folder" },
+      { title: '内容再利用', description: '从PDF中提取图片，用于其他文档、网站或演示文稿。', icon: "refresh-cw" },
     ],
     faq: [
       { question: '提取的图片是什么格式？', answer: '图片会尽可能保持原始格式（JPEG、PNG等）提取，原始像素数据会转换为PNG格式。' },
@@ -2537,9 +2537,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '管理图层', description: '切换、添加或删除图层。' },
     ],
     useCases: [
-      { title: '技术图纸', description: '管理CAD导出中的图层。', icon: 'ruler' },
-      { title: '地图编辑', description: '切换地图图层。', icon: 'map' },
-      { title: '印刷准备', description: '准备分层PDF进行打印。', icon: 'printer' },
+      { title: '技术图纸', description: '管理CAD导出中的图层。', icon: "ruler" },
+      { title: '地图编辑', description: '切换地图图层。', icon: "map" },
+      { title: '印刷准备', description: '准备分层PDF进行打印。', icon: "printer" },
     ],
     faq: [
       { question: '什么是PDF图层？', answer: 'OCG是PDF中可以显示或隐藏的图层。' },
@@ -2559,9 +2559,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '调整视图', description: '放大、缩小或旋转。' },
     ],
     useCases: [
-      { title: '文档审阅', description: '快速审阅PDF文档。', icon: 'book-open' },
-      { title: '移动阅读', description: '在任何设备上阅读PDF。', icon: 'smartphone' },
-      { title: '快速预览', description: '预览PDF。', icon: 'eye' },
+      { title: '文档审阅', description: '快速审阅PDF文档。', icon: "book-open" },
+      { title: '移动阅读', description: '在任何设备上阅读PDF。', icon: "smartphone" },
+      { title: '快速预览', description: '预览PDF。', icon: "eye" },
     ],
     faq: [
       { question: '文档安全吗？', answer: '是的，完全在浏览器中处理。' },
@@ -2572,7 +2572,7 @@ export const toolContentZh: Record<string, ToolContent> = {
 
   'digital-sign-pdf': {
     title: '数字签名',
-    metaDescription: '为PDF文档添加X.509数字签名。使用PFX、P12或PEM证书签署PDF，具有法律效力。',
+    metaDescription: "使用 PFX、P12 或 PEM 证书对 PDF 文档进行数字签名。在浏览器本地添加基于证书的签名。",
     keywords: ['pdf数字签名', 'x509证书', 'pfx签名', 'p12签名', 'pem签名', '电子签名'],
     description: `
       <p>数字签名工具允许您为PDF文档添加加密的X.509数字签名。与简单的手绘签名不同，数字签名提供法律效力和文档完整性验证。</p>
@@ -2586,9 +2586,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '签名并下载', description: '点击签名PDF应用数字签名并下载签名后的文档。' },
     ],
     useCases: [
-      { title: '法律文件', description: '使用具有法律约束力的数字签名签署合同、协议和法律文件。', icon: 'scale' },
-      { title: '商业审批', description: '数字签署发票、采购订单和审批文件以建立审计跟踪。', icon: 'briefcase' },
-      { title: '文档完整性', description: '确保文档在签名后未被篡改。', icon: 'shield-check' },
+      { title: '法律文件', description: '使用具有法律约束力的数字签名签署合同、协议和法律文件。', icon: "scale" },
+      { title: '商业审批', description: '数字签署发票、采购订单和审批文件以建立审计跟踪。', icon: "briefcase" },
+      { title: '文档完整性', description: '确保文档在签名后未被篡改。', icon: "shield-check" },
     ],
     faq: [
       { question: '支持哪些证书格式？', answer: '支持PFX（.pfx）、PKCS#12（.p12）和PEM（.pem）证书格式。' },
@@ -2613,9 +2613,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '导出报告', description: '可选下载验证结果的JSON报告。' },
     ],
     useCases: [
-      { title: '文档验证', description: '验证签名文档是否真实且未被篡改。', icon: 'shield-check' },
-      { title: '合规审计', description: '检查签名有效性以满足合规和审计要求。', icon: 'clipboard-check' },
-      { title: '证书审查', description: '查看已签名文档的证书详情和到期日期。', icon: 'award' },
+      { title: '文档验证', description: '验证签名文档是否真实且未被篡改。', icon: "shield-check" },
+      { title: '合规审计', description: '检查签名有效性以满足合规和审计要求。', icon: "clipboard-check" },
+      { title: '证书审查', description: '查看已签名文档的证书详情和到期日期。', icon: "award" },
     ],
     faq: [
       { question: '"有效"是什么意思？', answer: '有效签名意味着文档自签名以来未被修改，且证书链完整。' },
@@ -2638,9 +2638,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '转换为PDF并下载包含嵌入附件的结果。' },
     ],
     useCases: [
-      { title: '法律记录', description: '将重要邮件存档为PDF，并嵌入附件用于法律文档。', icon: 'scale' },
-      { title: '商业档案', description: '将商业往来转换为PDF以进行长期记录保存。', icon: 'briefcase' },
-      { title: '证据保存', description: '以不可编辑的PDF格式保存包含内联图像和附件的邮件证据。', icon: 'shield' },
+      { title: '法律记录', description: '将重要邮件存档为PDF，并嵌入附件用于法律文档。', icon: "scale" },
+      { title: '商业档案', description: '将商业往来转换为PDF以进行长期记录保存。', icon: "briefcase" },
+      { title: '证据保存', description: '以不可编辑的PDF格式保存包含内联图像和附件的邮件证据。', icon: "shield" },
     ],
     faq: [
       { question: '支持哪些邮件格式？', answer: '.eml（RFC 822）和.msg（Microsoft Outlook）文件都完全支持。' },
@@ -2666,9 +2666,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '转换为PDF并下载您的漫画。' },
     ],
     useCases: [
-      { title: '电子阅读器兼容性', description: '将CBZ转换为PDF，适用于仅支持PDF的电子阅读器。', icon: 'book' },
-      { title: '漫画归档', description: '为您的数字漫画收藏创建PDF归档。', icon: 'archive' },
-      { title: '打印准备', description: '将数字漫画转换为PDF以供打印。', icon: 'printer' },
+      { title: '电子阅读器兼容性', description: '将CBZ转换为PDF，适用于仅支持PDF的电子阅读器。', icon: "book" },
+      { title: '漫画归档', description: '为您的数字漫画收藏创建PDF归档。', icon: "archive" },
+      { title: '打印准备', description: '将数字漫画转换为PDF以供打印。', icon: "printer" },
     ],
     faq: [
       { question: '什么是CBZ格式？', answer: 'CBZ是一个包含漫画书页面图像文件的ZIP归档，重命名为.cbz扩展名。' },
@@ -2692,9 +2692,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '创建并下载', description: '生成小册子布局并下载以供打印。' },
     ],
     useCases: [
-      { title: '宣传册', description: '从标准PDF文档创建可折叠的宣传册。', icon: 'book-open' },
-      { title: '杂志', description: '制作具有正确页面拼版的自出版杂志。', icon: 'book' },
-      { title: '活动手册', description: '为活动创建专业的手册小册子。', icon: 'calendar' },
+      { title: '宣传册', description: '从标准PDF文档创建可折叠的宣传册。', icon: "book-open" },
+      { title: '杂志', description: '制作具有正确页面拼版的自出版杂志。', icon: "book" },
+      { title: '活动手册', description: '为活动创建专业的手册小册子。', icon: "calendar" },
     ],
     faq: [
       { question: '什么是骑马钉装订？', answer: '骑马钉是一种装订方法，将折叠的纸张嵌套并通过折痕钉合。' },
@@ -2718,9 +2718,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '处理页面并单独下载图像或作为ZIP归档下载。' },
     ],
     useCases: [
-      { title: '社交媒体', description: '将PDF幻灯片转换为图像以在社交媒体上发布。', icon: 'share-2' },
-      { title: '缩略图', description: '为PDF文档生成预览缩略图。', icon: 'image' },
-      { title: '网络发布', description: '将PDF内容转换为网络友好的图像格式。', icon: 'globe' },
+      { title: '社交媒体', description: '将PDF幻灯片转换为图像以在社交媒体上发布。', icon: "share-2" },
+      { title: '缩略图', description: '为PDF文档生成预览缩略图。', icon: "image" },
+      { title: '网络发布', description: '将PDF内容转换为网络友好的图像格式。', icon: "globe" },
     ],
     faq: [
       { question: '我应该使用什么DPI？', answer: '屏幕使用72 DPI，一般使用150 DPI，打印质量使用300 DPI。' },
@@ -2744,9 +2744,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '生成样式化的PDF并下载。' },
     ],
     useCases: [
-      { title: '文档', description: '将README文件和文档转换为可共享的PDF。', icon: 'file-text' },
-      { title: '笔记导出', description: '将Markdown笔记导出为PDF以供打印或共享。', icon: 'edit-3' },
-      { title: '报告', description: '从Markdown创建具有专业样式的报告。', icon: 'bar-chart' },
+      { title: '文档', description: '将README文件和文档转换为可共享的PDF。', icon: "file-text" },
+      { title: '笔记导出', description: '将Markdown笔记导出为PDF以供打印或共享。', icon: "edit-3" },
+      { title: '报告', description: '从Markdown创建具有专业样式的报告。', icon: "bar-chart" },
     ],
     faq: [
       { question: '是否支持GitHub风格Markdown？', answer: '是的，支持表格、任务列表、删除线和其他GFM功能。' },
@@ -2770,9 +2770,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '处理文件并下载独立于字体的PDF。' },
     ],
     useCases: [
-      { title: '打印准备', description: '通过删除所有字体依赖来消除商业打印机的字体问题。', icon: 'printer' },
-      { title: '跨平台共享', description: '共享在任何设备上看起来相同的文档，无论安装了什么字体。', icon: 'share-2' },
-      { title: '字体许可', description: '删除嵌入的字体以避免分发文档时的许可问题。', icon: 'shield' },
+      { title: '打印准备', description: '通过删除所有字体依赖来消除商业打印机的字体问题。', icon: "printer" },
+      { title: '跨平台共享', description: '共享在任何设备上看起来相同的文档，无论安装了什么字体。', icon: "share-2" },
+      { title: '字体许可', description: '删除嵌入的字体以避免分发文档时的许可问题。', icon: "shield" },
     ],
     faq: [
       { question: '这是如何工作的？', answer: '该工具以高分辨率（您选择的DPI）渲染每个页面，并从这些图像重新创建PDF，删除所有字体依赖同时保留视觉外观。' },
@@ -2799,9 +2799,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '转换并下载', description: '点击转换生成Markdown文件并下载。' },
     ],
     useCases: [
-      { title: '文档编写', description: '将PDF手册和指南转换为Markdown，用于版本控制的文档。', icon: 'file-text' },
-      { title: '笔记记录', description: '从PDF文章和书籍中提取内容到您的笔记系统。', icon: 'edit-3' },
-      { title: '内容迁移', description: '将PDF内容迁移到支持Markdown的CMS平台。', icon: 'copy' },
+      { title: '文档编写', description: '将PDF手册和指南转换为Markdown，用于版本控制的文档。', icon: "file-text" },
+      { title: '笔记记录', description: '从PDF文章和书籍中提取内容到您的笔记系统。', icon: "edit-3" },
+      { title: '内容迁移', description: '将PDF内容迁移到支持Markdown的CMS平台。', icon: "copy" },
     ],
     faq: [
       { question: '格式会保留吗？', answer: '该工具会根据字体大小检测标题，以及项目符号/编号列表。复杂布局可能需要手动调整。' },
@@ -2824,9 +2824,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '导出并下载', description: '选择输出格式（JSON/Markdown/CSV）并下载。' },
     ],
     useCases: [
-      { title: '数据分析', description: '提取表格数据以在电子表格或数据库中进行分析。', icon: 'bar-chart' },
-      { title: '报告处理', description: '从PDF报告中提取表格以进行进一步处理。', icon: 'file-text' },
-      { title: '文档', description: '将PDF表格转换为Markdown用于技术文档。', icon: 'book' },
+      { title: '数据分析', description: '提取表格数据以在电子表格或数据库中进行分析。', icon: "bar-chart" },
+      { title: '报告处理', description: '从PDF报告中提取表格以进行进一步处理。', icon: "file-text" },
+      { title: '文档', description: '将PDF表格转换为Markdown用于技术文档。', icon: "book" },
     ],
     faq: [
       { question: '可以检测复杂表格吗？', answer: '该工具最适合简单的网格表格。复杂的合并单元格可能需要手动调整。' },
@@ -2836,7 +2836,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'ai-pdf-reflower': {
     title: 'AI 智能自适应重排',
-    metaDescription: '将PDF文档重新排版为响应式移动端布局，支持Markdown和EPUB导出，改善小屏阅读体验。',
+    metaDescription: "重排 PDF 文本，以便于在移动设备上阅读。在浏览器中将提取的内容导出为 Markdown 或 EPUB。",
     keywords: ['pdf重排', '自适应pdf', 'pdf转markdown', 'epub导出', '移动端阅读pdf'],
     description: `
       <p>AI 智能自适应重排工具是您在移动设备上阅读PDF的最佳伴侣。传统的PDF文档采用固定版面，在手机或平板电脑上查看时往往需要不断缩放和横向滚动，体验极差。</p>
@@ -2849,9 +2849,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '导出文档', description: '预览满意后，点击拉绳按钮导出为Markdown或EPUB格式。' },
     ],
     useCases: [
-      { title: '手机端文献阅读', description: '在手机上轻松流畅地阅读学术论文与研究报告，告别频繁缩放。', icon: 'smartphone' },
-      { title: '电子书转换', description: '将文字类PDF转换为EPUB格式，导入到Kindle等电子书阅读器中。', icon: 'book' },
-      { title: '笔记整理', description: '将结构化的PDF内容直接导出为干净的Markdown文件进行笔记归档。', icon: 'file-text' },
+      { title: '手机端文献阅读', description: '在手机上轻松流畅地阅读学术论文与研究报告，告别频繁缩放。', icon: "smartphone" },
+      { title: '电子书转换', description: '将文字类PDF转换为EPUB格式，导入到Kindle等电子书阅读器中。', icon: "book" },
+      { title: '笔记整理', description: '将结构化的PDF内容直接导出为干净的Markdown文件进行笔记归档。', icon: "file-text" },
     ],
     faq: [
       { question: '双栏PDF能正确识别阅读顺序吗？', answer: '是的，重排算法会分析文本块的横坐标区间，将双栏布局拆解为左栏和右栏的纵向级联，不会出现左右行错乱。' },
@@ -2861,7 +2861,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'citation-linker': {
     title: '引文链接激活器',
-    metaDescription: '扫描并激活PDF中的引文标记，将其转化为可点击的DOI或页内跳转链接。',
+    metaDescription: "将 PDF 中的引文标记转换为可点击的 DOI 链接或页面引用。为研究文档添加有用的导航。",
     keywords: ['引文激活', 'pdf超链接', 'doi匹配', '学术pdf助手', 'pdf引文'],
     description: `
       <p>引文链接激活器专为学术科研人员打造。许多PDF格式的论文中，正文里的引用符号（如[1]、[2]）仅仅是普通的纯文本，读者需要反复手动翻页到最末尾寻找对应的参考文献，极大打断了阅读流。</p>
@@ -2874,9 +2874,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '注入链接并下载', description: '点击激活按钮，系统将超链接直接写入PDF中，生成全新PDF。' },
     ],
     useCases: [
-      { title: '论文精读', description: '在阅读PDF文献时，一键点击引用即可在侧边弹出原作者及DOI链接，极速追溯。', icon: 'link' },
-      { title: '论文出版准备', description: '确保您撰写的学术论文在转为PDF交付前，所有的交叉引用都具备超链接导航功能。', icon: 'award' },
-      { title: '文献关系梳理', description: '通过交互式拓扑图梳理复杂文献之间的层级网络关系。', icon: 'git-network' },
+      { title: '论文精读', description: '在阅读PDF文献时，一键点击引用即可在侧边弹出原作者及DOI链接，极速追溯。', icon: "link" },
+      { title: '论文出版准备', description: '确保您撰写的学术论文在转为PDF交付前，所有的交叉引用都具备超链接导航功能。', icon: "award" },
+      { title: '文献关系梳理', description: '通过交互式拓扑图梳理复杂文献之间的层级网络关系。', icon: "git-network" },
     ],
     faq: [
       { question: '如果没有DOI，链接能用吗？', answer: '如果参考文献条目中不包含DOI，工具会自动配置为“页内跳转”（GoTo 动作），点击依然可直接翻滚到参考文献所在的页面。' },
@@ -2886,7 +2886,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'vector-extractor': {
     title: 'PDF矢量提取器',
-    metaDescription: '将PDF转换为高保真SVG，允许鼠标拖动、框选并无损提取文档中的任意矢量图形和图表。',
+    metaDescription: "从 PDF 页面中提取矢量图形作为 SVG。选择图表、图表和徽标进行重新着色和导出。",
     keywords: ['pdf提取矢量', 'svg导出', 'pdf矢量图表', '提取logo', 'pdf矢量画'],
     description: `
       <p>PDF矢量提取器能够将PDF文档中蕴含的矢量路径和图形还原。无论您是想提取PDF学术海报中的折线图、文档插图，还是提取公司的Logo矢量源文件，本工具都能帮您达成目的。</p>
@@ -2899,9 +2899,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '调色并导出', description: '使用右侧面板调节图形属性，一键导出为SVG或复制SVG源码。' },
     ],
     useCases: [
-      { title: '设计师素材提取', description: '快速提取宣传册、招商书PDF中高质量矢量图标与原创插图。', icon: 'bezier' },
-      { title: '科研图表导出', description: '提取论文PDF中复杂图表的矢量源文件，用于高分辨率排版印刷。', icon: 'presentation' },
-      { title: '企业品牌搜集', description: '从合同或报告中提取矢量格式的公司商标和标识，防止失真。', icon: 'crown' },
+      { title: '设计师素材提取', description: '快速提取宣传册、招商书PDF中高质量矢量图标与原创插图。', icon: "bezier" },
+      { title: '科研图表导出', description: '提取论文PDF中复杂图表的矢量源文件，用于高分辨率排版印刷。', icon: "presentation" },
+      { title: '企业品牌搜集', description: '从合同或报告中提取矢量格式的公司商标和标识，防止失真。', icon: "crown" },
     ],
     faq: [
       { question: '为什么有些图片无法提取为矢量？', answer: 'PDF中的图片分为位图（如照片、JPG扫描件）和矢量图（如线条、填充区域、数学图表）。位图无法提取为矢量元素，只能提取为图片文件。' },
@@ -2911,7 +2911,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'deep-sanitize': {
     title: '深度元数据清洗',
-    metaDescription: '彻底擦除PDF文档中的作者信息、修改历史、隐藏图层以及未引用的冗余数据，完美保护隐私。',
+    metaDescription: "从 PDF 中删除元数据、隐藏图层和未使用的对象。共享之前在本地清理文档信息。",
     keywords: ['pdf脱敏', '清除元数据', '防溯源', '安全pdf', '擦除水印'],
     description: `
       <p>深度元数据清洗是保护商业秘密和个人隐私的终极防线。PDF文件在创建和编辑过程中，往往会在底层默默嵌入大量的敏感隐性信息，仅在视觉上涂黑是远远不够的。</p>
@@ -2924,9 +2924,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '执行净化并下载', description: '点击执行脱敏，伴随消融动效瞬间清空无用残留，生成极致干净的PDF文件。' },
     ],
     useCases: [
-      { title: '商业合同共享', description: '在将合同PDF发送给外部伙伴前，抹去起草人、系统路径和以前版本的协商修改记录。', icon: 'file-signature' },
-      { title: '防溯源文件发布', description: '清除文档底层的隐藏图层与不可见批注水印，保护信源隐私。', icon: 'eye-off' },
-      { title: 'PDF优化与瘦身', description: '剥离PDF文件中无用、孤立的废弃对象，加快网络加载速度。', icon: 'zap' },
+      { title: '商业合同共享', description: '在将合同PDF发送给外部伙伴前，抹去起草人、系统路径和以前版本的协商修改记录。', icon: "file-signature" },
+      { title: '防溯源文件发布', description: '清除文档底层的隐藏图层与不可见批注水印，保护信源隐私。', icon: "eye-off" },
+      { title: 'PDF优化与瘦身', description: '剥离PDF文件中无用、孤立的废弃对象，加快网络加载速度。', icon: "zap" },
     ],
     faq: [
       { question: '它和“删除元数据”有什么区别？', answer: '普通“删除元数据”仅修改常规属性（如Title, Author）。“深度元数据清洗”会对整棵PDF对象树执行全面扫描，重构xref，物理剔除 PieceInfo、隐藏图层与增量更新，杜绝一切隐形泄密路径。' },
@@ -2936,7 +2936,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'booklet-folding-simulator': {
     title: '3D装订拼版与折页模拟器',
-    metaDescription: '将PDF多页拼版为可折叠的大版，提供3D物理折页和骑马钉装订仿真动效预览。',
+    metaDescription: "排列 PDF 页面以进行小册子打印。在导出可打印的文档之前预览折叠的纸张和骑马订布局。",
     keywords: ['3D拼版', '折页模拟', '骑马钉装订', '书籍排版', '大版打样'],
     description: `
       <p>3D装订拼版与折页模拟器是一款专为印刷设计与出版排版人员打造的高级工具。传统的书籍排版需要精确计算页码的物理重叠和拼大版顺序，本项目将这一过程彻底可视化与自动化。</p>
@@ -2950,9 +2950,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '输出拼版PDF', description: '点击生成，下载重新排列并合并好的物理大版PDF，可直接进行双面打印。' },
     ],
     useCases: [
-      { title: '宣传小册子制作', description: '为折页宣传册、产品手册进行折叠顺序预演，防止打印后正反面颠倒。', icon: 'book-open' },
-      { title: '图书骑马钉排版', description: '为多页画册快速生成骑马钉印刷所需的折页拼大版文件。', icon: 'layers' },
-      { title: '工业折页大样设计', description: '帮助印刷厂客户经理直观展示各种复杂折页方式的页面物理分布。', icon: 'printer' },
+      { title: '宣传小册子制作', description: '为折页宣传册、产品手册进行折叠顺序预演，防止打印后正反面颠倒。', icon: "book-open" },
+      { title: '图书骑马钉排版', description: '为多页画册快速生成骑马钉印刷所需的折页拼大版文件。', icon: "layers" },
+      { title: '工业折页大样设计', description: '帮助印刷厂客户经理直观展示各种复杂折页方式的页面物理分布。', icon: "printer" },
     ],
     faq: [
       { question: '什么是“拼大版”？', answer: '拼大版（Imposition）是印刷过程中的关键步骤。因为印刷机纸张很大，我们不会一页一页印刷，而是将多页排在一张大纸上，印刷后经过折叠、裁切才装订成书。本工具能自动计算折叠后页码连续所需的排版顺序。' },
@@ -2962,7 +2962,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-to-slide': {
     title: 'PDF 转 Slide',
-    metaDescription: '智能分析PDF大纲，提取矢量图表与重点内容并无损重建为可编辑的PPTX演示文稿。',
+    metaDescription: "将 PDF 内容转换为 PowerPoint 幻灯片。导出包含文本和图像的 PPTX 演示文稿以供进一步编辑。",
     keywords: ['PDF转PPT', '幻灯片重建', '图表提取', '学术汇报', 'PPTX生成'],
     description: `
       <p>学术与商业幻灯片重建器能够将静态的PDF文档重新激活，重塑为极具现代感、可深度编辑的幻灯片演示文稿（PPTX）。</p>
@@ -2975,9 +2975,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键生成并下载', description: '启动重建引擎，自动生成格式规范、文本和图表皆可编辑的 PPTX 演示文稿。' },
     ],
     useCases: [
-      { title: '学术论文转汇报PPT', description: '将长篇学术论文中的文字大纲与矢量折线图、柱状图一键重组为演讲幻灯片。', icon: 'graduation-cap' },
-      { title: '商业白皮书转演示', description: '把冗长的年度行业报告提取出精炼的主标题和要点，作为宣讲PPT底稿。', icon: 'presentation' },
-      { title: '多设备跨平台演示', description: '免去手动截图复制的烦恼，极速得到排版整洁、文字可编辑的幻灯片框架。', icon: 'laptop' },
+      { title: '学术论文转汇报PPT', description: '将长篇学术论文中的文字大纲与矢量折线图、柱状图一键重组为演讲幻灯片。', icon: "graduation-cap" },
+      { title: '商业白皮书转演示', description: '把冗长的年度行业报告提取出精炼的主标题和要点，作为宣讲PPT底稿。', icon: "presentation" },
+      { title: '多设备跨平台演示', description: '免去手动截图复制的烦恼，极速得到排版整洁、文字可编辑的幻灯片框架。', icon: "laptop" },
     ],
     faq: [
       { question: '生成的 PPTX 在 Microsoft Office 中可以编辑吗？', answer: '可以。我们完全基于标准的 Office Open XML (OOXML) 格式在内存中重新构建了文档，文本、表格、占位符在 PowerPoint、Keynote 或 WPS 中均可无缝编辑。' },
@@ -2987,7 +2987,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'form-logic-designer': {
     title: '表单逻辑设计',
-    metaDescription: '使用毛玻璃节点图连线设计交互逻辑，向PDF表单注入可编程联动 JavaScript 脚本。',
+    metaDescription: "使用可视化设计器创建 PDF 表单规则。连接字段并添加交互式计算和验证逻辑。",
     keywords: ['PDF表单逻辑', 'AcroJS注入', '节点连线', '交互式PDF', '表单联动'],
     description: `
       <p>可编程PDF表单逻辑设计舱是填补PDF高级交互空白的革新性工具。传统的PDF表单都是死板的静态字段，而本工具能让您的PDF表单像现代Web应用一样具备动态交互逻辑。</p>
@@ -3000,9 +3000,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '编译注入并下载', description: '点击编译，系统生成 JavaScript 脚本并注入 PDF 字典，输出具备高交互性的智能PDF。' },
     ],
     useCases: [
-      { title: '智能商业合同样本', description: '根据用户勾选的条款，动态显示或隐藏附加补充协议输入框，保持界面清爽。', icon: 'file-signature' },
-      { title: '动态财务报销单', description: '多行报销金额自动求和，并根据填写的税率自动计算最终扣税，完全零手动输入。', icon: 'calculator' },
-      { title: '交互式问卷调研表', description: '利用条件跳转逻辑，跳过不适用的问题，提升用户在移动端填写表单的体验。', icon: 'form-input' },
+      { title: '智能商业合同样本', description: '根据用户勾选的条款，动态显示或隐藏附加补充协议输入框，保持界面清爽。', icon: "file-signature" },
+      { title: '动态财务报销单', description: '多行报销金额自动求和，并根据填写的税率自动计算最终扣税，完全零手动输入。', icon: "calculator" },
+      { title: '交互式问卷调研表', description: '利用条件跳转逻辑，跳过不适用的问题，提升用户在移动端填写表单的体验。', icon: "form-input" },
     ],
     faq: [
       { question: '这需要我的 PDF 预先有表单字段吗？', answer: '是的。该工具用于为已有的 PDF 表单字段添加高级逻辑。如果您没有表单字段，可以先使用我们的表单创建工具添加输入框和复选框。' },
@@ -3012,7 +3012,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'eink-optimizer': {
     title: '电子墨水屏护眼调色舱',
-    metaDescription: '针对电子墨水屏设备优化PDF：去噪、直方图二值化、字迹膨胀加粗，带来极致的纸感阅读。',
+    metaDescription: "为电子墨水阅读器优化 PDF 页面。清洁背景、增加文本对比度并调整文档以便于阅读。",
     keywords: ['墨水屏优化', '二值化去噪', '字迹加粗', '护眼阅读', '大津法二值化'],
     description: `
       <p>电子墨水屏护眼调色舱是一款专为 Kindles, Onyx Boox, Kobo 等 E-reader 狂热读者定制的福音工具。</p>
@@ -3025,9 +3025,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '优化处理并下载', description: '点击执行，系统对全书页面应用图像优化，输出极致适配墨水屏的护眼PDF。' },
     ],
     useCases: [
-      { title: '古籍文献字迹加粗', description: '解决扫描版线装古籍字迹因年代久远而浅淡模糊、难以辨认的问题。', icon: 'scroll' },
-      { title: '教材试卷底色漂白', description: '消除扫描或拍照试卷纸张的偏色、手写阴影，还原干净整洁的白纸黑字。', icon: 'file-text' },
-      { title: '墨水屏电纸书适配', description: '将带有彩色插图的文档转化为高对比度的黑白灰阶图，避免在墨水屏上显示出大片难看的杂乱网格。', icon: 'tablet' },
+      { title: '古籍文献字迹加粗', description: '解决扫描版线装古籍字迹因年代久远而浅淡模糊、难以辨认的问题。', icon: "scroll" },
+      { title: '教材试卷底色漂白', description: '消除扫描或拍照试卷纸张的偏色、手写阴影，还原干净整洁的白纸黑字。', icon: "file-text" },
+      { title: '墨水屏电纸书适配', description: '将带有彩色插图的文档转化为高对比度的黑白灰阶图，避免在墨水屏上显示出大片难看的杂乱网格。', icon: "tablet" },
     ],
     faq: [
       { question: '“字迹加粗”的原理是什么？', answer: '在图像处理中这被称为形态学膨胀（Dilation）。它以一定的结构元素扫描字迹边缘，将文字笔画向外扩展一个像素，从而使得淡细的字迹在物理上变粗、更显眼。' },
@@ -3037,7 +3037,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'cert-cryptor': {
     title: '证书加密与签名',
-    metaDescription: '使用非对称公钥证书加密PDF，配合3D实体黄金火漆按压盖印及PKCS#7数字证书签名。',
+    metaDescription: "使用证书对 PDF 文档进行加密和数字签名。在浏览器中本地处理证书文件。",
     keywords: ['证书加密', '火漆签名', '数字签名', '非对称加密', 'PKCS7签名'],
     description: `
       <p>3D物理蜡封证书签名与双钥加密锁为敏感企业文档、毕业证书或加密合同提供了军工级的安全保卫与极富尊贵仪式感的物理级视觉呈现。</p>
@@ -3051,9 +3051,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 4, title: '下载受保护的PDF', description: '保存文件。此时文档已被证书锁定，并带有不可篡改的加密印记。' },
     ],
     useCases: [
-      { title: '电子毕业证书/奖状', description: '在结业证书或商业奖状上打上立体火漆印记，并附带学校/企业的官方数字签名，极具分量。', icon: 'award' },
-      { title: '涉密合同传输', description: '使用合作方的公钥证书加密合同，确保只有接收方的安全密钥卡能解密查看，防止邮箱劫持泄密。', icon: 'shield-alert' },
-      { title: '官方防伪发文', description: '对企业正式通知文件进行数字签名，防范别有用心者通过编辑文本来篡改文告内容。', icon: 'stamp' },
+      { title: '电子毕业证书/奖状', description: '在结业证书或商业奖状上打上立体火漆印记，并附带学校/企业的官方数字签名，极具分量。', icon: "award" },
+      { title: '涉密合同传输', description: '使用合作方的公钥证书加密合同，确保只有接收方的安全密钥卡能解密查看，防止邮箱劫持泄密。', icon: "shield-alert" },
+      { title: '官方防伪发文', description: '对企业正式通知文件进行数字签名，防范别有用心者通过编辑文本来篡改文告内容。', icon: "stamp" },
     ],
     faq: [
       { question: '火漆印章是图片还是真的数字签名？', answer: '两者皆是。系统不仅在 PDF 上渲染了一个具有逼真法线纹理和立体阴影的火漆印外观（外观层），而且在 PDF 内部对象中真正写入了符合 PKCS#7 规范、不可伪造的数字签名（数据层）。' },
@@ -3063,7 +3063,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'passport-id-composer': {
     title: '证件双面拼版',
-    metaDescription: '一键将身份证或护照正反两面快速拼版渲染到单张 A4 纸张的上下区域，支持加防伪透明水印。',
+    metaDescription: "将身份证或护照的正反面合并在一张 A4 PDF 页面上。安排扫描并添加可选水印。",
     keywords: ['身份证拼版', '护照拼大版', '证件复印合成', '证件双面拼版', '身份证水印'],
     description: `
       <p>证件双面拼版与复印合成器是一个非常实用的办公神器。</p>
@@ -3076,9 +3076,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键拼合下载', description: '点击开始拼版，系统自动将其导出为单页高品质 A4 复印件 PDF。' },
     ],
     useCases: [
-      { title: '企业入职申请', description: '员工提交身份证复印件，一键合成并添加“仅限入职”防伪水印。', icon: 'user' },
-      { title: '银行/政务业务办理', description: '快速将身份证正反面规整拼接打印，满足政务物理存档规范。', icon: 'landmark' },
-      { title: '出国证件备份', description: '将护照与附页拼合成一页，方便出境备份和物理打印。', icon: 'plane' },
+      { title: '企业入职申请', description: '员工提交身份证复印件，一键合成并添加“仅限入职”防伪水印。', icon: "user" },
+      { title: '银行/政务业务办理', description: '快速将身份证正反面规整拼接打印，满足政务物理存档规范。', icon: "landmark" },
+      { title: '出国证件备份', description: '将护照与附页拼合成一页，方便出境备份和物理打印。', icon: "plane" },
     ],
     faq: [
       { question: '水印会遮挡证件上的文字吗？', answer: '完全不会。我们采用了精确调整过的 15% 极低透明度，使水印文字既清晰防伪，又不影响证件本身字迹和头像的阅读。' },
@@ -3088,7 +3088,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'annotation-exporter': {
     title: '批注与高亮导出',
-    metaDescription: '深度反序列化 PDF 的批注、高亮和划线流，智能提炼导出为结构化 Markdown/JSON 大纲笔记本。',
+    metaDescription: "将 PDF 注释、注释、突出显示和下划线导出为 Markdown 或 JSON。整理注释以供学习、回顾和研究。",
     keywords: ['批注提取', '高亮导出', 'pdf高亮整理', 'pdf批注反序列化', 'markdown笔记本'],
     description: `
       <p>智能批注/高亮提取与大纲笔记本是一个深度挖掘 PDF 批注价值的效率舱。</p>
@@ -3101,9 +3101,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键提取导出', description: '点击执行，系统瞬间完成对批注流的解析与大纲重组。' },
     ],
     useCases: [
-      { title: '科研文献综述提炼', description: '将多篇论文的阅读高亮一键整合为 Markdown 提纲，极速撰写文献综述。', icon: 'graduation-cap' },
-      { title: '读书笔记高效整理', description: '提取电子书中的精彩句段和个人感悟，汇聚成个人知识库或 Obsidian 节点。', icon: 'book' },
-      { title: '协作文档审核收集', description: '批量收集多位审核人在 PDF 方案上标记的修改意见，形成任务清单。', icon: 'users' },
+      { title: '科研文献综述提炼', description: '将多篇论文的阅读高亮一键整合为 Markdown 提纲，极速撰写文献综述。', icon: "graduation-cap" },
+      { title: '读书笔记高效整理', description: '提取电子书中的精彩句段和个人感悟，汇聚成个人知识库或 Obsidian 节点。', icon: "book" },
+      { title: '协作文档审核收集', description: '批量收集多位审核人在 PDF 方案上标记的修改意见，形成任务清单。', icon: "users" },
     ],
     faq: [
       { question: '可以提取手写平板上的笔迹批注吗？', answer: '可以。只要您的手写笔迹在 PDF 中保存为标准的 Ink 注解，该工具都能完整捕获其类型和坐标，并以结构化记录导出。' },
@@ -3113,7 +3113,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'batch-watermark-remover': {
     title: '批量去水印',
-    metaDescription: '采用内容流物理擦除技术（Content Stream Purge），无损擦除 PDF 底层文本或矢量水印流。',
+    metaDescription: "从 PDF 中删除匹配的文本和图像水印。查看输出以检查文档内容是否已保留。",
     keywords: ['水印擦除', 'pdf去水印', '批量水印删除', '物理内容流擦除', '图片水印删除'],
     description: `
       <p>PDF 水印批量一键智能擦除器是业内罕见的无损 PDF 净化引擎。</p>
@@ -3126,9 +3126,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键物理净化', description: '点击执行，伴随微型量子解构粉碎波效，水印瞬间被物理清空。' },
     ],
     useCases: [
-      { title: '机密报告净化存档', description: '将废弃或公开报告上的“机密”或“草稿”水印无损擦除，用于归档和重新分发。', icon: 'archive' },
-      { title: '背景图片干扰消除', description: '快速物理擦除 PDF 各页底部的半透明大图水印，让页面文本阅读更加清爽。', icon: 'eye' },
-      { title: '企业模板二次开发', description: '物理擦除旧版官方文件的页脚水印，以便快速套用新的企业标准。', icon: 'copy' },
+      { title: '机密报告净化存档', description: '将废弃或公开报告上的“机密”或“草稿”水印无损擦除，用于归档和重新分发。', icon: "archive" },
+      { title: '背景图片干扰消除', description: '快速物理擦除 PDF 各页底部的半透明大图水印，让页面文本阅读更加清爽。', icon: "eye" },
+      { title: '企业模板二次开发', description: '物理擦除旧版官方文件的页脚水印，以便快速套用新的企业标准。', icon: "copy" },
     ],
     faq: [
       { question: '擦除水印后会被重新复原吗？', answer: '绝对不会。与视觉遮挡不同，我们是直接修改了 PDF 页面的二进制内容流（Content Stream），将相关算子物理清除，不留任何痕迹。' },
@@ -3138,7 +3138,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'smart-data-redactor': {
     title: '敏感信息脱敏',
-    metaDescription: '利用 NLP 敏感词定位与内容流物理覆盖，一键物理擦除手机号、邮箱、身份证等隐私。',
+    metaDescription: "在 PDF 中查找电子邮件地址、电话号码和 ID 模式。在本地查看匹配项并编辑敏感内容。",
     keywords: ['自动脱敏', '敏感词模糊', 'pdf隐私遮蔽', '内容流物理擦除', '电话号码脱敏'],
     description: `
       <p>敏感信息自动模糊与脱敏引擎是一款保障信息安全与合规的利器。</p>
@@ -3151,9 +3151,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键扫描覆盖', description: '点击执行，敏感词瞬间被红外交叉准星锁定，物理覆盖并彻底脱敏。' },
     ],
     useCases: [
-      { title: '敏感商业合同公开', description: '在向第三方公开合同前，自动擦除其中的产品价格、核心人员联系方式等隐私。', icon: 'file-signature' },
-      { title: '简历库去标识化', description: '对批量简历进行处理，隐藏求职者的真实姓名、手机、家庭住址，符合 GDPR 规范。', icon: 'user-check' },
-      { title: '财务报表对外发布', description: '隐藏非公开财务报表中的特定股东姓名及敏感利润数字，防止竞争对手搜集。', icon: 'pie-chart' },
+      { title: '敏感商业合同公开', description: '在向第三方公开合同前，自动擦除其中的产品价格、核心人员联系方式等隐私。', icon: "file-signature" },
+      { title: '简历库去标识化', description: '对批量简历进行处理，隐藏求职者的真实姓名、手机、家庭住址，符合 GDPR 规范。', icon: "user-check" },
+      { title: '财务报表对外发布', description: '隐藏非公开财务报表中的特定股东姓名及敏感利润数字，防止竞争对手搜集。', icon: "pie-chart" },
     ],
     faq: [
       { question: '脱敏后的 PDF 真的无法通过复制获取隐私吗？', answer: '真的。我们不仅画了黑盒，而且在 PDF 页面流（Page Stream）中将原敏感字串彻底重写为了 `[REDACTED]`。即使他人用文本提取工具，也绝对无法获取。' },
@@ -3163,7 +3163,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'bookmarks-auto-generator': {
     title: '自动生成书签',
-    metaDescription: '分析 PDF 排版字号与正则标题（如第一章），自动反推树形大纲，物理注入 /Outline 编目。',
+    metaDescription: "从标题和文本模式生成 PDF 书签。为长文档、手册和报告添加可导航的大纲。",
     keywords: ['大纲自动生成', '书签生成器', 'pdf书签注入', '字号大纲推导', '物理目录注入'],
     description: `
       <p>多层级书签自动生成与目录编目器能够瞬间将“乱麻”般的 PDF 文档整理得丝丝入扣。</p>
@@ -3176,9 +3176,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '生成并物理注入', description: '点击执行，大纲树在晶格沙盘上如树叶般舒展开，一键写入 PDF 二进制中。' },
     ],
     useCases: [
-      { title: '大型技术手册整理', description: '为几百页的无目录仪器说明书或标准文件自动生成多级大纲书签，大幅提升工作效率。', icon: 'tool' },
-      { title: '学位论文整理归档', description: '在提交学位论文前，自动推导构建一级、二级书签大纲，满足高校归档的规范要求。', icon: 'graduation-cap' },
-      { title: '电子书精排阅读', description: '在导入 Kindle/平板阅读前，将扫描版的无大纲电子书梳理注入完整章节目录。', icon: 'tablet' },
+      { title: '大型技术手册整理', description: '为几百页的无目录仪器说明书或标准文件自动生成多级大纲书签，大幅提升工作效率。', icon: "tool" },
+      { title: '学位论文整理归档', description: '在提交学位论文前，自动推导构建一级、二级书签大纲，满足高校归档的规范要求。', icon: "graduation-cap" },
+      { title: '电子书精排阅读', description: '在导入 Kindle/平板阅读前，将扫描版的无大纲电子书梳理注入完整章节目录。', icon: "tablet" },
     ],
     faq: [
       { question: '有些偏僻的章节标题格式能被识别吗？', answer: '能。您只需在右侧的“自定义匹配正则”中填入对应的规律（如 `^[一二三]、`），系统即可自动应用该规则进行精准提取。' },
@@ -3188,7 +3188,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'batch-barcode-injector': {
     title: '批量注入条码',
-    metaDescription: '接收资产链接或列表，批量生成高保真 QR/Code128 码，精确定位批量注入 PDF 页。',
+    metaDescription: "批量添加QR码或Code 128条形码到PDF页面。调整文档跟踪、标签和打印工作流程的位置。",
     keywords: ['二维码批量生成', '条码注入pdf', '资产标签pdf', 'pdf二维码对齐', '批量条码添加'],
     description: `
       <p>PDF 批量二维码/条形码生成与资产注入器是连接数字资产与实体纸张的物理桥梁。</p>
@@ -3201,9 +3201,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '批量注入并下载', description: '点击执行，生成的条形码精准覆盖渲染在所有页面的指定位置。' },
     ],
     useCases: [
-      { title: '合同防伪溯源', description: '在合同首页右上角批量印盖带有合同编号、防伪链接的专属二维码。', icon: 'file-check' },
-      { title: '物流出库单批量贴码', description: '快速在出库单指定位置打上 Code128 条形码，方便手持扫描枪扫码自动入库。', icon: 'truck' },
-      { title: '固定资产卡片建档', description: '为每一页资产设备卡物理添加一个包含设备参数和盘点链接的二维码。', icon: 'archive' },
+      { title: '合同防伪溯源', description: '在合同首页右上角批量印盖带有合同编号、防伪链接的专属二维码。', icon: "file-check" },
+      { title: '物流出库单批量贴码', description: '快速在出库单指定位置打上 Code128 条形码，方便手持扫描枪扫码自动入库。', icon: "truck" },
+      { title: '固定资产卡片建档', description: '为每一页资产设备卡物理添加一个包含设备参数和盘点链接的二维码。', icon: "archive" },
     ],
     faq: [
       { question: '生成的二维码扫码识别率高吗？', answer: '极高。我们采用的是纯矢量到高分辨率无损 PNG 的渲染，在 PDF 内部作为高精度图像嵌入，即使打印成很小尺寸也极易被扫描枪和手机识别。' },
@@ -3213,7 +3213,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'signature-ink-optimizer': {
     title: '签名印章提取',
-    metaDescription: '提取照片中手写签名和红色印章，过滤白黄色阴影褶皱纸张杂噪，输出透明 Alpha 通道 PNG。',
+    metaDescription: "从照片中提取签名或印章并删除其背景。下载透明 PNG 以在文档中使用。",
     keywords: ['手写签名抠图', '印章透明背景', '签名背景变透明', '签名对比度增强', '笔迹净化'],
     description: `
       <p>手写签名/印章色彩还原与背景透化舱是一间极具硬核图像底蕴的“笔迹净化离心机”。</p>
@@ -3226,9 +3226,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '生成透明PNG贴', description: '点击执行，净化完成并生成带透明 Alpha 通道的无损 PNG，可直接用于电子签名。' },
     ],
     useCases: [
-      { title: '电子合同高专业度签名', description: '将手机拍的灰色签名转化为干干净净、可直接盖在红字上面的透明手写签章。', icon: 'file-signature' },
-      { title: '企业电子印章规范化', description: '净化实物公章照片，剔除复杂纸质纤维阴影，形成高纯净度的无损透明电子公章。', icon: 'stamp' },
-      { title: '插画手稿线条提取', description: '提取白纸手绘线稿中的纯黑线条并透明化，便于导入 Photoshop 进行二次上色。', icon: 'edit' },
+      { title: '电子合同高专业度签名', description: '将手机拍的灰色签名转化为干干净净、可直接盖在红字上面的透明手写签章。', icon: "file-signature" },
+      { title: '企业电子印章规范化', description: '净化实物公章照片，剔除复杂纸质纤维阴影，形成高纯净度的无损透明电子公章。', icon: "stamp" },
+      { title: '插画手稿线条提取', description: '提取白纸手绘线稿中的纯黑线条并透明化，便于导入 Photoshop 进行二次上色。', icon: "edit" },
     ],
     faq: [
       { question: '“自适应 Alpha 抠图”和普通的去底色有什么不同？', answer: '普通去底色会把字迹内部的浅色也扣成透明，导致字迹看起来残缺发虚。本算法只过滤背景的低对比度发白发黄区域，并对属于字迹的笔锋边缘进行像素增强，边缘光滑柔和。' },
@@ -3238,7 +3238,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'dead-link-debugger': {
     title: '失效链接修复',
-    metaDescription: '全局探测 PDF 中所有 `/URI` 动作，支持死链批量替换，重构注入回写。',
+    metaDescription: "检查 PDF 超链接并替换损坏或过时的目的地。扫描链接注释并保存更新的文档。",
     keywords: ['pdf死链检测', 'pdf超链接修改', 'pdf链接失效检测', 'pdf重定向注入', '超链接替换'],
     description: `
       <p>全局超链接/失效网址自动修复器是一款保障 PDF 文档交互品质的底层编辑器。</p>
@@ -3251,9 +3251,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '回写二进制并下载', description: '点击写入修复，系统瞬间将超链接替换回写并生成修正后的 PDF。' },
     ],
     useCases: [
-      { title: '宣传册死链热修复', description: '发现已经发出去的宣传册 PDF 中官网链接填错，不用重新排版，直接热替换修复链接。', icon: 'refresh-cw' },
-      { title: '电子书引用网址订正', description: '批量扫描学术论文电子书中的参考文献网址，订正死链以保证引用的学术严谨性。', icon: 'book' },
-      { title: '企业迁移网址批量更新', description: '当公司域名更换后，批量将几百份旧版 PDF 文件中的旧链接全部更新为新网址。', icon: 'globe' },
+      { title: '宣传册死链热修复', description: '发现已经发出去的宣传册 PDF 中官网链接填错，不用重新排版，直接热替换修复链接。', icon: "refresh-cw" },
+      { title: '电子书引用网址订正', description: '批量扫描学术论文电子书中的参考文献网址，订正死链以保证引用的学术严谨性。', icon: "book" },
+      { title: '企业迁移网址批量更新', description: '当公司域名更换后，批量将几百份旧版 PDF 文件中的旧链接全部更新为新网址。', icon: "globe" },
     ],
     faq: [
       { question: '为什么不直接用网络请求自动在线探测死链？', answer: '在浏览器端直接发送请求探测死链会遇到跨域 CORS 协议阻断。因此我们完美地采用“提取列表 + 支持原地高灵活性热修改”的设计，将重定向权限100%交给用户。' },
@@ -3263,7 +3263,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'interactive-toc-generator': {
     title: '生成互动目录',
-    metaDescription: '提取大纲标题，生成具有极高现代排版美学的互动目录页插入，注入 double-way /GoTo 动作。',
+    metaDescription: "在 PDF 中添加可点击的目录。创建章节链接和返回导航以更轻松地浏览文档。",
     keywords: ['自动生成目录', 'pdf互动目录', '双向锚定链接', 'pdf目录生成器', 'goto动作'],
     description: `
       <p>生成互动目录工具是 PDF 翻页体验的一场颠覆性革命。</p>
@@ -3276,9 +3276,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '织入双向目录并下载', description: '点击执行，伴随精致折纸飞舞动效，包含双向跳转的高级互动 PDF 瞬间诞生。' },
     ],
     useCases: [
-      { title: '企业年度报告精排', description: '为财报一键加盖高颜值封面后的互动目录页，让投资者阅读时能够极速双向跳转。', icon: 'file-bar' },
-      { title: '毕业论文前置编目', description: '在毕业论文正文前，自动快速织入规范排版的页码目录，并确保双向链接高可用。', icon: 'bookmark' },
-      { title: '产品说明书操作优化', description: '让产品手册的用户在阅读到具体故障排查页时，可以通过“TOC ↩”按钮一键返回主菜单。', icon: 'check-circle' },
+      { title: '企业年度报告精排', description: '为财报一键加盖高颜值封面后的互动目录页，让投资者阅读时能够极速双向跳转。', icon: "file-bar" },
+      { title: '毕业论文前置编目', description: '在毕业论文正文前，自动快速织入规范排版的页码目录，并确保双向链接高可用。', icon: "bookmark" },
+      { title: '产品说明书操作优化', description: '让产品手册的用户在阅读到具体故障排查页时，可以通过“TOC ↩”按钮一键返回主菜单。', icon: "check-circle" },
     ],
     faq: [
       { question: '“双向锚定”的原理是什么？', answer: '我们在目录页的对应位置写入了跳转至目标页的 `/Link` 动作；同时，在每个被锚定的目标正文页右上角，物理印盖了一个微型的跳转按钮链接回目录页。这都是通过低级对象树回写实现的。' },
@@ -3287,8 +3287,8 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
   'global-invoice-parser': {
-    title: '发票翻译与折算',
-    metaDescription: '智能识别多国发票，原地翻译表格条目，按实时国际汇率覆盖高端三维立体折算账本。',
+    title: "PDF发票金额转换器",
+    metaDescription: "从 PDF 中提取发票金额、在货币之间转换总计并向文档添加计算摘要。",
     keywords: ['发票翻译', '发票汇率折算', '外币账单换算', '发票原地替换', '多币种发票'],
     description: `
       <p>发票翻译与折算工具是跨国财务人员与海淘用户的“掌控感福音”。</p>
@@ -3301,9 +3301,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '生成折算账本', description: '点击折算，发票总额旁边被优雅 stamped 本地汇率账本并开放下载。' },
     ],
     useCases: [
-      { title: '跨国差旅费报销', description: '员工海外出差的发票（如美元计价），一键折算为人民币总额，并物理印盖汇率快照，方便财务极速报销。', icon: 'plane' },
-      { title: '跨境海淘对账结算', description: '将海淘账单上的欧元/日元原地折算，一眼看清真实的本地货币支出。', icon: 'credit-card' },
-      { title: '外贸企业发票建档', description: '为日常繁杂的外币结算单加盖本币标记及核算快照，统一财务归档度量衡。', icon: 'folder-open' },
+      { title: '跨国差旅费报销', description: '员工海外出差的发票（如美元计价），一键折算为人民币总额，并物理印盖汇率快照，方便财务极速报销。', icon: "plane" },
+      { title: '跨境海淘对账结算', description: '将海淘账单上的欧元/日元原地折算，一眼看清真实的本地货币支出。', icon: "credit-card" },
+      { title: '外贸企业发票建档', description: '为日常繁杂的外币结算单加盖本币标记及核算快照，统一财务归档度量衡。', icon: "folder-open" },
     ],
     faq: [
       { question: '它是如何自动获取发票金额的？', answer: '系统后台利用 PDFJS 文本字符流分析，通过金钱正则匹配带有 `$`、`€`、`£` 等符号 of 的数字。同时分析 `Total` 等关键词以锁定真实的发票最终金额。' },
@@ -3322,9 +3322,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: "分析并校正", description: "下载 · 对齐后的 PDF" },
     ],
     useCases: [
-      { title: '合同及收据归档', description: '将随手用手机拍摄的倾斜合同照片，极速一键拉直归档，复印打印如原件般整洁。', icon: 'file-text' },
-      { title: '老旧书籍数字化', description: '修复扫描古旧书籍或字画时由于翻开不平整导致的文字倾斜，统一排版。', icon: 'book' },
-      { title: '考卷及作业扫描', description: '自动校正学生拍摄上传的歪斜作业，大大降低批改时的视觉疲劳。', icon: 'edit-3' },
+      { title: '合同及收据归档', description: '将随手用手机拍摄的倾斜合同照片，极速一键拉直归档，复印打印如原件般整洁。', icon: "file-text" },
+      { title: '老旧书籍数字化', description: '修复扫描古旧书籍或字画时由于翻开不平整导致的文字倾斜，统一排版。', icon: "book" },
+      { title: '考卷及作业扫描', description: '自动校正学生拍摄上传的歪斜作业，大大降低批改时的视觉疲劳。', icon: "edit-3" },
     ],
     faq: [
       { question: '“拉东变换检测”的原理是什么？', answer: "在本地检测倾斜的文字行，并将校正后的内容适配到原始页面内。" },
@@ -3334,7 +3334,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-two-column-reflower': {
     title: '双栏论文重排',
-    metaDescription: '智能识别 PDF 论文或期刊的双栏排版格式，无损切分并重组为单栏自适应布局，畅享手机阅读。',
+    metaDescription: "将两栏 PDF 论文重排为单栏，以便于移动阅读。调整学术文档以适应较小的屏幕。",
     keywords: ['双栏转单栏', '论文重排', '手机看论文', 'pdf自适应阅读', '重组双栏pdf'],
     description: `
       <p>双栏论文重排工具是解决移动端阅读学术文献痛点的“终极利器”。</p>
@@ -3347,9 +3347,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '流式编织并导出', description: '点击执行，双栏页面在 3D 折扇卷轴动效中重排为单栏版式并极速下载。' },
     ],
     useCases: [
-      { title: 'Kindle/电子书阅读', description: '将厚重难读的双栏论文一键重排，导入墨水屏设备，享受如读小说一般的流式排版。', icon: 'tablet' },
-      { title: '手机端直读文献', description: '在地铁或户外用手机看论文时，无需双指频繁拖拽放大，直接单手顺畅下拉阅读。', icon: 'smartphone' },
-      { title: '老旧期刊整理', description: '将古老双栏报纸、行业期刊重塑为单栏排版，方便视力不佳的年长读者无障碍扫描。', icon: 'book-open' },
+      { title: 'Kindle/电子书阅读', description: '将厚重难读的双栏论文一键重排，导入墨水屏设备，享受如读小说一般的流式排版。', icon: "tablet" },
+      { title: '手机端直读文献', description: '在地铁或户外用手机看论文时，无需双指频繁拖拽放大，直接单手顺畅下拉阅读。', icon: "smartphone" },
+      { title: '老旧期刊整理', description: '将古老双栏报纸、行业期刊重塑为单栏排版，方便视力不佳的年长读者无障碍扫描。', icon: "book-open" },
     ],
     faq: [
       { question: '跨栏的超大图表和数学公式会怎么处理？', answer: '我们的段落编排器包含“跨栏检测（Span detection）”。对于宽度超过页面单栏上限的大插图、三线表或长数学公式，系统会自动将其判定为“跨栏元素”，在单栏中独占一行进行完整保留，绝不发生错位裁切。' },
@@ -3359,7 +3359,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-page-resizer-uniform': {
     title: 'PDF 尺寸统一',
-    metaDescription: '批量将混合有 A4、A3、Letter 等异型大小的 PDF 页面智能等比缩放、对齐至统一规格（如 A4），方便打印 and 阅览。',
+    metaDescription: "将混合 PDF 页面调整为统一尺寸。使用比例缩放和居中边距标准化 A4、A3 和 Letter 页面。",
     keywords: ['pdf尺寸统一', 'pdf等比缩放', 'pdf合并对齐', '统一mediabox', '批量规范尺寸'],
     description: `
       <p>PDF 尺寸统一工具是规范凌乱 PDF 文档、保障高可用打印的“排版精算师”。</p>
@@ -3372,9 +3372,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键归一并下载', description: '点击执行，伴随 3D 纸张叠齐卡位动效，下载整齐划一、100% 尺寸一致的 PDF。' },
     ],
     useCases: [
-      { title: '标书与标书附件合并', description: '将扫描资质证书（异型图纸）与标准 A4 投标文件无缝合并，统一尺寸后再行物理打印，避免卡纸。', icon: 'file-text' },
-      { title: '设计画册与图表整合', description: '把超宽的 A3 财务数据统计表智能缩放折合到 A4 报告中，保持打印输出时的长宽规范。', icon: 'layout' },
-      { title: '电子书统一裁边', description: '将不同章节大小有些许微小参差的扫描版电子书，一键强制归一到同一尺寸，提升翻页直观感。', icon: 'book' },
+      { title: '标书与标书附件合并', description: '将扫描资质证书（异型图纸）与标准 A4 投标文件无缝合并，统一尺寸后再行物理打印，避免卡纸。', icon: "file-text" },
+      { title: '设计画册与图表整合', description: '把超宽的 A3 财务数据统计表智能缩放折合到 A4 报告中，保持打印输出时的长宽规范。', icon: "layout" },
+      { title: '电子书统一裁边', description: '将不同章节大小有些许微小参差的扫描版电子书，一键强制归一到同一尺寸，提升翻页直观感。', icon: "book" },
     ],
     faq: [
       { question: '“尺寸归一”是粗暴拉伸画面吗？', answer: '绝不。我们提供“等比缩放并留白（Contain）”和“居中对齐裁剪（Cover）”两种模式。默认等比缩放绝对不会导致字体或插图发生扁平、变高的形变。' },
@@ -3384,7 +3384,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'handwriting-ink-contrast-booster': {
     title: '手写笔迹增强',
-    metaDescription: '自动识别扫描合同或手写笔记上的蓝/黑色笔迹，彻底剔除纸张杂色和泛黄霉斑，大幅增强字迹对比度。',
+    metaDescription: "增强扫描图像中的手写和签名对比度。减少纸张背景噪音并使墨水更易于阅读。",
     keywords: ['签名笔迹增强', '合同笔迹加黑', '笔迹净化提取', '扫描件漂白', '增强手写合同'],
     description: `
       <p>手写笔迹增强工具是让扫描签名和手写文稿恢复“跃然纸上”质感的物理纯化器。</p>
@@ -3397,9 +3397,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '物理增强并下载', description: '点击执行，伴随发光色彩扫描透镜，下载字迹纯净、对比强烈的 PDF。' },
     ],
     useCases: [
-      { title: '签字合同及协议整理', description: '将扫描质量堪忧、签名暗淡的销售合同，一键还原出纯白背景和高对比度签字，方便归档和分发。', icon: 'file-check' },
-      { title: '手写课堂笔记电子化', description: '将笔记本上的数学推导、手绘草图一键清除灰色背景和纸张折痕，完美融入电子笔记本。', icon: 'book' },
-      { title: '历史文献及墨迹加深', description: '为年代久远、字迹淡化的历史宗卷重塑墨水深度，抢旧模糊的文字信息。', icon: 'archive' },
+      { title: '签字合同及协议整理', description: '将扫描质量堪忧、签名暗淡的销售合同，一键还原出纯白背景和高对比度签字，方便归档和分发。', icon: "file-check" },
+      { title: '手写课堂笔记电子化', description: '将笔记本上的数学推导、手绘草图一键清除灰色背景和纸张折痕，完美融入电子笔记本。', icon: "book" },
+      { title: '历史文献及墨迹加深', description: '为年代久远、字迹淡化的历史宗卷重塑墨水深度，抢旧模糊的文字信息。', icon: "archive" },
     ],
     faq: [
       { question: '它与普通的灰度化有什么区别？', answer: '普通灰度化会连同纸面阴影一起变灰，而我们的算法能够精细提取手写笔迹的“光谱边缘”，将背景纸张剥离为绝对纯白，只保留并加浓手写线条本身。' },
@@ -3409,7 +3409,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-spine-bookbinder': {
     title: '书脊厚度计算',
-    metaDescription: '依据 PDF 总页数与纸张克重规格，自动精准计算胶装/线装书脊物理厚度，一键生成带对齐折痕的书脊封面。',
+    metaDescription: "根据页数和纸张重量计算书脊宽度。生成带有书脊折叠线的可打印封面模板。",
     keywords: ['计算书脊厚度', '物理书脊生成', '标书封面排版', '折页痕计算', '胶装书 binder'],
     description: `
       <p>书脊厚度计算工具是出版排版和工程标书制作团队的“物理力学精装师”。</p>
@@ -3422,9 +3422,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '动态 3D 预览并导出', description: '在 3D 旋转书籍模型中查看厚度和折痕是否完美，点击执行导出高精度印刷级 PDF。' },
     ],
     useCases: [
-      { title: '招投标文件封面设计', description: '为几百页厚的厚重标书一键量身定做带物理折线书脊的封面，保证装订效果绝对严密。', icon: 'layers' },
-      { title: '毕业论文精装版装订', description: '计算硕士/博士论文胶装硬壳所需的书脊尺寸，防止印装封面位移。', icon: 'award' },
-      { title: '自出版图书封面设计', description: '独立作家出版实体书籍时，精确计算各厚度纸张的折页痕宽度，高保真排版。', icon: 'book-open' },
+      { title: '招投标文件封面设计', description: '为几百页厚的厚重标书一键量身定做带物理折线书脊的封面，保证装订效果绝对严密。', icon: "layers" },
+      { title: '毕业论文精装版装订', description: '计算硕士/博士论文胶装硬壳所需的书脊尺寸，防止印装封面位移。', icon: "award" },
+      { title: '自出版图书封面设计', description: '独立作家出版实体书籍时，精确计算各厚度纸张的折页痕宽度，高保真排版。', icon: "book-open" },
     ],
     faq: [
       { question: '“克重厚度模型”的计算精准吗？', answer: '非常精准。我们收集并固化了工业级造纸工艺的平均纸厚比（例如：70g 纸 = 0.09mm；80g 纸 = 0.10mm；157g 铜版纸 = 0.13mm 等）。并且提供“双面打印”开关，自动减半计算物理页数。' },
@@ -3434,7 +3434,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-signature-anchor-helper': {
     title: '签名位置引导',
-    metaDescription: '智能检索合同中的签字/盖章标志词，自动精准注入带高亮脉冲光晕和图标的 PDF 可点击交互跳转指引图层。',
+    metaDescription: "使用 X/Y 坐标将签名指南放置在 PDF 页面上。在保存更新的文档之前预览他们的位置。",
     keywords: ['签名位置指引', '注入签名锚点', '合同签字助手', 'pdf指示图层', '防止合同漏签'],
     description: `
       <p>签名位置引导工具是保障商业合同和跨国多方协议完美合规签署的“流程守护神”。</p>
@@ -3447,9 +3447,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       {"step":3,"title":"处理","description":"处理文件，查看结果并下载 PDF。"},
     ],
     useCases: [
-      { title: '大型融资合作协议', description: '在涉及数十个签名位置的多人合伙协议中，为每位签署人注入醒目的专属跳转标记，防止漏签。', icon: 'users' },
-      { title: '入职合同与保密协议', description: '新员工入职签署时，快速标注多处骑缝章、紧急联系人签字区，流畅引导电子化入职。', icon: 'file-text' },
-      { title: '跨国商贸采购单签署', description: '多币种、多条款的大额订单中，将双方盖章栏坐标加盖显眼的蓝色飞翼跳转指示。', icon: 'briefcase' },
+      { title: '大型融资合作协议', description: '在涉及数十个签名位置的多人合伙协议中，为每位签署人注入醒目的专属跳转标记，防止漏签。', icon: "users" },
+      { title: '入职合同与保密协议', description: '新员工入职签署时，快速标注多处骑缝章、紧急联系人签字区，流畅引导电子化入职。', icon: "file-text" },
+      { title: '跨国商贸采购单签署', description: '多币种、多条款的大额订单中，将双方盖章栏坐标加盖显眼的蓝色飞翼跳转指示。', icon: "briefcase" },
     ],
     faq: [
       { question: '“指引图层”会在打印时显示吗？', answer: '我们特别配置了 PDF 规范的 `Printable` 标志字典。默认情况下，这些交互指引卡片在电脑、手机屏幕上翻阅时会有高亮动画，而在物理纸张打印时则会自动隐形，不留任何痕迹。' },
@@ -3459,7 +3459,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-lossless-slicer': {
     title: '大图纸无损裁剪',
-    metaDescription: '在 PDF 树底层重写视口包围盒矩阵，高保真裁剪超大 CAD 工程蓝图的局部区域，完全保持矢量曲线且文件体积暴降。',
+    metaDescription: "使用精确坐标裁剪 PDF 绘图、地图或图表的区域。在导出的 PDF 中保留矢量内容。",
     keywords: ['pdf矢量裁剪', '无损pdf切片', '修改mediabox', 'cad局部提取', '高保真裁剪图纸'],
     description: `
       <p>大图纸无损裁剪工具是针对 engineering 工程师和精密图纸审计人员的“低级矩阵手术刀”。</p>
@@ -3472,9 +3472,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       {"step":3,"title":"处理","description":"处理文件，查看结果并下载 PDF。"},
     ],
     useCases: [
-      { title: 'CAD工程图局部提取', description: '从浩瀚的几百兆全套厂房设计图纸中，一键剥离出“冷却系统”局部，发送给分包商讨论。', icon: 'crop' },
-      { title: '地图与高精度遥感分析', description: '截取巨幅高清矢量卫星地图的指定街区，作为分析报告的无损高清插图。', icon: 'map' },
-      { title: '电子书插图高质量收藏', description: '无损提取医学或理工科电子书中高清晰度的复杂原理结构图，保持超清缩放。', icon: 'image' },
+      { title: 'CAD工程图局部提取', description: '从浩瀚的几百兆全套厂房设计图纸中，一键剥离出“冷却系统”局部，发送给分包商讨论。', icon: "crop" },
+      { title: '地图与高精度遥感分析', description: '截取巨幅高清矢量卫星地图的指定街区，作为分析报告的无损高清插图。', icon: "map" },
+      { title: '电子书插图高质量收藏', description: '无损提取医学或理工科电子书中高清晰度的复杂原理结构图，保持超清缩放。', icon: "image" },
     ],
     faq: [
       { question: '这里的“物理裁切”和截图有什么区别？', answer: '截图是丢失全部原字样、曲线信息的栅格像素图；本工具则是对原 PDF 矢量线条进行“包围盒投影过滤”，保留原文字段可搜索性以及全部矢量顶点，理论上可以无限放大。' },
@@ -3484,7 +3484,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'pdf-scratchpad-canvas': {
     title: '草稿拼接画布',
-    metaDescription: '重新规划页面尺寸，在每一页 PDF 的右侧或底侧拼接精美发光的网格/横线笔记画布，专为备考和公式推导设计。',
+    metaDescription: "向 PDF 页面添加网格、直纹或康奈尔笔记边距。为学习笔记、计算和考试准备创造额外的写作空间。",
     keywords: ['pdf加草稿页', '页面横向拼接', 'cornell笔记网格', '低级物理重绘', '备考pdf笔记本'],
     description: `
       <p>草稿拼接画布工具是为广大学生党、考研考公一族和科研人员定制的“公式演算伴侣”。</p>
@@ -3497,9 +3497,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '一键拼贴并下载', description: '点击执行，伴随精致折页展开音效，下载拥有专属草稿画板的 PDF。' },
     ],
     useCases: [
-      { title: '数学/理工科课件学习', description: '在每一页讲义的右侧拼接精细网格纸，一边看老师的公式，一边在右侧进行原位推导演算。', icon: 'edit-3' },
-      { title: '外语真题及阅读精读', description: '将考博、考研英语阅读真题右侧拼接横线便签，逐段进行单词解释、语法结构拆解和长难句剖析。', icon: 'book' },
-      { title: '设计稿侧边批注', description: '为产品设计图或分析报告的外延增加草稿图层，方便在审图时在右边直接加盖修改注释。', icon: 'columns' },
+      { title: '数学/理工科课件学习', description: '在每一页讲义的右侧拼接精细网格纸，一边看老师的公式，一边在右侧进行原位推导演算。', icon: "edit-3" },
+      { title: '外语真题及阅读精读', description: '将考博、考研英语阅读真题右侧拼接横线便签，逐段进行单词解释、语法结构拆解和长难句剖析。', icon: "book" },
+      { title: '设计稿侧边批注', description: '为产品设计图或分析报告的外延增加草稿图层，方便在审图时在右边直接加盖修改注释。', icon: "columns" },
     ],
     faq: [
       { question: '拼接草稿纸后，原来的文档内容会被挤压吗？', answer: '完全不会。算法是“向外拓宽页面物理尺寸”，而不是在原有页面内画网格。原本的书籍文字、排版和清晰度 100% 保持一模一样，只是画布边缘变宽了。' },
@@ -3509,7 +3509,7 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
   'photo-tiling-prepress': {
     title: '证件照自助拼版',
-    metaDescription: '智能裁剪多规格证件照，在 5/6 寸主流相纸网格内精准计算平铺贴版，自动盖印高画质物理裁切虚线。',
+    metaDescription: "在标准照片纸上裁剪并排列身份证或护照照片。添加打印裁剪标记以帮助切割成品纸张。",
     keywords: ['证件照排版', '6寸相纸平铺', '身份证排版打印', '登记照prepress', '照片自动拼版'],
     description: `
       <p>证件照自助拼版工具是实现照片和卡证极速自助拼版打印的“印前排版精算师”。</p>
@@ -3522,9 +3522,9 @@ export const toolContentZh: Record<string, ToolContent> = {
       { step: 3, title: '磁力卡位并生成 PDF', description: '在带有仿真木质格调的贴版台上预览，照片会以高仿真磁力吸附排好，点击执行导出 PDF。' },
     ],
     useCases: [
-      { title: '登记照自助冲印', description: '将用手机自拍的白色背景证件照，一键排满一张 6 寸相纸，用普通照片打印机即可冲印出 8 张一寸照，省去高额相馆费。', icon: 'user' },
-      { title: '身份证件双面复印', description: '将身份证正面、反面照片自动规范排列在一张 Letter/A4 复印纸的同侧，直接打印即是物理复印件。', icon: 'file-text' },
-      { title: '批量照片小样排版', description: '把多张家庭旅游照、聚会照按照网格贴满相纸，进行缩略小样印前预览排版，节省相纸资源。', icon: 'grid' },
+      { title: '登记照自助冲印', description: '将用手机自拍的白色背景证件照，一键排满一张 6 寸相纸，用普通照片打印机即可冲印出 8 张一寸照，省去高额相馆费。', icon: "user" },
+      { title: '身份证件双面复印', description: '将身份证正面、反面照片自动规范排列在一张 Letter/A4 复印纸的同侧，直接打印即是物理复印件。', icon: "file-text" },
+      { title: '批量照片小样排版', description: '把多张家庭旅游照、聚会照按照网格贴满相纸，进行缩略小样印前预览排版，节省相纸资源。', icon: "grid" },
     ],
     faq: [
       { question: '打印出来的照片物理尺寸真的和 1 寸/2 寸一致吗？', answer: '绝对一致。我们的排版引擎在计算贴版布局时，使用的是标准 PDF 精高精物理物理度量单位（72 pt = 1 英寸），严格将 1 寸定格在 25x35 毫米，2 寸定格在 35x49 毫米。只要在打印时选择“实际大小 / 100% 缩放”即可完美对齐。' },

@@ -3332,7 +3332,7 @@ export const toolContentVn: Record<string, ToolContent> = {
     "title": "OCR PDF",
     "metaDescription": "Làm cho PDF đã quét có thể tìm kiếm với OCR. Trích xuất văn bản từ hình ảnh và tài liệu đã quét.",
     "keywords": [
-      "ocr pdf",
+      "ocr pdf\nloại",
       "pdf có thể tìm kiếm",
       "nhận dạng văn bản",
       "quét sang văn bản"
@@ -3931,7 +3931,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       "n-up pdf",
       "nhiều trang mỗi tờ",
       "in 2-up",
-      "imposition"
+      "áp đặt"
     ],
     "description": "\n      <p>N-Up PDF sắp xếp nhiều trang lên các tờ đơn, tạo bố cục 2-up, 4-up, 6-up, 9-up hoặc tùy chỉnh. Hoàn hảo để tiết kiệm giấy khi in ấn hoặc tạo tài liệu phân phát.</p>\n      <p>Chọn từ bố cục đặt sẵn hoặc tạo sắp xếp tùy chỉnh. Công cụ tự động chia tỷ lệ và định vị trang để kết quả tối ưu.</p>\n      <p>Tất cả xử lý diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n    ",
     "howToUse": [
@@ -4224,7 +4224,7 @@ export const toolContentVn: Record<string, ToolContent> = {
     "metaDescription": "So sánh hai tài liệu PDF. Làm nổi bật sự khác biệt giữa các phiên bản.",
     "keywords": [
       "so sánh pdf",
-      "pdf diff",
+      "pdf khác biệt",
       "so sánh tài liệu",
       "so sánh phiên bản"
     ],
@@ -4279,10 +4279,10 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   },
   "posterize-pdf": {
-    "title": "Posterize PDF",
+    "title": "Áp phích PDF",
     "metaDescription": "Chia trang PDF lớn thành ô in. Tạo áp phích từ trang PDF.",
     "keywords": [
-      "posterize pdf",
+      "áp phích pdf\nbản đồ",
       "ô pdf",
       "in khổ lớn",
       "áp phích pdf"
@@ -4397,10 +4397,10 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   },
   "linearize-pdf": {
-    "title": "Linearize PDF",
+    "title": "Tuyến tính hóa PDF",
     "metaDescription": "Tối ưu hóa PDF để xem web nhanh. Bật tải tiến triển.",
     "keywords": [
-      "linearize pdf",
+      "tuyến tính hóa pdf",
       "xem web nhanh",
       "tối ưu hóa pdf",
       "pdf tiến triển"
@@ -4414,7 +4414,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       },
       {
         "step": 2,
-        "title": "Linearize",
+        "title": "Tuyến tính hóa",
         "description": "Nhấp Linearize để tối ưu hóa cho xem web."
       },
       {
@@ -5047,10 +5047,10 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   },
   "deskew-pdf": {
-    "title": "Deskew PDF",
+    "title": "PDF nghiêng",
     "metaDescription": "Tự động làm thẳng trang PDF đã quét hoặc bị nghiêng. Khắc phục tài liệu bị lệch với độ chính xác góc phát hiện.",
     "keywords": [
-      "deskew pdf",
+      "văn bản pdf\ntập sách pdf",
       "làm thẳng pdf",
       "khắc phục quét lệch",
       "tự động xoay pdf",
@@ -5110,11 +5110,11 @@ export const toolContentVn: Record<string, ToolContent> = {
     "title": "Tạo booklet PDF",
     "metaDescription": "Sắp xếp bố cục booklet từ PDF để in. Sắp xếp trang cho ràng buộc saddle-stitch với nhiều tùy chọn lưới.",
     "keywords": [
-      "pdf booklet",
+      "",
       "trình tạo booklet",
       "in booklet",
-      "saddle stitch",
-      "imposition"
+      "khâu yên ngựa\nlịch",
+      "áp đặt"
     ],
     "description": "\n      <p>Tạo booklet PDF sắp xếp trang PDF của bạn thành bố cục booklet sẵn sàng in, hoàn hảo để tạo brochure, zine, booklet và ấn phẩm saddle-stitched.</p>\n      <p>Chọn từ nhiều chế độ lưới (1x2, 2x2, 2x4, 4x4), kích thước giấy và tùy chọn định hướng. Công cụ tự động xử lý imposition trang cho thứ tự gấp chính xác.</p>\n      <p>Tất cả xử lý diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n    ",
     "howToUse": [
@@ -5354,7 +5354,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       "truyện tranh sang pdf",
       "chuyển đổi cbz",
       "trình chuyển đổi truyện tranh",
-      "cbz converter"
+      "công cụ chuyển đổi cbz\ntòa nhà"
     ],
     "description": "\n      <p>CBZ sang PDF chuyển đổi tệp Kho lưu trữ Truyện tranh (CBZ) thành tài liệu PDF. Công cụ trích xuất tất cả hình ảnh từ kho lưu trữ CBZ và biên soạn chúng thành PDF trong khi duy trì thứ tự đọc chính xác.</p>\n      <p>Chọn từ nhiều tùy chọn kích thước trang bao gồm kích thước hình ảnh gốc hoặc kích thước truyện tranh tiêu chuẩn. Hoàn hảo để đọc truyện tranh trên thiết bị hỗ trợ PDF nhưng không hỗ trợ CBZ.</p>\n      <p>Tất cả chuyển đổi diễn ra cục bộ trong trình duyệt của bạn, đảm bảo truyện tranh của bạn vẫn riêng tư.</p>\n    ",
     "howToUse": [
@@ -5718,7 +5718,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   "form-logic-designer": {
     "title": "Logic biểu mẫu",
-    "metaDescription": "Thiết kế các hành vi động bằng khung hình nút giả kính và nhúng logic AcroJS tương tác vào biểu mẫu PDF.",
+    "metaDescription": "Tạo quy tắc biểu mẫu PDF bằng trình thiết kế trực quan. Kết nối các trường và thêm logic tính toán và xác thực tương tác.",
     "keywords": [
       "logic biểu mẫu PDF",
       "nhúng AcroJS",
@@ -5777,8 +5777,8 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   },
   "global-invoice-parser": {
-    "title": "Dịch hóa đơn & Tính tỷ giá",
-    "metaDescription": "Trích xuất tổng số tiền từ hóa đơn đa quốc gia, thực hiện các phép tính và đóng dấu sổ cái tỷ giá hối đoái giả kính tương tác.",
+    "title": "Công cụ chuyển đổi số tiền hóa đơn PDF",
+    "metaDescription": "Trích xuất số tiền hóa đơn từ tệp PDF, chuyển đổi tổng số giữa các loại tiền tệ và thêm bản tóm tắt tính toán vào tài liệu.",
     "keywords": [
       "dịch hóa đơn",
       "chuyển đổi tiền tệ hóa đơn",
@@ -5844,53 +5844,53 @@ export const toolContentVn: Record<string, ToolContent> = {
       "chuyển đổi cbz",
       "truyện tranh pdf"
     ],
-    "description": "\n      <p>PDF to CBZ is custom-engineered for comic enthusiasts and digital ebook archivists. It renders every page of your PDF volumes into high-fidelity rasterized graphics and compiles them into a standard Comic Book ZIP (.cbz) bundle.</p>\n      <p>To eliminate frustrating manual scraping in systems like Calibre, Komga, Kavita, or CDisplayEx, the processor automatically generates and injects both <strong>ComicInfo.xml</strong> and <strong>metadata.opf</strong> files internally, while simultaneously writing a standardized <strong>ComicBookInfo JSON</strong> payload directly into the ZIP file comment metadata.</p>\n      <p>Includes complete configuration sliders for image compression quality, page dimension scale, right-to-left layout reading toggles (Manga mode), and black-and-white grayscale color filtering.</p>\n    ",
+    "description": "<p>PDF to CBZ được thiết kế tùy chỉnh dành cho những người đam mê truyện tranh và nhà lưu trữ sách điện tử kỹ thuật số. Nó hiển thị mọi trang trong các tập PDF của bạn thành đồ họa dạng raster có độ trung thực cao và biên dịch chúng thành gói ZIP Truyện tranh (.cbz) tiêu chuẩn.</p>\n      <p>Để loại bỏ việc quét thủ công gây khó chịu trong các hệ thống như Calibre, Komga, Kavita hoặc CDisplayEx, bộ xử lý sẽ tự động tạo và đưa cả tệp <strong>ComicInfo.xml</strong> và <strong>metadata.opf</strong> vào bên trong, đồng thời ghi trực tiếp tải trọng <strong>ComicBookInfo JSON</strong> được tiêu chuẩn hóa vào siêu dữ liệu nhận xét tệp ZIP.</p>\n      <p>Bao gồm các thanh trượt cấu hình hoàn chỉnh cho chất lượng nén hình ảnh, tỷ lệ kích thước trang, nút chuyển đổi đọc bố cục từ phải sang trái (chế độ Manga) và lọc màu thang độ xám đen trắng.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Comic PDF",
-        "description": "Drag and drop your primary comic, artbook, or manga PDF file."
+        "title": "Tải lên bản PDF truyện tranh",
+        "description": "Kéo và thả tệp PDF truyện tranh, sách nghệ thuật hoặc truyện tranh chính của bạn."
       },
       {
         "step": 2,
-        "title": "Input Comic Metadata",
-        "description": "Fill out Series, Volume, Title, Writer, and Publisher fields, and toggle layout or grayscale optimization."
+        "title": "Nhập siêu dữ liệu truyện tranh",
+        "description": "Điền vào các trường Bộ sách, Tập, Tiêu đề, Người viết và Nhà xuất bản, đồng thời chuyển đổi bố cục hoặc tối ưu hóa thang độ xám."
       },
       {
         "step": 3,
-        "title": "Compile and Download",
-        "description": "Click Convert to compile and retrieve your metadata-rich .cbz file instantly ready for Calibre."
+        "title": "Biên dịch và tải xuống",
+        "description": "Nhấp vào Chuyển đổi để biên dịch và truy xuất tệp .cbz giàu siêu dữ liệu của bạn, sẵn sàng ngay lập tức cho Calibre."
       }
     ],
     "useCases": [
       {
-        "title": "Retrograde Comic Packaging",
-        "description": "Transform raw scanned PDF books into compact, standard-compliant CBZ comic files easily scrapable by comic library managers.",
+        "title": "Bao bì truyện tranh ngược dòng",
+        "description": "Chuyển đổi sách PDF được quét thô thành tệp truyện tranh CBZ nhỏ gọn, tuân thủ tiêu chuẩn mà người quản lý thư viện truyện tranh có thể dễ dàng quét được.",
         "icon": "book"
       },
       {
-        "title": "Zero-Effort Calibre Integration",
-        "description": "The built-in metadata.opf schema allows Calibre to fetch and classify creators and volume issues without manual lookup.",
+        "title": "Tích hợp tầm cỡ không cần nỗ lực",
+        "description": "Lược đồ siêu dữ liệu.opf tích hợp sẵn cho phép Calibre tìm nạp và phân loại các vấn đề về người sáng tạo cũng như khối lượng mà không cần tra cứu thủ công.",
         "icon": "database"
       },
       {
-        "title": "E-Ink Screen Enhancement",
-        "description": "Pre-filter graphic color channels into high-contrast grayscale on compile, boosting visual refresh and clarity on E-ink screens while saving storage.",
+        "title": "Cải tiến màn hình E-Ink",
+        "description": "Lọc trước các kênh màu đồ họa thành thang độ xám có độ tương phản cao khi biên dịch, tăng cường làm mới hình ảnh và độ rõ nét trên màn hình E-ink đồng thời tiết kiệm dung lượng.",
         "icon": "eye"
       }
     ],
     "faq": [
       {
-        "question": "What is a .cbz file?",
-        "answer": "A CBZ file is a specialized archive container format for comic book series. It is internally formatted as a ZIP package containing sequentially numbered page images alongside structural metadata XML files."
+        "question": "Tệp .cbz là gì?",
+        "answer": "Tệp CBZ là định dạng chứa kho lưu trữ chuyên dụng dành cho loạt truyện tranh. Nó được định dạng nội bộ dưới dạng gói ZIP chứa hình ảnh trang được đánh số tuần tự cùng với các tệp XML siêu dữ liệu cấu trúc."
       },
       {
-        "question": "How is metadata compatible?",
-        "answer": "We compile and embed ComicInfo.xml, metadata.opf, and ZIP File Comments in one pass. This guarantees absolute compliance across multiple comic and e-book ecosystems."
+        "question": "Siêu dữ liệu tương thích như thế nào?",
+        "answer": "Chúng tôi biên dịch và nhúng Nhận xét Tệp ComicInfo.xml, siêu dữ liệu.opf và Tệp ZIP trong một lần chuyển. Điều này đảm bảo sự tuân thủ tuyệt đối trên nhiều hệ sinh thái truyện tranh và sách điện tử."
       },
       {
-        "question": "Why use Grayscale mode?",
-        "answer": "If you read on a grayscale E-ink reader (like Kindle or Kobo), compiling directly in Grayscale reduces artifact ghosting, delivers superior contrast levels, and shrinks the final CBZ file size."
+        "question": "Tại sao nên sử dụng chế độ Thang độ xám?",
+        "answer": "Nếu bạn đọc trên đầu đọc E-ink thang độ xám (như Kindle hoặc Kobo), việc biên dịch trực tiếp trong Grayscale sẽ giảm hiện tượng bóng mờ giả tạo, mang lại mức độ tương phản vượt trội và thu nhỏ kích thước tệp CBZ cuối cùng."
       }
     ]
   },
@@ -5902,58 +5902,58 @@ export const toolContentVn: Record<string, ToolContent> = {
       "pdf overlay",
       "chèn con dấu pdf"
     ],
-    "description": "\n      <p>Overlay PDF allows you to layer pages of one PDF document on top or underneath another PDF document. It is perfect for applying letterheads, adding background grids, stamping watermarks, or fusing layout drafts together.</p>\n      <p>Supports both Overlay mode (layer goes on top) and Underlay mode (layer goes underneath). Specify custom target page ranges or loop shorter overlay documents to cover the entire base file automatically.</p>\n      <p>All processing is executed entirely inside your web browser locally, guaranteeing total security and data privacy.</p>\n    ",
+    "description": "<p>PDF lớp phủ cho phép bạn xếp lớp các trang của một tài liệu PDF lên trên hoặc bên dưới một tài liệu PDF khác. Nó hoàn hảo để áp dụng tiêu đề thư, thêm lưới nền, đóng dấu hình mờ hoặc kết hợp các bản nháp bố cục với nhau.</p>\n      <p>Hỗ trợ cả chế độ Lớp phủ (lớp nằm trên cùng) và chế độ Lớp phủ (lớp nằm bên dưới). Chỉ định phạm vi trang mục tiêu tùy chỉnh hoặc lặp lại các tài liệu lớp phủ ngắn hơn để tự động bao phủ toàn bộ tệp cơ sở.</p>\n      <p>Tất cả quá trình xử lý được thực hiện hoàn toàn bên trong trình duyệt web của bạn cục bộ, đảm bảo tính bảo mật và quyền riêng tư dữ liệu hoàn toàn.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Main PDF",
-        "description": "Drag and drop your primary base PDF document."
+        "title": "Tải lên bản PDF chính",
+        "description": "Kéo và thả tài liệu PDF cơ sở chính của bạn."
       },
       {
         "step": 2,
-        "title": "Upload Layer PDF",
-        "description": "Provide the overlay/underlay document that acts as the layer."
+        "title": "Tải lên lớp PDF",
+        "description": "Cung cấp tài liệu lớp phủ/lớp lót hoạt động như lớp."
       },
       {
         "step": 3,
-        "title": "Configure Layering",
-        "description": "Choose overlay or underlay mode, specify page ranges, and enable page looping."
+        "title": "Định cấu hình phân lớp",
+        "description": "Chọn chế độ lớp phủ hoặc lớp lót, chỉ định phạm vi trang và bật tính năng lặp trang."
       },
       {
         "step": 4,
-        "title": "Compile and Download",
-        "description": "Click Compile to process and download the layered result PDF."
+        "title": "Biên dịch và tải xuống",
+        "description": "Nhấp vào Biên dịch để xử lý và tải xuống bản PDF kết quả được xếp lớp."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate Letterheads",
-        "description": "Layer invoice contents on top of standard company letterhead templates.",
+        "title": "Tiêu đề thư công ty",
+        "description": "Xếp nội dung hóa đơn lên trên các mẫu tiêu đề thư tiêu chuẩn của công ty.",
         "icon": "file-text"
       },
       {
-        "title": "Watermarks & Seals",
-        "description": "Overlay security stamps, signature seals, or backgrounds across documents.",
+        "title": "Hình mờ & Con dấu",
+        "description": "Phủ tem bảo mật, con dấu chữ ký hoặc hình nền trên các tài liệu.",
         "icon": "shield"
       },
       {
-        "title": "Drawing Blueprints",
-        "description": "Combine draft architectures or layout grids underneath text blocks.",
+        "title": "Vẽ bản thiết kế",
+        "description": "Kết hợp các kiến ​​trúc phác thảo hoặc lưới bố cục bên dưới các khối văn bản.",
         "icon": "layout"
       }
     ],
     "faq": [
       {
-        "question": "What is the difference between Overlay and Underlay?",
-        "answer": "Overlay places the secondary layer on top of your main content. Underlay places it at the very bottom, acting as a background template."
+        "question": "Sự khác biệt giữa Lớp phủ và Lớp lót là gì?",
+        "answer": "Lớp phủ đặt lớp phụ lên trên nội dung chính của bạn. Lớp lót đặt nó ở dưới cùng, hoạt động như một mẫu nền."
       },
       {
-        "question": "Can I loop the overlay layer?",
-        "answer": "Yes, if the layer PDF is shorter than the base document, enabling Loop will cycle it (e.g. page 1, 2, 1, 2) to cover all base pages."
+        "question": "Tôi có thể lặp lại lớp phủ không?",
+        "answer": "Có, nếu lớp PDF ngắn hơn tài liệu cơ sở, việc bật Vòng lặp sẽ xoay vòng nó (ví dụ: trang 1, 2, 1, 2) để bao phủ tất cả các trang cơ sở."
       },
       {
-        "question": "Is page range supported?",
-        "answer": "Yes, you can target specific pages using range syntax such as \"1-5\", \"odd\", \"even\", or comma-separated lists."
+        "question": "Phạm vi trang có được hỗ trợ không?",
+        "answer": "Có, bạn có thể nhắm mục tiêu các trang cụ thể bằng cách sử dụng cú pháp phạm vi, chẳng hạn như \"1-5\", \"lẻ\", \"chẵn\" hoặc danh sách được phân tách bằng dấu phẩy."
       }
     ]
   },
@@ -6023,1058 +6023,1058 @@ export const toolContentVn: Record<string, ToolContent> = {
       "đánh số trang logic",
       "điều hướng pdf"
     ],
-    "description": "\n      <p>Add Page Labels allows you to inject custom page labeling metadata (/PageLabels) into your PDF's root Catalog dictionary. This customizes the labels displayed in professional PDF reader navigation sidebars and top page number jump panels (e.g. using Roman numerals for front matter, decimal sequences for main body, or custom prefixes such as A-0, A-1 for technical subsections).</p>\n      <p>Supports combining multiple custom rules seamlessly. Crucially, we've built a highly optimized <strong>disjoint-range slicing algorithm</strong>: even if you declare complex alternating patterns (e.g., odd pages style A, even pages style B), the tool will elegantly dissect and compose boundaries to ensure proper standard-compliant display without leaking formats into unmapped pages.</p>\n      <p>All operations are processed entirely inside your local browser sandbox, securing absolute data privacy.</p>\n    ",
+    "description": "<p>Thêm Nhãn Trang cho phép bạn đưa siêu dữ liệu ghi nhãn trang tùy chỉnh (/PageLabels) vào từ điển Danh mục gốc của tệp PDF. Điều này tùy chỉnh các nhãn được hiển thị trong thanh bên điều hướng trình đọc PDF chuyên nghiệp và bảng nhảy số trang trên cùng (ví dụ: sử dụng chữ số La Mã cho phần đầu, chuỗi thập phân cho nội dung chính hoặc tiền tố tùy chỉnh như A-0, A-1 cho các phần phụ kỹ thuật).</p>\n      <p>Hỗ trợ kết hợp nhiều quy tắc tùy chỉnh một cách liền mạch. Điều quan trọng là chúng tôi đã xây dựng một <strong>thuật toán cắt phạm vi rời rạc</strong> được tối ưu hóa cao: ngay cả khi bạn khai báo các mẫu xen kẽ phức tạp (ví dụ: kiểu trang lẻ A, kiểu trang chẵn B), công cụ sẽ phân tích và soạn thảo các ranh giới một cách tinh tế để đảm bảo hiển thị tuân thủ tiêu chuẩn phù hợp mà không làm rò rỉ định dạng vào các trang chưa được ánh xạ.</p>\n      <p>Mọi thao tác được xử lý hoàn toàn bên trong hộp cát trình duyệt cục bộ của bạn, đảm bảo quyền riêng tư dữ liệu tuyệt đối.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Provide the target PDF document you wish to label."
+        "title": "Tải lên tài liệu PDF",
+        "description": "Cung cấp tài liệu PDF mục tiêu mà bạn muốn gắn nhãn."
       },
       {
         "step": 2,
-        "title": "Configure Labeling Rules",
-        "description": "Add one or more rules specifying page ranges (e.g., \"1-5\", \"odd\", or comma-separated lists), prefix, style, and starting sequence."
+        "title": "Định cấu hình quy tắc ghi nhãn",
+        "description": "Thêm một hoặc nhiều quy tắc chỉ định phạm vi trang (ví dụ: \"1-5\", \"lẻ\" hoặc danh sách được phân tách bằng dấu phẩy), tiền tố, kiểu và trình tự bắt đầu."
       },
       {
         "step": 3,
-        "title": "Preview and Download",
-        "description": "Review the live page label list preview below, then compile and download your updated PDF document."
+        "title": "Xem trước và tải xuống",
+        "description": "Xem lại bản xem trước danh sách nhãn trang trực tiếp bên dưới, sau đó biên dịch và tải xuống tài liệu PDF cập nhật của bạn."
       }
     ],
     "useCases": [
       {
-        "title": "Academic Thesis Formatting",
-        "description": "Set lowercase Roman numerals (i, ii, iii) for introductory front matter and transition to decimal for main chapters.",
+        "title": "Định dạng luận văn học thuật",
+        "description": "Đặt chữ số La Mã viết thường (i, ii, iii) cho phần mở đầu và chuyển sang số thập phân cho các chương chính.",
         "icon": "book"
       },
       {
-        "title": "Engineering Blueprint Prefixes",
-        "description": "Attach subsystem abbreviations (e.g., \"A-1\", \"M-5\") as page label prefixes, letting teams search and locate pages in seconds.",
+        "title": "Tiền tố bản thiết kế kỹ thuật",
+        "description": "Đính kèm các chữ viết tắt của hệ thống con (ví dụ: \"A-1\", \"M-5\") làm tiền tố nhãn trang, cho phép các nhóm tìm kiếm và định vị các trang trong vài giây.",
         "icon": "layout"
       },
       {
-        "title": "Custom Alternating Layouts",
-        "description": "Apply highly specific page range indexing to odd/even sequences or non-contiguous sections with maximum freedom.",
+        "title": "Bố cục xen kẽ tùy chỉnh",
+        "description": "Áp dụng tính năng lập chỉ mục phạm vi trang có tính cụ thể cao cho các chuỗi chẵn/lẻ hoặc các phần không liền kề với mức độ tự do tối đa.",
         "icon": "shuffle"
       }
     ],
     "faq": [
       {
-        "question": "What are page labels vs page numbers?",
-        "answer": "Ordinary page numbers are visual text blocks rendered directly on the paper canvas (visible when printed). Page labels, however, are structural metadata injected into the PDF catalog. They control what is displayed underneath thumbnails and in the page lookup box inside software like Adobe Acrobat or Apple Preview."
+        "question": "Nhãn trang và số trang là gì?",
+        "answer": "Số trang thông thường là các khối văn bản trực quan được hiển thị trực tiếp trên khung giấy (hiển thị khi in). Tuy nhiên, nhãn trang là siêu dữ liệu cấu trúc được đưa vào danh mục PDF. Họ kiểm soát những gì được hiển thị bên dưới hình thu nhỏ và trong hộp tra cứu trang bên trong phần mềm như Adobe Acrobat hoặc Apple Preview."
       },
       {
-        "question": "What happens if I leave the Page Range empty?",
-        "answer": "Leaving the page range empty causes the rule to apply globally to all pages of the document."
+        "question": "Điều gì xảy ra nếu tôi để trống Phạm vi Trang?",
+        "answer": "Để trống phạm vi trang sẽ khiến quy tắc áp dụng chung cho tất cả các trang của tài liệu."
       },
       {
-        "question": "How are overlapping rules handled?",
-        "answer": "Rules are evaluated sequentially in the order they are listed. If a page range of a later rule overlaps with an earlier one, the later rule takes priority and overrides the label for that page."
+        "question": "Các quy tắc chồng chéo được xử lý như thế nào?",
+        "answer": "Các quy tắc được đánh giá tuần tự theo thứ tự được liệt kê. Nếu phạm vi trang của quy tắc sau trùng lặp với phạm vi trang trước đó thì quy tắc sau sẽ được ưu tiên và ghi đè nhãn cho trang đó."
       }
     ]
   },
   "ai-pdf-reflower": {
     "title": "Tự động tái dàn trang AI",
-    "metaDescription": "Tái cấu trúc tài liệu PDF thành bố cục tương thích với thiết bị di động. Hỗ trợ xuất sang Markdown và EPUB.",
+    "metaDescription": "Chỉnh lại văn bản PDF để đọc dễ dàng hơn trên thiết bị di động. Xuất nội dung được trích xuất dưới dạng Markdown hoặc EPUB trong trình duyệt của bạn.",
     "keywords": [
       "dàn trang pdf",
       "pdf tự thích ứng",
       "pdf sang markdown",
       "xuất epub"
     ],
-    "description": "\n      <p>AI PDF Layout Reflower is your ultimate companion for reading PDF documents on mobile devices. Traditional PDFs use a fixed layout, which often requires endless zooming and horizontal scrolling on smartphones or tablets, resulting in a tedious reading experience.</p>\n      <p>This tool intelligently parses the text flow, line spacing, and physical coordinates of the PDF pages, reconstructing the semantic paragraphs and heading hierarchies. For multi-column or dual-column documents, it intelligently merges column flows into a single responsive flow, ensuring smooth reading.</p>\n      <p>Additionally, it supports rendering mathematical formulas into LaTeX/MathJax and offers multiple reading themes (Sepia, Dark, Eye-protecting Green). You can export the reflowed layout as Markdown or a standard EPUB ebook with a single click.</p>\n    ",
+    "description": "<p>AI PDF Layout Reflower là người bạn đồng hành tối ưu của bạn để đọc tài liệu PDF trên thiết bị di động. Các tệp PDF truyền thống sử dụng bố cục cố định, thường yêu cầu phải thu phóng và cuộn ngang liên tục trên điện thoại thông minh hoặc máy tính bảng, dẫn đến trải nghiệm đọc tẻ nhạt.</p>\n      <p>Công cụ này phân tích cú pháp luồng văn bản, khoảng cách dòng và tọa độ vật lý của các trang PDF một cách thông minh, tái cấu trúc các đoạn ngữ nghĩa và phân cấp tiêu đề. Đối với các tài liệu nhiều cột hoặc hai cột, nó hợp nhất các luồng cột một cách thông minh thành một luồng phản hồi duy nhất, đảm bảo đọc trơn tru.</p>\n      <p>Ngoài ra, nó còn hỗ trợ hiển thị các công thức toán học sang LaTeX/MathJax và cung cấp nhiều chủ đề đọc (Sepia, Dark, Eye-protecting Green). Bạn có thể xuất bố cục đã chỉnh sửa dưới dạng Markdown hoặc sách điện tử EPUB tiêu chuẩn chỉ bằng một cú nhấp chuột.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop your PDF file or click to browse and select it."
+        "title": "Tải lên tệp PDF",
+        "description": "Kéo và thả tệp PDF của bạn hoặc nhấp để duyệt và chọn tệp đó."
       },
       {
         "step": 2,
-        "title": "Select Reading Theme",
-        "description": "Choose your preferred font size and theme colors in the 3D mobile simulator on the right."
+        "title": "Chọn chủ đề đọc",
+        "description": "Chọn kích thước phông chữ và màu chủ đề ưa thích của bạn trong trình mô phỏng di động 3D ở bên phải."
       },
       {
         "step": 3,
-        "title": "Export Document",
-        "description": "Once satisfied, use the physical pull-rope to export the document as Markdown or EPUB."
+        "title": "Xuất tài liệu",
+        "description": "Sau khi hài lòng, hãy sử dụng dây kéo vật lý để xuất tài liệu dưới dạng Markdown hoặc EPUB."
       }
     ],
     "useCases": [
       {
-        "title": "Mobile Literature Reading",
-        "description": "Read academic papers and research reports on your phone seamlessly without constant zooming.",
+        "title": "Đọc văn học di động",
+        "description": "Đọc các bài báo học thuật và báo cáo nghiên cứu trên điện thoại của bạn một cách liền mạch mà không cần phải phóng to liên tục.",
         "icon": "smartphone"
       },
       {
-        "title": "Ebook Conversion",
-        "description": "Convert text-heavy PDFs into EPUB files and import them into Kindle or other ebook readers.",
+        "title": "Chuyển đổi sách điện tử",
+        "description": "Chuyển đổi các tệp PDF nặng văn bản thành tệp EPUB và nhập chúng vào Kindle hoặc các trình đọc sách điện tử khác.",
         "icon": "book"
       },
       {
-        "title": "Note Archive",
-        "description": "Directly convert structured PDF content into clean Markdown files for your personal knowledge base.",
+        "title": "Lưu trữ ghi chú",
+        "description": "Chuyển đổi trực tiếp nội dung PDF có cấu trúc thành các tệp Markdown rõ ràng cho cơ sở kiến ​​thức cá nhân của bạn.",
         "icon": "file-text"
       }
     ],
     "faq": [
       {
-        "question": "Does it handle dual-column PDFs correctly?",
-        "answer": "Yes, the layout reflower detects the horizontal coordinates of text blocks and structures left and right columns sequentially, preventing line interleaving."
+        "question": "Nó có xử lý chính xác các tệp PDF cột kép không?",
+        "answer": "Có, tính năng chỉnh lại bố cục sẽ phát hiện tọa độ ngang của các khối văn bản và cấu trúc cột bên trái và bên phải một cách tuần tự, ngăn chặn tình trạng xen kẽ dòng."
       },
       {
-        "question": "Will images and math formulas be lost?",
-        "answer": "Mathematical formulas are converted to LaTeX/MathJax syntax for clean web rendering, and images are preserved in their corresponding semantic positions."
+        "question": "Hình ảnh và công thức toán có bị mất không?",
+        "answer": "Các công thức toán học được chuyển đổi sang cú pháp LaTeX/MathJax để hiển thị trang web rõ ràng và hình ảnh được giữ nguyên ở các vị trí ngữ nghĩa tương ứng của chúng."
       },
       {
-        "question": "Is the conversion done in the cloud?",
-        "answer": "No, all layout analysis and format packaging are performed locally in your browser to guarantee the absolute privacy of your documents."
+        "question": "Quá trình chuyển đổi có được thực hiện trên đám mây không?",
+        "answer": "Không, tất cả phân tích bố cục và đóng gói định dạng đều được thực hiện cục bộ trong trình duyệt của bạn để đảm bảo quyền riêng tư tuyệt đối cho tài liệu của bạn."
       }
     ]
   },
   "citation-linker": {
     "title": "Kích hoạt liên kết trích dẫn",
-    "metaDescription": "Quét và kích hoạt các ký hiệu trích dẫn trong PDF, chuyển đổi chúng thành liên kết DOI hoặc liên kết nội trang.",
+    "metaDescription": "Biến các điểm đánh dấu trích dẫn trong tệp PDF thành các liên kết DOI hoặc tài liệu tham khảo trang có thể nhấp vào. Thêm điều hướng hữu ích vào tài liệu nghiên cứu.",
     "keywords": [
       "liên kết trích dẫn",
       "hyperlink pdf",
       "so khớp doi",
       "pdf học thuật"
     ],
-    "description": "\n      <p>Citation Linker is designed specifically for academic researchers. In many PDF papers, citation markers (e.g., [1], [2]) are plain text, forcing readers to scroll back and forth to the reference list at the end of the document, interrupting their focus.</p>\n      <p>This tool reads PDF text locally, uses pattern recognition to match citation markers to their corresponding reference entries, and overlays clickable PDF link annotations using DOI lookups or page-jump coordinates.</p>\n      <p>It also generates an interactive citation relationship map to visually navigate the document's reference network.</p>\n    ",
+    "description": "<p>Trình liên kết trích dẫn được thiết kế dành riêng cho các nhà nghiên cứu học thuật. Trong nhiều tài liệu PDF, dấu trích dẫn (ví dụ: [1], [2]) là văn bản thuần túy, buộc người đọc phải cuộn qua lại để đến danh sách tham khảo ở cuối tài liệu, làm gián đoạn sự tập trung của họ.</p>\n      <p>Công cụ này đọc văn bản PDF cục bộ, sử dụng tính năng nhận dạng mẫu để khớp các dấu trích dẫn với các mục tham chiếu tương ứng và phủ các chú thích liên kết PDF có thể nhấp bằng cách sử dụng tra cứu DOI hoặc tọa độ nhảy trang.</p>\n      <p>Nó cũng tạo ra bản đồ mối quan hệ trích dẫn tương tác để điều hướng trực quan mạng tham chiếu của tài liệu.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic PDF",
-        "description": "Upload a PDF paper or thesis containing a bibliography/reference section."
+        "title": "Tải lên bản PDF học thuật",
+        "description": "Tải lên một bài báo hoặc luận án PDF có chứa phần thư mục/tài liệu tham khảo."
       },
       {
         "step": 2,
-        "title": "Review Citations",
-        "description": "Inspect the citation pairs in the interactive map and manually edit or add DOI links if necessary."
+        "title": "Xem lại trích dẫn",
+        "description": "Kiểm tra các cặp trích dẫn trong bản đồ tương tác và chỉnh sửa hoặc thêm liên kết DOI theo cách thủ công nếu cần."
       },
       {
         "step": 3,
-        "title": "Inject Links",
-        "description": "Click the activate button to overlay hyperlinks onto the PDF and download the updated document."
+        "title": "Chèn liên kết",
+        "description": "Nhấp vào nút kích hoạt để phủ các siêu liên kết lên tệp PDF và tải xuống tài liệu cập nhật."
       }
     ],
     "useCases": [
       {
-        "title": "Deep Literature Reading",
-        "description": "Click citation markers to immediately view reference details or navigate to external DOI pages.",
+        "title": "Đọc văn học sâu sắc",
+        "description": "Nhấp vào dấu trích dẫn để xem ngay chi tiết tham chiếu hoặc điều hướng đến các trang DOI bên ngoài.\nliên kết",
         "icon": "link"
       },
       {
-        "title": "Pre-publication Preparation",
-        "description": "Ensure your written academic papers have fully active hyperlink navigations before final submission.",
+        "title": "Chuẩn bị trước khi xuất bản",
+        "description": "Đảm bảo các bài viết học thuật bằng văn bản của bạn có điều hướng siêu liên kết hoạt động hoàn toàn trước khi gửi lần cuối.",
         "icon": "award"
       },
       {
-        "title": "Reference Map Analysis",
-        "description": "Understand literature hierarchies and connections via the interactive network topology map.",
+        "title": "Phân tích bản đồ tham khảo",
+        "description": "Hiểu hệ thống phân cấp và kết nối tài liệu thông qua bản đồ cấu trúc liên kết mạng tương tác.",
         "icon": "git-network"
       }
     ],
     "faq": [
       {
-        "question": "What if a reference has no DOI?",
-        "answer": "If a DOI cannot be found, the tool falls back to an internal \"GoTo Page\" action, allowing you to click the marker and jump directly to the reference page."
+        "question": "Điều gì sẽ xảy ra nếu một tài liệu tham khảo không có DOI?",
+        "answer": "Nếu không tìm thấy DOI, công cụ sẽ quay lại hành động \"Trang GoTo\" nội bộ, cho phép bạn nhấp vào điểm đánh dấu và chuyển trực tiếp đến trang tham chiếu."
       },
       {
-        "question": "Which citation formats are supported?",
-        "answer": "It supports common numeric brackets (e.g., [1], [1-3]) and author-year citations (e.g., Author et al., 202X)."
+        "question": "Hỗ trợ những định dạng trích dẫn nào?",
+        "answer": "Nó hỗ trợ các dấu ngoặc số phổ biến (ví dụ: [1], [1-3]) và trích dẫn theo năm của tác giả (ví dụ: Tác giả và cộng sự, 202X)."
       },
       {
-        "question": "Will it modify the appearance of my PDF?",
-        "answer": "No, it injects invisible Link annotations on top of the text, preserving the original layout, fonts, and styling of your document."
+        "question": "Nó có sửa đổi giao diện của tệp PDF của tôi không?",
+        "answer": "Không, nó chèn các chú thích Liên kết vô hình lên trên văn bản, giữ nguyên bố cục, phông chữ và kiểu dáng ban đầu của tài liệu của bạn."
       }
     ]
   },
   "vector-extractor": {
     "title": "Trích xuất vectơ PDF",
-    "metaDescription": "Chuyển đổi PDF sang SVG độ chính xác cao, cho phép chọn và trích xuất không mất dữ liệu bất kỳ đồ họa vectơ nào.",
+    "metaDescription": "Trích xuất đồ họa vector từ các trang PDF dưới dạng SVG. Chọn biểu đồ, sơ đồ và logo để đổi màu và xuất.",
     "keywords": [
       "trích xuất vectơ pdf",
       "xuất svg",
       "trích xuất logo",
       "đồ họa vectơ"
     ],
-    "description": "\n      <p>PDF Vector Extractor unlocks vector paths and artwork embedded inside PDF files. Easily extract vector charts, diagrams, or logos from documents for design work or printing.</p>\n      <p>Under the hood, it utilizes high-fidelity SVG rendering to deconstruct PDF vector paths into clean, standard SVG element trees without loss of precision.</p>\n      <p>The interface highlights hover elements with a Z-axis 3D layer explosion effect, complete with a color picker panel for designers to adjust and extract vector nodes.</p>\n    ",
+    "description": "<p>PDF Vector Extractor mở khóa các đường dẫn vectơ và tác phẩm nghệ thuật được nhúng bên trong tệp PDF. Dễ dàng trích xuất biểu đồ vector, sơ đồ hoặc biểu tượng từ tài liệu cho công việc thiết kế hoặc in ấn.</p>\n      <p>Bên trong, nó sử dụng khả năng kết xuất SVG có độ chính xác cao để giải cấu trúc các đường dẫn vectơ PDF thành các cây phần tử SVG tiêu chuẩn, rõ ràng mà không làm giảm độ chính xác.</p>\n      <p>Giao diện làm nổi bật các phần tử di chuột với hiệu ứng bùng nổ lớp 3D trục Z, hoàn chỉnh với bảng chọn màu để nhà thiết kế điều chỉnh và trích xuất các nút vectơ.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Upload a PDF containing vector assets, diagrams, charts, or logos."
+        "title": "Tải lên tài liệu PDF",
+        "description": "Tải lên tệp PDF chứa nội dung vectơ, sơ đồ, biểu đồ hoặc biểu trưng."
       },
       {
         "step": 2,
-        "title": "Select Elements",
-        "description": "Hover over the vector canvas to highlight elements, then click to select a node."
+        "title": "Chọn các phần tử",
+        "description": "Di chuột qua khung vẽ vector để đánh dấu các phần tử, sau đó nhấp để chọn nút."
       },
       {
         "step": 3,
-        "title": "Customize and Export",
-        "description": "Adjust path attributes in the panel, then download as SVG or copy SVG source code."
+        "title": "Tùy chỉnh và xuất",
+        "description": "Điều chỉnh thuộc tính đường dẫn trong bảng điều khiển, sau đó tải xuống dưới dạng SVG hoặc sao chép mã nguồn SVG."
       }
     ],
     "useCases": [
       {
-        "title": "Design Asset Extraction",
-        "description": "Quickly extract company logos, icons, and illustrations from brand guidelines or brochures.",
+        "title": "Khai thác tài sản thiết kế",
+        "description": "Trích xuất nhanh chóng logo, biểu tượng và hình minh họa của công ty từ hướng dẫn thương hiệu hoặc tài liệu quảng cáo.",
         "icon": "bezier"
       },
       {
-        "title": "Scientific Chart Export",
-        "description": "Extract vector charts from research papers to use in high-resolution printing or presentations.",
+        "title": "Xuất biểu đồ khoa học",
+        "description": "Trích xuất biểu đồ vector từ các tài liệu nghiên cứu để sử dụng trong in ấn hoặc thuyết trình có độ phân giải cao.",
         "icon": "presentation"
       },
       {
-        "title": "Vector Asset Recoloring",
-        "description": "Modify the stroke and fill colors of extracted assets before saving them for web projects.",
+        "title": "Đổi màu nội dung vector",
+        "description": "Sửa đổi nét và tô màu của nội dung được trích xuất trước khi lưu chúng cho các dự án web.",
         "icon": "crown"
       }
     ],
     "faq": [
       {
-        "question": "Why can't I select certain images?",
-        "answer": "PDFs contain both raster images (like photos or scanned pages) and vector artwork (like shapes and curves). Only vector paths can be deconstructed into SVG paths."
+        "question": "Tại sao tôi không thể chọn một số hình ảnh nhất định?",
+        "answer": "Tệp PDF chứa cả hình ảnh raster (như ảnh hoặc trang được quét) và tác phẩm nghệ thuật vector (như hình dạng và đường cong). Chỉ các đường dẫn vectơ mới có thể được giải cấu trúc thành các đường dẫn SVG."
       },
       {
-        "question": "Does the output SVG contain styles?",
-        "answer": "Yes, the exported SVG retains all original properties including fills, strokes, opacity, gradients, and coordinate transforms."
+        "question": "SVG đầu ra có chứa kiểu không?",
+        "answer": "Có, SVG được xuất sẽ giữ lại tất cả các thuộc tính ban đầu bao gồm màu nền, nét, độ mờ, độ dốc và các phép biến đổi tọa độ."
       },
       {
-        "question": "Will large files lag?",
-        "answer": "We use WebAssembly acceleration, but PDFs with extremely complex CAD drawings or thousands of vector paths may take a few seconds to render."
+        "question": "Các tệp lớn có bị lag không?",
+        "answer": "Chúng tôi sử dụng tính năng tăng tốc WebAssugging nhưng các tệp PDF có bản vẽ CAD cực kỳ phức tạp hoặc hàng nghìn đường dẫn vectơ có thể mất vài giây để hiển thị."
       }
     ]
   },
   "deep-sanitize": {
     "title": "Làm sạch siêu dữ liệu sâu",
-    "metaDescription": "Xóa bỏ hoàn toàn thông tin tác giả, lịch sử chỉnh sửa, lớp ẩn và các đối tượng thừa từ cấu trúc tệp PDF.",
+    "metaDescription": "Xóa siêu dữ liệu, lớp ẩn và các đối tượng không sử dụng khỏi tệp PDF. Làm sạch thông tin tài liệu cục bộ trước khi chia sẻ.",
     "keywords": [
       "làm sạch pdf",
       "xóa siêu dữ liệu",
       "bảo mật pdf",
       "chống truy vết"
     ],
-    "description": "\n      <p>Deep Metadata Sanitizer is your ultimate defense against metadata leaks and hidden tracking. Simply drawing black boxes over visible text in PDF files is not enough to protect commercial secrets.</p>\n      <p>This tool scans the PDF binary structure to completely erase author info, creator software, editing logs (XMP Metadata), proprietary PieceInfo caches, and OCG optional content groups (often used for invisible watermarks).</p>\n      <p>It also rewrites the cross-reference tables (xref) completely, discarding all incremental update blocks to ensure that deleted or modified historical data cannot be restored.</p>\n    ",
+    "description": "<p>Deep Metadata Sanitizer là biện pháp bảo vệ tối ưu chống rò rỉ siêu dữ liệu và theo dõi ẩn. Chỉ vẽ các hộp đen lên phần văn bản hiển thị trong tệp PDF là không đủ để bảo vệ bí mật thương mại.</p>\n      <p>Công cụ này quét cấu trúc nhị phân PDF để xóa hoàn toàn thông tin tác giả, phần mềm người sáng tạo, nhật ký chỉnh sửa (Siêu dữ liệu XMP), bộ đệm PieceInfo độc quyền và nhóm nội dung tùy chọn OCG (thường được sử dụng cho hình mờ vô hình).</p>\n      <p>Nó cũng viết lại hoàn toàn các bảng tham chiếu chéo (xref), loại bỏ tất cả các khối cập nhật gia tăng để đảm bảo rằng dữ liệu lịch sử đã bị xóa hoặc sửa đổi không thể khôi phục được.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF",
-        "description": "Select the PDF file containing sensitive data or modification history."
+        "title": "Tải lên bản PDF",
+        "description": "Chọn tệp PDF chứa dữ liệu nhạy cảm hoặc lịch sử sửa đổi."
       },
       {
         "step": 2,
-        "title": "Run Scanner",
-        "description": "Trigger the 3D containment scanner to check the file for hidden metadata and layers."
+        "title": "Chạy máy quét",
+        "description": "Kích hoạt máy quét ngăn chặn 3D để kiểm tra tệp để tìm siêu dữ liệu và lớp ẩn."
       },
       {
         "step": 3,
-        "title": "Deep Sanitize",
-        "description": "Click sanitize to wipe out tracking elements and download the fully clean PDF."
+        "title": "Vệ sinh sâu",
+        "description": "Nhấp vào vệ sinh để xóa các phần tử theo dõi và tải xuống bản PDF hoàn toàn sạch sẽ."
       }
     ],
     "useCases": [
       {
-        "title": "Contract Sharing",
-        "description": "Remove drafting records, paths, and previous revisions before sharing business contracts with third parties.",
+        "title": "Chia sẻ hợp đồng",
+        "description": "Xóa các bản ghi soạn thảo, đường dẫn và các bản sửa đổi trước đó trước khi chia sẻ hợp đồng kinh doanh với bên thứ ba.",
         "icon": "file-signature"
       },
       {
-        "title": "Anonymized Publishing",
-        "description": "Wipe invisible annotations and watermarks to publish documents anonymously and securely.",
+        "title": "Xuất bản ẩn danh",
+        "description": "Xóa các chú thích và hình mờ vô hình để xuất bản tài liệu ẩn danh và an toàn.",
         "icon": "eye-off"
       },
       {
-        "title": "PDF Optimization",
-        "description": "Remove orphaned objects and garbage data streams to make files load faster on the web.",
+        "title": "Tối ưu hóa PDF",
+        "description": "Loại bỏ các đối tượng mồ côi và luồng dữ liệu rác để giúp tệp tải nhanh hơn trên web.",
         "icon": "zap"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard metadata removal?",
-        "answer": "Standard tools only clear basic fields like title or author. Deep Sanitizer reconstructs the entire PDF xref table, wiping PieceInfo, hidden watermarks, and historical incremental revisions."
+        "question": "Điều này khác với việc xóa siêu dữ liệu tiêu chuẩn như thế nào?",
+        "answer": "Công cụ tiêu chuẩn chỉ xóa các trường cơ bản như tiêu đề hoặc tác giả. Deep Sanitizer tái tạo lại toàn bộ bảng PDF xref, xóa PieceInfo, hình mờ ẩn và các bản sửa đổi gia tăng lịch sử."
       },
       {
-        "question": "Will this affect document layout or text?",
-        "answer": "No, it only strips hidden description streams and structure data. The visible layout, texts, and graphics remain unchanged."
+        "question": "Điều này có ảnh hưởng đến bố cục hoặc văn bản tài liệu không?",
+        "answer": "Không, nó chỉ loại bỏ các luồng mô tả và dữ liệu cấu trúc ẩn. Bố cục, văn bản và đồ họa hiển thị không thay đổi."
       },
       {
-        "question": "Does this remove PDF passwords?",
-        "answer": "No, if a PDF is encrypted, you must unlock it first before performing a deep sanitization."
+        "question": "Điều này có xóa mật khẩu PDF không?",
+        "answer": "Không, nếu tệp PDF được mã hóa, bạn phải mở khóa nó trước khi thực hiện khử trùng sâu."
       }
     ]
   },
   "booklet-folding-simulator": {
     "title": "Mô phỏng gấp và bình trang 3D",
-    "metaDescription": "Dàn trang PDF thành các khổ giấy in lớn và trực quan hóa quy trình gấp giấy, đóng ghim sách trong không gian 3D.",
+    "metaDescription": "Sắp xếp các trang PDF để in tập sách. Xem trước các tờ gấp và bố cục đường khâu yên ngựa trước khi xuất tài liệu sẵn sàng in của bạn.",
     "keywords": [
       "bình trang 3d",
       "mô phỏng gấp giấy",
       "đóng ghim giữa",
       "dàn trang in"
     ],
-    "description": "\n      <p>3D Booklet & Folding Simulator is an advanced tool designed for print designers and publishing professionals. Traditional book layout requires calculating complex page overlays and imposition pagination sequences. This tool visualizes and automates that entire process.</p>\n      <p>Under the hood, our custom imposition algorithm maps a sequential PDF page list into standard print sheet layouts (such as 4-page half-folds, 8-page saddle stitches, or accordion folds), merging pages onto the front and back of large physical sheets.</p>\n      <p>On the front-end, we utilize pure CSS 3D Matrix transforms and spring-mass physics curves to animate sheet folding horizontally and vertically, delivering a physical-like binding preview with a high WOW factor.</p>\n    ",
+    "description": "<p>Trình mô phỏng gấp sách và gấp sách 3D là một công cụ nâng cao được thiết kế dành cho các nhà thiết kế in ấn và chuyên gia xuất bản. Bố cục sách truyền thống yêu cầu tính toán lớp phủ trang phức tạp và trình tự phân trang áp đặt. Công cụ này trực quan hóa và tự động hóa toàn bộ quá trình đó.</p>\n      <p>Thuật toán áp đặt tùy chỉnh của chúng tôi ánh xạ danh sách trang PDF tuần tự thành các bố cục trang in tiêu chuẩn (chẳng hạn như trang gấp 4 trang, đường gấp 8 trang hoặc đường gấp xếp), hợp nhất các trang vào mặt trước và mặt sau của các tờ giấy vật lý lớn.</p>\n      <p>Ở giao diện người dùng, chúng tôi sử dụng các phép biến đổi Ma trận 3D CSS thuần túy và các đường cong vật lý khối lượng lò xo để tạo hiệu ứng cho các trang gấp theo chiều ngang và chiều dọc, mang đến bản xem trước ràng buộc giống như vật lý với hệ số WOW cao.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop the PDF document you wish to layout for printing."
+        "title": "Tải lên tệp PDF",
+        "description": "Kéo và thả tài liệu PDF bạn muốn bố trí để in."
       },
       {
         "step": 2,
-        "title": "Select Folding Layout",
-        "description": "Choose your preferred imposition scheme (e.g., 4-page fold, 8-page saddle stitch, 4-page accordion)."
+        "title": "Chọn Bố cục gấp",
+        "description": "Chọn sơ đồ áp đặt ưa thích của bạn (ví dụ: gấp 4 trang, khâu yên ngựa 8 trang, đàn accordion 4 trang)."
       },
       {
         "step": 3,
-        "title": "Interactive 3D Preview",
-        "description": "Drag the slider to watch the sheet fold in 3D and inspect the final page numbering layout."
+        "title": "Xem trước 3D tương tác",
+        "description": "Kéo thanh trượt để xem tờ gấp ở dạng 3D và kiểm tra bố cục đánh số trang cuối cùng."
       },
       {
         "step": 4,
-        "title": "Generate Imposed PDF",
-        "description": "Click generate to download the rearranged and merged physical sheet PDF, ready for double-sided printing."
+        "title": "Tạo PDF được áp dụng",
+        "description": "Nhấp vào tạo để tải xuống bản PDF trang vật lý được sắp xếp lại và hợp nhất, sẵn sàng để in hai mặt."
       }
     ],
     "useCases": [
       {
-        "title": "Brochure Prototyping",
-        "description": "Pre-visualize the folding sequence of tri-folds and pamphlets to prevent upsidedown pages after printing.",
+        "title": "Tạo mẫu Brochure",
+        "description": "Hình dung trước trình tự gấp gấp ba và tờ rơi để tránh tình trạng lộn ngược trang sau khi in.",
         "icon": "book-open"
       },
       {
-        "title": "Book Saddle-Stitching",
-        "description": "Generate imposed print sheets for multi-page magazines or booklets automatically.",
+        "title": "Khâu yên sách",
+        "description": "Tự động tạo các trang in áp dụng cho các tạp chí hoặc tập sách nhiều trang.",
         "icon": "layers"
       },
       {
-        "title": "Print Shop Visual Aids",
-        "description": "Help clients visualize how pages are physically distributed and folded on print sheets.",
+        "title": "Cửa hàng in Dụng cụ hỗ trợ trực quan",
+        "description": "Giúp khách hàng hình dung cách các trang được phân bổ và gấp lại vật lý trên các tờ in.",
         "icon": "printer"
       }
     ],
     "faq": [
       {
-        "question": "What is \"Imposition\"?",
-        "answer": "Imposition is a fundamental step in prepress printing. Since commercial presses print on large sheets, pages are arranged out of order so that once printed, folded, and bound, the pages appear in the correct sequential order. This tool automatically calculates that layout."
+        "question": "\"Áp đặt\" là gì?",
+        "answer": "Đổ khuôn là bước cơ bản trong quá trình in sơ bộ. Vì máy in thương mại in trên những tờ giấy lớn nên các trang được sắp xếp không theo thứ tự sao cho khi được in, gấp và đóng bìa, các trang sẽ xuất hiện theo đúng thứ tự. Công cụ này tự động tính toán bố cục đó."
       },
       {
-        "question": "Does the 3D preview alter my PDF content?",
-        "answer": "No, the original PDF content is merely rendered as texture mappings onto the 3D sheet. The generated PDF only adjusts page order and placement; text and graphic qualities are kept intact."
+        "question": "Bản xem trước 3D có làm thay đổi nội dung PDF của tôi không?",
+        "answer": "Không, nội dung PDF gốc chỉ được hiển thị dưới dạng ánh xạ kết cấu trên trang tính 3D. Tệp PDF được tạo chỉ điều chỉnh thứ tự và vị trí trang; chất lượng văn bản và đồ họa được giữ nguyên."
       },
       {
-        "question": "What if my PDF page count is not a multiple of 4 or 8?",
-        "answer": "The optimizer automatically appends blank pages at the end to satisfy the mathematical page-count requirements of the selected folding layout."
+        "question": "Điều gì sẽ xảy ra nếu số trang PDF của tôi không phải là bội số của 4 hoặc 8?",
+        "answer": "Trình tối ưu hóa tự động thêm các trang trống vào cuối để đáp ứng các yêu cầu về số trang toán học của bố cục gấp đã chọn."
       }
     ]
   },
   "pdf-to-slide": {
     "title": "PDF sang Slide",
-    "metaDescription": "Phân tích bố cục tài liệu PDF để trích xuất sơ đồ vectơ và nội dung chính thành tệp trình chiếu PPTX có thể chỉnh sửa.",
+    "metaDescription": "Chuyển đổi nội dung PDF sang slide PowerPoint. Xuất bản trình bày PPTX có văn bản và hình ảnh để chỉnh sửa thêm.",
     "keywords": [
       "pdf sang ppt",
       "tái tạo slide",
       "trích xuất biểu đồ",
       "tạo pptx"
     ],
-    "description": "\n      <p>AI PDF-to-Slide Reconstructor breathes new life into static PDF documents, transforming them into modern, highly-customizable PowerPoint slides (PPTX).</p>\n      <p>The tool uses an advanced layout outline extractor that automatically parses document heading levels, paragraph lines, and font weights to establish a logical slide framework. It also isolates vector charts and high-resolution tables, stripping background artifacts to embed them cleanly as independent editable assets.</p>\n      <p>All PPTX outputs are built using standard Office Open XML elements, meaning all text remains fully editable and vectors do not lose resolution. The front-end showcases a fluid \"starfield\" card transition animation that visualizes the reconstruction in an engaging manner.</p>\n    ",
+    "description": "<p>AI PDF-to-Slide Reconstructor thổi sức sống mới vào các tài liệu PDF tĩnh, biến chúng thành các trang chiếu PowerPoint (PPTX) hiện đại, có khả năng tùy chỉnh cao.</p>\n      <p>Công cụ này sử dụng trình trích xuất phác thảo bố cục nâng cao để tự động phân tích các cấp độ tiêu đề, dòng đoạn văn và độ dày phông chữ của tài liệu để thiết lập khung trang chiếu hợp lý. Nó cũng tách biệt các biểu đồ vectơ và bảng có độ phân giải cao, loại bỏ các thành phần nền để nhúng chúng một cách rõ ràng dưới dạng nội dung có thể chỉnh sửa độc lập.</p>\n      <p>Tất cả đầu ra PPTX đều được xây dựng bằng cách sử dụng các phần tử Office Open XML tiêu chuẩn, nghĩa là tất cả văn bản vẫn có thể chỉnh sửa hoàn toàn và vectơ không bị mất độ phân giải. Giao diện người dùng hiển thị hoạt ảnh chuyển tiếp thẻ \"starfield\" linh hoạt giúp hình dung quá trình tái thiết một cách hấp dẫn.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic/Business PDF",
-        "description": "Upload a PDF document that contains structured sections and diagrams."
+        "title": "Tải lên bản PDF Học thuật/Kinh doanh",
+        "description": "Tải lên tài liệu PDF có chứa các phần và sơ đồ có cấu trúc."
       },
       {
         "step": 2,
-        "title": "Analyze Slide Outlines",
-        "description": "Inspect the extracted slide structure, adjust titles, or delete unneeded card blocks."
+        "title": "Phân tích dàn ý slide",
+        "description": "Kiểm tra cấu trúc slide được trích xuất, điều chỉnh tiêu đề hoặc xóa các khối thẻ không cần thiết."
       },
       {
         "step": 3,
-        "title": "Reconstruct to PPTX",
-        "description": "Start the compilation engine to receive a standard, editable presentation file."
+        "title": "Tái tạo thành PPTX",
+        "description": "Khởi động công cụ biên dịch để nhận tệp trình bày tiêu chuẩn, có thể chỉnh sửa."
       }
     ],
     "useCases": [
       {
-        "title": "Research Paper Presentation",
-        "description": "Convert academic journal PDFs, text structures, and vector diagrams into slide decks ready for talks.",
+        "title": "Trình bày bài nghiên cứu",
+        "description": "Chuyển đổi các tệp PDF tạp chí học thuật, cấu trúc văn bản và sơ đồ vectơ thành các bản trình bày sẵn sàng cho các buổi nói chuyện.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Business Report Summary",
-        "description": "Distill massive annual corporate reports into clean, bulleted presentation drafts instantly.",
+        "title": "Tóm tắt báo cáo kinh doanh",
+        "description": "Chắt lọc các báo cáo hàng năm lớn của công ty thành các bản thảo trình bày rõ ràng, có dấu đầu dòng ngay lập tức.",
         "icon": "presentation"
       },
       {
-        "title": "Multi-Device Demos",
-        "description": "Avoid copying screenshots manually. Get a clean, fully-editable layout framework in seconds.",
+        "title": "Bản trình diễn trên nhiều thiết bị",
+        "description": "Tránh sao chép ảnh chụp màn hình theo cách thủ công. Nhận khung bố cục rõ ràng, có thể chỉnh sửa hoàn toàn trong vài giây.",
         "icon": "laptop"
       }
     ],
     "faq": [
       {
-        "question": "Are the slides editable in Microsoft Office?",
-        "answer": "Yes. The files are generated natively in memory according to the official Office Open XML (OOXML) specification. Texts, tables, and placeholders are fully interactive in PowerPoint, Keynote, and WPS."
+        "question": "Các slide có thể chỉnh sửa được trong Microsoft Office không?",
+        "answer": "Vâng. Các tệp được tạo nguyên bản trong bộ nhớ theo đặc tả chính thức của Office Open XML (OOXML). Văn bản, bảng và trình giữ chỗ hoàn toàn tương tác trong PowerPoint, Keynote và WPS."
       },
       {
-        "question": "How are charts extracted?",
-        "answer": "The engine scans vector paths and raster layers in the PDF, detects bounded areas representing graphs, and clips them out as standalone SVG nodes or high-DPI images."
+        "question": "Biểu đồ được trích xuất như thế nào?",
+        "answer": "Công cụ quét các đường dẫn vectơ và các lớp raster trong PDF, phát hiện các vùng giới hạn biểu thị đồ thị và cắt chúng ra dưới dạng các nút SVG độc lập hoặc hình ảnh có độ phân giải cao."
       },
       {
-        "question": "Does this work on scanned documents?",
-        "answer": "For scanned PDFs lacking actual text layers, we recommend running our OCR tool first before passing the file to the Slide Reconstructor."
+        "question": "Tính năng này có hoạt động trên các tài liệu được quét không?",
+        "answer": "Đối với các tệp PDF được quét thiếu các lớp văn bản thực tế, chúng tôi khuyên bạn nên chạy công cụ OCR trước khi chuyển tệp tới Trình tái tạo trang chiếu."
       }
     ]
   },
   "eink-optimizer": {
     "title": "Tối ưu hóa màn hình E-ink",
-    "metaDescription": "Tối ưu hóa tài liệu PDF cho các thiết bị màn hình mực điện tử: khử nhiễu, nhị phân hóa Otsu, làm đậm nét chữ.",
+    "metaDescription": "Tối ưu hóa các trang PDF cho trình đọc e-ink. Làm sạch nền, tăng độ tương phản của văn bản và điều chỉnh tài liệu để dễ đọc hơn.",
     "keywords": [
       "tối ưu e-ink",
       "nhị phân hóa khử nhiễu",
       "làm đậm nét chữ",
       "máy đọc sách"
     ],
-    "description": "\n      <p>e-Ink Reader Optimizer is a must-have tool custom-made for e-Reader enthusiasts using Kindle, Onyx Boox, Kobo, or other e-paper devices.</p>\n      <p>Many scanned PDF e-books suffer from faint lettering, muddy gray backgrounds, noise, or scan shadows when viewed on e-Ink screens. This tool analyzes gray-value histograms and applies Otsu's Binarization Thresholding to separate text from background, converting gray backdrops to clean white.</p>\n      <p>Additionally, it integrates morphological dilation to bold and thicken thin, faded characters, providing crisp, high-contrast typography. The inertia-damped contrast slider allows you to fine-tune the paper-like contrast in real-time.</p>\n    ",
+    "description": "<p>e-Ink Reader Optimizer là công cụ bắt buộc phải có dành riêng cho những người đam mê thiết bị đọc sách điện tử sử dụng Kindle, Onyx Boox, Kobo hoặc các thiết bị giấy điện tử khác.</p>\n      <p>Nhiều sách điện tử PDF được quét có chữ mờ, nền xám đục, nhiễu hoặc bóng quét khi xem trên màn hình e-Ink. Công cụ này phân tích biểu đồ giá trị xám và áp dụng Ngưỡng nhị phân của Otsu để tách văn bản khỏi nền, chuyển đổi phông nền màu xám thành màu trắng rõ ràng.</p>\n      <p>Ngoài ra, nó còn tích hợp tính năng giãn nở hình thái để in đậm và làm dày các ký tự mỏng, mờ, cung cấp kiểu chữ sắc nét, có độ tương phản cao. Thanh trượt độ tương phản giảm quán tính cho phép bạn tinh chỉnh độ tương phản giống như tờ giấy trong thời gian thực.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Scanned PDF",
-        "description": "Upload e-books or scanned documents with faint text or gray backgrounds."
+        "title": "Tải lên bản PDF đã quét",
+        "description": "Tải lên sách điện tử hoặc tài liệu được quét có văn bản mờ hoặc nền xám."
       },
       {
         "step": 2,
-        "title": "Adjust Contrast Slider",
-        "description": "Drag the damped slider to balance background removal and character bolding in real-time."
+        "title": "Điều chỉnh thanh trượt độ tương phản",
+        "description": "Kéo thanh trượt giảm chấn để cân bằng việc loại bỏ nền và in đậm ký tự trong thời gian thực."
       },
       {
         "step": 3,
-        "title": "Optimize and Download",
-        "description": "Process the entire PDF to generate a high-contrast, eye-friendly document tailored for e-Ink."
+        "title": "Tối ưu hóa và tải xuống",
+        "description": "Xử lý toàn bộ tệp PDF để tạo tài liệu có độ tương phản cao, thân thiện với mắt được thiết kế riêng cho e-Ink."
       }
     ],
     "useCases": [
       {
-        "title": "Ancient Manuscript Restoration",
-        "description": "Thicken faded text in scans of historical books or handwritten manuscripts to make them readable.",
+        "title": "Phục hồi bản thảo cổ",
+        "description": "Làm dày văn bản bị mờ trong bản quét sách lịch sử hoặc bản thảo viết tay để chúng có thể đọc được.",
         "icon": "scroll"
       },
       {
-        "title": "Exam Sheet Clean-up",
-        "description": "Bleach background shadows from photocopied or photographed exams, returning clean black text on white paper.",
+        "title": "Dọn dẹp bài thi",
+        "description": "Tẩy bóng nền của các bài kiểm tra được sao chụp hoặc chụp ảnh, trả lại văn bản đen sạch trên giấy trắng.",
         "icon": "file-text"
       },
       {
-        "title": "E-paper Device Tailoring",
-        "description": "Convert colored PDFs to optimized grayscale, preventing messy, dithering artifacts on monochrome screens.",
+        "title": "May thiết bị giấy điện tử",
+        "description": "Chuyển đổi các tệp PDF màu sang thang độ xám được tối ưu hóa, ngăn ngừa hiện tượng lộn xộn, phối màu trên màn hình đơn sắc.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "How does the \"character bolding\" work?",
-        "answer": "In image processing, this is called dilation. It uses a structuring matrix to expand character margins by a pixel, physically thickening faint strokes to make them legible."
+        "question": "Tính năng \"in đậm ký tự\" hoạt động như thế nào?",
+        "answer": "Trong xử lý hình ảnh, điều này được gọi là giãn nở. Nó sử dụng ma trận cấu trúc để mở rộng lề ký tự thêm một pixel, làm dày các nét mờ về mặt vật lý để làm cho chúng dễ đọc."
       },
       {
-        "question": "Will this process bloat the file size?",
-        "answer": "Quite the opposite. By binarizing complex color/grayscale images to simple black-and-white layouts, standard compression (like CCITT Group 4) can shrink the PDF file size significantly."
+        "question": "Quá trình này có làm tăng kích thước tệp không?",
+        "answer": "Hoàn toàn ngược lại. Bằng cách nhị phân các hình ảnh màu/thang độ xám phức tạp thành bố cục đen trắng đơn giản, tính năng nén tiêu chuẩn (như CCITT Nhóm 4) có thể thu nhỏ kích thước tệp PDF một cách đáng kể."
       },
       {
-        "question": "Does this support native text PDFs?",
-        "answer": "Yes. Native vector PDFs are rasterized at high resolutions in the background, optimized, and compiled back, ensuring unified high-contrast reading."
+        "question": "Điều này có hỗ trợ các tệp PDF văn bản gốc không?",
+        "answer": "Vâng. Các tệp PDF vectơ gốc được rasterized ở độ phân giải cao ở chế độ nền, được tối ưu hóa và biên dịch lại, đảm bảo khả năng đọc có độ tương phản cao thống nhất."
       }
     ]
   },
   "cert-cryptor": {
     "title": "Mã hóa chứng thư",
-    "metaDescription": "Mã hóa PDF bằng chứng thư công khai, ký số PKCS#7 kết hợp hiệu ứng đóng dấu sáp nổi 3D cổ điển.",
+    "metaDescription": "Mã hóa và ký điện tử các tài liệu PDF bằng chứng chỉ. Làm việc với các tệp chứng chỉ cục bộ trong trình duyệt của bạn.",
     "keywords": [
       "mã hóa chứng thư",
       "đóng dấu sáp 3d",
       "ký số pkcs7",
       "bảo mật pdf"
     ],
-    "description": "\n      <p>3D Wax-Seal & Certificate Cryptor provides military-grade security and premium physical-grade aesthetics for sensitive corporate files, degrees, or agreements.</p>\n      <p>Technically, it offers asymmetric public-key encryption: import a recipient's public key certificate (.cer/.crt) to lock the PDF stream; only the holder of the matching private key (.pfx) can decrypt it. It also generates standard PKCS#7 digital signatures to ensure document tamper-proof integrity.</p>\n      <p>Visually, we feature a 3D physical gold or red wax-seal stamp. When you sign, a beautifully rendered stamp descends with a satisfying mechanical sound, leaving a 3D wax seal with realistic normal-mapped height variations and wax run-offs on the page, surrounded by glowing cryptographic tracks.</p>\n    ",
+    "description": "<p>Con dấu sáp 3D & Mật mã chứng chỉ cung cấp khả năng bảo mật cấp quân sự và tính thẩm mỹ cao cấp ở cấp độ vật lý cho các tệp, bằng cấp hoặc thỏa thuận nhạy cảm của công ty.</p>\n      <p>Về mặt kỹ thuật, nó cung cấp mã hóa khóa công khai bất đối xứng: nhập chứng chỉ khóa chung của người nhận (.cer/.crt) để khóa luồng PDF; chỉ người nắm giữ khóa riêng phù hợp (.pfx) mới có thể giải mã được nó. Nó cũng tạo ra chữ ký số PKCS#7 tiêu chuẩn để đảm bảo tính toàn vẹn của tài liệu, chống giả mạo.</p>\n      <p>Nhìn bề ngoài, chúng tôi có con dấu sáp màu đỏ hoặc vàng vật lý 3D. Khi bạn ký, một con tem được hiển thị đẹp mắt sẽ hạ xuống với âm thanh cơ học thỏa mãn, để lại con dấu sáp 3D với các biến thể chiều cao được ánh xạ bình thường thực tế và các dòng sáp chảy ra trên trang, được bao quanh bởi các dấu vết mật mã phát sáng.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF and Cert",
-        "description": "Add your PDF and import your signing certificate (.pfx) or the recipient's public certificate (.cer)."
+        "title": "Tải lên bản PDF và chứng chỉ",
+        "description": "Thêm tệp PDF của bạn và nhập chứng chỉ ký (.pfx) hoặc chứng chỉ công khai của người nhận (.cer)."
       },
       {
         "step": 2,
-        "title": "Place the 3D Stamp",
-        "description": "Drag and locate the seal on the document preview, and pick a wax style (e.g., gold, crimson)."
+        "title": "Đặt tem 3D",
+        "description": "Kéo và định vị con dấu trên bản xem trước tài liệu và chọn kiểu sáp (ví dụ: vàng, đỏ thẫm)."
       },
       {
         "step": 3,
-        "title": "Press and Sign",
-        "description": "Click execute to watch the 3D wax-seal imprint ceremony, generating a physical-grade digital signature."
+        "title": "Nhấn và ký",
+        "description": "Nhấp vào thực hiện để xem buổi lễ đóng dấu sáp 3D, tạo ra chữ ký số cấp vật lý."
       },
       {
         "step": 4,
-        "title": "Download Secured PDF",
-        "description": "Save the output document, now cryptographically locked and stamped."
+        "title": "Tải xuống bản PDF bảo mật",
+        "description": "Lưu tài liệu đầu ra, hiện đã được khóa và đóng dấu bằng mật mã."
       }
     ],
     "useCases": [
       {
-        "title": "Diplomas and Certificates",
-        "description": "Affix highly-valued 3D wax seal badges to digital diplomas and awards, backed by genuine digital signatures.",
+        "title": "Văn bằng và Chứng chỉ",
+        "description": "Dán huy hiệu con dấu sáp 3D có giá trị cao vào các bằng cấp và giải thưởng kỹ thuật số, được hỗ trợ bằng chữ ký số chính hãng.",
         "icon": "award"
       },
       {
-        "title": "Confidential Agreements",
-        "description": "Lock sensitive contracts using the client's public certificate so that only their secure physical keycard can unlock it.",
+        "title": "Thỏa thuận bí mật",
+        "description": "Khóa các hợp đồng nhạy cảm bằng chứng chỉ công khai của khách hàng để chỉ thẻ khóa vật lý an toàn của họ mới có thể mở khóa.",
         "icon": "shield-alert"
       },
       {
-        "title": "Official Press Releases",
-        "description": "Digitally sign public announcements to prevent malicious text edits or spoofing.",
+        "title": "Thông cáo báo chí chính thức",
+        "description": "Ký điện tử vào các thông báo công khai để ngăn chặn hành vi chỉnh sửa hoặc giả mạo văn bản độc hại.",
         "icon": "stamp"
       }
     ],
     "faq": [
       {
-        "question": "Is the wax seal just an image or a real signature?",
-        "answer": "Both. The system renders an incredibly realistic 3D wax imprint with normal-mapped depth (visual layer) and encodes an authentic, tamper-proof PKCS#7 cryptographic signature inside the PDF (data layer)."
+        "question": "Con dấu sáp chỉ là hình ảnh hay chữ ký thật?",
+        "answer": "Cả hai. Hệ thống này tạo ra dấu ấn sáp 3D cực kỳ chân thực với độ sâu được ánh xạ thông thường (lớp trực quan) và mã hóa chữ ký mật mã PKCS#7 xác thực, chống giả mạo bên trong PDF (lớp dữ liệu)."
       },
       {
-        "question": "What is \"Certificate-based Encryption\"?",
-        "answer": "It is a passwordless encryption technique. You encrypt the file using the recipient's public key. The reader automatically searches for their local private certificate to decrypt the file seamlessly, ensuring robust security."
+        "question": "\"Mã hóa dựa trên chứng chỉ\" là gì?",
+        "answer": "Đây là một kỹ thuật mã hóa không cần mật khẩu. Bạn mã hóa tệp bằng khóa chung của người nhận. Người đọc tự động tìm kiếm chứng chỉ riêng cục bộ của họ để giải mã tệp một cách liền mạch, đảm bảo tính bảo mật mạnh mẽ."
       },
       {
-        "question": "Can I customize the stamp design?",
-        "answer": "Yes. We provide multiple designs like the PDFCraft watermark or a Royal crest, and you can adjust the wax melting radius and normal-map indentation depth in the panel."
+        "question": "Tôi có thể tùy chỉnh thiết kế tem không?",
+        "answer": "Vâng. Chúng tôi cung cấp nhiều thiết kế như hình mờ PDFCraft hoặc huy hiệu Hoàng gia và bạn có thể điều chỉnh bán kính tan chảy sáp và độ sâu thụt bản đồ thông thường trong bảng điều khiển."
       }
     ]
   },
   "passport-id-composer": {
     "title": "Ghép thẻ hai mặt",
-    "metaDescription": "Sắp xếp hai mặt thẻ căn cước hoặc hộ chiếu lên một trang giấy A4 để in ấn, hỗ trợ đóng dấu nước chống lạm dụng.",
+    "metaDescription": "Gộp mặt trước và mặt sau của CMND hoặc hộ chiếu trên một trang PDF A4. Sắp xếp các bản quét và thêm hình mờ tùy chọn.",
     "keywords": [
       "ghép mặt căn cước",
       "photo chứng minh thư",
       "in hộ chiếu",
       "đóng dấu nước"
     ],
-    "description": "\n      <p>The Passport & ID Double-sided Composer is an incredibly useful productivity utility for standard business and personal operations.</p>\n      <p>When applying for bank accounts, onboarding, or signing agreements, we frequently need copies of both sides of ID cards. This tool accepts front/back images or PDF pages and precisely arranges them onto a single A4 page complying with national standard layout resolutions.</p>\n      <p>Furthermore, you can customize overlapping translucent anti-counterfeit watermarks (e.g. \"FOR ONBOARDING ONLY\") to prevent unauthorized document reuse. It even features a 3D glow laser sweep copier scanner door visual effect to deliver premium feedback.</p>\n    ",
+    "description": "<p>Trình soạn thảo hai mặt Hộ chiếu & ID là một tiện ích năng suất cực kỳ hữu ích cho các hoạt động cá nhân và kinh doanh tiêu chuẩn.</p>\n      <p>Khi đăng ký tài khoản ngân hàng, đăng ký tham gia hoặc ký kết thỏa thuận, chúng tôi thường cần bản sao của cả hai mặt chứng minh nhân dân. Công cụ này chấp nhận hình ảnh mặt trước/mặt sau hoặc trang PDF và sắp xếp chúng một cách chính xác trên một trang A4 duy nhất tuân thủ độ phân giải bố cục tiêu chuẩn quốc gia.</p>\n      <p>Hơn nữa, bạn có thể tùy chỉnh các hình mờ chống giả trong mờ chồng chéo (ví dụ: \"CHỈ DÀNH CHO MỞ RỘNG\") để ngăn chặn việc sử dụng lại tài liệu trái phép. Nó thậm chí còn có hiệu ứng hình ảnh cửa máy quét máy photocopy quét tia laser phát sáng 3D để mang lại phản hồi cao cấp.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload ID files",
-        "description": "Upload front and back photos/scans of your ID or passport (up to 2 files)."
+        "title": "Tải lên tệp ID",
+        "description": "Tải lên ảnh/bản scan mặt trước và mặt sau của CMND hoặc hộ chiếu của bạn (tối đa 2 tệp)."
       },
       {
         "step": 2,
-        "title": "Configure secure watermark",
-        "description": "Input custom text overlay to restrict unauthorized document replication."
+        "title": "Định cấu hình hình mờ an toàn",
+        "description": "Nhập lớp phủ văn bản tùy chỉnh để hạn chế sao chép tài liệu trái phép."
       },
       {
         "step": 3,
-        "title": "Compose & download",
-        "description": "Click execute to generate a single-page print-ready A4 PDF."
+        "title": "Soạn và tải xuống",
+        "description": "Nhấp vào thực hiện để tạo bản PDF A4 sẵn sàng in một trang."
       }
     ],
     "useCases": [
       {
-        "title": "HR onboarding submission",
-        "description": "Quickly align employee ID copies and apply protective watermarks.",
+        "title": "Nộp hồ sơ giới thiệu nhân sự",
+        "description": "Nhanh chóng căn chỉnh các bản sao ID nhân viên và áp dụng hình mờ bảo vệ.",
         "icon": "user"
       },
       {
-        "title": "Government & banking service",
-        "description": "Prepare standardized ID prints that meet physical archive requirements.",
+        "title": "Dịch vụ chính phủ và ngân hàng",
+        "description": "Chuẩn bị các bản in ID tiêu chuẩn đáp ứng các yêu cầu lưu trữ vật lý.",
         "icon": "landmark"
       },
       {
-        "title": "Travel backups",
-        "description": "Arrange passport pages and visa details onto a unified A4 paper.",
+        "title": "Dự phòng du lịch",
+        "description": "Sắp xếp các trang hộ chiếu và chi tiết visa vào một tờ giấy A4 thống nhất.",
         "icon": "plane"
       }
     ],
     "faq": [
       {
-        "question": "Will watermarks block identity text details?",
-        "answer": "No. The watermark is rendered at a carefully tuned 15% opacity to block forgery without sacrificing the legibility of text or photo fields."
+        "question": "Hình mờ có chặn chi tiết văn bản nhận dạng không?",
+        "answer": "Không. Hình mờ được hiển thị ở độ mờ 15% được điều chỉnh cẩn thận để chặn hành vi giả mạo mà không làm mất đi tính dễ đọc của trường văn bản hoặc ảnh."
       },
       {
-        "question": "Is the composite card size accurate?",
-        "answer": "Yes. It renders the ID card at the standard physical dimension of 85.6mm × 54mm scaled perfectly on the A4 page."
+        "question": "Kích thước thẻ tổng hợp có chính xác không?",
+        "answer": "Vâng. Nó hiển thị thẻ ID ở kích thước vật lý tiêu chuẩn 85,6mm × 54mm được chia tỷ lệ hoàn hảo trên trang A4."
       },
       {
-        "question": "Does it support driver licenses?",
-        "answer": "Yes, it works beautifully for any card-based identity scans."
+        "question": "Nó có hỗ trợ bằng lái xe không?",
+        "answer": "Có, nó hoạt động rất tốt cho mọi hoạt động quét nhận dạng dựa trên thẻ."
       }
     ]
   },
   "annotation-exporter": {
     "title": "Trích chú thích & tô sáng",
-    "metaDescription": "Quét và trích xuất các nét vẽ tay, văn bản tô sáng và nhận xét từ tài liệu PDF thành ghi chú Markdown.",
+    "metaDescription": "Xuất nhận xét, ghi chú, đánh dấu và gạch chân dưới dạng PDF sang Markdown hoặc JSON. Tổ chức các chú thích để học tập, đánh giá và nghiên cứu.",
     "keywords": [
       "trích xuất chú thích pdf",
       "xuất văn bản tô sáng",
       "ghi chú đọc sách"
     ],
-    "description": "\n      <p>The Smart Annotation Exporter is a powerful workspace that unlocks full value from your PDF annotations.</p>\n      <p>While conducting literature reviews or reading extensive ebooks, we make heavy use of highlights and sticky notes. This tool deserializes the low-level PDF <code>/Annots</code> dictionary and extracts all highlights, notes, underlines, and hand-drawn ink markers.</p>\n      <p>It automatically aligns the comments with their respective outline headers, generating a structured Markdown or JSON notebook with page reference anchors. Watch your highlights float beautifully into the frosted-glass notebook panel.</p>\n    ",
+    "description": "<p>Trình xuất chú thích thông minh là một không gian làm việc mạnh mẽ giúp khai thác toàn bộ giá trị từ các chú thích PDF của bạn.</p>\n      <p>Khi tiến hành đánh giá tài liệu hoặc đọc nhiều sách điện tử, chúng tôi sử dụng rất nhiều điểm đánh dấu và ghi chú. Công cụ này giải tuần tự hóa từ điển <code>/Chú thích</code> PDF cấp thấp và trích xuất tất cả các điểm đánh dấu, ghi chú, gạch chân và bút đánh dấu bằng mực vẽ tay.</p>\n      <p>Nó tự động căn chỉnh các nhận xét với các tiêu đề phác thảo tương ứng, tạo ra một sổ ghi chép Markdown hoặc JSON có cấu trúc với các neo tham chiếu trang. Xem những điểm nổi bật của bạn nổi đẹp mắt trên bảng sổ tay bằng kính mờ.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import annotated PDF",
-        "description": "Upload any PDF essay or book containing your underlines, highlights, or comments."
+        "title": "Nhập PDF có chú thích",
+        "description": "Tải lên bất kỳ bài luận hoặc cuốn sách PDF nào có phần gạch chân, đánh dấu hoặc nhận xét của bạn."
       },
       {
         "step": 2,
-        "title": "Configure filters & format",
-        "description": "Select the annotation types you want to extract and choose Markdown or JSON."
+        "title": "Định cấu hình bộ lọc và định dạng",
+        "description": "Chọn loại chú thích bạn muốn trích xuất và chọn Markdown hoặc JSON."
       },
       {
         "step": 3,
-        "title": "Extract notebook",
-        "description": "Click execute to parse the comments stream and assemble your outline summary."
+        "title": "Trích xuất sổ ghi chép",
+        "description": "Nhấp vào thực hiện để phân tích luồng nhận xét và tập hợp bản tóm tắt dàn ý của bạn."
       }
     ],
     "useCases": [
       {
-        "title": "Scientific literature synthesis",
-        "description": "Extract reading notes across multiple papers into Markdown templates to compose lit reviews instantly.",
+        "title": "Tổng hợp tài liệu khoa học",
+        "description": "Trích xuất các ghi chú đọc trên nhiều bài viết vào các mẫu Markdown để soạn các bài đánh giá ngắn gọn ngay lập tức.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Study journal compiling",
-        "description": "Collect beautiful insights and personal remarks from textbooks into Obsidian databases.",
+        "title": "Biên soạn nhật ký học tập",
+        "description": "Thu thập những hiểu biết sâu sắc và nhận xét cá nhân từ sách giáo khoa vào cơ sở dữ liệu Obsidian.",
         "icon": "book"
       },
       {
-        "title": "Document collaborative audit",
-        "description": "Gather review corrections from different team members and establish actionable task lists.",
+        "title": "Kiểm tra hợp tác tài liệu",
+        "description": "Thu thập các bản sửa lỗi đánh giá từ các thành viên khác nhau trong nhóm và thiết lập danh sách nhiệm vụ có thể thực hiện được.",
         "icon": "users"
       }
     ],
     "faq": [
       {
-        "question": "Can it extract tablet hand-drawn ink strokes?",
-        "answer": "Yes. As long as the hand-drawn marks are stored as standard PDF Ink annotations, the tool can perfectly isolate and structure their page positions."
+        "question": "Nó có thể trích xuất nét mực vẽ tay của máy tính bảng không?",
+        "answer": "Vâng. Miễn là các dấu vẽ tay được lưu trữ dưới dạng chú thích PDF Ink tiêu chuẩn, công cụ này có thể tách biệt và cấu trúc các vị trí trang của chúng một cách hoàn hảo."
       },
       {
-        "question": "Why are some highlighted extracts empty?",
-        "answer": "If the PDF is a non-searchable image scan lacking underlying text, highlights only store coordinates. Run OCR on the PDF first, then extract annotations."
+        "question": "Tại sao một số đoạn trích được đánh dấu lại trống?",
+        "answer": "Nếu PDF là bản quét hình ảnh không thể tìm kiếm được, thiếu văn bản cơ bản, thì chỉ đánh dấu tọa độ lưu trữ. Trước tiên hãy chạy OCR trên tệp PDF, sau đó trích xuất chú thích."
       },
       {
-        "question": "Do the Markdown links jump back to the PDF?",
-        "answer": "The exported file lists precise page numbers and original outline headings to make cross-referencing seamless."
+        "question": "Các liên kết Markdown có quay lại bản PDF không?",
+        "answer": "Tệp được xuất liệt kê số trang chính xác và tiêu đề dàn ý gốc để giúp việc tham chiếu chéo trở nên liền mạch."
       }
     ]
   },
   "batch-watermark-remover": {
     "title": "Xóa hình mờ hàng loạt",
-    "metaDescription": "Phân tích mã nguồn nội dung PDF, loại bỏ chính xác các luồng văn bản Tj/TJ và hình ảnh XObject chứa hình mờ.",
+    "metaDescription": "Xóa hình mờ văn bản và hình ảnh phù hợp khỏi tệp PDF. Xem lại kết quả đầu ra để kiểm tra xem nội dung tài liệu có được giữ nguyên hay không.",
     "keywords": [
       "xóa hình mờ pdf",
       "xóa watermark hàng loạt",
       "làm sạch nội dung pdf"
     ],
-    "description": "\n      <p>The Batch Watermark Remover is a state-of-the-art PDF sanitizer that physically cleanses documents.</p>\n      <p>Generic watermark removers usually just overlay white blocks or distort document spacing. This tool utilizes a robust <strong>Content Stream Purge</strong> technique.</p>\n      <p>It parses the low-level rendering operators of each page, identifies specific watermark string commands (e.g. \"Confidential\", \"DRAFT\") or background image objects, and physically deletes or overwrites them. The watermarks disappear completely, preserving the original formatting and vector quality.</p>\n    ",
+    "description": "<p>Batch Watermark Remover là công cụ khử trùng PDF tiên tiến giúp làm sạch tài liệu về mặt vật lý.</p>\n      <p>Các công cụ xóa hình mờ thông thường thường chỉ phủ lên các khối màu trắng hoặc làm biến dạng khoảng cách giữa các tài liệu. Công cụ này sử dụng kỹ thuật <strong>Thanh lọc luồng nội dung</strong> mạnh mẽ.</p>\n      <p>Nó phân tích cú pháp các toán tử hiển thị cấp thấp của mỗi trang, xác định các lệnh chuỗi hình mờ cụ thể (ví dụ: \"Bí mật\", \"DRAFT\") hoặc các đối tượng hình nền và xóa hoặc ghi đè chúng về mặt vật lý. Hình mờ biến mất hoàn toàn, giữ nguyên định dạng và chất lượng vectơ ban đầu.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload watermarked file",
-        "description": "Provide the PDF document showing commercial logos or security labels."
+        "title": "Tải lên tập tin có hình mờ",
+        "description": "Cung cấp tài liệu PDF hiển thị logo thương mại hoặc nhãn bảo mật."
       },
       {
         "step": 2,
-        "title": "Define target watermark",
-        "description": "Input the exact string to delete, or toggle translucent XObject image cleanup."
+        "title": "Xác định hình mờ mục tiêu",
+        "description": "Nhập chuỗi chính xác để xóa hoặc chuyển đổi chức năng dọn dẹp hình ảnh XObject mờ."
       },
       {
         "step": 3,
-        "title": "Run physical purge",
-        "description": "Click execute to scrub the content operators with high fidelity."
+        "title": "Chạy thanh lọc vật lý",
+        "description": "Nhấp vào thực thi để lọc các toán tử nội dung với độ trung thực cao."
       }
     ],
     "useCases": [
       {
-        "title": "Archiving corporate assets",
-        "description": "Remove expired \"Confidential\" or \"Draft\" watermarks for general public distribution.",
+        "title": "Lưu trữ tài sản doanh nghiệp",
+        "description": "Xóa hình mờ \"Bí mật\" hoặc \"Bản nháp\" đã hết hạn để phân phối rộng rãi cho công chúng.",
         "icon": "archive"
       },
       {
-        "title": "Clearing background clutter",
-        "description": "Scrub heavy background pictures that distract readers from scanning text.",
+        "title": "Xóa nền lộn xộn",
+        "description": "Xóa các hình nền nặng khiến người đọc mất tập trung khi quét văn bản.",
         "icon": "eye"
       },
       {
-        "title": "Document reusing",
-        "description": "Cleanse old page footer branding elements to apply new corporate templates easily.",
+        "title": "Tái sử dụng tài liệu",
+        "description": "Làm sạch các thành phần thương hiệu chân trang cũ của trang để áp dụng các mẫu công ty mới một cách dễ dàng.",
         "icon": "copy"
       }
     ],
     "faq": [
       {
-        "question": "Can the purged watermarks be recovered?",
-        "answer": "No. Unlike visual masks, we rewrite the page binary stream to erase the operators, leaving no traces."
+        "question": "Các hình mờ đã bị xóa có thể phục hồi được không?",
+        "answer": "Không. Không giống như mặt nạ trực quan, chúng tôi viết lại luồng nhị phân của trang để xóa các toán tử, không để lại dấu vết."
       },
       {
-        "question": "Does it support complex gradients?",
-        "answer": "If the watermark is stored as a separate text node or image XObject, the tool can isolate and physically wipe it."
+        "question": "Nó có hỗ trợ độ dốc phức tạp không?",
+        "answer": "Nếu hình mờ được lưu trữ dưới dạng nút văn bản hoặc hình ảnh XObject riêng biệt, công cụ có thể cô lập và xóa sạch hình mờ đó một cách vật lý."
       },
       {
-        "question": "Will it modify normal page text?",
-        "answer": "No. The scrubbing engine only target operators matching the specified watermark signature; regular text remains untouched."
+        "question": "Nó có sửa đổi văn bản trang bình thường không?",
+        "answer": "Không. Công cụ lọc chỉ nhắm mục tiêu vào những người vận hành khớp với chữ ký hình mờ đã chỉ định; văn bản thông thường vẫn còn nguyên."
       }
     ]
   },
   "smart-data-redactor": {
     "title": "Che dữ liệu nhạy cảm",
-    "metaDescription": "Tự động quét các thông tin như email, số điện thoại, căn cước, sau đó vẽ đè hộp màu đen che phủ và hủy văn bản gốc.",
+    "metaDescription": "Tìm địa chỉ email, số điện thoại và mẫu ID trong tệp PDF. Xem lại các kết quả trùng khớp và biên tập lại nội dung nhạy cảm tại địa phương.",
     "keywords": [
       "che phủ dữ liệu nhạy cảm",
       "mã hóa thông tin cá nhân",
       "bảo mật thông tin"
     ],
-    "description": "\n      <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>\n      <p>Simply overlaying black boxes in normal editors is unsafe because the underlying text can still be copied. This tool implements true <strong>NLP pattern matching and physical content stream sanitization</strong>.</p>\n      <p>It scans the document for emails, phone numbers, SSNs, or custom keywords, places a premium matte black mask over the coordinates, and permanently overwrites the character stream with <code>[REDACTED]</code>, blocking copy-paste leaks.</p>\n    ",
+    "description": "<p>Trình biên tập dữ liệu về quyền riêng tư thông minh là một công cụ tự động được thiết kế để đảm bảo tuân thủ mạnh mẽ về quyền riêng tư của tài liệu.</p>\n      <p>Chỉ phủ các hộp đen trong trình soạn thảo thông thường là không an toàn vì văn bản bên dưới vẫn có thể được sao chép. Công cụ này triển khai <strong>khớp mẫu NLP thực sự và dọn dẹp luồng nội dung vật lý</strong>.</p>\n      <p>Nó quét tài liệu để tìm email, số điện thoại, SSN hoặc từ khóa tùy chỉnh, đặt mặt nạ đen mờ cao cấp lên tọa độ và ghi đè vĩnh viễn luồng ký tự bằng <code>[REDACTED]</code>, chặn rò rỉ sao chép-dán.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload target PDF",
-        "description": "Provide the contract or statement showing sensitive customer details."
+        "title": "Tải lên bản PDF mục tiêu",
+        "description": "Cung cấp hợp đồng hoặc tuyên bố thể hiện thông tin chi tiết nhạy cảm của khách hàng."
       },
       {
         "step": 2,
-        "title": "Select redaction rules",
-        "description": "Check target patterns (email, phone, ID) or define custom sensitive words."
+        "title": "Chọn quy tắc biên tập",
+        "description": "Kiểm tra các mẫu mục tiêu (email, điện thoại, ID) hoặc xác định các từ nhạy cảm tùy chỉnh."
       },
       {
         "step": 3,
-        "title": "Auto redact & download",
-        "description": "Click execute to overlay secure masks and wipe the text streams."
+        "title": "Tự động biên tập lại và tải xuống",
+        "description": "Nhấp vào thực thi để phủ các mặt nạ bảo mật và xóa luồng văn bản."
       }
     ],
     "useCases": [
       {
-        "title": "Commercial agreements sharing",
-        "description": "Safely publish business documents by hiding personal salaries, phone numbers, or emails.",
+        "title": "Chia sẻ thỏa thuận thương mại",
+        "description": "Xuất bản an toàn các tài liệu kinh doanh bằng cách ẩn lương cá nhân, số điện thoại hoặc email.",
         "icon": "file-signature"
       },
       {
-        "title": "Resume database anonymization",
-        "description": "Strip applicant names, contact info, or addresses to comply with strict privacy regulations.",
+        "title": "Tiếp tục ẩn danh cơ sở dữ liệu",
+        "description": "Loại bỏ tên, thông tin liên hệ hoặc địa chỉ của người nộp đơn để tuân thủ các quy định nghiêm ngặt về quyền riêng tư.",
         "icon": "user-check"
       },
       {
-        "title": "Financial statement distribution",
-        "description": "Conceal specific ledger numbers or shareholder names before publishing reports.",
+        "title": "Phân phối báo cáo tài chính",
+        "description": "Che giấu số sổ cái hoặc tên cổ đông cụ thể trước khi công bố báo cáo.",
         "icon": "pie-chart"
       }
     ],
     "faq": [
       {
-        "question": "Are redacted details truly un-copyable?",
-        "answer": "Yes. We rewrite the page content stream to erase the characters. Copy-pasting from the redacted box will only extract the string \"[REDACTED]\"."
+        "question": "Các chi tiết bị loại bỏ có thực sự không thể sao chép được không?",
+        "answer": "Vâng. Chúng ta viết lại dòng nội dung trang để xóa ký tự. Việc dán sao chép từ hộp đã được xử lý lại sẽ chỉ trích xuất chuỗi \"[THÔNG TIN ĐÃ GIẤU]\"."
       },
       {
-        "question": "Does it work for scanned image PDFs?",
-        "answer": "This tool targets vector text streams. For scanned image files, use our OCR tool first or crop manually."
+        "question": "Nó có hoạt động đối với các tệp PDF hình ảnh được quét không?",
+        "answer": "Công cụ này nhắm mục tiêu các luồng văn bản vector. Đối với các tệp hình ảnh được quét, trước tiên hãy sử dụng công cụ OCR của chúng tôi hoặc cắt thủ công."
       },
       {
-        "question": "Is the red HUD target scope saved in the file?",
-        "answer": "No, that is a gorgeous frontend interactive loading effect. The output PDF displays standard clean black rectangles."
+        "question": "Phạm vi mục tiêu HUD màu đỏ có được lưu trong tệp không?",
+        "answer": "Không, đó là hiệu ứng tải tương tác giao diện người dùng tuyệt đẹp. Tệp PDF đầu ra hiển thị các hình chữ nhật màu đen sạch sẽ tiêu chuẩn."
       }
     ]
   },
   "bookmarks-auto-generator": {
     "title": "Tự động tạo mục lục",
-    "metaDescription": "Phân tích kích thước và thứ bậc phông chữ trong tài liệu để tạo và nhúng cây mục lục (/Outlines) tự động.",
+    "metaDescription": "Tạo dấu trang PDF từ tiêu đề và mẫu văn bản. Thêm dàn bài có thể điều hướng vào các tài liệu, sổ tay và báo cáo dài.",
     "keywords": [
       "tạo bookmark tự động",
       "mục lục thông minh pdf",
       "cây mục lục"
     ],
-    "description": "\n      <p>The Auto Bookmarks Generator brings absolute clarity to lengthy, unstructured PDF documents.</p>\n      <p>Scanning through books or booklets with no outline navigation is painful. This tool parses typographic hierarchies (such as font sizes and weights) along with regex rules (like \"Chapter 1\", \"Section 1.1\") to automatically deduce headings.</p>\n      <p>It then compiles and injects these headings directly into the PDF <code>/Outline</code> dictionary. Any standard viewer will then show a beautifully structured, multi-level navigation sidebar, backed by an interactive 3D outline tree preview.</p>\n    ",
+    "description": "<p>Trình tạo dấu trang tự động mang lại sự rõ ràng tuyệt đối cho các tài liệu PDF dài, không có cấu trúc.</p>\n      <p>Việc quét qua sách hoặc tập sách nhỏ mà không có điều hướng theo dàn ý là điều khó khăn. Công cụ này phân tích các hệ thống phân cấp kiểu chữ (chẳng hạn như kích thước và độ đậm phông chữ) cùng với các quy tắc biểu thức chính quy (như \"Chương 1\", \"Phần 1.1\") để tự động suy ra các tiêu đề.</p>\n      <p>Sau đó, nó biên dịch và đưa trực tiếp các tiêu đề này vào từ điển PDF <code>/Outline</code>. Sau đó, bất kỳ trình xem tiêu chuẩn nào cũng sẽ hiển thị thanh bên điều hướng đa cấp, có cấu trúc đẹp mắt, được hỗ trợ bởi bản xem trước cây phác thảo 3D tương tác.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide unstructured PDF",
-        "description": "Upload large brochures, academic papers, or ebooks lacking a catalog sidebar."
+        "title": "Cung cấp bản PDF không có cấu trúc",
+        "description": "Tải lên các tài liệu quảng cáo lớn, tài liệu học thuật hoặc sách điện tử không có thanh bên danh mục."
       },
       {
         "step": 2,
-        "title": "Tune heading rules",
-        "description": "Configure strategies specifying minimum font size thresholds and match rules."
+        "title": "Điều chỉnh quy tắc tiêu đề",
+        "description": "Định cấu hình chiến lược chỉ định ngưỡng kích thước phông chữ tối thiểu và quy tắc đối sánh."
       },
       {
         "step": 3,
-        "title": "Build and inject",
-        "description": "Click execute to render the outline nodes and physically write the outline bookmarks."
+        "title": "Xây dựng và tiêm",
+        "description": "Nhấp vào thực hiện để hiển thị các nút phác thảo và ghi các dấu trang phác thảo một cách vật lý."
       }
     ],
     "useCases": [
       {
-        "title": "Technical manuals organizing",
-        "description": "Auto compile multi-level chapters for standard guidelines, saving hours of manual indexing.",
+        "title": "Tổ chức hướng dẫn kỹ thuật",
+        "description": "Tự động biên soạn các chương đa cấp theo hướng dẫn tiêu chuẩn, tiết kiệm thời gian lập chỉ mục thủ công.",
         "icon": "tool"
       },
       {
-        "title": "Thesis preparation",
-        "description": "Inject clean nested bookmarks matching exact academic submission standards.",
+        "title": "Chuẩn bị luận văn",
+        "description": "Chèn các dấu trang lồng nhau sạch sẽ phù hợp với tiêu chuẩn gửi học thuật chính xác.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Ebook navigation optimization",
-        "description": "Structure scanned text publications into readable chapters for tablets or mobile readers.",
+        "title": "Tối ưu hóa điều hướng sách điện tử",
+        "description": "Cấu trúc các ấn phẩm văn bản được quét thành các chương có thể đọc được cho máy tính bảng hoặc thiết bị đọc trên thiết bị di động.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "Can it match custom chapter formats?",
-        "answer": "Yes. You can add custom regex patterns in the sidebar panel (e.g., `^Part\\s+\\w+`) to target unique layouts."
+        "question": "Nó có thể phù hợp với các định dạng chương tùy chỉnh không?",
+        "answer": "Vâng. Bạn có thể thêm các mẫu biểu thức chính quy tùy chỉnh trong bảng điều khiển thanh bên (ví dụ: `^Part\\s+\\w+`) để nhắm mục tiêu các bố cục độc đáo."
       },
       {
-        "question": "Will this affect the visual page presentation?",
-        "answer": "No. The tool only adds an internal structural bookmark catalog. The text and visual assets of the pages remain untouched."
+        "question": "Điều này có ảnh hưởng đến việc trình bày trang trực quan không?",
+        "answer": "Không. Công cụ chỉ thêm danh mục dấu trang cấu trúc nội bộ. Nội dung văn bản và hình ảnh của các trang vẫn còn nguyên."
       },
       {
-        "question": "How many bookmark levels are supported?",
-        "answer": "The tool supports deeply nested bookmark structures, allowing chapter, section, and subsection layouts."
+        "question": "Hỗ trợ bao nhiêu cấp độ dấu trang?",
+        "answer": "Công cụ này hỗ trợ các cấu trúc dấu trang được lồng sâu, cho phép bố cục chương, phần và phần phụ."
       }
     ]
   },
   "batch-barcode-injector": {
     "title": "Nhúng mã vạch hàng loạt",
-    "metaDescription": "Tải lên danh sách mã vạch hoặc mã QR và nhúng chúng hàng loạt vào tọa độ định sẵn trên các trang PDF.",
+    "metaDescription": "Thêm hàng loạt mã QR hoặc mã vạch Code 128 vào các trang PDF. Điều chỉnh vị trí để theo dõi tài liệu, nhãn và quy trình in.",
     "keywords": [
       "nhúng qr hàng loạt",
       "chèn mã vạch pdf",
       "in nhãn mã vạch"
     ],
-    "description": "\n      <p>The Batch Barcode precision injector bridges digital asset tracking with physical document indexing.</p>\n      <p>In warehousing, contract review, or logistics, we often need to Stamp unique barcodes onto invoices or device cards. This tool makes it incredibly easy.</p>\n      <p>Generate highly readable QR codes or Code128 barcodes, and use our gorgeous aligning workspace with green laser guides to position them. A clean scan audio beep triggers on placement, providing highly premium feedback.</p>\n    ",
+    "description": "<p>Bộ tiêm mã vạch chính xác theo lô kết nối việc theo dõi tài sản kỹ thuật số với lập chỉ mục tài liệu vật lý.</p>\n      <p>Trong kho bãi, xem xét hợp đồng hoặc hậu cần, chúng ta thường cần Đóng dấu mã vạch duy nhất lên hóa đơn hoặc thẻ thiết bị. Công cụ này giúp việc này trở nên vô cùng dễ dàng.</p>\n      <p>Tạo mã QR hoặc mã vạch Code128 có khả năng đọc cao và sử dụng không gian làm việc căn chỉnh tuyệt đẹp của chúng tôi với các hướng dẫn bằng tia laser màu xanh lá cây để định vị chúng. Một tiếng bíp âm thanh quét sạch sẽ kích hoạt vị trí đặt, cung cấp phản hồi có chất lượng cao.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload document",
-        "description": "Drag and drop single or multi-page PDFs representing agreements or shipping lists."
+        "title": "Tải tài liệu lên",
+        "description": "Kéo và thả các tệp PDF đơn hoặc nhiều trang thể hiện các thỏa thuận hoặc danh sách vận chuyển."
       },
       {
         "step": 2,
-        "title": "Position barcode coordinates",
-        "description": "Set code type, value, and drag the placement box to specify coordinates."
+        "title": "Vị trí tọa độ mã vạch",
+        "description": "Đặt loại mã, giá trị và kéo hộp vị trí để chỉ định tọa độ."
       },
       {
         "step": 3,
-        "title": "Stamps and download",
-        "description": "Click execute to render the code layer onto the targeted page indices."
+        "title": "Tem và tải về",
+        "description": "Nhấp vào thực thi để hiển thị lớp mã trên các chỉ mục trang được nhắm mục tiêu."
       }
     ],
     "useCases": [
       {
-        "title": "Contract validation tracing",
-        "description": "Apply a unique QR code showing anti-counterfeit details onto the header of contracts.",
+        "title": "Truy tìm xác thực hợp đồng",
+        "description": "Áp dụng mã QR duy nhất hiển thị chi tiết chống hàng giả trên tiêu đề hợp đồng.",
         "icon": "file-check"
       },
       {
-        "title": "Shipping lists coding",
-        "description": "Place Code128 barcodes at target spots for quick warehouse scanning gun validation.",
+        "title": "Mã hóa danh sách vận chuyển",
+        "description": "Đặt mã vạch Code128 tại các điểm mục tiêu để xác thực súng quét kho nhanh chóng.",
         "icon": "truck"
       },
       {
-        "title": "Asset registration carding",
-        "description": "Add inventory QR codes displaying maintenance specs onto physical equipment sheets.",
+        "title": "Đăng ký thẻ tài sản",
+        "description": "Thêm mã QR tồn kho hiển thị thông số kỹ thuật bảo trì vào trang thiết bị vật lý.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "Are the generated barcodes highly scannable?",
-        "answer": "Yes. We embed lossless high-resolution PNG representations that remain sharp even when printed at very small dimensions."
+        "question": "Mã vạch được tạo có dễ quét được không?",
+        "answer": "Vâng. Chúng tôi nhúng các bản trình bày PNG có độ phân giải cao không mất dữ liệu mà vẫn sắc nét ngay cả khi được in ở kích thước rất nhỏ."
       },
       {
-        "question": "Can I inject unique values on each page?",
-        "answer": "Currently, the batch run applies the same configured code onto all selected pages. Multi-valued excel import is planned in a future update."
+        "question": "Tôi có thể thêm các giá trị duy nhất vào mỗi trang không?",
+        "answer": "Hiện tại, việc chạy hàng loạt sẽ áp dụng cùng một mã được định cấu hình trên tất cả các trang đã chọn. Nhập excel đa giá trị được lên kế hoạch trong bản cập nhật trong tương lai."
       },
       {
-        "question": "What does the `pt` coordinate represent?",
-        "answer": "`pt` (Point) is the standard PDF physical unit (72 pt = 1 inch). A4 pages are represented as 595 × 842 pt."
+        "question": "Tọa độ `pt` thể hiện điều gì?",
+        "answer": "`pt` (Điểm) là đơn vị vật lý PDF tiêu chuẩn (72 pt = 1 inch). Các trang A4 được biểu diễn dưới dạng 595 × 842 pt."
       }
     ]
   },
   "signature-ink-optimizer": {
     "title": "Trích chữ ký & con dấu",
-    "metaDescription": "Trích xuất chữ ký và con dấu từ tài liệu quét, làm sạch nền và khử bóng để tạo tệp PNG nền trong suốt.",
+    "metaDescription": "Trích xuất chữ ký hoặc tem từ ảnh và xóa nền của ảnh. Tải xuống PNG trong suốt để sử dụng trong tài liệu.",
     "keywords": [
       "tách chữ ký",
       "làm trong suốt con dấu",
       "tách dấu đỏ png"
     ],
-    "description": "\n      <p>The Signature & Stamp Chroma Ink Optimizer functions as a professional high-fidelity ink purifier.</p>\n      <p>Signatures or corporate seals captured on phones often suffer from yellow paper tint, uneven shadows, and page wrinkles. Pasting them directly onto contract PDFs looks amateur.</p>\n      <p>This tool separates the Alpha channel based on luminance and color space. It completely bleaches paper backgrounds while sharpening stamp red (Chroma Ink) and handwriting black. The result is a premium, transparent PNG stamp carrying genuine ink textures.</p>\n    ",
+    "description": "<p>Chroma Ink Optimizer có chức năng như một bộ lọc mực chuyên nghiệp có độ trung thực cao.</p>\n      <p>Chữ ký hoặc con dấu công ty chụp trên điện thoại thường bị ố vàng, đổ bóng không đều và bị nhăn trang. Dán chúng trực tiếp vào các tệp PDF hợp đồng trông có vẻ nghiệp dư.</p>\n      <p>Công cụ này phân tách kênh Alpha dựa trên độ sáng và không gian màu. Nó tẩy trắng hoàn toàn nền giấy trong khi làm sắc nét màu đỏ tem (Mực Chroma) và chữ viết tay màu đen. Kết quả là một con tem PNG trong suốt, cao cấp có họa tiết mực thật.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload seal photo",
-        "description": "Provide a phone-captured photo of your signature or stamp seal."
+        "title": "Tải ảnh con dấu lên",
+        "description": "Cung cấp ảnh chụp chữ ký hoặc con dấu của bạn được chụp bằng điện thoại."
       },
       {
         "step": 2,
-        "title": "Adjust cleaning sliders",
-        "description": "Move contrast and luminance sliders to isolate the background noise in real-time."
+        "title": "Điều chỉnh thanh trượt làm sạch",
+        "description": "Di chuyển các thanh trượt độ tương phản và độ sáng để tách tiếng ồn xung quanh trong thời gian thực."
       },
       {
         "step": 3,
-        "title": "Download clean signature",
-        "description": "Export as transparent PNG ready to be stamped onto formal document agreements."
+        "title": "Tải xuống chữ ký sạch",
+        "description": "Xuất dưới dạng PNG trong suốt, sẵn sàng để đóng dấu vào các thỏa thuận tài liệu chính thức."
       }
     ],
     "useCases": [
       {
-        "title": "Professional e-signature prep",
-        "description": "Convert gray signature photos into beautiful, transparent layers to sign agreements.",
+        "title": "Chuẩn bị chữ ký điện tử chuyên nghiệp",
+        "description": "Chuyển đổi ảnh chữ ký màu xám thành các lớp trong suốt, đẹp mắt để ký thỏa thuận.",
         "icon": "file-signature"
       },
       {
-        "title": "Corporate seal sanitizing",
-        "description": "Clean physical stamp scans by discarding paper fiber noise, preparing crisp transparent stamp seals.",
+        "title": "Vệ sinh seal công ty",
+        "description": "Làm sạch bản quét tem vật lý bằng cách loại bỏ tiếng ồn của sợi giấy, chuẩn bị con dấu tem trong suốt sắc nét.",
         "icon": "stamp"
       },
       {
-        "title": "Drawn line art extraction",
-        "description": "Isolate black strokes from drawing sketchbooks for easy Photoshop coloring workflows.",
+        "title": "Trích xuất nghệ thuật đường vẽ",
+        "description": "Tách biệt các nét đen khỏi sổ phác thảo để có quy trình tô màu Photoshop dễ dàng.",
         "icon": "edit"
       }
     ],
     "faq": [
       {
-        "question": "How does self-adaptive Alpha extraction differ from normal keying?",
-        "answer": "Standard chroma-keying often makes signature stroke details look blocky and pixelated. Our algorithm isolates only white/yellow background noise and smooths the ink borders."
+        "question": "Quá trình trích xuất Alpha tự thích ứng khác với khóa thông thường như thế nào?",
+        "answer": "Khóa sắc độ tiêu chuẩn thường làm cho các chi tiết nét đặc trưng trông có vẻ khối và có pixel. Thuật toán của chúng tôi chỉ tách nhiễu nền trắng/vàng và làm mịn đường viền mực."
       },
       {
-        "question": "Which image formats are supported?",
-        "answer": "We support JPG, JPEG, and PNG. For best results, capture your signature photo under bright, even lighting."
+        "question": "Hỗ trợ những định dạng hình ảnh nào?",
+        "answer": "Chúng tôi hỗ trợ JPG, JPEG và PNG. Để có kết quả tốt nhất, hãy chụp bức ảnh đặc trưng của bạn dưới ánh sáng sáng, đều."
       },
       {
-        "question": "Will the handwriting detail be modified?",
-        "answer": "No. The pixel filtering acts on original coordinates, sharpening contrast while maintaining genuine stroke textures."
+        "question": "Chi tiết chữ viết tay có bị sửa đổi không?",
+        "answer": "Không. Tính năng lọc pixel hoạt động theo tọa độ gốc, làm sắc nét độ tương phản trong khi vẫn duy trì họa tiết nét chân thực."
       }
     ]
   },
   "dead-link-debugger": {
     "title": "Sửa liên kết hỏng",
-    "metaDescription": "Quét toàn bộ tài liệu PDF để tìm các liên kết (/URI) bị hỏng, cho phép sửa đổi hoặc chuyển hướng chúng.",
+    "metaDescription": "Kiểm tra các siêu liên kết PDF và thay thế các đích đến bị hỏng hoặc lỗi thời. Quét chú thích liên kết và lưu tài liệu đã cập nhật.",
     "keywords": [
       "sửa liên kết hỏng",
       "kiểm tra link pdf",
       "điều hướng url pdf"
     ],
-    "description": "\n      <p>The Dead Link Debugger is a deep structural editor that guarantees link interaction quality in published files.</p>\n      <p>Broken urls (404/500) inside manuals, whitepapers, or guides reduce branding authority. This tool lets you manage the hyperlinks database seamlessly.</p>\n      <p>It parses the low-level <code>/Link</code> dictionaries on each page, Probes them, and displays link status in an interactive grid (red for dead links, orange for redirects). Simply type the updated redirect URL, and the tool writes the new target directly back into the PDF binary stream.</p>\n    ",
+    "description": "<p>Trình gỡ lỗi liên kết chết là trình chỉnh sửa cấu trúc sâu đảm bảo chất lượng tương tác liên kết trong các tệp đã xuất bản.</p>\n      <p>Các url bị hỏng (404/500) bên trong sách hướng dẫn, sách trắng hoặc hướng dẫn sẽ làm giảm uy tín của thương hiệu. Công cụ này cho phép bạn quản lý cơ sở dữ liệu siêu liên kết một cách liền mạch.</p>\n      <p>Nó phân tích các từ điển <code>/Liên kết</code> cấp thấp trên mỗi trang, Thăm dò chúng và hiển thị trạng thái liên kết trong một lưới tương tác (màu đỏ cho các liên kết chết, màu cam cho các chuyển hướng). Chỉ cần nhập URL chuyển hướng đã cập nhật và công cụ sẽ ghi trực tiếp mục tiêu mới vào luồng nhị phân PDF.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide target document",
-        "description": "Upload the PDF manual or catalog containing links to debug."
+        "title": "Cung cấp tài liệu mục tiêu",
+        "description": "Tải lên hướng dẫn sử dụng hoặc danh mục PDF có chứa các liên kết để gỡ lỗi."
       },
       {
         "step": 2,
-        "title": "Scan and update",
-        "description": "Let the debugger extract all URL entities. Input new redirect URLs for broken items."
+        "title": "Quét và cập nhật",
+        "description": "Cho phép trình gỡ lỗi trích xuất tất cả các thực thể URL. Nhập URL chuyển hướng mới cho các mục bị hỏng."
       },
       {
         "step": 3,
-        "title": "Save redirect updates",
-        "description": "Click execute to rewrite /URI actions and download the corrected PDF."
+        "title": "Lưu cập nhật chuyển hướng",
+        "description": "Nhấp vào thực hiện để viết lại các hành động /URI và tải xuống bản PDF đã sửa."
       }
     ],
     "useCases": [
       {
-        "title": "Flyer broken links hotfix",
-        "description": "Instantly correct wrong urls on published flyers without reopening original design editors.",
+        "title": "Hotfix liên kết bị hỏng tờ rơi",
+        "description": "Sửa ngay lập tức các url sai trên các tờ rơi đã xuất bản mà không cần mở lại trình chỉnh sửa thiết kế ban đầu.",
         "icon": "refresh-cw"
       },
       {
-        "title": "Bibliography links verification",
-        "description": "Verify academic bibliography links in reports, updating references to maintain authority.",
+        "title": "Xác minh liên kết thư mục",
+        "description": "Xác minh các liên kết thư mục học thuật trong báo cáo, cập nhật tài liệu tham khảo để duy trì quyền lực.",
         "icon": "book"
       },
       {
-        "title": "Corporate rebranding updates",
-        "description": "Batch update old URLs across corporate PDFs when company domain names are changed.",
+        "title": "Cập nhật đổi thương hiệu doanh nghiệp",
+        "description": "Cập nhật hàng loạt các URL cũ trên các tệp PDF của công ty khi tên miền của công ty được thay đổi.",
         "icon": "globe"
       }
     ],
     "faq": [
       {
-        "question": "Why isn't link reachability fully checked online?",
-        "answer": "Web browsers enforce strict CORS policies that block direct multi-origin link checking. Our tool lists the links clearly and lets you hot-fix them manually."
+        "question": "Tại sao khả năng tiếp cận liên kết không được kiểm tra trực tuyến đầy đủ?",
+        "answer": "Trình duyệt web thực thi các chính sách CORS nghiêm ngặt nhằm chặn việc kiểm tra liên kết đa nguồn trực tiếp. Công cụ của chúng tôi liệt kê các liên kết rõ ràng và cho phép bạn sửa nóng chúng theo cách thủ công."
       },
       {
-        "question": "Will this modify the visual text representation on the page?",
-        "answer": "No. It only alters the underlying `/URI` navigation action. The visual link text remains unchanged."
+        "question": "Điều này có sửa đổi cách trình bày văn bản trực quan trên trang không?",
+        "answer": "Không. Nó chỉ thay đổi hành động điều hướng `/URI` cơ bản. Văn bản liên kết trực quan vẫn không thay đổi."
       },
       {
-        "question": "Does it support modifying internal page bookmarks?",
-        "answer": "This tool handles external `/URI` hyperlinks. For internal layout navigation, use our interactive TOC tool."
+        "question": "Nó có hỗ trợ sửa đổi dấu trang trang nội bộ không?",
+        "answer": "Công cụ này xử lý các siêu liên kết `/URI` bên ngoài. Để điều hướng bố cục nội bộ, hãy sử dụng công cụ TOC tương tác của chúng tôi."
       }
     ]
   },
   "interactive-toc-generator": {
     "title": "Tạo mục lục tương tác",
-    "metaDescription": "Chèn trang mục lục có thể nhấp để di chuyển đến các trang tương ứng, tự động thêm nút quay về mục lục (↩) ở lề trang.",
+    "metaDescription": "Thêm mục lục có thể nhấp vào tệp PDF của bạn. Tạo liên kết chương và quay lại điều hướng để duyệt tài liệu dễ dàng hơn.",
     "keywords": [
       "tạo mục lục tương tác",
       "mục lục nhấp chuột",
       "nút quay lại mục lục"
     ],
-    "description": "\n      <p>The Interactive TOC Builder introduces a revolutionary navigation experience to extensive PDFs.</p>\n      <p>Flipping through hundreds of pages in unstructured documents to locate target chapters is frustrating. This tool introduces <strong>Bidirectional TOC compilation</strong>.</p>\n      <p>It scans headers and generates an origami-inspired, premium Table of Contents page inserted right after the cover. In addition to creating clickable /GoTo links for each index row, it injects a tiny, elegant \"TOC ↩\" hovering anchor at the corner of each target chapter page. Readers can jump back and forth instantly, enjoying web-like navigation.</p>\n    ",
+    "description": "<p>Trình tạo TOC tương tác mang đến trải nghiệm điều hướng mang tính cách mạng cho các tệp PDF mở rộng.</p>\n      <p>Việc lật qua hàng trăm trang trong các tài liệu phi cấu trúc để tìm các chương mục tiêu thật là khó chịu. Công cụ này giới thiệu <strong>Biên dịch TOC hai chiều</strong>.</p>\n      <p>Nó quét các tiêu đề và tạo ra một trang Mục lục cao cấp, lấy cảm hứng từ origami được chèn ngay sau bìa. Ngoài việc tạo các liên kết /GoTo có thể nhấp vào cho mỗi hàng chỉ mục, nó còn chèn một mỏ neo lơ lửng \"TOC ↩\" nhỏ, trang nhã ở góc của mỗi trang chương mục tiêu. Người đọc có thể chuyển qua lại ngay lập tức và tận hưởng khả năng điều hướng giống như trên web.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide PDF document",
-        "description": "Upload a report, eBook, or proposal that needs an interactive catalog."
+        "title": "Cung cấp tài liệu PDF",
+        "description": "Tải lên báo cáo, Sách điện tử hoặc đề xuất cần danh mục tương tác."
       },
       {
         "step": 2,
-        "title": "Set TOC title & index",
-        "description": "Customize the main title and choose the page index to insert the TOC page."
+        "title": "Đặt tiêu đề & chỉ mục TOC",
+        "description": "Tùy chỉnh tiêu đề chính và chọn chỉ mục trang để chèn trang TOC."
       },
       {
         "step": 3,
-        "title": "Weave anchors & save",
-        "description": "Click execute to compile the pages and write the dual-link navigation."
+        "title": "Đan neo và lưu lại",
+        "description": "Nhấp vào thực hiện để biên dịch các trang và viết điều hướng liên kết kép."
       }
     ],
     "useCases": [
       {
-        "title": "Annual corporate report polishing",
-        "description": "Inject a beautiful index page after the cover sheet to allow shareholders to jump between financial charts.",
+        "title": "Đánh bóng báo cáo thường niên của công ty",
+        "description": "Chèn một trang chỉ mục đẹp mắt sau trang bìa để cho phép các cổ đông chuyển đổi giữa các biểu đồ tài chính.",
         "icon": "file-bar"
       },
       {
-        "title": "Thesis indexing",
-        "description": "Fast compile standard indexes aligned with university formatting rules.",
+        "title": "Lập chỉ mục luận văn",
+        "description": "Biên dịch nhanh các chỉ mục tiêu chuẩn phù hợp với quy tắc định dạng của trường đại học.\ndấu trang",
         "icon": "bookmark"
       },
       {
-        "title": "Operation manual navigation",
-        "description": "Help handbook readers quickly jump from troubleshooting sheets back to the main TOC.",
+        "title": "Điều hướng hướng dẫn vận hành",
+        "description": "Giúp người đọc sổ tay nhanh chóng chuyển từ trang xử lý sự cố trở lại TOC chính.",
         "icon": "check-circle"
       }
     ],
     "faq": [
       {
-        "question": "How do the bidirectional anchors work?",
-        "answer": "We create standard Link annotations on the TOC page targeting the respective pages; then we embed a link back to the TOC page on all target chapter sheets."
+        "question": "Mỏ neo hai chiều hoạt động như thế nào?",
+        "answer": "Chúng tôi tạo chú thích Liên kết tiêu chuẩn trên trang TOC nhắm mục tiêu đến các trang tương ứng; sau đó chúng tôi nhúng một liên kết quay lại trang TOC trên tất cả các trang chương mục tiêu."
       },
       {
-        "question": "Will inserting the TOC page break existing page numbers?",
-        "answer": "No. The compiler accounts for the offset of the newly inserted TOC page, ensuring all target destinations align."
+        "question": "Việc chèn trang TOC có làm hỏng số trang hiện có không?",
+        "answer": "Không. Trình biên dịch tính đến phần bù của trang TOC mới được chèn, đảm bảo tất cả các đích đến đều căn chỉnh."
       },
       {
-        "question": "Is the TOC page valid when printed physically?",
-        "answer": "Yes. The generated TOC lists clean physical page numbers to guide paper readers while enabling clickable links on screen."
+        "question": "Trang TOC có hợp lệ khi được in vật lý không?",
+        "answer": "Có. TOC được tạo liệt kê các số trang vật lý rõ ràng để hướng dẫn người đọc giấy đồng thời kích hoạt các liên kết có thể nhấp vào trên màn hình."
       }
     ]
   },
@@ -7090,8 +7090,8 @@ export const toolContentVn: Record<string, ToolContent> = {
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide skew PDF",
-        "description": "Upload any PDF sheet carrying rotated or poorly aligned scanned documents."
+        "title": "Cung cấp bản PDF lệch",
+        "description": "Tải lên bất kỳ trang PDF nào có tài liệu được quét bị xoay hoặc căn chỉnh kém."
       },
       {
         "step": 2,
@@ -7106,481 +7106,481 @@ export const toolContentVn: Record<string, ToolContent> = {
     ],
     "useCases": [
       {
-        "title": "Receipt & Contract Archiving",
-        "description": "Straighten quick hand-held mobile contract scans before saving them as formal digital PDF archives.",
+        "title": "Lưu trữ biên lai và hợp đồng",
+        "description": "Làm thẳng các bản quét hợp đồng di động cầm tay nhanh chóng trước khi lưu chúng dưới dạng kho lưu trữ PDF kỹ thuật số chính thức.",
         "icon": "file-text"
       },
       {
-        "title": "Academic Book Digitizing",
-        "description": "Sanitize microfilm book scans where text lines drift out of horizontal margins.",
+        "title": "Số hóa sách học thuật",
+        "description": "Khử trùng các bản quét sách vi phim nơi các dòng văn bản tràn ra khỏi lề ngang.",
         "icon": "book"
       },
       {
-        "title": "Student Homework Grading",
-        "description": "Correct homework snapshots taken by student phones, relaxing the eyes of grading teachers.",
+        "title": "Chấm điểm bài tập về nhà của học sinh",
+        "description": "Chỉnh sửa ảnh chụp nhanh bài tập được chụp bằng điện thoại của học sinh, giúp giáo viên chấm điểm thư giãn.",
         "icon": "edit-3"
       }
     ],
     "faq": [
       {
-        "question": "How is document skew detected?",
+        "question": "Làm cách nào để phát hiện độ lệch của tài liệu?",
         "answer": "Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc."
       },
       {
-        "question": "Will this process crop away page edges?",
+        "question": "Quá trình này có cắt bỏ các cạnh của trang không?",
         "answer": "Phát hiện dòng chữ nghiêng ngay trên thiết bị và đặt nội dung đã chỉnh trong trang gốc."
       },
       {
-        "question": "Does it support documents filled with diagrams?",
+        "question": "Nó có hỗ trợ các tài liệu chứa đầy sơ đồ không?",
         "answer": "Trang trống, bản quét không rõ và trang có chú thích được giữ nguyên."
       }
     ]
   },
   "pdf-two-column-reflower": {
     "title": "Chuyển đổi tài liệu 2 cột",
-    "metaDescription": "Sao chép trang và giới hạn lại CropBox trái/phải để chuyển đổi tài liệu từ hai cột thành một cột thẳng đứng.",
+    "metaDescription": "Sắp xếp lại các tài liệu PDF hai cột thành một cột duy nhất để đọc trên thiết bị di động dễ dàng hơn. Điều chỉnh tài liệu học thuật cho màn hình nhỏ hơn.",
     "keywords": [
       "chuyển hai cột sang một cột",
       "dàn trang luận văn",
       "chia hộp cắt pdf"
     ],
-    "description": "\n      <p>The Academic Two-Column Reflower solves the most significant pain point of digital research: reading papers on standard mobile screens.</p>\n      <p>Double-column layouts (used by IEEE, ACM, Nature, and major reports) are designed for A4 paper. Navigating them on phone screens or Kindle devices requires constant zooming, dragging right, scrolling down, and panning back up. It breaks reading comprehension completely.</p>\n      <p>Our processor implements a <strong>smart paragraph reflow and vertical partition barrier scan</strong>. It analyzes character coordinates to map double-column gutters, divides the layout, and weaves segments vertically (left column first, then right). Graphs, formulas, and headings are seamlessly rearranged into a single-column, flowable vertical scroll PDF.</p>\n    ",
+    "description": "<p>Reflower hai cột học thuật giải quyết điểm yếu quan trọng nhất của nghiên cứu kỹ thuật số: đọc bài viết trên màn hình di động tiêu chuẩn.</p>\n      <p>Bố cục hai cột (được IEEE, ACM, Nature và các báo cáo lớn sử dụng) được thiết kế cho giấy A4. Điều hướng chúng trên màn hình điện thoại hoặc thiết bị Kindle yêu cầu liên tục thu phóng, kéo sang phải, cuộn xuống và xoay ngược lên. Nó phá vỡ hoàn toàn khả năng đọc hiểu.</p>\n      <p>Bộ xử lý của chúng tôi triển khai <strong>quét chỉnh lại đoạn văn thông minh và quét rào cản phân vùng dọc</strong>. Nó phân tích tọa độ ký tự để ánh xạ các máng xối hai cột, phân chia bố cục và dệt các phân đoạn theo chiều dọc (cột trái trước, sau đó phải). Đồ thị, công thức và tiêu đề được sắp xếp lại liền mạch thành một bản PDF cuộn dọc, một cột, có thể di chuyển được.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload double-column PDF",
-        "description": "Provide the IEEE/ACM journal report or multi-column PDF sheet."
+        "title": "Tải lên bản PDF hai cột",
+        "description": "Cung cấp báo cáo tạp chí IEEE/ACM hoặc bảng PDF nhiều cột."
       },
       {
         "step": 2,
-        "title": "Inspect partition gutter",
-        "description": "Verify the red vertical partition slice guides. Adjust margins to prevent overlapping elements."
+        "title": "Kiểm tra máng xối phân vùng",
+        "description": "Xác minh các hướng dẫn lát phân vùng dọc màu đỏ. Điều chỉnh lề để tránh các phần tử chồng chéo."
       },
       {
         "step": 3,
-        "title": "Reflow and save",
-        "description": "Click execute to compile the pages into flowable layouts and download instantly."
+        "title": "Chỉnh lại và lưu",
+        "description": "Nhấp vào thực hiện để biên dịch các trang thành bố cục có thể điều chỉnh được và tải xuống ngay lập tức."
       }
     ],
     "useCases": [
       {
-        "title": "e-Reader Book Import",
-        "description": "Convert dense double-column essays into comfortable single-column documents matching Kindle and Onyx screens.",
+        "title": "Nhập sách e-Reader",
+        "description": "Chuyển đổi các bài luận hai cột dày đặc thành tài liệu một cột thoải mái phù hợp với màn hình Kindle và Onyx.",
         "icon": "tablet"
       },
       {
-        "title": "Subway Phone Reading",
-        "description": "Read research literature comfortably with single-hand vertical swipe gestures during transit.",
+        "title": "Đọc điện thoại tàu điện ngầm",
+        "description": "Đọc tài liệu nghiên cứu một cách thoải mái bằng cử chỉ vuốt dọc bằng một tay trong khi di chuyển.",
         "icon": "smartphone"
       },
       {
-        "title": "Archival Journal Formatting",
-        "description": "Modernize old narrow-column newspapers into readable, single-column web formats.",
+        "title": "Định dạng tạp chí lưu trữ",
+        "description": "Hiện đại hóa các tờ báo cột hẹp cũ thành các định dạng web một cột dễ đọc.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How are broad charts and equations handled?",
-        "answer": "Our engine applies \"span element detection.\" When an equation or diagram exceeds normal column widths, it is isolated as a full-width item, maintaining original proportions without clipping."
+        "question": "Biểu đồ và phương trình rộng được xử lý như thế nào?",
+        "answer": "Công cụ của chúng tôi áp dụng \"phát hiện phần tử nhịp\". Khi một phương trình hoặc sơ đồ vượt quá độ rộng cột bình thường, nó sẽ bị cô lập dưới dạng một mục có chiều rộng đầy đủ, duy trì tỷ lệ ban đầu mà không bị cắt bớt."
       },
       {
-        "question": "Will this modify the vector text resolution?",
-        "answer": "Not at all. We rewrite PDF text object transform matrices at the object tree level instead of rasterizing, meaning text remains 100% vector and fully selectable."
+        "question": "Điều này có làm thay đổi độ phân giải của văn bản vector không?",
+        "answer": "Không hề. Chúng tôi viết lại ma trận biến đổi đối tượng văn bản PDF ở cấp cây đối tượng thay vì rasterizing, nghĩa là văn bản vẫn là vectơ 100% và hoàn toàn có thể lựa chọn."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "For flat image-based PDFs, we highly recommend running our OCR tool first before executing the Reflow process."
+        "question": "Tính năng này có hoạt động trên tài liệu hình ảnh được quét không?",
+        "answer": "Đối với các tệp PDF dựa trên hình ảnh phẳng, chúng tôi khuyên bạn nên chạy công cụ OCR trước khi thực hiện quy trình Reflow."
       }
     ]
   },
   "pdf-page-resizer-uniform": {
     "title": "Đồng nhất kích thước trang",
-    "metaDescription": "Tự động phát hiện kích thước các trang khác nhau trong PDF, phóng to/thu nhỏ đồng bộ về kích thước đích.",
+    "metaDescription": "Thay đổi kích thước các trang PDF hỗn hợp thành kích thước đồng nhất. Chuẩn hóa các trang A4, A3 và Letter với tỷ lệ tỷ lệ và lề giữa.",
     "keywords": [
       "đồng nhất khổ giấy pdf",
       "co giãn trang về a4",
       "căn giữa trang in"
     ],
-    "description": "\n      <p>The Multi-Format PDF Resizer is the ultimate standardizer for cluttered, mismatched corporate documents.</p>\n      <p>Combining invoices, contracts, and supplementary charts often results in a PDF containing massive A3 ledger pages, standard A4 agreements, and Letter-sized envelopes. Flipping through them is highly distracting, and sending them to physical office printers often causes jam errors due to size mismatch.</p>\n      <p>This tool rewrites the low-level <code>/MediaBox</code> and <code>/CropBox</code> grids on each page. It maps existing widths and heights, scales original pages proportionally to match target presets (e.g. standard A4), and introduces elegant, consistent surrounding margins, making the entire file look incredibly polished.</p>\n    ",
+    "description": "<p>Bộ điều chỉnh kích thước PDF đa định dạng là công cụ chuẩn hóa tối ưu cho các tài liệu công ty lộn xộn, không khớp.</p>\n      <p>Việc kết hợp hóa đơn, hợp đồng và biểu đồ bổ sung thường tạo ra một tệp PDF chứa các trang sổ cái A3 khổng lồ, các thỏa thuận A4 tiêu chuẩn và phong bì cỡ Letter. Việc lật qua chúng rất dễ gây mất tập trung và gửi chúng đến máy in văn phòng thực tế thường gây ra lỗi kẹt giấy do kích thước không khớp.</p>\n      <p>Công cụ này viết lại các lưới <code>/MediaBox</code> và <code>/CropBox</code> cấp thấp trên mỗi trang. Nó ánh xạ chiều rộng và chiều cao hiện có, chia tỷ lệ các trang gốc theo tỷ lệ để phù hợp với các mục tiêu đặt trước (ví dụ: A4 tiêu chuẩn) đồng thời giới thiệu các lề xung quanh trang nhã, nhất quán, làm cho toàn bộ tệp trông cực kỳ bóng bẩy.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide mixed-size PDF",
-        "description": "Upload a merged PDF document containing mismatched, messy page sizes."
+        "title": "Cung cấp PDF có kích thước hỗn hợp",
+        "description": "Tải lên tài liệu PDF đã hợp nhất có chứa kích thước trang không khớp, lộn xộn."
       },
       {
         "step": 2,
-        "title": "Choose target preset",
-        "description": "Select the target uniform size (e.g. A4, Letter, A3) and toggle scale modes."
+        "title": "Chọn mục tiêu đặt trước",
+        "description": "Chọn kích thước thống nhất mục tiêu (ví dụ: A4, Letter, A3) và chuyển đổi chế độ tỷ lệ."
       },
       {
         "step": 3,
-        "title": "Align and download",
-        "description": "Click execute to trigger 3D sheet alignment, downloading a beautifully standardized PDF."
+        "title": "Căn chỉnh và tải xuống",
+        "description": "Nhấp vào thực hiện để kích hoạt căn chỉnh trang tính 3D, tải xuống bản PDF được chuẩn hóa đẹp mắt."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate RFP Proposals",
-        "description": "Standardize scanned qualification certificates and A4 bidding sheets before physical printing.",
+        "title": "Đề xuất RFP của công ty",
+        "description": "Chuẩn hóa các chứng chỉ năng lực được quét và bảng đấu thầu A4 trước khi in giấy.",
         "icon": "file-text"
       },
       {
-        "title": "Financial Chart Integration",
-        "description": "Scale broad A3 financial cash flows into neat A4 pages, preserving printing standards.",
+        "title": "Tích hợp biểu đồ tài chính",
+        "description": "Chia tỷ lệ dòng tiền tài chính A3 rộng thành các trang A4 gọn gàng, đảm bảo tiêu chuẩn in ấn.",
         "icon": "layout"
       },
       {
-        "title": "Book Margin Standardization",
-        "description": "Force slightly varied scanned book pages into an absolutely uniform dimension for comfortable reading.",
+        "title": "Tiêu chuẩn hóa lề sách",
+        "description": "Buộc các trang sách được quét hơi khác nhau thành một kích thước hoàn toàn thống nhất để đọc thoải mái.",
         "icon": "book"
       }
     ],
     "faq": [
       {
-        "question": "Will this warp my content?",
-        "answer": "Never. We support both \"Contain\" (proportional scaling with white bars) and \"Cover\" (centered crop). The default Contain mode preserves aspect ratios, preventing distortion."
+        "question": "Điều này có làm sai lệch nội dung của tôi không?",
+        "answer": "Không bao giờ. Chúng tôi hỗ trợ cả \"Contain\" (tỷ lệ theo tỷ lệ với các thanh màu trắng) và \"Cover\" (cắt ở giữa). Chế độ Chứa mặc định duy trì tỷ lệ khung hình, ngăn ngừa biến dạng."
       },
       {
-        "question": "Will existing forms and annotations remain clickable?",
-        "answer": "Yes. The algorithm maps the scaling factors to the Annotation coordinate arrays, scaling link boxes, sign boundaries, and inputs to align perfectly after resizing."
+        "question": "Các biểu mẫu và chú thích hiện có vẫn có thể nhấp vào được chứ?",
+        "answer": "Vâng. Thuật toán ánh xạ các hệ số tỷ lệ tới mảng tọa độ Chú thích, hộp liên kết tỷ lệ, ranh giới ký hiệu và đầu vào để căn chỉnh hoàn hảo sau khi thay đổi kích thước."
       },
       {
-        "question": "Is there a limit on how many pages I can resize?",
-        "answer": "No. Since all operations run locally in your client sandbox using native JavaScript, you can process extensive PDFs containing hundreds of pages in seconds."
+        "question": "Có giới hạn về số lượng trang tôi có thể thay đổi kích thước không?",
+        "answer": "Không. Vì tất cả các thao tác đều chạy cục bộ trong hộp cát máy khách của bạn bằng cách sử dụng JavaScript gốc nên bạn có thể xử lý các tệp PDF mở rộng chứa hàng trăm trang trong vài giây."
       }
     ]
   },
   "handwriting-ink-contrast-booster": {
     "title": "Tăng độ nét chữ viết tay",
-    "metaDescription": "Tẩy trắng nền giấy ố vàng/tối màu, kéo giãn tương phản cục bộ cho nét viết mực xanh/đen và dấu đỏ.",
+    "metaDescription": "Nâng cao độ tương phản chữ viết tay và chữ ký trong hình ảnh được quét. Giảm tiếng ồn nền giấy và làm cho mực dễ đọc hơn.",
     "keywords": [
       "tăng nét chữ viết tay",
       "làm sạch nền giấy quét",
       "làm rõ nét chữ ký"
     ],
-    "description": "\n      <p>The Handwriting Ink Contrast Booster is a savior for digitizing signed agreements and historical manuscript archives.</p>\n      <p>Scans of hand-signed documents often look dull due to grey scanner glass reflection, yellow paper tint, or faded ink. Re-printing or photocopying these files results in blurry, illegible signatures. Traditional contrast tools darken the entire background, worsening the layout.</p>\n      <p>This tool utilizes **Contrast Limited Adaptive Histogram Equalization (CLAHE) and hue-based color separation**. In a secure local Canvas process, it isolates handwriting strokes (both black and blue) from background parchment, bleaches shadow wrinkles completely, and infuses faded inks with deep, saturated contrast, leaving your documents looking incredibly crisp and clean.</p>\n    ",
+    "description": "<p>Bộ tăng cường độ tương phản mực viết tay là cứu tinh cho việc số hóa các thỏa thuận đã ký và kho lưu trữ bản thảo lịch sử.</p>\n      <p>Các bản quét tài liệu được ký tay thường trông mờ do phản chiếu của kính máy quét màu xám, giấy ố vàng hoặc mực bị phai. Việc in lại hoặc sao chụp các tập tin này sẽ khiến chữ ký bị mờ, khó đọc. Các công cụ tương phản truyền thống làm tối toàn bộ nền, làm xấu bố cục.</p>\n      <p>Công cụ này sử dụng **Cân bằng biểu đồ thích ứng có giới hạn độ tương phản (CLAHE) và phân tách màu dựa trên màu sắc**. Trong quy trình Canvas cục bộ an toàn, nó tách biệt các nét viết tay (cả đen và xanh) khỏi giấy da nền, tẩy trắng hoàn toàn các nếp nhăn bóng và truyền các loại mực đã phai màu với độ tương phản sâu, bão hòa, giúp tài liệu của bạn trông cực kỳ sắc nét và sạch sẽ.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import hand-signed document",
-        "description": "Provide a PDF containing faded signatures, handwritten diaries, or sketches."
+        "title": "Nhập tài liệu được ký tay",
+        "description": "Cung cấp bản PDF có chữ ký mờ, nhật ký viết tay hoặc bản phác thảo."
       },
       {
         "step": 2,
-        "title": "Configure ink filter",
-        "description": "Select the color profile to isolate (e.g. blue ink, black ink, or both) and adjust sharpening."
+        "title": "Cấu hình bộ lọc mực",
+        "description": "Chọn cấu hình màu để tách biệt (ví dụ: mực xanh, mực đen hoặc cả hai) và điều chỉnh độ sắc nét."
       },
       {
         "step": 3,
-        "title": "Sharpen and download",
-        "description": "Click execute to trace colors with a radar scanner effect and download purified PDF."
+        "title": "Làm sắc nét và tải xuống",
+        "description": "Nhấp vào thực hiện để theo dõi màu sắc bằng hiệu ứng máy quét radar và tải xuống bản PDF tinh khiết."
       }
     ],
     "useCases": [
       {
-        "title": "Executed Contracts Repair",
-        "description": "Repair poorly scanned agreements, sharpening signatures and bleaching paper background to A4-pure white.",
+        "title": "Thực hiện sửa chữa hợp đồng",
+        "description": "Sửa các thỏa thuận scan kém, mài chữ ký và tẩy nền giấy thành màu trắng tinh A4.",
         "icon": "file-check"
       },
       {
-        "title": "Handwritten Manuscripts Archive",
-        "description": "Digitize written journals or diaries, extracting clear black strokes while erasing age-related stains.",
+        "title": "Lưu trữ bản thảo viết tay",
+        "description": "Số hóa nhật ký viết tay, trích xuất nét đen rõ ràng đồng thời xóa đi các vết bẩn do tuổi tác.",
         "icon": "book"
       },
       {
-        "title": "Historical Ledger Restoration",
-        "description": "Restore faint ink details on aged archival ledgers, rescuing valuable handwritten coordinates.",
+        "title": "Khôi phục sổ cái lịch sử",
+        "description": "Khôi phục các chi tiết mực mờ trên sổ cái lưu trữ cũ, giải cứu tọa độ viết tay có giá trị.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "How does this differ from normal grayscale conversion?",
-        "answer": "Grayscale converts paper shadows into gray values. Our adaptive algorithm separates background luminance and isolates signature \"ink spectrums,\" purifying the backdrop to absolute white while leaving stroke edges sharp."
+        "question": "Điều này khác với chuyển đổi thang độ xám thông thường như thế nào?",
+        "answer": "Thang độ xám chuyển đổi bóng giấy thành giá trị màu xám. Thuật toán thích ứng của chúng tôi tách độ chói của nền và tách biệt \"phổ mực\" đặc trưng, ​​​​làm sạch phông nền thành màu trắng tuyệt đối trong khi vẫn làm sắc nét các cạnh nét vẽ."
       },
       {
-        "question": "Will I lose handwriting stroke texture?",
-        "answer": "No. The CLAHE algorithm works on a sub-pixel level, preserving natural pen-stroke pressure, ink fading, and dynamic line weights."
+        "question": "Tôi có bị mất kết cấu nét viết tay không?",
+        "answer": "Không. Thuật toán CLAHE hoạt động ở cấp độ pixel phụ, duy trì áp lực nét bút tự nhiên, độ mờ của mực và độ dày của đường động."
       },
       {
-        "question": "Can I keep red corporate stamp marks?",
-        "answer": "Yes. By enabling \"Chroma Ink Preservation,\" the booster whitens paper background and darkens writing, while maintaining the bright colors of red seals and blue ink signatures."
+        "question": "Tôi có thể giữ dấu tem màu đỏ của công ty không?",
+        "answer": "Vâng. Bằng cách bật \"Bảo quản mực Chroma\", bộ tăng cường làm trắng nền giấy và làm tối chữ viết, đồng thời duy trì màu sắc tươi sáng của dấu đỏ và chữ ký mực xanh."
       }
     ]
   },
   "pdf-spine-bookbinder": {
     "title": "Tính độ dày gáy sách",
-    "metaDescription": "Nhập số trang và định lượng giấy GSM để tính độ dày gáy sách theo đơn vị mm, tạo bản vẽ thiết kế bìa PDF phẳng.",
+    "metaDescription": "Tính chiều rộng gáy sách từ số trang và trọng lượng giấy. Tạo mẫu bìa có thể in được với các đường gấp gáy.",
     "keywords": [
       "tính độ dày gáy sách",
       "thiết kế bìa sách",
       "khổ gáy sách brossure"
     ],
-    "description": "\n      <p>The PDF Spine Bookbinder is a pre-press savior for designers, self-publishing authors, and commercial bidding teams.</p>\n      <p>When compiling thick book catalogs, bidding proposals, or annual directories, perfect binding (glue binding) requires a cover with precise spine coordinates. If the spine width is off by even 1mm, the bound cover will warp, shift, or crease. Calculating page counts against paper weight is complex and error-prone.</p>\n      <p>This tool utilizes a <strong>physically modeled GSM paper-to-thickness library</strong>. Simply input your PDF page count and select paper stock (e.g. 80 GSM offset, 100 GSM glossy). The engine calculates spine width down to micrometers and compiles a print-ready, extra-wide cover PDF complete with standard front/back flaps and precise fold mark creases.</p>\n    ",
+    "description": "<p>PDF Spine Bookbinder là cứu tinh trước khi in cho các nhà thiết kế, tác giả tự xuất bản và nhóm đấu thầu thương mại.</p>\n      <p>Khi biên soạn các danh mục sách dày, đề xuất đấu thầu hoặc thư mục hàng năm, việc đóng bìa hoàn hảo (đóng gáy bằng keo) cần có bìa có tọa độ gáy chính xác. Nếu chiều rộng gáy sách lệch đi dù chỉ 1 mm, bìa đóng sẽ bị cong, dịch chuyển hoặc bị nhàu. Việc tính số trang theo trọng lượng giấy rất phức tạp và dễ xảy ra lỗi.</p>\n      <p>Công cụ này sử dụng <strong>thư viện GSM theo độ dày giấy được mô hình hóa vật lý</strong>. Chỉ cần nhập số trang PDF của bạn và chọn loại giấy (ví dụ: 80 GSM offset, 100 GSM gloss). Công cụ này tính toán chiều rộng gáy sách đến từng micromet và biên soạn một bản PDF bìa cực rộng, sẵn sàng in hoàn chỉnh với các nắp trước/sau tiêu chuẩn và các nếp gấp chính xác.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Set pages & stock type",
-        "description": "Input document page count and select the target paper stock specifications."
+        "title": "Đặt trang và loại kho",
+        "description": "Nhập số trang tài liệu và chọn thông số kỹ thuật của kho giấy mục tiêu."
       },
       {
         "step": 2,
-        "title": "Input spine text",
-        "description": "Enter book titles, author details, and customize spine/cover backgrounds."
+        "title": "Nhập văn bản cột sống",
+        "description": "Nhập tên sách, thông tin chi tiết về tác giả và tùy chỉnh hình nền gáy/bìa."
       },
       {
         "step": 3,
-        "title": "3D Preview & Export",
-        "description": "Spin and inspect your book cover in an interactive 3D binder. Export high-resolution vector PDF."
+        "title": "Xem trước và xuất 3D",
+        "description": "Xoay và kiểm tra bìa sách của bạn trong bìa sách 3D tương tác. Xuất PDF vector có độ phân giải cao."
       }
     ],
     "useCases": [
       {
-        "title": "Thick Bidding Proposals",
-        "description": "Design professional cover sheets with precise spine crease alignments for thick tender bids.",
+        "title": "Đề xuất đấu thầu dày đặc",
+        "description": "Thiết kế các tờ bìa chuyên nghiệp với khả năng căn chỉnh nếp gấp gáy chính xác cho các hồ sơ dự thầu dày.",
         "icon": "layers"
       },
       {
-        "title": "Thesis Hardcover Binding",
-        "description": "Map out perfect spine layout widths for university master/doctorate degree theses.",
+        "title": "Đóng bìa cứng luận văn",
+        "description": "Vạch ra chiều rộng bố cục cột sống hoàn hảo cho luận văn thạc sĩ/tiến sĩ đại học.",
         "icon": "award"
       },
       {
-        "title": "Self-Publishing Novel Covers",
-        "description": "Calculate book spine width easily before submitting files to Print-on-Demand publishing services.",
+        "title": "Bìa tiểu thuyết tự xuất bản",
+        "description": "Dễ dàng tính toán chiều rộng gáy sách trước khi gửi tệp đến dịch vụ xuất bản In theo yêu cầu.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How accurate is the GSM paper-thickness calculation?",
-        "answer": "Highly accurate. Our physics library matches industry averages (e.g. 70 GSM = 0.09mm, 80 GSM = 0.10mm, 150 GSM glossy = 0.125mm). We also include a \"Double-sided printing\" toggle to halve calculations automatically."
+        "question": "Cách tính độ dày giấy GSM chính xác đến mức nào?",
+        "answer": "Độ chính xác cao. Thư viện vật lý của chúng tôi phù hợp với mức trung bình của ngành (ví dụ: 70 GSM = 0,09mm, 80 GSM = 0,10mm, 150 GSM bóng = 0,125mm). Chúng tôi cũng bao gồm nút chuyển đổi \"In hai mặt\" để tự động giảm một nửa số phép tính."
       },
       {
-        "question": "Are the exported covers ready for direct printing?",
-        "answer": "Yes. The files are vector-perfect PDFs carrying standard registration marks, color bars, and spine guides, fully compliant with offset and digital commercial presses."
+        "question": "Bìa xuất khẩu đã sẵn sàng để in trực tiếp chưa?",
+        "answer": "Vâng. Các tệp này là các tệp PDF hoàn hảo về vector có các dấu đăng ký tiêu chuẩn, thanh màu và hướng dẫn gáy, hoàn toàn tuân thủ các máy in thương mại kỹ thuật số và offset."
       },
       {
-        "question": "Can I upload a background image spanning the spine?",
-        "answer": "Yes. You can upload custom layouts, and our compositor will wrap and align the graphics across the spine folds automatically."
+        "question": "Tôi có thể tải lên hình nền kéo dài cột sống không?",
+        "answer": "Vâng. Bạn có thể tải lên các bố cục tùy chỉnh và bộ tổng hợp của chúng tôi sẽ tự động bao bọc và căn chỉnh đồ họa trên các nếp gấp gáy."
       }
     ]
   },
   "pdf-signature-anchor-helper": {
     "title": "Neo hướng dẫn ký tên",
-    "metaDescription": "Định vị chính xác và nhúng con dấu chỉ dẫn ký tên kèm theo các liên kết nhảy tương tác trực tiếp tới vị trí ký.",
+    "metaDescription": "Đặt hướng dẫn chữ ký trên các trang PDF sử dụng tọa độ X/Y. Xem trước vị trí của họ trước khi lưu tài liệu cập nhật.",
     "keywords": [
       "hướng dẫn ký tên pdf",
       "neo vị trí ký",
       "ký tên liên kết"
     ],
-    "description": "\n      <p>The PDF Signature Guide Injector guarantees clean, error-free signing workflows for multi-page agreements.</p>\n      <p>When sending multi-page NDA agreements, financial statements, or commercial leases, clients often miss critical signing boxes, requiring endless back-and-forth email loops and delayed business transactions.</p>\n      <p>Our tool uses <strong>natural regex semantic mapping</strong>. It scans the PDF character map to locate terms like <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code>, or <code>签署日期：</code>. It then leverages <code>pdf-lib</code> to inject standard PDF interactive Link annotations. When opened in any standard reader, clients see blinking, neon-bordered arrows that instantly guide them to the correct boxes, making signing foolproof.</p>\n    ",
+    "description": "<p>Trình tạo hướng dẫn chữ ký PDF đảm bảo quy trình ký kết rõ ràng, không có lỗi cho các thỏa thuận nhiều trang.</p>\n      <p>Khi gửi các thỏa thuận NDA, báo cáo tài chính hoặc hợp đồng thuê thương mại dài nhiều trang, khách hàng thường bỏ lỡ các hộp ký quan trọng, yêu cầu các vòng lặp email qua lại vô tận và các giao dịch kinh doanh bị trì hoãn.</p>\n      <p>Công cụ của chúng tôi sử dụng <strong>ánh xạ ngữ nghĩa biểu thức chính quy tự nhiên</strong>. Nó quét bản đồ ký tự PDF để xác định các thuật ngữ như <code>Chữ ký:</code>, <code>签字:</code>, <code>Nhân chứng:</code> hoặc <code>签署日期:</code>. Sau đó, nó tận dụng <code>pdf-lib</code> để chèn các chú thích Liên kết tương tác PDF tiêu chuẩn. Khi mở bằng bất kỳ đầu đọc tiêu chuẩn nào, khách hàng sẽ nhìn thấy các mũi tên nhấp nháy có viền đèn neon ngay lập tức hướng dẫn họ đến đúng ô, giúp việc ký tên trở nên dễ dàng.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import business contract",
-        "description": "Upload the PDF contract or NDA that needs signature coordinates."
+        "title": "Hợp đồng kinh doanh nhập khẩu",
+        "description": "Tải lên hợp đồng PDF hoặc NDA cần tọa độ chữ ký."
       },
       {"step":2,"title":"X / Y","description":"Nhấp vào phần xem trước PDF thực tế hoặc nhập tọa độ X và Y cho trang đã chọn."},
       {"step":3,"title":"Xử lý","description":"Xử lý tệp, xem kết quả rồi tải PDF xuống."},
     ],
     "useCases": [
       {
-        "title": "Corporate NDA Agreements",
-        "description": "Inject clear, flashing guides next to sign blocks to prevent onboarding employees from missing clauses.",
+        "title": "Thỏa thuận NDA của doanh nghiệp",
+        "description": "Đưa các hướng dẫn rõ ràng, nhấp nháy bên cạnh các khối ký tên để ngăn nhân viên tham gia thiếu các điều khoản.",
         "icon": "file-text"
       },
       {
-        "title": "Commercial Lease Contracts",
-        "description": "Guide multiple co-signers through multi-page real estate documents with custom-colored tabs.",
+        "title": "Hợp đồng cho thuê thương mại",
+        "description": "Hướng dẫn nhiều người đồng ký tên thông qua các tài liệu bất động sản nhiều trang bằng các tab màu tùy chỉnh.",
         "icon": "users"
       },
       {
-        "title": "Procurement PO Signatures",
-        "description": "Overlay interactive pointers on invoices and purchase orders to accelerate accounting approval loops.",
+        "title": "Chữ ký PO mua sắm",
+        "description": "Xếp chồng các con trỏ tương tác trên hóa đơn và đơn đặt hàng để đẩy nhanh vòng phê duyệt kế toán.",
         "icon": "briefcase"
       }
     ],
     "faq": [
       {
-        "question": "Will these guides appear when I print the contract?",
-        "answer": "No. The anchors are injected with the standard PDF `Printable` flag set to false. They display beautifully on computer/tablet screens but remain completely invisible when printed."
+        "question": "Những hướng dẫn này có xuất hiện khi tôi in hợp đồng không?",
+        "answer": "Không. Các neo được thêm cờ PDF `Có thể in` tiêu chuẩn được đặt thành sai. Chúng hiển thị đẹp mắt trên màn hình máy tính/máy tính bảng nhưng vẫn hoàn toàn vô hình khi được in."
       },
       {
-        "question": "Can clients jump between signature fields easily?",
-        "answer": "Yes. We weave bidirectional internal anchors. Clients can click the \"Sign Guide\" bookmark to automatically jump to the next empty signature slot instantly."
+        "question": "Khách hàng có thể dễ dàng chuyển đổi giữa các trường chữ ký không?",
+        "answer": "Vâng. Chúng tôi dệt neo nội bộ hai chiều. Khách hàng có thể nhấp vào dấu trang \"Hướng dẫn ký\" để tự động chuyển sang ô chữ ký trống tiếp theo ngay lập tức."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "Yes. Besides looking up text streams, our spatial layout parser estimates signature lines based on horizontal rules and bounding boxes on scanned sheets."
+        "question": "Tính năng này có hoạt động trên tài liệu hình ảnh được quét không?",
+        "answer": "Vâng. Bên cạnh việc tra cứu các luồng văn bản, trình phân tích cú pháp bố cục không gian của chúng tôi ước tính các dòng chữ ký dựa trên các quy tắc ngang và hộp giới hạn trên các trang được quét."
       }
     ]
   },
   "pdf-lossless-slicer": {
     "title": "Cắt bản vẽ không mất nét",
-    "metaDescription": "Định hình lại không gian MediaBox và CropBox để cắt các phần bản vẽ CAD lớn mà không làm vỡ các đường nét vectơ.",
+    "metaDescription": "Cắt một vùng của bản vẽ, bản đồ hoặc biểu đồ PDF bằng tọa độ chính xác. Giữ nguyên nội dung vector trong tệp PDF đã xuất.",
     "keywords": [
       "cắt bản vẽ lớn pdf",
       "cắt không mất dữ liệu",
       "cropbox bản vẽ"
     ],
-    "description": "\n      <p>The PDF Lossless Drawing Slicer is a high-precision, surgical tool built for architects, engineers, and map detailers.</p>\n      <p>When extracting a specific pump room or chip core from a massive CAD engineering blueprint or geographic map PDF, traditional screenshots result in pixelated, blurry text. Normal cropping tools simply place a mask over the sheet, meaning the massive 100MB file remains huge, and hidden content can still be extracted.</p>\n      <p>This tool edits the page <code>/MediaBox</code>, <code>/CropBox</code>, and <code>/BleedBox</code> matrices at the object tree level. It physically isolates vector nodes outside the selected region, keeping the target area 100% vector-perfect (allowing infinite zoom magnification) while purging redundant off-screen paths and images to shrink the file size by 95%!</p>\n    ",
+    "description": "<p>Bộ cắt bản vẽ không mất dữ liệu PDF là một công cụ phẫu thuật có độ chính xác cao được thiết kế dành cho kiến trúc sư, kỹ sư và người vẽ chi tiết bản đồ.</p>\n      <p>Khi trích xuất một phòng máy bơm hoặc lõi chip cụ thể từ bản thiết kế kỹ thuật CAD đồ sộ hoặc bản đồ địa lý PDF, ảnh chụp màn hình truyền thống sẽ tạo ra văn bản mờ, có pixel. Các công cụ cắt xén thông thường chỉ cần đặt một mặt nạ lên trang tính, nghĩa là tệp lớn 100MB vẫn có dung lượng lớn và nội dung ẩn vẫn có thể được trích xuất.</p>\n      <p>Công cụ này chỉnh sửa các ma trận trang <code>/MediaBox</code>, <code>/CropBox</code> và <code>/BleedBox</code> ở cấp độ cây đối tượng. Nó cô lập về mặt vật lý các nút vectơ bên ngoài vùng đã chọn, giữ cho vùng mục tiêu hoàn hảo 100% về vectơ (cho phép phóng to thu phóng vô hạn) đồng thời loại bỏ các đường dẫn và hình ảnh ngoài màn hình dư thừa để thu nhỏ kích thước tệp xuống 95%!</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import large blueprint",
-        "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
+        "title": "Nhập bản thiết kế lớn",
+        "description": "Tải lên bản đồ CAD, GIS giàu vector hoặc bản PDF danh mục có độ phân giải cao."
       },
       {"step":2,"title":"Hình chữ nhật cắt","description":"Nhập X, Y, chiều rộng và chiều cao rồi kiểm tra trang đã chọn trong phần xem trước."},
       {"step":3,"title":"Xử lý","description":"Xử lý tệp, xem kết quả rồi tải PDF xuống."},
     ],
     "useCases": [
       {
-        "title": "CAD Blueprint Isolation",
-        "description": "Slice out a \"cooling system\" detail from a massive 100MB floor plan blueprint to share with sub-contractors.",
+        "title": "Cách ly bản thiết kế CAD",
+        "description": "Cắt ra chi tiết \"hệ thống làm mát\" từ bản thiết kế sơ đồ mặt bằng khổng lồ 100 MB để chia sẻ với các nhà thầu phụ.",
         "icon": "crop"
       },
       {
-        "title": "GIS Map Snipping",
-        "description": "Extract a lossless, vector-clear block of a city street map for a presentation slide without resolution loss.",
+        "title": "Cắt bản đồ GIS",
+        "description": "Trích xuất khối bản đồ đường phố thành phố rõ ràng, không mất dữ liệu để tạo trang trình bày mà không làm giảm độ phân giải.",
         "icon": "map"
       },
       {
-        "title": "Manual Illustration Tracing",
-        "description": "Lossless isolate scientific book figures to embed into high-quality academic papers.",
+        "title": "Truy tìm minh họa thủ công",
+        "description": "Lossless cô lập các số liệu sách khoa học để nhúng vào các bài báo học thuật chất lượng cao.",
         "icon": "image"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard cropping?",
-        "answer": "Standard cropping merely adjusts visual bounds; the hidden vectors remain in the file. Our slicer trims overlapping vector paths and purges out-of-bounds XObject images, ensuring complete data isolation and maximum file compression."
+        "question": "Điều này khác với cắt xén tiêu chuẩn như thế nào?",
+        "answer": "Cắt xén tiêu chuẩn chỉ điều chỉnh giới hạn hình ảnh; các vectơ ẩn vẫn còn trong tệp. Bộ cắt của chúng tôi cắt các đường dẫn vectơ chồng chéo và lọc các hình ảnh XObject ngoài giới hạn, đảm bảo cách ly dữ liệu hoàn chỉnh và nén tệp tối đa."
       },
       {
-        "question": "Will text layers remain searchable?",
-        "answer": "Yes. Any text characters that fall inside the sliced boundary remain fully vector-clear, searchable, and selectable."
+        "question": "Các lớp văn bản có còn có thể tìm kiếm được không?",
+        "answer": "Vâng. Bất kỳ ký tự văn bản nào nằm trong ranh giới được cắt vẫn hoàn toàn rõ ràng về vectơ, có thể tìm kiếm và chọn được."
       },
       {
-        "question": "Can I export sliced regions to SVG?",
-        "answer": "The output is a standardized vector PDF. You can pass the resulting file to our PDF-to-SVG tool to convert it to a web-scalable vector graphics format."
+        "question": "Tôi có thể xuất các vùng được cắt lát sang SVG không?",
+        "answer": "Đầu ra là một tệp PDF vector được tiêu chuẩn hóa. Bạn có thể chuyển tệp kết quả sang công cụ PDF-to-SVG của chúng tôi để chuyển đổi tệp đó sang định dạng đồ họa vector có khả năng mở rộng trên web."
       }
     ]
   },
   "pdf-scratchpad-canvas": {
     "title": "Chèn nháp lưới ô vuông",
-    "metaDescription": "Tăng chiều rộng hoặc chiều cao trang PDF, ghép thêm một dải lề nháp 200 pt mang họa tiết kẻ ngang hoặc ô lưới.",
+    "metaDescription": "Thêm lề lưới, đường kẻ hoặc lề ghi chú Cornell vào các trang PDF. Tạo thêm không gian viết để ghi chú học tập, tính toán và luyện thi.",
     "keywords": [
       "chèn lề nháp pdf",
       "mở rộng lề viết ghi chú",
       "lưới ô vuông nháp"
     ],
-    "description": "\n      <p>The PDF Scratchpad Margin Extender is an essential study companion tailored for students, researchers, and professional exam candidates.</p>\n      <p>When solving practice test papers, reviewing slides, or reading academic textbooks on digital tablets, page margins are incredibly tight. Opening a separate notes app forces you to toggle screens constantly, breaking focus. Adding flat blank sheets prevents you from viewing the problem and your calculation side-by-side.</p>\n      <p>This tool rewrites page width or height dimensions in the low-level PDF structure, expanding <code>/MediaBox</code> margins by 200~250 pt on the right or bottom. It then overlays clean grid lines, college-ruled notebook lines, or Cornell layouts in the new margins, giving you dedicated, adjacent draft boards next to every single slide or question!</p>\n    ",
+    "description": "<p>PDF Scratchpad Margin Extender là một công cụ học tập thiết yếu được thiết kế riêng cho sinh viên, nhà nghiên cứu và thí sinh thi chuyên nghiệp.</p>\n      <p>Khi giải bài kiểm tra thực hành, xem lại các trang trình bày hoặc đọc sách giáo khoa học thuật trên máy tính bảng kỹ thuật số, lề trang rất chặt chẽ. Việc mở một ứng dụng ghi chú riêng buộc bạn phải chuyển đổi màn hình liên tục, làm mất tập trung. Việc thêm các tờ giấy trắng phẳng sẽ ngăn bạn xem bài toán và phép tính cạnh nhau.</p>\n      <p>Công cụ này viết lại kích thước chiều rộng hoặc chiều cao của trang trong cấu trúc PDF cấp thấp, mở rộng lề <code>/MediaBox</code> thêm 200~250 pt ở bên phải hoặc dưới cùng. Sau đó, nó sẽ phủ các đường lưới rõ ràng, các dòng sổ ghi chép do trường đại học quản lý hoặc bố cục của Cornell vào các lề mới, cung cấp cho bạn các bảng nháp liền kề, chuyên dụng bên cạnh mỗi trang trình bày hoặc câu hỏi!</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload lecture slides",
-        "description": "Provide the PDF textbook, slides, or study papers."
+        "title": "Tải slide bài giảng lên",
+        "description": "Cung cấp sách giáo khoa, slide hoặc tài liệu học tập dưới dạng PDF."
       },
       {
         "step": 2,
-        "title": "Choose margin & grid style",
-        "description": "Pick margin expansion direction (e.g. right side for tablets) and select the grid template."
+        "title": "Chọn kiểu lề và lưới",
+        "description": "Chọn hướng mở rộng lề (ví dụ: bên phải cho máy tính bảng) và chọn mẫu lưới."
       },
       {
         "step": 3,
-        "title": "Stitch canvas & download",
-        "description": "Click execute to generate expanded pages complete with beautiful draft grids."
+        "title": "Ghép canvas và tải xuống",
+        "description": "Nhấp vào thực hiện để tạo các trang mở rộng hoàn chỉnh với các lưới nháp đẹp mắt."
       }
     ],
     "useCases": [
       {
-        "title": "STEM Exam Preparation",
-        "description": "Stitch grid margins next to math and physics exam questions, solving derivations right next to the question.",
+        "title": "Luyện thi STEM",
+        "description": "Ghép lề lưới bên cạnh đề thi toán, lý, giải đạo hàm ngay bên cạnh câu hỏi.",
         "icon": "edit-3"
       },
       {
-        "title": "Language Reading Analysis",
-        "description": "Add ruled notebook margins next to foreign language essays for vocabulary analysis and paragraph translation.",
+        "title": "Phân tích khả năng đọc ngôn ngữ",
+        "description": "Thêm lề sổ ghi chép có đường kẻ bên cạnh các bài tiểu luận ngoại ngữ để phân tích từ vựng và dịch đoạn văn.",
         "icon": "book"
       },
       {
-        "title": "Architectural Blueprint Audit",
-        "description": "Add empty margin spaces on the side of blueprints for engineering calculations and client review comments.",
+        "title": "Kiểm tra bản thiết kế kiến trúc",
+        "description": "Thêm khoảng trống lề bên cạnh bản thiết kế để tính toán kỹ thuật và nhận xét đánh giá của khách hàng.",
         "icon": "columns"
       }
     ],
     "faq": [
       {
-        "question": "Will this squish my original PDF text?",
-        "answer": "Not at all. The algorithm expands the paper dimension outwards. The original content retains its layout, fonts, and resolution; we simply stretch the white space on the borders and draw grids on them."
+        "question": "Điều này có làm hỏng văn bản PDF gốc của tôi không?",
+        "answer": "Không hề. Thuật toán mở rộng kích thước giấy ra bên ngoài. Nội dung gốc vẫn giữ nguyên bố cục, phông chữ và độ phân giải; chúng tôi chỉ đơn giản kéo dài khoảng trắng trên các đường viền và vẽ các lưới trên chúng."
       },
       {
-        "question": "Can standard hand-writing pens write in the scratchpad?",
-        "answer": "Yes. The new PDF pages are compiled natively. Popular tablet note-taking applications like Goodnotes, Notability, Xodo, and Acrobat can write, highlight, and doodle directly in the new grid space."
+        "question": "Bút viết tay tiêu chuẩn có thể viết vào sổ ghi chép được không?",
+        "answer": "Có. Các trang PDF mới được biên soạn nguyên bản. Các ứng dụng ghi chú phổ biến trên máy tính bảng như Goodnotes, Notability, Xodo và Acrobat có thể viết, đánh dấu và vẽ nguệch ngoạc trực tiếp trong không gian lưới mới."
       },
       {
-        "question": "Are grid lines dark and distracting?",
-        "answer": "We curated three subtle, eye-friendly colors (soft blue-gray, warm brown, and glowing green). The lines are thin and gentle, serving as guides without distracting you from the original page content."
+        "question": "Các đường lưới có tối và gây mất tập trung không?",
+        "answer": "Chúng tôi đã tuyển chọn ba màu tinh tế, thân thiện với mắt (xám xanh dịu, nâu ấm và xanh lục sáng). Các dòng mỏng và nhẹ nhàng, đóng vai trò như những hướng dẫn mà không làm bạn phân tâm khỏi nội dung trang gốc."
       }
     ]
   },
   "photo-tiling-prepress": {
     "title": "Ghép ảnh thẻ in ấn",
-    "metaDescription": "Tự động sắp xếp ảnh thẻ thành ma trận khít trên các khổ giấy ảnh 5 inch hoặc 6 inch, hỗ trợ chèn đường cắt.",
+    "metaDescription": "Cắt và sắp xếp ảnh CMND hoặc hộ chiếu trên giấy ảnh tiêu chuẩn. Thêm dấu cắt in để giúp cắt tờ thành phẩm.",
     "keywords": [
       "in ảnh thẻ",
       "Xếp ảnh thẻ in giấy ảnh",
       "đường viền cắt ảnh"
     ],
-    "description": "\n      <p>The Prepress Photo Tiling tool is a cost-effective, high-precision layout compiler built for personal registration cards and photography studios.</p>\n      <p>Printing passport photos, ID photos, or driver licenses at home often results in incorrect physical dimensions (often printed too large or too small), wasted photo paper, and uneven alignments. Going to professional print shops to get layouts made is time-consuming.</p>\n      <p>Our tool integrates a <strong>precision prepress matrix engine</strong>. It accepts portrait photographs or ID card scans, crops them to standard dimensions (e.g. 1\" or 2\" passport specs), calculates optimal tile counts for standard photo papers (e.g. 5\" or 6\" sheets), and injects crisp, micro-pixel crop lines for easy physical cutting, generating a perfect printable PDF.</p>\n    ",
+    "description": "<p>Công cụ Prepress Photo Tiling là một trình biên dịch bố cục có độ chính xác cao, tiết kiệm chi phí được thiết kế cho thẻ đăng ký cá nhân và studio chụp ảnh.</p>\n      <p>In ảnh hộ chiếu, ảnh CMND hoặc bằng lái xe tại nhà thường dẫn đến kích thước vật lý không chính xác (thường in quá lớn hoặc quá nhỏ), lãng phí giấy ảnh và căn chỉnh không đều. Đến các cửa hàng in chuyên nghiệp để lấy bố cục rất tốn thời gian.</p>\n      <p>Công cụ của chúng tôi tích hợp <strong>công cụ ma trận ép trước chính xác</strong>. Nó chấp nhận ảnh chân dung hoặc bản quét thẻ căn cước, cắt chúng theo kích thước tiêu chuẩn (ví dụ: thông số hộ chiếu 1\" hoặc 2\", tính toán số lượng ô tối ưu cho giấy ảnh tiêu chuẩn (ví dụ: tờ 5\" hoặc 6\") và chèn các đường cắt sắc nét, có kích thước cực nhỏ để dễ dàng cắt vật lý, tạo ra bản PDF có thể in hoàn hảo.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import passport photo",
-        "description": "Upload the camera portrait snapshot or double-sided ID card images."
+        "title": "Ảnh hộ chiếu nhập khẩu",
+        "description": "Tải lên ảnh chụp chân dung camera hoặc ảnh CMND hai mặt."
       },
       {
         "step": 2,
-        "title": "Configure paper & layout",
-        "description": "Select the target print paper size (e.g. 6\") and choose the grid layouts (e.g. 8 copies of 1\" photos)."
+        "title": "Định cấu hình giấy và bố cục",
+        "description": "Chọn kích thước giấy in mục tiêu (ví dụ: 6\") và chọn bố cục lưới (ví dụ: 8 bản sao của ảnh 1\")."
       },
       {
         "step": 3,
-        "title": "Tile and export",
-        "description": "Inspect photo tiles on our grid, and export the high-DPI printable PDF."
+        "title": "Ngói và xuất khẩu",
+        "description": "Kiểm tra các ô ảnh trên lưới của chúng tôi và xuất bản PDF có thể in được với độ phân giải cao."
       }
     ],
     "useCases": [
       {
-        "title": "Self-Service Passport Photos",
-        "description": "Arrange your mobile-shot passport portraits onto a single 6\" photo paper grid, and print 8 copies for a fraction of standard studio costs.",
+        "title": "Ảnh hộ chiếu tự phục vụ",
+        "description": "Sắp xếp các bức chân dung hộ chiếu được chụp bằng điện thoại di động của bạn trên một lưới giấy ảnh 6 inch duy nhất và in 8 bản sao với một phần chi phí studio tiêu chuẩn.",
         "icon": "user"
       },
       {
-        "title": "ID Card Double-sided Copy",
-        "description": "Format front and back scans of national ID cards neatly on standard Letter/A4 sheets for official submissions.",
+        "title": "CMND Copy 2 mặt",
+        "description": "Định dạng bản scan mặt trước và mặt sau của CMND ngay ngắn trên tờ Letter/A4 tiêu chuẩn để nộp hồ sơ chính thức.",
         "icon": "file-text"
       },
       {
-        "title": "Batch Photo Thumbnail Sheets",
-        "description": "Tile multiple family memories or design snapshots onto a grid paper to print thumbnail contact sheets efficiently.",
+        "title": "Trang thu nhỏ ảnh hàng loạt",
+        "description": "Xếp nhiều kỷ niệm của gia đình hoặc thiết kế ảnh chụp nhanh lên giấy lưới để in các tờ liên hệ hình thu nhỏ một cách hiệu quả.",
         "icon": "grid"
       }
     ],
     "faq": [
       {
-        "question": "Will the printed dimensions match official 1\" or 2\" specs?",
-        "answer": "Yes. The grid engine measures using standard PDF points (72 pt = 1 inch), rendering 1\" photos exactly at 25x35mm, and 2\" photos at 35x49mm. Ensure you print at \"Actual Size / 100% Scale\" in your printer settings."
+        "question": "Kích thước in có khớp với thông số kỹ thuật 1\" hoặc 2\" chính thức không?",
+        "answer": "Vâng. Công cụ lưới đo lường bằng cách sử dụng các điểm PDF tiêu chuẩn (72 pt = 1 inch), hiển thị chính xác ảnh 1\" ở kích thước 25x35mm và 2\" ảnh ở kích thước 35x49mm. Đảm bảo bạn in ở \"Kích thước thực tế/Tỷ lệ 100%\" trong cài đặt máy in của bạn."
       },
       {
-        "question": "Can I combine 1\" and 2\" photos on a single sheet?",
-        "answer": "Yes. We provide curated hybrid layout presets (e.g. \"4 copies of 1\" + 4 copies of 2\"\"), allowing you to maximize photo paper space."
+        "question": "Tôi có thể kết hợp ảnh 1\" và 2\" trên một tờ không?",
+        "answer": "Vâng. Chúng tôi cung cấp các cài đặt trước bố cục kết hợp được tuyển chọn (ví dụ: \"4 bản sao của 1\" + 4 bản sao của 2\"), cho phép bạn tối đa hóa không gian giấy ảnh."
       },
       {
-        "question": "Does the template include border bleeds?",
-        "answer": "Yes. The prepress layouts reserve a standard 4mm print-safe margin on the paper borders, preventing physical printer rollers from cropping the photos."
+        "question": "Mẫu có bị tràn viền không?",
+        "answer": "Có. Bố cục chế bản dành sẵn lề an toàn in 4mm tiêu chuẩn trên viền giấy, ngăn trục lăn máy in vật lý cắt xén ảnh."
       }
     ]
   },
@@ -7716,7 +7716,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   "digital-sign-pdf": {
     "title": "Chữ ký số PDF",
-    "metaDescription": "Thêm chữ ký số X.509 vào tài liệu PDF. Ký PDF bằng chứng thư số PFX, P12 hoặc PEM để đảm bảo tính pháp lý.",
+    "metaDescription": "Ký điện tử các tài liệu PDF với chứng chỉ PFX, P12 hoặc PEM. Thêm chữ ký dựa trên chứng chỉ cục bộ trong trình duyệt của bạn.",
     "keywords": [
       "chữ ký số pdf",
       "chứng thư số x509",
@@ -7844,4 +7844,76 @@ export const toolContentVn: Record<string, ToolContent> = {
       }
     ]
   }
+,
+"redact-pdf": {
+  "title": "Che thông tin trong PDF",
+  "metaDescription": "Bôi đen, làm mờ hoặc tạo pixel cho nội dung PDF nhạy cảm. Xuất các trang phẳng và xóa siêu dữ liệu cục bộ trong trình duyệt của bạn.",
+  "keywords": [
+    "biên tập lại pdf",
+    "mất điện pdf",
+    "khảm pdf",
+    "mờ pdf",
+    "quyền riêng tư pdf",
+    "xóa dữ liệu nhạy cảm",
+    "trình soạn thảo pdf an toàn"
+  ],
+  "description": "<p>Redact PDF cung cấp trình chỉnh sửa tương tác, trực quan để che giấu và bảo vệ vĩnh viễn dữ liệu nhạy cảm trong tài liệu PDF của bạn. Kéo để đánh dấu bất kỳ khu vực bí mật nào—chẳng hạn như tên, địa chỉ, số ID, chữ ký, con dấu chính thức, số liệu tài chính hoặc chân dung—và áp dụng các hiệu ứng bôi đen, bôi trắng, khảm hoặc làm mờ.</p>\n      <p>Không giống như các trình chỉnh sửa PDF tiêu chuẩn chỉ chồng các hình chữ nhật màu đen bề ngoài lên văn bản hiện có, công cụ này thực hiện <strong>tạo điểm ảnh vật lý không thể đảo ngược</strong>. Các lớp văn bản, đồ họa vector và luồng OCR bên dưới bị phá hủy hoàn toàn và không thể khôi phục được bằng cách dán sao chép hoặc kỹ thuật đảo ngược.</p>\n      <p>Ngoài ra, công cụ này còn thực hiện xóa siêu dữ liệu chuyên sâu, loại bỏ thông tin tác giả, lịch sử sáng tạo và luồng XMP. Tất cả quá trình xử lý diễn ra cục bộ 100% trong trình duyệt của bạn mà không cần tải lên máy chủ.</p>",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Tải lên tài liệu PDF",
+      "description": "Chọn hoặc kéo và thả tệp PDF bạn muốn biên tập lại."
+    },
+    {
+      "step": 2,
+      "title": "Đánh dấu vùng nhạy cảm",
+      "description": "Nhấp và kéo trên bất kỳ trang nào để vẽ các hộp biên tập xung quanh nội dung bí mật."
+    },
+    {
+      "step": 3,
+      "title": "Chọn kiểu soạn thảo",
+      "description": "Chọn bôi đen, làm trắng, khảm (kích thước pixel có thể điều chỉnh) hoặc làm mờ. Chuyển đổi xem trước thời gian thực để kiểm tra kết quả."
+    },
+    {
+      "step": 4,
+      "title": "Xuất PDF bảo mật",
+      "description": "Nhấp vào \"Tạo PDF bảo mật\" để thực hiện làm phẳng, xóa siêu dữ liệu không thể đảo ngược và tải xuống tài liệu được bảo mật của bạn."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Quyền riêng tư và tuân thủ quy định",
+      "description": "Che dấu thông tin nhận dạng cá nhân (PII) một cách an toàn để tuân thủ các yêu cầu của GDPR, HIPAA hoặc CCPA.",
+      "icon": "shield"
+    },
+    {
+      "title": "Bí mật pháp lý & chia sẻ kinh doanh",
+      "description": "Che giấu bí mật thương mại, điều khoản giải quyết, chữ ký và tem trước khi tiết lộ công khai hoặc phân phối ra bên ngoài.",
+      "icon": "file-text"
+    },
+    {
+      "title": "Bảo vệ tài chính và danh tính",
+      "description": "Che giấu số tài khoản ngân hàng, mã số thuế, chi tiết thẻ tín dụng và số CMND khỏi bảng sao kê và hóa đơn.",
+      "icon": "lock"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Có ai có thể khôi phục thông tin đã được biên tập lại bằng cách sao chép văn bản hoặc kiểm tra các lớp không?",
+      "answer": "Không. Các khu vực được xử lý lại trải qua quá trình làm phẳng điểm ảnh vật lý. Văn bản, vectơ và đối tượng bên dưới bị xóa hoàn toàn khỏi cấu trúc tệp, khiến việc khôi phục không thể thực hiện được."
+    },
+    {
+      "question": "Sự khác biệt giữa mất điện, khảm và mờ là gì?",
+      "answer": "Blackout tạo ra một mặt nạ đen đặc (tiêu chuẩn cho văn bản pháp luật); Whiteout cung cấp một lớp mặt nạ trắng sạch; khảm tạo ra một lưới pixel; và độ mờ tạo ra hiệu ứng kính mờ mềm mại."
+    },
+    {
+      "question": "Tệp có được tải lên máy chủ của bạn không?",
+      "answer": "Không. Tất cả quá trình hiển thị, biên tập, làm phẳng và tạo PDF diễn ra hoàn toàn trong bộ nhớ trình duyệt của bạn. Tài liệu của bạn không bao giờ rời khỏi thiết bị của bạn."
+    },
+    {
+      "question": "Siêu dữ liệu nào bị xóa?",
+      "answer": "Tiêu đề tài liệu, Tác giả, Chủ đề, Từ khóa, Người tạo, Nhà sản xuất, Ngày tạo, Ngày sửa đổi và các luồng siêu dữ liệu XMP mở rộng đều bị xóa hoàn toàn."
+    }
+  ]
+}
 };

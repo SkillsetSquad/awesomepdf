@@ -1,0 +1,1172 @@
+{
+  "zh": {
+    "home": {
+      "title": "AwesomePDF – 免费的 PDF 合并、压缩与编辑工具",
+      "description": "几秒钟内合并、压缩、转换、编辑和整理 PDF。免费、简单、在浏览器中运行的 PDF 工具，无需注册。"
+    },
+    "tools": {
+      "title": "所有 PDF 工具",
+      "description": "免费在线PDF工具，可合并、拆分、压缩、转换、编辑和保护文档。所有处理均在浏览器内完成，无需注册或将文件上传到服务器。"
+    },
+    "about": {
+      "title": "关于我们",
+      "description": "了解 AwesomePDF - 您免费、私密且强大的 PDF 工具箱。所有处理都在您的浏览器中进行。"
+    },
+    "faq": {
+      "title": "常见问题",
+      "description": "查找有关 AwesomePDF 的常见问题解答。了解如何有效使用我们的 PDF 工具。"
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "description": "AwesomePDF 隐私政策。您的文件永远不会离开您的设备 - 所有处理都在本地浏览器中进行。"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "联系 AwesomePDF 团队。我们很乐意听取您的意见。"
+    },
+    "keywords": {
+      "pdfTools": "PDF 工具",
+      "mergePdf": "合并 PDF",
+      "splitPdf": "拆分 PDF",
+      "compressPdf": "压缩 PDF",
+      "convertPdf": "转换 PDF",
+      "freePdfTools": "免费 PDF 工具",
+      "onlinePdfEditor": "在线 PDF 编辑器"
+    },
+    "toolSuffix": "免费在线工具",
+    "howTo": "如何使用",
+    "navigation": {
+      "home": "首页",
+      "tools": "工具",
+      "workflow": "工作流",
+      "about": "关于",
+      "faq": "常见问题",
+      "privacy": "隐私",
+      "contact": "联系我们",
+      "mainMenu": "主导航",
+      "openMenu": "打开菜单",
+      "allTools": "全部工具",
+      "edit": "编辑",
+      "convert": "转换",
+      "organize": "整理",
+      "shareFiles": "文件共享",
+      "comingSoon": "即将推出",
+      "browseAll": "浏览全部 {count} 个工具",
+      "language": "语言",
+      "search": "搜索"
+    },
+    "categories": {
+      "popular": "热门工具",
+      "editAnnotate": "编辑与注释",
+      "convertToPdf": "转换为PDF",
+      "convertFromPdf": "从PDF转换",
+      "organizeManage": "整理与管理",
+      "optimizeRepair": "优化与修复",
+      "securePdf": "PDF安全"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "编辑、注释和修改 PDF 内容",
+      "convertToPdf": "将各种格式转换为 PDF",
+      "convertFromPdf": "将 PDF 转换为其他格式",
+      "organizeManage": "组织、合并、拆分和管理 PDF 页面",
+      "optimizeRepair": "压缩、优化和修复 PDF 文件",
+      "securePdf": "加密、解密和保护 PDF 文件"
+    },
+    "openSource": {
+      "title": "开源声明",
+      "description": "下载此部署版本的 AwesomePDF 源代码，包括构建配置和原始声明。"
+    }
+  },
+  "ja": {
+    "home": {
+      "title": "AwesomePDF – 結合・圧縮・編集ができる無料のPDFツール",
+      "description": "PDFの結合、圧縮、変換、編集、整理を数秒で。ブラウザで動く無料のシンプルなPDFツール。登録は不要です。"
+    },
+    "tools": {
+      "title": "すべてのPDFツール",
+      "description": "PDFの結合、分割、圧縮、変換、編集、保護ができる無料オンラインツール。ブラウザ内で処理するため、アカウント登録やサーバーへのファイル送信は不要です。"
+    },
+    "about": {
+      "title": "私たちについて",
+      "description": "AwesomePDFについて - 無料でプライベートな強力なPDFツールキット。すべての処理はブラウザ内で行われます。"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "description": "AwesomePDFに関するよくある質問の回答。PDFツールを効果的に使用する方法をご覧ください。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "description": "AwesomePDFプライバシーポリシー。ファイルはデバイスから離れることはありません - すべての処理はローカルブラウザで行われます。"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "description": "AwesomePDFチームにお問い合わせください。ご意見をお待ちしております。"
+    },
+    "keywords": {
+      "pdfTools": "PDFツール",
+      "mergePdf": "PDF結合",
+      "splitPdf": "PDF分割",
+      "compressPdf": "PDF圧縮",
+      "convertPdf": "PDF変換",
+      "freePdfTools": "無料PDFツール",
+      "onlinePdfEditor": "オンラインPDFエディター"
+    },
+    "toolSuffix": "無料オンライン",
+    "howTo": "使用方法",
+    "navigation": {
+      "home": "家",
+      "tools": "ツール",
+      "workflow": "ワークフロー",
+      "about": "概要",
+      "faq": "よくある質問",
+      "privacy": "プライバシー",
+      "contact": "お問い合わせ",
+      "mainMenu": "メインナビゲーション",
+      "openMenu": "メニューを開く",
+      "allTools": "すべてのツール",
+      "edit": "編集",
+      "convert": "変換",
+      "organize": "整理",
+      "shareFiles": "ファイル共有",
+      "comingSoon": "近日公開",
+      "browseAll": "{count}個のツールをすべて見る",
+      "language": "言語",
+      "search": "検索"
+    },
+    "categories": {
+      "popular": "人気のツール",
+      "editAnnotate": "編集 & 注釈",
+      "convertToPdf": "PDFに変換",
+      "convertFromPdf": "PDFから変換",
+      "organizeManage": "整理 & 管理",
+      "optimizeRepair": "最適化 & 修復",
+      "securePdf": "PDFセキュリティ"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "PDFコンテンツの編集、注釈、変更",
+      "convertToPdf": "様々な形式からPDFへの変換",
+      "convertFromPdf": "PDFから他の形式への変換",
+      "organizeManage": "PDFページの整理、結合、分割、管理",
+      "optimizeRepair": "PDFファイルの圧縮、最適化、修復",
+      "securePdf": "PDFファイルの暗号化、復号化、保護"
+    },
+    "openSource": {
+      "title": "オープンソースの通知",
+      "description": "この版のAwesomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。"
+    }
+  },
+  "de": {
+    "home": {
+      "title": "AwesomePDF – kostenlose PDF-Werkzeuge zum Zusammenfügen, Komprimieren und Bearbeiten",
+      "description": "PDFs in Sekunden zusammenfügen, komprimieren, konvertieren, bearbeiten und organisieren. Kostenlose, einfache PDF-Werkzeuge im Browser, ohne Anmeldung."
+    },
+    "tools": {
+      "title": "Alle PDF-Werkzeuge",
+      "description": "Kostenlose PDF-Tools zum Zusammenführen, Teilen, Komprimieren, Konvertieren und Bearbeiten im Browser. Ohne Konto oder Datei-Upload auf einen Server."
+    },
+    "about": {
+      "title": "Über uns",
+      "description": "Erfahren Sie mehr über AwesomePDF - Ihr kostenloses, privates und leistungsstarkes PDF-Toolkit. Alle Verarbeitung erfolgt in Ihrem Browser."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Finden Sie Antworten auf häufige Fragen zu AwesomePDF. Erfahren Sie, wie Sie unsere PDF-Werkzeuge effektiv nutzen können."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "description": "AwesomePDF Datenschutzrichtlinie. Ihre Dateien verlassen Ihr Gerät nie - alle Verarbeitung erfolgt lokal in Ihrem Browser."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Kontaktieren Sie das AwesomePDF-Team. Wir freuen uns auf Ihre Nachricht."
+    },
+    "keywords": {
+      "pdfTools": "PDF-Werkzeuge",
+      "mergePdf": "PDF zusammenführen",
+      "splitPdf": "PDF teilen",
+      "compressPdf": "PDF komprimieren",
+      "convertPdf": "PDF konvertieren",
+      "freePdfTools": "kostenlose PDF-Werkzeuge",
+      "onlinePdfEditor": "Online-PDF-Editor"
+    },
+    "toolSuffix": "Kostenlos online",
+    "howTo": "Verwendung",
+    "navigation": {
+      "home": "Heim",
+      "tools": "Werkzeuge",
+      "workflow": "Workflow",
+      "about": "Über uns",
+      "faq": "FAQ",
+      "privacy": "Privatsphäre",
+      "contact": "Kontakt",
+      "mainMenu": "Hauptnavigation",
+      "openMenu": "Menü öffnen",
+      "allTools": "Alle Werkzeuge",
+      "edit": "Bearbeiten",
+      "convert": "Konvertieren",
+      "organize": "Organisieren",
+      "shareFiles": "Dateien teilen",
+      "comingSoon": "Demnächst",
+      "browseAll": "Alle {count} Werkzeuge ansehen",
+      "language": "Sprache",
+      "search": "Suchen"
+    },
+    "categories": {
+      "popular": "Beliebte Werkzeuge",
+      "editAnnotate": "Bearbeiten & Annotieren",
+      "convertToPdf": "In PDF konvertieren",
+      "convertFromPdf": "Von PDF konvertieren",
+      "organizeManage": "Organisieren & Verwalten",
+      "optimizeRepair": "Optimieren & Reparieren",
+      "securePdf": "PDF-Sicherheit"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "PDF-Inhalte bearbeiten, annotieren und modifizieren",
+      "convertToPdf": "Verschiedene Formate in PDF konvertieren",
+      "convertFromPdf": "PDF in andere Formate konvertieren",
+      "organizeManage": "PDF-Seiten organisieren, zusammenfügen, teilen und verwalten",
+      "optimizeRepair": "PDF-Dateien komprimieren, optimieren und reparieren",
+      "securePdf": "PDF-Dateien verschlüsseln, entschlüsseln und sichern"
+    },
+    "openSource": {
+      "title": "Open-Source-Hinweise",
+      "description": "Laden Sie den Quellcode dieser bereitgestellten AwesomePDF-Version einschließlich Build-Konfiguration und ursprünglicher Hinweise herunter."
+    }
+  },
+  "pl": {
+    "home": {
+      "title": "AwesomePDF – darmowe narzędzia PDF do łączenia, kompresji i edycji",
+      "description": "Łącz, kompresuj, konwertuj, edytuj i porządkuj pliki PDF w kilka sekund. Darmowe, proste narzędzia działające w przeglądarce, bez rejestracji."
+    },
+    "tools": {
+      "title": "Wszystkie narzędzia PDF",
+      "description": "Darmowe narzędzia PDF do łączenia, dzielenia, kompresji, konwersji, edycji i ochrony dokumentów w przeglądarce. Bez konta i przesyłania plików na serwer."
+    },
+    "about": {
+      "title": "O AwesomePDF",
+      "description": "Dowiedz się o AwesomePDF — darmowym, prywatnym i zaawansowanym zestawie narzędzi PDF. Całe przetwarzanie odbywa się w Twojej przeglądarce."
+    },
+    "faq": {
+      "title": "Często zadawane pytania",
+      "description": "Znajdź odpowiedzi na często zadawane pytania dotyczące AwesomePDF. Dowiedz się, jak efektywnie korzystać z naszych narzędzi PDF."
+    },
+    "privacy": {
+      "title": "Polityka prywatności",
+      "description": "Polityka prywatności AwesomePDF. Twoje pliki nigdy nie opuszczają Twojego urządzenia – całe przetwarzanie odbywa się lokalnie w Twojej przeglądarce."
+    },
+    "contact": {
+      "title": "Skontaktuj się z nami",
+      "description": "Skontaktuj się z zespołem AwesomePDF. Chcielibyśmy usłyszeć od ciebie."
+    },
+    "keywords": {
+      "pdfTools": "narzędzia PDF",
+      "mergePdf": "połączyć PDF",
+      "splitPdf": "podziel PDF",
+      "compressPdf": "skompresuj PDF",
+      "convertPdf": "konwertuj PDF",
+      "freePdfTools": "bezpłatne narzędzia PDF",
+      "onlinePdfEditor": "edytor PDF online"
+    },
+    "toolSuffix": "Za darmo online",
+    "howTo": "Jak używać",
+    "navigation": {
+      "home": "Strona główna",
+      "tools": "Narzędzia",
+      "workflow": "Przepływ pracy",
+      "about": "O AwesomePDF",
+      "faq": "Często zadawane pytania",
+      "privacy": "Prywatność",
+      "contact": "Kontakt",
+      "mainMenu": "Nawigacja główna",
+      "openMenu": "Otwórz menu",
+      "allTools": "Wszystkie narzędzia",
+      "edit": "Edytuj",
+      "convert": "Konwertuj",
+      "organize": "Organizuj",
+      "shareFiles": "Udostępnij pliki",
+      "comingSoon": "Wkrótce",
+      "browseAll": "Przeglądaj wszystkie narzędzia ({count})",
+      "language": "Język",
+      "search": "Szukaj"
+    },
+    "categories": {
+      "popular": "Popularne narzędzia",
+      "editAnnotate": "Edytuj i dodawaj adnotacje",
+      "convertToPdf": "Konwertuj na PDF",
+      "convertFromPdf": "Konwertuj z PDF",
+      "organizeManage": "Organizuj i zarządzaj",
+      "optimizeRepair": "Optymalizuj i napraw",
+      "securePdf": "Zabezpiecz PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Edytuj, dodawaj adnotacje i modyfikuj treść PDF",
+      "convertToPdf": "Konwertuj różne formaty na PDF",
+      "convertFromPdf": "Konwertuj PDF na inne formaty",
+      "organizeManage": "Organizuj, łącz, dziel i zarządzaj stronami PDF",
+      "optimizeRepair": "Kompresuj, optymalizuj i naprawiaj pliki PDF",
+      "securePdf": "Szyfruj, odszyfrowuj i zabezpieczaj pliki PDF"
+    },
+    "openSource": {
+      "title": "Informacje o otwartym oprogramowaniu",
+      "description": "Pobierz kod źródłowy wdrożonej wersji AwesomePDF, w tym konfigurację kompilacji i oryginalne informacje."
+    }
+  },
+  "pt": {
+    "home": {
+      "title": "AwesomePDF – ferramentas PDF gratuitas para juntar, comprimir e editar",
+      "description": "Junte, comprima, converta, edite e organize PDFs em segundos. Ferramentas PDF gratuitas e simples, que funcionam no navegador e não exigem cadastro."
+    },
+    "tools": {
+      "title": "Todas as Ferramentas PDF",
+      "description": "Ferramentas PDF grátis para juntar, dividir, comprimir, converter, editar e proteger documentos no navegador. Sem conta nem envio de arquivos ao servidor."
+    },
+    "about": {
+      "title": "Sobre Nós",
+      "description": "Conheça o AwesomePDF - seu kit de ferramentas PDF gratuito, privado e poderoso. Todo o processamento acontece no seu navegador."
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "description": "Encontre respostas para perguntas comuns sobre o AwesomePDF. Aprenda a usar nossas ferramentas PDF de forma eficaz."
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "description": "Política de privacidade do AwesomePDF. Seus arquivos nunca saem do seu dispositivo - todo o processamento acontece localmente no seu navegador."
+    },
+    "contact": {
+      "title": "Contato",
+      "description": "Entre em contato com a equipe do AwesomePDF. Adoraríamos ouvir você."
+    },
+    "keywords": {
+      "pdfTools": "ferramentas PDF",
+      "mergePdf": "mesclar PDF",
+      "splitPdf": "dividir PDF",
+      "compressPdf": "comprimir PDF",
+      "convertPdf": "converter PDF",
+      "freePdfTools": "ferramentas PDF grátis",
+      "onlinePdfEditor": "editor PDF online"
+    },
+    "toolSuffix": "Grátis online",
+    "howTo": "Como usar",
+    "navigation": {
+      "home": "Início",
+      "tools": "Ferramentas",
+      "workflow": "Fluxo de trabalho",
+      "about": "Sobre",
+      "faq": "Perguntas Frequentes",
+      "privacy": "Privacidade",
+      "contact": "Contato",
+      "mainMenu": "Navegação principal",
+      "openMenu": "Abrir menu",
+      "allTools": "Ferramentas",
+      "edit": "Editar",
+      "convert": "Converter",
+      "organize": "Organizar",
+      "shareFiles": "Compartilhar arquivos",
+      "comingSoon": "Em breve",
+      "browseAll": "Ver as {count} ferramentas",
+      "language": "Idioma",
+      "search": "Pesquisar"
+    },
+    "categories": {
+      "popular": "Ferramentas Populares",
+      "editAnnotate": "Editar e Anotar",
+      "convertToPdf": "Converter para PDF",
+      "convertFromPdf": "Converter de PDF",
+      "organizeManage": "Organizar e Gerenciar",
+      "optimizeRepair": "Otimizar e Reparar",
+      "securePdf": "PDF Seguro"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Editar, anotar e modificar conteúdo PDF",
+      "convertToPdf": "Converter vários formatos para PDF",
+      "convertFromPdf": "Converter PDF para outros formatos",
+      "organizeManage": "Organizar, unir, dividir e gerenciar páginas PDF",
+      "optimizeRepair": "Comprimir, otimizar e reparar arquivos PDF",
+      "securePdf": "Criptografar, descriptografar e proteger arquivos PDF"
+    },
+    "openSource": {
+      "title": "Avisos de código aberto",
+      "description": "Baixe o código-fonte desta versão do AwesomePDF, incluindo a configuração de compilação e os avisos originais."
+    }
+  },
+  "en": {
+    "home": {
+      "title": "AwesomePDF – Free PDF Tools to Merge, Compress & Edit",
+      "description": "Merge, split, compress, convert and edit PDFs free online. Private browser processing, no registration and no file uploads to a server."
+    },
+    "tools": {
+      "title": "All PDF Tools",
+      "description": "Free PDF tools to merge, split, compress, convert, edit and protect documents in your browser. No account or file upload to a server required."
+    },
+    "about": {
+      "title": "About",
+      "description": "Learn about AwesomePDF - your free, private, and powerful PDF toolkit. All processing happens in your browser."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about AwesomePDF. Learn how to use our PDF tools effectively."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "AwesomePDF privacy policy. Your files never leave your device - all processing happens locally in your browser."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Get in touch with AwesomePDF team. We'd love to hear from you."
+    },
+    "keywords": {
+      "pdfTools": "PDF tools",
+      "mergePdf": "merge PDF",
+      "splitPdf": "split PDF",
+      "compressPdf": "compress PDF",
+      "convertPdf": "convert PDF",
+      "freePdfTools": "free PDF tools",
+      "onlinePdfEditor": "online PDF editor"
+    },
+    "toolSuffix": "Free Online",
+    "howTo": "How to Use",
+    "navigation": {
+      "home": "Home",
+      "tools": "Tools",
+      "workflow": "Workflow",
+      "about": "About",
+      "faq": "FAQ",
+      "privacy": "Privacy",
+      "contact": "Contact",
+      "mainMenu": "Main navigation",
+      "openMenu": "Open menu",
+      "allTools": "All Tools",
+      "edit": "Edit",
+      "convert": "Convert",
+      "organize": "Organize",
+      "shareFiles": "Share Files",
+      "comingSoon": "Coming Soon",
+      "browseAll": "Browse all {count} tools",
+      "language": "Language",
+      "search": "Search"
+    },
+    "categories": {
+      "popular": "Popular Tools",
+      "editAnnotate": "Edit & Annotate",
+      "convertToPdf": "Convert to PDF",
+      "convertFromPdf": "Convert from PDF",
+      "organizeManage": "Organize & Manage",
+      "optimizeRepair": "Optimize & Repair",
+      "securePdf": "Secure PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Edit, annotate, and modify PDF content",
+      "convertToPdf": "Convert various formats to PDF",
+      "convertFromPdf": "Convert PDF to other formats",
+      "organizeManage": "Organize, merge, split, and manage PDF pages",
+      "optimizeRepair": "Compress, optimize, and repair PDF files",
+      "securePdf": "Encrypt, decrypt, and secure PDF files"
+    },
+    "openSource": {
+      "title": "Open-source notices",
+      "description": "Download the source code for this deployed version of AwesomePDF, including its build configuration and original notices."
+    }
+  },
+  "it": {
+    "home": {
+      "title": "AwesomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
+      "description": "Unisci, comprimi, converti, modifica e organizza i PDF in pochi secondi. Strumenti PDF gratuiti e semplici, nel browser e senza registrazione."
+    },
+    "tools": {
+      "title": "Tutti gli Strumenti PDF",
+      "description": "Strumenti PDF gratuiti per unire, dividere, comprimere, convertire, modificare e proteggere documenti nel browser. Senza account né invio al server."
+    },
+    "about": {
+      "title": "Informazioni",
+      "description": "Scopri AwesomePDF: il tuo kit di strumenti PDF gratuito, privato e potente. Tutto l'elaborazione avviene nel tuo browser."
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "description": "Trova risposte alle domande più comuni su AwesomePDF. Impara a utilizzare efficacemente i nostri strumenti PDF."
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy",
+      "description": "Informativa sulla privacy di AwesomePDF. I tuoi file non lasciano mai il tuo dispositivo: tutto avviene localmente nel tuo browser."
+    },
+    "contact": {
+      "title": "Contattaci",
+      "description": "Mettiti in contatto con il team di AwesomePDF. Ci farebbe piacere sentirti."
+    },
+    "keywords": {
+      "pdfTools": "strumenti PDF",
+      "mergePdf": "unire PDF",
+      "splitPdf": "dividere PDF",
+      "compressPdf": "comprimere PDF",
+      "convertPdf": "convertire PDF",
+      "freePdfTools": "strumenti PDF gratuiti",
+      "onlinePdfEditor": "editor PDF online"
+    },
+    "toolSuffix": "Gratis online",
+    "howTo": "Come usare",
+    "navigation": {
+      "home": "Home",
+      "tools": "Strumenti",
+      "workflow": "Flusso di lavoro",
+      "about": "Informazioni",
+      "faq": "FAQ",
+      "privacy": "Privacy",
+      "contact": "Contatto",
+      "mainMenu": "Navigazione principale",
+      "openMenu": "Apri menu",
+      "allTools": "Tutti gli strumenti",
+      "edit": "Modifica",
+      "convert": "Converti",
+      "organize": "Organizza",
+      "shareFiles": "Condividi file",
+      "comingSoon": "In arrivo",
+      "browseAll": "Sfoglia tutti i {count} strumenti",
+      "language": "Lingua",
+      "search": "Cerca"
+    },
+    "categories": {
+      "popular": "Strumenti popolari",
+      "editAnnotate": "Modifica e annota",
+      "convertToPdf": "Converti in PDF",
+      "convertFromPdf": "Converti da PDF",
+      "organizeManage": "Organizza e gestisci",
+      "optimizeRepair": "Ottimizza e ripara",
+      "securePdf": "Proteggi PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Modifica, annota e modifica i contenuti PDF",
+      "convertToPdf": "Converti vari formati in PDF",
+      "convertFromPdf": "Converti PDF in altri formati",
+      "organizeManage": "Organizza, unisci, dividi e gestisci le pagine PDF",
+      "optimizeRepair": "Comprimi, ottimizza e ripara i file PDF",
+      "securePdf": "Cripta, decripta e proteggi i PDF"
+    },
+    "openSource": {
+      "title": "Avvisi open source",
+      "description": "Scarica il codice sorgente di questa versione di AwesomePDF, inclusi la configurazione di compilazione e gli avvisi originali."
+    }
+  },
+  "fr": {
+    "home": {
+      "title": "AwesomePDF – outils PDF gratuits pour fusionner, compresser et modifier",
+      "description": "Fusionnez, compressez, convertissez, modifiez et organisez vos PDF en quelques secondes. Des outils PDF gratuits et simples, dans votre navigateur, sans inscription."
+    },
+    "tools": {
+      "title": "Tous les Outils PDF",
+      "description": "Outils PDF gratuits pour fusionner, diviser, compresser, convertir, modifier et protéger vos documents dans le navigateur. Sans compte ni envoi au serveur."
+    },
+    "about": {
+      "title": "À Propos",
+      "description": "Découvrez AwesomePDF - votre boîte à outils PDF gratuite, privée et puissante. Tout le traitement se fait dans votre navigateur."
+    },
+    "faq": {
+      "title": "Questions Fréquentes",
+      "description": "Trouvez des réponses aux questions courantes sur AwesomePDF. Apprenez à utiliser efficacement nos outils PDF."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "description": "Politique de confidentialité de AwesomePDF. Vos fichiers ne quittent jamais votre appareil - tout le traitement se fait localement dans votre navigateur."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Contactez l'équipe AwesomePDF. Nous serions ravis de vous entendre."
+    },
+    "keywords": {
+      "pdfTools": "outils PDF",
+      "mergePdf": "fusionner PDF",
+      "splitPdf": "diviser PDF",
+      "compressPdf": "compresser PDF",
+      "convertPdf": "convertir PDF",
+      "freePdfTools": "outils PDF gratuits",
+      "onlinePdfEditor": "éditeur PDF en ligne"
+    },
+    "toolSuffix": "Gratuit en ligne",
+    "howTo": "Comment utiliser",
+    "navigation": {
+      "home": "Accueil",
+      "tools": "Outils",
+      "workflow": "Flux de travail",
+      "about": "À propos",
+      "faq": "FAQ",
+      "privacy": "Confidentialité",
+      "contact": "Contact",
+      "mainMenu": "Navigation principale",
+      "openMenu": "Ouvrir le menu",
+      "allTools": "Tous les outils",
+      "edit": "Modifier",
+      "convert": "Convertir",
+      "organize": "Organiser",
+      "shareFiles": "Partager des fichiers",
+      "comingSoon": "Bientôt",
+      "browseAll": "Voir les {count} outils",
+      "language": "Langue",
+      "search": "Rechercher"
+    },
+    "categories": {
+      "popular": "Outils Populaires",
+      "editAnnotate": "Éditer et Annoter",
+      "convertToPdf": "Convertir en PDF",
+      "convertFromPdf": "Convertir depuis PDF",
+      "organizeManage": "Organiser et Gérer",
+      "optimizeRepair": "Optimiser et Réparer",
+      "securePdf": "PDF Sécurisé"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Éditer, annoter et modifier le contenu PDF",
+      "convertToPdf": "Convertir divers formats en PDF",
+      "convertFromPdf": "Convertir PDF en d'autres formats",
+      "organizeManage": "Organiser, fusionner, diviser et gérer les pages PDF",
+      "optimizeRepair": "Compresser, optimiser et réparer les fichiers PDF",
+      "securePdf": "Chiffrer, déchiffrer et sécuriser les fichiers PDF"
+    },
+    "openSource": {
+      "title": "Mentions open source",
+      "description": "Téléchargez le code source de cette version déployée d’AwesomePDF, avec sa configuration de compilation et les mentions originales."
+    }
+  },
+  "ro": {
+    "home": {
+      "title": "AwesomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
+      "description": "Îmbină, comprimă, convertește, editează și organizează PDF-uri în câteva secunde. Instrumente PDF gratuite și simple, care rulează în browser, fără înregistrare."
+    },
+    "tools": {
+      "title": "Toate Instrumentele PDF",
+      "description": "Instrumente PDF gratuite pentru îmbinare, împărțire, comprimare, conversie, editare și protecție în browser. Fără cont sau încărcare pe un server."
+    },
+    "about": {
+      "title": "Despre",
+      "description": "Află mai multe despre AwesomePDF - setul tău de instrumente PDF gratuit, privat și puternic. Toată procesarea are loc în browser-ul tău."
+    },
+    "faq": {
+      "title": "Întrebări Frecvente",
+      "description": "Găsește răspunsuri la întrebări comune despre AwesomePDF. Învață cum să folosești eficient instrumentele noastre PDF."
+    },
+    "privacy": {
+      "title": "Politica de Confidențialitate",
+      "description": "Politica de confidențialitate AwesomePDF. Fișierele tale nu părăsesc niciodată dispozitivul - toată procesarea are loc local în browser."
+    },
+    "contact": {
+      "title": "Contactează-ne",
+      "description": "Ia legătura cu echipa AwesomePDF. Ne-ar plăcea să auzim de la tine."
+    },
+    "keywords": {
+      "pdfTools": "instrumente PDF",
+      "mergePdf": "combină PDF",
+      "splitPdf": "divizează PDF",
+      "compressPdf": "comprimă PDF",
+      "convertPdf": "convertește PDF",
+      "freePdfTools": "instrumente PDF gratuite",
+      "onlinePdfEditor": "editor PDF online"
+    },
+    "toolSuffix": "Gratuit online",
+    "howTo": "Cum se utilizează",
+    "navigation": {
+      "home": "Acasă",
+      "tools": "Instrumente",
+      "workflow": "Flux de lucru",
+      "about": "Despre",
+      "faq": "FAQ",
+      "privacy": "Confidențialitate",
+      "contact": "Contact",
+      "mainMenu": "Navigare principală",
+      "openMenu": "Deschide meniul",
+      "allTools": "Toate instrumentele",
+      "edit": "Editare",
+      "convert": "Conversie",
+      "organize": "Organizare",
+      "shareFiles": "Partajare fișiere",
+      "comingSoon": "În curând",
+      "browseAll": "Vezi toate cele {count} instrumente",
+      "language": "Limbă",
+      "search": "Căutare"
+    },
+    "categories": {
+      "popular": "Instrumente Populare",
+      "editAnnotate": "Editare și Adnotare",
+      "convertToPdf": "Conversie în PDF",
+      "convertFromPdf": "Conversie din PDF",
+      "organizeManage": "Organizare și Gestionare",
+      "optimizeRepair": "Optimizare și Reparare",
+      "securePdf": "Securizare PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Editează, adnotează și modifică conținutul PDF",
+      "convertToPdf": "Convertește diverse formate în PDF",
+      "convertFromPdf": "Convertește PDF în alte formate",
+      "organizeManage": "Organizează, combină, divizează și gestionează paginile PDF",
+      "optimizeRepair": "Comprimă, optimizează și repară fișierele PDF",
+      "securePdf": "Criptează, decriptează și securizează fișierele PDF"
+    },
+    "openSource": {
+      "title": "Notificări open source",
+      "description": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale."
+    }
+  },
+  "ko": {
+    "home": {
+      "title": "AwesomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
+      "description": "PDF를 몇 초 만에 병합, 압축, 변환, 편집, 정리하세요. 브라우저에서 실행되는 무료의 간단한 PDF 도구이며 가입이 필요 없습니다."
+    },
+    "tools": {
+      "title": "모든 PDF 도구",
+      "description": "PDF 병합, 분할, 압축, 변환, 편집 및 보호를 위한 무료 온라인 도구. 브라우저에서 처리하며 계정이나 서버 파일 업로드가 필요 없습니다."
+    },
+    "about": {
+      "title": "회사 소개",
+      "description": "AwesomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "description": "AwesomePDF에 대한 일반적인 질문에 대한 답변을 찾으세요. PDF 도구를 효과적으로 사용하는 방법을 알아보세요."
+    },
+    "privacy": {
+      "title": "개인정보 보호정책",
+      "description": "AwesomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
+    },
+    "contact": {
+      "title": "문의하기",
+      "description": "AwesomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
+    },
+    "keywords": {
+      "pdfTools": "PDF 도구",
+      "mergePdf": "PDF 병합",
+      "splitPdf": "PDF 분할",
+      "compressPdf": "PDF 압축",
+      "convertPdf": "PDF 변환",
+      "freePdfTools": "무료 PDF 도구",
+      "onlinePdfEditor": "온라인 PDF 편집기"
+    },
+    "toolSuffix": "무료 온라인",
+    "howTo": "사용방법",
+    "navigation": {
+      "home": "집",
+      "tools": "도구",
+      "workflow": "워크플로우",
+      "about": "소개",
+      "faq": "자주 묻는 질문",
+      "privacy": "은둔",
+      "contact": "문의하기",
+      "mainMenu": "주 탐색",
+      "openMenu": "메뉴 열기",
+      "allTools": "모든 도구",
+      "edit": "편집",
+      "convert": "변환",
+      "organize": "정리",
+      "shareFiles": "파일 공유",
+      "comingSoon": "출시 예정",
+      "browseAll": "도구 {count}개 모두 보기",
+      "language": "언어",
+      "search": "검색"
+    },
+    "categories": {
+      "popular": "인기 도구",
+      "editAnnotate": "편집 및 주석",
+      "convertToPdf": "PDF로 변환",
+      "convertFromPdf": "PDF에서 변환",
+      "organizeManage": "정리 및 관리",
+      "optimizeRepair": "최적화 및 복구",
+      "securePdf": "PDF 보안"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "PDF 콘텐츠 편집, 주석 및 수정",
+      "convertToPdf": "다양한 형식을 PDF로 변환",
+      "convertFromPdf": "PDF를 다른 형식으로 변환",
+      "organizeManage": "PDF 페이지 정리, 병합, 분할 및 관리",
+      "optimizeRepair": "PDF 파일 압축, 최적화 및 복구",
+      "securePdf": "PDF 파일 암호화, 복호화 및 보안"
+    },
+    "openSource": {
+      "title": "오픈 소스 고지",
+      "description": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요."
+    }
+  },
+  "zh-TW": {
+    "home": {
+      "title": "AwesomePDF – 免費的 PDF 合併、壓縮與編輯工具",
+      "description": "幾秒內合併、壓縮、轉換、編輯和整理 PDF。免費、簡單、在瀏覽器中執行的 PDF 工具，無需註冊。"
+    },
+    "tools": {
+      "title": "所有 PDF 工具",
+      "description": "免費線上PDF工具，可合併、分割、壓縮、轉換、編輯和保護文件。所有處理均在瀏覽器內完成，無需註冊或將檔案上傳至伺服器。"
+    },
+    "about": {
+      "title": "關於我們",
+      "description": "瞭解 AwesomePDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
+    },
+    "faq": {
+      "title": "常見問題",
+      "description": "查找有關 AwesomePDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
+    },
+    "privacy": {
+      "title": "隱私政策",
+      "description": "AwesomePDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "description": "聯繫 AwesomePDF 團隊。我們很樂意聽取您的意見。"
+    },
+    "keywords": {
+      "pdfTools": "PDF 工具",
+      "mergePdf": "合併 PDF",
+      "splitPdf": "分割 PDF",
+      "compressPdf": "壓縮 PDF",
+      "convertPdf": "轉換 PDF",
+      "freePdfTools": "免費 PDF 工具",
+      "onlinePdfEditor": "線上 PDF 編輯器"
+    },
+    "toolSuffix": "免費線上工具",
+    "howTo": "使用方法",
+    "navigation": {
+      "home": "首頁",
+      "tools": "工具",
+      "workflow": "工作流",
+      "about": "關於",
+      "faq": "常見問題",
+      "privacy": "隱私",
+      "contact": "聯絡我們",
+      "mainMenu": "主導覽",
+      "openMenu": "開啟選單",
+      "allTools": "所有工具",
+      "edit": "編輯",
+      "convert": "轉換",
+      "organize": "整理",
+      "shareFiles": "檔案分享",
+      "comingSoon": "即將推出",
+      "browseAll": "瀏覽全部 {count} 個工具",
+      "language": "語言",
+      "search": "搜尋"
+    },
+    "categories": {
+      "popular": "熱門工具",
+      "editAnnotate": "編輯與註釋",
+      "convertToPdf": "轉換為PDF",
+      "convertFromPdf": "從PDF轉換",
+      "organizeManage": "整理與管理",
+      "optimizeRepair": "優化與修復",
+      "securePdf": "PDF安全"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "編輯、註釋和修改 PDF 內容",
+      "convertToPdf": "將各種格式轉換為 PDF",
+      "convertFromPdf": "將 PDF 轉換為其他格式",
+      "organizeManage": "組織、合併、拆分和管理 PDF 頁面",
+      "optimizeRepair": "壓縮、最佳化和修復 PDF 檔案",
+      "securePdf": "加密、解密和保護 PDF 檔案"
+    },
+    "openSource": {
+      "title": "開源聲明",
+      "description": "下載此部署版本的 AwesomePDF 原始碼，包括建置設定和原始聲明。"
+    }
+  },
+  "vi": {
+    "home": {
+      "title": "AwesomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
+      "description": "Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF chỉ trong vài giây. Công cụ PDF miễn phí, đơn giản, chạy ngay trên trình duyệt và không cần đăng ký."
+    },
+    "tools": {
+      "title": "Tất cả Công cụ PDF",
+      "description": "Công cụ PDF miễn phí để gộp, tách, nén, chuyển đổi, chỉnh sửa và bảo vệ tài liệu ngay trong trình duyệt. Không cần tài khoản hay tải tệp lên máy chủ."
+    },
+    "about": {
+      "title": "Giới thiệu",
+      "description": "Tìm hiểu về AwesomePDF - bộ công cụ PDF miễn phí, riêng tư và mạnh mẽ của bạn. Toàn bộ xử lý diễn ra ngay trong trình duyệt."
+    },
+    "faq": {
+      "title": "Câu hỏi Thường gặp",
+      "description": "Tìm câu trả lời cho các câu hỏi phổ biến về AwesomePDF. Hướng dẫn sử dụng hiệu quả các công cụ PDF của chúng tôi."
+    },
+    "privacy": {
+      "title": "Chính sách Bảo mật",
+      "description": "Chính sách bảo mật của AwesomePDF. Tệp của bạn không bao giờ rời khỏi thiết bị - mọi xử lý đều diễn ra cục bộ trong trình duyệt."
+    },
+    "contact": {
+      "title": "Liên hệ Chúng tôi",
+      "description": "Liên hệ với đội ngũ AwesomePDF. Chúng tôi rất mong nhận được phản hồi từ bạn."
+    },
+    "keywords": {
+      "pdfTools": "công cụ PDF",
+      "mergePdf": "hợp nhất PDF",
+      "splitPdf": "tách PDF",
+      "compressPdf": "nén PDF",
+      "convertPdf": "chuyển đổi PDF",
+      "freePdfTools": "công cụ PDF miễn phí",
+      "onlinePdfEditor": "trình chỉnh sửa PDF trực tuyến"
+    },
+    "toolSuffix": "Miễn phí trực tuyến",
+    "howTo": "Cách sử dụng",
+    "navigation": {
+      "home": "Trang chủ",
+      "tools": "Công cụ",
+      "workflow": "Quy trình công việc",
+      "about": "Giới thiệu",
+      "faq": "FAQ",
+      "privacy": "Sự riêng tư",
+      "contact": "Liên hệ",
+      "mainMenu": "Điều hướng chính",
+      "openMenu": "Mở menu",
+      "allTools": "Tất cả công cụ",
+      "edit": "Chỉnh sửa",
+      "convert": "Chuyển đổi",
+      "organize": "Sắp xếp",
+      "shareFiles": "Chia sẻ tệp",
+      "comingSoon": "Sắp ra mắt",
+      "browseAll": "Xem tất cả {count} công cụ",
+      "language": "Ngôn ngữ",
+      "search": "Tìm kiếm"
+    },
+    "categories": {
+      "popular": "Công cụ Phổ biến",
+      "editAnnotate": "Chỉnh sửa & Chú thích",
+      "convertToPdf": "Chuyển sang PDF",
+      "convertFromPdf": "Chuyển từ PDF",
+      "organizeManage": "Sắp xếp & Quản lý",
+      "optimizeRepair": "Tối ưu & Sửa chữa",
+      "securePdf": "Bảo mật PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Chỉnh sửa, chú thích và sửa đổi nội dung PDF",
+      "convertToPdf": "Chuyển đổi nhiều định dạng sang PDF",
+      "convertFromPdf": "Chuyển đổi PDF sang các định dạng khác",
+      "organizeManage": "Sắp xếp, hợp nhất, tách và quản lý trang PDF",
+      "optimizeRepair": "Nén, tối ưu và sửa chữa tệp PDF",
+      "securePdf": "Mã hóa, giải mã và bảo mật tệp PDF"
+    },
+    "openSource": {
+      "title": "Thông báo nguồn mở",
+      "description": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc."
+    }
+  },
+  "id": {
+    "home": {
+      "title": "AwesomePDF – alat PDF gratis untuk menggabung, mengompres, dan mengedit",
+      "description": "Gabungkan, kompres, konversi, edit, dan atur PDF dalam hitungan detik. Alat PDF gratis dan sederhana yang berjalan di browser, tanpa perlu mendaftar."
+    },
+    "tools": {
+      "title": "Semua Alat PDF",
+      "description": "Alat PDF gratis untuk menggabungkan, memisahkan, mengompres, mengonversi, mengedit, dan melindungi dokumen di browser. Tanpa akun atau unggahan ke server."
+    },
+    "about": {
+      "title": "Tentang",
+      "description": "Pelajari tentang AwesomePDF - toolkit PDF gratis, pribadi, dan kuat. Semua proses terjadi di browser Anda."
+    },
+    "faq": {
+      "title": "Pertanyaan yang Sering Diajukan",
+      "description": "Temukan jawaban untuk pertanyaan umum tentang AwesomePDF. Pelajari cara menggunakan alat PDF kami secara efektif."
+    },
+    "privacy": {
+      "title": "Kebijakan Privasi",
+      "description": "Kebijakan privasi AwesomePDF. File Anda tidak pernah meninggalkan perangkat Anda - semua proses terjadi secara lokal di browser Anda."
+    },
+    "contact": {
+      "title": "Hubungi Kami",
+      "description": "Hubungi tim AwesomePDF. Kami ingin mendengar pendapat Anda."
+    },
+    "keywords": {
+      "pdfTools": "alat PDF",
+      "mergePdf": "gabung PDF",
+      "splitPdf": "pisah PDF",
+      "compressPdf": "kompres PDF",
+      "convertPdf": "konversi PDF",
+      "freePdfTools": "alat PDF gratis",
+      "onlinePdfEditor": "editor PDF online"
+    },
+    "toolSuffix": "Gratis online",
+    "howTo": "Cara Menggunakan",
+    "navigation": {
+      "home": "Rumah",
+      "tools": "Alat",
+      "workflow": "Alur Kerja",
+      "about": "Tentang",
+      "faq": "FAQ",
+      "privacy": "Pribadi",
+      "contact": "Hubungi",
+      "mainMenu": "Navigasi utama",
+      "openMenu": "Buka menu",
+      "allTools": "Semua Alat",
+      "edit": "Edit",
+      "convert": "Konversi",
+      "organize": "Atur",
+      "shareFiles": "Bagikan File",
+      "comingSoon": "Segera Hadir",
+      "browseAll": "Jelajahi semua {count} alat",
+      "language": "Bahasa",
+      "search": "Cari"
+    },
+    "categories": {
+      "popular": "Alat Populer",
+      "editAnnotate": "Edit & Anotasi",
+      "convertToPdf": "Konversi ke PDF",
+      "convertFromPdf": "Konversi dari PDF",
+      "organizeManage": "Atur & Kelola",
+      "optimizeRepair": "Optimalkan & Perbaiki",
+      "securePdf": "Amankan PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Edit, beri anotasi, dan ubah konten PDF",
+      "convertToPdf": "Konversi berbagai format ke PDF",
+      "convertFromPdf": "Konversi PDF ke format lain",
+      "organizeManage": "Atur, gabung, pisah, dan kelola halaman PDF",
+      "optimizeRepair": "Kompres, optimalkan, dan perbaiki file PDF",
+      "securePdf": "Enkripsi, dekripsi, dan amankan file PDF"
+    },
+    "openSource": {
+      "title": "Pemberitahuan sumber terbuka",
+      "description": "Unduh kode sumber versi AwesomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli."
+    }
+  },
+  "es": {
+    "home": {
+      "title": "AwesomePDF – herramientas PDF gratuitas para unir, comprimir y editar",
+      "description": "Une, comprime, convierte, edita y organiza PDF en segundos. Herramientas PDF gratuitas y sencillas que funcionan en tu navegador, sin registro."
+    },
+    "tools": {
+      "title": "Todas las Herramientas PDF",
+      "description": "Herramientas PDF gratis para unir, dividir, comprimir, convertir, editar y proteger documentos en tu navegador. Sin cuenta ni subir archivos a un servidor."
+    },
+    "about": {
+      "title": "Acerca de Nosotros",
+      "description": "Conoce AwesomePDF - tu kit de herramientas PDF gratuito, privado y potente. Todo el procesamiento ocurre en tu navegador."
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "description": "Encuentra respuestas a preguntas comunes sobre AwesomePDF. Aprende a usar nuestras herramientas PDF de manera efectiva."
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Política de privacidad de AwesomePDF. Tus archivos nunca salen de tu dispositivo - todo el procesamiento ocurre localmente en tu navegador."
+    },
+    "contact": {
+      "title": "Contáctanos",
+      "description": "Ponte en contacto con el equipo de AwesomePDF. Nos encantaría saber de ti."
+    },
+    "keywords": {
+      "pdfTools": "herramientas PDF",
+      "mergePdf": "combinar PDF",
+      "splitPdf": "dividir PDF",
+      "compressPdf": "comprimir PDF",
+      "convertPdf": "convertir PDF",
+      "freePdfTools": "herramientas PDF gratis",
+      "onlinePdfEditor": "editor PDF en línea"
+    },
+    "toolSuffix": "Gratis online",
+    "howTo": "Cómo usar",
+    "navigation": {
+      "home": "Inicio",
+      "tools": "Herramientas",
+      "workflow": "Flujo de trabajo",
+      "about": "Acerca de",
+      "faq": "Preguntas Frecuentes",
+      "privacy": "Privacidad",
+      "contact": "Contacto",
+      "mainMenu": "Navegación principal",
+      "openMenu": "Abrir menú",
+      "allTools": "Herramientas",
+      "edit": "Editar",
+      "convert": "Convertir",
+      "organize": "Organizar",
+      "shareFiles": "Compartir archivos",
+      "comingSoon": "Próximamente",
+      "browseAll": "Ver las {count} herramientas",
+      "language": "Idioma",
+      "search": "Buscar"
+    },
+    "categories": {
+      "popular": "Herramientas Populares",
+      "editAnnotate": "Editar y Anotar",
+      "convertToPdf": "Convertir a PDF",
+      "convertFromPdf": "Convertir desde PDF",
+      "organizeManage": "Organizar y Gestionar",
+      "optimizeRepair": "Optimizar y Reparar",
+      "securePdf": "PDF Seguro"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "Editar, anotar y modificar contenido PDF",
+      "convertToPdf": "Convertir varios formatos a PDF",
+      "convertFromPdf": "Convertir PDF a otros formatos",
+      "organizeManage": "Organizar, unir, dividir y gestionar páginas PDF",
+      "optimizeRepair": "Comprimir, optimizar y reparar archivos PDF",
+      "securePdf": "Cifrar, descifrar y asegurar archivos PDF"
+    },
+    "openSource": {
+      "title": "Avisos de código abierto",
+      "description": "Descarga el código fuente de esta versión de AwesomePDF, incluida su configuración de compilación y los avisos originales."
+    }
+  },
+  "ar": {
+    "home": {
+      "title": "AwesomePDF – أدوات PDF مجانية للدمج والضغط والتحرير",
+      "description": "ادمج ملفات PDF واضغطها وحوّلها وحرّرها ونظّمها في ثوانٍ. أدوات PDF مجانية وبسيطة تعمل في متصفحك ولا تتطلب تسجيلًا."
+    },
+    "tools": {
+      "title": "جميع أدوات PDF",
+      "description": "أدوات PDF مجانية لدمج المستندات وتقسيمها وضغطها وتحويلها وتحريرها وحمايتها في المتصفح. دون حساب أو رفع الملفات إلى خادم."
+    },
+    "about": {
+      "title": "من نحن",
+      "description": "تعرّف على AwesomePDF — مجموعة أدوات PDF مجانية وخاصة وقوية. تتم جميع المعالجة داخل متصفحك."
+    },
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "description": "اعثر على إجابات للأسئلة الشائعة حول AwesomePDF وتعرّف على كيفية استخدام أدوات PDF بفعالية."
+    },
+    "privacy": {
+      "title": "سياسة الخصوصية",
+      "description": "سياسة خصوصية AwesomePDF. ملفاتك لا تغادر جهازك أبدًا، وجميع المعالجة تتم محليًا داخل المتصفح."
+    },
+    "contact": {
+      "title": "تواصل معنا",
+      "description": "تواصل مع فريق AwesomePDF. يسعدنا سماع استفساراتك وملاحظاتك."
+    },
+    "keywords": {
+      "pdfTools": "أدوات PDF",
+      "mergePdf": "دمج PDF",
+      "splitPdf": "تقسيم PDF",
+      "compressPdf": "ضغط PDF",
+      "convertPdf": "تحويل PDF",
+      "freePdfTools": "أدوات PDF مجانية",
+      "onlinePdfEditor": "محرر PDF عبر الإنترنت"
+    },
+    "toolSuffix": "مجانًا عبر الإنترنت",
+    "howTo": "كيفية الاستخدام",
+    "navigation": {
+      "home": "بيت",
+      "tools": "الأدوات",
+      "workflow": "سير العمل",
+      "about": "من نحن",
+      "faq": "الأسئلة الشائعة",
+      "privacy": "خصوصية",
+      "contact": "الاتصال",
+      "mainMenu": "التنقل الرئيسي",
+      "openMenu": "فتح القائمة",
+      "allTools": "كل الأدوات",
+      "edit": "تحرير",
+      "convert": "تحويل",
+      "organize": "تنظيم",
+      "shareFiles": "مشاركة الملفات",
+      "comingSoon": "قريبًا",
+      "browseAll": "تصفّح كل الأدوات ({count})",
+      "language": "اللغة",
+      "search": "بحث"
+    },
+    "categories": {
+      "popular": "الأدوات الشائعة",
+      "editAnnotate": "تحرير وشرح",
+      "convertToPdf": "تحويل إلى PDF",
+      "convertFromPdf": "تحويل من PDF",
+      "organizeManage": "تنظيم وإدارة",
+      "optimizeRepair": "تحسين وإصلاح",
+      "securePdf": "تأمين PDF"
+    },
+    "categoryDescriptions": {
+      "editAnnotate": "تحرير وشرح وتعديل محتوى PDF",
+      "convertToPdf": "تحويل صيغ مختلفة إلى PDF",
+      "convertFromPdf": "تحويل ملفات PDF إلى صيغ أخرى",
+      "organizeManage": "تنظيم ودمج وتقسيم وإدارة صفحات PDF",
+      "optimizeRepair": "ضغط وتحسين وإصلاح ملفات PDF",
+      "securePdf": "تشفير وفك تشفير وتأمين ملفات PDF"
+    },
+    "openSource": {
+      "title": "إشعارات المصادر المفتوحة",
+      "description": "نزّل الشيفرة المصدرية لهذا الإصدار المنشور من AwesomePDF، بما في ذلك إعدادات البناء والإشعارات الأصلية."
+    }
+  }
+}

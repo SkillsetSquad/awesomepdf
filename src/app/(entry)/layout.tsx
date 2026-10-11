@@ -3,6 +3,7 @@ import '@/app/globals.css';
 
 import { siteConfig } from '@/config/site';
 import { withBasePath } from '@/lib/utils/path';
+import { SiteDocument } from '@/components/layout/SiteDocument';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -21,19 +22,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="color-scheme" content="light dark" />
-        <style dangerouslySetInnerHTML={{ __html: 'html{scrollbar-gutter:stable}' }} />
-        <script
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/coi-serviceworker.js`}
-          data-coi="true"
-          async
-        />
-      </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        {children}
-      </body>
-    </html>
+    <SiteDocument locale="en">{children}</SiteDocument>
   );
 }

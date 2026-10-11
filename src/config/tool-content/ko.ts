@@ -3163,7 +3163,7 @@ export const toolContentKo: Record<string, ToolContent> = {
   },
   "digital-sign-pdf": {
     "title": "디지털 서명",
-    "metaDescription": "PDF 문서에 X.509 디지털 서명을 추가합니다. PFX, P12 또는 PEM 인증서로 PDF에 서명하여 법적 효력을 부여합니다.",
+    "metaDescription": "PFX, P12 또는 PEM 인증서를 사용하여 PDF 문서에 디지털 서명합니다. 브라우저에 로컬로 인증서 기반 서명을 추가하세요.",
     "keywords": [
       "pdf 디지털 서명",
       "x509 인증서",
@@ -3283,7 +3283,7 @@ export const toolContentKo: Record<string, ToolContent> = {
   },
   "form-logic-designer": {
     "title": "폼 로직 디자인",
-    "metaDescription": "글래스모피즘 노드 캔버스를 사용하여 대화형 로직을 설계하고 Acrobat JavaScript 코드를 PDF 양식에 주입합니다.",
+    "metaDescription": "비주얼 디자이너로 PDF 양식 규칙을 만듭니다. 필드를 연결하고 대화형 계산 및 유효성 검사 논리를 추가합니다.",
     "keywords": [
       "PDF 양식 로직",
       "AcroJS 주입",
@@ -3342,8 +3342,8 @@ export const toolContentKo: Record<string, ToolContent> = {
     ]
   },
   "global-invoice-parser": {
-    "title": "송장 번역 및 환산",
-    "metaDescription": "다국적 송장에서 통화 총액을 자동으로 추출하고 실시간 환율을 적용하여 글래스모피즘 스타일의 환율 대장을 스탬프합니다.",
+    "title": "PDF 송장 금액 변환기",
+    "metaDescription": "PDF에서 송장 금액을 추출하고, 통화 간 총액을 변환하고, 문서에 계산 요약을 추가합니다.",
     "keywords": [
       "송장 번역",
       "송장 환율 환산",
@@ -3409,53 +3409,53 @@ export const toolContentKo: Record<string, ToolContent> = {
       "만화책 변환",
       "cbz 변환기"
     ],
-    "description": "\n      <p>PDF to CBZ is custom-engineered for comic enthusiasts and digital ebook archivists. It renders every page of your PDF volumes into high-fidelity rasterized graphics and compiles them into a standard Comic Book ZIP (.cbz) bundle.</p>\n      <p>To eliminate frustrating manual scraping in systems like Calibre, Komga, Kavita, or CDisplayEx, the processor automatically generates and injects both <strong>ComicInfo.xml</strong> and <strong>metadata.opf</strong> files internally, while simultaneously writing a standardized <strong>ComicBookInfo JSON</strong> payload directly into the ZIP file comment metadata.</p>\n      <p>Includes complete configuration sliders for image compression quality, page dimension scale, right-to-left layout reading toggles (Manga mode), and black-and-white grayscale color filtering.</p>\n    ",
+    "description": "<p>PDF to CBZ는 만화 애호가와 디지털 전자책 기록 보관자를 위해 맞춤 설계되었습니다. PDF 볼륨의 모든 페이지를 고화질 래스터화된 그래픽으로 렌더링하고 표준 Comic Book ZIP(.cbz) 번들로 컴파일합니다.</p>\n      <p>Calibre, Komga, Kavita 또는 CDisplayEx와 같은 시스템에서 번거로운 수동 스크래핑을 제거하기 위해 프로세서는 내부적으로 <strong>ComicInfo.xml</strong> 및 <strong>metadata.opf</strong> 파일을 자동으로 생성하여 삽입하는 동시에 표준화된 <strong>ComicBookInfo JSON</strong> 페이로드를 ZIP 파일 주석 메타데이터에 직접 작성합니다.</p>\n      <p>이미지 압축 품질, 페이지 크기 배율, 오른쪽에서 왼쪽 레이아웃 읽기 토글(만화 모드) 및 흑백 회색조 색상 필터링을 위한 전체 구성 슬라이더가 포함되어 있습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Comic PDF",
-        "description": "Drag and drop your primary comic, artbook, or manga PDF file."
+        "title": "만화 PDF 업로드",
+        "description": "기본 만화, 아트북 또는 만화 PDF 파일을 드래그 앤 드롭하세요."
       },
       {
         "step": 2,
-        "title": "Input Comic Metadata",
-        "description": "Fill out Series, Volume, Title, Writer, and Publisher fields, and toggle layout or grayscale optimization."
+        "title": "만화 메타데이터 입력",
+        "description": "시리즈, 권, 제목, 작가 및 출판사 필드를 작성하고 레이아웃 또는 회색조 최적화를 전환합니다."
       },
       {
         "step": 3,
-        "title": "Compile and Download",
-        "description": "Click Convert to compile and retrieve your metadata-rich .cbz file instantly ready for Calibre."
+        "title": "컴파일 및 다운로드",
+        "description": "변환을 클릭하여 Calibre에 즉시 사용할 수 있는 메타데이터가 풍부한 .cbz 파일을 컴파일하고 검색하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Retrograde Comic Packaging",
-        "description": "Transform raw scanned PDF books into compact, standard-compliant CBZ comic files easily scrapable by comic library managers.",
+        "title": "역행 만화 포장",
+        "description": "원본으로 스캔한 PDF 책을 만화 도서관 관리자가 쉽게 스크랩할 수 있는 컴팩트한 표준 규격 CBZ 만화 파일로 변환합니다.",
         "icon": "book"
       },
       {
-        "title": "Zero-Effort Calibre Integration",
-        "description": "The built-in metadata.opf schema allows Calibre to fetch and classify creators and volume issues without manual lookup.",
+        "title": "제로 노력 구경 통합",
+        "description": "내장된 메타데이터.opf 스키마를 통해 Calibre는 수동 조회 없이 작성자 및 볼륨 문제를 가져오고 분류할 수 있습니다.",
         "icon": "database"
       },
       {
-        "title": "E-Ink Screen Enhancement",
-        "description": "Pre-filter graphic color channels into high-contrast grayscale on compile, boosting visual refresh and clarity on E-ink screens while saving storage.",
+        "title": "E-Ink 화면 개선",
+        "description": "컴파일 시 그래픽 색상 채널을 고대비 회색조로 사전 필터링하여 저장 공간을 절약하는 동시에 E-잉크 화면의 시각적 새로고침과 선명도를 높입니다.",
         "icon": "eye"
       }
     ],
     "faq": [
       {
-        "question": "What is a .cbz file?",
-        "answer": "A CBZ file is a specialized archive container format for comic book series. It is internally formatted as a ZIP package containing sequentially numbered page images alongside structural metadata XML files."
+        "question": ".cbz 파일이란 무엇인가요?",
+        "answer": "CBZ 파일은 만화 시리즈의 특수 아카이브 컨테이너 형식입니다. 구조적 메타데이터 XML 파일과 함께 순차적으로 번호가 매겨진 페이지 이미지를 포함하는 ZIP 패키지로 내부적으로 형식이 지정됩니다."
       },
       {
-        "question": "How is metadata compatible?",
-        "answer": "We compile and embed ComicInfo.xml, metadata.opf, and ZIP File Comments in one pass. This guarantees absolute compliance across multiple comic and e-book ecosystems."
+        "question": "메타데이터는 어떻게 호환되나요?",
+        "answer": "ComicInfo.xml, 메타데이터.opf 및 ZIP 파일 주석을 한 번에 컴파일하고 포함합니다. 이는 여러 만화 및 전자책 생태계 전반에 걸쳐 완벽한 규정 준수를 보장합니다."
       },
       {
-        "question": "Why use Grayscale mode?",
-        "answer": "If you read on a grayscale E-ink reader (like Kindle or Kobo), compiling directly in Grayscale reduces artifact ghosting, delivers superior contrast levels, and shrinks the final CBZ file size."
+        "question": "그레이스케일 모드를 사용하는 이유는 무엇입니까?",
+        "answer": "회색조 E-ink 리더(예: Kindle 또는 Kobo)에서 읽는 경우 회색조에서 직접 컴파일하면 아티팩트 잔상이 줄어들고 뛰어난 대비 수준을 제공하며 최종 CBZ 파일 크기가 줄어듭니다."
       }
     ]
   },
@@ -3467,58 +3467,58 @@ export const toolContentKo: Record<string, ToolContent> = {
       "pdf 겹치기",
       "워터마크 레이어"
     ],
-    "description": "\n      <p>Overlay PDF allows you to layer pages of one PDF document on top or underneath another PDF document. It is perfect for applying letterheads, adding background grids, stamping watermarks, or fusing layout drafts together.</p>\n      <p>Supports both Overlay mode (layer goes on top) and Underlay mode (layer goes underneath). Specify custom target page ranges or loop shorter overlay documents to cover the entire base file automatically.</p>\n      <p>All processing is executed entirely inside your web browser locally, guaranteeing total security and data privacy.</p>\n    ",
+    "description": "<p>PDF 오버레이를 사용하면 한 PDF 문서의 페이지를 다른 PDF 문서 위나 아래에 겹쳐서 표시할 수 있습니다. 레터헤드 적용, 배경 격자 추가, 워터마크 스탬프 또는 레이아웃 초안 융합에 적합합니다.</p>\n      <p>오버레이 모드(레이어가 맨 위에 위치)와 언더레이 모드(레이어가 아래에 위치)를 모두 지원합니다. 사용자 정의 대상 페이지 범위를 지정하거나 더 짧은 오버레이 문서를 반복하여 전체 기본 파일을 자동으로 포괄합니다.</p>\n      <p>모든 처리는 완전히 웹 브라우저 내에서 로컬로 실행되므로 완전한 보안과 데이터 개인 정보 보호가 보장됩니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Main PDF",
-        "description": "Drag and drop your primary base PDF document."
+        "title": "기본 PDF 업로드",
+        "description": "기본 기본 PDF 문서를 끌어서 놓습니다."
       },
       {
         "step": 2,
-        "title": "Upload Layer PDF",
-        "description": "Provide the overlay/underlay document that acts as the layer."
+        "title": "레이어 PDF 업로드",
+        "description": "레이어 역할을 하는 오버레이/언더레이 문서를 제공하세요."
       },
       {
         "step": 3,
-        "title": "Configure Layering",
-        "description": "Choose overlay or underlay mode, specify page ranges, and enable page looping."
+        "title": "레이어링 구성",
+        "description": "오버레이 또는 언더레이 모드를 선택하고, 페이지 범위를 지정하고, 페이지 반복을 활성화합니다."
       },
       {
         "step": 4,
-        "title": "Compile and Download",
-        "description": "Click Compile to process and download the layered result PDF."
+        "title": "컴파일 및 다운로드",
+        "description": "컴파일을 클릭하면 계층화된 결과 PDF를 처리하고 다운로드할 수 있습니다."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate Letterheads",
-        "description": "Layer invoice contents on top of standard company letterhead templates.",
+        "title": "기업 레터헤드",
+        "description": "표준 회사 레터헤드 템플릿 위에 송장 내용을 추가합니다.",
         "icon": "file-text"
       },
       {
-        "title": "Watermarks & Seals",
-        "description": "Overlay security stamps, signature seals, or backgrounds across documents.",
+        "title": "워터마크 및 씰",
+        "description": "문서 전체에 보안 스탬프, 서명 도장 또는 배경을 오버레이합니다.",
         "icon": "shield"
       },
       {
-        "title": "Drawing Blueprints",
-        "description": "Combine draft architectures or layout grids underneath text blocks.",
+        "title": "청사진 그리기",
+        "description": "초안 아키텍처 또는 레이아웃 그리드를 텍스트 블록 아래에 결합합니다.",
         "icon": "layout"
       }
     ],
     "faq": [
       {
-        "question": "What is the difference between Overlay and Underlay?",
-        "answer": "Overlay places the secondary layer on top of your main content. Underlay places it at the very bottom, acting as a background template."
+        "question": "오버레이와 언더레이의 차이점은 무엇인가요?",
+        "answer": "오버레이는 기본 콘텐츠 위에 보조 레이어를 배치합니다. 언더레이는 맨 아래에 배치하여 배경 템플릿 역할을 합니다."
       },
       {
-        "question": "Can I loop the overlay layer?",
-        "answer": "Yes, if the layer PDF is shorter than the base document, enabling Loop will cycle it (e.g. page 1, 2, 1, 2) to cover all base pages."
+        "question": "오버레이 레이어를 반복할 수 있나요?",
+        "answer": "예, 레이어 PDF가 기본 문서보다 짧은 경우 루프를 활성화하면 모든 기본 페이지를 포함하도록 순환(예: 페이지 1, 2, 1, 2)됩니다."
       },
       {
-        "question": "Is page range supported?",
-        "answer": "Yes, you can target specific pages using range syntax such as \"1-5\", \"odd\", \"even\", or comma-separated lists."
+        "question": "페이지 범위가 지원되나요?",
+        "answer": "예, \"1-5\", \"홀수\", \"짝수\" 또는 쉼표로 구분된 목록과 같은 범위 구문을 사용하여 특정 페이지를 타겟팅할 수 있습니다."
       }
     ]
   },
@@ -3588,1059 +3588,1059 @@ export const toolContentKo: Record<string, ToolContent> = {
       "pdf 레이블링",
       "논리 페이지 번호"
     ],
-    "description": "\n      <p>Add Page Labels allows you to inject custom page labeling metadata (/PageLabels) into your PDF's root Catalog dictionary. This customizes the labels displayed in professional PDF reader navigation sidebars and top page number jump panels (e.g. using Roman numerals for front matter, decimal sequences for main body, or custom prefixes such as A-0, A-1 for technical subsections).</p>\n      <p>Supports combining multiple custom rules seamlessly. Crucially, we've built a highly optimized <strong>disjoint-range slicing algorithm</strong>: even if you declare complex alternating patterns (e.g., odd pages style A, even pages style B), the tool will elegantly dissect and compose boundaries to ensure proper standard-compliant display without leaking formats into unmapped pages.</p>\n      <p>All operations are processed entirely inside your local browser sandbox, securing absolute data privacy.</p>\n    ",
+    "description": "<p>페이지 레이블 추가를 사용하면 사용자 정의 페이지 레이블 지정 메타데이터(/PageLabels)를 PDF의 루트 카탈로그 사전에 삽입할 수 있습니다. 이를 통해 전문 PDF 리더 탐색 사이드바 및 상위 페이지 번호 점프 패널에 표시되는 레이블을 사용자 정의합니다(예: 머리말에 로마 숫자 사용, 본문에 소수 순서 사용, 기술 하위 섹션에 A-0, A-1과 같은 사용자 정의 접두어 사용).</p>\n      <p>여러 맞춤 규칙을 원활하게 결합할 수 있도록 지원합니다. 결정적으로, 우리는 고도로 최적화된 <strong>분리 범위 분할 알고리즘</strong>을 구축했습니다. 복잡한 교대 패턴(예: 홀수 페이지 스타일 A, 짝수 페이지 스타일 B)을 선언하더라도 이 도구는 매핑되지 않은 페이지에 형식을 유출하지 않고 적절한 표준 호환 디스플레이를 보장하기 위해 경계를 우아하게 분석하고 구성합니다.</p>\n      <p>모든 작업은 전적으로 로컬 브라우저 샌드박스 내에서 처리되므로 절대적인 데이터 개인정보 보호가 보장됩니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Provide the target PDF document you wish to label."
+        "title": "PDF 문서 업로드",
+        "description": "라벨을 붙이고 싶은 대상 PDF 문서를 제공하세요."
       },
       {
         "step": 2,
-        "title": "Configure Labeling Rules",
-        "description": "Add one or more rules specifying page ranges (e.g., \"1-5\", \"odd\", or comma-separated lists), prefix, style, and starting sequence."
+        "title": "라벨링 규칙 구성",
+        "description": "페이지 범위(예: '1-5', '홀수' 또는 쉼표로 구분된 목록), 접두사, 스타일 및 시작 순서를 지정하는 하나 이상의 규칙을 추가합니다."
       },
       {
         "step": 3,
-        "title": "Preview and Download",
-        "description": "Review the live page label list preview below, then compile and download your updated PDF document."
+        "title": "미리보기 및 다운로드",
+        "description": "아래의 라이브 페이지 라벨 목록 미리보기를 검토한 후 업데이트된 PDF 문서를 컴파일하고 다운로드하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Academic Thesis Formatting",
-        "description": "Set lowercase Roman numerals (i, ii, iii) for introductory front matter and transition to decimal for main chapters.",
+        "title": "학술논문양식",
+        "description": "서문에는 소문자 로마 숫자(i, ii, iii)를 설정하고 주요 장에는 소수점으로 전환합니다.",
         "icon": "book"
       },
       {
-        "title": "Engineering Blueprint Prefixes",
-        "description": "Attach subsystem abbreviations (e.g., \"A-1\", \"M-5\") as page label prefixes, letting teams search and locate pages in seconds.",
+        "title": "엔지니어링 청사진 접두사",
+        "description": "하위 시스템 약어(예: \"A-1\", \"M-5\")를 페이지 레이블 접두사로 첨부하여 팀이 몇 초 만에 페이지를 검색하고 찾을 수 있도록 합니다.",
         "icon": "layout"
       },
       {
-        "title": "Custom Alternating Layouts",
-        "description": "Apply highly specific page range indexing to odd/even sequences or non-contiguous sections with maximum freedom.",
+        "title": "사용자 정의 대체 레이아웃",
+        "description": "홀수/짝수 시퀀스 또는 비연속 섹션에 매우 구체적인 페이지 범위 인덱싱을 최대한 자유롭게 적용합니다.",
         "icon": "shuffle"
       }
     ],
     "faq": [
       {
-        "question": "What are page labels vs page numbers?",
-        "answer": "Ordinary page numbers are visual text blocks rendered directly on the paper canvas (visible when printed). Page labels, however, are structural metadata injected into the PDF catalog. They control what is displayed underneath thumbnails and in the page lookup box inside software like Adobe Acrobat or Apple Preview."
+        "question": "페이지 라벨과 페이지 번호란 무엇인가요?",
+        "answer": "일반적인 페이지 번호는 종이 캔버스에 직접 렌더링된 시각적 텍스트 블록입니다(인쇄 시 표시됨). 그러나 페이지 레이블은 PDF 카탈로그에 삽입된 구조적 메타데이터입니다. Adobe Acrobat 또는 Apple Preview와 같은 소프트웨어 내부의 페이지 조회 상자와 축소판 아래에 표시되는 내용을 제어합니다."
       },
       {
-        "question": "What happens if I leave the Page Range empty?",
-        "answer": "Leaving the page range empty causes the rule to apply globally to all pages of the document."
+        "question": "페이지 범위를 비워두면 어떻게 되나요?",
+        "answer": "페이지 범위를 비워두면 규칙이 문서의 모든 페이지에 전체적으로 적용됩니다."
       },
       {
-        "question": "How are overlapping rules handled?",
-        "answer": "Rules are evaluated sequentially in the order they are listed. If a page range of a later rule overlaps with an earlier one, the later rule takes priority and overrides the label for that page."
+        "question": "중복되는 규칙은 어떻게 처리되나요?",
+        "answer": "규칙은 나열된 순서대로 순차적으로 평가됩니다. 이후 규칙의 페이지 범위가 이전 규칙과 겹치는 경우 이후 규칙이 우선순위를 가지며 해당 페이지의 라벨을 재정의합니다."
       }
     ]
   },
   "ai-pdf-reflower": {
     "title": "AI PDF 모바일 재배열",
-    "metaDescription": "고정 레이아웃의 PDF 문서를 모바일 기기에 맞는 반응형 리플로우 레이아웃으로 재구성하고 EPUB/Markdown으로 내보냅니다.",
+    "metaDescription": "모바일에서 더 쉽게 읽을 수 있도록 PDF 텍스트를 리플로우합니다. 추출된 콘텐츠를 브라우저에서 Markdown 또는 EPUB로 내보냅니다.",
     "keywords": [
       "pdf 리플로우",
       "반응형 pdf",
       "pdf 마크다운 변환",
       "epub 내보내기"
     ],
-    "description": "\n      <p>AI PDF Layout Reflower is your ultimate companion for reading PDF documents on mobile devices. Traditional PDFs use a fixed layout, which often requires endless zooming and horizontal scrolling on smartphones or tablets, resulting in a tedious reading experience.</p>\n      <p>This tool intelligently parses the text flow, line spacing, and physical coordinates of the PDF pages, reconstructing the semantic paragraphs and heading hierarchies. For multi-column or dual-column documents, it intelligently merges column flows into a single responsive flow, ensuring smooth reading.</p>\n      <p>Additionally, it supports rendering mathematical formulas into LaTeX/MathJax and offers multiple reading themes (Sepia, Dark, Eye-protecting Green). You can export the reflowed layout as Markdown or a standard EPUB ebook with a single click.</p>\n    ",
+    "description": "<p>AI PDF Layout Reflower는 모바일 장치에서 PDF 문서를 읽을 수 있는 최고의 동반자입니다. 기존 PDF는 고정 레이아웃을 사용하므로 스마트폰이나 태블릿에서 끝없는 확대/축소와 가로 스크롤이 필요한 경우가 많아 지루한 읽기 환경을 초래하는 경우가 많습니다.</p>\n      <p>이 도구는 PDF 페이지의 텍스트 흐름, 줄 간격, 물리적 좌표를 지능적으로 분석하여 의미 있는 단락과 제목 계층을 재구성합니다. 다중 열 또는 이중 열 문서의 경우 열 흐름을 단일 반응형 흐름으로 지능적으로 병합하여 원활한 읽기를 보장합니다.</p>\n      <p>또한 LaTeX/MathJax로 수학 공식 렌더링을 지원하고 다양한 독서 테마(세피아, 어두움, 눈 보호 녹색)를 제공합니다. 클릭 한 번으로 리플로우된 레이아웃을 Markdown이나 표준 EPUB eBook으로 내보낼 수 있습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop your PDF file or click to browse and select it."
+        "title": "PDF 파일 업로드",
+        "description": "PDF 파일을 끌어서 놓거나 클릭하여 찾아보고 선택하세요."
       },
       {
         "step": 2,
-        "title": "Select Reading Theme",
-        "description": "Choose your preferred font size and theme colors in the 3D mobile simulator on the right."
+        "title": "독서 테마 선택",
+        "description": "오른쪽의 3D 모바일 시뮬레이터에서 원하는 글꼴 크기와 테마 색상을 선택하세요."
       },
       {
         "step": 3,
-        "title": "Export Document",
-        "description": "Once satisfied, use the physical pull-rope to export the document as Markdown or EPUB."
+        "title": "문서 내보내기",
+        "description": "만족스러우면 물리적 당김줄을 사용하여 문서를 Markdown 또는 EPUB로 내보냅니다."
       }
     ],
     "useCases": [
       {
-        "title": "Mobile Literature Reading",
-        "description": "Read academic papers and research reports on your phone seamlessly without constant zooming.",
+        "title": "모바일 문학읽기",
+        "description": "지속적인 확대/축소 없이 휴대폰에서 학술 논문 및 연구 보고서를 원활하게 읽으세요.",
         "icon": "smartphone"
       },
       {
-        "title": "Ebook Conversion",
-        "description": "Convert text-heavy PDFs into EPUB files and import them into Kindle or other ebook readers.",
+        "title": "전자책 전환",
+        "description": "텍스트가 많은 PDF를 EPUB 파일로 변환하고 Kindle 또는 기타 eBook 리더로 가져옵니다.",
         "icon": "book"
       },
       {
-        "title": "Note Archive",
-        "description": "Directly convert structured PDF content into clean Markdown files for your personal knowledge base.",
+        "title": "노트 아카이브",
+        "description": "개인 지식 기반을 위해 구조화된 PDF 콘텐츠를 깨끗한 Markdown 파일로 직접 변환합니다.",
         "icon": "file-text"
       }
     ],
     "faq": [
       {
-        "question": "Does it handle dual-column PDFs correctly?",
-        "answer": "Yes, the layout reflower detects the horizontal coordinates of text blocks and structures left and right columns sequentially, preventing line interleaving."
+        "question": "이중 열 PDF를 올바르게 처리합니까?",
+        "answer": "예, 레이아웃 리플라워는 텍스트 블록의 수평 좌표를 감지하고 왼쪽 및 오른쪽 열을 순차적으로 구조화하여 줄 인터리빙을 방지합니다."
       },
       {
-        "question": "Will images and math formulas be lost?",
-        "answer": "Mathematical formulas are converted to LaTeX/MathJax syntax for clean web rendering, and images are preserved in their corresponding semantic positions."
+        "question": "이미지와 수학 공식이 손실되나요?",
+        "answer": "깔끔한 웹 렌더링을 위해 수학 공식이 LaTeX/MathJax 구문으로 변환되고 이미지는 해당 의미 위치에 보존됩니다."
       },
       {
-        "question": "Is the conversion done in the cloud?",
-        "answer": "No, all layout analysis and format packaging are performed locally in your browser to guarantee the absolute privacy of your documents."
+        "question": "클라우드에서 변환이 이루어지나요?",
+        "answer": "아니요. 문서의 절대적인 개인정보 보호를 보장하기 위해 모든 레이아웃 분석 및 형식 패키징은 브라우저에서 로컬로 수행됩니다."
       }
     ]
   },
   "citation-linker": {
     "title": "인용 링크 활성화 도구",
-    "metaDescription": "학술 PDF에서 인용 부호(예: [1])를 감지하여 클릭 가능한 DOI 외부 링크나 페이지 이동 링크로 연결합니다.",
+    "metaDescription": "PDF의 인용 표시를 클릭 가능한 DOI 링크 또는 페이지 참조로 전환합니다. 연구 문서에 유용한 탐색 기능을 추가하세요.",
     "keywords": [
       "인용구 활성화",
       "pdf 하이퍼링크",
       "doi 매칭",
       "논문 도구"
     ],
-    "description": "\n      <p>Citation Linker is designed specifically for academic researchers. In many PDF papers, citation markers (e.g., [1], [2]) are plain text, forcing readers to scroll back and forth to the reference list at the end of the document, interrupting their focus.</p>\n      <p>This tool reads PDF text locally, uses pattern recognition to match citation markers to their corresponding reference entries, and overlays clickable PDF link annotations using DOI lookups or page-jump coordinates.</p>\n      <p>It also generates an interactive citation relationship map to visually navigate the document's reference network.</p>\n    ",
+    "description": "<p>인용 링커는 학술 연구자를 위해 특별히 설계되었습니다. 많은 PDF 논문에서 인용 표시(예: [1], [2])는 일반 텍스트이므로 독자가 문서 끝에 있는 참조 목록을 앞뒤로 스크롤해야 하므로 집중이 방해됩니다.</p>\n      <p>이 도구는 PDF 텍스트를 로컬에서 읽고, 패턴 인식을 사용하여 인용 표시를 해당 참조 항목과 일치시키고, DOI 조회 또는 페이지 점프 좌표를 사용하여 클릭 가능한 PDF 링크 주석을 오버레이합니다.</p>\n      <p>또한 문서의 참조 네트워크를 시각적으로 탐색할 수 있는 대화형 인용 관계 지도를 생성합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic PDF",
-        "description": "Upload a PDF paper or thesis containing a bibliography/reference section."
+        "title": "학술 PDF 업로드",
+        "description": "참고문헌/참고 섹션이 포함된 PDF 문서 또는 논문을 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Review Citations",
-        "description": "Inspect the citation pairs in the interactive map and manually edit or add DOI links if necessary."
+        "title": "인용 검토",
+        "description": "대화형 지도에서 인용 쌍을 검사하고 필요한 경우 DOI 링크를 수동으로 편집하거나 추가합니다."
       },
       {
         "step": 3,
-        "title": "Inject Links",
-        "description": "Click the activate button to overlay hyperlinks onto the PDF and download the updated document."
+        "title": "링크 삽입",
+        "description": "PDF에 하이퍼링크를 오버레이하고 업데이트된 문서를 다운로드하려면 활성화 버튼을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Deep Literature Reading",
-        "description": "Click citation markers to immediately view reference details or navigate to external DOI pages.",
+        "title": "심층문학읽기",
+        "description": "인용 표시를 클릭하면 참조 세부 정보를 즉시 확인하거나 외부 DOI 페이지로 이동할 수 있습니다.",
         "icon": "link"
       },
       {
-        "title": "Pre-publication Preparation",
-        "description": "Ensure your written academic papers have fully active hyperlink navigations before final submission.",
+        "title": "출판 전 준비",
+        "description": "귀하가 작성한 학술 논문이 최종 제출 전에 완전히 활성화된 하이퍼링크 탐색 기능을 갖추고 있는지 확인하세요.",
         "icon": "award"
       },
       {
-        "title": "Reference Map Analysis",
-        "description": "Understand literature hierarchies and connections via the interactive network topology map.",
+        "title": "참고지도 분석",
+        "description": "대화형 네트워크 토폴로지 맵을 통해 문헌 계층 및 연결을 이해합니다.",
         "icon": "git-network"
       }
     ],
     "faq": [
       {
-        "question": "What if a reference has no DOI?",
-        "answer": "If a DOI cannot be found, the tool falls back to an internal \"GoTo Page\" action, allowing you to click the marker and jump directly to the reference page."
+        "question": "참고문헌에 DOI가 없으면 어떻게 되나요?",
+        "answer": "DOI를 찾을 수 없는 경우 도구는 내부 \"페이지로 이동\" 동작으로 대체되어 마커를 클릭하고 참조 페이지로 직접 이동할 수 있습니다."
       },
       {
-        "question": "Which citation formats are supported?",
-        "answer": "It supports common numeric brackets (e.g., [1], [1-3]) and author-year citations (e.g., Author et al., 202X)."
+        "question": "어떤 인용 형식이 지원되나요?",
+        "answer": "일반적인 숫자 괄호(예: [1], [1-3])와 저자 연도 인용(예: Author et al., 202X)을 지원합니다."
       },
       {
-        "question": "Will it modify the appearance of my PDF?",
-        "answer": "No, it injects invisible Link annotations on top of the text, preserving the original layout, fonts, and styling of your document."
+        "question": "내 PDF의 모양이 변경되나요?",
+        "answer": "아니요, 텍스트 위에 보이지 않는 링크 주석을 삽입하여 문서의 원래 레이아웃, 글꼴 및 스타일을 유지합니다."
       }
     ]
   },
   "vector-extractor": {
     "title": "PDF 벡터 그래픽 추출기",
-    "metaDescription": "PDF 문서를 고정밀 SVG로 해체하여 로고, 차트, 설계도 등 물리 벡터 패스를 손실 없이 선택하고 추출합니다.",
+    "metaDescription": "PDF 페이지에서 벡터 그래픽을 SVG로 추출합니다. 다시 칠하고 내보낼 차트, 다이어그램, 로고를 선택하세요.",
     "keywords": [
       "pdf 벡터 추출",
       "svg 내보내기",
       "차트 추출",
       "일러스트 추출"
     ],
-    "description": "\n      <p>PDF Vector Extractor unlocks vector paths and artwork embedded inside PDF files. Easily extract vector charts, diagrams, or logos from documents for design work or printing.</p>\n      <p>Under the hood, it utilizes high-fidelity SVG rendering to deconstruct PDF vector paths into clean, standard SVG element trees without loss of precision.</p>\n      <p>The interface highlights hover elements with a Z-axis 3D layer explosion effect, complete with a color picker panel for designers to adjust and extract vector nodes.</p>\n    ",
+    "description": "<p>PDF 벡터 추출기는 PDF 파일에 포함된 벡터 경로와 아트웍을 잠금 해제합니다. 디자인 작업이나 인쇄를 위해 문서에서 벡터 차트, 다이어그램, 로고를 쉽게 추출할 수 있습니다.</p>\n      <p>내부적으로는 고품질 SVG 렌더링을 활용하여 정밀도 손실 없이 PDF 벡터 경로를 깔끔한 표준 SVG 요소 트리로 분해합니다.</p>\n      <p>인터페이스는 Z축 3D 레이어 폭발 효과로 호버 요소를 강조 표시하고 디자이너가 벡터 노드를 조정하고 추출할 수 있는 색상 선택 패널을 갖추고 있습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Upload a PDF containing vector assets, diagrams, charts, or logos."
+        "title": "PDF 문서 업로드",
+        "description": "벡터 자산, 다이어그램, 차트 또는 로고가 포함된 PDF를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Select Elements",
-        "description": "Hover over the vector canvas to highlight elements, then click to select a node."
+        "title": "요소 선택",
+        "description": "벡터 캔버스 위에 마우스를 올려 요소를 강조 표시한 다음 클릭하여 노드를 선택하세요."
       },
       {
         "step": 3,
-        "title": "Customize and Export",
-        "description": "Adjust path attributes in the panel, then download as SVG or copy SVG source code."
+        "title": "사용자 정의 및 내보내기",
+        "description": "패널에서 경로 속성을 조정한 다음 SVG로 다운로드하거나 SVG 소스 코드를 복사하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Design Asset Extraction",
-        "description": "Quickly extract company logos, icons, and illustrations from brand guidelines or brochures.",
+        "title": "디자인 자산 추출",
+        "description": "브랜드 가이드라인이나 브로셔에서 회사 로고, 아이콘, 일러스트레이션을 빠르게 추출합니다.",
         "icon": "bezier"
       },
       {
-        "title": "Scientific Chart Export",
-        "description": "Extract vector charts from research papers to use in high-resolution printing or presentations.",
+        "title": "과학 차트 내보내기",
+        "description": "연구 논문에서 벡터 차트를 추출하여 고해상도 인쇄 또는 프리젠테이션에 사용할 수 있습니다.",
         "icon": "presentation"
       },
       {
-        "title": "Vector Asset Recoloring",
-        "description": "Modify the stroke and fill colors of extracted assets before saving them for web projects.",
+        "title": "벡터 자산 다시 칠하기",
+        "description": "웹 프로젝트용으로 저장하기 전에 추출된 자산의 획 및 채우기 색상을 수정하세요.",
         "icon": "crown"
       }
     ],
     "faq": [
       {
-        "question": "Why can't I select certain images?",
-        "answer": "PDFs contain both raster images (like photos or scanned pages) and vector artwork (like shapes and curves). Only vector paths can be deconstructed into SVG paths."
+        "question": "왜 특정 이미지를 선택할 수 없나요?",
+        "answer": "PDF에는 래스터 이미지(예: 사진 또는 스캔한 페이지)와 벡터 아트워크(예: 모양 및 곡선)가 모두 포함되어 있습니다. 벡터 경로만 SVG 경로로 분해될 수 있습니다."
       },
       {
-        "question": "Does the output SVG contain styles?",
-        "answer": "Yes, the exported SVG retains all original properties including fills, strokes, opacity, gradients, and coordinate transforms."
+        "question": "출력 SVG에 스타일이 포함되어 있나요?",
+        "answer": "예, 내보낸 SVG는 채우기, 획, 불투명도, 그라디언트 및 좌표 변환을 포함한 모든 원본 속성을 유지합니다."
       },
       {
-        "question": "Will large files lag?",
-        "answer": "We use WebAssembly acceleration, but PDFs with extremely complex CAD drawings or thousands of vector paths may take a few seconds to render."
+        "question": "대용량 파일이 지연되나요?",
+        "answer": "WebAssembly 가속을 사용하지만 매우 복잡한 CAD 도면이나 수천 개의 벡터 경로가 포함된 PDF는 렌더링하는 데 몇 초가 걸릴 수 있습니다."
       }
     ]
   },
   "deep-sanitize": {
     "title": "딥 메타데이터 삭제 및 소독",
-    "metaDescription": "PDF 바이너리 수준에서 작성자 정보, 편집 기록, 숨김 레이어, 폐기 개체를 완벽히 삭제하여 비밀 누설을 차단합니다.",
+    "metaDescription": "PDF에서 메타데이터, 숨겨진 레이어 및 사용하지 않는 개체를 제거합니다. 공유하기 전에 로컬에서 문서 정보를 정리하세요.",
     "keywords": [
       "pdf 개인정보 삭제",
       "메타데이터 소독",
       "아카이브 클リーニング"
     ],
-    "description": "\n      <p>Deep Metadata Sanitizer is your ultimate defense against metadata leaks and hidden tracking. Simply drawing black boxes over visible text in PDF files is not enough to protect commercial secrets.</p>\n      <p>This tool scans the PDF binary structure to completely erase author info, creator software, editing logs (XMP Metadata), proprietary PieceInfo caches, and OCG optional content groups (often used for invisible watermarks).</p>\n      <p>It also rewrites the cross-reference tables (xref) completely, discarding all incremental update blocks to ensure that deleted or modified historical data cannot be restored.</p>\n    ",
+    "description": "<p>Deep Metadata Sanitizer는 메타데이터 유출 및 숨겨진 추적에 대한 궁극적인 방어책입니다. 단순히 PDF 파일에 보이는 텍스트 위에 검은색 상자를 그리는 것만으로는 상업적 비밀을 보호하기에 충분하지 않습니다.</p>\n      <p>이 도구는 PDF 바이너리 구조를 스캔하여 작성자 정보, 작성자 소프트웨어, 편집 로그(XMP 메타데이터), 독점적인 PieceInfo 캐시 및 OCG 선택적 콘텐츠 그룹(보통 보이지 않는 워터마크에 사용됨)을 완전히 삭제합니다.</p>\n      <p>또한 교차 참조 테이블(xref)을 완전히 다시 작성하여 삭제되거나 수정된 기록 데이터를 복원할 수 없도록 모든 증분 업데이트 블록을 삭제합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF",
-        "description": "Select the PDF file containing sensitive data or modification history."
+        "title": "PDF 업로드",
+        "description": "민감한 데이터나 수정 내역이 포함된 PDF 파일을 선택하세요."
       },
       {
         "step": 2,
-        "title": "Run Scanner",
-        "description": "Trigger the 3D containment scanner to check the file for hidden metadata and layers."
+        "title": "스캐너 실행",
+        "description": "3D 격리 스캐너를 작동하여 파일에 숨겨진 메타데이터 및 레이어가 있는지 확인하세요."
       },
       {
         "step": 3,
-        "title": "Deep Sanitize",
-        "description": "Click sanitize to wipe out tracking elements and download the fully clean PDF."
+        "title": "철저한 소독",
+        "description": "추적 요소를 제거하고 완전히 깨끗한 PDF를 다운로드하려면 삭제를 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Contract Sharing",
-        "description": "Remove drafting records, paths, and previous revisions before sharing business contracts with third parties.",
+        "title": "계약 공유",
+        "description": "비즈니스 계약을 제3자와 공유하기 전에 초안 기록, 경로 및 이전 수정 사항을 제거하세요.",
         "icon": "file-signature"
       },
       {
-        "title": "Anonymized Publishing",
-        "description": "Wipe invisible annotations and watermarks to publish documents anonymously and securely.",
+        "title": "익명 게시",
+        "description": "보이지 않는 주석과 워터마크를 지워 문서를 익명으로 안전하게 게시하세요.",
         "icon": "eye-off"
       },
       {
-        "title": "PDF Optimization",
-        "description": "Remove orphaned objects and garbage data streams to make files load faster on the web.",
+        "title": "PDF 최적화",
+        "description": "파일이 웹에서 더 빠르게 로드되도록 하려면 분리된 개체와 쓰레기 데이터 스트림을 제거하세요.",
         "icon": "zap"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard metadata removal?",
-        "answer": "Standard tools only clear basic fields like title or author. Deep Sanitizer reconstructs the entire PDF xref table, wiping PieceInfo, hidden watermarks, and historical incremental revisions."
+        "question": "이는 표준 메타데이터 제거와 어떻게 다릅니까?",
+        "answer": "표준 도구는 제목이나 저자와 같은 기본 필드만 지웁니다. Deep Sanitizer는 전체 PDF 외부 참조 테이블을 재구성하여 PieceInfo, 숨겨진 워터마크 및 기록 증분 개정판을 삭제합니다."
       },
       {
-        "question": "Will this affect document layout or text?",
-        "answer": "No, it only strips hidden description streams and structure data. The visible layout, texts, and graphics remain unchanged."
+        "question": "문서 레이아웃이나 텍스트에 영향을 미치나요?",
+        "answer": "아니요, 숨겨진 설명 스트림과 구조 데이터만 제거합니다. 표시되는 레이아웃, 텍스트 및 그래픽은 변경되지 않습니다."
       },
       {
-        "question": "Does this remove PDF passwords?",
-        "answer": "No, if a PDF is encrypted, you must unlock it first before performing a deep sanitization."
+        "question": "이렇게 하면 PDF 비밀번호가 제거되나요?",
+        "answer": "아니요, PDF가 암호화된 경우 철저한 삭제를 수행하기 전에 먼저 잠금을 해제해야 합니다."
       }
     ]
   },
   "booklet-folding-simulator": {
     "title": "3D 소책자 접지 시뮬레이터",
-    "metaDescription": "순서대로 배열된 PDF 페이지를 인쇄용 대판(Sheet) 배열로 자동 변환하고, 3D 가상 물리 공간에서 접지 및 중철제본을 테스트합니다.",
+    "metaDescription": "소책자 인쇄를 위해 PDF 페이지를 정렬합니다. 인쇄용 문서를 내보내기 전에 접힌 시트와 중철 레이아웃을 미리 보세요.",
     "keywords": [
       "3d 임포지션",
       "종이 접기 시뮬레이션",
       "중철 제본",
       "출판 인쇄"
     ],
-    "description": "\n      <p>3D Booklet & Folding Simulator is an advanced tool designed for print designers and publishing professionals. Traditional book layout requires calculating complex page overlays and imposition pagination sequences. This tool visualizes and automates that entire process.</p>\n      <p>Under the hood, our custom imposition algorithm maps a sequential PDF page list into standard print sheet layouts (such as 4-page half-folds, 8-page saddle stitches, or accordion folds), merging pages onto the front and back of large physical sheets.</p>\n      <p>On the front-end, we utilize pure CSS 3D Matrix transforms and spring-mass physics curves to animate sheet folding horizontally and vertically, delivering a physical-like binding preview with a high WOW factor.</p>\n    ",
+    "description": "<p>3D 소책자 및 접기 시뮬레이터는 인쇄 디자이너와 출판 전문가를 위해 설계된 고급 도구입니다. 기존의 책 레이아웃에는 복잡한 페이지 오버레이 계산과 페이지 매김 순서 정립이 필요합니다. 이 도구는 전체 프로세스를 시각화하고 자동화합니다.</p>\n      <p>내부적으로는 Google의 맞춤 정판 알고리즘이 순차 PDF 페이지 목록을 표준 인쇄 시트 레이아웃(예: 4페이지 반 접기, 8페이지 중철 또는 아코디언 접기)으로 매핑하여 대형 실제 시트의 앞면과 뒷면에 페이지를 병합합니다.</p>\n      <p>프런트엔드에서는 순수한 CSS 3D 매트릭스 변환과 스프링 질량 물리 곡선을 활용하여 수평 및 수직으로 시트를 접는 애니메이션을 구현하고 WOW 요소가 높은 물리적인 바인딩 미리보기를 제공합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop the PDF document you wish to layout for printing."
+        "title": "PDF 파일 업로드",
+        "description": "인쇄할 레이아웃을 원하는 PDF 문서를 끌어다 놓습니다."
       },
       {
         "step": 2,
-        "title": "Select Folding Layout",
-        "description": "Choose your preferred imposition scheme (e.g., 4-page fold, 8-page saddle stitch, 4-page accordion)."
+        "title": "접는 레이아웃 선택",
+        "description": "선호하는 정판 구성표(예: 4페이지 접기, 8페이지 중철, 4페이지 아코디언)를 선택하세요."
       },
       {
         "step": 3,
-        "title": "Interactive 3D Preview",
-        "description": "Drag the slider to watch the sheet fold in 3D and inspect the final page numbering layout."
+        "title": "대화형 3D 미리보기",
+        "description": "슬라이더를 드래그하여 시트 접힘을 3D로 관찰하고 최종 페이지 번호 매기기 레이아웃을 검사하세요."
       },
       {
         "step": 4,
-        "title": "Generate Imposed PDF",
-        "description": "Click generate to download the rearranged and merged physical sheet PDF, ready for double-sided printing."
+        "title": "임포징된 PDF 생성",
+        "description": "양면 인쇄가 가능한 재정렬 및 병합된 실제 시트 PDF를 다운로드하려면 생성을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Brochure Prototyping",
-        "description": "Pre-visualize the folding sequence of tri-folds and pamphlets to prevent upsidedown pages after printing.",
+        "title": "브로셔 프로토타이핑",
+        "description": "인쇄 후 페이지가 뒤집히는 것을 방지하기 위해 세 접기 및 팜플렛의 접는 순서를 미리 시각화합니다.",
         "icon": "book-open"
       },
       {
-        "title": "Book Saddle-Stitching",
-        "description": "Generate imposed print sheets for multi-page magazines or booklets automatically.",
+        "title": "책 중철 만들기",
+        "description": "여러 페이지로 구성된 잡지나 소책자용 인쇄 시트를 자동으로 생성합니다.",
         "icon": "layers"
       },
       {
-        "title": "Print Shop Visual Aids",
-        "description": "Help clients visualize how pages are physically distributed and folded on print sheets.",
+        "title": "인쇄소 시각 자료",
+        "description": "고객이 인쇄 시트에서 페이지가 물리적으로 어떻게 배포되고 접혀 있는지 시각화할 수 있도록 도와주세요.",
         "icon": "printer"
       }
     ],
     "faq": [
       {
-        "question": "What is \"Imposition\"?",
-        "answer": "Imposition is a fundamental step in prepress printing. Since commercial presses print on large sheets, pages are arranged out of order so that once printed, folded, and bound, the pages appear in the correct sequential order. This tool automatically calculates that layout."
+        "question": "'임포지션'이란 무엇인가요?",
+        "answer": "정판은 프리프레스 인쇄의 기본 단계입니다. 상업용 인쇄기는 큰 용지에 인쇄하기 때문에 페이지가 순서 없이 배열되어 인쇄되고, 접히고, 제본되면 페이지가 올바른 순서대로 나타납니다. 이 도구는 해당 레이아웃을 자동으로 계산합니다."
       },
       {
-        "question": "Does the 3D preview alter my PDF content?",
-        "answer": "No, the original PDF content is merely rendered as texture mappings onto the 3D sheet. The generated PDF only adjusts page order and placement; text and graphic qualities are kept intact."
+        "question": "3D 미리보기가 내 PDF 콘텐츠를 변경합니까?",
+        "answer": "아니요, 원본 PDF 콘텐츠는 단지 3D 시트에 텍스처 매핑으로 렌더링됩니다. 생성된 PDF는 페이지 순서와 배치만 조정합니다. 텍스트와 그래픽 품질은 그대로 유지됩니다."
       },
       {
-        "question": "What if my PDF page count is not a multiple of 4 or 8?",
-        "answer": "The optimizer automatically appends blank pages at the end to satisfy the mathematical page-count requirements of the selected folding layout."
+        "question": "내 PDF 페이지 수가 4 또는 8의 배수가 아니면 어떻게 되나요?",
+        "answer": "최적화 프로그램은 선택한 접기 레이아웃의 수학적 페이지 수 요구 사항을 충족하기 위해 끝에 빈 페이지를 자동으로 추가합니다."
       }
     ]
   },
   "pdf-to-slide": {
     "title": "PDF에서 슬라이드로",
-    "metaDescription": "정적 PDF에서 문맥 레이아웃을 해독하여 제목 골격과 벡터 그래프를 분석한 후 편집이 용이한 표준 PPTX 파워포인트로 빌드합니다.",
+    "metaDescription": "PDF 콘텐츠를 PowerPoint 슬라이드로 변환합니다. 추가 편집을 위해 텍스트와 이미지가 포함된 PPTX 프레젠테이션을 내보냅니다.",
     "keywords": [
       "pdf ppt 변환",
       "슬라이드 재구성",
       "도표 추출",
       "pptx 빌더"
     ],
-    "description": "\n      <p>AI PDF-to-Slide Reconstructor breathes new life into static PDF documents, transforming them into modern, highly-customizable PowerPoint slides (PPTX).</p>\n      <p>The tool uses an advanced layout outline extractor that automatically parses document heading levels, paragraph lines, and font weights to establish a logical slide framework. It also isolates vector charts and high-resolution tables, stripping background artifacts to embed them cleanly as independent editable assets.</p>\n      <p>All PPTX outputs are built using standard Office Open XML elements, meaning all text remains fully editable and vectors do not lose resolution. The front-end showcases a fluid \"starfield\" card transition animation that visualizes the reconstruction in an engaging manner.</p>\n    ",
+    "description": "<p>AI PDF-to-Slide Reconstructor는 정적 PDF 문서에 새로운 생명을 불어넣고 이를 고도로 사용자 정의 가능한 최신 PowerPoint 슬라이드(PPTX)로 변환합니다.</p>\n      <p>이 도구는 문서 제목 수준, 단락 줄, 글꼴 두께를 자동으로 분석하여 논리적인 슬라이드 프레임워크를 구축하는 고급 레이아웃 개요 추출기를 사용합니다. 또한 벡터 차트와 고해상도 테이블을 분리하고 배경 아티팩트를 제거하여 독립적인 편집 가능한 자산으로 깔끔하게 삽입합니다.</p>\n      <p>모든 PPTX 출력은 표준 Office Open XML 요소를 사용하여 작성됩니다. 즉, 모든 텍스트는 완전히 편집 가능한 상태로 유지되고 벡터는 해상도를 잃지 않습니다. 프런트엔드는 흥미로운 방식으로 재구성을 시각화하는 유동적인 '스타필드' 카드 전환 애니메이션을 보여줍니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic/Business PDF",
-        "description": "Upload a PDF document that contains structured sections and diagrams."
+        "title": "학술/비즈니스 PDF 업로드",
+        "description": "구조화된 섹션과 다이어그램이 포함된 PDF 문서를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Analyze Slide Outlines",
-        "description": "Inspect the extracted slide structure, adjust titles, or delete unneeded card blocks."
+        "title": "슬라이드 개요 분석",
+        "description": "추출된 슬라이드 구조를 검사하고, 제목을 조정하거나, 불필요한 카드 블록을 삭제하세요."
       },
       {
         "step": 3,
-        "title": "Reconstruct to PPTX",
-        "description": "Start the compilation engine to receive a standard, editable presentation file."
+        "title": "PPTX로 재구성",
+        "description": "편집 가능한 표준 프리젠테이션 파일을 받으려면 컴파일 엔진을 시작하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Research Paper Presentation",
-        "description": "Convert academic journal PDFs, text structures, and vector diagrams into slide decks ready for talks.",
+        "title": "연구 논문 발표",
+        "description": "학술 저널 PDF, 텍스트 구조 및 벡터 다이어그램을 대화에 사용할 수 있는 슬라이드 데크로 변환합니다.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Business Report Summary",
-        "description": "Distill massive annual corporate reports into clean, bulleted presentation drafts instantly.",
+        "title": "사업보고서 요약",
+        "description": "방대한 연간 기업 보고서를 즉시 명확하고 글머리 기호가 있는 프레젠테이션 초안으로 정제합니다.",
         "icon": "presentation"
       },
       {
-        "title": "Multi-Device Demos",
-        "description": "Avoid copying screenshots manually. Get a clean, fully-editable layout framework in seconds.",
+        "title": "다중 장치 데모",
+        "description": "스크린샷을 수동으로 복사하지 마세요. 단 몇 초 만에 깨끗하고 완전히 편집 가능한 레이아웃 프레임워크를 얻을 수 있습니다.",
         "icon": "laptop"
       }
     ],
     "faq": [
       {
-        "question": "Are the slides editable in Microsoft Office?",
-        "answer": "Yes. The files are generated natively in memory according to the official Office Open XML (OOXML) specification. Texts, tables, and placeholders are fully interactive in PowerPoint, Keynote, and WPS."
+        "question": "Microsoft Office에서 슬라이드를 편집할 수 있나요?",
+        "answer": "네. 파일은 공식 OOXML(Office Open XML) 사양에 따라 메모리에 기본적으로 생성됩니다. 텍스트, 표 및 자리 표시자는 PowerPoint, Keynote 및 WPS에서 완전히 대화형입니다."
       },
       {
-        "question": "How are charts extracted?",
-        "answer": "The engine scans vector paths and raster layers in the PDF, detects bounded areas representing graphs, and clips them out as standalone SVG nodes or high-DPI images."
+        "question": "차트는 어떻게 추출되나요?",
+        "answer": "엔진은 PDF에서 벡터 경로와 래스터 레이어를 스캔하고, 그래프를 나타내는 경계 영역을 감지하고, 이를 독립형 SVG 노드 또는 높은 DPI 이미지로 잘라냅니다."
       },
       {
-        "question": "Does this work on scanned documents?",
-        "answer": "For scanned PDFs lacking actual text layers, we recommend running our OCR tool first before passing the file to the Slide Reconstructor."
+        "question": "스캔한 문서에도 작동하나요?",
+        "answer": "실제 텍스트 레이어가 없는 스캔한 PDF의 경우 파일을 Slide Reconstructor에 전달하기 전에 먼저 OCR 도구를 실행하는 것이 좋습니다."
       }
     ]
   },
   "eink-optimizer": {
     "title": "e-Ink 전자잉크 리더 최적화",
-    "metaDescription": "전자잉크 이북 리더기 전용 PDF 보정: 오츠 알고리즘 이진화로 회색 배경을 표백하고 미세 폰트 획을 확장 및 가공합니다.",
+    "metaDescription": "e-ink 리더에 맞게 PDF 페이지를 최적화합니다. 읽기 쉽게 배경을 정리하고 텍스트 대비를 높이며 문서를 조정하세요.",
     "keywords": [
       "전자잉크 최적화",
       "이진화 노يز 제거",
       "글씨 굵게",
       "북리더 가독성"
     ],
-    "description": "\n      <p>e-Ink Reader Optimizer is a must-have tool custom-made for e-Reader enthusiasts using Kindle, Onyx Boox, Kobo, or other e-paper devices.</p>\n      <p>Many scanned PDF e-books suffer from faint lettering, muddy gray backgrounds, noise, or scan shadows when viewed on e-Ink screens. This tool analyzes gray-value histograms and applies Otsu's Binarization Thresholding to separate text from background, converting gray backdrops to clean white.</p>\n      <p>Additionally, it integrates morphological dilation to bold and thicken thin, faded characters, providing crisp, high-contrast typography. The inertia-damped contrast slider allows you to fine-tune the paper-like contrast in real-time.</p>\n    ",
+    "description": "<p>e-Ink Reader Optimizer는 Kindle, Onyx Boox, Kobo 또는 기타 전자종이 장치를 사용하는 e-Reader 매니아를 위해 맞춤 제작된 필수 도구입니다.</p>\n      <p>스캔된 PDF 전자책 중 다수는 e-Ink 화면에서 볼 때 희미한 글자, 흐릿한 회색 배경, 노이즈 또는 스캔 그림자로 인해 어려움을 겪습니다. 이 도구는 회색 값 히스토그램을 분석하고 Otsu의 이진화 임계값을 적용하여 텍스트를 배경에서 분리하여 회색 배경을 깨끗한 흰색으로 변환합니다.</p>\n      <p>또한 형태적 확장을 통합하여 얇고 빛 바랜 문자를 굵고 두껍게 만들어 선명한 고대비 타이포그래피를 제공합니다. 관성 감쇠 대비 슬라이더를 사용하면 종이와 같은 대비를 실시간으로 미세 조정할 수 있습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Scanned PDF",
-        "description": "Upload e-books or scanned documents with faint text or gray backgrounds."
+        "title": "스캔한 PDF 업로드",
+        "description": "텍스트가 희미하거나 배경이 회색인 전자책이나 스캔한 문서를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Adjust Contrast Slider",
-        "description": "Drag the damped slider to balance background removal and character bolding in real-time."
+        "title": "대비 슬라이더 조정",
+        "description": "감쇠 슬라이더를 드래그하여 실시간으로 배경 제거와 문자 굵게 표시의 균형을 맞춥니다."
       },
       {
         "step": 3,
-        "title": "Optimize and Download",
-        "description": "Process the entire PDF to generate a high-contrast, eye-friendly document tailored for e-Ink."
+        "title": "최적화 및 다운로드",
+        "description": "전체 PDF를 처리하여 e-Ink에 맞춰 눈에 편안한 고대비 문서를 생성합니다."
       }
     ],
     "useCases": [
       {
-        "title": "Ancient Manuscript Restoration",
-        "description": "Thicken faded text in scans of historical books or handwritten manuscripts to make them readable.",
+        "title": "고대 원고 복원",
+        "description": "역사서나 손으로 쓴 원고의 스캔본에서 빛바랜 텍스트를 두껍게 만들어 읽을 수 있도록 합니다.",
         "icon": "scroll"
       },
       {
-        "title": "Exam Sheet Clean-up",
-        "description": "Bleach background shadows from photocopied or photographed exams, returning clean black text on white paper.",
+        "title": "시험지 정리",
+        "description": "사진 복사 또는 촬영된 시험에서 배경 그림자를 표백하여 흰색 종이에 깨끗한 검정색 텍스트를 반환합니다.",
         "icon": "file-text"
       },
       {
-        "title": "E-paper Device Tailoring",
-        "description": "Convert colored PDFs to optimized grayscale, preventing messy, dithering artifacts on monochrome screens.",
+        "title": "전자종이 디바이스 테일러링",
+        "description": "컬러 PDF를 최적화된 회색조로 변환하여 흑백 화면에서 지저분하고 디더링 현상이 발생하는 것을 방지합니다.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "How does the \"character bolding\" work?",
-        "answer": "In image processing, this is called dilation. It uses a structuring matrix to expand character margins by a pixel, physically thickening faint strokes to make them legible."
+        "question": "\"문자 볼드체\"는 어떻게 작동하나요?",
+        "answer": "이미지 처리에서는 이를 팽창이라고 합니다. 구조화 행렬을 사용하여 문자 여백을 픽셀 단위로 확장하고 희미한 획을 물리적으로 두껍게 하여 읽기 쉽게 만듭니다."
       },
       {
-        "question": "Will this process bloat the file size?",
-        "answer": "Quite the opposite. By binarizing complex color/grayscale images to simple black-and-white layouts, standard compression (like CCITT Group 4) can shrink the PDF file size significantly."
+        "question": "이 프로세스로 인해 파일 크기가 커지나요?",
+        "answer": "정반대죠. 복잡한 컬러/회색조 이미지를 단순한 흑백 레이아웃으로 이진화함으로써 표준 압축(예: CCITT Group 4)을 통해 PDF 파일 크기를 크게 줄일 수 있습니다."
       },
       {
-        "question": "Does this support native text PDFs?",
-        "answer": "Yes. Native vector PDFs are rasterized at high resolutions in the background, optimized, and compiled back, ensuring unified high-contrast reading."
+        "question": "기본 텍스트 PDF를 지원합니까?",
+        "answer": "네. 기본 벡터 PDF는 백그라운드에서 고해상도로 래스터화되고, 최적화되고, 다시 컴파일되어 통일된 고대비 판독을 보장합니다."
       }
     ]
   },
   "cert-cryptor": {
     "title": "인증서 암호화 및 서명",
-    "metaDescription": "공개키 인증서를 이용한 PDF 암호화 및 PKCS#7 공인 디지털 서명과 더불어, 입체감 있는 3D 골드 왁스 씰 도장을 인장합니다.",
+    "metaDescription": "인증서를 사용하여 PDF 문서를 암호화하고 디지털 서명합니다. 브라우저에서 로컬로 인증서 파일을 사용하세요.",
     "keywords": [
       "인증서 암호화",
       "왁스 씰 서명",
       "디지털 서명",
       "비대칭 암호화"
     ],
-    "description": "\n      <p>3D Wax-Seal & Certificate Cryptor provides military-grade security and premium physical-grade aesthetics for sensitive corporate files, degrees, or agreements.</p>\n      <p>Technically, it offers asymmetric public-key encryption: import a recipient's public key certificate (.cer/.crt) to lock the PDF stream; only the holder of the matching private key (.pfx) can decrypt it. It also generates standard PKCS#7 digital signatures to ensure document tamper-proof integrity.</p>\n      <p>Visually, we feature a 3D physical gold or red wax-seal stamp. When you sign, a beautifully rendered stamp descends with a satisfying mechanical sound, leaving a 3D wax seal with realistic normal-mapped height variations and wax run-offs on the page, surrounded by glowing cryptographic tracks.</p>\n    ",
+    "description": "<p>3D Wax-Seal & Certificate Cryptor는 민감한 기업 파일, 학위 또는 계약서에 대해 군용 등급의 보안과 프리미엄 물리적 등급의 미학을 제공합니다.</p>\n      <p>기술적으로 비대칭 공개 키 암호화를 제공합니다. 수신자의 공개 키 인증서(.cer/.crt)를 가져와서 PDF 스트림을 잠급니다. 일치하는 개인 키(.pfx)를 보유한 사람만이 암호를 해독할 수 있습니다. 또한 문서 변조 방지 무결성을 보장하기 위해 표준 PKCS#7 디지털 서명을 생성합니다.</p>\n      <p>시각적으로 3D 실제 금색 또는 빨간색 왁스 도장 스탬프가 특징입니다. 서명하면 아름답게 렌더링된 우표가 만족스러운 기계 소리와 함께 내려오고, 빛나는 암호화 트랙으로 둘러싸인 페이지에 사실적인 노멀 매핑된 높이 변화와 왁스 유출이 포함된 3D 왁스 도장이 남습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF and Cert",
-        "description": "Add your PDF and import your signing certificate (.pfx) or the recipient's public certificate (.cer)."
+        "title": "PDF 및 인증서 업로드",
+        "description": "PDF를 추가하고 서명 인증서(.pfx) 또는 수신자의 공개 인증서(.cer)를 가져옵니다."
       },
       {
         "step": 2,
-        "title": "Place the 3D Stamp",
-        "description": "Drag and locate the seal on the document preview, and pick a wax style (e.g., gold, crimson)."
+        "title": "3D 스탬프 배치",
+        "description": "문서 미리보기에서 인장을 드래그하여 찾은 후 왁스 스타일(예: 금색, 진홍색)을 선택하세요."
       },
       {
         "step": 3,
-        "title": "Press and Sign",
-        "description": "Click execute to watch the 3D wax-seal imprint ceremony, generating a physical-grade digital signature."
+        "title": "누르고 서명하세요",
+        "description": "실행을 클릭하면 실제 등급의 디지털 서명이 생성되는 3D 왁스 도장 각인식을 볼 수 있습니다."
       },
       {
         "step": 4,
-        "title": "Download Secured PDF",
-        "description": "Save the output document, now cryptographically locked and stamped."
+        "title": "보안 PDF 다운로드",
+        "description": "이제 암호화되어 잠기고 스탬프가 찍힌 출력 문서를 저장합니다."
       }
     ],
     "useCases": [
       {
-        "title": "Diplomas and Certificates",
-        "description": "Affix highly-valued 3D wax seal badges to digital diplomas and awards, backed by genuine digital signatures.",
+        "title": "졸업장 및 수료증",
+        "description": "정품 디지털 서명으로 뒷받침되는 높은 가치의 3D 왁스 인감 배지를 디지털 졸업장 및 상장에 부착하세요.",
         "icon": "award"
       },
       {
-        "title": "Confidential Agreements",
-        "description": "Lock sensitive contracts using the client's public certificate so that only their secure physical keycard can unlock it.",
+        "title": "기밀 계약",
+        "description": "안전한 물리적 키카드만 잠금 해제할 수 있도록 클라이언트의 공개 인증서를 사용하여 민감한 계약을 잠급니다.",
         "icon": "shield-alert"
       },
       {
-        "title": "Official Press Releases",
-        "description": "Digitally sign public announcements to prevent malicious text edits or spoofing.",
+        "title": "공식 보도자료",
+        "description": "공개 공지에 디지털 서명을 하여 악의적인 텍스트 편집이나 스푸핑을 방지하세요.",
         "icon": "stamp"
       }
     ],
     "faq": [
       {
-        "question": "Is the wax seal just an image or a real signature?",
-        "answer": "Both. The system renders an incredibly realistic 3D wax imprint with normal-mapped depth (visual layer) and encodes an authentic, tamper-proof PKCS#7 cryptographic signature inside the PDF (data layer)."
+        "question": "왁스 도장은 이미지인가요 아니면 실제 서명인가요?",
+        "answer": "둘 다. 이 시스템은 노멀 매핑된 깊이(시각적 레이어)로 믿을 수 없을 정도로 사실적인 3D 왁스 임프린트를 렌더링하고 PDF(데이터 레이어) 내부에 변조 방지 인증 PKCS#7 암호화 서명을 인코딩합니다."
       },
       {
-        "question": "What is \"Certificate-based Encryption\"?",
-        "answer": "It is a passwordless encryption technique. You encrypt the file using the recipient's public key. The reader automatically searches for their local private certificate to decrypt the file seamlessly, ensuring robust security."
+        "question": "\"인증서 기반 암호화\"란?",
+        "answer": "비밀번호 없는 암호화 기술입니다. 수신자의 공개 키를 사용하여 파일을 암호화합니다. 리더는 자동으로 로컬 개인 인증서를 검색하여 파일을 원활하게 해독하여 강력한 보안을 보장합니다."
       },
       {
-        "question": "Can I customize the stamp design?",
-        "answer": "Yes. We provide multiple designs like the PDFCraft watermark or a Royal crest, and you can adjust the wax melting radius and normal-map indentation depth in the panel."
+        "question": "스탬프 디자인을 맞춤 설정할 수 있나요?",
+        "answer": "네. 우리는 PDFCraft 워터마크나 왕실 문장과 같은 다양한 디자인을 제공하며 패널에서 왁스 녹는 반경과 일반 맵 들여쓰기 깊이를 조정할 수 있습니다."
       }
     ]
   },
   "passport-id-composer": {
     "title": "신분증 양면 합성",
-    "metaDescription": "주민등록증, 운전면허증 및 여권의 앞뒷면 사진을 한 장의 A4 용지 규격 내에 상하 정렬로 배치하고 방범 수자원을 삽입합니다.",
+    "metaDescription": "신분증이나 여권의 앞면과 뒷면을 A4 PDF 한 장에 합칩니다. 스캔을 정렬하고 선택적 워터마크를 추가합니다.",
     "keywords": [
       "신분증 사본",
       "앞뒷면 합성",
       "A4 인쇄 정렬",
       "신분증 도용 방지"
     ],
-    "description": "\n      <p>The Passport & ID Double-sided Composer is an incredibly useful productivity utility for standard business and personal operations.</p>\n      <p>When applying for bank accounts, onboarding, or signing agreements, we frequently need copies of both sides of ID cards. This tool accepts front/back images or PDF pages and precisely arranges them onto a single A4 page complying with national standard layout resolutions.</p>\n      <p>Furthermore, you can customize overlapping translucent anti-counterfeit watermarks (e.g. \"FOR ONBOARDING ONLY\") to prevent unauthorized document reuse. It even features a 3D glow laser sweep copier scanner door visual effect to deliver premium feedback.</p>\n    ",
+    "description": "<p>Passport & ID 양면 작성기는 일반 비즈니스 및 개인 작업에 매우 유용한 생산성 유틸리티입니다.</p>\n      <p>은행 계좌 신청, 온보딩 또는 계약 체결 시 신분증 양면 사본이 필요한 경우가 많습니다. 이 도구는 앞/뒤 이미지 또는 PDF 페이지를 수용하여 국가 표준 레이아웃 해상도에 따라 단일 A4 페이지에 정확하게 배열합니다.</p>\n      <p>또한, 무단 문서 재사용을 방지하기 위해 겹치는 반투명 위조 방지 워터마크(예: '온보딩 전용')를 맞춤설정할 수 있습니다. 3D 글로우 레이저 스윕 복사기 스캐너 도어 시각 효과를 통해 프리미엄 피드백을 제공합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload ID files",
-        "description": "Upload front and back photos/scans of your ID or passport (up to 2 files)."
+        "title": "ID 파일 업로드",
+        "description": "신분증이나 여권의 앞면과 뒷면 사진/스캔본을 업로드하세요(최대 2개 파일)."
       },
       {
         "step": 2,
-        "title": "Configure secure watermark",
-        "description": "Input custom text overlay to restrict unauthorized document replication."
+        "title": "보안 워터마크 구성",
+        "description": "무단 문서 복제를 제한하기 위해 맞춤 텍스트 오버레이를 입력하세요."
       },
       {
         "step": 3,
-        "title": "Compose & download",
-        "description": "Click execute to generate a single-page print-ready A4 PDF."
+        "title": "작성 및 다운로드",
+        "description": "단일 페이지 인쇄용 A4 PDF를 생성하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "HR onboarding submission",
-        "description": "Quickly align employee ID copies and apply protective watermarks.",
+        "title": "HR 온보딩 제출",
+        "description": "직원 ID 사본을 신속하게 정렬하고 보호용 워터마크를 적용합니다.",
         "icon": "user"
       },
       {
-        "title": "Government & banking service",
-        "description": "Prepare standardized ID prints that meet physical archive requirements.",
+        "title": "정부 및 은행 서비스",
+        "description": "물리적 보관 요건을 충족하는 표준화된 신분증 인쇄를 준비합니다.",
         "icon": "landmark"
       },
       {
-        "title": "Travel backups",
-        "description": "Arrange passport pages and visa details onto a unified A4 paper.",
+        "title": "여행 백업",
+        "description": "여권 페이지와 비자 세부정보를 A4 용지에 정리합니다.",
         "icon": "plane"
       }
     ],
     "faq": [
       {
-        "question": "Will watermarks block identity text details?",
-        "answer": "No. The watermark is rendered at a carefully tuned 15% opacity to block forgery without sacrificing the legibility of text or photo fields."
+        "question": "워터마크가 신원 텍스트 세부정보를 차단합니까?",
+        "answer": "아니요. 워터마크는 텍스트나 사진 필드의 가독성을 저하시키지 않고 위조를 차단하기 위해 신중하게 조정된 15% 불투명도로 렌더링됩니다."
       },
       {
-        "question": "Is the composite card size accurate?",
-        "answer": "Yes. It renders the ID card at the standard physical dimension of 85.6mm × 54mm scaled perfectly on the A4 page."
+        "question": "복합카드 사이즈가 정확한가요?",
+        "answer": "네. A4 페이지에 완벽하게 확장된 85.6mm × 54mm의 표준 물리적 치수로 ID 카드를 렌더링합니다."
       },
       {
-        "question": "Does it support driver licenses?",
-        "answer": "Yes, it works beautifully for any card-based identity scans."
+        "question": "운전면허도 지원되나요?",
+        "answer": "예, 모든 카드 기반 신원 스캔에 완벽하게 작동합니다."
       }
     ]
   },
   "annotation-exporter": {
     "title": "주석 및 강조 내보내기",
-    "metaDescription": "PDF 문서 내에 기록된 형광펜 하이라이트, 텍스트 주석, 필기 메모를 구조화된 마크다운(Markdown) 문서로 일괄 내보냅니다.",
+    "metaDescription": "PDF 주석, 메모, 강조 표시 및 밑줄을 Markdown 또는 JSON으로 내보냅니다. 연구, 검토 및 조사를 위해 주석을 구성합니다.",
     "keywords": [
       "pdf 주석 추출",
       "하이라이트 수집",
       "독서 노트 생성",
       "마크다운 변환"
     ],
-    "description": "\n      <p>The Smart Annotation Exporter is a powerful workspace that unlocks full value from your PDF annotations.</p>\n      <p>While conducting literature reviews or reading extensive ebooks, we make heavy use of highlights and sticky notes. This tool deserializes the low-level PDF <code>/Annots</code> dictionary and extracts all highlights, notes, underlines, and hand-drawn ink markers.</p>\n      <p>It automatically aligns the comments with their respective outline headers, generating a structured Markdown or JSON notebook with page reference anchors. Watch your highlights float beautifully into the frosted-glass notebook panel.</p>\n    ",
+    "description": "<p>스마트 주석 내보내기는 PDF 주석의 가치를 최대한 활용하는 강력한 작업 공간입니다.</p>\n      <p>문헌을 검토하거나 광범위한 eBook을 읽을 때 강조표시와 스티커 메모를 많이 사용합니다. 이 도구는 하위 수준 PDF <code>/Annots</code> 사전을 역직렬화하고 모든 강조 표시, 메모, 밑줄 및 손으로 그린 잉크 마커를 추출합니다.</p>\n      <p>댓글을 해당 개요 헤더에 맞게 자동으로 정렬하여 페이지 참조 앵커가 있는 구조화된 Markdown 또는 JSON 노트북을 생성합니다. 반투명 유리 노트북 패널에 하이라이트가 아름답게 떠다니는 모습을 지켜보세요.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import annotated PDF",
-        "description": "Upload any PDF essay or book containing your underlines, highlights, or comments."
+        "title": "주석이 달린 PDF 가져오기",
+        "description": "밑줄, 하이라이트 또는 의견이 포함된 PDF 에세이나 책을 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Configure filters & format",
-        "description": "Select the annotation types you want to extract and choose Markdown or JSON."
+        "title": "필터 및 형식 구성",
+        "description": "추출하려는 주석 유형을 선택하고 Markdown 또는 JSON을 선택하세요."
       },
       {
         "step": 3,
-        "title": "Extract notebook",
-        "description": "Click execute to parse the comments stream and assemble your outline summary."
+        "title": "노트 추출",
+        "description": "댓글 스트림을 구문 분석하고 개요 요약을 정리하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Scientific literature synthesis",
-        "description": "Extract reading notes across multiple papers into Markdown templates to compose lit reviews instantly.",
+        "title": "과학 문헌 종합",
+        "description": "여러 논문의 독서 메모를 Markdown 템플릿으로 추출하여 즉시 명쾌한 리뷰를 작성합니다.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Study journal compiling",
-        "description": "Collect beautiful insights and personal remarks from textbooks into Obsidian databases.",
+        "title": "학습일지 작성",
+        "description": "교과서에서 얻은 아름다운 통찰력과 개인적인 의견을 Obsidian 데이터베이스에 수집하세요.",
         "icon": "book"
       },
       {
-        "title": "Document collaborative audit",
-        "description": "Gather review corrections from different team members and establish actionable task lists.",
+        "title": "문서 공동 감사",
+        "description": "여러 팀 구성원의 검토 수정 사항을 수집하고 실행 가능한 작업 목록을 수립합니다.",
         "icon": "users"
       }
     ],
     "faq": [
       {
-        "question": "Can it extract tablet hand-drawn ink strokes?",
-        "answer": "Yes. As long as the hand-drawn marks are stored as standard PDF Ink annotations, the tool can perfectly isolate and structure their page positions."
+        "question": "타블렛 손으로 그린 잉크 스트로크를 추출할 수 있나요?",
+        "answer": "네. 손으로 그린 ​​표시가 표준 PDF 잉크 주석으로 저장되어 있는 한 도구는 페이지 위치를 완벽하게 분리하고 구조화할 수 있습니다."
       },
       {
-        "question": "Why are some highlighted extracts empty?",
-        "answer": "If the PDF is a non-searchable image scan lacking underlying text, highlights only store coordinates. Run OCR on the PDF first, then extract annotations."
+        "question": "강조 표시된 일부 추출물이 비어 있는 이유는 무엇입니까?",
+        "answer": "PDF가 기본 텍스트가 부족하여 검색할 수 없는 이미지 스캔인 경우 매장 좌표만 강조 표시됩니다. 먼저 PDF에서 OCR을 실행한 다음 주석을 추출하세요."
       },
       {
-        "question": "Do the Markdown links jump back to the PDF?",
-        "answer": "The exported file lists precise page numbers and original outline headings to make cross-referencing seamless."
+        "question": "Markdown 링크가 PDF로 다시 이동합니까?",
+        "answer": "내보낸 파일에는 정확한 페이지 번호와 원본 개요 제목이 나열되어 상호 참조가 원활해집니다."
       }
     ]
   },
   "batch-watermark-remover": {
     "title": "워터마크 일괄 제거",
-    "metaDescription": "PDF 바이너리 드로잉 명령어를 직접 파싱하여 텍스트 흐름이나 배경 이미지로 고정된 워터마크를 완벽히 제거합니다.",
+    "metaDescription": "PDF에서 일치하는 텍스트 및 이미지 워터마크를 제거합니다. 출력을 검토하여 문서 콘텐츠가 보존되는지 확인하세요.",
     "keywords": [
       "pdf 워터마크 삭제",
       "배경 로고 제거",
       "콘텐츠 스트림 편집"
     ],
-    "description": "\n      <p>The Batch Watermark Remover is a state-of-the-art PDF sanitizer that physically cleanses documents.</p>\n      <p>Generic watermark removers usually just overlay white blocks or distort document spacing. This tool utilizes a robust <strong>Content Stream Purge</strong> technique.</p>\n      <p>It parses the low-level rendering operators of each page, identifies specific watermark string commands (e.g. \"Confidential\", \"DRAFT\") or background image objects, and physically deletes or overwrites them. The watermarks disappear completely, preserving the original formatting and vector quality.</p>\n    ",
+    "description": "<p>Batch Watermark Remover는 문서를 물리적으로 정리하는 최첨단 PDF 삭제 도구입니다.</p>\n      <p>일반 워터마크 제거 프로그램은 일반적으로 흰색 블록을 오버레이하거나 문서 간격을 왜곡합니다. 이 도구는 강력한 <strong>콘텐츠 스트림 삭제</strong> 기술을 활용합니다.</p>\n      <p>각 페이지의 하위 수준 렌더링 연산자를 구문 분석하고 특정 워터마크 문자열 명령(예: \"기밀\", \"초안\") 또는 배경 이미지 개체를 식별하고 물리적으로 삭제하거나 덮어씁니다. 워터마크가 완전히 사라지고 원래 형식과 벡터 품질이 유지됩니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload watermarked file",
-        "description": "Provide the PDF document showing commercial logos or security labels."
+        "title": "워터마크가 있는 파일 업로드",
+        "description": "상업용 로고나 보안 라벨이 표시된 PDF 문서를 제공하세요."
       },
       {
         "step": 2,
-        "title": "Define target watermark",
-        "description": "Input the exact string to delete, or toggle translucent XObject image cleanup."
+        "title": "대상 워터마크 정의",
+        "description": "삭제할 정확한 문자열을 입력하거나 반투명 XObject 이미지 정리를 전환하세요."
       },
       {
         "step": 3,
-        "title": "Run physical purge",
-        "description": "Click execute to scrub the content operators with high fidelity."
+        "title": "물리적 제거 실행",
+        "description": "실행을 클릭하면 콘텐츠 운영자를 충실도 높게 스크러빙할 수 있습니다."
       }
     ],
     "useCases": [
       {
-        "title": "Archiving corporate assets",
-        "description": "Remove expired \"Confidential\" or \"Draft\" watermarks for general public distribution.",
+        "title": "기업 자산 보관",
+        "description": "일반 공개 배포를 위해 만료된 \"기밀\" 또는 \"초안\" 워터마크를 제거합니다.",
         "icon": "archive"
       },
       {
-        "title": "Clearing background clutter",
-        "description": "Scrub heavy background pictures that distract readers from scanning text.",
+        "title": "어수선한 배경 지우기",
+        "description": "독자가 텍스트를 훑어보는 데 방해가 되는 무거운 배경 그림을 제거합니다.",
         "icon": "eye"
       },
       {
-        "title": "Document reusing",
-        "description": "Cleanse old page footer branding elements to apply new corporate templates easily.",
+        "title": "문서 재사용",
+        "description": "새로운 기업 템플릿을 쉽게 적용할 수 있도록 오래된 페이지 바닥글 브랜딩 요소를 정리합니다.",
         "icon": "copy"
       }
     ],
     "faq": [
       {
-        "question": "Can the purged watermarks be recovered?",
-        "answer": "No. Unlike visual masks, we rewrite the page binary stream to erase the operators, leaving no traces."
+        "question": "삭제된 워터마크를 복구할 수 있나요?",
+        "answer": "아니요. 시각적 마스크와 달리 페이지 바이너리 스트림을 다시 작성하여 연산자를 지우고 흔적을 남기지 않습니다."
       },
       {
-        "question": "Does it support complex gradients?",
-        "answer": "If the watermark is stored as a separate text node or image XObject, the tool can isolate and physically wipe it."
+        "question": "복잡한 그라데이션을 지원하나요?",
+        "answer": "워터마크가 별도의 텍스트 노드 또는 이미지 XObject로 저장된 경우 도구는 워터마크를 분리하여 물리적으로 지울 수 있습니다."
       },
       {
-        "question": "Will it modify normal page text?",
-        "answer": "No. The scrubbing engine only target operators matching the specified watermark signature; regular text remains untouched."
+        "question": "일반 페이지 텍스트도 수정되나요?",
+        "answer": "아니요. 스크러빙 엔진은 지정된 워터마크 서명과 일치하는 연산자만 대상으로 합니다. 일반 텍스트는 그대로 유지됩니다."
       }
     ]
   },
   "smart-data-redactor": {
     "title": "민감 정보 비식별화",
-    "metaDescription": "이메일, 전화번호, 주민등록번호 등 핵심 개인정보를 자동 식별하여 물리적 블랙 마스킹을 하고 원본 텍스트를 삭제합니다.",
+    "metaDescription": "PDF에서 이메일 주소, 전화번호, ID 패턴을 찾아보세요. 일치 항목을 검토하고 민감한 콘텐츠를 로컬에서 수정합니다.",
     "keywords": [
       "개인정보 마스킹",
       "비식별화 조치",
       "민감 데이터 마스킹"
     ],
-    "description": "\n      <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>\n      <p>Simply overlaying black boxes in normal editors is unsafe because the underlying text can still be copied. This tool implements true <strong>NLP pattern matching and physical content stream sanitization</strong>.</p>\n      <p>It scans the document for emails, phone numbers, SSNs, or custom keywords, places a premium matte black mask over the coordinates, and permanently overwrites the character stream with <code>[REDACTED]</code>, blocking copy-paste leaks.</p>\n    ",
+    "description": "<p>Smart Privacy Data Redactor는 강력한 문서 개인정보 보호 규정 준수를 보장하도록 설계된 자동화된 도구입니다.</p>\n      <p>일반 편집기에서 단순히 검은색 상자를 오버레이하는 것은 기본 텍스트가 여전히 복사될 수 있기 때문에 안전하지 않습니다. 이 도구는 진정한 <strong>NLP 패턴 일치 및 물리적 콘텐츠 스트림 삭제</strong>를 구현합니다.</p>\n      <p>문서에서 이메일, 전화번호, SSN 또는 맞춤 키워드를 검색하고 프리미엄 무광 검정색 마스크를 좌표 위에 배치한 다음 문자 스트림을 <code>[편집됨]</code>으로 영구적으로 덮어써서 복사-붙여넣기 누출을 차단합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload target PDF",
-        "description": "Provide the contract or statement showing sensitive customer details."
+        "title": "대상 PDF 업로드",
+        "description": "민감한 고객 세부정보를 보여주는 계약서나 명세서를 제공하세요."
       },
       {
         "step": 2,
-        "title": "Select redaction rules",
-        "description": "Check target patterns (email, phone, ID) or define custom sensitive words."
+        "title": "수정 규칙 선택",
+        "description": "대상 패턴(이메일, 전화, 아이디)을 확인하거나 민감 단어를 맞춤 정의하세요."
       },
       {
         "step": 3,
-        "title": "Auto redact & download",
-        "description": "Click execute to overlay secure masks and wipe the text streams."
+        "title": "자동 수정 및 다운로드",
+        "description": "보안 마스크를 오버레이하고 텍스트 스트림을 지우려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Commercial agreements sharing",
-        "description": "Safely publish business documents by hiding personal salaries, phone numbers, or emails.",
+        "title": "상업적 계약 공유",
+        "description": "개인 급여, 전화번호, 이메일을 숨겨 비즈니스 문서를 안전하게 게시하세요.",
         "icon": "file-signature"
       },
       {
-        "title": "Resume database anonymization",
-        "description": "Strip applicant names, contact info, or addresses to comply with strict privacy regulations.",
+        "title": "데이터베이스 익명화 재개",
+        "description": "엄격한 개인정보 보호 규정을 준수하기 위해 지원자의 이름, 연락처 정보 또는 주소를 제거합니다.",
         "icon": "user-check"
       },
       {
-        "title": "Financial statement distribution",
-        "description": "Conceal specific ledger numbers or shareholder names before publishing reports.",
+        "title": "재무제표 배포",
+        "description": "보고서를 게시하기 전에 특정 원장 번호나 주주 이름을 숨기세요.",
         "icon": "pie-chart"
       }
     ],
     "faq": [
       {
-        "question": "Are redacted details truly un-copyable?",
-        "answer": "Yes. We rewrite the page content stream to erase the characters. Copy-pasting from the redacted box will only extract the string \"[REDACTED]\"."
+        "question": "수정된 세부정보는 정말 복사할 수 없나요?",
+        "answer": "네. 문자를 지우기 위해 페이지 콘텐츠 스트림을 다시 작성합니다. 수정된 상자에서 복사하여 붙여넣으면 \"[REDACTED]\" 문자열만 추출됩니다."
       },
       {
-        "question": "Does it work for scanned image PDFs?",
-        "answer": "This tool targets vector text streams. For scanned image files, use our OCR tool first or crop manually."
+        "question": "스캔한 이미지 PDF에도 작동하나요?",
+        "answer": "이 도구는 벡터 텍스트 스트림을 대상으로 합니다. 스캔한 이미지 파일의 경우 먼저 OCR 도구를 사용하거나 수동으로 자릅니다."
       },
       {
-        "question": "Is the red HUD target scope saved in the file?",
-        "answer": "No, that is a gorgeous frontend interactive loading effect. The output PDF displays standard clean black rectangles."
+        "question": "빨간색 HUD 타겟 스코프가 파일에 저장되어 있나요?",
+        "answer": "아니요, 멋진 프런트엔드 인터랙티브 로딩 효과입니다. 출력 PDF에는 표준적이고 깨끗한 검정색 직사각형이 표시됩니다."
       }
     ]
   },
   "bookmarks-auto-generator": {
     "title": "북마크 자동 생성",
-    "metaDescription": "문서 서체 크기와 상하 관계를 분석하여 PDF 내장 북마크 계층 트리(/Outlines)를 원클릭으로 주입 생성합니다.",
+    "metaDescription": "제목과 텍스트 패턴에서 PDF 북마크를 생성합니다. 긴 문서, 매뉴얼, 보고서에 탐색 가능한 개요를 추가하세요.",
     "keywords": [
       "pdf 북마크 만들기",
       "목차 구조화",
       "자동 아웃라인"
     ],
-    "description": "\n      <p>The Auto Bookmarks Generator brings absolute clarity to lengthy, unstructured PDF documents.</p>\n      <p>Scanning through books or booklets with no outline navigation is painful. This tool parses typographic hierarchies (such as font sizes and weights) along with regex rules (like \"Chapter 1\", \"Section 1.1\") to automatically deduce headings.</p>\n      <p>It then compiles and injects these headings directly into the PDF <code>/Outline</code> dictionary. Any standard viewer will then show a beautifully structured, multi-level navigation sidebar, backed by an interactive 3D outline tree preview.</p>\n    ",
+    "description": "<p>자동 북마크 생성기는 길고 구조화되지 않은 PDF 문서에 절대적인 명확성을 제공합니다.</p>\n      <p>개요 탐색 없이 책이나 소책자를 훑어보는 것은 고통스럽습니다. 이 도구는 정규식 규칙(예: '1장', '섹션 1.1')과 함께 인쇄 계층(예: 글꼴 크기 및 두께)을 분석하여 제목을 자동으로 추론합니다.</p>\n      <p>그런 다음 이러한 제목을 컴파일하여 PDF <code>/Outline</code> 사전에 직접 삽입합니다. 그러면 모든 표준 뷰어에 대화형 3D 개요 트리 미리보기가 지원되는 아름답게 구조화된 다단계 탐색 사이드바가 표시됩니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide unstructured PDF",
-        "description": "Upload large brochures, academic papers, or ebooks lacking a catalog sidebar."
+        "title": "구조화되지 않은 PDF 제공",
+        "description": "카탈로그 사이드바가 없는 대형 브로셔, 학술 논문 또는 전자책을 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Tune heading rules",
-        "description": "Configure strategies specifying minimum font size thresholds and match rules."
+        "title": "제목 규칙 조정",
+        "description": "최소 글꼴 크기 임계값 및 일치 규칙을 지정하는 전략을 구성합니다."
       },
       {
         "step": 3,
-        "title": "Build and inject",
-        "description": "Click execute to render the outline nodes and physically write the outline bookmarks."
+        "title": "빌드 및 주입",
+        "description": "실행을 클릭하여 개요 노드를 렌더링하고 개요 책갈피를 물리적으로 작성합니다."
       }
     ],
     "useCases": [
       {
-        "title": "Technical manuals organizing",
-        "description": "Auto compile multi-level chapters for standard guidelines, saving hours of manual indexing.",
+        "title": "기술 매뉴얼 정리",
+        "description": "표준 지침에 대한 다단계 챕터를 자동 컴파일하여 수동 색인 생성 시간을 절약합니다.",
         "icon": "tool"
       },
       {
-        "title": "Thesis preparation",
-        "description": "Inject clean nested bookmarks matching exact academic submission standards.",
+        "title": "논문 준비",
+        "description": "정확한 학술 제출 표준과 일치하는 깔끔하게 중첩된 북마크를 삽입합니다.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Ebook navigation optimization",
-        "description": "Structure scanned text publications into readable chapters for tablets or mobile readers.",
+        "title": "전자책 탐색 최적화",
+        "description": "스캔한 텍스트 출판물을 태블릿이나 모바일 리더가 읽을 수 있는 장으로 구성합니다.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "Can it match custom chapter formats?",
-        "answer": "Yes. You can add custom regex patterns in the sidebar panel (e.g., `^Part\\s+\\w+`) to target unique layouts."
+        "question": "사용자 정의 챕터 형식과 일치할 수 있나요?",
+        "answer": "네. 사이드바 패널에 사용자 정의 정규식 패턴(예: `^Part\\s+\\w+`)을 추가하여 고유한 레이아웃을 타겟팅할 수 있습니다."
       },
       {
-        "question": "Will this affect the visual page presentation?",
-        "answer": "No. The tool only adds an internal structural bookmark catalog. The text and visual assets of the pages remain untouched."
+        "question": "이것이 시각적 페이지 표시에 영향을 미치나요?",
+        "answer": "아니요. 이 도구는 내부 구조 북마크 카탈로그만 추가합니다. 페이지의 텍스트 및 시각적 자산은 그대로 유지됩니다."
       },
       {
-        "question": "How many bookmark levels are supported?",
-        "answer": "The tool supports deeply nested bookmark structures, allowing chapter, section, and subsection layouts."
+        "question": "북마크 수준은 몇 개까지 지원되나요?",
+        "answer": "이 도구는 깊게 중첩된 북마크 구조를 지원하여 장, 섹션 및 하위 섹션 레이아웃을 허용합니다."
       }
     ]
   },
   "batch-barcode-injector": {
     "title": "바코드 일괄 삽입",
-    "metaDescription": "배송 서류, 세금 문서 등 PDF 각 페이지의 지정 좌표에 QR코드 및 Code128 바코드 스탬프를 일괄 삽입합니다.",
+    "metaDescription": "PDF 페이지에 QR 코드 또는 코드 128 바코드를 대량으로 추가합니다. 문서 추적, 라벨 및 인쇄 작업 흐름에 대한 배치를 조정합니다.",
     "keywords": [
       "qr코드 주입",
       "바코드 병합",
       "송장 일괄 스탬프"
     ],
-    "description": "\n      <p>The Batch Barcode precision injector bridges digital asset tracking with physical document indexing.</p>\n      <p>In warehousing, contract review, or logistics, we often need to Stamp unique barcodes onto invoices or device cards. This tool makes it incredibly easy.</p>\n      <p>Generate highly readable QR codes or Code128 barcodes, and use our gorgeous aligning workspace with green laser guides to position them. A clean scan audio beep triggers on placement, providing highly premium feedback.</p>\n    ",
+    "description": "<p>배치 바코드 정밀 인젝터는 디지털 자산 추적과 실제 문서 색인 생성을 연결합니다.</p>\n      <p>창고 보관, 계약 검토, 물류 과정에서 송장이나 기기 카드에 고유한 바코드를 찍어야 하는 경우가 많습니다. 이 도구를 사용하면 놀라울 정도로 쉽습니다.</p>\n      <p>가독성이 높은 QR 코드 또는 Code128 바코드를 생성하고 녹색 레이저 가이드가 있는 멋진 정렬 작업 공간을 사용하여 위치를 지정하세요. 배치 시 깨끗한 스캔 오디오 신호음이 울려 매우 고급스러운 피드백을 제공합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload document",
-        "description": "Drag and drop single or multi-page PDFs representing agreements or shipping lists."
+        "title": "문서 업로드",
+        "description": "계약서 또는 배송 목록을 나타내는 단일 또는 다중 페이지 PDF를 끌어서 놓습니다."
       },
       {
         "step": 2,
-        "title": "Position barcode coordinates",
-        "description": "Set code type, value, and drag the placement box to specify coordinates."
+        "title": "위치 바코드 좌표",
+        "description": "코드 종류와 값을 설정하고 배치 상자를 드래그하여 좌표를 지정하세요."
       },
       {
         "step": 3,
-        "title": "Stamps and download",
-        "description": "Click execute to render the code layer onto the targeted page indices."
+        "title": "스탬프 및 다운로드",
+        "description": "코드 레이어를 대상 페이지 색인에 렌더링하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Contract validation tracing",
-        "description": "Apply a unique QR code showing anti-counterfeit details onto the header of contracts.",
+        "title": "계약 유효성 추적",
+        "description": "계약서 헤더에 위조 방지 세부정보를 표시하는 고유한 QR 코드를 적용합니다.",
         "icon": "file-check"
       },
       {
-        "title": "Shipping lists coding",
-        "description": "Place Code128 barcodes at target spots for quick warehouse scanning gun validation.",
+        "title": "배송 목록 코딩",
+        "description": "빠른 창고 스캐닝 건 검증을 위해 대상 지점에 Code128 바코드를 배치합니다.",
         "icon": "truck"
       },
       {
-        "title": "Asset registration carding",
-        "description": "Add inventory QR codes displaying maintenance specs onto physical equipment sheets.",
+        "title": "자산등록카드",
+        "description": "물리적 장비 시트에 유지 관리 사양을 표시하는 인벤토리 QR 코드를 추가합니다.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "Are the generated barcodes highly scannable?",
-        "answer": "Yes. We embed lossless high-resolution PNG representations that remain sharp even when printed at very small dimensions."
+        "question": "생성된 바코드는 스캔 가능성이 높나요?",
+        "answer": "네. 우리는 매우 작은 크기로 인쇄할 때에도 선명한 상태를 유지하는 무손실 고해상도 PNG 표현을 포함합니다."
       },
       {
-        "question": "Can I inject unique values on each page?",
-        "answer": "Currently, the batch run applies the same configured code onto all selected pages. Multi-valued excel import is planned in a future update."
+        "question": "각 페이지에 고유한 값을 삽입할 수 있나요?",
+        "answer": "현재 일괄 실행은 선택된 모든 페이지에 동일한 구성 코드를 적용합니다. 다중 값 Excel 가져오기는 향후 업데이트에서 계획되어 있습니다."
       },
       {
-        "question": "What does the `pt` coordinate represent?",
-        "answer": "`pt` (Point) is the standard PDF physical unit (72 pt = 1 inch). A4 pages are represented as 595 × 842 pt."
+        "question": "`pt` 좌표는 무엇을 나타냅니까?",
+        "answer": "`pt`(포인트)는 표준 PDF 물리적 단위(72pt = 1인치)입니다. A4 페이지는 595 × 842pt로 표시됩니다."
       }
     ]
   },
   "signature-ink-optimizer": {
     "title": "서명 및 인장 추출",
-    "metaDescription": "스캔된 서류에서 필기 서명과 빨간색 인장을 자동 추출하고 HSL 보정으로 배경 얼룩을 제거하여 투명 PNG로 분리합니다.",
+    "metaDescription": "사진에서 서명이나 스탬프를 추출하고 배경을 제거합니다. 문서에 사용할 투명 PNG를 다운로드하세요.",
     "keywords": [
       "서명 추출",
       "도장 투명화",
       "도장 누끼",
       "필적 정화"
     ],
-    "description": "\n      <p>The Signature & Stamp Chroma Ink Optimizer functions as a professional high-fidelity ink purifier.</p>\n      <p>Signatures or corporate seals captured on phones often suffer from yellow paper tint, uneven shadows, and page wrinkles. Pasting them directly onto contract PDFs looks amateur.</p>\n      <p>This tool separates the Alpha channel based on luminance and color space. It completely bleaches paper backgrounds while sharpening stamp red (Chroma Ink) and handwriting black. The result is a premium, transparent PNG stamp carrying genuine ink textures.</p>\n    ",
+    "description": "<p>Signature & Stamp Chroma Ink Optimizer는 전문적인 고품질 잉크 정화기 역할을 합니다.</p>\n      <p>휴대전화로 캡처한 서명이나 회사 인감에는 노란 종이 색조, 고르지 못한 그림자, 페이지 주름 등이 나타나는 경우가 많습니다. 계약서 PDF에 직접 붙여넣는 것은 아마추어처럼 보입니다.</p>\n      <p>이 도구는 휘도와 색상 공간을 기준으로 알파 채널을 분리합니다. 스탬프 빨간색(크로마 잉크)과 필기 검정색을 선명하게 하면서 종이 배경을 완전히 표백합니다. 그 결과 정품 잉크 질감이 담긴 프리미엄 투명 PNG 스탬프가 탄생했습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload seal photo",
-        "description": "Provide a phone-captured photo of your signature or stamp seal."
+        "title": "물개 사진 업로드",
+        "description": "서명 또는 도장이 찍힌 휴대폰 촬영 사진을 제공해 주세요."
       },
       {
         "step": 2,
-        "title": "Adjust cleaning sliders",
-        "description": "Move contrast and luminance sliders to isolate the background noise in real-time."
+        "title": "청소 슬라이더 조정",
+        "description": "대비 및 휘도 슬라이더를 움직여 배경 소음을 실시간으로 분리하세요."
       },
       {
         "step": 3,
-        "title": "Download clean signature",
-        "description": "Export as transparent PNG ready to be stamped onto formal document agreements."
+        "title": "깨끗한 서명 다운로드",
+        "description": "공식 문서 계약에 스탬프를 찍을 준비가 된 투명한 PNG로 내보냅니다."
       }
     ],
     "useCases": [
       {
-        "title": "Professional e-signature prep",
-        "description": "Convert gray signature photos into beautiful, transparent layers to sign agreements.",
+        "title": "전문적인 전자 서명 준비",
+        "description": "회색 서명 사진을 아름답고 투명한 레이어로 변환하여 계약서에 서명하세요.",
         "icon": "file-signature"
       },
       {
-        "title": "Corporate seal sanitizing",
-        "description": "Clean physical stamp scans by discarding paper fiber noise, preparing crisp transparent stamp seals.",
+        "title": "법인 인감 소독",
+        "description": "종이 섬유 노이즈를 버리고 선명한 투명 스탬프 봉인을 준비하여 물리적 스탬프 스캔을 청소합니다.",
         "icon": "stamp"
       },
       {
-        "title": "Drawn line art extraction",
-        "description": "Isolate black strokes from drawing sketchbooks for easy Photoshop coloring workflows.",
+        "title": "그려진 선화 추출",
+        "description": "손쉬운 Photoshop 색칠 작업 과정을 위해 그리기 스케치북에서 검은색 획을 분리합니다.",
         "icon": "edit"
       }
     ],
     "faq": [
       {
-        "question": "How does self-adaptive Alpha extraction differ from normal keying?",
-        "answer": "Standard chroma-keying often makes signature stroke details look blocky and pixelated. Our algorithm isolates only white/yellow background noise and smooths the ink borders."
+        "question": "자가 적응 알파 추출은 일반 키잉과 어떻게 다릅니까?",
+        "answer": "표준 크로마 키잉을 사용하면 시그니처 획 세부 사항이 뭉툭하고 픽셀화되어 보이는 경우가 많습니다. 우리의 알고리즘은 흰색/노란색 배경 노이즈만 분리하고 잉크 테두리를 매끄럽게 만듭니다."
       },
       {
-        "question": "Which image formats are supported?",
-        "answer": "We support JPG, JPEG, and PNG. For best results, capture your signature photo under bright, even lighting."
+        "question": "어떤 이미지 형식이 지원되나요?",
+        "answer": "JPG, JPEG, PNG를 지원합니다. 최상의 결과를 얻으려면 밝고 균일한 조명 아래에서 서명 사진을 촬영하세요."
       },
       {
-        "question": "Will the handwriting detail be modified?",
-        "answer": "No. The pixel filtering acts on original coordinates, sharpening contrast while maintaining genuine stroke textures."
+        "question": "필기 디테일이 수정되나요?",
+        "answer": "아니요. 픽셀 필터링은 원래 좌표에 작용하여 실제 획 텍스처를 유지하면서 대비를 선명하게 합니다."
       }
     ]
   },
   "dead-link-debugger": {
     "title": "깨진 링크 수정",
-    "metaDescription": "PDF 내부의 모든 하이퍼링크(/URI) 연결 상태를 실시간 테스트하고, 끊어진 링크나 무효 주소를 손쉽게 수정 및 주입합니다.",
+    "metaDescription": "PDF 하이퍼링크를 검사하고 끊어지거나 오래된 대상을 교체합니다. 링크 주석을 스캔하고 업데이트된 문서를 저장하세요.",
     "keywords": [
       "pdf 링크 복구",
       "url 디버깅",
       "하이퍼링크 수정"
     ],
-    "description": "\n      <p>The Dead Link Debugger is a deep structural editor that guarantees link interaction quality in published files.</p>\n      <p>Broken urls (404/500) inside manuals, whitepapers, or guides reduce branding authority. This tool lets you manage the hyperlinks database seamlessly.</p>\n      <p>It parses the low-level <code>/Link</code> dictionaries on each page, Probes them, and displays link status in an interactive grid (red for dead links, orange for redirects). Simply type the updated redirect URL, and the tool writes the new target directly back into the PDF binary stream.</p>\n    ",
+    "description": "<p>데드 링크 디버거는 게시된 파일의 링크 상호 작용 품질을 보장하는 심층 구조 편집기입니다.</p>\n      <p>설명서, 백서 또는 가이드 내부의 깨진 URL(404/500)은 브랜드 권위를 감소시킵니다. 이 도구를 사용하면 하이퍼링크 데이터베이스를 원활하게 관리할 수 있습니다.</p>\n      <p>각 페이지의 하위 수준 <code>/Link</code> 사전을 구문 분석하고 조사한 후 대화형 그리드에 링크 상태를 표시합니다(데드 링크는 빨간색, 리디렉션은 주황색). 업데이트된 리디렉션 URL을 입력하기만 하면 도구가 새 대상을 PDF 바이너리 스트림에 직접 다시 작성합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide target document",
-        "description": "Upload the PDF manual or catalog containing links to debug."
+        "title": "대상 문서 제공",
+        "description": "디버그 링크가 포함된 PDF 매뉴얼이나 카탈로그를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Scan and update",
-        "description": "Let the debugger extract all URL entities. Input new redirect URLs for broken items."
+        "title": "스캔 및 업데이트",
+        "description": "디버거가 모든 URL 항목을 추출하도록 합니다. 깨진 항목에 대한 새로운 리디렉션 URL을 입력하세요."
       },
       {
         "step": 3,
-        "title": "Save redirect updates",
-        "description": "Click execute to rewrite /URI actions and download the corrected PDF."
+        "title": "리디렉션 업데이트 저장",
+        "description": "/URI 작업을 다시 작성하고 수정된 PDF를 다운로드하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Flyer broken links hotfix",
-        "description": "Instantly correct wrong urls on published flyers without reopening original design editors.",
+        "title": "전단지 깨진 링크 핫픽스",
+        "description": "원본 디자인 편집기를 다시 열지 않고도 게시된 전단지의 잘못된 URL을 즉시 수정합니다.",
         "icon": "refresh-cw"
       },
       {
-        "title": "Bibliography links verification",
-        "description": "Verify academic bibliography links in reports, updating references to maintain authority.",
+        "title": "참고문헌 링크 확인",
+        "description": "보고서의 학술 참고문헌 링크를 확인하고 권위를 유지하기 위해 참고문헌을 업데이트합니다.",
         "icon": "book"
       },
       {
-        "title": "Corporate rebranding updates",
-        "description": "Batch update old URLs across corporate PDFs when company domain names are changed.",
+        "title": "기업 브랜드 변경 업데이트",
+        "description": "회사 도메인 이름이 변경되면 회사 PDF 전체에서 이전 URL을 일괄 업데이트합니다.",
         "icon": "globe"
       }
     ],
     "faq": [
       {
-        "question": "Why isn't link reachability fully checked online?",
-        "answer": "Web browsers enforce strict CORS policies that block direct multi-origin link checking. Our tool lists the links clearly and lets you hot-fix them manually."
+        "question": "링크 연결 가능성이 온라인에서 완전히 확인되지 않는 이유는 무엇입니까?",
+        "answer": "웹 브라우저는 다중 출처 링크 직접 확인을 차단하는 엄격한 CORS 정책을 시행합니다. 우리의 도구는 링크를 명확하게 나열하고 수동으로 핫픽스를 제공합니다."
       },
       {
-        "question": "Will this modify the visual text representation on the page?",
-        "answer": "No. It only alters the underlying `/URI` navigation action. The visual link text remains unchanged."
+        "question": "이렇게 하면 페이지의 시각적 텍스트 표현이 수정되나요?",
+        "answer": "아니요. 기본 `/URI` 탐색 동작만 변경합니다. 시각적 링크 텍스트는 변경되지 않습니다."
       },
       {
-        "question": "Does it support modifying internal page bookmarks?",
-        "answer": "This tool handles external `/URI` hyperlinks. For internal layout navigation, use our interactive TOC tool."
+        "question": "내부 페이지 북마크 수정을 지원하나요?",
+        "answer": "이 도구는 외부 `/URI` 하이퍼링크를 처리합니다. 내부 레이아웃 탐색을 위해서는 대화형 목차 도구를 사용하세요."
       }
     ]
   },
   "interactive-toc-generator": {
     "title": "대화형 목차 생성",
-    "metaDescription": "PDF에 각 챕터로 바로가는 하이퍼링크 목차 페이지를 앞단에 생성하고, 본문 페이지에는 목차 복귀 버튼(↩)을 앵커링합니다.",
+    "metaDescription": "PDF에 클릭 가능한 목차를 추가하세요. 보다 쉬운 문서 탐색을 위해 장 링크를 생성하고 탐색 기능을 반환합니다.",
     "keywords": [
       "pdf 목차 만들기",
       "양방향 링크 목차",
       "북마크 목차화"
     ],
-    "description": "\n      <p>The Interactive TOC Builder introduces a revolutionary navigation experience to extensive PDFs.</p>\n      <p>Flipping through hundreds of pages in unstructured documents to locate target chapters is frustrating. This tool introduces <strong>Bidirectional TOC compilation</strong>.</p>\n      <p>It scans headers and generates an origami-inspired, premium Table of Contents page inserted right after the cover. In addition to creating clickable /GoTo links for each index row, it injects a tiny, elegant \"TOC ↩\" hovering anchor at the corner of each target chapter page. Readers can jump back and forth instantly, enjoying web-like navigation.</p>\n    ",
+    "description": "<p>Interactive TOC Builder는 광범위한 PDF에 혁신적인 탐색 경험을 제공합니다.</p>\n      <p>대상 장을 찾기 위해 구조화되지 않은 문서에서 수백 페이지를 넘기는 것은 실망스럽습니다. 이 도구에는 <strong>양방향 TOC 편집</strong>이 도입되었습니다.</p>\n      <p>머리글을 스캔하여 표지 바로 뒤에 삽입되는 종이접기 스타일의 프리미엄 목차 페이지를 생성합니다. 각 색인 행에 대해 클릭 가능한 /GoTo 링크를 생성하는 것 외에도 각 대상 장 페이지의 모서리에 작고 우아한 \"TOC ↩\" 호버링 앵커를 삽입합니다. 독자는 웹과 같은 탐색을 즐기면서 즉시 앞뒤로 이동할 수 있습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide PDF document",
-        "description": "Upload a report, eBook, or proposal that needs an interactive catalog."
+        "title": "PDF 문서 제공",
+        "description": "대화형 카탈로그가 필요한 보고서, eBook 또는 제안서를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Set TOC title & index",
-        "description": "Customize the main title and choose the page index to insert the TOC page."
+        "title": "목차 제목 및 색인 설정",
+        "description": "주요 제목을 사용자 정의하고 페이지 색인을 선택하여 목차 페이지를 삽입하세요."
       },
       {
         "step": 3,
-        "title": "Weave anchors & save",
-        "description": "Click execute to compile the pages and write the dual-link navigation."
+        "title": "앵커 짜기 및 저장",
+        "description": "페이지를 컴파일하고 이중 링크 탐색을 작성하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Annual corporate report polishing",
-        "description": "Inject a beautiful index page after the cover sheet to allow shareholders to jump between financial charts.",
+        "title": "연간 기업 보고서 다듬기",
+        "description": "주주들이 재무 차트 사이를 이동할 수 있도록 표지 뒤에 아름다운 색인 페이지를 삽입합니다.",
         "icon": "file-bar"
       },
       {
-        "title": "Thesis indexing",
-        "description": "Fast compile standard indexes aligned with university formatting rules.",
+        "title": "논문 색인",
+        "description": "대학 서식 규칙에 맞춰 표준 색인을 빠르게 컴파일합니다.",
         "icon": "bookmark"
       },
       {
-        "title": "Operation manual navigation",
-        "description": "Help handbook readers quickly jump from troubleshooting sheets back to the main TOC.",
+        "title": "운영 매뉴얼 탐색",
+        "description": "핸드북 독자가 문제 해결 시트에서 기본 목차로 빠르게 이동할 수 있도록 도와주세요.",
         "icon": "check-circle"
       }
     ],
     "faq": [
       {
-        "question": "How do the bidirectional anchors work?",
-        "answer": "We create standard Link annotations on the TOC page targeting the respective pages; then we embed a link back to the TOC page on all target chapter sheets."
+        "question": "양방향 앵커는 어떻게 작동하나요?",
+        "answer": "각 페이지를 대상으로 하는 TOC 페이지에 표준 링크 주석을 생성합니다. 그런 다음 모든 대상 장 시트에 목차 페이지로 돌아가는 링크를 삽입합니다."
       },
       {
-        "question": "Will inserting the TOC page break existing page numbers?",
-        "answer": "No. The compiler accounts for the offset of the newly inserted TOC page, ensuring all target destinations align."
+        "question": "목차 페이지를 삽입하면 기존 페이지 번호가 깨지나요?",
+        "answer": "아니요. 컴파일러는 새로 삽입된 목차 페이지의 오프셋을 고려하여 모든 대상 대상이 정렬되도록 합니다."
       },
       {
-        "question": "Is the TOC page valid when printed physically?",
-        "answer": "Yes. The generated TOC lists clean physical page numbers to guide paper readers while enabling clickable links on screen."
+        "question": "목차 페이지는 물리적으로 인쇄했을 때 유효한가요?",
+        "answer": "네. 생성된 목차에는 화면에서 클릭 가능한 링크를 활성화하는 동시에 종이 독자를 안내하기 위한 명확한 실제 페이지 번호가 나열되어 있습니다."
       }
     ]
   },
@@ -4656,8 +4656,8 @@ export const toolContentKo: Record<string, ToolContent> = {
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide skew PDF",
-        "description": "Upload any PDF sheet carrying rotated or poorly aligned scanned documents."
+        "title": "왜곡된 PDF 제공",
+        "description": "회전되었거나 잘못 정렬된 스캔 문서가 포함된 PDF 시트를 업로드하세요."
       },
       {
         "step": 2,
@@ -4672,484 +4672,484 @@ export const toolContentKo: Record<string, ToolContent> = {
     ],
     "useCases": [
       {
-        "title": "Receipt & Contract Archiving",
-        "description": "Straighten quick hand-held mobile contract scans before saving them as formal digital PDF archives.",
+        "title": "영수증 및 계약서 보관",
+        "description": "휴대용 모바일 계약서 스캔을 공식 디지털 PDF 아카이브로 저장하기 전에 빠르게 정리하세요.",
         "icon": "file-text"
       },
       {
-        "title": "Academic Book Digitizing",
-        "description": "Sanitize microfilm book scans where text lines drift out of horizontal margins.",
+        "title": "학술 도서 디지털화",
+        "description": "텍스트 줄이 수평 여백을 벗어나는 마이크로필름 북 스캔을 삭제합니다.",
         "icon": "book"
       },
       {
-        "title": "Student Homework Grading",
-        "description": "Correct homework snapshots taken by student phones, relaxing the eyes of grading teachers.",
+        "title": "학생 숙제 채점",
+        "description": "학생 휴대폰으로 찍은 숙제 스냅샷을 수정하여 채점 교사의 눈을 편안하게 합니다.",
         "icon": "edit-3"
       }
     ],
     "faq": [
       {
-        "question": "How is document skew detected?",
+        "question": "문서 기울어짐은 어떻게 감지되나요?",
         "answer": "기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다."
       },
       {
-        "question": "Will this process crop away page edges?",
+        "question": "이 과정에서 페이지 가장자리가 잘리나요?",
         "answer": "기울어진 텍스트 줄을 로컬에서 감지하고 보정된 내용을 원래 페이지 안에 맞춥니다."
       },
       {
-        "question": "Does it support documents filled with diagrams?",
+        "question": "다이어그램으로 채워진 문서를 지원합니까?",
         "answer": "빈 페이지, 불확실한 스캔 및 주석이 있는 페이지는 변경하지 않습니다."
       }
     ]
   },
   "pdf-two-column-reflower": {
     "title": "학술 논문 2단 재배열",
-    "metaDescription": "논문이나 보고서의 2단 레이아웃을 파싱하여, 페이지 복제 후 CropBox 경계를 분할해 세로 스크롤만으로 읽기 좋은 1단으로 컴파일합니다.",
+    "metaDescription": "모바일에서 더 쉽게 읽을 수 있도록 2열로 구성된 PDF 문서를 단일 열로 리플로우합니다. 작은 화면에 맞게 학술 문서를 조정하세요.",
     "keywords": [
       "2단 논문 1단 변환",
       "크롭박스 레이아웃 분할",
       "모바일 전용 재배열"
     ],
-    "description": "\n      <p>The Academic Two-Column Reflower solves the most significant pain point of digital research: reading papers on standard mobile screens.</p>\n      <p>Double-column layouts (used by IEEE, ACM, Nature, and major reports) are designed for A4 paper. Navigating them on phone screens or Kindle devices requires constant zooming, dragging right, scrolling down, and panning back up. It breaks reading comprehension completely.</p>\n      <p>Our processor implements a <strong>smart paragraph reflow and vertical partition barrier scan</strong>. It analyzes character coordinates to map double-column gutters, divides the layout, and weaves segments vertically (left column first, then right). Graphs, formulas, and headings are seamlessly rearranged into a single-column, flowable vertical scroll PDF.</p>\n    ",
+    "description": "<p>Academic 2열 Reflower는 디지털 연구의 가장 중요한 문제점인 표준 모바일 화면에서 논문을 읽는 문제를 해결합니다.</p>\n      <p>이중 열 레이아웃(IEEE, ACM, Nature 및 주요 보고서에서 사용)은 A4 용지용으로 설계되었습니다. 휴대폰 화면이나 Kindle 장치에서 탐색하려면 지속적인 확대/축소, 오른쪽으로 드래그, 아래로 스크롤 및 위로 이동이 필요합니다. 독해력이 완전히 손상됩니다.</p>\n      <p>Google 프로세서는 <strong>스마트 단락 리플로우 및 수직 파티션 장벽 스캔</strong>을 구현합니다. 문자 좌표를 분석하여 이중 열 거터를 매핑하고, 레이아웃을 나누고, 세그먼트를 수직으로(왼쪽 열 먼저, 오른쪽 열 순으로) 엮습니다. 그래프, 수식, 제목이 단일 열의 흐름 가능한 세로 스크롤 PDF로 원활하게 재배열되었습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload double-column PDF",
-        "description": "Provide the IEEE/ACM journal report or multi-column PDF sheet."
+        "title": "2단 PDF 업로드",
+        "description": "IEEE/ACM 저널 보고서 또는 다중 열 PDF 시트를 제공하세요."
       },
       {
         "step": 2,
-        "title": "Inspect partition gutter",
-        "description": "Verify the red vertical partition slice guides. Adjust margins to prevent overlapping elements."
+        "title": "파티션 홈통 검사",
+        "description": "빨간색 수직 파티션 슬라이스 가이드를 확인하세요. 요소가 겹치는 것을 방지하려면 여백을 조정하세요."
       },
       {
         "step": 3,
-        "title": "Reflow and save",
-        "description": "Click execute to compile the pages into flowable layouts and download instantly."
+        "title": "리플로우 및 저장",
+        "description": "페이지를 흐름 가능한 레이아웃으로 컴파일하고 즉시 다운로드하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "e-Reader Book Import",
-        "description": "Convert dense double-column essays into comfortable single-column documents matching Kindle and Onyx screens.",
+        "title": "e-Reader 도서 가져오기",
+        "description": "빽빽한 2열 에세이를 Kindle 및 Onyx 화면과 일치하는 편안한 1열 문서로 변환하세요.",
         "icon": "tablet"
       },
       {
-        "title": "Subway Phone Reading",
-        "description": "Read research literature comfortably with single-hand vertical swipe gestures during transit.",
+        "title": "지하철 전화읽기",
+        "description": "이동 중에 한 손으로 세로로 스와이프하여 연구 문헌을 편안하게 읽으세요.",
         "icon": "smartphone"
       },
       {
-        "title": "Archival Journal Formatting",
-        "description": "Modernize old narrow-column newspapers into readable, single-column web formats.",
+        "title": "아카이브 저널 형식 지정",
+        "description": "오래된 좁은 열 신문을 읽기 쉬운 단일 열 웹 형식으로 현대화합니다.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How are broad charts and equations handled?",
-        "answer": "Our engine applies \"span element detection.\" When an equation or diagram exceeds normal column widths, it is isolated as a full-width item, maintaining original proportions without clipping."
+        "question": "광범위한 차트와 방정식은 어떻게 처리되나요?",
+        "answer": "우리 엔진은 \"스팬 요소 감지\"를 적용합니다. 방정식이나 다이어그램이 일반 열 너비를 초과하면 전체 너비 항목으로 격리되어 잘림 없이 원래 비율을 유지합니다."
       },
       {
-        "question": "Will this modify the vector text resolution?",
-        "answer": "Not at all. We rewrite PDF text object transform matrices at the object tree level instead of rasterizing, meaning text remains 100% vector and fully selectable."
+        "question": "벡터 텍스트 해상도가 수정되나요?",
+        "answer": "전혀 그렇지 않습니다. 래스터화하는 대신 객체 트리 수준에서 PDF 텍스트 객체 변환 행렬을 다시 작성합니다. 즉, 텍스트는 100% 벡터로 유지되고 완전히 선택 가능합니다."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "For flat image-based PDFs, we highly recommend running our OCR tool first before executing the Reflow process."
+        "question": "스캔한 이미지 문서에도 작동하나요?",
+        "answer": "평면 이미지 기반 PDF의 경우 리플로우 프로세스를 실행하기 전에 먼저 OCR 도구를 실행하는 것이 좋습니다."
       }
     ]
   },
   "pdf-page-resizer-uniform": {
     "title": "PDF 규격 단일화",
-    "metaDescription": "여러 규격(A3, A4, Letter 등)이 섞여 있는 PDF의 비율을 고정하여 대상 본국 규격(예: A4)의 정중앙에 맞춰 크기를 표준화합니다.",
+    "metaDescription": "혼합된 PDF 페이지의 크기를 균일한 크기로 조정합니다. 비례 배율 및 중앙 여백을 사용하여 A4, A3 및 Letter 페이지를 표준화합니다.",
     "keywords": [
       "pdf 크기 동일화",
       "A4 단일 변환",
       "여백 중앙 맞춤"
     ],
-    "description": "\n      <p>The Multi-Format PDF Resizer is the ultimate standardizer for cluttered, mismatched corporate documents.</p>\n      <p>Combining invoices, contracts, and supplementary charts often results in a PDF containing massive A3 ledger pages, standard A4 agreements, and Letter-sized envelopes. Flipping through them is highly distracting, and sending them to physical office printers often causes jam errors due to size mismatch.</p>\n      <p>This tool rewrites the low-level <code>/MediaBox</code> and <code>/CropBox</code> grids on each page. It maps existing widths and heights, scales original pages proportionally to match target presets (e.g. standard A4), and introduces elegant, consistent surrounding margins, making the entire file look incredibly polished.</p>\n    ",
+    "description": "<p>다중 형식 PDF Resizer는 복잡하고 일치하지 않는 기업 문서를 위한 최고의 표준화 도구입니다.</p>\n      <p>인보이스, 계약서, 보충 차트를 결합하면 대용량 A3 원장 페이지, 표준 A4 계약서, Letter 크기 봉투가 포함된 PDF가 생성되는 경우가 많습니다. 종이를 넘기는 것은 매우 산만하며 사무실의 실제 프린터로 보내는 경우 크기 불일치로 인해 용지 걸림 오류가 발생하는 경우가 많습니다.</p>\n      <p>이 도구는 각 페이지의 하위 수준 <code>/MediaBox</code> 및 <code>/CropBox</code> 그리드를 다시 작성합니다. 기존 너비와 높이를 매핑하고, 대상 사전 설정(예: 표준 A4)과 일치하도록 원본 페이지의 크기를 비례적으로 조정하며, 우아하고 일관된 주변 여백을 도입하여 전체 파일이 놀라울 정도로 세련되게 보입니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide mixed-size PDF",
-        "description": "Upload a merged PDF document containing mismatched, messy page sizes."
+        "title": "다양한 크기의 PDF 제공",
+        "description": "일치하지 않고 지저분한 페이지 크기가 포함된 병합된 PDF 문서를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Choose target preset",
-        "description": "Select the target uniform size (e.g. A4, Letter, A3) and toggle scale modes."
+        "title": "대상 사전 설정 선택",
+        "description": "대상 균일 크기(예: A4, Letter, A3)를 선택하고 배율 모드를 전환합니다."
       },
       {
         "step": 3,
-        "title": "Align and download",
-        "description": "Click execute to trigger 3D sheet alignment, downloading a beautifully standardized PDF."
+        "title": "정렬 및 다운로드",
+        "description": "실행을 클릭하면 3D 시트 정렬이 실행되고 아름답게 표준화된 PDF가 다운로드됩니다."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate RFP Proposals",
-        "description": "Standardize scanned qualification certificates and A4 bidding sheets before physical printing.",
+        "title": "기업 RFP 제안",
+        "description": "스캔한 자격증과 A4 입찰서를 실제 인쇄하기 전에 표준화합니다.",
         "icon": "file-text"
       },
       {
-        "title": "Financial Chart Integration",
-        "description": "Scale broad A3 financial cash flows into neat A4 pages, preserving printing standards.",
+        "title": "금융 차트 통합",
+        "description": "광범위한 A3 금융 현금 흐름을 깔끔한 A4 페이지로 확장하여 인쇄 표준을 유지합니다.",
         "icon": "layout"
       },
       {
-        "title": "Book Margin Standardization",
-        "description": "Force slightly varied scanned book pages into an absolutely uniform dimension for comfortable reading.",
+        "title": "도서 여백 표준화",
+        "description": "약간씩 다른 스캔 도서 페이지를 편안하게 읽을 수 있도록 절대적으로 균일한 크기로 만듭니다.",
         "icon": "book"
       }
     ],
     "faq": [
       {
-        "question": "Will this warp my content?",
-        "answer": "Never. We support both \"Contain\" (proportional scaling with white bars) and \"Cover\" (centered crop). The default Contain mode preserves aspect ratios, preventing distortion."
+        "question": "이로 인해 내 콘텐츠가 왜곡되나요?",
+        "answer": "절대로요. \"포함\"(흰색 막대를 사용한 비례 배율 조정) 및 \"표지\"(가운데 자르기)를 모두 지원합니다. 기본 포함 모드는 종횡비를 유지하여 왜곡을 방지합니다."
       },
       {
-        "question": "Will existing forms and annotations remain clickable?",
-        "answer": "Yes. The algorithm maps the scaling factors to the Annotation coordinate arrays, scaling link boxes, sign boundaries, and inputs to align perfectly after resizing."
+        "question": "기존 양식과 주석을 계속 클릭할 수 있나요?",
+        "answer": "네. 알고리즘은 크기 조정 후 완벽하게 정렬되도록 크기 조정 요소를 주석 좌표 배열, 크기 조정 링크 상자, 기호 경계 및 입력에 매핑합니다."
       },
       {
-        "question": "Is there a limit on how many pages I can resize?",
-        "answer": "No. Since all operations run locally in your client sandbox using native JavaScript, you can process extensive PDFs containing hundreds of pages in seconds."
+        "question": "크기를 조정할 수 있는 페이지 수에 제한이 있나요?",
+        "answer": "아니요. 모든 작업은 기본 JavaScript를 사용하여 클라이언트 샌드박스에서 로컬로 실행되므로 수백 페이지가 포함된 광범위한 PDF를 몇 초 안에 처리할 수 있습니다."
       }
     ]
   },
   "handwriting-ink-contrast-booster": {
     "title": "필기 대비 및 배경 강화",
-    "metaDescription": "누렇게 변색되거나 그림자 진 서류 배경을 깨끗하게 날려버리고, 청색/검은색 서명 필적과 붉은 인장 명암을 극대화합니다.",
+    "metaDescription": "스캔한 이미지의 필기 및 서명 대비를 향상시킵니다. 용지 배경 소음을 줄이고 잉크를 읽기 쉽게 만듭니다.",
     "keywords": [
       "자필 서명 보정",
       "배경 그림자 표백",
       "도장 선명하게"
     ],
-    "description": "\n      <p>The Handwriting Ink Contrast Booster is a savior for digitizing signed agreements and historical manuscript archives.</p>\n      <p>Scans of hand-signed documents often look dull due to grey scanner glass reflection, yellow paper tint, or faded ink. Re-printing or photocopying these files results in blurry, illegible signatures. Traditional contrast tools darken the entire background, worsening the layout.</p>\n      <p>This tool utilizes **Contrast Limited Adaptive Histogram Equalization (CLAHE) and hue-based color separation**. In a secure local Canvas process, it isolates handwriting strokes (both black and blue) from background parchment, bleaches shadow wrinkles completely, and infuses faded inks with deep, saturated contrast, leaving your documents looking incredibly crisp and clean.</p>\n    ",
+    "description": "<p>손글씨 잉크 대비 부스터(Handwriting Ink Contrast Booster)는 서명된 계약서와 역사적인 원고 기록 보관소를 디지털화하는 데 도움이 되는 구세주입니다.</p>\n      <p>손으로 서명한 문서의 스캔은 회색 스캐너 유리 반사, 노란색 종이 색조 또는 희미한 잉크로 인해 흐릿하게 보이는 경우가 많습니다. 이러한 파일을 다시 인쇄하거나 복사하면 서명이 흐릿하고 읽을 수 없게 됩니다. 기존 대비 도구는 배경 전체를 어둡게 만들어 레이아웃을 악화시킵니다.</p>\n      <p>이 도구는 **CLAHE(Contrast Limited Adaptive Histogram Equalization) 및 색상 기반 색상 분리**를 활용합니다. 안전한 로컬 캔버스 프로세스에서는 배경 양피지에서 손글씨 획(검은색과 파란색 모두)을 분리하고 그림자 주름을 완전히 표백하며 색 바랜 잉크에 깊고 채도가 높은 대비를 주입하여 문서가 놀라울 정도로 선명하고 깨끗하게 보입니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import hand-signed document",
-        "description": "Provide a PDF containing faded signatures, handwritten diaries, or sketches."
+        "title": "손으로 서명한 문서 가져오기",
+        "description": "빛바랜 서명, 손으로 쓴 일기, 스케치가 포함된 PDF를 제공하세요."
       },
       {
         "step": 2,
-        "title": "Configure ink filter",
-        "description": "Select the color profile to isolate (e.g. blue ink, black ink, or both) and adjust sharpening."
+        "title": "잉크 필터 구성",
+        "description": "분리할 색상 프로필(예: 파란색 잉크, 검정색 잉크 또는 둘 다)을 선택하고 선명도를 조정합니다."
       },
       {
         "step": 3,
-        "title": "Sharpen and download",
-        "description": "Click execute to trace colors with a radar scanner effect and download purified PDF."
+        "title": "선명화 및 다운로드",
+        "description": "실행을 클릭하면 레이더 스캐너 효과로 색상을 추적하고 정제된 PDF를 다운로드할 수 있습니다."
       }
     ],
     "useCases": [
       {
-        "title": "Executed Contracts Repair",
-        "description": "Repair poorly scanned agreements, sharpening signatures and bleaching paper background to A4-pure white.",
+        "title": "실행된 계약 수리",
+        "description": "제대로 스캔되지 않은 계약서를 수정하고 서명을 선명하게 하며 종이 배경을 A4 순백색으로 표백합니다.",
         "icon": "file-check"
       },
       {
-        "title": "Handwritten Manuscripts Archive",
-        "description": "Digitize written journals or diaries, extracting clear black strokes while erasing age-related stains.",
+        "title": "자필 원고 아카이브",
+        "description": "기록된 일지나 일기를 디지털화하여 나이와 관련된 얼룩을 지우고 선명한 검은색 획을 추출합니다.",
         "icon": "book"
       },
       {
-        "title": "Historical Ledger Restoration",
-        "description": "Restore faint ink details on aged archival ledgers, rescuing valuable handwritten coordinates.",
+        "title": "장부내역 복원",
+        "description": "오래된 보관 원장의 희미한 잉크 세부정보를 복원하여 귀중한 손으로 쓴 좌표를 복구하세요.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "How does this differ from normal grayscale conversion?",
-        "answer": "Grayscale converts paper shadows into gray values. Our adaptive algorithm separates background luminance and isolates signature \"ink spectrums,\" purifying the backdrop to absolute white while leaving stroke edges sharp."
+        "question": "이것이 일반적인 그레이스케일 변환과 어떻게 다릅니까?",
+        "answer": "회색조는 종이 그림자를 회색 값으로 변환합니다. 당사의 적응형 알고리즘은 배경 휘도를 분리하고 시그니처 \"잉크 스펙트럼\"을 분리하여 획 가장자리를 선명하게 유지하면서 배경을 완전한 흰색으로 정화합니다."
       },
       {
-        "question": "Will I lose handwriting stroke texture?",
-        "answer": "No. The CLAHE algorithm works on a sub-pixel level, preserving natural pen-stroke pressure, ink fading, and dynamic line weights."
+        "question": "필기 획 질감이 사라지나요?",
+        "answer": "아니요. CLAHE 알고리즘은 하위 픽셀 수준에서 작동하여 자연스러운 펜 스트로크 압력, 잉크 페이딩 및 동적 선 두께를 유지합니다."
       },
       {
-        "question": "Can I keep red corporate stamp marks?",
-        "answer": "Yes. By enabling \"Chroma Ink Preservation,\" the booster whitens paper background and darkens writing, while maintaining the bright colors of red seals and blue ink signatures."
+        "question": "빨간색 기업 스탬프를 유지할 수 있나요?",
+        "answer": "네. 부스터는 \"크로마 잉크 보존\"을 활성화함으로써 빨간색 도장과 파란색 잉크 서명의 밝은 색상을 유지하면서 종이 배경을 희게 하고 필기를 어둡게 합니다."
       }
     ]
   },
   "pdf-spine-bookbinder": {
     "title": "책등 두께 계산",
-    "metaDescription": "페이지 번호와 용지 평량(GSM)을 활용해 밀리미터 단위로 책등(Spine) 두께를 정밀 산출하고, 오시선이 배치된 커버 PDF를 만듭니다.",
+    "metaDescription": "페이지 수와 용지 무게로 책등 너비를 계산합니다. 등뼈 접는 선이 있는 인쇄 가능한 표지 템플릿을 생성합니다.",
     "keywords": [
       "책등 두께 계산",
       "도서 제본",
       "Spine 디자인",
       "책표지 템플릿"
     ],
-    "description": "\n      <p>The PDF Spine Bookbinder is a pre-press savior for designers, self-publishing authors, and commercial bidding teams.</p>\n      <p>When compiling thick book catalogs, bidding proposals, or annual directories, perfect binding (glue binding) requires a cover with precise spine coordinates. If the spine width is off by even 1mm, the bound cover will warp, shift, or crease. Calculating page counts against paper weight is complex and error-prone.</p>\n      <p>This tool utilizes a <strong>physically modeled GSM paper-to-thickness library</strong>. Simply input your PDF page count and select paper stock (e.g. 80 GSM offset, 100 GSM glossy). The engine calculates spine width down to micrometers and compiles a print-ready, extra-wide cover PDF complete with standard front/back flaps and precise fold mark creases.</p>\n    ",
+    "description": "<p>PDF Spine Bookbinder는 디자이너, 자가 출판 작가, 상업 입찰 팀을 위한 인쇄 전 구세주입니다.</p>\n      <p>두꺼운 책 카탈로그, 입찰 제안서 또는 연간 디렉토리를 편집할 때 완벽한 제본(접착제 제본)을 위해서는 정확한 책등 좌표가 있는 표지가 필요합니다. 책등 너비가 1mm라도 벗어나면 제본된 표지가 뒤틀리거나 움직이거나 주름이 생길 수 있습니다. 용지 무게에 따른 페이지 수 계산은 복잡하고 오류가 발생하기 쉽습니다.</p>\n      <p>이 도구는 <strong>물리적으로 모델링된 GSM 종이 두께 라이브러리</strong>를 활용합니다. PDF 페이지 수를 입력하고 용지 용지(예: 80 GSM 오프셋, 100 GSM 광택)를 선택하기만 하면 됩니다. 엔진은 책등 너비를 마이크로미터까지 계산하고 표준 앞/뒤 덮개와 정밀한 접힘 표시 주름이 포함된 인쇄 가능한 매우 넓은 표지 PDF를 컴파일합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Set pages & stock type",
-        "description": "Input document page count and select the target paper stock specifications."
+        "title": "페이지 및 주식 유형 설정",
+        "description": "문서 페이지 수를 입력하고 대상 용지 사양을 선택합니다."
       },
       {
         "step": 2,
-        "title": "Input spine text",
-        "description": "Enter book titles, author details, and customize spine/cover backgrounds."
+        "title": "척추 텍스트 입력",
+        "description": "책 제목, 저자 세부정보를 입력하고 표지/표지 배경을 맞춤설정하세요."
       },
       {
         "step": 3,
-        "title": "3D Preview & Export",
-        "description": "Spin and inspect your book cover in an interactive 3D binder. Export high-resolution vector PDF."
+        "title": "3D 미리보기 및 내보내기",
+        "description": "대화형 3D 바인더에서 책 표지를 돌려서 검사해 보세요. 고해상도 벡터 PDF를 내보냅니다."
       }
     ],
     "useCases": [
       {
-        "title": "Thick Bidding Proposals",
-        "description": "Design professional cover sheets with precise spine crease alignments for thick tender bids.",
+        "title": "두꺼운 입찰 제안",
+        "description": "두꺼운 입찰을 위해 정확한 등뼈 주름 정렬로 전문적인 표지를 디자인합니다.",
         "icon": "layers"
       },
       {
-        "title": "Thesis Hardcover Binding",
-        "description": "Map out perfect spine layout widths for university master/doctorate degree theses.",
+        "title": "논문 하드커버 제본",
+        "description": "대학 석사/박사 학위 논문을 위한 완벽한 척추 레이아웃 너비를 계획하세요.",
         "icon": "award"
       },
       {
-        "title": "Self-Publishing Novel Covers",
-        "description": "Calculate book spine width easily before submitting files to Print-on-Demand publishing services.",
+        "title": "자체 출판 소설 표지",
+        "description": "주문형 인쇄 출판 서비스에 파일을 제출하기 전에 책 등 너비를 쉽게 계산하세요.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How accurate is the GSM paper-thickness calculation?",
-        "answer": "Highly accurate. Our physics library matches industry averages (e.g. 70 GSM = 0.09mm, 80 GSM = 0.10mm, 150 GSM glossy = 0.125mm). We also include a \"Double-sided printing\" toggle to halve calculations automatically."
+        "question": "GSM 용지 두께 계산은 얼마나 정확합니까?",
+        "answer": "매우 정확합니다. 우리의 물리 라이브러리는 업계 평균과 일치합니다(예: 70 GSM = 0.09mm, 80 GSM = 0.10mm, 150 GSM 광택 = 0.125mm). 또한 계산을 자동으로 절반으로 줄이는 \"양면 인쇄\" 토글도 포함되어 있습니다."
       },
       {
-        "question": "Are the exported covers ready for direct printing?",
-        "answer": "Yes. The files are vector-perfect PDFs carrying standard registration marks, color bars, and spine guides, fully compliant with offset and digital commercial presses."
+        "question": "수출된 표지는 다이렉트 프린팅 준비가 되었나요?",
+        "answer": "네. 파일은 표준 등록 표시, 색상 막대 및 책등 안내선을 포함하는 완벽한 벡터 PDF이며 오프셋 및 디지털 상업용 인쇄기와 완벽하게 호환됩니다."
       },
       {
-        "question": "Can I upload a background image spanning the spine?",
-        "answer": "Yes. You can upload custom layouts, and our compositor will wrap and align the graphics across the spine folds automatically."
+        "question": "척추에 걸쳐 있는 배경 이미지를 업로드할 수 있나요?",
+        "answer": "네. 사용자 정의 레이아웃을 업로드할 수 있으며 합성기가 척추 접힌 부분에 걸쳐 그래픽을 자동으로 래핑하고 정렬합니다."
       }
     ]
   },
   "pdf-signature-anchor-helper": {
     "title": "서명 위치 안내",
-    "metaDescription": "서명이 요구되는 계약서 영역을 마우스로 지정하여 시각적인 펜 입력 안내 엠블럼과 북마크 이동 단축 링크를 삽입합니다.",
+    "metaDescription": "X/Y 좌표를 사용하여 PDF 페이지에 서명 가이드를 배치합니다. 업데이트된 문서를 저장하기 전에 위치를 미리 봅니다.",
     "keywords": [
       "서명 위치 지정",
       "사인 가이드",
       "이동 링크 매핑"
     ],
-    "description": "\n      <p>The PDF Signature Guide Injector guarantees clean, error-free signing workflows for multi-page agreements.</p>\n      <p>When sending multi-page NDA agreements, financial statements, or commercial leases, clients often miss critical signing boxes, requiring endless back-and-forth email loops and delayed business transactions.</p>\n      <p>Our tool uses <strong>natural regex semantic mapping</strong>. It scans the PDF character map to locate terms like <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code>, or <code>签署日期：</code>. It then leverages <code>pdf-lib</code> to inject standard PDF interactive Link annotations. When opened in any standard reader, clients see blinking, neon-bordered arrows that instantly guide them to the correct boxes, making signing foolproof.</p>\n    ",
+    "description": "<p>PDF 서명 가이드 인젝터는 여러 페이지로 구성된 계약서에 대해 깔끔하고 오류 없는 서명 작업 과정을 보장합니다.</p>\n      <p>여러 페이지로 구성된 NDA 계약서, 재무제표 또는 상업 임대 계약서를 보낼 때 고객이 중요한 서명 상자를 놓치는 경우가 많아 이메일을 끊임없이 주고받고 비즈니스 거래가 지연됩니다.</p>\n      <p>저희 도구는 <strong>자연 정규식 의미 매핑</strong>을 사용합니다. PDF 문자표를 스캔하여 <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code> 또는 <code>签署日期：</code>와 같은 용어를 찾습니다. 그런 다음 <code>pdf-lib</code>를 활용하여 표준 PDF 대화형 링크 주석을 삽입합니다. 표준 리더에서 열면 고객에게 깜박이는 네온 테두리 화살표가 표시되어 즉시 올바른 상자로 안내하므로 서명이 간편해집니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import business contract",
-        "description": "Upload the PDF contract or NDA that needs signature coordinates."
+        "title": "수입업 계약서",
+        "description": "서명 좌표가 필요한 PDF 계약서 또는 NDA를 업로드하세요."
       },
       {"step":2,"title":"X / Y","description":"실제 PDF 미리보기를 클릭하거나 선택한 페이지의 X 및 Y 좌표를 입력하세요."},
       {"step":3,"title":"처리","description":"파일을 처리하고 결과를 확인한 다음 PDF를 다운로드하세요."},
     ],
     "useCases": [
       {
-        "title": "Corporate NDA Agreements",
-        "description": "Inject clear, flashing guides next to sign blocks to prevent onboarding employees from missing clauses.",
+        "title": "기업 NDA 계약",
+        "description": "입사 직원이 조항을 누락하는 것을 방지하기 위해 표지판 옆에 명확하고 깜박이는 가이드를 삽입합니다.",
         "icon": "file-text"
       },
       {
-        "title": "Commercial Lease Contracts",
-        "description": "Guide multiple co-signers through multi-page real estate documents with custom-colored tabs.",
+        "title": "상업 임대 계약",
+        "description": "맞춤 색상 탭이 있는 여러 페이지의 부동산 문서를 통해 여러 공동 서명자를 안내합니다.",
         "icon": "users"
       },
       {
-        "title": "Procurement PO Signatures",
-        "description": "Overlay interactive pointers on invoices and purchase orders to accelerate accounting approval loops.",
+        "title": "조달 PO 서명",
+        "description": "송장 및 구매 주문서에 대화형 포인터를 오버레이하여 회계 승인 루프를 가속화합니다.",
         "icon": "briefcase"
       }
     ],
     "faq": [
       {
-        "question": "Will these guides appear when I print the contract?",
-        "answer": "No. The anchors are injected with the standard PDF `Printable` flag set to false. They display beautifully on computer/tablet screens but remain completely invisible when printed."
+        "question": "계약서를 인쇄하면 이 가이드가 나오나요?",
+        "answer": "아니요. 앵커는 false로 설정된 표준 PDF '인쇄 가능' 플래그와 함께 삽입됩니다. 컴퓨터/태블릿 화면에서는 아름답게 표시되지만 인쇄할 때는 완전히 보이지 않습니다."
       },
       {
-        "question": "Can clients jump between signature fields easily?",
-        "answer": "Yes. We weave bidirectional internal anchors. Clients can click the \"Sign Guide\" bookmark to automatically jump to the next empty signature slot instantly."
+        "question": "클라이언트가 서명 필드 간에 쉽게 이동할 수 있나요?",
+        "answer": "네. 우리는 양방향 내부 앵커를 엮습니다. 고객은 \"서명 가이드\" 북마크를 클릭하여 다음 빈 서명 슬롯으로 즉시 자동으로 이동할 수 있습니다."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "Yes. Besides looking up text streams, our spatial layout parser estimates signature lines based on horizontal rules and bounding boxes on scanned sheets."
+        "question": "스캔한 이미지 문서에도 작동하나요?",
+        "answer": "네. 텍스트 스트림을 찾는 것 외에도 공간 레이아웃 파서는 스캔한 시트의 가로 규칙과 경계 상자를 기반으로 서명 줄을 추정합니다."
       }
     ]
   },
   "pdf-lossless-slicer": {
     "title": "대형 도면 무손실 분할",
-    "metaDescription": "초대형 도면 PDF 페이지에서 MediaBox와 CropBox 좌표계를 재지정하여, 화질 깨짐 없이 100% 벡터 포맷 상태로 영역을 무손실 절단합니다.",
+    "metaDescription": "정확한 좌표를 사용하여 PDF 그림, 지도 또는 차트의 영역을 자릅니다. 내보낸 PDF의 벡터 내용을 유지합니다.",
     "keywords": [
       "도면 크롭",
       "무손실 슬라이스",
       "벡터 자르기",
       "캐드도면 분할"
     ],
-    "description": "\n      <p>The PDF Lossless Drawing Slicer is a high-precision, surgical tool built for architects, engineers, and map detailers.</p>\n      <p>When extracting a specific pump room or chip core from a massive CAD engineering blueprint or geographic map PDF, traditional screenshots result in pixelated, blurry text. Normal cropping tools simply place a mask over the sheet, meaning the massive 100MB file remains huge, and hidden content can still be extracted.</p>\n      <p>This tool edits the page <code>/MediaBox</code>, <code>/CropBox</code>, and <code>/BleedBox</code> matrices at the object tree level. It physically isolates vector nodes outside the selected region, keeping the target area 100% vector-perfect (allowing infinite zoom magnification) while purging redundant off-screen paths and images to shrink the file size by 95%!</p>\n    ",
+    "description": "<p>PDF Lossless Drawing Slicer는 건축가, 엔지니어, 지도 세부 설계자를 위해 제작된 고정밀 수술 도구입니다.</p>\n      <p>대규모 CAD 엔지니어링 청사진이나 지리적 지도 PDF에서 특정 펌프실이나 칩 코어를 추출할 때 기존 스크린샷에서는 텍스트가 픽셀화되고 흐릿해집니다. 일반 자르기 도구는 단순히 시트 위에 마스크를 배치하기만 하면 됩니다. 즉, 100MB의 대용량 파일은 그대로 유지되며 숨겨진 콘텐츠도 계속 추출할 수 있습니다.</p>\n      <p>이 도구는 개체 트리 수준에서 페이지 <code>/MediaBox</code>, <code>/CropBox</code> 및 <code>/BleedBox</code> 행렬을 편집합니다. 선택한 영역 외부의 벡터 노드를 물리적으로 격리하여 대상 영역을 벡터 완벽하게 100% 유지(무한 확대/축소 가능)하는 동시에 중복된 오프스크린 경로와 이미지를 제거하여 파일 크기를 95% 줄입니다!</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import large blueprint",
-        "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
+        "title": "대형 청사진 가져오기",
+        "description": "벡터가 풍부한 CAD, GIS 지도 또는 고해상도 카탈로그 PDF를 업로드하세요."
       },
       {"step":2,"title":"자르기 사각형","description":"X, Y, 너비, 높이를 입력한 다음 미리보기에서 선택한 페이지를 확인하세요."},
       {"step":3,"title":"처리","description":"파일을 처리하고 결과를 확인한 다음 PDF를 다운로드하세요."},
     ],
     "useCases": [
       {
-        "title": "CAD Blueprint Isolation",
-        "description": "Slice out a \"cooling system\" detail from a massive 100MB floor plan blueprint to share with sub-contractors.",
+        "title": "CAD 청사진 분리",
+        "description": "대규모 100MB 평면도 청사진에서 '냉각 시스템' 세부 정보를 잘라내어 하청업체와 공유하세요.",
         "icon": "crop"
       },
       {
-        "title": "GIS Map Snipping",
-        "description": "Extract a lossless, vector-clear block of a city street map for a presentation slide without resolution loss.",
+        "title": "GIS 지도 캡처",
+        "description": "해상도 손실 없이 프리젠테이션 슬라이드를 위해 도시 거리 지도의 무손실 벡터 클리어 블록을 추출합니다.",
         "icon": "map"
       },
       {
-        "title": "Manual Illustration Tracing",
-        "description": "Lossless isolate scientific book figures to embed into high-quality academic papers.",
+        "title": "수동 일러스트레이션 추적",
+        "description": "과학 도서 수치를 무손실로 분리하여 고품질 학술 논문에 삽입합니다.",
         "icon": "image"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard cropping?",
-        "answer": "Standard cropping merely adjusts visual bounds; the hidden vectors remain in the file. Our slicer trims overlapping vector paths and purges out-of-bounds XObject images, ensuring complete data isolation and maximum file compression."
+        "question": "이것이 표준 자르기와 어떻게 다릅니까?",
+        "answer": "표준 자르기는 시각적 경계만 조정합니다. 숨겨진 벡터는 파일에 남아 있습니다. 당사의 슬라이서는 겹치는 벡터 경로를 자르고 경계를 벗어난 XObject 이미지를 제거하여 완전한 데이터 격리와 최대 파일 압축을 보장합니다."
       },
       {
-        "question": "Will text layers remain searchable?",
-        "answer": "Yes. Any text characters that fall inside the sliced boundary remain fully vector-clear, searchable, and selectable."
+        "question": "텍스트 레이어는 계속 검색 가능합니까?",
+        "answer": "네. 분할된 경계 내부에 있는 모든 텍스트 문자는 완전히 벡터 명확하고 검색 및 선택 가능한 상태로 유지됩니다."
       },
       {
-        "question": "Can I export sliced regions to SVG?",
-        "answer": "The output is a standardized vector PDF. You can pass the resulting file to our PDF-to-SVG tool to convert it to a web-scalable vector graphics format."
+        "question": "슬라이스된 영역을 SVG로 내보낼 수 있나요?",
+        "answer": "출력은 표준화된 벡터 PDF입니다. 결과 파일을 PDF-SVG 도구에 전달하여 웹 확장 가능한 벡터 그래픽 형식으로 변환할 수 있습니다."
       }
     ]
   },
   "pdf-scratchpad-canvas": {
     "title": "모눈종이 메모 연결",
-    "metaDescription": "PDF 본문 영역의 가로/세로 길이를 넓히고, 가장자리에 200 pt 크기의 격자 모눈종이 또는 줄노트 필기 연습장을 덧붙입니다.",
+    "metaDescription": "PDF 페이지에 격자선, 괘선 또는 코넬 메모 여백을 추가합니다. 학습 노트, 계산, 시험 준비를 위한 추가 쓰기 공간을 만드세요.",
     "keywords": [
       "필기장 연결",
       "노트 캔버스 병합",
       "모눈종이 여백 추가"
     ],
-    "description": "\n      <p>The PDF Scratchpad Margin Extender is an essential study companion tailored for students, researchers, and professional exam candidates.</p>\n      <p>When solving practice test papers, reviewing slides, or reading academic textbooks on digital tablets, page margins are incredibly tight. Opening a separate notes app forces you to toggle screens constantly, breaking focus. Adding flat blank sheets prevents you from viewing the problem and your calculation side-by-side.</p>\n      <p>This tool rewrites page width or height dimensions in the low-level PDF structure, expanding <code>/MediaBox</code> margins by 200~250 pt on the right or bottom. It then overlays clean grid lines, college-ruled notebook lines, or Cornell layouts in the new margins, giving you dedicated, adjacent draft boards next to every single slide or question!</p>\n    ",
+    "description": "<p>PDF Scratchpad Margin Extender는 학생, 연구원, 전문 시험 응시자를 위한 필수 학습 동반자입니다.</p>\n      <p>디지털 태블릿에서 연습 시험지를 풀거나 슬라이드를 검토하거나 학술 교과서를 읽을 때 페이지 여백이 엄청나게 좁습니다. 별도의 메모 앱을 열면 화면이 계속 전환되어 초점이 흐트러집니다. 평평한 빈 시트를 추가하면 문제와 계산을 나란히 볼 수 없습니다.</p>\n      <p>이 도구는 하위 수준 PDF 구조에서 페이지 너비 또는 높이 치수를 다시 작성하여 <code>/MediaBox</code> 여백을 오른쪽이나 아래쪽에서 200~250pt까지 확장합니다. 그런 다음 새로운 여백에 깨끗한 눈금선, 대학 기준 노트북 선 또는 코넬 레이아웃을 오버레이하여 모든 단일 슬라이드나 질문 옆에 전용 초안 보드를 제공합니다!</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload lecture slides",
-        "description": "Provide the PDF textbook, slides, or study papers."
+        "title": "강의 슬라이드 업로드",
+        "description": "PDF 교과서, 슬라이드, 학습 논문을 제공하세요."
       },
       {
         "step": 2,
-        "title": "Choose margin & grid style",
-        "description": "Pick margin expansion direction (e.g. right side for tablets) and select the grid template."
+        "title": "여백 및 격자 스타일 선택",
+        "description": "여백 확장 방향(예: 태블릿의 경우 오른쪽)을 선택하고 그리드 템플릿을 선택합니다."
       },
       {
         "step": 3,
-        "title": "Stitch canvas & download",
-        "description": "Click execute to generate expanded pages complete with beautiful draft grids."
+        "title": "스티치 캔버스 및 다운로드",
+        "description": "아름다운 초안 그리드가 포함된 확장된 페이지를 생성하려면 실행을 클릭하세요."
       }
     ],
     "useCases": [
       {
-        "title": "STEM Exam Preparation",
-        "description": "Stitch grid margins next to math and physics exam questions, solving derivations right next to the question.",
+        "title": "STEM 시험 준비",
+        "description": "수학 및 물리학 시험 문제 옆에 그리드 여백을 연결하여 문제 바로 옆에서 파생 문제를 해결합니다.",
         "icon": "edit-3"
       },
       {
-        "title": "Language Reading Analysis",
-        "description": "Add ruled notebook margins next to foreign language essays for vocabulary analysis and paragraph translation.",
+        "title": "언어 독해 분석",
+        "description": "어휘 분석 및 단락 번역을 위해 외국어 에세이 옆에 괘선 노트 여백을 추가합니다.",
         "icon": "book"
       },
       {
-        "title": "Architectural Blueprint Audit",
-        "description": "Add empty margin spaces on the side of blueprints for engineering calculations and client review comments.",
+        "title": "건축 청사진 감사",
+        "description": "엔지니어링 계산 및 고객 검토 의견을 위해 청사진 측면에 빈 여백 공간을 추가합니다.",
         "icon": "columns"
       }
     ],
     "faq": [
       {
-        "question": "Will this squish my original PDF text?",
-        "answer": "Not at all. The algorithm expands the paper dimension outwards. The original content retains its layout, fonts, and resolution; we simply stretch the white space on the borders and draw grids on them."
+        "question": "원본 PDF 텍스트가 찌그러지나요?",
+        "answer": "전혀 그렇지 않습니다. 알고리즘은 용지 크기를 바깥쪽으로 확장합니다. 원본 콘텐츠는 레이아웃, 글꼴, 해상도를 유지합니다. 간단히 테두리의 공백을 늘리고 그 위에 그리드를 그립니다."
       },
       {
-        "question": "Can standard hand-writing pens write in the scratchpad?",
-        "answer": "Yes. The new PDF pages are compiled natively. Popular tablet note-taking applications like Goodnotes, Notability, Xodo, and Acrobat can write, highlight, and doodle directly in the new grid space."
+        "question": "일반 필기펜으로 스크래치패드에 쓸 수 있나요?",
+        "answer": "네. 새 PDF 페이지는 기본적으로 컴파일됩니다. Goodnotes, Notability, Xodo 및 Acrobat과 같은 인기 있는 태블릿 메모 작성 응용 프로그램은 새로운 그리드 공간에서 직접 쓰고 강조 표시하고 낙서할 수 있습니다."
       },
       {
-        "question": "Are grid lines dark and distracting?",
-        "answer": "We curated three subtle, eye-friendly colors (soft blue-gray, warm brown, and glowing green). The lines are thin and gentle, serving as guides without distracting you from the original page content."
+        "question": "격자선이 어둡고 산만합니까?",
+        "answer": "은은하고 눈에 편안한 세 가지 색상(부드러운 청회색, 따뜻한 갈색, 빛나는 녹색)을 선별했습니다. 선은 가늘고 완만하여 원본 페이지 내용을 방해하지 않으면서 안내선 역할을 합니다."
       }
     ]
   },
   "photo-tiling-prepress": {
     "title": "증명사진 셀프 정렬",
-    "metaDescription": "증명사진 1장을 5인치 또는 6인치 인화지 규격에 꽉 차도록 바둑판 배열로 자동 임포지션하고 재단 가이드선을 삽입합니다.",
+    "metaDescription": "표준 인화지에서 신분증 또는 여권 사진을 자르고 정리합니다. 완성된 시트를 자르는 데 도움이 되도록 인쇄 자르기 표시를 추가합니다.",
     "keywords": [
       "증명사진 인화",
       "인화지 꽉 차게",
       "재단선 포함",
       "사진 그리드 배치"
     ],
-    "description": "\n      <p>The Prepress Photo Tiling tool is a cost-effective, high-precision layout compiler built for personal registration cards and photography studios.</p>\n      <p>Printing passport photos, ID photos, or driver licenses at home often results in incorrect physical dimensions (often printed too large or too small), wasted photo paper, and uneven alignments. Going to professional print shops to get layouts made is time-consuming.</p>\n      <p>Our tool integrates a <strong>precision prepress matrix engine</strong>. It accepts portrait photographs or ID card scans, crops them to standard dimensions (e.g. 1\" or 2\" passport specs), calculates optimal tile counts for standard photo papers (e.g. 5\" or 6\" sheets), and injects crisp, micro-pixel crop lines for easy physical cutting, generating a perfect printable PDF.</p>\n    ",
+    "description": "<p>Prepress Photo Tiling 도구는 개인 등록 카드 및 사진 스튜디오를 위해 제작된 비용 효율적이고 정밀한 레이아웃 컴파일러입니다.</p>\n      <p>여권 사진, 신분증 사진, 운전면허증을 집에서 인쇄하면 실제 크기가 잘못되거나(종종 너무 크거나 작게 인쇄됨), 인화지 낭비가 발생하고 정렬이 고르지 않게 되는 경우가 많습니다. 레이아웃을 만들기 위해 전문 인쇄소에 가는 것은 시간이 많이 걸립니다.</p>\n      <p>저희 도구에는 <strong>정밀 시험 인쇄 매트릭스 엔진</strong>이 통합되어 있습니다. 인물 사진이나 신분증 스캔을 받아 표준 크기(예: 1인치 또는 2인치 여권 사양)로 자르고, 표준 인화지(예: 5인치 또는 6인치 시트)에 대한 최적의 타일 수를 계산하고, 손쉬운 물리적 절단을 위해 선명한 마이크로 픽셀 자르기 선을 삽입하여 완벽하게 인쇄 가능한 PDF를 생성합니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import passport photo",
-        "description": "Upload the camera portrait snapshot or double-sided ID card images."
+        "title": "여권 사진 가져오기",
+        "description": "카메라 인물 사진이나 양면 신분증 이미지를 업로드하세요."
       },
       {
         "step": 2,
-        "title": "Configure paper & layout",
-        "description": "Select the target print paper size (e.g. 6\") and choose the grid layouts (e.g. 8 copies of 1\" photos)."
+        "title": "용지 및 레이아웃 구성",
+        "description": "대상 인쇄 용지 크기(예: 6인치)를 선택하고 그리드 레이아웃(예: 1인치 사진 8매)을 선택합니다."
       },
       {
         "step": 3,
-        "title": "Tile and export",
-        "description": "Inspect photo tiles on our grid, and export the high-DPI printable PDF."
+        "title": "타일링 및 내보내기",
+        "description": "그리드에서 사진 타일을 검사하고 높은 DPI로 인쇄 가능한 PDF를 내보냅니다."
       }
     ],
     "useCases": [
       {
-        "title": "Self-Service Passport Photos",
-        "description": "Arrange your mobile-shot passport portraits onto a single 6\" photo paper grid, and print 8 copies for a fraction of standard studio costs.",
+        "title": "셀프 여권 사진",
+        "description": "모바일로 촬영한 여권 인물 사진을 6인치 인화지 한 장에 배열하고 표준 스튜디오 비용보다 훨씬 저렴한 비용으로 8장을 인쇄할 수 있습니다.",
         "icon": "user"
       },
       {
-        "title": "ID Card Double-sided Copy",
-        "description": "Format front and back scans of national ID cards neatly on standard Letter/A4 sheets for official submissions.",
+        "title": "신분증 양면복사",
+        "description": "공식 제출용으로 표준 Letter/A4 시트에 국가 ID 카드의 앞면과 뒷면 스캔 형식을 깔끔하게 지정하세요.",
         "icon": "file-text"
       },
       {
-        "title": "Batch Photo Thumbnail Sheets",
-        "description": "Tile multiple family memories or design snapshots onto a grid paper to print thumbnail contact sheets efficiently.",
+        "title": "일괄 사진 썸네일 시트",
+        "description": "여러 가족 추억을 바둑판식으로 배열하거나 스냅샷을 디자인하여 모눈 종이에 썸네일 밀착 인화지를 효율적으로 인쇄합니다.",
         "icon": "grid"
       }
     ],
     "faq": [
       {
-        "question": "Will the printed dimensions match official 1\" or 2\" specs?",
-        "answer": "Yes. The grid engine measures using standard PDF points (72 pt = 1 inch), rendering 1\" photos exactly at 25x35mm, and 2\" photos at 35x49mm. Ensure you print at \"Actual Size / 100% Scale\" in your printer settings."
+        "question": "인쇄된 치수가 공식 1인치 또는 2인치 사양과 일치합니까?",
+        "answer": "네. 그리드 엔진은 표준 PDF 포인트(72pt = 1인치)를 사용하여 측정하여 1인치 사진을 25x35mm로, 2인치 사진을 35x49mm로 정확하게 렌더링합니다. 프린터 설정에서 \"실제 크기/100% 배율\"로 인쇄하는지 확인하세요."
       },
       {
-        "question": "Can I combine 1\" and 2\" photos on a single sheet?",
-        "answer": "Yes. We provide curated hybrid layout presets (e.g. \"4 copies of 1\" + 4 copies of 2\"\"), allowing you to maximize photo paper space."
+        "question": "1인치 사진과 2인치 사진을 한 장에 합칠 수 있나요?",
+        "answer": "네. 엄선된 하이브리드 레이아웃 사전 설정(예: \"1\"의 복사본 4개 + 2\"의 복사본 4개)을 제공하여 인화지 공간을 최대화할 수 있습니다."
       },
       {
-        "question": "Does the template include border bleeds?",
-        "answer": "Yes. The prepress layouts reserve a standard 4mm print-safe margin on the paper borders, preventing physical printer rollers from cropping the photos."
+        "question": "템플릿에 테두리 블리드가 포함되어 있나요?",
+        "answer": "네. 시험 인쇄 레이아웃은 용지 테두리에 표준 4mm의 인쇄 안전 여백을 예약하여 실제 프린터 롤러가 사진을 자르는 것을 방지합니다."
       }
     ]
   },
@@ -7758,4 +7758,76 @@ export const toolContentKo: Record<string, ToolContent> = {
       }
     ]
   }
+,
+"redact-pdf": {
+  "title": "PDF 정보 가리기",
+  "metaDescription": "민감한 PDF 콘텐츠를 검게 처리하거나 흐리게 처리하거나 픽셀화합니다. 병합된 페이지를 내보내고 브라우저에서 로컬로 메타데이터를 제거하세요.",
+  "keywords": [
+    "PDF 수정",
+    "정전 pdf",
+    "모자이크 PDF",
+    "흐릿한 PDF",
+    "PDF 개인정보 보호",
+    "민감한 데이터 삭제",
+    "보안 PDF 편집기"
+  ],
+  "description": "<p>PDF 수정은 PDF 문서의 민감한 데이터를 영구적으로 숨기고 보호할 수 있는 시각적인 대화형 편집기를 제공합니다. 이름, 주소, ID 번호, 서명, 공식 인감, 재무 수치, 초상화 등 기밀 영역을 드래그하여 표시하고 블랙아웃, 화이트아웃, 모자이크 또는 흐림 효과를 적용하세요.</p>\n      <p>기존 텍스트 위에 표면적인 검은색 직사각형을 단순히 겹쳐 놓는 표준 PDF 편집기와 달리 이 도구는 <strong>되돌릴 수 없는 물리적 픽셀 래스터화</strong>를 수행합니다. 기본 텍스트 레이어, 벡터 그래픽 및 OCR 스트림은 완전히 파괴되며 복사 붙여넣기 또는 리버스 엔지니어링으로는 복구할 수 없습니다.</p>\n      <p>또한 이 도구는 심층적인 메타데이터 삭제를 수행하여 작성자 정보, 생성 기록 및 XMP 스트림을 제거합니다. 모든 처리는 서버 업로드 없이 브라우저에서 100% 로컬로 실행됩니다.</p>",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "PDF 문서 업로드",
+      "description": "수정하려는 PDF 파일을 선택하거나 끌어서 놓습니다."
+    },
+    {
+      "step": 2,
+      "title": "민감한 부분을 표시하세요",
+      "description": "페이지를 클릭하고 드래그하여 기밀 콘텐츠 주위에 수정 상자를 그립니다."
+    },
+    {
+      "step": 3,
+      "title": "편집 스타일 선택",
+      "description": "블랙아웃, 화이트아웃, 모자이크(픽셀 크기 조정 가능) 또는 흐림을 선택하세요. 실시간 미리보기를 전환하여 결과를 검사합니다."
+    },
+    {
+      "step": 4,
+      "title": "보안 PDF 내보내기",
+      "description": "되돌릴 수 없는 병합, 메타데이터 삭제를 실행하고 보안 문서를 다운로드하려면 \"보안 PDF 생성\"을 클릭하세요."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "개인정보 보호 및 규정 준수",
+      "description": "GDPR, HIPAA 또는 CCPA 요구 사항을 준수하기 위해 개인 식별 정보(PII)를 안전하게 마스킹하세요.",
+      "icon": "shield"
+    },
+    {
+      "title": "기밀 법률 및 비즈니스 공유",
+      "description": "공개 또는 외부 배포 전에 영업 비밀, 결제 조건, 서명 및 도장을 모호하게 합니다.",
+      "icon": "file-text"
+    },
+    {
+      "title": "금융 및 신원 보호",
+      "description": "명세서 및 송장에서 은행 계좌 번호, 세금 ID, 신용 카드 정보 및 ID 카드 번호를 숨깁니다.",
+      "icon": "lock"
+    }
+  ],
+  "faq": [
+    {
+      "question": "누구든지 텍스트를 복사하거나 레이어를 검사하여 수정된 정보를 복구할 수 있나요?",
+      "answer": "아니요. 수정된 영역은 물리적인 픽셀 번인 병합을 거칩니다. 기본 텍스트, 벡터 및 개체가 파일 구조에서 완전히 제거되어 복구가 불가능합니다."
+    },
+    {
+      "question": "블랙아웃, 모자이크, 블러의 차이점은 무엇인가요?",
+      "answer": "블랙아웃은 단색 검정색 마스크를 만듭니다(법률 문서의 표준). 화이트아웃은 깨끗한 흰색 마스크를 제공합니다. 모자이크는 픽셀화된 격자를 생성합니다. 흐림 효과는 부드러운 반투명 유리 효과를 생성합니다."
+    },
+    {
+      "question": "파일이 서버에 업로드되어 있나요?",
+      "answer": "아니요. 모든 렌더링, 편집, 병합 및 PDF 생성은 전적으로 브라우저 메모리 내에서 발생합니다. 귀하의 문서는 절대로 귀하의 장치를 떠나지 않습니다."
+    },
+    {
+      "question": "어떤 메타데이터가 제거되나요?",
+      "answer": "문서 제목, 작성자, 제목, 키워드, 작성자, 생산자, CreationDate, ModDate 및 확장 XMP 메타데이터 스트림이 완전히 삭제됩니다."
+    }
+  ]
+}
 };

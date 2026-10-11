@@ -24,9 +24,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Przetwarzaj i pobieraj", description: "Kliknij przycisk przetwarzania i pobierz zmodyfikowany plik PDF po zakończeniu operacji." },
     ],
     useCases: [
-      { title: "Przygotowanie dokumentu", description: "Przygotuj dokumenty do przesłania, usuwając niepotrzebne strony, zmieniając kolejność treści i łącząc wiele plików.", icon: 'file-check' },
-      { title: "Scalanie raportów", description: "Połącz wiele sekcji raportu, dodaj strony tytułowe i uporządkuj rozdziały w jeden profesjonalny dokument.", icon: 'book-open' },
-      { title: "Zarządzanie archiwum", description: "Dziel duże pliki archiwalne na łatwe do zarządzania sekcje, wyodrębniaj odpowiednie strony i reorganizuj dokumenty historyczne.", icon: 'archive' },
+      { title: "Przygotowanie dokumentu", description: "Przygotuj dokumenty do przesłania, usuwając niepotrzebne strony, zmieniając kolejność treści i łącząc wiele plików.", icon: "file-check" },
+      { title: "Scalanie raportów", description: "Połącz wiele sekcji raportu, dodaj strony tytułowe i uporządkuj rozdziały w jeden profesjonalny dokument.", icon: "book-open" },
+      { title: "Zarządzanie archiwum", description: "Dziel duże pliki archiwalne na łatwe do zarządzania sekcje, wyodrębniaj odpowiednie strony i reorganizuj dokumenty historyczne.", icon: "archive" },
     ],
     faq: [
       { question: "Ile plików PDF mogę przetwarzać jednocześnie?", answer: "Możesz jednocześnie przesyłać i przetwarzać do 10 plików PDF o łącznym maksymalnym rozmiarze 500MB." },
@@ -46,9 +46,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Połącz i pobierz", description: "Kliknij przycisk Scal, aby połączyć wszystkie pliki, a następnie pobierz scalony plik PDF." },
     ],
     useCases: [
-      { title: "Połącz raporty", description: "Połącz raporty miesięczne lub kwartalne w jeden dokument roczny, aby ułatwić dystrybucję i archiwizację.", icon: 'file-text' },
-      { title: "Tworzenie portfolio", description: "Połącz wiele dokumentów projektowych, certyfikatów lub próbek prac w profesjonalne portfolio.", icon: 'briefcase' },
-      { title: "Konsoliduj faktury", description: "Scal wiele faktur lub paragonów w jeden dokument dla celów księgowych i prowadzenia dokumentacji.", icon: 'receipt' },
+      { title: "Połącz raporty", description: "Połącz raporty miesięczne lub kwartalne w jeden dokument roczny, aby ułatwić dystrybucję i archiwizację.", icon: "file-text" },
+      { title: "Tworzenie portfolio", description: "Połącz wiele dokumentów projektowych, certyfikatów lub próbek prac w profesjonalne portfolio.", icon: "briefcase" },
+      { title: "Konsoliduj faktury", description: "Scal wiele faktur lub paragonów w jeden dokument dla celów księgowych i prowadzenia dokumentacji.", icon: "receipt" },
     ],
     faq: [
       { question: "Ile plików PDF mogę scalić?", answer: "Jednocześnie można scalić do 100 plików PDF o łącznym rozmiarze do 500MB." },
@@ -69,9 +69,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Zastosuj i pobierz", description: "Kliknij Obróć, aby zastosować zmiany i pobrać wyprostowany plik PDF." },
     ],
     useCases: [
-      { title: "Zeskanowane dokumenty", description: "Wyprostuj zeskanowane strony wprowadzone do skanera pod kątem.", icon: 'scan' },
-      { title: "Rysunki techniczne", description: "Precyzyjnie dostosuj orientację schematów technicznych i planów.", icon: 'ruler' },
-      { title: "Kreatywne układy", description: "Twórz unikalne układy, obracając strony pod określonym artystycznym kątem.", icon: 'pen-tool' },
+      { title: "Zeskanowane dokumenty", description: "Wyprostuj zeskanowane strony wprowadzone do skanera pod kątem.", icon: "scan" },
+      { title: "Rysunki techniczne", description: "Precyzyjnie dostosuj orientację schematów technicznych i planów.", icon: "ruler" },
+      { title: "Kreatywne układy", description: "Twórz unikalne układy, obracając strony pod określonym artystycznym kątem.", icon: "pen-tool" },
     ],
     faq: [
       { question: "Czy mogę obracać o miejsca po przecinku, np. o 45.5 stopnia?", answer: "Obecnie narzędzie obsługuje stopnie całkowite, ale pracujemy nad umożliwieniem precyzji dziesiętnej." },
@@ -92,9 +92,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Połącz i pobierz", description: "Kliknij „Połącz pliki PDF”, aby wygenerować nowy dokument układu siatki i pobrać wynik." },
     ],
     useCases: [
-      { title: "Porównanie wizualne", description: "Umieść różne wersje projektu lub dokumentu obok siebie na jednej stronie, aby ułatwić porównanie.", icon: 'layout-grid' },
-      { title: "Drukowanie ulotek", description: "Połącz wiele krótkich dokumentów lub slajdów na jednym arkuszu papieru, aby zaoszczędzić na kosztach drukowania.", icon: 'printer' },
-      { title: "Tworzenie portfela", description: "Zaprezentuj wiele plików projektu w przejrzystym, zorganizowanym przeglądzie siatki.", icon: 'image' },
+      { title: "Porównanie wizualne", description: "Umieść różne wersje projektu lub dokumentu obok siebie na jednej stronie, aby ułatwić porównanie.", icon: "layout-grid" },
+      { title: "Drukowanie ulotek", description: "Połącz wiele krótkich dokumentów lub slajdów na jednym arkuszu papieru, aby zaoszczędzić na kosztach drukowania.", icon: "printer" },
+      { title: "Tworzenie portfela", description: "Zaprezentuj wiele plików projektu w przejrzystym, zorganizowanym przeglądzie siatki.", icon: "image" },
     ],
     faq: [
       { question: "Czym to się różni od N-Up?", answer: "N-Up pobiera strony z JEDNEGO pliku PDF i umieszcza je na arkuszu. Grid Combine pobiera WIELE RÓŻNYCH plików PDF i umieszcza je na arkuszu." },
@@ -115,9 +115,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Podziel i pobierz", description: "Kliknij opcję Podziel, aby utworzyć nowe pliki PDF i pobrać je pojedynczo lub jako archiwum ZIP." },
     ],
     useCases: [
-      { title: "Wyodrębnij rozdziały", description: "Podziel książkę lub podręcznik na poszczególne rozdziały, aby ułatwić czytanie lub dystrybucję.", icon: 'book' },
-      { title: "Oddzielne połączone skany", description: "Podziel zeskanowany dokument na osobne pliki dla każdego oryginalnego dokumentu.", icon: 'copy' },
-      { title: "Twórz materiały informacyjne", description: "Wyodrębnij określone slajdy lub strony z prezentacji, aby utworzyć szczegółowe materiały informacyjne.", icon: 'presentation' },
+      { title: "Wyodrębnij rozdziały", description: "Podziel książkę lub podręcznik na poszczególne rozdziały, aby ułatwić czytanie lub dystrybucję.", icon: "book" },
+      { title: "Oddzielne połączone skany", description: "Podziel zeskanowany dokument na osobne pliki dla każdego oryginalnego dokumentu.", icon: "copy" },
+      { title: "Twórz materiały informacyjne", description: "Wyodrębnij określone slajdy lub strony z prezentacji, aby utworzyć szczegółowe materiały informacyjne.", icon: "presentation" },
     ],
     faq: [
       { question: "Czy mogę podzielić plik PDF na poszczególne strony?", answer: "Tak, możesz podzielić plik PDF na pojedyncze, jednostronicowe pliki, wybierając opcję „Podziel każdą stronę”." },
@@ -137,9 +137,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Skompresuj i pobierz", description: "Kliknij opcję Kompresuj, aby zmniejszyć rozmiar pliku, a następnie pobierz zoptymalizowany plik PDF." },
     ],
     useCases: [
-      { title: "Załączniki do wiadomości e-mail", description: "Zmniejsz rozmiar pliku PDF, aby spełnić limity załączników do wiadomości e-mail i zapewnić szybszą dostawę.", icon: 'mail' },
-      { title: "Publikowanie w Internecie", description: "Optymalizuj pliki PDF do pobrania w Internecie, aby skrócić czas ładowania stron i poprawić wygodę użytkownika.", icon: 'globe' },
-      { title: "Optymalizacja przechowywania", description: "Kompresuj zarchiwizowane dokumenty, aby zaoszczędzić miejsce na dysku, zachowując jednocześnie dostępność.", icon: 'hard-drive' },
+      { title: "Załączniki do wiadomości e-mail", description: "Zmniejsz rozmiar pliku PDF, aby spełnić limity załączników do wiadomości e-mail i zapewnić szybszą dostawę.", icon: "mail" },
+      { title: "Publikowanie w Internecie", description: "Optymalizuj pliki PDF do pobrania w Internecie, aby skrócić czas ładowania stron i poprawić wygodę użytkownika.", icon: "globe" },
+      { title: "Optymalizacja przechowywania", description: "Kompresuj zarchiwizowane dokumenty, aby zaoszczędzić miejsce na dysku, zachowując jednocześnie dostępność.", icon: "hard-drive" },
     ],
     faq: [
       { question: "Jak bardzo mogę zmniejszyć rozmiar pliku?", answer: "Wyniki kompresji różnią się w zależności od zawartości pliku PDF. Pliki PDF zawierające dużo obrazów można często zmniejszyć o 50–80%, podczas gdy pliki PDF zawierające wyłącznie tekst mogą zostać zmniejszone w mniejszym stopniu." },
@@ -161,8 +161,8 @@ export const toolContentPl: Record<string, ToolContent> = {
     ],
     useCases: [
       { title: "Przegląd dokumentów", description: "Dodawaj komentarze, wyróżnienia i znaczniki do dokumentów na potrzeby procesów wspólnej recenzji.", icon: 'message-square' },
-      { title: "Wypełnienie formularza", description: "Wypełniaj pola tekstowe, dodawaj podpisy i wypełniaj formularze PDF bez drukowania.", icon: 'edit-3' },
-      { title: "Redakcja treści", description: "Przed udostępnieniem trwale usuń poufne informacje z dokumentów.", icon: 'eye-off' },
+      { title: "Wypełnienie formularza", description: "Wypełniaj pola tekstowe, dodawaj podpisy i wypełniaj formularze PDF bez drukowania.", icon: "edit-3" },
+      { title: "Redakcja treści", description: "Przed udostępnieniem trwale usuń poufne informacje z dokumentów.", icon: "eye-off" },
     ],
     faq: [
       { question: "Czy mogę edytować oryginalny tekst w pliku PDF?", answer: "Tak. Wybierz opcję Edytuj tekst na pasku narzędzi PDF, kliknij istniejący blok tekstu, wprowadź zamiennik i zastosuj go. Tekst jest trwale zastępowany w wyeksportowanym pliku PDF." },
@@ -182,9 +182,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF i pobrać wynik." },
     ],
     useCases: [
-      { title: "Albumy fotograficzne", description: "Twórz albumy ze zdjęciami w pliku PDF ze zdjęć z wakacji lub zdjęć z wydarzeń, aby łatwo je udostępniać.", icon: 'image' },
-      { title: "Skanowanie dokumentów", description: "Konwertuj zdjęcia dokumentów z aparatu telefonicznego na odpowiednie pliki PDF.", icon: 'camera' },
-      { title: "Tworzenie portfela", description: "Zbierz prace fotograficzne lub próbki projektów w profesjonalne portfolio PDF.", icon: 'folder' },
+      { title: "Albumy fotograficzne", description: "Twórz albumy ze zdjęciami w pliku PDF ze zdjęć z wakacji lub zdjęć z wydarzeń, aby łatwo je udostępniać.", icon: "image" },
+      { title: "Skanowanie dokumentów", description: "Konwertuj zdjęcia dokumentów z aparatu telefonicznego na odpowiednie pliki PDF.", icon: "camera" },
+      { title: "Tworzenie portfela", description: "Zbierz prace fotograficzne lub próbki projektów w profesjonalne portfolio PDF.", icon: "folder" },
     ],
     faq: [
       { question: "Ile obrazów mogę przekonwertować?", answer: "Możesz przekonwertować maksymalnie 100 obrazów JPG na jeden dokument PDF." },
@@ -205,9 +205,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować swój podpis i pobrać podpisany plik PDF." },
     ],
     useCases: [
-      { title: "Podpisanie umowy", description: "Podpisuj umowy i porozumienia elektronicznie, bez drukowania i skanowania.", icon: 'file-signature' },
-      { title: "Wypełnienie formularza", description: "Dodaj swój podpis do formularzy wniosków, formularzy zgód i dokumentów urzędowych.", icon: 'clipboard' },
-      { title: "Procesy zatwierdzania", description: "Podpisuj dokumenty w ramach procesów przeglądu i zatwierdzania.", icon: 'check-circle' },
+      { title: "Podpisanie umowy", description: "Podpisuj umowy i porozumienia elektronicznie, bez drukowania i skanowania.", icon: "file-signature" },
+      { title: "Wypełnienie formularza", description: "Dodaj swój podpis do formularzy wniosków, formularzy zgód i dokumentów urzędowych.", icon: "clipboard" },
+      { title: "Procesy zatwierdzania", description: "Podpisuj dokumenty w ramach procesów przeglądu i zatwierdzania.", icon: "check-circle" },
     ],
     faq: [
       { question: "Czy podpis elektroniczny jest prawnie wiążący?", answer: "Podpisy elektroniczne są prawnie uznawane w większości krajów. Jednak niektóre dokumenty mogą wymagać określonych typów podpisów cyfrowych. Sprawdź lokalne przepisy." },
@@ -228,9 +228,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Przytnij i pobierz", description: "Kliknij Przytnij, aby zastosować zmiany i pobrać przycięty plik PDF." },
     ],
     useCases: [
-      { title: "Usuń marginesy", description: "Przytnij nadmierne marginesy zeskanowanych dokumentów lub plików PDF z dużymi krawędziami.", icon: 'maximize-2' },
-      { title: "Skup się na treści", description: "Przytnij, aby wyróżnić określone obszary treści, usuwając nagłówki, stopki lub paski boczne.", icon: 'target' },
-      { title: "Standaryzuj strony", description: "Ustaw wszystkie strony tego samego rozmiaru, przycinając je do jednakowych wymiarów.", icon: 'square' },
+      { title: "Usuń marginesy", description: "Przytnij nadmierne marginesy zeskanowanych dokumentów lub plików PDF z dużymi krawędziami.", icon: "maximize-2" },
+      { title: "Skup się na treści", description: "Przytnij, aby wyróżnić określone obszary treści, usuwając nagłówki, stopki lub paski boczne.", icon: "target" },
+      { title: "Standaryzuj strony", description: "Ustaw wszystkie strony tego samego rozmiaru, przycinając je do jednakowych wymiarów.", icon: "square" },
     ],
     faq: [
       { question: "Czy przycinanie trwale usuwa zawartość?", answer: "Tak, przycinanie usuwa zawartość poza obszarem przycinania. Pamiętaj, aby zachować kopię zapasową oryginalnego pliku." },
@@ -250,9 +250,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyodrębnij i pobierz", description: "Kliknij opcję Wyodrębnij, aby utworzyć nowy plik PDF z wybranymi stronami i pobrać go." },
     ],
     useCases: [
-      { title: "Twórz fragmenty", description: "Wyodrębnij odpowiednie strony z raportów lub książek, aby utworzyć ukierunkowane dokumenty referencyjne.", icon: 'file-minus' },
-      { title: "Udostępnij określoną treść", description: "Wyciągnij określone strony, aby je udostępnić bez wysyłania całego dokumentu.", icon: 'share-2' },
-      { title: "Archiwizuj ważne strony", description: "Wyodrębniaj i zapisuj kluczowe strony z dokumentów w celu długoterminowej archiwizacji.", icon: 'archive' },
+      { title: "Twórz fragmenty", description: "Wyodrębnij odpowiednie strony z raportów lub książek, aby utworzyć ukierunkowane dokumenty referencyjne.", icon: "file-minus" },
+      { title: "Udostępnij określoną treść", description: "Wyciągnij określone strony, aby je udostępnić bez wysyłania całego dokumentu.", icon: "share-2" },
+      { title: "Archiwizuj ważne strony", description: "Wyodrębniaj i zapisuj kluczowe strony z dokumentów w celu długoterminowej archiwizacji.", icon: "archive" },
     ],
     faq: [
       { question: "Czy mogę wyodrębnić strony, które nie sąsiadują ze sobą?", answer: "Tak, możesz wybrać dowolną kombinację stron, zarówno następujących po sobie, jak i rozproszonych po całym dokumencie." },
@@ -272,9 +272,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować zmiany i pobrać przeorganizowany plik PDF." },
     ],
     useCases: [
-      { title: "Napraw kolejność stron", description: "Popraw kolejność stron, które zostały nieprawidłowo zeskanowane lub połączone.", icon: 'arrow-up-down' },
-      { title: "Ułóż własną kolejność", description: "Ułóż strony w określonej kolejności dla prezentacji lub raportów.", icon: 'list' },
-      { title: "Usuń niechciane strony", description: "Usuń puste strony, duplikaty lub nieistotną treść z dokumentów.", icon: 'trash-2' },
+      { title: "Napraw kolejność stron", description: "Popraw kolejność stron, które zostały nieprawidłowo zeskanowane lub połączone.", icon: "arrow-up-down" },
+      { title: "Ułóż własną kolejność", description: "Ułóż strony w określonej kolejności dla prezentacji lub raportów.", icon: "list" },
+      { title: "Usuń niechciane strony", description: "Usuń puste strony, duplikaty lub nieistotną treść z dokumentów.", icon: "trash-2" },
     ],
     faq: [
       { question: "Czy mogę duplikować strony?", answer: "Tak, możesz powielić dowolną stronę i umieścić kopię w dowolnym miejscu dokumentu." },
@@ -294,9 +294,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Usuń i pobierz", description: "Kliknij Usuń, aby usunąć wybrane strony i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Usuń puste strony", description: "Wyczyść dokumenty, usuwając przypadkowo dołączone puste strony.", icon: 'file-x' },
-      { title: "Usuń treści wrażliwe", description: "Przed udostępnieniem dokumentów usuń strony zawierające poufne informacje.", icon: 'shield' },
-      { title: "Usprawnij dokumenty", description: "Usuń nieaktualne lub nieistotne strony, aby utworzyć bardziej szczegółowe dokumenty.", icon: 'filter' },
+      { title: "Usuń puste strony", description: "Wyczyść dokumenty, usuwając przypadkowo dołączone puste strony.", icon: "file-x" },
+      { title: "Usuń treści wrażliwe", description: "Przed udostępnieniem dokumentów usuń strony zawierające poufne informacje.", icon: "shield" },
+      { title: "Usprawnij dokumenty", description: "Usuń nieaktualne lub nieistotne strony, aby utworzyć bardziej szczegółowe dokumenty.", icon: "filter" },
     ],
     faq: [
       { question: "Czy mogę odzyskać usunięte strony?", answer: "Usunięcie jest trwałe w pliku wyjściowym. Zachowaj kopię zapasową oryginalnego dokumentu, jeśli strony będą Ci później potrzebne." },
@@ -318,9 +318,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować zmiany i pobrać plik PDF ze zaktualizowanymi zakładkami." },
     ],
     useCases: [
-      { title: "Utwórz nawigację", description: "Dodawaj zakładki do długich dokumentów, aby ułatwić czytelnikom szybkie przechodzenie do określonych sekcji.", icon: 'navigation' },
-      { title: "Organizuj rozdziały", description: "Utwórz hierarchiczną strukturę zakładek odzwierciedlającą organizację rozdziałów w dokumencie.", icon: 'book-open' },
-      { title: "Popraw dostępność", description: "Dodaj zakładki, aby dokumenty były bardziej dostępne i przyjazne dla użytkownika.", icon: 'accessibility' },
+      { title: "Utwórz nawigację", description: "Dodawaj zakładki do długich dokumentów, aby ułatwić czytelnikom szybkie przechodzenie do określonych sekcji.", icon: "navigation" },
+      { title: "Organizuj rozdziały", description: "Utwórz hierarchiczną strukturę zakładek odzwierciedlającą organizację rozdziałów w dokumencie.", icon: "book-open" },
+      { title: "Popraw dostępność", description: "Dodaj zakładki, aby dokumenty były bardziej dostępne i przyjazne dla użytkownika.", icon: "accessibility" },
     ],
     faq: [
       { question: "Czy mogę tworzyć zagnieżdżone zakładki?", answer: "Tak, możesz utworzyć strukturę hierarchiczną z zakładkami nadrzędnymi i podrzędnymi." },
@@ -340,9 +340,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wygeneruj i pobierz", description: "Kliknij opcję Generuj, aby utworzyć spis treści i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Artykuły akademickie", description: "Dodaj profesjonalny spis treści do prac dyplomowych, dysertacji i artykułów naukowych.", icon: 'graduation-cap' },
-      { title: "Raporty biznesowe", description: "Twórz raporty, w których można nawigować, z przejrzystymi listami sekcji dla interesariuszy.", icon: 'bar-chart' },
-      { title: "Podręczniki użytkownika", description: "Generuj kompleksowe spisy treści dla dokumentacji technicznej i podręczników użytkownika.", icon: 'book' },
+      { title: "Artykuły akademickie", description: "Dodaj profesjonalny spis treści do prac dyplomowych, dysertacji i artykułów naukowych.", icon: "graduation-cap" },
+      { title: "Raporty biznesowe", description: "Twórz raporty, w których można nawigować, z przejrzystymi listami sekcji dla interesariuszy.", icon: "bar-chart" },
+      { title: "Podręczniki użytkownika", description: "Generuj kompleksowe spisy treści dla dokumentacji technicznej i podręczników użytkownika.", icon: "book" },
     ],
     faq: [
       { question: "Czy mogę dostosować wygląd spisu treści?", answer: "Tak, możesz wybierać spośród różnych stylów, czcionek i układów spisu treści." },
@@ -362,9 +362,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby dodać numery stron i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Dokumenty zawodowe", description: "Dodawaj numery stron do raportów, ofert i dokumentów biznesowych.", icon: 'file-text' },
-      { title: "Artykuły akademickie", description: "Numeruj strony zgodnie z wymogami formatowania akademickiego.", icon: 'graduation-cap' },
-      { title: "Dokumenty prawne", description: "Dodaj odpowiednią paginację do umów i dokumentów prawnych.", icon: 'scale' },
+      { title: "Dokumenty zawodowe", description: "Dodawaj numery stron do raportów, ofert i dokumentów biznesowych.", icon: "file-text" },
+      { title: "Artykuły akademickie", description: "Numeruj strony zgodnie z wymogami formatowania akademickiego.", icon: "graduation-cap" },
+      { title: "Dokumenty prawne", description: "Dodaj odpowiednią paginację do umów i dokumentów prawnych.", icon: "scale" },
     ],
     faq: [
       { question: "Czy mogę pominąć pierwszą stronę?", answer: "Tak, możesz określić, które strony numerować, a które pominąć, np. strony tytułowe lub strony tytułowe." },
@@ -384,9 +384,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby dodać znak wodny i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Ochrona dokumentów", description: "Dodaj znaki wodne „Poufne” lub „Wersja robocza”, aby wskazać status dokumentu.", icon: 'shield' },
-      { title: "Dokumenty marki", description: "Dodawaj logo lub nazwy firmy do oficjalnych dokumentów.", icon: 'award' },
-      { title: "Informacja o prawach autorskich", description: "Dodaj informacje o prawach autorskich, aby chronić własność intelektualną.", icon: 'copyright' },
+      { title: "Ochrona dokumentów", description: "Dodaj znaki wodne „Poufne” lub „Wersja robocza”, aby wskazać status dokumentu.", icon: "shield" },
+      { title: "Dokumenty marki", description: "Dodawaj logo lub nazwy firmy do oficjalnych dokumentów.", icon: "award" },
+      { title: "Informacja o prawach autorskich", description: "Dodaj informacje o prawach autorskich, aby chronić własność intelektualną.", icon: "copyright" },
     ],
     faq: [
       { question: "Czy mogę użyć obrazu jako znaku wodnego?", answer: "Tak, możesz przesyłać obrazy PNG, JPG lub SVG, aby używać ich jako znaków wodnych." },
@@ -406,9 +406,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby dodać nagłówki/stopki i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Dokumenty biznesowe", description: "Dodaj nazwę firmy i numery stron do profesjonalnych dokumentów.", icon: 'briefcase' },
-      { title: "Dokumenty prawne", description: "Dołącz numery spraw, daty i odniesienia do stron w zgłoszeniach prawnych.", icon: 'scale' },
-      { title: "Artykuły akademickie", description: "Dodaj bieżące nagłówki z tytułem artykułu i nazwiskiem autora.", icon: 'graduation-cap' },
+      { title: "Dokumenty biznesowe", description: "Dodaj nazwę firmy i numery stron do profesjonalnych dokumentów.", icon: "briefcase" },
+      { title: "Dokumenty prawne", description: "Dołącz numery spraw, daty i odniesienia do stron w zgłoszeniach prawnych.", icon: "scale" },
+      { title: "Artykuły akademickie", description: "Dodaj bieżące nagłówki z tytułem artykułu i nazwiskiem autora.", icon: "graduation-cap" },
     ],
     faq: [
       { question: "Czy mogę mieć różne nagłówki na stronach nieparzystych i parzystych?", answer: "Tak, możesz skonfigurować inną zawartość dla stron nieparzystych i parzystych." },
@@ -428,9 +428,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Odwróć i pobierz", description: "Kliknij Odwróć, aby przetworzyć dokument i pobrać wynik." },
     ],
     useCases: [
-      { title: "Nocne czytanie", description: "Twórz wersje dokumentów w trybie ciemnym, aby wygodnie czytać je w nocy.", icon: 'moon' },
-      { title: "Zmniejsz zmęczenie oczu", description: "Odwróć jasne dokumenty, aby zmniejszyć zmęczenie oczu podczas dłuższego czytania.", icon: 'eye' },
-      { title: "Drukuj oszczędności", description: "Odwracaj dokumenty, aby zmniejszyć zużycie atramentu podczas drukowania wersji roboczych.", icon: 'printer' },
+      { title: "Nocne czytanie", description: "Twórz wersje dokumentów w trybie ciemnym, aby wygodnie czytać je w nocy.", icon: "moon" },
+      { title: "Zmniejsz zmęczenie oczu", description: "Odwróć jasne dokumenty, aby zmniejszyć zmęczenie oczu podczas dłuższego czytania.", icon: "eye" },
+      { title: "Drukuj oszczędności", description: "Odwracaj dokumenty, aby zmniejszyć zużycie atramentu podczas drukowania wersji roboczych.", icon: "printer" },
     ],
     faq: [
       { question: "Czy obrazy również zostaną odwrócone?", answer: "Domyślnie tak. Możesz zachować oryginalne obrazy podczas odwracania tekstu i tła." },
@@ -450,9 +450,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby dodać tło i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Popraw czytelność", description: "Dodaj jasne tło w kolorze kremowym lub w sepii, aby zmniejszyć zmęczenie oczu.", icon: 'eye' },
-      { title: "Dokumenty marki", description: "Używaj kolorów marki jako tła dla materiałów marketingowych.", icon: 'palette' },
-      { title: "Zaznacz sekcje", description: "Użyj różnych kolorów tła, aby rozróżnić sekcje dokumentu.", icon: 'layers' },
+      { title: "Popraw czytelność", description: "Dodaj jasne tło w kolorze kremowym lub w sepii, aby zmniejszyć zmęczenie oczu.", icon: "eye" },
+      { title: "Dokumenty marki", description: "Używaj kolorów marki jako tła dla materiałów marketingowych.", icon: "palette" },
+      { title: "Zaznacz sekcje", description: "Użyj różnych kolorów tła, aby rozróżnić sekcje dokumentu.", icon: "layers" },
     ],
     faq: [
       { question: "Czy tło zakryje istniejącą treść?", answer: "Nie, tło jest dodawane za istniejącą treścią, zachowując cały tekst i obrazy." },
@@ -472,9 +472,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby zmienić kolor tekstu i pobrać zaktualizowany plik PDF." },
     ],
     useCases: [
-      { title: "Popraw kontrast", description: "Zmień kolor tekstu, aby poprawić czytelność na tle tła.", icon: 'contrast' },
-      { title: "Spójność marki", description: "Zaktualizuj kolory tekstu, aby dopasować je do wytycznych marki.", icon: 'palette' },
-      { title: "Dostępność", description: "Dostosuj kolory tekstu, aby spełnić wymagania dotyczące kontrastu dostępności.", icon: 'accessibility' },
+      { title: "Popraw kontrast", description: "Zmień kolor tekstu, aby poprawić czytelność na tle tła.", icon: "contrast" },
+      { title: "Spójność marki", description: "Zaktualizuj kolory tekstu, aby dopasować je do wytycznych marki.", icon: "palette" },
+      { title: "Dostępność", description: "Dostosuj kolory tekstu, aby spełnić wymagania dotyczące kontrastu dostępności.", icon: "accessibility" },
     ],
     faq: [
       { question: "Czy cały tekst zostanie zmieniony?", answer: "Tak, narzędzie zmienia kolor wszystkich elementów tekstowych w dokumencie." },
@@ -494,9 +494,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pozycjonuj i aplikuj", description: "Kliknij, aby umieścić stempel, dostosuj położenie i rozmiar, a następnie pobierz." },
     ],
     useCases: [
-      { title: "Zatwierdzenie dokumentu", description: "Dodaj stemple „Zatwierdzone” lub „Odrzucone” do dokumentów w przepływach pracy recenzji.", icon: 'check-circle' },
-      { title: "Wskazanie stanu", description: "Oznacz dokumenty jako „Wersja robocza”, „Ostateczna” lub „Poufna”.", icon: 'tag' },
-      { title: "Kontrola jakości", description: "Dodaj stemple kontroli jakości, aby wskazać zakończenie inspekcji lub przeglądu.", icon: 'clipboard-check' },
+      { title: "Zatwierdzenie dokumentu", description: "Dodaj stemple „Zatwierdzone” lub „Odrzucone” do dokumentów w przepływach pracy recenzji.", icon: "check-circle" },
+      { title: "Wskazanie stanu", description: "Oznacz dokumenty jako „Wersja robocza”, „Ostateczna” lub „Poufna”.", icon: "tag" },
+      { title: "Kontrola jakości", description: "Dodaj stemple kontroli jakości, aby wskazać zakończenie inspekcji lub przeglądu.", icon: "clipboard-check" },
     ],
     faq: [
       { question: "Jakie gotowe stemple są dostępne?", answer: "Ustawienia wstępne obejmują Zatwierdzone, Odrzucone, Wersja robocza, Ostateczne, Poufne, Kopia i inne." },
@@ -516,9 +516,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Usuń i pobierz", description: "Kliknij Usuń, aby usunąć adnotacje i pobrać czysty plik PDF." },
     ],
     useCases: [
-      { title: "Sfinalizuj dokumenty", description: "Usuń komentarze i znaczniki do recenzji przed opublikowaniem dokumentów końcowych.", icon: 'file-check' },
-      { title: "Ochrona prywatności", description: "Przed udostępnieniem usuń komentarze, które mogą zawierać poufne informacje.", icon: 'shield' },
-      { title: "Czysta dystrybucja", description: "Twórz czyste kopie dokumentów z adnotacjami do dystrybucji.", icon: 'copy' },
+      { title: "Sfinalizuj dokumenty", description: "Usuń komentarze i znaczniki do recenzji przed opublikowaniem dokumentów końcowych.", icon: "file-check" },
+      { title: "Ochrona prywatności", description: "Przed udostępnieniem usuń komentarze, które mogą zawierać poufne informacje.", icon: "shield" },
+      { title: "Czysta dystrybucja", description: "Twórz czyste kopie dokumentów z adnotacjami do dystrybucji.", icon: "copy" },
     ],
     faq: [
       { question: "Jakie typy adnotacji można usunąć?", answer: "Komentarze, wyróżnienia, podkreślenia, przekreślenia, karteczki samoprzylepne, pieczątki i łącza można usunąć." },
@@ -538,9 +538,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zachować swoje wpisy i pobrać wypełniony formularz." },
     ],
     useCases: [
-      { title: "Formularze zgłoszeniowe", description: "Wypełnianie wniosków o pracę, wniosków o pozwolenia i formularzy rejestracyjnych.", icon: 'clipboard' },
-      { title: "Formularze podatkowe", description: "Wypełniaj dokumenty podatkowe i formularze finansowe drogą elektroniczną.", icon: 'file-text' },
-      { title: "Umowy", description: "Przed podpisaniem wypełnij formularze umowy, podając swoje dane.", icon: 'file-signature' },
+      { title: "Formularze zgłoszeniowe", description: "Wypełnianie wniosków o pracę, wniosków o pozwolenia i formularzy rejestracyjnych.", icon: "clipboard" },
+      { title: "Formularze podatkowe", description: "Wypełniaj dokumenty podatkowe i formularze finansowe drogą elektroniczną.", icon: "file-text" },
+      { title: "Umowy", description: "Przed podpisaniem wypełnij formularze umowy, podając swoje dane.", icon: "file-signature" },
     ],
     faq: [
       { question: "Czy mogę zapisać swoje postępy?", answer: "Tak, możesz zapisać częściowo wypełnione formularze i kontynuować później." },
@@ -560,9 +560,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Skonfiguruj i zapisz", description: "Ustaw właściwości pola, a następnie zapisz i pobierz formularz PDF do wypełnienia." },
     ],
     useCases: [
-      { title: "Formularze zgłoszeniowe", description: "Twórz możliwe do wypełnienia podania o pracę, formularze członkowskie i rejestracje.", icon: 'user-plus' },
-      { title: "Ankiety", description: "Twórz interaktywne ankiety i kwestionariusze do gromadzenia danych.", icon: 'clipboard-list' },
-      { title: "Formularze zamówień", description: "Twórz formularze zamówień produktów z polami ilościowymi i polami wyboru.", icon: 'shopping-cart' },
+      { title: "Formularze zgłoszeniowe", description: "Twórz możliwe do wypełnienia podania o pracę, formularze członkowskie i rejestracje.", icon: "user-plus" },
+      { title: "Ankiety", description: "Twórz interaktywne ankiety i kwestionariusze do gromadzenia danych.", icon: "clipboard-list" },
+      { title: "Formularze zamówień", description: "Twórz formularze zamówień produktów z polami ilościowymi i polami wyboru.", icon: "shopping-cart" },
     ],
     faq: [
       { question: "Jakie typy pól mogę dodać?", answer: "Pola tekstowe, pola wyboru, przyciski opcji, listy rozwijane, selektory dat i pola podpisów." },
@@ -582,9 +582,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Usuń i pobierz", description: "Kliknij Usuń, aby usunąć puste strony i pobrać wyczyszczony plik PDF." },
     ],
     useCases: [
-      { title: "Wyczyść zeskanowane dokumenty", description: "Usuń puste strony z dokumentów skanowanych wsadowo.", icon: 'scan' },
+      { title: "Wyczyść zeskanowane dokumenty", description: "Usuń puste strony z dokumentów skanowanych wsadowo.", icon: "scan" },
       { title: "Usuń separatory", description: "Usuń puste strony oddzielające ze scalonych dokumentów.", icon: 'minus' },
-      { title: "Zmniejsz rozmiar pliku", description: "Usuń niepotrzebne puste strony, aby zmniejszyć rozmiar dokumentu.", icon: 'minimize-2' },
+      { title: "Zmniejsz rozmiar pliku", description: "Usuń niepotrzebne puste strony, aby zmniejszyć rozmiar dokumentu.", icon: "minimize-2" },
     ],
     faq: [
       { question: "Jak działa wykrywanie pustych miejsc?", answer: "Narzędzie analizuje zawartość strony i traktuje strony z minimalną widoczną treścią lub bez niej jako puste." },
@@ -604,9 +604,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF i pobrać wynik." },
     ],
     useCases: [
-      { title: "Kolekcje zdjęć", description: "Łącz zdjęcia z różnych źródeł w jeden album PDF.", icon: 'images' },
-      { title: "Dokumenty w formacie mieszanym", description: "Konwertuj obrazy z różnych formatów na ujednolicony plik PDF.", icon: 'file-stack' },
-      { title: "Tworzenie archiwum", description: "Twórz archiwa PDF ze zbiorów obrazów w celu długoterminowego przechowywania.", icon: 'archive' },
+      { title: "Kolekcje zdjęć", description: "Łącz zdjęcia z różnych źródeł w jeden album PDF.", icon: "images" },
+      { title: "Dokumenty w formacie mieszanym", description: "Konwertuj obrazy z różnych formatów na ujednolicony plik PDF.", icon: "file-stack" },
+      { title: "Tworzenie archiwum", description: "Twórz archiwa PDF ze zbiorów obrazów w celu długoterminowego przechowywania.", icon: "archive" },
     ],
     faq: [
       { question: "Jakie formaty obrazów są obsługiwane?", answer: "Obsługiwane są formaty JPG, JPEG, PNG, WebP, BMP, TIFF, TIF, SVG, HEIC i HEIF." },
@@ -626,9 +626,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF i pobrać." },
     ],
     useCases: [
-      { title: "Portfolio graficzne", description: "Zbierz grafiki i projekty PNG w profesjonalne portfolio.", icon: 'palette' },
-      { title: "Dokumentacja zrzutów ekranu", description: "Konwertuj zrzuty ekranu na dokumentację PDF.", icon: 'monitor' },
-      { title: "Kolekcje logo", description: "Twórz katalogi PDF z logo i zasobami marki.", icon: 'award' },
+      { title: "Portfolio graficzne", description: "Zbierz grafiki i projekty PNG w profesjonalne portfolio.", icon: "palette" },
+      { title: "Dokumentacja zrzutów ekranu", description: "Konwertuj zrzuty ekranu na dokumentację PDF.", icon: "monitor" },
+      { title: "Kolekcje logo", description: "Twórz katalogi PDF z logo i zasobami marki.", icon: "award" },
     ],
     faq: [
       { question: "Czy zachowana jest przejrzystość?", answer: "Przezroczystość PNG jest zachowywana w pliku wyjściowym PDF." },
@@ -648,9 +648,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF." },
     ],
     useCases: [
-      { title: "Archiwizacja treści internetowych", description: "Konwertuj obrazy internetowe na format PDF w celu archiwizacji w trybie offline.", icon: 'globe' },
-      { title: "Przygotowanie do druku", description: "Konwertuj obrazy WebP na format PDF w celu drukowania.", icon: 'printer' },
-      { title: "Standaryzacja formatu", description: "Konwertuj nowoczesny WebP na uniwersalnie kompatybilny plik PDF.", icon: 'file-check' },
+      { title: "Archiwizacja treści internetowych", description: "Konwertuj obrazy internetowe na format PDF w celu archiwizacji w trybie offline.", icon: "globe" },
+      { title: "Przygotowanie do druku", description: "Konwertuj obrazy WebP na format PDF w celu drukowania.", icon: "printer" },
+      { title: "Standaryzacja formatu", description: "Konwertuj nowoczesny WebP na uniwersalnie kompatybilny plik PDF.", icon: "file-check" },
     ],
     faq: [
       { question: "Co to jest format WebP?", answer: "WebP to nowoczesny format obrazu opracowany przez firmę Google, który zapewnia doskonałą kompresję obrazów internetowych." },
@@ -670,9 +670,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć wektorowy plik PDF." },
     ],
     useCases: [
-      { title: "Konwersja logo", description: "Konwertuj logo SVG na format PDF na potrzeby materiałów drukowanych.", icon: 'award' },
-      { title: "Rysunki techniczne", description: "Konwertuj eksporty CAD i ilustracje techniczne do formatu PDF.", icon: 'ruler' },
-      { title: "Kolekcje ikon", description: "Twórz katalogi PDF z zestawami ikon i grafiką.", icon: 'grid' },
+      { title: "Konwersja logo", description: "Konwertuj logo SVG na format PDF na potrzeby materiałów drukowanych.", icon: "award" },
+      { title: "Rysunki techniczne", description: "Konwertuj eksporty CAD i ilustracje techniczne do formatu PDF.", icon: "ruler" },
+      { title: "Kolekcje ikon", description: "Twórz katalogi PDF z zestawami ikon i grafiką.", icon: "grid" },
     ],
     faq: [
       { question: "Czy jakość wektorowa jest zachowana?", answer: "Tak, jakość wektorowa SVG jest w pełni zachowywana w pliku wyjściowym PDF." },
@@ -692,9 +692,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF." },
     ],
     useCases: [
-      { title: "Konwersja starszych plików", description: "Konwertuj stare pliki BMP na nowoczesny format PDF.", icon: 'history' },
-      { title: "Zrzuty ekranu Windowsa", description: "Konwertuj zrzuty ekranu z bitmapami systemu Windows na format PDF.", icon: 'monitor' },
-      { title: "Modernizacja Archiwum", description: "Zaktualizuj starsze archiwa obrazów do formatu PDF.", icon: 'archive' },
+      { title: "Konwersja starszych plików", description: "Konwertuj stare pliki BMP na nowoczesny format PDF.", icon: "history" },
+      { title: "Zrzuty ekranu Windowsa", description: "Konwertuj zrzuty ekranu z bitmapami systemu Windows na format PDF.", icon: "monitor" },
+      { title: "Modernizacja Archiwum", description: "Zaktualizuj starsze archiwa obrazów do formatu PDF.", icon: "archive" },
     ],
     faq: [
       { question: "Czy rozmiar pliku zostanie zmniejszony?", answer: "Tak, pliki BMP są zazwyczaj znacznie kompresowane podczas konwersji do formatu PDF." },
@@ -714,9 +714,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby wyrenderować pliki PSD i pobrać dokument PDF." },
     ],
     useCases: [
-      { title: "Udostępnij projekty", description: "Udostępniaj projekty programu Photoshop klientom i współpracownikom, którzy nie mają programu Photoshop.", icon: 'share-2' },
-      { title: "Tworzenie portfela", description: "Utwórz swoje prace projektowe w profesjonalnym portfolio PDF.", icon: 'layout' },
-      { title: "Przygotowanie do druku", description: "Konwertuj projekty do formatu PDF w celu drukowania.", icon: 'printer' },
+      { title: "Udostępnij projekty", description: "Udostępniaj projekty programu Photoshop klientom i współpracownikom, którzy nie mają programu Photoshop.", icon: "share-2" },
+      { title: "Tworzenie portfela", description: "Utwórz swoje prace projektowe w profesjonalnym portfolio PDF.", icon: "layout" },
+      { title: "Przygotowanie do druku", description: "Konwertuj projekty do formatu PDF w celu drukowania.", icon: "printer" },
     ],
     faq: [
       { question: "Czy muszę mieć zainstalowany Photoshop?", answer: "Nie, to narzędzie działa całkowicie w przeglądarce i nie wymaga programu Adobe Photoshop." },
@@ -736,9 +736,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF." },
     ],
     useCases: [
-      { title: "Albumy zdjęć na iPhone'a", description: "Twórz albumy PDF ze zdjęć iPhone'a w celu udostępniania.", icon: 'smartphone' },
-      { title: "Skanowanie dokumentów", description: "Konwertuj skany dokumentów iPhone'a do formatu PDF.", icon: 'scan' },
-      { title: "Udostępnianie międzyplatformowe", description: "Konwertuj HEIC na PDF, aby zapewnić uniwersalną kompatybilność.", icon: 'share-2' },
+      { title: "Albumy zdjęć na iPhone'a", description: "Twórz albumy PDF ze zdjęć iPhone'a w celu udostępniania.", icon: "smartphone" },
+      { title: "Skanowanie dokumentów", description: "Konwertuj skany dokumentów iPhone'a do formatu PDF.", icon: "scan" },
+      { title: "Udostępnianie międzyplatformowe", description: "Konwertuj HEIC na PDF, aby zapewnić uniwersalną kompatybilność.", icon: "share-2" },
     ],
     faq: [
       { question: "Co to jest format HEIC?", answer: "HEIC (High Efficiency Image Container) to format obrazu firmy Apple o lepszej kompresji niż JPEG." },
@@ -758,9 +758,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć plik PDF." },
     ],
     useCases: [
-      { title: "Zeskanowane dokumenty", description: "Konwertuj wysokiej jakości skany z formatu TIFF na PDF.", icon: 'scan' },
-      { title: "Profesjonalna grafika", description: "Konwertuj profesjonalną grafikę TIFF do dystrybucji.", icon: 'image' },
-      { title: "Konwersja archiwum", description: "Konwertuj archiwa TIFF na bardziej przystępny format PDF.", icon: 'archive' },
+      { title: "Zeskanowane dokumenty", description: "Konwertuj wysokiej jakości skany z formatu TIFF na PDF.", icon: "scan" },
+      { title: "Profesjonalna grafika", description: "Konwertuj profesjonalną grafikę TIFF do dystrybucji.", icon: "image" },
+      { title: "Konwersja archiwum", description: "Konwertuj archiwa TIFF na bardziej przystępny format PDF.", icon: "archive" },
     ],
     faq: [
       { question: "Czy obsługiwane są wielostronicowe pliki TIFF?", answer: "Tak, wielostronicowe pliki TIFF są automatycznie konwertowane na wielostronicowe pliki PDF." },
@@ -780,9 +780,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć sformatowany plik PDF." },
     ],
     useCases: [
-      { title: "Dokumentacja kodu", description: "Konwertuj pliki kodu źródłowego na format PDF w celu uzyskania dokumentacji.", icon: 'code' },
-      { title: "Archiwa dzienników", description: "Konwertuj pliki dziennika do formatu PDF w celach archiwalnych.", icon: 'file-text' },
-      { title: "Uwaga Konwersja", description: "Konwertuj notatki w postaci zwykłego tekstu na sformatowane dokumenty PDF.", icon: 'sticky-note' },
+      { title: "Dokumentacja kodu", description: "Konwertuj pliki kodu źródłowego na format PDF w celu uzyskania dokumentacji.", icon: "code" },
+      { title: "Archiwa dzienników", description: "Konwertuj pliki dziennika do formatu PDF w celach archiwalnych.", icon: "file-text" },
+      { title: "Uwaga Konwersja", description: "Konwertuj notatki w postaci zwykłego tekstu na sformatowane dokumenty PDF.", icon: "sticky-note" },
     ],
     faq: [
       { question: "Jakie czcionki są dostępne?", answer: "Dostępnych jest wiele czcionek, w tym czcionki o stałej szerokości dla kodu." },
@@ -802,9 +802,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć sformatowany plik PDF." },
     ],
     useCases: [
-      { title: "Dokumentacja API", description: "Konwertuj odpowiedzi API na format PDF w celu uzyskania dokumentacji.", icon: 'code' },
-      { title: "Archiwa konfiguracji", description: "Archiwizuj pliki konfiguracyjne w czytelnym formacie PDF.", icon: 'settings' },
-      { title: "Raporty danych", description: "Twórz raporty PDF z eksportów danych JSON.", icon: 'bar-chart' },
+      { title: "Dokumentacja API", description: "Konwertuj odpowiedzi API na format PDF w celu uzyskania dokumentacji.", icon: "code" },
+      { title: "Archiwa konfiguracji", description: "Archiwizuj pliki konfiguracyjne w czytelnym formacie PDF.", icon: "settings" },
+      { title: "Raporty danych", description: "Twórz raporty PDF z eksportów danych JSON.", icon: "bar-chart" },
     ],
     faq: [
       { question: "Czy podświetlanie składni jest uwzględnione?", answer: "Tak, składnia JSON jest wyróżniona kolorami kluczy, wartości i typów." },
@@ -824,9 +824,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Udostępnianie dokumentów", description: "Konwertuj dokumenty programu Word na format PDF w celu uniwersalnego udostępniania i przeglądania.", icon: 'share-2' },
-      { title: "Przygotowanie do druku", description: "Twórz gotowe do druku pliki PDF z dokumentów programu Word.", icon: 'printer' },
-      { title: "Archiwum dokumentów", description: "Archiwizuj dokumenty programu Word w stabilnym formacie PDF w celu długotrwałego przechowywania.", icon: 'archive' },
+      { title: "Udostępnianie dokumentów", description: "Konwertuj dokumenty programu Word na format PDF w celu uniwersalnego udostępniania i przeglądania.", icon: "share-2" },
+      { title: "Przygotowanie do druku", description: "Twórz gotowe do druku pliki PDF z dokumentów programu Word.", icon: "printer" },
+      { title: "Archiwum dokumentów", description: "Archiwizuj dokumenty programu Word w stabilnym formacie PDF w celu długotrwałego przechowywania.", icon: "archive" },
     ],
     faq: [
       { question: "Czy obsługiwany jest format .doc?", answer: "Obecnie obsługiwany jest tylko format .docx. Najpierw przekonwertuj pliki .doc na .docx za pomocą programu Microsoft Word lub LibreOffice." },
@@ -846,9 +846,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Udostępnianie raportów", description: "Konwertuj raporty Excel do formatu PDF w celu dystrybucji wśród interesariuszy.", icon: 'file-text' },
-      { title: "Archiwizacja danych", description: "Archiwizuj dane arkusza kalkulacyjnego w stabilnym formacie PDF.", icon: 'archive' },
-      { title: "Przygotowanie do druku", description: "Twórz gotowe do druku pliki PDF z arkuszy programu Excel.", icon: 'printer' },
+      { title: "Udostępnianie raportów", description: "Konwertuj raporty Excel do formatu PDF w celu dystrybucji wśród interesariuszy.", icon: "file-text" },
+      { title: "Archiwizacja danych", description: "Archiwizuj dane arkusza kalkulacyjnego w stabilnym formacie PDF.", icon: "archive" },
+      { title: "Przygotowanie do druku", description: "Twórz gotowe do druku pliki PDF z arkuszy programu Excel.", icon: "printer" },
     ],
     faq: [
       { question: "Czy obsługiwanych jest wiele arkuszy?", answer: "Tak, wszystkie arkusze w skoroszycie są konwertowane i dołączane do pliku PDF." },
@@ -868,9 +868,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Udostępnianie prezentacji", description: "Udostępniaj prezentacje każdemu, bez konieczności korzystania z programu PowerPoint.", icon: 'share-2' },
-      { title: "Tworzenie materiałów informacyjnych", description: "Twórz materiały informacyjne w pliku PDF ze slajdów prezentacji.", icon: 'file-text' },
-      { title: "Prezentacje archiwalne", description: "Archiwizuj prezentacje w stabilnym formacie PDF.", icon: 'archive' },
+      { title: "Udostępnianie prezentacji", description: "Udostępniaj prezentacje każdemu, bez konieczności korzystania z programu PowerPoint.", icon: "share-2" },
+      { title: "Tworzenie materiałów informacyjnych", description: "Twórz materiały informacyjne w pliku PDF ze slajdów prezentacji.", icon: "file-text" },
+      { title: "Prezentacje archiwalne", description: "Archiwizuj prezentacje w stabilnym formacie PDF.", icon: "archive" },
     ],
     faq: [
       { question: "Czy animacje zostały zachowane?", answer: "PDF jest formatem statycznym, więc animacje i przejścia nie są zachowywane. Każdy slajd staje się stroną statyczną." },
@@ -890,9 +890,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Konwersja formatu", description: "Konwertuj dokumenty XPS na szerzej obsługiwany format PDF.", icon: 'file' },
-      { title: "Udostępnianie dokumentów", description: "Udostępniaj dokumenty XPS użytkownikom, którzy nie mają przeglądarek XPS.", icon: 'share-2' },
-      { title: "Migracja archiwum", description: "Przeprowadź migrację archiwów XPS do formatu PDF, aby uzyskać lepszą kompatybilność.", icon: 'archive' },
+      { title: "Konwersja formatu", description: "Konwertuj dokumenty XPS na szerzej obsługiwany format PDF.", icon: "file" },
+      { title: "Udostępnianie dokumentów", description: "Udostępniaj dokumenty XPS użytkownikom, którzy nie mają przeglądarek XPS.", icon: "share-2" },
+      { title: "Migracja archiwum", description: "Przeprowadź migrację archiwów XPS do formatu PDF, aby uzyskać lepszą kompatybilność.", icon: "archive" },
     ],
     faq: [
       { question: "Co to jest format XPS?", answer: "XPS (Specyfikacja papieru XML) to format stałego dokumentu firmy Microsoft, podobny do formatu PDF. Jest powszechnie używany do drukowania w systemie Windows." },
@@ -912,9 +912,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Konwersja starszej wersji", description: "Konwertuj stare dokumenty RTF na nowoczesny format PDF.", icon: 'history' },
-      { title: "Udostępnianie dokumentów", description: "Udostępniaj dokumenty RTF w powszechnie dostępnym formacie PDF.", icon: 'share-2' },
-      { title: "Dokumenty archiwalne", description: "Archiwizuj pliki RTF w stabilnym formacie PDF w celu długotrwałego przechowywania.", icon: 'archive' },
+      { title: "Konwersja starszej wersji", description: "Konwertuj stare dokumenty RTF na nowoczesny format PDF.", icon: "history" },
+      { title: "Udostępnianie dokumentów", description: "Udostępniaj dokumenty RTF w powszechnie dostępnym formacie PDF.", icon: "share-2" },
+      { title: "Dokumenty archiwalne", description: "Archiwizuj pliki RTF w stabilnym formacie PDF w celu długotrwałego przechowywania.", icon: "archive" },
     ],
     faq: [
       { question: "Jakie formatowanie zostało zachowane?", answer: "Konwertowane jest podstawowe formatowanie tekstu, w tym czcionki, akapity i style. Złożone funkcje RTF można uprościć." },
@@ -934,9 +934,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Drukuj e-booki", description: "Konwertuj e-booki na format PDF w celu wydruku.", icon: 'printer' },
-      { title: "Archiwum książek", description: "Przechowuj e-booki w długoterminowo stabilnym formacie PDF.", icon: 'archive' },
-      { title: "Udostępnij dokumenty", description: "Udostępniaj e-booki każdemu, nawet bez e-czytnika.", icon: 'share-2' },
+      { title: "Drukuj e-booki", description: "Konwertuj e-booki na format PDF w celu wydruku.", icon: "printer" },
+      { title: "Archiwum książek", description: "Przechowuj e-booki w długoterminowo stabilnym formacie PDF.", icon: "archive" },
+      { title: "Udostępnij dokumenty", description: "Udostępniaj e-booki każdemu, nawet bez e-czytnika.", icon: "share-2" },
     ],
     faq: [
       { question: "Czy formatowanie zostało zachowane?", answer: "Tak! To narzędzie wykorzystuje natywne renderowanie EPUB, zachowując formatowanie tekstu, obrazy i układ z wysoką wiernością." },
@@ -956,9 +956,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz PDF", description: "Kliknij Pobierz, aby zapisać przekonwertowany dokument PDF." },
     ],
     useCases: [
-      { title: "Drukuj książki Kindle", description: "Konwertuj e-booki Kindle na format PDF w celu wydruku.", icon: 'printer' },
-      { title: "Archiwum książek", description: "Przechowuj książki Kindle w uniwersalnym formacie PDF.", icon: 'archive' },
-      { title: "Odczyt na różnych urządzeniach", description: "Czytaj książki Kindle na urządzeniach obsługujących tylko pliki PDF.", icon: 'tablet-smartphone' },
+      { title: "Drukuj książki Kindle", description: "Konwertuj e-booki Kindle na format PDF w celu wydruku.", icon: "printer" },
+      { title: "Archiwum książek", description: "Przechowuj książki Kindle w uniwersalnym formacie PDF.", icon: "archive" },
+      { title: "Odczyt na różnych urządzeniach", description: "Czytaj książki Kindle na urządzeniach obsługujących tylko pliki PDF.", icon: "tablet-smartphone" },
     ],
     faq: [
       { question: "Jakie formaty MOBI są obsługiwane?", answer: "To narzędzie obsługuje pliki .mobi, .azw i .azw3 (wersje inne niż DRM)." },
@@ -978,9 +978,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobieraj", description: "Kliknij Konwertuj do formatu PDF i pobierz przekonwertowany dokument." },
     ],
     useCases: [
-      { title: "Dokumenty archiwalne", description: "Konwertuj archiwa DJVU do uniwersalnego formatu PDF.", icon: 'archive' },
-      { title: "Udostępnij zeskanowane książki", description: "Udostępniaj zeskanowane książki w pliku PDF, aby zwiększyć kompatybilność.", icon: 'share-2' },
-      { title: "Drukuj dokumenty", description: "Konwertuj DJVU na wysokiej jakości plik PDF w celu drukowania.", icon: 'printer' },
+      { title: "Dokumenty archiwalne", description: "Konwertuj archiwa DJVU do uniwersalnego formatu PDF.", icon: "archive" },
+      { title: "Udostępnij zeskanowane książki", description: "Udostępniaj zeskanowane książki w pliku PDF, aby zwiększyć kompatybilność.", icon: "share-2" },
+      { title: "Drukuj dokumenty", description: "Konwertuj DJVU na wysokiej jakości plik PDF w celu drukowania.", icon: "printer" },
     ],
     faq: [
       { question: "Co to jest format DJVU?", answer: "DjVu to format pliku przeznaczony do przechowywania zeskanowanych dokumentów, zwłaszcza zawierających tekst, rysunki i obrazy. Zapewnia lepszą kompresję zeskanowanych treści niż PDF." },
@@ -1000,9 +1000,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobieraj", description: "Kliknij opcję Konwertuj do formatu PDF i pobierz przekonwertowane dokumenty." },
     ],
     useCases: [
-      { title: "Drukuj e-booki", description: "Konwertuj e-booki FB2 na format PDF w celu wydruku.", icon: 'printer' },
-      { title: "Konwersja wsadowa", description: "Konwertuj wiele plików FB2 na format PDF jednocześnie.", icon: 'layers' },
-      { title: "Uniwersalny format", description: "Udostępniaj e-booki w pliku PDF, który działa na każdym urządzeniu.", icon: 'share-2' },
+      { title: "Drukuj e-booki", description: "Konwertuj e-booki FB2 na format PDF w celu wydruku.", icon: "printer" },
+      { title: "Konwersja wsadowa", description: "Konwertuj wiele plików FB2 na format PDF jednocześnie.", icon: "layers" },
+      { title: "Uniwersalny format", description: "Udostępniaj e-booki w pliku PDF, który działa na każdym urządzeniu.", icon: "share-2" },
     ],
     faq: [
       { question: "Czy mogę konwertować wiele plików FB2 na raz?", answer: "Tak! To narzędzie obsługuje konwersję wsadową do 20 plików FB2 jednocześnie." },
@@ -1024,9 +1024,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby wyodrębnić obrazy i pobrać je w formacie ZIP." },
     ],
     useCases: [
-      { title: "Publikowanie w Internecie", description: "Konwertuj strony PDF na obrazy do użytku w witrynie internetowej.", icon: 'globe' },
-      { title: "Media społecznościowe", description: "Wyodrębnij strony jako obrazy do udostępniania w mediach społecznościowych.", icon: 'share-2' },
-      { title: "Prezentacje", description: "Konwertuj slajdy PDF na obrazy do prezentacji.", icon: 'presentation' },
+      { title: "Publikowanie w Internecie", description: "Konwertuj strony PDF na obrazy do użytku w witrynie internetowej.", icon: "globe" },
+      { title: "Media społecznościowe", description: "Wyodrębnij strony jako obrazy do udostępniania w mediach społecznościowych.", icon: "share-2" },
+      { title: "Prezentacje", description: "Konwertuj slajdy PDF na obrazy do prezentacji.", icon: "presentation" },
     ],
     faq: [
       { question: "Jakie ustawienia jakości są dostępne?", answer: "Możesz ustawić DPI od 72 do 300 i jakość JPEG od 1-100." },
@@ -1046,9 +1046,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby wyodrębnić obrazy PNG." },
     ],
     useCases: [
-      { title: "Ekstrakcja grafiki", description: "Wyodrębniaj diagramy i grafiki o doskonałej jakości.", icon: 'image' },
-      { title: "Zasoby projektowe", description: "Konwertuj projekty PDF na PNG na potrzeby oprogramowania do edycji.", icon: 'palette' },
-      { title: "Dokumentacja", description: "Twórz wysokiej jakości obrazy do dokumentacji technicznej.", icon: 'file-text' },
+      { title: "Ekstrakcja grafiki", description: "Wyodrębniaj diagramy i grafiki o doskonałej jakości.", icon: "image" },
+      { title: "Zasoby projektowe", description: "Konwertuj projekty PDF na PNG na potrzeby oprogramowania do edycji.", icon: "palette" },
+      { title: "Dokumentacja", description: "Twórz wysokiej jakości obrazy do dokumentacji technicznej.", icon: "file-text" },
     ],
     faq: [
       { question: "Dlaczego warto wybrać PNG zamiast JPG?", answer: "PNG oferuje bezstratną kompresję i obsługę przezroczystości, idealną dla grafiki i tekstu." },
@@ -1068,9 +1068,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij opcję Konwertuj, aby utworzyć obrazy WebP." },
     ],
     useCases: [
-      { title: "Optymalizacja sieci", description: "Twórz obrazy zoptymalizowane pod kątem Internetu z zawartości PDF.", icon: 'globe' },
-      { title: "Oszczędność przepustowości", description: "Zmniejsz rozmiar pliku obrazu, aby przyspieszyć ładowanie.", icon: 'zap' },
-      { title: "Nowoczesne strony internetowe", description: "Używaj nowoczesnych formatów obrazów we współczesnych projektach internetowych.", icon: 'layout' },
+      { title: "Optymalizacja sieci", description: "Twórz obrazy zoptymalizowane pod kątem Internetu z zawartości PDF.", icon: "globe" },
+      { title: "Oszczędność przepustowości", description: "Zmniejsz rozmiar pliku obrazu, aby przyspieszyć ładowanie.", icon: "zap" },
+      { title: "Nowoczesne strony internetowe", description: "Używaj nowoczesnych formatów obrazów we współczesnych projektach internetowych.", icon: "layout" },
     ],
     faq: [
       { question: "Co to jest format WebP?", answer: "WebP to nowoczesny format obrazu firmy Google oferujący doskonałą kompresję." },
@@ -1090,9 +1090,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć obrazy BMP." },
     ],
     useCases: [
-      { title: "Starsze systemy", description: "Twórz obrazy kompatybilne ze starszym oprogramowaniem.", icon: 'history' },
-      { title: "Aplikacje Windowsowe", description: "Generuj pliki BMP dla aplikacji specyficznych dla systemu Windows.", icon: 'monitor' },
-      { title: "Nieskompresowane archiwa", description: "Twórz nieskompresowane archiwa obrazów z plików PDF.", icon: 'archive' },
+      { title: "Starsze systemy", description: "Twórz obrazy kompatybilne ze starszym oprogramowaniem.", icon: "history" },
+      { title: "Aplikacje Windowsowe", description: "Generuj pliki BMP dla aplikacji specyficznych dla systemu Windows.", icon: "monitor" },
+      { title: "Nieskompresowane archiwa", description: "Twórz nieskompresowane archiwa obrazów z plików PDF.", icon: "archive" },
     ],
     faq: [
       { question: "Dlaczego warto używać formatu BMP?", answer: "BMP oferuje nieskompresowaną jakość i maksymalną kompatybilność ze starszymi systemami." },
@@ -1112,9 +1112,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć obrazy TIFF." },
     ],
     useCases: [
-      { title: "Profesjonalny druk", description: "Twórz gotowe do druku pliki TIFF z dokumentów PDF.", icon: 'printer' },
-      { title: "Archiwizacja dokumentów", description: "Archiwizuj dokumenty w wysokiej jakości formacie TIFF.", icon: 'archive' },
-      { title: "Publikowanie", description: "Konwertuj pliki PDF na TIFF na potrzeby procesów publikowania.", icon: 'book' },
+      { title: "Profesjonalny druk", description: "Twórz gotowe do druku pliki TIFF z dokumentów PDF.", icon: "printer" },
+      { title: "Archiwizacja dokumentów", description: "Archiwizuj dokumenty w wysokiej jakości formacie TIFF.", icon: "archive" },
+      { title: "Publikowanie", description: "Konwertuj pliki PDF na TIFF na potrzeby procesów publikowania.", icon: "book" },
     ],
     faq: [
       { question: "Czy mogę tworzyć wielostronicowe pliki TIFF?", answer: "Tak, możesz połączyć wszystkie strony PDF w jeden wielostronicowy plik TIFF." },
@@ -1134,9 +1134,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Kliknij Konwertuj, aby utworzyć i pobrać bogaty w metadane plik .cbz, który będzie natychmiast gotowy do użycia w Calibre." },
     ],
     useCases: [
-      { title: "Konwersja PDF do CBZ", description: "Przekształcaj surowe zeskanowane książki PDF w kompaktowe, zgodne ze standardami pliki komiksów CBZ, które menedżerowie bibliotek komiksów mogą łatwo katalogować.", icon: 'book' },
-      { title: "Integracja kalibru bez wysiłku", description: "Wbudowany schemat metadata.opf pozwala Calibre pobierać i klasyfikować twórców i problemy z wolumenami bez ręcznego wyszukiwania.", icon: 'database' },
-      { title: "Ulepszenie ekranu E-Ink", description: "Wstępnie filtruj graficzne kanały kolorów do skali szarości o wysokim kontraście podczas tworzenia, zwiększając odświeżenie i wyrazistość obrazu na ekranach E-ink, jednocześnie oszczędzając miejsce na dysku.", icon: 'eye' },
+      { title: "Konwersja PDF do CBZ", description: "Przekształcaj surowe zeskanowane książki PDF w kompaktowe, zgodne ze standardami pliki komiksów CBZ, które menedżerowie bibliotek komiksów mogą łatwo katalogować.", icon: "book" },
+      { title: "Integracja kalibru bez wysiłku", description: "Wbudowany schemat metadata.opf pozwala Calibre pobierać i klasyfikować twórców i problemy z wolumenami bez ręcznego wyszukiwania.", icon: "database" },
+      { title: "Ulepszenie ekranu E-Ink", description: "Wstępnie filtruj graficzne kanały kolorów do skali szarości o wysokim kontraście podczas tworzenia, zwiększając odświeżenie i wyrazistość obrazu na ekranach E-ink, jednocześnie oszczędzając miejsce na dysku.", icon: "eye" },
     ],
     faq: [
       { question: "Co to jest plik .cbz?", answer: "Plik CBZ to wyspecjalizowany format kontenera archiwum dla serii komiksów. Jest wewnętrznie sformatowany jako pakiet ZIP zawierający kolejno ponumerowane obrazy stron wraz z plikami XML metadanych strukturalnych." },
@@ -1158,10 +1158,10 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Pobierz", description: "Pobierz pojedyncze pliki SVG lub wszystkie strony w postaci archiwum ZIP." },
     ],
     useCases: [
-      { title: "Logo i grafika", description: "Wyodrębnij logo i grafikę wektorową z plików PDF do wykorzystania w oprogramowaniu do projektowania.", icon: 'pen-tool' },
-      { title: "Schematy techniczne", description: "Konwertuj rysunki techniczne i diagramy do skalowalnego formatu SVG.", icon: 'ruler' },
-      { title: "Rozwój sieci", description: "Twórz gotowe do umieszczenia w Internecie pliki SVG z zawartości PDF dla responsywnych witryn internetowych.", icon: 'globe' },
-      { title: "Drukuj w dowolnym rozmiarze", description: "Generuj grafikę wektorową, która doskonale drukuje się w dowolnym rozmiarze.", icon: 'printer' },
+      { title: "Logo i grafika", description: "Wyodrębnij logo i grafikę wektorową z plików PDF do wykorzystania w oprogramowaniu do projektowania.", icon: "pen-tool" },
+      { title: "Schematy techniczne", description: "Konwertuj rysunki techniczne i diagramy do skalowalnego formatu SVG.", icon: "ruler" },
+      { title: "Rozwój sieci", description: "Twórz gotowe do umieszczenia w Internecie pliki SVG z zawartości PDF dla responsywnych witryn internetowych.", icon: "globe" },
+      { title: "Drukuj w dowolnym rozmiarze", description: "Generuj grafikę wektorową, która doskonale drukuje się w dowolnym rozmiarze.", icon: "printer" },
     ],
     faq: [
       { question: "Co to jest format SVG?", answer: "SVG (Scalable Vector Graphics) to format obrazu wektorowego, który można skalować do dowolnego rozmiaru bez utraty jakości. Jest szeroko stosowany w logo, ikonach i grafice internetowej." },
@@ -1182,9 +1182,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij opcję Konwertuj, aby utworzyć plik PDF w skali szarości." },
     ],
     useCases: [
-      { title: "Drukuj oszczędności", description: "Konwertuj na skalę szarości, aby zaoszczędzić na kosztach drukowania w kolorze.", icon: 'printer' },
-      { title: "Projekty dokumentów", description: "Twórz czarno-białe wersje robocze do recenzji.", icon: 'file-text' },
-      { title: "Zmniejszenie rozmiaru pliku", description: "Zmniejsz rozmiar pliku PDF, usuwając informacje o kolorach.", icon: 'minimize-2' },
+      { title: "Drukuj oszczędności", description: "Konwertuj na skalę szarości, aby zaoszczędzić na kosztach drukowania w kolorze.", icon: "printer" },
+      { title: "Projekty dokumentów", description: "Twórz czarno-białe wersje robocze do recenzji.", icon: "file-text" },
+      { title: "Zmniejszenie rozmiaru pliku", description: "Zmniejsz rozmiar pliku PDF, usuwając informacje o kolorach.", icon: "minimize-2" },
     ],
     faq: [
       { question: "Czy tekst pozostanie czytelny?", answer: "Tak, podczas konwersji w skali szarości zachowana jest przejrzystość tekstu." },
@@ -1204,9 +1204,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyodrębnij i pobierz", description: "Kliknij Wyodrębnij, aby wygenerować JSON i pobrać." },
     ],
     useCases: [
-      { title: "Ekstrakcja danych", description: "Wyodrębnij uporządkowane dane z dokumentów PDF.", icon: 'database' },
-      { title: "Analiza dokumentów", description: "Programowo analizuj strukturę i zawartość pliku PDF.", icon: 'search' },
-      { title: "Integracja", description: "Importuj zawartość PDF do aplikacji za pośrednictwem JSON.", icon: 'plug' },
+      { title: "Ekstrakcja danych", description: "Wyodrębnij uporządkowane dane z dokumentów PDF.", icon: "database" },
+      { title: "Analiza dokumentów", description: "Programowo analizuj strukturę i zawartość pliku PDF.", icon: "search" },
+      { title: "Integracja", description: "Importuj zawartość PDF do aplikacji za pośrednictwem JSON.", icon: "plug" },
     ],
     faq: [
       { question: "Jakie dane są wyodrębniane?", answer: "Treść tekstowa, metadane, wymiary strony, czcionki i struktura dokumentu." },
@@ -1226,9 +1226,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby utworzyć prezentację PowerPoint i pobrać plik PPTX." },
     ],
     useCases: [
-      { title: "Tworzenie prezentacji", description: "Konwertuj raporty lub dokumenty PDF na slajdy prezentacji na spotkania.", icon: 'presentation' },
-      { title: "Materiały szkoleniowe", description: "Przekształcaj dokumenty szkoleniowe w pliku PDF w interaktywne prezentacje programu PowerPoint.", icon: 'book-open' },
-      { title: "Zmiana przeznaczenia treści", description: "Konwertuj istniejącą zawartość PDF na edytowalny format slajdu w celu dalszej personalizacji.", icon: 'refresh-cw' },
+      { title: "Tworzenie prezentacji", description: "Konwertuj raporty lub dokumenty PDF na slajdy prezentacji na spotkania.", icon: "presentation" },
+      { title: "Materiały szkoleniowe", description: "Przekształcaj dokumenty szkoleniowe w pliku PDF w interaktywne prezentacje programu PowerPoint.", icon: "book-open" },
+      { title: "Zmiana przeznaczenia treści", description: "Konwertuj istniejącą zawartość PDF na edytowalny format slajdu w celu dalszej personalizacji.", icon: "refresh-cw" },
     ],
     faq: [
       { question: "Czy slajdy będą edytowalne?", answer: "Każdy slajd zawiera wysokiej jakości obraz strony PDF. W programie PowerPoint możesz dodawać tekst, kształty i adnotacje na górze." },
@@ -1248,9 +1248,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz Excela", description: "Pobierz plik Excel z wyodrębnionymi tabelami." },
     ],
     useCases: [
-      { title: "Analiza finansowa", description: "Konwertuj wyciągi bankowe lub faktury do programu Excel w celu analizy.", icon: 'trending-up' },
-      { title: "Ekstrakcja danych", description: "Pobieraj tabele danych z artykułów naukowych lub raportów.", icon: 'database' },
-      { title: "Zarządzanie zapasami", description: "Konwertuj listy inwentarza z pliku PDF na arkusz kalkulacyjny.", icon: 'clipboard' },
+      { title: "Analiza finansowa", description: "Konwertuj wyciągi bankowe lub faktury do programu Excel w celu analizy.", icon: "trending-up" },
+      { title: "Ekstrakcja danych", description: "Pobieraj tabele danych z artykułów naukowych lub raportów.", icon: "database" },
+      { title: "Zarządzanie zapasami", description: "Konwertuj listy inwentarza z pliku PDF na arkusz kalkulacyjny.", icon: "clipboard" },
     ],
     faq: [
       { question: "Jak obsługiwane są tabele?", answer: "Tabele wykryte na każdej stronie są wyodrębniane do odpowiednich arkuszy w pliku Excel." },
@@ -1263,7 +1263,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   'ocr-pdf': {
     title: "PDF-OCR",
     metaDescription: "Spraw, aby zeskanowane pliki PDF można było przeszukiwać za pomocą OCR. Wyodrębnij tekst z obrazów i zeskanowanych dokumentów.",
-    keywords: ["ocr pdf", "przeszukiwalny plik PDF", "rozpoznawanie tekstu", "skanuj do tekstu"],
+    keywords: ["ocr pdf\nWpisz", "przeszukiwalny plik PDF", "rozpoznawanie tekstu", "skanuj do tekstu"],
     description: "<p>OCR PDF wykorzystuje funkcję optycznego rozpoznawania znaków do wyodrębniania tekstu ze zeskanowanych dokumentów i obrazów w plikach PDF. Konwertuj pliki PDF zawierające obrazy na dokumenty tekstowe z możliwością wyszukiwania i wybierania.</p>\n      <p>Obsługa wielu języków zapewnia dokładne rozpoznawanie tekstu niezależnie od języka dokumentu. Oryginalny układ zostaje zachowany po dodaniu warstwy tekstowej z możliwością przeszukiwania.</p>\n      <p>Całe przetwarzanie OCR odbywa się w Twojej przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne.</p>\n    ",
     howToUse: [
       { step: 1, title: "Prześlij zeskanowany plik PDF", description: "Przeciągnij i upuść zeskanowany plik PDF lub kliknij, aby wybrać." },
@@ -1271,9 +1271,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Przetwarzaj i pobieraj", description: "Kliknij opcję Przetwarzaj, aby uruchomić OCR i pobrać plik PDF z możliwością przeszukiwania." },
     ],
     useCases: [
-      { title: "Digitalizacja archiwów", description: "Umożliwia przeszukiwanie archiwów zeskanowanych dokumentów.", icon: 'archive' },
-      { title: "Wyszukiwanie dokumentów", description: "Włącz wyszukiwanie tekstu w zeskanowanych dokumentach.", icon: 'search' },
-      { title: "Ekstrakcja tekstu", description: "Wyodrębnij tekst ze zeskanowanych dokumentów do edycji.", icon: 'type' },
+      { title: "Digitalizacja archiwów", description: "Umożliwia przeszukiwanie archiwów zeskanowanych dokumentów.", icon: "archive" },
+      { title: "Wyszukiwanie dokumentów", description: "Włącz wyszukiwanie tekstu w zeskanowanych dokumentach.", icon: "search" },
+      { title: "Ekstrakcja tekstu", description: "Wyodrębnij tekst ze zeskanowanych dokumentów do edycji.", icon: "type" },
     ],
     faq: [
       { question: "Jakie języki są obsługiwane?", answer: "Obsługiwanych jest ponad 100 języków, w tym angielski, chiński, japoński, koreański i inne." },
@@ -1293,9 +1293,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Połącz i pobierz", description: "Kliknij opcję Scal, aby przeplatać strony i pobierać." },
     ],
     useCases: [
-      { title: "Skanowanie dwustronne", description: "Połącz oddzielnie zeskanowane strony przednie i tylne.", icon: 'copy' },
-      { title: "Montaż dokumentów", description: "Przeplataj strony z dwóch powiązanych dokumentów.", icon: 'layers' },
-      { title: "Skanowanie książek", description: "Łącz skany stron nieparzystych i parzystych w kompletne książki.", icon: 'book' },
+      { title: "Skanowanie dwustronne", description: "Połącz oddzielnie zeskanowane strony przednie i tylne.", icon: "copy" },
+      { title: "Montaż dokumentów", description: "Przeplataj strony z dwóch powiązanych dokumentów.", icon: "layers" },
+      { title: "Skanowanie książek", description: "Łącz skany stron nieparzystych i parzystych w kompletne książki.", icon: "book" },
     ],
     faq: [
       { question: "Co się stanie, jeśli dokumenty mają różną liczbę stron?", answer: "Na końcu dołączone są dodatkowe strony z dłuższego dokumentu." },
@@ -1315,9 +1315,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby osadzić załączniki i pobrać." },
     ],
     useCases: [
-      { title: "Pakiety projektów", description: "Połącz pliki projektu z dokumentacją PDF.", icon: 'package' },
-      { title: "Dystrybucja raportów", description: "Dołącz pliki danych źródłowych, aby raportować pliki PDF.", icon: 'paperclip' },
-      { title: "Pakiety kontraktowe", description: "Dołącz dokumenty potwierdzające do umów.", icon: 'file-text' },
+      { title: "Pakiety projektów", description: "Połącz pliki projektu z dokumentacją PDF.", icon: "package" },
+      { title: "Dystrybucja raportów", description: "Dołącz pliki danych źródłowych, aby raportować pliki PDF.", icon: "paperclip" },
+      { title: "Pakiety kontraktowe", description: "Dołącz dokumenty potwierdzające do umów.", icon: "file-text" },
     ],
     faq: [
       { question: "Jakie typy plików można dołączać?", answer: "Do pliku PDF można dołączyć dowolny typ pliku." },
@@ -1337,9 +1337,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyodrębnij i pobierz", description: "Pobierz pojedyncze pliki lub wszystkie w formacie ZIP." },
     ],
     useCases: [
-      { title: "Uzyskaj dostęp do plików źródłowych", description: "Wyodrębnij oryginalne pliki danych z raportów PDF.", icon: 'download' },
-      { title: "Odzyskaj załączniki", description: "Odzyskaj osadzone pliki z pakietów PDF.", icon: 'folder-open' },
-      { title: "Ekstrakcja wsadowa", description: "Wyodrębnij załączniki z wielu plików PDF jednocześnie.", icon: 'layers' },
+      { title: "Uzyskaj dostęp do plików źródłowych", description: "Wyodrębnij oryginalne pliki danych z raportów PDF.", icon: "download" },
+      { title: "Odzyskaj załączniki", description: "Odzyskaj osadzone pliki z pakietów PDF.", icon: "folder-open" },
+      { title: "Ekstrakcja wsadowa", description: "Wyodrębnij załączniki z wielu plików PDF jednocześnie.", icon: "layers" },
     ],
     faq: [
       { question: "A co jeśli nie ma załączników?", answer: "Narzędzie wskaże, czy nie znaleziono żadnych osadzonych plików." },
@@ -1360,9 +1360,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Pobierz", description: "Pobierz pojedyncze obrazy lub wszystkie obrazy jako archiwum ZIP." },
     ],
     useCases: [
-      { title: "Odzyskiwanie zdjęć", description: "Wyodrębniaj zdjęcia i obrazy osadzone w dokumentach PDF w celu ponownego wykorzystania lub archiwizacji.", icon: 'image' },
-      { title: "Kolekcja aktywów", description: "Zbierz całą grafikę i obrazy z raportów, prezentacji i broszur w pliku PDF.", icon: 'folder' },
-      { title: "Zmiana przeznaczenia treści", description: "Wyodrębniaj obrazy z plików PDF i używaj ich w innych dokumentach, witrynach internetowych lub prezentacjach.", icon: 'refresh-cw' },
+      { title: "Odzyskiwanie zdjęć", description: "Wyodrębniaj zdjęcia i obrazy osadzone w dokumentach PDF w celu ponownego wykorzystania lub archiwizacji.", icon: "image" },
+      { title: "Kolekcja aktywów", description: "Zbierz całą grafikę i obrazy z raportów, prezentacji i broszur w pliku PDF.", icon: "folder" },
+      { title: "Zmiana przeznaczenia treści", description: "Wyodrębniaj obrazy z plików PDF i używaj ich w innych dokumentach, witrynach internetowych lub prezentacjach.", icon: "refresh-cw" },
     ],
     faq: [
       { question: "Jakie formaty obrazów są wyodrębniane?", answer: "Obrazy są wyodrębniane w ich natywnym formacie (JPEG, PNG itp.), jeśli to możliwe, lub konwertowane do formatu PNG w celu uzyskania surowych danych obrazu." },
@@ -1382,9 +1382,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować zmiany i pobrać." },
     ],
     useCases: [
-      { title: "Wyczyść pliki PDF", description: "Usuń niepotrzebne załączniki z pakietów PDF.", icon: 'trash-2' },
-      { title: "Zmień nazwę plików", description: "Zaktualizuj nazwy załączników dla przejrzystości.", icon: 'edit' },
-      { title: "Przejrzyj zawartość", description: "Kontroluj osadzone pliki przed dystrybucją.", icon: 'eye' },
+      { title: "Wyczyść pliki PDF", description: "Usuń niepotrzebne załączniki z pakietów PDF.", icon: "trash-2" },
+      { title: "Zmień nazwę plików", description: "Zaktualizuj nazwy załączników dla przejrzystości.", icon: "edit" },
+      { title: "Przejrzyj zawartość", description: "Kontroluj osadzone pliki przed dystrybucją.", icon: "eye" },
     ],
     faq: [
       { question: "Czy mogę tutaj dodawać nowe załączniki?", answer: "Użyj narzędzia Dodaj załączniki, aby osadzić nowe pliki." },
@@ -1404,9 +1404,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Podziel i pobierz", description: "Kliknij opcję Podziel, aby podzielić strony i pobrać." },
     ],
     useCases: [
-      { title: "Podzielone skany", description: "Podziel zeskanowane strony zawierające wiele dokumentów.", icon: 'scissors' },
-      { title: "Zmień rozmiar stron", description: "Podziel duże strony na standardowe rozmiary papieru.", icon: 'maximize-2' },
-      { title: "Twórz karty", description: "Podziel strony na sekcje wielkości karty w celu wydrukowania.", icon: 'grid' },
+      { title: "Podzielone skany", description: "Podziel zeskanowane strony zawierające wiele dokumentów.", icon: "scissors" },
+      { title: "Zmień rozmiar stron", description: "Podziel duże strony na standardowe rozmiary papieru.", icon: "maximize-2" },
+      { title: "Twórz karty", description: "Podziel strony na sekcje wielkości karty w celu wydrukowania.", icon: "grid" },
     ],
     faq: [
       { question: "Czy mogę podzielić na nierówne części?", answer: "Obecnie podziały są równe. Użyj opcji Przytnij plik PDF w przypadku sekcji niestandardowych." },
@@ -1426,9 +1426,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Dodaj i pobierz", description: "Kliknij Dodaj, aby wstawić strony i pobrać." },
     ],
     useCases: [
-      { title: "Miejsce na notatki", description: "Dodaj puste strony na odręczne notatki.", icon: 'edit-3' },
+      { title: "Miejsce na notatki", description: "Dodaj puste strony na odręczne notatki.", icon: "edit-3" },
       { title: "Dzielniki sekcji", description: "Wstaw puste strony pomiędzy sekcjami dokumentu.", icon: 'minus' },
-      { title: "Przygotowanie do druku", description: "Dodaj strony w celu wyrównania druku dwustronnego.", icon: 'printer' },
+      { title: "Przygotowanie do druku", description: "Dodaj strony w celu wyrównania druku dwustronnego.", icon: "printer" },
     ],
     faq: [
       { question: "Czy mogę wybrać rozmiar strony?", answer: "Tak, puste strony mogą pasować do istniejących stron lub używać niestandardowych wymiarów." },
@@ -1448,9 +1448,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Odwróć i pobierz", description: "Kliknij opcję Odwróć, aby zmienić kolejność stron i pobrać." },
     ],
     useCases: [
-      { title: "Napraw kolejność skanowania", description: "Popraw dokumenty zeskanowane w odwrotnej kolejności.", icon: 'refresh-cw' },
-      { title: "Przygotowanie do druku", description: "Odwróć strony dla określonych wymagań drukowania.", icon: 'printer' },
-      { title: "Zmiana kolejności dokumentów", description: "Szybko zmieniaj kolejność dokumentów do przeglądu.", icon: 'arrow-up-down' },
+      { title: "Napraw kolejność skanowania", description: "Popraw dokumenty zeskanowane w odwrotnej kolejności.", icon: "refresh-cw" },
+      { title: "Przygotowanie do druku", description: "Odwróć strony dla określonych wymagań drukowania.", icon: "printer" },
+      { title: "Zmiana kolejności dokumentów", description: "Szybko zmieniaj kolejność dokumentów do przeglądu.", icon: "arrow-up-down" },
     ],
     faq: [
       { question: "Czy zakładki są aktualizowane?", answer: "Tak, zakładki są aktualizowane, aby wskazywały właściwe odwrócone strony." },
@@ -1470,9 +1470,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Obróć i pobierz", description: "Kliknij Obróć, aby zastosować zmiany i pobrać." },
     ],
     useCases: [
-      { title: "Napraw skany", description: "Prawidłowa orientacja skanowanych dokumentów.", icon: 'rotate-cw' },
-      { title: "Strony krajobrazowe", description: "Obróć strony poziome, aby zapewnić prawidłowe przeglądanie.", icon: 'monitor' },
-      { title: "Orientacja mieszana", description: "Standaryzuj orientację strony w dokumentach mieszanych.", icon: 'layout' },
+      { title: "Napraw skany", description: "Prawidłowa orientacja skanowanych dokumentów.", icon: "rotate-cw" },
+      { title: "Strony krajobrazowe", description: "Obróć strony poziome, aby zapewnić prawidłowe przeglądanie.", icon: "monitor" },
+      { title: "Orientacja mieszana", description: "Standaryzuj orientację strony w dokumentach mieszanych.", icon: "layout" },
     ],
     faq: [
       { question: "Czy mogę inaczej obracać różne strony?", answer: "Tak, możesz zastosować różne obroty dla różnych stron." },
@@ -1493,9 +1493,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Utwórz i pobierz", description: "Kliknij Utwórz, aby przetworzyć i pobrać warstwowy plik PDF." },
     ],
     useCases: [
-      { title: "Papier firmowy", description: "Nałóż zawartość faktury na standardowe szablony papieru firmowego.", icon: 'file-text' },
-      { title: "Znaki wodne i pieczęcie", description: "Nakładaj pieczątki zabezpieczające, pieczęcie podpisu lub tła na dokumenty.", icon: 'shield' },
-      { title: "Rysowanie planów", description: "Połącz szkice architektur lub siatki układów pod blokami tekstu.", icon: 'layout' },
+      { title: "Papier firmowy", description: "Nałóż zawartość faktury na standardowe szablony papieru firmowego.", icon: "file-text" },
+      { title: "Znaki wodne i pieczęcie", description: "Nakładaj pieczątki zabezpieczające, pieczęcie podpisu lub tła na dokumenty.", icon: "shield" },
+      { title: "Rysowanie planów", description: "Połącz szkice architektur lub siatki układów pod blokami tekstu.", icon: "layout" },
     ],
     faq: [
       { question: "Jaka jest różnica między nakładką a podkładem?", answer: "Nakładka umieszcza warstwę dodatkową na głównej treści. Underlay umieszcza go na samym dole, pełniąc rolę szablonu tła." },
@@ -1574,9 +1574,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyświetl podgląd i pobierz", description: "Przejrzyj poniższy podgląd listy etykiet stron na żywo, a następnie utwórz i pobierz zaktualizowany dokument PDF." },
     ],
     useCases: [
-      { title: "Formatowanie pracy akademickiej", description: "Ustaw małe cyfry rzymskie (i, ii, iii) dla wprowadzenia i przejścia na dziesiętne dla głównych rozdziałów.", icon: 'book' },
-      { title: "Przedrostki planów inżynieryjnych", description: "Dołącz skróty podsystemów (np. „A-1”, „M-5”) jako przedrostki etykiet stron, umożliwiając zespołom wyszukiwanie i lokalizowanie stron w ciągu kilku sekund.", icon: 'layout' },
-      { title: "Niestandardowe układy naprzemienne", description: "Stosuj bardzo szczegółowe indeksowanie zakresów stron do sekwencji nieparzystych/parzystych lub nieciągłych sekcji z maksymalną swobodą.", icon: 'shuffle' },
+      { title: "Formatowanie pracy akademickiej", description: "Ustaw małe cyfry rzymskie (i, ii, iii) dla wprowadzenia i przejścia na dziesiętne dla głównych rozdziałów.", icon: "book" },
+      { title: "Przedrostki planów inżynieryjnych", description: "Dołącz skróty podsystemów (np. „A-1”, „M-5”) jako przedrostki etykiet stron, umożliwiając zespołom wyszukiwanie i lokalizowanie stron w ciągu kilku sekund.", icon: "layout" },
+      { title: "Niestandardowe układy naprzemienne", description: "Stosuj bardzo szczegółowe indeksowanie zakresów stron do sekwencji nieparzystych/parzystych lub nieciągłych sekcji z maksymalną swobodą.", icon: "shuffle" },
     ],
     faq: [
       { question: "Czym są etykiety stron i numery stron?", answer: "Zwykłe numery stron to wizualne bloki tekstu renderowane bezpośrednio na papierowym płótnie (widoczne po wydrukowaniu). Etykiety stron to jednak metadane strukturalne wprowadzone do katalogu PDF. Kontrolują zawartość wyświetlaną pod miniaturami oraz w polu wyszukiwania strony w oprogramowaniu takim jak Adobe Acrobat lub Apple Preview." },
@@ -1596,9 +1596,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Kliknij opcję Utwórz, aby wygenerować i pobrać plik PDF składający się z kilku stron." },
     ],
     useCases: [
-      { title: "Oszczędzaj papier", description: "Drukuj wiele stron na arkuszu, aby zmniejszyć zużycie papieru.", icon: 'leaf' },
-      { title: "Twórz materiały informacyjne", description: "Twórz kompaktowe materiały informacyjne na podstawie slajdów prezentacji.", icon: 'file-text' },
-      { title: "Przejrzyj dokumenty", description: "Drukuj dokumenty w zmniejszonym rozmiarze do przeglądu.", icon: 'eye' },
+      { title: "Oszczędzaj papier", description: "Drukuj wiele stron na arkuszu, aby zmniejszyć zużycie papieru.", icon: "leaf" },
+      { title: "Twórz materiały informacyjne", description: "Twórz kompaktowe materiały informacyjne na podstawie slajdów prezentacji.", icon: "file-text" },
+      { title: "Przejrzyj dokumenty", description: "Drukuj dokumenty w zmniejszonym rozmiarze do przeglądu.", icon: "eye" },
     ],
     faq: [
       { question: "Jakie układy są dostępne?", answer: "Dostępne są układy 2 na 1, 4 na 1, 6 na 1, 9 na 1 oraz niestandardowe układy siatki." },
@@ -1618,9 +1618,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Połącz i pobierz", description: "Kliknij Połącz, aby utworzyć jednostronicowy plik PDF." },
     ],
     useCases: [
-      { title: "Dokumenty internetowe", description: "Twórz przewijalne pliki PDF do umieszczania w Internecie.", icon: 'globe' },
-      { title: "Ciągłe czytanie", description: "Konwertuj dokumenty podzielone na strony na przewijanie ciągłe.", icon: 'scroll' },
-      { title: "Treść w dłuższej formie", description: "Łącz strony, aby sprawnie czytać długie formularze.", icon: 'file-text' },
+      { title: "Dokumenty internetowe", description: "Twórz przewijalne pliki PDF do umieszczania w Internecie.", icon: "globe" },
+      { title: "Ciągłe czytanie", description: "Konwertuj dokumenty podzielone na strony na przewijanie ciągłe.", icon: "scroll" },
+      { title: "Treść w dłuższej formie", description: "Łącz strony, aby sprawnie czytać długie formularze.", icon: "file-text" },
     ],
     faq: [
       { question: "Czy istnieje limit stron?", answer: "Bardzo długie dokumenty mogą być ograniczone przez pamięć przeglądarki." },
@@ -1640,9 +1640,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Eksportuj w razie potrzeby", description: "Opcjonalnie eksportuj metadane w formacie JSON." },
     ],
     useCases: [
-      { title: "Audyt dokumentów", description: "Przejrzyj właściwości dokumentu pod kątem zgodności.", icon: 'clipboard-check' },
-      { title: "Zweryfikuj autentyczność", description: "Sprawdź daty powstania i informacje o autorze.", icon: 'shield' },
-      { title: "Informacje o pliku", description: "Uzyskaj szczegółowe informacje na temat plików PDF.", icon: 'info' },
+      { title: "Audyt dokumentów", description: "Przejrzyj właściwości dokumentu pod kątem zgodności.", icon: "clipboard-check" },
+      { title: "Zweryfikuj autentyczność", description: "Sprawdź daty powstania i informacje o autorze.", icon: "shield" },
+      { title: "Informacje o pliku", description: "Uzyskaj szczegółowe informacje na temat plików PDF.", icon: "info" },
     ],
     faq: [
       { question: "Jakie metadane są wyświetlane?", answer: "Tytuł, autor, temat, słowa kluczowe, twórca, producent, daty i wersja PDF." },
@@ -1662,9 +1662,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować zmiany i pobrać." },
     ],
     useCases: [
-      { title: "Dodaj atrybucję", description: "Ustaw odpowiednie informacje o autorze i twórcy.", icon: 'user' },
-      { title: "Optymalizacja SEO", description: "Dodaj słowa kluczowe i opisy, aby ułatwić wyszukiwanie.", icon: 'search' },
-      { title: "Przygotowanie dokumentu", description: "Przed udostępnieniem przygotuj dokumenty z odpowiednimi metadanymi.", icon: 'file-check' },
+      { title: "Dodaj atrybucję", description: "Ustaw odpowiednie informacje o autorze i twórcy.", icon: "user" },
+      { title: "Optymalizacja SEO", description: "Dodaj słowa kluczowe i opisy, aby ułatwić wyszukiwanie.", icon: "search" },
+      { title: "Przygotowanie dokumentu", description: "Przed udostępnieniem przygotuj dokumenty z odpowiednimi metadanymi.", icon: "file-check" },
     ],
     faq: [
       { question: "Jakie pola mogę edytować?", answer: "Pola tytułu, autora, tematu, słów kluczowych, twórcy i producenta." },
@@ -1684,9 +1684,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Kliknij Utwórz, aby wygenerować archiwum ZIP." },
     ],
     useCases: [
-      { title: "Udostępnianie plików", description: "Połącz wiele plików PDF w celu łatwiejszego udostępniania.", icon: 'share-2' },
-      { title: "Tworzenie kopii zapasowych", description: "Twórz skompresowane kopie zapasowe kolekcji PDF.", icon: 'archive' },
-      { title: "Załączniki do e-maili", description: "Połącz pliki PDF w jeden załącznik do wiadomości e-mail.", icon: 'mail' },
+      { title: "Udostępnianie plików", description: "Połącz wiele plików PDF w celu łatwiejszego udostępniania.", icon: "share-2" },
+      { title: "Tworzenie kopii zapasowych", description: "Twórz skompresowane kopie zapasowe kolekcji PDF.", icon: "archive" },
+      { title: "Załączniki do e-maili", description: "Połącz pliki PDF w jeden załącznik do wiadomości e-mail.", icon: "mail" },
     ],
     faq: [
       { question: "Jak duża jest kompresja?", answer: "Kompresja ZIP zazwyczaj zmniejsza całkowity rozmiar o 10–30%." },
@@ -1706,9 +1706,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zaznacz filtry", description: "Zmiany tekstu · Zmiany czcionki · Nagłówki i stopki · Przeniesiony tekst" },
     ],
     useCases: [
-      { title: "Przegląd umowy", description: "Porównaj wersje umów, aby zidentyfikować zmiany.", icon: 'file-text' },
-      { title: "Rewizja dokumentu", description: "Przeglądaj zmiany pomiędzy wersjami dokumentu.", icon: 'git-compare' },
-      { title: "Zapewnienie jakości", description: "Sprawdź, czy wprowadzono wyłącznie zamierzone zmiany.", icon: 'check-circle' },
+      { title: "Przegląd umowy", description: "Porównaj wersje umów, aby zidentyfikować zmiany.", icon: "file-text" },
+      { title: "Rewizja dokumentu", description: "Przeglądaj zmiany pomiędzy wersjami dokumentu.", icon: "git-compare" },
+      { title: "Zapewnienie jakości", description: "Sprawdź, czy wprowadzono wyłącznie zamierzone zmiany.", icon: "check-circle" },
     ],
     faq: [
       { question: "Jakie rodzaje różnic są wykrywane?", answer: "Zmiany tekstu · Zmiany czcionki · Nagłówki i stopki · Przeniesiony tekst" },
@@ -1728,9 +1728,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Kliknij opcję Utwórz, aby wygenerować kafelki do wydrukowania." },
     ],
     useCases: [
-      { title: "Drukowanie plakatów", description: "Drukuj duże plakaty na standardowym papierze.", icon: 'maximize-2' },
-      { title: "Drukowanie mapy", description: "Drukuj duże mapy w sekcjach do montażu.", icon: 'map' },
-      { title: "Reprodukcja dzieł sztuki", description: "Twórz duże wydruki z grafik w pliku PDF.", icon: 'image' },
+      { title: "Drukowanie plakatów", description: "Drukuj duże plakaty na standardowym papierze.", icon: "maximize-2" },
+      { title: "Drukowanie mapy", description: "Drukuj duże mapy w sekcjach do montażu.", icon: "map" },
+      { title: "Reprodukcja dzieł sztuki", description: "Twórz duże wydruki z grafik w pliku PDF.", icon: "image" },
     ],
     faq: [
       { question: "Jakie nakładanie się powinienem zastosować?", answer: "Zaleca się zachodzenie na siebie 10-20mm, aby ułatwić wyrównanie podczas montażu." },
@@ -1751,9 +1751,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Kliknij Zastosuj, aby ujednolicić strony i pobrać." },
     ],
     useCases: [
-      { title: "Przygotowanie do druku", description: "Standaryzuj strony, aby zapewnić spójne drukowanie.", icon: 'printer' },
-      { title: "Oczyszczanie dokumentów", description: "Napraw dokumenty o niespójnych rozmiarach stron.", icon: 'file-check' },
-      { title: "Dokumenty zawodowe", description: "Twórz jednolite dokumenty do dystrybucji.", icon: 'briefcase' },
+      { title: "Przygotowanie do druku", description: "Standaryzuj strony, aby zapewnić spójne drukowanie.", icon: "printer" },
+      { title: "Oczyszczanie dokumentów", description: "Napraw dokumenty o niespójnych rozmiarach stron.", icon: "file-check" },
+      { title: "Dokumenty zawodowe", description: "Twórz jednolite dokumenty do dystrybucji.", icon: "briefcase" },
     ],
     faq: [
       { question: "Jak obsługiwana jest treść?", answer: "Treść jest skalowana w celu dopasowania do nowego rozmiaru strony lub wyśrodkowana." },
@@ -1773,9 +1773,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz", description: "Pobierz zoptymalizowany plik PDF." },
     ],
     useCases: [
-      { title: "Publikowanie w Internecie", description: "Optymalizuj pliki PDF pod kątem pobierania z witryny internetowej.", icon: 'globe' },
-      { title: "Załączniki do e-maili", description: "Twórz pliki PDF, które otwierają się szybciej dla odbiorców.", icon: 'mail' },
-      { title: "Dokumenty internetowe", description: "Popraw jakość przeglądania dokumentów online.", icon: 'cloud' },
+      { title: "Publikowanie w Internecie", description: "Optymalizuj pliki PDF pod kątem pobierania z witryny internetowej.", icon: "globe" },
+      { title: "Załączniki do e-maili", description: "Twórz pliki PDF, które otwierają się szybciej dla odbiorców.", icon: "mail" },
+      { title: "Dokumenty internetowe", description: "Popraw jakość przeglądania dokumentów online.", icon: "cloud" },
     ],
     faq: [
       { question: "Co to jest linearyzacja?", answer: "Linearyzacja reorganizuje dane PDF w celu stopniowego ładowania." },
@@ -1795,9 +1795,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Eksportuj raport", description: "Opcjonalnie eksportuj wymiary jako JSON." },
     ],
     useCases: [
-      { title: "Planowanie druku", description: "Przed drukowaniem sprawdź rozmiary stron.", icon: 'printer' },
-      { title: "Analiza dokumentów", description: "Identyfikuj strony o nietypowych wymiarach.", icon: 'search' },
-      { title: "Kontrola jakości", description: "Sprawdź, czy rozmiary stron odpowiadają specyfikacjom.", icon: 'check-circle' },
+      { title: "Planowanie druku", description: "Przed drukowaniem sprawdź rozmiary stron.", icon: "printer" },
+      { title: "Analiza dokumentów", description: "Identyfikuj strony o nietypowych wymiarach.", icon: "search" },
+      { title: "Kontrola jakości", description: "Sprawdź, czy rozmiary stron odpowiadają specyfikacjom.", icon: "check-circle" },
     ],
     faq: [
       { question: "Jakie jednostki są dostępne?", answer: "Cale, milimetry, centymetry i punkty." },
@@ -1817,9 +1817,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz", description: "Pobierz nieograniczony plik PDF." },
     ],
     useCases: [
-      { title: "Włącz drukowanie", description: "Odblokuj pliki PDF uniemożliwiające drukowanie.", icon: 'printer' },
-      { title: "Włącz kopiowanie", description: "Zezwalaj na zaznaczanie i kopiowanie tekstu.", icon: 'copy' },
-      { title: "Włącz edycję", description: "Usuń ograniczenia dotyczące edycji dokumentu.", icon: 'edit' },
+      { title: "Włącz drukowanie", description: "Odblokuj pliki PDF uniemożliwiające drukowanie.", icon: "printer" },
+      { title: "Włącz kopiowanie", description: "Zezwalaj na zaznaczanie i kopiowanie tekstu.", icon: "copy" },
+      { title: "Włącz edycję", description: "Usuń ograniczenia dotyczące edycji dokumentu.", icon: "edit" },
     ],
     faq: [
       { question: "Czy to jest legalne?", answer: "Usuwanie ograniczeń z dokumentów, które posiadasz lub do których masz prawa, jest ogólnie zgodne z prawem." },
@@ -1839,9 +1839,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz", description: "Jeśli operacja się powiedzie, pobierz naprawiony plik PDF." },
     ],
     useCases: [
-      { title: "Odzyskaj pliki", description: "Odzyskaj pliki PDF, które nie otwierają się poprawnie.", icon: 'refresh-cw' },
-      { title: "Napraw błędy", description: "Napraw pliki wyświetlające komunikaty o błędach.", icon: 'wrench' },
-      { title: "Przywróć zawartość", description: "Odzyskaj zawartość z częściowo uszkodzonych plików.", icon: 'file-check' },
+      { title: "Odzyskaj pliki", description: "Odzyskaj pliki PDF, które nie otwierają się poprawnie.", icon: "refresh-cw" },
+      { title: "Napraw błędy", description: "Napraw pliki wyświetlające komunikaty o błędach.", icon: "wrench" },
+      { title: "Przywróć zawartość", description: "Odzyskaj zawartość z częściowo uszkodzonych plików.", icon: "file-check" },
     ],
     faq: [
       { question: "Czy wszystkie pliki PDF można naprawić?", answer: "Sukces zależy od rodzaju i zakresu korupcji." },
@@ -1862,9 +1862,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zaszyfruj i pobierz", description: "Kliknij Zaszyfruj, aby zabezpieczyć plik PDF i pobrać." },
     ],
     useCases: [
-      { title: "Dokumenty poufne", description: "Chroń poufne dokumenty biznesowe.", icon: 'lock' },
-      { title: "Pliki osobiste", description: "Zabezpiecz dokumenty osobiste, takie jak zeznania podatkowe.", icon: 'shield' },
-      { title: "Kontrolowana dystrybucja", description: "Ogranicz to, co odbiorcy mogą zrobić z dokumentami.", icon: 'key' },
+      { title: "Dokumenty poufne", description: "Chroń poufne dokumenty biznesowe.", icon: "lock" },
+      { title: "Pliki osobiste", description: "Zabezpiecz dokumenty osobiste, takie jak zeznania podatkowe.", icon: "shield" },
+      { title: "Kontrolowana dystrybucja", description: "Ogranicz to, co odbiorcy mogą zrobić z dokumentami.", icon: "key" },
     ],
     faq: [
       { question: "Jaka jest różnica między hasłami użytkownika i właściciela?", answer: "Hasło użytkownika uniemożliwia otwarcie; hasło właściciela kontroluje uprawnienia." },
@@ -1884,9 +1884,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Oczyść i pobierz", description: "Kliknij opcję Oczyść, aby wyczyścić plik PDF i pobrać." },
     ],
     useCases: [
-      { title: "Publiczne wydanie", description: "Przygotuj dokumenty do publicznej dystrybucji.", icon: 'globe' },
-      { title: "Ochrona prywatności", description: "Usuń dane osobowe przed udostępnieniem.", icon: 'shield' },
-      { title: "Zgodność z bezpieczeństwem", description: "Spełniaj wymagania bezpieczeństwa dotyczące obsługi dokumentów.", icon: 'check-circle' },
+      { title: "Publiczne wydanie", description: "Przygotuj dokumenty do publicznej dystrybucji.", icon: "globe" },
+      { title: "Ochrona prywatności", description: "Usuń dane osobowe przed udostępnieniem.", icon: "shield" },
+      { title: "Zgodność z bezpieczeństwem", description: "Spełniaj wymagania bezpieczeństwa dotyczące obsługi dokumentów.", icon: "check-circle" },
     ],
     faq: [
       { question: "Jakie ukryte dane są usuwane?", answer: "Metadane, skrypty, załączniki, komentarze, dane formularzy i warstwy ukryte." },
@@ -1907,9 +1907,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Zastosuj redakcję", description: "Dostosuj wygląd zaciemniania i zastosuj do wybranych dopasowań." },
     ],
     useCases: [
-      { title: "Zgodność z przepisami dotyczącymi prywatności", description: "Redaguj dane osobowe, aby zachować zgodność z RODO, HIPAA lub innymi przepisami.", icon: 'shield' },
-      { title: "Dokumenty prawne", description: "Przed udostępnieniem usuń poufne dane z dokumentów prawnych.", icon: 'scale' },
-      { title: "Dokumentacja finansowa", description: "Redaguj numery kont, numery SSN lub dane finansowe z wyciągów.", icon: 'credit-card' },
+      { title: "Zgodność z przepisami dotyczącymi prywatności", description: "Redaguj dane osobowe, aby zachować zgodność z RODO, HIPAA lub innymi przepisami.", icon: "shield" },
+      { title: "Dokumenty prawne", description: "Przed udostępnieniem usuń poufne dane z dokumentów prawnych.", icon: "scale" },
+      { title: "Dokumentacja finansowa", description: "Redaguj numery kont, numery SSN lub dane finansowe z wyciągów.", icon: "credit-card" },
     ],
     faq: [
       { question: "Czy redakcja jest trwała?", answer: "Tak, redakcja trwale usuwa tekst źródłowy. Oryginalnej zawartości nie można odzyskać. Zawsze twórz kopię zapasową oryginalnego pliku." },
@@ -1921,7 +1921,7 @@ export const toolContentPl: Record<string, ToolContent> = {
 
   'redact-pdf': {
     title: "Zaciemnij i zamaskuj PDF",
-    metaDescription: "Wizualne zaciemnianie, mozaika lub rozmycie poufnych informacji w plikach PDF. Nieodwracalna rasteryzacja i czyszczenie metadanych dla ochrony prywatności.",
+    metaDescription: "Treść PDF zamazana, zamazana lub pikselowana. Eksportuj spłaszczone strony i usuwaj metadane lokalnie w przeglądarce.",
     keywords: ["zaciemnij pdf", "cenzura pdf", "mozaika pdf", "rozmycie pdf", "ochrona prywatności pdf", "bezpieczny edytor pdf"],
     description: "\n      <p>Zaciemnij i zamaskuj PDF pozwala na trwałe i bezpieczne ukrywanie wrażliwych danych w dokumentach PDF. Zaznacz obszary na stronach i zastosuj zaciemnienie, biały pasek, mozaikę lub rozmycie.</p>\n      <p>Narzędzie trwale usuwa podlegający tekst i obiekty wektorowe poprzez nieodwracalną fizyczną rasteryzację pikseli, uniemożliwiając odzyskanie treści.</p>\n      <p>Wszystko odbywa się lokalnie w przeglądarce bez wysyłania plików na serwer.</p>\n    ",
     howToUse: [
@@ -1931,9 +1931,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Pobierz zabezpieczony PDF", description: "Kliknij przycisk generowania i pobierz zanonimizowany plik." },
     ],
     useCases: [
-      { title: "Zgodność z RODO", description: "Usuwanie danych osobowych przed udostępnieniem dokumentów.", icon: 'shield' },
-      { title: "Dokumenty prawne", description: "Ukrywanie poufnych danych w umowach i pismach procesowych.", icon: 'file-text' },
-      { title: "Dane finansowe", description: "Cenzurowanie numerów kont bankowych i kwot na wyciągach.", icon: 'credit-card' },
+      { title: "Zgodność z RODO", description: "Usuwanie danych osobowych przed udostępnieniem dokumentów.", icon: "shield" },
+      { title: "Dokumenty prawne", description: "Ukrywanie poufnych danych w umowach i pismach procesowych.", icon: "file-text" },
+      { title: "Dane finansowe", description: "Cenzurowanie numerów kont bankowych i kwot na wyciągach.", icon: "credit-card" },
     ],
     faq: [
       { question: "Czy ukryte dane można odzyskać?", answer: "Nie, proces jest w 100% nieodwracalny, a tekst pod spodem zostaje całkowicie zniszczony." },
@@ -1953,9 +1953,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Odszyfruj i pobierz", description: "Kliknij Odszyfruj, aby usunąć ochronę i pobrać." },
     ],
     useCases: [
-      { title: "Usuń stare hasła", description: "Odblokuj dokumenty, gdy hasło nie jest już potrzebne.", icon: 'unlock' },
-      { title: "Uprość dostęp", description: "Twórz niezabezpieczone kopie, aby ułatwić udostępnianie.", icon: 'share-2' },
-      { title: "Dokumenty archiwalne", description: "Usuń hasła przed długoterminową archiwizacją.", icon: 'archive' },
+      { title: "Usuń stare hasła", description: "Odblokuj dokumenty, gdy hasło nie jest już potrzebne.", icon: "unlock" },
+      { title: "Uprość dostęp", description: "Twórz niezabezpieczone kopie, aby ułatwić udostępnianie.", icon: "share-2" },
+      { title: "Dokumenty archiwalne", description: "Usuń hasła przed długoterminową archiwizacją.", icon: "archive" },
     ],
     faq: [
       { question: "Czy może złamać nieznane hasła?", answer: "Nie, musisz znać aktualne hasło, aby je odszyfrować." },
@@ -1975,9 +1975,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Spłaszcz i pobierz", description: "Kliknij opcję Spłaszcz, aby utworzyć statyczny plik PDF." },
     ],
     useCases: [
-      { title: "Sfinalizuj formularze", description: "Zablokuj wypełnione dane formularza, aby zapobiec zmianom.", icon: 'lock' },
-      { title: "Zachowaj adnotacje", description: "Dodaj adnotacje na stałe do dokumentu.", icon: 'check-circle' },
-      { title: "Dokumenty archiwalne", description: "Twórz wersje nieedytowalne do archiwizacji.", icon: 'archive' },
+      { title: "Sfinalizuj formularze", description: "Zablokuj wypełnione dane formularza, aby zapobiec zmianom.", icon: "lock" },
+      { title: "Zachowaj adnotacje", description: "Dodaj adnotacje na stałe do dokumentu.", icon: "check-circle" },
+      { title: "Dokumenty archiwalne", description: "Twórz wersje nieedytowalne do archiwizacji.", icon: "archive" },
     ],
     faq: [
       { question: "Czy spłaszczenie jest odwracalne?", answer: "Nie, spłaszczenie jest trwałe. Zachowaj kopię zapasową oryginału." },
@@ -1997,9 +1997,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz", description: "Pobierz plik PDF pozbawiony metadanych." },
     ],
     useCases: [
-      { title: "Ochrona prywatności", description: "Usuń dane osobowe przed udostępnieniem.", icon: 'shield' },
-      { title: "Dokumenty anonimowe", description: "Twórz dokumenty bez podawania autora.", icon: 'user-x' },
-      { title: "Czysta dystrybucja", description: "Rozpowszechniaj dokumenty bez wewnętrznych metadanych.", icon: 'send' },
+      { title: "Ochrona prywatności", description: "Usuń dane osobowe przed udostępnieniem.", icon: "shield" },
+      { title: "Dokumenty anonimowe", description: "Twórz dokumenty bez podawania autora.", icon: "user-x" },
+      { title: "Czysta dystrybucja", description: "Rozpowszechniaj dokumenty bez wewnętrznych metadanych.", icon: "send" },
     ],
     faq: [
       { question: "Jakie metadane są usuwane?", answer: "Autor, tytuł, temat, słowa kluczowe, daty, informacje o twórcy i producencie." },
@@ -2019,9 +2019,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj i pobierz", description: "Ustaw hasło właściciela i pobierz zastrzeżony plik PDF." },
     ],
     useCases: [
-      { title: "Zapobiegaj kopiowaniu", description: "Wyłącz kopiowanie tekstu, aby chronić zawartość.", icon: 'copy' },
-      { title: "Drukowanie kontrolne", description: "Ogranicz lub zezwól na drukowanie dokumentów.", icon: 'printer' },
-      { title: "Ogranicz edycję", description: "Zapobiegaj zmianom w dokumencie.", icon: 'edit-3' },
+      { title: "Zapobiegaj kopiowaniu", description: "Wyłącz kopiowanie tekstu, aby chronić zawartość.", icon: "copy" },
+      { title: "Drukowanie kontrolne", description: "Ogranicz lub zezwól na drukowanie dokumentów.", icon: "printer" },
+      { title: "Ogranicz edycję", description: "Zapobiegaj zmianom w dokumencie.", icon: "edit-3" },
     ],
     faq: [
       { question: "Czy potrzebuję hasła?", answer: "Aby wymusić uprawnienia, wymagane jest hasło właściciela." },
@@ -2041,9 +2041,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz dokument Worda", description: "Pobierz w pełni edytowalny plik DOCX." },
     ],
     useCases: [
-      { title: "Edytuj umowy", description: "Konwertuj umowy PDF na Word w celu edycji i korekty.", icon: 'file-text' },
-      { title: "Aktualizacja CV", description: "Aktualizuj stare CV w pliku PDF, konwertując je do formatu Word.", icon: 'user' },
-      { title: "Zmiana przeznaczenia treści", description: "Wyodrębnij zawartość z raportów PDF dla innych dokumentów.", icon: 'copy' },
+      { title: "Edytuj umowy", description: "Konwertuj umowy PDF na Word w celu edycji i korekty.", icon: "file-text" },
+      { title: "Aktualizacja CV", description: "Aktualizuj stare CV w pliku PDF, konwertując je do formatu Word.", icon: "user" },
+      { title: "Zmiana przeznaczenia treści", description: "Wyodrębnij zawartość z raportów PDF dla innych dokumentów.", icon: "copy" },
     ],
     faq: [
       { question: "Czy formatowanie zostało zachowane?", answer: "Tak, narzędzie ma na celu jak najdokładniejsze zachowanie układu, czcionek i obrazów." },
@@ -2063,9 +2063,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Kliknij Konwertuj, aby wygenerować plik Markdown i pobrać." },
     ],
     useCases: [
-      { title: "Dokumentacja", description: "Konwertuj podręczniki i przewodniki w pliku PDF do Markdown, aby uzyskać dokumentację kontrolowaną przez wersję.", icon: 'file-text' },
-      { title: "Robienie notatek", description: "Wyodrębnij treść z artykułów i książek w pliku PDF do swojego systemu notatek.", icon: 'edit-3' },
-      { title: "Migracja treści", description: "Przeprowadź migrację treści PDF na platformy CMS obsługujące Markdown.", icon: 'copy' },
+      { title: "Dokumentacja", description: "Konwertuj podręczniki i przewodniki w pliku PDF do Markdown, aby uzyskać dokumentację kontrolowaną przez wersję.", icon: "file-text" },
+      { title: "Robienie notatek", description: "Wyodrębnij treść z artykułów i książek w pliku PDF do swojego systemu notatek.", icon: "edit-3" },
+      { title: "Migracja treści", description: "Przeprowadź migrację treści PDF na platformy CMS obsługujące Markdown.", icon: "copy" },
     ],
     faq: [
       { question: "Czy formatowanie zostało zachowane?", answer: "Narzędzie próbuje wykryć nagłówki na podstawie rozmiaru czcionki i list punktorowych/numerowanych. Złożone układy mogą wymagać ręcznej regulacji." },
@@ -2086,9 +2086,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Przetwarzaj i pobieraj", description: "Kliknij opcję Prostuj, aby wyprostować strony i pobrać poprawiony plik PDF." },
     ],
     useCases: [
-      { title: "Zeskanowane dokumenty", description: "Napraw strony zeskanowane pod kątem z podajników dokumentów.", icon: 'scan' },
-      { title: "Skany mobilne", description: "Popraw przechylone zdjęcia dokumentów zrobione smartfonami.", icon: 'smartphone' },
-      { title: "Renowacja archiwum", description: "Wyprostuj stare zeskanowane archiwa, aby uzyskać lepszą czytelność.", icon: 'archive' },
+      { title: "Zeskanowane dokumenty", description: "Napraw strony zeskanowane pod kątem z podajników dokumentów.", icon: "scan" },
+      { title: "Skany mobilne", description: "Popraw przechylone zdjęcia dokumentów zrobione smartfonami.", icon: "smartphone" },
+      { title: "Renowacja archiwum", description: "Wyprostuj stare zeskanowane archiwa, aby uzyskać lepszą czytelność.", icon: "archive" },
     ],
     faq: [
       { question: "Jak dokładne jest wykrywanie kąta?", answer: "Narzędzie wykorzystuje analizę wariancji profilu projekcji do wykrywania kątów skosu do ±10 stopni z dużą dokładnością. Automatycznie pomija strony o kącie mniejszym niż 0.3 stopnia." },
@@ -2110,9 +2110,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Wygeneruj układ broszury i pobierz do druku." },
     ],
     useCases: [
-      { title: "Broszury", description: "Twórz składane broszury ze standardowych dokumentów PDF.", icon: 'book-open' },
-      { title: "Ziny", description: "Twórz samodzielnie publikowane ziny z odpowiednim rozmieszczeniem stron.", icon: 'book' },
-      { title: "Programy wydarzeń", description: "Twórz profesjonalne broszury z programami wydarzeń.", icon: 'calendar' },
+      { title: "Broszury", description: "Twórz składane broszury ze standardowych dokumentów PDF.", icon: "book-open" },
+      { title: "Ziny", description: "Twórz samodzielnie publikowane ziny z odpowiednim rozmieszczeniem stron.", icon: "book" },
+      { title: "Programy wydarzeń", description: "Twórz profesjonalne broszury z programami wydarzeń.", icon: "calendar" },
     ],
     faq: [
       { question: "Co to jest wiązanie siodłowe?", answer: "Zszywanie siodłowe to metoda oprawy, w której złożone arkusze są zagnieżdżane i zszywane w zagięciu." },
@@ -2132,9 +2132,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Przetwarzaj strony i pobieraj obrazy pojedynczo lub jako archiwum ZIP." },
     ],
     useCases: [
-      { title: "Media społecznościowe", description: "Konwertuj slajdy PDF na obrazy do publikowania w mediach społecznościowych.", icon: 'share-2' },
-      { title: "Miniatury", description: "Generuj miniatury podglądu dokumentów PDF.", icon: 'image' },
-      { title: "Publikowanie w Internecie", description: "Konwertuj zawartość PDF na formaty obrazów przyjazne dla Internetu.", icon: 'globe' },
+      { title: "Media społecznościowe", description: "Konwertuj slajdy PDF na obrazy do publikowania w mediach społecznościowych.", icon: "share-2" },
+      { title: "Miniatury", description: "Generuj miniatury podglądu dokumentów PDF.", icon: "image" },
+      { title: "Publikowanie w Internecie", description: "Konwertuj zawartość PDF na formaty obrazów przyjazne dla Internetu.", icon: "globe" },
     ],
     faq: [
       { question: "Jakiego DPI powinienem użyć?", answer: "72 DPI dla ekranu, 150 DPI do ogólnego użytku, 300 DPI dla jakości druku." },
@@ -2154,9 +2154,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Wygeneruj stylizowany plik PDF i pobierz." },
     ],
     useCases: [
-      { title: "Dokumentacja", description: "Konwertuj pliki i dokumenty README na pliki PDF, które można udostępniać.", icon: 'file-text' },
-      { title: "Eksport notatek", description: "Eksportuj notatki Markdown do pliku PDF w celu wydrukowania lub udostępnienia.", icon: 'edit-3' },
-      { title: "Raporty", description: "Twórz raporty z Markdown z profesjonalną stylizacją.", icon: 'bar-chart' },
+      { title: "Dokumentacja", description: "Konwertuj pliki i dokumenty README na pliki PDF, które można udostępniać.", icon: "file-text" },
+      { title: "Eksport notatek", description: "Eksportuj notatki Markdown do pliku PDF w celu wydrukowania lub udostępnienia.", icon: "edit-3" },
+      { title: "Raporty", description: "Twórz raporty z Markdown z profesjonalną stylizacją.", icon: "bar-chart" },
     ],
     faq: [
       { question: "Czy obsługiwany jest GitHub Flavored Markdown?", answer: "Tak, obsługiwane są tabele, listy zadań, przekreślenia i inne funkcje GFM." },
@@ -2176,9 +2176,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Konwertuj do formatu PDF z osadzonymi załącznikami i pobierz wynik." },
     ],
     useCases: [
-      { title: "Zapisy prawne", description: "Archiwizuj ważne e-maile w pliku PDF z osadzonymi załącznikami do dokumentacji prawnej.", icon: 'scale' },
-      { title: "Archiwa biznesowe", description: "Konwertuj korespondencję biznesową do formatu PDF w celu długoterminowego przechowywania dokumentacji.", icon: 'briefcase' },
-      { title: "Ochrona dowodów", description: "Zapisuj dowody w wiadomościach e-mail z wbudowanymi obrazami i załącznikami w nieedytowalnym formacie PDF.", icon: 'shield' },
+      { title: "Zapisy prawne", description: "Archiwizuj ważne e-maile w pliku PDF z osadzonymi załącznikami do dokumentacji prawnej.", icon: "scale" },
+      { title: "Archiwa biznesowe", description: "Konwertuj korespondencję biznesową do formatu PDF w celu długoterminowego przechowywania dokumentacji.", icon: "briefcase" },
+      { title: "Ochrona dowodów", description: "Zapisuj dowody w wiadomościach e-mail z wbudowanymi obrazami i załącznikami w nieedytowalnym formacie PDF.", icon: "shield" },
     ],
     faq: [
       { question: "Jakie formaty e-maili są obsługiwane?", answer: "W pełni obsługiwane są zarówno pliki .eml (RFC 822), jak i .msg (Microsoft Outlook)." },
@@ -2200,9 +2200,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Konwertuj do formatu PDF i pobierz swój komiks." },
     ],
     useCases: [
-      { title: "Kompatybilność z czytnikiem e-booków", description: "Konwertuj CBZ na PDF dla e-czytników obsługujących tylko format PDF.", icon: 'book' },
-      { title: "Archiwa komiksów", description: "Twórz archiwa PDF swojej cyfrowej kolekcji komiksów.", icon: 'archive' },
-      { title: "Przygotowanie do druku", description: "Konwertuj cyfrowe komiksy na format PDF w celu drukowania.", icon: 'printer' },
+      { title: "Kompatybilność z czytnikiem e-booków", description: "Konwertuj CBZ na PDF dla e-czytników obsługujących tylko format PDF.", icon: "book" },
+      { title: "Archiwa komiksów", description: "Twórz archiwa PDF swojej cyfrowej kolekcji komiksów.", icon: "archive" },
+      { title: "Przygotowanie do druku", description: "Konwertuj cyfrowe komiksy na format PDF w celu drukowania.", icon: "printer" },
     ],
     faq: [
       { question: "Co to jest format CBZ?", answer: "CBZ to archiwum ZIP zawierające strony komiksów w postaci plików graficznych, których nazwy zmieniono z rozszerzeniem .cbz." },
@@ -2222,9 +2222,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Konwertuj do formatu PDF/A i pobierz dokument archiwalny." },
     ],
     useCases: [
-      { title: "Archiwa prawne", description: "Konwertuj dokumenty prawne do formatu PDF/A w celu długoterminowego przechowywania dopuszczonego przez sąd.", icon: 'scale' },
-      { title: "Dokumenty rządowe", description: "Przestrzegaj rządowych wymogów archiwalnych, korzystając z formatu PDF/A.", icon: 'building' },
-      { title: "Archiwa biznesowe", description: "Zachowaj ważne dokumenty biznesowe, aby były dostępne w przyszłości.", icon: 'archive' },
+      { title: "Archiwa prawne", description: "Konwertuj dokumenty prawne do formatu PDF/A w celu długoterminowego przechowywania dopuszczonego przez sąd.", icon: "scale" },
+      { title: "Dokumenty rządowe", description: "Przestrzegaj rządowych wymogów archiwalnych, korzystając z formatu PDF/A.", icon: "building" },
+      { title: "Archiwa biznesowe", description: "Zachowaj ważne dokumenty biznesowe, aby były dostępne w przyszłości.", icon: "archive" },
     ],
     faq: [
       { question: "Którego poziomu PDF/A powinienem używać?", answer: "Do większości zastosowań zalecany jest format PDF/A-2b. Użyj 1b, aby uzyskać maksymalną kompatybilność lub 3b, jeśli potrzebujesz osadzonych plików." },
@@ -2244,9 +2244,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Konwertuj i pobierz", description: "Przetwórz plik i pobierz plik PDF niezależny od czcionki." },
     ],
     useCases: [
-      { title: "Przygotowanie do druku", description: "Wyeliminuj problemy z czcionkami w drukarniach komercyjnych, usuwając wszystkie zależności czcionek.", icon: 'printer' },
-      { title: "Udostępnianie międzyplatformowe", description: "Udostępniaj dokumenty, które wyglądają identycznie na każdym urządzeniu, niezależnie od zainstalowanych czcionek.", icon: 'share-2' },
-      { title: "Licencjonowanie czcionek", description: "Usuń osadzone czcionki, aby uniknąć problemów licencyjnych podczas dystrybucji dokumentów.", icon: 'shield' },
+      { title: "Przygotowanie do druku", description: "Wyeliminuj problemy z czcionkami w drukarniach komercyjnych, usuwając wszystkie zależności czcionek.", icon: "printer" },
+      { title: "Udostępnianie międzyplatformowe", description: "Udostępniaj dokumenty, które wyglądają identycznie na każdym urządzeniu, niezależnie od zainstalowanych czcionek.", icon: "share-2" },
+      { title: "Licencjonowanie czcionek", description: "Usuń osadzone czcionki, aby uniknąć problemów licencyjnych podczas dystrybucji dokumentów.", icon: "shield" },
     ],
     faq: [
       { question: "Jak to działa?", answer: "Narzędzie renderuje każdą stronę w wysokiej rozdzielczości (wybrane DPI) i odtwarza plik PDF z tych obrazów, usuwając wszystkie zależności czcionek, zachowując jednocześnie wygląd." },
@@ -2269,9 +2269,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Eksportuj i pobieraj", description: "Wybierz format wyjściowy (JSON/Markdown/CSV) i pobierz." },
     ],
     useCases: [
-      { title: "Analiza danych", description: "Wyodrębnij dane z tabeli do analizy w arkuszach kalkulacyjnych lub bazach danych.", icon: 'bar-chart' },
-      { title: "Przetwarzanie raportu", description: "Pobieraj tabele z raportów PDF do dalszego przetwarzania.", icon: 'file-text' },
-      { title: "Dokumentacja", description: "Konwertuj tabele PDF do Markdown w celu uzyskania dokumentacji technicznej.", icon: 'book' },
+      { title: "Analiza danych", description: "Wyodrębnij dane z tabeli do analizy w arkuszach kalkulacyjnych lub bazach danych.", icon: "bar-chart" },
+      { title: "Przetwarzanie raportu", description: "Pobieraj tabele z raportów PDF do dalszego przetwarzania.", icon: "file-text" },
+      { title: "Dokumentacja", description: "Konwertuj tabele PDF do Markdown w celu uzyskania dokumentacji technicznej.", icon: "book" },
     ],
     faq: [
       { question: "Czy może wykryć złożone tabele?", answer: "Narzędzie najlepiej sprawdza się w przypadku prostych tabel siatkowych. Złożone, połączone komórki mogą wymagać ręcznej regulacji." },
@@ -2292,9 +2292,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Zapisz i pobierz", description: "Pobierz zmodyfikowany plik PDF z zastosowanymi zmianami warstw." },
     ],
     useCases: [
-      { title: "Rysunki techniczne", description: "Zarządzaj warstwami w eksporcie CAD, aby pokazywać/ukrywać wymiary, adnotacje lub różne widoki.", icon: 'ruler' },
-      { title: "Edycja mapy", description: "Przełączaj różne warstwy mapy, takie jak topografia, drogi i etykiety, aby uzyskać niestandardowe wydruki map.", icon: 'map' },
-      { title: "Przygotowanie do druku", description: "Przygotuj warstwowe pliki PDF do druku, przełączając odpowiednie warstwy dla różnych wersji.", icon: 'printer' },
+      { title: "Rysunki techniczne", description: "Zarządzaj warstwami w eksporcie CAD, aby pokazywać/ukrywać wymiary, adnotacje lub różne widoki.", icon: "ruler" },
+      { title: "Edycja mapy", description: "Przełączaj różne warstwy mapy, takie jak topografia, drogi i etykiety, aby uzyskać niestandardowe wydruki map.", icon: "map" },
+      { title: "Przygotowanie do druku", description: "Przygotuj warstwowe pliki PDF do druku, przełączając odpowiednie warstwy dla różnych wersji.", icon: "printer" },
     ],
     faq: [
       { question: "Co to są warstwy PDF (OCG)?", answer: "Opcjonalne grupy treści (OCG) to warstwy w pliku PDF, które można wyświetlać lub ukrywać. Są powszechnie stosowane w rysunkach CAD, mapach i złożonych dokumentach." },
@@ -2315,9 +2315,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Wydrukuj lub pobierz", description: "Wydrukuj dokument lub pobierz go, aby uzyskać dostęp w trybie offline, jeśli zajdzie taka potrzeba." },
     ],
     useCases: [
-      { title: "Przegląd dokumentów", description: "Szybko przeglądaj dokumenty PDF bez instalowania żadnego oprogramowania.", icon: 'book-open' },
-      { title: "Czytanie mobilne", description: "Czytaj dokumenty PDF na dowolnym urządzeniu z przeglądarką internetową.", icon: 'smartphone' },
-      { title: "Szybki podgląd", description: "Przeglądaj pliki PDF przed podjęciem decyzji o ich pobraniu lub wydrukowaniu.", icon: 'eye' },
+      { title: "Przegląd dokumentów", description: "Szybko przeglądaj dokumenty PDF bez instalowania żadnego oprogramowania.", icon: "book-open" },
+      { title: "Czytanie mobilne", description: "Czytaj dokumenty PDF na dowolnym urządzeniu z przeglądarką internetową.", icon: "smartphone" },
+      { title: "Szybki podgląd", description: "Przeglądaj pliki PDF przed podjęciem decyzji o ich pobraniu lub wydrukowaniu.", icon: "eye" },
     ],
     faq: [
       { question: "Czy mój dokument jest bezpieczny?", answer: "Tak, Twój dokument jest przetwarzany całkowicie w Twojej przeglądarce i nigdy nie jest przesyłany na żaden serwer." },
@@ -2328,7 +2328,7 @@ export const toolContentPl: Record<string, ToolContent> = {
 
   'digital-sign-pdf': {
     title: "Podpis cyfrowy",
-    metaDescription: "Dodaj podpisy cyfrowe X.509 do dokumentów PDF. Podpisuj pliki PDF certyfikatami PFX, P12 lub PEM, aby zachować ważność prawną.",
+    metaDescription: "Cyfrowo podpisuj dokumenty PDF za pomocą certyfikatów PFX, P12 lub PEM. Dodaj podpisy oparte na certyfikatach lokalnie w przeglądarce.",
     keywords: ["podpis cyfrowy PDF", "certyfikat X.509", "podpis PFX w PDF", "podpis P12 w PDF", "podpis PEM w PDF", "podpisz PDF zgodnie z prawem"],
     description: "\n      <p>Podpis cyfrowy umożliwia dodawanie kryptograficznych podpisów cyfrowych X.509 do dokumentów PDF. W przeciwieństwie do podpisów prostych, podpisy cyfrowe zapewniają ważność prawną i weryfikację integralności dokumentu.</p>\n      <p>Prześlij plik certyfikatu (w formacie PFX, P12 lub PEM), wprowadź hasło i podpisz plik PDF. Możesz dodać widoczne podpisy z niestandardowym tekstem, obrazami i położeniem lub niewidoczne podpisy wyłącznie w celu zapewnienia integralności dokumentu.</p>\n      <p>Wszystkie podpisywanie odbywa się lokalnie w Twojej przeglądarce. Twój certyfikat i dokumenty nigdy nie są przesyłane na żaden serwer.</p>\n    ",
     howToUse: [
@@ -2338,9 +2338,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Podpisz i pobierz", description: "Kliknij opcję Podpisz PDF, aby zastosować podpis cyfrowy i pobrać podpisany dokument." },
     ],
     useCases: [
-      { title: "Dokumenty prawne", description: "Podpisuj umowy, porozumienia i dokumenty prawne za pomocą prawnie wiążących podpisów cyfrowych.", icon: 'scale' },
-      { title: "Zezwolenia biznesowe", description: "Podpisuj cyfrowo faktury, zamówienia i dokumenty zatwierdzające na potrzeby ścieżek audytu.", icon: 'briefcase' },
-      { title: "Integralność dokumentu", description: "Upewnij się, że po podpisaniu dokumenty nie zostały naruszone.", icon: 'shield-check' },
+      { title: "Dokumenty prawne", description: "Podpisuj umowy, porozumienia i dokumenty prawne za pomocą prawnie wiążących podpisów cyfrowych.", icon: "scale" },
+      { title: "Zezwolenia biznesowe", description: "Podpisuj cyfrowo faktury, zamówienia i dokumenty zatwierdzające na potrzeby ścieżek audytu.", icon: "briefcase" },
+      { title: "Integralność dokumentu", description: "Upewnij się, że po podpisaniu dokumenty nie zostały naruszone.", icon: "shield-check" },
     ],
     faq: [
       { question: "Jakie formaty certyfikatów są obsługiwane?", answer: "Obsługiwane są formaty certyfikatów PFX (.pfx), PKCS#12 (.p12) i PEM (.pem)." },
@@ -2361,9 +2361,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Eksportuj raport", description: "Opcjonalnie pobierz raport JSON z wynikami walidacji." },
     ],
     useCases: [
-      { title: "Weryfikacja dokumentu", description: "Sprawdź, czy podpisane dokumenty są autentyczne i nie zostały naruszone.", icon: 'shield-check' },
-      { title: "Audyt zgodności", description: "Sprawdź ważność podpisu dla celów zgodności i audytu.", icon: 'clipboard-check' },
-      { title: "Przegląd certyfikatu", description: "Wyświetl szczegóły certyfikatu i daty ważności podpisanych dokumentów.", icon: 'award' },
+      { title: "Weryfikacja dokumentu", description: "Sprawdź, czy podpisane dokumenty są autentyczne i nie zostały naruszone.", icon: "shield-check" },
+      { title: "Audyt zgodności", description: "Sprawdź ważność podpisu dla celów zgodności i audytu.", icon: "clipboard-check" },
+      { title: "Przegląd certyfikatu", description: "Wyświetl szczegóły certyfikatu i daty ważności podpisanych dokumentów.", icon: "award" },
     ],
     faq: [
       { question: "Co oznacza „ważny”?", answer: "Ważny podpis oznacza, że dokument nie został zmodyfikowany od czasu podpisania, a łańcuch certyfikatów jest zachowany w całości." },
@@ -2373,7 +2373,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'ai-pdf-reflower': {
     title: "Dostosuj układ PDF z użyciem AI",
-    metaDescription: "Ponownie składaj dokumenty PDF w responsywne układy przyjazne dla urządzeń mobilnych. Obsługa eksportu Markdown i EPUB w celu lepszego czytania na małym ekranie.",
+    metaDescription: "Zmień przepływ tekstu PDF, aby ułatwić czytanie na urządzeniach mobilnych. Eksportuj wyodrębnioną zawartość jako Markdown lub EPUB w przeglądarce.",
     keywords: ["zmiana układu PDF", "responsywny PDF", "PDF do Markdown", "eksport EPUB", "mobilny czytnik PDF"],
     description: "\n      <p>Narzędzie AI do zmiany układu PDF ułatwia czytanie dokumentów PDF na urządzeniach mobilnych. Tradycyjne pliki PDF mają stały układ, który na smartfonach i tabletach często wymaga ciągłego powiększania oraz przewijania w poziomie.</p>\n      <p>Narzędzie analizuje przepływ tekstu, odstępy między wierszami i współrzędne stron PDF, aby odtworzyć semantyczne akapity oraz hierarchię nagłówków. W dokumentach wielokolumnowych łączy kolumny w jeden responsywny przepływ, zapewniając płynne czytanie.</p>\n      <p>Obsługuje także renderowanie formuł matematycznych w LaTeX/MathJax oraz motywy czytania (Sepia, Ciemny i Zielony chroniący oczy). Układ po zmianie można jednym kliknięciem wyeksportować jako Markdown lub standardowy e-book EPUB.</p>\n    ",
     howToUse: [
@@ -2382,9 +2382,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Eksportuj dokument", description: "Gdy wynik Ci odpowiada, użyj uchwytu do przeciągania, aby wyeksportować dokument jako Markdown lub EPUB." },
     ],
     useCases: [
-      { title: "Mobilne czytanie literatury", description: "Sprawnie czytaj artykuły akademickie i raporty z badań na swoim telefonie, bez ciągłego powiększania i przewijania.", icon: 'smartphone' },
-      { title: "Konwersja e-booków", description: "Konwertuj pliki PDF zawierające dużo tekstu na pliki EPUB i importuj je do Kindle lub innych czytników e-booków.", icon: 'book' },
-      { title: "Archiwizacja notatek", description: "Bezpośrednio konwertuj ustrukturyzowaną zawartość PDF na czyste pliki Markdown, aby wzbogacić swoją osobistą bazę wiedzy.", icon: 'file-text' },
+      { title: "Mobilne czytanie literatury", description: "Sprawnie czytaj artykuły akademickie i raporty z badań na swoim telefonie, bez ciągłego powiększania i przewijania.", icon: "smartphone" },
+      { title: "Konwersja e-booków", description: "Konwertuj pliki PDF zawierające dużo tekstu na pliki EPUB i importuj je do Kindle lub innych czytników e-booków.", icon: "book" },
+      { title: "Archiwizacja notatek", description: "Bezpośrednio konwertuj ustrukturyzowaną zawartość PDF na czyste pliki Markdown, aby wzbogacić swoją osobistą bazę wiedzy.", icon: "file-text" },
     ],
     faq: [
       { question: "Czy poprawnie obsługuje dwukolumnowe pliki PDF?", answer: "Tak, narzędzie wykrywa poziome współrzędne bloków tekstu i układa kolejno lewą oraz prawą kolumnę, zapobiegając przeplataniu wierszy." },
@@ -2394,7 +2394,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'citation-linker': {
     title: "Łączenie cytowań",
-    metaDescription: "Skanuj i aktywuj znaczniki cytatów w plikach PDF, konwertując je na klikalne łącza DOI lub elementy docelowe przeskoku strony.",
+    metaDescription: "Zmień znaczniki cytatów w plikach PDF w klikalne łącza DOI lub odniesienia do stron. Dodaj użyteczną nawigację do dokumentów badawczych.",
     keywords: ["łączenie cytowań", "hiperłącza PDF", "dopasowanie DOI", "narzędzie akademickie", "bibliografia PDF"],
     description: "\n      <p>Narzędzie do łączenia cytowań zostało stworzone z myślą o badaczach. W wielu dokumentach PDF znaczniki cytowań (np. [1], [2]) są zwykłym tekstem, przez co trzeba ciągle przewijać dokument do bibliografii.</p>\n      <p>Narzędzie lokalnie odczytuje tekst PDF, dopasowuje znaczniki cytowań do wpisów bibliograficznych i nakłada klikalne adnotacje linków, korzystając z wyszukiwania DOI lub współrzędnych przejścia do strony.</p>\n      <p>Generuje także interaktywną mapę powiązań cytowań, ułatwiającą wizualną nawigację po sieci referencji dokumentu.</p>\n    ",
     howToUse: [
@@ -2404,8 +2404,8 @@ export const toolContentPl: Record<string, ToolContent> = {
     ],
     useCases: [
       { title: "Głębokie czytanie literatury", description: "Kliknij znaczniki cytatów, aby natychmiast wyświetlić szczegóły referencji lub przejść do zewnętrznych stron DOI.", icon: 'link' },
-      { title: "Przygotowanie przed publikacją", description: "Przed ostatecznym przesłaniem upewnij się, że Twoje pisemne prace akademickie mają w pełni aktywne nawigacje hiperłączami.", icon: 'award' },
-      { title: "Analiza mapy referencyjnej", description: "Zrozum hierarchie literatury i połączenia za pomocą interaktywnej mapy topologii sieci.", icon: 'git-network' },
+      { title: "Przygotowanie przed publikacją", description: "Przed ostatecznym przesłaniem upewnij się, że Twoje pisemne prace akademickie mają w pełni aktywne nawigacje hiperłączami.", icon: "award" },
+      { title: "Analiza mapy referencyjnej", description: "Zrozum hierarchie literatury i połączenia za pomocą interaktywnej mapy topologii sieci.", icon: "git-network" },
     ],
     faq: [
       { question: "A co jeśli referencja nie ma DOI?", answer: "Jeśli nie można znaleźć DOI, narzędzie powraca do wewnętrznej akcji „Przejdź do strony”, umożliwiając kliknięcie znacznika i przejście bezpośrednio do strony referencyjnej." },
@@ -2415,7 +2415,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'vector-extractor': {
     title: "Ekstraktor wektorów PDF",
-    metaDescription: "Konwertuj pliki PDF na format SVG o wysokiej jakości, umożliwiając wybieranie, ponowne kolorowanie i eksportowanie wykresów wektorowych, logo i grafiki.",
+    metaDescription: "Wyodrębnij grafikę wektorową ze stron PDF jako SVG. Wybierz wykresy, diagramy i logo do ponownego kolorowania i eksportu.",
     keywords: ["wyodrębnij wektory z pliku pdf", "pdf do svg", "wykresy wektorowe w pliku PDF", "wyodrębnij logo", "rysunki wektorowe"],
     description: "\n      <p>Ekstraktor wektorów PDF odblokowuje ścieżki wektorowe i grafiki osadzone w plikach PDF. Z łatwością wyodrębniaj wykresy wektorowe, diagramy lub logo z dokumentów w celu projektowania lub drukowania.</p>\n      <p>Pod maską wykorzystuje wysokiej jakości renderowanie SVG do dekonstrukcji ścieżek wektorowych PDF na czyste, standardowe drzewa elementów SVG bez utraty precyzji.</p>\n      <p>Interfejs wyróżnia najechane elementy efektem eksplozji warstwy 3D w osi Z oraz panelem wyboru kolorów umożliwiającym projektantom dostosowywanie i wyodrębnianie węzłów wektorowych.</p>\n    ",
     howToUse: [
@@ -2424,9 +2424,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Dostosuj i eksportuj", description: "Dostosuj atrybuty ścieżki w panelu, a następnie pobierz jako SVG lub skopiuj kod źródłowy SVG." },
     ],
     useCases: [
-      { title: "Ekstrakcja zasobów projektowych", description: "Szybko wyodrębnij logo firmy, ikony i ilustracje z wytycznych lub broszur dotyczących marki.", icon: 'bezier' },
-      { title: "Eksport wykresów naukowych", description: "Wyodrębniaj wykresy wektorowe z artykułów naukowych do wykorzystania w druku lub prezentacjach w wysokiej rozdzielczości.", icon: 'presentation' },
-      { title: "Ponowne kolorowanie zasobów wektorowych", description: "Zmodyfikuj kolory obrysu i wypełnienia wyodrębnionych zasobów przed zapisaniem ich do projektów internetowych.", icon: 'crown' },
+      { title: "Ekstrakcja zasobów projektowych", description: "Szybko wyodrębnij logo firmy, ikony i ilustracje z wytycznych lub broszur dotyczących marki.", icon: "bezier" },
+      { title: "Eksport wykresów naukowych", description: "Wyodrębniaj wykresy wektorowe z artykułów naukowych do wykorzystania w druku lub prezentacjach w wysokiej rozdzielczości.", icon: "presentation" },
+      { title: "Ponowne kolorowanie zasobów wektorowych", description: "Zmodyfikuj kolory obrysu i wypełnienia wyodrębnionych zasobów przed zapisaniem ich do projektów internetowych.", icon: "crown" },
     ],
     faq: [
       { question: "Dlaczego nie mogę wybrać niektórych obrazów?", answer: "Pliki PDF zawierają zarówno obrazy rastrowe (takie jak zdjęcia lub zeskanowane strony), jak i grafiki wektorowe (takie jak kształty i krzywe). Na ścieżki SVG można dekonstruować wyłącznie ścieżki wektorowe." },
@@ -2436,7 +2436,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'deep-sanitize': {
     title: "Głębokie oczyszczanie metadanych",
-    metaDescription: "Dokładnie wyczyść metadane autora, dzienniki modyfikacji, ukryte warstwy i osierocone obiekty z plików PDF, aby zapewnić maksymalną prywatność.",
+    metaDescription: "Usuń metadane, ukryte warstwy i nieużywane obiekty z plików PDF. Przed udostępnieniem wyczyść informacje o dokumencie lokalnie.",
     keywords: ["głębokie oczyszczanie PDF", "usuń metadane", "anonimizuj PDF", "usuń ukryty znak wodny", "bezpieczny plik PDF"],
     description: "\n      <p>Deep Metadata Sanitizer to najlepsza ochrona przed wyciekami metadanych i ukrytym śledzeniem. Samo narysowanie czarnych skrzynek na widocznym tekście w plikach PDF nie wystarczy, aby chronić tajemnicę handlową.</p>\n      <p>To narzędzie skanuje binarną strukturę pliku PDF, aby całkowicie usunąć informacje o autorze, oprogramowanie twórcy, dzienniki edycji (metadane XMP), zastrzeżone pamięci podręczne PieceInfo i opcjonalne grupy treści OCG (często używane w przypadku niewidocznych znaków wodnych).</p>\n      <p>Zapisuje także całkowicie od nowa tabele odniesień (xref), odrzucając wszystkie bloki aktualizacji przyrostowej, aby mieć pewność, że usuniętych lub zmodyfikowanych danych historycznych nie będzie można przywrócić.</p>\n    ",
     howToUse: [
@@ -2445,9 +2445,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Głębokie oczyszczanie", description: "Kliknij opcję Oczyść, aby usunąć elementy śledzące i pobrać w pełni oczyszczony plik PDF." },
     ],
     useCases: [
-      { title: "Udostępnianie kontraktu", description: "Usuń zapisy redakcyjne, ścieżki i poprzednie wersje przed udostępnieniem umów biznesowych stronom trzecim.", icon: 'file-signature' },
-      { title: "Anonimowe publikacje", description: "Usuń niewidoczne adnotacje i znaki wodne, aby publikować dokumenty anonimowo i bezpiecznie.", icon: 'eye-off' },
-      { title: "Optymalizacja PDF", description: "Usuń osierocone obiekty i niepotrzebne strumienie danych, aby przyspieszyć ładowanie plików w Internecie.", icon: 'zap' },
+      { title: "Udostępnianie kontraktu", description: "Usuń zapisy redakcyjne, ścieżki i poprzednie wersje przed udostępnieniem umów biznesowych stronom trzecim.", icon: "file-signature" },
+      { title: "Anonimowe publikacje", description: "Usuń niewidoczne adnotacje i znaki wodne, aby publikować dokumenty anonimowo i bezpiecznie.", icon: "eye-off" },
+      { title: "Optymalizacja PDF", description: "Usuń osierocone obiekty i niepotrzebne strumienie danych, aby przyspieszyć ładowanie plików w Internecie.", icon: "zap" },
     ],
     faq: [
       { question: "Czym to się różni od standardowego usuwania metadanych?", answer: "Standardowe narzędzia usuwają tylko podstawowe pola, takie jak tytuł lub autor. Deep Sanitizer rekonstruuje całą tabelę odnośników PDF, usuwając PieceInfo, ukryte znaki wodne i historyczne wersje przyrostowe." },
@@ -2457,7 +2457,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'booklet-folding-simulator': {
     title: "Symulator broszury i składania 3D",
-    metaDescription: "Nakładaj wielostronicowe pliki PDF na składane arkusze wydruku, wyposażone w animacje składania 3D i podglądy zszywania siodłowego.",
+    metaDescription: "Ułóż strony PDF w celu wydrukowania broszury. Przed wyeksportowaniem dokumentu gotowego do druku możesz przeglądać złożone arkusze i układy zszywania siodłowego.",
     keywords: ["Impozycja 3D", "symulator składania", "ścieg siodłowy", "układ książki", "sprawdzanie druku"],
     description: "\n      <p>Symulator broszury i składania 3D to zaawansowane narzędzie przeznaczone dla projektantów druku i profesjonalistów z branży wydawniczej. Tradycyjny układ książki wymaga obliczenia skomplikowanych nakładek stron i nałożenia sekwencji paginacji. To narzędzie wizualizuje i automatyzuje cały proces.</p>\n      <p>Pod maską nasz niestandardowy algorytm impozycji mapuje sekwencyjną listę stron PDF na standardowe układy arkuszy wydruku (takie jak 4-stronicowe składanie na pół, 8-stronicowe zszywanie zeszytowe lub harmonijkowe), łącząc strony z przodu i z tyłu dużych arkuszy.</p>\n      <p>W interfejsie wykorzystujemy czyste transformacje CSS 3D Matrix i krzywe fizyki masy sprężyny, aby animować składanie arkuszy w poziomie i w pionie, dając realistyczny podgląd oprawy.</p>\n    ",
     howToUse: [
@@ -2467,9 +2467,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Wygeneruj narzucony plik PDF", description: "Kliknij przycisk Generuj, aby pobrać zmieniony i scalony arkusz w pliku PDF, gotowy do dwustronnego drukowania." },
     ],
     useCases: [
-      { title: "Prototypowanie broszury", description: "Wstępnie wizualizuj sekwencję składania potrójnych części i broszur, aby zapobiec odwróceniu stron po wydrukowaniu.", icon: 'book-open' },
-      { title: "Książka Zszywanie siodłowe", description: "Automatycznie generuj arkusze druku dla wielostronicowych magazynów lub broszur.", icon: 'layers' },
-      { title: "Drukarnia Pomoce wizualne", description: "Pomóż klientom wizualizować, jak strony są rozmieszczone i składane na arkuszach wydruku.", icon: 'printer' },
+      { title: "Prototypowanie broszury", description: "Wstępnie wizualizuj sekwencję składania potrójnych części i broszur, aby zapobiec odwróceniu stron po wydrukowaniu.", icon: "book-open" },
+      { title: "Książka Zszywanie siodłowe", description: "Automatycznie generuj arkusze druku dla wielostronicowych magazynów lub broszur.", icon: "layers" },
+      { title: "Drukarnia Pomoce wizualne", description: "Pomóż klientom wizualizować, jak strony są rozmieszczone i składane na arkuszach wydruku.", icon: "printer" },
     ],
     faq: [
       { question: "Co to jest „nakładanie”?", answer: "Impozycja to podstawowy etap druku przygotowawczego. Ponieważ prasy komercyjne drukują na dużych arkuszach, strony są ułożone w nieuporządkowanej kolejności, tak że po wydrukowaniu, złożeniu i oprawieniu strony pojawiają się we właściwej kolejności. To narzędzie automatycznie oblicza ten układ." },
@@ -2479,7 +2479,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-to-slide': {
     title: "PDF do slajdu",
-    metaDescription: "Automatycznie analizuj kontury plików PDF, wyodrębniaj wykresy wektorowe i rekonstruuj je do w pełni edytowalnych prezentacji PPTX.",
+    metaDescription: "Konwertuj zawartość PDF na slajdy programu PowerPoint. Eksportuj prezentację PPTX z tekstem i obrazami do dalszej edycji.",
     keywords: ["PDF do PPT", "rekonstrukcja slajdów", "ekstrakcja wykresu", "prezentacja akademicka", "generator PPTX"],
     description: "\n      <p>Rekonstruktor PDF do slajdów przekształca statyczne dokumenty PDF w nowoczesne, łatwe do edycji slajdy programu PowerPoint (PPTX).</p>\n      <p>Narzędzie wykorzystuje zaawansowany moduł wyodrębniania konspektu układu, który automatycznie analizuje poziomy nagłówków dokumentu, linie akapitów i grubości czcionek w celu ustalenia logicznej struktury slajdów. Izoluje także wykresy wektorowe i tabele o wysokiej rozdzielczości, usuwając artefakty tła i osadzając je w przejrzysty sposób jako niezależne zasoby edytowalne.</p>\n      <p>Pliki PPTX powstają z użyciem standardowych elementów Office Open XML, co oznacza, że cały tekst pozostaje w pełni edytowalny, a wektory nie tracą rozdzielczości. Interfejs prezentuje płynną animację przejścia kart w stylu „gwiezdnego pola”, która wizualizuje rekonstrukcję.</p>\n    ",
     howToUse: [
@@ -2488,9 +2488,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zrekonstruuj do PPTX", description: "Uruchom silnik tworzenia, aby otrzymać standardowy, edytowalny plik prezentacji." },
     ],
     useCases: [
-      { title: "Prezentacja artykułu badawczego", description: "Konwertuj pliki PDF czasopism akademickich, struktury tekstowe i diagramy wektorowe na slajdy gotowe do prezentacji.", icon: 'graduation-cap' },
-      { title: "Podsumowanie raportu biznesowego", description: "Błyskawicznie przekształcaj ogromne roczne raporty korporacyjne w przejrzyste, wypunktowane wersje robocze prezentacji.", icon: 'presentation' },
-      { title: "Demo na wielu urządzeniach", description: "Unikaj ręcznego kopiowania zrzutów ekranu. Uzyskaj czystą, w pełni edytowalną strukturę układu w ciągu kilku sekund.", icon: 'laptop' },
+      { title: "Prezentacja artykułu badawczego", description: "Konwertuj pliki PDF czasopism akademickich, struktury tekstowe i diagramy wektorowe na slajdy gotowe do prezentacji.", icon: "graduation-cap" },
+      { title: "Podsumowanie raportu biznesowego", description: "Błyskawicznie przekształcaj ogromne roczne raporty korporacyjne w przejrzyste, wypunktowane wersje robocze prezentacji.", icon: "presentation" },
+      { title: "Demo na wielu urządzeniach", description: "Unikaj ręcznego kopiowania zrzutów ekranu. Uzyskaj czystą, w pełni edytowalną strukturę układu w ciągu kilku sekund.", icon: "laptop" },
     ],
     faq: [
       { question: "Czy slajdy można edytować w pakiecie Microsoft Office?", answer: "Tak. Pliki są generowane natywnie w pamięci zgodnie z oficjalną specyfikacją Office Open XML (OOXML). Teksty, tabele i elementy zastępcze są w pełni interaktywne w programach PowerPoint, Keynote i WPS." },
@@ -2500,7 +2500,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'form-logic-designer': {
     title: "Projektant logiki formularzy",
-    metaDescription: "Projektuj dynamiczne zachowania na płótnie węzłów w stylu glassmorphism i wstawiaj interaktywną logikę AcroJS do formularzy PDF.",
+    metaDescription: "Utwórz reguły formularzy PDF za pomocą projektanta wizualnego. Połącz pola i dodaj interaktywną logikę obliczeń i walidacji.",
     keywords: ["Logika formularza PDF", "Dodawanie AcroJS", "przepływ węzła", "interaktywny plik PDF", "zależności pól"],
     description: "\n      <p>Interaktywny projektant logiki formularzy to pionierskie narzędzie, które wypełnia ogromną lukę w możliwościach plików PDF: tworzy aktywne, responsywne pola zamiast płaskich, martwych formularzy.</p>\n      <p>Dzięki naszemu płótnu wizualnemu zawierającemu „świecące węzły szklanomorficzne” (zbudowanego na platformie React Flow) pola formularzy są reprezentowane jako połączone moduły. Możesz przeciągać linki, aby zdefiniować relacje: np. gdy pole wyboru jest zaznaczone ➜ włącz wprowadzanie tekstu ➜ automatycznie obliczaj wartości i aktualizuj pole sumy.</p>\n      <p>Po zaprojektowaniu silnik AcroJS tworzy logikę do oficjalnego kodu JavaScript programu Acrobat i wstawia ją do słowników „/AA” (akcje dodatkowe) formatu AcroForm. Interaktywne zachowania są następnie wykonywane natywnie w dowolnym standardowym czytniku plików PDF.</p>\n    ",
     howToUse: [
@@ -2509,9 +2509,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Dodaj utworzoną logikę JavaScript do słownika PDF i zapisz ostateczny automatyczny dokument." },
     ],
     useCases: [
-      { title: "Automatyczne umowy sprzedaży", description: "Dynamicznie pokazuj lub ukrywaj dodatkowe pola wejściowe na podstawie terminów wybranych przez klienta.", icon: 'file-signature' },
-      { title: "Automatyczne formularze wydatków", description: "Podsumuj wiele pozycji wydatków i dynamicznie obliczaj podatki, bez konieczności ręcznego obliczania.", icon: 'calculator' },
-      { title: "Interaktywne kwestionariusze", description: "Pomijaj nieistotne pytania na podstawie poprzednich odpowiedzi, aby uprościć wypełnianie formularza na urządzeniu mobilnym.", icon: 'form-input' },
+      { title: "Automatyczne umowy sprzedaży", description: "Dynamicznie pokazuj lub ukrywaj dodatkowe pola wejściowe na podstawie terminów wybranych przez klienta.", icon: "file-signature" },
+      { title: "Automatyczne formularze wydatków", description: "Podsumuj wiele pozycji wydatków i dynamicznie obliczaj podatki, bez konieczności ręcznego obliczania.", icon: "calculator" },
+      { title: "Interaktywne kwestionariusze", description: "Pomijaj nieistotne pytania na podstawie poprzednich odpowiedzi, aby uprościć wypełnianie formularza na urządzeniu mobilnym.", icon: "form-input" },
     ],
     faq: [
       { question: "Czy potrzebuję pliku PDF z wcześniej istniejącymi polami?", answer: "Tak. To narzędzie służy do wiązania reguł logicznych z istniejącymi polami. Jeśli Twój plik PDF nie zawiera pól interaktywnych, skorzystaj z naszego narzędzia Kreator formularzy, aby najpierw dodać dane wejściowe i pola wyboru." },
@@ -2521,7 +2521,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'eink-optimizer': {
     title: "Optymalizator czytnika e-Ink",
-    metaDescription: "Optymalizuj pliki PDF pod kątem ekranów e-Ink poprzez usuwanie tła, binaryzację Otsu i rozszerzanie tekstu morfologicznego.",
+    metaDescription: "Optymalizuj strony PDF pod kątem czytników e-atramentu. Wyczyść tła, zwiększ kontrast tekstu i dostosuj dokumenty, aby ułatwić ich czytanie.",
     keywords: ["optymalizacja PDF e-Ink", "binaryzacja", "pogrubienie tekstu", "czytanie przyjazne dla oczu", "próg Otsu"],
     description: "<p>Optymalizator PDF dla czytników e-Ink został stworzony dla użytkowników Kindle, Onyx Boox, Kobo i innych urządzeń z elektronicznym papierem.</p>\n      <p>Wiele zeskanowanych e-booków PDF ma wyblakłe litery, szare, zamglone tło, szum lub cienie skanowania widoczne na ekranach e-Ink. Narzędzie analizuje histogramy wartości szarości i stosuje binaryzację Otsu, aby oddzielić tekst od tła i zmienić szare tło w czystą biel.</p>\n      <p>Wykorzystuje również rozszerzanie morfologiczne, aby pogrubić i wzmocnić cienkie, wyblakłe znaki, zapewniając wyraźną typografię o wysokim kontraście. Suwak kontrastu z wygładzaniem suwaka pozwala precyzyjnie dostroić efekt przypominający papier w czasie rzeczywistym.</p>\n    ",
     howToUse: [
@@ -2530,9 +2530,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zoptymalizuj i pobierz", description: "Przetwórz cały plik PDF, aby wygenerować przyjazny dla oka dokument o wysokim kontraście, dostosowany do technologii e-Ink." },
     ],
     useCases: [
-      { title: "Czytelniejsze skany starych rękopisów", description: "Zagęszczaj wyblakły tekst na skanach książek historycznych lub odręcznych rękopisach, aby były czytelne.", icon: 'scroll' },
-      { title: "Oczyszczanie arkuszy egzaminacyjnych", description: "Rozjaśniaj cienie tła z kserokopii lub zdjęć arkuszy egzaminacyjnych, przywracając wyraźny czarny tekst na białym papierze.", icon: 'file-text' },
-      { title: "Dostosowanie do czytników e-papierowych", description: "Konwertuj kolorowe pliki PDF do zoptymalizowanej skali szarości, zapobiegając powstawaniu niepożądanych artefaktów na monochromatycznych ekranach.", icon: 'tablet' },
+      { title: "Czytelniejsze skany starych rękopisów", description: "Zagęszczaj wyblakły tekst na skanach książek historycznych lub odręcznych rękopisach, aby były czytelne.", icon: "scroll" },
+      { title: "Oczyszczanie arkuszy egzaminacyjnych", description: "Rozjaśniaj cienie tła z kserokopii lub zdjęć arkuszy egzaminacyjnych, przywracając wyraźny czarny tekst na białym papierze.", icon: "file-text" },
+      { title: "Dostosowanie do czytników e-papierowych", description: "Konwertuj kolorowe pliki PDF do zoptymalizowanej skali szarości, zapobiegając powstawaniu niepożądanych artefaktów na monochromatycznych ekranach.", icon: "tablet" },
     ],
     faq: [
       { question: "Jak działa „pogrubienie znaków”?", answer: "W przetwarzaniu obrazu nazywa się to dylatacją. Wykorzystuje matrycę strukturalną do rozszerzania marginesów znaków o piksel, pogrubiając słabe kreski, aby uczynić je czytelnymi." },
@@ -2542,7 +2542,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'cert-cryptor': {
     title: "Szyfruj i podpisz PDF certyfikatem",
-    metaDescription: "Zabezpiecz pliki PDF asymetrycznym szyfrowaniem certyfikatem klucza publicznego oraz podpisem PKCS#7, z wizualną pieczęcią woskową 3D.",
+    metaDescription: "Szyfruj i podpisuj cyfrowo dokumenty PDF za pomocą certyfikatów. Pracuj z plikami certyfikatów lokalnie w przeglądarce.",
     keywords: ["szyfrowanie certyfikatu", "podpis pieczęcią woskową", "podpis cyfrowy", "szyfrowanie asymetryczne", "Podpis PKCS#7"],
     description: "\n      <p>Narzędzie do szyfrowania certyfikatem i podpisywania z wizualną pieczęcią woskową 3D łączy ochronę kryptograficzną z efektowną oprawą wizualną dla poufnych plików firmowych, dyplomów i umów.</p>\n      <p>Oferuje asymetryczne szyfrowanie kluczem publicznym: zaimportuj certyfikat klucza publicznego odbiorcy (.cer/.crt), aby zablokować strumień PDF; tylko posiadacz odpowiedniego klucza prywatnego (.pfx) może go odszyfrować. Generuje również standardowe podpisy cyfrowe PKCS#7, zapewniające integralność dokumentu i ochronę przed modyfikacją.</p>\n      <p>Wizualnie dodaje trójwymiarową złotą lub czerwoną pieczęć woskową. Podczas podpisywania wyrenderowana pieczęć opada z mechanicznym dźwiękiem, pozostawiając na stronie realistyczny ślad wosku z efektami głębi oraz świecącymi akcentami kryptograficznymi.</p>\n    ",
     howToUse: [
@@ -2552,9 +2552,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 4, title: "Pobierz zabezpieczony plik PDF", description: "Zapisz dokument wyjściowy, teraz zabezpieczony kryptograficznie i ostemplowany." },
     ],
     useCases: [
-      { title: "Dyplomy i certyfikaty", description: "Umieszczaj ozdobne pieczęcie 3D na cyfrowych dyplomach na cyfrowych dyplomach i nagrodach, poparte prawdziwymi podpisami cyfrowymi.", icon: 'award' },
-      { title: "Poufne umowy", description: "Zablokuj poufne umowy certyfikatem publicznym, aby mógł je otworzyć wyłącznie posiadacz odpowiedniego klucza prywatnego.", icon: 'shield-alert' },
-      { title: "Oficjalne komunikaty prasowe", description: "Podpisuj cyfrowo ogłoszenia publiczne, aby zapobiec złośliwym zmianom tekstu lub fałszowaniu.", icon: 'stamp' },
+      { title: "Dyplomy i certyfikaty", description: "Umieszczaj ozdobne pieczęcie 3D na cyfrowych dyplomach na cyfrowych dyplomach i nagrodach, poparte prawdziwymi podpisami cyfrowymi.", icon: "award" },
+      { title: "Poufne umowy", description: "Zablokuj poufne umowy certyfikatem publicznym, aby mógł je otworzyć wyłącznie posiadacz odpowiedniego klucza prywatnego.", icon: "shield-alert" },
+      { title: "Oficjalne komunikaty prasowe", description: "Podpisuj cyfrowo ogłoszenia publiczne, aby zapobiec złośliwym zmianom tekstu lub fałszowaniu.", icon: "stamp" },
     ],
     faq: [
       { question: "Czy pieczęć woskowa to tylko obraz, czy prawdziwy podpis?", answer: "Obydwa. System renderuje niesamowicie realistyczny woskowy nadruk 3D z efektem głębi (warstwa wizualna) i koduje autentyczny, zabezpieczony przed manipulacją podpis kryptograficzny PKCS#7 wewnątrz pliku PDF (warstwa danych)." },
@@ -2564,7 +2564,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'passport-id-composer': {
     title: "Układ dokumentów tożsamości — przód i tył",
-    metaDescription: "Umieszczaj przednią i tylną stronę dowodów osobistych lub paszportów na jednej stronie A4 z opcjonalnymi znakami wodnymi zabezpieczającymi przed fałszerstwami.",
+    metaDescription: "Połącz przód i tył dowodu osobistego lub paszportu na jednej stronie formatu PDF. Uporządkuj skany i dodaj opcjonalny znak wodny.",
     keywords: ["układ dokumentów tożsamości", "układ paszportu", "dwustronna kopia dokumentu A4", "wydruk dowodu osobistego", "znak wodny zapobiegający fałszerstwom"],
     description: "\n      <p>Układ dokumentów paszportowych i tożsamości to praktyczne narzędzie do przygotowywania kopii dokumentów w sprawach firmowych i prywatnych.</p>\n      <p>Podczas ubiegania się o konto bankowe, dopełniania formalności pracowniczych czy podpisywania umów często potrzebujemy kopii obu stron dowodów osobistych. To narzędzie akceptuje obrazy z przodu/tyłu lub strony PDF i precyzyjnie układa je na jednej stronie A4 z zachowaniem właściwych wymiarów dokumentów.</p>\n      <p>Ponadto możesz dostosować nakładające się, półprzezroczyste znaki wodne zapobiegające fałszerstwom (np. „TYLKO DO CELÓW REKRUTACJI”), aby zapobiec nieupoważnionemu ponownemu użyciu dokumentów. Pojawia się także animacja skanowania 3D z laserem, która sygnalizuje zakończenie przetwarzania.</p>\n    ",
     howToUse: [
@@ -2573,9 +2573,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i pobierz", description: "Kliknij przycisk Wykonaj, aby wygenerować jednostronicowy plik PDF na stronie A4 gotowy do druku." },
     ],
     useCases: [
-      { title: "Dokumenty dla działu HR", description: "Przygotuj kopie dokumentów pracowników i dodaj ochronne znaki wodne.", icon: 'user' },
-      { title: "Usługi rządowe i bankowe", description: "Przygotuj standardowe wydruki identyfikacyjne, które spełniają wymagania dotyczące papierowego archiwum.", icon: 'landmark' },
-      { title: "Dokumenty na czas podróży", description: "Ułóż strony paszportu i informacje o wizie na jednej stronie A4.", icon: 'plane' },
+      { title: "Dokumenty dla działu HR", description: "Przygotuj kopie dokumentów pracowników i dodaj ochronne znaki wodne.", icon: "user" },
+      { title: "Usługi rządowe i bankowe", description: "Przygotuj standardowe wydruki identyfikacyjne, które spełniają wymagania dotyczące papierowego archiwum.", icon: "landmark" },
+      { title: "Dokumenty na czas podróży", description: "Ułóż strony paszportu i informacje o wizie na jednej stronie A4.", icon: "plane" },
     ],
     faq: [
       { question: "Czy znaki wodne będą blokować szczegóły tekstu tożsamości?", answer: "Nie. Znak wodny jest renderowany ze starannie dobraną przezroczystością 15%, aby zapobiec fałszerstwom bez utraty czytelności pól tekstowych lub fotograficznych." },
@@ -2585,7 +2585,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'annotation-exporter': {
     title: "Eksportuj adnotacje",
-    metaDescription: "Wyodrębnij komentarze, notatki, wyróżnienia i podkreślenia w pliku PDF i uporządkuj je w notatnikach Markdown/JSON według nagłówków dokumentu.",
+    metaDescription: "Eksportuj komentarze, notatki, wyróżnienia i podkreślenia w formacie PDF do Markdown lub JSON. Organizuj adnotacje do celów studiowania, przeglądania i badań.",
     keywords: ["eksportuj adnotacje", "wyodrębnij wyróżnienia z PDF", "notatki czytelnika PDF", "notatniki Markdown według konspektu", "pomocnik do przeglądu badań"],
     description: "\n      <p>Automatyczny eksporter adnotacji to zaawansowany obszar roboczy, który pozwala w pełni wykorzystać adnotacje w pliku PDF.</p>\n      <p>Podczas przeglądania literatury lub czytania obszernych e-booków często korzystamy z zakreśleń i notatek samoprzylepnych. To narzędzie odczytuje niskopoziomowy słownik <code>/Annots</code> PDF i wyodrębnia wszystkie wyróżnienia, notatki, podkreślenia i odręczne adnotacje atramentem.</p>\n      <p>Automatycznie dopasowuje komentarze do odpowiednich nagłówków konspektu, generując ustrukturyzowany notatnik Markdown lub JSON z kotwicami odwołań do stron. Zobacz, jak Twoje najważniejsze informacje są czytelnie uporządkowane w panelu notatnika.</p>\n    ",
     howToUse: [
@@ -2594,9 +2594,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyodrębnij notatnik", description: "Kliknij przycisk Wykonaj, aby przeanalizować strumień komentarzy i utworzyć podsumowanie konspektu." },
     ],
     useCases: [
-      { title: "Synteza literatury naukowej", description: "Wyodrębnij notatki z czytania z wielu artykułów do szablonów Markdown, aby szybko tworzyć spójne przeglądy literatury.", icon: 'graduation-cap' },
-      { title: "Tworzenie dziennika do nauki", description: "Gromadź cenne spostrzeżenia i osobiste uwagi z podręczników w notatkach w Obsidianie.", icon: 'book' },
-      { title: "Wspólny audyt dokumentów", description: "Zbieraj poprawki z recenzji od różnych członków zespołu i twórz listy zadań do wykonania.", icon: 'users' },
+      { title: "Synteza literatury naukowej", description: "Wyodrębnij notatki z czytania z wielu artykułów do szablonów Markdown, aby szybko tworzyć spójne przeglądy literatury.", icon: "graduation-cap" },
+      { title: "Tworzenie dziennika do nauki", description: "Gromadź cenne spostrzeżenia i osobiste uwagi z podręczników w notatkach w Obsidianie.", icon: "book" },
+      { title: "Wspólny audyt dokumentów", description: "Zbieraj poprawki z recenzji od różnych członków zespołu i twórz listy zadań do wykonania.", icon: "users" },
     ],
     faq: [
       { question: "Czy może wyodrębnić odręczne adnotacje typu Ink na tablecie?", answer: "Tak. Dopóki ręcznie rysowane znaczniki są przechowywane jako standardowe adnotacje PDF Ink, narzędzie może doskonale wyizolować i uporządkować pozycje na stronie." },
@@ -2606,7 +2606,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'batch-watermark-remover': {
     title: "Usuń zbiorczo znaki wodne",
-    metaDescription: "Trwale usuwaj ciągi znaków wodnych i obrazy XObject ze strumienia treści PDF bez zakłócania układu.",
+    metaDescription: "Usuń pasujące znaki wodne z tekstem i obrazem z plików PDF. Przejrzyj dane wyjściowe, aby sprawdzić, czy treść dokumentu została zachowana.",
     keywords: ["usuń znak wodny", "usuwanie znaku wodnego PDF", "czyszczenie strumienia treści", "zbiorcze usuwanie znaku wodnego", "usuń wersję roboczą znaku wodnego"],
     description: "\n      <p>Narzędzie do zbiorczego usuwania znaków wodnych to zaawansowany program do oczyszczania plików PDF, który trwale usuwa wskazane elementy z dokumentów.</p>\n      <p>Zwykłe narzędzia do usuwania znaków wodnych często jedynie nakładają białe bloki lub zniekształcają odstępy w dokumencie. To narzędzie wykorzystuje technikę <strong>oczyszczania strumienia treści</strong>.</p>\n      <p>Analizuje niskopoziomowe operatory renderowania każdej strony, rozpoznaje polecenia związane z tekstem znaku wodnego (np. „Poufne”, „WERSJA ROBOCZA”) albo obiekty obrazów tła i trwale je usuwa lub nadpisuje. Znaki wodne znikają całkowicie, przy zachowaniu oryginalnego formatowania i jakości wektorowej.</p>\n    ",
     howToUse: [
@@ -2615,9 +2615,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Uruchom trwałe oczyszczanie", description: "Kliknij przycisk Wykonaj, aby wyczyścić operatory treści z zachowaniem wysokiej wierności." },
     ],
     useCases: [
-      { title: "Archiwizacja dokumentów firmowych", description: "Usuń wygasłe znaki wodne „Poufne” lub „Wersja robocza” przed udostępnieniem.", icon: 'archive' },
-      { title: "Porządkowanie tła", description: "Usuń duże obrazy tła, które odwracają uwagę czytelników od skanowania tekstu.", icon: 'eye' },
-      { title: "Ponowne wykorzystanie dokumentu", description: "Wyczyść stare elementy marki w stopce strony, aby łatwo zastosować nowe szablony korporacyjne.", icon: 'copy' },
+      { title: "Archiwizacja dokumentów firmowych", description: "Usuń wygasłe znaki wodne „Poufne” lub „Wersja robocza” przed udostępnieniem.", icon: "archive" },
+      { title: "Porządkowanie tła", description: "Usuń duże obrazy tła, które odwracają uwagę czytelników od skanowania tekstu.", icon: "eye" },
+      { title: "Ponowne wykorzystanie dokumentu", description: "Wyczyść stare elementy marki w stopce strony, aby łatwo zastosować nowe szablony korporacyjne.", icon: "copy" },
     ],
     faq: [
       { question: "Czy można odzyskać usunięte znaki wodne?", answer: "Nie. W przeciwieństwie do masek wizualnych, przepisujemy strumień binarny strony, aby usunąć operatory, nie pozostawiając żadnych śladów." },
@@ -2627,7 +2627,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'smart-data-redactor': {
     title: "Redaguj dane wrażliwe",
-    metaDescription: "Automatycznie wykrywaj numery telefonów, adresy e-mail i identyfikatory, nakładaj nieprzezroczyste maski i trwale usuwaj podstawowe strumienie tekstu.",
+    metaDescription: "Znajdź adresy e-mail, numery telefonów i wzory dokumentów tożsamości w plikach PDF. Przeglądaj dopasowania i lokalnie redaguj wrażliwe treści.",
     keywords: ["automatyczna redakcja", "redagowanie danych wrażliwych w PDF", "usuń adres e-mail z PDF", "ukrywanie numerów telefonów", "narzędzie zgodne z RODO"],
     description: "\n      <p>Automatyczny redaktor danych wrażliwych pomaga bezpiecznie usuwać dane osobowe z dokumentów zgodnie z zasadami prywatności.</p>\n      <p>Samo nakładanie czarnych skrzynek w zwykłych edytorach jest niebezpieczne, ponieważ tekst znajdujący się pod nimi nadal może zostać skopiowany. To narzędzie implementuje prawdziwe <strong>wykrywanie wzorców NLP i trwałe oczyszczanie strumienia treści</strong>.</p>\n      <p>Skanuje dokument w poszukiwaniu e-maili, numerów telefonów, numerów SSN lub niestandardowych słów kluczowych, nakłada w odpowiednich miejscach nieprzezroczyste, czarne maski i trwale nadpisuje strumień znaków kodem <code>[REDACTED]</code>, blokując wycieki typu „kopiuj-wklej”.</p>\n    ",
     howToUse: [
@@ -2636,9 +2636,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Redaguj i pobierz", description: "Kliknij przycisk Wykonaj, aby nałożyć bezpieczne maski i wyczyścić strumienie tekstu." },
     ],
     useCases: [
-      { title: "Udostępnianie umów handlowych", description: "Bezpiecznie publikuj dokumenty biznesowe, ukrywając osobiste zarobki, numery telefonów i e-maile.", icon: 'file-signature' },
-      { title: "Anonimizacja bazy CV", description: "Usuń nazwiska kandydatów, dane kontaktowe lub adresy, aby zachować zgodność z rygorystycznymi przepisami dotyczącymi prywatności.", icon: 'user-check' },
-      { title: "Dystrybucja sprawozdań finansowych", description: "Przed publikacją raportów ukryj określone numery ksiąg rachunkowych lub nazwiska akcjonariuszy.", icon: 'pie-chart' },
+      { title: "Udostępnianie umów handlowych", description: "Bezpiecznie publikuj dokumenty biznesowe, ukrywając osobiste zarobki, numery telefonów i e-maile.", icon: "file-signature" },
+      { title: "Anonimizacja bazy CV", description: "Usuń nazwiska kandydatów, dane kontaktowe lub adresy, aby zachować zgodność z rygorystycznymi przepisami dotyczącymi prywatności.", icon: "user-check" },
+      { title: "Dystrybucja sprawozdań finansowych", description: "Przed publikacją raportów ukryj określone numery ksiąg rachunkowych lub nazwiska akcjonariuszy.", icon: "pie-chart" },
     ],
     faq: [
       { question: "Czy zaciemnionych szczegółów naprawdę nie da się skopiować?", answer: "Tak. Przepisujemy strumień zawartości strony, aby usunąć znaki. Kopiowanie i wklejanie z zamaskowanego pola spowoduje wyodrębnienie jedynie ciągu „[REDACTED]”." },
@@ -2648,7 +2648,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'bookmarks-auto-generator': {
     title: "Automatyczne generowanie zakładek",
-    metaDescription: "Analizuj hierarchię układu dokumentu i wzorce wyrażeń regularnych (np. rozdział), aby wygenerować i dodać katalogi zakładek /Outline.",
+    metaDescription: "Generuj zakładki PDF na podstawie nagłówków i wzorów tekstowych. Dodaj nawigacyjny zarys do długich dokumentów, podręczników i raportów.",
     keywords: ["wygeneruj zakładki", "kreator konspektu PDF", "dodaj zakładki do PDF", "katalog zakładek PDF", "generator drzewa konspektu"],
     description: "\n      <p>Automatyczny generator zakładek zapewnia czytelną nawigację po długich, nieustrukturyzowanych dokumentach PDF.</p>\n      <p>Skanowanie książek i broszur bez nawigacji konspektowej jest uciążliwe. To narzędzie analizuje hierarchie typograficzne (takie jak rozmiary i grubości czcionek) wraz z regułami wyrażeń regularnych (np. „Rozdział 1”, „Sekcja 1.1”), aby automatycznie wywnioskować nagłówki.</p>\n      <p>Następnie tworzy i wstawia te nagłówki bezpośrednio do słownika <code>/Outline</code> PDF. Każda standardowa przeglądarka wyświetli wówczas czytelny, wielopoziomowy panel nawigacji, wspierany przez interaktywny podgląd drzewa konspektu 3D.</p>\n    ",
     howToUse: [
@@ -2657,9 +2657,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Utwórz i dodaj", description: "Kliknij przycisk Wykonaj, aby wyrenderować węzły konspektu i zapisać zakładki konspektu." },
     ],
     useCases: [
-      { title: "Organizacja podręczników technicznych", description: "Automatycznie twórz wielopoziomowe rozdziały dla standardowych wytycznych, oszczędzając godziny ręcznego indeksowania.", icon: 'tool' },
-      { title: "Przygotowanie pracy dyplomowej", description: "Dodawaj czytelne, zagnieżdżone zakładki, które odpowiadają dokładnym standardom akademickim.", icon: 'graduation-cap' },
-      { title: "Optymalizacja nawigacji e-booków", description: "Strukturuj zeskanowane publikacje tekstowe w rozdziały czytelne dla tabletów lub czytników mobilnych.", icon: 'tablet' },
+      { title: "Organizacja podręczników technicznych", description: "Automatycznie twórz wielopoziomowe rozdziały dla standardowych wytycznych, oszczędzając godziny ręcznego indeksowania.", icon: "tool" },
+      { title: "Przygotowanie pracy dyplomowej", description: "Dodawaj czytelne, zagnieżdżone zakładki, które odpowiadają dokładnym standardom akademickim.", icon: "graduation-cap" },
+      { title: "Optymalizacja nawigacji e-booków", description: "Strukturuj zeskanowane publikacje tekstowe w rozdziały czytelne dla tabletów lub czytników mobilnych.", icon: "tablet" },
     ],
     faq: [
       { question: "Czy może pasować do niestandardowych formatów rozdziałów?", answer: "Tak. Możesz dodać niestandardowe wzorce wyrażeń regularnych na panelu bocznym (np. `^Part\\s+\\w+`), aby dopasować do unikalnych układów." },
@@ -2669,7 +2669,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'batch-barcode-injector': {
     title: "Wsadowe dodawanie kodów kreskowych",
-    metaDescription: "Generuj niestandardowe znaczniki QR/Code128 i precyzyjnie wstawiaj je na wybrane strony PDF z wytycznymi dopasowywania.",
+    metaDescription: "Zbiorcze dodawanie kodów QR lub kodów kreskowych Code 128 do stron PDF. Dostosuj rozmieszczenie śledzenia dokumentów, etykiet i przepływów pracy drukowania.",
     keywords: ["wygeneruj qr pdf", "narzędzie do dodawania kodów kreskowych", "znacznik aktywów pdf", "qr pozycjonowanie współrzędnych", "kody kreskowe na dokumentach"],
     description: "\n      <p>Precyzyjne narzędzie wsadowego dodawania kodów kreskowych łączy śledzenie zasobów cyfrowych z indeksowaniem papierowych dokumentów.</p>\n      <p>W magazynowaniu, przeglądzie umów lub logistyce często musimy umieszczać unikalne kody kreskowe na fakturach lub kartach urządzeń. Dzięki temu można szybko umieścić kody tam, gdzie są potrzebne.</p>\n      <p>Generuj bardzo czytelne kody QR lub kody kreskowe Code128 i użyj naszego czytelnego obszaru roboczego do wyrównywania z zielonymi prowadnicami, aby je ustawić. Po umieszczeniu kodu narzędzie odtwarza sygnał dźwiękowy potwierdzający poprawne skanowanie.</p>\n    ",
     howToUse: [
@@ -2678,9 +2678,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Dodaj kody i pobierz", description: "Kliknij przycisk Wykonaj, aby wyrenderować warstwę kodu na docelowych indeksach stron." },
     ],
     useCases: [
-      { title: "Weryfikacja umów", description: "Zastosuj unikalny kod QR zawierający szczegółowe informacje dotyczące zapobiegania podrabianiu w nagłówku umów.", icon: 'file-check' },
-      { title: "Kodowanie list wysyłkowych", description: "Umieść kody kreskowe Code128 w miejscach docelowych, aby szybko zweryfikować je skanerem magazynowym.", icon: 'truck' },
-      { title: "Rejestracja majątku", description: "Dodaj dodatkowe kody QR wyświetlające specyfikacje konserwacji na arkuszach sprzętu.", icon: 'archive' },
+      { title: "Weryfikacja umów", description: "Zastosuj unikalny kod QR zawierający szczegółowe informacje dotyczące zapobiegania podrabianiu w nagłówku umów.", icon: "file-check" },
+      { title: "Kodowanie list wysyłkowych", description: "Umieść kody kreskowe Code128 w miejscach docelowych, aby szybko zweryfikować je skanerem magazynowym.", icon: "truck" },
+      { title: "Rejestracja majątku", description: "Dodaj dodatkowe kody QR wyświetlające specyfikacje konserwacji na arkuszach sprzętu.", icon: "archive" },
     ],
     faq: [
       { question: "Czy wygenerowane kody kreskowe są łatwe do zeskanowania?", answer: "Tak. Osadzamy bezstratne reprezentacje PNG o wysokiej rozdzielczości, które pozostają ostre nawet po wydrukowaniu w bardzo małych wymiarach." },
@@ -2690,7 +2690,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'signature-ink-optimizer': {
     title: "Wyodrębnij podpis i pieczęć",
-    metaDescription: "Wyodrębnij ze zdjęć odręczne podpisy i czerwone pieczątki firmowe, usuń szum cienia papieru i eksportuj przezroczyste pliki PNG.",
+    metaDescription: "Wyodrębnij podpis lub pieczątkę ze zdjęcia i usuń jego tło. Pobierz przezroczysty plik PNG do użycia w dokumentach.",
     keywords: ["wyodrębnij podpis", "przezroczyste tło podpisu", "oczyszczanie zdjęć pieczęci", "wyostrzyć odręczny podpis", "pieczęć PNG z przezroczystym tłem"],
     description: "\n      <p>Optymalizator atramentu Chroma Ink Optimizer do podpisów i pieczątek to profesjonalne narzędzie do oczyszczania atramentu.</p>\n      <p>Podpisy lub pieczęcie firmowe fotografowane telefonem często charakteryzują się żółtym odcieniem papieru, nierównymi cieniami i zmarszczkami stron. Wklejanie ich bezpośrednio do plików PDF z umową wygląda amatorsko.</p>\n      <p>To narzędzie oddziela kanał alfa na podstawie luminancji i przestrzeni kolorów. Całkowicie rozjaśnia tła papierowe, jednocześnie wyostrzając czerwień stemplową (Chroma Ink) i czerń pisma ręcznego. Rezultatem jest najwyższej jakości przezroczysty znaczek PNG z naturalną fakturą atramentu.</p>\n    ",
     howToUse: [
@@ -2699,9 +2699,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Pobierz czysty podpis", description: "Eksportuj jako przezroczysty plik PNG, gotowy do umieszczenia na oficjalnych dokumentach." },
     ],
     useCases: [
-      { title: "Profesjonalne przygotowanie podpisu elektronicznego", description: "Konwertuj szare zdjęcia z podpisami na przezroczyste warstwy, aby podpisywać umowy.", icon: 'file-signature' },
-      { title: "Dezynfekcja pieczęci firmowych", description: "Oczyść papierowe skany pieczęci, usuwając szum włókien papierowych i przygotowując wyraźne, przezroczyste pieczęcie.", icon: 'stamp' },
-      { title: "Ekstrakcja rysowanych linii", description: "Izoluj czarne kreski ze szkicowników, aby ułatwić sobie pracę z kolorowaniem w programie Photoshop.", icon: 'edit' },
+      { title: "Profesjonalne przygotowanie podpisu elektronicznego", description: "Konwertuj szare zdjęcia z podpisami na przezroczyste warstwy, aby podpisywać umowy.", icon: "file-signature" },
+      { title: "Dezynfekcja pieczęci firmowych", description: "Oczyść papierowe skany pieczęci, usuwając szum włókien papierowych i przygotowując wyraźne, przezroczyste pieczęcie.", icon: "stamp" },
+      { title: "Ekstrakcja rysowanych linii", description: "Izoluj czarne kreski ze szkicowników, aby ułatwić sobie pracę z kolorowaniem w programie Photoshop.", icon: "edit" },
     ],
     faq: [
       { question: "Czym samoadaptacyjna ekstrakcja alfa różni się od normalnego kluczowania?", answer: "Standardowe kluczowanie kolorem często sprawia, że charakterystyczne detale obrysu wyglądają na blokowe i pikselowane. Nasz algorytm izoluje tylko biały/żółty szum tła i wygładza krawędzie atramentu." },
@@ -2711,7 +2711,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'dead-link-debugger': {
     title: "Napraw niedziałające łącza",
-    metaDescription: "Sprawdzaj adresy URL i adnotacje linków w pliku PDF, wykrywaj niedziałające odnośniki i ustawiaj przekierowania.",
+    metaDescription: "Sprawdź hiperłącza PDF i zastąp uszkodzone lub nieaktualne miejsca docelowe. Zeskanuj adnotacje do linków i zapisz zaktualizowany dokument.",
     keywords: ["martwy link pdf", "edytować hiperłącza PDF", "weryfikacja linku pdf", "link przekierowania pdf", "zaktualizuj adresy URL w pliku PDF"],
     description: "\n      <p>Narzędzie do naprawy niedziałających linków to zaawansowany edytor strukturalny, który poprawia jakość interakcji z linkami w publikowanych plikach.</p>\n      <p>Nieprawidłowe adresy URL (404/500) w podręcznikach, oficjalnych dokumentach lub przewodnikach osłabiają wiarygodność marki. Narzędzie ułatwia zarządzanie hiperłączami.</p>\n      <p>Analizuje niskopoziomowe słowniki <code>/Link</code> na każdej stronie, sprawdza je i wyświetla stan linków w interaktywnej siatce (czerwony dla niedziałających linków, pomarańczowy dla przekierowań). Wpisz zaktualizowany adres URL przekierowania, a narzędzie zapisze nowy cel bezpośrednio w strumieniu binarnym PDF.</p>\n    ",
     howToUse: [
@@ -2720,9 +2720,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zapisz aktualizacje przekierowań", description: "Kliknij Wykonaj, aby przepisać akcje /URI i pobrać poprawiony plik PDF." },
     ],
     useCases: [
-      { title: "Naprawa linków w ulotkach", description: "Natychmiast poprawiaj błędne adresy URL w opublikowanych ulotkach bez ponownego otwierania oryginalnych edytorów projektów.", icon: 'refresh-cw' },
-      { title: "Weryfikacja linków bibliograficznych", description: "Weryfikuj linki do bibliografii akademickiej w raportach, aktualizując odniesienia, aby zachować autorytet.", icon: 'book' },
-      { title: "Aktualizacja linków po zmianie domeny", description: "Zbiorcza aktualizacja starych adresów URL w korporacyjnych plikach PDF w przypadku zmiany nazw domen firmowych.", icon: 'globe' },
+      { title: "Naprawa linków w ulotkach", description: "Natychmiast poprawiaj błędne adresy URL w opublikowanych ulotkach bez ponownego otwierania oryginalnych edytorów projektów.", icon: "refresh-cw" },
+      { title: "Weryfikacja linków bibliograficznych", description: "Weryfikuj linki do bibliografii akademickiej w raportach, aktualizując odniesienia, aby zachować autorytet.", icon: "book" },
+      { title: "Aktualizacja linków po zmianie domeny", description: "Zbiorcza aktualizacja starych adresów URL w korporacyjnych plikach PDF w przypadku zmiany nazw domen firmowych.", icon: "globe" },
     ],
     faq: [
       { question: "Dlaczego dostępność linków nie jest w pełni sprawdzana online?", answer: "Przeglądarki internetowe wymuszają rygorystyczne zasady CORS, które blokują bezpośrednie sprawdzanie łączy z wielu źródeł. Nasze narzędzie wyświetla przejrzystą listę linków i pozwala na ich ręczne naprawienie." },
@@ -2732,7 +2732,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'interactive-toc-generator': {
     title: "Wygeneruj interaktywny spis treści",
-    metaDescription: "Wygeneruj estetyczne strony spisu treści, wstaw je przed treścią i podłącz wewnętrzne dwukierunkowe kotwice GoTo.",
+    metaDescription: "Dodaj klikalny spis treści do pliku PDF. Twórz łącza do rozdziałów i nawigację powrotną, aby ułatwić przeglądanie dokumentów.",
     keywords: ["wygeneruj spis treści", "interaktywny toc pdf", "dwukierunkowe łącze kotwiczące", "narzędzie do tworzenia stron indeksu PDF", "przejdź do akcji na stronie"],
     description: "\n      <p>Interaktywny kreator spisu treści wprowadza wygodną nawigację w obszernych plikach PDF.</p>\n      <p>Przewijanie setek stron nieustrukturyzowanych dokumentów w celu znalezienia docelowych rozdziałów jest frustrujące. To narzędzie wprowadza <strong>tworzenie dwukierunkowego spisu treści</strong>.</p>\n      <p>Skanuje nagłówki i generuje inspirowaną origami, profesjonalną stronę spisu treści wstawianą zaraz za okładką. Oprócz tworzenia klikalnych linków /GoTo dla każdego wiersza indeksu, wstawia małą, estetyczną kotwicę „TOC ↩” w rogu każdej strony docelowego rozdziału. Czytelnicy mogą błyskawicznie przeskakiwać w przód i w tył, korzystając z nawigacji podobnej do sieci.</p>\n    ",
     howToUse: [
@@ -2741,9 +2741,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Dodaj kotwice i zapisz", description: "Kliknij przycisk Wykonaj, aby utworzyć strony i zapisać nawigację z dwukierunkowymi linkami." },
     ],
     useCases: [
-      { title: "Roczne raporty firmowe", description: "Wstaw czytelną stronę spisu treści po okładce, aby umożliwić akcjonariuszom przeskakiwanie między wykresami finansowymi.", icon: 'file-bar' },
-      { title: "Indeksowanie prac", description: "Szybko twórz standardowe indeksy zgodne z zasadami formatowania akademickiego.", icon: 'bookmark' },
-      { title: "Instrukcja obsługi nawigacji", description: "Pomóż czytelnikom podręczników szybko przejść z arkuszy rozwiązywania problemów z powrotem do głównego spisu treści.", icon: 'check-circle' },
+      { title: "Roczne raporty firmowe", description: "Wstaw czytelną stronę spisu treści po okładce, aby umożliwić akcjonariuszom przeskakiwanie między wykresami finansowymi.", icon: "file-bar" },
+      { title: "Indeksowanie prac", description: "Szybko twórz standardowe indeksy zgodne z zasadami formatowania akademickiego.", icon: "bookmark" },
+      { title: "Instrukcja obsługi nawigacji", description: "Pomóż czytelnikom podręczników szybko przejść z arkuszy rozwiązywania problemów z powrotem do głównego spisu treści.", icon: "check-circle" },
     ],
     faq: [
       { question: "Jak działają kotwice dwukierunkowe?", answer: "Tworzymy standardowe adnotacje linków na stronie spisu treści kierujące do odpowiednich stron, a następnie osadzamy link powrotny do spisu treści na wszystkich stronach docelowych rozdziałów." },
@@ -2752,8 +2752,8 @@ export const toolContentPl: Record<string, ToolContent> = {
     ],
   },
   'global-invoice-parser': {
-    title: "Tłumaczenie i konwersja faktur",
-    metaDescription: "Wyodrębniaj sumy walut z faktur międzynarodowych, przeprowadzaj obliczenia i stempluj interaktywne tabele kursów walut z półprzezroczystej karty.",
+    title: "Konwerter kwot faktur w formacie PDF",
+    metaDescription: "Wyodrębnij kwoty faktur z plików PDF, przelicz sumy pomiędzy walutami i dodaj podsumowanie obliczeń do dokumentu.",
     keywords: ["przetłumaczyć fakturę", "przelicznik walut faktury", "kalkulator kursu walut pdf", "stempel w lokalnej walucie", "globalne narzędzie do fakturowania"],
     description: "\n      <p>Globalny tłumacz faktur ułatwia pracę międzynarodowym zespołom finansowym i globalnym nabywcom.</p>\n      <p>Obsługa faktur w wielu walutach ($, €, ¥) często wiąże się z żmudną ręczną arytmetyką. To narzędzie umożliwia <strong>tłumaczenie etykiet na miejscu i przeliczanie kursów wymiany w czasie rzeczywistym</strong>.</p>\n      <p>Skanuje dokument pod kątem łącznych cen, przeprowadza obliczenia w oparciu o dane referencyjne walut i umieszcza na marginesie strony estetyczną, półprzezroczystą tabelę kursów walut. Wyświetla czytelną animację zmieniających się wartości, zapewniając pełną kontrolę nad globalnymi rozliczeniami.</p>\n    ",
     howToUse: [
@@ -2762,9 +2762,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Zastosuj pieczęć księgową", description: "Kliknij przycisk Wykonaj, aby nałożyć estetyczną kartę kursów wymiany, gotową do rozliczenia." },
     ],
     useCases: [
-      { title: "Zwrot kosztów zagranicznej podróży służbowej", description: "Przeliczaj rachunki podróżne na walutę lokalną i dodawaj informacje o przeliczeniu, ułatwiając pracę księgowości.", icon: 'plane' },
-      { title: "Audyt zakupów transgranicznych", description: "Przetłumacz kolumny faktur i wyizoluj prawdziwy koszt towarów e-commerce.", icon: 'credit-card' },
-      { title: "Międzynarodowa księgowość przedsiębiorstw", description: "Dodawaj spójne tabele przeliczeń na fakturach korporacyjnych, aby usprawnić audyty na koniec roku.", icon: 'folder-open' },
+      { title: "Zwrot kosztów zagranicznej podróży służbowej", description: "Przeliczaj rachunki podróżne na walutę lokalną i dodawaj informacje o przeliczeniu, ułatwiając pracę księgowości.", icon: "plane" },
+      { title: "Audyt zakupów transgranicznych", description: "Przetłumacz kolumny faktur i wyizoluj prawdziwy koszt towarów e-commerce.", icon: "credit-card" },
+      { title: "Międzynarodowa księgowość przedsiębiorstw", description: "Dodawaj spójne tabele przeliczeń na fakturach korporacyjnych, aby usprawnić audyty na koniec roku.", icon: "folder-open" },
     ],
      faq: [
       { question: "Jak wykrywa kwoty faktur?", answer: "Skanuje strumienie znaków pod kątem symboli walut i analizuje nagłówki semantyczne, takie jak „Suma” lub „Należność”, aby zlokalizować końcową kwotę faktury." },
@@ -2783,9 +2783,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Analizuj i wyprostuj", description: "Pobierz · Wyrównany PDF" },
     ],
     useCases: [
-      { title: "Archiwizacja paragonów i umów", description: "Wyprostuj szybkie, ręczne skany umów zapisane na urządzeniu mobilnym, zanim zapiszesz je jako formalne cyfrowe archiwa PDF.", icon: 'file-text' },
-      { title: "Digitalizacja książek akademickich", description: "Oczyść skany książek z mikrofilmów w miejscach, w których linie tekstu wychodzą poza poziome marginesy.", icon: 'book' },
-      { title: "Ocena pracy domowej ucznia", description: "Popraw zdjęcia zadań domowych zrobione telefonami uczniów, ułatwiając nauczycielom ocenianie.", icon: 'edit-3' },
+      { title: "Archiwizacja paragonów i umów", description: "Wyprostuj szybkie, ręczne skany umów zapisane na urządzeniu mobilnym, zanim zapiszesz je jako formalne cyfrowe archiwa PDF.", icon: "file-text" },
+      { title: "Digitalizacja książek akademickich", description: "Oczyść skany książek z mikrofilmów w miejscach, w których linie tekstu wychodzą poza poziome marginesy.", icon: "book" },
+      { title: "Ocena pracy domowej ucznia", description: "Popraw zdjęcia zadań domowych zrobione telefonami uczniów, ułatwiając nauczycielom ocenianie.", icon: "edit-3" },
     ],
     faq: [
       { question: "Jak wykrywane jest przechylenie dokumentu?", answer: "Wykrywa lokalnie pochylone wiersze i dopasowuje poprawioną treść do oryginalnej strony." },
@@ -2795,7 +2795,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-two-column-reflower': {
     title: "Zmiana układu dokumentu dwukolumnowego",
-    metaDescription: "Analizuj układ dwukolumnowych dokumentów PDF IEEE/ACM i przekształcaj go w responsywny układ jednokolumnowy do wygodnego czytania na urządzeniach mobilnych i czytnikach e-booków.",
+    metaDescription: "Prześlij dwukolumnowe dokumenty PDF do jednej kolumny, aby ułatwić czytanie na urządzeniach mobilnych. Dostosuj dokumenty akademickie do mniejszych ekranów.",
     keywords: ["PDF dwukolumnowy na jednokolumnowy", "zmiana układu artykułu akademickiego", "czytaj artykuły na smartfonie", "zmiana układu PDF dla czytnika", "dokumenty przyjazne dla urządzeń mobilnych"],
     description: "\n      <p>Narzędzie do zmiany układu dokumentu dwukolumnowego rozwiązuje jeden z głównych problemów badań cyfrowych: czytanie artykułów na ekranach telefonów.</p>\n      <p>Układy dwukolumnowe (stosowane przez IEEE, ACM, Nature i w wielu raportach) są przeznaczone dla papieru A4. Na telefonach i urządzeniach Kindle wymagają ciągłego powiększania, przesuwania w bok i przewijania, co utrudnia czytanie ze zrozumieniem.</p>\n      <p>Procesor stosuje <strong>automatyczne przeformatowanie akapitów i wykrywanie pionowej granicy podziału</strong>. Analizuje współrzędne znaków, wyznacza odstęp między kolumnami, dzieli układ i układa segmenty pionowo (najpierw lewą, potem prawą kolumnę). Wykresy, formuły i nagłówki są płynnie rozmieszczane w jednokolumnowym PDF przewijanym w pionie.</p>\n    ",
     howToUse: [
@@ -2804,9 +2804,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Przeformatuj i zapisz", description: "Kliknij przycisk Wykonaj, aby przekształcić strony w płynny układ i natychmiast je pobrać." },
     ],
     useCases: [
-      { title: "Czytanie artykułów na czytniku", description: "Konwertuj gęste, dwukolumnowe eseje na wygodne jednokolumnowe dokumenty pasujące do ekranów Kindle i Onyx.", icon: 'tablet' },
-      { title: "Czytanie na telefonie w drodze", description: "Czytaj literaturę naukową wygodnie, wykonując pionowe gesty przesuwania jedną ręką podczas transportu.", icon: 'smartphone' },
-      { title: "Archiwalne czasopisma", description: "Zmodernizuj stare gazety wąsko-kolumnowe do czytelnych, jednokolumnowych formatów internetowych.", icon: 'book-open' },
+      { title: "Czytanie artykułów na czytniku", description: "Konwertuj gęste, dwukolumnowe eseje na wygodne jednokolumnowe dokumenty pasujące do ekranów Kindle i Onyx.", icon: "tablet" },
+      { title: "Czytanie na telefonie w drodze", description: "Czytaj literaturę naukową wygodnie, wykonując pionowe gesty przesuwania jedną ręką podczas transportu.", icon: "smartphone" },
+      { title: "Archiwalne czasopisma", description: "Zmodernizuj stare gazety wąsko-kolumnowe do czytelnych, jednokolumnowych formatów internetowych.", icon: "book-open" },
     ],
     faq: [
       { question: "Jak obsługiwane są szerokie wykresy i równania?", answer: "Nasz silnik stosuje „wykrywanie elementów rozpiętości”. Gdy równanie lub diagram przekracza normalną szerokość kolumny, jest izolowany jako element o pełnej szerokości, zachowując oryginalne proporcje bez przycinania." },
@@ -2816,7 +2816,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-page-resizer-uniform': {
     title: "Jednolity rozmiar strony PDF",
-    metaDescription: "Zbiorowa zmiana rozmiaru i normalizacja arkuszy PDF w mieszanych formatach A4, A3 i Letter w celu uzyskania jednolitego rozmiaru docelowego z proporcjonalnym centrowaniem i dopełnieniem marginesów.",
+    metaDescription: "Zmień rozmiar mieszanych stron PDF do jednolitego rozmiaru. Normalizuj strony A4, A3 i Letter z proporcjonalnym skalowaniem i wyśrodkowanymi marginesami.",
     keywords: ["jednolity rozmiar strony", "zmień rozmiar stron PDF", "normalizacja różnych formatów PDF", "normalizacja MediaBox", "zbiorcza zmiana rozmiaru stron"],
     description: "\n      <p>Narzędzie do zmiany rozmiaru plików PDF w wielu formatach to praktyczne narzędzie do porządkowania niespójnych dokumentów firmowych.</p>\n      <p>Łączenie faktur, umów i wykresów dodatkowych często skutkuje powstaniem pliku PDF zawierającego ogromne strony księgi formatu A3, standardowe umowy na stronie A4 i koperty w formacie Letter. Przeglądanie ich bardzo rozprasza, a wysyłanie ich do drukarek biurowych często powoduje błędy związane z zacięciem z powodu niedopasowania rozmiaru.</p>\n      <p>To narzędzie przepisuje niskopoziomowe siatki <code>/MediaBox</code> i <code>/CropBox</code> na każdej stronie. Odwzorowuje istniejące szerokości i wysokości, skaluje oryginalne strony proporcjonalnie, aby dopasować je do docelowych ustawień wstępnych (np. standardowego formatu A4) i wprowadza estetyczne, spójne marginesy otaczające, dzięki czemu cały plik wygląda niesamowicie dopracowany.</p>\n    ",
     howToUse: [
@@ -2825,9 +2825,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyrównaj i pobierz", description: "Kliknij przycisk Wykonaj, aby ujednolicić rozmiary stron i pobrać gotowy plik PDF." },
     ],
     useCases: [
-      { title: "Firmowe oferty przetargowe", description: "Standaryzuj zeskanowane certyfikaty kwalifikacji i arkusze ofertowe na stronie A4 przed wydrukiem.", icon: 'file-text' },
-      { title: "Integracja wykresów finansowych", description: "Skaluj szerokie przepływy pieniężne na stronie A3 na schludne strony A4, zachowując standardy drukowania.", icon: 'layout' },
-      { title: "Ujednolicanie marginesów książki", description: "Ujednolić rozmiary skanowanych stron książki dla wygodnego czytania.", icon: 'book' },
+      { title: "Firmowe oferty przetargowe", description: "Standaryzuj zeskanowane certyfikaty kwalifikacji i arkusze ofertowe na stronie A4 przed wydrukiem.", icon: "file-text" },
+      { title: "Integracja wykresów finansowych", description: "Skaluj szerokie przepływy pieniężne na stronie A3 na schludne strony A4, zachowując standardy drukowania.", icon: "layout" },
+      { title: "Ujednolicanie marginesów książki", description: "Ujednolić rozmiary skanowanych stron książki dla wygodnego czytania.", icon: "book" },
     ],
     faq: [
       { question: "Czy to wypaczy moją treść?", answer: "Nigdy. Obsługujemy zarówno opcję „Zawiera” (skalowanie proporcjonalne z białymi paskami), jak i „Okładka” (przycinanie wyśrodkowane). Domyślny tryb Zawiera zachowuje proporcje, zapobiegając zniekształceniom." },
@@ -2837,7 +2837,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'handwriting-ink-contrast-booster': {
     title: "Popraw czytelność pisma odręcznego",
-    metaDescription: "Wyodrębniaj ze zdjęć niebieskie lub czarne odręczne podpisy, rozjaśniaj żółty odcień papieru i radykalnie zwiększaj kontrast atramentu dla lepszej czytelności.",
+    metaDescription: "Popraw kontrast pisma ręcznego i podpisu na zeskanowanych obrazach. Zmniejsz szum tła papieru i popraw czytelność atramentu.",
     keywords: ["popraw kontrast pisma ręcznego", "zwiększenie kontrastu atramentu", "rozjaśnij zeskanowany papier", "wyostrz wyblakły podpis", "ekstrakcja podpisu"],
     description: "\n      <p>Narzędzie do poprawy kontrastu pisma ręcznego pomaga digitalizować podpisane umowy i archiwa historycznych rękopisów.</p>\n      <p>Skany ręcznie podpisanych dokumentów często wyglądają na matowe przez odbicia na szybie skanera, żółty odcień papieru lub wyblakły atrament. Ponowne drukowanie lub kserowanie tych plików powoduje rozmycie i nieczytelność podpisów. Tradycyjne narzędzia kontrastowe przyciemniają całe tło, pogarszając układ.</p>\n      <p>Narzędzie wykorzystuje **adaptacyjną korekcję histogramu z ograniczonym kontrastem (CLAHE) i separację kolorów opartą na odcieniu**. W bezpiecznym, lokalnym procesie Canvas izoluje ślady pisma ręcznego (czarne i niebieskie) od tła papieru, całkowicie rozjaśnia cienie i nadaje wyblakłemu atramentowi wyraźny, mocny kontrast, dzięki czemu dokumenty są wyraźne i czytelne.</p>\n    ",
     howToUse: [
@@ -2846,9 +2846,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Wyostrz i pobierz", description: "Kliknij opcję Wykonaj, aby prześledzić kolory za pomocą analizy kolorów i pobrać oczyszczony plik PDF." },
     ],
     useCases: [
-      { title: "Naprawa podpisanych umów", description: "Napraw źle zeskanowane umowy, wyostrzając podpisy i rozjaśniając tło papieru do czystej bieli A4.", icon: 'file-check' },
-      { title: "Archiwizacja rękopisów", description: "Digitalizuj odręczne dzienniki lub pamiętniki, wyodrębniając wyraźne czarne linie i usuwając plamy związane z wiekiem.", icon: 'book' },
-      { title: "Rekonstrukcja księgi historycznej", description: "Przywróć szczegóły wyblakłego atramentu na starych księgach archiwalnych, ratując cenne, odręczne zapiski.", icon: 'archive' },
+      { title: "Naprawa podpisanych umów", description: "Napraw źle zeskanowane umowy, wyostrzając podpisy i rozjaśniając tło papieru do czystej bieli A4.", icon: "file-check" },
+      { title: "Archiwizacja rękopisów", description: "Digitalizuj odręczne dzienniki lub pamiętniki, wyodrębniając wyraźne czarne linie i usuwając plamy związane z wiekiem.", icon: "book" },
+      { title: "Rekonstrukcja księgi historycznej", description: "Przywróć szczegóły wyblakłego atramentu na starych księgach archiwalnych, ratując cenne, odręczne zapiski.", icon: "archive" },
     ],
     faq: [
       { question: "Czym to się różni od normalnej konwersji na skalę szarości?", answer: "Skala szarości konwertuje cienie papieru na wartości szarości. Nasz algorytm adaptacyjny oddziela luminancję tła i izoluje charakterystyczne „widma atramentu”, oczyszczając tło do czystej bieli, pozostawiając ostre krawędzie obrysu." },
@@ -2858,7 +2858,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-spine-bookbinder': {
     title: "Oblicz szerokość grzbietu książki",
-    metaDescription: "Oblicz szerokość grzbietu książki na podstawie liczby stron i gramatury papieru, a następnie wygeneruj szablon okładki do wydrukowania z liniami zagięcia grzbietu.",
+    metaDescription: "Oblicz szerokość grzbietu książki na podstawie liczby stron i gramatury papieru. Wygeneruj szablon okładki do wydrukowania z liniami zagięcia grzbietu.",
     keywords: ["kalkulator grzbietu książki", "grubość grzbietu oprawy", "wygeneruj okładkę książki PDF", "znaczniki zgięć grzbietu", "przygotowanie do oprawy klejonej"],
     description: "<p>Narzędzie do obliczania grzbietu książki pomaga w przygotowaniu do druku projektantom, autorom samodzielnie wydającym publikacje i zespołom przygotowującym oferty przetargowe.</p>\n      <p>Przy tworzeniu grubych katalogów, ofert przetargowych lub roczników oprawa klejona wymaga okładki z dokładnie wyliczoną szerokością grzbietu. Jeśli szerokość grzbietu różni się choćby o 1 mm, oprawiona okładka może się wypaczyć, przesunąć lub pognieść. Obliczanie jej na podstawie liczby stron i gramatury papieru bywa złożone i podatne na błędy.</p>\n      <p>Narzędzie korzysta z <strong>modelowanej biblioteki zależności GSM od grubości papieru</strong>. Wprowadź liczbę stron PDF i wybierz rodzaj papieru (np. offset 80 GSM, błyszczący 100 GSM). Silnik oblicza szerokość grzbietu z dokładnością do mikrometrów i tworzy gotowy do druku, bardzo szeroki PDF okładki ze standardowymi skrzydełkami z przodu i z tyłu oraz precyzyjnymi liniami zagięcia.</p>\n    ",
     howToUse: [
@@ -2867,9 +2867,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Podgląd i eksport 3D", description: "Obróć i obejrzyj okładkę książki w interaktywnym podglądzie 3D. Eksportuj wektorowy plik PDF w wysokiej rozdzielczości." },
     ],
     useCases: [
-      { title: "Grube propozycje ofertowe", description: "Projektuj profesjonalne okładki z precyzyjnymi zagięciami grzbietu dla grubych ofert przetargowych.", icon: 'layers' },
-      { title: "Oprawa dyplomowa w twardej oprawie", description: "Zaplanuj idealne szerokości układu grzbietu dla prac magisterskich/doktorskich na uniwersytecie.", icon: 'award' },
-      { title: "Okładki powieści wydawane samodzielnie", description: "Z łatwością oblicz szerokość grzbietu książki przed przesłaniem plików do usług wydawniczych Print-on-Demand.", icon: 'book-open' },
+      { title: "Grube propozycje ofertowe", description: "Projektuj profesjonalne okładki z precyzyjnymi zagięciami grzbietu dla grubych ofert przetargowych.", icon: "layers" },
+      { title: "Oprawa dyplomowa w twardej oprawie", description: "Zaplanuj idealne szerokości układu grzbietu dla prac magisterskich/doktorskich na uniwersytecie.", icon: "award" },
+      { title: "Okładki powieści wydawane samodzielnie", description: "Z łatwością oblicz szerokość grzbietu książki przed przesłaniem plików do usług wydawniczych Print-on-Demand.", icon: "book-open" },
     ],
     faq: [
       { question: "Jak dokładne są obliczenia grubości papieru GSM?", answer: "Bardzo dokładne. Nasz model opiera się na typowych wartościach branżowych (np. 70 GSM = 0,09 mm, 80 GSM = 0,10 mm, 150 GSM błyszczący = 0,125 mm). Udostępniamy także przełącznik „Drukowanie dwustronne”, który automatycznie dzieli obliczenia na pół." },
@@ -2879,7 +2879,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-signature-anchor-helper': {
     title: "Pomocnik rozmieszczania podpisów",
-    metaDescription: "Automatycznie lokalizuj pola podpisu w umowach i wstawiaj interaktywne prowadnice i kotwice w celu szybkiego podpisywania.",
+    metaDescription: "Umieść linie pomocnicze podpisu na stronach PDF, używając współrzędnych X/Y. Przejrzyj ich pozycje przed zapisaniem zaktualizowanego dokumentu.",
     keywords: ["znajdź pola podpisu w PDF", "dodaj kotwicę podpisu", "pomocnik podpisywania umów", "przewodnik kliknij, aby podpisać", "zapobiegaj pominięciu podpisów"],
     description: "\n      <p>Przewodnik po polach podpisu PDF ułatwia sprawne podpisywanie umów wielostronicowych.</p>\n      <p>Podczas wysyłania wielostronicowych umów NDA, sprawozdań finansowych lub umów najmu komercyjnego klienci często pomijają krytyczne pola do podpisania, co prowadzi do niekończącej się wymiany e-maili i opóźnień w transakcjach biznesowych.</p>\n      <p>Nasze narzędzie wykorzystuje <strong>dopasowywanie wzorców wyrażeń regularnych</strong>. Skanuje mapę znaków PDF w celu zlokalizowania terminów takich jak <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code> lub <code>签署日期：</code>. Następnie wykorzystuje <code>pdf-lib</code> do wstawiania standardowych interaktywnych adnotacji linków PDF. Po otwarciu w dowolnym standardowym czytniku klienci widzą migające strzałki z neonowymi obramowaniami, które natychmiast kierują ich do właściwych pól, dzięki czemu podpisywanie jest niezawodne.</p>\n    ",
     howToUse: [
@@ -2888,9 +2888,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       {"step":3,"title":"Przetwórz","description":"Przetwórz plik, sprawdź wynik i pobierz PDF."},
     ],
     useCases: [
-      { title: "Korporacyjne umowy NDA", description: "Wstaw wyraźne, migające instrukcje obok pól podpisu, aby zapobiec pominięciu podpisów podczas wdrażania pracowników.", icon: 'file-text' },
-      { title: "Umowy najmu komercyjnego", description: "Prowadź wielu współsygnatariuszy przez wielostronicowe dokumenty dotyczące nieruchomości za pomocą zakładek w niestandardowych kolorach.", icon: 'users' },
-      { title: "Podpisy zamówień publicznych", description: "Nakładaj interaktywne wskaźniki na faktury i zamówienia, aby przyspieszyć proces zatwierdzania dokumentów księgowych.", icon: 'briefcase' },
+      { title: "Korporacyjne umowy NDA", description: "Wstaw wyraźne, migające instrukcje obok pól podpisu, aby zapobiec pominięciu podpisów podczas wdrażania pracowników.", icon: "file-text" },
+      { title: "Umowy najmu komercyjnego", description: "Prowadź wielu współsygnatariuszy przez wielostronicowe dokumenty dotyczące nieruchomości za pomocą zakładek w niestandardowych kolorach.", icon: "users" },
+      { title: "Podpisy zamówień publicznych", description: "Nakładaj interaktywne wskaźniki na faktury i zamówienia, aby przyspieszyć proces zatwierdzania dokumentów księgowych.", icon: "briefcase" },
     ],
     faq: [
       { question: "Czy te wytyczne pojawią się po wydrukowaniu umowy?", answer: "Nie. Do kotwic dodaje się standardową flagę PDF `Printable` ustawioną na wartość fałszywą. Wyświetlają się na ekranach komputerów i tabletów, ale po wydrukowaniu pozostają całkowicie niewidoczne." },
@@ -2900,7 +2900,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-lossless-slicer': {
     title: "Bezstratne wycinanie fragmentów rysunku",
-    metaDescription: "Wyodrębnij częściowy obszar dużych rysunków CAD, map lub wykresów bezpośrednio ze struktury PDF, zachowując pełną rozdzielczość wektorową i zmniejszając rozmiar pliku.",
+    metaDescription: "Przytnij region rysunku, mapy lub wykresu w formacie PDF, używając dokładnych współrzędnych. Zachowaj zawartość wektorową w eksportowanym pliku PDF.",
     keywords: ["przycinanie wektorów PDF", "bezstratne wycinanie PDF", "przycinanie rysunków CAD", "edycja ramek kadrowania", "wyodrębnij fragment mapy"],
     description: "\n      <p>Narzędzie do bezstratnego wycinania fragmentów rysunków PDF jest przeznaczone dla architektów, inżynierów i osób pracujących z mapami.</p>\n      <p>Przy wyodrębnianiu fragmentu dużego projektu CAD lub mapy PDF zwykłe zrzuty ekranu dają rozpikselowany, rozmyty tekst. Standardowe narzędzia kadrowania często jedynie maskują arkusz, więc plik o wielkości 100MB nadal pozostaje duży i zawiera ukryte dane.</p>\n      <p>Narzędzie edytuje ramki strony <code>/MediaBox</code>, <code>/CropBox</code> i <code>/BleedBox</code> na poziomie drzewa obiektów. Odcina elementy wektorowe poza wybranym regionem, zachowując obszar docelowy w 100% jako wektor (umożliwiając nieograniczone powiększanie), a jednocześnie usuwa zbędne ścieżki i obrazy poza ekranem, aby zmniejszyć rozmiar pliku o 95%!</p>\n    ",
     howToUse: [
@@ -2909,9 +2909,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       {"step":3,"title":"Przetwórz","description":"Przetwórz plik, sprawdź wynik i pobierz PDF."},
     ],
     useCases: [
-      { title: "Izolacja planu CAD", description: "Wytnij szczegół „układu chłodzenia” z ogromnego planu piętra o wielkości 100MB i udostępnij go podwykonawcom.", icon: 'crop' },
-      { title: "Wycinanie map GIS", description: "Wyodrębnij bezstratny, wyraźny wektorowo blok mapy ulic miasta do slajdu prezentacji bez utraty rozdzielczości.", icon: 'map' },
-      { title: "Ręczne śledzenie ilustracji", description: "Bezstratnie wyodrębniaj dane naukowe z książek i osadzaj je w artykułach akademickich.", icon: 'image' },
+      { title: "Izolacja planu CAD", description: "Wytnij szczegół „układu chłodzenia” z ogromnego planu piętra o wielkości 100MB i udostępnij go podwykonawcom.", icon: "crop" },
+      { title: "Wycinanie map GIS", description: "Wyodrębnij bezstratny, wyraźny wektorowo blok mapy ulic miasta do slajdu prezentacji bez utraty rozdzielczości.", icon: "map" },
+      { title: "Ręczne śledzenie ilustracji", description: "Bezstratnie wyodrębniaj dane naukowe z książek i osadzaj je w artykułach akademickich.", icon: "image" },
     ],
     faq: [
       { question: "Czym to się różni od standardowego przycinania?", answer: "Standardowe kadrowanie jedynie dostosowuje granice wizualne; ukryte wektory pozostają w pliku. Nasz fragmentator przycina nakładające się ścieżki wektorowe i usuwa wykraczające poza dopuszczalne obrazy XObject, zapewniając pełną izolację danych i maksymalną kompresję plików." },
@@ -2921,7 +2921,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'pdf-scratchpad-canvas': {
     title: "Marginesy do notatek w kratkę",
-    metaDescription: "Dodaj do stron PDF wysokiej jakości marginesy do notatek w kratkę, w linie lub w układzie Cornella, aby rozwiązywać zadania i przygotowywać notatki do egzaminu.",
+    metaDescription: "Dodaj marginesy w formie siatki, linii lub notatek Cornella do stron PDF. Stwórz dodatkową przestrzeń do pisania na notatki do nauki, obliczenia i przygotowanie do egzaminu.",
     keywords: ["rozszerz margines PDF", "dodaj margines do notatek", "notatki Cornell w PDF", "dodaj miejsce na notatki", "szablon notatek PDF"],
     description: "\n      <p>Narzędzie rozszerzające marginesy PDF jest pomocne dla studentów, badaczy i osób przygotowujących się do egzaminów zawodowych.</p>\n      <p>Podczas rozwiązywania testów, przeglądania slajdów lub czytania podręczników na tablecie marginesy stron bywają bardzo wąskie. Korzystanie z osobnej aplikacji do notatek wymusza ciągłe przełączanie ekranów, a dodawanie pustych arkuszy nie pozwala oglądać zadania i obliczeń obok siebie.</p>\n      <p>Narzędzie przepisuje szerokość lub wysokość strony w niskopoziomowej strukturze PDF, rozszerzając <code>/MediaBox</code> o 200~250 punktów z prawej strony lub na dole. Następnie dodaje w nowych marginesach linie w kratkę, linie w zeszycie albo układ Cornella, tworząc dodatkowe miejsce na notatki przy każdym slajdzie lub pytaniu.</p>\n    ",
     howToUse: [
@@ -2930,9 +2930,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Dodaj marginesy i pobierz", description: "Kliknij przycisk Wykonaj, aby wygenerować rozszerzone strony z czytelnymi siatkami do notatek." },
     ],
     useCases: [
-      { title: "Przygotowanie do egzaminu STEM", description: "Dodaj margines w kratkę obok pytań egzaminacyjnych z matematyki i fizyki, rozwiązując wyprowadzenia tuż obok pytania.", icon: 'edit-3' },
-      { title: "Analiza czytania językowego", description: "Dodawaj marginesy na notatki w linie obok esejów w języku obcym, aby umożliwić analizę słownictwa i tłumaczenie akapitów.", icon: 'book' },
-      { title: "Audyt projektu architektonicznego", description: "Dodaj puste marginesy z boku planów do obliczeń inżynierskich i komentarzy do recenzji klientów.", icon: 'columns' },
+      { title: "Przygotowanie do egzaminu STEM", description: "Dodaj margines w kratkę obok pytań egzaminacyjnych z matematyki i fizyki, rozwiązując wyprowadzenia tuż obok pytania.", icon: "edit-3" },
+      { title: "Analiza czytania językowego", description: "Dodawaj marginesy na notatki w linie obok esejów w języku obcym, aby umożliwić analizę słownictwa i tłumaczenie akapitów.", icon: "book" },
+      { title: "Audyt projektu architektonicznego", description: "Dodaj puste marginesy z boku planów do obliczeń inżynierskich i komentarzy do recenzji klientów.", icon: "columns" },
     ],
     faq: [
       { question: "Czy to zniekształci mój oryginalny tekst PDF?", answer: "Wcale nie. Algorytm rozszerza wymiar papieru na zewnątrz. Oryginalna treść zachowuje swój układ, czcionki i rozdzielczość; po prostu rozciągamy białą przestrzeń na granicach i rysujemy na nich siatki." },
@@ -2942,7 +2942,7 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
   'photo-tiling-prepress': {
     title: "Układ zdjęć dokumentowych do druku",
-    metaDescription: "Przycinaj i układaj zdjęcia paszportowe oraz do dokumentów na standardowym papierze fotograficznym 5″ lub 6″, dodając precyzyjne znaczniki cięcia dla łatwego przycinania.",
+    metaDescription: "Przytnij i ułóż zdjęcia do dowodu osobistego lub paszportu na standardowym papierze fotograficznym. Dodaj znaczniki przycięcia wydruku, aby ułatwić wycięcie gotowego arkusza.",
     keywords: ["układ zdjęć do dokumentów", "wydrukuj zdjęcie paszportowe", "układ zdjęć na papierze fotograficznym", "przygotowanie do druku zdjęcia do dokumentu", "znaczniki cięcia"],
     description: "\n      <p>Narzędzie do układania zdjęć przed drukiem to ekonomiczny i precyzyjny sposób przygotowania zdjęć do dokumentów dla użytkowników domowych i studiów fotograficznych.</p>\n      <p>Domowe drukowanie zdjęć paszportowych, zdjęć do dokumentów tożsamości lub praw jazdy często prowadzi do nieprawidłowych wymiarów, marnowania papieru fotograficznego i nierównego rozmieszczenia. Zlecanie przygotowania układu drukarni jest czasochłonne.</p>\n      <p>Narzędzie wykorzystuje <strong>precyzyjny układ przygotowania do druku</strong>. Przyjmuje zdjęcia portretowe lub skany dokumentów tożsamości, przycina je do standardowych wymiarów (np. zdjęć paszportowych 1″ lub 2″), oblicza optymalną liczbę zdjęć na standardowym papierze fotograficznym (np. arkuszu 5″ lub 6″) i dodaje wyraźne znaczniki cięcia, tworząc gotowy do wydruku plik PDF.</p>\n    ",
     howToUse: [
@@ -2951,9 +2951,9 @@ export const toolContentPl: Record<string, ToolContent> = {
       { step: 3, title: "Układanie zdjęć i eksport", description: "Sprawdź kafelki zdjęć w naszej siatce i wyeksportuj plik PDF do wydrukowania w wysokiej rozdzielczości." },
     ],
     useCases: [
-      { title: "Zdjęcia paszportowe samoobsługowe", description: "Ułóż portrety paszportowe wykonane mobilnie na pojedynczej siatce papieru fotograficznego o przekątnej 6 cali i wydrukuj 8 kopii za ułamek standardowych kosztów studia.", icon: 'user' },
-      { title: "Dwustronna kopia dowodu osobistego", description: "Na potrzeby oficjalnych zgłoszeń sformatuj starannie skany przedniej i tylnej strony krajowych dowodów osobistych na standardowych arkuszach Letter/A4.", icon: 'file-text' },
-      { title: "Arkusze miniatur zdjęć wsadowych", description: "Ułóż wiele rodzinnych wspomnień lub zaprojektuj migawki na arkuszu, aby efektywnie drukować miniatury stykówek.", icon: 'grid' },
+      { title: "Zdjęcia paszportowe samoobsługowe", description: "Ułóż portrety paszportowe wykonane mobilnie na pojedynczej siatce papieru fotograficznego o przekątnej 6 cali i wydrukuj 8 kopii za ułamek standardowych kosztów studia.", icon: "user" },
+      { title: "Dwustronna kopia dowodu osobistego", description: "Na potrzeby oficjalnych zgłoszeń sformatuj starannie skany przedniej i tylnej strony krajowych dowodów osobistych na standardowych arkuszach Letter/A4.", icon: "file-text" },
+      { title: "Arkusze miniatur zdjęć wsadowych", description: "Ułóż wiele rodzinnych wspomnień lub zaprojektuj migawki na arkuszu, aby efektywnie drukować miniatury stykówek.", icon: "grid" },
     ],
     faq: [
       { question: "Czy wydrukowane wymiary będą zgodne z oficjalnymi specyfikacjami 1” lub 2”?", answer: "Tak. Silnik siatki mierzy przy użyciu standardowych punktów PDF (72 pkt = 1 cal), renderując zdjęcia 1-calowe dokładnie w formacie 25x35 mm i zdjęcia 2-calowe w formacie 35x49 mm. Upewnij się, że drukujesz z ustawieniem „Rzeczywisty rozmiar / 100% skali” w ustawieniach drukarki." },

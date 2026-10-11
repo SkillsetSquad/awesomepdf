@@ -1,3 +1,4 @@
+import { PageSeo } from '@/components/seo/PageSeo';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
@@ -45,6 +46,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     // Enable static rendering
     setRequestLocale(locale);
 
+    const t = await getTranslations();
+    const key = CATEGORY_MESSAGE_KEYS[category as ToolCategory];
+
     // Get localized content for tools
     const { tools } = await import('@/config/tools');
     const { getToolContent } = await import('@/config/tool-content');
@@ -61,10 +65,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     }, {} as Record<string, { title: string; description: string }>);
 
     return (
+        <>
+        <PageSeo locale={locale as Locale} path={`/tools/category/${category}`} title={t(`home.categories.${key}`)} description={t(`home.categoriesDescription.${key}`)} type="CollectionPage" tools={getToolsByCategory(category as ToolCategory)} />
         <CategoryPageClient
             locale={locale as Locale}
             category={category as ToolCategory}
             localizedToolContent={localizedToolContent}
         />
+        </>
     );
 }

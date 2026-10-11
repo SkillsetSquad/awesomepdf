@@ -11,7 +11,7 @@ import JSZip from 'jszip';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'public');
 const generated = new Set(['public/source-code.zip', 'public/LICENSE.txt', 'public/THIRD_PARTY_NOTICES.txt', 'public/source-manifest.json']);
-const excludedDirectories = new Set(['node_modules', '.git', '.next', 'out', 'target', 'dist', 'coverage', 'scratch', '.cache']);
+const excludedDirectories = new Set(['node_modules', '.git', '.next', 'out', 'target', 'dist', 'coverage', 'scratch', '.cache', 'docs']);
 const excludedFiles = new Set([
   'public/libreoffice-wasm/soffice.wasm', 'public/libreoffice-wasm/soffice.data',
   'public/libreoffice-wasm/soffice.wasm.bin', 'public/libreoffice-wasm/soffice.data.bin',
@@ -31,10 +31,10 @@ async function walk(relative) {
 async function sourceFiles() {
   try {
     return execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { cwd: root, maxBuffer: 10 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] })
-      .toString().split('\0').filter(Boolean).filter((file) => !generated.has(file));
+      .toString().split('\0').filter(Boolean).filter((file) => !generated.has(file) && !file.startsWith('docs/'));
   } catch {
     // Docker builds intentionally omit .git. Include the same application/build inputs.
-    const directories = ['src', 'public', 'messages', 'scripts', 'docs', 'extension', 'src-tauri', 'nix', '.github'];
+    const directories = ['src', 'public', 'messages', 'scripts', 'extension', 'src-tauri', 'nix', '.github'];
     const rootFiles = (await readdir(root, { withFileTypes: true }))
       .filter((entry) => entry.isFile() && !entry.name.startsWith('.env') && !/\.(zip|tgz|log|tsbuildinfo)$/.test(entry.name) && entry.name !== '.DS_Store')
       .map((entry) => entry.name);

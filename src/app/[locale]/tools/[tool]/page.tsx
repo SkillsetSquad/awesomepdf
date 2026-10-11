@@ -1,3 +1,4 @@
+import { CATEGORY_MESSAGE_KEYS } from '@/types/tool';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getToolById, getAllTools } from '@/config/tools';
@@ -225,8 +226,9 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
   const webPageStructuredData = generateWebPageSchema(tool, content, locale);
   const breadcrumbStructuredData = generateBreadcrumbSchema(
     [
-      { name: 'Home', path: '' },
-      { name: 'Tools', path: '/tools' },
+      { name: t('common.navigation.home'), path: '' },
+      { name: t('common.navigation.tools'), path: '/tools' },
+      { name: t(`home.categories.${CATEGORY_MESSAGE_KEYS[tool.category]}`), path: `/tools/category/${tool.category}` },
       { name: content.title, path: `/tools/${tool.slug}` },
     ],
     locale

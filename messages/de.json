@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Alle PDF-Werkzeuge",
-      "description": "Durchsuchen Sie 67+ professionelle PDF-Werkzeuge. PDF-Dateien kostenlos zusammenführen, teilen, komprimieren, konvertieren, bearbeiten und schützen."
+      "description": "Kostenlose PDF-Tools zum Zusammenführen, Teilen, Komprimieren, Konvertieren und Bearbeiten im Browser. Ohne Konto oder Datei-Upload auf einen Server."
     },
     "about": {
       "title": "Über uns",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Welche Sprachen werden unterstützt?",
-          "answer": "AwesomePDF ist in 9 Sprachen verfügbar: Englisch, Japanisch, Koreanisch, Spanisch, Französisch, Deutsch, Chinesisch, Portugiesisch und Arabisch (mit RTL-Unterstützung)."
+          "answer": "AwesomePDF ist in {languages} Sprachen verfügbar: {languageNames}. Arabisch unterstützt eine Darstellung von rechts nach links."
         },
         "change": {
           "question": "Wie ändere ich die Sprache?",

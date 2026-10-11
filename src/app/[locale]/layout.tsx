@@ -1,4 +1,4 @@
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -7,6 +7,17 @@ import { fontVariables } from '@/lib/fonts';
 import { SkipLink } from '@/components/common/SkipLink';
 import '@/app/globals.css';
 import { UIProviders } from '@/components/ui/providers';
+import { SiteDocument } from '@/components/layout/SiteDocument';
+import { siteConfig } from '@/config/site';
+import { withBasePath } from '@/lib/utils/path';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: withBasePath('/favicon.svg'),
+    apple: withBasePath('/apple-touch-icon.png'),
+  },
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -50,6 +61,7 @@ export default async function LocaleLayout({
   const direction = localeConfig[locale as Locale]?.direction || 'ltr';
 
   return (
+    <SiteDocument locale={locale as Locale}>
     <NextIntlClientProvider messages={messages}>
       <div lang={locale} dir={direction} className={`${fontVariables} min-h-screen bg-background text-foreground antialiased font-sans`}>
         <UIProviders>
@@ -58,5 +70,6 @@ export default async function LocaleLayout({
         </UIProviders>
       </div>
     </NextIntlClientProvider>
+    </SiteDocument>
   );
 }

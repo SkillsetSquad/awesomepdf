@@ -4,8 +4,8 @@ permissions:
   contents: write
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  # Full upstream merges can restore the docs history intentionally removed
+  # from this fork. Prefer reviewed patches; keep full synchronization manual.
   workflow_dispatch:
 
 env:

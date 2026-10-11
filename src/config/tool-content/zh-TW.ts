@@ -1,4 +1,3 @@
-import { toolContentEn } from './en';
 /**
  * Traditional Chinese Tool Content
  * Requirements: 3.1 - Multi-language support
@@ -26,9 +25,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '處理並下載', description: '點擊處理按鈕，操作完成後下載修改後的PDF。' },
     ],
     useCases: [
-      { title: '檔案準備', description: '透過刪除不必要的頁面、重新排序內容和合併多個檔案來準備提交檔案。', icon: 'file-check' },
-      { title: '報告匯編', description: '合併多個報告部分，新增封面頁，將章節整理成一個專業文檔。', icon: 'book-open' },
-      { title: '檔案管理', description: '將大型檔案拆分成可管理的部分，提取相關頁面，重新整理歷史文件。', icon: 'archive' },
+      { title: '檔案準備', description: '透過刪除不必要的頁面、重新排序內容和合併多個檔案來準備提交檔案。', icon: "file-check" },
+      { title: '報告匯編', description: '合併多個報告部分，新增封面頁，將章節整理成一個專業文檔。', icon: "book-open" },
+      { title: '檔案管理', description: '將大型檔案拆分成可管理的部分，提取相關頁面，重新整理歷史文件。', icon: "archive" },
     ],
     faq: [
       { question: '一次可以處理多少個PDF？', answer: '您可以同時上傳和處理最多10個PDF檔案，合併最大大小為500MB。' },
@@ -52,9 +51,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '合併並下載', description: '點擊合併按鈕組合所有檔案，然後下載合併後的PDF。' },
     ],
     useCases: [
-      { title: '合併報告', description: '將月度或季度報告合併成一個年度文檔，便於分發和存檔。', icon: 'file-text' },
-      { title: '組裝作品集', description: '將多個項目文檔、證書或工作樣本合併成專業作品集。', icon: 'briefcase' },
-      { title: '整合發票', description: '將多張發票或收據合併成一個文檔，用於會計和記錄保存。', icon: 'receipt' },
+      { title: '合併報告', description: '將月度或季度報告合併成一個年度文檔，便於分發和存檔。', icon: "file-text" },
+      { title: '組裝作品集', description: '將多個項目文檔、證書或工作樣本合併成專業作品集。', icon: "briefcase" },
+      { title: '整合發票', description: '將多張發票或收據合併成一個文檔，用於會計和記錄保存。', icon: "receipt" },
     ],
     faq: [
       { question: '可以合併多少個PDF？', answer: '您可以一次合併最多100個PDF檔案，總大小最高可達500MB。' },
@@ -79,9 +78,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '應用並下載', description: '點擊旋轉應用更改並下載校正後的PDF。' },
     ],
     useCases: [
-      { title: '掃描文檔', description: '校正掃描時進紙傾斜的頁面。', icon: 'scan' },
-      { title: '技術圖紙', description: '精確調整技術圖表和平面圖的方向。', icon: 'ruler' },
-      { title: '創意排版', description: '通過將頁面旋轉到特定藝術角度來創建獨特的布局。', icon: 'pen-tool' },
+      { title: '掃描文檔', description: '校正掃描時進紙傾斜的頁面。', icon: "scan" },
+      { title: '技術圖紙', description: '精確調整技術圖表和平面圖的方向。', icon: "ruler" },
+      { title: '創意排版', description: '通過將頁面旋轉到特定藝術角度來創建獨特的布局。', icon: "pen-tool" },
     ],
     faq: [
       { question: '可以按小數旋轉嗎，例如45.5度？', answer: '目前工具僅支援整數度數，但我們正在努力啟用小數精度。' },
@@ -93,7 +92,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
   'grid-combine': {
     title: '網格組合 PDF',
     metaDescription: '將多個PDF檔案組合到單頁面上的靈活網格配置中。每頁排列2、4、6、9個或更多PDF，支援邊框和間距。',
-    keywords: ['網格組合', '合併pdf網格', 'pdf拼貼', '多pdf一頁', 'pdf n-up', '組合pdf網格'],
+    keywords: ['網格組合', '合併pdf網格', 'pdf拼貼', '多pdf一頁', "pdf 合一", '組合pdf網格'],
     description: `
       <p>網格組合工具提供了一種將多個獨立的PDF檔案合併到單頁面上的獨特方式。與簡單追加頁面的標準“合併PDF”工具或重新排列單個檔案頁面的“N-Up”工具不同，網格組合獲取多個輸入檔案並將它們並排排列在可自訂的網格配置中。</p>
       <p>您可以選擇各種網格配置，如2x1、2x2、3x3等。這非常適合比較多個檔案、從不同來源創建講義或列印多個檔案的緊湊版本。</p>
@@ -106,9 +105,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '組合並下載', description: '點擊“組合PDF”生成您的新網格配置檔案並下載結果。' },
     ],
     useCases: [
-      { title: '視覺比較', description: '將設計或文檔的不同版本並排放置在單個頁面上以便於比較。', icon: 'layout-grid' },
-      { title: '列印講義', description: '將多個短檔案或幻燈片合併到單張紙上以節省列印成本。', icon: 'printer' },
-      { title: '作品集創建', description: '在清晰、有組織的網格概覽中展示多個項目檔案。', icon: 'image' },
+      { title: '視覺比較', description: '將設計或文檔的不同版本並排放置在單個頁面上以便於比較。', icon: "layout-grid" },
+      { title: '列印講義', description: '將多個短檔案或幻燈片合併到單張紙上以節省列印成本。', icon: "printer" },
+      { title: '作品集創建', description: '在清晰、有組織的網格概覽中展示多個項目檔案。', icon: "image" },
     ],
     faq: [
       { question: '這與N-Up有什麼不同？', answer: 'N-Up從一個PDF中取得頁面並將它們放在一張紙上。網格組合取得多個不同的PDF檔案並將它們放在一張紙上。' },
@@ -133,9 +132,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '拆分並下載', description: '點擊拆分創建新的PDF檔案，單獨下載或作為ZIP壓縮包下載。' },
     ],
     useCases: [
-      { title: '提取章節', description: '將書籍或手冊拆分成單獨的章節，便於閱讀或分發。', icon: 'book' },
-      { title: '分離合併掃描', description: '將批量掃描的文檔分成每個原始文檔的單獨檔案。', icon: 'copy' },
-      { title: '創建講義', description: '從演示文稿中提取特定幻燈片或頁面以創建重點講義。', icon: 'presentation' },
+      { title: '提取章節', description: '將書籍或手冊拆分成單獨的章節，便於閱讀或分發。', icon: "book" },
+      { title: '分離合併掃描', description: '將批量掃描的文檔分成每個原始文檔的單獨檔案。', icon: "copy" },
+      { title: '創建講義', description: '從演示文稿中提取特定幻燈片或頁面以創建重點講義。', icon: "presentation" },
     ],
     faq: [
       { question: '可以將PDF拆分成單獨的頁面嗎？', answer: '是的，您可以通過選擇"每頁拆分"選項將PDF拆分成單獨的單頁檔案。' },
@@ -159,9 +158,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '壓縮並下載', description: '點擊壓縮以減小檔案大小，然後下載優化後的PDF。' },
     ],
     useCases: [
-      { title: '電子郵件附件', description: '減小PDF大小以滿足電子郵件附件限制並確保更快的發送。', icon: 'mail' },
-      { title: '網絡發布', description: '優化PDF以供網絡下載，提高頁面加載時間和使用者體驗。', icon: 'globe' },
-      { title: '存儲優化', description: '壓縮存檔檔案以節省磁盤空間同時保持可訪問性。', icon: 'hard-drive' },
+      { title: '電子郵件附件', description: '減小PDF大小以滿足電子郵件附件限制並確保更快的發送。', icon: "mail" },
+      { title: '網絡發布', description: '優化PDF以供網絡下載，提高頁面加載時間和使用者體驗。', icon: "globe" },
+      { title: '存儲優化', description: '壓縮存檔檔案以節省磁盤空間同時保持可訪問性。', icon: "hard-drive" },
     ],
     faq: [
       { question: '可以減少多少檔案大小？', answer: '壓縮結果因PDF內容而異。圖像密集的PDF通常可以減少50-80%，而純文本PDF可能減少較少。' },
@@ -187,8 +186,8 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     ],
     useCases: [
       { title: '文件審閱', description: '為協作審閱過程添加評論、高亮和標記到文件。', icon: 'message-square' },
-      { title: '表單填寫', description: '填寫文字欄位、新增簽名並完成PDF表單，無需列印。', icon: 'edit-3' },
-      { title: '內容編輯', description: '在共享前永久刪除文件中的敏感信息。', icon: 'eye-off' },
+      { title: '表單填寫', description: '填寫文字欄位、新增簽名並完成PDF表單，無需列印。', icon: "edit-3" },
+      { title: '內容編輯', description: '在共享前永久刪除文件中的敏感信息。', icon: "eye-off" },
     ],
     faq: [
       { question: '可以編輯PDF中的原始文字嗎？', answer: '此工具專注新增註解和新內容。要編輯現有文字，您可能需要使用原始檔案。' },
@@ -212,9 +211,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF並下載結果。' },
     ],
     useCases: [
-      { title: '照片相冊', description: '從假期照片或活動照片創建PDF相冊，便於分享。', icon: 'image' },
-      { title: '文件掃描', description: '將手機拍攝的文檔照片轉換為正式的PDF檔案。', icon: 'camera' },
-      { title: '作品集創建', description: '將攝影作品或設計樣本編譯成專業的PDF作品集。', icon: 'folder' },
+      { title: '照片相冊', description: '從假期照片或活動照片創建PDF相冊，便於分享。', icon: "image" },
+      { title: '文件掃描', description: '將手機拍攝的文檔照片轉換為正式的PDF檔案。', icon: "camera" },
+      { title: '作品集創建', description: '將攝影作品或設計樣本編譯成專業的PDF作品集。', icon: "folder" },
     ],
     faq: [
       { question: '可以轉換多少張圖片？', answer: '您可以將最多100張JPG圖片轉換成一個PDF檔案。' },
@@ -239,9 +238,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '保存並下載', description: '點擊保存應用簽名並下載已簽名的PDF。' },
     ],
     useCases: [
-      { title: '合同簽署', description: '電子簽署合同和協議，無需列印和掃描。', icon: 'file-signature' },
-      { title: '表單填寫', description: '為申請表、同意書和官方文件新增簽名。', icon: 'clipboard' },
-      { title: '審批流程', description: '作為審閱和審批流程的一部分簽署文件。', icon: 'check-circle' },
+      { title: '合同簽署', description: '電子簽署合同和協議，無需列印和掃描。', icon: "file-signature" },
+      { title: '表單填寫', description: '為申請表、同意書和官方文件新增簽名。', icon: "clipboard" },
+      { title: '審批流程', description: '作為審閱和審批流程的一部分簽署文件。', icon: "check-circle" },
     ],
     faq: [
       { question: '電子簽名具有法律效力嗎？', answer: '電子簽名在大多數國家都被法律認可。但是，某些文檔可能需要特定類型的數字簽名。請查閱當地法規。' },
@@ -266,9 +265,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '裁剪並下載', description: '點擊裁剪應用更改並下載裁剪後的PDF。' },
     ],
     useCases: [
-      { title: '刪除邊距', description: '修剪掃描文檔或具有大邊框的PDF的過多邊距。', icon: 'maximize-2' },
-      { title: '聚焦內容', description: '裁剪以突出特定內容區域，刪除頁首、頁尾或側邊欄。', icon: 'target' },
-      { title: '標準化頁面', description: '通過裁剪到統一尺寸使所有頁面大小相同。', icon: 'square' },
+      { title: '刪除邊距', description: '修剪掃描文檔或具有大邊框的PDF的過多邊距。', icon: "maximize-2" },
+      { title: '聚焦內容', description: '裁剪以突出特定內容區域，刪除頁首、頁尾或側邊欄。', icon: "target" },
+      { title: '標準化頁面', description: '通過裁剪到統一尺寸使所有頁面大小相同。', icon: "square" },
     ],
     faq: [
       { question: '裁剪會永久刪除內容嗎？', answer: '是的，裁剪會刪除裁剪區域外的內容。請確保保留原始檔案的備份。' },
@@ -292,9 +291,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '提取並下載', description: '點擊提取創建包含所選頁面的新PDF並下載。' },
     ],
     useCases: [
-      { title: '創建摘錄', description: '從報告或書籍中提取相關頁面以創建重點參考文件。', icon: 'file-minus' },
-      { title: '分享特定內容', description: '提取特定頁面進行分享，無需發送整個文檔。', icon: 'share-2' },
-      { title: '存檔重要頁面', description: '提取並儲存檔案中的關鍵頁面以供長期存檔。', icon: 'archive' },
+      { title: '創建摘錄', description: '從報告或書籍中提取相關頁面以創建重點參考文件。', icon: "file-minus" },
+      { title: '分享特定內容', description: '提取特定頁面進行分享，無需發送整個文檔。', icon: "share-2" },
+      { title: '存檔重要頁面', description: '提取並儲存檔案中的關鍵頁面以供長期存檔。', icon: "archive" },
     ],
     faq: [
       { question: '可以提取不連續的頁面嗎？', answer: '是的，您可以選擇任意頁面組合，無論是連續的還是分散在整個文檔中的。' },
@@ -318,9 +317,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '儲存並下載', description: '點擊儲存套用更改並下載重新整理的PDF。' },
     ],
     useCases: [
-      { title: '修正頁面順序', description: '糾正掃描或合併錯誤的頁面順序。', icon: 'arrow-up-down' },
-      { title: '建立自訂順序', description: '為簡報或報告按特定順序排列頁面。', icon: 'list' },
-      { title: '刪除不需要的頁面', description: '從檔案中刪除空白頁、重複頁或不相關的內容。', icon: 'trash-2' },
+      { title: '修正頁面順序', description: '糾正掃描或合併錯誤的頁面順序。', icon: "arrow-up-down" },
+      { title: '建立自訂順序', description: '為簡報或報告按特定順序排列頁面。', icon: "list" },
+      { title: '刪除不需要的頁面', description: '從檔案中刪除空白頁、重複頁或不相關的內容。', icon: "trash-2" },
     ],
     faq: [
       { question: '可以複製頁面嗎？', answer: '是的，您可以複製任何頁面並將副本放置在檔案中的任何位置。' },
@@ -344,9 +343,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '刪除並下載', description: '點擊刪除移除所選頁面並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '刪除空白頁', description: '通過刪除意外包含的空白頁來清理文檔。', icon: 'file-x' },
-      { title: '刪除敏感內容', description: '在共享文檔前刪除包含機密信息的頁面。', icon: 'shield' },
-      { title: '精簡文件', description: '刪除過時或不相關的頁面以創建更集中的文件。', icon: 'filter' },
+      { title: '刪除空白頁', description: '通過刪除意外包含的空白頁來清理文檔。', icon: "file-x" },
+      { title: '刪除敏感內容', description: '在共享文檔前刪除包含機密信息的頁面。', icon: "shield" },
+      { title: '精簡文件', description: '刪除過時或不相關的頁面以創建更集中的文件。', icon: "filter" },
     ],
     faq: [
       { question: '可以恢復已刪除的頁面嗎？', answer: '刪除在輸出檔案中是永久的。如果以後可能需要這些頁面，請保留原始文件的備份。' },
@@ -371,9 +370,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '保存並下載', description: '點擊保存應用更改並下載帶有更新書籤的PDF。' },
     ],
     useCases: [
-      { title: '創建導航', description: '為長文檔新增書籤，幫助讀者快速導航到特定部分。', icon: 'navigation' },
-      { title: '整理章節', description: '創建反映文檔章節組織的層次書籤結構。', icon: 'book-open' },
-      { title: '提高可訪問性', description: '新增書籤使文檔更易於訪問和友好使用者。', icon: 'accessibility' },
+      { title: '創建導航', description: '為長文檔新增書籤，幫助讀者快速導航到特定部分。', icon: "navigation" },
+      { title: '整理章節', description: '創建反映文檔章節組織的層次書籤結構。', icon: "book-open" },
+      { title: '提高可訪問性', description: '新增書籤使文檔更易於訪問和友好使用者。', icon: "accessibility" },
     ],
     faq: [
       { question: '可以創建嵌套書籤嗎？', answer: '是的，您可以創建具有父書籤和子書籤的層次結構。' },
@@ -397,9 +396,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '生成並下載', description: '點擊生成創建目錄並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '學術論文', description: '為論文、學位論文和研究報告新增專業目錄。', icon: 'graduation-cap' },
-      { title: '商業報告', description: '為利益相關者創建具有清晰章節列表的可導航報告。', icon: 'bar-chart' },
-      { title: '使用者手冊', description: '為技術文檔和使用者指南生成全面的目錄。', icon: 'book' },
+      { title: '學術論文', description: '為論文、學位論文和研究報告新增專業目錄。', icon: "graduation-cap" },
+      { title: '商業報告', description: '為利益相關者創建具有清晰章節列表的可導航報告。', icon: "bar-chart" },
+      { title: '使用者手冊', description: '為技術文檔和使用者指南生成全面的目錄。', icon: "book" },
     ],
     faq: [
       { question: '可以自定義目錄外觀嗎？', answer: '是的，您可以為目錄選擇不同的樣式、字體和布局。' },
@@ -423,9 +422,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '點擊應用新增頁碼並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '專業文檔', description: '為報告、提案和商業文檔新增頁碼。', icon: 'file-text' },
-      { title: '學術論文', description: '根據學術格式要求編號頁面。', icon: 'graduation-cap' },
-      { title: '法律文檔', description: '為合同和法律文件新增正確的分頁。', icon: 'scale' },
+      { title: '專業文檔', description: '為報告、提案和商業文檔新增頁碼。', icon: "file-text" },
+      { title: '學術論文', description: '根據學術格式要求編號頁面。', icon: "graduation-cap" },
+      { title: '法律文檔', description: '為合同和法律文件新增正確的分頁。', icon: "scale" },
     ],
     faq: [
       { question: '可以跳過第一頁嗎？', answer: '是的，您可以指定要編號的頁面和要跳過的頁面，如標題頁或封面頁。' },
@@ -449,9 +448,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '點擊應用新增水印並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '文件保護', description: '新增"機密"或"草稿"水印以指示文件狀態。', icon: 'shield' },
-      { title: '品牌文件', description: '為官方文件新增公司標誌或名稱。', icon: 'award' },
-      { title: '版權聲明', description: '新增著作權信息以保護著作權。', icon: 'copyright' },
+      { title: '文件保護', description: '新增"機密"或"草稿"水印以指示文件狀態。', icon: "shield" },
+      { title: '品牌文件', description: '為官方文件新增公司標誌或名稱。', icon: "award" },
+      { title: '版權聲明', description: '新增著作權信息以保護著作權。', icon: "copyright" },
     ],
     faq: [
       { question: '可以使用圖像作為水印嗎？', answer: '是的，您可以上傳PNG、JPG或SVG圖片作為水印。' },
@@ -475,9 +474,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '點擊應用新增頁首/頁尾並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '商業文檔', description: '為專業文檔新增公司名稱和頁碼。', icon: 'briefcase' },
-      { title: '法律文檔', description: '在法律文件中包含案件編號、日期和頁面引用。', icon: 'scale' },
-      { title: '學術論文', description: '新增帶有論文標題和作者姓名的頁首。', icon: 'graduation-cap' },
+      { title: '商業文檔', description: '為專業文檔新增公司名稱和頁碼。', icon: "briefcase" },
+      { title: '法律文檔', description: '在法律文件中包含案件編號、日期和頁面引用。', icon: "scale" },
+      { title: '學術論文', description: '新增帶有論文標題和作者姓名的頁首。', icon: "graduation-cap" },
     ],
     faq: [
       { question: '可以在奇數頁和偶數頁上有不同的頁首嗎？', answer: '是的，您可以為奇數頁和偶數頁配置不同的內容。' },
@@ -501,9 +500,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '反轉並下載', description: '點擊反轉處理文檔並下載結果。' },
     ],
     useCases: [
-      { title: '夜間閱讀', description: '創建文件的暗模式版本，便於夜間舒適閱讀。', icon: 'moon' },
-      { title: '減少眼睛疲勞', description: '反轉明亮的文件以減少長時間閱讀時的眼睛疲勞。', icon: 'eye' },
-      { title: '節省列印', description: '反轉文件以減少列印草稿時的墨水使用。', icon: 'printer' },
+      { title: '夜間閱讀', description: '創建文件的暗模式版本，便於夜間舒適閱讀。', icon: "moon" },
+      { title: '減少眼睛疲勞', description: '反轉明亮的文件以減少長時間閱讀時的眼睛疲勞。', icon: "eye" },
+      { title: '節省列印', description: '反轉文件以減少列印草稿時的墨水使用。', icon: "printer" },
     ],
     faq: [
       { question: '圖像也會被反轉嗎？', answer: '默認情況下會。您可以選擇在反轉文本和背景的同時保留原始圖像。' },
@@ -527,9 +526,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '點擊應用新增背景並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '提高可讀性', description: '新增淺奶油色或棕褐色背景以減少眼睛疲勞。', icon: 'eye' },
-      { title: '品牌文件', description: '使用品牌顏色作為營銷材料的背景。', icon: 'palette' },
-      { title: '突出部分', description: '使用不同的背景顏色來區分文件部分。', icon: 'layers' },
+      { title: '提高可讀性', description: '新增淺奶油色或棕褐色背景以減少眼睛疲勞。', icon: "eye" },
+      { title: '品牌文件', description: '使用品牌顏色作為營銷材料的背景。', icon: "palette" },
+      { title: '突出部分', description: '使用不同的背景顏色來區分文件部分。', icon: "layers" },
     ],
     faq: [
       { question: '背景會覆蓋現有內容嗎？', answer: '不會，背景新增在現有內容後面，保留所有文字和圖片。' },
@@ -553,9 +552,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '套用並下載', description: '點擊套用更改文字顏色並下載更新後的PDF。' },
     ],
     useCases: [
-      { title: '改善對比度', description: '更改文字顏色以提高與背景的可讀性。', icon: 'contrast' },
-      { title: '品牌一致性', description: '更新文字顏色以匹配品牌指南。', icon: 'palette' },
-      { title: '無障礙性', description: '調整文字顏色以滿足無障礙對比度要求。', icon: 'accessibility' },
+      { title: '改善對比度', description: '更改文字顏色以提高與背景的可讀性。', icon: "contrast" },
+      { title: '品牌一致性', description: '更新文字顏色以匹配品牌指南。', icon: "palette" },
+      { title: '無障礙性', description: '調整文字顏色以滿足無障礙對比度要求。', icon: "accessibility" },
     ],
     faq: [
       { question: '所有文字都會被更改嗎？', answer: '是的，該工具更改檔案中所有文字元素的顏色。' },
@@ -579,9 +578,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '定位並應用', description: '點擊放置印章，調整位置和大小，然後下載。' },
     ],
     useCases: [
-      { title: '文件審批', description: '在審閱工作流程中為文件新增"已批準"或"已拒絕"印章。', icon: 'check-circle' },
-      { title: '狀態指示', description: '將文件標記為"草稿"、"最終版"或"機密"。', icon: 'tag' },
-      { title: '品質控制', description: '新增質檢印章以指示檢查或審閱完成。', icon: 'clipboard-check' },
+      { title: '文件審批', description: '在審閱工作流程中為文件新增"已批準"或"已拒絕"印章。', icon: "check-circle" },
+      { title: '狀態指示', description: '將文件標記為"草稿"、"最終版"或"機密"。', icon: "tag" },
+      { title: '品質控制', description: '新增質檢印章以指示檢查或審閱完成。', icon: "clipboard-check" },
     ],
     faq: [
       { question: '有哪些預設印章可用？', answer: '預設包括已批準、已拒絕、草稿、最終版、機密、副本等。' },
@@ -605,9 +604,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '刪除並下載', description: '點擊刪除去除注釋並下載乾淨的PDF。' },
     ],
     useCases: [
-      { title: '完成文件', description: '在發布最終文件前刪除審閱評論和標記。', icon: 'file-check' },
-      { title: '隱私保護', description: '在共享前刪除可能包含敏感信息的評論。', icon: 'shield' },
-      { title: '乾淨分發', description: '創建已注釋文檔的乾淨副本以供分發。', icon: 'copy' },
+      { title: '完成文件', description: '在發布最終文件前刪除審閱評論和標記。', icon: "file-check" },
+      { title: '隱私保護', description: '在共享前刪除可能包含敏感信息的評論。', icon: "shield" },
+      { title: '乾淨分發', description: '創建已注釋文檔的乾淨副本以供分發。', icon: "copy" },
     ],
     faq: [
       { question: '可以刪除哪些類型的注釋？', answer: '評論、高亮、下劃線、刪除線、便簽、印章和超連結都可以刪除。' },
@@ -631,9 +630,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '儲存並下載', description: '點擊儲存保留您的輸入並下載已填寫的表單。' },
     ],
     useCases: [
-      { title: '申請表', description: '完成工作申請、許可申請和注冊表單。', icon: 'clipboard' },
-      { title: '稅務表單', description: '電子填寫稅務文件和財務表單。', icon: 'file-text' },
-      { title: '契約', description: '在簽署前用您的信息完成契約表單。', icon: 'file-signature' },
+      { title: '申請表', description: '完成工作申請、許可申請和注冊表單。', icon: "clipboard" },
+      { title: '稅務表單', description: '電子填寫稅務文件和財務表單。', icon: "file-text" },
+      { title: '契約', description: '在簽署前用您的信息完成契約表單。', icon: "file-signature" },
     ],
     faq: [
       { question: '可以儲存進度嗎？', answer: '是的，您可以儲存部分填寫的表單並稍後繼續。' },
@@ -657,9 +656,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '配置並儲存', description: '設定欄位屬性，然後儲存並下載可填寫的PDF表單。' },
     ],
     useCases: [
-      { title: '申請表', description: '創建可填寫的工作申請、會員表單和注冊表。', icon: 'user-plus' },
-      { title: '調查問卷', description: '構建用於數據收集的交互式調查和問卷。', icon: 'clipboard-list' },
-      { title: '訂單表', description: '創建帶有數量欄位和覆選框的產品訂單表。', icon: 'shopping-cart' },
+      { title: '申請表', description: '創建可填寫的工作申請、會員表單和注冊表。', icon: "user-plus" },
+      { title: '調查問卷', description: '構建用於數據收集的交互式調查和問卷。', icon: "clipboard-list" },
+      { title: '訂單表', description: '創建帶有數量欄位和覆選框的產品訂單表。', icon: "shopping-cart" },
     ],
     faq: [
       { question: '可以新增哪些欄位類型？', answer: '文字欄位、核取方塊、單選按鈕、下拉選單、日期選擇器和簽名欄位。' },
@@ -683,9 +682,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '刪除並下載', description: '點擊刪除刪除空白頁並下載清理後的PDF。' },
     ],
     useCases: [
-      { title: '清理掃描文件', description: '從批量掃描的檔案中刪除空白頁。', icon: 'scan' },
-      { title: '刪除分隔符', description: '從合併檔案中刪除空白分隔頁。', icon: 'minus' },
-      { title: '減小檔案大小', description: '刪除不必要的空白頁以減小檔案大小。', icon: 'minimize-2' },
+      { title: '清理掃描文件', description: '從批量掃描的檔案中刪除空白頁。', icon: "scan" },
+      { title: '刪除分隔符', description: '從合併檔案中刪除空白分隔頁。', icon: "minus" },
+      { title: '減小檔案大小', description: '刪除不必要的空白頁以減小檔案大小。', icon: "minimize-2" },
     ],
     faq: [
       { question: '空白檢測如何工作？', answer: '該工具分析頁面內容，將內容最少或沒有可見內容的頁面視為空白。' },
@@ -710,9 +709,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF並下載結果。' },
     ],
     useCases: [
-      { title: '照片集', description: '將來自各種來源的照片合併成一個PDF相冊。', icon: 'images' },
-      { title: '混合格式文檔', description: '將不同格式的圖像轉換為統一的PDF。', icon: 'file-stack' },
-      { title: '存檔創建', description: '從圖像集創建PDF存檔以供長期存儲。', icon: 'archive' },
+      { title: '照片集', description: '將來自各種來源的照片合併成一個PDF相冊。', icon: "images" },
+      { title: '混合格式文檔', description: '將不同格式的圖像轉換為統一的PDF。', icon: "file-stack" },
+      { title: '存檔創建', description: '從圖像集創建PDF存檔以供長期存儲。', icon: "archive" },
     ],
     faq: [
       { question: '支援哪些圖像格式？', answer: '支援JPG、JPEG、PNG、WebP、BMP、TIFF、TIF、SVG、HEIC和HEIF格式。' },
@@ -736,9 +735,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF並下載。' },
     ],
     useCases: [
-      { title: '圖形作品集', description: '將PNG圖形和設計編譯成專業作品集。', icon: 'palette' },
-      { title: '截圖文件', description: '將截圖轉換為PDF檔案。', icon: 'monitor' },
-      { title: '標誌集', description: '創建標誌和品牌資產的PDF目錄。', icon: 'award' },
+      { title: '圖形作品集', description: '將PNG圖形和設計編譯成專業作品集。', icon: "palette" },
+      { title: '截圖文件', description: '將截圖轉換為PDF檔案。', icon: "monitor" },
+      { title: '標誌集', description: '創建標誌和品牌資產的PDF目錄。', icon: "award" },
     ],
     faq: [
       { question: '透明度會保留嗎？', answer: 'PNG透明度在PDF輸出中會保留。' },
@@ -762,9 +761,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF。' },
     ],
     useCases: [
-      { title: '網絡內容存檔', description: '將網絡圖像轉換為PDF以供離線存檔。', icon: 'globe' },
-      { title: '列印準備', description: '將WebP圖像轉換為PDF以供列印。', icon: 'printer' },
-      { title: '格式標準化', description: '將現代WebP轉換為通用兼容的PDF。', icon: 'file-check' },
+      { title: '網絡內容存檔', description: '將網絡圖像轉換為PDF以供離線存檔。', icon: "globe" },
+      { title: '列印準備', description: '將WebP圖像轉換為PDF以供列印。', icon: "printer" },
+      { title: '格式標準化', description: '將現代WebP轉換為通用兼容的PDF。', icon: "file-check" },
     ],
     faq: [
       { question: '什麼是WebP格式？', answer: 'WebP是Google開發的現代圖像格式，為網絡圖像提供卓越的壓縮。' },
@@ -788,9 +787,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建向量PDF。' },
     ],
     useCases: [
-      { title: '標誌轉換', description: '將SVG標誌轉換為PDF以供印刷材料使用。', icon: 'award' },
-      { title: '技術圖紙', description: '將CAD導出和技術插圖轉換為PDF。', icon: 'ruler' },
-      { title: '圖標集', description: '創建圖標集和圖形的PDF目錄。', icon: 'grid' },
+      { title: '標誌轉換', description: '將SVG標誌轉換為PDF以供印刷材料使用。', icon: "award" },
+      { title: '技術圖紙', description: '將CAD導出和技術插圖轉換為PDF。', icon: "ruler" },
+      { title: '圖標集', description: '創建圖標集和圖形的PDF目錄。', icon: "grid" },
     ],
     faq: [
       { question: '向量品質會保留嗎？', answer: '是的，SVG向量品質在PDF輸出中完全保留。' },
@@ -814,9 +813,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF。' },
     ],
     useCases: [
-      { title: '傳統文件轉換', description: '將舊的BMP檔案轉換為現代PDF格式。', icon: 'history' },
-      { title: 'Windows截圖', description: '將Windows位圖截圖轉換為PDF檔案。', icon: 'monitor' },
-      { title: '存檔現代化', description: '將傳統圖像存檔更新為PDF格式。', icon: 'archive' },
+      { title: '傳統文件轉換', description: '將舊的BMP檔案轉換為現代PDF格式。', icon: "history" },
+      { title: 'Windows截圖', description: '將Windows位圖截圖轉換為PDF檔案。', icon: "monitor" },
+      { title: '存檔現代化', description: '將傳統圖像存檔更新為PDF格式。', icon: "archive" },
     ],
     faq: [
       { question: '文件大小會減小嗎？', answer: '是的，BMP文件在轉換為PDF時通常會顯著壓縮。' },
@@ -840,9 +839,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF。' },
     ],
     useCases: [
-      { title: 'iPhone照片相冊', description: '從iPhone照片創建PDF相冊以供分享。', icon: 'smartphone' },
-      { title: '文檔掃描', description: '將iPhone文檔掃描轉換為PDF格式。', icon: 'scan' },
-      { title: '跨平台分享', description: '將HEIC轉換為PDF以實現通用兼容性。', icon: 'share-2' },
+      { title: 'iPhone照片相冊', description: '從iPhone照片創建PDF相冊以供分享。', icon: "smartphone" },
+      { title: '文檔掃描', description: '將iPhone文檔掃描轉換為PDF格式。', icon: "scan" },
+      { title: '跨平台分享', description: '將HEIC轉換為PDF以實現通用兼容性。', icon: "share-2" },
     ],
     faq: [
       { question: '什麼是HEIC格式？', answer: 'HEIC（高效圖像容器）是Apple的圖像格式，比JPEG提供更好的壓縮。' },
@@ -866,9 +865,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PDF。' },
     ],
     useCases: [
-      { title: '掃描文檔', description: '將高品質掃描從TIFF轉換為PDF。', icon: 'scan' },
-      { title: '專業圖形', description: '轉換專業TIFF圖形以供分發。', icon: 'image' },
-      { title: '存檔轉換', description: '將TIFF存檔轉換為更易訪問的PDF格式。', icon: 'archive' },
+      { title: '掃描文檔', description: '將高品質掃描從TIFF轉換為PDF。', icon: "scan" },
+      { title: '專業圖形', description: '轉換專業TIFF圖形以供分發。', icon: "image" },
+      { title: '存檔轉換', description: '將TIFF存檔轉換為更易訪問的PDF格式。', icon: "archive" },
     ],
     faq: [
       { question: '支援多頁TIFF嗎？', answer: '是的，多頁TIFF文件自動轉換為多頁PDF。' },
@@ -892,9 +891,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建格式化的PDF。' },
     ],
     useCases: [
-      { title: '代碼文檔', description: '將源代碼文件轉換為PDF以供文檔使用。', icon: 'code' },
-      { title: '日誌存檔', description: '將日誌文件轉換為PDF以供存檔。', icon: 'file-text' },
-      { title: '筆記轉換', description: '將純文本筆記轉換為格式化的PDF文檔。', icon: 'sticky-note' },
+      { title: '代碼文檔', description: '將源代碼文件轉換為PDF以供文檔使用。', icon: "code" },
+      { title: '日誌存檔', description: '將日誌文件轉換為PDF以供存檔。', icon: "file-text" },
+      { title: '筆記轉換', description: '將純文本筆記轉換為格式化的PDF文檔。', icon: "sticky-note" },
     ],
     faq: [
       { question: '有哪些字體可用？', answer: '有多種字體可用，包括用於代碼的等寬字體。' },
@@ -918,9 +917,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建格式化的PDF。' },
     ],
     useCases: [
-      { title: 'API文檔', description: '將API響應轉換為PDF以供文檔使用。', icon: 'code' },
-      { title: '配置存檔', description: '以可讀的PDF格式存檔配置文件。', icon: 'settings' },
-      { title: '數據報告', description: '從JSON數據導出創建PDF報告。', icon: 'bar-chart' },
+      { title: 'API文檔', description: '將API響應轉換為PDF以供文檔使用。', icon: "code" },
+      { title: '配置存檔', description: '以可讀的PDF格式存檔配置文件。', icon: "settings" },
+      { title: '數據報告', description: '從JSON數據導出創建PDF報告。', icon: "bar-chart" },
     ],
     faq: [
       { question: '包含語法高亮嗎？', answer: '是的，JSON語法用顏色高亮顯示鍵、值和類型。' },
@@ -944,9 +943,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '文檔分享', description: '將Word文檔轉換為PDF以便通用分享和查看。', icon: 'share-2' },
-      { title: '列印準備', description: '從Word文檔創建可列印的PDF。', icon: 'printer' },
-      { title: '文檔存檔', description: '以穩定的PDF格式存檔Word文檔以供長期保存。', icon: 'archive' },
+      { title: '文檔分享', description: '將Word文檔轉換為PDF以便通用分享和查看。', icon: "share-2" },
+      { title: '列印準備', description: '從Word文檔創建可列印的PDF。', icon: "printer" },
+      { title: '文檔存檔', description: '以穩定的PDF格式存檔Word文檔以供長期保存。', icon: "archive" },
     ],
     faq: [
       { question: '支援.doc格式嗎？', answer: '目前僅支援.docx格式。請先使用Microsoft Word或LibreOffice將.doc文件轉換為.docx。' },
@@ -970,9 +969,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '報告分享', description: '將Excel報告轉換為PDF以供利益相關者分發。', icon: 'file-text' },
-      { title: '數據存檔', description: '以穩定的PDF格式存檔電子表格數據。', icon: 'archive' },
-      { title: '列印準備', description: '從Excel工作表創建可列印的PDF。', icon: 'printer' },
+      { title: '報告分享', description: '將Excel報告轉換為PDF以供利益相關者分發。', icon: "file-text" },
+      { title: '數據存檔', description: '以穩定的PDF格式存檔電子表格數據。', icon: "archive" },
+      { title: '列印準備', description: '從Excel工作表創建可列印的PDF。', icon: "printer" },
     ],
     faq: [
       { question: '支援多個工作表嗎？', answer: '是的，工作簿中的所有工作表都會被轉換並包含在PDF中。' },
@@ -996,9 +995,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '演示文稿分享', description: '與任何人分享演示文稿，無需PowerPoint。', icon: 'share-2' },
-      { title: '講義創建', description: '從演示幻燈片創建PDF講義。', icon: 'file-text' },
-      { title: '存檔演示文稿', description: '以穩定的PDF格式存檔演示文稿。', icon: 'archive' },
+      { title: '演示文稿分享', description: '與任何人分享演示文稿，無需PowerPoint。', icon: "share-2" },
+      { title: '講義創建', description: '從演示幻燈片創建PDF講義。', icon: "file-text" },
+      { title: '存檔演示文稿', description: '以穩定的PDF格式存檔演示文稿。', icon: "archive" },
     ],
     faq: [
       { question: '動畫會保留嗎？', answer: 'PDF是靜態格式，因此動畫和過渡不會保留。每張幻燈片變成靜態頁面。' },
@@ -1022,9 +1021,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '格式轉換', description: '將XPS文檔轉換為更廣泛支援的PDF格式。', icon: 'file' },
-      { title: '文檔分享', description: '與沒有XPS查看器的使用者分享XPS文檔。', icon: 'share-2' },
-      { title: '存檔遷移', description: '將XPS存檔遷移到PDF格式以獲得更好的兼容性。', icon: 'archive' },
+      { title: '格式轉換', description: '將XPS文檔轉換為更廣泛支援的PDF格式。', icon: "file" },
+      { title: '文檔分享', description: '與沒有XPS查看器的使用者分享XPS文檔。', icon: "share-2" },
+      { title: '存檔遷移', description: '將XPS存檔遷移到PDF格式以獲得更好的兼容性。', icon: "archive" },
     ],
     faq: [
       { question: '什麼是XPS格式？', answer: 'XPS（XML紙規範）是Microsoft的固定文檔格式，類似於PDF。它常用於Windows列印。' },
@@ -1048,9 +1047,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '舊版轉換', description: '將舊的RTF文檔轉換為現代PDF格式。', icon: 'history' },
-      { title: '文檔分享', description: '以通用可查看的PDF格式分享RTF文檔。', icon: 'share-2' },
-      { title: '存檔文檔', description: '以穩定的PDF格式存檔RTF文件以供長期保存。', icon: 'archive' },
+      { title: '舊版轉換', description: '將舊的RTF文檔轉換為現代PDF格式。', icon: "history" },
+      { title: '文檔分享', description: '以通用可查看的PDF格式分享RTF文檔。', icon: "share-2" },
+      { title: '存檔文檔', description: '以穩定的PDF格式存檔RTF文件以供長期保存。', icon: "archive" },
     ],
     faq: [
       { question: '保留哪些格式？', answer: '包括字體、段落和樣式在內的基本文本格式會被轉換。覆雜的RTF功能可能會被簡化。' },
@@ -1074,9 +1073,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '列印電子書', description: '將電子書轉換為PDF以便物理列印。', icon: 'printer' },
-      { title: '存檔書籍', description: '以長期穩定的PDF格式存儲電子書。', icon: 'archive' },
-      { title: '分享文檔', description: '與任何人分享電子書，即使沒有電子閱讀器。', icon: 'share-2' },
+      { title: '列印電子書', description: '將電子書轉換為PDF以便物理列印。', icon: "printer" },
+      { title: '存檔書籍', description: '以長期穩定的PDF格式存儲電子書。', icon: "archive" },
+      { title: '分享文檔', description: '與任何人分享電子書，即使沒有電子閱讀器。', icon: "share-2" },
     ],
     faq: [
       { question: '格式會保留嗎？', answer: '是的！此工具使用原生EPUB渲染，以高保真度保留文本格式、圖片和布局。' },
@@ -1100,9 +1099,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載PDF', description: '點擊下載保存轉換後的PDF文檔。' },
     ],
     useCases: [
-      { title: '列印Kindle書籍', description: '將Kindle電子書轉換為PDF以便物理列印。', icon: 'printer' },
-      { title: '存檔書籍', description: '以通用PDF格式存儲Kindle書籍。', icon: 'archive' },
-      { title: '跨設備閱讀', description: '在只支援PDF的設備上閱讀Kindle書籍。', icon: 'tablet-smartphone' },
+      { title: '列印Kindle書籍', description: '將Kindle電子書轉換為PDF以便物理列印。', icon: "printer" },
+      { title: '存檔書籍', description: '以通用PDF格式存儲Kindle書籍。', icon: "archive" },
+      { title: '跨設備閱讀', description: '在只支援PDF的設備上閱讀Kindle書籍。', icon: "tablet-smartphone" },
     ],
     faq: [
       { question: '支援哪些MOBI格式？', answer: '此工具支援.mobi、.azw和.azw3文件（非DRM版本）。' },
@@ -1126,9 +1125,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換為PDF並下載轉換後的文檔。' },
     ],
     useCases: [
-      { title: '存檔文檔', description: '將DJVU檔案轉換為通用PDF格式。', icon: 'archive' },
-      { title: '分享掃描書籍', description: '以PDF格式分享掃描書籍以獲得更廣泛的兼容性。', icon: 'share-2' },
-      { title: '列印文檔', description: '將DJVU轉換為高品質PDF以進行列印。', icon: 'printer' },
+      { title: '存檔文檔', description: '將DJVU檔案轉換為通用PDF格式。', icon: "archive" },
+      { title: '分享掃描書籍', description: '以PDF格式分享掃描書籍以獲得更廣泛的兼容性。', icon: "share-2" },
+      { title: '列印文檔', description: '將DJVU轉換為高品質PDF以進行列印。', icon: "printer" },
     ],
     faq: [
       { question: '什麼是DJVU格式？', answer: 'DjVu是一種文件格式，設計用於存儲掃描文檔，特別是包含文本、圖形和圖像的文檔。它為掃描內容提供比PDF更好的壓縮。' },
@@ -1152,9 +1151,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換為PDF並下載轉換後的文檔。' },
     ],
     useCases: [
-      { title: '列印電子書', description: '將FB2電子書轉換為PDF以便物理列印。', icon: 'printer' },
-      { title: '批量轉換', description: '一次將多個FB2文件轉換為PDF。', icon: 'layers' },
-      { title: '通用格式', description: '以適用於任何設備的PDF格式分享電子書。', icon: 'share-2' },
+      { title: '列印電子書', description: '將FB2電子書轉換為PDF以便物理列印。', icon: "printer" },
+      { title: '批量轉換', description: '一次將多個FB2文件轉換為PDF。', icon: "layers" },
+      { title: '通用格式', description: '以適用於任何設備的PDF格式分享電子書。', icon: "share-2" },
     ],
     faq: [
       { question: '可以一次轉換多個FB2文件嗎？', answer: '可以！此工具支援同時批量轉換最多20個FB2文件。' },
@@ -1180,9 +1179,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換提取圖像並作為ZIP下載。' },
     ],
     useCases: [
-      { title: '網絡發布', description: '將PDF頁面轉換為圖像以供網站使用。', icon: 'globe' },
-      { title: '社交媒體', description: '提取頁面作為圖像以供社交媒體分享。', icon: 'share-2' },
-      { title: '演示文稿', description: '將PDF幻燈片轉換為圖像以供演示。', icon: 'presentation' },
+      { title: '網絡發布', description: '將PDF頁面轉換為圖像以供網站使用。', icon: "globe" },
+      { title: '社交媒體', description: '提取頁面作為圖像以供社交媒體分享。', icon: "share-2" },
+      { title: '演示文稿', description: '將PDF幻燈片轉換為圖像以供演示。', icon: "presentation" },
     ],
     faq: [
       { question: '有哪些品質設置可用？', answer: '您可以設置72到300的DPI和1-100的JPEG品質。' },
@@ -1206,9 +1205,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換提取PNG圖像。' },
     ],
     useCases: [
-      { title: '圖形提取', description: '以完美品質提取圖表和圖形。', icon: 'image' },
-      { title: '設計資產', description: '將PDF設計轉換為PNG以供編輯軟件使用。', icon: 'palette' },
-      { title: '文檔', description: '為技術文檔創建高品質圖像。', icon: 'file-text' },
+      { title: '圖形提取', description: '以完美品質提取圖表和圖形。', icon: "image" },
+      { title: '設計資產', description: '將PDF設計轉換為PNG以供編輯軟件使用。', icon: "palette" },
+      { title: '文檔', description: '為技術文檔創建高品質圖像。', icon: "file-text" },
     ],
     faq: [
       { question: '為什麼選擇PNG而不是JPG？', answer: 'PNG提供無損壓縮和透明度支援，非常適合圖形和文本。' },
@@ -1232,9 +1231,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建WebP圖像。' },
     ],
     useCases: [
-      { title: '網絡優化', description: '從PDF內容創建網絡優化的圖像。', icon: 'globe' },
-      { title: '帶寬節省', description: '減小圖像文件大小以加快加載速度。', icon: 'zap' },
-      { title: '現代網站', description: '為現代網絡項目使用現代圖像格式。', icon: 'layout' },
+      { title: '網絡優化', description: '從PDF內容創建網絡優化的圖像。', icon: "globe" },
+      { title: '帶寬節省', description: '減小圖像文件大小以加快加載速度。', icon: "zap" },
+      { title: '現代網站', description: '為現代網絡項目使用現代圖像格式。', icon: "layout" },
     ],
     faq: [
       { question: '什麼是WebP格式？', answer: 'WebP是Google的現代圖像格式，提供卓越的壓縮。' },
@@ -1258,9 +1257,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建BMP圖像。' },
     ],
     useCases: [
-      { title: '傳統系統', description: '創建與舊軟件兼容的圖像。', icon: 'history' },
-      { title: 'Windows應用程式', description: '為Windows特定應用程式生成BMP文件。', icon: 'monitor' },
-      { title: '未壓縮存檔', description: '從PDF創建未壓縮的圖像存檔。', icon: 'archive' },
+      { title: '傳統系統', description: '創建與舊軟件兼容的圖像。', icon: "history" },
+      { title: 'Windows應用程式', description: '為Windows特定應用程式生成BMP文件。', icon: "monitor" },
+      { title: '未壓縮存檔', description: '從PDF創建未壓縮的圖像存檔。', icon: "archive" },
     ],
     faq: [
       { question: '為什麼使用BMP格式？', answer: 'BMP提供未壓縮的品質和與傳統系統的最大兼容性。' },
@@ -1284,9 +1283,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建TIFF圖像。' },
     ],
     useCases: [
-      { title: '專業列印', description: '從PDF文檔創建可列印的TIFF文件。', icon: 'printer' },
-      { title: '文檔存檔', description: '以高品質TIFF格式存檔文檔。', icon: 'archive' },
-      { title: '出版', description: '將PDF轉換為TIFF以供出版工作流程使用。', icon: 'book' },
+      { title: '專業列印', description: '從PDF文檔創建可列印的TIFF文件。', icon: "printer" },
+      { title: '文檔存檔', description: '以高品質TIFF格式存檔文檔。', icon: "archive" },
+      { title: '出版', description: '將PDF轉換為TIFF以供出版工作流程使用。', icon: "book" },
     ],
     faq: [
       { question: '可以創建多頁TIFF嗎？', answer: '是的，您可以將所有PDF頁面合併成一個多頁TIFF。' },
@@ -1311,10 +1310,10 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '下載', description: '下載單個SVG文件或將所有頁面打包為ZIP壓縮包。' },
     ],
     useCases: [
-      { title: '標誌和圖形', description: '從PDF中提取標誌和向量圖形，用於設計軟件。', icon: 'pen-tool' },
-      { title: '技術圖紙', description: '將技術圖紙和圖表轉換為可縮放的SVG格式。', icon: 'ruler' },
-      { title: '網頁開發', description: '從PDF內容創建網頁友好的SVG文件，用於響應式網站。', icon: 'globe' },
-      { title: '任意尺寸列印', description: '生成可以任意尺寸完美列印的向量圖形。', icon: 'printer' },
+      { title: '標誌和圖形', description: '從PDF中提取標誌和向量圖形，用於設計軟件。', icon: "pen-tool" },
+      { title: '技術圖紙', description: '將技術圖紙和圖表轉換為可縮放的SVG格式。', icon: "ruler" },
+      { title: '網頁開發', description: '從PDF內容創建網頁友好的SVG文件，用於響應式網站。', icon: "globe" },
+      { title: '任意尺寸列印', description: '生成可以任意尺寸完美列印的向量圖形。', icon: "printer" },
     ],
     faq: [
       { question: '什麼是SVG格式？', answer: 'SVG（可縮放向量圖形）是一種可以縮放到任意尺寸而不損失品質的向量圖像格式。它廣泛用於標誌、圖標和網頁圖形。' },
@@ -1339,9 +1338,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建灰度PDF。' },
     ],
     useCases: [
-      { title: '節省列印', description: '轉換為灰度以節省彩色列印成本。', icon: 'printer' },
-      { title: '草稿文檔', description: '創建黑白草稿以供審閱。', icon: 'file-text' },
-      { title: '減小文件大小', description: '通過刪除顏色信息減小PDF大小。', icon: 'minimize-2' },
+      { title: '節省列印', description: '轉換為灰度以節省彩色列印成本。', icon: "printer" },
+      { title: '草稿文檔', description: '創建黑白草稿以供審閱。', icon: "file-text" },
+      { title: '減小文件大小', description: '通過刪除顏色信息減小PDF大小。', icon: "minimize-2" },
     ],
     faq: [
       { question: '文本會保持可讀嗎？', answer: '是的，灰度轉換過程中文本清晰度得以保留。' },
@@ -1365,9 +1364,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '提取並下載', description: '點擊提取生成JSON並下載。' },
     ],
     useCases: [
-      { title: '數據提取', description: '從PDF文檔中提取結構化數據。', icon: 'database' },
-      { title: '文檔分析', description: '以程式分析PDF結構和內容。', icon: 'search' },
-      { title: '集成', description: '通過JSON將PDF內容導入應用程式。', icon: 'plug' },
+      { title: '數據提取', description: '從PDF文檔中提取結構化數據。', icon: "database" },
+      { title: '文檔分析', description: '以程式分析PDF結構和內容。', icon: "search" },
+      { title: '集成', description: '通過JSON將PDF內容導入應用程式。', icon: "plug" },
     ],
     faq: [
       { question: '提取哪些數據？', answer: '文本內容、後設資料、頁面尺寸、字體和文檔結構。' },
@@ -1391,9 +1390,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換創建PowerPoint演示文稿。' },
     ],
     useCases: [
-      { title: '創建演示', description: '將PDF文檔轉換為會議幻燈片。', icon: 'presentation' },
-      { title: '培訓材料', description: '將教材轉換為交互式演示文稿。', icon: 'book-open' },
-      { title: '內容覆用', description: '將現有內容轉換為可編輯幻燈片。', icon: 'refresh-cw' },
+      { title: '創建演示', description: '將PDF文檔轉換為會議幻燈片。', icon: "presentation" },
+      { title: '培訓材料', description: '將教材轉換為交互式演示文稿。', icon: "book-open" },
+      { title: '內容覆用', description: '將現有內容轉換為可編輯幻燈片。', icon: "refresh-cw" },
     ],
     faq: [
       { question: '幻燈片可編輯嗎？', answer: '每張幻燈片包含PDF頁面的圖像。您可以在頂部新增內容。' },
@@ -1417,9 +1416,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載Excel', description: '下載包含提取表格的文件。' },
     ],
     useCases: [
-      { title: '財務分析', description: '轉換銀行賬單或發票。', icon: 'trending-up' },
-      { title: '數據提取', description: '從報告中提取數據表。', icon: 'database' },
-      { title: '清單轉換', description: '將PDF庫存清單轉換為表格。', icon: 'clipboard' },
+      { title: '財務分析', description: '轉換銀行賬單或發票。', icon: "trending-up" },
+      { title: '數據提取', description: '從報告中提取數據表。', icon: "database" },
+      { title: '清單轉換', description: '將PDF庫存清單轉換為表格。', icon: "clipboard" },
     ],
     faq: [
       { question: '如何處理表格？', answer: '每頁的表格提取到對應的Excel工作表中。' },
@@ -1443,9 +1442,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載', description: '立即下載轉換後的PDF文件。' },
     ],
     useCases: [
-      { title: '客戶預覽', description: '以通用的PDF格式向客戶發送設計稿。', icon: 'image' },
-      { title: '作品集創建', description: '將Photoshop作品編譯成PDF作品集以供求職申請。', icon: 'briefcase' },
-      { title: '列印準備', description: '將PSD設計轉換為PDF，以便列印服務更好地處理。', icon: 'printer' },
+      { title: '客戶預覽', description: '以通用的PDF格式向客戶發送設計稿。', icon: "image" },
+      { title: '作品集創建', description: '將Photoshop作品編譯成PDF作品集以供求職申請。', icon: "briefcase" },
+      { title: '列印準備', description: '將PSD設計轉換為PDF，以便列印服務更好地處理。', icon: "printer" },
     ],
     faq: [
       { question: '需要安裝Photoshop嗎？', answer: '不需要，此工具完全在瀏覽器中運行，無需Adobe Photoshop。' },
@@ -1470,9 +1469,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '處理並下載', description: '點擊處理運行OCR並下載可搜尋的PDF。' },
     ],
     useCases: [
-      { title: '數字化存檔', description: '使掃描的文檔存檔可搜尋。', icon: 'archive' },
-      { title: '文檔搜尋', description: '在掃描文檔中啟用文本搜尋。', icon: 'search' },
-      { title: '文本提取', description: '從掃描文檔中提取文本以供編輯。', icon: 'type' },
+      { title: '數字化存檔', description: '使掃描的文檔存檔可搜尋。', icon: "archive" },
+      { title: '文檔搜尋', description: '在掃描文檔中啟用文本搜尋。', icon: "search" },
+      { title: '文本提取', description: '從掃描文檔中提取文本以供編輯。', icon: "type" },
     ],
     faq: [
       { question: '支援哪些語言？', answer: '支援100多種語言，包括英語、中文、日語、韓語等。' },
@@ -1496,9 +1495,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '合併並下載', description: '點擊合併交錯頁面並下載。' },
     ],
     useCases: [
-      { title: '雙面掃描', description: '合併分別掃描的正面和背面頁面。', icon: 'copy' },
-      { title: '文檔組裝', description: '交錯來自兩個相關文檔的頁面。', icon: 'layers' },
-      { title: '書籍掃描', description: '將奇數頁和偶數頁掃描合併成完整的書籍。', icon: 'book' },
+      { title: '雙面掃描', description: '合併分別掃描的正面和背面頁面。', icon: "copy" },
+      { title: '文檔組裝', description: '交錯來自兩個相關文檔的頁面。', icon: "layers" },
+      { title: '書籍掃描', description: '將奇數頁和偶數頁掃描合併成完整的書籍。', icon: "book" },
     ],
     faq: [
       { question: '如果文檔頁數不同怎麼辦？', answer: '較長文檔的額外頁面會附加在末尾。' },
@@ -1522,9 +1521,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '保存並下載', description: '點擊保存嵌入附件並下載。' },
     ],
     useCases: [
-      { title: '項目包', description: '將項目文件與文檔PDF捆綁在一起。', icon: 'package' },
-      { title: '報告分發', description: '將源數據文件附加到報告PDF。', icon: 'paperclip' },
-      { title: '合同包', description: '在合同中包含支援文檔。', icon: 'file-text' },
+      { title: '項目包', description: '將項目文件與文檔PDF捆綁在一起。', icon: "package" },
+      { title: '報告分發', description: '將源數據文件附加到報告PDF。', icon: "paperclip" },
+      { title: '合同包', description: '在合同中包含支援文檔。', icon: "file-text" },
     ],
     faq: [
       { question: '可以附加哪些文件類型？', answer: '任何文件類型都可以附加到PDF。' },
@@ -1548,9 +1547,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '提取並下載', description: '下載單個文件或全部作為ZIP。' },
     ],
     useCases: [
-      { title: '訪問源文件', description: '從PDF報告中提取原始數據文件。', icon: 'download' },
-      { title: '恢復附件', description: '從PDF包中檢索嵌入的文件。', icon: 'folder-open' },
-      { title: '批量提取', description: '一次從多個PDF中提取附件。', icon: 'layers' },
+      { title: '訪問源文件', description: '從PDF報告中提取原始數據文件。', icon: "download" },
+      { title: '恢復附件', description: '從PDF包中檢索嵌入的文件。', icon: "folder-open" },
+      { title: '批量提取', description: '一次從多個PDF中提取附件。', icon: "layers" },
     ],
     faq: [
       { question: '如果沒有附件怎麼辦？', answer: '如果沒有找到嵌入文件，工具會提示。' },
@@ -1574,9 +1573,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '保存並下載', description: '點擊保存應用更改並下載。' },
     ],
     useCases: [
-      { title: '清理PDF', description: '從PDF包中刪除不必要的附件。', icon: 'trash-2' },
-      { title: '重命名文件', description: '更新附件名稱以提高清晰度。', icon: 'edit' },
-      { title: '審閱內容', description: '在分發前審核嵌入的文件。', icon: 'eye' },
+      { title: '清理PDF', description: '從PDF包中刪除不必要的附件。', icon: "trash-2" },
+      { title: '重命名文件', description: '更新附件名稱以提高清晰度。', icon: "edit" },
+      { title: '審閱內容', description: '在分發前審核嵌入的文件。', icon: "eye" },
     ],
     faq: [
       { question: '可以在這里新增新附件嗎？', answer: '使用新增附件工具嵌入新文件。' },
@@ -1600,9 +1599,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '分割並下載', description: '點擊分割拆分頁面並下載。' },
     ],
     useCases: [
-      { title: '分割掃描', description: '分割包含多個文檔的掃描頁面。', icon: 'scissors' },
-      { title: '調整頁面大小', description: '將大頁面分割成標準紙張尺寸。', icon: 'maximize-2' },
-      { title: '創建卡片', description: '將頁面分割成卡片大小的部分以供列印。', icon: 'grid' },
+      { title: '分割掃描', description: '分割包含多個文檔的掃描頁面。', icon: "scissors" },
+      { title: '調整頁面大小', description: '將大頁面分割成標準紙張尺寸。', icon: "maximize-2" },
+      { title: '創建卡片', description: '將頁面分割成卡片大小的部分以供列印。', icon: "grid" },
     ],
     faq: [
       { question: '可以分割成不等的部分嗎？', answer: '目前分割是等分的。使用裁剪PDF進行自定義部分。' },
@@ -1626,9 +1625,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '新增並下載', description: '點擊新增插入頁面並下載。' },
     ],
     useCases: [
-      { title: '筆記空間', description: '新增空白頁以供手寫筆記。', icon: 'edit-3' },
-      { title: '章節分隔符', description: '在文檔章節之間插入空白頁。', icon: 'minus' },
-      { title: '列印準備', description: '新增頁面以對齊雙面列印。', icon: 'printer' },
+      { title: '筆記空間', description: '新增空白頁以供手寫筆記。', icon: "edit-3" },
+      { title: '章節分隔符', description: '在文檔章節之間插入空白頁。', icon: "minus" },
+      { title: '列印準備', description: '新增頁面以對齊雙面列印。', icon: "printer" },
     ],
     faq: [
       { question: '可以選擇頁面大小嗎？', answer: '是的，空白頁可以匹配現有頁面或使用自定義尺寸。' },
@@ -1652,9 +1651,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '反轉並下載', description: '點擊反轉翻轉頁面順序並下載。' },
     ],
     useCases: [
-      { title: '修覆掃描順序', description: '糾正以相反順序掃描的文檔。', icon: 'refresh-cw' },
-      { title: '列印準備', description: '為特定列印要求反轉頁面。', icon: 'printer' },
-      { title: '文檔重新排序', description: '快速翻轉文檔順序以供審閱。', icon: 'arrow-up-down' },
+      { title: '修覆掃描順序', description: '糾正以相反順序掃描的文檔。', icon: "refresh-cw" },
+      { title: '列印準備', description: '為特定列印要求反轉頁面。', icon: "printer" },
+      { title: '文檔重新排序', description: '快速翻轉文檔順序以供審閱。', icon: "arrow-up-down" },
     ],
     faq: [
       { question: '書籤會更新嗎？', answer: '是的，書籤會更新以指向正確的反轉頁面。' },
@@ -1678,9 +1677,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '旋轉並下載', description: '點擊旋轉應用更改並下載。' },
     ],
     useCases: [
-      { title: '修覆掃描', description: '糾正掃描文檔的方向。', icon: 'rotate-cw' },
-      { title: '橫向頁面', description: '旋轉橫向頁面以正確查看。', icon: 'monitor' },
-      { title: '混合方向', description: '標準化混合文檔中的頁面方向。', icon: 'layout' },
+      { title: '修覆掃描', description: '糾正掃描文檔的方向。', icon: "rotate-cw" },
+      { title: '橫向頁面', description: '旋轉橫向頁面以正確查看。', icon: "monitor" },
+      { title: '混合方向', description: '標準化混合文檔中的頁面方向。', icon: "layout" },
     ],
     faq: [
       { question: '可以對不同頁面進行不同的旋轉嗎？', answer: '是的，您可以對不同頁面應用不同的旋轉。' },
@@ -1704,9 +1703,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '創建並下載', description: '點擊創建生成N合一PDF並下載。' },
     ],
     useCases: [
-      { title: '節省紙張', description: '每張紙列印多頁以減少紙張使用。', icon: 'leaf' },
-      { title: '創建講義', description: '從演示幻燈片制作緊湊的講義。', icon: 'file-text' },
-      { title: '審閱文檔', description: '以縮小尺寸列印文檔以供審閱。', icon: 'eye' },
+      { title: '節省紙張', description: '每張紙列印多頁以減少紙張使用。', icon: "leaf" },
+      { title: '創建講義', description: '從演示幻燈片制作緊湊的講義。', icon: "file-text" },
+      { title: '審閱文檔', description: '以縮小尺寸列印文檔以供審閱。', icon: "eye" },
     ],
     faq: [
       { question: '有哪些布局可用？', answer: '2合1、4合1、6合1、9合1和自定義網格布局可用。' },
@@ -1730,9 +1729,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '合併並下載', description: '點擊合併創建單頁PDF。' },
     ],
     useCases: [
-      { title: '網絡文檔', description: '創建可滾動的PDF以供網頁嵌入。', icon: 'globe' },
-      { title: '連續閱讀', description: '將分頁文檔轉換為連續滾動。', icon: 'scroll' },
-      { title: '長篇內容', description: '合併頁面以實現無縫的長篇閱讀。', icon: 'file-text' },
+      { title: '網絡文檔', description: '創建可滾動的PDF以供網頁嵌入。', icon: "globe" },
+      { title: '連續閱讀', description: '將分頁文檔轉換為連續滾動。', icon: "scroll" },
+      { title: '長篇內容', description: '合併頁面以實現無縫的長篇閱讀。', icon: "file-text" },
     ],
     faq: [
       { question: '有頁數限制嗎？', answer: '非常長的文檔可能受瀏覽器內存限制。' },
@@ -1756,9 +1755,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '如需導出', description: '可選擇將後設資料導出為JSON。' },
     ],
     useCases: [
-      { title: '文檔審核', description: '審閱文檔屬性以確保合規性。', icon: 'clipboard-check' },
-      { title: '驗證真實性', description: '檢查創建日期和作者信息。', icon: 'shield' },
-      { title: '文件信息', description: '獲取PDF文件的詳細信息。', icon: 'info' },
+      { title: '文檔審核', description: '審閱文檔屬性以確保合規性。', icon: "clipboard-check" },
+      { title: '驗證真實性', description: '檢查創建日期和作者信息。', icon: "shield" },
+      { title: '文件信息', description: '獲取PDF文件的詳細信息。', icon: "info" },
     ],
     faq: [
       { question: '顯示哪些後設資料？', answer: '標題、作者、主題、關鍵詞、創建者、生產者、日期和PDF版本。' },
@@ -1782,9 +1781,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '保存並下載', description: '點擊保存應用更改並下載。' },
     ],
     useCases: [
-      { title: '新增歸屬', description: '設置正確的作者和創建者信息。', icon: 'user' },
-      { title: 'SEO優化', description: '新增關鍵詞和描述以提高可搜尋性。', icon: 'search' },
-      { title: '文檔準備', description: '在共享前準備具有正確後設資料的文檔。', icon: 'file-check' },
+      { title: '新增歸屬', description: '設置正確的作者和創建者信息。', icon: "user" },
+      { title: 'SEO優化', description: '新增關鍵詞和描述以提高可搜尋性。', icon: "search" },
+      { title: '文檔準備', description: '在共享前準備具有正確後設資料的文檔。', icon: "file-check" },
     ],
     faq: [
       { question: '可以編輯哪些欄位？', answer: '標題、作者、主題、關鍵詞、創建者和生產者欄位。' },
@@ -1808,9 +1807,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '創建並下載', description: '點擊創建生成ZIP壓縮包。' },
     ],
     useCases: [
-      { title: '文件共享', description: '捆綁多個PDF以便於共享。', icon: 'share-2' },
-      { title: '創建備份', description: '創建PDF集合的壓縮備份。', icon: 'archive' },
-      { title: '電子郵件附件', description: '將PDF合併成一個附件以供電子郵件使用。', icon: 'mail' },
+      { title: '文件共享', description: '捆綁多個PDF以便於共享。', icon: "share-2" },
+      { title: '創建備份', description: '創建PDF集合的壓縮備份。', icon: "archive" },
+      { title: '電子郵件附件', description: '將PDF合併成一個附件以供電子郵件使用。', icon: "mail" },
     ],
     faq: [
       { question: '應用多少壓縮？', answer: 'ZIP壓縮通常將總大小減少10-30%。' },
@@ -1830,9 +1829,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: "高亮過濾項", description: "文本內容變更 · 字型變更 · 頁首和頁尾 · 移動的文字" },
     ],
     useCases: [
-      { title: '合同審閱', description: '比較合同版本以識別更改。', icon: 'file-text' },
-      { title: '文檔修訂', description: '審閱文檔版本之間的編輯。', icon: 'git-compare' },
-      { title: '品質保證', description: '驗證只進行了預期的更改。', icon: 'check-circle' },
+      { title: '合同審閱', description: '比較合同版本以識別更改。', icon: "file-text" },
+      { title: '文檔修訂', description: '審閱文檔版本之間的編輯。', icon: "git-compare" },
+      { title: '品質保證', description: '驗證只進行了預期的更改。', icon: "check-circle" },
     ],
     faq: [
       { question: '檢測哪些類型的差異？', answer: "文本內容變更 · 字型變更 · 頁首和頁尾 · 移動的文字" },
@@ -1856,9 +1855,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '創建並下載', description: '點擊創建生成可列印的瓷磚。' },
     ],
     useCases: [
-      { title: '海報列印', description: '在標準紙張上列印大型海報。', icon: 'maximize-2' },
-      { title: '地圖列印', description: '分段列印大型地圖以供組裝。', icon: 'map' },
-      { title: '藝術品複製', description: '從PDF藝術品創建大型列印品。', icon: 'image' },
+      { title: '海報列印', description: '在標準紙張上列印大型海報。', icon: "maximize-2" },
+      { title: '地圖列印', description: '分段列印大型地圖以供組裝。', icon: "map" },
+      { title: '藝術品複製', description: '從PDF藝術品創建大型列印品。', icon: "image" },
     ],
     faq: [
       { question: '應該使用多少重疊？', answer: '建議10-20mm的重疊以便於組裝時對齊。' },
@@ -1883,9 +1882,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '點擊應用標準化頁面並下載。' },
     ],
     useCases: [
-      { title: '列印準備', description: '標準化頁面以實現一致的列印。', icon: 'printer' },
-      { title: '文檔清理', description: '修覆頁面大小不一致的文檔。', icon: 'file-check' },
-      { title: '專業文檔', description: '創建統一的文檔以供分發。', icon: 'briefcase' },
+      { title: '列印準備', description: '標準化頁面以實現一致的列印。', icon: "printer" },
+      { title: '文檔清理', description: '修覆頁面大小不一致的文檔。', icon: "file-check" },
+      { title: '專業文檔', description: '創建統一的文檔以供分發。', icon: "briefcase" },
     ],
     faq: [
       { question: '內容如何處理？', answer: '內容會縮放以適應或居中在新頁面大小上。' },
@@ -1909,9 +1908,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載', description: '下載優化後的PDF。' },
     ],
     useCases: [
-      { title: '網絡發布', description: '優化PDF以供網站下載。', icon: 'globe' },
-      { title: '電子郵件附件', description: '創建為收件人更快打開的PDF。', icon: 'mail' },
-      { title: '在線文檔', description: '改善在線文檔的查看體驗。', icon: 'cloud' },
+      { title: '網絡發布', description: '優化PDF以供網站下載。', icon: "globe" },
+      { title: '電子郵件附件', description: '創建為收件人更快打開的PDF。', icon: "mail" },
+      { title: '在線文檔', description: '改善在線文檔的查看體驗。', icon: "cloud" },
     ],
     faq: [
       { question: '什麼是線性化？', answer: '線性化重新組織PDF數據以實現漸進式加載。' },
@@ -1935,9 +1934,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '導出報告', description: '可選擇將尺寸導出為JSON。' },
     ],
     useCases: [
-      { title: '列印規劃', description: '列印前檢查頁面大小。', icon: 'printer' },
-      { title: '文檔分析', description: '識別尺寸異常的頁面。', icon: 'search' },
-      { title: '品質控制', description: '驗證頁面大小符合規格。', icon: 'check-circle' },
+      { title: '列印規劃', description: '列印前檢查頁面大小。', icon: "printer" },
+      { title: '文檔分析', description: '識別尺寸異常的頁面。', icon: "search" },
+      { title: '品質控制', description: '驗證頁面大小符合規格。', icon: "check-circle" },
     ],
     faq: [
       { question: '有哪些單位可用？', answer: '英寸、毫米、厘米和點。' },
@@ -1961,9 +1960,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載', description: '下載不受限制的PDF。' },
     ],
     useCases: [
-      { title: '啟用列印', description: '解鎖阻止列印的PDF。', icon: 'printer' },
-      { title: '啟用複製', description: '允許文本選擇和複製。', icon: 'copy' },
-      { title: '啟用編輯', description: '刪除文檔編輯限制。', icon: 'edit' },
+      { title: '啟用列印', description: '解鎖阻止列印的PDF。', icon: "printer" },
+      { title: '啟用複製', description: '允許文本選擇和複製。', icon: "copy" },
+      { title: '啟用編輯', description: '刪除文檔編輯限制。', icon: "edit" },
     ],
     faq: [
       { question: '這合法嗎？', answer: '從您擁有或有權使用的文檔中刪除限制通常是合法的。' },
@@ -1987,9 +1986,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載', description: '如果成功，下載修覆後的PDF。' },
     ],
     useCases: [
-      { title: '恢復文件', description: '恢復無法正常打開的PDF。', icon: 'refresh-cw' },
-      { title: '修覆錯誤', description: '修覆顯示錯誤消息的文件。', icon: 'wrench' },
-      { title: '恢復內容', description: '從部分損壞的文件中恢復內容。', icon: 'file-check' },
+      { title: '恢復文件', description: '恢復無法正常打開的PDF。', icon: "refresh-cw" },
+      { title: '修覆錯誤', description: '修覆顯示錯誤消息的文件。', icon: "wrench" },
+      { title: '恢復內容', description: '從部分損壞的文件中恢復內容。', icon: "file-check" },
     ],
     faq: [
       { question: '所有PDF都可以修覆嗎？', answer: '成功取決於損壞的類型和程度。' },
@@ -2014,9 +2013,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '加密並下載', description: '點擊加密保護您的PDF並下載。' },
     ],
     useCases: [
-      { title: '機密文檔', description: '保護敏感的商業文檔。', icon: 'lock' },
-      { title: '個人文件', description: '保護個人文檔如稅務申報表。', icon: 'shield' },
-      { title: '受控分發', description: '限制收件人對文檔的操作。', icon: 'key' },
+      { title: '機密文檔', description: '保護敏感的商業文檔。', icon: "lock" },
+      { title: '個人文件', description: '保護個人文檔如稅務申報表。', icon: "shield" },
+      { title: '受控分發', description: '限制收件人對文檔的操作。', icon: "key" },
     ],
     faq: [
       { question: '使用者密碼和所有者密碼有什麼區別？', answer: '使用者密碼防止打開；所有者密碼控制權限。' },
@@ -2040,9 +2039,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '清理並下載', description: '點擊清理清潔PDF並下載。' },
     ],
     useCases: [
-      { title: '公開發布', description: '準備文檔以供公開分發。', icon: 'globe' },
-      { title: '隱私保護', description: '在共享前刪除個人信息。', icon: 'shield' },
-      { title: '安全合規', description: '滿足文檔處理的安全要求。', icon: 'check-circle' },
+      { title: '公開發布', description: '準備文檔以供公開分發。', icon: "globe" },
+      { title: '隱私保護', description: '在共享前刪除個人信息。', icon: "shield" },
+      { title: '安全合規', description: '滿足文檔處理的安全要求。', icon: "check-circle" },
     ],
     faq: [
       { question: '刪除哪些隱藏數據？', answer: '後設資料、腳本、附件、評論、表單數據和隱藏圖層。' },
@@ -2067,9 +2066,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '應用遮蓋', description: '自定義遮蓋外觀並應用於所選匹配項。' },
     ],
     useCases: [
-      { title: '隱私合規', description: '遮蓋個人信息以符合GDPR、HIPAA或其他法規。', icon: 'shield' },
-      { title: '法律文檔', description: '在共享前從法律文檔中刪除機密數據。', icon: 'scale' },
-      { title: '財務記錄', description: '從報表中遮蓋賬號、社保號或財務數據。', icon: 'credit-card' },
+      { title: '隱私合規', description: '遮蓋個人信息以符合GDPR、HIPAA或其他法規。', icon: "shield" },
+      { title: '法律文檔', description: '在共享前從法律文檔中刪除機密數據。', icon: "scale" },
+      { title: '財務記錄', description: '從報表中遮蓋賬號、社保號或財務數據。', icon: "credit-card" },
     ],
     faq: [
       { question: '遮蓋是永久的嗎？', answer: '是的，遮蓋會永久刪除底層文本。原始內容無法恢復。請始終保留原始文件的備份。' },
@@ -2093,9 +2092,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '解密並下載', description: '點擊解密刪除保護並下載。' },
     ],
     useCases: [
-      { title: '刪除舊密碼', description: '當不再需要密碼時解鎖文檔。', icon: 'unlock' },
-      { title: '簡化訪問', description: '創建不受保護的副本以便於共享。', icon: 'share-2' },
-      { title: '存檔文檔', description: '在長期存檔前刪除密碼。', icon: 'archive' },
+      { title: '刪除舊密碼', description: '當不再需要密碼時解鎖文檔。', icon: "unlock" },
+      { title: '簡化訪問', description: '創建不受保護的副本以便於共享。', icon: "share-2" },
+      { title: '存檔文檔', description: '在長期存檔前刪除密碼。', icon: "archive" },
     ],
     faq: [
       { question: '可以破解未知密碼嗎？', answer: '不能，您必須知道當前密碼才能解密。' },
@@ -2119,9 +2118,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '扁平化並下載', description: '點擊扁平化創建靜態PDF。' },
     ],
     useCases: [
-      { title: '完成表單', description: '鎖定已填寫的表單數據以防止更改。', icon: 'lock' },
-      { title: '保留注釋', description: '使注釋在文檔中永久化。', icon: 'check-circle' },
-      { title: '存檔文檔', description: '創建不可編輯的版本以供存檔。', icon: 'archive' },
+      { title: '完成表單', description: '鎖定已填寫的表單數據以防止更改。', icon: "lock" },
+      { title: '保留注釋', description: '使注釋在文檔中永久化。', icon: "check-circle" },
+      { title: '存檔文檔', description: '創建不可編輯的版本以供存檔。', icon: "archive" },
     ],
     faq: [
       { question: '扁平化是可逆的嗎？', answer: '不，扁平化是永久的。保留原件的備份。' },
@@ -2169,9 +2168,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載', description: '下載無後設資料的PDF。' },
     ],
     useCases: [
-      { title: '隱私保護', description: '在共享前刪除個人信息。', icon: 'shield' },
-      { title: '匿名文檔', description: '創建沒有作者歸屬的文檔。', icon: 'user-x' },
-      { title: '乾淨分發', description: '分發沒有內部後設資料的文檔。', icon: 'send' },
+      { title: '隱私保護', description: '在共享前刪除個人信息。', icon: "shield" },
+      { title: '匿名文檔', description: '創建沒有作者歸屬的文檔。', icon: "user-x" },
+      { title: '乾淨分發', description: '分發沒有內部後設資料的文檔。', icon: "send" },
     ],
     faq: [
       { question: '刪除哪些後設資料？', answer: '作者、標題、主題、關鍵詞、日期、創建者和生產者信息。' },
@@ -2195,9 +2194,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '應用並下載', description: '設置所有者密碼並下載受限PDF。' },
     ],
     useCases: [
-      { title: '防止複製', description: '禁用文本複製以保護內容。', icon: 'copy' },
-      { title: '控制列印', description: '限制或允許文檔列印。', icon: 'printer' },
-      { title: '限制編輯', description: '防止對文檔的修改。', icon: 'edit-3' },
+      { title: '防止複製', description: '禁用文本複製以保護內容。', icon: "copy" },
+      { title: '控制列印', description: '限制或允許文檔列印。', icon: "printer" },
+      { title: '限制編輯', description: '防止對文檔的修改。', icon: "edit-3" },
     ],
     faq: [
       { question: '需要密碼嗎？', answer: '需要所有者密碼來強制執行權限。' },
@@ -2220,9 +2219,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載Word文檔', description: '點擊下載生成的DOCX文件，並在Microsoft Word或WPS中打開。' },
     ],
     useCases: [
-      { title: '合同修改', description: '將PDF格式的合同轉回Word，以便進行條款修訂和版本對比。', icon: 'file-text' },
-      { title: '簡歷更新', description: '找回以前制作的PDF簡歷，轉換為Word格式快速更新工作經歷。', icon: 'user' },
-      { title: '資料整理', description: '從大型PDF報告中提取文本和表格，用於撰寫新的文檔或分析報告。', icon: 'copy' },
+      { title: '合同修改', description: '將PDF格式的合同轉回Word，以便進行條款修訂和版本對比。', icon: "file-text" },
+      { title: '簡歷更新', description: '找回以前制作的PDF簡歷，轉換為Word格式快速更新工作經歷。', icon: "user" },
+      { title: '資料整理', description: '從大型PDF報告中提取文本和表格，用於撰寫新的文檔或分析報告。', icon: "copy" },
     ],
     faq: [
       { question: '轉換後的排版會亂嗎？', answer: '對於標準文檔，我們的算法能實現極高的還原度。但如果原PDF是由圖片生成的掃描件，建議先使用OCR工具。' },
@@ -2273,9 +2272,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '處理並下載', description: '點擊校正以拉直頁面並下載校正後的PDF。' },
     ],
     useCases: [
-      { title: '掃描文檔', description: '修覆從文檔進紙器以一定角度掃描的頁面。', icon: 'scan' },
-      { title: '手機掃描', description: '校正使用智能手機拍攝的傾斜文檔照片。', icon: 'smartphone' },
-      { title: '檔案修覆', description: '拉直舊掃描檔案以提高可讀性。', icon: 'archive' },
+      { title: '掃描文檔', description: '修覆從文檔進紙器以一定角度掃描的頁面。', icon: "scan" },
+      { title: '手機掃描', description: '校正使用智能手機拍攝的傾斜文檔照片。', icon: "smartphone" },
+      { title: '檔案修覆', description: '拉直舊掃描檔案以提高可讀性。', icon: "archive" },
     ],
     faq: [
       { question: '角度檢測有多準確？', answer: '該工具使用投影輪廓方差分析來檢測高達±10度的傾斜角度，具有高精度。它會自動跳過角度小於0.3度的頁面。' },
@@ -2299,9 +2298,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '下載存檔文件', description: '獲取適用於政府、法律或學術要求的存檔PDF。' },
     ],
     useCases: [
-      { title: '法律文書存檔', description: '將合同和裁決書轉換為PDF/A，確保長期司法效力。', icon: 'scale' },
-      { title: '政府公文遞交', description: '滿足政府部門對遞交文件必須為PDF/A格式的要求。', icon: 'landmark' },
-      { title: '論文提交', description: '高校圖書館通常要求畢業論文采用PDF/A格式以進行永久館藏。', icon: 'graduation-cap' },
+      { title: '法律文書存檔', description: '將合同和裁決書轉換為PDF/A，確保長期司法效力。', icon: "scale" },
+      { title: '政府公文遞交', description: '滿足政府部門對遞交文件必須為PDF/A格式的要求。', icon: "landmark" },
+      { title: '論文提交', description: '高校圖書館通常要求畢業論文采用PDF/A格式以進行永久館藏。', icon: "graduation-cap" },
     ],
     faq: [
       { question: 'PDF/A有什麼好處？', answer: '它具有自包含性，這意味著顯示文檔所需的所有信息（如字體）都已保存在文件內，不依賴外部超連結。' },
@@ -2351,9 +2350,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '下載', description: '單獨下載每張圖片，或將所有圖片打包成ZIP壓縮包下載。' },
     ],
     useCases: [
-      { title: '圖片恢復', description: '從PDF文檔中提取照片和圖片，用於重覆使用或存檔。', icon: 'image' },
-      { title: '素材收集', description: '收集PDF報告、演示文稿或宣傳冊中的所有圖形和圖片。', icon: 'folder' },
-      { title: '內容再利用', description: '從PDF中提取圖片，用於其他文檔、網站或演示文稿。', icon: 'refresh-cw' },
+      { title: '圖片恢復', description: '從PDF文檔中提取照片和圖片，用於重覆使用或存檔。', icon: "image" },
+      { title: '素材收集', description: '收集PDF報告、演示文稿或宣傳冊中的所有圖形和圖片。', icon: "folder" },
+      { title: '內容再利用', description: '從PDF中提取圖片，用於其他文檔、網站或演示文稿。', icon: "refresh-cw" },
     ],
     faq: [
       { question: '提取的圖片是什麼格式？', answer: '圖片會盡可能保持原始格式（JPEG、PNG等）提取，原始像素數據會轉換為PNG格式。' },
@@ -2373,9 +2372,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '管理圖層', description: '切換、新增或刪除圖層。' },
     ],
     useCases: [
-      { title: '技術圖紙', description: '管理CAD導出中的圖層。', icon: 'ruler' },
-      { title: '地圖編輯', description: '切換地圖圖層。', icon: 'map' },
-      { title: '印刷準備', description: '準備分層PDF進行列印。', icon: 'printer' },
+      { title: '技術圖紙', description: '管理CAD導出中的圖層。', icon: "ruler" },
+      { title: '地圖編輯', description: '切換地圖圖層。', icon: "map" },
+      { title: '印刷準備', description: '準備分層PDF進行列印。', icon: "printer" },
     ],
     faq: [
       { question: '什麼是PDF圖層？', answer: 'OCG是PDF中可以顯示或隱藏的圖層。' },
@@ -2395,9 +2394,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '調整視圖', description: '放大、縮小或旋轉。' },
     ],
     useCases: [
-      { title: '文件審閱', description: '快速審閱PDF文件。', icon: 'book-open' },
-      { title: '移動閱讀', description: '在任何設備上閱讀PDF。', icon: 'smartphone' },
-      { title: '快速預覽', description: '預覽PDF。', icon: 'eye' },
+      { title: '文件審閱', description: '快速審閱PDF文件。', icon: "book-open" },
+      { title: '移動閱讀', description: '在任何設備上閱讀PDF。', icon: "smartphone" },
+      { title: '快速預覽', description: '預覽PDF。', icon: "eye" },
     ],
     faq: [
       { question: '文件安全嗎？', answer: '是的，完全在瀏覽器中處理。' },
@@ -2408,7 +2407,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
 
   'digital-sign-pdf': {
     title: '數字簽名',
-    metaDescription: '為PDF文檔新增X.509數字簽名。使用PFX、P12或PEM證書籤署PDF，具有法律效力。',
+    metaDescription: "使用 PFX、P12 或 PEM 憑證對 PDF 文件進行數位簽章。在瀏覽器本機新增基於憑證的簽章。",
     keywords: ['pdf數字簽名', 'x509證書', 'pfx簽名', 'p12簽名', 'pem簽名', '電子簽名'],
     description: `
       <p>數字簽名工具允許您為PDF文檔新增加密的X.509數字簽名。與簡單的手繪簽名不同，數字簽名提供法律效力和文檔完整性驗證。</p>
@@ -2422,9 +2421,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '簽名並下載', description: '點擊簽名PDF應用數字簽名並下載簽名後的文檔。' },
     ],
     useCases: [
-      { title: '法律文件', description: '使用具有法律約束力的數字簽名簽署合同、協議和法律文件。', icon: 'scale' },
-      { title: '商業審批', description: '數字簽署發票、采購訂單和審批文件以建立稽核軌跡。', icon: 'briefcase' },
-      { title: '文檔完整性', description: '確保文檔在簽名後未被篡改。', icon: 'shield-check' },
+      { title: '法律文件', description: '使用具有法律約束力的數字簽名簽署合同、協議和法律文件。', icon: "scale" },
+      { title: '商業審批', description: '數字簽署發票、采購訂單和審批文件以建立稽核軌跡。', icon: "briefcase" },
+      { title: '文檔完整性', description: '確保文檔在簽名後未被篡改。', icon: "shield-check" },
     ],
     faq: [
       { question: '支援哪些證書格式？', answer: '支援PFX（.pfx）、PKCS#12（.p12）和PEM（.pem）證書格式。' },
@@ -2449,9 +2448,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '導出報告', description: '可選下載驗證結果的JSON報告。' },
     ],
     useCases: [
-      { title: '文檔驗證', description: '驗證簽名文檔是否真實且未被篡改。', icon: 'shield-check' },
-      { title: '合規審計', description: '檢查簽名有效性以滿足合規和審計要求。', icon: 'clipboard-check' },
-      { title: '證書審查', description: '查看已簽名文檔的證書詳情和到期日期。', icon: 'award' },
+      { title: '文檔驗證', description: '驗證簽名文檔是否真實且未被篡改。', icon: "shield-check" },
+      { title: '合規審計', description: '檢查簽名有效性以滿足合規和審計要求。', icon: "clipboard-check" },
+      { title: '證書審查', description: '查看已簽名文檔的證書詳情和到期日期。', icon: "award" },
     ],
     faq: [
       { question: '"有效"是什麼意思？', answer: '有效簽名意味著文檔自簽名以來未被修改，且證書鏈完整。' },
@@ -2474,9 +2473,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '轉換為PDF並下載包含嵌入附件的結果。' },
     ],
     useCases: [
-      { title: '法律記錄', description: '將重要郵件存檔為PDF，並嵌入附件用於法律文檔。', icon: 'scale' },
-      { title: '商業檔案', description: '將商業往來轉換為PDF以進行長期記錄保存。', icon: 'briefcase' },
-      { title: '證據保存', description: '以不可編輯的PDF格式保存包含內聯圖像和附件的郵件證據。', icon: 'shield' },
+      { title: '法律記錄', description: '將重要郵件存檔為PDF，並嵌入附件用於法律文檔。', icon: "scale" },
+      { title: '商業檔案', description: '將商業往來轉換為PDF以進行長期記錄保存。', icon: "briefcase" },
+      { title: '證據保存', description: '以不可編輯的PDF格式保存包含內聯圖像和附件的郵件證據。', icon: "shield" },
     ],
     faq: [
       { question: '支援哪些郵件格式？', answer: '.eml（RFC 822）和.msg（Microsoft Outlook）文件都完全支援。' },
@@ -2502,9 +2501,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '轉換為PDF並下載您的漫畫。' },
     ],
     useCases: [
-      { title: '電子閱讀器兼容性', description: '將CBZ轉換為PDF，適用於僅支援PDF的電子閱讀器。', icon: 'book' },
-      { title: '漫畫歸檔', description: '為您的數字漫畫收藏創建PDF歸檔。', icon: 'archive' },
-      { title: '列印準備', description: '將數字漫畫轉換為PDF以供列印。', icon: 'printer' },
+      { title: '電子閱讀器兼容性', description: '將CBZ轉換為PDF，適用於僅支援PDF的電子閱讀器。', icon: "book" },
+      { title: '漫畫歸檔', description: '為您的數字漫畫收藏創建PDF歸檔。', icon: "archive" },
+      { title: '列印準備', description: '將數字漫畫轉換為PDF以供列印。', icon: "printer" },
     ],
     faq: [
       { question: '什麼是CBZ格式？', answer: 'CBZ是一個包含漫畫書頁面圖像文件的ZIP歸檔，重命名為.cbz副檔名。' },
@@ -2528,9 +2527,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '創建並下載', description: '生成小冊子布局並下載以供列印。' },
     ],
     useCases: [
-      { title: '宣傳冊', description: '從標準PDF文檔創建可折疊的宣傳冊。', icon: 'book-open' },
-      { title: '雜誌', description: '制作具有正確頁面拼版的自出版雜誌。', icon: 'book' },
-      { title: '活動手冊', description: '為活動創建專業的手冊小冊子。', icon: 'calendar' },
+      { title: '宣傳冊', description: '從標準PDF文檔創建可折疊的宣傳冊。', icon: "book-open" },
+      { title: '雜誌', description: '制作具有正確頁面拼版的自出版雜誌。', icon: "book" },
+      { title: '活動手冊', description: '為活動創建專業的手冊小冊子。', icon: "calendar" },
     ],
     faq: [
       { question: '什麼是騎馬釘裝訂？', answer: '騎馬釘是一種裝訂方法，將折疊的紙張嵌套並通過折痕釘合。' },
@@ -2554,9 +2553,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '處理頁面並單獨下載圖像或作為ZIP歸檔下載。' },
     ],
     useCases: [
-      { title: '社交媒體', description: '將PDF幻燈片轉換為圖像以在社交媒體上發布。', icon: 'share-2' },
-      { title: '縮略圖', description: '為PDF文檔生成預覽縮略圖。', icon: 'image' },
-      { title: '網絡發布', description: '將PDF內容轉換為網絡友好的圖像格式。', icon: 'globe' },
+      { title: '社交媒體', description: '將PDF幻燈片轉換為圖像以在社交媒體上發布。', icon: "share-2" },
+      { title: '縮略圖', description: '為PDF文檔生成預覽縮略圖。', icon: "image" },
+      { title: '網絡發布', description: '將PDF內容轉換為網絡友好的圖像格式。', icon: "globe" },
     ],
     faq: [
       { question: '我應該使用什麼DPI？', answer: '螢幕使用72 DPI，一般使用150 DPI，列印品質使用300 DPI。' },
@@ -2580,9 +2579,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '生成樣式化的PDF並下載。' },
     ],
     useCases: [
-      { title: '文檔', description: '將README文件和文檔轉換為可共享的PDF。', icon: 'file-text' },
-      { title: '筆記導出', description: '將Markdown筆記導出為PDF以供列印或共享。', icon: 'edit-3' },
-      { title: '報告', description: '從Markdown創建具有專業樣式的報告。', icon: 'bar-chart' },
+      { title: '文檔', description: '將README文件和文檔轉換為可共享的PDF。', icon: "file-text" },
+      { title: '筆記導出', description: '將Markdown筆記導出為PDF以供列印或共享。', icon: "edit-3" },
+      { title: '報告', description: '從Markdown創建具有專業樣式的報告。', icon: "bar-chart" },
     ],
     faq: [
       { question: '是否支援GitHub風格Markdown？', answer: '是的，支援表格、任務列表、刪除線和其他GFM功能。' },
@@ -2606,9 +2605,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '處理文件並下載獨立於字體的PDF。' },
     ],
     useCases: [
-      { title: '列印準備', description: '通過刪除所有字體依賴來消除商業列印機的字體問題。', icon: 'printer' },
-      { title: '跨平台共享', description: '共享在任何設備上看起來相同的文檔，無論安裝了什麼字體。', icon: 'share-2' },
-      { title: '字體許可', description: '刪除嵌入的字體以避免分發文檔時的許可問題。', icon: 'shield' },
+      { title: '列印準備', description: '通過刪除所有字體依賴來消除商業列印機的字體問題。', icon: "printer" },
+      { title: '跨平台共享', description: '共享在任何設備上看起來相同的文檔，無論安裝了什麼字體。', icon: "share-2" },
+      { title: '字體許可', description: '刪除嵌入的字體以避免分發文檔時的許可問題。', icon: "shield" },
     ],
     faq: [
       { question: '這是如何工作的？', answer: '該工具以高分辨率（您選擇的DPI）渲染每個頁面，並從這些圖像重新創建PDF，刪除所有字體依賴同時保留視覺外觀。' },
@@ -2635,9 +2634,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '轉換並下載', description: '點擊轉換生成Markdown文件並下載。' },
     ],
     useCases: [
-      { title: '文檔編寫', description: '將PDF手冊和指南轉換為Markdown，用於版本控制的文檔。', icon: 'file-text' },
-      { title: '筆記記錄', description: '從PDF文章和書籍中提取內容到您的筆記系統。', icon: 'edit-3' },
-      { title: '內容遷移', description: '將PDF內容遷移到支援Markdown的CMS平台。', icon: 'copy' },
+      { title: '文檔編寫', description: '將PDF手冊和指南轉換為Markdown，用於版本控制的文檔。', icon: "file-text" },
+      { title: '筆記記錄', description: '從PDF文章和書籍中提取內容到您的筆記系統。', icon: "edit-3" },
+      { title: '內容遷移', description: '將PDF內容遷移到支援Markdown的CMS平台。', icon: "copy" },
     ],
     faq: [
       { question: '格式會保留嗎？', answer: '該工具會根據字體大小檢測標題，以及項目符號/編號列表。覆雜布局可能需要手動調整。' },
@@ -2660,9 +2659,9 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 3, title: '導出並下載', description: '選擇輸出格式（JSON/Markdown/CSV）並下載。' },
     ],
     useCases: [
-      { title: '數據分析', description: '提取表格數據以在電子表格或數據庫中進行分析。', icon: 'bar-chart' },
-      { title: '報告處理', description: '從PDF報告中提取表格以進行進一步處理。', icon: 'file-text' },
-      { title: '文檔', description: '將PDF表格轉換為Markdown用於技術文檔。', icon: 'book' },
+      { title: '數據分析', description: '提取表格數據以在電子表格或數據庫中進行分析。', icon: "bar-chart" },
+      { title: '報告處理', description: '從PDF報告中提取表格以進行進一步處理。', icon: "file-text" },
+      { title: '文檔', description: '將PDF表格轉換為Markdown用於技術文檔。', icon: "book" },
     ],
     faq: [
       { question: '可以檢測覆雜表格嗎？', answer: '該工具最適合簡單的網格表格。覆雜的合併單元格可能需要手動調整。' },
@@ -2672,7 +2671,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
   },
   'form-logic-designer': {
     "title": "表單邏輯設計",
-    "metaDescription": "使用毛玻璃節點圖連線設計交互邏輯，向PDF表單注入可編程聯動 JavaScript 腳本。",
+    "metaDescription": "使用視覺化設計器建立 PDF 表單規則。連接字段並添加互動式計算和驗證邏輯。",
     "keywords": [
         "PDF表單邏輯",
         "AcroJS注入",
@@ -2732,8 +2731,8 @@ export const toolContentZhTW: Record<string, ToolContent> = {
 },
 
   'global-invoice-parser': {
-    "title": "發票翻譯與折算",
-    "metaDescription": "智能識別多國發票，原地翻譯表格條目，按實時國際匯率覆蓋高端三維立體折算帳本。",
+    "title": "PDF發票金額轉換器",
+    "metaDescription": "從 PDF 提取發票金額、在貨幣之間轉換總計並向文件添加計算摘要。",
     "keywords": [
         "發票翻譯",
         "發票匯率折算",
@@ -2796,20 +2795,115 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     title: 'PDF 轉 CBZ',
     metaDescription: '將 PDF 文件轉換為 CBZ 漫畫書歸檔。保留圖像順序和質量。',
     keywords: ["pdf 轉 cbz","漫畫轉換","cbz 轉換器"],
-    description: toolContentEn['pdf-to-cbz'].description,
-    howToUse: toolContentEn['pdf-to-cbz'].howToUse,
-    useCases: toolContentEn['pdf-to-cbz'].useCases,
-    faq: toolContentEn['pdf-to-cbz'].faq,
+    description: "<p>PDF 到 CBZ 是為漫畫愛好者和數位電子書檔案管理員量身設計的。它將 PDF 卷的每一頁渲染為高保真光柵化圖形，並將它們編譯成標準漫畫書 ZIP (.cbz) 套件。 </p>\n      <p>為了消除 Calibre、Komga、Kavita 或 CDisplayEx 等系統中令人沮喪的手動抓取，處理器會在內部自動生成並註入 <strong>ComicInfo.xml</strong> 和 <strong>metadata.opf</strong> 文件，同時將標準化的 <strong>ComicBookInfo JSON</strong> 有效負載直接寫入 ZIP 文件元數據中。 </p>\n      <p>包括影像壓縮品質、頁面尺寸比例、從右到左佈局閱讀切換（漫畫模式）和黑白灰階顏色過濾的完整配置滑桿。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳漫畫PDF",
+    "description": "拖放您的主要漫畫、畫冊或漫畫 PDF 檔案。"
+  },
+  {
+    "step": 2,
+    "title": "輸入漫畫元數據",
+    "description": "填寫系列、卷、標題、作者和出版商字段，並切換佈局或灰階優化。"
+  },
+  {
+    "step": 3,
+    "title": "編譯下載",
+    "description": "點擊「轉換」即可編譯並檢索元資料豐富的 .cbz 文件，立即為 Calibre 做好準備。"
+  }
+],
+    useCases: [
+  {
+    "title": "逆行漫畫包裝",
+    "description": "將原始掃描 PDF 書籍轉換為緊湊、符合標準的 CBZ 漫畫文件，漫畫庫管理員可以輕鬆抓取。",
+    "icon": "book"
+  },
+  {
+    "title": "零費力的口徑集成",
+    "description": "內建的metadata.opf模式允許Calibre獲取和分類創建者和數量問題，而無需手動查找。",
+    "icon": "database"
+  },
+  {
+    "title": "電子墨水屏增強",
+    "description": "在編譯時將圖形色彩通道預先過濾為高對比度灰度，提高電子墨水螢幕上的視覺刷新和清晰度，同時節省儲存空間。",
+    "icon": "eye"
+  }
+],
+    faq: [
+  {
+    "question": "什麼是 .cbz 檔？",
+    "answer": "CBZ 檔案是漫畫系列的專用存檔容器格式。它的內部格式為 ZIP 包，其中包含按順序編號的頁面影像以及結構元資料 XML 檔案。"
+  },
+  {
+    "question": "元資料如何相容？",
+    "answer": "我們一次編譯並嵌入 ComicInfo.xml、metadata.opf 和 ZIP 檔案註解。這保證了多個漫畫和電子書生態系統的絕對合規性。"
+  },
+  {
+    "question": "為什麼要使用灰階模式？",
+    "answer": "如果您在灰階電子墨水閱讀器（如 Kindle 或 Kobo）上閱讀，直接以灰度進行編譯可以減少偽影，提供卓越的對比度，並縮小最終 CBZ 檔案大小。"
+  }
+],
   },
 
   'overlay-pdf': {
     title: '疊加 PDF',
     metaDescription: '將兩個 PDF 頁面疊加合併為一頁。適用於印章、背景與水印疊加。',
     keywords: ["pdf 疊加","合併 pdf","浮水印疊加","頁面覆蓋"],
-    description: toolContentEn['overlay-pdf'].description,
-    howToUse: toolContentEn['overlay-pdf'].howToUse,
-    useCases: toolContentEn['overlay-pdf'].useCases,
-    faq: toolContentEn['overlay-pdf'].faq,
+    description: "<p>疊加 PDF 可讓您將一個 PDF 文件的頁面層疊在另一個 PDF 文件的上面或下面。它非常適合應用信頭、添加背景網格、加蓋浮水印或將佈局草稿融合在一起。 </p>\n      <p>支援疊加模式（圖層在頂部）和底層模式（圖層在下方）。指定自訂目標頁面範圍或循環較短的覆蓋文件以自動覆蓋整個基本文件。 </p>\n      <p>所有處理完全在本地網路瀏覽器內執行，確保全面的安全性和資料隱私。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳主要 PDF",
+    "description": "拖放您的主要基礎 PDF 文件。"
+  },
+  {
+    "step": 2,
+    "title": "上傳圖層PDF",
+    "description": "提供充當圖層的overlay/underlay文件。"
+  },
+  {
+    "step": 3,
+    "title": "配置分層",
+    "description": "選擇疊加或底層模式、指定頁面範圍並啟用頁面循環。"
+  },
+  {
+    "step": 4,
+    "title": "編譯下載",
+    "description": "點選編譯，處理並下載分層結果PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "公司信箋",
+    "description": "在標準公司信頭範本之上分層發票內容。",
+    "icon": "file-text"
+  },
+  {
+    "title": "水印與印章",
+    "description": "在文件上疊加安全印章、簽名印章或背景。",
+    "icon": "shield"
+  },
+  {
+    "title": "繪製藍圖",
+    "description": "在文字區塊下方組合草稿架構或版面配置網格。",
+    "icon": "layout"
+  }
+],
+    faq: [
+  {
+    "question": "Overlay 和 Underlay 有什麼不同？",
+    "answer": "疊加將輔助圖層放置在主要內容之上。 Underlay 將其放置在最底部，充當背景模板。"
+  },
+  {
+    "question": "我可以循環疊加層嗎？",
+    "answer": "是的，如果圖層PDF比基礎文件短，啟用循環將循環它（例如第1,2,1,2頁）以覆蓋所有基礎頁面。"
+  },
+  {
+    "question": "支援頁面範圍嗎？",
+    "answer": "是的，您可以使用範圍語法（例如「1-5」、「奇數」、「偶數」或逗號分隔清單）來定位特定頁面。"
+  }
+],
   },
 
   'timestamp-pdf': {
@@ -2875,180 +2969,1000 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     title: '添加頁面標籤',
     metaDescription: '為 PDF 設定自定義頁面標籤（如前言用 I, II，正文用 1, 2）。改善閱讀器導航。',
     keywords: ["頁面標籤","pdf 頁面編號","pdf 邏輯頁碼","閱讀器導航"],
-    description: toolContentEn['add-page-labels'].description,
-    howToUse: toolContentEn['add-page-labels'].howToUse,
-    useCases: toolContentEn['add-page-labels'].useCases,
-    faq: toolContentEn['add-page-labels'].faq,
+    description: "<p>新增頁面標籤可讓您將自訂頁面標籤元資料 (/PageLabels) 插入 PDF 的根目錄字典中。這可以自訂專業 PDF 閱讀器導覽側邊欄和頂部頁碼跳轉面板中顯示的標籤（例如，使用羅馬數字作為前言，使用十進位序列作為主體，或使用自訂前綴，例如 A-0、A-1 作為技術小節）。 </p>\n      <p>支援無縫組合多個自訂規則。至關重要的是，我們建立了高度優化的<strong>不相交範圍切片演算法</strong>：即使您聲明複雜的交替模式（例如，奇數頁樣式 A，偶數頁樣式 B），該工具也會優雅地剖析和組合邊界，以確保正確的符合標準的顯示，而不會將格式洩漏到未映射的頁面中洩漏。 </p>\n      <p>所有操作都完全在本機瀏覽器沙箱內處理，確保絕對的資料隱私。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF文檔",
+    "description": "提供您要標記的目標 PDF 文件。"
+  },
+  {
+    "step": 2,
+    "title": "配置標籤規則",
+    "description": "新增一個或多個規則，指定頁面範圍（例如，「1-5」、「奇數」或逗號分隔清單）、前綴、樣式和起始順序。"
+  },
+  {
+    "step": 3,
+    "title": "預覽與下載",
+    "description": "查看下面的即時頁面標籤清單預覽，然後編譯並下載更新的 PDF 文件。"
+  }
+],
+    useCases: [
+  {
+    "title": "學術論文格式",
+    "description": "設定小寫羅馬數字（i、ii、iii）作為介紹性的前面內容，並為主要章節過渡到十進制。",
+    "icon": "book"
+  },
+  {
+    "title": "工程藍圖前綴",
+    "description": "附加子系統縮寫（例如「A-1」、「M-5」）作為頁面標籤前綴，讓團隊在幾秒鐘內搜尋和定位頁面。",
+    "icon": "layout"
+  },
+  {
+    "title": "自訂交替佈局",
+    "description": "以最大的自由度將高度特定的頁面範圍索引應用於奇數/偶數序列或非連續部分。",
+    "icon": "shuffle"
+  }
+],
+    faq: [
+  {
+    "question": "什麼是頁面標籤與頁碼？",
+    "answer": "普通頁碼是直接呈現在畫布上的可視文字區塊（列印時可見）。然而，頁面標籤是注入到 PDF 目錄中的結構元資料。它們控制縮圖下方以及 Adob​​e Acrobat 或 Apple Preview 等軟體內的頁面查找框中顯示的內容。"
+  },
+  {
+    "question": "如果我將頁面範圍留空會發生什麼事？",
+    "answer": "將頁面範圍留空會導致規則全域套用至文件的所有頁面。"
+  },
+  {
+    "question": "重疊規則如何處理？",
+    "answer": "規則依照列出的順序依序評估。如果後面的規則的頁面範圍與前面的規則重疊，則後面的規則優先並覆蓋該頁面的標籤。"
+  }
+],
   },
 
   'ai-pdf-reflower': {
     title: 'AI 智能自適應重排',
-    metaDescription: '將 PDF 文檔重新排版為響應式行動端版面，支援導出 Markdown 和 EPUB。',
+    metaDescription: "重排 PDF 文本，以便於在行動裝置上閱讀。在瀏覽器中將擷取的內容匯出為 Markdown 或 EPUB。",
     keywords: ["pdf 重排","自適應 pdf","pdf 轉 markdown","epub 導出"],
-    description: toolContentEn['ai-pdf-reflower'].description,
-    howToUse: toolContentEn['ai-pdf-reflower'].howToUse,
-    useCases: toolContentEn['ai-pdf-reflower'].useCases,
-    faq: toolContentEn['ai-pdf-reflower'].faq,
+    description: "<p>AI PDF Layout Reflower 是您在行動裝置上閱讀 PDF 文件的終極伴侶。傳統 PDF 使用固定佈局，通常需要在智慧型手機或平板電腦上無休止地縮放和水平滾動，從而導致乏味的閱讀體驗。 </p>\n      <p>此工具智慧解析 PDF 頁面的文字流、行距和物理座標，重建語意段落和標題層次結構。對於多欄或雙欄文檔，它會智慧地將欄流合併為單一響應流，確保閱讀流暢。 </p>\n      <p>此外，它還支援將數學公式渲染為LaTeX/MathJax，並提供多種閱讀主題（棕褐色、深色、護眼綠）。您只需單擊即可將重排版式匯出為 Markdown 或標準 EPUB 電子書。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF文件",
+    "description": "拖放 PDF 檔案或按一下瀏覽並選擇它。"
+  },
+  {
+    "step": 2,
+    "title": "選擇閱讀主題",
+    "description": "在右側的 3D 行動模擬器中選擇您喜歡的字體大小和主題顏色。"
+  },
+  {
+    "step": 3,
+    "title": "出口文件",
+    "description": "滿足後，使用實體拉繩將文件匯出為 Markdown 或 EPUB。"
+  }
+],
+    useCases: [
+  {
+    "title": "手機文學閱讀",
+    "description": "在手機上無縫閱讀學術論文和研究報告，無需不斷縮放。",
+    "icon": "smartphone"
+  },
+  {
+    "title": "電子書轉換",
+    "description": "將文字較多的 PDF 轉換為 EPUB 檔案並匯入 Kindle 或其他電子書閱讀器。",
+    "icon": "book"
+  },
+  {
+    "title": "筆記存檔",
+    "description": "直接將結構化 PDF 內容轉換為乾淨的 Markdown 文件，作為您的個人知識庫。",
+    "icon": "file-text"
+  }
+],
+    faq: [
+  {
+    "question": "它能正確處理雙欄 PDF 嗎？",
+    "answer": "是的，佈局重排會依序偵測文字區塊的水平座標並建構左右列，以防止行交錯。"
+  },
+  {
+    "question": "圖片和數學公式會遺失嗎？",
+    "answer": "數學公式轉換為 LaTeX/MathJax 語法以進行乾淨的 Web 渲染，並且圖像保留在相應的語義位置。"
+  },
+  {
+    "question": "轉換是在雲端完成的嗎？",
+    "answer": "不會，所有佈局分析和格式打包均在您的瀏覽器本地執行，以確保您文件的絕對隱私。"
+  }
+],
   },
 
   'citation-linker': {
     title: '引文連結啟動器',
-    metaDescription: '掃描並啟動 PDF 中的引文標記，將其轉化為可點擊的 DOI 或頁內跳轉連結。',
+    metaDescription: "將 PDF 中的引文標記轉換為可點擊的 DOI 連結或頁面引用。為研究文件添加有用的導航。",
     keywords: ["引文激活","pdf 超連結","doi 匹配","學術 pdf 助手"],
-    description: toolContentEn['citation-linker'].description,
-    howToUse: toolContentEn['citation-linker'].howToUse,
-    useCases: toolContentEn['citation-linker'].useCases,
-    faq: toolContentEn['citation-linker'].faq,
+    description: "<p>引文連結器專為學術研究人員設計。在許多 PDF 論文中，引文標記（例如 [1]、[2]）是純文本，迫使讀者來回滾動到文件末尾的參考列表，從而乾擾了他們的注意力。 </p>\n      <p>該工具在本地讀取 PDF 文本，使用模式識別將引文標記與其相應的參考條目進行匹配，並使用 DOI 查找或頁面跳轉坐標覆蓋可點擊的 PDF 鏈接註釋。 </p>\n      <p>它還產生互動式引用關係圖，以直觀地導航文件的參考網路。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳學術PDF",
+    "description": "上傳包含參考書目/參考部分的 PDF 論文或論文。"
+  },
+  {
+    "step": 2,
+    "title": "評論引用",
+    "description": "檢查互動式地圖中的引文對，並在必要時手動編輯或新增 DOI 連結。"
+  },
+  {
+    "step": 3,
+    "title": "注入鏈接",
+    "description": "點擊啟動按鈕將超連結疊加到 PDF 上並下載更新的文件。"
+  }
+],
+    useCases: [
+  {
+    "title": "深度文學閱讀",
+    "description": "點擊引文標記可立即查看參考文獻詳細資訊或導航至外部 DOI 頁面。",
+    "icon": "link"
+  },
+  {
+    "title": "發表前準備",
+    "description": "確保您的書面學術論文在最終提交之前具有完全活躍的超連結導航。",
+    "icon": "award"
+  },
+  {
+    "title": "參考圖分析",
+    "description": "透過互動式網路拓樸圖了解文獻層次結構和連結。",
+    "icon": "git-network"
+  }
+],
+    faq: [
+  {
+    "question": "如果參考文獻沒有 DOI 怎麼辦？",
+    "answer": "如果找不到 DOI，工具將退回到內部「前往頁面」操作，允許您點擊標記並直接跳到參考頁面。"
+  },
+  {
+    "question": "支援哪些引文格式？",
+    "answer": "它支援常見的數字括號（例如，[1]、[1-3]）和作者年份引用（例如，Author et al., 202X）。"
+  },
+  {
+    "question": "它會修改我的 PDF 的外觀嗎？",
+    "answer": "不，它會在文字頂部注入不可見的連結註釋，保留文件的原始佈局、字體和樣式。"
+  }
+],
   },
 
   'vector-extractor': {
     title: 'PDF 矢量提取器',
-    metaDescription: '將 PDF 轉換為高保真 SVG，允許滑鼠拖動、框選並無損提取任意矢量圖形。',
+    metaDescription: "從 PDF 頁面中提取向量圖形作為 SVG。選擇圖表、圖表和徽標進行重新著色和匯出。",
     keywords: ["pdf 提取矢量","svg 導出","矢量圖表提取","提取 logo"],
-    description: toolContentEn['vector-extractor'].description,
-    howToUse: toolContentEn['vector-extractor'].howToUse,
-    useCases: toolContentEn['vector-extractor'].useCases,
-    faq: toolContentEn['vector-extractor'].faq,
+    description: "<p>PDF 向量擷取器可解鎖 PDF 檔案中嵌入的向量路徑和圖稿。輕鬆從文件中提取向量圖、圖表或徽標以進行設計工作或列印。 </p>\n      <p>在底層，它利用高保真 SVG 渲染將 PDF 向量路徑解構為乾淨、標準的 SVG 元素樹，而不會損失精度。 </p>\n      <p>介面突出顯示具有 Z 軸 3D 圖層爆炸效果的懸停元素，並配有顏色選擇器面板，供設計人員調整和提取向量節點。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF文檔",
+    "description": "上傳包含向量資源、圖表、圖表或標誌的 PDF。"
+  },
+  {
+    "step": 2,
+    "title": "選擇元素",
+    "description": "將滑鼠懸停在向量畫布上以突出顯示元素，然後按一下以選擇節點。"
+  },
+  {
+    "step": 3,
+    "title": "客製與導出",
+    "description": "在面板中調整路徑屬性，然後下載為SVG或複製SVG原始碼。"
+  }
+],
+    useCases: [
+  {
+    "title": "設計資產提取",
+    "description": "從品牌指南或宣傳冊中快速擷取公司商標、圖示和插圖。",
+    "icon": "bezier"
+  },
+  {
+    "title": "科學圖表導出",
+    "description": "從研究論文中提取向量圖以用於高解析度列印或演示。",
+    "icon": "presentation"
+  },
+  {
+    "title": "向量資源重新著色",
+    "description": "在將提取的資源儲存到 Web 專案之前修改其描邊和填滿顏色。",
+    "icon": "crown"
+  }
+],
+    faq: [
+  {
+    "question": "為什麼我無法選擇某些圖像？",
+    "answer": "PDF 包含光柵影像（如相片或掃描頁）和向量圖稿（如形狀和曲線）。只有向量路徑可以解構為 SVG 路徑。"
+  },
+  {
+    "question": "輸出的 SVG 是否包含樣式？",
+    "answer": "是的，匯出的 SVG 保留所有原始屬性，包括填滿、描邊、不透明度、漸層和座標變換。"
+  },
+  {
+    "question": "大檔案會卡頓嗎？",
+    "answer": "我們使用 WebAssembly 加速，但具有極其複雜的 CAD 繪圖或數千個向量路徑的 PDF 可能需要幾秒鐘的時間才能渲染。"
+  }
+],
   },
 
   'deep-sanitize': {
     title: '深度元數據清洗',
-    metaDescription: '徹底擦除 PDF 文檔中的作者信息、修改歷史、隱藏圖層以及未引用的冗餘數據。',
+    metaDescription: "從 PDF 中刪除元資料、隱藏圖層和未使用的物件。共享之前在本地清理文檔資訊。",
     keywords: ["pdf 脫敏","清除元數據","防溯源","安全 pdf"],
-    description: toolContentEn['deep-sanitize'].description,
-    howToUse: toolContentEn['deep-sanitize'].howToUse,
-    useCases: toolContentEn['deep-sanitize'].useCases,
-    faq: toolContentEn['deep-sanitize'].faq,
+    description: "<p>Deep Metadata Sanitizer 是您抵禦元資料外洩和隱藏追蹤的終極防御手段。僅僅在 PDF 文件中的可見文字上繪製黑框不足以保護商業機密。 </p>\n      <p>此工具掃描 PDF 二進位結構，以完全刪除作者資訊、創建者軟體、編輯日誌（XMP 元資料）、專有的 PieceInfo 快取和 OCG 可選內容群組（通常用於隱形浮水印）。 </p>\n      <p>它也完全重寫交叉引用表（xref），丟棄所有增量更新區塊，以確保刪除或修改的歷史資料無法恢復。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF",
+    "description": "選擇包含敏感資料或修改歷史記錄的 PDF 檔案。"
+  },
+  {
+    "step": 2,
+    "title": "運行掃描儀",
+    "description": "觸發 3D 遏制掃描器檢查文件中隱藏的元資料和圖層。"
+  },
+  {
+    "step": 3,
+    "title": "深層消毒",
+    "description": "點擊清理以清除追蹤元素並下載完全乾淨的 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "合約共享",
+    "description": "在與第三方共享業務合約之前刪除起草記錄、路徑和先前的修訂。",
+    "icon": "file-signature"
+  },
+  {
+    "title": "匿名發布",
+    "description": "擦除不可見的註解和浮水印，以匿名、安全的方式發布文件。",
+    "icon": "eye-off"
+  },
+  {
+    "title": "PDF 優化",
+    "description": "刪除孤立物件和垃圾資料流，使檔案在網路上載入速度更快。",
+    "icon": "zap"
+  }
+],
+    faq: [
+  {
+    "question": "這與標準元資料刪除有何不同？",
+    "answer": "標準工具僅清除標題或作者等基本欄位。 Deep Sanitizer 重建整個 PDF 外部參考表，擦除 PieceInfo、隱藏浮水印和歷史增量修訂。"
+  },
+  {
+    "question": "這會影響文件版面或文字嗎？",
+    "answer": "不，它只剝離隱藏的描述流和結構資料。可見版面、文字和圖形保持不變。"
+  },
+  {
+    "question": "這會刪除 PDF 密碼嗎？",
+    "answer": "不可以，如果 PDF 已加密，您必須先將其解鎖，然後才能進行深度清潔。"
+  }
+],
   },
 
   'booklet-folding-simulator': {
     title: '3D 裝訂拼版與折頁模擬器',
-    metaDescription: '將 PDF 多頁拼版為可折疊的大版，提供 3D 物理折頁和騎馬釘裝訂仿真動效預覽。',
+    metaDescription: "排列 PDF 頁面以進行小冊子列印。在匯出可列印的文件之前預覽折疊的紙張和騎馬訂佈局。",
     keywords: ["3D 拼版","折頁模擬","騎馬釘裝訂","書籍排版"],
-    description: toolContentEn['booklet-folding-simulator'].description,
-    howToUse: toolContentEn['booklet-folding-simulator'].howToUse,
-    useCases: toolContentEn['booklet-folding-simulator'].useCases,
-    faq: toolContentEn['booklet-folding-simulator'].faq,
+    description: "<p>3D 小冊子和折疊模擬器是專為印刷設計師和出版專業人士設計的高級工具。傳統的書籍佈局需要計算複雜的頁面覆蓋和拼版分頁序列。該工具可以可視化並自動化整個過程。 </p>\n      <p>在底層，我們的自訂拼版演算法將連續的 PDF 頁面清單對應到標準列印紙張佈局（例如 4 頁對折、8 頁騎馬訂或手風琴折疊），將頁面合併到大型實體紙張的正面和背面。 </p>\n      <p>在前端，我們利用純 CSS 3D 矩陣變換和彈簧質量物理曲線來製作水平和垂直紙張折疊的動畫，從而提供具有高 WOW 係數的類似物理的裝訂預覽。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF文件",
+    "description": "拖放您想要佈局列印的 PDF 文件。"
+  },
+  {
+    "step": 2,
+    "title": "選擇折疊佈局",
+    "description": "選擇您喜歡的拼版方案（例如，4 頁折疊、8 頁騎馬訂、4 頁手風琴）。"
+  },
+  {
+    "step": 3,
+    "title": "互動3D預覽",
+    "description": "拖曳滑桿以 3D 形式觀看紙張折疊並檢查最終的頁碼佈局。"
+  },
+  {
+    "step": 4,
+    "title": "生成拼版 PDF",
+    "description": "點選「產生」下載重新排列並合併的實體表 PDF，準備雙面列印。"
+  }
+],
+    useCases: [
+  {
+    "title": "手冊原型設計",
+    "description": "預先視覺化三摺頁和小冊子的折疊順序，以防止列印後頁面顛倒。",
+    "icon": "book-open"
+  },
+  {
+    "title": "書籍騎馬訂",
+    "description": "自動產生多頁雜誌或小冊子的拼版列印頁。",
+    "icon": "layers"
+  },
+  {
+    "title": "印刷店視覺輔助工具",
+    "description": "幫助客戶直觀地了解頁面在列印紙上的物理分佈和折疊方式。",
+    "icon": "printer"
+  }
+],
+    faq: [
+  {
+    "question": "什麼是「強加」？",
+    "answer": "拼版是印前印刷的基本步驟。由於商業印刷機在大紙張上進行印刷，頁面的排列順序是無序的，因此一旦列印、折疊和裝訂，頁面就會以正確的順序出現。該工具會自動計算該佈局。"
+  },
+  {
+    "question": "3D 預覽會改變我的 PDF 內容嗎？",
+    "answer": "不，原始 PDF 內容僅以紋理映射渲染到 3D 圖紙上。產生的PDF僅調整頁面順序和位置；文字和圖形品質保持完整。"
+  },
+  {
+    "question": "如果我的 PDF 頁數不是 4 或 8 的倍數怎麼辦？",
+    "answer": "最佳化器會自動在最後附加空白頁，以符合所選折疊佈局的數學頁數要求。"
+  }
+],
   },
 
   'pdf-to-slide': {
     title: 'PDF 轉 Slide',
-    metaDescription: '智能分析 PDF 大綱，提取矢量圖表與重點內容並無損重建為可編輯的 PPTX 演示文稿。',
+    metaDescription: "將 PDF 內容轉換為 PowerPoint 投影片。匯出包含文字和圖像的 PPTX 簡報以供進一步編輯。",
     keywords: ["PDF 轉 PPT","投影片重建","圖表提取","PPTX 生成"],
-    description: toolContentEn['pdf-to-slide'].description,
-    howToUse: toolContentEn['pdf-to-slide'].howToUse,
-    useCases: toolContentEn['pdf-to-slide'].useCases,
-    faq: toolContentEn['pdf-to-slide'].faq,
+    description: "<p>AI PDF-to-Slide Reconstructor 為靜態 PDF 文件注入了新的活力，將其轉換為現代、高度可自訂的 PowerPoint 投影片 (PPTX)。 </p>\n      <p>此工具使用進階版面配置輪廓擷取器，可自動解析文件標題層級、段落行和字型粗細，以建立邏輯投影片框架。它還隔離向量圖和高解析度表格，剝離背景偽影，將它們乾淨地嵌入為獨立的可編輯資產。 </p>\n      <p>所有 PPTX 輸出均使用標準 Office Open XML 元素構建，這表示所有文字均保持完全可編輯，且向量不會遺失解析度。前端展示了流暢的“星空”卡片過渡動畫，以引人入勝的方式可視化重建。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳學術/商業 PDF",
+    "description": "上傳包含結構化部分和圖表的 PDF 文件。"
+  },
+  {
+    "step": 2,
+    "title": "分析投影片輪廓",
+    "description": "檢查擷取的投影片結構，調整標題或刪除不需要的卡片塊。"
+  },
+  {
+    "step": 3,
+    "title": "重建為 PPTX",
+    "description": "啟動編譯引擎，接收標準的、可編輯的簡報檔。"
+  }
+],
+    useCases: [
+  {
+    "title": "研究論文展示",
+    "description": "將學術期刊 PDF、文字結構和向量圖轉換為可供演講使用的投影片。",
+    "icon": "graduation-cap"
+  },
+  {
+    "title": "業務報告摘要",
+    "description": "立即將大量年度公司報告提煉成清晰的、項目符號式的簡報草稿。",
+    "icon": "presentation"
+  },
+  {
+    "title": "多設備演示",
+    "description": "避免手動複製螢幕截圖。在幾秒鐘內獲得一個乾淨、完全可編輯的佈局框架。",
+    "icon": "laptop"
+  }
+],
+    faq: [
+  {
+    "question": "投影片可以在 Microsoft Office 中編輯嗎？",
+    "answer": "是的。這些文件是根據官方 Office Open XML (OOXML) 規範在記憶體中本機產生的。文字、表格和占位符在 PowerPoint、Keynote 和 WPS 中完全互動。"
+  },
+  {
+    "question": "圖表是如何提取的？",
+    "answer": "引擎掃描 PDF 中的向量路徑和柵格圖層，偵測表示圖形的有界區域，並將它們剪切為獨立的 SVG 節點或高 DPI 影像。"
+  },
+  {
+    "question": "這對掃描文件有效嗎？",
+    "answer": "對於缺少實際文字圖層的掃描 PDF，我們建議先執行我們的 OCR 工具，然後再將檔案傳送到投影片重構器。"
+  }
+],
   },
 
   'eink-optimizer': {
     title: '電子墨水屏護眼調色艙',
-    metaDescription: '針對電子墨水屏設備優化 PDF：去噪、直方圖二值化、字跡膨脹加粗，帶來極致的紙感閱讀。',
+    metaDescription: "為電子墨水閱讀器優化 PDF 頁面。清潔背景、增加文字對比並調整文件以便於閱讀。",
     keywords: ["墨水屏優化","二值化去噪","字跡加粗","護眼閱讀"],
-    description: toolContentEn['eink-optimizer'].description,
-    howToUse: toolContentEn['eink-optimizer'].howToUse,
-    useCases: toolContentEn['eink-optimizer'].useCases,
-    faq: toolContentEn['eink-optimizer'].faq,
+    description: "<p>e-Ink Reader Optimizer是專為使用Kindle、Onyx Boox、Kobo或其他電子紙設備的電子閱讀器愛好者量身定制的必備工具。 </p>\n      <p>許多掃描的 PDF 電子書在電子墨水螢幕上查看時都存在字體模糊、灰色背景渾濁、噪音或掃描陰影的問題。該工具分析灰階值直方圖，並應用 Otsu 的二值化閾值將文字與背景分離，將灰色背景轉換為乾淨的白色。 </p>\n      <p>此外，它還整合了形態擴張功能，可將細長、褪色的字元加粗和加粗，從而提供清晰、高對比度的版式。慣性阻尼對比度滑桿可讓您即時微調紙張般的對比。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳掃描版 PDF",
+    "description": "上傳文字模糊或背景灰色的電子書或掃描文件。"
+  },
+  {
+    "step": 2,
+    "title": "調整對比滑桿",
+    "description": "拖曳阻尼滑塊可即時平衡背景去除和字元加粗。"
+  },
+  {
+    "step": 3,
+    "title": "優化並下載",
+    "description": "處理整個 PDF，產生專為電子墨水量身訂做的高對比、護眼文件。"
+  }
+],
+    useCases: [
+  {
+    "title": "古文獻修復",
+    "description": "將歷史書或手寫手稿的掃描件中褪色的文本加粗以使其可讀。",
+    "icon": "scroll"
+  },
+  {
+    "title": "試卷清理",
+    "description": "漂白影印或拍攝的考試中的背景陰影，在白紙上返回乾淨的黑色文字。",
+    "icon": "file-text"
+  },
+  {
+    "title": "電子紙設備訂製",
+    "description": "將彩色 PDF 轉換為最佳化的灰度，防止單色螢幕上出現雜亂、抖動的偽影。",
+    "icon": "tablet"
+  }
+],
+    faq: [
+  {
+    "question": "「字元加粗」是如何運作的？",
+    "answer": "在影像處理中，稱為膨脹。它使用結構化矩陣將字元邊距擴大一個像素，物理上加粗微弱的筆畫以使它們清晰可辨。"
+  },
+  {
+    "question": "此過程會使檔案大小膨脹嗎？",
+    "answer": "恰恰相反。透過將複雜的彩色/灰階影像二值化為簡單的黑白佈局，標準壓縮（如 CCITT Group 4）可以顯著縮小 PDF 檔案大小。"
+  },
+  {
+    "question": "這支援原生文字 PDF 嗎？",
+    "answer": "是的。原生向量 PDF 在後台以高解析度進行光柵化、最佳化和編譯，確保統一的高對比度閱讀。"
+  }
+],
   },
 
   'cert-cryptor': {
     title: '證書加密與簽名',
-    metaDescription: '使用非對稱公鑰證書加密 PDF，配合 3D 實體黃金火漆按壓蓋印及 PKCS#7 數字證書簽名。',
+    metaDescription: "使用憑證對 PDF 文件進行加密和數位簽章。在瀏覽器中本機處理憑證檔案。",
     keywords: ["證書加密","火漆簽名","數字簽名","非對稱加密"],
-    description: toolContentEn['cert-cryptor'].description,
-    howToUse: toolContentEn['cert-cryptor'].howToUse,
-    useCases: toolContentEn['cert-cryptor'].useCases,
-    faq: toolContentEn['cert-cryptor'].faq,
+    description: "<p>3D 蠟封和證書 Cryptor 為敏感的公司文件、學位或協議提供軍用級安全性和優質的物理級美觀。 </p>\n      <p>從技術上講，它提供了非對稱公鑰加密：匯入收件人的公鑰憑證（.cer/.crt）來鎖定 PDF 串流；只有匹配私鑰 (.pfx) 的持有者才能解密它。它還會產生標準 PKCS#7 數位簽名，以確保文件防篡改完整性。 </p>\n      <p>從視覺上看，我們採用了 3D 實體金色或紅色蠟封印章。當您簽名時，精美渲染的印章會伴隨著令人滿意的機械聲音下降，在頁面上留下具有逼真的法線貼圖高度變化和蠟徑流的 3D 蠟封，周圍環繞著發光的加密軌道。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳PDF與證書",
+    "description": "新增您的 PDF 並匯入您的簽章憑證 (.pfx) 或收件者的公共憑證 (.cer)。"
+  },
+  {
+    "step": 2,
+    "title": "放置 3D 印章",
+    "description": "在文件預覽中拖曳並找到印章，然後選擇蠟樣式（例如金色、深紅色）。"
+  },
+  {
+    "step": 3,
+    "title": "按下並簽名",
+    "description": "點擊執行即可觀看3D蠟印壓印儀式，產生實體級數位簽章。"
+  },
+  {
+    "step": 4,
+    "title": "下載受保護的 PDF",
+    "description": "儲存輸出文檔，現已加密鎖定並蓋章。"
+  }
+],
+    useCases: [
+  {
+    "title": "文憑和證書",
+    "description": "將高價值的 3D 蠟封徽章貼在數位文憑和獎項上，並有真正的數位簽名作為支持。",
+    "icon": "award"
+  },
+  {
+    "title": "保密協議",
+    "description": "使用客戶的公共憑證鎖定敏感合約，以便只有他們的安全實體鑰匙卡才能解鎖它。",
+    "icon": "shield-alert"
+  },
+  {
+    "title": "官方新聞稿",
+    "description": "對公告進行數位簽名，以防止惡意文字編輯或欺騙。",
+    "icon": "stamp"
+  }
+],
+    faq: [
+  {
+    "question": "蠟印只是圖像還是真實的簽名？",
+    "answer": "兩者都有。該系統渲染出具有法線映射深度（視覺層）的極其逼真的 3D 蠟印，並在 PDF（資料層）內編碼真實、防篡改的 PKCS#7 加密簽章。"
+  },
+  {
+    "question": "什麼是「基於憑證的加密」？",
+    "answer": "這是一種無密碼加密技術。您使用收件人的公鑰加密該檔案。閱讀器會自動搜尋本機私有憑證以無縫解密文件，確保強大的安全性。"
+  },
+  {
+    "question": "我可以訂製印章設計嗎？",
+    "answer": "是的。我們提供多種設計，例如 PDFCraft 浮水印或皇家徽章，您可以在面板中調整蠟熔化半徑和法線貼圖壓痕深度。"
+  }
+],
   },
 
   'passport-id-composer': {
     title: '證件雙面拼版',
-    metaDescription: '一鍵將身份證或護照正反兩面快速拼版渲染到單張 A4 紙張的上下區域，支援加防偽透明水印。',
+    metaDescription: "將身分證或護照的正反面合併在一張 A4 PDF 頁面上。安排掃描並添加可選浮水印。",
     keywords: ["身份證拼版","護照拼大版","證件複印合成","身份證水印"],
-    description: toolContentEn['passport-id-composer'].description,
-    howToUse: toolContentEn['passport-id-composer'].howToUse,
-    useCases: toolContentEn['passport-id-composer'].useCases,
-    faq: toolContentEn['passport-id-composer'].faq,
+    description: "<p>Passport & ID 雙面 Composer 是一款非常有用的生產力實用程序，適用於標準商業和個人操作。 </p>\n      <p>在申請銀行帳戶、入職或簽訂協議時，我們經常需要身分證正反面的複印件。該工具接受正面/背面圖像或PDF頁面，並將它們精確排列到符合國家標準佈局解析度的單一A4頁面上。 </p>\n      <p>此外，您還可以自訂重疊的半透明防偽浮水印（例如「僅限入職」），以防止未經授權的文件重複使用。它甚至具有 3D 發光雷射掃描影印機掃描器門視覺效果，可提供優質回饋。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳ID文件",
+    "description": "上傳身分證或護照的正面和背面照片/掃描件（最多 2 個文件）。"
+  },
+  {
+    "step": 2,
+    "title": "配置安全水印",
+    "description": "輸入自訂文字覆蓋以限制未經授權的文件複製。"
+  },
+  {
+    "step": 3,
+    "title": "撰寫並下載",
+    "description": "按一下「執行」產生單頁可列印的 A4 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "人力資源入職提交",
+    "description": "快速對齊員工 ID 副本並套用保護浮水印。",
+    "icon": "user"
+  },
+  {
+    "title": "政府與銀行服務",
+    "description": "準備符合實體存檔要求的標準化 ID 列印件。",
+    "icon": "landmark"
+  },
+  {
+    "title": "旅行備份",
+    "description": "將護照頁和簽證詳細資料整理到統一的 A4 紙上。",
+    "icon": "plane"
+  }
+],
+    faq: [
+  {
+    "question": "浮水印會遮擋身分文字詳細資料嗎？",
+    "answer": "否。水印以精心調整的 15% 不透明度渲染，以阻止偽造，而不會犧牲文字或照片欄位的易讀性。"
+  },
+  {
+    "question": "複合卡尺寸準確嗎？",
+    "answer": "是的。它以 85.6mm × 54mm 的標準實體尺寸呈現 ID 卡，並在 A4 頁面上完美縮放。"
+  },
+  {
+    "question": "支援駕照嗎？",
+    "answer": "是的，它非常適合任何基於卡片的身份掃描。"
+  }
+],
   },
 
   'annotation-exporter': {
     title: '批註與高亮導出',
-    metaDescription: '深入讀取 PDF 批註字典，一鍵捕獲高亮、手寫備忘與文字批註並導出為結構化 Markdown。',
+    metaDescription: "將 PDF 註解、註解、反白和下劃線匯出為 Markdown 或 JSON。整理註釋以供學習、回顧和研究。",
     keywords: ["pdf 導出批註","文獻閱讀筆記","提取高亮","markdown 導出"],
-    description: toolContentEn['annotation-exporter'].description,
-    howToUse: toolContentEn['annotation-exporter'].howToUse,
-    useCases: toolContentEn['annotation-exporter'].useCases,
-    faq: toolContentEn['annotation-exporter'].faq,
+    description: "<p>智慧註解匯出器是一個功能強大的工作區，可釋放 PDF 註解的全部價值。 </p>\n      <p>在進行文獻綜述或閱讀大量電子書時，我們大量使用突出顯示和便條。此工具反序列化低階 PDF <code>/Annots</code> 字典並提取所有反白、註解、底線和手繪墨跡標記。 </p>\n      <p>它會自動將註釋與其各自的大綱標題對齊，產生帶有頁面引用錨點的結構化 Markdown 或 JSON 筆記本。觀看您的亮點精美地漂浮在磨砂玻璃筆記本面板中。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "匯入附註解的 PDF",
+    "description": "上傳任何包含下劃線、反白或評論的 PDF 文章或書籍。"
+  },
+  {
+    "step": 2,
+    "title": "配置過濾器和格式",
+    "description": "選擇要擷取的註解類型，然後選擇 Markdown 或 JSON。"
+  },
+  {
+    "step": 3,
+    "title": "提取筆記本",
+    "description": "按一下「執行」以解析評論流並組合您的大綱摘要。"
+  }
+],
+    useCases: [
+  {
+    "title": "科學文獻綜合",
+    "description": "將多篇論文的閱讀筆記擷取到 Markdown 範本中，並立即撰寫精彩評論。",
+    "icon": "graduation-cap"
+  },
+  {
+    "title": "學習日記整理",
+    "description": "將教科書中的美好見解和個人言論收集到 Obsidian 資料庫中。",
+    "icon": "book"
+  },
+  {
+    "title": "文件協同審核",
+    "description": "收集不同團隊成員的審查更正並建立可操作的任務清單。",
+    "icon": "users"
+  }
+],
+    faq: [
+  {
+    "question": "可以提取平板手繪墨跡嗎？",
+    "answer": "是的。只要將手繪標記儲存為標準 PDF Ink 註釋，該工具就可以完美地隔離和建立其頁面位置。"
+  },
+  {
+    "question": "為什麼一些突出顯示的摘錄是空的？",
+    "answer": "如果 PDF 是缺乏底層文字的不可搜尋影像掃描，則反白僅儲存座標。首先對 PDF 執行 OCR，然後提取註釋。"
+  },
+  {
+    "question": "Markdown 連結會跳回 PDF 嗎？",
+    "answer": "匯出的文件列出了精確的頁碼和原始大綱標題，以實現無縫交叉引用。"
+  }
+],
   },
 
   'batch-watermark-remover': {
     title: '批量去水印',
-    metaDescription: '深入 PDF 內容描述符，精確刪除特定 Tj/TJ 文本流與 XObject 圖像水印而不損害文案。',
+    metaDescription: "從 PDF 中刪除相符的文字和圖像浮水印。查看輸出以檢查文件內容是否已保留。",
     keywords: ["pdf 去水印","批量刪除浮水印","內容流優化","pdf 清潔"],
-    description: toolContentEn['batch-watermark-remover'].description,
-    howToUse: toolContentEn['batch-watermark-remover'].howToUse,
-    useCases: toolContentEn['batch-watermark-remover'].useCases,
-    faq: toolContentEn['batch-watermark-remover'].faq,
+    description: "<p>批量水印去除器是一款最先進的 PDF 清理工具，可以實際清理文件。 </p>\n      <p>通用浮水印去除器通常只是覆蓋白色塊或扭曲文件間距。該工具利用強大的<strong>內容流清除</strong>技術。 </p>\n      <p>它解析每個頁面的低階渲染運算符，識別特定的水印字串命令（例如「機密」、「草稿」）或背景圖像對象，並物理刪除或覆蓋它們。水印完全消失，保留原始格式和向量品質。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳帶有浮水印的文件",
+    "description": "提供包含商業標誌或安全標籤的PDF文件。"
+  },
+  {
+    "step": 2,
+    "title": "定義目標浮水印",
+    "description": "輸入要刪除的確切字串，或切換半透明 XObject 影像清理。"
+  },
+  {
+    "step": 3,
+    "title": "進行物理淨化",
+    "description": "點選執行，高保真地擦洗內容運算子。"
+  }
+],
+    useCases: [
+  {
+    "title": "企業資產歸檔",
+    "description": "刪除過期的「機密」或「草稿」浮水印以供公眾分發。",
+    "icon": "archive"
+  },
+  {
+    "title": "清除背景雜亂",
+    "description": "擦掉那些分散讀者掃描文字注意力的厚重背景圖片。",
+    "icon": "eye"
+  },
+  {
+    "title": "文檔重用",
+    "description": "清理舊的頁腳品牌元素，輕鬆套用新的企業模板。",
+    "icon": "copy"
+  }
+],
+    faq: [
+  {
+    "question": "清除的水印還能恢復嗎？",
+    "answer": "不，與視覺遮罩不同，我們重寫頁面二進位流以擦除運算符，不留下任何痕跡。"
+  },
+  {
+    "question": "支援複雜漸層嗎？",
+    "answer": "如果浮水印儲存為單獨的文字節點或圖像 XObject，則該工具可以隔離並物理擦除它。"
+  },
+  {
+    "question": "會修改正常的頁面文字嗎？",
+    "answer": "否。清洗引擎僅針對與指定浮水印簽名相符的算子；常規文字保持不變。"
+  }
+],
   },
 
   'smart-data-redactor': {
     title: '敏感訊息脫敏',
-    metaDescription: '智能檢索文檔中的郵箱、身份證、手機等隱私數據，強制物理填色遮罩並重置底層文本。',
+    metaDescription: "在 PDF 中尋找電子郵件地址、電話號碼和 ID 模式。在本地查看匹配項並編輯敏感內容。",
     keywords: ["pdf 隱私遮罩","安全脫敏","物理擦除","數據合規"],
-    description: toolContentEn['smart-data-redactor'].description,
-    howToUse: toolContentEn['smart-data-redactor'].howToUse,
-    useCases: toolContentEn['smart-data-redactor'].useCases,
-    faq: toolContentEn['smart-data-redactor'].faq,
+    description: "<p>智慧隱私資料編輯器是一款自動化工具，旨在確保可靠的文件隱私合規性。 </p>\n      <p>在普通編輯器中簡單地覆蓋黑框是不安全的，因為底層文字仍然可以被複製。該工具實現了真正的<strong>NLP 模式匹配和物理內容流清理</strong>。 </p>\n      <p>它會掃描文件中的電子郵件、電話號碼、SSN 或自訂關鍵字，在座標上放置高級啞光黑色遮罩，並使用<code>[已編輯]</code>永久覆蓋字元流，從而阻止複製貼上洩漏。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳目標PDF",
+    "description": "提供顯示敏感客戶詳細資料的合約或聲明。"
+  },
+  {
+    "step": 2,
+    "title": "選擇密文規則",
+    "description": "檢查目標模式（電子郵件、電話、ID）或定義自訂敏感字詞。"
+  },
+  {
+    "step": 3,
+    "title": "自動編輯與下載",
+    "description": "按一下「執行」以覆寫安全遮罩並擦除文字流。"
+  }
+],
+    useCases: [
+  {
+    "title": "商業協議共享",
+    "description": "透過隱藏個人薪資、電話號碼或電子郵件來安全地發布商業文件。",
+    "icon": "file-signature"
+  },
+  {
+    "title": "恢復資料庫匿名化",
+    "description": "刪除申請人姓名、聯絡資訊或地址，以遵守嚴格的隱私法規。",
+    "icon": "user-check"
+  },
+  {
+    "title": "財務報表分佈",
+    "description": "在發布報告之前隱藏具體帳本編號或股東姓名。",
+    "icon": "pie-chart"
+  }
+],
+    faq: [
+  {
+    "question": "編輯過的細節真的無法複製嗎？",
+    "answer": "是的。我們重寫頁面內容流以擦除字元。從編輯框中複製貼上只會提取字串「[REDACTED]」。"
+  },
+  {
+    "question": "它適用於掃描影像 PDF 嗎？",
+    "answer": "此工具針對向量文字流。對於掃描的影像文件，請先使用我們的 OCR 工具或手動裁剪。"
+  },
+  {
+    "question": "紅色HUD目標範圍是否保存在文件中？",
+    "answer": "不，那是華麗的前端互動加載效果。輸出 PDF 顯示標準的乾淨黑色矩形。"
+  }
+],
   },
 
   'bookmarks-auto-generator': {
     title: '自動生成書籤',
-    metaDescription: '智能分析文檔中的字體大小與層級，在底層對象中自動注入嵌套大綱 Outlines 書簽樹。',
+    metaDescription: "從標題和文字模式產生 PDF 書籤。為長文件、手冊和報告新增可導航的大綱。",
     keywords: ["pdf 自動書籤","大綱目錄樹","pdf 導航結構","自動大綱"],
-    description: toolContentEn['bookmarks-auto-generator'].description,
-    howToUse: toolContentEn['bookmarks-auto-generator'].howToUse,
-    useCases: toolContentEn['bookmarks-auto-generator'].useCases,
-    faq: toolContentEn['bookmarks-auto-generator'].faq,
+    description: "<p>自動書籤產生器為冗長、非結構化的 PDF 文件帶來絕對的清晰度。 </p>\n      <p>瀏覽沒有大綱導航的書籍或小冊子是很痛苦的。此工具解析排版層次結構（例如字體大小和粗細）以及正規表示式規則（例如「第 1 章」、「第 1.1 節」）以自動推斷標題。 </p>\n      <p>然後，它會編譯這些標題並將其直接插入 PDF <code>/Outline</code> 字典中。然後，任何標準檢視器都會顯示結構精美的多層導航側邊欄，並由互動式 3D 輪廓樹預覽支援。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "提供非結構化PDF",
+    "description": "上傳大型手冊、學術論文或缺少目錄側邊欄的電子書。"
+  },
+  {
+    "step": 2,
+    "title": "調整標題規則",
+    "description": "配置指定最小字體大小閾值和匹配規則的策略。"
+  },
+  {
+    "step": 3,
+    "title": "建造並注入",
+    "description": "點選執行渲染大綱節點並實體寫入大綱書籤。"
+  }
+],
+    useCases: [
+  {
+    "title": "技術手冊整理",
+    "description": "自動編譯標準指南的多層章節，節省手動索引的時間。",
+    "icon": "tool"
+  },
+  {
+    "title": "論文準備",
+    "description": "注入符合精確學術提交標準的乾淨嵌套書籤。",
+    "icon": "graduation-cap"
+  },
+  {
+    "title": "電子書導航優化",
+    "description": "將掃描的文本出版物建構成平板電腦或行動閱讀器可讀的章節。",
+    "icon": "tablet"
+  }
+],
+    faq: [
+  {
+    "question": "可以匹配自訂章節格式嗎？",
+    "answer": "是的。您可以在側邊欄面板中新增自訂正規表示式模式（例如「^Part\\s+\\w+」）以定位獨特的佈局。"
+  },
+  {
+    "question": "這會影響頁面視覺呈現嗎？",
+    "answer": "否。此工具僅新增內部結構書籤目錄。頁面的文字和視覺資源保持不變。"
+  },
+  {
+    "question": "支援多少級書籤？",
+    "answer": "此工具支援深度嵌套的書籤結構，允許章、節和小節佈局。"
+  }
+],
   },
 
   'batch-barcode-injector': {
     title: '批量注入條碼',
-    metaDescription: '批量且高精度地向 PDF 各頁面指定坐標注入二維碼與 Code128 條形碼圖層。',
+    metaDescription: "批次新增QR碼或Code 128條碼到PDF頁面。調整文件追蹤、標籤和列印工作流程的位置。",
     keywords: ["pdf 注入條碼","二維碼合埋","批次二維碼","條形碼嵌入"],
-    description: toolContentEn['batch-barcode-injector'].description,
-    howToUse: toolContentEn['batch-barcode-injector'].howToUse,
-    useCases: toolContentEn['batch-barcode-injector'].useCases,
-    faq: toolContentEn['batch-barcode-injector'].faq,
+    description: "<p>批次條碼精確注入器將數位資產追蹤與實體文件索引連接起來。 </p>\n      <p>在倉儲、合約審查或物流中，我們經常需要在發票或設備卡上標記唯一的條碼。這個工具使它變得異常簡單。 </p>\n      <p>產生高度可讀的 QR 碼或 Code128 條碼，並使用我們帶有綠色雷射導軌的華麗對齊工作區來定位它們。放置時會觸發乾淨的掃描音訊蜂鳴聲，提供非常優質的回饋。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳文件",
+    "description": "拖放代表協議或出貨清單的單頁或多頁 PDF。"
+  },
+  {
+    "step": 2,
+    "title": "位置條碼座標",
+    "description": "設定代碼類型、值，並拖曳放置框指定座標。"
+  },
+  {
+    "step": 3,
+    "title": "郵票及下載",
+    "description": "點選執行將程式碼圖層渲染到目標頁面索引上。"
+  }
+],
+    useCases: [
+  {
+    "title": "合約驗證追蹤",
+    "description": "在合約標題上新增顯示防偽詳細資訊的唯一二維碼。",
+    "icon": "file-check"
+  },
+  {
+    "title": "出貨清單編碼",
+    "description": "將 Code128 條碼放置在目標點，以便快速進行倉庫掃描槍驗證。",
+    "icon": "truck"
+  },
+  {
+    "title": "資產登記梳理",
+    "description": "在實體設備表上新增顯示維護規格的庫存二維碼。",
+    "icon": "archive"
+  }
+],
+    faq: [
+  {
+    "question": "產生的條碼是否具有良好的可掃描性？",
+    "answer": "是的。我們嵌入了無損高解析度 PNG 表示，即使以非常小的尺寸列印也能保持清晰。"
+  },
+  {
+    "question": "我可以在每個頁面上註入唯一的值嗎？",
+    "answer": "目前，批量運行將相同的配置代碼應用於所有選定的頁面。計劃在未來的更新中進行多值 Excel 匯入。"
+  },
+  {
+    "question": "`pt` 座標代表什麼？",
+    "answer": "`pt`（點）是標準 PDF 物理單位（72 pt = 1 英吋）。 A4 頁面表示為 595 × 842 pt。"
+  }
+],
   },
 
   'signature-ink-optimizer': {
     title: '簽名印章提取',
-    metaDescription: '提取簽名印章並純化 HSL 色彩空間，漂白雜色與紙張反光，還原高品質透明底透明簽名。',
+    metaDescription: "從照片中提取簽名或印章並刪除其背景。下載透明 PNG 以在文件中使用。",
     keywords: ["簽名提取","印章透明化","筆跡純化","印章漂白"],
-    description: toolContentEn['signature-ink-optimizer'].description,
-    howToUse: toolContentEn['signature-ink-optimizer'].howToUse,
-    useCases: toolContentEn['signature-ink-optimizer'].useCases,
-    faq: toolContentEn['signature-ink-optimizer'].faq,
+    description: "<p>Signature & Stamp Chroma Ink Optimizer 可用作專業的高保真墨水淨化器。 </p>\n      <p>手機捕獲的簽名或公司印章通常會出現紙色發黃、陰影不均勻和頁面褶皺的問題。將它們直接貼到合約 PDF 上看起來很業餘。 </p>\n      <p>工具根據亮度和色彩空間分離 Alpha 通道。它完全漂白紙張背景，同時銳化紅色印章（色度墨水）和黑色筆跡。結果是帶有真實墨水紋理的優質透明 PNG 印章。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳印章照片",
+    "description": "提供手機拍攝的簽名或印章照片。"
+  },
+  {
+    "step": 2,
+    "title": "調整清潔滑塊",
+    "description": "移動對比度和亮度滑桿以即時隔離背景噪音。"
+  },
+  {
+    "step": 3,
+    "title": "下載乾淨的簽名",
+    "description": "匯出為透明 PNG，準備蓋章到正式文件協議上。"
+  }
+],
+    useCases: [
+  {
+    "title": "專業電子簽名準備",
+    "description": "將灰色簽名照片轉換為漂亮的透明圖層以簽署協議。",
+    "icon": "file-signature"
+  },
+  {
+    "title": "企業印章消毒",
+    "description": "透過丟棄紙纖維噪音來清潔實體郵票掃描，準備清晰的透明郵票密封件。",
+    "icon": "stamp"
+  },
+  {
+    "title": "繪製線稿擷取",
+    "description": "從繪圖素描本中分離出黑色筆劃，以實現輕鬆的 Photoshop 著色工作流程。",
+    "icon": "edit"
+  }
+],
+    faq: [
+  {
+    "question": "自適應 Alpha 提取與普通摳像有何不同？",
+    "answer": "標準色度鍵控通常會使簽章筆畫細節看起來塊狀和像素化。我們的演算法僅隔離白色/黃色背景雜訊並平滑墨水邊界。"
+  },
+  {
+    "question": "支援哪些影像格式？",
+    "answer": "我們支援 JPG、JPEG 和 PNG。為了獲得最佳效果，請在明亮、均勻的燈光下拍攝您的標誌性照片。"
+  },
+  {
+    "question": "筆跡細節會修改嗎？",
+    "answer": "否。像素濾波作用於原始座標，銳化對比度，同時保持真實的筆畫紋理。"
+  }
+],
   },
 
   'dead-link-debugger': {
     title: '失效鏈接修復',
-    metaDescription: '診斷 PDF 文檔中的 /URI 鏈接動作，提供無效鏈接標識與原地重定向修復。',
+    metaDescription: "檢查 PDF 超連結並替換損壞或過時的目的地。掃描連結註解並儲存更新的文件。",
     keywords: ["pdf 死鏈診斷","修改鏈接","pdf 鏈接修復","網頁鏈接調試"],
-    description: toolContentEn['dead-link-debugger'].description,
-    howToUse: toolContentEn['dead-link-debugger'].howToUse,
-    useCases: toolContentEn['dead-link-debugger'].useCases,
-    faq: toolContentEn['dead-link-debugger'].faq,
+    description: "<p>死連結偵錯器是深層結構編輯器，可保證已發佈文件中的連結互動品質。 </p>\n      <p>手冊、白皮書或指南中的損壞網址 (404/500) 會降低品牌權威。該工具可讓您無縫管理超連結資料庫。 </p>\n      <p>它解析每個頁面上的低階 <code>/Link</code> 字典，探測它們，並在互動網格中顯示連結狀態（紅色表示死鏈接，橙色表示重定向）。只需輸入更新的重定向 URL，該工具就會將新目標直接寫回 PDF 二進位流中。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "提供目標文件",
+    "description": "上傳包含調試連結的 PDF 手冊或目錄。"
+  },
+  {
+    "step": 2,
+    "title": "掃描更新",
+    "description": "讓偵錯器提取所有 URL 實體。輸入損壞項目的新重定向 URL。"
+  },
+  {
+    "step": 3,
+    "title": "儲存重定向更新",
+    "description": "按一下執行以重寫 /URI 操作並下載修正後的 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "傳單損壞連結修補程序",
+    "description": "立即修正已發布傳單上的錯誤網址，無需重新開啟原始設計編輯器。",
+    "icon": "refresh-cw"
+  },
+  {
+    "title": "參考書目連結驗證",
+    "description": "驗證報告中的學術參考書目鏈接，更新參考文獻以保持權威。",
+    "icon": "book"
+  },
+  {
+    "title": "企業品牌重塑更新",
+    "description": "公司網域變更時，大量更新公司 PDF 中的舊 URL。",
+    "icon": "globe"
+  }
+],
+    faq: [
+  {
+    "question": "為什麼沒有線上全面檢查連結可及性？",
+    "answer": "Web 瀏覽器強制執行嚴格的 CORS 策略，阻止直接多來源連結檢查。我們的工具清楚地列出了鏈接，並允許您手動熱修復它們。"
+  },
+  {
+    "question": "這會修改頁面上的視覺文字表示嗎？",
+    "answer": "否。它僅更改底層的“/URI”導航操作。視覺連結文字保持不變。"
+  },
+  {
+    "question": "支持修改內頁書籤嗎？",
+    "answer": "此工具處理外部「/URI」超連結。對於內部佈局導航，請使用我們的互動式目錄工具。"
+  }
+],
   },
 
   'interactive-toc-generator': {
     title: '生成互動目錄',
-    metaDescription: '在頁首添加雙向 GoTo 動作 TOC 頁面，頁邊加蓋 TOC ↩ 回跳按鈕。',
+    metaDescription: "在 PDF 中新增可點選的目錄。建立章節連結和返回導航以更輕鬆地瀏覽文件。",
     keywords: ["pdf 互動目錄","自動目錄頁","頁面錨定","雙向導航"],
-    description: toolContentEn['interactive-toc-generator'].description,
-    howToUse: toolContentEn['interactive-toc-generator'].howToUse,
-    useCases: toolContentEn['interactive-toc-generator'].useCases,
-    faq: toolContentEn['interactive-toc-generator'].faq,
+    description: "<p>互動式 TOC 產生器為大量 PDF 引入了革命性的導航體驗。 </p>\n      <p>翻閱非結構化文件中的數百頁來尋找目標章節是令人沮喪的。該工具引入了<strong>雙向 TOC 編譯</strong>。 </p>\n      <p>它會掃描標題並產生一個受摺紙啟發的高級目錄頁面，插入到封面之後。除了為每個索引行建立可點擊的/GoTo 連結之外，它還在每個目標章節頁面的角落注入了一個微小、優雅的「TOC ↩」懸停錨點。讀者可以立即來回跳轉，享受類似網路的導航。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "提供PDF文檔",
+    "description": "上傳需要互動式目錄的報告、電子書或提案。"
+  },
+  {
+    "step": 2,
+    "title": "設定目錄標題和索引",
+    "description": "自訂主標題並選擇頁面索引以插入目錄頁。"
+  },
+  {
+    "step": 3,
+    "title": "編織錨並保存",
+    "description": "點選執行編譯頁面並撰寫雙連結導覽。"
+  }
+],
+    useCases: [
+  {
+    "title": "年度公司報告打磨",
+    "description": "在封面後插入漂亮的索引頁，以允許股東在財務圖表之間跳轉。",
+    "icon": "file-bar"
+  },
+  {
+    "title": "論文索引",
+    "description": "快速編譯符合大學格式規則的標準索引。",
+    "icon": "bookmark"
+  },
+  {
+    "title": "操作手冊導航",
+    "description": "幫助手冊讀者快速從故障排除表跳回主目錄。",
+    "icon": "check-circle"
+  }
+],
+    faq: [
+  {
+    "question": "雙向錨點如何運作？",
+    "answer": "我們在針對各個頁面的目錄頁面上建立標準連結註解；然後我們在所有目標章節表上嵌入返回目錄頁面的連結。"
+  },
+  {
+    "question": "插入目錄頁會破壞現有頁碼嗎？",
+    "answer": "否。編譯器會考慮新插入的 TOC 頁的偏移量，確保所有目標位置對齊。"
+  },
+  {
+    "question": "TOC 頁實體列印時有效嗎？",
+    "answer": "是的。生成的目錄列出了乾淨的實體頁碼，以指導紙質讀者，同時在螢幕上啟用可點擊的連結。"
+  }
+],
   },
 
   'pdf-deskew-aligner': {
@@ -3056,94 +3970,499 @@ export const toolContentZhTW: Record<string, ToolContent> = {
     metaDescription: "在本機偵測傾斜的文字行，並將校正後的內容適配到原始頁面內。",
     keywords: ["pdf 傾斜校正","掃描糾偏","水平對齊","自動糾偏"],
     description: "\n      <p>在本機偵測傾斜的文字行，並將校正後的內容適配到原始頁面內。</p>\n      <p>空白頁、不確定的掃描頁以及有註解的頁面保持不變。</p>\n      <p>較高解析度需要更多時間。非常大的頁面會使用較低的分析解析度。</p>\n    ",
-    howToUse: toolContentEn['pdf-deskew-aligner'].howToUse,
-    useCases: toolContentEn['pdf-deskew-aligner'].useCases,
-    faq: toolContentEn['pdf-deskew-aligner'].faq,
+    howToUse: [
+  {
+    "step": 1,
+    "title": "提供傾斜PDF",
+    "description": "上傳包含旋轉或對齊不良的掃描文件的任何 PDF 頁。"
+  },
+  {
+    "step": 2,
+    "title": "掃描對齊設定",
+    "description": "分析解析度 · 最大校正角度"
+  },
+  {
+    "step": 3,
+    "title": "分析並矯正",
+    "description": "下載·對齊 PDF"
+  }
+],
+    useCases: [
+  {
+    "title": "收據及合約歸檔",
+    "description": "整理快速手持行動合約掃描件，然後儲存為正式的數位 PDF 檔案。",
+    "icon": "file-text"
+  },
+  {
+    "title": "學術書籍數位化",
+    "description": "清理縮微膠卷書籍掃描件中文字行超出水平邊距的地方。",
+    "icon": "book"
+  },
+  {
+    "title": "學生作業評分",
+    "description": "修正學生手機拍攝的作業快照，放鬆批改老師的眼睛。",
+    "icon": "edit-3"
+  }
+],
+    faq: [
+  {
+    "question": "如何偵測文件傾斜？",
+    "answer": "局部偵測傾斜的墨線並將校正後的內容放入原始頁面中。"
+  },
+  {
+    "question": "此過程會裁切掉頁面邊緣嗎？",
+    "answer": "局部偵測傾斜的墨線並將校正後的內容放入原始頁面中。"
+  },
+  {
+    "question": "支持圖表文檔嗎？",
+    "answer": "空白頁、不確定的掃描件和帶有註釋的頁面保持不變。"
+  }
+],
   },
 
   'pdf-two-column-reflower': {
     title: '雙欄論文重排',
-    metaDescription: '無損複製頁面並重新限制 CropBox 左/右視口，無損、100% 矢量級實現雙欄變單欄。',
+    metaDescription: "將兩欄 PDF 論文重排為單欄，以便於移動閱讀。調整學術文件以適應較小的螢幕。",
     keywords: ["雙欄重排","學術論文單欄","CropBox 裁剪","pdf 視口分裂"],
-    description: toolContentEn['pdf-two-column-reflower'].description,
-    howToUse: toolContentEn['pdf-two-column-reflower'].howToUse,
-    useCases: toolContentEn['pdf-two-column-reflower'].useCases,
-    faq: toolContentEn['pdf-two-column-reflower'].faq,
+    description: "<p>學術兩欄 Reflower 解決了數位研究最重要的痛點：在標準行動螢幕上閱讀論文。 </p>\n      <p>雙欄佈局（IEEE、ACM、Nature 和主要報告使用）專為 A4 紙設計。在手機螢幕或 Kindle 裝置上導航它們需要不斷縮放、向右拖曳、向下滾動和平移。它完全破壞了閱讀理解能力。 </p>\n      <p>我們的處理器實現了<strong>智慧段落回流和垂直分區屏障掃描</strong>。它分析字元座標以映射雙列裝訂線，劃分佈局，並垂直編織分段（先左列，然後右列）。圖形、公式和標題無縫地重新排列成單列、可流動的垂直滾動 PDF。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳雙欄PDF",
+    "description": "提供IEEE/ACM期刊報告或多欄PDF表。"
+  },
+  {
+    "step": 2,
+    "title": "檢查隔間天溝",
+    "description": "驗證紅色垂直分區切片導軌。調整邊距以防止元素重疊。"
+  },
+  {
+    "step": 3,
+    "title": "回流並保存",
+    "description": "按一下「執行」將頁面編譯成可流動的佈局並立即下載。"
+  }
+],
+    useCases: [
+  {
+    "title": "電子閱讀器圖書導入",
+    "description": "將密集的雙欄文章轉換為與 Kindle 和 Onyx 螢幕相符的舒適單欄文件。",
+    "icon": "tablet"
+  },
+  {
+    "title": "地鐵電話閱讀",
+    "description": "在旅途中透過單手垂直滑動手勢舒適地閱讀研究文獻。",
+    "icon": "smartphone"
+  },
+  {
+    "title": "檔案期刊格式",
+    "description": "將舊的窄欄報紙現代化為可讀的單欄網路格式。",
+    "icon": "book-open"
+  }
+],
+    faq: [
+  {
+    "question": "如何處理廣泛的圖表和方程式？",
+    "answer": "我們的引擎採用「跨度元素檢測」。當方程式或圖表超過正常列寬時，它會被隔離為全寬項目，保持原始比例而不進行裁剪。"
+  },
+  {
+    "question": "這會修改向量文字解析度嗎？",
+    "answer": "完全沒有。我們在物件樹層級重寫 PDF 文字物件變換矩陣而不是光柵化，這意味著文字仍然是 100% 向量且完全可選。"
+  },
+  {
+    "question": "這適用於掃描的影像文件嗎？",
+    "answer": "對於基於平面圖像的 PDF，我們強烈建議在執行回流流程之前先執行我們的 OCR 工具。"
+  }
+],
   },
 
   'pdf-page-resizer-uniform': {
     title: 'PDF 尺寸統一',
-    metaDescription: '智能讀取多規格 PDF 頁面尺寸，將其等比縮放並完美居中平鋪至統一的目标規格。',
+    metaDescription: "將混合 PDF 頁面調整為統一尺寸。使用比例縮放和居中邊距標準化 A4、A3 和 Letter 頁面。",
     keywords: ["pdf 頁面縮放","頁面尺寸統一","a4 歸一","pdf 重塑尺寸"],
-    description: toolContentEn['pdf-page-resizer-uniform'].description,
-    howToUse: toolContentEn['pdf-page-resizer-uniform'].howToUse,
-    useCases: toolContentEn['pdf-page-resizer-uniform'].useCases,
-    faq: toolContentEn['pdf-page-resizer-uniform'].faq,
+    description: "<p>多格式 PDF Resizer 是雜亂、不符的公司文件的終極標準化工具。 </p>\n      <p>合併發票、合約和補充圖表通常會產生包含大量 A3 分類帳頁、標準 A4 協議和信紙大小的信封的 PDF。翻閱它們非常分散注意力，並且將它們發送到實體辦公室印表機通常會因尺寸不匹配而導致卡紙錯誤。 </p>\n      <p>此工具會重寫每個頁面上的低階 <code>/MediaBox</code> 和 <code>/CropBox</code> 網格。它會對應現有的寬度和高度，按比例縮放原始頁面以匹配目標預設（例如標準 A4），並引入優雅、一致的周圍邊距，使整個文件看起來非常精美。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "提供混合尺寸PDF",
+    "description": "上傳包含不符、混亂頁面尺寸的合併 PDF 文件。"
+  },
+  {
+    "step": 2,
+    "title": "選擇目標預設",
+    "description": "選擇目標統一尺寸（例如 A4、Letter、A3）並切換縮放模式。"
+  },
+  {
+    "step": 3,
+    "title": "對齊並下載",
+    "description": "按一下「執行」觸發 3D 圖紙對齊，下載精美的標準化 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "企業 RFP 提案",
+    "description": "實物列印前將資質證明及A4招標單掃描件標準化。",
+    "icon": "file-text"
+  },
+  {
+    "title": "金融圖整合",
+    "description": "將廣泛的 A3 財務現金流量擴展到整齊的 A4 頁面，以保持列印標準。",
+    "icon": "layout"
+  },
+  {
+    "title": "帳面保證金標準化",
+    "description": "將略有不同的掃描書頁強制調整為絕對統一的尺寸，以實現舒適的閱讀。",
+    "icon": "book"
+  }
+],
+    faq: [
+  {
+    "question": "這會扭曲我的內容嗎？",
+    "answer": "從來沒有。我們支援“包含”（帶有白條的比例縮放）和“覆蓋”（居中裁剪）。預設的包含模式保留縱橫比，防止失真。"
+  },
+  {
+    "question": "現有的表單和註解是否仍可點擊？",
+    "answer": "是的。該演算法將縮放因子映射到註釋座標數組、縮放連結框、符號邊界和輸入，以在調整大小後完美對齊。"
+  },
+  {
+    "question": "我可以調整的頁面大小有限制嗎？",
+    "answer": "不需要。由於所有操作都使用本機 JavaScript 在客戶端沙箱中本地運行，因此您可以在幾秒鐘內處理包含數百頁的大量 PDF。"
+  }
+],
   },
 
   'handwriting-ink-contrast-booster': {
     title: '手寫筆跡增強',
-    metaDescription: '漂白黃斑暗光影背景，對藍/黑手寫筆跡和紅印章進行高斯局部對比度拉伸。',
+    metaDescription: "增強掃描影像中的手寫和簽名對比。減少紙張背景噪音並使墨水更易於閱讀。",
     keywords: ["筆跡增強","去除背景雜色","手寫優化","合同筆跡增強"],
-    description: toolContentEn['handwriting-ink-contrast-booster'].description,
-    howToUse: toolContentEn['handwriting-ink-contrast-booster'].howToUse,
-    useCases: toolContentEn['handwriting-ink-contrast-booster'].useCases,
-    faq: toolContentEn['handwriting-ink-contrast-booster'].faq,
+    description: "<p>手寫墨水對比增強器是數位簽署協議和歷史手稿檔案的救世主。 </p>\n      <p>由於灰色掃描器玻璃反射、黃色紙張色調或褪色墨水，手簽名文件的掃描件通常看起來暗淡無光。重新列印或影印這些文件會導致簽名模糊、難以辨認。傳統的對比工具會使整個背景變暗，從而使佈局惡化。 </p>\n      <p>該工具利用**對比度有限自適應直方圖均衡化 (CLAHE) 和基於色調的顏色分離**。在安全的本地 Canvas 流程中，它將手寫筆畫（黑色和藍色）與背景羊皮紙隔離，完全漂白陰影皺紋，並為褪色的墨水注入深、飽和的對比度，使您的文件看起來非常清晰和乾淨。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "匯入手簽文件",
+    "description": "提供包含褪色簽名、手寫日記或草圖的 PDF。"
+  },
+  {
+    "step": 2,
+    "title": "配置墨水過濾器",
+    "description": "選擇要隔離的顏色設定檔（例如藍色墨水、黑色墨水或兩者）並調整銳利化。"
+  },
+  {
+    "step": 3,
+    "title": "銳化並下載",
+    "description": "按一下「執行」以使用雷達掃描器效果追蹤顏色並下載純化的 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "已執行的合約修復",
+    "description": "修復掃描不良的協議，銳化簽名並將紙張背景漂白為A4純白色。",
+    "icon": "file-check"
+  },
+  {
+    "title": "手寫手稿檔案",
+    "description": "將書面日記或日記數位化，提取清晰的黑色筆劃，同時擦除與年齡相關的污漬。",
+    "icon": "book"
+  },
+  {
+    "title": "歷史帳本修復",
+    "description": "恢復陳舊檔案帳本上微弱的墨水細節，挽救寶貴的手寫座標。",
+    "icon": "archive"
+  }
+],
+    faq: [
+  {
+    "question": "這與普通的灰階轉換有何不同？",
+    "answer": "灰階將紙張陰影轉換為灰階值。我們的自適應演算法可分離背景亮度並隔離特徵“墨水光譜”，將背景淨化為絕對白色，同時使筆畫邊緣清晰。"
+  },
+  {
+    "question": "我會失去手寫筆畫紋理嗎？",
+    "answer": "否。 CLAHE 演算法在子像素層級工作，保留自然的筆觸壓力、墨水褪色和動態線寬。"
+  },
+  {
+    "question": "可以保留紅色企業印章嗎？",
+    "answer": "是的。透過啟用“色度墨水保存”，增強器可以使紙張背景變白並使文字變暗，同時保持紅色印章和藍色墨水簽名的明亮顏色。"
+  }
+],
   },
 
   'pdf-spine-bookbinder': {
     title: '書脊厚度計算',
-    metaDescription: '輸入頁數與 GSM 紙重，毫米級精准建模計算書脊寬度，並動態繪製帶有折壓印線的高清封套 PDF。',
+    metaDescription: "根據頁數和紙張重量計算書脊寬度。產生帶有書脊折疊線的可列印封面範本。",
     keywords: ["書脊厚度計算","書籍裝訂","封面排版","膠裝書脊"],
-    description: toolContentEn['pdf-spine-bookbinder'].description,
-    howToUse: toolContentEn['pdf-spine-bookbinder'].howToUse,
-    useCases: toolContentEn['pdf-spine-bookbinder'].useCases,
-    faq: toolContentEn['pdf-spine-bookbinder'].faq,
+    description: "<p>PDF Spine Bookbinder 是設計師、自助出版作者和商業投標團隊的印前救星。 </p>\n      <p>在編寫厚厚的書籍目錄、投標建議或年度目錄時，膠裝（膠裝）需要封面具有精確的書脊座標。如果書脊寬度有哪怕 1 毫米的偏差，裝訂的封面就會變形、移位或起皺。根據紙張重量計算頁數非常複雜且容易出錯。 </p>\n      <p>該工具利用<strong>物理建模的 GSM 紙張厚度庫</strong>。只需輸入您的 PDF 頁數並選擇紙材（例如 80 GSM 膠印紙、100 GSM 光面紙）。引擎可計算精確至微米的書脊寬度，並編譯可列印的超寬封面 PDF，配有標準的前/後翻蓋和精確的折疊標記摺痕。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "設定頁面和庫存類型",
+    "description": "輸入文件頁數並選擇目標紙材規格。"
+  },
+  {
+    "step": 2,
+    "title": "輸入書脊文字",
+    "description": "輸入書名、作者詳細信息，並自訂書脊/封面背景。"
+  },
+  {
+    "step": 3,
+    "title": "3D 預覽與匯出",
+    "description": "在互動式 3D 活頁夾中旋轉並檢查書籍封面。導出高解析度向量 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "厚厚的投標建議書",
+    "description": "設計專業的封面頁，具有精確的書脊摺痕對齊方式，適用於厚標。",
+    "icon": "layers"
+  },
+  {
+    "title": "論文精裝裝訂",
+    "description": "為大學碩士/博士論文制定完美的書脊佈局寬度。",
+    "icon": "award"
+  },
+  {
+    "title": "自出版小說封面",
+    "description": "在將文件提交到按需印刷出版服務之前，輕鬆計算書脊寬度。",
+    "icon": "book-open"
+  }
+],
+    faq: [
+  {
+    "question": "GSM紙張厚度計算有多準確？",
+    "answer": "高度準確。我們的實體庫符合業界平均值（例如 70 GSM = 0.09mm、80 GSM = 0.10mm、150 GSM 光澤 = 0.125mm）。我們還包括一個“雙面列印”開關，可以自動將計算量減半。"
+  },
+  {
+    "question": "導出的封面是否可以直接列印？",
+    "answer": "是的。這些文件是向量完美的 PDF，帶有標準套準標記、色條和書脊指南，完全符合膠印機和數位商業印刷機的要求。"
+  },
+  {
+    "question": "我可以上傳橫跨書脊的背景圖片嗎？",
+    "answer": "是的。您可以上傳自訂佈局，我們的合成器將自動包裝並對齊書脊折疊處的圖形。"
+  }
+],
   },
 
   'pdf-signature-anchor-helper': {
     title: '簽名位置引導',
-    metaDescription: '在 PDF 頁面中精確定位並物理合併手寫筆引導戳記和交互跳轉 Link 標記。',
+    metaDescription: "使用 X/Y 座標將簽名指南放置在 PDF 頁面上。在儲存更新的文件之前預覽他們的位置。",
     keywords: ["簽名引導","簽字錨定","跳轉連結","合同引導圖層"],
-    description: toolContentEn['pdf-signature-anchor-helper'].description,
-    howToUse: toolContentEn['pdf-signature-anchor-helper'].howToUse,
-    useCases: toolContentEn['pdf-signature-anchor-helper'].useCases,
-    faq: toolContentEn['pdf-signature-anchor-helper'].faq,
+    description: "<p>PDF 簽章指南注入器可確保多頁協定的乾淨、無錯誤的簽章工作流程。 </p>\n      <p>在發送多頁保密協議、財務報表或商業租賃時，客戶經常會錯過關鍵的簽名框，從而需要無休止的來回電子郵件循環並延遲業務交易。 </p>\n      <p>我們的工具使用<strong>自然正規表示式語意映射</strong>。它掃描 PDF 字元映射表以查找諸如 <code>簽名：</code>、<code>簽署：</code>、<code>見證人：</code> 或 <code>簽署日期：</code> 等術語。然後，它利用 pdf-lib 注入標準 PDF 互動式連結註釋。當在任何標準閱讀器中打開時，客戶會看到閃爍的霓虹燈邊框箭頭，這些箭頭會立即引導他們到正確的框，從而使簽名萬無一失。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "進口業務合約",
+    "description": "上傳需要簽名座標的PDF合約或NDA。"
+  },
+  {
+    "step": 2,
+    "title": "X / Y",
+    "description": "按一下實際 PDF 預覽或輸入所選頁面的 X 和 Y 座標。"
+  },
+  {
+    "step": 3,
+    "title": "流程",
+    "description": "處理文件，查看結果並下載 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "公司 NDA 協議",
+    "description": "在標誌區塊旁插入清晰、閃爍的指南，以防止入職員工遺漏條款。",
+    "icon": "file-text"
+  },
+  {
+    "title": "商業租賃合約",
+    "description": "使用自訂顏色標籤引導多個共同簽署者完成多頁房地產文件。",
+    "icon": "users"
+  },
+  {
+    "title": "採購訂單簽名",
+    "description": "在發票和採購訂單上疊加互動式指針，以加速會計審批循環。",
+    "icon": "briefcase"
+  }
+],
+    faq: [
+  {
+    "question": "當我列印合約時這些指南會出現嗎？",
+    "answer": "否。錨點是在標準 PDF「可列印」標誌設定為 false 的情況下注入的。它們在電腦/平板電腦螢幕上顯示精美，但在列印時完全不可見。"
+  },
+  {
+    "question": "客戶端可以輕鬆地在簽章欄位之間跳轉嗎？",
+    "answer": "是的。我們編織雙向內部錨。客戶可以點選「簽名精靈」書籤，立即自動跳到下一個空簽名位。"
+  },
+  {
+    "question": "這適用於掃描的影像文件嗎？",
+    "answer": "是的。除了尋找文字流之外，我們的空間佈局解析器還根據掃描紙張上的水平規則和邊界框來估計簽章行。"
+  }
+],
   },
 
   'pdf-lossless-slicer': {
     title: '大圖紙無損裁剪',
-    metaDescription: '徹底重塑 MediaBox 與 CropBox 矩形空間，無損、100% 矢量級裁剪大圖紙。',
+    metaDescription: "使用精確座標裁切 PDF 繪圖、地圖或圖表的區域。在匯出的 PDF 中保留向量內容。",
     keywords: ["pdf 無損裁剪","圖紙切片","CropBox 重塑","pdf 矢量裁剪"],
-    description: toolContentEn['pdf-lossless-slicer'].description,
-    howToUse: toolContentEn['pdf-lossless-slicer'].howToUse,
-    useCases: toolContentEn['pdf-lossless-slicer'].useCases,
-    faq: toolContentEn['pdf-lossless-slicer'].faq,
+    description: "<p>PDF 無損繪圖切片器是一款專為建築師、工程師和地圖詳細設計人員打造的高精度手術工具。 </p>\n      <p>當從大量 CAD 工程藍圖或地理地圖 PDF 中提取特定的泵房或晶片核心時，傳統的螢幕截圖會導致像素化、模糊的文字。普通的裁剪工具只是在紙張上放置一個遮罩，這意味著 100MB 的海量文件仍然很大，並且仍然可以提取隱藏的內容。 </p>\n      <p>此工具可在物件樹層級編輯頁面 <code>/MediaBox</code>、<code>/CropBox</code> 和 <code>/BleedBox</code> 矩陣。它在物理上隔離所選區域之外的向量節點，保持目標區域 100% 向量完美（允許無限縮放放大），同時清除冗餘的螢幕外路徑和圖像，將檔案大小縮小 95%！ </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "導入大藍圖",
+    "description": "上傳富含向量的 CAD、GIS 地圖或高解析度目錄 PDF。"
+  },
+  {
+    "step": 2,
+    "title": "裁剪長方形",
+    "description": "輸入X、Y、寬度和高度，然後在預覽中檢查所選頁面。"
+  },
+  {
+    "step": 3,
+    "title": "流程",
+    "description": "處理文件，查看結果並下載 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "CAD 藍圖隔離",
+    "description": "從巨大的 100MB 平面圖藍圖中切出「冷卻系統」細節，以便與分包商共享。",
+    "icon": "crop"
+  },
+  {
+    "title": "GIS地圖截圖",
+    "description": "提取城市街道地圖的無損、向量清晰塊以用於演示幻燈片，而不會損失解析度。",
+    "icon": "map"
+  },
+  {
+    "title": "手動描圖",
+    "description": "無損分離科學書籍圖，嵌入高品質的學術論文中。",
+    "icon": "image"
+  }
+],
+    faq: [
+  {
+    "question": "這與標準裁切有何不同？",
+    "answer": "標準裁切僅調整視覺邊界；隱藏的向量保留在檔案中。我們的切片器修剪重疊的向量路徑並清除越界的 XObject 影像，確保完整的資料隔離和最大程度的檔案壓縮。"
+  },
+  {
+    "question": "文字圖層仍可搜尋嗎？",
+    "answer": "是的。落在切片邊界內的任何文字字元都保持完全向量清晰、可搜尋和可選擇。"
+  },
+  {
+    "question": "我可以將切片區域匯出為 SVG 嗎？",
+    "answer": "輸出是標準化向量 PDF。您可以將生成的文件傳遞到我們的 PDF 到 SVG 工具，將其轉換為可網絡擴展的向量圖形格式。"
+  }
+],
   },
 
   'pdf-scratchpad-canvas': {
     title: '草稿拼接畫布',
-    metaDescription: '物理拓寬頁面尺寸，在右側或底部縫合出 200 pt 的草稿紙空間，並蓋印淺灰網格。',
+    metaDescription: "為 PDF 頁面新增網格、直紋或康乃爾筆記邊距。為學習筆記、計算和考試準備創造額外的寫作空間。",
     keywords: ["pdf 草稿紙","頁面拼接","網格背景","pdf 筆記畫布"],
-    description: toolContentEn['pdf-scratchpad-canvas'].description,
-    howToUse: toolContentEn['pdf-scratchpad-canvas'].howToUse,
-    useCases: toolContentEn['pdf-scratchpad-canvas'].useCases,
-    faq: toolContentEn['pdf-scratchpad-canvas'].faq,
+    description: "<p>PDF Scratchpad Margin Extender 是為學生、研究人員和專業考試考生量身定制的必備學習夥伴。 </p>\n      <p>在數位平板電腦上解答練習考卷、審查投影片或閱讀學術教科書時，頁邊距非常緊張。打開單獨的筆記應用程式會迫使您不斷切換螢幕，從而破壞焦點。新增空白表格可防止您並排查看問題和計算。 </p>\n      <p>此工具重寫低階 PDF 結構中的頁面寬度或高度尺寸，將右側或底部的 <code>/MediaBox</code> 邊距擴展 200~250 pt。然後，它會在新的邊距中覆蓋乾淨的網格線、大學規則的筆記本線或康奈爾大學佈局，為您在每張投影片或問題旁邊提供專用的相鄰草稿板！ </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "上傳講座投影片",
+    "description": "提供 PDF 教科書、投影片或研究論文。"
+  },
+  {
+    "step": 2,
+    "title": "選擇邊距和網格樣式",
+    "description": "選擇邊距擴展方向（例如平板電腦的右側）並選擇網格模板。"
+  },
+  {
+    "step": 3,
+    "title": "縫合畫布並下載",
+    "description": "按一下「執行」以產生具有漂亮草稿網格的擴充頁面。"
+  }
+],
+    useCases: [
+  {
+    "title": "STEM 考試準備",
+    "description": "在數學和物理考試問題旁縫合網格邊距，解決問題旁的推導問題。",
+    "icon": "edit-3"
+  },
+  {
+    "title": "語言閱讀分析",
+    "description": "在外文論文旁邊加入規則筆記本邊距，用於詞彙分析和段落翻譯。",
+    "icon": "book"
+  },
+  {
+    "title": "架構藍圖審核",
+    "description": "圖紙一側留有空白，用於工程計算和客戶評審意見。",
+    "icon": "columns"
+  }
+],
+    faq: [
+  {
+    "question": "這會壓扁我的原始 PDF 文字嗎？",
+    "answer": "完全沒有。該演算法向外擴展紙張尺寸。原始內容保留其佈局、字體和解析度；我們只需拉伸邊框上的空白並在其上繪製網格即可。"
+  },
+  {
+    "question": "標準手寫筆可以在便條本上寫字嗎？",
+    "answer": "是的。新的 PDF 頁面是本機編譯的。 Goodnotes、Notability、Xodo 和 Acrobat 等流行的平板電腦筆記應用程式可以直接在新的網格空間中書寫、突出顯示和塗鴉。"
+  },
+  {
+    "question": "網格線是否黑暗且分散注意力？",
+    "answer": "我們精心設計了三種微妙、護眼的顏色（柔和的藍灰色、暖棕色和亮綠色）。線條細而柔和，可以作為引導，而不會分散您對原始頁面內容的注意力。"
+  }
+],
   },
 
   'photo-tiling-prepress': {
     title: '證件照自助拼版',
-    metaDescription: '智能將單張證件照以高精度矩陣排滿 5寸/6寸標準相紙，並貼心加蓋裁剪線。',
+    metaDescription: "在標準相片紙上裁剪並排列身分證或護照照片。新增列印裁剪標記以幫助切割成品紙張。",
     keywords: ["證件照排版","相紙貼版","印前拼版","證件照拼版"],
-    description: toolContentEn['photo-tiling-prepress'].description,
-    howToUse: toolContentEn['photo-tiling-prepress'].howToUse,
-    useCases: toolContentEn['photo-tiling-prepress'].useCases,
-    faq: toolContentEn['photo-tiling-prepress'].faq,
+    description: "<p>印前照片平鋪工具是一款經濟高效、高精度的佈局編譯器，專為個人登記卡和攝影工作室打造。 </p>\n      <p>在家中列印護照照片、身分證照片或駕駛執照通常會導致實體尺寸不正確（通常列印太大或太小）、浪費照片紙以及對齊不均勻。去專業印刷店製作佈置非常耗時。 </p>\n      <p>我們的工具整合了<strong>精密印前矩陣引擎</strong>。它接受肖像照片或身份證掃描件，將其裁剪為標準尺寸（例如 1 英寸或 2 英寸護照規格），計算標準相紙（例如 5 英寸或 6 英寸紙張）的最佳平鋪數量，並註入清晰的微像素裁剪線以方便物理切割，生成完美的可打印 PDF。 </p>",
+    howToUse: [
+  {
+    "step": 1,
+    "title": "進口護照照片",
+    "description": "上傳相機人像抓拍或雙面身分證圖片。"
+  },
+  {
+    "step": 2,
+    "title": "配置紙張和佈局",
+    "description": "選擇目標列印紙張尺寸（例如 6 吋）並選擇網格佈局（例如 8 份 1 吋照片）。"
+  },
+  {
+    "step": 3,
+    "title": "平鋪與導出",
+    "description": "檢查網格上的照片圖塊，並匯出高 DPI 可列印 PDF。"
+  }
+],
+    useCases: [
+  {
+    "title": "自助護照照片",
+    "description": "將手機拍攝的護照肖像排列在一張 6 英寸相紙網格上，然後打印 8 份，只需標準工作室成本的一小部分。",
+    "icon": "user"
+  },
+  {
+    "title": "身分證雙面影印",
+    "description": "將國民身分證的正面和背面掃描件整齊地格式化在標準 Letter/A4 紙張上，以供正式提交。",
+    "icon": "file-text"
+  },
+  {
+    "title": "批次照片縮圖",
+    "description": "將多個家庭記憶或設計快照平鋪到網格紙上，以高效列印縮圖聯繫表。",
+    "icon": "grid"
+  }
+],
+    faq: [
+  {
+    "question": "印刷尺寸是否符合官方 1 吋或 2 吋規格？",
+    "answer": "是的。網格引擎使用標準 PDF 點（72 點 = 1 吋）進行測量，將 1 吋照片精確渲染為 25x35 毫米，將 2 吋照片渲染為 35x49 毫米。請確保在印表機設定中以「實際尺寸/100% 比例」列印。"
+  },
+  {
+    "question": "我可以將 1 英吋和 2 英吋的照片合併在一張紙上嗎？",
+    "answer": "是的。我們提供精心策劃的混合版面預設（例如「4 份 1」+ 4 份 2」），讓您盡量利用相片紙空間。"
+  },
+  {
+    "question": "模板是否包含邊框出血？",
+    "answer": "是的。印前佈局在紙張邊框上保留標準的 4 毫米列印安全邊距，防止實體印表機滾筒裁切照片。"
+  }
+],
   },
 
   'redact-pdf': {
     title: 'PDF塗黑與馬賽克脫敏',
-    metaDescription: '對PDF機密信息進行物理塗黑遮蓋、馬賽克打碼或高斯模糊。物理像素級不可逆銷毁底層文字，深度清除元數據，純本地離線處理。',
+    metaDescription: "遮蔽、模糊或像素化敏感的 PDF 內容。匯出扁平化頁面並在瀏覽器中本機刪除元資料。",
     keywords: ['pdf塗黑', 'pdf馬賽克', 'pdf打碼', 'pdf脫敏', 'pdf遮蓋', '隱私保護', '抹黑pdf', '模糊pdf'],
     description: `
       <p>PDF塗黑與馬賽克脫敏工具是一款專為高隱私敏感場景設計的安全脫敏利器。不同於常見PDF閱讀器只是在文字上方疊加黑色矩形矢量形狀（底層文字依然可被複制或提取），本工具採用<strong>物理像素級不可逆柵格化銷毀</strong>技術，徹底消滅選區下方的原始文字流和字體信息。</p>
@@ -3157,10 +4476,10 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { step: 4, title: '實時預覽並導出', description: '點擊「預覽脫敏效果」查看真實輸出效果，確認無誤後點擊「應用脫敏並導出」。' },
     ],
     useCases: [
-      { title: '商業合約與標書脫敏', description: '對合同中的報價、客戶名稱、簽字印章進行不可逆打碼抹黑，防止商業機密洩露。', icon: 'file-text' },
-      { title: '個人隱私合規（GDPR / 個資法）', description: '抹去身份證號、手機號、家庭住址、銀行卡號等敏感私密數據。', icon: 'shield' },
-      { title: '醫療病歷與司法材料歸檔', description: '對病患隱私、案件證人姓名進行無痕馬賽克或抹黑，符合司法與醫療公開標準。', icon: 'lock' },
-      { title: '公開技術報告與截圖展示', description: '隱藏文檔中的內部伺服器IP、API密鑰或內部組織架構。', icon: 'eye-off' },
+      { title: '商業合約與標書脫敏', description: '對合同中的報價、客戶名稱、簽字印章進行不可逆打碼抹黑，防止商業機密洩露。', icon: "file-text" },
+      { title: '個人隱私合規（GDPR / 個資法）', description: '抹去身份證號、手機號、家庭住址、銀行卡號等敏感私密數據。', icon: "shield" },
+      { title: '醫療病歷與司法材料歸檔', description: '對病患隱私、案件證人姓名進行無痕馬賽克或抹黑，符合司法與醫療公開標準。', icon: "lock" },
+      { title: '公開技術報告與截圖展示', description: '隱藏文檔中的內部伺服器IP、API密鑰或內部組織架構。', icon: "eye-off" },
     ],
     faq: [
       { question: '塗黑或馬賽克處理後，底層文字還能被複制或還原嗎？', answer: '絕對不能。我們對脫敏頁面進行了物理像素級柵格化重構，選區下方的文字和矢量流被徹底覆蓋重繪，生成的PDF中已不存在原始文本字元，任何工具都無法複製或反向提取。' },

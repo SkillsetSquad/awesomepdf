@@ -137,7 +137,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     "keywords": [
       "rotar pdf ángulo personalizado",
       "enderezar pdf",
-      "deskew pdf",
+      "enderezar pdf",
       "rotación personalizada pdf"
     ],
     "description": "<p>Rotar por Grados Personalizados te da control preciso sobre la orientación de tus páginas PDF. A diferencia de las herramientas estándar que solo rotan en incrementos de 90 grados, esta herramienta te permite rotar páginas en cualquier ángulo específico.</p><p>Perfecto para enderezar documentos escaneados torcidos o ajustar diagramas. Puedes corregir páginas individuales o aplicar la misma rotación a todo el documento.</p><p>Todo el procesamiento ocurre localmente en tu navegador, asegurando privacidad total mientras logras una alineación perfecta.</p>",
@@ -970,7 +970,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     "metaDescription": "Añade marcas de agua de texto o imagen a documentos PDF.",
     "keywords": [
       "marca de agua pdf",
-      "watermark pdf",
+      "pdf de marca de agua",
       "añadir marca",
       "proteger pdf"
     ],
@@ -2477,7 +2477,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     ]
   },
   "ocr-pdf": {
-    "title": "OCR PDF",
+    "title": "PDF con reconocimiento óptico de caracteres",
     "metaDescription": "Reconocimiento óptico de caracteres para hacer PDFs escaneados buscables.",
     "keywords": [
       "ocr pdf",
@@ -3000,10 +3000,10 @@ export const toolContentEs: Record<string, ToolContent> = {
     ]
   },
   "n-up-pdf": {
-    "title": "N-Up PDF",
+    "title": "PDF de varias páginas en una",
     "metaDescription": "Coloca múltiples páginas PDF en una sola página (2-up, 4-up, etc.).",
     "keywords": [
-      "n-up pdf",
+      "n-arriba pdf",
       "múltiples páginas",
       "2-up",
       "4-up",
@@ -3470,7 +3470,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     "metaDescription": "Optimiza PDFs para visualización web rápida (Fast Web View).",
     "keywords": [
       "linearizar pdf",
-      "fast web view",
+      "vista web rápida",
       "optimizar pdf web"
     ],
     "description": "<p>Linearizar PDF optimiza documentos para visualización web rápida, permitiendo ver la primera página mientras se descarga el resto.</p><p>Procesamiento local.</p>",
@@ -3878,7 +3878,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     "metaDescription": "Aplana formularios y anotaciones en documentos PDF.",
     "keywords": [
       "aplanar pdf",
-      "flatten pdf",
+      "aplanar pdf",
       "formularios pdf"
     ],
     "description": "<p>Aplanar PDF convierte formularios interactivos y anotaciones en contenido estático no editable.</p><p>Procesamiento local.</p>",
@@ -4483,7 +4483,7 @@ export const toolContentEs: Record<string, ToolContent> = {
   },
   "digital-sign-pdf": {
     "title": "Firma Digital",
-    "metaDescription": "Añade firmas digitales X.509 a documentos PDF. Firma PDFs con certificados PFX, P12 o PEM para validez legal.",
+    "metaDescription": "Firmar digitalmente documentos PDF con certificados PFX, P12 o PEM. Agregue firmas basadas en certificados localmente en su navegador.",
     "keywords": [
       "firma digital pdf",
       "certificado x509",
@@ -4603,7 +4603,7 @@ export const toolContentEs: Record<string, ToolContent> = {
   },
   "form-logic-designer": {
     "title": "Lógica de Formularios",
-    "metaDescription": "Diseñe comportamientos dinámicos mediante un lienzo de nodos de glassmorphism e inyecte lógica interactiva AcroJS en formularios PDF.",
+    "metaDescription": "Cree reglas de formulario PDF con un diseñador visual. Conecte campos y agregue lógica de validación y cálculo interactivo.",
     "keywords": [
       "lógica de formulario PDF",
       "inyección AcroJS",
@@ -4662,8 +4662,8 @@ export const toolContentEs: Record<string, ToolContent> = {
     ]
   },
   "global-invoice-parser": {
-    "title": "Traductor y Conversor de Facturas",
-    "metaDescription": "Extraiga totales de divisas de facturas multinacionales, realice cálculos e imprima registros de cambio interactivos con efecto de vidrio esmerilado.",
+    "title": "Conversor de importes de facturas en PDF",
+    "metaDescription": "Extraiga los importes de las facturas de archivos PDF, convierta totales entre monedas y agregue un resumen de cálculo al documento.",
     "keywords": [
       "traducir factura",
       "conversor de divisas de factura",
@@ -4729,53 +4729,53 @@ export const toolContentEs: Record<string, ToolContent> = {
       "conversor comic",
       "cbz pdf"
     ],
-    "description": "\n      <p>PDF to CBZ is custom-engineered for comic enthusiasts and digital ebook archivists. It renders every page of your PDF volumes into high-fidelity rasterized graphics and compiles them into a standard Comic Book ZIP (.cbz) bundle.</p>\n      <p>To eliminate frustrating manual scraping in systems like Calibre, Komga, Kavita, or CDisplayEx, the processor automatically generates and injects both <strong>ComicInfo.xml</strong> and <strong>metadata.opf</strong> files internally, while simultaneously writing a standardized <strong>ComicBookInfo JSON</strong> payload directly into the ZIP file comment metadata.</p>\n      <p>Includes complete configuration sliders for image compression quality, page dimension scale, right-to-left layout reading toggles (Manga mode), and black-and-white grayscale color filtering.</p>\n    ",
+    "description": "<p>PDF to CBZ está diseñado a medida para entusiastas del cómic y archiveros de libros electrónicos digitales. Representa cada página de sus volúmenes PDF en gráficos rasterizados de alta fidelidad y los compila en un paquete ZIP (.cbz) de cómic estándar.</p>\n      <p>Para eliminar el frustrante raspado manual en sistemas como Calibre, Komga, Kavita o CDisplayEx, el procesador genera e inyecta automáticamente archivos <strong>ComicInfo.xml</strong> y <strong>metadata.opf</strong> internamente, mientras escribe simultáneamente una carga útil estandarizada <strong>ComicBookInfo JSON</strong> directamente en los metadatos de comentarios del archivo ZIP.</p>\n      <p>Incluye controles deslizantes de configuración completos para la calidad de compresión de imágenes, escala de dimensiones de página, alternancia de lectura de diseño de derecha a izquierda (modo Manga) y filtrado de color en escala de grises en blanco y negro.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Comic PDF",
-        "description": "Drag and drop your primary comic, artbook, or manga PDF file."
+        "title": "Subir cómic PDF",
+        "description": "Arrastre y suelte su archivo PDF principal de cómic, libro de arte o manga."
       },
       {
         "step": 2,
-        "title": "Input Comic Metadata",
-        "description": "Fill out Series, Volume, Title, Writer, and Publisher fields, and toggle layout or grayscale optimization."
+        "title": "Introducir metadatos de cómic",
+        "description": "Complete los campos Serie, Volumen, Título, Escritor y Editor, y alterne el diseño o la optimización en escala de grises."
       },
       {
         "step": 3,
-        "title": "Compile and Download",
-        "description": "Click Convert to compile and retrieve your metadata-rich .cbz file instantly ready for Calibre."
+        "title": "Compilar y descargar",
+        "description": "Haga clic en Convertir para compilar y recuperar su archivo .cbz rico en metadatos, listo al instante para Calibre."
       }
     ],
     "useCases": [
       {
-        "title": "Retrograde Comic Packaging",
-        "description": "Transform raw scanned PDF books into compact, standard-compliant CBZ comic files easily scrapable by comic library managers.",
+        "title": "Embalaje de cómic retrógrado",
+        "description": "Transforme libros PDF escaneados sin formato en archivos de cómics CBZ compactos y compatibles con los estándares que los administradores de bibliotecas de cómics puedan eliminar fácilmente.",
         "icon": "book"
       },
       {
-        "title": "Zero-Effort Calibre Integration",
-        "description": "The built-in metadata.opf schema allows Calibre to fetch and classify creators and volume issues without manual lookup.",
+        "title": "Integración de calibre sin esfuerzo",
+        "description": "El esquema metadata.opf incorporado permite a Calibre buscar y clasificar creadores y problemas de volumen sin búsqueda manual.",
         "icon": "database"
       },
       {
-        "title": "E-Ink Screen Enhancement",
-        "description": "Pre-filter graphic color channels into high-contrast grayscale on compile, boosting visual refresh and clarity on E-ink screens while saving storage.",
+        "title": "Mejora de la pantalla de tinta electrónica",
+        "description": "Filtre previamente los canales de color gráficos en escala de grises de alto contraste al compilar, lo que aumenta la actualización visual y la claridad en las pantallas de tinta electrónica y, al mismo tiempo, ahorra almacenamiento.",
         "icon": "eye"
       }
     ],
     "faq": [
       {
-        "question": "What is a .cbz file?",
-        "answer": "A CBZ file is a specialized archive container format for comic book series. It is internally formatted as a ZIP package containing sequentially numbered page images alongside structural metadata XML files."
+        "question": "¿Qué es un archivo .cbz?",
+        "answer": "Un archivo CBZ es un formato contenedor de archivo especializado para series de cómics. Tiene el formato interno como un paquete ZIP que contiene imágenes de páginas numeradas secuencialmente junto con archivos XML de metadatos estructurales."
       },
       {
-        "question": "How is metadata compatible?",
-        "answer": "We compile and embed ComicInfo.xml, metadata.opf, and ZIP File Comments in one pass. This guarantees absolute compliance across multiple comic and e-book ecosystems."
+        "question": "¿Cómo son compatibles los metadatos?",
+        "answer": "Compilamos e incrustamos ComicInfo.xml, metadata.opf y comentarios de archivos ZIP de una sola vez. Esto garantiza un cumplimiento absoluto en múltiples ecosistemas de cómics y libros electrónicos."
       },
       {
-        "question": "Why use Grayscale mode?",
-        "answer": "If you read on a grayscale E-ink reader (like Kindle or Kobo), compiling directly in Grayscale reduces artifact ghosting, delivers superior contrast levels, and shrinks the final CBZ file size."
+        "question": "¿Por qué utilizar el modo Escala de grises?",
+        "answer": "Si lee en un lector de tinta electrónica en escala de grises (como Kindle o Kobo), compilar directamente en escala de grises reduce las imágenes fantasma, ofrece niveles de contraste superiores y reduce el tamaño del archivo CBZ final."
       }
     ]
   },
@@ -4787,58 +4787,58 @@ export const toolContentEs: Record<string, ToolContent> = {
       "pdf overlay",
       "sellar pdf"
     ],
-    "description": "\n      <p>Overlay PDF allows you to layer pages of one PDF document on top or underneath another PDF document. It is perfect for applying letterheads, adding background grids, stamping watermarks, or fusing layout drafts together.</p>\n      <p>Supports both Overlay mode (layer goes on top) and Underlay mode (layer goes underneath). Specify custom target page ranges or loop shorter overlay documents to cover the entire base file automatically.</p>\n      <p>All processing is executed entirely inside your web browser locally, guaranteeing total security and data privacy.</p>\n    ",
+    "description": "<p>Superponer PDF le permite superponer páginas de un documento PDF encima o debajo de otro documento PDF. Es perfecto para aplicar membretes, agregar cuadrículas de fondo, estampar marcas de agua o fusionar borradores de diseño.</p>\n      <p>Admite el modo Superposición (la capa va encima) y el modo Subrayado (la capa va debajo). Especifique rangos de páginas de destino personalizados o recorra documentos superpuestos más cortos para cubrir todo el archivo base automáticamente.</p>\n      <p>Todo el procesamiento se ejecuta íntegramente dentro de su navegador web localmente, garantizando total seguridad y privacidad de los datos.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Main PDF",
-        "description": "Drag and drop your primary base PDF document."
+        "title": "Subir PDF principal",
+        "description": "Arrastre y suelte su documento PDF base principal."
       },
       {
         "step": 2,
-        "title": "Upload Layer PDF",
-        "description": "Provide the overlay/underlay document that acts as the layer."
+        "title": "Subir capa PDF",
+        "description": "Proporcione el documento superpuesto/subyacente que actúa como capa."
       },
       {
         "step": 3,
-        "title": "Configure Layering",
-        "description": "Choose overlay or underlay mode, specify page ranges, and enable page looping."
+        "title": "Configurar capas",
+        "description": "Elija el modo de superposición o subyacente, especifique rangos de páginas y habilite el bucle de páginas."
       },
       {
         "step": 4,
-        "title": "Compile and Download",
-        "description": "Click Compile to process and download the layered result PDF."
+        "title": "Compilar y descargar",
+        "description": "Haga clic en Compilar para procesar y descargar el PDF del resultado en capas."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate Letterheads",
-        "description": "Layer invoice contents on top of standard company letterhead templates.",
+        "title": "Membretes Corporativos",
+        "description": "Coloque el contenido de la factura sobre las plantillas de membrete estándar de la empresa.",
         "icon": "file-text"
       },
       {
-        "title": "Watermarks & Seals",
-        "description": "Overlay security stamps, signature seals, or backgrounds across documents.",
+        "title": "Marcas de agua y sellos",
+        "description": "Superponer sellos de seguridad, sellos de firma o fondos en todos los documentos.",
         "icon": "shield"
       },
       {
-        "title": "Drawing Blueprints",
-        "description": "Combine draft architectures or layout grids underneath text blocks.",
+        "title": "Planos de dibujo",
+        "description": "Combine borradores de arquitectura o cuadrículas de diseño debajo de bloques de texto.",
         "icon": "layout"
       }
     ],
     "faq": [
       {
-        "question": "What is the difference between Overlay and Underlay?",
-        "answer": "Overlay places the secondary layer on top of your main content. Underlay places it at the very bottom, acting as a background template."
+        "question": "¿Cuál es la diferencia entre Superposición y Subrayación?",
+        "answer": "Superposición coloca la capa secundaria encima de su contenido principal. Underlay lo coloca en la parte inferior, actuando como plantilla de fondo."
       },
       {
-        "question": "Can I loop the overlay layer?",
-        "answer": "Yes, if the layer PDF is shorter than the base document, enabling Loop will cycle it (e.g. page 1, 2, 1, 2) to cover all base pages."
+        "question": "¿Puedo realizar un bucle en la capa superpuesta?",
+        "answer": "Sí, si la capa PDF es más corta que el documento base, al habilitar Loop se realizará un ciclo (por ejemplo, página 1, 2, 1, 2) para cubrir todas las páginas base."
       },
       {
-        "question": "Is page range supported?",
-        "answer": "Yes, you can target specific pages using range syntax such as \"1-5\", \"odd\", \"even\", or comma-separated lists."
+        "question": "¿Se admite el rango de páginas?",
+        "answer": "Sí, puede orientar sus anuncios a páginas específicas utilizando una sintaxis de rango como \"1-5\", \"impar\", \"par\" o listas separadas por comas."
       }
     ]
   },
@@ -4908,1059 +4908,1059 @@ export const toolContentEs: Record<string, ToolContent> = {
       "numerar paginas pdf",
       "paginas logicas"
     ],
-    "description": "\n      <p>Add Page Labels allows you to inject custom page labeling metadata (/PageLabels) into your PDF's root Catalog dictionary. This customizes the labels displayed in professional PDF reader navigation sidebars and top page number jump panels (e.g. using Roman numerals for front matter, decimal sequences for main body, or custom prefixes such as A-0, A-1 for technical subsections).</p>\n      <p>Supports combining multiple custom rules seamlessly. Crucially, we've built a highly optimized <strong>disjoint-range slicing algorithm</strong>: even if you declare complex alternating patterns (e.g., odd pages style A, even pages style B), the tool will elegantly dissect and compose boundaries to ensure proper standard-compliant display without leaking formats into unmapped pages.</p>\n      <p>All operations are processed entirely inside your local browser sandbox, securing absolute data privacy.</p>\n    ",
+    "description": "<p>Agregar etiquetas de página le permite insertar metadatos de etiquetado de páginas personalizados (/PageLabels) en el diccionario raíz del catálogo de su PDF. Esto personaliza las etiquetas que se muestran en las barras laterales de navegación del lector de PDF profesional y en los paneles de salto de números de página superior (por ejemplo, usando números romanos para la introducción, secuencias decimales para el cuerpo principal o prefijos personalizados como A-0, A-1 para las subsecciones técnicas).</p>\n      <p>Admite la combinación de múltiples reglas personalizadas sin problemas. Fundamentalmente, hemos creado un <strong>algoritmo de corte de rango disjunto</strong> altamente optimizado: incluso si declara patrones alternos complejos (por ejemplo, páginas impares estilo A, páginas pares estilo B), la herramienta diseccionará y compondrá elegantemente los límites para garantizar una visualización adecuada que cumpla con los estándares sin filtrar formatos en páginas no asignadas.</p>\n      <p>Todas las operaciones se procesan íntegramente dentro de la zona de pruebas de su navegador local, lo que garantiza la privacidad absoluta de los datos.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Provide the target PDF document you wish to label."
+        "title": "Subir documento PDF",
+        "description": "Proporcione el documento PDF de destino que desea etiquetar."
       },
       {
         "step": 2,
-        "title": "Configure Labeling Rules",
-        "description": "Add one or more rules specifying page ranges (e.g., \"1-5\", \"odd\", or comma-separated lists), prefix, style, and starting sequence."
+        "title": "Configurar reglas de etiquetado",
+        "description": "Agregue una o más reglas que especifiquen rangos de páginas (por ejemplo, listas \"1-5\", \"impar\" o separadas por comas), prefijo, estilo y secuencia inicial."
       },
       {
         "step": 3,
-        "title": "Preview and Download",
-        "description": "Review the live page label list preview below, then compile and download your updated PDF document."
+        "title": "Vista previa y descarga",
+        "description": "Revise la vista previa de la lista de etiquetas de páginas en vivo a continuación, luego compile y descargue su documento PDF actualizado."
       }
     ],
     "useCases": [
       {
-        "title": "Academic Thesis Formatting",
-        "description": "Set lowercase Roman numerals (i, ii, iii) for introductory front matter and transition to decimal for main chapters.",
+        "title": "Formato de tesis académica",
+        "description": "Establezca números romanos en minúscula (i, ii, iii) para la introducción y la transición a decimal para los capítulos principales.",
         "icon": "book"
       },
       {
-        "title": "Engineering Blueprint Prefixes",
-        "description": "Attach subsystem abbreviations (e.g., \"A-1\", \"M-5\") as page label prefixes, letting teams search and locate pages in seconds.",
+        "title": "Prefijos de planos de ingeniería",
+        "description": "Adjunte abreviaturas de subsistema (por ejemplo, \"A-1\", \"M-5\") como prefijos de etiquetas de página, lo que permitirá a los equipos buscar y ubicar páginas en segundos.",
         "icon": "layout"
       },
       {
-        "title": "Custom Alternating Layouts",
-        "description": "Apply highly specific page range indexing to odd/even sequences or non-contiguous sections with maximum freedom.",
+        "title": "Diseños alternos personalizados",
+        "description": "Aplique indexación de rangos de páginas altamente específica a secuencias pares/impares o secciones no contiguas con la máxima libertad.",
         "icon": "shuffle"
       }
     ],
     "faq": [
       {
-        "question": "What are page labels vs page numbers?",
-        "answer": "Ordinary page numbers are visual text blocks rendered directly on the paper canvas (visible when printed). Page labels, however, are structural metadata injected into the PDF catalog. They control what is displayed underneath thumbnails and in the page lookup box inside software like Adobe Acrobat or Apple Preview."
+        "question": "¿Qué son las etiquetas de página y los números de página?",
+        "answer": "Los números de página normales son bloques de texto visuales representados directamente en el lienzo de papel (visibles cuando se imprimen). Sin embargo, las etiquetas de página son metadatos estructurales inyectados en el catálogo PDF. Controlan lo que se muestra debajo de las miniaturas y en el cuadro de búsqueda de páginas dentro de software como Adobe Acrobat o Apple Preview."
       },
       {
-        "question": "What happens if I leave the Page Range empty?",
-        "answer": "Leaving the page range empty causes the rule to apply globally to all pages of the document."
+        "question": "¿Qué sucede si dejo el rango de páginas vacío?",
+        "answer": "Dejar el rango de páginas vacío hace que la regla se aplique globalmente a todas las páginas del documento."
       },
       {
-        "question": "How are overlapping rules handled?",
-        "answer": "Rules are evaluated sequentially in the order they are listed. If a page range of a later rule overlaps with an earlier one, the later rule takes priority and overrides the label for that page."
+        "question": "¿Cómo se manejan las reglas superpuestas?",
+        "answer": "Las reglas se evalúan secuencialmente en el orden en que aparecen. Si un rango de páginas de una regla posterior se superpone con una anterior, la regla posterior tiene prioridad y anula la etiqueta de esa página."
       }
     ]
   },
   "ai-pdf-reflower": {
     "title": "Adaptación de Flujo PDF con IA",
-    "metaDescription": "Rediseñe documentos PDF para pantallas móviles. Exportación a Markdown y EPUB.",
+    "metaDescription": "Redistribuir el texto PDF para facilitar la lectura en el móvil. Exporte el contenido extraído como Markdown o EPUB en su navegador.",
     "keywords": [
       "flujo pdf",
       "pdf adaptativo",
       "pdf a markdown",
       "exportar epub"
     ],
-    "description": "\n      <p>AI PDF Layout Reflower is your ultimate companion for reading PDF documents on mobile devices. Traditional PDFs use a fixed layout, which often requires endless zooming and horizontal scrolling on smartphones or tablets, resulting in a tedious reading experience.</p>\n      <p>This tool intelligently parses the text flow, line spacing, and physical coordinates of the PDF pages, reconstructing the semantic paragraphs and heading hierarchies. For multi-column or dual-column documents, it intelligently merges column flows into a single responsive flow, ensuring smooth reading.</p>\n      <p>Additionally, it supports rendering mathematical formulas into LaTeX/MathJax and offers multiple reading themes (Sepia, Dark, Eye-protecting Green). You can export the reflowed layout as Markdown or a standard EPUB ebook with a single click.</p>\n    ",
+    "description": "<p>AI PDF Layout Reflower es su mejor compañero para leer documentos PDF en dispositivos móviles. Los archivos PDF tradicionales utilizan un diseño fijo, que a menudo requiere un zoom interminable y un desplazamiento horizontal en teléfonos inteligentes o tabletas, lo que resulta en una experiencia de lectura tediosa.</p>\n      <p>Esta herramienta analiza de forma inteligente el flujo de texto, el interlineado y las coordenadas físicas de las páginas PDF, reconstruyendo los párrafos semánticos y las jerarquías de encabezados. Para documentos de varias o dos columnas, combina de forma inteligente los flujos de columnas en un único flujo responsivo, lo que garantiza una lectura fluida.</p>\n      <p>Además, admite la representación de fórmulas matemáticas en LaTeX/MathJax y ofrece múltiples temas de lectura (Sepia, Oscuro, Verde que protege los ojos). Puedes exportar el diseño redistribuido como Markdown o un libro electrónico EPUB estándar con un solo clic.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop your PDF file or click to browse and select it."
+        "title": "Subir archivo PDF",
+        "description": "Arrastre y suelte su archivo PDF o haga clic para explorarlo y seleccionarlo."
       },
       {
         "step": 2,
-        "title": "Select Reading Theme",
-        "description": "Choose your preferred font size and theme colors in the 3D mobile simulator on the right."
+        "title": "Seleccionar tema de lectura",
+        "description": "Elija el tamaño de fuente y los colores del tema que prefiera en el simulador móvil 3D de la derecha."
       },
       {
         "step": 3,
-        "title": "Export Document",
-        "description": "Once satisfied, use the physical pull-rope to export the document as Markdown or EPUB."
+        "title": "Exportar documento",
+        "description": "Una vez satisfecho, utilice la cuerda de tracción física para exportar el documento como Markdown o EPUB."
       }
     ],
     "useCases": [
       {
-        "title": "Mobile Literature Reading",
-        "description": "Read academic papers and research reports on your phone seamlessly without constant zooming.",
+        "title": "Lectura de literatura móvil",
+        "description": "Lea artículos académicos e informes de investigación en su teléfono sin problemas y sin hacer zoom constantemente.",
         "icon": "smartphone"
       },
       {
-        "title": "Ebook Conversion",
-        "description": "Convert text-heavy PDFs into EPUB files and import them into Kindle or other ebook readers.",
+        "title": "Conversión de libros electrónicos",
+        "description": "Convierta archivos PDF con mucho texto en archivos EPUB e impórtelos a Kindle u otros lectores de libros electrónicos.",
         "icon": "book"
       },
       {
-        "title": "Note Archive",
-        "description": "Directly convert structured PDF content into clean Markdown files for your personal knowledge base.",
+        "title": "Archivo de notas",
+        "description": "Convierta directamente contenido PDF estructurado en archivos Markdown limpios para su base de conocimientos personal.",
         "icon": "file-text"
       }
     ],
     "faq": [
       {
-        "question": "Does it handle dual-column PDFs correctly?",
-        "answer": "Yes, the layout reflower detects the horizontal coordinates of text blocks and structures left and right columns sequentially, preventing line interleaving."
+        "question": "¿Maneja correctamente archivos PDF de dos columnas?",
+        "answer": "Sí, el cambio de diseño detecta las coordenadas horizontales de los bloques de texto y estructura las columnas izquierda y derecha secuencialmente, evitando el entrelazado de líneas."
       },
       {
-        "question": "Will images and math formulas be lost?",
-        "answer": "Mathematical formulas are converted to LaTeX/MathJax syntax for clean web rendering, and images are preserved in their corresponding semantic positions."
+        "question": "¿Se perderán imágenes y fórmulas matemáticas?",
+        "answer": "Las fórmulas matemáticas se convierten a la sintaxis LaTeX/MathJax para una representación web limpia y las imágenes se conservan en sus posiciones semánticas correspondientes."
       },
       {
-        "question": "Is the conversion done in the cloud?",
-        "answer": "No, all layout analysis and format packaging are performed locally in your browser to guarantee the absolute privacy of your documents."
+        "question": "¿La conversión se realiza en la nube?",
+        "answer": "No, todos los análisis de diseño y empaquetado de formatos se realizan localmente en su navegador para garantizar la absoluta privacidad de sus documentos."
       }
     ]
   },
   "citation-linker": {
     "title": "Activador de Enlaces de Citas",
-    "metaDescription": "Escanee y active las marcas de cita en PDFs, convirtiéndolas en enlaces DOI interactivos o saltos de página.",
+    "metaDescription": "Convierta los marcadores de citas en archivos PDF en enlaces DOI o referencias de páginas en los que se puede hacer clic. Agregue navegación útil a los documentos de investigación.",
     "keywords": [
       "enlaces de citas",
       "hipervinculo pdf",
       "coincidencia doi",
       "citas academicas"
     ],
-    "description": "\n      <p>Citation Linker is designed specifically for academic researchers. In many PDF papers, citation markers (e.g., [1], [2]) are plain text, forcing readers to scroll back and forth to the reference list at the end of the document, interrupting their focus.</p>\n      <p>This tool reads PDF text locally, uses pattern recognition to match citation markers to their corresponding reference entries, and overlays clickable PDF link annotations using DOI lookups or page-jump coordinates.</p>\n      <p>It also generates an interactive citation relationship map to visually navigate the document's reference network.</p>\n    ",
+    "description": "<p>Citation Linker está diseñado específicamente para investigadores académicos. En muchos artículos PDF, los marcadores de citas (por ejemplo, [1], [2]) son texto sin formato, lo que obliga a los lectores a desplazarse hacia adelante y hacia atrás hasta la lista de referencias al final del documento, interrumpiendo su atención.</p>\n      <p>Esta herramienta lee texto PDF localmente, utiliza reconocimiento de patrones para hacer coincidir los marcadores de citas con sus entradas de referencia correspondientes y superpone anotaciones de enlaces PDF en los que se puede hacer clic mediante búsquedas DOI o coordenadas de salto de página.</p>\n      <p>También genera un mapa interactivo de relaciones de citas para navegar visualmente por la red de referencia del documento.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic PDF",
-        "description": "Upload a PDF paper or thesis containing a bibliography/reference section."
+        "title": "Subir PDF Académico",
+        "description": "Cargue un artículo o tesis en PDF que contenga una sección de bibliografía/referencia."
       },
       {
         "step": 2,
-        "title": "Review Citations",
-        "description": "Inspect the citation pairs in the interactive map and manually edit or add DOI links if necessary."
+        "title": "Revisar citas",
+        "description": "Inspeccione los pares de citas en el mapa interactivo y edite o agregue manualmente enlaces DOI si es necesario."
       },
       {
         "step": 3,
-        "title": "Inject Links",
-        "description": "Click the activate button to overlay hyperlinks onto the PDF and download the updated document."
+        "title": "Inyectar enlaces",
+        "description": "Haga clic en el botón Activar para superponer hipervínculos en el PDF y descargar el documento actualizado."
       }
     ],
     "useCases": [
       {
-        "title": "Deep Literature Reading",
-        "description": "Click citation markers to immediately view reference details or navigate to external DOI pages.",
+        "title": "Lectura profunda de literatura",
+        "description": "Haga clic en los marcadores de citas para ver inmediatamente los detalles de la referencia o navegar a páginas DOI externas.",
         "icon": "link"
       },
       {
-        "title": "Pre-publication Preparation",
-        "description": "Ensure your written academic papers have fully active hyperlink navigations before final submission.",
+        "title": "Preparación previa a la publicación",
+        "description": "Asegúrese de que sus trabajos académicos escritos tengan navegaciones de hipervínculos completamente activas antes del envío final.",
         "icon": "award"
       },
       {
-        "title": "Reference Map Analysis",
-        "description": "Understand literature hierarchies and connections via the interactive network topology map.",
+        "title": "Análisis de mapas de referencia",
+        "description": "Comprenda las jerarquías y conexiones de la literatura a través del mapa de topología de red interactivo.",
         "icon": "git-network"
       }
     ],
     "faq": [
       {
-        "question": "What if a reference has no DOI?",
-        "answer": "If a DOI cannot be found, the tool falls back to an internal \"GoTo Page\" action, allowing you to click the marker and jump directly to the reference page."
+        "question": "¿Qué pasa si una referencia no tiene DOI?",
+        "answer": "Si no se puede encontrar un DOI, la herramienta recurre a una acción interna \"Ir a página\", que le permite hacer clic en el marcador y saltar directamente a la página de referencia."
       },
       {
-        "question": "Which citation formats are supported?",
-        "answer": "It supports common numeric brackets (e.g., [1], [1-3]) and author-year citations (e.g., Author et al., 202X)."
+        "question": "¿Qué formatos de citas se admiten?",
+        "answer": "Admite corchetes numéricos comunes (p. ej., [1], [1-3]) y citas de autor y año (p. ej., Autor et al., 202X)."
       },
       {
-        "question": "Will it modify the appearance of my PDF?",
-        "answer": "No, it injects invisible Link annotations on top of the text, preserving the original layout, fonts, and styling of your document."
+        "question": "¿Modificará la apariencia de mi PDF?",
+        "answer": "No, inyecta anotaciones de enlaces invisibles encima del texto, preservando el diseño, las fuentes y el estilo originales de su documento."
       }
     ]
   },
   "vector-extractor": {
     "title": "Extractor de Vectores PDF",
-    "metaDescription": "Convierta PDF a SVG de alta fidelidad. Permite seleccionar y extraer gráficos vectoriales y logotipos sin pérdidas.",
+    "metaDescription": "Extraiga gráficos vectoriales de páginas PDF como SVG. Seleccione cuadros, diagramas y logotipos para volver a colorearlos y exportarlos.",
     "keywords": [
       "extraer vectores pdf",
       "exportar svg",
       "extraer logotipos",
       "graficos vectoriales"
     ],
-    "description": "\n      <p>PDF Vector Extractor unlocks vector paths and artwork embedded inside PDF files. Easily extract vector charts, diagrams, or logos from documents for design work or printing.</p>\n      <p>Under the hood, it utilizes high-fidelity SVG rendering to deconstruct PDF vector paths into clean, standard SVG element trees without loss of precision.</p>\n      <p>The interface highlights hover elements with a Z-axis 3D layer explosion effect, complete with a color picker panel for designers to adjust and extract vector nodes.</p>\n    ",
+    "description": "<p>PDF Vector Extractor desbloquea rutas vectoriales e ilustraciones incrustadas dentro de archivos PDF. Extraiga fácilmente gráficos vectoriales, diagramas o logotipos de documentos para trabajos de diseño o impresión.</p>\n      <p>Bajo el capó, utiliza renderizado SVG de alta fidelidad para deconstruir rutas vectoriales de PDF en árboles de elementos SVG estándar y limpios sin pérdida de precisión.</p>\n      <p>La interfaz resalta los elementos flotantes con un efecto de explosión de capa 3D en el eje Z, completo con un panel de selección de color para que los diseñadores ajusten y extraigan nodos vectoriales.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Upload a PDF containing vector assets, diagrams, charts, or logos."
+        "title": "Subir documento PDF",
+        "description": "Cargue un PDF que contenga recursos vectoriales, diagramas, tablas o logotipos."
       },
       {
         "step": 2,
-        "title": "Select Elements",
-        "description": "Hover over the vector canvas to highlight elements, then click to select a node."
+        "title": "Seleccionar elementos",
+        "description": "Pase el cursor sobre el lienzo vectorial para resaltar elementos y luego haga clic para seleccionar un nodo."
       },
       {
         "step": 3,
-        "title": "Customize and Export",
-        "description": "Adjust path attributes in the panel, then download as SVG or copy SVG source code."
+        "title": "Personalizar y exportar",
+        "description": "Ajuste los atributos de ruta en el panel, luego descárguelo como SVG o copie el código fuente SVG."
       }
     ],
     "useCases": [
       {
-        "title": "Design Asset Extraction",
-        "description": "Quickly extract company logos, icons, and illustrations from brand guidelines or brochures.",
+        "title": "Extracción de activos de diseño",
+        "description": "Extraiga rápidamente logotipos, íconos e ilustraciones de empresas de folletos o pautas de marca.",
         "icon": "bezier"
       },
       {
-        "title": "Scientific Chart Export",
-        "description": "Extract vector charts from research papers to use in high-resolution printing or presentations.",
+        "title": "Exportación de gráficos científicos",
+        "description": "Extraiga gráficos vectoriales de artículos de investigación para utilizarlos en presentaciones o impresiones de alta resolución.",
         "icon": "presentation"
       },
       {
-        "title": "Vector Asset Recoloring",
-        "description": "Modify the stroke and fill colors of extracted assets before saving them for web projects.",
+        "title": "Cambio de color de recursos vectoriales",
+        "description": "Modifique el trazo y los colores de relleno de los recursos extraídos antes de guardarlos para proyectos web.",
         "icon": "crown"
       }
     ],
     "faq": [
       {
-        "question": "Why can't I select certain images?",
-        "answer": "PDFs contain both raster images (like photos or scanned pages) and vector artwork (like shapes and curves). Only vector paths can be deconstructed into SVG paths."
+        "question": "¿Por qué no puedo seleccionar ciertas imágenes?",
+        "answer": "Los archivos PDF contienen imágenes rasterizadas (como fotografías o páginas escaneadas) e ilustraciones vectoriales (como formas y curvas). Sólo las rutas vectoriales se pueden deconstruir en rutas SVG."
       },
       {
-        "question": "Does the output SVG contain styles?",
-        "answer": "Yes, the exported SVG retains all original properties including fills, strokes, opacity, gradients, and coordinate transforms."
+        "question": "¿El SVG de salida contiene estilos?",
+        "answer": "Sí, el SVG exportado conserva todas las propiedades originales, incluidos rellenos, trazos, opacidad, degradados y transformaciones de coordenadas."
       },
       {
-        "question": "Will large files lag?",
-        "answer": "We use WebAssembly acceleration, but PDFs with extremely complex CAD drawings or thousands of vector paths may take a few seconds to render."
+        "question": "¿Se retrasarán los archivos grandes?",
+        "answer": "Usamos la aceleración de WebAssembly, pero los archivos PDF con dibujos CAD extremadamente complejos o miles de rutas vectoriales pueden tardar unos segundos en renderizarse."
       }
     ]
   },
   "deep-sanitize": {
     "title": "Desinfección Profunda de Metadatos",
-    "metaDescription": "Elimine por completo metadatos, historial de edición, capas ocultas y datos huérfanos de sus documentos PDF.",
+    "metaDescription": "Elimina metadatos, capas ocultas y objetos no utilizados de los archivos PDF. Limpie la información del documento localmente antes de compartirla.",
     "keywords": [
       "desinfectar pdf",
       "limpiar metadatos",
       "privacidad pdf",
       "seguridad pdf"
     ],
-    "description": "\n      <p>Deep Metadata Sanitizer is your ultimate defense against metadata leaks and hidden tracking. Simply drawing black boxes over visible text in PDF files is not enough to protect commercial secrets.</p>\n      <p>This tool scans the PDF binary structure to completely erase author info, creator software, editing logs (XMP Metadata), proprietary PieceInfo caches, and OCG optional content groups (often used for invisible watermarks).</p>\n      <p>It also rewrites the cross-reference tables (xref) completely, discarding all incremental update blocks to ensure that deleted or modified historical data cannot be restored.</p>\n    ",
+    "description": "<p>Deep Metadata Sanitizer es su defensa definitiva contra las fugas de metadatos y el seguimiento oculto. Simplemente dibujar cuadros negros sobre el texto visible en archivos PDF no es suficiente para proteger los secretos comerciales.</p>\n      <p>Esta herramienta escanea la estructura binaria del PDF para borrar completamente la información del autor, el software del creador, los registros de edición (metadatos XMP), las cachés patentadas de PieceInfo y los grupos de contenido opcionales OCG (a menudo utilizados para marcas de agua invisibles).</p>\n      <p>También reescribe completamente las tablas de referencias cruzadas (xref), descartando todos los bloques de actualización incrementales para garantizar que los datos históricos eliminados o modificados no puedan restaurarse.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF",
-        "description": "Select the PDF file containing sensitive data or modification history."
+        "title": "Subir PDF",
+        "description": "Seleccione el archivo PDF que contiene datos confidenciales o historial de modificaciones."
       },
       {
         "step": 2,
-        "title": "Run Scanner",
-        "description": "Trigger the 3D containment scanner to check the file for hidden metadata and layers."
+        "title": "Ejecutar escáner",
+        "description": "Active el escáner de contención 3D para comprobar si el archivo tiene metadatos y capas ocultos."
       },
       {
         "step": 3,
-        "title": "Deep Sanitize",
-        "description": "Click sanitize to wipe out tracking elements and download the fully clean PDF."
+        "title": "Desinfección profunda",
+        "description": "Haga clic en desinfectar para eliminar los elementos de seguimiento y descargar el PDF completamente limpio."
       }
     ],
     "useCases": [
       {
-        "title": "Contract Sharing",
-        "description": "Remove drafting records, paths, and previous revisions before sharing business contracts with third parties.",
+        "title": "Contrato compartido",
+        "description": "Elimine registros de redacción, rutas y revisiones anteriores antes de compartir contratos comerciales con terceros.",
         "icon": "file-signature"
       },
       {
-        "title": "Anonymized Publishing",
-        "description": "Wipe invisible annotations and watermarks to publish documents anonymously and securely.",
+        "title": "Publicación anónima",
+        "description": "Borre anotaciones y marcas de agua invisibles para publicar documentos de forma anónima y segura.",
         "icon": "eye-off"
       },
       {
-        "title": "PDF Optimization",
-        "description": "Remove orphaned objects and garbage data streams to make files load faster on the web.",
+        "title": "Optimización de PDF",
+        "description": "Elimine objetos huérfanos y flujos de datos basura para que los archivos se carguen más rápido en la web.",
         "icon": "zap"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard metadata removal?",
-        "answer": "Standard tools only clear basic fields like title or author. Deep Sanitizer reconstructs the entire PDF xref table, wiping PieceInfo, hidden watermarks, and historical incremental revisions."
+        "question": "¿En qué se diferencia esto de la eliminación de metadatos estándar?",
+        "answer": "Las herramientas estándar solo borran campos básicos como título o autor. Deep Sanitizer reconstruye toda la tabla de referencias externas de PDF, limpiando PieceInfo, marcas de agua ocultas y revisiones incrementales históricas."
       },
       {
-        "question": "Will this affect document layout or text?",
-        "answer": "No, it only strips hidden description streams and structure data. The visible layout, texts, and graphics remain unchanged."
+        "question": "¿Esto afectará el diseño o el texto del documento?",
+        "answer": "No, solo elimina los flujos de descripción ocultos y los datos de estructura. El diseño, los textos y los gráficos visibles permanecen sin cambios."
       },
       {
-        "question": "Does this remove PDF passwords?",
-        "answer": "No, if a PDF is encrypted, you must unlock it first before performing a deep sanitization."
+        "question": "¿Esto elimina las contraseñas de PDF?",
+        "answer": "No, si un PDF está cifrado, primero debes desbloquearlo antes de realizar una desinfección profunda."
       }
     ]
   },
   "booklet-folding-simulator": {
     "title": "Simulador 3D de Plegado e Imposición",
-    "metaDescription": "Realice la imposición de páginas PDF en pliegos y visualice el plegado físico y la encuadernación en un simulador 3D.",
+    "metaDescription": "Organice páginas PDF para imprimir folletos. Obtenga una vista previa de las hojas plegadas y los diseños de encuadernación antes de exportar su documento listo para imprimir.",
     "keywords": [
       "imposicion 3d",
       "simulador de plegado",
       "encuadernacion grapada",
       "diseño editorial"
     ],
-    "description": "\n      <p>3D Booklet & Folding Simulator is an advanced tool designed for print designers and publishing professionals. Traditional book layout requires calculating complex page overlays and imposition pagination sequences. This tool visualizes and automates that entire process.</p>\n      <p>Under the hood, our custom imposition algorithm maps a sequential PDF page list into standard print sheet layouts (such as 4-page half-folds, 8-page saddle stitches, or accordion folds), merging pages onto the front and back of large physical sheets.</p>\n      <p>On the front-end, we utilize pure CSS 3D Matrix transforms and spring-mass physics curves to animate sheet folding horizontally and vertically, delivering a physical-like binding preview with a high WOW factor.</p>\n    ",
+    "description": "<p>3D Booklet & Folding Simulator es una herramienta avanzada diseñada para diseñadores de impresión y profesionales editoriales. El diseño de libros tradicional requiere calcular superposiciones de páginas complejas y secuencias de paginación de imposición. Esta herramienta visualiza y automatiza todo ese proceso.</p>\n      <p>Bajo el capó, nuestro algoritmo de imposición personalizado asigna una lista secuencial de páginas PDF a diseños de hojas de impresión estándar (como pliegues por la mitad de 4 páginas, encuadernados de 8 páginas o pliegues en acordeón), fusionando las páginas en el anverso y el reverso de hojas físicas grandes.</p>\n      <p>En la interfaz, utilizamos transformaciones Matrix 3D CSS puras y curvas físicas de masa de resorte para animar el plegado de hojas horizontal y verticalmente, brindando una vista previa de encuadernación similar a la física con un alto factor WOW.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF File",
-        "description": "Drag and drop the PDF document you wish to layout for printing."
+        "title": "Subir archivo PDF",
+        "description": "Arrastre y suelte el documento PDF que desea diseñar para imprimir."
       },
       {
         "step": 2,
-        "title": "Select Folding Layout",
-        "description": "Choose your preferred imposition scheme (e.g., 4-page fold, 8-page saddle stitch, 4-page accordion)."
+        "title": "Seleccionar diseño plegable",
+        "description": "Elija su esquema de imposición preferido (por ejemplo, plegado de 4 páginas, encuadernado de 8 páginas, acordeón de 4 páginas)."
       },
       {
         "step": 3,
-        "title": "Interactive 3D Preview",
-        "description": "Drag the slider to watch the sheet fold in 3D and inspect the final page numbering layout."
+        "title": "Vista previa interactiva en 3D",
+        "description": "Arrastre el control deslizante para observar cómo se dobla la hoja en 3D e inspeccionar el diseño final de numeración de páginas."
       },
       {
         "step": 4,
-        "title": "Generate Imposed PDF",
-        "description": "Click generate to download the rearranged and merged physical sheet PDF, ready for double-sided printing."
+        "title": "Generar PDF impuesto",
+        "description": "Haga clic en generar para descargar el PDF de la hoja física reorganizada y fusionada, listo para imprimir a doble cara."
       }
     ],
     "useCases": [
       {
-        "title": "Brochure Prototyping",
-        "description": "Pre-visualize the folding sequence of tri-folds and pamphlets to prevent upsidedown pages after printing.",
+        "title": "Creación de prototipos de folletos",
+        "description": "Visualice previamente la secuencia de plegado de trípticos y folletos para evitar páginas al revés después de la impresión.",
         "icon": "book-open"
       },
       {
-        "title": "Book Saddle-Stitching",
-        "description": "Generate imposed print sheets for multi-page magazines or booklets automatically.",
+        "title": "Encuadernación de libros",
+        "description": "Genere automáticamente hojas de impresión impuestas para revistas o folletos de varias páginas.",
         "icon": "layers"
       },
       {
-        "title": "Print Shop Visual Aids",
-        "description": "Help clients visualize how pages are physically distributed and folded on print sheets.",
+        "title": "Ayudas visuales para imprentas",
+        "description": "Ayude a los clientes a visualizar cómo se distribuyen físicamente y se pliegan las páginas en las hojas impresas.",
         "icon": "printer"
       }
     ],
     "faq": [
       {
-        "question": "What is \"Imposition\"?",
-        "answer": "Imposition is a fundamental step in prepress printing. Since commercial presses print on large sheets, pages are arranged out of order so that once printed, folded, and bound, the pages appear in the correct sequential order. This tool automatically calculates that layout."
+        "question": "¿Qué es la \"Imposición\"?",
+        "answer": "La imposición es un paso fundamental en la impresión de preimpresión. Dado que las imprentas comerciales imprimen en hojas grandes, las páginas se organizan desordenadamente de modo que una vez impresas, plegadas y encuadernadas, aparecen en el orden secuencial correcto. Esta herramienta calcula automáticamente ese diseño."
       },
       {
-        "question": "Does the 3D preview alter my PDF content?",
-        "answer": "No, the original PDF content is merely rendered as texture mappings onto the 3D sheet. The generated PDF only adjusts page order and placement; text and graphic qualities are kept intact."
+        "question": "¿La vista previa 3D altera el contenido de mi PDF?",
+        "answer": "No, el contenido del PDF original simplemente se representa como asignaciones de textura en la hoja 3D. El PDF generado sólo ajusta el orden y la ubicación de las páginas; Las cualidades textuales y gráficas se mantienen intactas."
       },
       {
-        "question": "What if my PDF page count is not a multiple of 4 or 8?",
-        "answer": "The optimizer automatically appends blank pages at the end to satisfy the mathematical page-count requirements of the selected folding layout."
+        "question": "¿Qué pasa si el número de páginas de mi PDF no es múltiplo de 4 u 8?",
+        "answer": "El optimizador agrega automáticamente páginas en blanco al final para satisfacer los requisitos matemáticos de recuento de páginas del diseño de plegado seleccionado."
       }
     ]
   },
   "pdf-to-slide": {
     "title": "PDF a Presentación",
-    "metaDescription": "Analice el esquema de un PDF y extraiga gráficos vectoriales para reconstruirlos en una presentación PPTX editable.",
+    "metaDescription": "Convierta contenido PDF en diapositivas de PowerPoint. Exporte una presentación PPTX con texto e imágenes para editarla más.",
     "keywords": [
       "pdf a ppt",
       "crear diapositivas",
       "convertidor pptx",
       "extraer diagramas"
     ],
-    "description": "\n      <p>AI PDF-to-Slide Reconstructor breathes new life into static PDF documents, transforming them into modern, highly-customizable PowerPoint slides (PPTX).</p>\n      <p>The tool uses an advanced layout outline extractor that automatically parses document heading levels, paragraph lines, and font weights to establish a logical slide framework. It also isolates vector charts and high-resolution tables, stripping background artifacts to embed them cleanly as independent editable assets.</p>\n      <p>All PPTX outputs are built using standard Office Open XML elements, meaning all text remains fully editable and vectors do not lose resolution. The front-end showcases a fluid \"starfield\" card transition animation that visualizes the reconstruction in an engaging manner.</p>\n    ",
+    "description": "<p>AI PDF-to-Slide Reconstructor da nueva vida a los documentos PDF estáticos, transformándolos en diapositivas de PowerPoint (PPTX) modernas y altamente personalizables.</p>\n      <p>La herramienta utiliza un extractor de esquemas de diseño avanzado que analiza automáticamente los niveles de encabezado del documento, las líneas de párrafo y los pesos de fuente para establecer un marco de diapositiva lógico. También aísla gráficos vectoriales y tablas de alta resolución, eliminando artefactos de fondo para incrustarlos limpiamente como recursos editables independientes.</p>\n      <p>Todas las salidas PPTX se crean utilizando elementos estándar de Office Open XML, lo que significa que todo el texto sigue siendo totalmente editable y los vectores no pierden resolución. La interfaz muestra una animación fluida de transición de tarjeta \"campo de estrellas\" que visualiza la reconstrucción de una manera atractiva.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Academic/Business PDF",
-        "description": "Upload a PDF document that contains structured sections and diagrams."
+        "title": "Cargar PDF académico/comercial",
+        "description": "Sube un documento PDF que contenga secciones y diagramas estructurados."
       },
       {
         "step": 2,
-        "title": "Analyze Slide Outlines",
-        "description": "Inspect the extracted slide structure, adjust titles, or delete unneeded card blocks."
+        "title": "Analizar esquemas de diapositivas",
+        "description": "Inspeccione la estructura de diapositivas extraída, ajuste títulos o elimine bloques de tarjetas innecesarios."
       },
       {
         "step": 3,
-        "title": "Reconstruct to PPTX",
-        "description": "Start the compilation engine to receive a standard, editable presentation file."
+        "title": "Reconstruir a PPTX",
+        "description": "Inicie el motor de compilación para recibir un archivo de presentación editable estándar."
       }
     ],
     "useCases": [
       {
-        "title": "Research Paper Presentation",
-        "description": "Convert academic journal PDFs, text structures, and vector diagrams into slide decks ready for talks.",
+        "title": "Presentación del trabajo de investigación",
+        "description": "Convierta archivos PDF de revistas académicas, estructuras de texto y diagramas vectoriales en presentaciones de diapositivas listas para charlas.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Business Report Summary",
-        "description": "Distill massive annual corporate reports into clean, bulleted presentation drafts instantly.",
+        "title": "Resumen del informe comercial",
+        "description": "Convierta instantáneamente informes corporativos anuales masivos en borradores de presentación limpios y con viñetas.",
         "icon": "presentation"
       },
       {
-        "title": "Multi-Device Demos",
-        "description": "Avoid copying screenshots manually. Get a clean, fully-editable layout framework in seconds.",
+        "title": "Demostraciones multidispositivo",
+        "description": "Evite copiar capturas de pantalla manualmente. Obtenga un marco de diseño limpio y totalmente editable en segundos.",
         "icon": "laptop"
       }
     ],
     "faq": [
       {
-        "question": "Are the slides editable in Microsoft Office?",
-        "answer": "Yes. The files are generated natively in memory according to the official Office Open XML (OOXML) specification. Texts, tables, and placeholders are fully interactive in PowerPoint, Keynote, and WPS."
+        "question": "¿Las diapositivas son editables en Microsoft Office?",
+        "answer": "Sí. Los archivos se generan de forma nativa en la memoria según la especificación oficial Office Open XML (OOXML). Los textos, tablas y marcadores de posición son completamente interactivos en PowerPoint, Keynote y WPS."
       },
       {
-        "question": "How are charts extracted?",
-        "answer": "The engine scans vector paths and raster layers in the PDF, detects bounded areas representing graphs, and clips them out as standalone SVG nodes or high-DPI images."
+        "question": "¿Cómo se extraen los gráficos?",
+        "answer": "El motor escanea rutas vectoriales y capas ráster en el PDF, detecta áreas delimitadas que representan gráficos y las recorta como nodos SVG independientes o imágenes de alto DPI."
       },
       {
-        "question": "Does this work on scanned documents?",
-        "answer": "For scanned PDFs lacking actual text layers, we recommend running our OCR tool first before passing the file to the Slide Reconstructor."
+        "question": "¿Esto funciona con documentos escaneados?",
+        "answer": "Para archivos PDF escaneados que carecen de capas de texto reales, recomendamos ejecutar primero nuestra herramienta OCR antes de pasar el archivo al Reconstructor de diapositivas."
       }
     ]
   },
   "eink-optimizer": {
     "title": "Optimizador para Lectores e-Ink",
-    "metaDescription": "Optimice PDFs para pantallas de tinta electrónica: eliminación de ruido, binarización Otsu y engrosamiento de trazos.",
+    "metaDescription": "Optimice las páginas PDF para lectores de tinta electrónica. Limpie fondos, aumente el contraste del texto y ajuste los documentos para una lectura más fácil.",
     "keywords": [
       "optimizar eink",
       "binarizacion otsu",
       "engrosar letra",
       "lectores de tinta"
     ],
-    "description": "\n      <p>e-Ink Reader Optimizer is a must-have tool custom-made for e-Reader enthusiasts using Kindle, Onyx Boox, Kobo, or other e-paper devices.</p>\n      <p>Many scanned PDF e-books suffer from faint lettering, muddy gray backgrounds, noise, or scan shadows when viewed on e-Ink screens. This tool analyzes gray-value histograms and applies Otsu's Binarization Thresholding to separate text from background, converting gray backdrops to clean white.</p>\n      <p>Additionally, it integrates morphological dilation to bold and thicken thin, faded characters, providing crisp, high-contrast typography. The inertia-damped contrast slider allows you to fine-tune the paper-like contrast in real-time.</p>\n    ",
+    "description": "<p>e-Ink Reader Optimizer es una herramienta imprescindible hecha a medida para los entusiastas de los lectores electrónicos que utilizan Kindle, Onyx Boox, Kobo u otros dispositivos de papel electrónico.</p>\n      <p>Muchos libros electrónicos PDF escaneados presentan letras tenues, fondos grises turbios, ruido o sombras escaneadas cuando se ven en pantallas de tinta electrónica. Esta herramienta analiza histogramas de valores de grises y aplica el umbral de binarización de Otsu para separar el texto del fondo, convirtiendo fondos grises en un blanco limpio.</p>\n      <p>Además, integra dilatación morfológica para negrita y espesar caracteres finos y descoloridos, proporcionando una tipografía nítida y de alto contraste. El control deslizante de contraste amortiguado por inercia le permite ajustar el contraste similar al del papel en tiempo real.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload Scanned PDF",
-        "description": "Upload e-books or scanned documents with faint text or gray backgrounds."
+        "title": "Subir PDF escaneado",
+        "description": "Cargue libros electrónicos o documentos escaneados con texto tenue o fondos grises."
       },
       {
         "step": 2,
-        "title": "Adjust Contrast Slider",
-        "description": "Drag the damped slider to balance background removal and character bolding in real-time."
+        "title": "Ajustar el control deslizante de contraste",
+        "description": "Arrastre el control deslizante amortiguado para equilibrar la eliminación del fondo y la negrita de los caracteres en tiempo real."
       },
       {
         "step": 3,
-        "title": "Optimize and Download",
-        "description": "Process the entire PDF to generate a high-contrast, eye-friendly document tailored for e-Ink."
+        "title": "Optimizar y descargar",
+        "description": "Procese el PDF completo para generar un documento de alto contraste y fácil de ver diseñado para e-Ink."
       }
     ],
     "useCases": [
       {
-        "title": "Ancient Manuscript Restoration",
-        "description": "Thicken faded text in scans of historical books or handwritten manuscripts to make them readable.",
+        "title": "Restauración de manuscritos antiguos",
+        "description": "Espesa el texto descolorido en escaneos de libros históricos o manuscritos para hacerlos legibles.",
         "icon": "scroll"
       },
       {
-        "title": "Exam Sheet Clean-up",
-        "description": "Bleach background shadows from photocopied or photographed exams, returning clean black text on white paper.",
+        "title": "Limpieza de la hoja de examen",
+        "description": "Blanquea las sombras de fondo de exámenes fotocopiados o fotografiados, devolviendo texto negro limpio sobre papel blanco.",
         "icon": "file-text"
       },
       {
-        "title": "E-paper Device Tailoring",
-        "description": "Convert colored PDFs to optimized grayscale, preventing messy, dithering artifacts on monochrome screens.",
+        "title": "Adaptación de dispositivos de papel electrónico",
+        "description": "Convierta archivos PDF en color a escala de grises optimizada, evitando artefactos desordenados y difuminados en pantallas monocromáticas.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "How does the \"character bolding\" work?",
-        "answer": "In image processing, this is called dilation. It uses a structuring matrix to expand character margins by a pixel, physically thickening faint strokes to make them legible."
+        "question": "¿Cómo funciona el \"carácter en negrita\"?",
+        "answer": "En el procesamiento de imágenes, esto se llama dilatación. Utiliza una matriz estructurante para expandir los márgenes de los caracteres en un píxel, engrosando físicamente los trazos tenues para hacerlos legibles."
       },
       {
-        "question": "Will this process bloat the file size?",
-        "answer": "Quite the opposite. By binarizing complex color/grayscale images to simple black-and-white layouts, standard compression (like CCITT Group 4) can shrink the PDF file size significantly."
+        "question": "¿Este proceso aumentará el tamaño del archivo?",
+        "answer": "Todo lo contrario. Al binarizar imágenes complejas en color/escala de grises en diseños simples en blanco y negro, la compresión estándar (como CCITT Grupo 4) puede reducir significativamente el tamaño del archivo PDF."
       },
       {
-        "question": "Does this support native text PDFs?",
-        "answer": "Yes. Native vector PDFs are rasterized at high resolutions in the background, optimized, and compiled back, ensuring unified high-contrast reading."
+        "question": "¿Esto admite archivos PDF con texto nativo?",
+        "answer": "Sí. Los archivos PDF vectoriales nativos se rasterizan en alta resolución en segundo plano, se optimizan y se vuelven a compilar, lo que garantiza una lectura unificada de alto contraste."
       }
     ]
   },
   "cert-cryptor": {
     "title": "Cifrar Certificado",
-    "metaDescription": "Cifre PDFs con certificados de clave pública y aplique una firma digital PKCS#7 junto a un sello de lacre físico en 3D.",
+    "metaDescription": "Cifre y firme digitalmente documentos PDF mediante certificados. Trabaje con archivos de certificados localmente en su navegador.",
     "keywords": [
       "cifrado de certificados",
       "sello de lacre 3d",
       "firma digital",
       "pkcs7"
     ],
-    "description": "\n      <p>3D Wax-Seal & Certificate Cryptor provides military-grade security and premium physical-grade aesthetics for sensitive corporate files, degrees, or agreements.</p>\n      <p>Technically, it offers asymmetric public-key encryption: import a recipient's public key certificate (.cer/.crt) to lock the PDF stream; only the holder of the matching private key (.pfx) can decrypt it. It also generates standard PKCS#7 digital signatures to ensure document tamper-proof integrity.</p>\n      <p>Visually, we feature a 3D physical gold or red wax-seal stamp. When you sign, a beautifully rendered stamp descends with a satisfying mechanical sound, leaving a 3D wax seal with realistic normal-mapped height variations and wax run-offs on the page, surrounded by glowing cryptographic tracks.</p>\n    ",
+    "description": "<p>3D Wax-Seal & Certificate Cryptor proporciona seguridad de grado militar y una estética de grado físico premium para archivos, títulos o acuerdos corporativos confidenciales.</p>\n      <p>Técnicamente, ofrece cifrado de clave pública asimétrica: importe el certificado de clave pública de un destinatario (.cer/.crt) para bloquear el flujo de PDF; sólo el titular de la clave privada correspondiente (.pfx) puede descifrarla. También genera firmas digitales estándar PKCS#7 para garantizar la integridad del documento a prueba de manipulaciones.</p>\n      <p>Visualmente, presentamos un sello de cera rojo o dorado físico en 3D. Cuando firmas, un sello bellamente renderizado desciende con un sonido mecánico satisfactorio, dejando un sello de cera en 3D con variaciones de altura realistas y escurrimientos de cera en la página, rodeado de pistas criptográficas brillantes.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF and Cert",
-        "description": "Add your PDF and import your signing certificate (.pfx) or the recipient's public certificate (.cer)."
+        "title": "Cargar PDF y certificado",
+        "description": "Agregue su PDF e importe su certificado de firma (.pfx) o el certificado público del destinatario (.cer)."
       },
       {
         "step": 2,
-        "title": "Place the 3D Stamp",
-        "description": "Drag and locate the seal on the document preview, and pick a wax style (e.g., gold, crimson)."
+        "title": "Coloca el sello 3D",
+        "description": "Arrastre y ubique el sello en la vista previa del documento y elija un estilo de cera (por ejemplo, dorado, carmesí)."
       },
       {
         "step": 3,
-        "title": "Press and Sign",
-        "description": "Click execute to watch the 3D wax-seal imprint ceremony, generating a physical-grade digital signature."
+        "title": "Presione y firme",
+        "description": "Haga clic en ejecutar para ver la ceremonia de impresión del sello de cera en 3D, generando una firma digital de grado físico."
       },
       {
         "step": 4,
-        "title": "Download Secured PDF",
-        "description": "Save the output document, now cryptographically locked and stamped."
+        "title": "Descargar PDF seguro",
+        "description": "Guarde el documento de salida, ahora bloqueado y sellado criptográficamente."
       }
     ],
     "useCases": [
       {
-        "title": "Diplomas and Certificates",
-        "description": "Affix highly-valued 3D wax seal badges to digital diplomas and awards, backed by genuine digital signatures.",
+        "title": "Diplomas y Certificados",
+        "description": "Coloque insignias con sellos de cera 3D de gran valor en diplomas y premios digitales, respaldados por firmas digitales genuinas.",
         "icon": "award"
       },
       {
-        "title": "Confidential Agreements",
-        "description": "Lock sensitive contracts using the client's public certificate so that only their secure physical keycard can unlock it.",
+        "title": "Acuerdos confidenciales",
+        "description": "Bloquee contratos confidenciales utilizando el certificado público del cliente para que solo su tarjeta física segura pueda desbloquearlos.",
         "icon": "shield-alert"
       },
       {
-        "title": "Official Press Releases",
-        "description": "Digitally sign public announcements to prevent malicious text edits or spoofing.",
+        "title": "Comunicados de prensa oficiales",
+        "description": "Firme digitalmente anuncios públicos para evitar ediciones de texto maliciosas o suplantaciones de identidad.",
         "icon": "stamp"
       }
     ],
     "faq": [
       {
-        "question": "Is the wax seal just an image or a real signature?",
-        "answer": "Both. The system renders an incredibly realistic 3D wax imprint with normal-mapped depth (visual layer) and encodes an authentic, tamper-proof PKCS#7 cryptographic signature inside the PDF (data layer)."
+        "question": "¿El sello de cera es sólo una imagen o una firma real?",
+        "answer": "Ambos. El sistema genera una impresión de cera 3D increíblemente realista con una profundidad mapeada normal (capa visual) y codifica una firma criptográfica PKCS#7 auténtica y a prueba de manipulaciones dentro del PDF (capa de datos)."
       },
       {
-        "question": "What is \"Certificate-based Encryption\"?",
-        "answer": "It is a passwordless encryption technique. You encrypt the file using the recipient's public key. The reader automatically searches for their local private certificate to decrypt the file seamlessly, ensuring robust security."
+        "question": "¿Qué es el \"cifrado basado en certificados\"?",
+        "answer": "Es una técnica de cifrado sin contraseña. Cifra el archivo utilizando la clave pública del destinatario. El lector busca automáticamente su certificado privado local para descifrar el archivo sin problemas, garantizando una seguridad sólida."
       },
       {
-        "question": "Can I customize the stamp design?",
-        "answer": "Yes. We provide multiple designs like the PDFCraft watermark or a Royal crest, and you can adjust the wax melting radius and normal-map indentation depth in the panel."
+        "question": "¿Puedo personalizar el diseño del sello?",
+        "answer": "Sí. Proporcionamos múltiples diseños, como la marca de agua PDFCraft o un escudo real, y usted puede ajustar el radio de fusión de la cera y la profundidad de sangría del mapa normal en el panel."
       }
     ]
   },
   "passport-id-composer": {
     "title": "Copiar Identificación Doble Cara",
-    "metaDescription": "Combine el anverso y reverso de identificaciones o pasaportes en una página A4 con marcas de agua de seguridad.",
+    "metaDescription": "Combine el anverso y el reverso de un documento de identidad o pasaporte en una página PDF A4. Organice escaneos y agregue una marca de agua opcional.",
     "keywords": [
       "copia de identificacion",
       "anverso reverso a4",
       "copia de pasaporte",
       "marca de agua"
     ],
-    "description": "\n      <p>The Passport & ID Double-sided Composer is an incredibly useful productivity utility for standard business and personal operations.</p>\n      <p>When applying for bank accounts, onboarding, or signing agreements, we frequently need copies of both sides of ID cards. This tool accepts front/back images or PDF pages and precisely arranges them onto a single A4 page complying with national standard layout resolutions.</p>\n      <p>Furthermore, you can customize overlapping translucent anti-counterfeit watermarks (e.g. \"FOR ONBOARDING ONLY\") to prevent unauthorized document reuse. It even features a 3D glow laser sweep copier scanner door visual effect to deliver premium feedback.</p>\n    ",
+    "description": "<p>El compositor de doble cara de Passport & ID es una utilidad de productividad increíblemente útil para operaciones comerciales y personales estándar.</p>\n      <p>Al solicitar cuentas bancarias, incorporarnos o firmar acuerdos, con frecuencia necesitamos copias de ambos lados de los documentos de identidad. Esta herramienta acepta imágenes frontales y posteriores o páginas PDF y las organiza con precisión en una sola página A4 cumpliendo con las resoluciones de diseño estándar nacionales.</p>\n      <p>Además, puede personalizar marcas de agua translúcidas antifalsificación superpuestas (por ejemplo, \"SOLO PARA INGRESO\") para evitar la reutilización no autorizada de documentos. Incluso cuenta con un efecto visual en la puerta del escáner, fotocopiadora y barrido láser con brillo 3D para ofrecer una respuesta de primera calidad.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload ID files",
-        "description": "Upload front and back photos/scans of your ID or passport (up to 2 files)."
+        "title": "Cargar archivos de identificación",
+        "description": "Cargue fotografías/escaneos del anverso y reverso de su documento de identidad o pasaporte (hasta 2 archivos)."
       },
       {
         "step": 2,
-        "title": "Configure secure watermark",
-        "description": "Input custom text overlay to restrict unauthorized document replication."
+        "title": "Configurar marca de agua segura",
+        "description": "Ingrese texto personalizado superpuesto para restringir la replicación no autorizada de documentos."
       },
       {
         "step": 3,
-        "title": "Compose & download",
-        "description": "Click execute to generate a single-page print-ready A4 PDF."
+        "title": "Redactar y descargar",
+        "description": "Haga clic en ejecutar para generar un PDF A4 de una sola página listo para imprimir."
       }
     ],
     "useCases": [
       {
-        "title": "HR onboarding submission",
-        "description": "Quickly align employee ID copies and apply protective watermarks.",
+        "title": "Envío de incorporación de recursos humanos",
+        "description": "Alinee rápidamente las copias de identificación de los empleados y aplique marcas de agua protectoras.",
         "icon": "user"
       },
       {
-        "title": "Government & banking service",
-        "description": "Prepare standardized ID prints that meet physical archive requirements.",
+        "title": "Servicio gubernamental y bancario",
+        "description": "Prepare impresiones de identificación estandarizadas que cumplan con los requisitos de archivo físico.",
         "icon": "landmark"
       },
       {
-        "title": "Travel backups",
-        "description": "Arrange passport pages and visa details onto a unified A4 paper.",
+        "title": "Copias de seguridad de viajes",
+        "description": "Organice las páginas del pasaporte y los detalles del visado en un papel A4 unificado.",
         "icon": "plane"
       }
     ],
     "faq": [
       {
-        "question": "Will watermarks block identity text details?",
-        "answer": "No. The watermark is rendered at a carefully tuned 15% opacity to block forgery without sacrificing the legibility of text or photo fields."
+        "question": "¿Las marcas de agua bloquearán los detalles del texto de identidad?",
+        "answer": "No. La marca de agua se representa con una opacidad cuidadosamente ajustada del 15 % para bloquear la falsificación sin sacrificar la legibilidad de los campos de texto o fotografía."
       },
       {
-        "question": "Is the composite card size accurate?",
-        "answer": "Yes. It renders the ID card at the standard physical dimension of 85.6mm × 54mm scaled perfectly on the A4 page."
+        "question": "¿Es exacto el tamaño de la tarjeta compuesta?",
+        "answer": "Sí. Representa la tarjeta de identificación en la dimensión física estándar de 85,6 mm × 54 mm escalada perfectamente en la página A4."
       },
       {
-        "question": "Does it support driver licenses?",
-        "answer": "Yes, it works beautifully for any card-based identity scans."
+        "question": "¿Admite licencias de conducir?",
+        "answer": "Sí, funciona muy bien para cualquier escaneo de identidad basado en tarjetas."
       }
     ]
   },
   "annotation-exporter": {
     "title": "Exportar Anotaciones",
-    "metaDescription": "Extraiga resaltados, notas y comentarios de PDFs en un documento Markdown organizado para su estudio.",
+    "metaDescription": "Exporte comentarios, notas, resaltados y subrayados en PDF a Markdown o JSON. Organizar anotaciones para estudio, revisión e investigación.",
     "keywords": [
       "exportar anotaciones pdf",
       "extraer resaltados",
       "notas de estudio",
       "markdown"
     ],
-    "description": "\n      <p>The Smart Annotation Exporter is a powerful workspace that unlocks full value from your PDF annotations.</p>\n      <p>While conducting literature reviews or reading extensive ebooks, we make heavy use of highlights and sticky notes. This tool deserializes the low-level PDF <code>/Annots</code> dictionary and extracts all highlights, notes, underlines, and hand-drawn ink markers.</p>\n      <p>It automatically aligns the comments with their respective outline headers, generating a structured Markdown or JSON notebook with page reference anchors. Watch your highlights float beautifully into the frosted-glass notebook panel.</p>\n    ",
+    "description": "<p>El Exportador de anotaciones inteligentes es un potente espacio de trabajo que libera todo el valor de sus anotaciones en PDF.</p>\n      <p>Mientras realizamos reseñas literarias o leemos libros electrónicos extensos, hacemos un uso intensivo de resaltados y notas adhesivas. Esta herramienta deserializa el diccionario PDF <code>/Annots</code> de bajo nivel y extrae todos los resaltados, notas, subrayados y marcadores de tinta dibujados a mano.</p>\n      <p>Alinea automáticamente los comentarios con sus respectivos encabezados de esquema, generando un cuaderno Markdown o JSON estructurado con anclajes de referencia de página. Observe cómo sus reflejos flotan maravillosamente en el panel de vidrio esmerilado del cuaderno.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import annotated PDF",
-        "description": "Upload any PDF essay or book containing your underlines, highlights, or comments."
+        "title": "Importar PDF anotado",
+        "description": "Cargue cualquier ensayo o libro en PDF que contenga subrayados, aspectos destacados o comentarios."
       },
       {
         "step": 2,
-        "title": "Configure filters & format",
-        "description": "Select the annotation types you want to extract and choose Markdown or JSON."
+        "title": "Configurar filtros y formato",
+        "description": "Seleccione los tipos de anotaciones que desea extraer y elija Markdown o JSON."
       },
       {
         "step": 3,
-        "title": "Extract notebook",
-        "description": "Click execute to parse the comments stream and assemble your outline summary."
+        "title": "Extraer cuaderno",
+        "description": "Haga clic en ejecutar para analizar el flujo de comentarios y crear su resumen general."
       }
     ],
     "useCases": [
       {
-        "title": "Scientific literature synthesis",
-        "description": "Extract reading notes across multiple papers into Markdown templates to compose lit reviews instantly.",
+        "title": "Síntesis de literatura científica",
+        "description": "Extraiga notas de lectura de varios artículos en plantillas de Markdown para redactar reseñas ilustradas al instante.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Study journal compiling",
-        "description": "Collect beautiful insights and personal remarks from textbooks into Obsidian databases.",
+        "title": "Compilación del diario de estudio",
+        "description": "Recopile hermosas ideas y comentarios personales de libros de texto en bases de datos de Obsidian.",
         "icon": "book"
       },
       {
-        "title": "Document collaborative audit",
-        "description": "Gather review corrections from different team members and establish actionable task lists.",
+        "title": "Auditoría colaborativa de documentos",
+        "description": "Reúna correcciones de revisión de diferentes miembros del equipo y establezca listas de tareas procesables.",
         "icon": "users"
       }
     ],
     "faq": [
       {
-        "question": "Can it extract tablet hand-drawn ink strokes?",
-        "answer": "Yes. As long as the hand-drawn marks are stored as standard PDF Ink annotations, the tool can perfectly isolate and structure their page positions."
+        "question": "¿Puede extraer trazos de tinta dibujados a mano en tabletas?",
+        "answer": "Sí. Siempre que las marcas dibujadas a mano se almacenen como anotaciones estándar de PDF Ink, la herramienta puede aislar y estructurar perfectamente las posiciones de sus páginas."
       },
       {
-        "question": "Why are some highlighted extracts empty?",
-        "answer": "If the PDF is a non-searchable image scan lacking underlying text, highlights only store coordinates. Run OCR on the PDF first, then extract annotations."
+        "question": "¿Por qué algunos extractos resaltados están vacíos?",
+        "answer": "Si el PDF es una imagen escaneada que no permite realizar búsquedas y carece de texto subyacente, resalta solo las coordenadas de la tienda. Primero ejecute OCR en el PDF y luego extraiga las anotaciones."
       },
       {
-        "question": "Do the Markdown links jump back to the PDF?",
-        "answer": "The exported file lists precise page numbers and original outline headings to make cross-referencing seamless."
+        "question": "¿Los enlaces de Markdown regresan al PDF?",
+        "answer": "El archivo exportado enumera números de página precisos y encabezados de esquema originales para que las referencias cruzadas sean perfectas."
       }
     ]
   },
   "batch-watermark-remover": {
     "title": "Quitar Marcas de Agua",
-    "metaDescription": "Analice el flujo de contenido de sus PDFs y elimine marcas de agua de texto e imagen (XObjects) sin alterar el formato.",
+    "metaDescription": "Elimine las marcas de agua de imágenes y texto coincidentes de los archivos PDF. Revise el resultado para comprobar que se conserva el contenido del documento.",
     "keywords": [
       "eliminar marca de agua pdf",
       "quitar logos pdf",
       "limpieza de pdf"
     ],
-    "description": "\n      <p>The Batch Watermark Remover is a state-of-the-art PDF sanitizer that physically cleanses documents.</p>\n      <p>Generic watermark removers usually just overlay white blocks or distort document spacing. This tool utilizes a robust <strong>Content Stream Purge</strong> technique.</p>\n      <p>It parses the low-level rendering operators of each page, identifies specific watermark string commands (e.g. \"Confidential\", \"DRAFT\") or background image objects, and physically deletes or overwrites them. The watermarks disappear completely, preserving the original formatting and vector quality.</p>\n    ",
+    "description": "<p>Batch Watermark Remover es un desinfectante de PDF de última generación que limpia físicamente los documentos.</p>\n      <p>Los eliminadores de marcas de agua genéricos normalmente solo superponen bloques blancos o distorsionan el espaciado de los documentos. Esta herramienta utiliza una sólida técnica de <strong>depuración de flujo de contenido</strong>.</p>\n      <p>Analiza los operadores de representación de bajo nivel de cada página, identifica comandos de cadena de marca de agua específicos (por ejemplo, \"Confidencial\", \"BORRADOR\") u objetos de imagen de fondo, y los elimina o sobrescribe físicamente. Las marcas de agua desaparecen por completo, conservando el formato original y la calidad vectorial.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload watermarked file",
-        "description": "Provide the PDF document showing commercial logos or security labels."
+        "title": "Subir archivo con marca de agua",
+        "description": "Proporcionar el documento PDF que muestre logotipos comerciales o etiquetas de seguridad."
       },
       {
         "step": 2,
-        "title": "Define target watermark",
-        "description": "Input the exact string to delete, or toggle translucent XObject image cleanup."
+        "title": "Definir marca de agua de destino",
+        "description": "Ingrese la cadena exacta para eliminar o active la limpieza de imágenes translúcidas de XObject."
       },
       {
         "step": 3,
-        "title": "Run physical purge",
-        "description": "Click execute to scrub the content operators with high fidelity."
+        "title": "Ejecutar purga física",
+        "description": "Haga clic en ejecutar para eliminar los operadores de contenido con alta fidelidad."
       }
     ],
     "useCases": [
       {
-        "title": "Archiving corporate assets",
-        "description": "Remove expired \"Confidential\" or \"Draft\" watermarks for general public distribution.",
+        "title": "Archivar activos corporativos",
+        "description": "Elimine las marcas de agua \"Confidenciales\" o \"Borrador\" caducadas para su distribución al público en general.",
         "icon": "archive"
       },
       {
-        "title": "Clearing background clutter",
-        "description": "Scrub heavy background pictures that distract readers from scanning text.",
+        "title": "Limpiar el desorden del fondo",
+        "description": "Elimina las imágenes de fondo pesadas que distraen a los lectores de escanear el texto.",
         "icon": "eye"
       },
       {
-        "title": "Document reusing",
-        "description": "Cleanse old page footer branding elements to apply new corporate templates easily.",
+        "title": "Reutilización de documentos",
+        "description": "Limpie los elementos de marca antiguos del pie de página para aplicar nuevas plantillas corporativas fácilmente.",
         "icon": "copy"
       }
     ],
     "faq": [
       {
-        "question": "Can the purged watermarks be recovered?",
-        "answer": "No. Unlike visual masks, we rewrite the page binary stream to erase the operators, leaving no traces."
+        "question": "¿Se pueden recuperar las marcas de agua eliminadas?",
+        "answer": "No. A diferencia de las máscaras visuales, reescribimos el flujo binario de la página para borrar los operadores, sin dejar rastros."
       },
       {
-        "question": "Does it support complex gradients?",
-        "answer": "If the watermark is stored as a separate text node or image XObject, the tool can isolate and physically wipe it."
+        "question": "¿Admite gradientes complejos?",
+        "answer": "Si la marca de agua se almacena como un nodo de texto separado o un XObject de imagen, la herramienta puede aislarla y borrarla físicamente."
       },
       {
-        "question": "Will it modify normal page text?",
-        "answer": "No. The scrubbing engine only target operators matching the specified watermark signature; regular text remains untouched."
+        "question": "¿Modificará el texto normal de la página?",
+        "answer": "No. El motor de depuración solo se dirige a operadores que coincidan con la firma de marca de agua especificada; El texto normal permanece intacto."
       }
     ]
   },
   "smart-data-redactor": {
     "title": "Redactar Datos Sensibles",
-    "metaDescription": "Detecte y censure de forma física e irreversible correos electrónicos, números de teléfono e identificaciones en PDFs.",
+    "metaDescription": "Encuentre direcciones de correo electrónico, números de teléfono y patrones de identificación en archivos PDF. Revise coincidencias y redacte contenido confidencial localmente.",
     "keywords": [
       "censurar pdf",
       "ocultar datos sensibles",
       "redaccion de documentos"
     ],
-    "description": "\n      <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>\n      <p>Simply overlaying black boxes in normal editors is unsafe because the underlying text can still be copied. This tool implements true <strong>NLP pattern matching and physical content stream sanitization</strong>.</p>\n      <p>It scans the document for emails, phone numbers, SSNs, or custom keywords, places a premium matte black mask over the coordinates, and permanently overwrites the character stream with <code>[REDACTED]</code>, blocking copy-paste leaks.</p>\n    ",
+    "description": "<p>Smart Privacy Data Redactor es una herramienta automatizada diseñada para garantizar un sólido cumplimiento de la privacidad de los documentos.</p>\n      <p>Simplemente superponer cuadros negros en editores normales no es seguro porque el texto subyacente aún se puede copiar. Esta herramienta implementa una verdadera <strong>coincidencia de patrones de PNL y desinfección del flujo de contenido físico</strong>.</p>\n      <p>Escanea el documento en busca de correos electrónicos, números de teléfono, números de seguridad social o palabras clave personalizadas, coloca una máscara negra mate premium sobre las coordenadas y sobrescribe permanentemente el flujo de caracteres con <code>[REDACTED]</code>, bloqueando las filtraciones de copiar y pegar.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload target PDF",
-        "description": "Provide the contract or statement showing sensitive customer details."
+        "title": "Subir PDF de destino",
+        "description": "Proporcione el contrato o declaración que muestre detalles confidenciales del cliente."
       },
       {
         "step": 2,
-        "title": "Select redaction rules",
-        "description": "Check target patterns (email, phone, ID) or define custom sensitive words."
+        "title": "Seleccionar reglas de redacción",
+        "description": "Verifique los patrones de destino (correo electrónico, teléfono, identificación) o defina palabras confidenciales personalizadas."
       },
       {
         "step": 3,
-        "title": "Auto redact & download",
-        "description": "Click execute to overlay secure masks and wipe the text streams."
+        "title": "Redacción y descarga automáticas",
+        "description": "Haga clic en ejecutar para superponer máscaras seguras y borrar los flujos de texto."
       }
     ],
     "useCases": [
       {
-        "title": "Commercial agreements sharing",
-        "description": "Safely publish business documents by hiding personal salaries, phone numbers, or emails.",
+        "title": "Intercambio de acuerdos comerciales",
+        "description": "Publique de forma segura documentos comerciales ocultando salarios personales, números de teléfono o correos electrónicos.",
         "icon": "file-signature"
       },
       {
-        "title": "Resume database anonymization",
-        "description": "Strip applicant names, contact info, or addresses to comply with strict privacy regulations.",
+        "title": "Reanudar la anonimización de la base de datos",
+        "description": "Elimina los nombres, la información de contacto o las direcciones de los solicitantes para cumplir con estrictas normas de privacidad.",
         "icon": "user-check"
       },
       {
-        "title": "Financial statement distribution",
-        "description": "Conceal specific ledger numbers or shareholder names before publishing reports.",
+        "title": "Distribución de estados financieros",
+        "description": "Ocultar números de libro mayor específicos o nombres de accionistas antes de publicar informes.",
         "icon": "pie-chart"
       }
     ],
     "faq": [
       {
-        "question": "Are redacted details truly un-copyable?",
-        "answer": "Yes. We rewrite the page content stream to erase the characters. Copy-pasting from the redacted box will only extract the string \"[REDACTED]\"."
+        "question": "¿Los detalles redactados realmente no se pueden copiar?",
+        "answer": "Sí. Reescribimos el flujo de contenido de la página para borrar los caracteres. Copiar y pegar desde el cuadro redactado solo extraerá la cadena \"[ELIMINADO]\"."
       },
       {
-        "question": "Does it work for scanned image PDFs?",
-        "answer": "This tool targets vector text streams. For scanned image files, use our OCR tool first or crop manually."
+        "question": "¿Funciona con archivos PDF de imágenes escaneadas?",
+        "answer": "Esta herramienta apunta a flujos de texto vectoriales. Para archivos de imágenes escaneadas, utilice primero nuestra herramienta OCR o recórtela manualmente."
       },
       {
-        "question": "Is the red HUD target scope saved in the file?",
-        "answer": "No, that is a gorgeous frontend interactive loading effect. The output PDF displays standard clean black rectangles."
+        "question": "¿Está guardado el alcance objetivo del HUD rojo en el archivo?",
+        "answer": "No, ese es un magnífico efecto de carga interactivo en la interfaz. El PDF de salida muestra rectángulos negros limpios estándar."
       }
     ]
   },
   "bookmarks-auto-generator": {
     "title": "Generar Marcadores",
-    "metaDescription": "Analice los tamaños de fuente y jerarquías para inyectar automáticamente un esquema de marcadores anidados en el PDF.",
+    "metaDescription": "Genere marcadores PDF a partir de títulos y patrones de texto. Agregue un esquema navegable a documentos, manuales e informes extensos.",
     "keywords": [
       "marcadores pdf",
       "esquema de navegacion",
       "crear marcadores automaticos"
     ],
-    "description": "\n      <p>The Auto Bookmarks Generator brings absolute clarity to lengthy, unstructured PDF documents.</p>\n      <p>Scanning through books or booklets with no outline navigation is painful. This tool parses typographic hierarchies (such as font sizes and weights) along with regex rules (like \"Chapter 1\", \"Section 1.1\") to automatically deduce headings.</p>\n      <p>It then compiles and injects these headings directly into the PDF <code>/Outline</code> dictionary. Any standard viewer will then show a beautifully structured, multi-level navigation sidebar, backed by an interactive 3D outline tree preview.</p>\n    ",
+    "description": "<p>El generador automático de marcadores aporta claridad absoluta a documentos PDF extensos y no estructurados.</p>\n      <p>Escanear libros o folletos sin un esquema de navegación es doloroso. Esta herramienta analiza jerarquías tipográficas (como tamaños y pesos de fuente) junto con reglas de expresiones regulares (como \"Capítulo 1\", \"Sección 1.1\") para deducir encabezados automáticamente.</p>\n      <p>Luego compila e inyecta estos encabezados directamente en el diccionario PDF <code>/Outline</code>. Cualquier visor estándar mostrará una barra lateral de navegación de varios niveles bellamente estructurada, respaldada por una vista previa interactiva de árbol de esquemas en 3D.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide unstructured PDF",
-        "description": "Upload large brochures, academic papers, or ebooks lacking a catalog sidebar."
+        "title": "Proporcionar PDF no estructurado",
+        "description": "Sube folletos grandes, artículos académicos o libros electrónicos que no tengan una barra lateral de catálogo."
       },
       {
         "step": 2,
-        "title": "Tune heading rules",
-        "description": "Configure strategies specifying minimum font size thresholds and match rules."
+        "title": "Reglas de sintonización de rumbo",
+        "description": "Configure estrategias que especifiquen umbrales mínimos de tamaño de fuente y reglas de coincidencia."
       },
       {
         "step": 3,
-        "title": "Build and inject",
-        "description": "Click execute to render the outline nodes and physically write the outline bookmarks."
+        "title": "Construir e inyectar",
+        "description": "Haga clic en ejecutar para representar los nodos del esquema y escribir físicamente los marcadores del esquema."
       }
     ],
     "useCases": [
       {
-        "title": "Technical manuals organizing",
-        "description": "Auto compile multi-level chapters for standard guidelines, saving hours of manual indexing.",
+        "title": "Organización de manuales técnicos",
+        "description": "Compile automáticamente capítulos de varios niveles para pautas estándar, lo que ahorra horas de indexación manual.",
         "icon": "tool"
       },
       {
-        "title": "Thesis preparation",
-        "description": "Inject clean nested bookmarks matching exact academic submission standards.",
+        "title": "Preparación de tesis",
+        "description": "Inyecte marcadores anidados limpios que coincidan exactamente con los estándares de presentación académica.",
         "icon": "graduation-cap"
       },
       {
-        "title": "Ebook navigation optimization",
-        "description": "Structure scanned text publications into readable chapters for tablets or mobile readers.",
+        "title": "Optimización de la navegación de libros electrónicos",
+        "description": "Estructurar las publicaciones de texto escaneadas en capítulos legibles para tabletas o lectores móviles.",
         "icon": "tablet"
       }
     ],
     "faq": [
       {
-        "question": "Can it match custom chapter formats?",
-        "answer": "Yes. You can add custom regex patterns in the sidebar panel (e.g., `^Part\\s+\\w+`) to target unique layouts."
+        "question": "¿Puede coincidir con formatos de capítulos personalizados?",
+        "answer": "Sí. Puede agregar patrones de expresiones regulares personalizados en el panel de la barra lateral (por ejemplo, `^Part\\s+\\w+`) para apuntar a diseños únicos."
       },
       {
-        "question": "Will this affect the visual page presentation?",
-        "answer": "No. The tool only adds an internal structural bookmark catalog. The text and visual assets of the pages remain untouched."
+        "question": "¿Esto afectará la presentación visual de la página?",
+        "answer": "No. La herramienta solo agrega un catálogo de marcadores estructurales internos. El texto y los recursos visuales de las páginas permanecen intactos."
       },
       {
-        "question": "How many bookmark levels are supported?",
-        "answer": "The tool supports deeply nested bookmark structures, allowing chapter, section, and subsection layouts."
+        "question": "¿Cuántos niveles de marcadores se admiten?",
+        "answer": "La herramienta admite estructuras de marcadores profundamente anidadas, lo que permite diseños de capítulos, secciones y subsecciones."
       }
     ]
   },
   "batch-barcode-injector": {
     "title": "Insertar Códigos en Lote",
-    "metaDescription": "Inyecte códigos de barras (Code128) y códigos QR en coordenadas específicas de múltiples páginas PDF en lote.",
+    "metaDescription": "Agregue códigos QR o códigos de barras Código 128 a páginas PDF de forma masiva. Ajuste la ubicación para el seguimiento de documentos, etiquetas y flujos de trabajo de impresión.",
     "keywords": [
       "insertar qr pdf",
       "códigos de barras en lote",
       "etiquetado pdf"
     ],
-    "description": "\n      <p>The Batch Barcode precision injector bridges digital asset tracking with physical document indexing.</p>\n      <p>In warehousing, contract review, or logistics, we often need to Stamp unique barcodes onto invoices or device cards. This tool makes it incredibly easy.</p>\n      <p>Generate highly readable QR codes or Code128 barcodes, and use our gorgeous aligning workspace with green laser guides to position them. A clean scan audio beep triggers on placement, providing highly premium feedback.</p>\n    ",
+    "description": "<p>El inyector de precisión Batch Barcode une el seguimiento de activos digitales con la indexación de documentos físicos.</p>\n      <p>En el almacenamiento, la revisión de contratos o la logística, a menudo necesitamos sellar códigos de barras únicos en facturas o tarjetas de dispositivos. Esta herramienta lo hace increíblemente fácil.</p>\n      <p>Genere códigos QR o códigos de barras Code128 altamente legibles y utilice nuestro magnífico espacio de trabajo de alineación con guías láser verdes para posicionarlos. Un pitido de audio de escaneo limpio se activa al momento de la colocación, lo que proporciona una respuesta de alta calidad.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload document",
-        "description": "Drag and drop single or multi-page PDFs representing agreements or shipping lists."
+        "title": "Subir documento",
+        "description": "Arrastre y suelte archivos PDF de una o varias páginas que representan acuerdos o listas de envío."
       },
       {
         "step": 2,
-        "title": "Position barcode coordinates",
-        "description": "Set code type, value, and drag the placement box to specify coordinates."
+        "title": "Coordenadas del código de barras de posición",
+        "description": "Establezca el tipo de código, el valor y arrastre el cuadro de ubicación para especificar las coordenadas."
       },
       {
         "step": 3,
-        "title": "Stamps and download",
-        "description": "Click execute to render the code layer onto the targeted page indices."
+        "title": "Sellos y descarga",
+        "description": "Haga clic en ejecutar para representar la capa de código en los índices de la página de destino."
       }
     ],
     "useCases": [
       {
-        "title": "Contract validation tracing",
-        "description": "Apply a unique QR code showing anti-counterfeit details onto the header of contracts.",
+        "title": "Seguimiento de validación de contratos",
+        "description": "Aplique un código QR único que muestre detalles antifalsificación en el encabezado de los contratos.",
         "icon": "file-check"
       },
       {
-        "title": "Shipping lists coding",
-        "description": "Place Code128 barcodes at target spots for quick warehouse scanning gun validation.",
+        "title": "Codificación de listas de envío",
+        "description": "Coloque códigos de barras Code128 en los puntos de destino para una validación rápida de las armas de escaneo en el almacén.",
         "icon": "truck"
       },
       {
-        "title": "Asset registration carding",
-        "description": "Add inventory QR codes displaying maintenance specs onto physical equipment sheets.",
+        "title": "Tarjeta de registro de activos",
+        "description": "Agregue códigos QR de inventario que muestren especificaciones de mantenimiento en hojas de equipos físicos.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "Are the generated barcodes highly scannable?",
-        "answer": "Yes. We embed lossless high-resolution PNG representations that remain sharp even when printed at very small dimensions."
+        "question": "¿Los códigos de barras generados son altamente escaneables?",
+        "answer": "Sí. Incorporamos representaciones PNG de alta resolución sin pérdidas que permanecen nítidas incluso cuando se imprimen en dimensiones muy pequeñas."
       },
       {
-        "question": "Can I inject unique values on each page?",
-        "answer": "Currently, the batch run applies the same configured code onto all selected pages. Multi-valued excel import is planned in a future update."
+        "question": "¿Puedo inyectar valores únicos en cada página?",
+        "answer": "Actualmente, la ejecución por lotes aplica el mismo código configurado en todas las páginas seleccionadas. La importación de Excel de valores múltiples está prevista en una actualización futura."
       },
       {
-        "question": "What does the `pt` coordinate represent?",
-        "answer": "`pt` (Point) is the standard PDF physical unit (72 pt = 1 inch). A4 pages are represented as 595 × 842 pt."
+        "question": "¿Qué representa la coordenada `pt`?",
+        "answer": "`pt` (Punto) es la unidad física estándar de PDF (72 pt = 1 pulgada). Las páginas A4 se representan como 595 × 842 pt."
       }
     ]
   },
   "signature-ink-optimizer": {
     "title": "Extraer Firmas y Sellos",
-    "metaDescription": "Extraiga firmas y sellos de documentos escaneados, eliminando el fondo para generar PNGs transparentes de alta calidad.",
+    "metaDescription": "Extrae una firma o sello de una foto y elimina su fondo. Descargue un PNG transparente para usarlo en documentos.",
     "keywords": [
       "extraer firma pdf",
       "digitalizar sellos",
       "fondo transparente png"
     ],
-    "description": "\n      <p>The Signature & Stamp Chroma Ink Optimizer functions as a professional high-fidelity ink purifier.</p>\n      <p>Signatures or corporate seals captured on phones often suffer from yellow paper tint, uneven shadows, and page wrinkles. Pasting them directly onto contract PDFs looks amateur.</p>\n      <p>This tool separates the Alpha channel based on luminance and color space. It completely bleaches paper backgrounds while sharpening stamp red (Chroma Ink) and handwriting black. The result is a premium, transparent PNG stamp carrying genuine ink textures.</p>\n    ",
+    "description": "<p>El optimizador de tinta Chroma Signature & Stamp funciona como un purificador de tinta profesional de alta fidelidad.</p>\n      <p>Las firmas o sellos corporativos capturados en teléfonos a menudo presentan un tinte de papel amarillo, sombras desiguales y arrugas en las páginas. Pegarlos directamente en archivos PDF de contratos parece un trabajo amateur.</p>\n      <p>Esta herramienta separa el canal Alfa según la luminancia y el espacio de color. Blanquea completamente los fondos de papel mientras afila el rojo del sello (Chroma Ink) y la escritura a mano en negro. El resultado es un sello PNG transparente de primera calidad con texturas de tinta genuinas.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload seal photo",
-        "description": "Provide a phone-captured photo of your signature or stamp seal."
+        "title": "Subir foto del sello",
+        "description": "Proporcione una foto capturada por teléfono de su firma o sello."
       },
       {
         "step": 2,
-        "title": "Adjust cleaning sliders",
-        "description": "Move contrast and luminance sliders to isolate the background noise in real-time."
+        "title": "Ajustar los controles deslizantes de limpieza",
+        "description": "Mueva los controles deslizantes de contraste y luminancia para aislar el ruido de fondo en tiempo real."
       },
       {
         "step": 3,
-        "title": "Download clean signature",
-        "description": "Export as transparent PNG ready to be stamped onto formal document agreements."
+        "title": "Descargar firma limpia",
+        "description": "Exporte como PNG transparente listo para estampar en acuerdos de documentos formales."
       }
     ],
     "useCases": [
       {
-        "title": "Professional e-signature prep",
-        "description": "Convert gray signature photos into beautiful, transparent layers to sign agreements.",
+        "title": "Preparación profesional de firma electrónica",
+        "description": "Convierta fotografías de firmas grises en hermosas capas transparentes para firmar acuerdos.",
         "icon": "file-signature"
       },
       {
-        "title": "Corporate seal sanitizing",
-        "description": "Clean physical stamp scans by discarding paper fiber noise, preparing crisp transparent stamp seals.",
+        "title": "Sanitización del sello corporativo",
+        "description": "Limpie los escaneos de sellos físicos descartando el ruido de la fibra del papel y preparando sellos de sellos transparentes y nítidos.",
         "icon": "stamp"
       },
       {
-        "title": "Drawn line art extraction",
-        "description": "Isolate black strokes from drawing sketchbooks for easy Photoshop coloring workflows.",
+        "title": "Extracción de arte lineal dibujado",
+        "description": "Aísle los trazos negros de los cuadernos de dibujo para facilitar los flujos de trabajo de coloración en Photoshop.",
         "icon": "edit"
       }
     ],
     "faq": [
       {
-        "question": "How does self-adaptive Alpha extraction differ from normal keying?",
-        "answer": "Standard chroma-keying often makes signature stroke details look blocky and pixelated. Our algorithm isolates only white/yellow background noise and smooths the ink borders."
+        "question": "¿En qué se diferencia la extracción Alfa autoadaptativa de la codificación normal?",
+        "answer": "La incrustación cromática estándar a menudo hace que los detalles del trazo característico parezcan bloques y pixelados. Nuestro algoritmo aísla sólo el ruido de fondo blanco/amarillo y suaviza los bordes de la tinta."
       },
       {
-        "question": "Which image formats are supported?",
-        "answer": "We support JPG, JPEG, and PNG. For best results, capture your signature photo under bright, even lighting."
+        "question": "¿Qué formatos de imagen son compatibles?",
+        "answer": "Admitimos JPG, JPEG y PNG. Para obtener mejores resultados, capture su fotografía distintiva bajo una iluminación brillante y uniforme."
       },
       {
-        "question": "Will the handwriting detail be modified?",
-        "answer": "No. The pixel filtering acts on original coordinates, sharpening contrast while maintaining genuine stroke textures."
+        "question": "¿Se modificará el detalle de escritura a mano?",
+        "answer": "No. El filtrado de píxeles actúa sobre las coordenadas originales, agudizando el contraste y manteniendo texturas de trazo genuinas."
       }
     ]
   },
   "dead-link-debugger": {
     "title": "Reparar Enlaces Rotos",
-    "metaDescription": "Escanee y diagnostique enlaces externos (/URI) en PDFs, permitiendo corregirlos o redirigirlos fácilmente.",
+    "metaDescription": "Inspeccione los hipervínculos de PDF y reemplace los destinos rotos u obsoletos. Escanee las anotaciones de los enlaces y guarde el documento actualizado.",
     "keywords": [
       "enlaces rotos pdf",
       "corregir url pdf",
       "depurar hipervinculos"
     ],
-    "description": "\n      <p>The Dead Link Debugger is a deep structural editor that guarantees link interaction quality in published files.</p>\n      <p>Broken urls (404/500) inside manuals, whitepapers, or guides reduce branding authority. This tool lets you manage the hyperlinks database seamlessly.</p>\n      <p>It parses the low-level <code>/Link</code> dictionaries on each page, Probes them, and displays link status in an interactive grid (red for dead links, orange for redirects). Simply type the updated redirect URL, and the tool writes the new target directly back into the PDF binary stream.</p>\n    ",
+    "description": "<p>Dead Link Debugger es un editor estructural profundo que garantiza la calidad de la interacción de enlaces en archivos publicados.</p>\n      <p>Las URL rotas (404/500) dentro de manuales, documentos técnicos o guías reducen la autoridad de la marca. Esta herramienta le permite administrar la base de datos de hipervínculos sin problemas.</p>\n      <p>Analiza los diccionarios <code>/Link</code> de bajo nivel en cada página, los sondea y muestra el estado de los enlaces en una cuadrícula interactiva (rojo para enlaces inactivos, naranja para redireccionamientos). Simplemente escriba la URL de redireccionamiento actualizada y la herramienta escribirá el nuevo destino directamente en la secuencia binaria del PDF.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide target document",
-        "description": "Upload the PDF manual or catalog containing links to debug."
+        "title": "Proporcionar documento de destino",
+        "description": "Cargue el manual o catálogo en PDF que contenga enlaces para depurar."
       },
       {
         "step": 2,
-        "title": "Scan and update",
-        "description": "Let the debugger extract all URL entities. Input new redirect URLs for broken items."
+        "title": "Escanear y actualizar",
+        "description": "Deje que el depurador extraiga todas las entidades URL. Ingrese nuevas URL de redireccionamiento para elementos rotos."
       },
       {
         "step": 3,
-        "title": "Save redirect updates",
-        "description": "Click execute to rewrite /URI actions and download the corrected PDF."
+        "title": "Guardar actualizaciones de redireccionamiento",
+        "description": "Haga clic en ejecutar para reescribir las acciones /URI y descargar el PDF corregido."
       }
     ],
     "useCases": [
       {
-        "title": "Flyer broken links hotfix",
-        "description": "Instantly correct wrong urls on published flyers without reopening original design editors.",
+        "title": "Revisión de enlaces rotos del folleto",
+        "description": "Corrija instantáneamente las URL incorrectas en los folletos publicados sin volver a abrir los editores de diseño originales.",
         "icon": "refresh-cw"
       },
       {
-        "title": "Bibliography links verification",
-        "description": "Verify academic bibliography links in reports, updating references to maintain authority.",
+        "title": "Verificación de enlaces de bibliografía",
+        "description": "Verificar enlaces de bibliografía académica en informes, actualizando referencias para mantener la autoridad.",
         "icon": "book"
       },
       {
-        "title": "Corporate rebranding updates",
-        "description": "Batch update old URLs across corporate PDFs when company domain names are changed.",
+        "title": "Actualizaciones de cambio de marca corporativa",
+        "description": "Actualice por lotes las URL antiguas en los PDF corporativos cuando se cambian los nombres de dominio de la empresa.",
         "icon": "globe"
       }
     ],
     "faq": [
       {
-        "question": "Why isn't link reachability fully checked online?",
-        "answer": "Web browsers enforce strict CORS policies that block direct multi-origin link checking. Our tool lists the links clearly and lets you hot-fix them manually."
+        "question": "¿Por qué no se verifica completamente en línea la accesibilidad del enlace?",
+        "answer": "Los navegadores web aplican políticas CORS estrictas que bloquean la verificación directa de enlaces de múltiples orígenes. Nuestra herramienta enumera los enlaces claramente y le permite corregirlos manualmente."
       },
       {
-        "question": "Will this modify the visual text representation on the page?",
-        "answer": "No. It only alters the underlying `/URI` navigation action. The visual link text remains unchanged."
+        "question": "¿Esto modificará la representación visual del texto en la página?",
+        "answer": "No. Solo altera la acción de navegación `/URI` subyacente. El texto del enlace visual permanece sin cambios."
       },
       {
-        "question": "Does it support modifying internal page bookmarks?",
-        "answer": "This tool handles external `/URI` hyperlinks. For internal layout navigation, use our interactive TOC tool."
+        "question": "¿Admite la modificación de marcadores de páginas internas?",
+        "answer": "Esta herramienta maneja hipervínculos `/URI` externos. Para navegar por el diseño interno, utilice nuestra herramienta TOC interactiva."
       }
     ]
   },
   "interactive-toc-generator": {
     "title": "Generar Índice Interactivo",
-    "metaDescription": "Inserte una página de índice interactivo con enlaces a cada sección y agregue botones de retorno (↩) en las páginas.",
+    "metaDescription": "Agregue una tabla de contenido en la que se pueda hacer clic a su PDF. Cree enlaces de capítulos y regrese a la navegación para facilitar la navegación de documentos.",
     "keywords": [
       "indice interactivo pdf",
       "tabla de contenido pdf",
       "enlaces de navegacion"
     ],
-    "description": "\n      <p>The Interactive TOC Builder introduces a revolutionary navigation experience to extensive PDFs.</p>\n      <p>Flipping through hundreds of pages in unstructured documents to locate target chapters is frustrating. This tool introduces <strong>Bidirectional TOC compilation</strong>.</p>\n      <p>It scans headers and generates an origami-inspired, premium Table of Contents page inserted right after the cover. In addition to creating clickable /GoTo links for each index row, it injects a tiny, elegant \"TOC ↩\" hovering anchor at the corner of each target chapter page. Readers can jump back and forth instantly, enjoying web-like navigation.</p>\n    ",
+    "description": "<p>El generador interactivo de TOC presenta una experiencia de navegación revolucionaria para archivos PDF extensos.</p>\n      <p>Hojear cientos de páginas en documentos no estructurados para localizar los capítulos de destino es frustrante. Esta herramienta presenta la <strong>compilación TOC bidireccional</strong>.</p>\n      <p>Escanea los encabezados y genera una página de índice premium inspirada en el origami, insertada justo después de la portada. Además de crear enlaces /Ir a en los que se puede hacer clic para cada fila del índice, inyecta un ancla flotante pequeña y elegante \"TOC ↩\" en la esquina de cada página del capítulo de destino. Los lectores pueden avanzar y retroceder instantáneamente, disfrutando de una navegación similar a la web.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide PDF document",
-        "description": "Upload a report, eBook, or proposal that needs an interactive catalog."
+        "title": "Proporcionar documento PDF",
+        "description": "Cargue un informe, libro electrónico o propuesta que necesite un catálogo interactivo."
       },
       {
         "step": 2,
-        "title": "Set TOC title & index",
-        "description": "Customize the main title and choose the page index to insert the TOC page."
+        "title": "Establecer título e índice de TOC",
+        "description": "Personaliza el título principal y elige el índice de la página para insertar la página TOC."
       },
       {
         "step": 3,
-        "title": "Weave anchors & save",
-        "description": "Click execute to compile the pages and write the dual-link navigation."
+        "title": "Tejer anclas y guardar",
+        "description": "Haga clic en ejecutar para compilar las páginas y escribir la navegación de doble enlace."
       }
     ],
     "useCases": [
       {
-        "title": "Annual corporate report polishing",
-        "description": "Inject a beautiful index page after the cover sheet to allow shareholders to jump between financial charts.",
+        "title": "Pulido del informe corporativo anual",
+        "description": "Inyecte una hermosa página de índice después de la portada para permitir a los accionistas saltar entre los gráficos financieros.",
         "icon": "file-bar"
       },
       {
-        "title": "Thesis indexing",
-        "description": "Fast compile standard indexes aligned with university formatting rules.",
+        "title": "Indexación de tesis",
+        "description": "Compilación rápida de índices estándar alineados con las reglas de formato de la universidad.",
         "icon": "bookmark"
       },
       {
-        "title": "Operation manual navigation",
-        "description": "Help handbook readers quickly jump from troubleshooting sheets back to the main TOC.",
+        "title": "Navegación del manual de operación",
+        "description": "Ayude a los lectores del manual a pasar rápidamente de las hojas de solución de problemas al índice de contenido principal.",
         "icon": "check-circle"
       }
     ],
     "faq": [
       {
-        "question": "How do the bidirectional anchors work?",
-        "answer": "We create standard Link annotations on the TOC page targeting the respective pages; then we embed a link back to the TOC page on all target chapter sheets."
+        "question": "¿Cómo funcionan los anclajes bidireccionales?",
+        "answer": "Creamos anotaciones de enlaces estándar en la página TOC dirigidas a las páginas respectivas; luego incorporamos un enlace a la página TOC en todas las hojas de capítulos de destino."
       },
       {
-        "question": "Will inserting the TOC page break existing page numbers?",
-        "answer": "No. The compiler accounts for the offset of the newly inserted TOC page, ensuring all target destinations align."
+        "question": "¿La inserción de la página TOC alterará los números de página existentes?",
+        "answer": "No. El compilador tiene en cuenta el desplazamiento de la página TOC recién insertada, asegurando que todos los destinos de destino estén alineados."
       },
       {
-        "question": "Is the TOC page valid when printed physically?",
-        "answer": "Yes. The generated TOC lists clean physical page numbers to guide paper readers while enabling clickable links on screen."
+        "question": "¿Es válida la página TOC cuando se imprime físicamente?",
+        "answer": "Sí. El TOC generado enumera números de páginas físicas limpios para guiar a los lectores en papel y al mismo tiempo permite hacer clic en enlaces en la pantalla."
       }
     ]
   },
@@ -5976,8 +5976,8 @@ export const toolContentEs: Record<string, ToolContent> = {
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide skew PDF",
-        "description": "Upload any PDF sheet carrying rotated or poorly aligned scanned documents."
+        "title": "Proporcionar PDF sesgado",
+        "description": "Cargue cualquier hoja PDF que contenga documentos escaneados rotados o mal alineados."
       },
       {
         "step": 2,
@@ -5992,481 +5992,481 @@ export const toolContentEs: Record<string, ToolContent> = {
     ],
     "useCases": [
       {
-        "title": "Receipt & Contract Archiving",
-        "description": "Straighten quick hand-held mobile contract scans before saving them as formal digital PDF archives.",
+        "title": "Archivado de recibos y contratos",
+        "description": "Enderece escaneos rápidos de contratos móviles antes de guardarlos como archivos PDF digitales formales.",
         "icon": "file-text"
       },
       {
-        "title": "Academic Book Digitizing",
-        "description": "Sanitize microfilm book scans where text lines drift out of horizontal margins.",
+        "title": "Digitalización de libros académicos",
+        "description": "Desinfecte los escaneos de libros en microfilmes donde las líneas de texto se salen de los márgenes horizontales.",
         "icon": "book"
       },
       {
-        "title": "Student Homework Grading",
-        "description": "Correct homework snapshots taken by student phones, relaxing the eyes of grading teachers.",
+        "title": "Calificación de tareas de estudiantes",
+        "description": "Corregir instantáneas de tareas tomadas por los teléfonos de los estudiantes, lo que relaja los ojos de los profesores que califican.",
         "icon": "edit-3"
       }
     ],
     "faq": [
       {
-        "question": "How is document skew detected?",
+        "question": "¿Cómo se detecta la inclinación del documento?",
         "answer": "Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original."
       },
       {
-        "question": "Will this process crop away page edges?",
+        "question": "¿Este proceso recortará los bordes de la página?",
         "answer": "Detecta líneas de texto inclinadas localmente y ajusta el contenido corregido a la página original."
       },
       {
-        "question": "Does it support documents filled with diagrams?",
+        "question": "¿Admite documentos llenos de diagramas?",
         "answer": "Las páginas en blanco, los escaneos inciertos y las páginas con anotaciones se conservan sin cambios."
       }
     ]
   },
   "pdf-two-column-reflower": {
     "title": "Reorganizar PDFs de Dos Columnas",
-    "metaDescription": "Divida documentos de doble columna copiando páginas y redefiniendo el CropBox para una lectura fluida en una sola columna.",
+    "metaDescription": "Redistribuya documentos PDF de dos columnas en una sola columna para facilitar la lectura móvil. Ajuste los documentos académicos para pantallas más pequeñas.",
     "keywords": [
       "redistribuir columnas",
       "pdf doble columna a una",
       "ajustar cropbox"
     ],
-    "description": "\n      <p>The Academic Two-Column Reflower solves the most significant pain point of digital research: reading papers on standard mobile screens.</p>\n      <p>Double-column layouts (used by IEEE, ACM, Nature, and major reports) are designed for A4 paper. Navigating them on phone screens or Kindle devices requires constant zooming, dragging right, scrolling down, and panning back up. It breaks reading comprehension completely.</p>\n      <p>Our processor implements a <strong>smart paragraph reflow and vertical partition barrier scan</strong>. It analyzes character coordinates to map double-column gutters, divides the layout, and weaves segments vertically (left column first, then right). Graphs, formulas, and headings are seamlessly rearranged into a single-column, flowable vertical scroll PDF.</p>\n    ",
+    "description": "<p>El Academic Two-Column Reflower resuelve el problema más importante de la investigación digital: leer artículos en pantallas móviles estándar.</p>\n      <p>Los diseños de dos columnas (utilizados por IEEE, ACM, Nature y los principales informes) están diseñados para papel A4. Navegar por ellos en las pantallas de los teléfonos o dispositivos Kindle requiere hacer zoom constantemente, arrastrar hacia la derecha, desplazarse hacia abajo y volver a desplazarse hacia arriba. Rompe completamente la comprensión lectora.</p>\n      <p>Nuestro procesador implementa un <strong>reflujo de párrafos inteligente y un escaneo de barrera de partición vertical</strong>. Analiza las coordenadas de los caracteres para mapear canalones de dos columnas, divide el diseño y teje segmentos verticalmente (primero la columna izquierda, luego la derecha). Los gráficos, fórmulas y títulos se reorganizan perfectamente en un PDF fluido de desplazamiento vertical de una sola columna.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload double-column PDF",
-        "description": "Provide the IEEE/ACM journal report or multi-column PDF sheet."
+        "title": "Subir PDF a doble columna",
+        "description": "Proporcione el informe del diario IEEE/ACM o la hoja PDF de varias columnas."
       },
       {
         "step": 2,
-        "title": "Inspect partition gutter",
-        "description": "Verify the red vertical partition slice guides. Adjust margins to prevent overlapping elements."
+        "title": "Inspeccionar el canal de partición",
+        "description": "Verifique las guías rojas de corte de partición vertical. Ajuste los márgenes para evitar la superposición de elementos."
       },
       {
         "step": 3,
-        "title": "Reflow and save",
-        "description": "Click execute to compile the pages into flowable layouts and download instantly."
+        "title": "Redistribuir y guardar",
+        "description": "Haga clic en ejecutar para compilar las páginas en diseños fluidos y descargarlas al instante."
       }
     ],
     "useCases": [
       {
-        "title": "e-Reader Book Import",
-        "description": "Convert dense double-column essays into comfortable single-column documents matching Kindle and Onyx screens.",
+        "title": "Importación de libros de lector electrónico",
+        "description": "Convierta ensayos densos de dos columnas en cómodos documentos de una sola columna que coincidan con las pantallas de Kindle y Onyx.",
         "icon": "tablet"
       },
       {
-        "title": "Subway Phone Reading",
-        "description": "Read research literature comfortably with single-hand vertical swipe gestures during transit.",
+        "title": "Lectura del teléfono del metro",
+        "description": "Lea literatura de investigación cómodamente con gestos de deslizamiento vertical con una sola mano durante el tránsito.",
         "icon": "smartphone"
       },
       {
-        "title": "Archival Journal Formatting",
-        "description": "Modernize old narrow-column newspapers into readable, single-column web formats.",
+        "title": "Formato de revistas de archivo",
+        "description": "Modernizar periódicos antiguos de columnas estrechas a formatos web legibles de una sola columna.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How are broad charts and equations handled?",
-        "answer": "Our engine applies \"span element detection.\" When an equation or diagram exceeds normal column widths, it is isolated as a full-width item, maintaining original proportions without clipping."
+        "question": "¿Cómo se manejan los gráficos y ecuaciones generales?",
+        "answer": "Nuestro motor aplica \"detección de elementos de tramo\". Cuando una ecuación o diagrama excede el ancho de columna normal, se aísla como un elemento de ancho completo, manteniendo las proporciones originales sin recortes."
       },
       {
-        "question": "Will this modify the vector text resolution?",
-        "answer": "Not at all. We rewrite PDF text object transform matrices at the object tree level instead of rasterizing, meaning text remains 100% vector and fully selectable."
+        "question": "¿Esto modificará la resolución del texto vectorial?",
+        "answer": "En absoluto. Reescribimos matrices de transformación de objetos de texto PDF en el nivel del árbol de objetos en lugar de rasterizarlos, lo que significa que el texto sigue siendo 100 % vectorial y totalmente seleccionable."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "For flat image-based PDFs, we highly recommend running our OCR tool first before executing the Reflow process."
+        "question": "¿Esto funciona en documentos con imágenes escaneadas?",
+        "answer": "Para archivos PDF basados ​​en imágenes planas, recomendamos encarecidamente ejecutar nuestra herramienta OCR primero antes de ejecutar el proceso de reflujo."
       }
     ]
   },
   "pdf-page-resizer-uniform": {
     "title": "Uniformar Tamaño de Páginas PDF",
-    "metaDescription": "Escale páginas PDF de diversos tamaños centrándolas y ajustándolas proporcionalmente a un tamaño uniforme de destino.",
+    "metaDescription": "Cambie el tamaño de las páginas PDF mixtas a un tamaño uniforme. Normalice páginas A4, A3 y Carta con escala proporcional y márgenes centrados.",
     "keywords": [
       "dimensionar paginas pdf",
       "uniformar pdf a a4",
       "centrar contenido paginas"
     ],
-    "description": "\n      <p>The Multi-Format PDF Resizer is the ultimate standardizer for cluttered, mismatched corporate documents.</p>\n      <p>Combining invoices, contracts, and supplementary charts often results in a PDF containing massive A3 ledger pages, standard A4 agreements, and Letter-sized envelopes. Flipping through them is highly distracting, and sending them to physical office printers often causes jam errors due to size mismatch.</p>\n      <p>This tool rewrites the low-level <code>/MediaBox</code> and <code>/CropBox</code> grids on each page. It maps existing widths and heights, scales original pages proportionally to match target presets (e.g. standard A4), and introduces elegant, consistent surrounding margins, making the entire file look incredibly polished.</p>\n    ",
+    "description": "<p>Multi-Format PDF Resizer es el estandarizador definitivo para documentos corporativos desordenados y que no coinciden.</p>\n      <p>La combinación de facturas, contratos y cuadros complementarios a menudo da como resultado un PDF que contiene enormes páginas de libro mayor A3, acuerdos estándar A4 y sobres tamaño Carta. Hojearlos distrae mucho y enviarlos a impresoras físicas de oficina a menudo provoca errores de atasco debido a que el tamaño no coincide.</p>\n      <p>Esta herramienta reescribe las cuadrículas <code>/MediaBox</code> y <code>/CropBox</code> de bajo nivel en cada página. Mapea los anchos y altos existentes, escala las páginas originales proporcionalmente para que coincidan con los ajustes preestablecidos de destino (por ejemplo, A4 estándar) e introduce márgenes circundantes elegantes y consistentes, lo que hace que todo el archivo se vea increíblemente pulido.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Provide mixed-size PDF",
-        "description": "Upload a merged PDF document containing mismatched, messy page sizes."
+        "title": "Proporcionar PDF de varios tamaños",
+        "description": "Cargue un documento PDF combinado que contenga tamaños de página desordenados y que no coincidan."
       },
       {
         "step": 2,
-        "title": "Choose target preset",
-        "description": "Select the target uniform size (e.g. A4, Letter, A3) and toggle scale modes."
+        "title": "Elija el objetivo preestablecido",
+        "description": "Seleccione el tamaño uniforme de destino (por ejemplo, A4, Carta, A3) y alterne los modos de escala."
       },
       {
         "step": 3,
-        "title": "Align and download",
-        "description": "Click execute to trigger 3D sheet alignment, downloading a beautifully standardized PDF."
+        "title": "Alinear y descargar",
+        "description": "Haga clic en ejecutar para activar la alineación de la hoja 3D y descargar un PDF bellamente estandarizado."
       }
     ],
     "useCases": [
       {
-        "title": "Corporate RFP Proposals",
-        "description": "Standardize scanned qualification certificates and A4 bidding sheets before physical printing.",
+        "title": "Propuestas de RFP corporativas",
+        "description": "Estandarice los certificados de calificación escaneados y las hojas de oferta A4 antes de la impresión física.",
         "icon": "file-text"
       },
       {
-        "title": "Financial Chart Integration",
-        "description": "Scale broad A3 financial cash flows into neat A4 pages, preserving printing standards.",
+        "title": "Integración del gráfico financiero",
+        "description": "Escale amplios flujos de efectivo financieros A3 a páginas ordenadas A4, preservando los estándares de impresión.",
         "icon": "layout"
       },
       {
-        "title": "Book Margin Standardization",
-        "description": "Force slightly varied scanned book pages into an absolutely uniform dimension for comfortable reading.",
+        "title": "Estandarización de márgenes de libros",
+        "description": "Fuerza las páginas de libros escaneadas ligeramente variadas a una dimensión absolutamente uniforme para una lectura cómoda.",
         "icon": "book"
       }
     ],
     "faq": [
       {
-        "question": "Will this warp my content?",
-        "answer": "Never. We support both \"Contain\" (proportional scaling with white bars) and \"Cover\" (centered crop). The default Contain mode preserves aspect ratios, preventing distortion."
+        "question": "¿Esto deformará mi contenido?",
+        "answer": "Nunca. Admitimos tanto \"Contener\" (escala proporcional con barras blancas) como \"Cubrir\" (recorte centrado). El modo Contener predeterminado conserva las relaciones de aspecto, evitando la distorsión."
       },
       {
-        "question": "Will existing forms and annotations remain clickable?",
-        "answer": "Yes. The algorithm maps the scaling factors to the Annotation coordinate arrays, scaling link boxes, sign boundaries, and inputs to align perfectly after resizing."
+        "question": "¿Se podrán hacer clic en los formularios y anotaciones existentes?",
+        "answer": "Sí. El algoritmo asigna los factores de escala a las matrices de coordenadas de anotación, los cuadros de enlace de escala, los límites de los signos y las entradas para alinearlos perfectamente después de cambiar el tamaño."
       },
       {
-        "question": "Is there a limit on how many pages I can resize?",
-        "answer": "No. Since all operations run locally in your client sandbox using native JavaScript, you can process extensive PDFs containing hundreds of pages in seconds."
+        "question": "¿Existe un límite en la cantidad de páginas que puedo cambiar de tamaño?",
+        "answer": "No. Dado que todas las operaciones se ejecutan localmente en la zona de pruebas de su cliente utilizando JavaScript nativo, puede procesar archivos PDF extensos que contengan cientos de páginas en segundos."
       }
     ]
   },
   "handwriting-ink-contrast-booster": {
     "title": "Mejorar Contraste de Manuscritos",
-    "metaDescription": "Blanquee fondos manchados u oscuros y aumente el contraste de firmas a mano (azul/negro) y sellos rojos.",
+    "metaDescription": "Mejore el contraste de la escritura a mano y la firma en imágenes escaneadas. Reduzca el ruido de fondo del papel y facilite la lectura de la tinta.",
     "keywords": [
       "resaltar escritura a mano",
       "blanquear papel escaneado",
       "contraste de firmas"
     ],
-    "description": "\n      <p>The Handwriting Ink Contrast Booster is a savior for digitizing signed agreements and historical manuscript archives.</p>\n      <p>Scans of hand-signed documents often look dull due to grey scanner glass reflection, yellow paper tint, or faded ink. Re-printing or photocopying these files results in blurry, illegible signatures. Traditional contrast tools darken the entire background, worsening the layout.</p>\n      <p>This tool utilizes **Contrast Limited Adaptive Histogram Equalization (CLAHE) and hue-based color separation**. In a secure local Canvas process, it isolates handwriting strokes (both black and blue) from background parchment, bleaches shadow wrinkles completely, and infuses faded inks with deep, saturated contrast, leaving your documents looking incredibly crisp and clean.</p>\n    ",
+    "description": "<p>El potenciador de contraste de tinta para escritura a mano es un salvavidas para digitalizar acuerdos firmados y archivos de manuscritos históricos.</p>\n      <p>Los escaneos de documentos firmados a mano a menudo tienen un aspecto opaco debido al reflejo gris del cristal del escáner, el tinte amarillo del papel o la tinta descolorida. Reimprimir o fotocopiar estos archivos da como resultado firmas borrosas e ilegibles. Las herramientas de contraste tradicionales oscurecen todo el fondo, empeorando el diseño.</p>\n      <p>Esta herramienta utiliza **Ecualización de histograma adaptativo limitado por contraste (CLAHE) y separación de colores basada en tonos**. En un proceso Canvas local seguro, aísla los trazos de escritura a mano (tanto negros como azules) del pergamino del fondo, blanquea las arrugas de las sombras por completo e infunde tintas descoloridas con un contraste profundo y saturado, dejando sus documentos con un aspecto increíblemente nítido y limpio.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import hand-signed document",
-        "description": "Provide a PDF containing faded signatures, handwritten diaries, or sketches."
+        "title": "Importar documento firmado a mano",
+        "description": "Proporcione un PDF que contenga firmas descoloridas, diarios escritos a mano o bocetos."
       },
       {
         "step": 2,
-        "title": "Configure ink filter",
-        "description": "Select the color profile to isolate (e.g. blue ink, black ink, or both) and adjust sharpening."
+        "title": "Configurar filtro de tinta",
+        "description": "Seleccione el perfil de color que desea aislar (por ejemplo, tinta azul, tinta negra o ambas) y ajuste la nitidez."
       },
       {
         "step": 3,
-        "title": "Sharpen and download",
-        "description": "Click execute to trace colors with a radar scanner effect and download purified PDF."
+        "title": "Afilar y descargar",
+        "description": "Haga clic en ejecutar para trazar colores con un efecto de escáner de radar y descargar el PDF purificado."
       }
     ],
     "useCases": [
       {
-        "title": "Executed Contracts Repair",
-        "description": "Repair poorly scanned agreements, sharpening signatures and bleaching paper background to A4-pure white.",
+        "title": "Reparación de Contratos Ejecutados",
+        "description": "Reparar acuerdos mal escaneados, afinar firmas y blanquear el fondo del papel a A4, blanco puro.",
         "icon": "file-check"
       },
       {
-        "title": "Handwritten Manuscripts Archive",
-        "description": "Digitize written journals or diaries, extracting clear black strokes while erasing age-related stains.",
+        "title": "Archivo de manuscritos manuscritos",
+        "description": "Digitalice diarios o diarios escritos, extrayendo trazos negros claros y borrando manchas relacionadas con la edad.",
         "icon": "book"
       },
       {
-        "title": "Historical Ledger Restoration",
-        "description": "Restore faint ink details on aged archival ledgers, rescuing valuable handwritten coordinates.",
+        "title": "Restauración del libro mayor histórico",
+        "description": "Restaure detalles de tinta tenue en libros de contabilidad antiguos, rescatando valiosas coordenadas escritas a mano.",
         "icon": "archive"
       }
     ],
     "faq": [
       {
-        "question": "How does this differ from normal grayscale conversion?",
-        "answer": "Grayscale converts paper shadows into gray values. Our adaptive algorithm separates background luminance and isolates signature \"ink spectrums,\" purifying the backdrop to absolute white while leaving stroke edges sharp."
+        "question": "¿En qué se diferencia esto de la conversión normal en escala de grises?",
+        "answer": "La escala de grises convierte las sombras del papel en valores de grises. Nuestro algoritmo adaptativo separa la luminancia del fondo y aísla los \"espectros de tinta\" característicos, purificando el fondo a un blanco absoluto y dejando los bordes de los trazos nítidos."
       },
       {
-        "question": "Will I lose handwriting stroke texture?",
-        "answer": "No. The CLAHE algorithm works on a sub-pixel level, preserving natural pen-stroke pressure, ink fading, and dynamic line weights."
+        "question": "¿Perderé la textura del trazo de escritura a mano?",
+        "answer": "No. El algoritmo CLAHE funciona a nivel de subpíxeles, preservando la presión natural del trazo del lápiz, la decoloración de la tinta y los grosores de línea dinámicos."
       },
       {
-        "question": "Can I keep red corporate stamp marks?",
-        "answer": "Yes. By enabling \"Chroma Ink Preservation,\" the booster whitens paper background and darkens writing, while maintaining the bright colors of red seals and blue ink signatures."
+        "question": "¿Puedo conservar los sellos corporativos rojos?",
+        "answer": "Sí. Al habilitar \"Preservación de tinta cromática\", el potenciador blanquea el fondo del papel y oscurece la escritura, mientras mantiene los colores brillantes de los sellos rojos y las firmas en tinta azul."
       }
     ]
   },
   "pdf-spine-bookbinder": {
     "title": "Calcular Ancho de Lomo",
-    "metaDescription": "Calcule el grosor del lomo en milímetros según las páginas y gramaje del papel, y genere una plantilla de portada con líneas de hendido.",
+    "metaDescription": "Calcule el ancho del lomo del libro a partir del recuento de páginas y el peso del papel. Genere una plantilla de portada imprimible con líneas de plegado del lomo.",
     "keywords": [
       "calcular lomo libro",
       "grosor de lomo",
       "plantilla de portada pdf"
     ],
-    "description": "\n      <p>The PDF Spine Bookbinder is a pre-press savior for designers, self-publishing authors, and commercial bidding teams.</p>\n      <p>When compiling thick book catalogs, bidding proposals, or annual directories, perfect binding (glue binding) requires a cover with precise spine coordinates. If the spine width is off by even 1mm, the bound cover will warp, shift, or crease. Calculating page counts against paper weight is complex and error-prone.</p>\n      <p>This tool utilizes a <strong>physically modeled GSM paper-to-thickness library</strong>. Simply input your PDF page count and select paper stock (e.g. 80 GSM offset, 100 GSM glossy). The engine calculates spine width down to micrometers and compiles a print-ready, extra-wide cover PDF complete with standard front/back flaps and precise fold mark creases.</p>\n    ",
+    "description": "<p>PDF Spine Bookbinder es un salvavidas de preimpresión para diseñadores, autores de autoedición y equipos de licitaciones comerciales.</p>\n      <p>Al compilar catálogos de libros gruesos, propuestas de licitación o directorios anuales, la encuadernación perfecta (encuadernación con pegamento) requiere una cubierta con coordenadas precisas del lomo. Si el ancho del lomo se desvía incluso en 1 mm, la cubierta encuadernada se deformará, se desplazará o se arrugará. Calcular el número de páginas en función del peso del papel es complejo y propenso a errores.</p>\n      <p>Esta herramienta utiliza una <strong>biblioteca GSM de espesor de papel modelada físicamente</strong>. Simplemente ingrese el número de páginas de su PDF y seleccione el tipo de papel (por ejemplo, 80 GSM offset, 100 GSM satinado). El motor calcula el ancho del lomo hasta en micrómetros y compila un PDF de portada extra ancha listo para imprimir, completo con solapas frontales y posteriores estándar y pliegues precisos con marcas de pliegue.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Set pages & stock type",
-        "description": "Input document page count and select the target paper stock specifications."
+        "title": "Establecer páginas y tipo de stock",
+        "description": "Ingrese el recuento de páginas del documento y seleccione las especificaciones del stock de papel de destino."
       },
       {
         "step": 2,
-        "title": "Input spine text",
-        "description": "Enter book titles, author details, and customize spine/cover backgrounds."
+        "title": "Ingrese el texto del lomo",
+        "description": "Ingrese títulos de libros, detalles del autor y personalice los fondos del lomo/cubierta."
       },
       {
         "step": 3,
-        "title": "3D Preview & Export",
-        "description": "Spin and inspect your book cover in an interactive 3D binder. Export high-resolution vector PDF."
+        "title": "Vista previa y exportación 3D",
+        "description": "Gira e inspecciona la portada de tu libro en una carpeta 3D interactiva. Exporte PDF vectorial de alta resolución."
       }
     ],
     "useCases": [
       {
-        "title": "Thick Bidding Proposals",
-        "description": "Design professional cover sheets with precise spine crease alignments for thick tender bids.",
+        "title": "Propuestas de licitación gruesas",
+        "description": "Diseñe portadas profesionales con alineaciones precisas del pliegue del lomo para ofertas tiernas y gruesas.",
         "icon": "layers"
       },
       {
-        "title": "Thesis Hardcover Binding",
-        "description": "Map out perfect spine layout widths for university master/doctorate degree theses.",
+        "title": "Encuadernación de tapa dura de tesis",
+        "description": "Trace los anchos de diseño de lomo perfectos para tesis universitarias de maestría/doctorado.",
         "icon": "award"
       },
       {
-        "title": "Self-Publishing Novel Covers",
-        "description": "Calculate book spine width easily before submitting files to Print-on-Demand publishing services.",
+        "title": "Portadas de novelas de autoedición",
+        "description": "Calcule fácilmente el ancho del lomo del libro antes de enviar archivos a los servicios de publicación de impresión bajo demanda.",
         "icon": "book-open"
       }
     ],
     "faq": [
       {
-        "question": "How accurate is the GSM paper-thickness calculation?",
-        "answer": "Highly accurate. Our physics library matches industry averages (e.g. 70 GSM = 0.09mm, 80 GSM = 0.10mm, 150 GSM glossy = 0.125mm). We also include a \"Double-sided printing\" toggle to halve calculations automatically."
+        "question": "¿Qué tan preciso es el cálculo del espesor del papel GSM?",
+        "answer": "Altamente preciso. Nuestra biblioteca de física coincide con los promedios de la industria (por ejemplo, 70 GSM = 0,09 mm, 80 GSM = 0,10 mm, 150 GSM brillante = 0,125 mm). También incluimos una opción de \"Impresión a doble cara\" para reducir a la mitad los cálculos automáticamente."
       },
       {
-        "question": "Are the exported covers ready for direct printing?",
-        "answer": "Yes. The files are vector-perfect PDFs carrying standard registration marks, color bars, and spine guides, fully compliant with offset and digital commercial presses."
+        "question": "¿Las portadas exportadas están listas para impresión directa?",
+        "answer": "Sí. Los archivos son archivos PDF con vectores perfectos que llevan marcas de registro estándar, barras de color y guías de lomo, totalmente compatibles con las prensas comerciales digitales y offset."
       },
       {
-        "question": "Can I upload a background image spanning the spine?",
-        "answer": "Yes. You can upload custom layouts, and our compositor will wrap and align the graphics across the spine folds automatically."
+        "question": "¿Puedo cargar una imagen de fondo que abarque el lomo?",
+        "answer": "Sí. Puede cargar diseños personalizados y nuestro compositor ajustará y alineará los gráficos en los pliegues del lomo automáticamente."
       }
     ]
   },
   "pdf-signature-anchor-helper": {
     "title": "Guía de Posición de Firma",
-    "metaDescription": "Inserte indicadores visuales de firma y enlaces de navegación rápida en las ubicaciones donde se requiere firmar.",
+    "metaDescription": "Coloque guías de firma en páginas PDF usando coordenadas X/Y. Obtenga una vista previa de sus posiciones antes de guardar el documento actualizado.",
     "keywords": [
       "anclaje de firma",
       "marcador de firma pdf",
       "guiar firmante"
     ],
-    "description": "\n      <p>The PDF Signature Guide Injector guarantees clean, error-free signing workflows for multi-page agreements.</p>\n      <p>When sending multi-page NDA agreements, financial statements, or commercial leases, clients often miss critical signing boxes, requiring endless back-and-forth email loops and delayed business transactions.</p>\n      <p>Our tool uses <strong>natural regex semantic mapping</strong>. It scans the PDF character map to locate terms like <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code>, or <code>签署日期：</code>. It then leverages <code>pdf-lib</code> to inject standard PDF interactive Link annotations. When opened in any standard reader, clients see blinking, neon-bordered arrows that instantly guide them to the correct boxes, making signing foolproof.</p>\n    ",
+    "description": "<p>El PDF Signature Guide Injector garantiza flujos de trabajo de firma limpios y sin errores para acuerdos de varias páginas.</p>\n      <p>Al enviar acuerdos de confidencialidad de varias páginas, estados financieros o arrendamientos comerciales, los clientes a menudo pasan por alto casillas de firma críticas, lo que requiere interminables bucles de correo electrónico de ida y vuelta y transacciones comerciales retrasadas.</p>\n      <p>Nuestra herramienta utiliza <strong>mapeo semántico de expresiones regulares</strong>. Escanea el mapa de caracteres PDF para localizar términos como <code>Firma:</code>, <code>签字：</code>, <code>Testigo:</code> o <code>签署日期：</code>. Luego aprovecha <code>pdf-lib</code> para inyectar anotaciones de enlaces interactivos en PDF estándar. Cuando se abre en cualquier lector estándar, los clientes ven flechas parpadeantes con bordes de neón que los guían instantáneamente a las casillas correctas, lo que hace que la firma sea infalible.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import business contract",
-        "description": "Upload the PDF contract or NDA that needs signature coordinates."
+        "title": "Contrato comercial de importación",
+        "description": "Cargue el contrato en PDF o NDA que necesita coordenadas de firma."
       },
       {"step":2,"title":"X / Y","description":"Haz clic en la vista previa real del PDF o introduce las coordenadas X e Y de la página seleccionada."},
       {"step":3,"title":"Procesar","description":"Procesa el archivo, revisa el resultado y descarga el PDF."},
     ],
     "useCases": [
       {
-        "title": "Corporate NDA Agreements",
-        "description": "Inject clear, flashing guides next to sign blocks to prevent onboarding employees from missing clauses.",
+        "title": "Acuerdos NDA corporativos",
+        "description": "Inyecte guías transparentes y parpadeantes junto a los bloques de letreros para evitar que los empleados incorporados pierdan cláusulas.",
         "icon": "file-text"
       },
       {
-        "title": "Commercial Lease Contracts",
-        "description": "Guide multiple co-signers through multi-page real estate documents with custom-colored tabs.",
+        "title": "Contratos de arrendamiento comercial",
+        "description": "Guíe a varios cofirmantes a través de documentos inmobiliarios de varias páginas con pestañas de colores personalizados.",
         "icon": "users"
       },
       {
-        "title": "Procurement PO Signatures",
-        "description": "Overlay interactive pointers on invoices and purchase orders to accelerate accounting approval loops.",
+        "title": "Firmas de orden de compra de adquisiciones",
+        "description": "Superponga punteros interactivos en facturas y órdenes de compra para acelerar los ciclos de aprobación contable.",
         "icon": "briefcase"
       }
     ],
     "faq": [
       {
-        "question": "Will these guides appear when I print the contract?",
-        "answer": "No. The anchors are injected with the standard PDF `Printable` flag set to false. They display beautifully on computer/tablet screens but remain completely invisible when printed."
+        "question": "¿Estas guías aparecerán cuando imprima el contrato?",
+        "answer": "No. Los anclajes se inyectan con el indicador estándar de PDF \"Imprimible\" establecido en falso. Se muestran bellamente en las pantallas de computadoras o tabletas, pero permanecen completamente invisibles cuando se imprimen."
       },
       {
-        "question": "Can clients jump between signature fields easily?",
-        "answer": "Yes. We weave bidirectional internal anchors. Clients can click the \"Sign Guide\" bookmark to automatically jump to the next empty signature slot instantly."
+        "question": "¿Pueden los clientes saltar fácilmente entre los campos de firma?",
+        "answer": "Sí. Tejemos anclajes internos bidireccionales. Los clientes pueden hacer clic en el marcador \"Guía de firmas\" para saltar automáticamente al siguiente espacio de firma vacío al instante."
       },
       {
-        "question": "Does this work on scanned image documents?",
-        "answer": "Yes. Besides looking up text streams, our spatial layout parser estimates signature lines based on horizontal rules and bounding boxes on scanned sheets."
+        "question": "¿Esto funciona en documentos con imágenes escaneadas?",
+        "answer": "Sí. Además de buscar secuencias de texto, nuestro analizador de diseño espacial estima líneas de firma basándose en reglas horizontales y cuadros delimitadores en hojas escaneadas."
       }
     ]
   },
   "pdf-lossless-slicer": {
     "title": "Recorte de Planos sin Pérdidas",
-    "metaDescription": "Recorte secciones de planos de gran tamaño modificando el CropBox a nivel vectorial, sin pérdida de resolución.",
+    "metaDescription": "Recorta una región de un dibujo, mapa o gráfico PDF usando coordenadas precisas. Conserve el contenido vectorial en el PDF exportado.",
     "keywords": [
       "recortar planos pdf",
       "recorte vectorial pdf",
       "modificar mediabox"
     ],
-    "description": "\n      <p>The PDF Lossless Drawing Slicer is a high-precision, surgical tool built for architects, engineers, and map detailers.</p>\n      <p>When extracting a specific pump room or chip core from a massive CAD engineering blueprint or geographic map PDF, traditional screenshots result in pixelated, blurry text. Normal cropping tools simply place a mask over the sheet, meaning the massive 100MB file remains huge, and hidden content can still be extracted.</p>\n      <p>This tool edits the page <code>/MediaBox</code>, <code>/CropBox</code>, and <code>/BleedBox</code> matrices at the object tree level. It physically isolates vector nodes outside the selected region, keeping the target area 100% vector-perfect (allowing infinite zoom magnification) while purging redundant off-screen paths and images to shrink the file size by 95%!</p>\n    ",
+    "description": "<p>PDF Lossless Drawing Slicer es una herramienta quirúrgica de alta precisión diseñada para arquitectos, ingenieros y cartógrafos.</p>\n      <p>Al extraer una sala de bombas o un núcleo de chip específico de un enorme plano de ingeniería CAD o de un mapa geográfico PDF, las capturas de pantalla tradicionales dan como resultado un texto borroso y pixelado. Las herramientas de recorte normales simplemente colocan una máscara sobre la hoja, lo que significa que el enorme archivo de 100 MB sigue siendo enorme y aún se puede extraer el contenido oculto.</p>\n      <p>Esta herramienta edita las matrices de página <code>/MediaBox</code>, <code>/CropBox</code> y <code>/BleedBox</code> en el nivel del árbol de objetos. Aísla físicamente los nodos vectoriales fuera de la región seleccionada, manteniendo el área de destino 100% vectorialmente perfecta (lo que permite una ampliación de zoom infinita) mientras elimina rutas e imágenes redundantes fuera de la pantalla para reducir el tamaño del archivo en un 95%.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import large blueprint",
-        "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
+        "title": "Importar plano grande",
+        "description": "Cargue el CAD rico en vectores, el mapa GIS o el PDF del catálogo de alta resolución."
       },
       {"step":2,"title":"Rectángulo de recorte","description":"Introduce X, Y, anchura y altura; comprueba la página seleccionada en la vista previa."},
       {"step":3,"title":"Procesar","description":"Procesa el archivo, revisa el resultado y descarga el PDF."},
     ],
     "useCases": [
       {
-        "title": "CAD Blueprint Isolation",
-        "description": "Slice out a \"cooling system\" detail from a massive 100MB floor plan blueprint to share with sub-contractors.",
+        "title": "Aislamiento de planos CAD",
+        "description": "Extraiga un detalle del \"sistema de refrigeración\" de un enorme plano de planta de 100 MB para compartirlo con los subcontratistas.",
         "icon": "crop"
       },
       {
-        "title": "GIS Map Snipping",
-        "description": "Extract a lossless, vector-clear block of a city street map for a presentation slide without resolution loss.",
+        "title": "Recorte de mapas SIG",
+        "description": "Extraiga un bloque sin pérdidas y sin vectores de un mapa de calles de la ciudad para una diapositiva de presentación sin pérdida de resolución.",
         "icon": "map"
       },
       {
-        "title": "Manual Illustration Tracing",
-        "description": "Lossless isolate scientific book figures to embed into high-quality academic papers.",
+        "title": "Seguimiento manual de ilustraciones",
+        "description": "Aísle figuras de libros científicos sin pérdidas para incorporarlas en artículos académicos de alta calidad.",
         "icon": "image"
       }
     ],
     "faq": [
       {
-        "question": "How is this different from standard cropping?",
-        "answer": "Standard cropping merely adjusts visual bounds; the hidden vectors remain in the file. Our slicer trims overlapping vector paths and purges out-of-bounds XObject images, ensuring complete data isolation and maximum file compression."
+        "question": "¿En qué se diferencia esto del recorte estándar?",
+        "answer": "El recorte estándar simplemente ajusta los límites visuales; los vectores ocultos permanecen en el archivo. Nuestro cortador recorta las rutas vectoriales superpuestas y purga las imágenes XObject fuera de los límites, lo que garantiza un aislamiento completo de los datos y una máxima compresión de archivos."
       },
       {
-        "question": "Will text layers remain searchable?",
-        "answer": "Yes. Any text characters that fall inside the sliced boundary remain fully vector-clear, searchable, and selectable."
+        "question": "¿Se podrán realizar búsquedas en las capas de texto?",
+        "answer": "Sí. Cualquier carácter de texto que se encuentre dentro del límite cortado permanece completamente claro como vector, se puede buscar y seleccionar."
       },
       {
-        "question": "Can I export sliced regions to SVG?",
-        "answer": "The output is a standardized vector PDF. You can pass the resulting file to our PDF-to-SVG tool to convert it to a web-scalable vector graphics format."
+        "question": "¿Puedo exportar regiones cortadas a SVG?",
+        "answer": "El resultado es un PDF vectorial estandarizado. Puede pasar el archivo resultante a nuestra herramienta de PDF a SVG para convertirlo a un formato de gráficos vectoriales escalable en la web."
       }
     ]
   },
   "pdf-scratchpad-canvas": {
     "title": "Lienzo de Notas Cuadriculado",
-    "metaDescription": "Amplíe el lienzo de las páginas PDF agregando un margen de notas con patrón de cuadrícula o líneas para escribir.",
+    "metaDescription": "Agregue márgenes de notas de cuadrícula, rayados o Cornell a páginas PDF. Cree espacio de escritura adicional para notas de estudio, cálculos y preparación de exámenes.",
     "keywords": [
       "margen para notas pdf",
       "papel cuadriculado pdf",
       "lienzo de escritura"
     ],
-    "description": "\n      <p>The PDF Scratchpad Margin Extender is an essential study companion tailored for students, researchers, and professional exam candidates.</p>\n      <p>When solving practice test papers, reviewing slides, or reading academic textbooks on digital tablets, page margins are incredibly tight. Opening a separate notes app forces you to toggle screens constantly, breaking focus. Adding flat blank sheets prevents you from viewing the problem and your calculation side-by-side.</p>\n      <p>This tool rewrites page width or height dimensions in the low-level PDF structure, expanding <code>/MediaBox</code> margins by 200~250 pt on the right or bottom. It then overlays clean grid lines, college-ruled notebook lines, or Cornell layouts in the new margins, giving you dedicated, adjacent draft boards next to every single slide or question!</p>\n    ",
+    "description": "<p>PDF Scratchpad Margin Extender es un compañero de estudio esencial diseñado para estudiantes, investigadores y candidatos a exámenes profesionales.</p>\n      <p>Al resolver exámenes de práctica, revisar diapositivas o leer libros de texto académicos en tabletas digitales, los márgenes de las páginas son increíblemente ajustados. Abrir una aplicación de notas separada te obliga a alternar pantallas constantemente, rompiendo el enfoque. Agregar hojas en blanco le impide ver el problema y su cálculo uno al lado del otro.</p>\n      <p>Esta herramienta reescribe las dimensiones de ancho o alto de la página en la estructura PDF de bajo nivel, expandiendo los márgenes de <code>/MediaBox</code> entre 200 y 250 puntos a la derecha o en la parte inferior. Luego, superpone líneas de cuadrícula limpias, líneas de cuadernos con reglas universitarias o diseños de Cornell en los nuevos márgenes, brindándole tableros de borrador adyacentes y dedicados junto a cada diapositiva o pregunta.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload lecture slides",
-        "description": "Provide the PDF textbook, slides, or study papers."
+        "title": "Subir diapositivas de la conferencia",
+        "description": "Proporcione el libro de texto, las diapositivas o los trabajos de estudio en PDF."
       },
       {
         "step": 2,
-        "title": "Choose margin & grid style",
-        "description": "Pick margin expansion direction (e.g. right side for tablets) and select the grid template."
+        "title": "Elige el estilo de margen y cuadrícula",
+        "description": "Elija la dirección de expansión del margen (por ejemplo, lado derecho para tabletas) y seleccione la plantilla de cuadrícula."
       },
       {
         "step": 3,
-        "title": "Stitch canvas & download",
-        "description": "Click execute to generate expanded pages complete with beautiful draft grids."
+        "title": "Coser lienzo y descargar",
+        "description": "Haga clic en ejecutar para generar páginas ampliadas con hermosas cuadrículas de borrador."
       }
     ],
     "useCases": [
       {
-        "title": "STEM Exam Preparation",
-        "description": "Stitch grid margins next to math and physics exam questions, solving derivations right next to the question.",
+        "title": "Preparación para el examen STEM",
+        "description": "Cose los márgenes de la cuadrícula junto a las preguntas de los exámenes de matemáticas y física, resolviendo derivaciones justo al lado de la pregunta.",
         "icon": "edit-3"
       },
       {
-        "title": "Language Reading Analysis",
-        "description": "Add ruled notebook margins next to foreign language essays for vocabulary analysis and paragraph translation.",
+        "title": "Análisis de lectura del lenguaje",
+        "description": "Agregue márgenes de cuaderno rayados junto a ensayos en idiomas extranjeros para análisis de vocabulario y traducción de párrafos.",
         "icon": "book"
       },
       {
-        "title": "Architectural Blueprint Audit",
-        "description": "Add empty margin spaces on the side of blueprints for engineering calculations and client review comments.",
+        "title": "Auditoría de planos arquitectónicos",
+        "description": "Agregue espacios de margen vacíos al costado de los planos para cálculos de ingeniería y comentarios de revisión de clientes.",
         "icon": "columns"
       }
     ],
     "faq": [
       {
-        "question": "Will this squish my original PDF text?",
-        "answer": "Not at all. The algorithm expands the paper dimension outwards. The original content retains its layout, fonts, and resolution; we simply stretch the white space on the borders and draw grids on them."
+        "question": "¿Esto aplastará mi texto PDF original?",
+        "answer": "Para nada. El algoritmo expande la dimensión del papel hacia afuera. El contenido original conserva su diseño, fuentes y resolución; simplemente estiramos el espacio en blanco en los bordes y dibujamos cuadrículas en ellos."
       },
       {
-        "question": "Can standard hand-writing pens write in the scratchpad?",
-        "answer": "Yes. The new PDF pages are compiled natively. Popular tablet note-taking applications like Goodnotes, Notability, Xodo, and Acrobat can write, highlight, and doodle directly in the new grid space."
+        "question": "¿Pueden los bolígrafos estándar escribir en el bloc de notas?",
+        "answer": "Sí. Las nuevas páginas PDF se compilan de forma nativa. Las aplicaciones populares para tomar notas en tabletas, como Goodnotes, Notability, Xodo y Acrobat, pueden escribir, resaltar y garabatear directamente en el nuevo espacio de la cuadrícula."
       },
       {
-        "question": "Are grid lines dark and distracting?",
-        "answer": "We curated three subtle, eye-friendly colors (soft blue-gray, warm brown, and glowing green). The lines are thin and gentle, serving as guides without distracting you from the original page content."
+        "question": "¿Las líneas de la cuadrícula son oscuras y distraen?",
+        "answer": "Seleccionamos tres colores sutiles y agradables a la vista (azul grisáceo suave, marrón cálido y verde brillante). Las líneas son finas y suaves y sirven como guías sin distraerte del contenido de la página original."
       }
     ]
   },
   "photo-tiling-prepress": {
     "title": "Imprimir Fotos de Identificación",
-    "metaDescription": "Organice una foto de identificación en un plano de impresión de 5\" o 6\" en formato de matriz, con guías de corte.",
+    "metaDescription": "Recorte y organice fotografías de identificación o pasaporte en papel fotográfico estándar. Agregue marcas de corte de impresión para ayudar a cortar la hoja terminada.",
     "keywords": [
       "imprimir fotos carnet",
       "papel fotográfico matriz",
       "guias de corte"
     ],
-    "description": "\n      <p>The Prepress Photo Tiling tool is a cost-effective, high-precision layout compiler built for personal registration cards and photography studios.</p>\n      <p>Printing passport photos, ID photos, or driver licenses at home often results in incorrect physical dimensions (often printed too large or too small), wasted photo paper, and uneven alignments. Going to professional print shops to get layouts made is time-consuming.</p>\n      <p>Our tool integrates a <strong>precision prepress matrix engine</strong>. It accepts portrait photographs or ID card scans, crops them to standard dimensions (e.g. 1\" or 2\" passport specs), calculates optimal tile counts for standard photo papers (e.g. 5\" or 6\" sheets), and injects crisp, micro-pixel crop lines for easy physical cutting, generating a perfect printable PDF.</p>\n    ",
+    "description": "<p>La herramienta Prepress Photo Tiling es un compilador de diseño rentable y de alta precisión creado para tarjetas de registro personales y estudios de fotografía.</p>\n      <p>La impresión de fotografías de pasaporte, de identificación o de permisos de conducir en casa a menudo genera dimensiones físicas incorrectas (a menudo impresas demasiado grandes o demasiado pequeñas), desperdicio de papel fotográfico y alineaciones desiguales. Ir a imprentas profesionales para realizar los diseños lleva mucho tiempo.</p>\n      <p>Nuestra herramienta integra un <strong>motor matricial de preimpresión de precisión</strong>. Acepta fotografías de retratos o escaneos de tarjetas de identificación, los recorta a dimensiones estándar (por ejemplo, especificaciones de pasaporte de 1\" o 2\"), calcula el número óptimo de mosaicos para papeles fotográficos estándar (por ejemplo, hojas de 5\" o 6\") e inyecta líneas de recorte nítidas de micropíxeles para facilitar el corte físico, generando un PDF imprimible perfecto.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Import passport photo",
-        "description": "Upload the camera portrait snapshot or double-sided ID card images."
+        "title": "Importar foto de pasaporte",
+        "description": "Cargue la instantánea de retrato de la cámara o las imágenes de tarjetas de identificación de doble cara."
       },
       {
         "step": 2,
-        "title": "Configure paper & layout",
-        "description": "Select the target print paper size (e.g. 6\") and choose the grid layouts (e.g. 8 copies of 1\" photos)."
+        "title": "Configurar papel y diseño",
+        "description": "Seleccione el tamaño del papel de impresión de destino (por ejemplo, 6\") y elija los diseños de cuadrícula (por ejemplo, 8 copias de fotografías de 1\")."
       },
       {
         "step": 3,
-        "title": "Tile and export",
-        "description": "Inspect photo tiles on our grid, and export the high-DPI printable PDF."
+        "title": "Mosaico y exportación",
+        "description": "Inspeccione mosaicos de fotografías en nuestra cuadrícula y exporte el PDF imprimible de alto DPI."
       }
     ],
     "useCases": [
       {
-        "title": "Self-Service Passport Photos",
-        "description": "Arrange your mobile-shot passport portraits onto a single 6\" photo paper grid, and print 8 copies for a fraction of standard studio costs.",
+        "title": "Fotos de pasaporte de autoservicio",
+        "description": "Organice sus retratos de pasaporte tomados con su dispositivo móvil en una sola cuadrícula de papel fotográfico de 6\" e imprima 8 copias por una fracción de los costos estándar de estudio.",
         "icon": "user"
       },
       {
-        "title": "ID Card Double-sided Copy",
-        "description": "Format front and back scans of national ID cards neatly on standard Letter/A4 sheets for official submissions.",
+        "title": "Copia de tarjeta de identificación a doble cara",
+        "description": "Formatee cuidadosamente los escaneos del anverso y el reverso de los documentos de identidad nacionales en hojas estándar Carta/A4 para presentaciones oficiales.",
         "icon": "file-text"
       },
       {
-        "title": "Batch Photo Thumbnail Sheets",
-        "description": "Tile multiple family memories or design snapshots onto a grid paper to print thumbnail contact sheets efficiently.",
+        "title": "Hojas de miniaturas de fotografías por lotes",
+        "description": "Coloca múltiples recuerdos familiares o diseña instantáneas en un papel cuadriculado para imprimir hojas de contactos en miniatura de manera eficiente.",
         "icon": "grid"
       }
     ],
     "faq": [
       {
-        "question": "Will the printed dimensions match official 1\" or 2\" specs?",
-        "answer": "Yes. The grid engine measures using standard PDF points (72 pt = 1 inch), rendering 1\" photos exactly at 25x35mm, and 2\" photos at 35x49mm. Ensure you print at \"Actual Size / 100% Scale\" in your printer settings."
+        "question": "¿Las dimensiones impresas coincidirán con las especificaciones oficiales de 1\" o 2\"?",
+        "answer": "Sí. El motor de cuadrícula mide utilizando puntos PDF estándar (72 pt = 1 pulgada), renderizando fotos de 1\" exactamente a 25x35 mm y fotos de 2\" a 35x49 mm. Asegúrese de imprimir en \"Tamaño real / Escala 100%\" en la configuración de su impresora."
       },
       {
-        "question": "Can I combine 1\" and 2\" photos on a single sheet?",
-        "answer": "Yes. We provide curated hybrid layout presets (e.g. \"4 copies of 1\" + 4 copies of 2\"\"), allowing you to maximize photo paper space."
+        "question": "¿Puedo combinar fotografías de 1\" y 2\" en una sola hoja?",
+        "answer": "Sí. Proporcionamos ajustes preestablecidos de diseño híbrido seleccionados (por ejemplo, \"4 copias de 1\" + 4 copias de 2\"), lo que le permite maximizar el espacio en papel fotográfico."
       },
       {
-        "question": "Does the template include border bleeds?",
-        "answer": "Yes. The prepress layouts reserve a standard 4mm print-safe margin on the paper borders, preventing physical printer rollers from cropping the photos."
+        "question": "¿La plantilla incluye sangrados en los bordes?",
+        "answer": "Sí. Los diseños de preimpresión reservan un margen seguro de impresión estándar de 4 mm en los bordes del papel, lo que evita que los rodillos físicos de la impresora recorten las fotografías."
       }
     ]
   },
@@ -7780,4 +7780,76 @@ export const toolContentEs: Record<string, ToolContent> = {
       }
     ]
   }
+,
+"redact-pdf": {
+  "title": "Censurar PDF",
+  "metaDescription": "Oscurece, difumina o pixela contenido PDF sensible. Exporte páginas aplanadas y elimine metadatos localmente en su navegador.",
+  "keywords": [
+    "redactar pdf",
+    "apagón pdf",
+    "mosaico pdf",
+    "desenfocar pdf",
+    "privacidad del pdf",
+    "eliminar datos confidenciales",
+    "editor de pdf seguro"
+  ],
+  "description": "<p>Redact PDF proporciona un editor visual e interactivo para ocultar y proteger permanentemente datos confidenciales en sus documentos PDF. Arrastra para marcar cualquier área confidencial (como nombres, direcciones, números de identificación, firmas, sellos oficiales, cifras financieras o retratos) y aplica efectos de oscurecimiento, oscurecimiento, mosaico o desenfoque.</p>\n      <p>A diferencia de los editores de PDF estándar que simplemente superponen rectángulos negros superficiales sobre el texto existente, esta herramienta realiza una <strong>rasterización física irreversible de píxeles</strong>. Las capas de texto subyacentes, los gráficos vectoriales y las secuencias de OCR se destruyen por completo y no se pueden recuperar copiando y pegando ni aplicando ingeniería inversa.</p>\n      <p>Además, la herramienta realiza una limpieza profunda de metadatos, eliminando la información del autor, el historial de creación y las transmisiones XMP. Todo el procesamiento se ejecuta 100% localmente en su navegador sin cargas en el servidor.</p>",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Subir documento PDF",
+      "description": "Seleccione o arrastre y suelte el archivo PDF que desea redactar."
+    },
+    {
+      "step": 2,
+      "title": "Marcar áreas sensibles",
+      "description": "Haga clic y arrastre en cualquier página para dibujar cuadros de redacción alrededor del contenido confidencial."
+    },
+    {
+      "step": 3,
+      "title": "Elija estilo de redacción",
+      "description": "Seleccione oscurecimiento, oscurecimiento, mosaico (tamaño de píxel ajustable) o desenfoque. Cambie la vista previa en tiempo real para inspeccionar el resultado."
+    },
+    {
+      "step": 4,
+      "title": "Exportar PDF seguro",
+      "description": "Haga clic en \"Generar PDF seguro\" para ejecutar el acoplamiento irreversible, la eliminación de metadatos y descargar su documento seguro."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Privacidad y cumplimiento normativo",
+      "description": "Enmascare de forma segura la información de identificación personal (PII) para cumplir con los requisitos de GDPR, HIPAA o CCPA.",
+      "icon": "shield"
+    },
+    {
+      "title": "Intercambio confidencial legal y comercial",
+      "description": "Secretos comerciales oscuros, términos de acuerdos, firmas y sellos antes de su divulgación pública o distribución externa.",
+      "icon": "file-text"
+    },
+    {
+      "title": "Protección financiera y de identidad",
+      "description": "Ocultar números de cuentas bancarias, identificaciones fiscales, detalles de tarjetas de crédito y números de tarjetas de identificación en extractos y facturas.",
+      "icon": "lock"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Alguien puede recuperar información redactada copiando texto o inspeccionando capas?",
+      "answer": "No. Las áreas redactadas se someten a un aplanamiento físico de los píxeles. El texto, los vectores y los objetos subyacentes se eliminan por completo de la estructura del archivo, lo que imposibilita la recuperación."
+    },
+    {
+      "question": "¿Cuál es la diferencia entre oscurecimiento, mosaico y desenfoque?",
+      "answer": "Blackout crea una máscara negra sólida (estándar para documentos legales); whiteout proporciona una máscara blanca y limpia; el mosaico crea una cuadrícula pixelada; y el desenfoque produce un suave efecto de vidrio esmerilado."
+    },
+    {
+      "question": "¿Se cargan archivos en sus servidores?",
+      "answer": "No. Todo el procesamiento, la redacción, el acoplamiento y la generación de PDF se realizan completamente dentro de la memoria de su navegador. Tus documentos nunca salen de tu dispositivo."
+    },
+    {
+      "question": "¿Qué metadatos se eliminan?",
+      "answer": "El título del documento, el autor, el asunto, las palabras clave, el creador, el productor, la fecha de creación, la fecha de modificación y los flujos de metadatos XMP extendidos se borran por completo."
+    }
+  ]
+}
 };

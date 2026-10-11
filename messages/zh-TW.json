@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "所有 PDF 工具",
-      "description": "瀏覽 67+ 款專業 PDF 工具。免費合併、分割、壓縮、轉換、編輯和保護您的 PDF 檔案。"
+      "description": "免費線上PDF工具，可合併、分割、壓縮、轉換、編輯和保護文件。所有處理均在瀏覽器內完成，無需註冊或將檔案上傳至伺服器。"
     },
     "about": {
       "title": "關於我們",
@@ -161,7 +161,7 @@
       "finish": "完成",
       "skip": "跳過",
       "stepOf": "/",
-      "welcomeTitle": "歡迎使用PDFCraft！",
+      "welcomeTitle": "歡迎使用AwesomePDF！",
       "welcomeMessage": "想要快速瞭解如何使用我們的PDF工具嗎？只需一分鐘。",
       "helpButton": "幫助導覽"
     },
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "支援哪些語言？",
-          "answer": "AwesomePDF 提供 9 種語言版本：英語、日語、韓語、西班牙語、法語、德語、中文、葡萄牙語和阿拉伯語（支援從右到左）。"
+          "answer": "AwesomePDF支援{languages}種語言：{languageNames}。阿拉伯語支援從右至左的版面配置。"
         },
         "change": {
           "question": "如何更改語言？",

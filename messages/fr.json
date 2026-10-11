@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "Tous les Outils PDF",
-      "description": "Parcourez plus de 67 outils PDF professionnels. Fusionnez, divisez, compressez, convertissez, modifiez et sécurisez vos fichiers PDF gratuitement."
+      "description": "Outils PDF gratuits pour fusionner, diviser, compresser, convertir, modifier et protéger vos documents dans le navigateur. Sans compte ni envoi au serveur."
     },
     "about": {
       "title": "À Propos",
@@ -1248,7 +1248,7 @@
       "languages": {
         "supported": {
           "question": "Quelles langues sont prises en charge ?",
-          "answer": "AwesomePDF est disponible en 9 langues : anglais, japonais, coréen, espagnol, français, allemand, chinois, portugais et arabe (avec prise en charge RTL)."
+          "answer": "AwesomePDF est disponible en {languages} langues : {languageNames}. L’arabe dispose d’une interface de droite à gauche."
         },
         "change": {
           "question": "Comment changer la langue ?",

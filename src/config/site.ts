@@ -2,20 +2,20 @@
  * Resolve the public origin of the deployment (no trailing slash).
  *
  * The site is a static export, so the host is only known at build time. Order:
- * explicit NEXT_PUBLIC_SITE_URL, then the host's own build variables
- * (Vercel, Netlify, Cloudflare Pages), then localhost for local development.
+ * explicit NEXT_PUBLIC_SITE_URL, then the known production domain. Preview
+ * hostnames must not silently change the canonical origin.
  */
 function resolveSiteUrl(): string {
   const candidate =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
-    process.env.URL?.trim() || // Netlify primary site URL
-    process.env.CF_PAGES_URL?.trim() ||
-    process.env.VERCEL_URL?.trim() ||
-    'http://localhost:3000';
+    'https://awsomepdf.com';
 
   const withProtocol = /^https?:\/\//i.test(candidate) ? candidate : `https://${candidate}`;
-  return withProtocol.replace(/\/+$/, '');
+  const url = new URL(withProtocol);
+  if (url.pathname !== '/' || url.search || url.hash) {
+    throw new Error('NEXT_PUBLIC_SITE_URL must be an origin. Set BASE_PATH separately for a subpath deployment.');
+  }
+  return url.origin;
 }
 
 /**

@@ -7,6 +7,8 @@ import ToolsPageClient from './ToolsPageClient';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
+import { PageSeo } from '@/components/seo/PageSeo';
+import seoCopy from '@/lib/seo/copy.json';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -67,6 +69,7 @@ export default async function ToolsPage({ params }: ToolsPageProps) {
   // because static export doesn't support server-side searchParams
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <PageSeo locale={locale as Locale} path="/tools" title={seoCopy[locale as Locale].tools.title} description={seoCopy[locale as Locale].tools.description} type="CollectionPage" tools={tools.filter(tool => !tool.disabled)} />
       <Header locale={locale as Locale} />
       <Suspense fallback={<ToolsPageFallback label={t('loading')} />}>
         <ToolsPageClient locale={locale as Locale} localizedToolContent={localizedToolContent} />

@@ -6,7 +6,7 @@
  */
 
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/config/site';
+import { getAbsoluteUrl, getCanonicalUrl, getAlternateUrls } from '@/lib/seo/urls';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { getAllTools } from '@/config/tools';
 import { TOOL_CATEGORIES } from '@/types/tool';
@@ -55,14 +55,14 @@ const STATIC_PAGES = [
 /**
  * Generate sitemap entries for a specific locale
  */
-function generateLocaleEntries(locale: Locale, lastModified: Date): MetadataRoute.Sitemap {
+function generateLocaleEntries(locale: Locale): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   
   // Add static pages
   for (const page of STATIC_PAGES) {
     entries.push({
-      url: `${siteConfig.url}/${locale}${page.path}`,
-      lastModified,
+      url: getCanonicalUrl(locale, page.path),
+      alternates: { languages: getAlternateUrls(page.path) },
       changeFrequency: page.changeFrequency as 'daily' | 'weekly' | 'monthly',
       priority: page.priority,
     });
@@ -72,8 +72,8 @@ function generateLocaleEntries(locale: Locale, lastModified: Date): MetadataRout
   const tools = getAllTools();
   for (const tool of tools) {
     entries.push({
-      url: `${siteConfig.url}/${locale}/tools/${tool.slug}`,
-      lastModified,
+      url: getCanonicalUrl(locale, `/tools/${tool.slug}`),
+      alternates: { languages: getAlternateUrls(`/tools/${tool.slug}`) },
       changeFrequency: CHANGE_FREQUENCY.toolPage,
       priority: PRIORITY.toolPage,
     });
@@ -86,12 +86,15 @@ function generateLocaleEntries(locale: Locale, lastModified: Date): MetadataRout
  * Generate the complete sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const allEntries: MetadataRoute.Sitemap = [];
+  const allEntries: MetadataRoute.Sitemap = [{
+    url: getAbsoluteUrl('/', true),
+    alternates: { languages: getAlternateUrls() },
+    priority: PRIORITY.home,
+  }];
   
   // Generate entries for each locale
   for (const locale of locales) {
-    const localeEntries = generateLocaleEntries(locale, lastModified);
+    const localeEntries = generateLocaleEntries(locale);
     allEntries.push(...localeEntries);
   }
   
@@ -108,5 +111,5 @@ export function getSitemapUrlCount(): number {
   const toolPagesCount = tools.length;
   const localesCount = locales.length;
   
-  return (staticPagesCount + toolPagesCount) * localesCount;
+  return (staticPagesCount + toolPagesCount) * localesCount + 1;
 }

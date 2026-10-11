@@ -286,7 +286,12 @@ Enjoy converting your Markdown to PDF!
                                         prose prose-sm max-w-none
                                         ${theme === 'dark' ? 'bg-gray-900 text-white prose-invert' : 'bg-white'}
                                     `}
-                                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(previewHtml) }}
+                                    dangerouslySetInnerHTML={{
+                                        // A document preview sits below the landing page's H1.
+                                        // PDF export continues to use the original Markdown levels.
+                                        __html: sanitizeHtml(previewHtml).replace(/<(\/?)(h)([1-6])(\b[^>]*)>/gi,
+                                            (_, closing, heading, level, attributes) => `<${closing}${heading}${Math.min(Number(level) + 1, 6)}${attributes}>`),
+                                    }}
                                 />
                             </div>
                         )}

@@ -2249,7 +2249,7 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'redact-pdf': {
     title: 'Redact PDF',
-    metaDescription: 'Visually blackout, mosaic, or blur sensitive information in PDF files. Irreversible physical rasterization and deep metadata sanitization for privacy protection.',
+    metaDescription: "Black out, blur or pixelate sensitive PDF content. Export flattened pages and remove metadata locally in your browser.",
     keywords: ['redact pdf', 'blackout pdf', 'mosaic pdf', 'blur pdf', 'pdf privacy', 'remove sensitive data', 'secure pdf editor'],
     description: `
       <p>Redact PDF provides a visual, interactive editor to permanently conceal and protect sensitive data in your PDF documents. Drag to mark any confidential area—such as names, addresses, ID numbers, signatures, official seals, financial figures, or portraits—and apply blackout, whiteout, mosaic, or blur effects.</p>
@@ -2729,7 +2729,7 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'digital-sign-pdf': {
     title: 'Digital Signature',
-    metaDescription: 'Add X.509 digital signatures to PDF documents. Sign PDFs with PFX, P12, or PEM certificates for legal validity.',
+    metaDescription: "Digitally sign PDF documents with PFX, P12 or PEM certificates. Add certificate-based signatures locally in your browser.",
     keywords: ['digital signature pdf', 'x509 certificate', 'pfx sign pdf', 'p12 sign pdf', 'pem sign pdf', 'legally sign pdf'],
     description: `
       <p>Digital Signature allows you to add cryptographic X.509 digital signatures to PDF documents. Unlike simple drawn signatures, digital signatures provide legal validity and document integrity verification.</p>
@@ -2782,7 +2782,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'ai-pdf-reflower': {
     title: 'AI PDF Layout Reflower',
-    metaDescription: 'Re-typeset PDF documents into responsive mobile-friendly layouts. Support Markdown and EPUB export for enhanced small-screen reading.',
+    metaDescription: "Reflow PDF text for easier reading on mobile. Export extracted content as Markdown or EPUB in your browser.",
     keywords: ['pdf reflow', 'responsive pdf', 'pdf to markdown', 'epub export', 'mobile pdf reader'],
     description: `
       <p>AI PDF Layout Reflower is your ultimate companion for reading PDF documents on mobile devices. Traditional PDFs use a fixed layout, which often requires endless zooming and horizontal scrolling on smartphones or tablets, resulting in a tedious reading experience.</p>
@@ -2807,7 +2807,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'citation-linker': {
     title: 'Citation Linker',
-    metaDescription: 'Scan and activate citation markers in PDFs, converting them into clickable DOI links or page-jump targets.',
+    metaDescription: "Turn citation markers in PDFs into clickable DOI links or page references. Add useful navigation to research documents.",
     keywords: ['citation linker', 'pdf hyperlink', 'doi matching', 'academic helper', 'pdf references'],
     description: `
       <p>Citation Linker is designed specifically for academic researchers. In many PDF papers, citation markers (e.g., [1], [2]) are plain text, forcing readers to scroll back and forth to the reference list at the end of the document, interrupting their focus.</p>
@@ -2832,7 +2832,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'vector-extractor': {
     title: 'PDF Vector Extractor',
-    metaDescription: 'Convert PDF into high-fidelity SVG, allowing you to select, recolor, and export vector charts, logos, and graphics.',
+    metaDescription: "Extract vector graphics from PDF pages as SVG. Select charts, diagrams and logos for recoloring and export.",
     keywords: ['extract vectors from pdf', 'pdf to svg', 'pdf vector charts', 'extract logo', 'vector drawings'],
     description: `
       <p>PDF Vector Extractor unlocks vector paths and artwork embedded inside PDF files. Easily extract vector charts, diagrams, or logos from documents for design work or printing.</p>
@@ -2857,7 +2857,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'deep-sanitize': {
     title: 'Deep Metadata Sanitizer',
-    metaDescription: 'Thoroughly wipe author metadata, modification logs, hidden layers, and orphan objects from PDFs for maximum privacy.',
+    metaDescription: "Remove metadata, hidden layers and unused objects from PDFs. Clean document information locally before sharing.",
     keywords: ['pdf sanitization', 'clear metadata', 'anonymize pdf', 'strip hidden watermark', 'secure pdf'],
     description: `
       <p>Deep Metadata Sanitizer is your ultimate defense against metadata leaks and hidden tracking. Simply drawing black boxes over visible text in PDF files is not enough to protect commercial secrets.</p>
@@ -2882,7 +2882,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'booklet-folding-simulator': {
     title: '3D Booklet & Folding Simulator',
-    metaDescription: 'Impose multi-page PDFs into foldable print sheets, featuring 3D physical folding animations and saddle-stitch previews.',
+    metaDescription: "Arrange PDF pages for booklet printing. Preview folded sheets and saddle-stitch layouts before exporting your print-ready document.",
     keywords: ['3D imposition', 'folding simulator', 'saddle stitch', 'book layout', 'print proofing'],
     description: `
       <p>3D Booklet & Folding Simulator is an advanced tool designed for print designers and publishing professionals. Traditional book layout requires calculating complex page overlays and imposition pagination sequences. This tool visualizes and automates that entire process.</p>
@@ -2908,7 +2908,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-to-slide': {
     title: 'PDF to Slide',
-    metaDescription: 'Intelligently analyze PDF outlines, extract vector charts, and reconstruct them into fully-editable PPTX presentations.',
+    metaDescription: "Convert PDF content to PowerPoint slides. Export a PPTX presentation with text and images for further editing.",
     keywords: ['PDF to PPT', 'slide reconstruction', 'chart extraction', 'academic presentation', 'PPTX compiler'],
     description: `
       <p>AI PDF-to-Slide Reconstructor breathes new life into static PDF documents, transforming them into modern, highly-customizable PowerPoint slides (PPTX).</p>
@@ -2933,7 +2933,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'form-logic-designer': {
     title: 'Form Logic Designer',
-    metaDescription: 'Design dynamic behaviors using a glassmorphic node canvas and inject interactive AcroJS logic into PDF forms.',
+    metaDescription: "Create PDF form rules with a visual designer. Connect fields and add interactive calculation and validation logic.",
     keywords: ['PDF form logic', 'AcroJS injection', 'node flow', 'interactive PDF', 'field dependencies'],
     description: `
       <p>Interactive Form Logic Designer is a pioneering tool that fills a massive gap in PDF capabilities: creating active, responsive fields instead of flat, dead forms.</p>
@@ -2958,7 +2958,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'eink-optimizer': {
     title: 'e-Ink Reader Optimizer',
-    metaDescription: 'Optimize PDFs for e-Ink screens via background clearing, Otsu binarization, and morphological text dilation.',
+    metaDescription: "Optimize PDF pages for e-ink readers. Clean backgrounds, increase text contrast and adjust documents for easier reading.",
     keywords: ['eink optimizer', 'binarization', 'text bolding', 'eye-friendly reading', 'otsu threshold'],
     description: `
       <p>e-Ink Reader Optimizer is a must-have tool custom-made for e-Reader enthusiasts using Kindle, Onyx Boox, Kobo, or other e-paper devices.</p>
@@ -2983,7 +2983,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'cert-cryptor': {
     title: 'Certificate Encrypt & Sign',
-    metaDescription: 'Secure PDFs using asymmetric public-key certificate encryption, paired with a 3D gold wax-seal imprint and PKCS#7 signature.',
+    metaDescription: "Encrypt and digitally sign PDF documents using certificates. Work with certificate files locally in your browser.",
     keywords: ['certificate encryption', 'wax seal signature', 'digital signature', 'asymmetric crypt', 'PKCS7 signature'],
     description: `
       <p>3D Wax-Seal & Certificate Cryptor provides military-grade security and premium physical-grade aesthetics for sensitive corporate files, degrees, or agreements.</p>
@@ -3009,7 +3009,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'passport-id-composer': {
     title: 'Double-Sided ID Composer',
-    metaDescription: 'Instantly compose both front and back sides of ID cards or passports onto a single A4 page with optional anti-counterfeit watermarks.',
+    metaDescription: "Combine the front and back of an ID card or passport on one A4 PDF page. Arrange scans and add an optional watermark.",
     keywords: ['ID card composer', 'passport imposition', 'A4 double-sided copy', 'identity card printing', 'anti-counterfeit watermark'],
     description: `
       <p>The Passport & ID Double-sided Composer is an incredibly useful productivity utility for standard business and personal operations.</p>
@@ -3034,7 +3034,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'annotation-exporter': {
     title: 'Export Annotations',
-    metaDescription: 'Extract PDF comments, notes, highlights, and underlines, and structure them into Markdown/JSON notebooks aligned with outline chapters.',
+    metaDescription: "Export PDF comments, notes, highlights and underlines to Markdown or JSON. Organize annotations for study, review and research.",
     keywords: ['export annotations', 'extract pdf highlights', 'pdf reader notes', 'markdown outline notebooks', 'study summary helper'],
     description: `
       <p>The Smart Annotation Exporter is a powerful workspace that unlocks full value from your PDF annotations.</p>
@@ -3059,7 +3059,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'batch-watermark-remover': {
     title: 'Batch Remove Watermarks',
-    metaDescription: 'Physically scrub watermark strings and XObject images from the PDF content stream without messing up layouts.',
+    metaDescription: "Remove matching text and image watermarks from PDFs. Review the output to check that document content is preserved.",
     keywords: ['remove watermark', 'pdf watermark eraser', 'content stream purge', 'batch watermark cleaning', 'remove draft watermark'],
     description: `
       <p>The Batch Watermark Remover is a state-of-the-art PDF sanitizer that physically cleanses documents.</p>
@@ -3084,7 +3084,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'smart-data-redactor': {
     title: 'Sensitive Data Redaction',
-    metaDescription: 'Automatically detect phone numbers, emails, and IDs, overlay opaque masks, and physically erase underlying text streams.',
+    metaDescription: "Find email addresses, phone numbers and ID patterns in PDFs. Review matches and redact sensitive content locally.",
     keywords: ['automatic redaction', 'redact privacy pdf', 'erase email pdf', 'mask phone numbers', 'gdpr compliance tool'],
     description: `
       <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>
@@ -3109,7 +3109,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'bookmarks-auto-generator': {
     title: 'Auto Generate Bookmarks',
-    metaDescription: 'Analyze document layout hierarchy and regex patterns (e.g. Chapter) to generate and inject /Outline bookmark catalogs.',
+    metaDescription: "Generate PDF bookmarks from headings and text patterns. Add a navigable outline to long documents, manuals and reports.",
     keywords: ['generate bookmarks', 'pdf outline builder', 'inject bookmarks pdf', 'font size catalog', 'outline tree builder'],
     description: `
       <p>The Auto Bookmarks Generator brings absolute clarity to lengthy, unstructured PDF documents.</p>
@@ -3134,7 +3134,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'batch-barcode-injector': {
     title: 'Batch Inject Barcodes',
-    metaDescription: 'Generate custom QR/Code128 tags and precisely inject them into bulk PDF pages with aligning guidelines.',
+    metaDescription: "Add QR codes or Code 128 barcodes to PDF pages in bulk. Adjust placement for document tracking, labels and print workflows.",
     keywords: ['generate qr pdf', 'barcode injector', 'asset tag pdf', 'qr coordinate positioning', 'stamp barcodes'],
     description: `
       <p>The Batch Barcode precision injector bridges digital asset tracking with physical document indexing.</p>
@@ -3159,7 +3159,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'signature-ink-optimizer': {
     title: 'Extract Signature & Stamp',
-    metaDescription: 'Extract handwritten signatures and red corporate stamps from photos, remove paper shadow noise, and export transparent PNGs.',
+    metaDescription: "Extract a signature or stamp from a photo and remove its background. Download a transparent PNG for use in documents.",
     keywords: ['extract signature', 'transparent signature background', 'clean stamp photo', 'sharpen hand signature', 'png seal maker'],
     description: `
       <p>The Signature & Stamp Chroma Ink Optimizer functions as a professional high-fidelity ink purifier.</p>
@@ -3184,7 +3184,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'dead-link-debugger': {
     title: 'Fix Dead Links',
-    metaDescription: 'Scan all URL actions and link annotations in PDF, detect reachability, and inject redirects.',
+    metaDescription: "Inspect PDF hyperlinks and replace broken or outdated destinations. Scan link annotations and save the updated document.",
     keywords: ['dead link pdf', 'edit pdf hyperlinks', 'pdf link validation', 'redirect link pdf', 'update urls in pdf'],
     description: `
       <p>The Dead Link Debugger is a deep structural editor that guarantees link interaction quality in published files.</p>
@@ -3209,7 +3209,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'interactive-toc-generator': {
     title: 'Generate Interactive TOC',
-    metaDescription: 'Generate aesthetic Table of Contents pages, insert them pre-content, and wire internal bidirectional GoTo anchors.',
+    metaDescription: "Add a clickable table of contents to your PDF. Create chapter links and return navigation for easier document browsing.",
     keywords: ['generate table of contents', 'interactive toc pdf', 'bidirectional anchor link', 'pdf index page builder', 'goto page action'],
     description: `
       <p>The Interactive TOC Builder introduces a revolutionary navigation experience to extensive PDFs.</p>
@@ -3233,8 +3233,8 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
   'global-invoice-parser': {
-    title: 'Invoice Translate & Convert',
-    metaDescription: 'Extract currency totals from multi-national invoices, run calculations, and stamp interactive frosted-glass exchange ledgers.',
+    title: "PDF Invoice Amount Converter",
+    metaDescription: "Extract invoice amounts from PDFs, convert totals between currencies and add a calculation summary to the document.",
     keywords: ['translate invoice', 'invoice currency converter', 'exchange rate calculator pdf', 'stamp local currency', 'global invoice tool'],
     description: `
       <p>The Global Invoice Translator provides ultimate clarity for international finance teams and global buyers.</p>
@@ -3280,7 +3280,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-two-column-reflower': {
     title: 'Two-Column Paper Reflow',
-    metaDescription: 'Analyze IEEE/ACM double-column paper PDF structures and reflow them into responsive single-column layouts for smooth mobile and e-Reader viewing.',
+    metaDescription: "Reflow two-column PDF papers into a single column for easier mobile reading. Adjust academic documents for smaller screens.",
     keywords: ['two-column pdf to single', 'reflow academic paper', 'read papers on smartphone', 'pdf reader reflow', 'mobile friendly papers'],
     description: `
       <p>The Academic Two-Column Reflower solves the most significant pain point of digital research: reading papers on standard mobile screens.</p>
@@ -3305,7 +3305,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-page-resizer-uniform': {
     title: 'Uniform PDF Page Size',
-    metaDescription: 'Batch resize and normalize mixed-format A4, A3, and Letter PDF sheets into a uniform target size with proportional centering and margin padding.',
+    metaDescription: "Resize mixed PDF pages to a uniform size. Normalize A4, A3 and Letter pages with proportional scaling and centered margins.",
     keywords: ['uniform page size', 'resize pdf pages', 'merge diverse pdf', 'mediabox normalize', 'batch page scale'],
     description: `
       <p>The Multi-Format PDF Resizer is the ultimate standardizer for cluttered, mismatched corporate documents.</p>
@@ -3330,7 +3330,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'handwriting-ink-contrast-booster': {
     title: 'Enhance Handwriting Ink',
-    metaDescription: 'Extract blue or black handwriting signatures from photos, bleach yellow paper grain, and dramatically boost ink contrast for readability.',
+    metaDescription: "Enhance handwriting and signature contrast in scanned images. Reduce paper background noise and make ink easier to read.",
     keywords: ['enhance handwritten contract', 'ink contrast boost', 'bleach scanned paper', 'sharpen faded signature', 'signature extraction'],
     description: `
       <p>The Handwriting Ink Contrast Booster is a savior for digitizing signed agreements and historical manuscript archives.</p>
@@ -3355,7 +3355,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-spine-bookbinder': {
     title: 'Calculate Book Spine Width',
-    metaDescription: 'Calculate book spine width based on page count and paper GSM, and generate a printable cover template with spine fold lines.',
+    metaDescription: "Calculate book spine width from page count and paper weight. Generate a printable cover template with spine fold lines.",
     keywords: ['book spine calculator', 'binding spine thickness', 'generate book cover pdf', 'spine fold marks', 'perfect binding prepress'],
     description: `
       <p>The PDF Spine Bookbinder is a pre-press savior for designers, self-publishing authors, and commercial bidding teams.</p>
@@ -3380,7 +3380,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-signature-anchor-helper': {
     title: 'Signature Position Guide',
-    metaDescription: 'Automatically locate signature fields in contracts, and inject interactive hovering guides and anchors for quick signing.',
+    metaDescription: "Place signature guides on PDF pages using X/Y coordinates. Preview their positions before saving the updated document.",
     keywords: ['locate signature pdf', 'inject sign anchor', 'contract signing helper', 'click to sign guide', 'prevent missing signatures'],
     description: `
       <p>The PDF Signature Guide Injector guarantees clean, error-free signing workflows for multi-page agreements.</p>
@@ -3405,7 +3405,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-lossless-slicer': {
     title: 'Lossless Drawing Slicing',
-    metaDescription: 'Extract a partial region of large PDF CAD drawings, maps, or charts at a low-level, keeping vector resolution intact while dropping file size.',
+    metaDescription: "Crop a region of a PDF drawing, map or chart using precise coordinates. Preserve vector content in the exported PDF.",
     keywords: ['pdf vector crop', 'lossless pdf slice', 'cad drawing crop', 'cropbox matrix edit', 'extract map region'],
     description: `
       <p>The PDF Lossless Drawing Slicer is a high-precision, surgical tool built for architects, engineers, and map detailers.</p>
@@ -3430,7 +3430,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'pdf-scratchpad-canvas': {
     title: 'Grid Scratchpad Canvas',
-    metaDescription: 'Stitch high-quality grid, ruled, or Cornell note-taking margins to PDF pages for formula derivations and exam note preparation.',
+    metaDescription: "Add grid, ruled or Cornell note margins to PDF pages. Create extra writing space for study notes, calculations and exam preparation.",
     keywords: ['pdf margin expand', 'add scratchpad page', 'cornell notes grid', 'stitch draft space', 'pdf notes template'],
     description: `
       <p>The PDF Scratchpad Margin Extender is an essential study companion tailored for students, researchers, and professional exam candidates.</p>
@@ -3455,7 +3455,7 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
   'photo-tiling-prepress': {
     title: 'ID Photo DIY Print Tiler',
-    metaDescription: 'Crop and tile passport/ID photos onto standard 5" or 6" photo papers, and stamp precise prepress physical crop marks for easy cutting.',
+    metaDescription: "Crop and arrange ID or passport photos on standard photo paper. Add print crop marks to help cut the finished sheet.",
     keywords: ['id photo tiling', 'print passport photo', 'tile photo standard paper', 'id photo layout prepress', 'stamp crop marks'],
     description: `
       <p>The Prepress Photo Tiling tool is a cost-effective, high-precision layout compiler built for personal registration cards and photography studios.</p>
