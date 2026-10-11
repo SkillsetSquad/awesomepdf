@@ -24,7 +24,7 @@ describe('Annotation viewer integration', () => {
       act(() => vi.advanceTimersByTime(1000));
       const script = doc.querySelector('script')!.textContent!;
       const start = script.indexOf('function injectCustomMenuControls(menu)');
-      const end = script.indexOf('// D. Undo/Redo', start);
+      const end = script.indexOf('// D. Annotation history', start);
       expect(start).toBeGreaterThan(0);
       const annotation = { name: 'rectangle', style: { color: '#123456', fillEnabled: false, fillColor: '#abcdef' } };
       const updateAnnotationStyle = vi.fn();

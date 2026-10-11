@@ -14,6 +14,7 @@ import { Card } from '@/components/ui/card';
 import { LegacyTextEditDialog } from './LegacyTextEditDialog';
 import { LegacyEditorControls } from './LegacyEditorControls';
 import { AnnotationExportDialog } from './AnnotationExportDialog';
+import { AnnotationHistoryControls } from './AnnotationHistoryControls';
 import { PDFViewerControls } from '../PDFViewerControls';
 import {
   replaceExistingText,
@@ -121,6 +122,8 @@ export function LegacyAnnotatorTool({
     }
   }, [setFile]);
 
+  const handleAnnotationHistoryError = useCallback(() => setError(tErrors('processingFailed')), [tErrors]);
+
   const handleUploadError = useCallback((errorMessage: string) => {
     setError(errorMessage);
   }, []);
@@ -163,24 +166,6 @@ export function LegacyAnnotatorTool({
             (function() {
               console.log('[PDFCraft Patch] Initializing annotation patches...');
 
-              let undoStack = [];
-              let redoStack = [];
-              let lastStateStr = '';
-              let isDoingUndoRedo = false;
-
-              const toolNameTranslations = {
-                'cloud': ${JSON.stringify(t('editPdf.annCloud'))},
-                'rectangle': ${JSON.stringify(t('editPdf.annRectangle'))},
-                'circle': ${JSON.stringify(t('editPdf.annCircle'))},
-                'arrow': ${JSON.stringify(t('editPdf.annArrow'))},
-                'freehand': ${JSON.stringify(t('editPdf.annFreehand'))},
-                'freeText': ${JSON.stringify(t('editPdf.annFreeText'))},
-                'freeHighlight': ${JSON.stringify(t('editPdf.annFreeHighlight'))},
-                'note': ${JSON.stringify(t('editPdf.annNote'))},
-                'signature': ${JSON.stringify(t('editPdf.annSignature'))},
-                'stamp': ${JSON.stringify(t('editPdf.annStamp'))}
-              };
-
               const initInterval = setInterval(() => {
                 const ext = window.pdfjsAnnotationExtensionInstance;
                 if (ext) {
@@ -188,7 +173,6 @@ export function LegacyAnnotatorTool({
                   console.log('[PDFCraft Patch] pdfjsAnnotationExtensionInstance found! Setting up patches...');
                   setupCloudFix();
                   setupColorPickerAndStroke();
-                  setupUndoRedoAndAuthorPatch();
                   setupSnapping();
                   setupChineseFontPatch();
                   setupExistingTextEditing();
@@ -696,156 +680,7 @@ export function LegacyAnnotatorTool({
                 styleContainer.appendChild(container);
               }
 
-              // D. Undo/Redo & Comment list labels auto-override
-              function getAnnotationsSnapshot() {
-                const ext = window.pdfjsAnnotationExtensionInstance;
-                if (!ext) return null;
-                if (typeof ext.getAnnotationStore !== 'function') return null;
-                const store = ext.getAnnotationStore();
-                if (!store) return null;
-                return JSON.stringify(store);
-              }
-
-              function setupUndoRedoAndAuthorPatch() {
-                // Initialize undo stack with initial state
-                const initialState = getAnnotationsSnapshot();
-                if (initialState) {
-                  undoStack.push(initialState);
-                  lastStateStr = initialState;
-                }
-
-                // Periodically check for state changes and update UI elements
-                setInterval(() => {
-                  const ext = window.pdfjsAnnotationExtensionInstance;
-                  if (!ext) return;
-
-                  // Dynamic author override for tool name labels in comments list
-                  const store = typeof ext.getAnnotationStore === 'function'
-                    ? ext.getAnnotationStore()
-                    : null;
-                  let authorUpdated = false;
-                  if (store && store.annotations) {
-                    store.annotations.forEach(ann => {
-                      const transName = toolNameTranslations[ann.name] || 'Annotation';
-                      const targetAuthor = transName + ' (' + ${JSON.stringify(t('editPdf.unnamedUser'))} + ')';
-                      if (ann.author !== targetAuthor && ann.author === ${JSON.stringify(t('editPdf.unnamedUser'))}) {
-                        ann.author = targetAuthor;
-                        authorUpdated = true;
-                      }
-                    });
-                  }
-
-                  const currentState = getAnnotationsSnapshot();
-                  if (currentState && currentState !== lastStateStr) {
-                    if (!isDoingUndoRedo) {
-                      undoStack.push(currentState);
-                      redoStack = []; // Reset redo stack on new operation
-                      updateUndoRedoButtonsState();
-                    }
-                    lastStateStr = currentState;
-                  }
-                }, 500);
-
-                // Inject Undo/Redo buttons UI
-                injectUndoRedoButtons();
-              }
-
-              function performUndo() {
-                if (undoStack.length <= 1) return;
-                isDoingUndoRedo = true;
-                const current = undoStack.pop();
-                redoStack.push(current);
-                const prev = undoStack[undoStack.length - 1];
-                loadState(prev);
-              }
-
-              function performRedo() {
-                if (redoStack.length === 0) return;
-                isDoingUndoRedo = true;
-                const next = redoStack.pop();
-                undoStack.push(next);
-                loadState(next);
-              }
-
-              function loadState(stateStr) {
-                const ext = window.pdfjsAnnotationExtensionInstance;
-                if (!ext) return;
-
-                try {
-                  const stateObj = JSON.parse(stateStr);
-                  if (typeof ext.resetPdfjsAnnotationStorage === 'function') {
-                    ext.resetPdfjsAnnotationStorage();
-                  }
-                  if (typeof ext.initAnnotations === 'function') {
-                    ext.initAnnotations(stateObj);
-                  }
-                  if (typeof ext.reDrawAnnotation === 'function') {
-                    ext.reDrawAnnotation();
-                  }
-                  lastStateStr = stateStr;
-                  updateUndoRedoButtonsState();
-                } catch (err) {
-                  console.error('[PDFCraft Patch] Failed to load state', err);
-                } finally {
-                  setTimeout(() => {
-                    isDoingUndoRedo = false;
-                  }, 100);
-                }
-              }
-
-              function injectUndoRedoButtons() {
-                const customToolbar = document.querySelector('.CustomToolbar');
-                if (customToolbar) {
-                  if (customToolbar.querySelector('.pdfcraft-undo-btn')) return;
-                  const btnList = customToolbar.querySelector('ul') || customToolbar;
-
-                  const undoLi = document.createElement('li');
-                  undoLi.className = 'pdfcraft-undo-btn';
-
-
-                  const undoBtn = document.createElement('button');
-                  undoBtn.type = 'button';
-                  undoBtn.textContent = ${JSON.stringify(t('editPdf.undo'))};
-                  undoBtn.className = 'toolbarButton';
-                  undoBtn.disabled = true;
-                  undoBtn.addEventListener('click', performUndo);
-                  undoLi.appendChild(undoBtn);
-
-                  const redoLi = document.createElement('li');
-                  redoLi.className = 'pdfcraft-redo-btn';
-
-
-                  const redoBtn = document.createElement('button');
-                  redoBtn.type = 'button';
-                  redoBtn.textContent = ${JSON.stringify(t('editPdf.redo'))};
-                  redoBtn.className = 'toolbarButton';
-                  redoBtn.disabled = true;
-                  redoBtn.addEventListener('click', performRedo);
-                  redoLi.appendChild(redoBtn);
-
-                  if (btnList.firstChild) {
-                    btnList.insertBefore(undoLi, btnList.firstChild);
-                    btnList.insertBefore(redoLi, undoLi.nextSibling);
-                  } else {
-                    btnList.appendChild(undoLi);
-                    btnList.appendChild(redoLi);
-                  }
-                }
-              }
-
-              function updateUndoRedoButtonsState() {
-                const undoBtn = document.querySelector('.pdfcraft-undo-btn button');
-                const redoBtn = document.querySelector('.pdfcraft-redo-btn button');
-                
-                if (undoBtn) {
-                  const canUndo = undoStack.length > 1;
-                  undoBtn.disabled = !canUndo;
-                }
-                if (redoBtn) {
-                  const canRedo = redoStack.length > 0;
-                  redoBtn.disabled = !canRedo;
-                }
-              }
+              // D. Annotation history is mounted by the parent using the shipped painter/store API.
             })();
           `;
           doc.body.appendChild(patchScript);
@@ -994,6 +829,7 @@ export function LegacyAnnotatorTool({
   return (
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
+      <AnnotationHistoryControls iframe={editorFrame} undo={t('editPdf.undo')} redo={t('editPdf.redo')} onError={handleAnnotationHistoryError} />
       <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels}
         colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }}
         styleLabels={{ title: t('editPdf.annotationStyle'), color: tBookmark('color'), strokeWidth: t('editPdf.strokeWidth'), opacity: t('editPdf.opacity'), back: t('buttons.back'), format: t('editPdf.colorFormat'), close: t('buttons.close') }}
