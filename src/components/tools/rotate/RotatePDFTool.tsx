@@ -336,7 +336,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
     const dy = e.clientY - centerY;
 
     // Calculate angle in radians, convert to degrees
-    let angleRad = Math.atan2(dy, dx);
+    const angleRad = Math.atan2(dy, dx);
     let angleDeg = (angleRad * 180) / Math.PI;
 
     // Offset standard mathematical angle (0 is positive x axis)

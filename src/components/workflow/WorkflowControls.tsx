@@ -405,8 +405,8 @@ export function WorkflowControls({
                                 <Button variant="ghost" size="sm"
                                     onClick={() => {
                                         executionState.outputFiles?.forEach((item, index) => {
-                                            let blob: Blob = item instanceof Blob ? item : item.blob;
-                                            let filename: string = item instanceof Blob ? `output_${index + 1}.pdf` : (item.filename || `output_${index + 1}.pdf`);
+                                            const blob: Blob = item instanceof Blob ? item : item.blob;
+                                            const filename: string = item instanceof Blob ? `output_${index + 1}.pdf` : (item.filename || `output_${index + 1}.pdf`);
                                             saveBlobFile(blob, filename);
                                         });
                                     }}
@@ -420,8 +420,8 @@ export function WorkflowControls({
                             <Button variant="ghost" size="sm"
                                 onClick={async () => {
                                     const item = executionState.outputFiles![0];
-                                    let blob: Blob = item instanceof Blob ? item : item.blob;
-                                    let filename: string = item instanceof Blob ? `output_1.pdf` : (item.filename || `output_1.pdf`);
+                                    const blob: Blob = item instanceof Blob ? item : item.blob;
+                                    const filename: string = item instanceof Blob ? `output_1.pdf` : (item.filename || `output_1.pdf`);
                                     await saveBlobFile(blob, filename);
                                 }}
                                 className="flex items-center gap-1 cursor-pointer"

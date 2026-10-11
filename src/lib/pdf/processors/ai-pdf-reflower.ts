@@ -144,7 +144,7 @@ export class AIPDFReflowerProcessor extends BasePDFProcessor {
         // Reconstruct paragraphs
         let currentParaText = '';
         let lastItem: any = null;
-        let avgFontSize = sortedItems.reduce((acc, item) => acc + item.fontSize, 0) / sortedItems.length;
+        const avgFontSize = sortedItems.reduce((acc, item) => acc + item.fontSize, 0) / sortedItems.length;
 
         for (let i = 0; i < sortedItems.length; i++) {
           const item = sortedItems[i];

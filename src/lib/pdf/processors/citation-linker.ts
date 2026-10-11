@@ -79,7 +79,7 @@ export class CitationLinkerProcessor extends BasePDFProcessor {
       for (let p = referencesPageNum; p <= totalPages; p++) {
         const page = await pdfjsDoc.getPage(p);
         const textContent = await page.getTextContent();
-        let pageText = textContent.items.map((item: any) => item.str).join(' ');
+        const pageText = textContent.items.map((item: any) => item.str).join(' ');
         
         // Match patterns like [1] or 1.
         const refRegex = /(?:\[(\d+)\]|(\d+)\.)\s+([^\[\n]+)/g;
