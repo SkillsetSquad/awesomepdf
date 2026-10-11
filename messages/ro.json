@@ -623,7 +623,7 @@
       "deletedPageDesc": "Această pagină a fost ștearsă complet în documentul modificat. Aliniată cu o completare goală pentru a păstra fluxurile de pagini ulterioare."
     },
     "compress": {
-      "waitingFiles": "Fișiere în așteptare ({count})",
+      "waitingFiles": "PDF-uri selectate ({count})",
       "clearAll": "Curățați tot",
       "sliderTooltip": "Trageți glisorul pentru a compara calitatea originală cu cea optimizată (Pagina 1)",
       "qualityCompare": "Stânga: Original (100%) | Dreapta: Comprimat ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "Optimizare finalizată!",
       "zipDownload": "Descărcați ZIP ({count} fișiere)",
       "successDone": "Documentul PDF a fost optimizat local!",
-      "sizeInfo": "Dimensiune inițială: {size} MB • S-au curățat fragmentele învechite și fluxurile de metadate local."
+      "sizeInfo": "Dimensiune inițială: {size} MB • S-au curățat fragmentele învechite și fluxurile de metadate local.",
+      "previewTitle": "Previzualizare PDF",
+      "sourcePreview": "PDF sursă",
+      "resultPreview": "PDF rezultat",
+      "previewHelp": "Selectați un fișier, apoi comparați sursa cu rezultatul final."
     },
     "deepSanitize": {
       "uploadLabel": "Selectează un PDF",

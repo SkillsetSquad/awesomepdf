@@ -623,7 +623,7 @@
       "deletedPageDesc": "Esta página fue completamente eliminada en el documento modificado. Alineada con un marcador de posición vacío para conservar los flujos de página posteriores."
     },
     "compress": {
-      "waitingFiles": "Archivos pendientes ({count})",
+      "waitingFiles": "PDF seleccionados ({count})",
       "clearAll": "Borrar todo",
       "sliderTooltip": "Arrastre el deslizador para comparar calidad original vs optimizada (Pág. 1)",
       "qualityCompare": "Izquierda: Original (100%) | Derecha: Comprimido ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "¡Optimización completada!",
       "zipDownload": "Descargar ZIP ({count} archivos)",
       "successDone": "¡Documento PDF optimizado localmente!",
-      "sizeInfo": "Tamaño original: {size} MB • Se limpiaron localmente los fragmentos obsoletos y los flujos de metadatos."
+      "sizeInfo": "Tamaño original: {size} MB • Se limpiaron localmente los fragmentos obsoletos y los flujos de metadatos.",
+      "previewTitle": "Vista previa del PDF",
+      "sourcePreview": "PDF original",
+      "resultPreview": "PDF resultante",
+      "previewHelp": "Selecciona un archivo y compara el original con el resultado terminado."
     },
     "deepSanitize": {
       "uploadLabel": "Seleccionar un PDF",

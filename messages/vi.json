@@ -623,7 +623,7 @@
       "deletedPageDesc": "Trang này đã bị xóa hoàn toàn khỏi tài liệu đã sửa. Hệ thống thêm trang trống để đảm bảo các trang sau khớp nhau."
     },
     "compress": {
-      "waitingFiles": "Tệp đang chờ xử lý ({count})",
+      "waitingFiles": "PDF đã chọn ({count})",
       "clearAll": "Xóa toàn bộ",
       "sliderTooltip": "Kéo thanh trượt để so sánh chất lượng gốc và đã tối ưu (Trang 1)",
       "qualityCompare": "Bên trái: Gốc (100%) | Bên phải: Nén ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "Tối ưu hóa thành công!",
       "zipDownload": "Tải xuống ZIP ({count} tệp)",
       "successDone": "Tài liệu PDF đã được tối ưu cục bộ!",
-      "sizeInfo": "Dung lượng gốc: {size} MB • Đã làm sạch các phân mảnh lỗi thời và luồng siêu dữ liệu dư thừa trên máy khách."
+      "sizeInfo": "Dung lượng gốc: {size} MB • Đã làm sạch các phân mảnh lỗi thời và luồng siêu dữ liệu dư thừa trên máy khách.",
+      "previewTitle": "Xem trước PDF",
+      "sourcePreview": "PDF gốc",
+      "resultPreview": "PDF kết quả",
+      "previewHelp": "Chọn một tệp, sau đó so sánh bản gốc với kết quả đã hoàn tất."
     },
     "deepSanitize": {
       "uploadLabel": "Chọn PDF",

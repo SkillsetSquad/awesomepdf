@@ -623,7 +623,7 @@
       "deletedPageDesc": "此页面在修改版本中已被完全删除。系统在此处插入空白对齐，以防扰乱后续页面的比对秩序。"
     },
     "compress": {
-      "waitingFiles": "待压缩文件列表 ({count})",
+      "waitingFiles": "已选 PDF（{count}）",
       "clearAll": "清空全部",
       "sliderTooltip": "拖动中间分割滑条查看无级压缩画质对比 (第 1 页)",
       "qualityCompare": "左: 原始画质 (100%) | 右: 模拟压缩 ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "压缩操作执行完毕！",
       "zipDownload": "打包下载 ZIP ({count} 个文件)",
       "successDone": "文档优化压缩完毕！",
-      "sizeInfo": "原始大小: {size} MB • 成功在本地清理了非必要废弃片段和无用元数据流。"
+      "sizeInfo": "原始大小: {size} MB • 成功在本地清理了非必要废弃片段和无用元数据流。",
+      "previewTitle": "PDF 预览",
+      "sourcePreview": "原始 PDF",
+      "resultPreview": "结果 PDF",
+      "previewHelp": "选择文件，然后比较原始文件与处理完成的结果。"
     },
     "deepSanitize": {
       "uploadLabel": "选择 PDF",

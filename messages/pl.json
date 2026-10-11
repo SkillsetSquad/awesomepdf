@@ -623,7 +623,7 @@
       "deletedPageDesc": "Ta strona została całkowicie usunięta w zmodyfikowanym dokumencie. Wyrównane z pustym wypełniaczem, aby zachować ciąg kolejnych stron."
     },
     "compress": {
-      "waitingFiles": "Oczekujące pliki ({count})",
+      "waitingFiles": "Wybrane pliki PDF ({count})",
       "clearAll": "Wyczyść wszystko",
       "sliderTooltip": "Przeciągnij suwak, aby porównać jakość oryginalną i zoptymalizowaną (Strona 1)",
       "qualityCompare": "Po lewej: Oryginał (100%) | Po prawej: skompresowany ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "Optymalizacja zakończona!",
       "zipDownload": "Pobierz ZIP ({count, plural, one {# plik} few {# pliki} many {# plików} other {# pliku}})",
       "successDone": "Dokument PDF został zoptymalizowany lokalnie!",
-      "sizeInfo": "Oryginał: {size} MB • Lokalnie wyczyszczono przestarzałe fragmenty i strumienie metadanych."
+      "sizeInfo": "Oryginał: {size} MB • Lokalnie wyczyszczono przestarzałe fragmenty i strumienie metadanych.",
+      "previewTitle": "Podgląd PDF",
+      "sourcePreview": "Źródłowy PDF",
+      "resultPreview": "Wynikowy PDF",
+      "previewHelp": "Wybierz plik, a następnie porównaj źródło z gotowym wynikiem."
     },
     "deepSanitize": {
       "uploadLabel": "Wybierz PDF",

@@ -623,7 +623,7 @@
       "deletedPageDesc": "수정된 문서에서 이 페이지가 완전히 삭제되었습니다. 이후 페이지 흐름을 유지하기 위해 빈 칸으로 정렬되었습니다."
     },
     "compress": {
-      "waitingFiles": "압축 대기 파일 목록 ({count})",
+      "waitingFiles": "선택한 PDF ({count})",
       "clearAll": "모두 지우기",
       "sliderTooltip": "슬라이더를 드래그하여 압축 전후의 품질을 비교 (1 페이지)",
       "qualityCompare": "왼쪽: 원본 (100%) | 오른쪽: 압축 적용본 ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "최적화 완료!",
       "zipDownload": "ZIP 다운로드 ({count}개 파일)",
       "successDone": "PDF 문서가 로컬에서 최적화되었습니다!",
-      "sizeInfo": "원본: {size} MB • 불필요한 레거시 조각 및 메타데이터 스트림이 로컬에서 정상 정리되었습니다."
+      "sizeInfo": "원본: {size} MB • 불필요한 레거시 조각 및 메타데이터 스트림이 로컬에서 정상 정리되었습니다.",
+      "previewTitle": "PDF 미리보기",
+      "sourcePreview": "원본 PDF",
+      "resultPreview": "결과 PDF",
+      "previewHelp": "파일을 선택한 다음 원본과 완료된 결과를 비교하세요."
     },
     "deepSanitize": {
       "uploadLabel": "PDF 선택",

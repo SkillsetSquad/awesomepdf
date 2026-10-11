@@ -623,7 +623,7 @@
       "deletedPageDesc": "このページは変更されたドキュメントで完全に削除されました。後続のページのフローを維持するために、空白のフィラーと整列されています。"
     },
     "compress": {
-      "waitingFiles": "保留中のファイル ({count})",
+      "waitingFiles": "選択したPDF（{count}）",
       "clearAll": "すべてクリア",
       "sliderTooltip": "スライダーをドラッグして、圧縮前と最適化後の画質を比較 (ページ 1)",
       "qualityCompare": "左: オリジナル (100%) | 右: 圧縮後 ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "最適化が完了しました！",
       "zipDownload": "ZIPをダウンロード ({count} 個のファイル)",
       "successDone": "PDFドキュメントがローカルで最適化されました！",
-      "sizeInfo": "オリジナル: {size} MB • ローカルで不要なフラグメントとメタデータストリームをクリーンアップしました。"
+      "sizeInfo": "オリジナル: {size} MB • ローカルで不要なフラグメントとメタデータストリームをクリーンアップしました。",
+      "previewTitle": "PDFプレビュー",
+      "sourcePreview": "元のPDF",
+      "resultPreview": "結果のPDF",
+      "previewHelp": "ファイルを選択し、元のPDFと処理後のPDFを比較してください。"
     },
     "deepSanitize": {
       "uploadLabel": "PDFを選択",

@@ -639,7 +639,7 @@
       "deletedPageDesc": "This page was completely deleted in the modified document. Aligned with a blank filler to preserve subsequent page flows."
     },
     "compress": {
-      "waitingFiles": "Pending Files ({count})",
+      "waitingFiles": "Selected PDFs ({count})",
       "clearAll": "Clear All",
       "sliderTooltip": "Drag the slider to compare original vs optimized quality (Page 1)",
       "qualityCompare": "Left: Original (100%) | Right: Compressed ({quality})",
@@ -660,7 +660,11 @@
       "successTitle": "Optimization Complete!",
       "zipDownload": "Download ZIP ({count} files)",
       "successDone": "PDF document optimized locally!",
-      "sizeInfo": "Original: {size} MB • Cleaned obsolete fragments and metadata streams locally."
+      "sizeInfo": "Original: {size} MB • Cleaned obsolete fragments and metadata streams locally.",
+      "previewTitle": "PDF preview",
+      "sourcePreview": "Source PDF",
+      "resultPreview": "Result PDF",
+      "previewHelp": "Choose a file, then compare the source with the finished result."
     },
     "deepSanitize": {
       "uploadLabel": "Select a PDF",

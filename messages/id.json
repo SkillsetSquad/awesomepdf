@@ -623,7 +623,7 @@
       "deletedPageDesc": "Halaman ini sepenuhnya dihapus dalam dokumen yang dimodifikasi. Diselaraskan dengan pengisi kosong untuk menjaga alur halaman berikutnya."
     },
     "compress": {
-      "waitingFiles": "File Tertunda ({count})",
+      "waitingFiles": "PDF yang dipilih ({count})",
       "clearAll": "Hapus Semua",
       "sliderTooltip": "Seret penggeser untuk membandingkan kualitas asli vs kualitas dioptimalkan (Halaman 1)",
       "qualityCompare": "Kiri: Asli (100%) | Kanan: Dikompres ({quality})",
@@ -644,7 +644,11 @@
       "successTitle": "Optimasi Selesai!",
       "zipDownload": "Unduh ZIP ({count} file)",
       "successDone": "Dokumen PDF dioptimalkan secara lokal!",
-      "sizeInfo": "Ukuran Asli: {size} MB • Berhasil membersihkan fragmen usang dan aliran metadata di penyimpanan lokal."
+      "sizeInfo": "Ukuran Asli: {size} MB • Berhasil membersihkan fragmen usang dan aliran metadata di penyimpanan lokal.",
+      "previewTitle": "Pratinjau PDF",
+      "sourcePreview": "PDF sumber",
+      "resultPreview": "PDF hasil",
+      "previewHelp": "Pilih file, lalu bandingkan sumber dengan hasil yang telah selesai."
     },
     "deepSanitize": {
       "uploadLabel": "Pilih PDF",
