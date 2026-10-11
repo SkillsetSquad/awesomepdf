@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -89,7 +90,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
   }, []);
 
   // Render page preview with header/footer overlay
-  const renderPagePreview = async (pdf: any, pageNum: number) => {
+  const renderPagePreview = async (pdf: PDFDocumentProxy, pageNum: number) => {
     if (!previewCanvasRef.current) return;
 
     try {

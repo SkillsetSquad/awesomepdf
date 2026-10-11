@@ -19,11 +19,12 @@ import {
   dataUrlToBlob,
 } from '@/lib/pdf/signature-storage';
 import { saveBlobFile } from '@/lib/tauri-bridge';
+import type { SignatureViewerWindow } from './signature-viewer';
 
 export interface SignatureLibraryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  viewerWindow?: Window | null;
+  viewerWindow?: SignatureViewerWindow | null;
   onOpenExtractor: () => void;
 }
 
@@ -63,9 +64,9 @@ export function SignatureLibraryModal({
         loadList();
 
         // If viewer is ready, immediately apply to document
-        if (viewerWindow && (viewerWindow as any).pdfcraftImportSignature) {
+        if (viewerWindow?.pdfcraftImportSignature) {
           const blob = dataUrlToBlob(dataUrl);
-          await (viewerWindow as any).pdfcraftImportSignature(blob, saved.name);
+          await viewerWindow.pdfcraftImportSignature(blob, saved.name);
           onClose();
         }
       };
@@ -88,9 +89,9 @@ export function SignatureLibraryModal({
 
   const handleApply = async (sig: PDFCraftSignature) => {
     try {
-      if (viewerWindow && (viewerWindow as any).pdfcraftImportSignature) {
+      if (viewerWindow?.pdfcraftImportSignature) {
         const blob = dataUrlToBlob(sig.dataUrl);
-        await (viewerWindow as any).pdfcraftImportSignature(blob, sig.name);
+        await viewerWindow.pdfcraftImportSignature(blob, sig.name);
         onClose();
       }
     } catch (e) {

@@ -39,9 +39,10 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
     if (file) return;
 
     // Check in-memory transfer first
-    if (typeof window !== 'undefined' && (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ instanceof File) {
-      const pendingFile = (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ as File;
-      (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ = null;
+    const transferWindow = window as Window & { __PDFCRAFT_PENDING_EDIT_FILE__?: File | null };
+    if (typeof window !== 'undefined' && transferWindow.__PDFCRAFT_PENDING_EDIT_FILE__ instanceof File) {
+      const pendingFile = transferWindow.__PDFCRAFT_PENDING_EDIT_FILE__ as File;
+      transferWindow.__PDFCRAFT_PENDING_EDIT_FILE__ = null;
       try {
         window.sessionStorage.removeItem('pdfcraft_pending_edit_file');
       } catch {}

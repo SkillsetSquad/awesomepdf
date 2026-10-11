@@ -2,16 +2,18 @@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { Check as UICheck, Clock as UIClock, FileText as UIFileText, Layers as UILayers, Lock as UILock } from 'lucide-react';
+import { Clock as UIClock, FileText as UIFileText, Layers as UILayers, Lock as UILock } from 'lucide-react';
 
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { PDFPagePreview } from '../PDFPagePreview';
 import { timestampPDF } from '@/lib/pdf/processors/timestamp';
 import type { ProcessOutput } from '@/types/pdf';
 
@@ -36,7 +38,6 @@ const TSA_SERVERS = [
 
 export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
 
   // File State
   const [file, setFile] = useState<File | null>(null);
@@ -56,6 +57,8 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
   // Cancellation ref
   const cancelledRef = useRef(false);
+  const operationRef = useRef(0);
+  useEffect(() => () => { operationRef.current += 1; }, []);
 
   /**
    * Load PDF metadata on selection
@@ -63,6 +66,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
   const handleFileSelected = useCallback(async (files: File[]) => {
     if (files.length === 0) return;
     const selectedFile = files[0];
+    const operation = ++operationRef.current;
     setFile(selectedFile);
     setIsLoadingMetadata(true);
     setError(null);
@@ -72,21 +76,26 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
     try {
       const { PDFDocument } = await import('pdf-lib');
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
+      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      if (operation !== operationRef.current) return;
       setTotalPages(pdf.getPageCount());
     } catch (err) {
+      if (operation !== operationRef.current) return;
       console.error(err);
       setError('Failed to parse PDF metadata. The file may be corrupt.');
     } finally {
-      setIsLoadingMetadata(false);
+      if (operation === operationRef.current) setIsLoadingMetadata(false);
     }
   }, []);
 
   const handleClearFile = () => {
+    operationRef.current += 1;
     setFile(null);
     setTotalPages(0);
     setResult(null);
     setAuditLog(null);
+    setStatus('idle');
+    setIsLoadingMetadata(false);
   };
 
   /**
@@ -98,6 +107,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
       return;
     }
 
+    const operation = ++operationRef.current;
     cancelledRef.current = false;
     setStatus('processing');
     setProgress(0);
@@ -110,17 +120,14 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
         [file],
         { tsaServer: selectedTSA },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (!cancelledRef.current && operation === operationRef.current) {
             setProgress(prog);
-            setProgressMessage(message || 'Requesting TSA certificate...');
+            setProgressMessage(message || 'Preparing local timestamp...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (cancelledRef.current || operation !== operationRef.current) return;
 
       if (output.success && output.result) {
         setResult(output.result as Blob);
@@ -136,11 +143,11 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
           });
         }
       } else {
-        setError(output.error?.message || 'Failed to apply RFC 3161 timestamp.');
+        setError(output.error?.message || 'Failed to apply local timestamp.');
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (!cancelledRef.current && operation === operationRef.current) {
         setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
         setStatus('error');
       }
@@ -148,6 +155,7 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
   };
 
   const handleCancel = () => {
+    operationRef.current += 1;
     cancelledRef.current = true;
     setStatus('idle');
     setProgress(0);
@@ -166,8 +174,8 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
           onFilesSelected={handleFileSelected}
           onError={setError}
           disabled={isProcessing || isLoadingMetadata}
-          label={t('timestamp.uploadLabel')}
-          description={t('timestamp.uploadDescription')}
+          label={t('timestamp.localUploadLabel')}
+          description={t('timestamp.localUploadDescription')}
         />
       )}
 
@@ -180,15 +188,15 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
 
       {/* File Metadata Overview */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
-          <div className="flex items-center gap-3">
-            <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
-            <div>
+        <Card  className="p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <UIFileText className="w-10 h-10 text-muted-foreground" aria-hidden="true" />
+            <div className="min-w-0">
               <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
                 {file.name}
               </p>
               <p className="text-xs text-muted-foreground">
-                {totalPages > 0 ? t('comparePdfs.pageNumber', { page: totalPages }) : t('status.loading')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
+                {totalPages > 0 ? t('accessibility.pageOf', { current: 1, total: totalPages }) : t('status.loading')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
               </p>
             </div>
           </div>
@@ -203,7 +211,9 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
         </Card>
       )}
 
-      {/* Primary Calibration Workspace */}
+      {file && <Alert><UIClock aria-hidden="true" /><AlertDescription>{t('timestamp.localNotice')}</AlertDescription></Alert>}
+
+      {/* Timestamp settings and document preview */}
       {file && totalPages > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
@@ -212,67 +222,18 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
             <Card  className="flex-1 p-6 gap-6 border flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
-                  <h3 className="text-base font-bold text-foreground flex items-center gap-2">
+                  <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
                     <UILayers className="w-5 h-5 text-primary" aria-hidden="true" />
-                    {tTools('timestampPdf.selectTsaTitle')}
+                    {t('timestamp.selectedAuthority')}
                   </h3>
-                  <p className="text-[11px] text-muted-foreground mt-1">
-                    {tTools('timestampPdf.privacyGuaranteed')}
-                  </p>
                 </div>
 
-                {/* TSA List selector recreate user screenshot beauty */}
-                <div className="space-y-2.5 max-h-[300px] overflow-y-auto pr-1">
-                  {TSA_SERVERS.map((tsa) => {
-                    const isSelected = selectedTSA === tsa.id;
-                    const isFast = tsa.speedKey === 'fast' || tsa.speedKey === 'blazing';
-                    return (
-                      <div
-                        key={tsa.id}
-                        onClick={() => !isProcessing && setSelectedTSA(tsa.id)}
-                        className={`group p-3.5 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${
-                          isSelected
-                            ? 'border-primary bg-primary/3 shadow-[0_0_12px_hsl(var(--color-primary)/0.15)]'
-                            : 'border-border bg-card hover:border-muted-foreground/40'
-                        }`}
-                      >
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-bold text-foreground">
-                              {tsa.name}
-                            </span>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold bg-muted text-muted-foreground uppercase">
-                              {tsa.id}
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-muted-foreground leading-normal max-w-sm">
-                            {tTools(`timestampPdf.tsa.desc.${tsa.id}`)}
-                          </p>
-                        </div>
-                        
-                        <div className="flex items-center gap-2">
-                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
-                            isFast
-                              ? 'bg-green-100 text-green-700 dark:bg-green-950/20 dark:text-green-400'
-                              : 'bg-amber-100 text-amber-700 dark:bg-amber-950/20 dark:text-amber-400'
-                          }`}>
-                            {tTools(`timestampPdf.tsa.speed.${tsa.speedKey}`)}
-                          </span>
-                          
-                          {/* Inner selected circle indicator */}
-                          <div className={`w-4.5 h-4.5 rounded-full border-2 flex items-center justify-center transition-all ${
-                            isSelected 
-                              ? 'border-primary bg-primary' 
-                              : 'border-border'
-                          }`}>
-                            {isSelected && (
-                              <UICheck className="w-3 h-3 text-white" aria-hidden="true" />
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div role="group" aria-label={t('timestamp.selectedAuthority')} className="space-y-2">
+                  {TSA_SERVERS.map((tsa) => (
+                    <Button key={tsa.id} variant={selectedTSA === tsa.id ? 'default' : 'outline'}
+                      className="w-full justify-start" aria-pressed={selectedTSA === tsa.id}
+                      disabled={isProcessing} onClick={() => setSelectedTSA(tsa.id)}>{tsa.name}</Button>
+                  ))}
                 </div>
               </div>
 
@@ -283,113 +244,35 @@ export function TimestampPDFTool({ className = '' }: TimestampPDFToolProps) {
                   size="lg"
                   onClick={handleTimestampProcess}
                   disabled={isProcessing}
-                  className="w-full py-4 flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2"
                 >
                   <UILock className="w-5 h-5" aria-hidden="true" />
-                  {tTools('timestampPdf.processButton')}
+                  {t('timestamp.localProcessButton')}
                 </Button>
               </div>
             </Card>
           </div>
 
-          {/* RIGHT: Dynamic Audit & Validation Certificate Panel */}
-          <div className="lg:col-span-6 flex flex-col">
-            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden">
-              
-              {!auditLog ? (
-                // Awaiting signing state
-                <div className="text-center space-y-3 p-6 text-muted-foreground">
-                  <div className="w-16 h-16 rounded-full bg-muted/50 border border-border flex items-center justify-center mx-auto text-muted-foreground mb-2">
-                    <UIFileText className="w-8 h-8" aria-hidden="true" />
-                  </div>
-                  <h4 className="text-sm font-bold text-foreground">{tTools('timestampPdf.waitingTitle')}</h4>
-                  <p className="text-xs leading-relaxed max-w-[260px] mx-auto">
-                    {tTools('timestampPdf.waitingDescription')}
-                  </p>
-                </div>
-              ) : (
-                // Successfully signed certificate voucher
-                <div className="w-full space-y-5 animate-in zoom-in-95 duration-500 flex flex-col justify-between h-full">
-                  
-                  {/* Premium Seal Emblem */}
-                  <div className="flex items-start justify-between border-b border-border pb-4">
-                    <div className="space-y-1">
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:bg-emerald-950/20 dark:text-emerald-400 font-bold uppercase tracking-wider">
-                        TSA Verified & Secured
-                      </span>
-                      <h4 className="text-base font-semibold tracking-tight text-foreground">
-                        {tTools('timestampPdf.certificateTitle')}
-                      </h4>
-                    </div>
-                    {/* Golden luxury seal */}
-                    <div className="w-14 h-14 rounded-full border-4 border-amber-400/40 bg-amber-400/10 flex items-center justify-center shadow-lg transform rotate-12 relative animate-in fade-in zoom-in-75 duration-700 delay-100">
-                      <div className="text-center font-semibold text-amber-500 uppercase tracking-tighter" style={{ fontSize: '7px', lineHeight: '1' }}>
-                        TSA<br/>
-                        <span className="text-[9px]">SEAL</span><br/>
-                        RFC 3161
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Audit Details */}
-                  <div className="space-y-4 flex-1 py-1">
-                    {/* Timestamp clock */}
-                    <div className="bg-muted/30 border border-border p-3.5 rounded-2xl flex items-center gap-3">
-                      <div className="p-2 rounded-xl bg-amber-500/10 text-amber-500">
-                        <UIClock className="w-5 h-5" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.tsaTime')}</p>
-                        <p className="text-sm font-semibold text-foreground mt-0.5">
-                          {new Date(auditLog.timestamp).toLocaleString()}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Cryptographic Hash */}
-                    <div className="space-y-1">
-                      <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.fileHash')}</p>
-                      <code className="text-[10px] bg-muted/35 border border-border px-3 py-2 rounded-xl block font-mono text-foreground break-all leading-normal">
-                        {auditLog.hash}
-                      </code>
-                    </div>
-
-                    {/* Metadata fields */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.authority')}</p>
-                        <p className="text-xs font-bold text-foreground mt-1">
-                          {auditLog.tsaAuthority}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">{tTools('timestampPdf.serialNumber')}</p>
-                        <p className="text-xs font-bold text-foreground mt-1 font-mono">
-                          {auditLog.serial}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Complete Action Area */}
-                  {result && (
-                    <div className="pt-4 border-t border-border flex gap-2">
-                      <DownloadButton
-                        file={result}
-                        filename={file.name.replace('.pdf', '_timestamped.pdf')}
-                        variant="secondary"
-                        size="default"
-                        className="flex-1"
-                        showFileSize
-                      />
-                    </div>
-                  )}
-
-                </div>
-              )}
-
-            </Card>
-          </div>
+          <Card className="lg:col-span-6 min-w-0 p-4 space-y-4">
+            <Tabs defaultValue="source">
+              <TabsList>
+                <TabsTrigger value="source">{t('documentPreview.source')}</TabsTrigger>
+                <TabsTrigger value="result" disabled={!result}>{t('documentPreview.result')}</TabsTrigger>
+              </TabsList>
+              <TabsContent value="source"><PDFPagePreview file={file} label={t('documentPreview.source')} /></TabsContent>
+              {result && <TabsContent value="result"><PDFPagePreview file={result} label={t('documentPreview.result')} /></TabsContent>}
+            </Tabs>
+            {auditLog && <div className="space-y-4 border-t pt-4">
+              <h3 className="font-semibold">{t('timestamp.localCertificateTitle')}</h3>
+              <dl className="space-y-3 text-sm">
+                <div><dt className="text-muted-foreground">{t('timestamp.deviceTime')}</dt><dd>{new Date(auditLog.timestamp).toLocaleString()}</dd></div>
+                <div><dt className="text-muted-foreground">{t('timestamp.tsaHash')}</dt><dd className="break-all font-mono text-xs" dir="ltr">{auditLog.hash}</dd></div>
+                <div><dt className="text-muted-foreground">{t('timestamp.selectedAuthority')}</dt><dd className="break-words">{auditLog.tsaAuthority}</dd></div>
+                <div><dt className="text-muted-foreground">{t('timestamp.tsaSerial')}</dt><dd className="break-all font-mono">{auditLog.serial}</dd></div>
+              </dl>
+              {result && <DownloadButton file={result} filename={file.name.replace(/\.pdf$/i, '_timestamped.pdf')} showFileSize />}
+            </div>}
+          </Card>
 
         </div>
       )}

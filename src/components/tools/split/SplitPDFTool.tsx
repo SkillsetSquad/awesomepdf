@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert, CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
@@ -79,7 +80,7 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
 
   // Ref for cancellation
   const cancelledRef = useRef(false);
-  const pdfDocRef = useRef<any>(null);
+  const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
 
   /**
    * Load PDF and generate page previews
@@ -157,8 +158,8 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
    * Parse PDF.js outline to BookmarkInfo format
    */
   const parseOutlineToBookmarks = async (
-    outline: any[],
-    pdf: any
+    outline: NonNullable<Awaited<ReturnType<PDFDocumentProxy['getOutline']>>>,
+    pdf: PDFDocumentProxy
   ): Promise<BookmarkInfo[]> => {
     const result: BookmarkInfo[] = [];
 

@@ -352,7 +352,7 @@ export function PDFToMarkdownTool({ className = '' }: PDFToMarkdownToolProps) {
 
             {/* Preview Section */}
             {status === 'complete' && markdownContent && (
-                <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="mt-8">
                     <Card  className="overflow-hidden p-0">
 <Tabs value={activeTab} onValueChange={(value) => { if (value === 'preview' || value === 'source') setActiveTab(value); }}>
                         {/* Preview Tabs */}

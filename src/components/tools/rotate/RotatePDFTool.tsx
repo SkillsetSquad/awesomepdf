@@ -565,7 +565,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
       {file && totalPages > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-          {/* LEFT: Rotational Calibration Hub (Glassmorphism Control Area) */}
+          {/* LEFT: Rotation settings */}
           <div className="lg:col-span-4 space-y-6">
             <Card
 
@@ -616,7 +616,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                 </TabsList>
 
                 {/* TAB 1: PRESET ROTATION PANEL */}
-                <TabsContent value="preset"><div className="space-y-4 animate-in fade-in slide-in-from-top-1 duration-200">
+                <TabsContent value="preset"><div className="space-y-4">
                     <div className="grid grid-cols-2 gap-2">
                       <Button
                         variant="outline"
@@ -706,7 +706,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                   </div></TabsContent>
 
                 {/* TAB 2: STEPLESS STEP ROTATION (FINE GRAIN DIAL + SLIDER) */}
-                <TabsContent value="stepless"><div className="space-y-6 animate-in fade-in slide-in-from-bottom-1 duration-200">
+                <TabsContent value="stepless"><div className="space-y-6">
 
                     {/* Visual Rotating Circle Dial Container */}
                     <div className="flex flex-col items-center justify-center">
@@ -911,7 +911,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
                         key={preview.pageNumber}
                         onClick={() => handleToggleSelectPage(preview.pageNumber)}
                         className={`group relative flex flex-col items-center rounded-lg border-2 bg-muted/25 overflow-hidden transition-all duration-300 cursor-pointer select-none ${isSelected
-                            ? 'border-primary shadow-[0_0_12px_hsl(var(--color-primary)/0.2)]'
+                            ? 'border-primary'
                             : 'border-border hover:border-muted-foreground/40'
                           }`}
                       >

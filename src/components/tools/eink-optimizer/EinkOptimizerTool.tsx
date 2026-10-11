@@ -13,12 +13,13 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { PDFPagePreview } from '../PDFPagePreview';
 import { optimizeEink } from '@/lib/pdf/processors/eink-optimizer';
 import {
   SunMoon,
   Sliders,
   Sparkles,
-  Eye,
   Settings,
   BookOpen
 } from 'lucide-react';
@@ -31,10 +32,8 @@ export function EinkOptimizerTool() {
   const [contrastOffset, setContrastOffset] = useState(0); // -50 to 50
   const [dilationAmount, setDilationAmount] = useState(0); // 0 (none), 1 (light), 2 (strong)
 
-  // Split-screen lens slider for comparing original vs e-Ink optimized (WOW Factor)
-  const [sliderPos, setSliderPos] = useState(50); // percentage 0 to 100
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef(false);
+  const operationRef = useRef(0);
+  useEffect(() => () => { operationRef.current += 1; }, []);
 
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
@@ -53,16 +52,20 @@ export function EinkOptimizerTool() {
   const handleProcess = async () => {
     if (!file) return;
 
+    const operation = ++operationRef.current;
     setStatus('processing');
     setProgress(15);
+    setError(null);
+    setResult(null);
 
     try {
       const output = await optimizeEink(
         file,
         { contrastOffset, dilationAmount },
-        (p) => setProgress(p)
+        (p) => { if (operation === operationRef.current) setProgress(p); }
       );
 
+      if (operation !== operationRef.current) return;
       if (output.success && output.result) {
         setResult(output.result as Blob);
         setStatus('complete');
@@ -71,12 +74,14 @@ export function EinkOptimizerTool() {
         setStatus('error');
       }
     } catch (err) {
+      if (operation !== operationRef.current) return;
       setError(err instanceof Error ? err.message : 'An error occurred.');
       setStatus('error');
     }
   };
 
   const handleReset = () => {
+    operationRef.current += 1;
     setFile(null);
     setResult(null);
     setError(null);
@@ -85,39 +90,12 @@ export function EinkOptimizerTool() {
     setDilationAmount(0);
   };
 
-  // Handle lens slider dragging
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDraggingRef.current || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPos(percentage);
-  };
-
-  const handleMouseUp = () => {
-    isDraggingRef.current = false;
-    window.removeEventListener('mousemove', handleMouseMove);
-    window.removeEventListener('mouseup', handleMouseUp);
-  };
-
-  const handleMouseDown = () => {
-    isDraggingRef.current = true;
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-  };
-
-  // Clean up global listeners on unmount
-  useEffect(() => {
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
+  const handleCancel = () => { operationRef.current += 1; setStatus('idle'); setProgress(0); };
 
   return (
     <Card className="p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 rounded-lg bg-teal-600/20 text-teal-400">
+        <div className="p-3 rounded-md bg-muted text-muted-foreground">
           <SunMoon className="w-6 h-6" />
         </div>
         <div>
@@ -139,15 +117,16 @@ export function EinkOptimizerTool() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between p-3 rounded-lg bg-muted border border-border">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg bg-muted border border-border">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
               <BookOpen className="w-5 h-5 text-muted-foreground" />
-              <span className="text-sm font-medium truncate max-w-md">{file.name}</span>
+              <span className="text-sm font-medium truncate max-w-md min-w-0">{file.name}</span>
             </div>
             <Button
               variant="outline"
               size="sm"
               onClick={handleReset}
+              disabled={status === 'processing'}
               className="text-xs"
             >
               {t('buttons.reset')}
@@ -158,13 +137,13 @@ export function EinkOptimizerTool() {
             {/* Control Panel */}
             <div className="space-y-6">
               {/* Contrast Threshold Offset Slider */}
-              <div className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+              <div className="space-y-3 p-4 rounded-md bg-muted border border-border">
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <Label htmlFor="eink-contrast-offset" className="flex items-center gap-1.5">
-                    <Sliders className="w-3.5 h-3.5 text-teal-400" />
+                    <Sliders className="w-3.5 h-3.5 text-muted-foreground" />
                     {t('einkOptimizer.otsueThresholdSuffix')}
                   </Label>
-                  <span className="font-mono text-teal-400">{contrastOffset > 0 ? `+${contrastOffset}` : contrastOffset}</span>
+                  <span className="font-mono text-muted-foreground">{contrastOffset > 0 ? `+${contrastOffset}` : contrastOffset}</span>
                 </div>
                 <Slider
                   min={-50}
@@ -174,16 +153,16 @@ export function EinkOptimizerTool() {
                   disabled={status === 'processing'}
                   className="w-full" id="eink-contrast-offset" aria-label={t('einkOptimizer.otsueThresholdSuffix')}
                 />
-                <div className="flex justify-between text-[9px] text-muted-foreground">
+                <div className="flex justify-between text-xs text-muted-foreground">
                   {t('einkOptimizer.keepStrokes')}
                   {t('einkOptimizer.stripBackground')}
                 </div>
               </div>
 
               {/* Text Dilation Amount */}
-              <div role="group" aria-labelledby="eink-dilation-label" className="space-y-3 p-4 rounded-xl bg-muted border border-border">
+              <div role="group" aria-labelledby="eink-dilation-label" className="space-y-3 p-4 rounded-md bg-muted border border-border">
                 <p id="eink-dilation-label" className="text-sm font-medium flex items-center gap-1.5">
-                  <Settings className="w-3.5 h-3.5 text-teal-400" />
+                  <Settings className="w-3.5 h-3.5 text-muted-foreground" />
                   {t('einkOptimizer.dilationSuffix')}
                 </p>
                 <div className="grid grid-cols-3 gap-2">
@@ -196,7 +175,7 @@ export function EinkOptimizerTool() {
                       key={option.val}
                       onClick={() => setDilationAmount(option.val)}
                       disabled={status === 'processing'}
-                      className="text-center"
+                      className="h-auto min-h-8 whitespace-normal px-2 text-center"
                     >
                       {option.label}
                     </Button>
@@ -205,7 +184,7 @@ export function EinkOptimizerTool() {
               </div>
 
               {/* Action Buttons */}
-              {status === 'idle' && (
+              {status !== 'processing' && (
                 <Button
                   onClick={handleProcess}
                   className="w-full flex items-center justify-center gap-2"
@@ -216,7 +195,7 @@ export function EinkOptimizerTool() {
               )}
 
               {status === 'processing' && (
-                <ProcessingProgress progress={progress} status={status} />
+                <ProcessingProgress progress={progress} status={status} onCancel={handleCancel} />
               )}
 
               {status === 'complete' && result && (
@@ -239,57 +218,16 @@ export function EinkOptimizerTool() {
               )}
             </div>
 
-            {/* Split Screen Contrast Lens (WOW FACTOR COMPARISON) */}
-            <div
-              ref={containerRef}
-              className="relative h-72 md:h-auto min-h-[300px] border border-neutral-800 rounded-xl overflow-hidden cursor-ew-resize select-none bg-neutral-900"
-            >
-              {/* Right Side: e-Ink Optimized (Clean White background, bold text) */}
-              <div className="absolute inset-0 bg-neutral-100 flex flex-col justify-center p-8 text-neutral-900 font-serif leading-relaxed text-xs">
-                <div className="text-right text-[9px] text-teal-600 font-mono font-bold mb-3 tracking-widest">
-                  E-INK PAPER VIEW
-                </div>
-                <h3 className="text-sm font-bold border-b border-neutral-300 pb-1 mb-2 font-sans">
-                  {t('einkOptimizer.afterLabel')}
-                </h3>
-                <p style={{ fontWeight: dilationAmount > 0 ? (dilationAmount === 1 ? '600' : '800') : 'normal' }}>
-                  {t('einkOptimizer.beforeSampleText')}
-                </p>
-              </div>
-
-              {/* Left Side: Original (Muddy scan page background with gray noise) */}
-              <div
-                className="absolute inset-y-0 left-0 bg-[radial-gradient(#b5b5b5_1px,transparent_1px)] [background-size:16px_16px] bg-neutral-400 flex flex-col justify-center p-8 text-neutral-700/80 font-serif leading-relaxed text-xs overflow-hidden border-r border-neutral-600"
-                style={{
-                  width: `${sliderPos}%`,
-                  boxShadow: '4px 0 16px rgba(0,0,0,0.15)'
-                }}
-              >
-                {/* Prevent content wrapping changes inside resized left pane */}
-                <div className="w-[300px] sm:w-[400px]">
-                  <div className="text-[9px] text-neutral-500 font-mono mb-3 tracking-widest">
-                    MUDDY SCAN LOG (ORIGINAL)
-                  </div>
-                  <h3 className="text-sm font-bold border-b border-neutral-400/40 pb-1 mb-2 text-neutral-750 font-sans">
-                    {t('einkOptimizer.beforeLabel')}
-                  </h3>
-                  <p className="opacity-70">
-                    {t('einkOptimizer.beforeSampleText')}
-                  </p>
-                </div>
-              </div>
-
-              {/* Lens Handle Slider */}
-              <div
-                onMouseDown={handleMouseDown}
-                className="absolute inset-y-0 w-1 bg-white cursor-ew-resize flex items-center justify-center z-10 shadow-lg"
-                style={{ left: `${sliderPos}%` }}
-              >
-                <div className="h-8 w-8 rounded-full bg-teal-500 border-2 border-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform text-white">
-                  <Eye className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
+            <Card className="min-w-0 p-4">
+              <Tabs defaultValue="source">
+                <TabsList>
+                  <TabsTrigger value="source">{t('documentPreview.source')}</TabsTrigger>
+                  <TabsTrigger value="result" disabled={!result}>{t('documentPreview.result')}</TabsTrigger>
+                </TabsList>
+                <TabsContent value="source"><PDFPagePreview file={file} label={t('documentPreview.source')} /></TabsContent>
+                {result && <TabsContent value="result"><PDFPagePreview file={result} label={t('documentPreview.result')} /></TabsContent>}
+              </Tabs>
+            </Card>
           </div>
         </div>
       )}

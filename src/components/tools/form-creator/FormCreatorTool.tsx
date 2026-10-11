@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { X as UIEmojiX } from 'lucide-react';
 
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
@@ -263,7 +264,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cancelledRef = useRef(false);
-  const pdfDocRef = useRef<any>(null);
+  const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
 
   // Generate unique ID
   const generateId = () => `field_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -440,7 +441,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   }, [file, currentPage, fields, isAddingPage]);
 
   // Render page
-  const renderPage = async (pdf: any, pageNum: number) => {
+  const renderPage = async (pdf: PDFDocumentProxy, pageNum: number) => {
     if (!canvasRef.current) return;
 
     try {

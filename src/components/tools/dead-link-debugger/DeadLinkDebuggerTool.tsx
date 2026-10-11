@@ -12,7 +12,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { debugDeadLinks, type DeadLinkOptions } from '@/lib/pdf/processors/dead-link-debugger';
+import { type ExtractedLink, debugDeadLinks, type DeadLinkOptions } from '@/lib/pdf/processors/dead-link-debugger';
 import type { ProcessOutput } from '@/types/pdf';
 import { Unlink, Sliders, CheckSquare, Sparkles } from 'lucide-react';
 
@@ -23,7 +23,7 @@ export interface DeadLinkDebuggerToolProps {
 export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolProps) {
   const t = useTranslations('common');
   const [file, setFile] = useState<File | null>(null);
-  const [linkList, setLinkList] = useState<any[]>([]);
+  const [linkList, setLinkList] = useState<ExtractedLink[]>([]);
   const [replacements, setReplacements] = useState<Record<string, string>>({});
 
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -70,7 +70,7 @@ export function DeadLinkDebuggerTool({ className = '' }: DeadLinkDebuggerToolPro
 
       if (output.success && output.result && output.metadata) {
         setResultBlob(output.result as Blob);
-        setLinkList((output.metadata.links as any[]) || []);
+        setLinkList((output.metadata.links as ExtractedLink[]) || []);
         setStatus('complete');
       } else {
         setError(output.error?.message || 'Failed to scan links.');

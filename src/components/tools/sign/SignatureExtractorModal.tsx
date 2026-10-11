@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { FileText as UIEmojiFileText, Lightbulb as UIEmojiLightbulb, MapPin as UIEmojiMapPin } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -30,12 +31,13 @@ import { saveSignature } from '@/lib/pdf/signature-storage';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 import { loadPdfjs } from '@/lib/pdf/loader';
 import { withBasePath } from '@/lib/utils/path';
+import type { SignatureViewerWindow } from './signature-viewer';
 
 export interface SignatureExtractorModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSignatureExtracted?: (result: { blob: Blob; dataUrl: string; name: string }) => void;
-  viewerWindow?: Window | null;
+  viewerWindow?: SignatureViewerWindow | null;
 }
 
 interface CropRect {
@@ -58,7 +60,7 @@ export function SignatureExtractorModal({
   const [error, setError] = useState<string | null>(null);
 
   // PDF Document & Page info
-  const pdfDocRef = useRef<any>(null);
+  const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
   const [pageCount, setPageCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [detectedZones, setDetectedZones] = useState<DetectedSignatureZone[]>([]);
@@ -320,8 +322,8 @@ export function SignatureExtractorModal({
       });
 
       // If active viewer window is available, inject signature
-      if (viewerWindow && (viewerWindow as any).pdfcraftImportSignature) {
-        await (viewerWindow as any).pdfcraftImportSignature(extractedResult.blob, name);
+      if (viewerWindow?.pdfcraftImportSignature) {
+        await viewerWindow.pdfcraftImportSignature(extractedResult.blob, name);
       }
 
       if (onSignatureExtracted) {

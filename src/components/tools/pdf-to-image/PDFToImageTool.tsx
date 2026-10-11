@@ -485,7 +485,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
             {/* Layout Preview */}
             {layoutPreset !== '1x1' && (
-              <div className="p-4 rounded-xl bg-gradient-to-br from-muted to-background border border-border">
+              <div className="p-4 rounded-xl bg-muted border border-border">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 rounded-full bg-primary"></div>
                   <h4 className="text-sm font-semibold text-foreground">
@@ -509,7 +509,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                       {Array.from({ length: (layoutPreset === 'custom' ? customColumns * customRows : parseInt(layoutPreset.split('x')[0]) * parseInt(layoutPreset.split('x')[1])) }).map((_, idx) => (
                         <div
                           key={idx}
-                          className="bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20 rounded flex items-center justify-center text-xs font-bold text-primary"
+                          className="bg-primary/10 border border-primary/20 rounded flex items-center justify-center text-xs font-bold text-primary"
                         >
                           {idx + 1}
                         </div>

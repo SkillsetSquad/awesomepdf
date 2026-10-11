@@ -339,7 +339,7 @@ export function AddPageLabelsTool() {
                 <Card
                   key={idx}
 
-                  className="p-5 relative gap-4 border animate-in fade-in slide-in-from-bottom-2 duration-300"
+                  className="p-5 relative gap-4 border"
                 >
                   <div className="flex justify-between items-center border-b border-border pb-3">
                     <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-md">
@@ -384,7 +384,7 @@ export function AddPageLabelsTool() {
                       </Label>
                       <NativeSelect
                         value={rule.style}
-                        onChange={(e) => handleRuleChange(idx, { style: e.target.value as any })}
+                        onChange={(e) => handleRuleChange(idx, { style: e.target.value as PageLabelRuleInput['style'] })}
                         className="w-full transition-all" aria-label={t('pageLabels.styleLabel')}
                       >
                         <NativeSelectOption value="D">{t('pageLabels.styleArabic')}</NativeSelectOption>

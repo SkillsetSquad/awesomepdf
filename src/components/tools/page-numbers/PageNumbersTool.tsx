@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -99,7 +100,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
   }, []);
 
   // Render page with page number overlay
-  const renderPagePreview = async (pdf: any, pageNum: number) => {
+  const renderPagePreview = async (pdf: PDFDocumentProxy, pageNum: number) => {
     if (!previewCanvasRef.current) return;
 
     // Cancel any ongoing render task

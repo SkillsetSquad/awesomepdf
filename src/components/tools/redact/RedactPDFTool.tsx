@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist';
 import { Lightbulb as UIEmojiLightbulb } from 'lucide-react';
 
 import { Slider } from '@/components/ui/slider';
@@ -125,13 +126,13 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageScale, setPageScale] = useState(1.2);
   const [isPageLoading, setIsPageLoading] = useState(false);
-  const [pdfDoc, setPdfDoc] = useState<any>(null);
+  const [pdfDoc, setPdfDoc] = useState<PDFDocumentProxy | null>(null);
   const [canvasReady, setCanvasReady] = useState(false);
   const [jumpInput, setJumpInput] = useState('1');
   const [sidebarViewMode, setSidebarViewMode] = useState<'grid' | 'list'>('grid');
   const [filterRedactedOnly, setFilterRedactedOnly] = useState(false);
   const activePageButtonRef = useRef<HTMLButtonElement | null>(null);
-  const pdfDocRef = useRef<any>(null);
+  const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
 
   // Redaction areas by page
   const [redactions, setRedactions] = useState<Record<number, RedactionArea[]>>({});
@@ -164,7 +165,7 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const baseCanvasRef = useRef<HTMLCanvasElement>(null);
   const overlayCanvasRef = useRef<HTMLCanvasElement>(null);
-  const renderTaskRef = useRef<any>(null);
+  const renderTaskRef = useRef<RenderTask | null>(null);
 
   // Interaction State
   const [isDrawing, setIsDrawing] = useState(false);
@@ -245,9 +246,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
         const initialFit = Math.min(1.5, Math.max(0.6, Number((targetW / unscaledViewport.width).toFixed(2))));
         setPageScale(initialFit);
       } catch {}
-    } catch (err: any) {
+    } catch (err) {
       console.error('Failed to load PDF:', err);
-      setError(err?.message || 'Failed to load PDF document');
+      setError((typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string' ? err.message : '') || 'Failed to load PDF document');
     } finally {
       setIsPageLoading(false);
     }
@@ -444,13 +445,13 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
 
         await renderTask.promise;
       }
-    } catch (err: any) {
-      if (err?.name === 'RenderingCancelledException') {
+    } catch (err) {
+      if (typeof err === 'object' && err !== null && 'name' in err && err.name === 'RenderingCancelledException') {
         // Normal collision cancellation, do not treat as error
         return;
       }
       console.error('Render page error:', err);
-      setError(err?.message || 'Failed to render PDF page');
+      setError((typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string' ? err.message : '') || 'Failed to render PDF page');
     } finally {
       setIsPageLoading(false);
     }
@@ -1423,9 +1424,9 @@ export function RedactPDFTool({ className = '' }: RedactPDFToolProps) {
         ? `${file.name.replace(/\.pdf$/i, '')}_redacted.pdf`
         : 'redacted.pdf';
       await saveBlobFile(outputBlob, downloadFilename);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Redaction failed:', err);
-      setError(err?.message || '处理脱敏 PDF 时出错');
+      setError((typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string' ? err.message : '') || '处理脱敏 PDF 时出错');
       setStatus('error');
     }
   }, [file, redactions, flattenAllPages, stripMetadata, purgeAnnotations, renderScale]);

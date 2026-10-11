@@ -24,6 +24,11 @@ interface StampState {
   viewerReady: boolean;
 }
 
+type StampViewerWindow = Window & { HTMLAnchorElement?: typeof HTMLAnchorElement };
+interface ExportEntry { call: () => unknown; kind: string }
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  value !== null && typeof value === 'object';
+
 export function StampsTool({ className = '' }: StampsToolProps) {
   const locale = useLocale();
   const t = useTranslations('common');
@@ -69,7 +74,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
     }
     try {
       setIsProcessing(true);
-      const win = iframeRef.current.contentWindow as any;
+      const win = iframeRef.current.contentWindow as StampViewerWindow | null;
       const doc = win?.document;
 
       if (!win || !doc) {
@@ -120,12 +125,12 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       };
 
       let triggered = false;
-      const AnchorProto = (win as any).HTMLAnchorElement?.prototype;
+      const AnchorProto = win.HTMLAnchorElement?.prototype;
       const originalClick = AnchorProto ? AnchorProto.click : null;
       if (AnchorProto && typeof originalClick === 'function') {
         AnchorProto.click = function patchedClick(this: HTMLAnchorElement, ...args: Parameters<HTMLAnchorElement['click']>) {
           try {
-            const href = this.getAttribute('href') || (this as any).href;
+            const href = this.getAttribute('href') || this.href;
             const dl = this.getAttribute('download');
             if (href && (dl !== null || /^blob:/.test(String(href)))) {
               triggered = true;
@@ -151,13 +156,13 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       //       component), or
       //   (b) the CustomToolbar's memoizedProps.onExport (a closure that
       //       forwards to the main class's exportPdf).
-      const findExportEntry = (): { call: () => any; kind: string } | null => {
+      const findExportEntry = (): ExportEntry | null => {
         const anchor = doc.querySelector('.CustomToolbar');
         if (!anchor) return null;
 
         const walkFromNode = (
-          node: any
-        ): { call: () => any; kind: string } | null => {
+          node: HTMLElement
+        ): ExportEntry | null => {
           const keys = Object.keys(node);
           for (const key of keys) {
             if (
@@ -165,22 +170,24 @@ export function StampsTool({ className = '' }: StampsToolProps) {
               key.startsWith('__reactInternalInstance$') ||
               key.startsWith('__reactProps$')
             ) {
-              let fiber: any = (node as any)[key];
-              while (fiber) {
+              let fiber: unknown = (node as unknown as Record<string, unknown>)[key];
+              while (isRecord(fiber)) {
                 // (a) exportPdf on stateNode
                 const inst = fiber.stateNode;
-                if (inst && typeof inst.exportPdf === 'function') {
+                if (isRecord(inst) && typeof inst.exportPdf === 'function') {
+                  const exportPdf = inst.exportPdf;
                   return {
                     kind: 'stateNode.exportPdf',
-                    call: () => inst.exportPdf(),
+                    call: () => exportPdf.call(inst),
                   };
                 }
                 // (b) onExport in props
                 const props = fiber.memoizedProps || fiber.pendingProps;
-                if (props && typeof props.onExport === 'function') {
+                if (isRecord(props) && typeof props.onExport === 'function') {
+                  const onExport = props.onExport;
                   return {
                     kind: 'props.onExport("pdf")',
-                    call: () => props.onExport('pdf'),
+                    call: () => onExport.call(props, 'pdf'),
                   };
                 }
                 fiber = fiber.return;

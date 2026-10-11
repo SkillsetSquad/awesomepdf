@@ -1071,7 +1071,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                 </RadioGroup>
 
                 {pageMode === 'custom' && (
-                  <div className="animate-in fade-in slide-in-from-top-1 duration-200">
+                  <div className="">
                     <Input
                       type="text"
                       value={customPageRange}

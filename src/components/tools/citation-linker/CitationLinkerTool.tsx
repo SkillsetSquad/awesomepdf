@@ -2,7 +2,7 @@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleAlert as UICircleAlert } from 'lucide-react';
 
-import { FileText as UIFileText, Settings as UISettings } from 'lucide-react';
+import { FileText as UIFileText } from 'lucide-react';
 
 import { Checkbox } from '@/components/ui/checkbox';
 
@@ -10,26 +10,22 @@ import { Label } from '@/components/ui/label';
 
 import { Input } from '@/components/ui/input';
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { linkCitations, type CitationLinkerOptions } from '@/lib/pdf/processors/citation-linker';
+import { PDFPagePreview } from '../PDFPagePreview';
+import { linkCitations } from '@/lib/pdf/processors/citation-linker';
 import type { ProcessOutput } from '@/types/pdf';
 import {
   GitBranch,
   Settings2,
   Link2,
-  Edit3,
   Check,
-  RotateCw,
-  CheckCircle2,
-  ExternalLink,
-  ShieldCheck,
-  FileText
+  ShieldCheck
 } from 'lucide-react';
 
 export interface CitationLinkerToolProps {
@@ -48,7 +44,6 @@ interface CitationItem {
 
 export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) {
   const t = useTranslations('common');
-  const tTools = useTranslations('tools');
 
   // File States
   const [file, setFile] = useState<File | null>(null);
@@ -71,28 +66,21 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
   const [fallbackToPageJump, setFallbackToPageJump] = useState(true);
   const [editUrl, setEditUrl] = useState('');
 
-  // Rotation angle for gear animation
-  const [gearAngle, setGearAngle] = useState(0);
-
+  const [previewPage, setPreviewPage] = useState(1);
   const cancelledRef = useRef(false);
 
-  // Animate gear during processing
-  useEffect(() => {
-    let interval: any;
-    if (status === 'processing') {
-      interval = setInterval(() => {
-        setGearAngle((prev) => (prev + 8) % 360);
-      }, 30);
-    }
-    return () => clearInterval(interval);
-  }, [status]);
+  const operationRef = useRef(0);
+  useEffect(() => () => { operationRef.current += 1; }, []);
 
   /**
    * Handle uploaded file and trigger scan
    */
-  const handleFileSelected = useCallback(async (files: File[]) => {
+  const handleFileSelected = async (files: File[]) => {
     if (files.length === 0) return;
     const selectedFile = files[0];
+    const operation = ++operationRef.current;
+    setPreviewPage(1);
+    setTotalPages(0);
     setFile(selectedFile);
     setIsLoadingMetadata(true);
     setError(null);
@@ -103,26 +91,28 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
     try {
       const { PDFDocument } = await import('pdf-lib');
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
+      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      if (operation !== operationRef.current) return;
       setTotalPages(pdf.getPageCount());
+      setIsLoadingMetadata(false);
 
-      // Auto run scan first
-      setTimeout(() => {
-        handleScanCitations(selectedFile);
-      }, 500);
+      // Scan the selected document after metadata is ready.
+      await handleScanCitations(selectedFile);
 
     } catch (err) {
+      if (operation !== operationRef.current) return;
       console.error(err);
       setError('Failed to parse PDF metadata. File might be corrupted.');
     } finally {
-      setIsLoadingMetadata(false);
+      if (operation === operationRef.current) setIsLoadingMetadata(false);
     }
-  }, []);
+  };
 
   /**
    * Scan Citations from PDF
    */
   const handleScanCitations = async (targetFile: File) => {
+    const operation = ++operationRef.current;
     cancelledRef.current = false;
     setStatus('processing');
     setProgress(0);
@@ -137,17 +127,14 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           fallbackToPageJump,
         },
         (prog, message) => {
-          if (!cancelledRef.current) {
+          if (!cancelledRef.current && operation === operationRef.current) {
             setProgress(prog);
             setProgressMessage(message || 'Analyzing bibliography patterns...');
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (cancelledRef.current || operation !== operationRef.current) return;
 
       if (output.success) {
         setStatus('idle'); // Back to idle so user can review and edit in UI
@@ -164,7 +151,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (!cancelledRef.current && operation === operationRef.current) {
         setError(err instanceof Error ? err.message : 'Error scanning citations.');
         setStatus('error');
       }
@@ -177,6 +164,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
   const handleApplyLinks = async () => {
     if (!file) return;
 
+    const operation = ++operationRef.current;
     cancelledRef.current = false;
     setStatus('processing');
     setProgress(70);
@@ -193,16 +181,13 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
           citationsList: citations, // Pass modified list back to processor
         },
         (prog) => {
-          if (!cancelledRef.current) {
+          if (!cancelledRef.current && operation === operationRef.current) {
             setProgress(prog);
           }
         }
       );
 
-      if (cancelledRef.current) {
-        setStatus('idle');
-        return;
-      }
+      if (cancelledRef.current || operation !== operationRef.current) return;
 
       if (output.success && output.result) {
         setResult(output.result as Blob);
@@ -212,7 +197,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
         setStatus('error');
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (!cancelledRef.current && operation === operationRef.current) {
         setError(err instanceof Error ? err.message : 'Linking process error.');
         setStatus('error');
       }
@@ -233,6 +218,9 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
   };
 
   const handleClearFile = () => {
+    operationRef.current += 1;
+    setIsLoadingMetadata(false);
+    setError(null);
     setFile(null);
     setTotalPages(0);
     setResult(null);
@@ -242,6 +230,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
   };
 
   const handleCancel = () => {
+    operationRef.current += 1;
     cancelledRef.current = true;
     setStatus('idle');
     setProgress(0);
@@ -274,15 +263,15 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
       {/* File Metadata Overview */}
       {file && (
-        <Card  className="p-4 flex items-center justify-between border-2 border-primary/25">
-          <div className="flex items-center gap-3">
-            <UIFileText className="w-10 h-10 text-red-500" aria-hidden="true" />
-            <div>
+        <Card  className="p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <UIFileText className="w-10 h-10 text-muted-foreground" aria-hidden="true" />
+            <div className="min-w-0">
               <p className="font-semibold text-sm text-foreground truncate max-w-[280px]" title={file.name}>
                 {file.name}
               </p>
               <p className="text-xs text-muted-foreground">
-                {totalPages > 0 ? `${totalPages} ${t('pdfToCbz.pagesLabel') || 'pages'}` : t('citationLinker.scanningMetadata')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
+                {totalPages > 0 ? t('accessibility.pageOf', { current: previewPage, total: totalPages }) : t('citationLinker.scanningMetadata')} • {(file.size / (1024 * 1024)).toFixed(2)} MB
               </p>
             </div>
           </div>
@@ -293,7 +282,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
       )}
 
       {/* Main Workspace (Visible after citation scanning completes) */}
-      {file && citations.length > 0 && status !== 'processing' && status !== 'complete' && (
+      {file && totalPages > 0 && !isProcessing && status !== 'complete' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* LEFT: Citation Configuration & List */}
@@ -302,7 +291,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
               <div className="space-y-4">
                 <div className="border-b border-border pb-3">
-                  <h3 className="text-base font-bold text-foreground flex items-center gap-2">
+                  <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
                     <Settings2 className="w-5 h-5 text-primary" />
                     {t('citationLinker.optionsTitle')}
                   </h3>
@@ -331,25 +320,26 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
 
                 {/* Edit Link input */}
                 {selectedCitation && (
-                  <div className="p-4 bg-muted/30 border border-border rounded-2xl space-y-3 animate-in fade-in zoom-in-95 duration-200">
+                  <div className="p-4 border rounded-md space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-amber-500">{t('citationLinker.editingCitation', { marker: selectedCitation.marker })}</span>
-                      <span className="text-[10px] opacity-60">{t('citationLinker.citationPage', { page: selectedCitation.pageNum })}</span>
+                      <span className="text-xs font-semibold text-foreground">{t('citationLinker.editingCitation', { marker: selectedCitation.marker })}</span>
+                      <span className="text-xs opacity-60">{t('citationLinker.citationPage', { page: selectedCitation.pageNum })}</span>
                     </div>
 
-                    <p className="text-[11px] leading-relaxed line-clamp-2 text-muted-foreground">
+                    <p className="text-sm leading-relaxed line-clamp-2 text-muted-foreground">
                       {t('citationLinker.citationRef', { ref: selectedCitation.refText })}
                     </p>
 
                     <div className="flex gap-2">
                       <Input
+                        aria-label={t('citationLinker.doiPlaceholder')}
                         type="text"
                         value={editUrl}
                         onChange={(e) => setEditUrl(e.target.value)}
                         placeholder={t('citationLinker.doiPlaceholder')}
                         className="flex-1"
                       />
-                      <Button size="sm" variant="default" onClick={handleSaveUrl}>
+                      <Button size="sm" variant="default" onClick={handleSaveUrl} aria-label={t('buttons.save')}>
                         <Check className="w-3.5 h-3.5" />
                       </Button>
                     </div>
@@ -361,34 +351,35 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                   <Label className="text-muted-foreground uppercase tracking-wider">
                     {t('citationLinker.citationListTitle', { count: citations.length })}
                   </Label>
-                  <div className="space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
+                  <Button variant="outline" onClick={() => handleScanCitations(file)}>{t('buttons.process')}</Button>
+                  {citations.length === 0 && <Alert><AlertDescription><p className="font-medium">{t('citationLinker.emptyTitle')}</p><p>{t('citationLinker.emptyDescription')}</p></AlertDescription></Alert>}
+                  <div className="space-y-1.5 max-h-[240px] overflow-y-auto">
                     {citations.map((c) => (
-                      <div
+                      <Button
+                        variant={selectedCitation?.id === c.id ? 'secondary' : 'outline'}
+                        aria-pressed={selectedCitation?.id === c.id}
                         key={c.id}
                         onClick={() => {
                           setSelectedCitation(c);
                           setEditUrl(c.url);
+                          setPreviewPage(c.pageNum);
                         }}
-                        className={`p-2.5 rounded-xl border flex items-center justify-between text-xs cursor-pointer transition-all ${
-                          selectedCitation?.id === c.id
-                            ? 'border-primary bg-primary/4'
-                            : 'border-border bg-card hover:bg-muted/30'
-                        }`}
+                        className="w-full justify-between"
                       >
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-foreground">{c.marker}</span>
-                          <span className="text-[10px] text-muted-foreground">Page {c.pageNum}</span>
+                          <span className="font-semibold text-foreground">{c.marker}</span>
+                          <span className="text-xs text-muted-foreground">{t('citationLinker.citationPage', { page: c.pageNum })}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                           {c.url ? (
-                            <span className="text-[10px] text-emerald-500 font-bold flex items-center gap-0.5">
+                            <span className="text-xs text-emerald-500 font-semibold flex items-center gap-0.5">
                               <Link2 className="w-3 h-3" /> DOI
                             </span>
                           ) : (
-                            <span className="text-[10px] text-muted-foreground font-medium">{t('citationLinker.gotoPage')}</span>
+                            <span className="text-xs text-muted-foreground font-medium">{t('citationLinker.gotoPage')}</span>
                           )}
                         </div>
-                      </div>
+                      </Button>
                     ))}
                   </div>
                 </div>
@@ -399,8 +390,9 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
                 <Button
                   variant="default"
                   size="lg"
-                  className="w-full py-4 flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2"
                   onClick={handleApplyLinks}
+                  disabled={citations.length === 0}
                 >
                   <GitBranch className="w-5 h-5" />
                   {t('citationLinker.injectLink')}
@@ -409,155 +401,15 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
             </Card>
           </div>
 
-          {/* RIGHT: Interactive Glassmorphism Citation Star Map */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <Card  className="flex-1 p-6 bg-card border-2 border-dashed border-border flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[420px]">
-
-              {/* Star Topology SVG Map */}
-              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                <svg className="w-full h-full opacity-60">
-                  <defs>
-                    <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.15" />
-                      <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
-                    </radialGradient>
-                    {/* Glowing path filter */}
-                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feGaussianBlur stdDeviation="3" result="blur" />
-                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                  </defs>
-
-                  {/* Central Glow */}
-                  <circle cx="50%" cy="50%" r="150" fill="url(#star-glow)" />
-
-                  {/* Connected line graphs */}
-                  {citations.slice(0, 10).map((c, idx) => {
-                    const angle = (idx * (2 * Math.PI)) / Math.min(10, citations.length);
-                    const x = 50 + 35 * Math.cos(angle);
-                    const y = 50 + 35 * Math.sin(angle);
-
-                    const isSelected = selectedCitation?.id === c.id;
-                    const strokeColor = isSelected
-                      ? 'var(--primary)'
-                      : c.url
-                        ? 'rgba(16, 185, 129, 0.4)'
-                        : 'rgba(156, 163, 175, 0.3)';
-                    const strokeDash = isSelected ? 'none' : c.url ? 'none' : '4,4';
-
-                    return (
-                      <g key={c.id}>
-                        {/* Connecting line */}
-                        <line
-                          x1="50%"
-                          y1="50%"
-                          x2={`${x}%`}
-                          y2={`${y}%`}
-                          stroke={strokeColor}
-                          strokeWidth={isSelected ? 2.5 : 1.2}
-                          strokeDasharray={strokeDash}
-                          filter={isSelected ? 'url(#glow)' : ''}
-                        />
-                        {/* Shimmer pulse effect along active link lines */}
-                        {c.url && (
-                          <circle r="3" fill="#10b981">
-                            <animateMotion
-                              path={`M 170 210 L ${1.7 * x + 85} ${2.1 * y + 105}`}
-                              dur="3s"
-                              repeatCount="indefinite"
-                            />
-                          </circle>
-                        )}
-                      </g>
-                    );
-                  })}
-                </svg>
-              </div>
-
-              {/* Topology Nodes (DOM Elements overlaid on SVG space) */}
-              <div className="w-full h-full relative z-20 flex items-center justify-center">
-
-                {/* Central paper node */}
-                <div className="w-20 h-20 rounded-full border-4 border-primary/60 bg-background shadow-2xl flex flex-col items-center justify-center text-center p-2 z-30 transform hover:scale-105 transition-transform">
-                  <FileText className="w-6 h-6 text-primary" />
-                  <span className="text-[9px] font-semibold mt-1 leading-none uppercase">Paper</span>
-                </div>
-
-                {/* Circumferential nodes (slice first 10 for layout clarity) */}
-                {citations.slice(0, 10).map((c, idx) => {
-                  const angle = (idx * (2 * Math.PI)) / Math.min(10, citations.length);
-                  const radiusX = 130;
-                  const radiusY = 130;
-                  const x = radiusX * Math.cos(angle);
-                  const y = radiusY * Math.sin(angle);
-
-                  const isSelected = selectedCitation?.id === c.id;
-
-                  return (
-                    <div
-                      key={c.id}
-                      onClick={() => {
-                        setSelectedCitation(c);
-                        setEditUrl(c.url);
-                      }}
-                      style={{
-                        transform: `translate(${x}px, ${y}px)`,
-                      }}
-                      className={`absolute w-12 h-12 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer transition-all hover:scale-110 shadow-lg border-2 z-30 ${
-                        isSelected
-                          ? 'border-primary bg-primary/15 ring-2 ring-primary/30'
-                          : c.url
-                            ? 'border-emerald-500/50 bg-emerald-50/90 dark:bg-emerald-950/20'
-                            : 'border-border bg-background'
-                      }`}
-                    >
-                      <span className="text-[10px] font-bold leading-none">{c.marker}</span>
-                      <span className="text-[8px] opacity-50 mt-1">P{c.pageNum}</span>
-                    </div>
-                  );
-                })}
-
-              </div>
-
-              {/* Topology Instructions Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] text-muted-foreground z-30">
-                <span>{t('citationLinker.doiExternalLink')}</span>
-                <span>{t('citationLinker.gotoPageLink')}</span>
-              </div>
-
-            </Card>
-          </div>
+          <Card className="lg:col-span-7 min-w-0 p-4 space-y-4">
+            <h3 className="font-semibold">{t('documentPreview.source')}</h3>
+            <PDFPagePreview file={file} label={t('documentPreview.source')} selectedPage={previewPage} onPageChange={setPreviewPage} />
+          </Card>
 
         </div>
       )}
 
-      {/* Processing State (Rotating gear dynamic panel) */}
-      {isProcessing && (
-        <Card  className="p-10 border flex flex-col items-center justify-center gap-6">
-          {/* 3D Gear rotate animation */}
-          <div className="relative w-24 h-24 flex items-center justify-center">
-            <div
-              style={{ transform: `rotate(${gearAngle}deg)` }}
-              className="absolute w-20 h-20 text-primary opacity-80"
-            >
-              <UISettings className="w-full h-full" aria-hidden="true" />
-            </div>
-
-            {/* Small offset gear */}
-            <div
-              style={{ transform: `rotate(${-gearAngle * 1.5}deg)` }}
-              className="absolute -top-1 -right-1 w-10 h-10 text-muted-foreground opacity-60"
-            >
-              <UISettings className="w-full h-full" aria-hidden="true" />
-            </div>
-          </div>
-
-          <div className="text-center space-y-2">
-            <h4 className="text-sm font-bold text-foreground">{t('citationLinker.injectingMessage')}</h4>
-            <p className="text-xs text-muted-foreground">{progressMessage}</p>
-          </div>
-        </Card>
-      )}
+      {isProcessing && <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} showPercentage />}
 
       {/* Finished Stage (Success screen) */}
       {status === 'complete' && result && (
@@ -573,6 +425,7 @@ export function CitationLinkerTool({ className = '' }: CitationLinkerToolProps) 
             </p>
           </div>
 
+          <PDFPagePreview file={result} label={t('documentPreview.result')} />
           <div className="flex gap-3 justify-center max-w-xs mx-auto">
             <DownloadButton
               file={result}

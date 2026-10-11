@@ -81,19 +81,16 @@ export function ToolDirectory({ locale, tools }: ToolDirectoryProps) {
               const active = category === id;
               const count = id === 'all' ? tools.length : counts[id];
               return (
-                <button
+                <Button
                   key={id}
-                  type="button"
+                  variant={active ? 'default' : 'outline'}
                   aria-pressed={active}
                   onClick={() => chooseCategory(id)}
-                  className={cn(
-                    'inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors focus-visible:outline-2',
-                    active ? 'border-primary bg-primary text-primary-foreground' : 'bg-background hover:border-primary/40 hover:bg-accent',
-                  )}
+                  className="min-h-10"
                 >
                   {id === 'all' ? t('all') : nameOf(id)}
                   <span className={cn('text-xs font-normal', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{count}</span>
-                </button>
+                </Button>
               );
             })}
           </div>

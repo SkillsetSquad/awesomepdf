@@ -1,4 +1,5 @@
 'use client';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -75,7 +76,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
     const [totalPages, setTotalPages] = useState(0);
     const [previewScale, setPreviewScale] = useState(1.0);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const pdfDocRef = useRef<any>(null);
+    const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
 
     const cancelledRef = useRef(false);
 
