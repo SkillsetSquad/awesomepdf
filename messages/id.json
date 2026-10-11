@@ -720,7 +720,14 @@
       "colorFormat": "Format warna",
       "annotationStyle": "Gaya anotasi",
       "strokeWidth": "Ketebalan garis",
-      "opacity": "Opasitas"
+      "opacity": "Opasitas",
+      "signatureDescription": "Gambar, ketik, atau unggah tanda tangan, lalu klik PDF untuk menempatkannya.",
+      "signatureDraw": "Gambar",
+      "signatureType": "Ketik",
+      "signatureSaved": "Tanda tangan tersimpan",
+      "signatureText": "Teks tanda tangan",
+      "signatureFont": "Font",
+      "signatureImage": "Gambar tanda tangan"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

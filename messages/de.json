@@ -720,7 +720,14 @@
       "colorFormat": "Farbformat",
       "annotationStyle": "Anmerkungsstil",
       "strokeWidth": "Strichstärke",
-      "opacity": "Deckkraft"
+      "opacity": "Deckkraft",
+      "signatureDescription": "Zeichnen, tippen oder laden Sie eine Unterschrift hoch und klicken Sie dann zum Platzieren auf die PDF.",
+      "signatureDraw": "Zeichnen",
+      "signatureType": "Tippen",
+      "signatureSaved": "Gespeicherte Unterschriften",
+      "signatureText": "Unterschriftstext",
+      "signatureFont": "Schriftart",
+      "signatureImage": "Unterschriftsbild"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu-Offset)",

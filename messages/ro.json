@@ -720,7 +720,14 @@
       "colorFormat": "Formatul culorii",
       "annotationStyle": "Stilul adnotării",
       "strokeWidth": "Grosimea liniei",
-      "opacity": "Opacitate"
+      "opacity": "Opacitate",
+      "signatureDescription": "Desenează, tastează sau încarcă o semnătură, apoi apasă pe PDF pentru a o poziționa.",
+      "signatureDraw": "Desenează",
+      "signatureType": "Tastează",
+      "signatureSaved": "Semnături salvate",
+      "signatureText": "Textul semnăturii",
+      "signatureFont": "Font",
+      "signatureImage": "Imaginea semnăturii"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",

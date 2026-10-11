@@ -8,6 +8,7 @@ import { ArrowUpRight, Circle, Cloud, Download, Highlighter, Info, MessageSquare
 import { AnnotationExportMenu, type AnnotationExportAction, type AnnotationExportFormat } from './AnnotationExportMenu';
 import { AnnotationColorControl, type AnnotationColorOptions } from './AnnotationColorControl';
 import { AnnotationStyleControls, type AnnotationStyleLabels, type AnnotationStyleOptions } from './AnnotationStyleControls';
+import { AnnotationSignatureControl, type AnnotationSignatureOptions, type AnnotationSignatureLabels } from './AnnotationSignatureControl';
 
 const annotationIcons: Record<string, LucideIcon> = {
   select: MousePointer2, rectangle: Square, circle: Circle, note: StickyNote,
@@ -26,6 +27,7 @@ interface ViewerControl {
   color?: string;
   colorOptions?: AnnotationColorOptions;
   styleOptions?: AnnotationStyleOptions;
+  signatureOptions?: AnnotationSignatureOptions;
   onExport?: AnnotationExportAction;
   exportFormats?: AnnotationExportFormat[];
   label: string;
@@ -34,7 +36,7 @@ interface ViewerControl {
   action: HTMLElement;
 }
 
-export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, styleLabels, exportError = 'Export failed. Please try again.' }: {
+export function LegacyEditorControls({ iframe, locale, undo, redo, labels, colorLabels, styleLabels, signatureLabels, exportError = 'Export failed. Please try again.' }: {
   iframe: HTMLIFrameElement | null;
   locale: string;
   undo: string;
@@ -42,12 +44,16 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
   labels?: Record<string, string>;
   colorLabels?: { format: string; close: string };
   styleLabels?: AnnotationStyleLabels;
+  signatureLabels?: AnnotationSignatureLabels;
   exportError?: string;
 }) {
   const [controls, setControls] = useState<ViewerControl[]>([]);
   useEffect(() => {
     const doc = iframe?.contentDocument;
     if (!doc?.body) return;
+    const viewer = doc.defaultView as (Window & { awesomepdfSignatureControls?: boolean }) | null;
+    const previousSignatureControls = viewer?.awesomepdfSignatureControls;
+    if (viewer) viewer.awesomepdfSignatureControls = !!signatureLabels;
     const sheets = Array.from(document.querySelectorAll('link[rel="stylesheet"], style')).map(node => {
       const clone = node.cloneNode(true) as HTMLElement;
       clone.removeAttribute('id');
@@ -127,8 +133,9 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         const mount = mountControl(item, action);
         const exportAction = (item as HTMLElement & { awesomepdfExport?: AnnotationExportAction }).awesomepdfExport;
         const colorOptions = (item as HTMLElement & { awesomepdfColor?: AnnotationColorOptions }).awesomepdfColor;
+        const signatureOptions = (item.querySelector('[data-signature-control]') as (HTMLElement & { awesomepdfSignature?: AnnotationSignatureOptions }) | null)?.awesomepdfSignature;
         const exportFormats = (['pdf', 'excel'] as const).filter(format => item.dataset[format === 'pdf' ? 'exportPdf' : 'exportExcel'] === 'true');
-        next.push({ item, mount, action, kind: 'annotation', key: tool, Icon, color: tool === 'color' ? color : undefined, colorOptions,
+        next.push({ item, mount, action, kind: 'annotation', key: tool, Icon, color: tool === 'color' ? color : undefined, colorOptions, signatureOptions,
           onExport: typeof exportAction === 'function' ? exportAction : undefined, exportFormats,
           label, toggle: !['color', 'export'].includes(tool),
           disabled: item.classList.contains('disabled') || action.hasAttribute('disabled'), pressed: item.classList.contains('selected') });
@@ -146,20 +153,24 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
       }
       setControls(previous => previous.length === next.length && next.every((control, index) => {
         const old = previous[index];
-        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.styleOptions === control.styleOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
+        return old.item === control.item && old.mount === control.mount && old.action === control.action && old.label === control.label && old.disabled === control.disabled && old.pressed === control.pressed && old.color === control.color && old.colorOptions === control.colorOptions && old.styleOptions === control.styleOptions && old.signatureOptions === control.signatureOptions && old.onExport === control.onExport && old.exportFormats?.join() === control.exportFormats?.join();
       }) ? previous : next);
     };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel', 'data-annotation-style', 'data-color', 'data-stroke-width', 'data-opacity'] });
+    observer.observe(doc.body, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ['class', 'disabled', 'data-message', 'title', 'style', 'data-export-pdf', 'data-export-excel', 'data-annotation-style', 'data-color', 'data-stroke-width', 'data-opacity', 'data-signature-revision'] });
     return () => {
       observer.disconnect();
+      if (viewer) {
+        if (previousSignatureControls === undefined) delete viewer.awesomepdfSignatureControls;
+        else viewer.awesomepdfSignatureControls = previousSignatureControls;
+      }
       theme.disconnect();
       for (const [item, { mount, parent }] of registry) { mount.remove(); delete parent.dataset.awesomepdfAction; delete item.dataset.awesomepdfControl; }
       style.remove();
       sheets.forEach(sheet => sheet.remove());
     };
-  }, [iframe, locale, undo, redo, labels]);
+  }, [iframe, locale, undo, redo, labels, signatureLabels]);
 
   return controls.map(control => createPortal(control.kind === 'hint'
     ? <Alert className="pointer-events-none fixed top-20 left-1/2 z-[100000] w-[calc(100%-2rem)] max-w-md -translate-x-1/2" role="status" dir={locale === 'ar' ? 'rtl' : 'ltr'}><Info aria-hidden="true" /><AlertDescription>{control.label}</AlertDescription></Alert>
@@ -167,6 +178,8 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     ? <AnnotationStyleControls options={control.styleOptions} direction={locale === 'ar' ? 'rtl' : 'ltr'} labels={styleLabels ?? { title: 'Annotation style', color: labels?.color ?? 'Color', strokeWidth: 'Stroke width', opacity: 'Opacity', back: 'Back', format: colorLabels?.format ?? 'Color format', close: colorLabels?.close ?? 'Close' }} />
     : control.key === 'color' && control.colorOptions
     ? <AnnotationColorControl options={control.colorOptions} label={control.label} disabled={control.disabled} direction={locale === 'ar' ? 'rtl' : 'ltr'} formatLabel={colorLabels?.format ?? 'Color format'} closeLabel={colorLabels?.close ?? 'Close'} />
+    : control.key === 'signature' && control.signatureOptions && signatureLabels
+    ? <AnnotationSignatureControl options={control.signatureOptions} label={control.label} labels={signatureLabels} direction={locale === 'ar' ? 'rtl' : 'ltr'} pressed={control.pressed} />
     : control.key === 'export' && control.onExport
     ? <AnnotationExportMenu container={control.item.ownerDocument.body} label={control.label} formats={control.exportFormats ?? []} onExport={control.onExport} direction={locale === 'ar' ? 'rtl' : 'ltr'} errorMessage={exportError} />
     : <Button dir={locale === 'ar' ? 'rtl' : 'ltr'} type="button" size={control.kind === 'annotation-action' ? 'icon-sm' : 'sm'} variant={control.pressed ? 'secondary' : 'ghost'} disabled={control.disabled}

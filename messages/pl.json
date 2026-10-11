@@ -720,7 +720,14 @@
       "colorFormat": "Format koloru",
       "annotationStyle": "Styl adnotacji",
       "strokeWidth": "Grubość linii",
-      "opacity": "Krycie"
+      "opacity": "Krycie",
+      "signatureDescription": "Narysuj, wpisz lub prześlij podpis, a następnie kliknij plik PDF, aby go umieścić.",
+      "signatureDraw": "Rysuj",
+      "signatureType": "Wpisz",
+      "signatureSaved": "Zapisane podpisy",
+      "signatureText": "Tekst podpisu",
+      "signatureFont": "Czcionka",
+      "signatureImage": "Obraz podpisu"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Przesunięcie Otsu)",

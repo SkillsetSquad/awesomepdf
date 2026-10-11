@@ -720,7 +720,14 @@
       "colorFormat": "Formato de color",
       "annotationStyle": "Estilo de anotación",
       "strokeWidth": "Grosor del trazo",
-      "opacity": "Opacidad"
+      "opacity": "Opacidad",
+      "signatureDescription": "Dibuja, escribe o sube una firma y haz clic en el PDF para colocarla.",
+      "signatureDraw": "Dibujar",
+      "signatureType": "Escribir",
+      "signatureSaved": "Firmas guardadas",
+      "signatureText": "Texto de la firma",
+      "signatureFont": "Fuente",
+      "signatureImage": "Imagen de la firma"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desviación Otsu)",

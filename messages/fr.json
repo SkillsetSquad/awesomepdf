@@ -720,7 +720,14 @@
       "colorFormat": "Format de couleur",
       "annotationStyle": "Style de l’annotation",
       "strokeWidth": "Épaisseur du trait",
-      "opacity": "Opacité"
+      "opacity": "Opacité",
+      "signatureDescription": "Dessinez, saisissez ou importez une signature, puis cliquez sur le PDF pour la placer.",
+      "signatureDraw": "Dessiner",
+      "signatureType": "Saisir",
+      "signatureSaved": "Signatures enregistrées",
+      "signatureText": "Texte de la signature",
+      "signatureFont": "Police",
+      "signatureImage": "Image de la signature"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Décalage d'Otsu)",

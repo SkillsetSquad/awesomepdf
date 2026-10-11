@@ -720,7 +720,14 @@
       "colorFormat": "色彩格式",
       "annotationStyle": "註解樣式",
       "strokeWidth": "線條寬度",
-      "opacity": "不透明度"
+      "opacity": "不透明度",
+      "signatureDescription": "繪製、輸入或上傳簽名，然後點擊 PDF 放置簽名。",
+      "signatureDraw": "繪製",
+      "signatureType": "輸入",
+      "signatureSaved": "已儲存的簽名",
+      "signatureText": "簽名文字",
+      "signatureFont": "字型",
+      "signatureImage": "簽名圖片"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu 閾值偏移)",

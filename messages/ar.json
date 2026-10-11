@@ -720,7 +720,14 @@
       "colorFormat": "تنسيق اللون",
       "annotationStyle": "نمط التعليق التوضيحي",
       "strokeWidth": "عرض الخط",
-      "opacity": "التعتيم"
+      "opacity": "التعتيم",
+      "signatureDescription": "ارسم توقيعًا أو اكتبه أو ارفع صورته، ثم انقر على ملف PDF لوضعه.",
+      "signatureDraw": "رسم",
+      "signatureType": "كتابة",
+      "signatureSaved": "التوقيعات المحفوظة",
+      "signatureText": "نص التوقيع",
+      "signatureFont": "الخط",
+      "signatureImage": "صورة التوقيع"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (إزاحة أوتسو)",

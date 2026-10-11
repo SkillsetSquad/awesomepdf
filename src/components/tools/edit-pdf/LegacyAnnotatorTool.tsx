@@ -57,6 +57,11 @@ export function LegacyAnnotatorTool({
     signature: t('editPdf.annSignature'), stamp: t('editPdf.annStamp'), color: tBookmark('color'),
     export: t('buttons.download'), comments: t('editPdf.comments'), delete: t('buttons.delete'), style: t('editPdf.annotationStyle'),
   }), [t, tTools, tBookmark]);
+  const signatureLabels = useMemo(() => ({
+    description: t('editPdf.signatureDescription'), draw: t('editPdf.signatureDraw'), type: t('editPdf.signatureType'),
+    saved: t('editPdf.signatureSaved'), text: t('editPdf.signatureText'), font: t('editPdf.signatureFont'), image: t('editPdf.signatureImage'),
+    upload: t('buttons.upload'), color: tBookmark('color'), clear: t('buttons.clear'), add: t('buttons.add'), cancel: t('buttons.cancel'), error: tErrors('processingFailed'),
+  }), [t, tBookmark, tErrors]);
   
   const [internalFile, setInternalFile] = useState<File | null>(null);
   const file = externalFile !== undefined ? externalFile : internalFile;
@@ -830,7 +835,7 @@ export function LegacyAnnotatorTool({
     <div className={`space-y-6 ${className}`.trim()}>
       <PDFViewerControls key={`viewer:${pdfUrl}`} iframe={editorFrame} locale={locale} />
       <AnnotationHistoryControls iframe={editorFrame} undo={t('editPdf.undo')} redo={t('editPdf.redo')} onError={handleAnnotationHistoryError} />
-      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels}
+      <LegacyEditorControls key={`controls:${pdfUrl}`} iframe={editorFrame} locale={locale} undo={t('editPdf.undo')} redo={t('editPdf.redo')} labels={annotationLabels} signatureLabels={signatureLabels}
         colorLabels={{ format: t('editPdf.colorFormat'), close: t('buttons.close') }}
         styleLabels={{ title: t('editPdf.annotationStyle'), color: tBookmark('color'), strokeWidth: t('editPdf.strokeWidth'), opacity: t('editPdf.opacity'), back: t('buttons.back'), format: t('editPdf.colorFormat'), close: t('buttons.close') }}
         exportError={tErrors('processingFailed')} />

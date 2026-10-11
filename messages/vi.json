@@ -720,7 +720,14 @@
       "colorFormat": "Định dạng màu",
       "annotationStyle": "Kiểu chú thích",
       "strokeWidth": "Độ dày nét",
-      "opacity": "Độ mờ"
+      "opacity": "Độ mờ",
+      "signatureDescription": "Vẽ, nhập hoặc tải lên chữ ký, rồi nhấp vào PDF để đặt chữ ký.",
+      "signatureDraw": "Vẽ",
+      "signatureType": "Nhập",
+      "signatureSaved": "Chữ ký đã lưu",
+      "signatureText": "Nội dung chữ ký",
+      "signatureFont": "Phông chữ",
+      "signatureImage": "Hình ảnh chữ ký"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Độ lệch Otsu)",

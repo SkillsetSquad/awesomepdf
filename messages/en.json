@@ -720,7 +720,14 @@
       "colorFormat": "Color format",
       "annotationStyle": "Annotation style",
       "strokeWidth": "Stroke width",
-      "opacity": "Opacity"
+      "opacity": "Opacity",
+      "signatureDescription": "Draw, type or upload a signature, then click the PDF to place it.",
+      "signatureDraw": "Draw",
+      "signatureType": "Type",
+      "signatureSaved": "Saved signatures",
+      "signatureText": "Signature text",
+      "signatureFont": "Font",
+      "signatureImage": "Signature image"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu Offset)",

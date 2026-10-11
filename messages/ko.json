@@ -720,7 +720,14 @@
       "colorFormat": "색상 형식",
       "annotationStyle": "주석 스타일",
       "strokeWidth": "선 두께",
-      "opacity": "불투명도"
+      "opacity": "불투명도",
+      "signatureDescription": "서명을 그리거나 입력하거나 업로드한 다음 PDF를 클릭하여 배치하세요.",
+      "signatureDraw": "그리기",
+      "signatureType": "입력",
+      "signatureSaved": "저장된 서명",
+      "signatureText": "서명 텍스트",
+      "signatureFont": "글꼴",
+      "signatureImage": "서명 이미지"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (오츠 임계값 오프셋)",

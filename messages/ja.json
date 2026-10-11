@@ -720,7 +720,14 @@
       "colorFormat": "色の形式",
       "annotationStyle": "注釈のスタイル",
       "strokeWidth": "線の太さ",
-      "opacity": "不透明度"
+      "opacity": "不透明度",
+      "signatureDescription": "署名を描く、入力する、またはアップロードして、PDFをクリックして配置します。",
+      "signatureDraw": "描画",
+      "signatureType": "入力",
+      "signatureSaved": "保存した署名",
+      "signatureText": "署名の文字",
+      "signatureFont": "フォント",
+      "signatureImage": "署名画像"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津しきい値オフセット)",
