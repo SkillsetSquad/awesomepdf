@@ -1505,25 +1505,62 @@ export const toolContentPl: Record<string, ToolContent> = {
   },
 
   'timestamp-pdf': {
-    title: "Dodaj znacznik czasu do PDF",
-    metaDescription: "Dodaj zaufane znaczniki czasu RFC 3161 do dokumentów PDF. Udowodnij istnienie dokumentu w określonym momencie bez certyfikatów.",
-    keywords: ["znacznik czasu pdf", "RFC 3161", "serwer ts", "zaufane oznaczenie czasu", "dowód istnienia"],
-    description: "\n      <p>Znacznik czasu PDF dodaje zaufane znaczniki czasu zgodne ze standardem RFC 3161 do dokumentów PDF przy użyciu zewnętrznych organów znakowania czasem (TSA). Zapewnia prawnie wiążący dowód matematyczny na to, że dokument istniał w określonym, niezmiennym stanie w określonym momencie.</p>\n      <p>Wybierz spośród globalnych zaufanych serwerów TSA, takich jak DigiCert, Sectigo, SSL.com, FreeTSA lub MeSign. Żadne osobiste certyfikaty podpisu nie są wymagane, aby zabezpieczyć dokumenty przed przyszłymi manipulacjami.</p>\n      <p>Obsługuje w pełni bezpieczne lokalne hashowanie przed uzgadnianiem, gwarantując, że cała zawartość dokumentu pozostanie w 100% poufna.</p>\n    ",
-    howToUse: [
-      { step: 1, title: "Prześlij dokument PDF", description: "Wybierz docelowy plik PDF, dla którego chcesz oznaczyć znacznikiem czasu." },
-      { step: 2, title: "Wybierz Serwer TSA", description: "Wybierz z listy zaufany, globalny urząd znakowania czasem." },
-      { step: 3, title: "Zastosuj i sygnatura czasowa", description: "Kliknij opcję Znacznik czasu, aby pobrać bezpieczną odpowiedź od TSA i osadzić token." },
+    "title": "Lokalny znacznik czasu PDF",
+    "metaDescription": "To narzędzie tworzy lokalny, samopodpisany znacznik czasu z zegara urządzenia. Nie żąda ani nie weryfikuje znacznika od wybranego TSA.",
+    "keywords": [
+      "Lokalny znacznik czasu PDF",
+      "PDF",
+      "Czas urządzenia"
     ],
-    useCases: [
-      { title: "Własność intelektualna", description: "Ustal wyraźny dowód pierwszeństwa patentów, projektów i pomysłów przed publicznym udostępnieniem.", icon: 'lightbulb' },
-      { title: "Audyt finansowy", description: "Zapewnij certyfikowane, odporne na manipulacje rejestrowanie archiwów ksiąg i raportów bilansowych.", icon: 'activity' },
-      { title: "Umowy prawne", description: "Zablokuj umowy prawne zaufanym dowodem czasowym, aby uniknąć argumentów z datą wsteczną.", icon: 'file-check' },
+    "description": "<p>Wybierz PDF, aby dodać lokalny znacznik czasu.</p><p>To narzędzie tworzy lokalny, samopodpisany znacznik czasu z zegara urządzenia. Nie żąda ani nie weryfikuje znacznika od wybranego TSA.</p><p>Przetwarzanie pozostaje w przeglądarce; dokument ani jego skrót nie są wysyłane do TSA.</p>",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Prześlij PDF",
+        "description": "Wybierz PDF, aby dodać lokalny znacznik czasu."
+      },
+      {
+        "step": 2,
+        "title": "Nazwa wybranego organu",
+        "description": "Wybierz nazwę podpisu lokalnego. Ta nazwa nie nawiązuje połączenia z TSA."
+      },
+      {
+        "step": 3,
+        "title": "Dodaj lokalny znacznik czasu",
+        "description": "Przetwórz plik, sprawdź wynik i pobierz PDF."
+      }
     ],
-    faq: [
-      { question: "Co to jest zaufany znacznik czasu (RFC 3161)?", answer: "Znacznik czasu RFC 3161 to podpisany kryptograficznie token wydany przez uznany organ zewnętrzny (TSA), który łączy skrót dokumentu z określonym, zweryfikowanym źródłem zegara." },
-      { question: "Czy potrzebuję certyfikatu cyfrowego?", answer: "Nie, podpis kryptograficzny jest dostarczany bezpośrednio przez zaufany serwer TSA, co sprawia, że proces ten nie wymaga wysiłku dla właścicieli dokumentów." },
-      { question: "Czy TSA widzi zawartość mojego dokumentu?", answer: "Nigdy. Narzędzie wysyła jedynie bezpieczny skrót SHA-256 Twojego dokumentu do serwera TSA, zachowując całkowicie prywatny dokument." },
+    "useCases": [
+      {
+        "title": "Wersje robocze",
+        "description": "Zachowaj kopię dokumentu roboczego z lokalną datą.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Archiwa osobiste",
+        "description": "Zapisz kopię ze znacznikiem czasu do własnego użytku.",
+        "icon": "archive"
+      },
+      {
+        "title": "Sprawdzanie podpisu",
+        "description": "Sprawdź wygenerowany podpis i metadane w czytniku PDF.",
+        "icon": "search"
+      }
     ],
+    "faq": [
+      {
+        "question": "Czy znacznik czasu jest niezależnie weryfikowany?",
+        "answer": "To narzędzie tworzy lokalny, samopodpisany znacznik czasu z zegara urządzenia. Nie żąda ani nie weryfikuje znacznika od wybranego TSA."
+      },
+      {
+        "question": "Czy muszę przesłać certyfikat cyfrowy?",
+        "answer": "Nie. Narzędzie generuje na potrzeby tej operacji lokalny certyfikat z podpisem własnym."
+      },
+      {
+        "question": "Który zegar dostarcza czas?",
+        "answer": "Czas pochodzi z zegara urządzenia i nie jest niezależnie weryfikowany."
+      }
+    ]
   },
 
   'add-page-labels': {
@@ -2847,8 +2884,8 @@ export const toolContentPl: Record<string, ToolContent> = {
     description: "\n      <p>Przewodnik po polach podpisu PDF ułatwia sprawne podpisywanie umów wielostronicowych.</p>\n      <p>Podczas wysyłania wielostronicowych umów NDA, sprawozdań finansowych lub umów najmu komercyjnego klienci często pomijają krytyczne pola do podpisania, co prowadzi do niekończącej się wymiany e-maili i opóźnień w transakcjach biznesowych.</p>\n      <p>Nasze narzędzie wykorzystuje <strong>dopasowywanie wzorców wyrażeń regularnych</strong>. Skanuje mapę znaków PDF w celu zlokalizowania terminów takich jak <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code> lub <code>签署日期：</code>. Następnie wykorzystuje <code>pdf-lib</code> do wstawiania standardowych interaktywnych adnotacji linków PDF. Po otwarciu w dowolnym standardowym czytniku klienci widzą migające strzałki z neonowymi obramowaniami, które natychmiast kierują ich do właściwych pól, dzięki czemu podpisywanie jest niezawodne.</p>\n    ",
     howToUse: [
       { step: 1, title: "Zaimportuj umowę biznesową", description: "Prześlij umowę PDF lub NDA wymagającą wskazania miejsc podpisu." },
-      { step: 2, title: "Automatyczne skanowanie miejsc na podpisy", description: "Sprawdź automatycznie zlokalizowane pola do podpisywania i w razie potrzeby ręcznie dodaj niestandardowe punkty podpisu." },
-      { step: 3, title: "Dodaj kotwice i zapisz", description: "Kliknij przycisk Wykonaj, aby zapisać interaktywne warstwy wskaźnikowe w strukturze pliku PDF." },
+      {"step":2,"title":"X / Y","description":"Kliknij rzeczywisty podgląd PDF lub podaj współrzędne X i Y dla wybranej strony."},
+      {"step":3,"title":"Przetwórz","description":"Przetwórz plik, sprawdź wynik i pobierz PDF."},
     ],
     useCases: [
       { title: "Korporacyjne umowy NDA", description: "Wstaw wyraźne, migające instrukcje obok pól podpisu, aby zapobiec pominięciu podpisów podczas wdrażania pracowników.", icon: 'file-text' },
@@ -2868,8 +2905,8 @@ export const toolContentPl: Record<string, ToolContent> = {
     description: "\n      <p>Narzędzie do bezstratnego wycinania fragmentów rysunków PDF jest przeznaczone dla architektów, inżynierów i osób pracujących z mapami.</p>\n      <p>Przy wyodrębnianiu fragmentu dużego projektu CAD lub mapy PDF zwykłe zrzuty ekranu dają rozpikselowany, rozmyty tekst. Standardowe narzędzia kadrowania często jedynie maskują arkusz, więc plik o wielkości 100MB nadal pozostaje duży i zawiera ukryte dane.</p>\n      <p>Narzędzie edytuje ramki strony <code>/MediaBox</code>, <code>/CropBox</code> i <code>/BleedBox</code> na poziomie drzewa obiektów. Odcina elementy wektorowe poza wybranym regionem, zachowując obszar docelowy w 100% jako wektor (umożliwiając nieograniczone powiększanie), a jednocześnie usuwa zbędne ścieżki i obrazy poza ekranem, aby zmniejszyć rozmiar pliku o 95%!</p>\n    ",
     howToUse: [
       { step: 1, title: "Zaimportuj duży plan", description: "Prześlij bogatą w wektory mapę CAD, mapę GIS lub katalog PDF w wysokiej rozdzielczości." },
-      { step: 2, title: "Wyznacz obszar przycięcia", description: "Przeciągnij i przeskaluj zielone pole przycięcia, aby wybrać region lokalny, który chcesz wyciąć." },
-      { step: 3, title: "Uruchom przycinanie laserowe", description: "Kliknij przycisk Wykonaj, aby uruchomić nasz moduł wycinania obiektów i pobrać mały, bezstratny plik PDF." },
+      {"step":2,"title":"Prostokąt przycięcia","description":"Podaj X, Y, szerokość i wysokość, a następnie sprawdź wybraną stronę na podglądzie."},
+      {"step":3,"title":"Przetwórz","description":"Przetwórz plik, sprawdź wynik i pobierz PDF."},
     ],
     useCases: [
       { title: "Izolacja planu CAD", description: "Wytnij szczegół „układu chłodzenia” z ogromnego planu piętra o wielkości 100MB i udostępnij go podwykonawcom.", icon: 'crop' },

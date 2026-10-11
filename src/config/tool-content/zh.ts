@@ -1768,29 +1768,62 @@ export const toolContentZh: Record<string, ToolContent> = {
   },
 
   'timestamp-pdf': {
-    title: 'PDF 可信时间戳',
-    metaDescription: '为 PDF 文档添加 RFC 3161 可信时间戳。无需证书，即可在司法上确凿证明文档在特定时间点存在且未被篡改。',
-    keywords: ['pdf时间戳', 'rfc 3161', 'tsa服务器', '可信时间戳', '存在性证明'],
-    description: `
-      <p>PDF 可信时间戳工具利用外部权威时间戳机构 (TSA)，为您的 PDF 文件追加符合 RFC 3161 标准的安全时间戳。这能为您的电子文件在司法、知识产权确权或合规审计上，提供无可辩驳的数学和法律凭证，客观证明该文件在某个精确的历史时间点就已完整存在且未经任何改动。</p>
-      <p>支持选择 MeSign、DigiCert、Sectigo、SSL.com、FreeTSA 等全球知名时间戳服务器。整个签名操作不依赖任何个人私钥证书，轻松对文档加锁，保障长久安全性。</p>
-      <p>安全加密原则：在与外部服务器通信握手前，只会在本地计算文档的安全 SHA-256 哈希值并发送，您的文档具体内容绝对不会泄露给任何外部网络。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上传待签名 PDF', description: '选择并上传您要进行时间戳确权签名的 PDF 文件。' },
-      { step: 2, title: '选择时间戳服务器', description: '在列表中选择一家全球受信任的权威时间戳服务商 (TSA)。' },
-      { step: 3, title: '签署并下载', description: '点击开始签署，系统会快速向 TSA 握手获取可信 TST 令牌并完美嵌入 PDF 中。' },
+    "title": "PDF 本地时间戳",
+    "metaDescription": "此工具使用设备时钟创建本地自签名时间戳。它不会向所选 TSA 请求或验证时间戳。",
+    "keywords": [
+      "PDF 本地时间戳",
+      "PDF",
+      "设备时间"
     ],
-    useCases: [
-      { title: '知识产权与版权证明', description: '在发明、设计底稿、小说草稿公开发布前抢先签署，提供绝对的原创时间证明。', icon: 'lightbulb' },
-      { title: '电子合同与法律文书', description: '为双方签署的电子协议加上可信时间锁，防止发生任何篡改或事后倒签日期的纠纷。', icon: 'file-check' },
-      { title: '财务报表与合规日志', description: '对历史账目、合规审计日志进行时间戳锚定，满足行业严苛的档案完整性审查。', icon: 'activity' },
+    "description": "<p>选择 PDF 以添加本地时间戳。</p><p>此工具使用设备时钟创建本地自签名时间戳。它不会向所选 TSA 请求或验证时间戳。</p><p>处理在浏览器中完成；不会向 TSA 发送文档或哈希值。</p>",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "上传 PDF",
+        "description": "选择 PDF 以添加本地时间戳。"
+      },
+      {
+        "step": 2,
+        "title": "所选机构名称",
+        "description": "选择本地签名的名称。此名称不会连接到 TSA。"
+      },
+      {
+        "step": 3,
+        "title": "添加本地时间戳",
+        "description": "处理文件，查看结果并下载 PDF。"
+      }
     ],
-    faq: [
-      { question: '什么是 RFC 3161 可信时间戳？', answer: 'RFC 3161 时间戳是由第三方权威时间戳服务商 (TSA) 采用私钥对您的文件哈希值和权威原子钟时间联合签署生成的加密令牌，具有极高的法律证明效力。' },
-      { question: '我需要自己去申请数字证书吗？', answer: '完全不需要。签名证书是由 TSA 时间戳机构提供的，您作为文档拥有者不需要具备任何证书，只需一键点击即可完成签署。' },
-      { question: '时间戳服务器会看到我的机密文件内容吗？', answer: '绝对不会。该工具在浏览器本地计算文件的哈希摘要（SHA-256），只把这串无规律的 64 位字符发送给时间戳服务器，服务器无法倒推出您的任何文件内容，隐私万无一失。' },
+    "useCases": [
+      {
+        "title": "工作草稿",
+        "description": "保留一份以本地时间标记的工作文档副本。",
+        "icon": "file-text"
+      },
+      {
+        "title": "个人档案",
+        "description": "保存带时间戳的副本供自己参考。",
+        "icon": "archive"
+      },
+      {
+        "title": "检查签名",
+        "description": "在 PDF 阅读器中检查生成的签名和元数据。",
+        "icon": "search"
+      }
     ],
+    "faq": [
+      {
+        "question": "时间戳经过独立验证吗？",
+        "answer": "此工具使用设备时钟创建本地自签名时间戳。它不会向所选 TSA 请求或验证时间戳。"
+      },
+      {
+        "question": "需要上传数字证书吗？",
+        "answer": "不需要。工具为本次操作在本地生成自签名证书。"
+      },
+      {
+        "question": "时间来自哪个时钟？",
+        "answer": "时间来自设备时钟，未经独立验证。"
+      }
+    ]
   },
 
   'n-up-pdf': {
@@ -3410,8 +3443,8 @@ export const toolContentZh: Record<string, ToolContent> = {
     `,
     howToUse: [
       { step: 1, title: '导入商务合同 PDF', description: '上传需要多方签署、页数繁多、签字位置隐蔽的 PDF 合同文档。' },
-      { step: 2, title: '智能扫描与标记', description: '系统将列出所有自动检测到的签名栏坐标。您可以一键启用，也可手动增补指引标记。' },
-      { step: 3, title: '注入指引层并下载', description: '点击执行，将呼吸指引图层物理织入 PDF 结构中并极速下载。' },
+      {"step":2,"title":"X / Y","description":"点击实际 PDF 预览，或为所选页面输入 X 和 Y 坐标。"},
+      {"step":3,"title":"处理","description":"处理文件，查看结果并下载 PDF。"},
     ],
     useCases: [
       { title: '大型融资合作协议', description: '在涉及数十个签名位置的多人合伙协议中，为每位签署人注入醒目的专属跳转标记，防止漏签。', icon: 'users' },
@@ -3435,8 +3468,8 @@ export const toolContentZh: Record<string, ToolContent> = {
     `,
     howToUse: [
       { step: 1, title: '导入超大图纸 PDF', description: '上传高解析度的 CAD 蓝图、精密图表或超大规格画册。' },
-      { step: 2, title: '拉拽发光激光裁切框', description: '在预览界面中拉伸发光的绿色裁剪选框，锁定您需要无损切片的局部区域。' },
-      { step: 3, title: '物理物理切割并保存', description: '点击裁剪，伴随两道炫酷激光束交叉扫过，瞬间下载完美局部无损的 PDF。' },
+      {"step":2,"title":"裁剪矩形","description":"输入 X、Y、宽度和高度，然后在预览中检查所选页面。"},
+      {"step":3,"title":"处理","description":"处理文件，查看结果并下载 PDF。"},
     ],
     useCases: [
       { title: 'CAD工程图局部提取', description: '从浩瀚的几百兆全套厂房设计图纸中，一键剥离出“冷却系统”局部，发送给分包商讨论。', icon: 'crop' },

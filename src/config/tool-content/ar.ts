@@ -6021,60 +6021,60 @@ export const toolContentAr: Record<string, ToolContent> = {
     ]
   },
   "timestamp-pdf": {
-    "title": "ختم الوقت لملفات PDF",
-    "metaDescription": "حقن ختم وقت آمن متوافق مع معيار RFC 3161 في مستندات PDF لإثبات وقت الإنشاء وحمايتها من التلاعب.",
+    "title": "ختم وقت محلي لملف PDF",
+    "metaDescription": "تنشئ هذه الأداة طابعاً زمنياً محلياً موقّعاً ذاتياً باستخدام ساعة جهازك. ولا تطلب أو تتحقق من طابع زمني من جهة TSA المحددة.",
     "keywords": [
-      "ختم الوقت pdf",
-      "معيار rfc 3161",
-      "توثيق الوقت"
+      "ختم وقت محلي لملف PDF",
+      "PDF",
+      "وقت الجهاز"
     ],
-    "description": "\n      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>\n      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>\n      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>\n    ",
+    "description": "<p>حدد ملف PDF لإضافة طابع زمني محلي.</p><p>تنشئ هذه الأداة طابعاً زمنياً محلياً موقّعاً ذاتياً باستخدام ساعة جهازك. ولا تطلب أو تتحقق من طابع زمني من جهة TSA المحددة.</p><p>تتم المعالجة داخل المتصفح؛ ولا يُرسل المستند أو بصمته إلى هيئة TSA.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Select the target PDF file you want to timestamp."
+        "title": "رفع PDF",
+        "description": "حدد ملف PDF لإضافة طابع زمني محلي."
       },
       {
         "step": 2,
-        "title": "Select TSA Server",
-        "description": "Choose a trusted global Time Stamping Authority from the list."
+        "title": "اسم الجهة المحددة",
+        "description": "اختر اسمًا للتوقيع المحلي. هذا الاسم لا ينشئ اتصالًا بهيئة TSA."
       },
       {
         "step": 3,
-        "title": "Apply and Timestamp",
-        "description": "Click Timestamp to fetch secure response from TSA and embed the token."
+        "title": "إضافة طابع زمني محلي",
+        "description": "عالج الملف وراجع النتيجة ثم نزّل ملف PDF."
       }
     ],
     "useCases": [
       {
-        "title": "Intellectual Property",
-        "description": "Establish clear priority proof of patents, drafts, and ideas before public release.",
-        "icon": "lightbulb"
+        "title": "مسودات العمل",
+        "description": "احتفظ بنسخة مؤرخة محليًا من مستند العمل.",
+        "icon": "file-text"
       },
       {
-        "title": "Financial Auditing",
-        "description": "Provide certified tamper-proof logging of ledger archives and balance reports.",
-        "icon": "activity"
+        "title": "الأرشيف الشخصي",
+        "description": "احفظ نسخة بختم وقت للرجوع إليها شخصيًا.",
+        "icon": "archive"
       },
       {
-        "title": "Legal Contracts",
-        "description": "Lock legal agreements with a trusted time proof to avoid backdating arguments.",
-        "icon": "file-check"
+        "title": "فحص التوقيع",
+        "description": "افحص التوقيع الذي تم إنشاؤه والبيانات الوصفية في قارئ PDF.",
+        "icon": "search"
       }
     ],
     "faq": [
       {
-        "question": "What is a trusted timestamp (RFC 3161)?",
-        "answer": "An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source."
+        "question": "هل يتم التحقق من ختم الوقت بصورة مستقلة؟",
+        "answer": "تنشئ هذه الأداة طابعاً زمنياً محلياً موقّعاً ذاتياً باستخدام ساعة جهازك. ولا تطلب أو تتحقق من طابع زمني من جهة TSA المحددة."
       },
       {
-        "question": "Do I need a digital certificate?",
-        "answer": "No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners."
+        "question": "هل يجب رفع شهادة رقمية؟",
+        "answer": "لا. تُنشئ الأداة شهادة محلية موقعة ذاتيًا لهذه العملية."
       },
       {
-        "question": "Does the TSA see my document contents?",
-        "answer": "Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private."
+        "question": "أي ساعة توفر الوقت؟",
+        "answer": "يأتي الوقت من ساعة جهازك ولا يتم التحقق منه بصورة مستقلة."
       }
     ]
   },
@@ -7438,16 +7438,8 @@ export const toolContentAr: Record<string, ToolContent> = {
         "title": "Import business contract",
         "description": "Upload the PDF contract or NDA that needs signature coordinates."
       },
-      {
-        "step": 2,
-        "title": "Auto-scan signature slots",
-        "description": "Inspect the automatically located signing boxes, and manually add custom sign points if needed."
-      },
-      {
-        "step": 3,
-        "title": "Inject anchors & save",
-        "description": "Click execute to write the interactive pointer layers into the PDF structure."
-      }
+      {"step":2,"title":"X / Y","description":"انقر على معاينة PDF الفعلية أو أدخل إحداثيات X وY للصفحة المحددة."},
+      {"step":3,"title":"تنفيذ","description":"عالج الملف وراجع النتيجة ثم نزّل ملف PDF."},
     ],
     "useCases": [
       {
@@ -7496,16 +7488,8 @@ export const toolContentAr: Record<string, ToolContent> = {
         "title": "Import large blueprint",
         "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
       },
-      {
-        "step": 2,
-        "title": "Draw cutting box",
-        "description": "Drag and scale the green laser-line crop box to target the local region you want to slice."
-      },
-      {
-        "step": 3,
-        "title": "Trigger laser crop",
-        "description": "Click execute to trigger our low-level object slicer and download the tiny, lossless PDF."
-      }
+      {"step":2,"title":"مستطيل القص","description":"أدخل X وY والعرض والارتفاع ثم افحص الصفحة المحددة في المعاينة."},
+      {"step":3,"title":"تنفيذ","description":"عالج الملف وراجع النتيجة ثم نزّل ملف PDF."},
     ],
     "useCases": [
       {

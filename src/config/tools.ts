@@ -871,7 +871,7 @@ export const tools: Tool[] = [
     outputFormat: 'pdf',
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
-    features: ['rfc3161', 'tsa-servers', 'audit-trail'],
+    features: ['local-timestamp', 'self-signed-signature', 'device-clock'],
     relatedTools: ['sign-pdf', 'encrypt-pdf', 'sanitize-pdf'],
   },
   {

@@ -5958,60 +5958,60 @@ export const toolContentVn: Record<string, ToolContent> = {
     ]
   },
   "timestamp-pdf": {
-    "title": "Đóng dấu thời gian PDF",
-    "metaDescription": "Nhúng dấu thời gian bảo mật RFC 3161 vào tài liệu PDF để xác minh thời gian tạo và chống giả mạo.",
+    "title": "Dấu thời gian PDF cục bộ",
+    "metaDescription": "Công cụ này tạo dấu thời gian cục bộ tự ký bằng đồng hồ thiết bị. Công cụ không yêu cầu hoặc xác minh dấu thời gian từ TSA đã chọn.",
     "keywords": [
-      "đóng dấu thời gian pdf",
-      "rfc 3161",
-      "xác thực thời gian"
+      "Dấu thời gian PDF cục bộ",
+      "PDF",
+      "Giờ thiết bị"
     ],
-    "description": "\n      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>\n      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>\n      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>\n    ",
+    "description": "<p>Chọn PDF để thêm dấu thời gian cục bộ.</p><p>Công cụ này tạo dấu thời gian cục bộ tự ký bằng đồng hồ thiết bị. Công cụ không yêu cầu hoặc xác minh dấu thời gian từ TSA đã chọn.</p><p>Việc xử lý diễn ra trong trình duyệt; tài liệu và mã băm không được gửi đến TSA.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Select the target PDF file you want to timestamp."
+        "title": "Tải PDF lên",
+        "description": "Chọn PDF để thêm dấu thời gian cục bộ."
       },
       {
         "step": 2,
-        "title": "Select TSA Server",
-        "description": "Choose a trusted global Time Stamping Authority from the list."
+        "title": "Tên cơ quan đã chọn",
+        "description": "Chọn tên cho chữ ký cục bộ. Tên này không tạo kết nối với TSA."
       },
       {
         "step": 3,
-        "title": "Apply and Timestamp",
-        "description": "Click Timestamp to fetch secure response from TSA and embed the token."
+        "title": "Thêm dấu thời gian cục bộ",
+        "description": "Xử lý tệp, xem kết quả rồi tải PDF xuống."
       }
     ],
     "useCases": [
       {
-        "title": "Intellectual Property",
-        "description": "Establish clear priority proof of patents, drafts, and ideas before public release.",
-        "icon": "lightbulb"
+        "title": "Bản nháp đang làm việc",
+        "description": "Giữ một bản sao tài liệu có ngày giờ cục bộ.",
+        "icon": "file-text"
       },
       {
-        "title": "Financial Auditing",
-        "description": "Provide certified tamper-proof logging of ledger archives and balance reports.",
-        "icon": "activity"
+        "title": "Lưu trữ cá nhân",
+        "description": "Lưu bản sao có dấu thời gian để tham khảo cá nhân.",
+        "icon": "archive"
       },
       {
-        "title": "Legal Contracts",
-        "description": "Lock legal agreements with a trusted time proof to avoid backdating arguments.",
-        "icon": "file-check"
+        "title": "Kiểm tra chữ ký",
+        "description": "Kiểm tra chữ ký đã tạo và siêu dữ liệu trong trình đọc PDF.",
+        "icon": "search"
       }
     ],
     "faq": [
       {
-        "question": "What is a trusted timestamp (RFC 3161)?",
-        "answer": "An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source."
+        "question": "Dấu thời gian có được xác minh độc lập không?",
+        "answer": "Công cụ này tạo dấu thời gian cục bộ tự ký bằng đồng hồ thiết bị. Công cụ không yêu cầu hoặc xác minh dấu thời gian từ TSA đã chọn."
       },
       {
-        "question": "Do I need a digital certificate?",
-        "answer": "No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners."
+        "question": "Tôi có cần tải chứng chỉ số lên không?",
+        "answer": "Không. Công cụ tạo một chứng chỉ cục bộ tự ký cho thao tác này."
       },
       {
-        "question": "Does the TSA see my document contents?",
-        "answer": "Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private."
+        "question": "Đồng hồ nào cung cấp thời gian?",
+        "answer": "Thời gian lấy từ đồng hồ thiết bị và không được xác minh độc lập."
       }
     ]
   },
@@ -7383,16 +7383,8 @@ export const toolContentVn: Record<string, ToolContent> = {
         "title": "Import business contract",
         "description": "Upload the PDF contract or NDA that needs signature coordinates."
       },
-      {
-        "step": 2,
-        "title": "Auto-scan signature slots",
-        "description": "Inspect the automatically located signing boxes, and manually add custom sign points if needed."
-      },
-      {
-        "step": 3,
-        "title": "Inject anchors & save",
-        "description": "Click execute to write the interactive pointer layers into the PDF structure."
-      }
+      {"step":2,"title":"X / Y","description":"Nhấp vào phần xem trước PDF thực tế hoặc nhập tọa độ X và Y cho trang đã chọn."},
+      {"step":3,"title":"Xử lý","description":"Xử lý tệp, xem kết quả rồi tải PDF xuống."},
     ],
     "useCases": [
       {
@@ -7441,16 +7433,8 @@ export const toolContentVn: Record<string, ToolContent> = {
         "title": "Import large blueprint",
         "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
       },
-      {
-        "step": 2,
-        "title": "Draw cutting box",
-        "description": "Drag and scale the green laser-line crop box to target the local region you want to slice."
-      },
-      {
-        "step": 3,
-        "title": "Trigger laser crop",
-        "description": "Click execute to trigger our low-level object slicer and download the tiny, lossless PDF."
-      }
+      {"step":2,"title":"Hình chữ nhật cắt","description":"Nhập X, Y, chiều rộng và chiều cao rồi kiểm tra trang đã chọn trong phần xem trước."},
+      {"step":3,"title":"Xử lý","description":"Xử lý tệp, xem kết quả rồi tải PDF xuống."},
     ],
     "useCases": [
       {

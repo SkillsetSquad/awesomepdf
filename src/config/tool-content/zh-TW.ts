@@ -2813,13 +2813,62 @@ export const toolContentZhTW: Record<string, ToolContent> = {
   },
 
   'timestamp-pdf': {
-    title: 'PDF 時間戳記',
-    metaDescription: '為 PDF 文檔注入 RFC 3161 安全時間戳記。驗證文件創建時間防篡改。',
-    keywords: ["pdf 時間戳記","rfc 3161","時間戳服務","數字簽名"],
-    description: toolContentEn['timestamp-pdf'].description,
-    howToUse: toolContentEn['timestamp-pdf'].howToUse,
-    useCases: toolContentEn['timestamp-pdf'].useCases,
-    faq: toolContentEn['timestamp-pdf'].faq,
+    "title": "PDF 本機時間戳記",
+    "metaDescription": "此工具使用裝置時鐘建立本機自我簽署的時間戳記。它不會向所選 TSA 要求或驗證時間戳記。",
+    "keywords": [
+      "PDF 本機時間戳記",
+      "PDF",
+      "裝置時間"
+    ],
+    "description": "<p>選擇 PDF 以新增本機時間戳記。</p><p>此工具使用裝置時鐘建立本機自我簽署的時間戳記。它不會向所選 TSA 要求或驗證時間戳記。</p><p>處理在瀏覽器中完成；不會向 TSA 傳送文件或雜湊值。</p>",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "上傳 PDF",
+        "description": "選擇 PDF 以新增本機時間戳記。"
+      },
+      {
+        "step": 2,
+        "title": "所選機構名稱",
+        "description": "選擇本機簽章的名稱。此名稱不會連線至 TSA。"
+      },
+      {
+        "step": 3,
+        "title": "新增本機時間戳記",
+        "description": "處理檔案、查看結果並下載 PDF。"
+      }
+    ],
+    "useCases": [
+      {
+        "title": "工作草稿",
+        "description": "保留一份以本機時間標記的工作文件副本。",
+        "icon": "file-text"
+      },
+      {
+        "title": "個人檔案",
+        "description": "儲存附有時間戳記的副本供自己參考。",
+        "icon": "archive"
+      },
+      {
+        "title": "檢查簽章",
+        "description": "在 PDF 閱讀器中檢查產生的簽章和中繼資料。",
+        "icon": "search"
+      }
+    ],
+    "faq": [
+      {
+        "question": "時間戳記經過獨立驗證嗎？",
+        "answer": "此工具使用裝置時鐘建立本機自我簽署的時間戳記。它不會向所選 TSA 要求或驗證時間戳記。"
+      },
+      {
+        "question": "需要上傳數位憑證嗎？",
+        "answer": "不需要。工具會為本次操作在本機產生自我簽署的憑證。"
+      },
+      {
+        "question": "時間來自哪個時鐘？",
+        "answer": "時間來自裝置時鐘，未經獨立驗證。"
+      }
+    ]
   },
 
   'add-page-labels': {

@@ -4436,60 +4436,60 @@ export const toolContentDe: Record<string, ToolContent> = {
     ]
   },
   "timestamp-pdf": {
-    "title": "PDF-Zeitstempel",
-    "metaDescription": "Fügen Sie PDF-Dokumenten einen sicheren RFC 3161-Zeitstempel hinzu. Weisen Sie das Erstellungsdatum nach.",
+    "title": "Lokaler PDF-Zeitstempel",
+    "metaDescription": "Dieses Werkzeug erstellt einen lokalen, selbstsignierten Zeitstempel mit Ihrer Geräteuhr. Es fordert keinen Zeitstempel bei der ausgewählten TSA an und prüft keinen.",
     "keywords": [
-      "pdf zeitstempel",
-      "rfc 3161",
-      "digitaler zeitstempel"
+      "Lokaler PDF-Zeitstempel",
+      "PDF",
+      "Gerätezeit"
     ],
-    "description": "\n      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>\n      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>\n      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>\n    ",
+    "description": "<p>Wählen Sie ein PDF für einen lokalen Zeitstempel aus.</p><p>Dieses Werkzeug erstellt einen lokalen, selbstsignierten Zeitstempel mit Ihrer Geräteuhr. Es fordert keinen Zeitstempel bei der ausgewählten TSA an und prüft keinen.</p><p>Die Verarbeitung bleibt im Browser; weder das Dokument noch sein Hash wird an eine TSA gesendet.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Select the target PDF file you want to timestamp."
+        "title": "PDF hochladen",
+        "description": "Wählen Sie ein PDF für einen lokalen Zeitstempel aus."
       },
       {
         "step": 2,
-        "title": "Select TSA Server",
-        "description": "Choose a trusted global Time Stamping Authority from the list."
+        "title": "Bezeichnung der ausgewählten Stelle",
+        "description": "Wählen Sie einen Namen für die lokale Signatur. Dieser Name stellt keine Verbindung zu einer TSA her."
       },
       {
         "step": 3,
-        "title": "Apply and Timestamp",
-        "description": "Click Timestamp to fetch secure response from TSA and embed the token."
+        "title": "Lokalen Zeitstempel hinzufügen",
+        "description": "Verarbeiten Sie die Datei, prüfen Sie das Ergebnis und laden Sie die PDF herunter."
       }
     ],
     "useCases": [
       {
-        "title": "Intellectual Property",
-        "description": "Establish clear priority proof of patents, drafts, and ideas before public release.",
-        "icon": "lightbulb"
+        "title": "Arbeitsentwürfe",
+        "description": "Bewahren Sie eine lokal datierte Kopie eines Arbeitsdokuments auf.",
+        "icon": "file-text"
       },
       {
-        "title": "Financial Auditing",
-        "description": "Provide certified tamper-proof logging of ledger archives and balance reports.",
-        "icon": "activity"
+        "title": "Persönliche Archive",
+        "description": "Speichern Sie eine Kopie mit Zeitstempel für Ihre eigenen Unterlagen.",
+        "icon": "archive"
       },
       {
-        "title": "Legal Contracts",
-        "description": "Lock legal agreements with a trusted time proof to avoid backdating arguments.",
-        "icon": "file-check"
+        "title": "Signaturprüfung",
+        "description": "Prüfen Sie die erzeugte Signatur und die Metadaten in einem PDF-Reader.",
+        "icon": "search"
       }
     ],
     "faq": [
       {
-        "question": "What is a trusted timestamp (RFC 3161)?",
-        "answer": "An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source."
+        "question": "Wird der Zeitstempel unabhängig überprüft?",
+        "answer": "Dieses Werkzeug erstellt einen lokalen, selbstsignierten Zeitstempel mit Ihrer Geräteuhr. Es fordert keinen Zeitstempel bei der ausgewählten TSA an und prüft keinen."
       },
       {
-        "question": "Do I need a digital certificate?",
-        "answer": "No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners."
+        "question": "Muss ich ein digitales Zertifikat hochladen?",
+        "answer": "Nein. Das Werkzeug erzeugt für diesen Vorgang ein lokales, selbstsigniertes Zertifikat."
       },
       {
-        "question": "Does the TSA see my document contents?",
-        "answer": "Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private."
+        "question": "Welche Uhr liefert die Zeit?",
+        "answer": "Die Zeit stammt von der Uhr Ihres Geräts und wird nicht unabhängig überprüft."
       }
     ]
   },
@@ -5866,16 +5866,8 @@ export const toolContentDe: Record<string, ToolContent> = {
         "title": "Import business contract",
         "description": "Upload the PDF contract or NDA that needs signature coordinates."
       },
-      {
-        "step": 2,
-        "title": "Auto-scan signature slots",
-        "description": "Inspect the automatically located signing boxes, and manually add custom sign points if needed."
-      },
-      {
-        "step": 3,
-        "title": "Inject anchors & save",
-        "description": "Click execute to write the interactive pointer layers into the PDF structure."
-      }
+      {"step":2,"title":"X / Y","description":"Klicken Sie in die echte PDF-Vorschau oder geben Sie X- und Y-Koordinaten für die gewählte Seite ein."},
+      {"step":3,"title":"Verarbeiten","description":"Verarbeiten Sie die Datei, prüfen Sie das Ergebnis und laden Sie die PDF herunter."},
     ],
     "useCases": [
       {
@@ -5925,16 +5917,8 @@ export const toolContentDe: Record<string, ToolContent> = {
         "title": "Import large blueprint",
         "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
       },
-      {
-        "step": 2,
-        "title": "Draw cutting box",
-        "description": "Drag and scale the green laser-line crop box to target the local region you want to slice."
-      },
-      {
-        "step": 3,
-        "title": "Trigger laser crop",
-        "description": "Click execute to trigger our low-level object slicer and download the tiny, lossless PDF."
-      }
+      {"step":2,"title":"Zuschnittrechteck","description":"Geben Sie X, Y, Breite und Höhe ein und prüfen Sie die gewählte Seite in der Vorschau."},
+      {"step":3,"title":"Verarbeiten","description":"Verarbeiten Sie die Datei, prüfen Sie das Ergebnis und laden Sie die PDF herunter."},
     ],
     "useCases": [
       {

@@ -5811,61 +5811,60 @@ export const toolContentJa: Record<string, ToolContent> = {
     ]
   },
   "timestamp-pdf": {
-    "title": "PDFタイムスタンプ追加",
-    "metaDescription": "PDF文書にRFC 3161に準拠したセキュアなタイムスタンプを追加します。作成日時の証明と改ざん防止に。",
+    "title": "PDF のローカルタイムスタンプ",
+    "metaDescription": "このツールは端末の時計を使用して、自己署名されたローカルタイムスタンプを作成します。選択したTSAへの要求やタイムスタンプの検証は行いません。",
     "keywords": [
-      "pdf タイムスタンプ",
-      "rfc 3161",
-      "時刻証明",
-      "改ざん防止"
+      "PDF のローカルタイムスタンプ",
+      "PDF",
+      "端末の時刻"
     ],
-    "description": "\n      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>\n      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>\n      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>\n    ",
+    "description": "<p>ローカルタイムスタンプを追加するPDFを選択します。</p><p>このツールは端末の時計を使用して、自己署名されたローカルタイムスタンプを作成します。選択したTSAへの要求やタイムスタンプの検証は行いません。</p><p>処理はブラウザー内で行われ、文書やハッシュは TSA に送信されません。</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Select the target PDF file you want to timestamp."
+        "title": "PDFをアップロード",
+        "description": "ローカルタイムスタンプを追加するPDFを選択します。"
       },
       {
         "step": 2,
-        "title": "Select TSA Server",
-        "description": "Choose a trusted global Time Stamping Authority from the list."
+        "title": "選択した機関の名称",
+        "description": "ローカル署名の名前を選びます。この名前で TSA への接続は行われません。"
       },
       {
         "step": 3,
-        "title": "Apply and Timestamp",
-        "description": "Click Timestamp to fetch secure response from TSA and embed the token."
+        "title": "ローカルタイムスタンプを追加",
+        "description": "ファイルを処理し、結果を確認して PDF をダウンロードします。"
       }
     ],
     "useCases": [
       {
-        "title": "Intellectual Property",
-        "description": "Establish clear priority proof of patents, drafts, and ideas before public release.",
-        "icon": "lightbulb"
+        "title": "作業中の下書き",
+        "description": "作業文書のローカル日時付きコピーを保存します。",
+        "icon": "file-text"
       },
       {
-        "title": "Financial Auditing",
-        "description": "Provide certified tamper-proof logging of ledger archives and balance reports.",
-        "icon": "activity"
+        "title": "個人用アーカイブ",
+        "description": "自分で参照するためのタイムスタンプ付きコピーを保存します。",
+        "icon": "archive"
       },
       {
-        "title": "Legal Contracts",
-        "description": "Lock legal agreements with a trusted time proof to avoid backdating arguments.",
-        "icon": "file-check"
+        "title": "署名の確認",
+        "description": "生成された署名とメタデータを PDF リーダーで確認します。",
+        "icon": "search"
       }
     ],
     "faq": [
       {
-        "question": "What is a trusted timestamp (RFC 3161)?",
-        "answer": "An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source."
+        "question": "タイムスタンプは独立に検証されていますか？",
+        "answer": "このツールは端末の時計を使用して、自己署名されたローカルタイムスタンプを作成します。選択したTSAへの要求やタイムスタンプの検証は行いません。"
       },
       {
-        "question": "Do I need a digital certificate?",
-        "answer": "No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners."
+        "question": "電子証明書をアップロードする必要がありますか？",
+        "answer": "いいえ。この処理用にローカルの自己署名証明書を生成します。"
       },
       {
-        "question": "Does the TSA see my document contents?",
-        "answer": "Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private."
+        "question": "どの時計から時刻を取得しますか？",
+        "answer": "時刻は端末の時計から取得し、独立した検証は行いません。"
       }
     ]
   },
@@ -7248,16 +7247,8 @@ export const toolContentJa: Record<string, ToolContent> = {
         "title": "Import business contract",
         "description": "Upload the PDF contract or NDA that needs signature coordinates."
       },
-      {
-        "step": 2,
-        "title": "Auto-scan signature slots",
-        "description": "Inspect the automatically located signing boxes, and manually add custom sign points if needed."
-      },
-      {
-        "step": 3,
-        "title": "Inject anchors & save",
-        "description": "Click execute to write the interactive pointer layers into the PDF structure."
-      }
+      {"step":2,"title":"X / Y","description":"実際の PDF プレビューをクリックするか、選択ページの X と Y 座標を入力します。"},
+      {"step":3,"title":"処理","description":"ファイルを処理し、結果を確認して PDF をダウンロードします。"},
     ],
     "useCases": [
       {
@@ -7307,16 +7298,8 @@ export const toolContentJa: Record<string, ToolContent> = {
         "title": "Import large blueprint",
         "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
       },
-      {
-        "step": 2,
-        "title": "Draw cutting box",
-        "description": "Drag and scale the green laser-line crop box to target the local region you want to slice."
-      },
-      {
-        "step": 3,
-        "title": "Trigger laser crop",
-        "description": "Click execute to trigger our low-level object slicer and download the tiny, lossless PDF."
-      }
+      {"step":2,"title":"切り抜きの矩形","description":"X、Y、幅、高さを入力し、選択ページをプレビューで確認します。"},
+      {"step":3,"title":"処理","description":"ファイルを処理し、結果を確認して PDF をダウンロードします。"},
     ],
     "useCases": [
       {

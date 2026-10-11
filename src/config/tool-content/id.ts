@@ -2752,13 +2752,62 @@ export const toolContentId: Record<string, ToolContent> = {
   },
 
   'timestamp-pdf': {
-    title: 'Stempel Waktu PDF',
-    metaDescription: 'Sematkan stempel waktu aman RFC 3161 pada dokumen PDF untuk membuktikan waktu pembuatan dan integritas data.',
-    keywords: ["stempel waktu pdf","rfc 3161","bukti waktu digital"],
-    description: toolContentEn['timestamp-pdf'].description,
-    howToUse: toolContentEn['timestamp-pdf'].howToUse,
-    useCases: toolContentEn['timestamp-pdf'].useCases,
-    faq: toolContentEn['timestamp-pdf'].faq,
+    "title": "Stempel Waktu PDF Lokal",
+    "metaDescription": "Alat ini membuat stempel waktu lokal yang ditandatangani sendiri menggunakan jam perangkat. Alat ini tidak meminta atau memverifikasi stempel waktu dari TSA yang dipilih.",
+    "keywords": [
+      "Stempel Waktu PDF Lokal",
+      "PDF",
+      "Waktu perangkat"
+    ],
+    "description": "<p>Pilih PDF untuk menambahkan stempel waktu lokal.</p><p>Alat ini membuat stempel waktu lokal yang ditandatangani sendiri menggunakan jam perangkat. Alat ini tidak meminta atau memverifikasi stempel waktu dari TSA yang dipilih.</p><p>Pemrosesan tetap di browser; dokumen maupun hash tidak dikirim ke TSA.</p>",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Unggah PDF",
+        "description": "Pilih PDF untuk menambahkan stempel waktu lokal."
+      },
+      {
+        "step": 2,
+        "title": "Label otoritas yang dipilih",
+        "description": "Pilih nama untuk tanda tangan lokal. Nama ini tidak membuat koneksi ke TSA."
+      },
+      {
+        "step": 3,
+        "title": "Tambah stempel waktu lokal",
+        "description": "Proses file, periksa hasilnya, lalu unduh PDF."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Draf kerja",
+        "description": "Simpan salinan dokumen kerja dengan tanggal lokal.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Arsip pribadi",
+        "description": "Simpan salinan berstempel waktu untuk referensi pribadi.",
+        "icon": "archive"
+      },
+      {
+        "title": "Pemeriksaan tanda tangan",
+        "description": "Periksa tanda tangan yang dibuat dan metadata di pembaca PDF.",
+        "icon": "search"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah stempel waktu diverifikasi secara independen?",
+        "answer": "Alat ini membuat stempel waktu lokal yang ditandatangani sendiri menggunakan jam perangkat. Alat ini tidak meminta atau memverifikasi stempel waktu dari TSA yang dipilih."
+      },
+      {
+        "question": "Apakah saya harus mengunggah sertifikat digital?",
+        "answer": "Tidak. Alat ini membuat sertifikat lokal yang ditandatangani sendiri untuk operasi ini."
+      },
+      {
+        "question": "Jam mana yang menyediakan waktu?",
+        "answer": "Waktu berasal dari jam perangkat dan tidak diverifikasi secara independen."
+      }
+    ]
   },
 
   'add-page-labels': {

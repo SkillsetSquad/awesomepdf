@@ -1773,29 +1773,62 @@ export const toolContentEn: Record<string, ToolContent> = {
   },
 
   'timestamp-pdf': {
-    title: 'Timestamp PDF',
-    metaDescription: 'Add RFC 3161 trusted timestamps to PDF documents. Prove document existence at a specific point in time without certificates.',
-    keywords: ['timestamp pdf', 'rfc 3161', 'tsa server', 'trusted timestamping', 'proof of existence'],
-    description: `
-      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>
-      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>
-      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>
-    `,
-    howToUse: [
-      { step: 1, title: 'Upload PDF Document', description: 'Select the target PDF file you want to timestamp.' },
-      { step: 2, title: 'Select TSA Server', description: 'Choose a trusted global Time Stamping Authority from the list.' },
-      { step: 3, title: 'Apply and Timestamp', description: 'Click Timestamp to fetch secure response from TSA and embed the token.' },
+    "title": "Local PDF Timestamp",
+    "metaDescription": "This tool creates a local, self-signed timestamp using your device clock. It does not request or verify a timestamp from the selected TSA.",
+    "keywords": [
+      "Local PDF Timestamp",
+      "PDF",
+      "Device time"
     ],
-    useCases: [
-      { title: 'Intellectual Property', description: 'Establish clear priority proof of patents, drafts, and ideas before public release.', icon: 'lightbulb' },
-      { title: 'Financial Auditing', description: 'Provide certified tamper-proof logging of ledger archives and balance reports.', icon: 'activity' },
-      { title: 'Legal Contracts', description: 'Lock legal agreements with a trusted time proof to avoid backdating arguments.', icon: 'file-check' },
+    "description": "<p>Select a PDF to add a local timestamp.</p><p>This tool creates a local, self-signed timestamp using your device clock. It does not request or verify a timestamp from the selected TSA.</p><p>Processing stays in your browser; no document or hash is sent to a TSA.</p>",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Upload PDF",
+        "description": "Select a PDF to add a local timestamp."
+      },
+      {
+        "step": 2,
+        "title": "Selected authority label",
+        "description": "Choose a name for the local signature. This name does not connect to a TSA."
+      },
+      {
+        "step": 3,
+        "title": "Add local timestamp",
+        "description": "Process the file, review the result and download the PDF."
+      }
     ],
-    faq: [
-      { question: 'What is a trusted timestamp (RFC 3161)?', answer: 'An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source.' },
-      { question: 'Do I need a digital certificate?', answer: 'No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners.' },
-      { question: 'Does the TSA see my document contents?', answer: 'Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private.' },
+    "useCases": [
+      {
+        "title": "Working drafts",
+        "description": "Keep a locally dated copy of a working document.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Personal archives",
+        "description": "Save a timestamped copy for your own reference.",
+        "icon": "archive"
+      },
+      {
+        "title": "Signature inspection",
+        "description": "Inspect the generated signature and metadata in a PDF reader.",
+        "icon": "search"
+      }
     ],
+    "faq": [
+      {
+        "question": "Is the timestamp independently verified?",
+        "answer": "This tool creates a local, self-signed timestamp using your device clock. It does not request or verify a timestamp from the selected TSA."
+      },
+      {
+        "question": "Must I upload a digital certificate?",
+        "answer": "No. The tool generates a local, self-signed certificate for this operation."
+      },
+      {
+        "question": "Which clock supplies the time?",
+        "answer": "The time comes from your device clock and is not independently verified."
+      }
+    ]
   },
 
   'add-page-labels': {
@@ -3356,8 +3389,8 @@ export const toolContentEn: Record<string, ToolContent> = {
     `,
     howToUse: [
       { step: 1, title: 'Import business contract', description: 'Upload the PDF contract or NDA that needs signature coordinates.' },
-      { step: 2, title: 'Auto-scan signature slots', description: 'Inspect the automatically located signing boxes, and manually add custom sign points if needed.' },
-      { step: 3, title: 'Inject anchors & save', description: 'Click execute to write the interactive pointer layers into the PDF structure.' },
+      {"step":2,"title":"X / Y","description":"Click the actual PDF preview or enter X and Y coordinates for the selected page."},
+      {"step":3,"title":"Process","description":"Process the file, review the result and download the PDF."},
     ],
     useCases: [
       { title: 'Corporate NDA Agreements', description: 'Inject clear, flashing guides next to sign blocks to prevent onboarding employees from missing clauses.', icon: 'file-text' },
@@ -3381,8 +3414,8 @@ export const toolContentEn: Record<string, ToolContent> = {
     `,
     howToUse: [
       { step: 1, title: 'Import large blueprint', description: 'Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF.' },
-      { step: 2, title: 'Draw cutting box', description: 'Drag and scale the green laser-line crop box to target the local region you want to slice.' },
-      { step: 3, title: 'Trigger laser crop', description: 'Click execute to trigger our low-level object slicer and download the tiny, lossless PDF.' },
+      {"step":2,"title":"Crop rectangle","description":"Enter X, Y, width and height, then check the selected page in the preview."},
+      {"step":3,"title":"Process","description":"Process the file, review the result and download the PDF."},
     ],
     useCases: [
       { title: 'CAD Blueprint Isolation', description: 'Slice out a "cooling system" detail from a massive 100MB floor plan blueprint to share with sub-contractors.', icon: 'crop' },

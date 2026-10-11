@@ -3523,61 +3523,60 @@ export const toolContentKo: Record<string, ToolContent> = {
     ]
   },
   "timestamp-pdf": {
-    "title": "PDF 타임스탬프 추가",
-    "metaDescription": "PDF 문서에 RFC 3161 보안 타임스탬프를 주입합니다. 문서 생성 시각을 증명하고 변조를 방지합니다.",
+    "title": "PDF 로컬 타임스탬프",
+    "metaDescription": "이 도구는 기기 시계로 자체 서명된 로컬 타임스탬프를 만듭니다. 선택한 TSA에 타임스탬프를 요청하거나 검증하지 않습니다.",
     "keywords": [
-      "pdf 타임스탬프",
-      "rfc 3161",
-      "시간 인증",
-      "위변조 방지"
+      "PDF 로컬 타임스탬프",
+      "PDF",
+      "기기 시간"
     ],
-    "description": "\n      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>\n      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>\n      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>\n    ",
+    "description": "<p>로컬 타임스탬프를 추가할 PDF를 선택하세요.</p><p>이 도구는 기기 시계로 자체 서명된 로컬 타임스탬프를 만듭니다. 선택한 TSA에 타임스탬프를 요청하거나 검증하지 않습니다.</p><p>처리는 브라우저에서 이루어지며 문서나 해시를 TSA에 보내지 않습니다.</p>",
     "howToUse": [
       {
         "step": 1,
-        "title": "Upload PDF Document",
-        "description": "Select the target PDF file you want to timestamp."
+        "title": "PDF 업로드",
+        "description": "로컬 타임스탬프를 추가할 PDF를 선택하세요."
       },
       {
         "step": 2,
-        "title": "Select TSA Server",
-        "description": "Choose a trusted global Time Stamping Authority from the list."
+        "title": "선택한 기관 이름",
+        "description": "로컬 서명의 이름을 선택하세요. 이 이름으로 TSA에 연결하지 않습니다."
       },
       {
         "step": 3,
-        "title": "Apply and Timestamp",
-        "description": "Click Timestamp to fetch secure response from TSA and embed the token."
+        "title": "로컬 타임스탬프 추가",
+        "description": "파일을 처리하고 결과를 확인한 다음 PDF를 다운로드하세요."
       }
     ],
     "useCases": [
       {
-        "title": "Intellectual Property",
-        "description": "Establish clear priority proof of patents, drafts, and ideas before public release.",
-        "icon": "lightbulb"
+        "title": "작업 초안",
+        "description": "로컬 날짜가 표시된 작업 문서 사본을 보관하세요.",
+        "icon": "file-text"
       },
       {
-        "title": "Financial Auditing",
-        "description": "Provide certified tamper-proof logging of ledger archives and balance reports.",
-        "icon": "activity"
+        "title": "개인 보관함",
+        "description": "개인 참고용으로 타임스탬프가 있는 사본을 저장하세요.",
+        "icon": "archive"
       },
       {
-        "title": "Legal Contracts",
-        "description": "Lock legal agreements with a trusted time proof to avoid backdating arguments.",
-        "icon": "file-check"
+        "title": "서명 확인",
+        "description": "PDF 리더에서 생성된 서명과 메타데이터를 확인하세요.",
+        "icon": "search"
       }
     ],
     "faq": [
       {
-        "question": "What is a trusted timestamp (RFC 3161)?",
-        "answer": "An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source."
+        "question": "타임스탬프가 독립적으로 검증되나요?",
+        "answer": "이 도구는 기기 시계로 자체 서명된 로컬 타임스탬프를 만듭니다. 선택한 TSA에 타임스탬프를 요청하거나 검증하지 않습니다."
       },
       {
-        "question": "Do I need a digital certificate?",
-        "answer": "No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners."
+        "question": "디지털 인증서를 업로드해야 하나요?",
+        "answer": "아니요. 이 작업을 위한 로컬 자체 서명 인증서를 생성합니다."
       },
       {
-        "question": "Does the TSA see my document contents?",
-        "answer": "Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private."
+        "question": "시간은 어떤 시계에서 가져오나요?",
+        "answer": "시간은 기기 시계에서 가져오며 독립적으로 검증하지 않습니다."
       }
     ]
   },
@@ -4951,16 +4950,8 @@ export const toolContentKo: Record<string, ToolContent> = {
         "title": "Import business contract",
         "description": "Upload the PDF contract or NDA that needs signature coordinates."
       },
-      {
-        "step": 2,
-        "title": "Auto-scan signature slots",
-        "description": "Inspect the automatically located signing boxes, and manually add custom sign points if needed."
-      },
-      {
-        "step": 3,
-        "title": "Inject anchors & save",
-        "description": "Click execute to write the interactive pointer layers into the PDF structure."
-      }
+      {"step":2,"title":"X / Y","description":"실제 PDF 미리보기를 클릭하거나 선택한 페이지의 X 및 Y 좌표를 입력하세요."},
+      {"step":3,"title":"처리","description":"파일을 처리하고 결과를 확인한 다음 PDF를 다운로드하세요."},
     ],
     "useCases": [
       {
@@ -5010,16 +5001,8 @@ export const toolContentKo: Record<string, ToolContent> = {
         "title": "Import large blueprint",
         "description": "Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF."
       },
-      {
-        "step": 2,
-        "title": "Draw cutting box",
-        "description": "Drag and scale the green laser-line crop box to target the local region you want to slice."
-      },
-      {
-        "step": 3,
-        "title": "Trigger laser crop",
-        "description": "Click execute to trigger our low-level object slicer and download the tiny, lossless PDF."
-      }
+      {"step":2,"title":"자르기 사각형","description":"X, Y, 너비, 높이를 입력한 다음 미리보기에서 선택한 페이지를 확인하세요."},
+      {"step":3,"title":"처리","description":"파일을 처리하고 결과를 확인한 다음 PDF를 다운로드하세요."},
     ],
     "useCases": [
       {
