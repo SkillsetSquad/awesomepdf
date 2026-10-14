@@ -2859,7 +2859,7 @@
       "moveButton": "Move",
       "movedNotice": "“{title}” moved. Save and download to apply this change.",
       "noMoveTargets": "Add another bookmark to choose a destination.",
-      "insertHint": "Add Bookmark inserts after the selected entry at the same level and uses the previewed page. With no selection, it adds at the end.",
+      "insertHint": "Add Bookmark inserts after the active entry at the same level and uses the previewed page. With no active entry, it adds at the end. Checkboxes do not change the insertion position.",
       "removeAll": "Remove all bookmarks",
       "removeAllConfirm": "Remove all bookmarks, including nested bookmarks? Save and download to apply this change. The original file stays unchanged.",
       "removedAllNotice": "All bookmarks removed. Save and download to apply this change.",
@@ -2888,7 +2888,13 @@
       "bold": "Bold",
       "italic": "Italic",
       "boldItalic": "Bold & Italic",
-      "setToCurrentPage": "Set to current page"
+      "setToCurrentPage": "Set to current page",
+      "selectBookmark": "Select bookmark: {title}",
+      "selectionCount": "Selected: {count}",
+      "removeSelection": "Remove selection",
+      "removeSelectionConfirm": "Selected: {selected}. Bookmarks to remove: {total}, including all children of selected entries. Save and download to apply this change. The original file stays unchanged.",
+      "removedSelectionNotice": "Bookmarks removed: {count}. Save and download to apply this change.",
+      "selectionHint": "Click to select one bookmark. Shift-click selects a visible range; Ctrl/Cmd-click toggles entries. Ctrl/Cmd+Shift-click adds a range. Use checkboxes with a keyboard or on touch screens. Selection survives scrolling and collapsing."
     },
     "pageNumbers": {
       "uploadLabel": "Upload PDF File",

@@ -2846,7 +2846,7 @@
       "moveButton": "Mută",
       "movedNotice": "„{title}” a fost mutat. Salvează și descarcă pentru a aplica această modificare.",
       "noMoveTargets": "Adaugă alt marcaj pentru a alege o destinație.",
-      "insertHint": "Adaugă marcaj inserează după intrarea selectată la același nivel și trimite la pagina previzualizată. Fără selecție, adaugă la sfârșit.",
+      "insertHint": "Adaugă marcaj inserează după intrarea activă, la același nivel, și indică pagina previzualizată. Fără intrare activă, adaugă la final. Casetele nu schimbă poziția de inserare.",
       "removeAll": "Elimină toate marcajele",
       "removeAllConfirm": "Elimini toate marcajele, inclusiv cele imbricate? Salvează și descarcă pentru a aplica această modificare. Fișierul original rămâne neschimbat.",
       "removedAllNotice": "Toate marcajele au fost eliminate. Salvează și descarcă pentru a aplica această modificare.",
@@ -2875,7 +2875,13 @@
       "bold": "Aldin",
       "italic": "Cursiv",
       "boldItalic": "Aldin și Cursiv",
-      "setToCurrentPage": "Setează la pagina curentă"
+      "setToCurrentPage": "Setează la pagina curentă",
+      "selectBookmark": "Selectează marcajul: {title}",
+      "selectionCount": "Selectate: {count}",
+      "removeSelection": "Elimină selecția",
+      "removeSelectionConfirm": "Selectate: {selected}. Marcaje de eliminat: {total}, inclusiv toate elementele copil ale intrărilor selectate. Salvează și descarcă pentru a aplica modificarea. Fișierul original rămâne neschimbat.",
+      "removedSelectionNotice": "Marcaje eliminate: {count}. Salvează și descarcă pentru a aplica modificarea.",
+      "selectionHint": "Clic selectează un marcaj. Shift+clic selectează un interval vizibil; Ctrl/Cmd+clic comută selecția. Ctrl/Cmd+Shift+clic adaugă un interval. Folosește casetele cu tastatura sau pe ecrane tactile. Selecția se păstrează la derulare sau restrângere."
     },
     "pageNumbers": {
       "uploadLabel": "Încărcați fișierul PDF",

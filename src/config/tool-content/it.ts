@@ -827,7 +827,7 @@ export const toolContentIt: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Modifica segnalibri",
-    "metaDescription": "Aggiungi, modifica, organizza o rimuovi tutti i segnalibri PDF. Gestisci la navigazione del documento localmente nel browser.",
+    "metaDescription": "Aggiungi, modifica, sposta o rimuovi i segnalibri PDF selezionati o tutti i segnalibri. Gestisci la navigazione localmente nel browser.",
     "keywords": [
       "segnalibri pdf",
       "modifica segnalibri",
@@ -835,9 +835,10 @@ export const toolContentIt: Record<string, ToolContent> = {
       "navigazione pdf",
       "sommario",
       "rimuovi tutti i segnalibri pdf",
-      "sposta segnalibro"
+      "sposta segnalibro",
+      "rimuovere i segnalibri PDF selezionati"
     ],
-    "description": "\n      <p>Modifica segnalibri consente di creare, modificare e organizzare i segnalibri nei tuoi documenti PDF. I segnalibri offrono una navigazione rapida verso sezioni specifiche, rendendo più semplici i documenti lunghi.</p>\n      <p>Puoi aggiungere nuovi segnalibri, modificare quelli esistenti, riorganizzare la gerarchia o importare segnalibri da fonti esterne. Questo strumento è essenziale per creare documenti professionali e ben navigabili.</p>\n      <p>Tutte le modifiche avvengono localmente nel tuo browser, garantendo che i documenti restino privati.</p>\n      <p>Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri.</p>\n      <p>Aggiungi segnalibro inserisce dopo la voce selezionata allo stesso livello e punta alla pagina visualizzata. Senza selezione, aggiunge alla fine. Trascina la maniglia prima, dopo o dentro un altro segnalibro. Fai clic o toccala per scegliere una destinazione.</p>\n    ",
+    "description": "\n      <p>Modifica segnalibri consente di creare, modificare e organizzare i segnalibri nei tuoi documenti PDF. I segnalibri offrono una navigazione rapida verso sezioni specifiche, rendendo più semplici i documenti lunghi.</p>\n      <p>Puoi aggiungere nuovi segnalibri, modificare quelli esistenti, riorganizzare la gerarchia o importare segnalibri da fonti esterne. Questo strumento è essenziale per creare documenti professionali e ben navigabili.</p>\n      <p>Tutte le modifiche avvengono localmente nel tuo browser, garantendo che i documenti restino privati.</p>\n      <p>Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri.</p>\n      <p>Aggiungi segnalibro inserisce dopo la voce attiva, allo stesso livello, e punta alla pagina in anteprima. Senza voce attiva, aggiunge alla fine. Le caselle non cambiano la posizione di inserimento. Trascina la maniglia prima, dopo o dentro un altro segnalibro. Fai clic o toccala per scegliere una destinazione.</p>\n      <p>Seleziona i segnalibri con Maiusc+clic, Ctrl/Cmd+clic o le caselle, fai clic su Rimuovi selezione e conferma. Le voci principali selezionate e tutti i loro figli vengono rimossi. Salva e scarica per applicare le modifiche.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -847,7 +848,7 @@ export const toolContentIt: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestisci i segnalibri",
-        "description": "Aggiungi nuovi segnalibri, modifica quelli esistenti o trascina per riorganizzare la gerarchia. Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri. Aggiungi segnalibro inserisce dopo la voce selezionata allo stesso livello e punta alla pagina visualizzata. Senza selezione, aggiunge alla fine. Trascina la maniglia prima, dopo o dentro un altro segnalibro. Fai clic o toccala per scegliere una destinazione."
+        "description": "Aggiungi nuovi segnalibri, modifica quelli esistenti o trascina per riorganizzare la gerarchia. Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri. Aggiungi segnalibro inserisce dopo la voce attiva, allo stesso livello, e punta alla pagina in anteprima. Senza voce attiva, aggiunge alla fine. Le caselle non cambiano la posizione di inserimento. Trascina la maniglia prima, dopo o dentro un altro segnalibro. Fai clic o toccala per scegliere una destinazione. Seleziona i segnalibri con Maiusc+clic, Ctrl/Cmd+clic o le caselle, fai clic su Rimuovi selezione e conferma. Le voci principali selezionate e tutti i loro figli vengono rimossi. Salva e scarica per applicare le modifiche."
       },
       {
         "step": 3,

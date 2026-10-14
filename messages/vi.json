@@ -2846,7 +2846,7 @@
       "moveButton": "Di chuyển",
       "movedNotice": "Đã di chuyển “{title}”. Lưu và tải xuống để áp dụng thay đổi này.",
       "noMoveTargets": "Thêm dấu trang khác để chọn đích.",
-      "insertHint": "Thêm dấu trang sẽ chèn sau mục được chọn ở cùng cấp và liên kết với trang đang xem. Nếu không chọn mục nào, dấu trang được thêm vào cuối.",
+      "insertHint": "Thêm dấu trang chèn sau mục đang hoạt động ở cùng cấp và liên kết đến trang xem trước. Khi không có mục đang hoạt động, dấu trang được thêm vào cuối. Ô chọn không thay đổi vị trí chèn.",
       "removeAll": "Xóa tất cả dấu trang",
       "removeAllConfirm": "Xóa tất cả dấu trang, bao gồm dấu trang lồng nhau? Lưu và tải xuống để áp dụng thay đổi này. Tệp gốc không bị thay đổi.",
       "removedAllNotice": "Đã xóa tất cả dấu trang. Lưu và tải xuống để áp dụng thay đổi này.",
@@ -2875,7 +2875,13 @@
       "bold": "Đậm",
       "italic": "Nghiêng",
       "boldItalic": "Đậm & Nghiêng",
-      "setToCurrentPage": "Đặt thành trang hiện tại"
+      "setToCurrentPage": "Đặt thành trang hiện tại",
+      "selectBookmark": "Chọn dấu trang: {title}",
+      "selectionCount": "Đã chọn: {count}",
+      "removeSelection": "Xóa mục đã chọn",
+      "removeSelectionConfirm": "Đã chọn: {selected}. Số dấu trang sẽ xóa: {total}, bao gồm tất cả mục con của các mục đã chọn. Lưu và tải xuống để áp dụng thay đổi. Tệp gốc không bị thay đổi.",
+      "removedSelectionNotice": "Số dấu trang đã xóa: {count}. Lưu và tải xuống để áp dụng thay đổi.",
+      "selectionHint": "Nhấp để chọn một dấu trang. Shift+nhấp chọn phạm vi đang hiển thị; Ctrl/Cmd+nhấp bật hoặc tắt lựa chọn. Ctrl/Cmd+Shift+nhấp thêm một phạm vi. Dùng ô chọn với bàn phím hoặc màn hình cảm ứng. Lựa chọn vẫn giữ khi cuộn hoặc thu gọn."
     },
     "pageNumbers": {
       "uploadLabel": "Tải lên tệp PDF",

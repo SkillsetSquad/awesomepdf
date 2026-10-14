@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { PDFArray, PDFDict, PDFDocument, PDFHexString, PDFName, PDFNumber, PDFRawStream, PDFRef, PDFString, decodePDFRawStream, degrees } from 'pdf-lib';
 import { createFileFixture, readBlobBytes } from '@/__tests__/helpers/file-fixture';
 import { processBookmarks } from '@/lib/pdf/processors/bookmark';
-import { insertBookmarkAfter, moveBookmark, type BookmarkNode } from '@/lib/pdf/bookmark-tree';
+import { insertBookmarkAfter, moveBookmark, removeBookmarks, type BookmarkNode } from '@/lib/pdf/bookmark-tree';
 
 async function createBookmarkedPDF() {
   const pdf = await PDFDocument.create();
@@ -45,6 +45,19 @@ function pageStreams(pdf: PDFDocument) {
       return new TextDecoder().decode(decodePDFRawStream(stream).decode());
     });
   });
+}
+
+function readOutline(pdf: PDFDocument, parent: PDFDict): Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> {
+  const result: Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> = [];
+  let next = parent.get(PDFName.of('First'));
+  while (next) {
+    const item = pdf.context.lookup(next, PDFDict);
+    const destination = item.lookup(PDFName.of('Dest'), PDFArray).get(0);
+    if (!(destination instanceof PDFRef)) throw new Error('Expected a bookmark page reference');
+    result.push({ title: item.lookup(PDFName.of('Title'), PDFHexString).decodeText(), page: pdf.getPages().findIndex(page => page.ref.toString() === destination.toString()) + 1, children: readOutline(pdf, item) });
+    next = item.get(PDFName.of('Next'));
+  }
+  return result;
 }
 
 describe('Bookmark removal PDF output', () => {
@@ -110,20 +123,8 @@ describe('Bookmark removal PDF output', () => {
     expect(output.success, output.error?.details).toBe(true);
     if (!(output.result instanceof Blob)) throw new Error('Expected a PDF blob');
     const saved = await PDFDocument.load(await readBlobBytes(output.result));
-    function readOutline(parent: PDFDict): Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> {
-      const result: Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> = [];
-      let next = parent.get(PDFName.of('First'));
-      while (next) {
-        const item = saved.context.lookup(next, PDFDict);
-        const destination = item.lookup(PDFName.of('Dest'), PDFArray).get(0);
-        if (!(destination instanceof PDFRef)) throw new Error('Expected a bookmark page reference');
-        result.push({ title: item.lookup(PDFName.of('Title'), PDFHexString).decodeText(), page: saved.getPages().findIndex(page => page.ref.toString() === destination.toString()) + 1, children: readOutline(item) });
-        next = item.get(PDFName.of('Next'));
-      }
-      return result;
-    }
     const root = saved.catalog.lookup(PDFName.of('Outlines'), PDFDict);
-    expect(readOutline(root)).toEqual([{ title: 'Tail', page: 2, children: [{ title: 'Chapter', page: 1, children: [
+    expect(readOutline(saved, root)).toEqual([{ title: 'Tail', page: 2, children: [{ title: 'Chapter', page: 1, children: [
       { title: 'Section', page: 2, children: [] }, { title: 'Inserted', page: 2, children: [] },
     ] }] }]);
     const section = root.lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('First'), PDFDict);
@@ -133,5 +134,44 @@ describe('Bookmark removal PDF output', () => {
     expect(saved.getPageCount()).toBe(original.getPageCount());
     expect(pageStreams(saved)).toEqual(pageStreams(original));
     expect(saved.getForm().getTextField('example').getText()).toBe('Preserved form value');
+  });
+
+  it('exports selective nested removal while preserving useful outlines and the original document content', async () => {
+    const { file } = await createBookmarkedPDF();
+    const node = (id: string, pageNumber: number, children: BookmarkNode[] = []): BookmarkNode => ({ id, title: id, pageNumber, children, isExpanded: true });
+    const keep = { ...node('Useful section', 2), style: 'bold-italic' as const, color: '#123456' };
+    const tree = [node('TOC', 1, [keep, node('Unwanted branch', 1, [node('Unwanted child', 2)]), node('Useful tail', 1)]), node('Page bookmarks', 1, [node('Page 2', 2)])];
+    const initial = await processBookmarks(file, { action: 'add', bookmarks: tree });
+    expect(initial.success).toBe(true);
+    if (!(initial.result instanceof Blob)) throw new Error('Expected initial PDF');
+    const sourceBytes = await readBlobBytes(initial.result);
+    const sourceFile = createFileFixture('selected.pdf', sourceBytes, 'application/pdf');
+    const source = await PDFDocument.load(sourceBytes);
+    const removed = removeBookmarks(tree, new Set(['Unwanted branch', 'Unwanted child', 'Page bookmarks']));
+    expect(removed.selectedCount).toBe(3); expect(removed.removedCount).toBe(4);
+    const output = await processBookmarks(sourceFile, { action: 'add', bookmarks: removed.nodes });
+    expect(output.success, output.error?.details).toBe(true);
+    if (!(output.result instanceof Blob)) throw new Error('Expected exported PDF');
+    const saved = await PDFDocument.load(await readBlobBytes(output.result));
+    const root = saved.catalog.lookup(PDFName.of('Outlines'), PDFDict);
+    expect(readOutline(saved, root)).toEqual([{ title: 'TOC', page: 1, children: [
+      { title: 'Useful section', page: 2, children: [] }, { title: 'Useful tail', page: 1, children: [] },
+    ] }]);
+    const section = root.lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('First'), PDFDict);
+    expect(section.lookup(PDFName.of('F'), PDFNumber).asNumber()).toBe(3);
+    expect(section.lookup(PDFName.of('C'), PDFArray).asArray().map(value => saved.context.lookup(value, PDFNumber).asNumber()))
+      .toEqual([18 / 255, 52 / 255, 86 / 255]);
+    expect(saved.getPageCount()).toBe(source.getPageCount());
+    expect(saved.getPages().map(page => [page.getMediaBox(), page.getCropBox(), page.getRotation()]))
+      .toEqual(source.getPages().map(page => [page.getMediaBox(), page.getCropBox(), page.getRotation()]));
+    expect(pageStreams(saved)).toEqual(pageStreams(source));
+    expect(saved.getForm().getTextField('example').getText()).toBe('Preserved form value');
+    expect(saved.getForm().getTextField('example').acroField.getWidgets()).toHaveLength(1);
+    const annotations = saved.getPage(1).node.lookup(PDFName.of('Annots'), PDFArray);
+    expect(annotations.size()).toBe(2);
+    expect(annotations.lookup(0, PDFDict).lookup(PDFName.of('A'), PDFDict).lookup(PDFName.of('URI'), PDFString).decodeText()).toBe('https://example.com/');
+    expect(annotations.lookup(1, PDFDict).lookup(PDFName.of('Contents'), PDFString).decodeText()).toBe('Preserved note');
+    expect(new Uint8Array(await sourceFile.arrayBuffer())).toEqual(sourceBytes);
+    expect(readOutline(source, source.catalog.lookup(PDFName.of('Outlines'), PDFDict))).toHaveLength(2);
   });
 });

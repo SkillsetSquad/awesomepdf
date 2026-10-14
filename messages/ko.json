@@ -2846,7 +2846,7 @@
       "moveButton": "이동",
       "movedNotice": "“{title}”을 이동했습니다. 저장하고 다운로드하여 변경 사항을 적용하세요.",
       "noMoveTargets": "대상을 선택하려면 다른 북마크를 추가하세요.",
-      "insertHint": "북마크 추가는 선택한 항목 바로 뒤의 같은 수준에 삽입하며 미리 보는 페이지로 연결합니다. 선택하지 않으면 맨 끝에 추가합니다.",
+      "insertHint": "북마크 추가는 활성 항목 바로 뒤의 같은 수준에 삽입하고 미리 보는 페이지에 연결합니다. 활성 항목이 없으면 끝에 추가합니다. 체크박스는 삽입 위치를 변경하지 않습니다.",
       "removeAll": "모든 북마크 삭제",
       "removeAllConfirm": "하위 북마크를 포함한 모든 북마크를 삭제할까요? 저장하고 다운로드하면 변경 사항이 적용됩니다. 원본 파일은 변경되지 않습니다.",
       "removedAllNotice": "모든 북마크를 삭제했습니다. 저장하고 다운로드하여 변경 사항을 적용하세요.",
@@ -2875,7 +2875,13 @@
       "bold": "굵게",
       "italic": "기울임꼴",
       "boldItalic": "굵게 및 기울임꼴",
-      "setToCurrentPage": "현재 페이지로 설정"
+      "setToCurrentPage": "현재 페이지로 설정",
+      "selectBookmark": "북마크 선택: {title}",
+      "selectionCount": "선택됨: {count}",
+      "removeSelection": "선택 항목 삭제",
+      "removeSelectionConfirm": "선택됨: {selected}. 삭제할 북마크: {total}개. 선택한 항목의 모든 하위 항목이 포함됩니다. 저장하고 다운로드하여 변경 사항을 적용하세요. 원본 파일은 변경되지 않습니다.",
+      "removedSelectionNotice": "삭제된 북마크: {count}개. 저장하고 다운로드하여 변경 사항을 적용하세요.",
+      "selectionHint": "클릭하면 북마크 하나를 선택합니다. Shift+클릭은 표시된 범위를 선택하고 Ctrl/Cmd+클릭은 선택을 전환합니다. Ctrl/Cmd+Shift+클릭은 범위를 추가합니다. 키보드나 터치 화면에서는 체크박스를 사용하세요. 스크롤하거나 접어도 선택이 유지됩니다."
     },
     "pageNumbers": {
       "uploadLabel": "PDF 파일 업로드",

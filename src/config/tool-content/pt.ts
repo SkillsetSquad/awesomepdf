@@ -5052,7 +5052,7 @@ export const toolContentPt: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Editar Marcadores",
-    "metaDescription": "Adicione, edite, organize ou remova todos os marcadores PDF. Gerencie a navegação do documento localmente no navegador.",
+    "metaDescription": "Adicione, edite, mova ou remova os marcadores PDF selecionados ou todos os marcadores. Gerencie a navegação localmente no navegador.",
     "keywords": [
       "marcadores pdf",
       "editar marcadores",
@@ -5060,9 +5060,10 @@ export const toolContentPt: Record<string, ToolContent> = {
       "navegação de pdf",
       "indice de pdf",
       "remover todos os marcadores pdf",
-      "mover marcador"
+      "mover marcador",
+      "remover marcadores PDF selecionados"
     ],
-    "description": "\n      <p>A ferramenta Editar Marcadores permite criar, modificar e organizar marcadores em seus documentos PDF. Os marcadores fornecem navegação rápida para seções específicas, tornando documentos longos mais fáceis de usar.</p>\n      <p>Você pode adicionar novos marcadores, editar os existentes, reorganizar a hierarquia de marcadores ou importar marcadores de fontes externas. Esta ferramenta é essencial para criar documentos profissionais e navegáveis.</p>\n      <p>Toda a edição ocorre localmente no seu navegador, garantindo a privacidade dos seus documentos.</p>\n      <p>Para remover todos, clique em Remover todos os marcadores e confirme. Salve e baixe para exportar um PDF sem marcadores.</p>\n      <p>Adicionar marcador insere após a entrada selecionada no mesmo nível e aponta para a página exibida. Sem seleção, adiciona ao final. Arraste a alça para antes, depois ou dentro de outro marcador. Clique ou toque nela para escolher um destino.</p>\n    ",
+    "description": "\n      <p>A ferramenta Editar Marcadores permite criar, modificar e organizar marcadores em seus documentos PDF. Os marcadores fornecem navegação rápida para seções específicas, tornando documentos longos mais fáceis de usar.</p>\n      <p>Você pode adicionar novos marcadores, editar os existentes, reorganizar a hierarquia de marcadores ou importar marcadores de fontes externas. Esta ferramenta é essencial para criar documentos profissionais e navegáveis.</p>\n      <p>Toda a edição ocorre localmente no seu navegador, garantindo a privacidade dos seus documentos.</p>\n      <p>Para remover todos, clique em Remover todos os marcadores e confirme. Salve e baixe para exportar um PDF sem marcadores.</p>\n      <p>Adicionar marcador insere após a entrada ativa, no mesmo nível, e aponta para a página em visualização. Sem entrada ativa, adiciona ao final. As caixas não alteram a posição de inserção. Arraste a alça para antes, depois ou dentro de outro marcador. Clique ou toque nela para escolher um destino.</p>\n      <p>Selecione marcadores com Shift+clique, Ctrl/Cmd+clique ou as caixas, clique em Remover seleção e confirme. As entradas selecionadas e todos os seus filhos são removidos. Salve e baixe para aplicar as alterações.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -5072,7 +5073,7 @@ export const toolContentPt: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gerenciar Marcadores",
-        "description": "Adicione novos marcadores, edite os existentes ou arraste para reorganizar a hierarquia. Para remover todos, clique em Remover todos os marcadores e confirme. Salve e baixe para exportar um PDF sem marcadores. Adicionar marcador insere após a entrada selecionada no mesmo nível e aponta para a página exibida. Sem seleção, adiciona ao final. Arraste a alça para antes, depois ou dentro de outro marcador. Clique ou toque nela para escolher um destino."
+        "description": "Adicione novos marcadores, edite os existentes ou arraste para reorganizar a hierarquia. Para remover todos, clique em Remover todos os marcadores e confirme. Salve e baixe para exportar um PDF sem marcadores. Adicionar marcador insere após a entrada ativa, no mesmo nível, e aponta para a página em visualização. Sem entrada ativa, adiciona ao final. As caixas não alteram a posição de inserção. Arraste a alça para antes, depois ou dentro de outro marcador. Clique ou toque nela para escolher um destino. Selecione marcadores com Shift+clique, Ctrl/Cmd+clique ou as caixas, clique em Remover seleção e confirme. As entradas selecionadas e todos os seus filhos são removidos. Salve e baixe para aplicar as alterações."
       },
       {
         "step": 3,

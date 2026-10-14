@@ -361,18 +361,19 @@ export const toolContentEn: Record<string, ToolContent> = {
   // ==================== EDIT & ANNOTATE ====================
   'bookmark': {
     title: 'Edit Bookmarks',
-    metaDescription: 'Add, edit, organize, or remove all PDF bookmarks. Manage document navigation locally in your browser.',
-    keywords: ['pdf bookmarks', 'edit bookmarks', 'add bookmarks', 'pdf navigation', 'table of contents', 'remove all pdf bookmarks', 'move bookmark'],
+    metaDescription: 'Add, edit, move, or remove selected PDF bookmarks or all bookmarks. Manage navigation locally in your browser.',
+    keywords: ['pdf bookmarks', 'edit bookmarks', 'add bookmarks', 'pdf navigation', 'table of contents', 'remove all pdf bookmarks', 'move bookmark', 'remove selected pdf bookmarks'],
     description: `
       <p>Edit Bookmarks allows you to create, modify, and organize bookmarks in your PDF documents. Bookmarks provide quick navigation to specific sections, making long documents easier to use.</p>
       <p>You can add new bookmarks, edit existing ones, reorganize the bookmark hierarchy, or import bookmarks from external sources. This tool is essential for creating professional, navigable documents.</p>
       <p>All editing happens locally in your browser, ensuring your documents remain private.</p>
       <p>To remove every bookmark, click Remove all bookmarks and confirm. Save and download to export a PDF without bookmarks.</p>
-      <p>Add Bookmark inserts after the selected entry at the same level and uses the previewed page. With no selection, it adds at the end. Drag the grip before, after, or inside another bookmark. Click or tap it to choose a destination.</p>
+      <p>Add Bookmark inserts after the active entry at the same level and uses the previewed page. With no active entry, it adds at the end. Checkboxes do not change the insertion position. Drag the grip before, after, or inside another bookmark. Click or tap it to choose a destination.</p>
+      <p>Select bookmarks using Shift-click, Ctrl/Cmd-click, or checkboxes, then click Remove selection and confirm. Selected parents and all their children are removed. Save and download to apply the changes.</p>
     `,
     howToUse: [
       { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select the document you want to edit.' },
-      { step: 2, title: 'Manage Bookmarks', description: 'Add new bookmarks, edit existing ones, or drag to reorganize the hierarchy. To remove every bookmark, click Remove all bookmarks and confirm. Save and download to export a PDF without bookmarks. Add Bookmark inserts after the selected entry at the same level and uses the previewed page. With no selection, it adds at the end. Drag the grip before, after, or inside another bookmark. Click or tap it to choose a destination.' },
+      { step: 2, title: 'Manage Bookmarks', description: 'Add new bookmarks, edit existing ones, or drag to reorganize the hierarchy. To remove every bookmark, click Remove all bookmarks and confirm. Save and download to export a PDF without bookmarks. Add Bookmark inserts after the active entry at the same level and uses the previewed page. With no active entry, it adds at the end. Checkboxes do not change the insertion position. Drag the grip before, after, or inside another bookmark. Click or tap it to choose a destination. Select bookmarks using Shift-click, Ctrl/Cmd-click, or checkboxes, then click Remove selection and confirm. Selected parents and all their children are removed. Save and download to apply the changes.' },
       { step: 3, title: 'Save and Download', description: 'Click Save to apply your changes and download the PDF with updated bookmarks.' },
     ],
     useCases: [

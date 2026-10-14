@@ -31,6 +31,45 @@ export function removeBookmark(nodes: BookmarkNode[], id: string): BookmarkNode[
   return changed ? result : nodes;
 }
 
+/** Range selection follows the rows users can currently see, including both endpoints. */
+export function getVisibleBookmarkIds(nodes: BookmarkNode[]): string[] {
+  return nodes.flatMap(node => [node.id, ...(node.isExpanded ? getVisibleBookmarkIds(node.children) : [])]);
+}
+
+export function selectBookmarkRange(visibleIds: string[], anchorId: string | null, targetId: string, previous: ReadonlySet<string> = new Set()): Set<string> {
+  const anchor = anchorId ? visibleIds.indexOf(anchorId) : -1;
+  const target = visibleIds.indexOf(targetId);
+  if (anchor === -1 || target === -1) return new Set([targetId]);
+  return new Set([...previous, ...visibleIds.slice(Math.min(anchor, target), Math.max(anchor, target) + 1)]);
+}
+
+/** Delete selected subtrees once, counting hidden children and ignoring stale selection IDs. */
+export function removeBookmarks(nodes: BookmarkNode[], selectedIds: ReadonlySet<string>): { nodes: BookmarkNode[]; selectedCount: number; removedCount: number } {
+  let selectedCount = 0;
+  let removedCount = 0;
+  const visit = (items: BookmarkNode[], ancestorRemoved = false): BookmarkNode[] => {
+    let changed = false;
+    const result: BookmarkNode[] = [];
+    for (const node of items) {
+      const selected = selectedIds.has(node.id);
+      if (selected) selectedCount += 1;
+      const removed = ancestorRemoved || selected;
+      if (removed) removedCount += 1;
+      const children = visit(node.children, removed);
+      if (removed) {
+        changed = true;
+      } else if (children !== node.children) {
+        changed = true;
+        result.push({ ...node, children });
+      } else {
+        result.push(node);
+      }
+    }
+    return changed ? result : items;
+  };
+  return { nodes: visit(nodes), selectedCount, removedCount };
+}
+
 function insertAt(nodes: BookmarkNode[], node: BookmarkNode, targetId: string, placement: BookmarkPlacement): BookmarkNode[] {
   const index = nodes.findIndex(target => target.id === targetId);
   if (index !== -1) {

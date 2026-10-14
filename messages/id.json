@@ -2846,7 +2846,7 @@
       "moveButton": "Pindahkan",
       "movedNotice": "“{title}” telah dipindahkan. Simpan dan unduh untuk menerapkan perubahan ini.",
       "noMoveTargets": "Tambahkan markah lain untuk memilih tujuan.",
-      "insertHint": "Tambah Markah menyisipkan setelah entri yang dipilih pada tingkat yang sama dan menautkan halaman pratinjau. Tanpa pilihan, markah ditambahkan di akhir.",
+      "insertHint": "Tambah Bookmark menyisipkan setelah entri aktif pada tingkat yang sama dan menautkan ke halaman pratinjau. Tanpa entri aktif, bookmark ditambahkan di akhir. Kotak centang tidak mengubah posisi penyisipan.",
       "removeAll": "Hapus semua markah",
       "removeAllConfirm": "Hapus semua markah, termasuk markah bertingkat? Simpan dan unduh untuk menerapkan perubahan ini. File asli tetap tidak berubah.",
       "removedAllNotice": "Semua markah telah dihapus. Simpan dan unduh untuk menerapkan perubahan ini.",
@@ -2875,7 +2875,13 @@
       "bold": "Tebal",
       "italic": "Miring",
       "boldItalic": "Tebal & Miring",
-      "setToCurrentPage": "Atur ke halaman saat ini"
+      "setToCurrentPage": "Atur ke halaman saat ini",
+      "selectBookmark": "Pilih bookmark: {title}",
+      "selectionCount": "Dipilih: {count}",
+      "removeSelection": "Hapus pilihan",
+      "removeSelectionConfirm": "Dipilih: {selected}. Bookmark yang akan dihapus: {total}, termasuk semua anak dari entri yang dipilih. Simpan dan unduh untuk menerapkan perubahan. File asli tidak berubah.",
+      "removedSelectionNotice": "Bookmark dihapus: {count}. Simpan dan unduh untuk menerapkan perubahan.",
+      "selectionHint": "Klik untuk memilih satu bookmark. Shift+klik memilih rentang yang terlihat; Ctrl/Cmd+klik mengubah pilihan. Ctrl/Cmd+Shift+klik menambahkan rentang. Gunakan kotak centang dengan keyboard atau layar sentuh. Pilihan tetap ada saat menggulir atau menutup cabang."
     },
     "pageNumbers": {
       "uploadLabel": "Unggah File PDF",

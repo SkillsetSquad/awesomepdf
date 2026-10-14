@@ -763,7 +763,7 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Éditer les signets",
-    "metaDescription": "Ajoutez, modifiez, organisez ou supprimez tous les signets PDF. Gérez la navigation du document localement dans votre navigateur.",
+    "metaDescription": "Ajoutez, modifiez, déplacez ou supprimez les signets PDF sélectionnés ou tous les signets. Gérez la navigation localement dans votre navigateur.",
     "keywords": [
       "signets pdf",
       "éditer signets",
@@ -771,9 +771,10 @@ export const toolContentFr: Record<string, ToolContent> = {
       "navigation pdf",
       "table des matières pdf",
       "supprimer tous les signets pdf",
-      "déplacer le signet"
+      "déplacer le signet",
+      "supprimer les signets PDF sélectionnés"
     ],
-    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n      <p>Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets.</p>\n      <p>Ajouter un signet insère après l’entrée sélectionnée au même niveau et cible la page affichée. Sans sélection, le signet est ajouté à la fin. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination.</p>\n    ",
+    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n      <p>Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets.</p>\n      <p>Ajouter un signet insère après l’entrée active, au même niveau, et cible la page prévisualisée. Sans entrée active, il est ajouté à la fin. Les cases ne modifient pas la position d’insertion. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination.</p>\n      <p>Sélectionnez des signets avec Maj+clic, Ctrl/Cmd+clic ou les cases, puis cliquez sur Supprimer la sélection et confirmez. Les parents sélectionnés et tous leurs enfants sont supprimés. Enregistrez et téléchargez pour appliquer les modifications.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -783,7 +784,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gérez les signets",
-        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie. Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets. Ajouter un signet insère après l’entrée sélectionnée au même niveau et cible la page affichée. Sans sélection, le signet est ajouté à la fin. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination."
+        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie. Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets. Ajouter un signet insère après l’entrée active, au même niveau, et cible la page prévisualisée. Sans entrée active, il est ajouté à la fin. Les cases ne modifient pas la position d’insertion. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination. Sélectionnez des signets avec Maj+clic, Ctrl/Cmd+clic ou les cases, puis cliquez sur Supprimer la sélection et confirmez. Les parents sélectionnés et tous leurs enfants sont supprimés. Enregistrez et téléchargez pour appliquer les modifications."
       },
       {
         "step": 3,

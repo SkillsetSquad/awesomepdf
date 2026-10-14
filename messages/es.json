@@ -2855,7 +2855,7 @@
       "moveButton": "Mover",
       "movedNotice": "Se ha movido «{title}». Guarda y descarga para aplicar este cambio.",
       "noMoveTargets": "Añade otro marcador para elegir un destino.",
-      "insertHint": "Añadir marcador inserta después de la entrada seleccionada al mismo nivel y enlaza con la página de vista previa. Sin selección, añade al final.",
+      "insertHint": "Añadir marcador lo inserta después de la entrada activa, al mismo nivel, y enlaza la página de la vista previa. Sin entrada activa, se añade al final. Las casillas no cambian la posición de inserción.",
       "removeAll": "Eliminar todos los marcadores",
       "removeAllConfirm": "¿Eliminar todos los marcadores, incluidos los anidados? Guarda y descarga para aplicar este cambio. El archivo original no se modifica.",
       "removedAllNotice": "Se han eliminado todos los marcadores. Guarda y descarga para aplicar este cambio.",
@@ -2884,7 +2884,13 @@
       "bold": "Atrevido",
       "italic": "Itálico",
       "boldItalic": "Negrita y cursiva",
-      "setToCurrentPage": "Establecer en la página actual"
+      "setToCurrentPage": "Establecer en la página actual",
+      "selectBookmark": "Seleccionar marcador: {title}",
+      "selectionCount": "Seleccionados: {count}",
+      "removeSelection": "Eliminar selección",
+      "removeSelectionConfirm": "Seleccionados: {selected}. Marcadores que se eliminarán: {total}, incluidos todos los hijos de las entradas seleccionadas. Guarda y descarga para aplicar el cambio. El archivo original no se modifica.",
+      "removedSelectionNotice": "Marcadores eliminados: {count}. Guarda y descarga para aplicar el cambio.",
+      "selectionHint": "Haz clic para seleccionar un marcador. Mayús+clic selecciona un rango visible; Ctrl/Cmd+clic alterna la selección. Ctrl/Cmd+Mayús+clic añade un rango. Usa las casillas con el teclado o en pantallas táctiles. La selección se conserva al desplazarte o contraer entradas."
     },
     "pageNumbers": {
       "uploadLabel": "Subir archivo PDF",

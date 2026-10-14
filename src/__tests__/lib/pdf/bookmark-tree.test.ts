@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
-import { appendChildBookmark, canMoveBookmark, findBookmark, getBookmarkMoveTargets, getBookmarkPlacement, insertBookmarkAfter, moveBookmark, removeBookmark, type BookmarkNode, type BookmarkPlacement } from '@/lib/pdf/bookmark-tree';
+import { appendChildBookmark, canMoveBookmark, findBookmark, getBookmarkMoveTargets, getBookmarkPlacement, getVisibleBookmarkIds, insertBookmarkAfter, moveBookmark, removeBookmark, removeBookmarks, selectBookmarkRange, type BookmarkNode, type BookmarkPlacement } from '@/lib/pdf/bookmark-tree';
 
 function node(id: string, children: BookmarkNode[] = []): BookmarkNode {
   return { id, title: id, pageNumber: 2, children, isExpanded: true, color: '#123456', style: 'bold-italic' };
@@ -83,6 +83,64 @@ describe('Bookmark tree editing', () => {
     expect(getBookmarkPlacement(102, 100, 40)).toBe('before');
     expect(getBookmarkPlacement(120, 100, 40)).toBe('inside');
     expect(getBookmarkPlacement(138, 100, 40)).toBe('after');
+  });
+
+  it('selects inclusive forward and reverse ranges through visible rows only', () => {
+    const tree = fixture(); tree[0].children[0].isExpanded = false; freeze(tree);
+    const visible = getVisibleBookmarkIds(tree);
+    expect(visible).toEqual(['a', 'a1', 'a2', 'b', 'b1', 'c']);
+    for (const [anchor, target] of [['a1', 'b1'], ['b1', 'a1']]) {
+      expect([...selectBookmarkRange(visible, anchor, target)]).toEqual(['a1', 'a2', 'b', 'b1']);
+    }
+    expect([...selectBookmarkRange(visible, 'a1', 'a2', new Set(['c', 'a11']))]).toEqual(['c', 'a11', 'a1', 'a2']);
+    for (const anchor of [null, 'missing', 'a11']) {
+      expect([...selectBookmarkRange(visible, anchor, 'b', new Set(['c']))]).toEqual(['b']);
+    }
+  });
+
+  it('removes overlapping selected subtrees once and preserves surviving identity and content', () => {
+    const tree = fixture(); tree[0].isExpanded = false; freeze(tree);
+    const result = removeBookmarks(tree, new Set(['a1', 'a11', 'b', 'stale']));
+    expect(result.selectedCount).toBe(3); expect(result.removedCount).toBe(4);
+    expect(ids(result.nodes)).toEqual(['a', 'a2', 'c']);
+    expect(result.nodes[0]).toEqual({ ...tree[0], children: [tree[0].children[1]] });
+    expect(result.nodes[0].children[0]).toBe(tree[0].children[1]);
+    expect(result.nodes[1]).toBe(tree[2]);
+    expect(ids(tree)).toEqual(['a', 'a1', 'a11', 'a2', 'b', 'b1', 'c']);
+  });
+
+  it('ignores stale selections, handles empty trees, and can remove the complete tree', () => {
+    const tree = freeze(fixture());
+    for (const selection of [new Set<string>(), new Set(['missing'])]) {
+      expect(removeBookmarks(tree, selection)).toEqual({ nodes: tree, selectedCount: 0, removedCount: 0 });
+      expect(removeBookmarks(tree, selection).nodes).toBe(tree);
+    }
+    expect(removeBookmarks([], new Set(['missing']))).toEqual({ nodes: [], selectedCount: 0, removedCount: 0 });
+    expect(removeBookmarks(tree, new Set(['a', 'a1', 'b', 'c']))).toEqual({ nodes: [], selectedCount: 4, removedCount: 7 });
+  });
+
+  it('keeps every unremoved branch intact across generated bulk selections', () => {
+    fc.assert(fc.property(fc.array(fc.nat(), { maxLength: 30 }), fc.array(fc.nat(), { maxLength: 30 }), (parents, choices) => {
+      const tree: BookmarkNode[] = [], all: BookmarkNode[] = [];
+      parents.forEach((parent, index) => {
+        const item = node(String(index)); all.push(item);
+        if (index > 0 && parent % 3 !== 0) all[parent % index].children.push(item);
+        else tree.push(item);
+      });
+      const selection = new Set(choices.map(choice => String(choice % (all.length + 1))));
+      const removed = new Set<string>();
+      all.filter(item => selection.has(item.id)).forEach(item => ids([item]).forEach(id => removed.add(id)));
+      const original = JSON.stringify(tree); freeze(tree);
+      const result = removeBookmarks(tree, selection);
+      expect(ids(result.nodes)).toEqual(ids(tree).filter(id => !removed.has(id)));
+      expect(result.removedCount).toBe(removed.size);
+      expect(result.selectedCount).toBe(all.filter(item => selection.has(item.id)).length);
+      expect(JSON.stringify(tree)).toBe(original);
+      all.filter(item => !removed.has(item.id)).forEach(item => {
+        const surviving = findBookmark(result.nodes, item.id);
+        expect(surviving).toEqual({ ...item, children: item.children.filter(child => !removed.has(child.id)).map(child => findBookmark(result.nodes, child.id)) });
+      });
+    }), { numRuns: 100 });
   });
 
   it('never loses, duplicates, or mutates bookmarks across generated nested moves', () => {

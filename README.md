@@ -46,7 +46,7 @@ PDFCraft provides the original tool set and processing engines. The changes belo
 - **Interface:** Reworked navigation, pages, dialogs and document workspaces with shadcn/ui controls, light and dark themes, and keyboard navigation.
 - **File search:** Cmd+K / Ctrl+K searches tools, recent filenames and saved project records in this browser.
 - **Annotation editing:** Connected signature, stamp, comment and undo/redo controls to the document editor.
-- **Bookmark editing:** New entries appear after the selected bookmark and link to the previewed page. Reposition complete bookmark subtrees by dragging or choosing a destination in the keyboard/mobile Move dialog. Confirmed bulk removal and exporting empty bookmark lists are also supported.
+- **Bookmark editing:** New entries appear after the active bookmark and link to the previewed page. Reposition complete bookmark subtrees by dragging or choosing a destination in the keyboard/mobile Move dialog. Select entries by range, Ctrl/Cmd-click, or checkboxes and confirm their removal, or remove every bookmark at once. Empty bookmark lists can be exported too.
 - **Processing fixes:** Corrected page geometry in booklet and column splitting, added scan tilt detection, and tied OCR confidence to recognition results.
 - **Permanent redaction:** Redact PDF, Find and Redact, and Smart Data Redactor remove selected content and rewrite the PDF. See [Redacting sensitive content](#redacting-sensitive-content) for usage and limits.
 - **Tool loading:** Tool interfaces load individually when selected.
@@ -138,7 +138,7 @@ Common tools are listed below. Browse the [tool directory](https://awsomepdf.com
 | **Edit PDF** | Add text, images, annotations, highlights, and shapes |
 | **Sign PDF** | Draw, type, upload, or scan a photo of your handwritten signature |
 | **Crop PDF** | Trim margins and remove unwanted areas |
-| **Edit Bookmarks** | Insert beside a selected entry, move bookmark subtrees, or remove all bookmarks |
+| **Edit Bookmarks** | Insert beside an active entry, move bookmark subtrees, or remove selected/all bookmarks |
 | **Table of Contents** | Generate clickable table of contents from bookmarks |
 | **Page Numbers** | Add customizable page numbering |
 | **Add Watermark** | Apply text or image watermarks |
@@ -154,11 +154,15 @@ Common tools are listed below. Browse the [tool directory](https://awsomepdf.com
 | **Deskew PDF** | Automatically straighten skewed scanned pages |
 | **OCG Manager** | Manage Optional Content Groups (layers) in PDFs |
 
-In **Edit Bookmarks**, select an entry, navigate the preview to the desired page, and click **Add Bookmark** to insert directly after that entry at the same level. With no selection, new entries go at the end of the root list. **Add child** remains available for nested entries. Bookmarks target the page; they do not capture an exact scroll position within it.
+In **Edit Bookmarks**, click an entry's title to make it active, navigate the preview to the desired page, and click **Add Bookmark** to insert directly after that entry at the same level. With no active entry, new entries go at the end of the root list. **Add child** remains available for nested entries. Bookmarks target the page; they do not capture an exact scroll position within it.
 
 Drag a bookmark's grip to place its entire subtree before, after, or inside another entry. The list scrolls when you hold the drag near its top or bottom edge. On mobile or with a keyboard, click or activate the grip to open **Move bookmark**, choose a destination and placement, and apply the move. Invalid drops leave the tree unchanged. Click **Save Bookmarks** and download to apply edits to a PDF; the original file remains unchanged.
 
-To remove every bookmark, click **Remove all bookmarks** and confirm, then save and download. This clears nested bookmarks too. You can also save after deleting the final bookmark individually.
+To remove several bookmarks while keeping useful navigation, click one entry and **Shift-click** another to select the visible range between them. **Ctrl-click** (or **Cmd-click** on macOS) toggles individual entries; adding **Shift** adds a range to the selection. On touch screens or with a keyboard, use the labeled checkboxes; **Space** toggles a focused checkbox. Checkboxes do not change the preview or insertion position. Scrolling, using the scrollbar, and collapsing branches preserve selection, including selected entries hidden within collapsed branches.
+
+Click **Remove selection** and review the confirmation: it shows the selected count and the total number to remove, including all descendants of selected parents. Cancel preserves edits, selection, and any existing download. Confirm clears the selected subtrees; then click **Save Bookmarks** and download. Movement still applies to one subtree at a time.
+
+To remove every bookmark, click **Remove all bookmarks** and confirm, then save and download. This clears nested bookmarks too. You can also save after deleting the final bookmark individually or through **Remove selection**. If saving fails, retry without uploading the original file again.
 
 ### Convert to PDF
 

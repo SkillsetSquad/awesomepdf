@@ -2847,7 +2847,7 @@
       "moveButton": "移動",
       "movedNotice": "已移動「{title}」。儲存並下載以套用此變更。",
       "noMoveTargets": "請新增其他書籤以選擇目標。",
-      "insertHint": "新增書籤會在所選項目之後的同一層級插入，並連結至預覽中的頁面。未選取時會新增至末尾。",
+      "insertHint": "新增書籤會在目前作用中項目之後的同一層級插入，並連結至預覽中的頁面。沒有作用中項目時新增至末尾。核取方塊不會改變插入位置。",
       "removeAll": "刪除所有書籤",
       "removeAllConfirm": "刪除所有書籤，包括巢狀書籤？儲存並下載以套用此變更。原始檔案保持不變。",
       "removedAllNotice": "已刪除所有書籤。儲存並下載以套用此變更。",
@@ -2876,7 +2876,13 @@
       "bold": "粗體",
       "italic": "斜體",
       "boldItalic": "粗體斜體",
-      "setToCurrentPage": "設為目前頁面"
+      "setToCurrentPage": "設為目前頁面",
+      "selectBookmark": "選取書籤：{title}",
+      "selectionCount": "已選取：{count}",
+      "removeSelection": "刪除所選書籤",
+      "removeSelectionConfirm": "已選取：{selected}。將刪除的書籤數：{total}，包含所選項目的所有子項。儲存並下載以套用變更。原始檔案保持不變。",
+      "removedSelectionNotice": "已刪除的書籤數：{count}。儲存並下載以套用變更。",
+      "selectionHint": "點擊選取一個書籤。Shift+點擊選取可見範圍；Ctrl/Cmd+點擊切換選取狀態。Ctrl/Cmd+Shift+點擊新增範圍。使用鍵盤或觸控螢幕時可勾選核取方塊。捲動或收合項目不會清除選取。"
     },
     "pageNumbers": {
       "uploadLabel": "上傳 PDF 文件",

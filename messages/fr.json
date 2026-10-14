@@ -2846,7 +2846,7 @@
       "moveButton": "Déplacer",
       "movedNotice": "« {title} » a été déplacé. Enregistrez et téléchargez pour appliquer cette modification.",
       "noMoveTargets": "Ajoutez un autre signet pour choisir une destination.",
-      "insertHint": "Ajouter un signet insère après l’entrée sélectionnée au même niveau et cible la page affichée. Sans sélection, le signet est ajouté à la fin.",
+      "insertHint": "Ajouter un signet insère après l’entrée active, au même niveau, et cible la page prévisualisée. Sans entrée active, il est ajouté à la fin. Les cases ne modifient pas la position d’insertion.",
       "removeAll": "Supprimer tous les signets",
       "removeAllConfirm": "Supprimer tous les signets, y compris les signets imbriqués ? Enregistrez et téléchargez pour appliquer cette modification. Le fichier original reste inchangé.",
       "removedAllNotice": "Tous les signets ont été supprimés. Enregistrez et téléchargez pour appliquer cette modification.",
@@ -2875,7 +2875,13 @@
       "bold": "Audacieux",
       "italic": "Italique",
       "boldItalic": "Gras et italique",
-      "setToCurrentPage": "Définir sur la page actuelle"
+      "setToCurrentPage": "Définir sur la page actuelle",
+      "selectBookmark": "Sélectionner le signet : {title}",
+      "selectionCount": "Sélectionnés : {count}",
+      "removeSelection": "Supprimer la sélection",
+      "removeSelectionConfirm": "Sélectionnés : {selected}. Signets à supprimer : {total}, y compris tous les enfants des entrées sélectionnées. Enregistrez et téléchargez pour appliquer la modification. Le fichier original reste inchangé.",
+      "removedSelectionNotice": "Signets supprimés : {count}. Enregistrez et téléchargez pour appliquer la modification.",
+      "selectionHint": "Cliquez pour sélectionner un signet. Maj+clic sélectionne une plage visible ; Ctrl/Cmd+clic inverse la sélection. Ctrl/Cmd+Maj+clic ajoute une plage. Utilisez les cases avec le clavier ou sur écran tactile. La sélection est conservée lors du défilement ou du repli des entrées."
     },
     "pageNumbers": {
       "uploadLabel": "Téléverser le fichier PDF",

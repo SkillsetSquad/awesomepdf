@@ -2846,7 +2846,7 @@
       "moveButton": "Verschieben",
       "movedNotice": "„{title}“ wurde verschoben. Speichern und herunterladen, um diese Änderung anzuwenden.",
       "noMoveTargets": "Fügen Sie ein weiteres Lesezeichen hinzu, um ein Ziel auszuwählen.",
-      "insertHint": "Lesezeichen hinzufügen fügt nach dem ausgewählten Eintrag auf derselben Ebene ein und verlinkt die angezeigte Seite. Ohne Auswahl wird am Ende angefügt.",
+      "insertHint": "Lesezeichen hinzufügen fügt hinter dem aktiven Eintrag auf derselben Ebene ein und verweist auf die angezeigte Seite. Ohne aktiven Eintrag wird am Ende eingefügt. Kontrollkästchen ändern die Einfügeposition nicht.",
       "removeAll": "Alle Lesezeichen entfernen",
       "removeAllConfirm": "Alle Lesezeichen einschließlich verschachtelter Lesezeichen entfernen? Speichern und herunterladen, um diese Änderung anzuwenden. Die Originaldatei bleibt unverändert.",
       "removedAllNotice": "Alle Lesezeichen wurden entfernt. Speichern und herunterladen, um diese Änderung anzuwenden.",
@@ -2875,7 +2875,13 @@
       "bold": "Fett",
       "italic": "Kursiv",
       "boldItalic": "Fett & Kursiv",
-      "setToCurrentPage": "Auf aktuelle Seite setzen"
+      "setToCurrentPage": "Auf aktuelle Seite setzen",
+      "selectBookmark": "Lesezeichen auswählen: {title}",
+      "selectionCount": "Ausgewählt: {count}",
+      "removeSelection": "Auswahl entfernen",
+      "removeSelectionConfirm": "Ausgewählt: {selected}. Zu entfernende Lesezeichen: {total}, einschließlich aller Untereinträge der ausgewählten Einträge. Speichern und herunterladen, um die Änderung anzuwenden. Die Originaldatei bleibt unverändert.",
+      "removedSelectionNotice": "Entfernte Lesezeichen: {count}. Speichern und herunterladen, um die Änderung anzuwenden.",
+      "selectionHint": "Klicken wählt ein Lesezeichen aus. Umschalt+Klick wählt einen sichtbaren Bereich; Strg/Cmd+Klick schaltet die Auswahl um. Strg/Cmd+Umschalt+Klick fügt einen Bereich hinzu. Mit Tastatur oder Touchscreen können Sie die Kontrollkästchen nutzen. Scrollen und Einklappen erhalten die Auswahl."
     },
     "pageNumbers": {
       "uploadLabel": "PDF-Datei hochladen",

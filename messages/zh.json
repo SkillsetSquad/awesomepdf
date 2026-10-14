@@ -2851,7 +2851,7 @@
       "moveButton": "移动",
       "movedNotice": "已移动“{title}”。保存并下载以应用此更改。",
       "noMoveTargets": "请添加其他书签以选择目标。",
-      "insertHint": "添加书签会在所选条目之后的同一层级插入，并链接到预览中的页面。未选择时会添加到末尾。",
+      "insertHint": "添加书签会在当前活动条目之后的同一级别插入，并链接到预览中的页面。没有活动条目时添加到末尾。复选框不会改变插入位置。",
       "removeAll": "删除所有书签",
       "removeAllConfirm": "删除所有书签，包括嵌套书签？保存并下载以应用此更改。原始文件保持不变。",
       "removedAllNotice": "已删除所有书签。保存并下载以应用此更改。",
@@ -2880,7 +2880,13 @@
       "bold": "加粗",
       "italic": "倾斜",
       "boldItalic": "加粗并倾斜",
-      "setToCurrentPage": "设为当前页"
+      "setToCurrentPage": "设为当前页",
+      "selectBookmark": "选择书签：{title}",
+      "selectionCount": "已选择：{count}",
+      "removeSelection": "删除所选书签",
+      "removeSelectionConfirm": "已选择：{selected}。将删除的书签数：{total}，包括所选条目的所有子项。保存并下载以应用更改。原始文件保持不变。",
+      "removedSelectionNotice": "已删除的书签数：{count}。保存并下载以应用更改。",
+      "selectionHint": "单击选择一个书签。Shift+单击选择可见范围；Ctrl/Cmd+单击切换选择状态。Ctrl/Cmd+Shift+单击添加范围。使用键盘或触摸屏时可勾选复选框。滚动或折叠条目不会清除选择。"
     },
     "pageNumbers": {
       "uploadLabel": "上传PDF文件",

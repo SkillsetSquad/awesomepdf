@@ -792,16 +792,17 @@ export const toolContentEs: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Editar Marcadores",
-    "metaDescription": "Añade, edita, organiza o elimina todos los marcadores PDF. Gestiona la navegación del documento localmente en tu navegador.",
+    "metaDescription": "Añade, edita, mueve o elimina los marcadores PDF seleccionados o todos los marcadores. Gestiona la navegación localmente en tu navegador.",
     "keywords": [
       "marcadores pdf",
       "editar marcadores",
       "índice pdf",
       "navegación pdf",
       "eliminar todos los marcadores pdf",
-      "mover marcador"
+      "mover marcador",
+      "eliminar marcadores PDF seleccionados"
     ],
-    "description": "<p>Editar Marcadores te permite crear y gestionar marcadores en tus documentos PDF para facilitar la navegación.</p><p>Procesamiento local.</p>\n      <p>Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores.</p>\n      <p>Añadir marcador inserta después de la entrada seleccionada al mismo nivel y enlaza con la página de vista previa. Sin selección, añade al final. Arrastra el asa antes, después o dentro de otro marcador. Haz clic o toca para elegir un destino.</p>\n    ",
+    "description": "<p>Editar Marcadores te permite crear y gestionar marcadores en tus documentos PDF para facilitar la navegación.</p><p>Procesamiento local.</p>\n      <p>Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores.</p>\n      <p>Añadir marcador lo inserta después de la entrada activa, al mismo nivel, y enlaza la página de la vista previa. Sin entrada activa, se añade al final. Las casillas no cambian la posición de inserción. Arrastra el asa antes, después o dentro de otro marcador. Haz clic o toca para elegir un destino.</p>\n      <p>Selecciona marcadores con Mayús+clic, Ctrl/Cmd+clic o las casillas; pulsa Eliminar selección y confirma. Se eliminan las entradas seleccionadas y todos sus hijos. Guarda y descarga para aplicar los cambios.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -811,7 +812,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestiona Marcadores",
-        "description": "Añade, edita, elimina o reorganiza marcadores. Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores. Añadir marcador inserta después de la entrada seleccionada al mismo nivel y enlaza con la página de vista previa. Sin selección, añade al final. Arrastra el asa antes, después o dentro de otro marcador. Haz clic o toca para elegir un destino."
+        "description": "Añade, edita, elimina o reorganiza marcadores. Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores. Añadir marcador lo inserta después de la entrada activa, al mismo nivel, y enlaza la página de la vista previa. Sin entrada activa, se añade al final. Las casillas no cambian la posición de inserción. Arrastra el asa antes, después o dentro de otro marcador. Haz clic o toca para elegir un destino. Selecciona marcadores con Mayús+clic, Ctrl/Cmd+clic o las casillas; pulsa Eliminar selección y confirma. Se eliminan las entradas seleccionadas y todos sus hijos. Guarda y descarga para aplicar los cambios."
       },
       {
         "step": 3,

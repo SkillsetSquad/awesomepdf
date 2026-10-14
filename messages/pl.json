@@ -2859,7 +2859,7 @@
       "moveButton": "Przenieś",
       "movedNotice": "Przeniesiono „{title}”. Zapisz i pobierz, aby zastosować tę zmianę.",
       "noMoveTargets": "Dodaj inną zakładkę, aby wybrać miejsce docelowe.",
-      "insertHint": "Dodaj zakładkę wstawia po zaznaczonym wpisie na tym samym poziomie i wskazuje podglądaną stronę. Bez zaznaczenia dodaje na końcu.",
+      "insertHint": "Dodaj zakładkę wstawia po aktywnym wpisie na tym samym poziomie i wskazuje podglądaną stronę. Bez aktywnego wpisu dodaje na końcu. Pola wyboru nie zmieniają miejsca wstawiania.",
       "removeAll": "Usuń wszystkie zakładki",
       "removeAllConfirm": "Usunąć wszystkie zakładki, w tym zagnieżdżone? Zapisz i pobierz, aby zastosować tę zmianę. Oryginalny plik pozostanie bez zmian.",
       "removedAllNotice": "Wszystkie zakładki zostały usunięte. Zapisz i pobierz, aby zastosować tę zmianę.",
@@ -2888,7 +2888,13 @@
       "bold": "Odważne",
       "italic": "Kursywa",
       "boldItalic": "Pogrubienie i kursywa",
-      "setToCurrentPage": "Ustaw na bieżącą stronę"
+      "setToCurrentPage": "Ustaw na bieżącą stronę",
+      "selectBookmark": "Zaznacz zakładkę: {title}",
+      "selectionCount": "Zaznaczono: {count}",
+      "removeSelection": "Usuń zaznaczone",
+      "removeSelectionConfirm": "Zaznaczono: {selected}. Zakładki do usunięcia: {total}, w tym wszystkie elementy podrzędne zaznaczonych wpisów. Zapisz i pobierz, aby zastosować zmianę. Oryginalny plik pozostaje bez zmian.",
+      "removedSelectionNotice": "Usunięte zakładki: {count}. Zapisz i pobierz, aby zastosować zmianę.",
+      "selectionHint": "Kliknięcie zaznacza jedną zakładkę. Shift+kliknięcie zaznacza widoczny zakres; Ctrl/Cmd+kliknięcie przełącza zaznaczenie. Ctrl/Cmd+Shift+kliknięcie dodaje zakres. Używaj pól wyboru z klawiaturą lub na ekranach dotykowych. Przewijanie i zwijanie nie usuwa zaznaczenia."
     },
     "pageNumbers": {
       "uploadLabel": "Prześlij plik PDF",

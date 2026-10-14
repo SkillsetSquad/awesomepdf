@@ -828,7 +828,7 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Chỉnh sửa đánh dấu trang",
-    "metaDescription": "Thêm, chỉnh sửa, sắp xếp hoặc xóa tất cả dấu trang PDF. Quản lý điều hướng tài liệu ngay trong trình duyệt.",
+    "metaDescription": "Thêm, sửa, di chuyển hoặc xóa các dấu trang PDF đã chọn hay tất cả dấu trang. Quản lý điều hướng cục bộ trong trình duyệt.",
     "keywords": [
       "đánh dấu trang pdf",
       "chỉnh sửa đánh dấu trang",
@@ -836,9 +836,10 @@ export const toolContentVn: Record<string, ToolContent> = {
       "điều hướng pdf",
       "mục lục",
       "xóa tất cả dấu trang pdf",
-      "di chuyển dấu trang"
+      "di chuyển dấu trang",
+      "xóa dấu trang PDF đã chọn"
     ],
-    "description": "\n      <p>Chỉnh sửa đánh dấu trang cho phép bạn tạo, sửa đổi và tổ chức đánh dấu trang trong tài liệu PDF của mình. Đánh dấu trang cung cấp điều hướng nhanh đến các phần cụ thể, giúp tài liệu dài dễ sử dụng hơn.</p>\n      <p>Bạn có thể thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có, tổ chức lại cấu trúc phân cấp đánh dấu trang hoặc nhập đánh dấu trang từ nguồn bên ngoài. Công cụ này thiết yếu để tạo tài liệu chuyên nghiệp, có thể điều hướng.</p>\n      <p>Tất cả chỉnh sửa diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n      <p>Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang.</p>\n      <p>Thêm dấu trang sẽ chèn sau mục được chọn ở cùng cấp và liên kết với trang đang xem. Nếu không chọn mục nào, dấu trang được thêm vào cuối. Kéo tay nắm đến trước, sau hoặc bên trong dấu trang khác. Nhấp hoặc chạm vào tay nắm để chọn đích.</p>\n    ",
+    "description": "\n      <p>Chỉnh sửa đánh dấu trang cho phép bạn tạo, sửa đổi và tổ chức đánh dấu trang trong tài liệu PDF của mình. Đánh dấu trang cung cấp điều hướng nhanh đến các phần cụ thể, giúp tài liệu dài dễ sử dụng hơn.</p>\n      <p>Bạn có thể thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có, tổ chức lại cấu trúc phân cấp đánh dấu trang hoặc nhập đánh dấu trang từ nguồn bên ngoài. Công cụ này thiết yếu để tạo tài liệu chuyên nghiệp, có thể điều hướng.</p>\n      <p>Tất cả chỉnh sửa diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n      <p>Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang.</p>\n      <p>Thêm dấu trang chèn sau mục đang hoạt động ở cùng cấp và liên kết đến trang xem trước. Khi không có mục đang hoạt động, dấu trang được thêm vào cuối. Ô chọn không thay đổi vị trí chèn. Kéo tay nắm đến trước, sau hoặc bên trong dấu trang khác. Nhấp hoặc chạm vào tay nắm để chọn đích.</p>\n      <p>Chọn dấu trang bằng Shift+nhấp, Ctrl/Cmd+nhấp hoặc ô chọn, rồi nhấp Xóa mục đã chọn và xác nhận. Các mục cha đã chọn và tất cả mục con sẽ bị xóa. Lưu và tải xuống để áp dụng thay đổi.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -848,7 +849,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Quản lý đánh dấu trang",
-        "description": "Thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có hoặc kéo để tổ chức lại cấu trúc phân cấp. Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang. Thêm dấu trang sẽ chèn sau mục được chọn ở cùng cấp và liên kết với trang đang xem. Nếu không chọn mục nào, dấu trang được thêm vào cuối. Kéo tay nắm đến trước, sau hoặc bên trong dấu trang khác. Nhấp hoặc chạm vào tay nắm để chọn đích."
+        "description": "Thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có hoặc kéo để tổ chức lại cấu trúc phân cấp. Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang. Thêm dấu trang chèn sau mục đang hoạt động ở cùng cấp và liên kết đến trang xem trước. Khi không có mục đang hoạt động, dấu trang được thêm vào cuối. Ô chọn không thay đổi vị trí chèn. Kéo tay nắm đến trước, sau hoặc bên trong dấu trang khác. Nhấp hoặc chạm vào tay nắm để chọn đích. Chọn dấu trang bằng Shift+nhấp, Ctrl/Cmd+nhấp hoặc ô chọn, rồi nhấp Xóa mục đã chọn và xác nhận. Các mục cha đã chọn và tất cả mục con sẽ bị xóa. Lưu và tải xuống để áp dụng thay đổi."
       },
       {
         "step": 3,

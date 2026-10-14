@@ -2846,7 +2846,7 @@
       "moveButton": "Sposta",
       "movedNotice": "«{title}» è stato spostato. Salva e scarica per applicare questa modifica.",
       "noMoveTargets": "Aggiungi un altro segnalibro per scegliere una destinazione.",
-      "insertHint": "Aggiungi segnalibro inserisce dopo la voce selezionata allo stesso livello e punta alla pagina visualizzata. Senza selezione, aggiunge alla fine.",
+      "insertHint": "Aggiungi segnalibro inserisce dopo la voce attiva, allo stesso livello, e punta alla pagina in anteprima. Senza voce attiva, aggiunge alla fine. Le caselle non cambiano la posizione di inserimento.",
       "removeAll": "Rimuovi tutti i segnalibri",
       "removeAllConfirm": "Rimuovere tutti i segnalibri, inclusi quelli annidati? Salva e scarica per applicare questa modifica. Il file originale rimane invariato.",
       "removedAllNotice": "Tutti i segnalibri sono stati rimossi. Salva e scarica per applicare questa modifica.",
@@ -2875,7 +2875,13 @@
       "bold": "Grassetto",
       "italic": "Corsivo",
       "boldItalic": "Grassetto e corsivo",
-      "setToCurrentPage": "Imposta sulla pagina corrente"
+      "setToCurrentPage": "Imposta sulla pagina corrente",
+      "selectBookmark": "Seleziona segnalibro: {title}",
+      "selectionCount": "Selezionati: {count}",
+      "removeSelection": "Rimuovi selezione",
+      "removeSelectionConfirm": "Selezionati: {selected}. Segnalibri da rimuovere: {total}, inclusi tutti i figli delle voci selezionate. Salva e scarica per applicare la modifica. Il file originale rimane invariato.",
+      "removedSelectionNotice": "Segnalibri rimossi: {count}. Salva e scarica per applicare la modifica.",
+      "selectionHint": "Fai clic per selezionare un segnalibro. Maiusc+clic seleziona un intervallo visibile; Ctrl/Cmd+clic alterna la selezione. Ctrl/Cmd+Maiusc+clic aggiunge un intervallo. Usa le caselle con la tastiera o su schermi touch. La selezione resta durante lo scorrimento o la compressione delle voci."
     },
     "pageNumbers": {
       "uploadLabel": "Carica file PDF",

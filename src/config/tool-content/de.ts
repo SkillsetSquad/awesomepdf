@@ -914,16 +914,17 @@ export const toolContentDe: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Lesezeichen bearbeiten",
-    "metaDescription": "PDF-Lesezeichen hinzufügen, bearbeiten, ordnen oder vollständig entfernen. Verwalten Sie die Dokumentnavigation lokal im Browser.",
+    "metaDescription": "PDF-Lesezeichen hinzufügen, bearbeiten, verschieben und ausgewählte oder alle Lesezeichen entfernen. Navigation lokal im Browser verwalten.",
     "keywords": [
       "pdf lesezeichen",
       "lesezeichen bearbeiten",
       "PDF-Navigation",
       "inhaltsverzeichnis erstellen",
       "alle pdf lesezeichen entfernen",
-      "lesezeichen verschieben"
+      "lesezeichen verschieben",
+      "ausgewählte PDF-Lesezeichen entfernen"
     ],
-    "description": "\n      <p>Mit \"Lesezeichen bearbeiten\" können Sie Lesezeichen in Ihren PDF-Dokumenten erstellen, ändern und organisieren. Lesezeichen ermöglichen eine schnelle Navigation zu bestimmten Abschnitten, was die Nutzung langer Dokumente erheblich erleichtert.</p>\n      <p>Sie können neue Lesezeichen hinzufügen, die Hierarchie neu organisieren oder Lesezeichen aus externen Quellen importieren. Dieses Tool ist unerlässlich für die Erstellung professioneller, navigierbarer Dokumente.</p>\n      <p>Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren.</p>\n      <p>Lesezeichen hinzufügen fügt nach dem ausgewählten Eintrag auf derselben Ebene ein und verlinkt die angezeigte Seite. Ohne Auswahl wird am Ende angefügt. Ziehen Sie den Griff vor, nach oder unter ein anderes Lesezeichen. Klicken oder tippen Sie darauf, um ein Ziel auszuwählen.</p>\n    ",
+    "description": "\n      <p>Mit \"Lesezeichen bearbeiten\" können Sie Lesezeichen in Ihren PDF-Dokumenten erstellen, ändern und organisieren. Lesezeichen ermöglichen eine schnelle Navigation zu bestimmten Abschnitten, was die Nutzung langer Dokumente erheblich erleichtert.</p>\n      <p>Sie können neue Lesezeichen hinzufügen, die Hierarchie neu organisieren oder Lesezeichen aus externen Quellen importieren. Dieses Tool ist unerlässlich für die Erstellung professioneller, navigierbarer Dokumente.</p>\n      <p>Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren.</p>\n      <p>Lesezeichen hinzufügen fügt hinter dem aktiven Eintrag auf derselben Ebene ein und verweist auf die angezeigte Seite. Ohne aktiven Eintrag wird am Ende eingefügt. Kontrollkästchen ändern die Einfügeposition nicht. Ziehen Sie den Griff vor, nach oder unter ein anderes Lesezeichen. Klicken oder tippen Sie darauf, um ein Ziel auszuwählen.</p>\n      <p>Wählen Sie Lesezeichen mit Umschalt+Klick, Strg/Cmd+Klick oder Kontrollkästchen, klicken Sie auf Auswahl entfernen und bestätigen Sie. Ausgewählte übergeordnete Einträge und alle Untereinträge werden entfernt. Speichern und herunterladen, um die Änderungen anzuwenden.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -933,7 +934,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Lesezeichen verwalten",
-        "description": "Fügen Sie neue Punkte hinzu, benennen Sie bestehende um oder ziehen Sie diese per Drag & Drop in eine hierarchische Ordnung. Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren. Lesezeichen hinzufügen fügt nach dem ausgewählten Eintrag auf derselben Ebene ein und verlinkt die angezeigte Seite. Ohne Auswahl wird am Ende angefügt. Ziehen Sie den Griff vor, nach oder unter ein anderes Lesezeichen. Klicken oder tippen Sie darauf, um ein Ziel auszuwählen."
+        "description": "Fügen Sie neue Punkte hinzu, benennen Sie bestehende um oder ziehen Sie diese per Drag & Drop in eine hierarchische Ordnung. Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren. Lesezeichen hinzufügen fügt hinter dem aktiven Eintrag auf derselben Ebene ein und verweist auf die angezeigte Seite. Ohne aktiven Eintrag wird am Ende eingefügt. Kontrollkästchen ändern die Einfügeposition nicht. Ziehen Sie den Griff vor, nach oder unter ein anderes Lesezeichen. Klicken oder tippen Sie darauf, um ein Ziel auszuwählen. Wählen Sie Lesezeichen mit Umschalt+Klick, Strg/Cmd+Klick oder Kontrollkästchen, klicken Sie auf Auswahl entfernen und bestätigen Sie. Ausgewählte übergeordnete Einträge und alle Untereinträge werden entfernt. Speichern und herunterladen, um die Änderungen anzuwenden."
       },
       {
         "step": 3,

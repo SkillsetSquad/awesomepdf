@@ -102,4 +102,18 @@ describe('message catalog integrity', () => {
       }
     }
   });
+
+  it('defines token-compatible bookmark selection messages for every locale', () => {
+    const keys = ['selectBookmark', 'selectionCount', 'removeSelection', 'removeSelectionConfirm', 'removedSelectionNotice', 'selectionHint'];
+    const english = JSON.parse(readFileSync(join(messagesDir, 'en.json'), 'utf8'));
+    for (const file of readdirSync(messagesDir).filter(file => file.endsWith('.json'))) {
+      const messages = JSON.parse(readFileSync(join(messagesDir, file), 'utf8'));
+      for (const key of keys) {
+        const value = getNestedValue(messages, `tools.bookmark.${key}`);
+        expect(value, `${file}:${key}`).toEqual(expect.any(String));
+        expect(getInterpolationArguments(value as string), `${file}:${key}`)
+          .toEqual(getInterpolationArguments(getNestedValue(english, `tools.bookmark.${key}`) as string));
+      }
+    }
+  });
 });

@@ -360,18 +360,19 @@ export const toolContentId: Record<string, ToolContent> = {
   // ==================== EDIT & ANNOTATE ====================
   'bookmark': {
     title: 'Edit Markah (Bookmark)',
-    metaDescription: 'Tambah, edit, atur, atau hapus semua markah PDF. Kelola navigasi dokumen secara lokal di browser Anda.',
-    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi', 'hapus semua markah pdf', 'pindahkan markah'],
+    metaDescription: 'Tambah, edit, pindahkan, atau hapus bookmark PDF yang dipilih atau semua bookmark. Kelola navigasi secara lokal di browser.',
+    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi', 'hapus semua markah pdf', 'pindahkan markah', 'hapus bookmark PDF yang dipilih'],
     description: `
       <p>Edit Markah memungkinkan Anda membuat, memodifikasi, dan mengatur markah di dokumen PDF Anda. Markah memberikan navigasi cepat ke bagian tertentu, sehingga dokumen panjang lebih mudah digunakan.</p>
       <p>Anda dapat menambahkan markah baru, mengedit yang sudah ada, mengatur ulang hierarki markah, atau mengimpor markah dari sumber eksternal. Alat ini penting untuk membuat dokumen yang profesional dan mudah dinavigasi.</p>
       <p>Semua pengeditan terjadi secara lokal di browser Anda, memastikan dokumen Anda tetap privat.</p>
       <p>Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah.</p>
-      <p>Tambah Markah menyisipkan setelah entri yang dipilih pada tingkat yang sama dan menautkan halaman pratinjau. Tanpa pilihan, markah ditambahkan di akhir. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan.</p>
+      <p>Tambah Bookmark menyisipkan setelah entri aktif pada tingkat yang sama dan menautkan ke halaman pratinjau. Tanpa entri aktif, bookmark ditambahkan di akhir. Kotak centang tidak mengubah posisi penyisipan. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan.</p>
+      <p>Pilih bookmark dengan Shift+klik, Ctrl/Cmd+klik, atau kotak centang, lalu klik Hapus pilihan dan konfirmasi. Induk yang dipilih dan semua anaknya dihapus. Simpan dan unduh untuk menerapkan perubahan.</p>
     `,
     howToUse: [
       { step: 1, title: 'Unggah PDF Anda', description: 'Tarik dan lepas file PDF Anda atau klik untuk memilih dokumen yang ingin Anda edit.' },
-      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya. Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah. Tambah Markah menyisipkan setelah entri yang dipilih pada tingkat yang sama dan menautkan halaman pratinjau. Tanpa pilihan, markah ditambahkan di akhir. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan.' },
+      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya. Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah. Tambah Bookmark menyisipkan setelah entri aktif pada tingkat yang sama dan menautkan ke halaman pratinjau. Tanpa entri aktif, bookmark ditambahkan di akhir. Kotak centang tidak mengubah posisi penyisipan. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan. Pilih bookmark dengan Shift+klik, Ctrl/Cmd+klik, atau kotak centang, lalu klik Hapus pilihan dan konfirmasi. Induk yang dipilih dan semua anaknya dihapus. Simpan dan unduh untuk menerapkan perubahan.' },
       { step: 3, title: 'Simpan dan Unduh', description: 'Klik Simpan untuk menerapkan perubahan Anda dan mengunduh PDF dengan markah yang telah diperbarui.' },
     ],
     useCases: [

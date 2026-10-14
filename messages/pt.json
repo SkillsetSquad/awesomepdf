@@ -2846,7 +2846,7 @@
       "moveButton": "Mover",
       "movedNotice": "“{title}” foi movido. Salve e baixe para aplicar esta alteração.",
       "noMoveTargets": "Adicione outro marcador para escolher um destino.",
-      "insertHint": "Adicionar marcador insere após a entrada selecionada no mesmo nível e aponta para a página exibida. Sem seleção, adiciona ao final.",
+      "insertHint": "Adicionar marcador insere após a entrada ativa, no mesmo nível, e aponta para a página em visualização. Sem entrada ativa, adiciona ao final. As caixas não alteram a posição de inserção.",
       "removeAll": "Remover todos os marcadores",
       "removeAllConfirm": "Remover todos os marcadores, incluindo os aninhados? Salve e baixe para aplicar esta alteração. O arquivo original permanece inalterado.",
       "removedAllNotice": "Todos os marcadores foram removidos. Salve e baixe para aplicar esta alteração.",
@@ -2875,7 +2875,13 @@
       "bold": "Audacioso",
       "italic": "itálico",
       "boldItalic": "Negrito e Itálico",
-      "setToCurrentPage": "Definir para a página atual"
+      "setToCurrentPage": "Definir para a página atual",
+      "selectBookmark": "Selecionar marcador: {title}",
+      "selectionCount": "Selecionados: {count}",
+      "removeSelection": "Remover seleção",
+      "removeSelectionConfirm": "Selecionados: {selected}. Marcadores a remover: {total}, incluindo todos os filhos das entradas selecionadas. Salve e baixe para aplicar a alteração. O arquivo original permanece inalterado.",
+      "removedSelectionNotice": "Marcadores removidos: {count}. Salve e baixe para aplicar a alteração.",
+      "selectionHint": "Clique para selecionar um marcador. Shift+clique seleciona um intervalo visível; Ctrl/Cmd+clique alterna a seleção. Ctrl/Cmd+Shift+clique adiciona um intervalo. Use as caixas com o teclado ou em telas sensíveis ao toque. A seleção é mantida ao rolar ou recolher entradas."
     },
     "pageNumbers": {
       "uploadLabel": "Carregar arquivo PDF",
