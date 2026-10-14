@@ -13,7 +13,7 @@
 
 <div align="center">
 
-[![PDFCraft](https://img.shields.io/website?url=https%3A%2F%2Fpdfcraft.devtoolcafe.com%2Fen%2F&label=PDFCraft)](https://pdfcraft.devtoolcafe.com/en/)
+[![AwsomePDF website](https://img.shields.io/website?url=https%3A%2F%2Fawsomepdf.com%2Fen%2F&label=AwsomePDF)](https://awsomepdf.com/en/)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
@@ -22,13 +22,15 @@
 
 </div>
 
-> **AwsomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
+> **AwsomePDF is based on and modified from [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by **Skillset Squad Private Limited** ([GitHub](https://github.com/SkillsetSquad)). All credit for the original tools and processing engine goes to the PDFCraft team.
 >
 > AwsomePDF builds on that foundation with a **[shadcn/ui](https://ui.shadcn.com/)** interface, searchable local file history, document-processing fixes, permanent redaction, and deployment changes. The commit-backed differences are listed below.
 
+Try [AwsomePDF](https://awsomepdf.com/en/) · [Self-hosting](DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security reporting](#security-reporting) · [Changelog](CHANGELOG.md)
+
 ## 📖 About
 
-**AwsomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
+**AwsomePDF** is an open-source, browser-based PDF editor and toolkit for merging, splitting, compression, conversion, annotation and document management. Supported tools process document bytes locally using JavaScript and WebAssembly. You can use the hosted website or self-host the static application; no account is required. Some tools download engine assets, fonts or language data before they can run.
 
 The original processing engine and tool set come from PDFCraft. This fork changes both the interface and selected processing paths while retaining the browser-based architecture and upstream attribution.
 
@@ -235,8 +237,8 @@ To run this project locally, follow these steps:
 
 ### Prerequisites
 
-- Node.js 18.17 or later
-- npm, yarn, or pnpm
+- Node.js 22 (matching CI and Docker)
+- npm and the committed `package-lock.json`
 
 ### Installation
 
@@ -248,20 +250,12 @@ To run this project locally, follow these steps:
 
 2.  **Install dependencies**
     ```bash
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
+    npm ci
     ```
 
 3.  **Start the development server**
     ```bash
     npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
     ```
 
 4.  **Open your browser**
@@ -366,23 +360,21 @@ After deployment, please check the following features to ensure everything is wo
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a change. Use synthetic or public PDF fixtures and keep document data on the device. CI checks lint, types, tests and the production static export.
 
-1.  Fork the project
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+Because this project is derived from PDFCraft, generally useful changes may also be worth contributing upstream. Import upstream changes through reviewed patches; automatic full-fork synchronization is not part of the maintenance workflow.
 
-Because this is a fork, changes to the core PDF tools that are not specific to the shadcn/ui rework may also be worth contributing back to [PDFCraft](https://github.com/PDFCraftTool/pdfcraft).
+### Security reporting
+
+Report vulnerabilities privately through [GitHub private vulnerability reporting](https://github.com/SkillsetSquad/awsomepdf/security/advisories/new). Include the affected commit, browser/OS, reproduction steps and a minimal synthetic or public fixture. Do not post exploit details, customer documents, passwords, private keys or personal information in public issues. No response-time guarantee or supported release series has been declared.
 
 ## 🙏 Acknowledgements
 
-AwsomePDF is a fork of **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
+AwsomePDF is based on and modified from **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
 
 PDFCraft itself stands on the shoulders of giants. It gratefully acknowledges [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools, which served as a significant inspiration and reference for its core logic. We share that respect for the foundation laid by the BentoPDF team.
 
-Third-party components keep their original notices. They are generated at build time and published with each deployed build on the site's open-source page.
+The root AGPLv3 license and original copyright notices remain unchanged. Removing the GitHub fork relationship does not change provenance or licensing obligations. Third-party components keep their original notices. They are generated at build time and published with each deployed build on the site's open-source page.
 
 ## 📄 License
 
@@ -391,5 +383,5 @@ This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE)
 ---
 
 <div align="center">
-  Maintained by <a href="https://github.com/SkillsetSquad">Skillset Squad</a> · Forked from <a href="https://github.com/PDFCraftTool/pdfcraft">PDFCraft</a> by the PDFCraft Team
+  Maintained by <a href="https://github.com/SkillsetSquad">Skillset Squad</a> · Based on and modified from <a href="https://github.com/PDFCraftTool/pdfcraft">PDFCraft</a> by the PDFCraft Team
 </div>
