@@ -83,7 +83,7 @@ def main():
     args.add_argument('--site-url', default='https://awsomepdf.com')
     args.add_argument('--base-path', default='')
     args.add_argument('--out', default='out')
-    args.add_argument('--report', default='docs/seo/export-audit.json')
+    args.add_argument('--report', default='scratch/seo/export-audit.json')
     options = args.parse_args()
     root, output = Path.cwd(), Path(options.out)
     site = options.site_url.rstrip('/') + ('/' + options.base_path.strip('/') if options.base_path.strip('/') else '')

@@ -342,7 +342,7 @@ Rebuild the site after changing either value; runtime variables cannot change an
 | `npm run lint` | Run ESLint |
 | `npx tsc --noEmit` | Check TypeScript |
 | `npm test` | Run the Vitest suite |
-| `npm run audit:seo` | Audit the exported site's metadata and locale routes after a build |
+| `npm run audit:seo` | Audit exported metadata and locale routes after a build; write the report to ignored `scratch/seo/` |
 | `npm run generate:social-images` | Regenerate social previews from the SVG sources in `public/images/social/` |
 | `node scripts/verify-redaction.mjs` | Check synthetic redaction outputs with the bundled PyMuPDF WASM engine |
 
