@@ -73,7 +73,7 @@ export function connectAnnotationDrawing(engine: AnnotationDrawingEngine, doc: D
   const attach = (stage: DrawingStage) => {
     const container = stage.container();
     const guide = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    guide.dataset.awesomepdfAlignmentGuides = 'true';
+    guide.dataset.awsomepdfAlignmentGuides = 'true';
     guide.setAttribute('aria-hidden', 'true');
     guide.classList.add('pointer-events-none', 'absolute', 'inset-0', 'text-primary');
     guide.style.width = '100%'; guide.style.height = '100%';
@@ -117,9 +117,9 @@ export function connectAnnotationDrawing(engine: AnnotationDrawingEngine, doc: D
         // Native dragend remains responsible for serializing and publishing the moved group.
       } catch { clear(); onError(); }
     };
-    stage.on('dragmove.awesomepdfSnapping', drag);
-    stage.on('dragend.awesomepdfSnapping', clear);
-    return () => { stage.off('.awesomepdfSnapping'); clear(); };
+    stage.on('dragmove.awsomepdfSnapping', drag);
+    stage.on('dragend.awsomepdfSnapping', clear);
+    return () => { stage.off('.awsomepdfSnapping'); clear(); };
   };
 
   const refresh = () => {

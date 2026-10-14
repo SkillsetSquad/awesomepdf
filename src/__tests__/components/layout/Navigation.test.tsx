@@ -17,7 +17,6 @@ vi.mock('next/navigation', () => ({ useRouter: () => ({ push }), usePathname: ()
 vi.mock('next/link', () => ({
   default: ({ onClick, ...props }: React.ComponentProps<'a'>) => <a {...props} onClick={(event) => { onClick?.(event); event.preventDefault(); }} />,
 }));
-vi.mock('@/components/common/UpdateCheckButton', () => ({ UpdateCheckButton: () => null }));
 
 function wrap(children: React.ReactNode) {
   return render(<NextIntlClientProvider locale="en" messages={messages}><TooltipProvider>{children}</TooltipProvider></NextIntlClientProvider>);

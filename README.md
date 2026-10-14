@@ -1,7 +1,7 @@
-# AwesomePDF
+# AwsomePDF
 
 <div align="center">
-  <img src="public/images/logo.png" alt="AwesomePDF logo" width="120" height="120" />
+  <img src="public/images/logo.png" alt="AwsomePDF logo" width="120" height="120" />
   <h1>Professional PDF Tools</h1>
   <p>
     <strong>Free, Private & Browser-Based</strong>
@@ -22,21 +22,21 @@
 
 </div>
 
-> **AwesomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
+> **AwsomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
 >
 > We have reworked the interface to use **[shadcn/ui](https://ui.shadcn.com/)** instead of PDFCraft's custom theme and component set. **Bigger changes are underway**, so expect this project to keep diverging from upstream.
 
 ## 📖 About
 
-**AwesomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
+**AwsomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
 
 The processing engine and tool set come from PDFCraft. What differs in this fork is the interface layer and where the project is headed (see below).
 
 ## 🔀 Relationship to PDFCraft
 
-| | PDFCraft (upstream) | AwesomePDF (this fork) |
+| | PDFCraft (upstream) | AwsomePDF (this fork) |
 |---|---|---|
-| Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awesomepdf](https://github.com/SkillsetSquad/awesomepdf) |
+| Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf) |
 | Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
 | UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
 | Status | Upstream project | Actively diverging |
@@ -230,8 +230,8 @@ To run this project locally, follow these steps:
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/SkillsetSquad/awesomepdf.git
-    cd awesomepdf
+    git clone https://github.com/SkillsetSquad/awsomepdf.git
+    cd awsomepdf
     ```
 
 2.  **Install dependencies**
@@ -257,12 +257,12 @@ To run this project locally, follow these steps:
 
 ### 🐳 Docker
 
-> ℹ️ The pre-built image published by upstream (`ghcr.io/pdfcrafttool/pdfcraft`) is the original PDFCraft and does **not** include the shadcn/ui rework. To run AwesomePDF, build from source as below.
+> ℹ️ The pre-built image published by upstream (`ghcr.io/pdfcrafttool/pdfcraft`) is the original PDFCraft and does **not** include the shadcn/ui rework. To run AwsomePDF, build from source as below.
 
 ```bash
 # Clone the repository
-git clone https://github.com/SkillsetSquad/awesomepdf.git
-cd awesomepdf
+git clone https://github.com/SkillsetSquad/awsomepdf.git
+cd awsomepdf
 
 # Development mode (with hot reload; only start the development service)
 docker compose --profile dev up web-dev
@@ -288,13 +288,13 @@ Sitemap, `robots.txt`, canonical and structured-data URLs are built from the sit
 
 The default production origin is `https://awsomepdf.com`. Use `npm run audit:seo` after a build to verify every public page and language. Local SEO reports and image sources are saved in the ignored `docs/seo/` directory.
 
-To deploy under a subpath (e.g., `https://your-domain.com/awesomepdf/`), specify the base path during the build:
+To deploy under a subpath (e.g., `https://your-domain.com/awsomepdf/`), specify the base path during the build:
 
 ```bash
 docker build \
-  --build-arg BASE_PATH=/awesomepdf \
+  --build-arg BASE_PATH=/awsomepdf \
   --build-arg NEXT_PUBLIC_SITE_URL=https://your-domain.com \
-  -t awesomepdf .
+  -t awsomepdf .
 ```
 
 *Note: Since the app is statically exported, `BASE_PATH` and `NEXT_PUBLIC_SITE_URL` must be provided during the build stage.*
@@ -309,7 +309,7 @@ docker build \
 
 ## 🚀 Production Deployment Guide
 
-AwesomePDF is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
+AwsomePDF is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
 
 > 📖 **For comprehensive deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
 
@@ -366,7 +366,7 @@ Because this is a fork, changes to the core PDF tools that are not specific to t
 
 ## 🙏 Acknowledgements
 
-AwesomePDF is a fork of **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
+AwsomePDF is a fork of **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
 
 PDFCraft itself stands on the shoulders of giants. It gratefully acknowledges [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools, which served as a significant inspiration and reference for its core logic. We share that respect for the foundation laid by the BentoPDF team.
 

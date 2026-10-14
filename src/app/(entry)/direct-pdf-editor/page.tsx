@@ -4,7 +4,7 @@ import { DirectEditorClient } from '@/components/editor/DirectEditorClient';
 import { getAbsoluteUrl } from '@/lib/seo/urls';
 
 export const metadata: Metadata = {
-  title: 'PDF Editor | AwesomePDF',
+  title: 'PDF Editor | AwsomePDF',
   description: 'Private PDF editing workspace. Open a document to edit text and images in your browser.',
   alternates: { canonical: getAbsoluteUrl('/direct-pdf-editor', true) },
   robots: { index: false, follow: false },

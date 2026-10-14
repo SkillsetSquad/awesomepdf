@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const temporary = await mkdtemp(join(tmpdir(), 'awesomepdf-redaction-'));
+const temporary = await mkdtemp(join(tmpdir(), 'awsomepdf-redaction-'));
 try {
   // The bundled Emscripten runtime expects CommonJS in Node. Keep vendor files intact.
   const assets = resolve('public/pymupdf-wasm');
@@ -29,7 +29,7 @@ def redact(doc, areas, **options):
     doc.close()
     with open('/request.json', 'w') as f:
         json.dump(dict(action='redact', areas=areas, **options), f)
-    encoded = _awesomepdf_redaction('/fixture.pdf', '/request.json')
+    encoded = _awsomepdf_redaction('/fixture.pdf', '/request.json')
     return pymupdf.open(stream=base64.b64decode(encoded), filetype='pdf')
 
 def area(page, rect, coordinates='pdf', **kwargs):
@@ -55,7 +55,7 @@ for rotation in (0, 90, 180, 270):
     doc.save('/text-fixture.pdf')
     with open('/text-request.json', 'w') as f:
         json.dump(dict(action='text'), f)
-    extracted = json.loads(_awesomepdf_redaction('/text-fixture.pdf', '/text-request.json'))
+    extracted = json.loads(_awsomepdf_redaction('/text-fixture.pdf', '/text-request.json'))
     assert abs(extracted[0]['chars'][0]['origin'][0] - 60) < .01, 'Search crop X coordinate mismatch'
     assert abs(extracted[0]['chars'][0]['origin'][1] - 390) < .01, 'Search crop Y coordinate mismatch'
     selected = extracted[0]['chars'][5:13]
@@ -63,7 +63,7 @@ for rotation in (0, 90, 180, 270):
               max(c['rect'][2] for c in selected), max(c['rect'][3] for c in selected)]
     with open('/text-request.json', 'w') as f:
         json.dump(dict(action='redact', areas=[area(1, bounds)]), f)
-    text_output = pymupdf.open(stream=base64.b64decode(_awesomepdf_redaction('/text-fixture.pdf', '/text-request.json')), filetype='pdf')
+    text_output = pymupdf.open(stream=base64.b64decode(_awsomepdf_redaction('/text-fixture.pdf', '/text-request.json')), filetype='pdf')
     assert_absent(text_output, 'secretgy')
     assert 'KEEP' in text_output[0].get_text() and 'UNCHANGED' in text_output[0].get_text()
     assert text_output[0].rotation == rotation
@@ -135,7 +135,7 @@ doc.saveIncr()
 doc.close()
 with open('/request.json', 'w') as f:
     json.dump(dict(action='redact', areas=[area(1, rect)]), f)
-output = pymupdf.open(stream=base64.b64decode(_awesomepdf_redaction('/history.pdf', '/request.json')), filetype='pdf')
+output = pymupdf.open(stream=base64.b64decode(_awsomepdf_redaction('/history.pdf', '/request.json')), filetype='pdf')
 assert_absent(output, 'ANCILLARYSECRET'); assert_absent(output, 'OLDREVISIONSECRET')
 assert not output.embfile_count() and not output.get_toc()
 assert not list(output[0].annots() or []) and not list(output[0].widgets() or [])

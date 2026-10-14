@@ -43,7 +43,7 @@ describe('Homepage', () => {
     expect(shortcuts.map((link) => link.textContent)).toEqual(['Merge PDF', 'Compress PDF', 'PDF to Word', 'Edit PDF', 'Sign PDF']);
   });
 
-  it('presents AwesomePDF Share as Coming Soon, with nothing interactive that could pretend it works', () => {
+  it('presents AwsomePDF Share as Coming Soon, with nothing interactive that could pretend it works', () => {
     view();
     const share = screen.getByRole('region', { name: /Share files directly/ });
 
@@ -69,16 +69,16 @@ describe('Homepage', () => {
     const questions = within(faq).getAllByRole('button').map((button) => button.textContent);
 
     expect(questions).toEqual([
-      'Is AwesomePDF free to use?',
+      'Is AwsomePDF free to use?',
       'Are my PDF files uploaded to a server?',
-      'Can I use AwesomePDF without creating an account?',
+      'Can I use AwsomePDF without creating an account?',
       'Which PDF tools are available?',
-      'Can I use AwesomePDF on mobile devices?',
-      'Does AwesomePDF support scanned documents?',
-      'What is AwesomePDF Share?',
+      'Can I use AwsomePDF on mobile devices?',
+      'Does AwsomePDF support scanned documents?',
+      'What is AwsomePDF Share?',
     ]);
-    expect(faq).toHaveTextContent(`AwesomePDF includes ${getAllTools().length} tools`);
-    expect(faq).toHaveTextContent(/AwesomePDF Share is a planned feature, coming soon/);
+    expect(faq).toHaveTextContent(`AwsomePDF includes ${getAllTools().length} tools`);
+    expect(faq).toHaveTextContent(/AwsomePDF Share is a planned feature, coming soon/);
   });
 
   it('publishes structured data that matches the visible FAQ', () => {

@@ -22,12 +22,12 @@ function resolveSiteUrl(): string {
  * Site configuration
  */
 export const siteConfig = {
-  name: 'AwesomePDF',
+  name: 'AwsomePDF',
   description: 'Free online PDF tools that run in your browser. Merge, split, compress, convert, and edit PDF files with no sign-up required.',
   url: resolveSiteUrl(),
   ogImage: '/images/og-image.png',
   links: {
-    github: 'https://github.com/SkillsetSquad/awesomepdf',
+    github: 'https://github.com/SkillsetSquad/awsomepdf',
     upstream: 'https://github.com/PDFCraftTool/pdfcraft',
   },
   creator: 'Skillset Squad Private Limited',
@@ -46,8 +46,8 @@ export const siteConfig = {
   ],
   // SEO-related settings
   seo: {
-    titleTemplate: '%s | AwesomePDF',
-    defaultTitle: 'AwesomePDF - Free Online PDF Tools',
+    titleTemplate: '%s | AwsomePDF',
+    defaultTitle: 'AwsomePDF - Free Online PDF Tools',
     locale: 'en_US',
   },
 };

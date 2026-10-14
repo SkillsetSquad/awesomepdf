@@ -46,7 +46,7 @@ export async function createLocalSigningCertificate(password: string) {
   certificate.validity.notBefore = new Date();
   certificate.validity.notAfter = new Date();
   certificate.validity.notAfter.setFullYear(certificate.validity.notAfter.getFullYear() + 1);
-  const subject = [{ name: 'commonName', value: 'AwesomePDF Local Seal' }];
+  const subject = [{ name: 'commonName', value: 'AwsomePDF Local Seal' }];
   certificate.setSubject(subject); certificate.setIssuer(subject);
   certificate.setExtensions([{ name: 'basicConstraints', cA: false }, { name: 'keyUsage', digitalSignature: true, keyEncipherment: true }]);
   certificate.sign(keys.privateKey, forge.md.sha256.create());

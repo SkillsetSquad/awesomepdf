@@ -150,9 +150,9 @@ describe('Native annotation export status integration', () => {
 
   it('retains native fallback dialogs and removes the parent adapter on unmount', async () => {
     const { viewer, cleanup } = setup();
-    expect(viewer.awesomepdfAnnotationExportDialog).toBeTypeOf('function');
+    expect(viewer.awsomepdfAnnotationExportDialog).toBeTypeOf('function');
     cleanup();
-    expect(viewer.awesomepdfAnnotationExportDialog).toBeUndefined();
+    expect(viewer.awsomepdfAnnotationExportDialog).toBeUndefined();
     const engine = nativeExports(viewer);
     await engine.onExport('pdf');
     expect(engine.nativeModal.info).toHaveBeenCalledOnce();

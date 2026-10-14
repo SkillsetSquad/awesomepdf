@@ -121,7 +121,7 @@ Open http://localhost:3000
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d
 ```
-Open http://localhost:8080. The local override binds only to `127.0.0.1`; set `AWESOMEPDF_HTTP_PORT` to use another local port. The base Compose file exposes port 80 internally without publishing a host port, so Coolify can route through its proxy without host-port conflicts.
+Open http://localhost:8080. The local override binds only to `127.0.0.1`; set `AWSOMEPDF_HTTP_PORT` to use another local port. The base Compose file exposes port 80 internally without publishing a host port, so Coolify can route through its proxy without host-port conflicts.
 
 **Stop and remove containers:**
 ```bash
@@ -138,7 +138,7 @@ docker compose -f docker-compose.yml -f docker-compose.local.yml down
 | Build variable | Default / purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://awsomepdf.com`; canonical origin without a path |
-| `BASE_PATH` | Empty for root hosting; a prefix such as `/awesomepdf` for subpath hosting |
+| `BASE_PATH` | Empty for root hosting; a prefix such as `/awsomepdf` for subpath hosting |
 | `APP_VERSION` | Optional visible build version; Git-less images otherwise use the package version |
 | `DISABLE_UPDATE_CHECK` | `false`; set to `true` to disable automatic update checks |
 | `SOURCE_REVISION` | Optional Git revision recorded in the source manifest |
@@ -714,7 +714,7 @@ After deploying, test:
 - [ ] PWA can be installed
 - [ ] Performance is acceptable (< 3s first load)
 
-## AwesomePDF source and canonical origin
+## AwsomePDF source and canonical origin
 
 The production domain is **https://awsomepdf.com** (without the second “e”). Sitemap, robots, canonical URLs, language alternates, structured data and social images use this origin by default. `NEXT_PUBLIC_SITE_URL` can override it for another deployment; pass an origin without a path and use `BASE_PATH` separately for subpaths. Automatic host preview URLs do not override the production origin. The GitHub Pages workflow also defaults to `https://awsomepdf.com`, and `public/CNAME` records the custom domain. DNS must point this domain to the selected host before live crawling can work.
 
@@ -724,4 +724,4 @@ The `prebuild` hook generates `public/source-code.zip`, `LICENSE.txt`, `THIRD_PA
 
 Serve these generated files with the static export. Keep `/[locale]/open-source/` reachable. `SOURCE_REVISION` may optionally label Git-less builds with a revision; the download always contains the actual build source. The canonical-origin setting must be passed at build time, including in Docker via its build argument.
 
-The contact page links to the modified AwesomePDF repository. Set `NEXT_PUBLIC_CONTACT_EMAIL` before building to expose a verified support email address. Without it, email contact stays hidden. The former simulated contact form has been removed; no message backend is introduced.
+The contact page links to the modified AwsomePDF repository. Set `NEXT_PUBLIC_CONTACT_EMAIL` before building to expose a verified support email address. Without it, email contact stays hidden. The former simulated contact form has been removed; no message backend is introduced.

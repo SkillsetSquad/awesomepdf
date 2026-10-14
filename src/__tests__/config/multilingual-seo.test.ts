@@ -94,15 +94,15 @@ describe('subpath deployments', () => {
   });
   it('uses the same subpath and slash convention for pages, assets, sitemap and schemas', async () => {
     vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://awsomepdf.com');
-    vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/awesomepdf');
+    vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/awsomepdf');
     vi.resetModules();
     const { getCanonicalUrl, getAlternateUrls, getAbsoluteUrl } = await import('@/lib/seo/urls');
     const { default: subpathSitemap } = await import('@/app/sitemap');
     const { default: subpathRobots } = await import('@/app/robots');
-    expect(getCanonicalUrl('zh-TW', '/tools/merge-pdf/')).toBe('https://awsomepdf.com/awesomepdf/zh-TW/tools/merge-pdf/');
-    expect(getAlternateUrls('/about')['ro']).toBe('https://awsomepdf.com/awesomepdf/ro/about/');
-    expect(getAbsoluteUrl('/images/og-ar.png')).toBe('https://awsomepdf.com/awesomepdf/images/og-ar.png');
-    expect(subpathSitemap().every(entry => entry.url.startsWith('https://awsomepdf.com/awesomepdf/'))).toBe(true);
-    expect(subpathRobots().sitemap).toBe('https://awsomepdf.com/awesomepdf/sitemap.xml');
+    expect(getCanonicalUrl('zh-TW', '/tools/merge-pdf/')).toBe('https://awsomepdf.com/awsomepdf/zh-TW/tools/merge-pdf/');
+    expect(getAlternateUrls('/about')['ro']).toBe('https://awsomepdf.com/awsomepdf/ro/about/');
+    expect(getAbsoluteUrl('/images/og-ar.png')).toBe('https://awsomepdf.com/awsomepdf/images/og-ar.png');
+    expect(subpathSitemap().every(entry => entry.url.startsWith('https://awsomepdf.com/awsomepdf/'))).toBe(true);
+    expect(subpathRobots().sitemap).toBe('https://awsomepdf.com/awsomepdf/sitemap.xml');
   });
 });

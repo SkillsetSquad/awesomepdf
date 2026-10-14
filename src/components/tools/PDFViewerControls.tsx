@@ -177,7 +177,7 @@ export function PDFViewerControls({ iframe, locale }: { iframe: HTMLIFrameElemen
           Object.assign(input.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', margin: '0', opacity: '0', zIndex: '1' });
           fields.set(input, { mount, wrapper, style });
         }
-        input.dispatchEvent(new Event('awesomepdf:sync-field'));
+        input.dispatchEvent(new Event('awsomepdf:sync-field'));
       }
       const next = [...mounts.values()];
       setIconMounts(previous => previous.length === next.length && next.every((entry, index) => previous[index].mount === entry.mount) ? previous : next);

@@ -39,7 +39,7 @@ async function runOperation(file: File | ArrayBuffer, request: object): Promise<
       pyodide.FS.writeFile(requestPath, new TextEncoder().encode(JSON.stringify(request)));
       // Only generated paths enter Python source. User data is read from JSON.
       const result = await pyodide.runPythonAsync(
-        `${REDACTION_SCRIPT}\n_awesomepdf_redaction(${JSON.stringify(inputPath)}, ${JSON.stringify(requestPath)})`
+        `${REDACTION_SCRIPT}\n_awsomepdf_redaction(${JSON.stringify(inputPath)}, ${JSON.stringify(requestPath)})`
       );
       if (typeof result !== 'string') throw new Error('Invalid local redaction engine response');
       return result;

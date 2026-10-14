@@ -93,7 +93,7 @@ describe('Certificate cryptor real output', () => {
     expect(result.metadata?.encrypted).toBe(false);
     expect(result.metadata?.certificate).toBeUndefined();
     expect(result.metadata?.generatedCertificate).toBe(false);
-    const outputDirectory = process.env.AWESOMEPDF_CERT_FIXTURE_DIR;
+    const outputDirectory = process.env.AWSOMEPDF_CERT_FIXTURE_DIR;
     if (outputDirectory) {
       await mkdir(outputDirectory, { recursive: true });
       const { cms, signedBytes } = validateCms(bytes);

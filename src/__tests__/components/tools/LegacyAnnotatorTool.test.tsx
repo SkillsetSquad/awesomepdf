@@ -8,7 +8,7 @@ vi.mock('next-intl', () => ({
 }));
 
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: () => null }));
-vi.mock('@/lib/utils/path', () => ({ withBasePath: (path: string) => `/awesomepdf${path}` }));
+vi.mock('@/lib/utils/path', () => ({ withBasePath: (path: string) => `/awsomepdf${path}` }));
 
 describe('Annotation viewer integration', () => {
   it('keeps injected viewer code valid with quotes, backslashes and newlines in translations', () => {

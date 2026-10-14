@@ -27,7 +27,7 @@ export function AnnotationHistoryControls({ iframe, undo, redo, onError }: {
       if (!toolbar || !isAnnotationHistoryEngine(engine)) return;
       controller = createAnnotationHistory(engine, setState);
       anchor = doc.createElement('li');
-      anchor.dataset.awesomepdfControl = 'true';
+      anchor.dataset.awsomepdfControl = 'true';
       anchor.className = '!w-auto !h-auto';
       toolbar.prepend(anchor);
       setMount(anchor); setHistory(controller);

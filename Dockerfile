@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # =============================================================================
-# AwesomePDF Production Dockerfile (based on PDFCraft)
+# AwsomePDF Production Dockerfile (based on PDFCraft)
 # Multi-stage build for optimized image size
 # Optimized with BuildKit cache mounts for faster builds
 # =============================================================================

@@ -51,7 +51,7 @@ async function setup(locale: 'en' | 'ar' = 'en') {
   const history = createAnnotationHistory(engine, vi.fn());
   const panel = await within(doc.body).findByRole('region', { name: labels.title });
   await waitFor(() => expect(panel.querySelectorAll('[data-slot="card"]')).toHaveLength(3));
-  const metadata = () => (host.querySelector('[data-comment-control]') as HTMLElement & { awesomepdfComment: AnnotationCommentOptions }).awesomepdfComment;
+  const metadata = () => (host.querySelector('[data-comment-control]') as HTMLElement & { awsomepdfComment: AnnotationCommentOptions }).awsomepdfComment;
   let controlsMounted = true;
   const unmountControls = () => { if (controlsMounted) { view.unmount(); controlsMounted = false; } };
   return { iframe, doc, panel, labels, records, onUpdate, onDelete, onSelected, history, ref, metadata,
@@ -128,11 +128,11 @@ describe('Standard comments connected to the shipped component and painter store
     try {
       const card = doc.getElementById('annotation-one')!; const scroll = vi.fn(); card.scrollIntoView = scroll;
       act(() => ref.current!.selectedAnnotation(records.get('one') as CommentAnnotation, true)); await within(panel).findByRole('textbox', { name: labels.replyText }); expect(scroll).toHaveBeenCalledWith({ behavior: 'smooth', block: 'center' }); expect(metadata().anchors.current.one).toBe(card);
-      expect((iframe.contentWindow as Window & { awesomepdfCommentControls: boolean }).awesomepdfCommentControls).toBe(true);
+      expect((iframe.contentWindow as Window & { awsomepdfCommentControls: boolean }).awsomepdfCommentControls).toBe(true);
       act(() => unmountControls());
       await waitFor(() => expect(doc.querySelector('.CustomComment .filters')).not.toBeNull());
-      expect((iframe.contentWindow as Window & { awesomepdfCommentControls?: boolean }).awesomepdfCommentControls).toBeUndefined();
-      expect(doc.querySelector('[data-awesomepdf-mount]')).toBeNull(); expect(doc.querySelector('[data-slot="card"]')).toBeNull();
+      expect((iframe.contentWindow as Window & { awsomepdfCommentControls?: boolean }).awsomepdfCommentControls).toBeUndefined();
+      expect(doc.querySelector('[data-awsomepdf-mount]')).toBeNull(); expect(doc.querySelector('[data-slot="card"]')).toBeNull();
       expect(doc.querySelectorAll('#annotation-one')).toHaveLength(1); expect(metadata().anchors.current.one).toBe(doc.getElementById('annotation-one'));
     } finally { cleanup(); }
   });

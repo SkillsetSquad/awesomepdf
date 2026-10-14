@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
+      "title": "AwsomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
       "description": "PDF를 몇 초 만에 병합, 압축, 변환, 편집, 정리하세요. 브라우저에서 실행되는 무료의 간단한 PDF 도구이며 가입이 필요 없습니다."
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "회사 소개",
-      "description": "AwesomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
+      "description": "AwsomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
     },
     "faq": {
       "title": "자주 묻는 질문",
-      "description": "AwesomePDF에 대한 일반적인 질문에 대한 답변을 찾으세요. PDF 도구를 효과적으로 사용하는 방법을 알아보세요."
+      "description": "AwsomePDF에 대한 일반적인 질문에 대한 답변을 찾으세요. PDF 도구를 효과적으로 사용하는 방법을 알아보세요."
     },
     "privacy": {
       "title": "개인정보 보호정책",
-      "description": "AwesomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
+      "description": "AwsomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
     },
     "contact": {
       "title": "문의하기",
-      "description": "AwesomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
+      "description": "AwsomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
     },
     "keywords": {
       "pdfTools": "PDF 도구",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "AwesomePDF",
+    "brand": "AwsomePDF",
     "tagline": "전문 PDF 도구 - 무료 & 프라이빗",
     "navigation": {
       "home": "집",
@@ -100,8 +100,8 @@
       "skipped": "건너뜀"
     },
     "footer": {
-      "footer": "© 2025 AwesomePDF. All rights reserved.",
-      "copyright": "© {year} AwesomePDF. All rights reserved.",
+      "footer": "© 2025 AwsomePDF. All rights reserved.",
+      "copyright": "© {year} AwsomePDF. All rights reserved.",
       "privacyBadge": "100% 프라이빗 - 파일이 기기를 떠나지 않습니다",
       "madeWith": "<Heart /> 및 <Nextjs />로 제작",
       "resources": "자료",
@@ -110,7 +110,7 @@
       "openSource": "오픈 소스 고지",
       "basedOn": "기반 프로젝트:",
       "downloadError": "소스 다운로드에 실패했습니다. 다시 시도하세요.",
-      "sourceDescription": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요.",
+      "sourceDescription": "배포된 AwsomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요.",
       "description": "일상 업무를 위한 브라우저 기반 무료 PDF 도구입니다. 계정 없이 PDF를 병합, 압축, 변환, 편집, 정리하세요.",
       "brandOf": "Skillset Squad Private Limited의 브랜드입니다.",
       "toolsHeading": "PDF 도구",
@@ -118,7 +118,7 @@
       "legalHeading": "오픈 소스 및 법적 고지",
       "convertPdf": "PDF 변환",
       "privacyPolicy": "개인정보 처리방침",
-      "copyrightLine": "© {year} AwesomePDF. Skillset Squad Private Limited의 브랜드입니다."
+      "copyrightLine": "© {year} AwsomePDF. Skillset Squad Private Limited의 브랜드입니다."
     },
     "recentFiles": {
       "title": "최근 파일",
@@ -161,7 +161,7 @@
       "finish": "완료",
       "skip": "건너뛰기",
       "stepOf": "/",
-      "welcomeTitle": "AwesomePDF에 오신 것을 환영합니다!",
+      "welcomeTitle": "AwsomePDF에 오신 것을 환영합니다!",
       "welcomeMessage": "PDF 도구 사용법을 배우는 빠른 투어를 원하시나요? 1분 정도 소요됩니다.",
       "helpButton": "도움말 투어"
     },
@@ -845,7 +845,7 @@
       "copyText": "인식된 텍스트 복사",
       "copied": "클립보드에 복사됨",
       "openInEditor": "PDF 편집기에서 열기",
-      "openInEditorDesc": "다운로드 없이 AwesomePDF 편집기에서 텍스트와 레이아웃 편집",
+      "openInEditorDesc": "다운로드 없이 AwsomePDF 편집기에서 텍스트와 레이아웃 편집",
       "statsPages": "페이지",
       "statsWords": "단어",
       "statsChars": "문자",
@@ -1098,39 +1098,6 @@
       "downloadSvg": "SVG 자산 다운로드",
       "previewHelp": "클릭이나 키보드로 벡터를 선택하세요."
     },
-    "updater": {
-      "title": "소프트웨어 업데이트",
-      "checkBtn": "업데이트 확인",
-      "checking": "업데이트 확인 중...",
-      "errorTitle": "업데이트를 확인할 수 없습니다",
-      "retry": "다시 시도",
-      "latest": "최신 버전입니다!",
-      "latestDesc": "AwesomePDF가 현재 최신 버전({version})입니다.",
-      "available": "새 버전 출시",
-      "currentVersion": "현재 버전",
-      "released": "출시일",
-      "releaseNotes": "릴리스 노트",
-      "downloadPortable": "Windows 무설치 포터블 버전 다운로드 (ZIP)",
-      "downloadInstaller": "Windows 설치 프로그램 다운로드 (.exe / .msi)",
-      "downloadMac": "macOS 다운로드 (.dmg)",
-      "downloadAppImage": "Linux AppImage 다운로드 (포터블)",
-      "downloadDeb": "Linux Debian 패키지 다운로드 (.deb)",
-      "allDownloads": "모든 플랫폼 다운로드 보기",
-      "viewOnGithub": "GitHub에서 보기",
-      "skipVersion": "이 버전 건너뛰기",
-      "remindLater": "나중에 알림",
-      "close": "닫기",
-      "newVersionBadge": "새 버전",
-      "toastPrompt": "새 버전이 출시되었습니다. 안정성과 핵심 기능이 최적화되었습니다. 지금 업데이트하여 최상의 환경을 경험해보세요.",
-      "viewDetails": "지금 업데이트 / 자세히 보기",
-      "mirrorDownload": "고속 미러 다운로드",
-      "copyLink": "링크 복사",
-      "copyMirrorLink": "미러 링크 복사",
-      "openingBrowser": "브라우저를 여는 중...",
-      "downloadStartedNotice": "브라우저에서 다운로드가 시작되었습니다! 자동으로 시작되지 않으면 링크를 복사하여 브라우저에 붙여넣으세요.",
-      "downloadFailedNotice": "브라우저를 자동으로 열 수 없습니다. 링크를 복사하여 브라우저에서 다운로드하세요.",
-      "linkCopied": "다운로드 링크가 클립보드에 복사되었습니다!"
-    },
     "canvas": {
       "zoomIn": "확대",
       "zoomOut": "축소",
@@ -1191,16 +1158,16 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "AwesomePDF는 무엇인가요?",
-          "answer": "AwesomePDF는 브라우저에서 완전히 실행되는 개인정보 보호형 무료 PDF 툴킷입니다. 서버에 파일을 업로드하지 않고도 PDF 편집, 변환, 병합, 분할, 암호화 등 {count}개 이상의 전문적인 도구를 제공합니다."
+          "question": "AwsomePDF는 무엇인가요?",
+          "answer": "AwsomePDF는 브라우저에서 완전히 실행되는 개인정보 보호형 무료 PDF 툴킷입니다. 서버에 파일을 업로드하지 않고도 PDF 편집, 변환, 병합, 분할, 암호화 등 {count}개 이상의 전문적인 도구를 제공합니다."
         },
         "isFree": {
-          "question": "AwesomePDF는 정말 무료인가요?",
-          "answer": "네, AwesomePDF는 완전히 무료로 사용할 수 있습니다. 숨겨진 비용이나 프리미엄 요금제, 회원 가입이 필요하지 않습니다. 모든 기능을 누구나 제한 없이 이용 가능합니다."
+          "question": "AwsomePDF는 정말 무료인가요?",
+          "answer": "네, AwsomePDF는 완전히 무료로 사용할 수 있습니다. 숨겨진 비용이나 프리미엄 요금제, 회원 가입이 필요하지 않습니다. 모든 기능을 누구나 제한 없이 이용 가능합니다."
         },
         "account": {
           "question": "회원가입이나 계정 생성이 필요한가요?",
-          "answer": "아니요, AwesomePDF를 사용하기 위해 계정을 생성하거나 등록할 필요가 없습니다. 웹사이트를 방문하여 즉시 원하는 도구를 시작해 보세요."
+          "answer": "아니요, AwsomePDF를 사용하기 위해 계정을 생성하거나 등록할 필요가 없습니다. 웹사이트를 방문하여 즉시 원하는 도구를 시작해 보세요."
         }
       },
       "privacy": {
@@ -1209,8 +1176,8 @@
           "answer": "아니요, 파일은 서버로 절대 업로드되지 않습니다. 모든 PDF 처리는 JavaScript와 WebAssembly를 사용하여 웹 브라우저 내에서 안전하게 로컬로 진행됩니다. 파일이 장치 외부로 절대 송출되지 않습니다."
         },
         "safe": {
-          "question": "민감한 문서에 AwesomePDF를 사용해도 안전한가요?",
-          "answer": "네, AwesomePDF는 철저하게 개인정보 보호를 염두에 두고 설계되었습니다. 모든 처리가 브라우저 내에서 직접 이루어지므로, 중요한 문서가 사용자 장치에 그대로 유지되며 인터넷을 통해 전송되지 않습니다."
+          "question": "민감한 문서에 AwsomePDF를 사용해도 안전한가요?",
+          "answer": "네, AwsomePDF는 철저하게 개인정보 보호를 염두에 두고 설계되었습니다. 모든 처리가 브라우저 내에서 직접 이루어지므로, 중요한 문서가 사용자 장치에 그대로 유지되며 인터넷을 통해 전송되지 않습니다."
         },
         "storage": {
           "question": "처리 완료 후 파일들은 어떻게 처리되나요?",
@@ -1220,7 +1187,7 @@
       "features": {
         "operations": {
           "question": "어떤 PDF 작업들을 지원하나요?",
-          "answer": "AwesomePDF는 병합, 분할, 압축, 변환(이미지, 텍스트, JSON 등 상호 변환), 편집, 주석, 서명, 워터마크 추가, 암호화/해제, OCR 등을 포함한 67개 이상의 다양한 무료 도구를 제공합니다."
+          "answer": "AwsomePDF는 병합, 분할, 압축, 변환(이미지, 텍스트, JSON 등 상호 변환), 편집, 주석, 서명, 워터마크 추가, 암호화/해제, OCR 등을 포함한 67개 이상의 다양한 무료 도구를 제공합니다."
         },
         "merge": {
           "question": "여러 PDF 파일을 하나로 합칠 수 있나요?",
@@ -1228,17 +1195,17 @@
         },
         "images": {
           "question": "이미지를 PDF로 변환할 수 있나요?",
-          "answer": "네, AwesomePDF는 JPG, PNG, WebP, BMP, TIFF, SVG, HEIC 등의 이미지를 PDF로 변환하는 작업을 지원합니다. 단일 또는 여러 이미지를 한 번에 변환할 수 있습니다."
+          "answer": "네, AwsomePDF는 JPG, PNG, WebP, BMP, TIFF, SVG, HEIC 등의 이미지를 PDF로 변환하는 작업을 지원합니다. 단일 또는 여러 이미지를 한 번에 변환할 수 있습니다."
         },
         "edit": {
           "question": "PDF 안의 글자를 직접 수정할 수 있나요?",
-          "answer": "AwesomePDF는 텍스트 추가, 형광펜 표시, 도형 삽입, 서명 삽입 등의 주석 추가 및 편집 도구를 지원합니다. 전체 텍스트 편집 수준의 주석 작성 및 표시는 「PDF 편집기」 도구를 이용하시면 더욱 편리합니다."
+          "answer": "AwsomePDF는 텍스트 추가, 형광펜 표시, 도형 삽입, 서명 삽입 등의 주석 추가 및 편집 도구를 지원합니다. 전체 텍스트 편집 수준의 주석 작성 및 표시는 「PDF 편집기」 도구를 이용하시면 더욱 편리합니다."
         }
       },
       "technical": {
         "browsers": {
           "question": "어떤 웹 브라우저를 지원하나요?",
-          "answer": "AwesomePDF는 Chrome, Firefox, Safari, Edge 등 모든 모던 브라우저에서 잘 작동합니다. 최상의 경험을 위해 브라우저를 항상 최신 버전으로 업데이트하여 사용하시는 것을 권장합니다."
+          "answer": "AwsomePDF는 Chrome, Firefox, Safari, Edge 등 모든 모던 브라우저에서 잘 작동합니다. 최상의 경험을 위해 브라우저를 항상 최신 버전으로 업데이트하여 사용하시는 것을 권장합니다."
         },
         "sizeLimit": {
           "question": "업로드할 수 있는 파일 용량 제한이 있나요?",
@@ -1250,13 +1217,13 @@
         },
         "offline": {
           "question": "인터넷이 연결되지 않은 상태에서도 작동하나요?",
-          "answer": "현재로서는 AwesomePDF 웹 앱을 처음 로드하기 위해 네트워크 연결이 필요합니다. 하지만 앱이 한 번 완전히 로드되면, 실제 PDF 변환 및 처리 작업은 모두 로컬에서 수행되므로 오프라인에서도 진행할 수 있습니다."
+          "answer": "현재로서는 AwsomePDF 웹 앱을 처음 로드하기 위해 네트워크 연결이 필요합니다. 하지만 앱이 한 번 완전히 로드되면, 실제 PDF 변환 및 처리 작업은 모두 로컬에서 수행되므로 오프라인에서도 진행할 수 있습니다."
         }
       },
       "languages": {
         "supported": {
           "question": "지원하는 언어 목록은 무엇인가요?",
-          "answer": "AwesomePDF는 {languages}개 언어를 지원합니다: {languageNames}. 아랍어는 오른쪽에서 왼쪽으로 표시됩니다."
+          "answer": "AwsomePDF는 {languages}개 언어를 지원합니다: {languageNames}. 아랍어는 오른쪽에서 왼쪽으로 표시됩니다."
         },
         "change": {
           "question": "언어 설정을 어떻게 변경하나요?",
@@ -1287,7 +1254,7 @@
       },
       "fast": {
         "title": "신속함과 고성능",
-        "description": "최신 웹 성능 기술로 구동되는 AwesomePDF는 불필요한 업로드 및 대기 시간 없이 즉각적이고 부드러운 초고속 PDF 렌더링 및 가공 속도를 제공합니다."
+        "description": "최신 웹 성능 기술로 구동되는 AwsomePDF는 불필요한 업로드 및 대기 시간 없이 즉각적이고 부드러운 초고속 PDF 렌더링 및 가공 속도를 제공합니다."
       },
       "accessible": {
         "title": "뛰어난 접근성",
@@ -1295,7 +1262,7 @@
       },
       "free": {
         "title": "평생 무료",
-        "description": "AwesomePDF는 애드웨어나 숨겨진 유료 옵션이 일절 존재하지 않으며, 회원 가입이나 사용 횟수 제한이 전혀 없는 완전 무상 서비스입니다."
+        "description": "AwsomePDF는 애드웨어나 숨겨진 유료 옵션이 일절 존재하지 않으며, 회원 가입이나 사용 횟수 제한이 전혀 없는 완전 무상 서비스입니다."
       },
       "openSource": {
         "title": "오픈소스",
@@ -1440,7 +1407,7 @@
       "chooseDifferent": "다른 파일 선택",
       "mixedNotice": "파일 형식이 서로 달라 모든 파일에 맞는 단일 도구가 없습니다. PDF만 또는 이미지만처럼 같은 형식의 파일을 선택하세요.",
       "noToolNotice": "이 파일 조합을 열 수 있는 도구가 없습니다. 파일 수를 줄이거나 다른 형식의 파일을 사용해 보세요.",
-      "noneUsable": "선택한 파일을 사용할 수 없습니다. AwesomePDF는 PDF, 이미지, Word·Excel·PowerPoint 같은 일반 문서를 지원합니다.",
+      "noneUsable": "선택한 파일을 사용할 수 없습니다. AwsomePDF는 PDF, 이미지, Word·Excel·PowerPoint 같은 일반 문서를 지원합니다.",
       "skipped": "일부 파일을 건너뛰었습니다",
       "readFailed": "파일을 읽을 수 없습니다. 다시 시도해 주세요.",
       "errors": {
@@ -1526,11 +1493,11 @@
       "clearFilters": "필터 지우기"
     },
     "share": {
-      "name": "AwesomePDF Share",
+      "name": "AwsomePDF Share",
       "title": "파일을 직접 공유하세요. 클라우드 저장 없이.",
       "badge": "출시 예정",
       "subtitle": "P2P 기술로 PDF와 기타 파일을 브라우저 간에 직접 보내세요. 계정이 필요 없고 클라우드에 영구 저장되지 않습니다.",
-      "planned": "AwesomePDF Share는 계획 중인 기능이며 아직 사용할 수 없습니다. 작동 방식을 미리 보여 드리는 것입니다.",
+      "planned": "AwsomePDF Share는 계획 중인 기능이며 아직 사용할 수 없습니다. 작동 방식을 미리 보여 드리는 것입니다.",
       "stepsTitle": "예정된 작동 방식",
       "steps": {
         "choose": "보낼 파일을 선택합니다.",
@@ -1561,7 +1528,7 @@
     },
     "trust": {
       "title": "당신의 문서. 당신의 통제.",
-      "description": "지원되는 PDF 작업은 브라우저에서 로컬로 실행되므로 계정을 만들지 않고도 민감한 파일을 다룰 수 있습니다. 개인정보 보호는 AwesomePDF의 핵심 원칙이며, 방식이 다른 부분은 분명히 알려 드립니다.",
+      "description": "지원되는 PDF 작업은 브라우저에서 로컬로 실행되므로 계정을 만들지 않고도 민감한 파일을 다룰 수 있습니다. 개인정보 보호는 AwsomePDF의 핵심 원칙이며, 방식이 다른 부분은 분명히 알려 드립니다.",
       "items": {
         "private": {
           "title": "설계부터 프라이빗",
@@ -1582,16 +1549,16 @@
     },
     "faq": {
       "title": "자주 묻는 질문",
-      "description": "AwesomePDF에 대한 간단한 답변입니다.",
+      "description": "AwsomePDF에 대한 간단한 답변입니다.",
       "seeAll": "모든 FAQ 보기",
       "items": {
         "free": {
-          "question": "AwesomePDF는 무료인가요?",
-          "answer": "네. AwesomePDF의 PDF 도구는 무료이며 구독이나 가입이 필요 없습니다."
+          "question": "AwsomePDF는 무료인가요?",
+          "answer": "네. AwsomePDF의 PDF 도구는 무료이며 구독이나 가입이 필요 없습니다."
         },
         "upload": {
           "question": "내 PDF 파일이 서버에 업로드되나요?",
-          "answer": "아니요. 지원되는 도구는 JavaScript와 WebAssembly를 사용해 브라우저에서 파일을 처리하며, AwesomePDF는 문서를 서버에 업로드하지 않습니다. 일부 도구는 처음 사용할 때 글꼴, 언어 데이터 또는 보조 스크립트를 다운로드하지만 문서는 여기에 포함되지 않습니다. 또한 앱은 최근 사용한 파일 이름의 짧은 목록을 기기에 저장하며, 헤더의 시계 아이콘에서 언제든지 지울 수 있습니다."
+          "answer": "아니요. 지원되는 도구는 JavaScript와 WebAssembly를 사용해 브라우저에서 파일을 처리하며, AwsomePDF는 문서를 서버에 업로드하지 않습니다. 일부 도구는 처음 사용할 때 글꼴, 언어 데이터 또는 보조 스크립트를 다운로드하지만 문서는 여기에 포함되지 않습니다. 또한 앱은 최근 사용한 파일 이름의 짧은 목록을 기기에 저장하며, 헤더의 시계 아이콘에서 언제든지 지울 수 있습니다."
         },
         "account": {
           "question": "계정 없이 사용할 수 있나요?",
@@ -1599,19 +1566,19 @@
         },
         "tools": {
           "question": "어떤 PDF 도구를 사용할 수 있나요?",
-          "answer": "AwesomePDF에는 편집 및 주석, PDF로 변환, PDF에서 변환, 정리 및 관리, 최적화 및 복구, PDF 보안의 6개 그룹에 {count}개의 도구가 있습니다. 병합, 분할, 압축, PDF를 Word로, 편집, 서명이 인기 있습니다. 위의 디렉터리에서 둘러보거나 검색을 이용하세요."
+          "answer": "AwsomePDF에는 편집 및 주석, PDF로 변환, PDF에서 변환, 정리 및 관리, 최적화 및 복구, PDF 보안의 6개 그룹에 {count}개의 도구가 있습니다. 병합, 분할, 압축, PDF를 Word로, 편집, 서명이 인기 있습니다. 위의 디렉터리에서 둘러보거나 검색을 이용하세요."
         },
         "mobile": {
           "question": "모바일 기기에서도 사용할 수 있나요?",
-          "answer": "네. AwesomePDF는 최신 모바일 브라우저에서 작동합니다. 파일이 기기에서 처리되기 때문에 큰 문서나 OCR, Office 변환 같은 무거운 작업은 휴대폰에서 더 느릴 수 있습니다."
+          "answer": "네. AwsomePDF는 최신 모바일 브라우저에서 작동합니다. 파일이 기기에서 처리되기 때문에 큰 문서나 OCR, Office 변환 같은 무거운 작업은 휴대폰에서 더 느릴 수 있습니다."
         },
         "scanned": {
           "question": "스캔한 문서도 지원하나요?",
           "answer": "네. OCR PDF 도구는 스캔한 페이지의 텍스트를 인식해 PDF를 검색 가능하게 만듭니다. 결과는 스캔 품질과 언어에 따라 다르며, OCR 언어 데이터는 처음 사용할 때 다운로드됩니다."
         },
         "share": {
-          "question": "AwesomePDF Share란 무엇인가요?",
-          "answer": "AwesomePDF Share는 암호화된 P2P 연결로 한 브라우저에서 다른 브라우저로 파일을 직접 보내는, 곧 출시될 예정인 기능입니다. 아직 사용할 수 없으며 위에 나열된 도구에는 포함되지 않습니다."
+          "question": "AwsomePDF Share란 무엇인가요?",
+          "answer": "AwsomePDF Share는 암호화된 P2P 연결로 한 브라우저에서 다른 브라우저로 파일을 직접 보내는, 곧 출시될 예정인 기능입니다. 아직 사용할 수 없으며 위에 나열된 도구에는 포함되지 않습니다."
         }
       }
     },
@@ -1636,7 +1603,7 @@
   "workflow": {
     "title": "PDF 워크플로우 편집기",
     "subtitle": "도구를 연결하여 맞춤형 PDF 처리 파이프라인 생성",
-    "metaTitle": "PDF 워크플로 빌더 - AwesomePDF",
+    "metaTitle": "PDF 워크플로 빌더 - AwsomePDF",
     "metaDescription": "도구를 시각적으로 연결하여 맞춤형 PDF 처리 파이프라인을 생성하세요. 워크플로우를 구축, 저장 및 재사용하세요.",
     "toolbox": "도구 상자",
     "dragToAdd": "워크플로우에 도구를 드래그하여 추가",

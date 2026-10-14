@@ -58,7 +58,7 @@ describe('Annotation editor controls', () => {
       expect(within(doc.body).getByRole('status')).toHaveTextContent('Select a text block');
       expect(iframe).toBeInTheDocument();
     } finally { cleanup(); }
-    expect(doc.querySelector('[data-awesomepdf-mount]')).toBeNull();
-    expect(doc.querySelector('[data-awesomepdf-control]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-mount]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-control]')).toBeNull();
   });
 });

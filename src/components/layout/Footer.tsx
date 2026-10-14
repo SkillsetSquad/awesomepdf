@@ -7,7 +7,6 @@ import { allToolsHref, categoryHref, toolHref } from '@/lib/routes';
 import { getToolSummaries } from '@/lib/tool-summaries';
 import { withBasePath } from '@/lib/utils/path';
 import { getToolById } from '@/config/tools';
-import { UpdateCheckButton } from '@/components/common/UpdateCheckButton';
 import { Separator } from '@/components/ui/separator';
 import { BrandMark } from './BrandMark';
 
@@ -78,7 +77,6 @@ export function Footer({ locale }: FooterProps) {
 
         <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <p className="text-sm text-muted-foreground">{t('footer.copyrightLine', { year: new Date().getFullYear() })}</p>
-          <UpdateCheckButton />
         </div>
       </div>
     </footer>

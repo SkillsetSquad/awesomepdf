@@ -79,10 +79,10 @@ describe('TIFF export compatibility', () => {
     expect(blob.type).toBe('image/tiff');
     const bytes = await bytesOf(blob);
     // Optional local artifacts let an independent installed TIFF decoder inspect the exact outputs.
-    if (process.env.AWESOMEPDF_TIFF_FIXTURE_DIR) {
+    if (process.env.AWSOMEPDF_TIFF_FIXTURE_DIR) {
       const fs = await import('node:fs/promises'); const path = await import('node:path');
-      await fs.mkdir(process.env.AWESOMEPDF_TIFF_FIXTURE_DIR, { recursive: true });
-      await fs.writeFile(path.join(process.env.AWESOMEPDF_TIFF_FIXTURE_DIR, `${mode}-${compression}.tiff`), new Uint8Array(bytes));
+      await fs.mkdir(process.env.AWSOMEPDF_TIFF_FIXTURE_DIR, { recursive: true });
+      await fs.writeFile(path.join(process.env.AWSOMEPDF_TIFF_FIXTURE_DIR, `${mode}-${compression}.tiff`), new Uint8Array(bytes));
     }
     const { frames, view } = directories(bytes);
     expect(frames).toHaveLength(2);

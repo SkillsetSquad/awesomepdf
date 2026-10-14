@@ -18,7 +18,7 @@ vi.mock('next-intl', () => ({
   useLocale: () => 'en',
   useTranslations: () => (key: string) => {
     const translations: Record<string, string> = {
-      'brand': 'AwesomePDF',
+      'brand': 'AwsomePDF',
       'tagline': 'Professional PDF Tools - Free & Private',
       'navigation.home': 'Home',
       'navigation.tools': 'Tools',
@@ -28,7 +28,7 @@ vi.mock('next-intl', () => ({
       'navigation.contact': 'Contact',
       'buttons.selectLanguage': 'Select Language',
       'buttons.close': 'Close',
-      'footer.copyright': '© {year} AwesomePDF. All rights reserved.',
+      'footer.copyright': '© {year} AwsomePDF. All rights reserved.',
       'footer.privacyBadge': '100% Private - Files never leave your device',
     };
     return translations[key] || key;
@@ -65,10 +65,10 @@ describe('Layout Property Tests', () => {
    * **Validates: Requirements 2.1**
    * 
    * For any rendered page in the application, the page content 
-   * SHALL contain the brand name "AwesomePDF" in the header or title area.
+   * SHALL contain the brand name "AwsomePDF" in the header or title area.
    */
   describe('Property 2: Brand Consistency', () => {
-    it('Header component displays AwesomePDF brand name for all locales', () => {
+    it('Header component displays AwsomePDF brand name for all locales', () => {
       fc.assert(
         fc.property(
           fc.constantFrom(...locales),
@@ -78,7 +78,7 @@ describe('Layout Property Tests', () => {
             // Find the brand name in the header
             const brandElement = screen.getByTestId('brand-name');
             expect(brandElement).toBeInTheDocument();
-            expect(brandElement.textContent).toBe('AwesomePDF');
+            expect(brandElement.textContent).toBe('AwsomePDF');
             
             unmount();
             return true;
@@ -88,7 +88,7 @@ describe('Layout Property Tests', () => {
       );
     });
 
-    it('Footer component displays AwesomePDF brand name for all locales', () => {
+    it('Footer component displays AwsomePDF brand name for all locales', () => {
       fc.assert(
         fc.property(
           fc.constantFrom(...locales),
@@ -98,7 +98,7 @@ describe('Layout Property Tests', () => {
             // Find the brand name in the footer
             const brandElement = screen.getByTestId('footer-brand-name');
             expect(brandElement).toBeInTheDocument();
-            expect(brandElement.textContent).toBe('AwesomePDF');
+            expect(brandElement.textContent).toBe('AwsomePDF');
             
             unmount();
             return true;
@@ -127,7 +127,7 @@ describe('Layout Property Tests', () => {
             
             // Brand should be consistent
             expect(headerBrandText).toBe(footerBrandText);
-            expect(headerBrandText).toBe('AwesomePDF');
+            expect(headerBrandText).toBe('AwsomePDF');
             
             return true;
           }

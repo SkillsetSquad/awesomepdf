@@ -33,7 +33,7 @@ function setup() {
   act(() => root.render(<React.StrictMode><Comment ref={ref} userName="Reviewer" onUpdate={onUpdate} onDelete={onDelete} onSelected={onSelected} /></React.StrictMode>));
   act(() => { for (const item of records.values()) ref.current!.addAnnotation(item as RecordData); });
   type Metadata = { annotations: RecordData[]; onAddReply(annotation: RecordData, text: string, status?: string): void; onSaveText(annotation: RecordData, text: string): void; onSaveReply(annotation: RecordData, reply: Reply, text: string): void; onDeleteReply(annotation: RecordData, reply: Reply): void; onDelete(annotation: RecordData): void };
-  const metadata = () => (host.querySelector('[data-comment-control]') as HTMLElement & { awesomepdfComment: Metadata }).awesomepdfComment;
+  const metadata = () => (host.querySelector('[data-comment-control]') as HTMLElement & { awsomepdfComment: Metadata }).awsomepdfComment;
   return { metadata, records, onUpdate, onDelete, history, ref, cleanup: () => { act(() => root.unmount()); history.dispose(); host.remove(); } };
 }
 

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
+      "title": "AwsomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
       "description": "Unisci, comprimi, converti, modifica e organizza i PDF in pochi secondi. Strumenti PDF gratuiti e semplici, nel browser e senza registrazione."
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "Informazioni",
-      "description": "Scopri AwesomePDF: il tuo kit di strumenti PDF gratuito, privato e potente. Tutto l'elaborazione avviene nel tuo browser."
+      "description": "Scopri AwsomePDF: il tuo kit di strumenti PDF gratuito, privato e potente. Tutto l'elaborazione avviene nel tuo browser."
     },
     "faq": {
       "title": "Domande Frequenti",
-      "description": "Trova risposte alle domande più comuni su AwesomePDF. Impara a utilizzare efficacemente i nostri strumenti PDF."
+      "description": "Trova risposte alle domande più comuni su AwsomePDF. Impara a utilizzare efficacemente i nostri strumenti PDF."
     },
     "privacy": {
       "title": "Informativa sulla Privacy",
-      "description": "Informativa sulla privacy di AwesomePDF. I tuoi file non lasciano mai il tuo dispositivo: tutto avviene localmente nel tuo browser."
+      "description": "Informativa sulla privacy di AwsomePDF. I tuoi file non lasciano mai il tuo dispositivo: tutto avviene localmente nel tuo browser."
     },
     "contact": {
       "title": "Contattaci",
-      "description": "Mettiti in contatto con il team di AwesomePDF. Ci farebbe piacere sentirti."
+      "description": "Mettiti in contatto con il team di AwsomePDF. Ci farebbe piacere sentirti."
     },
     "keywords": {
       "pdfTools": "strumenti PDF",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "AwesomePDF",
+    "brand": "AwsomePDF",
     "tagline": "Strumenti PDF professionali - Gratuiti e Privati",
     "navigation": {
       "home": "Home",
@@ -100,8 +100,8 @@
       "skipped": "Saltato"
     },
     "footer": {
-      "footer": "© 2025 AwesomePDF. Tutti i diritti riservati.",
-      "copyright": "© {year} AwesomePDF. Tutti i diritti riservati.",
+      "footer": "© 2025 AwsomePDF. Tutti i diritti riservati.",
+      "copyright": "© {year} AwsomePDF. Tutti i diritti riservati.",
       "privacyBadge": "100% Privato - I file non lasciano mai il tuo dispositivo",
       "madeWith": "Fatto con <Heart /> e <Nextjs />",
       "resources": "Risorse",
@@ -110,7 +110,7 @@
       "openSource": "Avvisi open source",
       "basedOn": "Basato su",
       "downloadError": "Download del codice sorgente non riuscito. Riprova.",
-      "sourceDescription": "Scarica il codice sorgente di questa versione di AwesomePDF, inclusi la configurazione di compilazione e gli avvisi originali.",
+      "sourceDescription": "Scarica il codice sorgente di questa versione di AwsomePDF, inclusi la configurazione di compilazione e gli avvisi originali.",
       "description": "Strumenti PDF gratuiti nel browser per il lavoro di ogni giorno. Unisci, comprimi, converti, modifica e organizza i PDF senza creare un account.",
       "brandOf": "Un marchio di Skillset Squad Private Limited.",
       "toolsHeading": "Strumenti PDF",
@@ -118,7 +118,7 @@
       "legalHeading": "Open source e note legali",
       "convertPdf": "Converti PDF",
       "privacyPolicy": "Informativa sulla privacy",
-      "copyrightLine": "© {year} AwesomePDF. Un marchio di Skillset Squad Private Limited."
+      "copyrightLine": "© {year} AwsomePDF. Un marchio di Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "File recenti",
@@ -161,7 +161,7 @@
       "finish": "Fine",
       "skip": "Salta",
       "stepOf": "di",
-      "welcomeTitle": "Benvenuto in AwesomePDF!",
+      "welcomeTitle": "Benvenuto in AwsomePDF!",
       "welcomeMessage": "Vuoi un breve tour per imparare a usare i nostri strumenti PDF? Richiede solo un minuto.",
       "helpButton": "Tour guida"
     },
@@ -845,7 +845,7 @@
       "copyText": "Copia testo riconosciuto",
       "copied": "Copiato negli appunti",
       "openInEditor": "Apri nell’editor PDF",
-      "openInEditorDesc": "Modifica testo e layout nell’editor AwesomePDF senza scaricare",
+      "openInEditorDesc": "Modifica testo e layout nell’editor AwsomePDF senza scaricare",
       "statsPages": "Pagine",
       "statsWords": "Parole",
       "statsChars": "Caratteri",
@@ -1098,39 +1098,6 @@
       "downloadSvg": "Scarica risorsa SVG",
       "previewHelp": "Seleziona un vettore con un clic o la tastiera."
     },
-    "updater": {
-      "title": "Aggiornamento software",
-      "checkBtn": "Verifica aggiornamenti",
-      "checking": "Controllo aggiornamenti in corso...",
-      "errorTitle": "Impossibile verificare gli aggiornamenti",
-      "retry": "Riprova",
-      "latest": "Sei aggiornato!",
-      "latestDesc": "AwesomePDF è attualmente alla versione più recente ({version}).",
-      "available": "Nuova versione disponibile",
-      "currentVersion": "Versione corrente",
-      "released": "Rilasciato il",
-      "releaseNotes": "Note di rilascio",
-      "downloadPortable": "Scarica versione portatile per Windows (ZIP)",
-      "downloadInstaller": "Scarica programma di installazione per Windows (.exe / .msi)",
-      "downloadMac": "Scarica per macOS (.dmg)",
-      "downloadAppImage": "Scarica Linux AppImage (portatile)",
-      "downloadDeb": "Scarica pacchetto Linux Debian (.deb)",
-      "allDownloads": "Visualizza tutti i download per piattaforma",
-      "viewOnGithub": "Visualizza su GitHub",
-      "skipVersion": "Salta questa versione",
-      "remindLater": "Ricordamelo più tardi",
-      "close": "Chiudi",
-      "newVersionBadge": "Nuova versione",
-      "toastPrompt": "È disponibile una nuova versione con stabilità e prestazioni migliorate. Aggiorna ora per un'esperienza ottimale.",
-      "viewDetails": "Aggiorna ora / Visualizza dettagli",
-      "mirrorDownload": "Download mirror veloce",
-      "copyLink": "Copia link",
-      "copyMirrorLink": "Copia link mirror",
-      "openingBrowser": "Apertura del browser in corso...",
-      "downloadStartedNotice": "Download avviato nel browser! Se non si avvia, copia il link e incollalo nel tuo browser.",
-      "downloadFailedNotice": "Impossibile aprire il browser. Copia il link e incollalo manualmente nel browser.",
-      "linkCopied": "Link di download copiato negli appunti!"
-    },
     "canvas": {
       "zoomIn": "Ingrandisci",
       "zoomOut": "Riduci",
@@ -1191,16 +1158,16 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "Cos'è AwesomePDF?",
-          "answer": "AwesomePDF è un kit di strumenti PDF gratuito e attento alla privacy che funziona interamente nel tuo browser. Offre oltre 80 strumenti professionali per modificare, convertire, unire, dividere e proteggere i PDF senza caricare nulla su server."
+          "question": "Cos'è AwsomePDF?",
+          "answer": "AwsomePDF è un kit di strumenti PDF gratuito e attento alla privacy che funziona interamente nel tuo browser. Offre oltre 80 strumenti professionali per modificare, convertire, unire, dividere e proteggere i PDF senza caricare nulla su server."
         },
         "isFree": {
-          "question": "AwesomePDF è davvero gratuito?",
-          "answer": "Sì, AwesomePDF è completamente gratuito. Non ci sono costi nascosti, livelli premium e non è richiesta la registrazione. Tutte le funzionalità sono disponibili per tutti."
+          "question": "AwsomePDF è davvero gratuito?",
+          "answer": "Sì, AwsomePDF è completamente gratuito. Non ci sono costi nascosti, livelli premium e non è richiesta la registrazione. Tutte le funzionalità sono disponibili per tutti."
         },
         "account": {
           "question": "Devo creare un account?",
-          "answer": "No, non è necessario creare un account o registrarsi per utilizzare AwesomePDF. Basta visitare il sito Web e iniziare immediatamente a utilizzare qualsiasi strumento."
+          "answer": "No, non è necessario creare un account o registrarsi per utilizzare AwsomePDF. Basta visitare il sito Web e iniziare immediatamente a utilizzare qualsiasi strumento."
         }
       },
       "privacy": {
@@ -1209,8 +1176,8 @@
           "answer": "No, i tuoi file non vengono mai caricati su nessun server. Tutta l'elaborazione dei PDF avviene localmente nel tuo browser utilizzando JavaScript e WebAssembly. I tuoi file non lasciano mai il tuo dispositivo."
         },
         "safe": {
-          "question": "È sicuro utilizzare AwesomePDF con documenti sensibili?",
-          "answer": "Sì, AwesomePDF è progettato pensando alla privacy. Poiché tutta l'elaborazione avviene localmente nel tuo browser, i tuoi documenti sensibili rimangono sul tuo dispositivo e non vengono mai trasmessi su Internet."
+          "question": "È sicuro utilizzare AwsomePDF con documenti sensibili?",
+          "answer": "Sì, AwsomePDF è progettato pensando alla privacy. Poiché tutta l'elaborazione avviene localmente nel tuo browser, i tuoi documenti sensibili rimangono sul tuo dispositivo e non vengono mai trasmessi su Internet."
         },
         "storage": {
           "question": "Cosa succede ai miei file dopo l'elaborazione?",
@@ -1220,7 +1187,7 @@
       "features": {
         "operations": {
           "question": "Quali operazioni PDF posso eseguire?",
-          "answer": "AwesomePDF offre oltre 67 strumenti tra cui: unisci, dividi, comprimi, converti (in/da immagini, testo, JSON), modifica, annota, firma, aggiungi filigrane, crittografa/decrittografa, OCR e molti altri."
+          "answer": "AwsomePDF offre oltre 67 strumenti tra cui: unisci, dividi, comprimi, converti (in/da immagini, testo, JSON), modifica, annota, firma, aggiungi filigrane, crittografa/decrittografa, OCR e molti altri."
         },
         "merge": {
           "question": "Posso unire più file PDF?",
@@ -1228,17 +1195,17 @@
         },
         "images": {
           "question": "Posso convertire le immagini in PDF?",
-          "answer": "Sì, AwesomePDF supporta la conversione di vari formati di immagine (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) in PDF. Puoi convertire immagini singole o multiple contemporaneamente."
+          "answer": "Sì, AwsomePDF supporta la conversione di vari formati di immagine (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) in PDF. Puoi convertire immagini singole o multiple contemporaneamente."
         },
         "edit": {
           "question": "Posso modificare il testo in un PDF?",
-          "answer": "AwesomePDF fornisce strumenti di annotazione e modifica tra cui evidenziazione, aggiunta di testo, forme, immagini e firme. Per la modifica del testo completo, lo strumento Editor PDF offre funzionalità di annotazione complete."
+          "answer": "AwsomePDF fornisce strumenti di annotazione e modifica tra cui evidenziazione, aggiunta di testo, forme, immagini e firme. Per la modifica del testo completo, lo strumento Editor PDF offre funzionalità di annotazione complete."
         }
       },
       "technical": {
         "browsers": {
           "question": "Quali browser sono supportati?",
-          "answer": "AwesomePDF funziona su tutti i browser moderni, inclusi Chrome, Firefox, Safari ed Edge. Ti consigliamo di utilizzare la versione più recente del tuo browser per la migliore esperienza."
+          "answer": "AwsomePDF funziona su tutti i browser moderni, inclusi Chrome, Firefox, Safari ed Edge. Ti consigliamo di utilizzare la versione più recente del tuo browser per la migliore esperienza."
         },
         "sizeLimit": {
           "question": "Esiste un limite alla dimensione del file?",
@@ -1249,14 +1216,14 @@
           "answer": "Poiché tutta l'elaborazione avviene nel tuo browser, le prestazioni dipendono dalle capacità del tuo dispositivo. I file di grandi dimensioni richiedono più memoria e potenza di elaborazione. Per ottenere risultati ottimali, chiudi le altre schede e applicazioni del browser."
         },
         "offline": {
-          "question": "AwesomePDF funziona offline?",
-          "answer": "Attualmente, AwesomePDF richiede una connessione Internet per caricare l'applicazione. Tuttavia, una volta caricato, l'elaborazione del PDF avviene localmente e non richiede una connessione."
+          "question": "AwsomePDF funziona offline?",
+          "answer": "Attualmente, AwsomePDF richiede una connessione Internet per caricare l'applicazione. Tuttavia, una volta caricato, l'elaborazione del PDF avviene localmente e non richiede una connessione."
         }
       },
       "languages": {
         "supported": {
           "question": "Quali lingue sono supportate?",
-          "answer": "AwesomePDF è disponibile in {languages} lingue: {languageNames}. L’arabo supporta un’interfaccia da destra a sinistra."
+          "answer": "AwsomePDF è disponibile in {languages} lingue: {languageNames}. L’arabo supporta un’interfaccia da destra a sinistra."
         },
         "change": {
           "question": "Come posso cambiare la lingua?",
@@ -1287,7 +1254,7 @@
       },
       "fast": {
         "title": "Veloce ed efficiente",
-        "description": "Basato sulle moderne tecnologie web, AwesomePDF offre un'elaborazione PDF estremamente veloce senza la necessità di caricamenti o download."
+        "description": "Basato sulle moderne tecnologie web, AwsomePDF offre un'elaborazione PDF estremamente veloce senza la necessità di caricamenti o download."
       },
       "accessible": {
         "title": "Accessibile ovunque",
@@ -1295,7 +1262,7 @@
       },
       "free": {
         "title": "Libero per sempre",
-        "description": "AwesomePDF è completamente gratuito, senza costi nascosti, senza registrazione richiesta e senza limiti di utilizzo."
+        "description": "AwsomePDF è completamente gratuito, senza costi nascosti, senza registrazione richiesta e senza limiti di utilizzo."
       },
       "openSource": {
         "title": "Open Source",
@@ -1440,7 +1407,7 @@
       "chooseDifferent": "Scegli altri file",
       "mixedNotice": "Questi file sono di tipi diversi, quindi nessuno strumento è adatto a tutti. Scegli file di un solo tipo, ad esempio solo PDF o solo immagini.",
       "noToolNotice": "Nessuno strumento può aprire questa combinazione di file. Prova con meno file o con un altro tipo di file.",
-      "noneUsable": "Nessuno dei file selezionati può essere usato. AwesomePDF funziona con PDF, immagini e documenti comuni come Word, Excel e PowerPoint.",
+      "noneUsable": "Nessuno dei file selezionati può essere usato. AwsomePDF funziona con PDF, immagini e documenti comuni come Word, Excel e PowerPoint.",
       "skipped": "Alcuni file sono stati ignorati",
       "readFailed": "Impossibile leggere questi file. Riprova.",
       "errors": {
@@ -1526,11 +1493,11 @@
       "clearFilters": "Cancella filtri"
     },
     "share": {
-      "name": "AwesomePDF Share",
+      "name": "AwsomePDF Share",
       "title": "Condividi i file direttamente. Senza archiviazione cloud.",
       "badge": "In arrivo",
       "subtitle": "Invia PDF e altri file direttamente da browser a browser con la tecnologia peer-to-peer. Nessun account richiesto e nessuna archiviazione permanente nel cloud.",
-      "planned": "AwesomePDF Share è una funzione pianificata e non è ancora disponibile. Questa è un’anteprima di come dovrebbe funzionare.",
+      "planned": "AwsomePDF Share è una funzione pianificata e non è ancora disponibile. Questa è un’anteprima di come dovrebbe funzionare.",
       "stepsTitle": "Come dovrebbe funzionare",
       "steps": {
         "choose": "Scegli un file da inviare.",
@@ -1561,7 +1528,7 @@
     },
     "trust": {
       "title": "I tuoi documenti. Il tuo controllo.",
-      "description": "Le operazioni PDF supportate vengono eseguite localmente nel browser, così puoi lavorare con file sensibili senza creare un account. La privacy è un principio fondamentale di AwesomePDF e lo diciamo chiaramente quando qualcosa funziona in modo diverso.",
+      "description": "Le operazioni PDF supportate vengono eseguite localmente nel browser, così puoi lavorare con file sensibili senza creare un account. La privacy è un principio fondamentale di AwsomePDF e lo diciamo chiaramente quando qualcosa funziona in modo diverso.",
       "items": {
         "private": {
           "title": "Privato per progettazione",
@@ -1582,36 +1549,36 @@
     },
     "faq": {
       "title": "Domande frequenti",
-      "description": "Risposte rapide su AwesomePDF.",
+      "description": "Risposte rapide su AwsomePDF.",
       "seeAll": "Vedi tutte le domande",
       "items": {
         "free": {
-          "question": "AwesomePDF è gratuito?",
-          "answer": "Sì. Gli strumenti PDF di AwesomePDF sono gratuiti, senza abbonamento e senza obbligo di registrazione."
+          "question": "AwsomePDF è gratuito?",
+          "answer": "Sì. Gli strumenti PDF di AwsomePDF sono gratuiti, senza abbonamento e senza obbligo di registrazione."
         },
         "upload": {
           "question": "I miei file PDF vengono caricati su un server?",
-          "answer": "No. Gli strumenti supportati elaborano i tuoi file nel browser con JavaScript e WebAssembly, e AwesomePDF non carica i tuoi documenti su un server. Alcuni strumenti scaricano caratteri, dati linguistici o script di supporto al primo utilizzo; i tuoi documenti non fanno parte di quei download. L’app conserva inoltre sul tuo dispositivo un breve elenco dei nomi dei file usati di recente, che puoi cancellare in qualsiasi momento dall’icona dell’orologio nell’intestazione."
+          "answer": "No. Gli strumenti supportati elaborano i tuoi file nel browser con JavaScript e WebAssembly, e AwsomePDF non carica i tuoi documenti su un server. Alcuni strumenti scaricano caratteri, dati linguistici o script di supporto al primo utilizzo; i tuoi documenti non fanno parte di quei download. L’app conserva inoltre sul tuo dispositivo un breve elenco dei nomi dei file usati di recente, che puoi cancellare in qualsiasi momento dall’icona dell’orologio nell’intestazione."
         },
         "account": {
-          "question": "Posso usare AwesomePDF senza creare un account?",
+          "question": "Posso usare AwsomePDF senza creare un account?",
           "answer": "Sì. Apri uno strumento qualsiasi e inizia subito a lavorare. Non ci sono login né registrazioni."
         },
         "tools": {
           "question": "Quali strumenti PDF sono disponibili?",
-          "answer": "AwesomePDF comprende {count} strumenti in sei gruppi: modificare e annotare, convertire in PDF, convertire da PDF, organizzare e gestire, ottimizzare e riparare, proteggere i PDF. Tra i più popolari ci sono unire, dividere, comprimere, PDF in Word, modificare e firmare. Sfogliali nell’elenco qui sopra o usa la ricerca."
+          "answer": "AwsomePDF comprende {count} strumenti in sei gruppi: modificare e annotare, convertire in PDF, convertire da PDF, organizzare e gestire, ottimizzare e riparare, proteggere i PDF. Tra i più popolari ci sono unire, dividere, comprimere, PDF in Word, modificare e firmare. Sfogliali nell’elenco qui sopra o usa la ricerca."
         },
         "mobile": {
-          "question": "Posso usare AwesomePDF sui dispositivi mobili?",
-          "answer": "Sì. AwesomePDF funziona nei browser mobili moderni. Poiché i file vengono elaborati sul tuo dispositivo, i documenti di grandi dimensioni e le attività più pesanti, come l’OCR o le conversioni Office, possono essere più lenti su uno smartphone."
+          "question": "Posso usare AwsomePDF sui dispositivi mobili?",
+          "answer": "Sì. AwsomePDF funziona nei browser mobili moderni. Poiché i file vengono elaborati sul tuo dispositivo, i documenti di grandi dimensioni e le attività più pesanti, come l’OCR o le conversioni Office, possono essere più lenti su uno smartphone."
         },
         "scanned": {
-          "question": "AwesomePDF supporta i documenti scansionati?",
+          "question": "AwsomePDF supporta i documenti scansionati?",
           "answer": "Sì. Lo strumento OCR PDF può riconoscere il testo delle pagine scansionate per rendere il PDF ricercabile. I risultati dipendono dalla qualità della scansione e dalla lingua, e i dati linguistici dell’OCR vengono scaricati al primo utilizzo."
         },
         "share": {
-          "question": "Che cos’è AwesomePDF Share?",
-          "answer": "AwesomePDF Share è una funzione pianificata, in arrivo, per inviare file direttamente da un browser a un altro tramite una connessione peer-to-peer cifrata. Non è ancora disponibile e non fa parte degli strumenti elencati sopra."
+          "question": "Che cos’è AwsomePDF Share?",
+          "answer": "AwsomePDF Share è una funzione pianificata, in arrivo, per inviare file direttamente da un browser a un altro tramite una connessione peer-to-peer cifrata. Non è ancora disponibile e non fa parte degli strumenti elencati sopra."
         }
       }
     },
@@ -1636,7 +1603,7 @@
   "workflow": {
     "title": "Generatore di flussi di lavoro PDF",
     "subtitle": "Crea pipeline di elaborazione PDF personalizzate collegando gli strumenti",
-    "metaTitle": "Creatore di flussi di lavoro PDF - AwesomePDF",
+    "metaTitle": "Creatore di flussi di lavoro PDF - AwsomePDF",
     "metaDescription": "Crea pipeline di elaborazione PDF personalizzate collegando visivamente gli strumenti. Costruisci, salva e riutilizza i tuoi flussi di lavoro.",
     "toolbox": "Cassetta degli attrezzi",
     "dragToAdd": "Trascina gli strumenti per aggiungerli al flusso di lavoro",

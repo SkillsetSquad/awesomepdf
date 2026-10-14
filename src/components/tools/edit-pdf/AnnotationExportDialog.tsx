@@ -17,7 +17,7 @@ export interface AnnotationExportDialogHandle {
 }
 
 export type AnnotationExportWindow = Window & {
-  awesomepdfAnnotationExportDialog?: (notice: AnnotationExportNotice) => AnnotationExportDialogHandle;
+  awsomepdfAnnotationExportDialog?: (notice: AnnotationExportNotice) => AnnotationExportDialogHandle;
 };
 
 /** The engine keeps its local export routines; only its status dialog is hosted here. */
@@ -35,7 +35,7 @@ export function AnnotationExportDialog({ iframe, locale, closeLabel, labels }: {
     const doc = iframe?.contentDocument;
     if (!viewer || !doc) return;
     let nextId = 0;
-    const previous = viewer.awesomepdfAnnotationExportDialog;
+    const previous = viewer.awsomepdfAnnotationExportDialog;
     const openDialog = (options: AnnotationExportNotice): AnnotationExportDialogHandle => {
       const id = ++nextId;
       returnFocus.current = doc.querySelector<HTMLElement>('[data-annotation-tool="export"] [data-slot="dropdown-menu-trigger"]');
@@ -45,11 +45,11 @@ export function AnnotationExportDialog({ iframe, locale, closeLabel, labels }: {
         destroy: () => setNotice(current => current?.id === id ? null : current),
       };
     };
-    viewer.awesomepdfAnnotationExportDialog = openDialog;
+    viewer.awsomepdfAnnotationExportDialog = openDialog;
     return () => {
-      if (viewer.awesomepdfAnnotationExportDialog === openDialog) {
-        if (previous) viewer.awesomepdfAnnotationExportDialog = previous;
-        else delete viewer.awesomepdfAnnotationExportDialog;
+      if (viewer.awsomepdfAnnotationExportDialog === openDialog) {
+        if (previous) viewer.awsomepdfAnnotationExportDialog = previous;
+        else delete viewer.awsomepdfAnnotationExportDialog;
       }
     };
   }, [iframe]);
