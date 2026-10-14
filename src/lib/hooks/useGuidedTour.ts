@@ -7,6 +7,7 @@
 
 'use client';
 
+import { readStorageItem, removeStorageItem } from '@/lib/storage/brand-migration';
 import { useState, useEffect, useCallback } from 'react';
 
 export interface TourStep {
@@ -18,8 +19,8 @@ export interface TourStep {
   highlightPadding?: number;
 }
 
-const TOUR_COMPLETED_KEY = 'pdfcraft_tour_completed';
-const TOUR_DISMISSED_KEY = 'pdfcraft_tour_dismissed';
+const TOUR_COMPLETED_KEY = 'awsomepdf_tour_completed';
+const TOUR_DISMISSED_KEY = 'awsomepdf_tour_dismissed';
 
 /**
  * Check if localStorage is available
@@ -62,8 +63,8 @@ export function useGuidedTour(steps: TourStep[]): UseGuidedTourReturn {
   useEffect(() => {
     if (!isLocalStorageAvailable()) return;
     
-    const completed = localStorage.getItem(TOUR_COMPLETED_KEY);
-    const dismissed = localStorage.getItem(TOUR_DISMISSED_KEY);
+    const completed = readStorageItem(localStorage, TOUR_COMPLETED_KEY);
+    const dismissed = readStorageItem(localStorage, TOUR_DISMISSED_KEY);
     
     if (!completed && !dismissed) {
       setIsFirstVisit(true);
@@ -118,8 +119,8 @@ export function useGuidedTour(steps: TourStep[]): UseGuidedTourReturn {
 
   const resetTour = useCallback(() => {
     if (isLocalStorageAvailable()) {
-      localStorage.removeItem(TOUR_COMPLETED_KEY);
-      localStorage.removeItem(TOUR_DISMISSED_KEY);
+      removeStorageItem(localStorage, TOUR_COMPLETED_KEY);
+      removeStorageItem(localStorage, TOUR_DISMISSED_KEY);
     }
     setIsFirstVisit(true);
     setCurrentStep(0);

@@ -25,7 +25,7 @@ describe('Tool directory', () => {
     expect(screen.getAllByTestId('tool-card')).toHaveLength(getAllTools().length);
   });
   it('shows no search results for a query missing from favorites and permits clearing it', async () => {
-    localStorage.setItem('pdfcraft-favorite-tools', JSON.stringify(['merge-pdf']));
+    localStorage.setItem('awsomepdf-favorite-tools', JSON.stringify(['merge-pdf']));
     params = new URLSearchParams('category=favorites');
     render(view());
     expect(screen.getByRole('link', { name: 'Fusion locale' })).toBeInTheDocument();

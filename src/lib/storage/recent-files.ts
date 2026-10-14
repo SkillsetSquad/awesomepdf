@@ -5,6 +5,7 @@
  * Stores and retrieves recent file history from localStorage
  */
 
+import { readStorageItem, removeStorageItem } from '@/lib/storage/brand-migration';
 import { notifyLocalFileRecordsChanged } from './events';
 
 export interface RecentFile {
@@ -16,7 +17,7 @@ export interface RecentFile {
   toolName?: string;
 }
 
-const STORAGE_KEY = 'pdfcraft_recent_files';
+const STORAGE_KEY = 'awsomepdf_recent_files';
 const MAX_RECENT_FILES = 10;
 
 /**
@@ -48,7 +49,7 @@ export function getRecentFiles(): RecentFile[] {
   if (!isLocalStorageAvailable()) return [];
   
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = readStorageItem(localStorage, STORAGE_KEY);
     if (!stored) return [];
     
     const files = JSON.parse(stored) as RecentFile[];
@@ -120,7 +121,7 @@ export function clearRecentFiles(): void {
   if (!isLocalStorageAvailable()) return;
   
   try {
-    localStorage.removeItem(STORAGE_KEY);
+    removeStorageItem(localStorage, STORAGE_KEY);
     notifyLocalFileRecordsChanged();
   } catch {
     // Silently fail

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
+      "title": "AwsomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
       "description": "Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF chỉ trong vài giây. Công cụ PDF miễn phí, đơn giản, chạy ngay trên trình duyệt và không cần đăng ký."
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "Giới thiệu",
-      "description": "Tìm hiểu về AwesomePDF - bộ công cụ PDF miễn phí, riêng tư và mạnh mẽ của bạn. Toàn bộ xử lý diễn ra ngay trong trình duyệt."
+      "description": "Tìm hiểu về AwsomePDF - bộ công cụ PDF miễn phí, riêng tư và mạnh mẽ của bạn. Toàn bộ xử lý diễn ra ngay trong trình duyệt."
     },
     "faq": {
       "title": "Câu hỏi Thường gặp",
-      "description": "Tìm câu trả lời cho các câu hỏi phổ biến về AwesomePDF. Hướng dẫn sử dụng hiệu quả các công cụ PDF của chúng tôi."
+      "description": "Tìm câu trả lời cho các câu hỏi phổ biến về AwsomePDF. Hướng dẫn sử dụng hiệu quả các công cụ PDF của chúng tôi."
     },
     "privacy": {
       "title": "Chính sách Bảo mật",
-      "description": "Chính sách bảo mật của AwesomePDF. Tệp của bạn không bao giờ rời khỏi thiết bị - mọi xử lý đều diễn ra cục bộ trong trình duyệt."
+      "description": "Chính sách bảo mật của AwsomePDF. Tệp của bạn không bao giờ rời khỏi thiết bị - mọi xử lý đều diễn ra cục bộ trong trình duyệt."
     },
     "contact": {
       "title": "Liên hệ Chúng tôi",
-      "description": "Liên hệ với đội ngũ AwesomePDF. Chúng tôi rất mong nhận được phản hồi từ bạn."
+      "description": "Liên hệ với đội ngũ AwsomePDF. Chúng tôi rất mong nhận được phản hồi từ bạn."
     },
     "keywords": {
       "pdfTools": "công cụ PDF",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "AwesomePDF",
+    "brand": "AwsomePDF",
     "tagline": "Công cụ PDF Chuyên nghiệp - Miễn phí & Riêng tư",
     "navigation": {
       "home": "Trang chủ",
@@ -100,8 +100,8 @@
       "skipped": "Đã bỏ qua"
     },
     "footer": {
-      "footer": "© 2025 AwesomePDF. Bảo lưu mọi quyền.",
-      "copyright": "© {year} AwesomePDF. Bảo lưu mọi quyền.",
+      "footer": "© 2025 AwsomePDF. Bảo lưu mọi quyền.",
+      "copyright": "© {year} AwsomePDF. Bảo lưu mọi quyền.",
       "privacyBadge": "100% Riêng tư - Tệp không bao giờ rời khỏi thiết bị",
       "madeWith": "Được tạo bởi <Heart /> và <Nextjs />",
       "resources": "Tài nguyên",
@@ -110,7 +110,7 @@
       "openSource": "Thông báo nguồn mở",
       "basedOn": "Dựa trên",
       "downloadError": "Không tải được mã nguồn. Vui lòng thử lại.",
-      "sourceDescription": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc.",
+      "sourceDescription": "Tải mã nguồn của phiên bản AwsomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc.",
       "description": "Công cụ PDF miễn phí chạy trên trình duyệt cho công việc hằng ngày. Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF mà không cần tạo tài khoản.",
       "brandOf": "Một thương hiệu của Skillset Squad Private Limited.",
       "toolsHeading": "Công cụ PDF",
@@ -118,7 +118,7 @@
       "legalHeading": "Mã nguồn mở & pháp lý",
       "convertPdf": "Chuyển đổi PDF",
       "privacyPolicy": "Chính sách quyền riêng tư",
-      "copyrightLine": "© {year} AwesomePDF. Một thương hiệu của Skillset Squad Private Limited."
+      "copyrightLine": "© {year} AwsomePDF. Một thương hiệu của Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "Tệp Gần đây",
@@ -161,7 +161,7 @@
       "finish": "Hoàn tất",
       "skip": "Bỏ qua",
       "stepOf": "của",
-      "welcomeTitle": "Chào mừng đến với AwesomePDF!",
+      "welcomeTitle": "Chào mừng đến với AwsomePDF!",
       "welcomeMessage": "Bạn có muốn tham gia một hướng dẫn nhanh để tìm hiểu cách sử dụng các công cụ PDF không? Chỉ mất khoảng một phút thôi.",
       "helpButton": "Hướng dẫn Trợ giúp"
     },
@@ -573,7 +573,7 @@
       "bronzeWax": "Đồng đỏ cổ xưa",
       "enableDoubleKey": "Mã hóa cho chứng chỉ ký (AES-256)",
       "decryptPasswordHelp": "Mật khẩu chứng chỉ",
-      "passwordPlaceholder": "Mật khẩu mặc định: pdfcraft",
+      "passwordPlaceholder": "Mật khẩu mặc định: awsomepdf",
       "sealCoordinates": "Tâm con dấu theo điểm PDF: X: {x}, Y: {y}",
       "clickToReposition": "Nhấp hoặc dùng phím mũi tên. Phần trăm được đo từ góc trên bên trái.",
       "previewTitle": "Vị trí con dấu trên trang đầu",
@@ -583,7 +583,7 @@
       "certificateDescription": "Không bắt buộc. Nếu không chọn chứng chỉ, một chứng chỉ cục bộ sẽ được tạo.",
       "removeCertificate": "Xóa chứng chỉ ký",
       "certificateDownload": "Tải chứng chỉ ký (.p12)",
-      "passwordHelp": "Mở khóa chứng chỉ có sẵn hoặc bảo vệ .p12 mới. Chứng chỉ mới dùng pdfcraft nếu ô này để trống.",
+      "passwordHelp": "Mở khóa chứng chỉ có sẵn hoặc bảo vệ .p12 mới. Chứng chỉ mới dùng awsomepdf nếu ô này để trống.",
       "localCertificateHelp": "Chứng chỉ cục bộ tự ký có thể không được trình đọc PDF tin cậy. Hãy giữ tệp .p12 đã tải xuống.",
       "encryptedHelp": "Cần khóa riêng của chứng chỉ này trong trình đọc PDF tương thích. Hãy giữ chứng chỉ .p12 hoặc .pfx."
     },
@@ -845,7 +845,7 @@
       "copyText": "Sao chép văn bản nhận dạng",
       "copied": "Đã sao chép vào bộ nhớ tạm",
       "openInEditor": "Mở trong trình chỉnh sửa PDF",
-      "openInEditorDesc": "Chỉnh sửa văn bản và bố cục trong AwesomePDF mà không cần tải xuống",
+      "openInEditorDesc": "Chỉnh sửa văn bản và bố cục trong AwsomePDF mà không cần tải xuống",
       "statsPages": "Trang",
       "statsWords": "Từ",
       "statsChars": "Ký tự",
@@ -1158,16 +1158,16 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "AwesomePDF là gì?",
-          "answer": "AwesomePDF là bộ công cụ PDF miễn phí, tập trung vào quyền riêng tư, chạy hoàn toàn trong trình duyệt của bạn. Nó cung cấp hơn 80 công cụ chuyên nghiệp để chỉnh sửa, chuyển đổi, hợp nhất, tách và bảo mật tệp PDF mà không cần tải lên bất kỳ máy chủ nào."
+          "question": "AwsomePDF là gì?",
+          "answer": "AwsomePDF là bộ công cụ PDF miễn phí, tập trung vào quyền riêng tư, chạy hoàn toàn trong trình duyệt của bạn. Nó cung cấp hơn 80 công cụ chuyên nghiệp để chỉnh sửa, chuyển đổi, hợp nhất, tách và bảo mật tệp PDF mà không cần tải lên bất kỳ máy chủ nào."
         },
         "isFree": {
-          "question": "AwesomePDF có thực sự miễn phí không?",
-          "answer": "Có, AwesomePDF hoàn toàn miễn phí sử dụng. Không có chi phí ẩn, không có gói cao cấp và không yêu cầu đăng ký. Tất cả các tính năng đều có sẵn cho mọi người."
+          "question": "AwsomePDF có thực sự miễn phí không?",
+          "answer": "Có, AwsomePDF hoàn toàn miễn phí sử dụng. Không có chi phí ẩn, không có gói cao cấp và không yêu cầu đăng ký. Tất cả các tính năng đều có sẵn cho mọi người."
         },
         "account": {
           "question": "Tôi có cần tạo tài khoản không?",
-          "answer": "Không, bạn không cần tạo tài khoản hay đăng ký để sử dụng AwesomePDF. Chỉ cần truy cập trang web và bắt đầu sử dụng bất kỳ công cụ nào ngay lập tức."
+          "answer": "Không, bạn không cần tạo tài khoản hay đăng ký để sử dụng AwsomePDF. Chỉ cần truy cập trang web và bắt đầu sử dụng bất kỳ công cụ nào ngay lập tức."
         }
       },
       "privacy": {
@@ -1176,8 +1176,8 @@
           "answer": "Không, tệp của bạn không bao giờ bị tải lên bất kỳ máy chủ nào. Tất cả quá trình xử lý PDF diễn ra cục bộ trong trình duyệt của bạn bằng JavaScript và WebAssembly. tệp của bạn không bao giờ rời khỏi thiết bị."
         },
         "safe": {
-          "question": "Có an toàn khi sử dụng AwesomePDF với các tài liệu nhạy cảm không?",
-          "answer": "Có, AwesomePDF được thiết kế chú trọng đến quyền riêng tư. Vì tất cả quá trình xử lý diễn ra cục bộ trong trình duyệt của bạn, các tài liệu nhạy cảm vẫn ở trên thiết bị của bạn và không bao giờ được truyền qua internet."
+          "question": "Có an toàn khi sử dụng AwsomePDF với các tài liệu nhạy cảm không?",
+          "answer": "Có, AwsomePDF được thiết kế chú trọng đến quyền riêng tư. Vì tất cả quá trình xử lý diễn ra cục bộ trong trình duyệt của bạn, các tài liệu nhạy cảm vẫn ở trên thiết bị của bạn và không bao giờ được truyền qua internet."
         },
         "storage": {
           "question": "Điều gì xảy ra với các tệp của tôi sau khi xử lý?",
@@ -1187,7 +1187,7 @@
       "features": {
         "operations": {
           "question": "Tôi có thể thực hiện những thao tác PDF nào?",
-          "answer": "AwesomePDF cung cấp hơn 67 công cụ bao gồm: gộp, chia nhỏ, nén, chuyển đổi (sang/từ hình ảnh, văn bản, JSON), chỉnh sửa, chú thích, ký tên, thêm hình mờ, mã hóa/giải mã, OCR, và nhiều công cụ khác."
+          "answer": "AwsomePDF cung cấp hơn 67 công cụ bao gồm: gộp, chia nhỏ, nén, chuyển đổi (sang/từ hình ảnh, văn bản, JSON), chỉnh sửa, chú thích, ký tên, thêm hình mờ, mã hóa/giải mã, OCR, và nhiều công cụ khác."
         },
         "merge": {
           "question": "Tôi có thể gộp nhiều tệp PDF lại với nhau không?",
@@ -1195,17 +1195,17 @@
         },
         "images": {
           "question": "Tôi có thể chuyển đổi hình ảnh sang PDF không?",
-          "answer": "Có, AwesomePDF hỗ trợ chuyển đổi nhiều định dạng hình ảnh khác nhau (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) sang PDF. Bạn có thể chuyển đổi một hoặc nhiều hình ảnh cùng một lúc."
+          "answer": "Có, AwsomePDF hỗ trợ chuyển đổi nhiều định dạng hình ảnh khác nhau (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) sang PDF. Bạn có thể chuyển đổi một hoặc nhiều hình ảnh cùng một lúc."
         },
         "edit": {
           "question": "Tôi có thể chỉnh sửa văn bản trong PDF không?",
-          "answer": "AwesomePDF cung cấp các công cụ chú thích và chỉnh sửa bao gồm làm nổi bật, thêm văn bản, hình vẽ, hình ảnh và chữ ký. Để chỉnh sửa văn bản đầy đủ, công cụ PDF Editor cung cấp các khả năng chú thích toàn diện."
+          "answer": "AwsomePDF cung cấp các công cụ chú thích và chỉnh sửa bao gồm làm nổi bật, thêm văn bản, hình vẽ, hình ảnh và chữ ký. Để chỉnh sửa văn bản đầy đủ, công cụ PDF Editor cung cấp các khả năng chú thích toàn diện."
         }
       },
       "technical": {
         "browsers": {
           "question": "Những trình duyệt nào được hỗ trợ?",
-          "answer": "AwesomePDF hoạt động trên tất cả các trình duyệt hiện đại bao gồm Chrome, Firefox, Safari và Edge. Chúng tôi khuyên bạn nên sử dụng phiên bản trình duyệt mới nhất để có trải nghiệm tốt nhất."
+          "answer": "AwsomePDF hoạt động trên tất cả các trình duyệt hiện đại bao gồm Chrome, Firefox, Safari và Edge. Chúng tôi khuyên bạn nên sử dụng phiên bản trình duyệt mới nhất để có trải nghiệm tốt nhất."
         },
         "sizeLimit": {
           "question": "Có giới hạn dung lượng tệp không?",
@@ -1216,14 +1216,14 @@
           "answer": "Vì tất cả quá trình xử lý đều diễn ra trong trình duyệt của bạn, hiệu suất phụ thuộc vào khả năng thiết bị của bạn. Các tệp lớn yêu cầu nhiều bộ nhớ và sức mạnh xử lý hơn. Để có kết quả tốt nhất, hãy đóng các tab trình duyệt và ứng dụng khác."
         },
         "offline": {
-          "question": "AwesomePDF có hoạt động ngoại tuyến không?",
-          "answer": "Hiện tại, AwesomePDF yêu cầu kết nối internet để tải ứng dụng. Tuy nhiên, sau khi đã tải xong, quá trình xử lý PDF tự nó diễn ra cục bộ và không cần kết nối."
+          "question": "AwsomePDF có hoạt động ngoại tuyến không?",
+          "answer": "Hiện tại, AwsomePDF yêu cầu kết nối internet để tải ứng dụng. Tuy nhiên, sau khi đã tải xong, quá trình xử lý PDF tự nó diễn ra cục bộ và không cần kết nối."
         }
       },
       "languages": {
         "supported": {
           "question": "Những ngôn ngữ nào được hỗ trợ?",
-          "answer": "AwesomePDF hỗ trợ {languages} ngôn ngữ: {languageNames}. Tiếng Ả Rập hỗ trợ bố cục từ phải sang trái."
+          "answer": "AwsomePDF hỗ trợ {languages} ngôn ngữ: {languageNames}. Tiếng Ả Rập hỗ trợ bố cục từ phải sang trái."
         },
         "change": {
           "question": "Làm thế nào để tôi thay đổi ngôn ngữ?",
@@ -1254,7 +1254,7 @@
       },
       "fast": {
         "title": "Nhanh chóng & Hiệu quả",
-        "description": "Được hỗ trợ bởi các công nghệ web hiện đại, AwesomePDF mang lại tốc độ xử lý PDF cực nhanh mà không cần tải lên hoặc tải xuống."
+        "description": "Được hỗ trợ bởi các công nghệ web hiện đại, AwsomePDF mang lại tốc độ xử lý PDF cực nhanh mà không cần tải lên hoặc tải xuống."
       },
       "accessible": {
         "title": "Truy cập mọi nơi",
@@ -1262,7 +1262,7 @@
       },
       "free": {
         "title": "Miễn phí Mãi mãi",
-        "description": "AwesomePDF hoàn toàn miễn phí sử dụng mà không có phí ẩn, không cần đăng ký và không giới hạn lượt sử dụng."
+        "description": "AwsomePDF hoàn toàn miễn phí sử dụng mà không có phí ẩn, không cần đăng ký và không giới hạn lượt sử dụng."
       },
       "openSource": {
         "title": "Mã nguồn Mở",
@@ -1299,8 +1299,7 @@
     "methods": {
       "email": {
         "title": "Thư điện tử",
-        "description": "Gửi email cho chúng tôi và chúng tôi sẽ trả lời trong vòng 24-48 giờ.",
-        "action": "contact@pdfcraft.app"
+        "description": "Gửi email cho chúng tôi và chúng tôi sẽ trả lời trong vòng 24-48 giờ."
       },
       "github": {
         "title": "GitHub",
@@ -1309,8 +1308,7 @@
       },
       "twitter": {
         "title": "Twitter",
-        "description": "Theo dõi chúng tôi để nhận cập nhật và thông báo.",
-        "action": "@pdfcraft"
+        "description": "Theo dõi chúng tôi để nhận cập nhật và thông báo."
       }
     },
     "form": {
@@ -1407,7 +1405,7 @@
       "chooseDifferent": "Chọn tệp khác",
       "mixedNotice": "Các tệp này thuộc nhiều loại khác nhau nên không có công cụ nào phù hợp với tất cả. Hãy chọn các tệp cùng một loại, chẳng hạn chỉ PDF hoặc chỉ hình ảnh.",
       "noToolNotice": "Không có công cụ nào mở được tổ hợp tệp này. Hãy thử với ít tệp hơn hoặc loại tệp khác.",
-      "noneUsable": "Không thể sử dụng bất kỳ tệp nào đã chọn. AwesomePDF hỗ trợ PDF, hình ảnh và các tài liệu phổ biến như Word, Excel và PowerPoint.",
+      "noneUsable": "Không thể sử dụng bất kỳ tệp nào đã chọn. AwsomePDF hỗ trợ PDF, hình ảnh và các tài liệu phổ biến như Word, Excel và PowerPoint.",
       "skipped": "Một số tệp đã bị bỏ qua",
       "readFailed": "Chúng tôi không thể đọc các tệp đó. Vui lòng thử lại.",
       "errors": {
@@ -1493,11 +1491,11 @@
       "clearFilters": "Xóa bộ lọc"
     },
     "share": {
-      "name": "AwesomePDF Share",
+      "name": "AwsomePDF Share",
       "title": "Chia sẻ tệp trực tiếp. Không lưu trữ đám mây.",
       "badge": "Sắp ra mắt",
       "subtitle": "Gửi PDF và các tệp khác trực tiếp giữa các trình duyệt bằng công nghệ ngang hàng. Không cần tài khoản và không lưu trữ đám mây vĩnh viễn.",
-      "planned": "AwesomePDF Share là tính năng đang được lên kế hoạch và chưa khả dụng. Đây là bản xem trước cách tính năng dự kiến hoạt động.",
+      "planned": "AwsomePDF Share là tính năng đang được lên kế hoạch và chưa khả dụng. Đây là bản xem trước cách tính năng dự kiến hoạt động.",
       "stepsTitle": "Dự kiến hoạt động như thế nào",
       "steps": {
         "choose": "Chọn một tệp để gửi.",
@@ -1528,7 +1526,7 @@
     },
     "trust": {
       "title": "Tài liệu của bạn. Quyền kiểm soát của bạn.",
-      "description": "Các thao tác PDF được hỗ trợ chạy cục bộ trong trình duyệt của bạn, nên bạn có thể làm việc với tệp nhạy cảm mà không cần tạo tài khoản. Quyền riêng tư là nguyên tắc cốt lõi của AwesomePDF, và chúng tôi nói rõ khi có điều gì hoạt động khác đi.",
+      "description": "Các thao tác PDF được hỗ trợ chạy cục bộ trong trình duyệt của bạn, nên bạn có thể làm việc với tệp nhạy cảm mà không cần tạo tài khoản. Quyền riêng tư là nguyên tắc cốt lõi của AwsomePDF, và chúng tôi nói rõ khi có điều gì hoạt động khác đi.",
       "items": {
         "private": {
           "title": "Riêng tư từ thiết kế",
@@ -1549,36 +1547,36 @@
     },
     "faq": {
       "title": "Câu hỏi thường gặp",
-      "description": "Giải đáp nhanh về AwesomePDF.",
+      "description": "Giải đáp nhanh về AwsomePDF.",
       "seeAll": "Xem tất cả câu hỏi thường gặp",
       "items": {
         "free": {
-          "question": "AwesomePDF có miễn phí không?",
-          "answer": "Có. Các công cụ PDF trên AwesomePDF miễn phí sử dụng, không cần đăng ký gói hay tạo tài khoản."
+          "question": "AwsomePDF có miễn phí không?",
+          "answer": "Có. Các công cụ PDF trên AwsomePDF miễn phí sử dụng, không cần đăng ký gói hay tạo tài khoản."
         },
         "upload": {
           "question": "Tệp PDF của tôi có bị tải lên máy chủ không?",
-          "answer": "Không. Các công cụ được hỗ trợ xử lý tệp của bạn ngay trong trình duyệt bằng JavaScript và WebAssembly, và AwesomePDF không tải tài liệu của bạn lên máy chủ. Một vài công cụ tải phông chữ, dữ liệu ngôn ngữ hoặc tập lệnh hỗ trợ trong lần dùng đầu tiên; tài liệu của bạn không nằm trong các lượt tải đó. Ứng dụng cũng lưu trên thiết bị của bạn một danh sách ngắn tên các tệp dùng gần đây, bạn có thể xóa bất cứ lúc nào bằng biểu tượng đồng hồ trên đầu trang."
+          "answer": "Không. Các công cụ được hỗ trợ xử lý tệp của bạn ngay trong trình duyệt bằng JavaScript và WebAssembly, và AwsomePDF không tải tài liệu của bạn lên máy chủ. Một vài công cụ tải phông chữ, dữ liệu ngôn ngữ hoặc tập lệnh hỗ trợ trong lần dùng đầu tiên; tài liệu của bạn không nằm trong các lượt tải đó. Ứng dụng cũng lưu trên thiết bị của bạn một danh sách ngắn tên các tệp dùng gần đây, bạn có thể xóa bất cứ lúc nào bằng biểu tượng đồng hồ trên đầu trang."
         },
         "account": {
-          "question": "Tôi có thể dùng AwesomePDF mà không cần tạo tài khoản không?",
+          "question": "Tôi có thể dùng AwsomePDF mà không cần tạo tài khoản không?",
           "answer": "Có. Mở bất kỳ công cụ nào và bắt đầu làm việc ngay. Không cần đăng nhập hay đăng ký."
         },
         "tools": {
           "question": "Có những công cụ PDF nào?",
-          "answer": "AwesomePDF có {count} công cụ trong sáu nhóm: chỉnh sửa và chú thích, chuyển sang PDF, chuyển từ PDF, sắp xếp và quản lý, tối ưu và sửa chữa, và bảo mật PDF. Các công cụ phổ biến gồm gộp, tách, nén, PDF sang Word, chỉnh sửa và ký. Hãy duyệt trong danh mục phía trên hoặc dùng tìm kiếm."
+          "answer": "AwsomePDF có {count} công cụ trong sáu nhóm: chỉnh sửa và chú thích, chuyển sang PDF, chuyển từ PDF, sắp xếp và quản lý, tối ưu và sửa chữa, và bảo mật PDF. Các công cụ phổ biến gồm gộp, tách, nén, PDF sang Word, chỉnh sửa và ký. Hãy duyệt trong danh mục phía trên hoặc dùng tìm kiếm."
         },
         "mobile": {
-          "question": "Tôi có thể dùng AwesomePDF trên thiết bị di động không?",
-          "answer": "Có. AwesomePDF chạy trên các trình duyệt di động hiện đại. Vì tệp được xử lý trên thiết bị của bạn, các tài liệu lớn và tác vụ nặng như OCR hay chuyển đổi Office có thể chậm hơn trên điện thoại."
+          "question": "Tôi có thể dùng AwsomePDF trên thiết bị di động không?",
+          "answer": "Có. AwsomePDF chạy trên các trình duyệt di động hiện đại. Vì tệp được xử lý trên thiết bị của bạn, các tài liệu lớn và tác vụ nặng như OCR hay chuyển đổi Office có thể chậm hơn trên điện thoại."
         },
         "scanned": {
-          "question": "AwesomePDF có hỗ trợ tài liệu quét không?",
+          "question": "AwsomePDF có hỗ trợ tài liệu quét không?",
           "answer": "Có. Công cụ OCR PDF có thể nhận dạng văn bản trên các trang đã quét để PDF có thể tìm kiếm được. Kết quả phụ thuộc vào chất lượng bản quét và ngôn ngữ, và dữ liệu ngôn ngữ OCR được tải về trong lần dùng đầu tiên."
         },
         "share": {
-          "question": "AwesomePDF Share là gì?",
-          "answer": "AwesomePDF Share là tính năng đang được lên kế hoạch và sắp ra mắt, cho phép gửi tệp trực tiếp từ trình duyệt này sang trình duyệt khác qua kết nối ngang hàng được mã hóa. Tính năng này chưa khả dụng và không nằm trong các công cụ được liệt kê ở trên."
+          "question": "AwsomePDF Share là gì?",
+          "answer": "AwsomePDF Share là tính năng đang được lên kế hoạch và sắp ra mắt, cho phép gửi tệp trực tiếp từ trình duyệt này sang trình duyệt khác qua kết nối ngang hàng được mã hóa. Tính năng này chưa khả dụng và không nằm trong các công cụ được liệt kê ở trên."
         }
       }
     },
@@ -1603,7 +1601,7 @@
   "workflow": {
     "title": "Trình xây dựng Quy trình PDF",
     "subtitle": "Tạo quy trình xử lý PDF tùy chỉnh bằng cách kết nối các công cụ",
-    "metaTitle": "Trình tạo quy trình làm việc PDF - AwesomePDF",
+    "metaTitle": "Trình tạo quy trình làm việc PDF - AwsomePDF",
     "metaDescription": "Tạo quy trình xử lý PDF tùy chỉnh bằng cách kết nối trực quan các công cụ. Xây dựng, lưu và tái sử dụng quy trình của bạn.",
     "toolbox": "Hộp Công cụ",
     "dragToAdd": "Kéo công cụ để thêm vào quy trình",

@@ -21,7 +21,7 @@ function DeviceNode({ icon: Icon, label }: { icon: LucideIcon; label: string }) 
 }
 
 /**
- * Preview of AwesomePDF Share. The feature does not exist yet: this section has
+ * Preview of AwsomePDF Share. The feature does not exist yet: this section has
  * no working control, makes no links and shows no transfer in progress.
  */
 export function ShareSection() {

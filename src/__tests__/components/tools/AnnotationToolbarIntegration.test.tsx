@@ -135,8 +135,8 @@ describe('Shipped annotation toolbar integration', () => {
       await waitFor(() => expect(rectangle).toHaveAttribute('aria-pressed', 'false'));
       expect(onChange).toHaveBeenLastCalledWith(null, null);
     } finally { cleanup(); }
-    expect(doc.querySelector('[data-awesomepdf-mount]')).toBeNull();
-    expect(doc.querySelector('[data-awesomepdf-action]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-mount]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-action]')).toBeNull();
   });
 
   it('keeps presets and HEX/RGB/HSB editing on the original active-tool color callback', async () => {

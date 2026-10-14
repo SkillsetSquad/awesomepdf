@@ -1,4 +1,4 @@
-# PDFCraft Static Export Deployment Guide
+# AwsomePDF Static Export Deployment Guide
 
 This project is configured for static export, making it deployable to any static hosting provider.
 
@@ -89,7 +89,7 @@ The `.github/workflows/deploy.yml` workflow handles automatic deployment.
 
 ### 4. Cloudflare Pages
 
-PDFCraft uses a custom asset chunking mechanism to bypass the 25 MiB file size limit on Cloudflare Pages. Large LibreOffice WASM files are automatically split into ~20MB chunks during the build process and reassembled on the client side.
+AwsomePDF uses a custom asset chunking mechanism to bypass the 25 MiB file size limit on Cloudflare Pages. Large LibreOffice WASM files are automatically split into ~20MB chunks during the build process and reassembled on the client side.
 
 **Automatic Deployment:**
 1. Connect repository in [Cloudflare Pages](https://pages.cloudflare.com)
@@ -121,7 +121,7 @@ Open http://localhost:3000
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d
 ```
-Open http://localhost:8080. The local override binds only to `127.0.0.1`; set `AWESOMEPDF_HTTP_PORT` to use another local port. The base Compose file exposes port 80 internally without publishing a host port, so Coolify can route through its proxy without host-port conflicts.
+Open http://localhost:8080. The local override binds only to `127.0.0.1`; set `AWSOMEPDF_HTTP_PORT` to use another local port. The base Compose file exposes port 80 internally without publishing a host port, so Coolify can route through its proxy without host-port conflicts.
 
 **Stop and remove containers:**
 ```bash
@@ -138,7 +138,7 @@ docker compose -f docker-compose.yml -f docker-compose.local.yml down
 | Build variable | Default / purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://awsomepdf.com`; canonical origin without a path |
-| `BASE_PATH` | Empty for root hosting; a prefix such as `/awesomepdf` for subpath hosting |
+| `BASE_PATH` | Empty for root hosting; a prefix such as `/awsomepdf` for subpath hosting |
 | `SOURCE_REVISION` | Optional Git revision recorded in the source manifest |
 
 The Dockerfile declares these arguments and Compose forwards them. Runtime environment changes cannot change exported URLs. If assigning Coolify's `SOURCE_COMMIT` to `SOURCE_REVISION`, enable the Coolify setting that makes the source commit available during builds.
@@ -430,8 +430,8 @@ The following environment variables can be set before building:
 # No required environment variables for static export
 # All processing happens client-side
 
-# Optional: For subpath deployment (e.g. /pdfcraft)
-BASE_PATH=/pdfcraft
+# Optional: For subpath deployment (e.g. /awsomepdf)
+BASE_PATH=/awsomepdf
 
 # Optional: For analytics or custom features
 NEXT_PUBLIC_SITE_URL=https://your-domain.com
@@ -442,25 +442,25 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ## 🌐 Subpath Deployment
 
-PDFCraft supports deployment under a subpath (e.g., `https://your-domain.com/pdfcraft/`). This is useful for hosting the app as a part of a larger website.
+AwsomePDF supports deployment under a subpath (e.g., `https://your-domain.com/awsomepdf/`). This is useful for hosting the app as a part of a larger website.
 
 ### Configuration
 
 The subpath must be specified at **build time** because Next.js needs to bake the paths into the static HTML.
 
-1.  **Environment Variable**: Set `BASE_PATH` (or `NEXT_PUBLIC_BASE_PATH`) to your desired subpath (e.g., `/pdfcraft`).
+1.  **Environment Variable**: Set `BASE_PATH` (or `NEXT_PUBLIC_BASE_PATH`) to your desired subpath (e.g., `/awsomepdf`).
 2.  **Build**: Run `npm run build` with the variable set.
 
 ### Examples
 
 #### Command Line
 ```bash
-BASE_PATH=/pdfcraft npm run build
+BASE_PATH=/awsomepdf npm run build
 ```
 
 #### Docker
 ```bash
-docker build --build-arg BASE_PATH=/pdfcraft -t pdfcraft .
+docker build --build-arg BASE_PATH=/awsomepdf -t awsomepdf .
 ```
 
 #### GitHub Actions
@@ -469,7 +469,7 @@ Update your workflow to include the environment variable in the build step:
 - name: Build with Next.js
   run: npm run build
   env:
-    BASE_PATH: /pdfcraft
+    BASE_PATH: /awsomepdf
 ```
 
 ---
@@ -504,7 +504,7 @@ Update your workflow to include the environment variable in the build step:
 
 ## 🌐 Multi-language Routes
 
-PDFCraft supports multiple languages. The static export generates pages for all locales:
+AwsomePDF supports multiple languages. The static export generates pages for all locales:
 
 | Locale | URL Pattern | Example |
 |--------|-------------|---------|
@@ -547,7 +547,7 @@ The build includes:
 
 ## 📦 LibreOffice WASM Architecture
 
-PDFCraft uses [LibreOffice WASM](https://github.com/nichdiekuh/libreoffice-wasm) (`@matbee/libreoffice-converter`) for document conversion (Word, Excel, PowerPoint, RTF to PDF). Understanding the file serving architecture is important for deployment.
+AwsomePDF uses [LibreOffice WASM](https://github.com/nichdiekuh/libreoffice-wasm) (`@matbee/libreoffice-converter`) for document conversion (Word, Excel, PowerPoint, RTF to PDF). Understanding the file serving architecture is important for deployment.
 
 ### File Layout
 
@@ -574,7 +574,7 @@ The raw WASM binary (`soffice.wasm.bin`, ~147MB) exceeds GitHub's 100MB file siz
 |---|---|---|
 | Development (`npm run dev`) | `predev` → `scripts/decompress-wasm.mjs public` | `public/libreoffice-wasm/` |
 | Production Build (`npm run build`) | `postbuild` → `scripts/decompress-wasm.mjs` | `out/libreoffice-wasm/` |
-| Docker Build | `DOCKER_BUILD=true` skips decompression/chunking; Nginx serves tracked `.bin.gz` files | `/website/pdfcraft${BASE_PATH}/libreoffice-wasm/` |
+| Docker Build | `DOCKER_BUILD=true` skips decompression/chunking; Nginx serves tracked `.bin.gz` files | `/website/awsomepdf${BASE_PATH}/libreoffice-wasm/` |
 
 ### How Each Platform Serves These Files
 
@@ -714,7 +714,7 @@ After deploying, test:
 - [ ] PWA can be installed
 - [ ] Performance is acceptable (< 3s first load)
 
-## AwesomePDF source and canonical origin
+## AwsomePDF source and canonical origin
 
 The production domain is **https://awsomepdf.com** (without the second “e”). Sitemap, robots, canonical URLs, language alternates, structured data and social images use this origin by default. `NEXT_PUBLIC_SITE_URL` can override it for another deployment; pass an origin without a path and use `BASE_PATH` separately for subpaths. Automatic host preview URLs do not override the production origin. The GitHub Pages workflow also defaults to `https://awsomepdf.com`, and `public/CNAME` records the custom domain. DNS must point this domain to the selected host before live crawling can work.
 
@@ -724,4 +724,14 @@ The `prebuild` hook generates `public/source-code.zip`, `LICENSE.txt`, `THIRD_PA
 
 Serve these generated files with the static export. Keep `/[locale]/open-source/` reachable. `SOURCE_REVISION` may optionally label Git-less builds with a revision; the download always contains the actual build source. The canonical-origin setting must be passed at build time, including in Docker via its build argument.
 
-The contact page links to the modified AwesomePDF repository. Set `NEXT_PUBLIC_CONTACT_EMAIL` before building to expose a verified support email address. Without it, email contact stays hidden. The former simulated contact form has been removed; no message backend is introduced.
+The contact page links to the modified AwsomePDF repository. Set `NEXT_PUBLIC_CONTACT_EMAIL` before building to expose a verified support email address. Without it, email contact stays hidden. The former simulated contact form has been removed; no message backend is introduced.
+
+## Package and installation names
+
+Social preview SVG sources live in `public/images/social/`. After editing them, run `npm run generate:social-images` before building to regenerate the committed PNG previews. The renderer is supplied by the installed Next.js dependencies.
+
+The npm package and Rust crate are named `awsomepdf`. The desktop product and window title are **AwsomePDF**, with executable `awsomepdf` and bundle ID `com.skillsetsquad.awsomepdf`. This creates a separate installation from PDFCraft; it does not import the old desktop app's data directory. Web storage migration applies only within the same browser origin and moves preferences, signatures, history, projects, workflows and cached fonts to the AwsomePDF names. Legacy IndexedDB databases remain as backups and are not reimported after records are deleted from the new stores.
+
+Docker serves files from `/website/awsomepdf${BASE_PATH}/`. Rebuild the image to update both the application and Nginx paths. Local preview uses `AWSOMEPDF_HTTP_PORT` (default `8080`). Nix package/module names use `awsomepdf`, `services.awsomepdf` and `AWSOMEPDF_PORT`; update configurations that used the old names. Engine cache names have changed, so assets may be downloaded again on first use.
+
+New certificate packages generated with an empty password field use `awsomepdf`. Existing `.p12` files keep their original passwords; enter that password when importing them.

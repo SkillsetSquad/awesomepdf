@@ -50,7 +50,7 @@ describe('Signature tool feedback', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Select PDF' }));
     const frame = container.querySelector('iframe')!;
     const activate = vi.fn(async () => activated);
-    Object.assign(frame.contentWindow!, { pdfcraftImportSignature: activate });
+    Object.assign(frame.contentWindow!, { awsomepdfImportSignature: activate });
     fireEvent.change(container.querySelector('input[type=file]')!, { target: { files: [new File(['png'], 'Alice.png', { type: 'image/png' })] } });
     await waitFor(() => expect(toast.success).toHaveBeenCalledOnce());
     expect(saveSignature).toHaveBeenCalledWith(expect.objectContaining({ name: 'Alice', width: 70, height: 30, dataUrl: 'data:image/png;base64,aA==' }));

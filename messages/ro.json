@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
+      "title": "AwsomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
       "description": "Îmbină, comprimă, convertește, editează și organizează PDF-uri în câteva secunde. Instrumente PDF gratuite și simple, care rulează în browser, fără înregistrare."
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "Despre",
-      "description": "Află mai multe despre AwesomePDF - setul tău de instrumente PDF gratuit, privat și puternic. Toată procesarea are loc în browser-ul tău."
+      "description": "Află mai multe despre AwsomePDF - setul tău de instrumente PDF gratuit, privat și puternic. Toată procesarea are loc în browser-ul tău."
     },
     "faq": {
       "title": "Întrebări Frecvente",
-      "description": "Găsește răspunsuri la întrebări comune despre AwesomePDF. Învață cum să folosești eficient instrumentele noastre PDF."
+      "description": "Găsește răspunsuri la întrebări comune despre AwsomePDF. Învață cum să folosești eficient instrumentele noastre PDF."
     },
     "privacy": {
       "title": "Politica de Confidențialitate",
-      "description": "Politica de confidențialitate AwesomePDF. Fișierele tale nu părăsesc niciodată dispozitivul - toată procesarea are loc local în browser."
+      "description": "Politica de confidențialitate AwsomePDF. Fișierele tale nu părăsesc niciodată dispozitivul - toată procesarea are loc local în browser."
     },
     "contact": {
       "title": "Contactează-ne",
-      "description": "Ia legătura cu echipa AwesomePDF. Ne-ar plăcea să auzim de la tine."
+      "description": "Ia legătura cu echipa AwsomePDF. Ne-ar plăcea să auzim de la tine."
     },
     "keywords": {
       "pdfTools": "instrumente PDF",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "AwesomePDF",
+    "brand": "AwsomePDF",
     "tagline": "Instrumente PDF Profesionale - Gratuite și Private",
     "navigation": {
       "home": "Acasă",
@@ -100,8 +100,8 @@
       "skipped": "Omis"
     },
     "footer": {
-      "footer": "© 2025 AwesomePDF. Toate drepturile rezervate.",
-      "copyright": "© {year} AwesomePDF. Toate drepturile rezervate.",
+      "footer": "© 2025 AwsomePDF. Toate drepturile rezervate.",
+      "copyright": "© {year} AwsomePDF. Toate drepturile rezervate.",
       "privacyBadge": "100% Privat - Fișierele nu părăsesc niciodată dispozitivul",
       "madeWith": "Creat cu <Heart /> și <Nextjs />",
       "resources": "Resurse",
@@ -110,7 +110,7 @@
       "openSource": "Notificări open source",
       "basedOn": "Bazat pe",
       "downloadError": "Descărcarea codului sursă a eșuat. Încercați din nou.",
-      "sourceDescription": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale.",
+      "sourceDescription": "Descărcați codul sursă al acestei versiuni AwsomePDF, inclusiv configurația de compilare și notificările originale.",
       "description": "Instrumente PDF gratuite în browser pentru munca de zi cu zi. Îmbină, comprimă, convertește, editează și organizează PDF-uri fără să creezi un cont.",
       "brandOf": "O marcă Skillset Squad Private Limited.",
       "toolsHeading": "Instrumente PDF",
@@ -118,7 +118,7 @@
       "legalHeading": "Open source și informații legale",
       "convertPdf": "Convertire PDF",
       "privacyPolicy": "Politica de confidențialitate",
-      "copyrightLine": "© {year} AwesomePDF. O marcă Skillset Squad Private Limited."
+      "copyrightLine": "© {year} AwsomePDF. O marcă Skillset Squad Private Limited."
     },
     "recentFiles": {
       "title": "Fișiere Recente",
@@ -161,7 +161,7 @@
       "finish": "Finalizează",
       "skip": "Omite",
       "stepOf": "din",
-      "welcomeTitle": "Bine ai venit la AwesomePDF!",
+      "welcomeTitle": "Bine ai venit la AwsomePDF!",
       "welcomeMessage": "Dorești un tur scurt pentru a învăța cum să folosești instrumentele noastre PDF? Durează doar un minut.",
       "helpButton": "Tur de Ajutor"
     },
@@ -573,7 +573,7 @@
       "bronzeWax": "Bronz stacojiu antic",
       "enableDoubleKey": "Criptează pentru certificatul de semnare (AES-256)",
       "decryptPasswordHelp": "Parola certificatului",
-      "passwordPlaceholder": "Parola implicită: pdfcraft",
+      "passwordPlaceholder": "Parola implicită: awsomepdf",
       "sealCoordinates": "Centrul sigiliului în puncte PDF: X: {x}, Y: {y}",
       "clickToReposition": "Fă clic sau folosește tastele săgeată. Procentele sunt măsurate din colțul stânga sus.",
       "previewTitle": "Poziția sigiliului pe prima pagină",
@@ -583,7 +583,7 @@
       "certificateDescription": "Opțional. Dacă nu alegi un certificat, se creează unul local.",
       "removeCertificate": "Elimină certificatul de semnare",
       "certificateDownload": "Descarcă certificatul de semnare (.p12)",
-      "passwordHelp": "Deblochează un certificat sau protejează noul .p12. Certificatele noi folosesc pdfcraft dacă acest câmp este gol.",
+      "passwordHelp": "Deblochează un certificat sau protejează noul .p12. Certificatele noi folosesc awsomepdf dacă acest câmp este gol.",
       "localCertificateHelp": "Certificatele locale sunt autosemnate și pot să nu fie acceptate de cititoarele PDF. Păstrează fișierul .p12 descărcat.",
       "encryptedHelp": "Necesită cheia privată a acestui certificat într-un cititor PDF compatibil. Păstrează certificatul .p12 sau .pfx."
     },
@@ -845,7 +845,7 @@
       "copyText": "Copiază textul recunoscut",
       "copied": "Copiat în clipboard",
       "openInEditor": "Deschide în editorul PDF",
-      "openInEditorDesc": "Editează textul și aspectul în editorul AwesomePDF fără descărcare",
+      "openInEditorDesc": "Editează textul și aspectul în editorul AwsomePDF fără descărcare",
       "statsPages": "Pagini",
       "statsWords": "Cuvinte",
       "statsChars": "Caractere",
@@ -1158,16 +1158,16 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "Ce este AwesomePDF?",
-          "answer": "AwesomePDF este un set de instrumente PDF gratuit, axat pe confidențialitate, care rulează în întregime în browser-ul tău. Oferă peste 80 de instrumente profesionale pentru editarea, convertirea, combinarea, divizarea și securizarea fișierelor PDF fără a le încărca pe niciun server."
+          "question": "Ce este AwsomePDF?",
+          "answer": "AwsomePDF este un set de instrumente PDF gratuit, axat pe confidențialitate, care rulează în întregime în browser-ul tău. Oferă peste 80 de instrumente profesionale pentru editarea, convertirea, combinarea, divizarea și securizarea fișierelor PDF fără a le încărca pe niciun server."
         },
         "isFree": {
-          "question": "Este AwesomePDF într-adevăr gratuit?",
-          "answer": "Da, AwesomePDF este complet gratuit. Nu există costuri ascunse, nici abonamente premium și nu este necesară înregistrarea. Toate funcționalitățile sunt disponibile pentru toată lumea."
+          "question": "Este AwsomePDF într-adevăr gratuit?",
+          "answer": "Da, AwsomePDF este complet gratuit. Nu există costuri ascunse, nici abonamente premium și nu este necesară înregistrarea. Toate funcționalitățile sunt disponibile pentru toată lumea."
         },
         "account": {
           "question": "Trebuie să creez un cont?",
-          "answer": "Nu, nu trebuie să vă creați un cont sau să vă înregistrați pentru a utiliza AwesomePDF. Pur și simplu vizitați site-ul web și începeți să utilizați orice instrument imediat."
+          "answer": "Nu, nu trebuie să vă creați un cont sau să vă înregistrați pentru a utiliza AwsomePDF. Pur și simplu vizitați site-ul web și începeți să utilizați orice instrument imediat."
         }
       },
       "privacy": {
@@ -1176,8 +1176,8 @@
           "answer": "Nu, fișierele dumneavoastră nu sunt încărcate niciodată pe niciun server. Toată procesarea PDF are loc local în browserul dumneavoastră folosind JavaScript și WebAssembly. Fișierele dumneavoastră nu părăsesc niciodată dispozitivul."
         },
         "safe": {
-          "question": "Este sigur să folosesc AwesomePDF pentru documente confidențiale?",
-          "answer": "Da, AwesomePDF este conceput cu gândul la confidențialitate. Deoarece toată procesarea are loc local în browserul dumneavoastră, documentele dumneavoastră confidențiale rămân pe dispozitiv și nu sunt transmise niciodată prin internet."
+          "question": "Este sigur să folosesc AwsomePDF pentru documente confidențiale?",
+          "answer": "Da, AwsomePDF este conceput cu gândul la confidențialitate. Deoarece toată procesarea are loc local în browserul dumneavoastră, documentele dumneavoastră confidențiale rămân pe dispozitiv și nu sunt transmise niciodată prin internet."
         },
         "storage": {
           "question": "Ce se întâmplă cu fișierele mele după procesare?",
@@ -1187,7 +1187,7 @@
       "features": {
         "operations": {
           "question": "Ce operațiuni PDF pot efectua?",
-          "answer": "AwesomePDF oferă peste 67 de instrumente, inclusiv: îmbinare, divizare, compresie, conversie (în/din imagini, text, JSON), editare, adnotare, semnare, adăugare filigran, criptare/decriptare, OCR și multe altele."
+          "answer": "AwsomePDF oferă peste 67 de instrumente, inclusiv: îmbinare, divizare, compresie, conversie (în/din imagini, text, JSON), editare, adnotare, semnare, adăugare filigran, criptare/decriptare, OCR și multe altele."
         },
         "merge": {
           "question": "Pot îmbina mai multe fișiere PDF?",
@@ -1195,17 +1195,17 @@
         },
         "images": {
           "question": "Pot converti imagini în PDF?",
-          "answer": "Da, AwesomePDF acceptă conversia diferitelor formate de imagine (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) în PDF. Puteți converti una sau mai multe imagini deodată."
+          "answer": "Da, AwsomePDF acceptă conversia diferitelor formate de imagine (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) în PDF. Puteți converti una sau mai multe imagini deodată."
         },
         "edit": {
           "question": "Pot edita textul într-un PDF?",
-          "answer": "AwesomePDF oferă instrumente de adnotare și editare, inclusiv evidențierea, adăugarea de text, forme, imagini și semnături. Pentru editarea completă a textului, instrumentul PDF Editor oferă capacități extinse de adnotare."
+          "answer": "AwsomePDF oferă instrumente de adnotare și editare, inclusiv evidențierea, adăugarea de text, forme, imagini și semnături. Pentru editarea completă a textului, instrumentul PDF Editor oferă capacități extinse de adnotare."
         }
       },
       "technical": {
         "browsers": {
           "question": "Ce browsere sunt acceptate?",
-          "answer": "AwesomePDF funcționează pe toate browserele moderne, inclusiv Chrome, Firefox, Safari și Edge. Vă recomandăm să utilizați cea mai recentă versiune a browserului dumneavoastră pentru cea mai bună experiență."
+          "answer": "AwsomePDF funcționează pe toate browserele moderne, inclusiv Chrome, Firefox, Safari și Edge. Vă recomandăm să utilizați cea mai recentă versiune a browserului dumneavoastră pentru cea mai bună experiență."
         },
         "sizeLimit": {
           "question": "Există o limită de dimensiune a fișierului?",
@@ -1216,14 +1216,14 @@
           "answer": "Deoarece toată procesarea are loc în browser, performanța depinde de capacitățile dispozitivului dumneavoastră. Fișierele mari necesită mai multă memorie și putere de procesare. Pentru cele mai bune rezultate, închideți alte file de browser și aplicații."
         },
         "offline": {
-          "question": "AwesomePDF funcționează offline?",
-          "answer": "În prezent, AwesomePDF necesită o conexiune la internet pentru a încărca aplicația. Cu toate acestea, odată încărcată, procesarea PDF în sine are loc local și nu necesită o conexiune."
+          "question": "AwsomePDF funcționează offline?",
+          "answer": "În prezent, AwsomePDF necesită o conexiune la internet pentru a încărca aplicația. Cu toate acestea, odată încărcată, procesarea PDF în sine are loc local și nu necesită o conexiune."
         }
       },
       "languages": {
         "supported": {
           "question": "Ce limbi sunt acceptate?",
-          "answer": "AwesomePDF este disponibil în {languages} limbi: {languageNames}. Araba acceptă afișarea de la dreapta la stânga."
+          "answer": "AwsomePDF este disponibil în {languages} limbi: {languageNames}. Araba acceptă afișarea de la dreapta la stânga."
         },
         "change": {
           "question": "Cum schimb limba?",
@@ -1254,7 +1254,7 @@
       },
       "fast": {
         "title": "Rapid și eficient",
-        "description": "Bazat pe tehnologii web moderne, AwesomePDF oferă o procesare ultra-rapidă a PDF-urilor fără a fi nevoie de încărcări sau descărcări."
+        "description": "Bazat pe tehnologii web moderne, AwsomePDF oferă o procesare ultra-rapidă a PDF-urilor fără a fi nevoie de încărcări sau descărcări."
       },
       "accessible": {
         "title": "Accesibil de pretutindeni",
@@ -1262,7 +1262,7 @@
       },
       "free": {
         "title": "Gratuit pentru totdeauna",
-        "description": "AwesomePDF este complet gratuit, fără costuri ascunse, fără înregistrare obligatorie și fără limite de utilizare."
+        "description": "AwsomePDF este complet gratuit, fără costuri ascunse, fără înregistrare obligatorie și fără limite de utilizare."
       },
       "openSource": {
         "title": "Open Source",
@@ -1299,8 +1299,7 @@
     "methods": {
       "email": {
         "title": "E-mail",
-        "description": "Trimite-ne un e-mail și îți vom răspunde în 24-48 de ore.",
-        "action": "contact@pdfcraft.app"
+        "description": "Trimite-ne un e-mail și îți vom răspunde în 24-48 de ore."
       },
       "github": {
         "title": "GitHub",
@@ -1309,8 +1308,7 @@
       },
       "twitter": {
         "title": "Twitter",
-        "description": "Urmărește-ne pentru noutăți și anunțuri.",
-        "action": "@pdfcraft"
+        "description": "Urmărește-ne pentru noutăți și anunțuri."
       }
     },
     "form": {
@@ -1407,7 +1405,7 @@
       "chooseDifferent": "Alege alte fișiere",
       "mixedNotice": "Aceste fișiere sunt de tipuri diferite, așa că niciun instrument nu se potrivește pentru toate. Alege fișiere de un singur tip, de exemplu doar PDF-uri sau doar imagini.",
       "noToolNotice": "Niciun instrument nu poate deschide această combinație de fișiere. Încearcă cu mai puține fișiere sau cu alt tip de fișier.",
-      "noneUsable": "Niciunul dintre fișierele selectate nu poate fi folosit. AwesomePDF funcționează cu PDF-uri, imagini și documente uzuale precum Word, Excel și PowerPoint.",
+      "noneUsable": "Niciunul dintre fișierele selectate nu poate fi folosit. AwsomePDF funcționează cu PDF-uri, imagini și documente uzuale precum Word, Excel și PowerPoint.",
       "skipped": "Unele fișiere au fost omise",
       "readFailed": "Nu am putut citi aceste fișiere. Încearcă din nou.",
       "errors": {
@@ -1493,11 +1491,11 @@
       "clearFilters": "Șterge filtrele"
     },
     "share": {
-      "name": "AwesomePDF Share",
+      "name": "AwsomePDF Share",
       "title": "Partajează fișiere direct. Fără stocare în cloud.",
       "badge": "În curând",
       "subtitle": "Trimite PDF-uri și alte fișiere direct între browsere, folosind tehnologia peer-to-peer. Fără cont și fără stocare permanentă în cloud.",
-      "planned": "AwesomePDF Share este o funcție planificată și nu este încă disponibilă. Aceasta este o previzualizare a modului în care ar urma să funcționeze.",
+      "planned": "AwsomePDF Share este o funcție planificată și nu este încă disponibilă. Aceasta este o previzualizare a modului în care ar urma să funcționeze.",
       "stepsTitle": "Cum este planificat să funcționeze",
       "steps": {
         "choose": "Alege un fișier de trimis.",
@@ -1528,7 +1526,7 @@
     },
     "trust": {
       "title": "Documentele tale. Controlul tău.",
-      "description": "Operațiunile PDF acceptate rulează local în browser, deci poți lucra cu fișiere sensibile fără să creezi un cont. Confidențialitatea este un principiu de bază al AwesomePDF, iar spunem clar când ceva funcționează diferit.",
+      "description": "Operațiunile PDF acceptate rulează local în browser, deci poți lucra cu fișiere sensibile fără să creezi un cont. Confidențialitatea este un principiu de bază al AwsomePDF, iar spunem clar când ceva funcționează diferit.",
       "items": {
         "private": {
           "title": "Confidențial prin concepție",
@@ -1549,36 +1547,36 @@
     },
     "faq": {
       "title": "Întrebări frecvente",
-      "description": "Răspunsuri rapide despre AwesomePDF.",
+      "description": "Răspunsuri rapide despre AwsomePDF.",
       "seeAll": "Vezi toate întrebările",
       "items": {
         "free": {
-          "question": "Este AwesomePDF gratuit?",
-          "answer": "Da. Instrumentele PDF din AwesomePDF sunt gratuite, fără abonament și fără înregistrare."
+          "question": "Este AwsomePDF gratuit?",
+          "answer": "Da. Instrumentele PDF din AwsomePDF sunt gratuite, fără abonament și fără înregistrare."
         },
         "upload": {
           "question": "Sunt fișierele mele PDF încărcate pe un server?",
-          "answer": "Nu. Instrumentele acceptate îți procesează fișierele în browser, folosind JavaScript și WebAssembly, iar AwesomePDF nu încarcă documentele tale pe un server. Câteva instrumente descarcă fonturi, date lingvistice sau scripturi auxiliare la prima utilizare; documentele tale nu fac parte din aceste descărcări. Aplicația păstrează pe dispozitivul tău și o scurtă listă cu numele fișierelor folosite recent, pe care o poți șterge oricând din pictograma ceas din antet."
+          "answer": "Nu. Instrumentele acceptate îți procesează fișierele în browser, folosind JavaScript și WebAssembly, iar AwsomePDF nu încarcă documentele tale pe un server. Câteva instrumente descarcă fonturi, date lingvistice sau scripturi auxiliare la prima utilizare; documentele tale nu fac parte din aceste descărcări. Aplicația păstrează pe dispozitivul tău și o scurtă listă cu numele fișierelor folosite recent, pe care o poți șterge oricând din pictograma ceas din antet."
         },
         "account": {
-          "question": "Pot folosi AwesomePDF fără să creez un cont?",
+          "question": "Pot folosi AwsomePDF fără să creez un cont?",
           "answer": "Da. Deschide orice instrument și începe imediat. Nu există autentificare sau înregistrare."
         },
         "tools": {
           "question": "Ce instrumente PDF sunt disponibile?",
-          "answer": "AwesomePDF include {count} de instrumente în șase grupe: editare și adnotare, conversie în PDF, conversie din PDF, organizare și gestionare, optimizare și reparare, securizare PDF. Printre cele populare se numără îmbinarea, împărțirea, comprimarea, PDF în Word, editarea și semnarea. Răsfoiește-le în directorul de mai sus sau folosește căutarea."
+          "answer": "AwsomePDF include {count} de instrumente în șase grupe: editare și adnotare, conversie în PDF, conversie din PDF, organizare și gestionare, optimizare și reparare, securizare PDF. Printre cele populare se numără îmbinarea, împărțirea, comprimarea, PDF în Word, editarea și semnarea. Răsfoiește-le în directorul de mai sus sau folosește căutarea."
         },
         "mobile": {
-          "question": "Pot folosi AwesomePDF pe dispozitive mobile?",
-          "answer": "Da. AwesomePDF funcționează în browserele mobile moderne. Deoarece fișierele sunt procesate pe dispozitivul tău, documentele mari și sarcinile solicitante, precum OCR sau conversiile Office, pot fi mai lente pe telefon."
+          "question": "Pot folosi AwsomePDF pe dispozitive mobile?",
+          "answer": "Da. AwsomePDF funcționează în browserele mobile moderne. Deoarece fișierele sunt procesate pe dispozitivul tău, documentele mari și sarcinile solicitante, precum OCR sau conversiile Office, pot fi mai lente pe telefon."
         },
         "scanned": {
-          "question": "Acceptă AwesomePDF documente scanate?",
+          "question": "Acceptă AwsomePDF documente scanate?",
           "answer": "Da. Instrumentul OCR PDF poate recunoaște textul din paginile scanate, astfel încât PDF-ul să devină căutabil. Rezultatele depind de calitatea scanării și de limbă, iar datele lingvistice pentru OCR se descarcă la prima utilizare."
         },
         "share": {
-          "question": "Ce este AwesomePDF Share?",
-          "answer": "AwesomePDF Share este o funcție planificată, disponibilă în curând, pentru trimiterea fișierelor direct de la un browser la altul printr-o conexiune peer-to-peer criptată. Nu este încă disponibilă și nu face parte din instrumentele enumerate mai sus."
+          "question": "Ce este AwsomePDF Share?",
+          "answer": "AwsomePDF Share este o funcție planificată, disponibilă în curând, pentru trimiterea fișierelor direct de la un browser la altul printr-o conexiune peer-to-peer criptată. Nu este încă disponibilă și nu face parte din instrumentele enumerate mai sus."
         }
       }
     },
@@ -1603,7 +1601,7 @@
   "workflow": {
     "title": "Constructor de Fluxuri de Lucru PDF",
     "subtitle": "Creează fluxuri personalizate de procesare PDF prin conectarea instrumentelor",
-    "metaTitle": "PDF Workflow Builder - AwesomePDF",
+    "metaTitle": "PDF Workflow Builder - AwsomePDF",
     "metaDescription": "Creează fluxuri personalizate de procesare PDF conectând vizual instrumentele. Construiește, salvează și reutilizează fluxurile tale de lucru.",
     "toolbox": "Cutie de Instrumente",
     "dragToAdd": "Trage instrumentele pentru a le adăuga în fluxul de lucru",

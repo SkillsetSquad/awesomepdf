@@ -5633,7 +5633,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       },
       {
         "question": "Puis-je personnaliser le design du tampon ?",
-        "answer": "Oui. Nous proposons plusieurs modèles comme le filigrane PDFCraft ou un écusson royal, et vous pouvez ajuster le rayon de fusion de la cire et la profondeur d'indentation de la carte normale dans le panneau."
+        "answer": "Oui. Nous proposons plusieurs modèles comme le filigrane AwsomePDF ou un écusson royal, et vous pouvez ajuster le rayon de fusion de la cire et la profondeur d'indentation de la carte normale dans le panneau."
       }
     ]
   },

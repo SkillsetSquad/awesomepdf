@@ -27,7 +27,7 @@ export function SourceCodeDownload({ archiveId }: { archiveId: string }) {
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement('a');
       anchor.href = url;
-      anchor.download = 'awesomepdf-source.zip';
+      anchor.download = 'awsomepdf-source.zip';
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();

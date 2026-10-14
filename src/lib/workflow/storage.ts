@@ -3,11 +3,12 @@
  * Handle saving and loading workflows from localStorage
  */
 
+import { readStorageItem } from '@/lib/storage/brand-migration';
 import { SavedWorkflow, WorkflowNode, WorkflowEdge } from '@/types/workflow';
 import { logger } from '@/lib/utils/logger';
 import { saveBlobFile } from '@/lib/tauri-bridge';
 
-const STORAGE_KEY = 'pdfcraft_workflows';
+const STORAGE_KEY = 'awsomepdf_workflows';
 const MAX_WORKFLOWS = 50;
 
 /**
@@ -17,7 +18,7 @@ export function getSavedWorkflows(): SavedWorkflow[] {
     if (typeof window === 'undefined') return [];
 
     try {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = readStorageItem(localStorage, STORAGE_KEY);
         if (!stored) return [];
 
         const workflows = JSON.parse(stored) as SavedWorkflow[];

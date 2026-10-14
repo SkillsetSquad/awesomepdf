@@ -6761,7 +6761,7 @@ export const toolContentIt: Record<string, ToolContent> = {
       },
       {
         "question": "Posso personalizzare il design del timbro?",
-        "answer": "Sì. Forniamo più design come la filigrana PDFCraft o uno stemma reale e puoi regolare il raggio di fusione della cera e la profondità del rientro della mappa normale nel pannello."
+        "answer": "Sì. Forniamo più design come la filigrana AwsomePDF o uno stemma reale e puoi regolare il raggio di fusione della cera e la profondità del rientro della mappa normale nel pannello."
       }
     ]
   },

@@ -694,7 +694,7 @@ class SignatureScanController {
     elements.cropFrame.replaceChildren(
       ...RESIZE_HANDLES.map(handle => {
         const div = document.createElement("div");
-        div.className = "pdfcraftScanHandle";
+        div.className = "awsomepdfScanHandle";
         div.dataset.handle = handle;
         return div;
       })

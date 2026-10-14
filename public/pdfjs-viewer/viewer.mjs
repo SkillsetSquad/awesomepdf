@@ -24,7 +24,7 @@
  * pdfjsVersion = 5.4.296
  * pdfjsBuild = f56dc8601
  */
-import { SignatureScanController } from "./pdfcraft_signature_scanner.mjs";
+import { SignatureScanController } from "./awsomepdf_signature_scanner.mjs";
 /******/ // The require scope
 /******/ var __webpack_require__ = {};
 /******/ 

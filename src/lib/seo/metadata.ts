@@ -48,7 +48,7 @@ export interface ToolMetadataOptions extends BaseMetadataOptions {
 export function generateBaseMetadata(options: PageMetadataOptions): Metadata {
   const { locale, path = '', title, description, keywords = [], image, noIndex = false } = options;
 
-  const cleanTitle = title.replace(/\s*[-|–—]\s*(?:PDFCraft|AwesomePDF)\s*$/i, '').trim();
+  const cleanTitle = title.replace(/\s*[-|–—]\s*(?:PDFCraft|AwesomePDF|AwsomePDF)\s*$/i, '').trim();
   const fullTitle = cleanTitle.includes(siteConfig.name)
     ? cleanTitle
     : `${cleanTitle} | ${siteConfig.name}`;

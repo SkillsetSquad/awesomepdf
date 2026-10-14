@@ -2652,7 +2652,7 @@
         display:block;
       }
 
-/* PDFCraft: "Scan" tab of the add-signature dialog (pdfcraft_signature_scanner.mjs) */
+/* PDFCraft: "Scan" tab of the add-signature dialog (awsomepdf_signature_scanner.mjs) */
 
 #addSignatureScanContainer{
   display:none;
@@ -2769,7 +2769,7 @@
   border-style:solid;
 }
 
-#addSignatureScanCropFrame .pdfcraftScanHandle{
+#addSignatureScanCropFrame .awsomepdfScanHandle{
   position:absolute;
   width:14px;
   height:14px;
@@ -2779,49 +2779,49 @@
   border-radius:50%;
 }
 
-#addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="nw"]{
+#addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="nw"]{
   inset-block-start:-8px;
   left:-8px;
   cursor:nwse-resize;
 }
 
-#addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="ne"]{
+#addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="ne"]{
   inset-block-start:-8px;
   right:-8px;
   cursor:nesw-resize;
 }
 
-#addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="sw"]{
+#addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="sw"]{
   inset-block-end:-8px;
   left:-8px;
   cursor:nesw-resize;
 }
 
-#addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="se"]{
+#addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="se"]{
   inset-block-end:-8px;
   right:-8px;
   cursor:nwse-resize;
 }
 
 @media (pointer: coarse){
-  #addSignatureScanCropFrame .pdfcraftScanHandle{
+  #addSignatureScanCropFrame .awsomepdfScanHandle{
     width:24px;
     height:24px;
   }
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="nw"],
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="ne"]{
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="nw"],
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="ne"]{
     inset-block-start:-13px;
   }
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="sw"],
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="se"]{
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="sw"],
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="se"]{
     inset-block-end:-13px;
   }
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="nw"],
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="sw"]{
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="nw"],
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="sw"]{
     left:-13px;
   }
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="ne"],
-  #addSignatureScanCropFrame .pdfcraftScanHandle[data-handle="se"]{
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="ne"],
+  #addSignatureScanCropFrame .awsomepdfScanHandle[data-handle="se"]{
     right:-13px;
   }
 }
@@ -2864,7 +2864,7 @@
   margin-inline-start:auto;
 }
 
-#addSignatureScanToolbar .pdfcraftScanIconButton{
+#addSignatureScanToolbar .awsomepdfScanIconButton{
   width:28px;
   height:28px;
   padding:0;
@@ -2874,19 +2874,19 @@
   cursor:pointer;
 }
 
-#addSignatureScanToolbar .pdfcraftScanIconButton:hover{
+#addSignatureScanToolbar .awsomepdfScanIconButton:hover{
   background-color:var(--bg-hover, rgb(0 0 0 / 0.08));
 }
 
-#addSignatureScanToolbar .pdfcraftScanIconButton:focus-visible{
+#addSignatureScanToolbar .awsomepdfScanIconButton:focus-visible{
   outline:2px solid var(--tab-top-line-active-color);
 }
 
-#addSignatureScanToolbar .pdfcraftScanIconButton > span{
+#addSignatureScanToolbar .awsomepdfScanIconButton > span{
   display:none;
 }
 
-#addSignatureScanToolbar .pdfcraftScanIconButton::before{
+#addSignatureScanToolbar .awsomepdfScanIconButton::before{
   content:"";
   display:block;
   width:16px;

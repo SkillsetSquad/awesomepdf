@@ -56,7 +56,7 @@ type PdfViewerWindow = Window & {
   pdfjsLib?: {
     AnnotationEditorType?: { NONE: number };
   };
-  pdfcraftImportSignature?: (blob: Blob, name?: string) => Promise<boolean>;
+  awsomepdfImportSignature?: (blob: Blob, name?: string) => Promise<boolean>;
 };
 
 const VIEWER_HTML = withBasePath('/pdfjs-viewer/viewer.html');
@@ -117,8 +117,8 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
         setSavedSignatureCount(getSavedSignatures().length);
 
         const viewer = iframeRef.current?.contentWindow as PdfViewerWindow | null;
-        const activated = viewer?.pdfcraftImportSignature
-          ? await viewer.pdfcraftImportSignature(dataUrlToBlob(dataUrl), saved.name)
+        const activated = viewer?.awsomepdfImportSignature
+          ? await viewer.awsomepdfImportSignature(dataUrlToBlob(dataUrl), saved.name)
           : false;
         toast.success(activated
           ? `签名“${saved.name}”已成功导入并在当前文档激活！可在页面点击放置并拖动边角自由缩放。`

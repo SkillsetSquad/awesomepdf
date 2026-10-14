@@ -5,6 +5,7 @@
  * Saves and loads project state for resuming interrupted operations
  */
 
+import { openBrandedDatabase } from './brand-migration';
 import { notifyLocalFileRecordsChanged } from './events';
 
 export interface ProjectState {
@@ -27,40 +28,21 @@ export interface ProjectFileMetadata {
   lastModified: number;
 }
 
-const DB_NAME = 'pdfcraft_projects';
-const DB_VERSION = 1;
+const DB_NAME = 'awsomepdf_projects';
 const STORE_NAME = 'projects';
 
 /**
  * Open the IndexedDB database
  */
-function openDatabase(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
-    if (typeof window === 'undefined' || !window.indexedDB) {
-      reject(new Error('IndexedDB not available'));
-      return;
-    }
-
-    const request = indexedDB.open(DB_NAME, DB_VERSION);
-
-    request.onerror = () => {
-      reject(new Error('Failed to open database'));
-    };
-
-    request.onsuccess = () => {
-      resolve(request.result);
-    };
-
-    request.onupgradeneeded = (event) => {
-      const db = (event.target as IDBOpenDBRequest).result;
-      
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
-        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-        store.createIndex('toolId', 'toolId', { unique: false });
-        store.createIndex('status', 'status', { unique: false });
-        store.createIndex('updatedAt', 'updatedAt', { unique: false });
-      }
-    };
+async function openDatabase(): Promise<IDBDatabase> {
+  if (typeof window === 'undefined' || !window.indexedDB) {
+    throw new Error('IndexedDB not available');
+  }
+  return openBrandedDatabase(DB_NAME, STORE_NAME, (db) => {
+    const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+    store.createIndex('toolId', 'toolId', { unique: false });
+    store.createIndex('status', 'status', { unique: false });
+    store.createIndex('updatedAt', 'updatedAt', { unique: false });
   });
 }
 

@@ -28,7 +28,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
   const t = useTranslations('common');
   const [file, setFile] = useState<File | null>(null);
   const [barcodeType, setBarcodeType] = useState<'qr' | 'code128'>('qr');
-  const [value, setValue] = useState('https://pdfcraft.org');
+  const [value, setValue] = useState('https://awsomepdf.com');
   const [xPos, setXPos] = useState(50);
   const [yPos, setYPos] = useState(50);
   const [width] = useState(80);
@@ -176,7 +176,7 @@ export function BatchBarcodeInjectorTool({ className = '' }: BatchBarcodeInjecto
                       type="text"
                       value={value}
                       onChange={(e) => { resetOutput(); setValue(e.target.value); }}
-                      placeholder="e.g. https://pdfcraft.org"
+                      placeholder="e.g. https://awsomepdf.com"
                       className="w-full" id="batchbarcodeinjectortool-field-2" aria-label={t('batchBarcodeInjector.barcodeValueLabel')} disabled={status === 'processing'}
                     />
                   </div>

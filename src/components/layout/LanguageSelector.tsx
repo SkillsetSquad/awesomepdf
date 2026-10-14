@@ -1,5 +1,6 @@
 'use client';
 
+import { readStorageItem } from '@/lib/storage/brand-migration';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Globe, ChevronDown } from 'lucide-react';
@@ -17,7 +18,7 @@ export interface LanguageSelectorProps {
 }
 
 // Storage key for language preference
-const LANGUAGE_PREFERENCE_KEY = 'pdfcraft-language-preference';
+const LANGUAGE_PREFERENCE_KEY = 'awsomepdf-language-preference';
 
 /**
  * Save language preference to localStorage
@@ -38,7 +39,7 @@ export function saveLanguagePreference(locale: Locale): void {
 export function getLanguagePreference(): Locale | null {
   if (typeof window !== 'undefined') {
     try {
-      const stored = localStorage.getItem(LANGUAGE_PREFERENCE_KEY);
+      const stored = readStorageItem(localStorage, LANGUAGE_PREFERENCE_KEY);
       if (stored && locales.includes(stored as Locale)) return stored as Locale;
     } catch {
       // No persisted preference is available.

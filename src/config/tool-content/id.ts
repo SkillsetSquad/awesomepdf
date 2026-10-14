@@ -3379,7 +3379,7 @@ export const toolContentId: Record<string, ToolContent> = {
   },
   {
     "question": "Bisakah saya menyesuaikan desain prangko?",
-    "answer": "Ya. Kami menyediakan beberapa desain seperti tanda air PDFCraft atau lambang Royal, dan Anda dapat menyesuaikan radius leleh lilin dan kedalaman lekukan peta normal di panel."
+    "answer": "Ya. Kami menyediakan beberapa desain seperti tanda air AwsomePDF atau lambang Royal, dan Anda dapat menyesuaikan radius leleh lilin dan kedalaman lekukan peta normal di panel."
   }
 ],
   },

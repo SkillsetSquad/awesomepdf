@@ -15,10 +15,10 @@ export function EditorNotifications({ direction = 'ltr' }: { direction?: 'ltr' |
       const message = (event as CustomEvent<{ message?: string }>).detail?.message;
       if (typeof message === 'string' && message) toast(message, { id: 'direct-editor-notice', duration: 2200 });
     };
-    window.addEventListener('PDFCRAFT_EDITOR_NOTICE', notify);
+    window.addEventListener('AWSOMEPDF_EDITOR_NOTICE', notify);
     return () => {
       observer.disconnect();
-      window.removeEventListener('PDFCRAFT_EDITOR_NOTICE', notify);
+      window.removeEventListener('AWSOMEPDF_EDITOR_NOTICE', notify);
       toast.dismiss('direct-editor-notice');
     };
   }, []);

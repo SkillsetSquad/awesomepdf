@@ -1,8 +1,8 @@
 /**
- * Service Worker for PDFCraft
+ * Service Worker for AwsomePDF
  */
 
-const CACHE_NAME = 'pdfcraft-cache-v2';
+const CACHE_NAME = 'awsomepdf-cache-v2';
 
 // Large assets to cache (Pyodide WASM and Python wheels)
 const PYODIDE_ASSETS = [
@@ -24,7 +24,8 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames
-                    .filter((name) => name !== CACHE_NAME)
+                    .filter((name) => name !== CACHE_NAME &&
+                        (name.startsWith('awsomepdf-cache-') || name.startsWith('pdfcraft-cache-')))
                     .map((name) => caches.delete(name))
             );
         }).then(() => clients.claim())

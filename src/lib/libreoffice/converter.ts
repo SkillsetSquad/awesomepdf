@@ -265,8 +265,7 @@ export class LibreOfficeConverter {
         if (!isIsolated || !hasSAB) {
             if (!isTauri() && typeof window !== 'undefined' && 'serviceWorker' in navigator) {
                 try {
-                    const basePath = window.location.pathname.startsWith('/pdfcraft') ? '/pdfcraft/' : '/';
-                    navigator.serviceWorker.register(`${basePath}coi-serviceworker.js`).then((reg) => {
+                    navigator.serviceWorker.register(withBasePath('/coi-serviceworker.js')).then((reg) => {
                         if (reg.active && !navigator.serviceWorker.controller) {
                             window.location.reload();
                         }

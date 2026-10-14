@@ -6719,7 +6719,7 @@ export const toolContentRo: Record<string, ToolContent> = {
       },
       {
         "question": "Pot personaliza designul ștampilei?",
-        "answer": "Da. Oferim mai multe modele, cum ar fi filigranul PDFCraft sau o creasta regală, și puteți ajusta raza de topire a cerii și adâncimea de indentare a hărții normale în panou."
+        "answer": "Da. Oferim mai multe modele, cum ar fi filigranul AwsomePDF sau o creasta regală, și puteți ajusta raza de topire a cerii și adâncimea de indentare a hărții normale în panou."
       }
     ]
   },

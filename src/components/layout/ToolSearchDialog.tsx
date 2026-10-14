@@ -57,7 +57,7 @@ export default function ToolSearchDialog({ locale, content, open, onOpenChange }
     };
     void refresh();
     const onStorage = (event: StorageEvent) => {
-      if (event.key === null || event.key === 'pdfcraft_recent_files') void refresh();
+      if (event.key === null || event.key === 'awsomepdf_recent_files') void refresh();
     };
     window.addEventListener('storage', onStorage);
     window.addEventListener('focus', refresh);

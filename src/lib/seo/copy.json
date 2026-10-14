@@ -1,7 +1,7 @@
 {
   "zh": {
     "home": {
-      "title": "AwesomePDF – 免费的 PDF 合并、压缩与编辑工具",
+      "title": "AwsomePDF – 免费的 PDF 合并、压缩与编辑工具",
       "description": "几秒钟内合并、压缩、转换、编辑和整理 PDF。免费、简单、在浏览器中运行的 PDF 工具，无需注册。"
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "关于我们",
-      "description": "了解 AwesomePDF - 您免费、私密且强大的 PDF 工具箱。所有处理都在您的浏览器中进行。"
+      "description": "了解 AwsomePDF - 您免费、私密且强大的 PDF 工具箱。所有处理都在您的浏览器中进行。"
     },
     "faq": {
       "title": "常见问题",
-      "description": "查找有关 AwesomePDF 的常见问题解答。了解如何有效使用我们的 PDF 工具。"
+      "description": "查找有关 AwsomePDF 的常见问题解答。了解如何有效使用我们的 PDF 工具。"
     },
     "privacy": {
       "title": "隐私政策",
-      "description": "AwesomePDF 隐私政策。您的文件永远不会离开您的设备 - 所有处理都在本地浏览器中进行。"
+      "description": "AwsomePDF 隐私政策。您的文件永远不会离开您的设备 - 所有处理都在本地浏览器中进行。"
     },
     "contact": {
       "title": "联系我们",
-      "description": "联系 AwesomePDF 团队。我们很乐意听取您的意见。"
+      "description": "联系 AwsomePDF 团队。我们很乐意听取您的意见。"
     },
     "keywords": {
       "pdfTools": "PDF 工具",
@@ -74,12 +74,12 @@
     },
     "openSource": {
       "title": "开源声明",
-      "description": "下载此部署版本的 AwesomePDF 源代码，包括构建配置和原始声明。"
+      "description": "下载此部署版本的 AwsomePDF 源代码，包括构建配置和原始声明。"
     }
   },
   "ja": {
     "home": {
-      "title": "AwesomePDF – 結合・圧縮・編集ができる無料のPDFツール",
+      "title": "AwsomePDF – 結合・圧縮・編集ができる無料のPDFツール",
       "description": "PDFの結合、圧縮、変換、編集、整理を数秒で。ブラウザで動く無料のシンプルなPDFツール。登録は不要です。"
     },
     "tools": {
@@ -88,19 +88,19 @@
     },
     "about": {
       "title": "私たちについて",
-      "description": "AwesomePDFについて - 無料でプライベートな強力なPDFツールキット。すべての処理はブラウザ内で行われます。"
+      "description": "AwsomePDFについて - 無料でプライベートな強力なPDFツールキット。すべての処理はブラウザ内で行われます。"
     },
     "faq": {
       "title": "よくある質問",
-      "description": "AwesomePDFに関するよくある質問の回答。PDFツールを効果的に使用する方法をご覧ください。"
+      "description": "AwsomePDFに関するよくある質問の回答。PDFツールを効果的に使用する方法をご覧ください。"
     },
     "privacy": {
       "title": "プライバシーポリシー",
-      "description": "AwesomePDFプライバシーポリシー。ファイルはデバイスから離れることはありません - すべての処理はローカルブラウザで行われます。"
+      "description": "AwsomePDFプライバシーポリシー。ファイルはデバイスから離れることはありません - すべての処理はローカルブラウザで行われます。"
     },
     "contact": {
       "title": "お問い合わせ",
-      "description": "AwesomePDFチームにお問い合わせください。ご意見をお待ちしております。"
+      "description": "AwsomePDFチームにお問い合わせください。ご意見をお待ちしております。"
     },
     "keywords": {
       "pdfTools": "PDFツール",
@@ -152,12 +152,12 @@
     },
     "openSource": {
       "title": "オープンソースの通知",
-      "description": "この版のAwesomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。"
+      "description": "この版のAwsomePDFのソースコード、ビルド設定、元の通知をダウンロードできます。"
     }
   },
   "de": {
     "home": {
-      "title": "AwesomePDF – kostenlose PDF-Werkzeuge zum Zusammenfügen, Komprimieren und Bearbeiten",
+      "title": "AwsomePDF – kostenlose PDF-Werkzeuge zum Zusammenfügen, Komprimieren und Bearbeiten",
       "description": "PDFs in Sekunden zusammenfügen, komprimieren, konvertieren, bearbeiten und organisieren. Kostenlose, einfache PDF-Werkzeuge im Browser, ohne Anmeldung."
     },
     "tools": {
@@ -166,19 +166,19 @@
     },
     "about": {
       "title": "Über uns",
-      "description": "Erfahren Sie mehr über AwesomePDF - Ihr kostenloses, privates und leistungsstarkes PDF-Toolkit. Alle Verarbeitung erfolgt in Ihrem Browser."
+      "description": "Erfahren Sie mehr über AwsomePDF - Ihr kostenloses, privates und leistungsstarkes PDF-Toolkit. Alle Verarbeitung erfolgt in Ihrem Browser."
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
-      "description": "Finden Sie Antworten auf häufige Fragen zu AwesomePDF. Erfahren Sie, wie Sie unsere PDF-Werkzeuge effektiv nutzen können."
+      "description": "Finden Sie Antworten auf häufige Fragen zu AwsomePDF. Erfahren Sie, wie Sie unsere PDF-Werkzeuge effektiv nutzen können."
     },
     "privacy": {
       "title": "Datenschutzrichtlinie",
-      "description": "AwesomePDF Datenschutzrichtlinie. Ihre Dateien verlassen Ihr Gerät nie - alle Verarbeitung erfolgt lokal in Ihrem Browser."
+      "description": "AwsomePDF Datenschutzrichtlinie. Ihre Dateien verlassen Ihr Gerät nie - alle Verarbeitung erfolgt lokal in Ihrem Browser."
     },
     "contact": {
       "title": "Kontakt",
-      "description": "Kontaktieren Sie das AwesomePDF-Team. Wir freuen uns auf Ihre Nachricht."
+      "description": "Kontaktieren Sie das AwsomePDF-Team. Wir freuen uns auf Ihre Nachricht."
     },
     "keywords": {
       "pdfTools": "PDF-Werkzeuge",
@@ -230,12 +230,12 @@
     },
     "openSource": {
       "title": "Open-Source-Hinweise",
-      "description": "Laden Sie den Quellcode dieser bereitgestellten AwesomePDF-Version einschließlich Build-Konfiguration und ursprünglicher Hinweise herunter."
+      "description": "Laden Sie den Quellcode dieser bereitgestellten AwsomePDF-Version einschließlich Build-Konfiguration und ursprünglicher Hinweise herunter."
     }
   },
   "pl": {
     "home": {
-      "title": "AwesomePDF – darmowe narzędzia PDF do łączenia, kompresji i edycji",
+      "title": "AwsomePDF – darmowe narzędzia PDF do łączenia, kompresji i edycji",
       "description": "Łącz, kompresuj, konwertuj, edytuj i porządkuj pliki PDF w kilka sekund. Darmowe, proste narzędzia działające w przeglądarce, bez rejestracji."
     },
     "tools": {
@@ -243,20 +243,20 @@
       "description": "Darmowe narzędzia PDF do łączenia, dzielenia, kompresji, konwersji, edycji i ochrony dokumentów w przeglądarce. Bez konta i przesyłania plików na serwer."
     },
     "about": {
-      "title": "O AwesomePDF",
-      "description": "Dowiedz się o AwesomePDF — darmowym, prywatnym i zaawansowanym zestawie narzędzi PDF. Całe przetwarzanie odbywa się w Twojej przeglądarce."
+      "title": "O AwsomePDF",
+      "description": "Dowiedz się o AwsomePDF — darmowym, prywatnym i zaawansowanym zestawie narzędzi PDF. Całe przetwarzanie odbywa się w Twojej przeglądarce."
     },
     "faq": {
       "title": "Często zadawane pytania",
-      "description": "Znajdź odpowiedzi na często zadawane pytania dotyczące AwesomePDF. Dowiedz się, jak efektywnie korzystać z naszych narzędzi PDF."
+      "description": "Znajdź odpowiedzi na często zadawane pytania dotyczące AwsomePDF. Dowiedz się, jak efektywnie korzystać z naszych narzędzi PDF."
     },
     "privacy": {
       "title": "Polityka prywatności",
-      "description": "Polityka prywatności AwesomePDF. Twoje pliki nigdy nie opuszczają Twojego urządzenia – całe przetwarzanie odbywa się lokalnie w Twojej przeglądarce."
+      "description": "Polityka prywatności AwsomePDF. Twoje pliki nigdy nie opuszczają Twojego urządzenia – całe przetwarzanie odbywa się lokalnie w Twojej przeglądarce."
     },
     "contact": {
       "title": "Skontaktuj się z nami",
-      "description": "Skontaktuj się z zespołem AwesomePDF. Chcielibyśmy usłyszeć od ciebie."
+      "description": "Skontaktuj się z zespołem AwsomePDF. Chcielibyśmy usłyszeć od ciebie."
     },
     "keywords": {
       "pdfTools": "narzędzia PDF",
@@ -273,7 +273,7 @@
       "home": "Strona główna",
       "tools": "Narzędzia",
       "workflow": "Przepływ pracy",
-      "about": "O AwesomePDF",
+      "about": "O AwsomePDF",
       "faq": "Często zadawane pytania",
       "privacy": "Prywatność",
       "contact": "Kontakt",
@@ -308,12 +308,12 @@
     },
     "openSource": {
       "title": "Informacje o otwartym oprogramowaniu",
-      "description": "Pobierz kod źródłowy wdrożonej wersji AwesomePDF, w tym konfigurację kompilacji i oryginalne informacje."
+      "description": "Pobierz kod źródłowy wdrożonej wersji AwsomePDF, w tym konfigurację kompilacji i oryginalne informacje."
     }
   },
   "pt": {
     "home": {
-      "title": "AwesomePDF – ferramentas PDF gratuitas para juntar, comprimir e editar",
+      "title": "AwsomePDF – ferramentas PDF gratuitas para juntar, comprimir e editar",
       "description": "Junte, comprima, converta, edite e organize PDFs em segundos. Ferramentas PDF gratuitas e simples, que funcionam no navegador e não exigem cadastro."
     },
     "tools": {
@@ -322,19 +322,19 @@
     },
     "about": {
       "title": "Sobre Nós",
-      "description": "Conheça o AwesomePDF - seu kit de ferramentas PDF gratuito, privado e poderoso. Todo o processamento acontece no seu navegador."
+      "description": "Conheça o AwsomePDF - seu kit de ferramentas PDF gratuito, privado e poderoso. Todo o processamento acontece no seu navegador."
     },
     "faq": {
       "title": "Perguntas Frequentes",
-      "description": "Encontre respostas para perguntas comuns sobre o AwesomePDF. Aprenda a usar nossas ferramentas PDF de forma eficaz."
+      "description": "Encontre respostas para perguntas comuns sobre o AwsomePDF. Aprenda a usar nossas ferramentas PDF de forma eficaz."
     },
     "privacy": {
       "title": "Política de Privacidade",
-      "description": "Política de privacidade do AwesomePDF. Seus arquivos nunca saem do seu dispositivo - todo o processamento acontece localmente no seu navegador."
+      "description": "Política de privacidade do AwsomePDF. Seus arquivos nunca saem do seu dispositivo - todo o processamento acontece localmente no seu navegador."
     },
     "contact": {
       "title": "Contato",
-      "description": "Entre em contato com a equipe do AwesomePDF. Adoraríamos ouvir você."
+      "description": "Entre em contato com a equipe do AwsomePDF. Adoraríamos ouvir você."
     },
     "keywords": {
       "pdfTools": "ferramentas PDF",
@@ -386,12 +386,12 @@
     },
     "openSource": {
       "title": "Avisos de código aberto",
-      "description": "Baixe o código-fonte desta versão do AwesomePDF, incluindo a configuração de compilação e os avisos originais."
+      "description": "Baixe o código-fonte desta versão do AwsomePDF, incluindo a configuração de compilação e os avisos originais."
     }
   },
   "en": {
     "home": {
-      "title": "AwesomePDF – Free PDF Tools to Merge, Compress & Edit",
+      "title": "AwsomePDF – Free PDF Tools to Merge, Compress & Edit",
       "description": "Merge, split, compress, convert and edit PDFs free online. Private browser processing, no registration and no file uploads to a server."
     },
     "tools": {
@@ -400,19 +400,19 @@
     },
     "about": {
       "title": "About",
-      "description": "Learn about AwesomePDF - your free, private, and powerful PDF toolkit. All processing happens in your browser."
+      "description": "Learn about AwsomePDF - your free, private, and powerful PDF toolkit. All processing happens in your browser."
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "description": "Find answers to common questions about AwesomePDF. Learn how to use our PDF tools effectively."
+      "description": "Find answers to common questions about AwsomePDF. Learn how to use our PDF tools effectively."
     },
     "privacy": {
       "title": "Privacy Policy",
-      "description": "AwesomePDF privacy policy. Your files never leave your device - all processing happens locally in your browser."
+      "description": "AwsomePDF privacy policy. Your files never leave your device - all processing happens locally in your browser."
     },
     "contact": {
       "title": "Contact Us",
-      "description": "Get in touch with AwesomePDF team. We'd love to hear from you."
+      "description": "Get in touch with AwsomePDF team. We'd love to hear from you."
     },
     "keywords": {
       "pdfTools": "PDF tools",
@@ -464,12 +464,12 @@
     },
     "openSource": {
       "title": "Open-source notices",
-      "description": "Download the source code for this deployed version of AwesomePDF, including its build configuration and original notices."
+      "description": "Download the source code for this deployed version of AwsomePDF, including its build configuration and original notices."
     }
   },
   "it": {
     "home": {
-      "title": "AwesomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
+      "title": "AwsomePDF – strumenti PDF gratuiti per unire, comprimere e modificare",
       "description": "Unisci, comprimi, converti, modifica e organizza i PDF in pochi secondi. Strumenti PDF gratuiti e semplici, nel browser e senza registrazione."
     },
     "tools": {
@@ -478,19 +478,19 @@
     },
     "about": {
       "title": "Informazioni",
-      "description": "Scopri AwesomePDF: il tuo kit di strumenti PDF gratuito, privato e potente. Tutto l'elaborazione avviene nel tuo browser."
+      "description": "Scopri AwsomePDF: il tuo kit di strumenti PDF gratuito, privato e potente. Tutto l'elaborazione avviene nel tuo browser."
     },
     "faq": {
       "title": "Domande Frequenti",
-      "description": "Trova risposte alle domande più comuni su AwesomePDF. Impara a utilizzare efficacemente i nostri strumenti PDF."
+      "description": "Trova risposte alle domande più comuni su AwsomePDF. Impara a utilizzare efficacemente i nostri strumenti PDF."
     },
     "privacy": {
       "title": "Informativa sulla Privacy",
-      "description": "Informativa sulla privacy di AwesomePDF. I tuoi file non lasciano mai il tuo dispositivo: tutto avviene localmente nel tuo browser."
+      "description": "Informativa sulla privacy di AwsomePDF. I tuoi file non lasciano mai il tuo dispositivo: tutto avviene localmente nel tuo browser."
     },
     "contact": {
       "title": "Contattaci",
-      "description": "Mettiti in contatto con il team di AwesomePDF. Ci farebbe piacere sentirti."
+      "description": "Mettiti in contatto con il team di AwsomePDF. Ci farebbe piacere sentirti."
     },
     "keywords": {
       "pdfTools": "strumenti PDF",
@@ -542,12 +542,12 @@
     },
     "openSource": {
       "title": "Avvisi open source",
-      "description": "Scarica il codice sorgente di questa versione di AwesomePDF, inclusi la configurazione di compilazione e gli avvisi originali."
+      "description": "Scarica il codice sorgente di questa versione di AwsomePDF, inclusi la configurazione di compilazione e gli avvisi originali."
     }
   },
   "fr": {
     "home": {
-      "title": "AwesomePDF – outils PDF gratuits pour fusionner, compresser et modifier",
+      "title": "AwsomePDF – outils PDF gratuits pour fusionner, compresser et modifier",
       "description": "Fusionnez, compressez, convertissez, modifiez et organisez vos PDF en quelques secondes. Des outils PDF gratuits et simples, dans votre navigateur, sans inscription."
     },
     "tools": {
@@ -556,19 +556,19 @@
     },
     "about": {
       "title": "À Propos",
-      "description": "Découvrez AwesomePDF - votre boîte à outils PDF gratuite, privée et puissante. Tout le traitement se fait dans votre navigateur."
+      "description": "Découvrez AwsomePDF - votre boîte à outils PDF gratuite, privée et puissante. Tout le traitement se fait dans votre navigateur."
     },
     "faq": {
       "title": "Questions Fréquentes",
-      "description": "Trouvez des réponses aux questions courantes sur AwesomePDF. Apprenez à utiliser efficacement nos outils PDF."
+      "description": "Trouvez des réponses aux questions courantes sur AwsomePDF. Apprenez à utiliser efficacement nos outils PDF."
     },
     "privacy": {
       "title": "Politique de Confidentialité",
-      "description": "Politique de confidentialité de AwesomePDF. Vos fichiers ne quittent jamais votre appareil - tout le traitement se fait localement dans votre navigateur."
+      "description": "Politique de confidentialité de AwsomePDF. Vos fichiers ne quittent jamais votre appareil - tout le traitement se fait localement dans votre navigateur."
     },
     "contact": {
       "title": "Contactez-nous",
-      "description": "Contactez l'équipe AwesomePDF. Nous serions ravis de vous entendre."
+      "description": "Contactez l'équipe AwsomePDF. Nous serions ravis de vous entendre."
     },
     "keywords": {
       "pdfTools": "outils PDF",
@@ -620,12 +620,12 @@
     },
     "openSource": {
       "title": "Mentions open source",
-      "description": "Téléchargez le code source de cette version déployée d’AwesomePDF, avec sa configuration de compilation et les mentions originales."
+      "description": "Téléchargez le code source de cette version déployée d’AwsomePDF, avec sa configuration de compilation et les mentions originales."
     }
   },
   "ro": {
     "home": {
-      "title": "AwesomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
+      "title": "AwsomePDF – instrumente PDF gratuite pentru îmbinare, comprimare și editare",
       "description": "Îmbină, comprimă, convertește, editează și organizează PDF-uri în câteva secunde. Instrumente PDF gratuite și simple, care rulează în browser, fără înregistrare."
     },
     "tools": {
@@ -634,19 +634,19 @@
     },
     "about": {
       "title": "Despre",
-      "description": "Află mai multe despre AwesomePDF - setul tău de instrumente PDF gratuit, privat și puternic. Toată procesarea are loc în browser-ul tău."
+      "description": "Află mai multe despre AwsomePDF - setul tău de instrumente PDF gratuit, privat și puternic. Toată procesarea are loc în browser-ul tău."
     },
     "faq": {
       "title": "Întrebări Frecvente",
-      "description": "Găsește răspunsuri la întrebări comune despre AwesomePDF. Învață cum să folosești eficient instrumentele noastre PDF."
+      "description": "Găsește răspunsuri la întrebări comune despre AwsomePDF. Învață cum să folosești eficient instrumentele noastre PDF."
     },
     "privacy": {
       "title": "Politica de Confidențialitate",
-      "description": "Politica de confidențialitate AwesomePDF. Fișierele tale nu părăsesc niciodată dispozitivul - toată procesarea are loc local în browser."
+      "description": "Politica de confidențialitate AwsomePDF. Fișierele tale nu părăsesc niciodată dispozitivul - toată procesarea are loc local în browser."
     },
     "contact": {
       "title": "Contactează-ne",
-      "description": "Ia legătura cu echipa AwesomePDF. Ne-ar plăcea să auzim de la tine."
+      "description": "Ia legătura cu echipa AwsomePDF. Ne-ar plăcea să auzim de la tine."
     },
     "keywords": {
       "pdfTools": "instrumente PDF",
@@ -698,12 +698,12 @@
     },
     "openSource": {
       "title": "Notificări open source",
-      "description": "Descărcați codul sursă al acestei versiuni AwesomePDF, inclusiv configurația de compilare și notificările originale."
+      "description": "Descărcați codul sursă al acestei versiuni AwsomePDF, inclusiv configurația de compilare și notificările originale."
     }
   },
   "ko": {
     "home": {
-      "title": "AwesomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
+      "title": "AwsomePDF – 병합·압축·편집을 위한 무료 PDF 도구",
       "description": "PDF를 몇 초 만에 병합, 압축, 변환, 편집, 정리하세요. 브라우저에서 실행되는 무료의 간단한 PDF 도구이며 가입이 필요 없습니다."
     },
     "tools": {
@@ -712,19 +712,19 @@
     },
     "about": {
       "title": "회사 소개",
-      "description": "AwesomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
+      "description": "AwsomePDF 소개 - 무료, 비공개, 강력한 PDF 툴킷. 모든 처리는 브라우저에서 이루어집니다."
     },
     "faq": {
       "title": "자주 묻는 질문",
-      "description": "AwesomePDF에 대한 일반적인 질문에 대한 답변을 찾으세요. PDF 도구를 효과적으로 사용하는 방법을 알아보세요."
+      "description": "AwsomePDF에 대한 일반적인 질문에 대한 답변을 찾으세요. PDF 도구를 효과적으로 사용하는 방법을 알아보세요."
     },
     "privacy": {
       "title": "개인정보 보호정책",
-      "description": "AwesomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
+      "description": "AwsomePDF 개인정보 보호정책. 파일은 장치를 떠나지 않습니다 - 모든 처리는 로컬 브라우저에서 이루어집니다."
     },
     "contact": {
       "title": "문의하기",
-      "description": "AwesomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
+      "description": "AwsomePDF 팀에 연락하세요. 여러분의 의견을 듣고 싶습니다."
     },
     "keywords": {
       "pdfTools": "PDF 도구",
@@ -776,12 +776,12 @@
     },
     "openSource": {
       "title": "오픈 소스 고지",
-      "description": "배포된 AwesomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요."
+      "description": "배포된 AwsomePDF 버전의 소스 코드, 빌드 설정 및 원본 고지를 다운로드하세요."
     }
   },
   "zh-TW": {
     "home": {
-      "title": "AwesomePDF – 免費的 PDF 合併、壓縮與編輯工具",
+      "title": "AwsomePDF – 免費的 PDF 合併、壓縮與編輯工具",
       "description": "幾秒內合併、壓縮、轉換、編輯和整理 PDF。免費、簡單、在瀏覽器中執行的 PDF 工具，無需註冊。"
     },
     "tools": {
@@ -790,19 +790,19 @@
     },
     "about": {
       "title": "關於我們",
-      "description": "瞭解 AwesomePDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
+      "description": "瞭解 AwsomePDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
     },
     "faq": {
       "title": "常見問題",
-      "description": "查找有關 AwesomePDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
+      "description": "查找有關 AwsomePDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
     },
     "privacy": {
       "title": "隱私政策",
-      "description": "AwesomePDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
+      "description": "AwsomePDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
     },
     "contact": {
       "title": "聯絡我們",
-      "description": "聯繫 AwesomePDF 團隊。我們很樂意聽取您的意見。"
+      "description": "聯繫 AwsomePDF 團隊。我們很樂意聽取您的意見。"
     },
     "keywords": {
       "pdfTools": "PDF 工具",
@@ -854,12 +854,12 @@
     },
     "openSource": {
       "title": "開源聲明",
-      "description": "下載此部署版本的 AwesomePDF 原始碼，包括建置設定和原始聲明。"
+      "description": "下載此部署版本的 AwsomePDF 原始碼，包括建置設定和原始聲明。"
     }
   },
   "vi": {
     "home": {
-      "title": "AwesomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
+      "title": "AwsomePDF – công cụ PDF miễn phí để gộp, nén và chỉnh sửa",
       "description": "Gộp, nén, chuyển đổi, chỉnh sửa và sắp xếp PDF chỉ trong vài giây. Công cụ PDF miễn phí, đơn giản, chạy ngay trên trình duyệt và không cần đăng ký."
     },
     "tools": {
@@ -868,19 +868,19 @@
     },
     "about": {
       "title": "Giới thiệu",
-      "description": "Tìm hiểu về AwesomePDF - bộ công cụ PDF miễn phí, riêng tư và mạnh mẽ của bạn. Toàn bộ xử lý diễn ra ngay trong trình duyệt."
+      "description": "Tìm hiểu về AwsomePDF - bộ công cụ PDF miễn phí, riêng tư và mạnh mẽ của bạn. Toàn bộ xử lý diễn ra ngay trong trình duyệt."
     },
     "faq": {
       "title": "Câu hỏi Thường gặp",
-      "description": "Tìm câu trả lời cho các câu hỏi phổ biến về AwesomePDF. Hướng dẫn sử dụng hiệu quả các công cụ PDF của chúng tôi."
+      "description": "Tìm câu trả lời cho các câu hỏi phổ biến về AwsomePDF. Hướng dẫn sử dụng hiệu quả các công cụ PDF của chúng tôi."
     },
     "privacy": {
       "title": "Chính sách Bảo mật",
-      "description": "Chính sách bảo mật của AwesomePDF. Tệp của bạn không bao giờ rời khỏi thiết bị - mọi xử lý đều diễn ra cục bộ trong trình duyệt."
+      "description": "Chính sách bảo mật của AwsomePDF. Tệp của bạn không bao giờ rời khỏi thiết bị - mọi xử lý đều diễn ra cục bộ trong trình duyệt."
     },
     "contact": {
       "title": "Liên hệ Chúng tôi",
-      "description": "Liên hệ với đội ngũ AwesomePDF. Chúng tôi rất mong nhận được phản hồi từ bạn."
+      "description": "Liên hệ với đội ngũ AwsomePDF. Chúng tôi rất mong nhận được phản hồi từ bạn."
     },
     "keywords": {
       "pdfTools": "công cụ PDF",
@@ -932,12 +932,12 @@
     },
     "openSource": {
       "title": "Thông báo nguồn mở",
-      "description": "Tải mã nguồn của phiên bản AwesomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc."
+      "description": "Tải mã nguồn của phiên bản AwsomePDF đang triển khai, bao gồm cấu hình xây dựng và các thông báo gốc."
     }
   },
   "id": {
     "home": {
-      "title": "AwesomePDF – alat PDF gratis untuk menggabung, mengompres, dan mengedit",
+      "title": "AwsomePDF – alat PDF gratis untuk menggabung, mengompres, dan mengedit",
       "description": "Gabungkan, kompres, konversi, edit, dan atur PDF dalam hitungan detik. Alat PDF gratis dan sederhana yang berjalan di browser, tanpa perlu mendaftar."
     },
     "tools": {
@@ -946,19 +946,19 @@
     },
     "about": {
       "title": "Tentang",
-      "description": "Pelajari tentang AwesomePDF - toolkit PDF gratis, pribadi, dan kuat. Semua proses terjadi di browser Anda."
+      "description": "Pelajari tentang AwsomePDF - toolkit PDF gratis, pribadi, dan kuat. Semua proses terjadi di browser Anda."
     },
     "faq": {
       "title": "Pertanyaan yang Sering Diajukan",
-      "description": "Temukan jawaban untuk pertanyaan umum tentang AwesomePDF. Pelajari cara menggunakan alat PDF kami secara efektif."
+      "description": "Temukan jawaban untuk pertanyaan umum tentang AwsomePDF. Pelajari cara menggunakan alat PDF kami secara efektif."
     },
     "privacy": {
       "title": "Kebijakan Privasi",
-      "description": "Kebijakan privasi AwesomePDF. File Anda tidak pernah meninggalkan perangkat Anda - semua proses terjadi secara lokal di browser Anda."
+      "description": "Kebijakan privasi AwsomePDF. File Anda tidak pernah meninggalkan perangkat Anda - semua proses terjadi secara lokal di browser Anda."
     },
     "contact": {
       "title": "Hubungi Kami",
-      "description": "Hubungi tim AwesomePDF. Kami ingin mendengar pendapat Anda."
+      "description": "Hubungi tim AwsomePDF. Kami ingin mendengar pendapat Anda."
     },
     "keywords": {
       "pdfTools": "alat PDF",
@@ -1010,12 +1010,12 @@
     },
     "openSource": {
       "title": "Pemberitahuan sumber terbuka",
-      "description": "Unduh kode sumber versi AwesomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli."
+      "description": "Unduh kode sumber versi AwsomePDF yang diterapkan ini, termasuk konfigurasi build dan pemberitahuan asli."
     }
   },
   "es": {
     "home": {
-      "title": "AwesomePDF – herramientas PDF gratuitas para unir, comprimir y editar",
+      "title": "AwsomePDF – herramientas PDF gratuitas para unir, comprimir y editar",
       "description": "Une, comprime, convierte, edita y organiza PDF en segundos. Herramientas PDF gratuitas y sencillas que funcionan en tu navegador, sin registro."
     },
     "tools": {
@@ -1024,19 +1024,19 @@
     },
     "about": {
       "title": "Acerca de Nosotros",
-      "description": "Conoce AwesomePDF - tu kit de herramientas PDF gratuito, privado y potente. Todo el procesamiento ocurre en tu navegador."
+      "description": "Conoce AwsomePDF - tu kit de herramientas PDF gratuito, privado y potente. Todo el procesamiento ocurre en tu navegador."
     },
     "faq": {
       "title": "Preguntas Frecuentes",
-      "description": "Encuentra respuestas a preguntas comunes sobre AwesomePDF. Aprende a usar nuestras herramientas PDF de manera efectiva."
+      "description": "Encuentra respuestas a preguntas comunes sobre AwsomePDF. Aprende a usar nuestras herramientas PDF de manera efectiva."
     },
     "privacy": {
       "title": "Política de Privacidad",
-      "description": "Política de privacidad de AwesomePDF. Tus archivos nunca salen de tu dispositivo - todo el procesamiento ocurre localmente en tu navegador."
+      "description": "Política de privacidad de AwsomePDF. Tus archivos nunca salen de tu dispositivo - todo el procesamiento ocurre localmente en tu navegador."
     },
     "contact": {
       "title": "Contáctanos",
-      "description": "Ponte en contacto con el equipo de AwesomePDF. Nos encantaría saber de ti."
+      "description": "Ponte en contacto con el equipo de AwsomePDF. Nos encantaría saber de ti."
     },
     "keywords": {
       "pdfTools": "herramientas PDF",
@@ -1088,12 +1088,12 @@
     },
     "openSource": {
       "title": "Avisos de código abierto",
-      "description": "Descarga el código fuente de esta versión de AwesomePDF, incluida su configuración de compilación y los avisos originales."
+      "description": "Descarga el código fuente de esta versión de AwsomePDF, incluida su configuración de compilación y los avisos originales."
     }
   },
   "ar": {
     "home": {
-      "title": "AwesomePDF – أدوات PDF مجانية للدمج والضغط والتحرير",
+      "title": "AwsomePDF – أدوات PDF مجانية للدمج والضغط والتحرير",
       "description": "ادمج ملفات PDF واضغطها وحوّلها وحرّرها ونظّمها في ثوانٍ. أدوات PDF مجانية وبسيطة تعمل في متصفحك ولا تتطلب تسجيلًا."
     },
     "tools": {
@@ -1102,19 +1102,19 @@
     },
     "about": {
       "title": "من نحن",
-      "description": "تعرّف على AwesomePDF — مجموعة أدوات PDF مجانية وخاصة وقوية. تتم جميع المعالجة داخل متصفحك."
+      "description": "تعرّف على AwsomePDF — مجموعة أدوات PDF مجانية وخاصة وقوية. تتم جميع المعالجة داخل متصفحك."
     },
     "faq": {
       "title": "الأسئلة الشائعة",
-      "description": "اعثر على إجابات للأسئلة الشائعة حول AwesomePDF وتعرّف على كيفية استخدام أدوات PDF بفعالية."
+      "description": "اعثر على إجابات للأسئلة الشائعة حول AwsomePDF وتعرّف على كيفية استخدام أدوات PDF بفعالية."
     },
     "privacy": {
       "title": "سياسة الخصوصية",
-      "description": "سياسة خصوصية AwesomePDF. ملفاتك لا تغادر جهازك أبدًا، وجميع المعالجة تتم محليًا داخل المتصفح."
+      "description": "سياسة خصوصية AwsomePDF. ملفاتك لا تغادر جهازك أبدًا، وجميع المعالجة تتم محليًا داخل المتصفح."
     },
     "contact": {
       "title": "تواصل معنا",
-      "description": "تواصل مع فريق AwesomePDF. يسعدنا سماع استفساراتك وملاحظاتك."
+      "description": "تواصل مع فريق AwsomePDF. يسعدنا سماع استفساراتك وملاحظاتك."
     },
     "keywords": {
       "pdfTools": "أدوات PDF",
@@ -1166,7 +1166,7 @@
     },
     "openSource": {
       "title": "إشعارات المصادر المفتوحة",
-      "description": "نزّل الشيفرة المصدرية لهذا الإصدار المنشور من AwesomePDF، بما في ذلك إعدادات البناء والإشعارات الأصلية."
+      "description": "نزّل الشيفرة المصدرية لهذا الإصدار المنشور من AwsomePDF، بما في ذلك إعدادات البناء والإشعارات الأصلية."
     }
   }
 }

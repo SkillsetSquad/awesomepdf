@@ -1,7 +1,7 @@
 {
   "metadata": {
     "home": {
-      "title": "AwesomePDF – 免費的 PDF 合併、壓縮與編輯工具",
+      "title": "AwsomePDF – 免費的 PDF 合併、壓縮與編輯工具",
       "description": "幾秒內合併、壓縮、轉換、編輯和整理 PDF。免費、簡單、在瀏覽器中執行的 PDF 工具，無需註冊。"
     },
     "tools": {
@@ -10,19 +10,19 @@
     },
     "about": {
       "title": "關於我們",
-      "description": "瞭解 AwesomePDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
+      "description": "瞭解 AwsomePDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
     },
     "faq": {
       "title": "常見問題",
-      "description": "查找有關 AwesomePDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
+      "description": "查找有關 AwsomePDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
     },
     "privacy": {
       "title": "隱私政策",
-      "description": "AwesomePDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
+      "description": "AwsomePDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
     },
     "contact": {
       "title": "聯絡我們",
-      "description": "聯繫 AwesomePDF 團隊。我們很樂意聽取您的意見。"
+      "description": "聯繫 AwsomePDF 團隊。我們很樂意聽取您的意見。"
     },
     "keywords": {
       "pdfTools": "PDF 工具",
@@ -35,7 +35,7 @@
     }
   },
   "common": {
-    "brand": "AwesomePDF",
+    "brand": "AwsomePDF",
     "tagline": "專業PDF工具 - 免費且私密",
     "navigation": {
       "home": "首頁",
@@ -100,8 +100,8 @@
       "skipped": "已略過"
     },
     "footer": {
-      "footer": "© 2025 AwesomePDF. 保留所有權利。",
-      "copyright": "© {year} AwesomePDF. 保留所有權利。",
+      "footer": "© 2025 AwsomePDF. 保留所有權利。",
+      "copyright": "© {year} AwsomePDF. 保留所有權利。",
       "privacyBadge": "100% 私密 - 檔案永不離開您的裝置",
       "madeWith": "Made with <Heart /> and <Nextjs />",
       "resources": "資源",
@@ -110,7 +110,7 @@
       "openSource": "開源聲明",
       "basedOn": "基於",
       "downloadError": "原始碼下載失敗，請重試。",
-      "sourceDescription": "下載此部署版本的 AwesomePDF 原始碼，包括建置設定和原始聲明。",
+      "sourceDescription": "下載此部署版本的 AwsomePDF 原始碼，包括建置設定和原始聲明。",
       "description": "適合日常使用的免費瀏覽器 PDF 工具。無需建立帳戶，即可合併、壓縮、轉換、編輯和整理 PDF。",
       "brandOf": "Skillset Squad Private Limited 旗下品牌。",
       "toolsHeading": "PDF 工具",
@@ -118,7 +118,7 @@
       "legalHeading": "開放原始碼與法律資訊",
       "convertPdf": "PDF 轉換",
       "privacyPolicy": "隱私權政策",
-      "copyrightLine": "© {year} AwesomePDF。Skillset Squad Private Limited 旗下品牌。"
+      "copyrightLine": "© {year} AwsomePDF。Skillset Squad Private Limited 旗下品牌。"
     },
     "recentFiles": {
       "title": "最近檔案",
@@ -161,7 +161,7 @@
       "finish": "完成",
       "skip": "跳過",
       "stepOf": "/",
-      "welcomeTitle": "歡迎使用AwesomePDF！",
+      "welcomeTitle": "歡迎使用AwsomePDF！",
       "welcomeMessage": "想要快速瞭解如何使用我們的PDF工具嗎？只需一分鐘。",
       "helpButton": "幫助導覽"
     },
@@ -573,7 +573,7 @@
       "bronzeWax": "古铜赤金",
       "enableDoubleKey": "為簽署憑證加密（AES-256）",
       "decryptPasswordHelp": "憑證密碼",
-      "passwordPlaceholder": "默認密碼: pdfcraft",
+      "passwordPlaceholder": "默認密碼: awsomepdf",
       "sealCoordinates": "PDF 點數單位的火漆中心：X: {x}，Y: {y}",
       "clickToReposition": "點擊或使用方向鍵放置火漆。百分比從左上角計算。",
       "previewTitle": "第一頁的火漆位置",
@@ -583,7 +583,7 @@
       "certificateDescription": "選填。未選取憑證時會建立本機憑證。",
       "removeCertificate": "移除簽署憑證",
       "certificateDownload": "下載簽署憑證（.p12）",
-      "passwordHelp": "用於解鎖指定憑證或保護新 .p12。新憑證在此欄位留空時使用 pdfcraft。",
+      "passwordHelp": "用於解鎖指定憑證或保護新 .p12。新憑證在此欄位留空時使用 awsomepdf。",
       "localCertificateHelp": "本機憑證為自我簽署，PDF 閱讀器可能不信任它。請保留下載的 .p12。",
       "encryptedHelp": "需要在相容的 PDF 閱讀器中使用此憑證的私密金鑰。請保留 .p12 或 .pfx 憑證。"
     },
@@ -845,7 +845,7 @@
       "copyText": "複製辨識文字",
       "copied": "已複製到剪貼簿",
       "openInEditor": "在 PDF 編輯器開啟",
-      "openInEditorDesc": "無需下載即可在 AwesomePDF 編輯器編輯文字與版面",
+      "openInEditorDesc": "無需下載即可在 AwsomePDF 編輯器編輯文字與版面",
       "statsPages": "頁數",
       "statsWords": "單字",
       "statsChars": "字元",
@@ -1158,16 +1158,16 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "AwesomePDF 是什麼？",
-          "answer": "AwesomePDF 是一個免費、注重隱私的 PDF 工具包，完全在您的瀏覽器中執行。它提供 67+ 個專業工具，用於編輯、轉換、合併、分割和加密 PDF 檔案，而無需將其上傳到任何伺服器。"
+          "question": "AwsomePDF 是什麼？",
+          "answer": "AwsomePDF 是一個免費、注重隱私的 PDF 工具包，完全在您的瀏覽器中執行。它提供 67+ 個專業工具，用於編輯、轉換、合併、分割和加密 PDF 檔案，而無需將其上傳到任何伺服器。"
         },
         "isFree": {
-          "question": "AwesomePDF 真的免費嗎？",
-          "answer": "是的，AwesomePDF 完全免費使用。沒有隱藏費用，沒有高階會員，也無需註冊。所有功能對每個人開放。"
+          "question": "AwsomePDF 真的免費嗎？",
+          "answer": "是的，AwsomePDF 完全免費使用。沒有隱藏費用，沒有高階會員，也無需註冊。所有功能對每個人開放。"
         },
         "account": {
           "question": "我需要建立帳戶嗎？",
-          "answer": "不需要，您無需建立帳戶或註冊即可使用 AwesomePDF。只需訪問網站即可立即開始使用任何工具。"
+          "answer": "不需要，您無需建立帳戶或註冊即可使用 AwsomePDF。只需訪問網站即可立即開始使用任何工具。"
         }
       },
       "privacy": {
@@ -1176,8 +1176,8 @@
           "answer": "不會，您的檔案從未上傳到任何伺服器。所有 PDF 處理都使用 JavaScript 和 WebAssembly 在瀏覽器本地進行。您的檔案從未離開您的裝置。"
         },
         "safe": {
-          "question": "使用 AwesomePDF 處理敏感文件安全嗎？",
-          "answer": "是的，AwesomePDF 的設計以隱私為重。由於所有處理都在瀏覽器本地進行，您的敏感文件保留在您的裝置上，從未透過網際網路傳輸。"
+          "question": "使用 AwsomePDF 處理敏感文件安全嗎？",
+          "answer": "是的，AwsomePDF 的設計以隱私為重。由於所有處理都在瀏覽器本地進行，您的敏感文件保留在您的裝置上，從未透過網際網路傳輸。"
         },
         "storage": {
           "question": "處理後我的檔案會怎樣？",
@@ -1187,7 +1187,7 @@
       "features": {
         "operations": {
           "question": "我可以執行哪些 PDF 操作？",
-          "answer": "AwesomePDF 提供 67+ 個工具，包括：合併、分割、壓縮、轉換（轉為/來自影像、文字、JSON）、編輯、註釋、簽名、新增浮水印、加密/解密、OCR 等等。"
+          "answer": "AwsomePDF 提供 67+ 個工具，包括：合併、分割、壓縮、轉換（轉為/來自影像、文字、JSON）、編輯、註釋、簽名、新增浮水印、加密/解密、OCR 等等。"
         },
         "merge": {
           "question": "我可以合併多個 PDF 檔案嗎？",
@@ -1195,17 +1195,17 @@
         },
         "images": {
           "question": "我可以將影像轉換為 PDF 嗎？",
-          "answer": "是的，AwesomePDF 支援將各種影像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）轉換為 PDF。您可以一次轉換單個或多個影像。"
+          "answer": "是的，AwsomePDF 支援將各種影像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）轉換為 PDF。您可以一次轉換單個或多個影像。"
         },
         "edit": {
           "question": "我可以編輯 PDF 中的文字嗎？",
-          "answer": "AwesomePDF 提供註釋和編輯工具，包括高亮、新增文字、形狀、影像和簽名。如需全文編輯，PDF 編輯器工具提供全面的註釋功能。"
+          "answer": "AwsomePDF 提供註釋和編輯工具，包括高亮、新增文字、形狀、影像和簽名。如需全文編輯，PDF 編輯器工具提供全面的註釋功能。"
         }
       },
       "technical": {
         "browsers": {
           "question": "支援哪些瀏覽器？",
-          "answer": "AwesomePDF 適用於所有現代瀏覽器，包括 Chrome、Firefox、Safari 和 Edge。我們建議使用最新版本的瀏覽器以獲得最佳體驗。"
+          "answer": "AwsomePDF 適用於所有現代瀏覽器，包括 Chrome、Firefox、Safari 和 Edge。我們建議使用最新版本的瀏覽器以獲得最佳體驗。"
         },
         "sizeLimit": {
           "question": "有檔案大小限制嗎？",
@@ -1216,14 +1216,14 @@
           "answer": "由於所有處理都在瀏覽器中進行，效能取決於您裝置的能力。大檔案需要更多的記憶體和處理能力。為了獲得最佳結果，請關閉其他瀏覽器分頁和應用程式。"
         },
         "offline": {
-          "question": "AwesomePDF 可以離線工作嗎？",
-          "answer": "目前，AwesomePDF 需要網際網路連線才能載入應用程式。但是，一旦載入，PDF 處理本身在本地進行，不需要連線。"
+          "question": "AwsomePDF 可以離線工作嗎？",
+          "answer": "目前，AwsomePDF 需要網際網路連線才能載入應用程式。但是，一旦載入，PDF 處理本身在本地進行，不需要連線。"
         }
       },
       "languages": {
         "supported": {
           "question": "支援哪些語言？",
-          "answer": "AwesomePDF支援{languages}種語言：{languageNames}。阿拉伯語支援從右至左的版面配置。"
+          "answer": "AwsomePDF支援{languages}種語言：{languageNames}。阿拉伯語支援從右至左的版面配置。"
         },
         "change": {
           "question": "如何更改語言？",
@@ -1254,7 +1254,7 @@
       },
       "fast": {
         "title": "快速高效",
-        "description": "由現代 Web 技術驅動，AwesomePDF 提供閃電般的 PDF 處理速度，無需上傳或下載。"
+        "description": "由現代 Web 技術驅動，AwsomePDF 提供閃電般的 PDF 處理速度，無需上傳或下載。"
       },
       "accessible": {
         "title": "隨處可用",
@@ -1262,7 +1262,7 @@
       },
       "free": {
         "title": "永久免費",
-        "description": "AwesomePDF 完全免費使用，沒有隱藏費用，無需註冊，也不限制使用次數。"
+        "description": "AwsomePDF 完全免費使用，沒有隱藏費用，無需註冊，也不限制使用次數。"
       },
       "openSource": {
         "title": "開源透明",
@@ -1299,8 +1299,7 @@
     "methods": {
       "email": {
         "title": "電子郵件",
-        "description": "傳送電子郵件給我們，我們將在 24-48 小時內回覆。",
-        "action": "contact@pdfcraft.app"
+        "description": "傳送電子郵件給我們，我們將在 24-48 小時內回覆。"
       },
       "github": {
         "title": "GitHub",
@@ -1309,8 +1308,7 @@
       },
       "twitter": {
         "title": "推特",
-        "description": "關注我們要獲取更新和公告。",
-        "action": "@pdfcraft"
+        "description": "關注我們要獲取更新和公告。"
       }
     },
     "form": {
@@ -1407,7 +1405,7 @@
       "chooseDifferent": "選擇其他檔案",
       "mixedNotice": "這些檔案類型不同，沒有一個工具能同時處理所有檔案。請選擇同一類型的檔案，例如只選 PDF 或只選圖片。",
       "noToolNotice": "沒有工具可以開啟這種檔案組合。請減少檔案數量或使用其他類型的檔案。",
-      "noneUsable": "所選檔案皆無法使用。AwesomePDF 支援 PDF、圖片，以及 Word、Excel 和 PowerPoint 等常見文件。",
+      "noneUsable": "所選檔案皆無法使用。AwsomePDF 支援 PDF、圖片，以及 Word、Excel 和 PowerPoint 等常見文件。",
       "skipped": "部分檔案已略過",
       "readFailed": "無法讀取這些檔案，請再試一次。",
       "errors": {
@@ -1493,11 +1491,11 @@
       "clearFilters": "清除篩選"
     },
     "share": {
-      "name": "AwesomePDF Share",
+      "name": "AwsomePDF Share",
       "title": "直接分享檔案，無需雲端儲存。",
       "badge": "即將推出",
       "subtitle": "透過點對點技術，在瀏覽器之間直接傳送 PDF 和其他檔案。無需帳戶，也不會在雲端永久儲存。",
-      "planned": "AwesomePDF Share 是規劃中的功能，目前尚無法使用。以下是它預期運作方式的預覽。",
+      "planned": "AwsomePDF Share 是規劃中的功能，目前尚無法使用。以下是它預期運作方式的預覽。",
       "stepsTitle": "預期的運作方式",
       "steps": {
         "choose": "選擇要傳送的檔案。",
@@ -1528,7 +1526,7 @@
     },
     "trust": {
       "title": "您的文件，由您掌控。",
-      "description": "支援的 PDF 操作在瀏覽器中本機執行，因此無需建立帳戶即可處理敏感檔案。隱私是 AwesomePDF 的核心原則，當某些功能的運作方式不同時，我們會坦誠說明。",
+      "description": "支援的 PDF 操作在瀏覽器中本機執行，因此無需建立帳戶即可處理敏感檔案。隱私是 AwsomePDF 的核心原則，當某些功能的運作方式不同時，我們會坦誠說明。",
       "items": {
         "private": {
           "title": "隱私優先的設計",
@@ -1549,36 +1547,36 @@
     },
     "faq": {
       "title": "常見問題",
-      "description": "關於 AwesomePDF 的快速解答。",
+      "description": "關於 AwsomePDF 的快速解答。",
       "seeAll": "查看全部常見問題",
       "items": {
         "free": {
-          "question": "AwesomePDF 可以免費使用嗎？",
-          "answer": "可以。AwesomePDF 的 PDF 工具可免費使用，無需訂閱，也無需註冊。"
+          "question": "AwsomePDF 可以免費使用嗎？",
+          "answer": "可以。AwsomePDF 的 PDF 工具可免費使用，無需訂閱，也無需註冊。"
         },
         "upload": {
           "question": "我的 PDF 檔案會上傳到伺服器嗎？",
-          "answer": "不會。支援的工具使用 JavaScript 和 WebAssembly 在您的瀏覽器中處理檔案，AwesomePDF 不會將您的文件上傳到伺服器。少數工具會在首次使用時下載字型、語言資料或輔助指令碼，您的文件不包含在這些下載中。應用程式也會在您的裝置上保存一份簡短的最近使用檔名清單，您可以隨時透過頁首的時鐘圖示清除。"
+          "answer": "不會。支援的工具使用 JavaScript 和 WebAssembly 在您的瀏覽器中處理檔案，AwsomePDF 不會將您的文件上傳到伺服器。少數工具會在首次使用時下載字型、語言資料或輔助指令碼，您的文件不包含在這些下載中。應用程式也會在您的裝置上保存一份簡短的最近使用檔名清單，您可以隨時透過頁首的時鐘圖示清除。"
         },
         "account": {
-          "question": "不建立帳戶也能使用 AwesomePDF 嗎？",
+          "question": "不建立帳戶也能使用 AwsomePDF 嗎？",
           "answer": "可以。開啟任何工具即可立即開始使用，無需登入或註冊。"
         },
         "tools": {
           "question": "有哪些 PDF 工具可用？",
-          "answer": "AwesomePDF 共有 {count} 個工具，分為六組：編輯與註釋、轉換為 PDF、從 PDF 轉換、整理與管理、最佳化與修復，以及 PDF 安全。熱門工具包括合併、拆分、壓縮、PDF 轉 Word、編輯和簽名。您可以在上方的目錄中瀏覽，也可以使用搜尋。"
+          "answer": "AwsomePDF 共有 {count} 個工具，分為六組：編輯與註釋、轉換為 PDF、從 PDF 轉換、整理與管理、最佳化與修復，以及 PDF 安全。熱門工具包括合併、拆分、壓縮、PDF 轉 Word、編輯和簽名。您可以在上方的目錄中瀏覽，也可以使用搜尋。"
         },
         "mobile": {
-          "question": "可以在行動裝置上使用 AwesomePDF 嗎？",
-          "answer": "可以。AwesomePDF 可在現代行動瀏覽器中執行。由於檔案在您的裝置上處理，較大的文件以及 OCR、Office 轉換等繁重任務在手機上可能會較慢。"
+          "question": "可以在行動裝置上使用 AwsomePDF 嗎？",
+          "answer": "可以。AwsomePDF 可在現代行動瀏覽器中執行。由於檔案在您的裝置上處理，較大的文件以及 OCR、Office 轉換等繁重任務在手機上可能會較慢。"
         },
         "scanned": {
-          "question": "AwesomePDF 支援掃描文件嗎？",
+          "question": "AwsomePDF 支援掃描文件嗎？",
           "answer": "支援。OCR PDF 工具可以辨識掃描頁面中的文字，使 PDF 變得可搜尋。結果取決於掃描品質和語言，且 OCR 語言資料會在首次使用時下載。"
         },
         "share": {
-          "question": "什麼是 AwesomePDF Share？",
-          "answer": "AwesomePDF Share 是即將推出的規劃功能，可透過加密的點對點連線，將檔案從一個瀏覽器直接傳送到另一個瀏覽器。該功能目前尚無法使用，也不屬於上方列出的工具。"
+          "question": "什麼是 AwsomePDF Share？",
+          "answer": "AwsomePDF Share 是即將推出的規劃功能，可透過加密的點對點連線，將檔案從一個瀏覽器直接傳送到另一個瀏覽器。該功能目前尚無法使用，也不屬於上方列出的工具。"
         }
       }
     },
@@ -1603,7 +1601,7 @@
   "workflow": {
     "title": "PDF 工作流程編輯器",
     "subtitle": "透過連接工具建立自訂 PDF 處理管道",
-    "metaTitle": "PDF 工作流程編輯器 - AwesomePDF",
+    "metaTitle": "PDF 工作流程編輯器 - AwsomePDF",
     "metaDescription": "透過視覺化連接工具建立自訂 PDF 處理管道。建構、儲存和重複使用您的工作流程。",
     "toolbox": "工具箱",
     "dragToAdd": "拖曳或雙擊工具以新增到工作流程",

@@ -40,7 +40,7 @@ describe('local file search', () => {
   });
 
   it('skips malformed metadata and preserves searchable history for an unavailable tool', async () => {
-    localStorage.setItem('pdfcraft_recent_files', JSON.stringify([
+    localStorage.setItem('awsomepdf_recent_files', JSON.stringify([
       null, { name: 7, size: 12 }, { name: 'invalid.pdf', size: -1 },
       { id: 'same', name: 'old.pdf', size: 0, toolUsed: 'removed-tool' },
       { id: 'same', name: 'valid.pdf', size: 512, toolUsed: 'merge-pdf' },
@@ -65,7 +65,7 @@ describe('local file search', () => {
       name: 'Project', toolId: 'merge-pdf', status: 'paused', progress: 0, options: {},
       fileMetadata: [{ name: 'kept.pdf', size: 20, type: 'application/pdf', lastModified: 0 }],
     });
-    localStorage.setItem('pdfcraft_recent_files', 'not JSON');
+    localStorage.setItem('awsomepdf_recent_files', 'not JSON');
     expect((await loadLocalFileSearch()).files[0].name).toBe('kept.pdf');
     vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new DOMException('Blocked', 'SecurityError'); });
     expect((await loadLocalFileSearch()).files[0].name).toBe('kept.pdf');

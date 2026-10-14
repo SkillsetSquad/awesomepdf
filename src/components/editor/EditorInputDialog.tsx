@@ -34,9 +34,9 @@ export function EditorInputDialog({ labels, locale }: { labels: Record<string, s
       setValue(next.value ?? '');
       setRequest(next);
     };
-    window.addEventListener('PDFCRAFT_EDITOR_INPUT', receive);
+    window.addEventListener('AWSOMEPDF_EDITOR_INPUT', receive);
     return () => {
-      window.removeEventListener('PDFCRAFT_EDITOR_INPUT', receive);
+      window.removeEventListener('AWSOMEPDF_EDITOR_INPUT', receive);
       pending.current?.respond(null);
       pending.current = null;
     };

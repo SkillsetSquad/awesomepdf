@@ -8,7 +8,7 @@ vi.mock('next-intl', () => ({
 }));
 
 vi.mock('@/components/tools/FileUploader', () => ({ FileUploader: () => null }));
-vi.mock('@/lib/utils/path', () => ({ withBasePath: (path: string) => `/awesomepdf${path}` }));
+vi.mock('@/lib/utils/path', () => ({ withBasePath: (path: string) => `/awsomepdf${path}` }));
 
 describe('Annotation viewer integration', () => {
   it('keeps injected viewer code valid with quotes, backslashes and newlines in translations', () => {
@@ -22,7 +22,7 @@ describe('Annotation viewer integration', () => {
       act(() => vi.advanceTimersByTime(1000));
       const script = iframe.contentDocument!.querySelector('script')!;
       expect(script?.tagName).toBe('SCRIPT');
-      expect(script.textContent).toContain('pdfcraft-edit-existing-text');
+      expect(script.textContent).toContain('awsomepdf-edit-existing-text');
       expect(script.textContent).not.toMatch(/getAnnotationStore|updateAnnotationStyle|selectedAnnotation|setupChineseFontPatch|setupCloudFix|injectCustomMenuControls/);
       expect(() => new Function(script.textContent!)).not.toThrow();
     } finally {

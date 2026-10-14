@@ -57,16 +57,16 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
   useEffect(() => {
     const doc = iframe?.contentDocument;
     if (!doc?.body) return;
-    const viewer = doc.defaultView as (Window & { awesomepdfSignatureControls?: boolean; awesomepdfStampControls?: boolean; awesomepdfCommentControls?: boolean }) | null;
-    const previousSignatureControls = viewer?.awesomepdfSignatureControls;
-    const previousStampControls = viewer?.awesomepdfStampControls;
-    const previousCommentControls = viewer?.awesomepdfCommentControls;
-    if (viewer) viewer.awesomepdfSignatureControls = !!signatureLabels;
-    if (viewer) viewer.awesomepdfStampControls = !!stampLabels;
+    const viewer = doc.defaultView as (Window & { awsomepdfSignatureControls?: boolean; awsomepdfStampControls?: boolean; awsomepdfCommentControls?: boolean }) | null;
+    const previousSignatureControls = viewer?.awsomepdfSignatureControls;
+    const previousStampControls = viewer?.awsomepdfStampControls;
+    const previousCommentControls = viewer?.awsomepdfCommentControls;
+    if (viewer) viewer.awsomepdfSignatureControls = !!signatureLabels;
+    if (viewer) viewer.awsomepdfStampControls = !!stampLabels;
     const refreshComments = () => {
-      for (const item of doc.querySelectorAll<HTMLElement>('[data-comment-control]')) (item as HTMLElement & { awesomepdfComment?: AnnotationCommentOptions }).awesomepdfComment?.refreshControls();
+      for (const item of doc.querySelectorAll<HTMLElement>('[data-comment-control]')) (item as HTMLElement & { awsomepdfComment?: AnnotationCommentOptions }).awsomepdfComment?.refreshControls();
     };
-    if (viewer) viewer.awesomepdfCommentControls = !!commentLabels;
+    if (viewer) viewer.awsomepdfCommentControls = !!commentLabels;
     if (!!previousCommentControls !== !!commentLabels) refreshComments();
     const sheets = Array.from(document.querySelectorAll('link[rel="stylesheet"], style')).map(node => {
       const clone = node.cloneNode(true) as HTMLElement;
@@ -78,18 +78,18 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     style.textContent = `
       .CustomToolbar { background: var(--card); color: var(--foreground); }
       .CustomToolbar .buttons li { color: var(--foreground); }
-      .CustomToolbar .buttons [data-awesomepdf-control] { color: var(--foreground); }
-      [data-awesomepdf-action] > :not([data-awesomepdf-mount]) { display: none !important; }
-      .CustomToolbar .buttons li[data-awesomepdf-control] { border: 0; background: transparent; margin: 0; opacity: 1; }
+      .CustomToolbar .buttons [data-awsomepdf-control] { color: var(--foreground); }
+      [data-awsomepdf-action] > :not([data-awsomepdf-mount]) { display: none !important; }
+      .CustomToolbar .buttons li[data-awsomepdf-control] { border: 0; background: transparent; margin: 0; opacity: 1; }
       .CustomToolbar { justify-content: flex-start; gap: .5rem; padding-inline: .5rem; border-bottom: 1px solid var(--border); }
       .CustomToolbar::after { display: none; }
       .CustomToolbar .buttons { flex-shrink: 0; gap: .25rem; }
       .CustomToolbar .right { position: static; margin-inline-start: auto; }
       .CustomAnnotationMenu { background: var(--popover); color: var(--popover-foreground); border-color: var(--border); }
       .CustomAnnotationMenu .buttons { display: flex; gap: .25rem; }
-      .CustomAnnotationMenu .buttons li[data-awesomepdf-control] { background: transparent; border: 0; padding: 0; margin: 0; width: auto; height: auto; }
-      .CustomComment[data-awesomepdf-control] > [data-awesomepdf-mount] { display: block; }
-      [data-awesomepdf-mount] { display: inline-flex; }
+      .CustomAnnotationMenu .buttons li[data-awsomepdf-control] { background: transparent; border: 0; padding: 0; margin: 0; width: auto; height: auto; }
+      .CustomComment[data-awsomepdf-control] > [data-awsomepdf-mount] { display: block; }
+      [data-awsomepdf-mount] { display: inline-flex; }
     `;
     doc.head.appendChild(style);
     const syncTheme = () => {
@@ -107,11 +107,11 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     const mountControl = (item: HTMLElement, parent = item) => {
       let entry = registry.get(item);
       if (entry?.parent !== parent) {
-        if (entry) { entry.mount.remove(); delete entry.parent.dataset.awesomepdfAction; }
+        if (entry) { entry.mount.remove(); delete entry.parent.dataset.awsomepdfAction; }
         const mount = doc.createElement('span');
-        mount.dataset.awesomepdfMount = 'true';
-        parent.dataset.awesomepdfAction = 'true';
-        item.dataset.awesomepdfControl = 'true';
+        mount.dataset.awsomepdfMount = 'true';
+        parent.dataset.awsomepdfAction = 'true';
+        item.dataset.awsomepdfControl = 'true';
         entry = { mount, parent };
         registry.set(item, entry);
       }
@@ -121,15 +121,15 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     const sync = () => {
       const next: ViewerControl[] = [];
       for (const [item, { mount, parent }] of registry) {
-        if (!doc.body.contains(item)) { mount.remove(); delete parent.dataset.awesomepdfAction; delete item.dataset.awesomepdfControl; registry.delete(item); }
+        if (!doc.body.contains(item)) { mount.remove(); delete parent.dataset.awsomepdfAction; delete item.dataset.awsomepdfControl; registry.delete(item); }
       }
       if (commentLabels) for (const item of doc.querySelectorAll<HTMLElement>('.CustomComment[data-comment-control]')) {
-        const commentOptions = (item as HTMLElement & { awesomepdfComment?: AnnotationCommentOptions }).awesomepdfComment;
+        const commentOptions = (item as HTMLElement & { awsomepdfComment?: AnnotationCommentOptions }).awsomepdfComment;
         if (commentOptions) next.push({ item, mount: mountControl(item), action: item, key: 'comments-panel', kind: 'annotation-comments', Icon: MessageSquare, toggle: false, label: commentLabels.title, disabled: false, pressed: false, commentOptions });
       }
       for (const [selector, kind] of [
-        ['#pdfcraft-edit-existing-text', 'edit'], ['.pdfcraft-undo-btn', 'undo'],
-        ['.pdfcraft-redo-btn', 'redo'], ['#pdfcraft-text-edit-hint', 'hint'],
+        ['#awsomepdf-edit-existing-text', 'edit'], ['.awsomepdf-undo-btn', 'undo'],
+        ['.awsomepdf-redo-btn', 'redo'], ['#awsomepdf-text-edit-hint', 'hint'],
       ] as const) {
         const item = doc.querySelector<HTMLElement>(selector);
         if (!item) continue;
@@ -137,7 +137,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         if (!action) continue;
         const mount = mountControl(item);
         next.push({ item, mount, kind, action, key: kind, toggle: kind === 'edit', Icon: kind === 'edit' ? TextCursorInput : kind === 'undo' ? Undo2 : kind === 'redo' ? Redo2 : Info, label: kind === 'undo' ? undo : kind === 'redo' ? redo : kind === 'hint' ? item.dataset.message ?? '' : item.title,
-          disabled: action.hasAttribute('disabled'), pressed: item.classList.contains('pdfcraft-active') });
+          disabled: action.hasAttribute('disabled'), pressed: item.classList.contains('awsomepdf-active') });
       }
       for (const item of doc.querySelectorAll<HTMLElement>('.CustomToolbar .buttons > li[data-annotation-tool]')) {
         const tool = item.dataset.annotationTool!;
@@ -150,10 +150,10 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         const color = icon.querySelector<HTMLElement>('[style]')?.style.color || undefined;
         const label = labels?.[tool] ?? (name.textContent?.trim() || item.title);
         const mount = mountControl(item, action);
-        const exportAction = (item as HTMLElement & { awesomepdfExport?: AnnotationExportAction }).awesomepdfExport;
-        const colorOptions = (item as HTMLElement & { awesomepdfColor?: AnnotationColorOptions }).awesomepdfColor;
-        const signatureOptions = (item.querySelector('[data-signature-control]') as (HTMLElement & { awesomepdfSignature?: AnnotationSignatureOptions }) | null)?.awesomepdfSignature;
-        const stampOptions = (item.querySelector('[data-stamp-control]') as (HTMLElement & { awesomepdfStamp?: AnnotationStampOptions }) | null)?.awesomepdfStamp;
+        const exportAction = (item as HTMLElement & { awsomepdfExport?: AnnotationExportAction }).awsomepdfExport;
+        const colorOptions = (item as HTMLElement & { awsomepdfColor?: AnnotationColorOptions }).awsomepdfColor;
+        const signatureOptions = (item.querySelector('[data-signature-control]') as (HTMLElement & { awsomepdfSignature?: AnnotationSignatureOptions }) | null)?.awsomepdfSignature;
+        const stampOptions = (item.querySelector('[data-stamp-control]') as (HTMLElement & { awsomepdfStamp?: AnnotationStampOptions }) | null)?.awsomepdfStamp;
         const exportFormats = (['pdf', 'excel'] as const).filter(format => item.dataset[format === 'pdf' ? 'exportPdf' : 'exportExcel'] === 'true');
         next.push({ item, mount, action, kind: 'annotation', key: tool, Icon, color: tool === 'color' ? color : undefined, colorOptions, signatureOptions, stampOptions,
           onExport: typeof exportAction === 'function' ? exportAction : undefined, exportFormats,
@@ -167,7 +167,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         next.push({ item, mount: mountControl(item), action: item, key: `context-${key}`, kind: 'annotation-action', ...action, toggle: false, disabled: false, pressed: false });
       }
       for (const item of doc.querySelectorAll<HTMLElement>('.CustomAnnotationMenu .styleContainer[data-annotation-style]')) {
-        const styleOptions = (item as HTMLElement & { awesomepdfStyle?: AnnotationStyleOptions }).awesomepdfStyle;
+        const styleOptions = (item as HTMLElement & { awsomepdfStyle?: AnnotationStyleOptions }).awsomepdfStyle;
         if (!styleOptions) continue;
         next.push({ item, mount: mountControl(item), action: item, key: 'context-style-panel', kind: 'annotation-style', Icon: Palette, label: '', styleOptions, toggle: false, disabled: false, pressed: false });
       }
@@ -182,16 +182,16 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
     return () => {
       observer.disconnect();
       if (viewer) {
-        if (previousSignatureControls === undefined) delete viewer.awesomepdfSignatureControls;
-        else viewer.awesomepdfSignatureControls = previousSignatureControls;
-        if (previousStampControls === undefined) delete viewer.awesomepdfStampControls;
-        else viewer.awesomepdfStampControls = previousStampControls;
-        if (previousCommentControls === undefined) delete viewer.awesomepdfCommentControls;
-        else viewer.awesomepdfCommentControls = previousCommentControls;
+        if (previousSignatureControls === undefined) delete viewer.awsomepdfSignatureControls;
+        else viewer.awsomepdfSignatureControls = previousSignatureControls;
+        if (previousStampControls === undefined) delete viewer.awsomepdfStampControls;
+        else viewer.awsomepdfStampControls = previousStampControls;
+        if (previousCommentControls === undefined) delete viewer.awsomepdfCommentControls;
+        else viewer.awsomepdfCommentControls = previousCommentControls;
         if (iframe?.isConnected && !!previousCommentControls !== !!commentLabels) refreshComments();
       }
       theme.disconnect();
-      for (const [item, { mount, parent }] of registry) { mount.remove(); delete parent.dataset.awesomepdfAction; delete item.dataset.awesomepdfControl; }
+      for (const [item, { mount, parent }] of registry) { mount.remove(); delete parent.dataset.awsomepdfAction; delete item.dataset.awsomepdfControl; }
       style.remove();
       sheets.forEach(sheet => sheet.remove());
     };
@@ -224,7 +224,7 @@ export function LegacyEditorControls({ iframe, locale, undo, redo, labels, color
         control.action.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true, view: viewer }));
         viewer?.setTimeout(() => {
           if (!iframe?.isConnected || document.activeElement !== iframe || doc.activeElement !== doc.body) return;
-          const target = control.key === 'context-style' ? '.CustomAnnotationMenu .styleContainer [data-awesomepdf-mount] [role="slider"], .CustomAnnotationMenu .styleContainer [data-awesomepdf-mount] button'
+          const target = control.key === 'context-style' ? '.CustomAnnotationMenu .styleContainer [data-awsomepdf-mount] [role="slider"], .CustomAnnotationMenu .styleContainer [data-awsomepdf-mount] button'
             : control.key === 'context-comments' ? '.CustomComment input, .CustomComment textarea, .CustomComment [tabindex="0"]' : '#viewerContainer';
           (doc.querySelector<HTMLElement>(target) ?? doc.querySelector<HTMLElement>('#viewerContainer'))?.focus();
         }, 0);

@@ -15,7 +15,7 @@ import {
   getSavedSignatures,
   saveSignature,
   deleteSignature,
-  PDFCraftSignature,
+  SavedSignature,
   dataUrlToBlob,
 } from '@/lib/pdf/signature-storage';
 import { saveBlobFile } from '@/lib/tauri-bridge';
@@ -36,7 +36,7 @@ export function SignatureLibraryModal({
 }: SignatureLibraryModalProps) {
   const locale = useLocale();
   const tCommon = useTranslations('common');
-  const [signatures, setSignatures] = useState<PDFCraftSignature[]>([]);
+  const [signatures, setSignatures] = useState<SavedSignature[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -64,9 +64,9 @@ export function SignatureLibraryModal({
         loadList();
 
         // If viewer is ready, immediately apply to document
-        if (viewerWindow?.pdfcraftImportSignature) {
+        if (viewerWindow?.awsomepdfImportSignature) {
           const blob = dataUrlToBlob(dataUrl);
-          await viewerWindow.pdfcraftImportSignature(blob, saved.name);
+          await viewerWindow.awsomepdfImportSignature(blob, saved.name);
           onClose();
         }
       };
@@ -87,11 +87,11 @@ export function SignatureLibraryModal({
     loadList();
   };
 
-  const handleApply = async (sig: PDFCraftSignature) => {
+  const handleApply = async (sig: SavedSignature) => {
     try {
-      if (viewerWindow?.pdfcraftImportSignature) {
+      if (viewerWindow?.awsomepdfImportSignature) {
         const blob = dataUrlToBlob(sig.dataUrl);
-        await viewerWindow.pdfcraftImportSignature(blob, sig.name);
+        await viewerWindow.awsomepdfImportSignature(blob, sig.name);
         onClose();
       }
     } catch (e) {
@@ -99,7 +99,7 @@ export function SignatureLibraryModal({
     }
   };
 
-  const handleDownload = async (sig: PDFCraftSignature) => {
+  const handleDownload = async (sig: SavedSignature) => {
     try {
       const blob = dataUrlToBlob(sig.dataUrl);
       await saveBlobFile(blob, `${sig.name}.png`);
@@ -108,7 +108,7 @@ export function SignatureLibraryModal({
     }
   };
 
-  const handleCopy = async (sig: PDFCraftSignature) => {
+  const handleCopy = async (sig: SavedSignature) => {
     try {
       if (navigator.clipboard && window.ClipboardItem) {
         const blob = dataUrlToBlob(sig.dataUrl);

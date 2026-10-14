@@ -1,10 +1,9 @@
-# AwesomePDF
+# AwsomePDF
 
 <div align="center">
-  <img src="public/images/logo.png" alt="AwesomePDF logo" width="120" height="120" />
-  <h1>Professional PDF Tools</h1>
+  <img src="public/images/logo.png" alt="AwsomePDF logo" width="120" height="120" />
   <p>
-    <strong>Free, Private & Browser-Based</strong>
+    <strong>Free PDF tools that run in your browser</strong>
   </p>
   <p>
     Merge, split, compress, convert, and edit PDF files online without uploading to servers.
@@ -13,7 +12,7 @@
 
 <div align="center">
 
-[![PDFCraft](https://img.shields.io/website?url=https%3A%2F%2Fpdfcraft.devtoolcafe.com%2Fen%2F&label=PDFCraft)](https://pdfcraft.devtoolcafe.com/en/)
+[![AwsomePDF website](https://img.shields.io/website?url=https%3A%2F%2Fawsomepdf.com%2Fen%2F&label=AwsomePDF)](https://awsomepdf.com/en/)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
@@ -22,75 +21,86 @@
 
 </div>
 
-> **AwesomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
->
-> We have reworked the interface to use **[shadcn/ui](https://ui.shadcn.com/)** instead of PDFCraft's custom theme and component set. **Bigger changes are underway**, so expect this project to keep diverging from upstream.
+AwsomePDF is based on [PDFCraft](https://github.com/PDFCraftTool/pdfcraft) and maintained by [Skillset Squad](https://github.com/SkillsetSquad). Credit for the original tools, processing engines and architecture belongs to the PDFCraft team.
 
-## 📖 About
+[Try AwsomePDF](https://awsomepdf.com/en/) · [Self-hosting guide](DEPLOYMENT.md)
 
-**AwesomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
+## About
 
-The processing engine and tool set come from PDFCraft. What differs in this fork is the interface layer and where the project is headed (see below).
+AwsomePDF lets you merge, split, compress, convert, annotate and organize PDF files. It processes documents on your device using JavaScript and WebAssembly, without uploading them to a server. Use the [website](https://awsomepdf.com/en/) or host the application yourself.
 
-## 🔀 Relationship to PDFCraft
+Some tools download processing engines, fonts or language data when first used. Offline use depends on which assets are already cached.
 
-| | PDFCraft (upstream) | AwesomePDF (this fork) |
+## Relationship to PDFCraft
+
+| | PDFCraft (upstream) | AwsomePDF (this fork) |
 |---|---|---|
-| Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awesomepdf](https://github.com/SkillsetSquad/awesomepdf) |
+| Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf) |
 | Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
-| UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
-| Status | Upstream project | Actively diverging |
+
+PDFCraft provides the original tool set and processing engines. The changes below were made in this repository.
 
 ### What has changed so far
 
-- Replaced PDFCraft's custom Button, Card, Modal, Tabs, form-field and theme-toggle components with standard shadcn/ui primitives.
-- Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer. Cmd+K / Ctrl+K now searches tool names and locally saved file records from recent-file history and saved projects.
-- Removed the inherited in-app update checker in this fork. Browser and desktop builds no longer query release servers or show update popups, badges, dialogs or manual update buttons, keeping document work free of update interruptions.
-- Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
-- Added a real open-source page with source, license and notice downloads for each deployed build.
-- Reworked Docker deployment in this fork for Coolify: production builds the static site into a self-contained Nginx image before startup, with a health check and no production source mounts or required Compose profile. Local preview ports use a separate Compose override.
-- Changed Redact PDF, Find and Redact, and Smart Data Redactor in this fork to use local PDF content removal with a full rewrite, rather than overlays or text-stream replacement. Selected glyphs, overlapping image pixels and touched graphics are removed; other text stays selectable. Secure export uses solid fills and strips ancillary content that can retain copies.
+- **Product identity:** Packages, desktop installers, extension links and generated document labels use AwsomePDF. Original PDFCraft attribution and license notices are preserved.
+- **Interface:** Reworked navigation, pages, dialogs and document workspaces with shadcn/ui controls, light and dark themes, and keyboard navigation.
+- **File search:** Cmd+K / Ctrl+K searches tools, recent filenames and saved project records in this browser.
+- **Annotation editing:** Connected signature, stamp, comment and undo/redo controls to the document editor.
+- **Processing fixes:** Corrected page geometry in booklet and column splitting, added scan tilt detection, and tied OCR confidence to recognition results.
+- **Permanent redaction:** Redact PDF, Find and Redact, and Smart Data Redactor remove selected content and rewrite the PDF. See [Redacting sensitive content](#redacting-sensitive-content) for usage and limits.
+- **Tool loading:** Tool interfaces load individually when selected.
+- **Source access and discovery:** Added source, license and notice downloads for deployed builds, along with localized search metadata and social images.
+- **Self-hosting:** Docker builds the site into an Nginx image with a health check. Coolify uses the base Compose file; local preview uses a separate override.
+- **Application updates:** Removed the inherited release checker and update controls from browser and desktop builds.
 
 ### Work in progress
 
-- The UI migration is not finished. Many individual tool workspaces (settings panels, previews and editors) are still being moved to shadcn/ui one at a time.
-- Larger changes beyond the UI are underway. This README will be updated as they land.
-- Some existing ESLint warnings remain. Production builds enforce lint and TypeScript checks.
+- **AwsomePDF Share:** Browser-to-browser file sharing is planned. The sharing section shows a preview.
+- **Redaction translations:** Some detailed instructions, FAQs and controls still use English in other language versions.
 
-Development notes are kept locally in the ignored `docs/` directory.
+## Features
 
-## ✨ Key Features
-
-- **🔒 100% Private**: All processing happens client-side. No file uploads to external servers.
-- **🚀 Fast & Responsive**: Powered by Next.js and WebAssembly for near-native performance.
-- **🛠️ Comprehensive Toolset**: 90+ tools to handle any PDF task.
-- **🎨 Modern UI**: Clean, accessible, responsive design built with shadcn/ui and Tailwind CSS, with light and dark themes.
-- **Permanent redaction**: Select areas or text matches and export a PDF with the selected content removed. Black and white fills replace blur/mosaic in secure redaction.
-- **🌐 Multi-language**: 15 languages: English, Japanese, Korean, Spanish, French, German, Simplified and Traditional Chinese, Portuguese, Arabic, Italian, Indonesian, Vietnamese, Romanian and Polish.
+- **Local processing:** Document processing runs on your device.
+- **PDF tools:** Merge, split, compress, convert, annotate, fill forms and manage pages.
+- **Permanent redaction:** Remove selected areas or text matches with solid black or white fills.
+- **Desktop and mobile:** Responsive controls with light and dark themes.
+- **15 languages:** English, Japanese, Korean, Spanish, French, German, Simplified and Traditional Chinese, Portuguese, Arabic, Italian, Indonesian, Vietnamese, Romanian and Polish.
 
 ### Searching tools and file history
 
-Press **Cmd+K** (Mac) or **Ctrl+K**, or use the header search button, to find tools and file records saved in this browser. Search matches filenames, saved project names and related tool names. Filename matches appear before tool results; otherwise tools come first. The palette reads recent-file history from localStorage and project file lists from IndexedDB when opened, and refreshes when file records change, when reopened or when the window regains focus.
+Press **Cmd+K** (Mac) or **Ctrl+K**, or use the header search button, to search tools, recent filenames and saved project records. Filename matches appear first when your query matches a saved file; otherwise tools come first. Each search shows up to eight tools and eight file results.
 
-File results show their source and open the corresponding tool. These stores contain names and metadata, not document bytes; choose the original file from your device to continue. Search does not inspect document contents, send filenames to a server or read unrelated browser storage. Results are limited to eight tools and eight files per query. Browser storage can be cleared or unavailable.
+Choosing a file result opens its tool. Select the original file from your device to continue: the history stores names and metadata, not document bytes. Search stays in your browser, and clearing browser storage removes saved records.
 
 ### Application updates
 
-AwesomePDF does not check for application updates or display update controls. Website updates are managed by the deployment operator; desktop users install a newer build manually. Previously saved update preferences have no effect. PDF engines can still load assets over the network when a tool needs them.
+Website updates are delivered by rebuilding and deploying the application. Desktop users install newer builds manually. AwsomePDF has no in-app update checker or update popup. Rebuild older deployments to remove the former checker.
+
+The desktop app uses the bundle ID `com.skillsetsquad.awsomepdf` and installs separately from PDFCraft. Existing desktop app data stays with the old installation. On the same website origin, browser preferences, signatures, file history, projects, workflows and cached fonts migrate to the new storage names.
 
 ### Redacting sensitive content
 
-Use **Redact PDF** to select rectangles or brush areas, **Find and Redact** to review exact text matches, or **Smart Data Redactor** to remove matches for email, phone, SSN/ID patterns and custom keywords. Apply redaction to create a new PDF; the original file remains unchanged. Text search works on extractable text, including matches split across font spans on the same line, and does not run OCR or match across separate lines. Use manual rectangles for scans. PDF previews respect page cropping and rotation and keep document geometry stable in RTL interfaces.
+Use **Redact PDF** to select rectangles or brush areas, **Find and Redact** to select exact text matches, or **Smart Data Redactor** to find email, phone, SSN/ID patterns and custom keywords. Applying redaction saves a new PDF and leaves the original unchanged.
 
-The output removes selected text, overlapping image pixels, touched graphics, previous revisions and unused objects. It also removes metadata, attachments, bookmarks, annotations, links and forms; digital signatures are invalidated. A touched vector object can disappear beyond the selection, and brush envelopes may remove nearby content. Other unselected copies can remain, including content reused on other pages. Review every page of the downloaded PDF before sharing. Optional full-page rasterization removes all selectable text. Engine assets load lazily; document bytes stay on your device.
+Text search finds extractable text on the same line, including text split across font spans. It does not run OCR or match across lines. Use manual rectangles for scanned documents.
 
-Run `node scripts/verify-redaction.mjs` to verify synthetic redaction outputs using the bundled PyMuPDF WASM engine, including extraction, decoded objects, image pixels, and page geometry.
+The exported PDF removes selected text, overlapping image pixels and graphics that touch the selection, then fills the areas with a solid color. Other text stays selectable unless you choose full-page rasterization.
 
-Redaction summaries and titles are localized in all 15 languages. Updated detailed instructions, FAQs and safety controls currently use English fallback in non-English catalogs.
+Redaction has these effects:
 
-## 🧰 Complete Tool List (90+ Tools)
+- Export also removes previous revisions, unused objects, metadata, attachments, bookmarks, annotations, links and forms. Digital signatures become invalid.
+- Graphics that touch a selection can be removed beyond its edges. Brush strokes can also remove nearby content.
+- Copies outside your selections can remain, including content reused on other pages.
+- Full-page rasterization turns pages into images and removes all selectable text.
 
-### 📁 Organize & Manage (27 tools)
+Review every page of the downloaded PDF before sharing it.
+
+## Tools
+
+Common tools are listed below. Browse the [tool directory](https://awsomepdf.com/en/tools/) for the full list.
+
+### Organize & Manage
+
 | Tool | Description |
 |------|-------------|
 | **PDF Multi Tool** | All-in-one PDF editor for merge, split, organize, delete, rotate, and extract |
@@ -120,7 +130,8 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **PDF Booklet** | Arrange pages for booklet printing (saddle stitch) |
 | **PDF Reader** | Read and view PDF documents in a clean interface |
 
-### ✏️ Edit & Annotate (19 tools)
+### Edit & Annotate
+
 | Tool | Description |
 |------|-------------|
 | **Edit PDF** | Add text, images, annotations, highlights, and shapes |
@@ -142,10 +153,11 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **Deskew PDF** | Automatically straighten skewed scanned pages |
 | **OCG Manager** | Manage Optional Content Groups (layers) in PDFs |
 
-### 📤 Convert to PDF (22 tools)
+### Convert to PDF
+
 | Tool | Description |
 |------|-------------|
-| **Image to PDF** | Convert any image format to PDF |
+| **Image to PDF** | Convert supported image formats to PDF |
 | **JPG to PDF** | Convert JPEG images to PDF |
 | **PNG to PDF** | Convert PNG images with transparency support |
 | **WebP to PDF** | Convert modern WebP images to PDF |
@@ -168,7 +180,8 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **CBZ to PDF** | Convert comic book archives to PDF |
 | **DjVu to PDF** | Convert DjVu documents to PDF |
 
-### 📥 Convert from PDF (13 tools)
+### Convert from PDF
+
 | Tool | Description |
 |------|-------------|
 | **PDF to JPG** | Extract pages as JPEG images |
@@ -185,7 +198,8 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **PDF to PDF/A** | Convert PDF to archival PDF/A format |
 | **Extract Tables** | Extract tables from PDF as structured data |
 
-### ⚡ Optimize & Repair (8 tools)
+### Optimize & Repair
+
 | Tool | Description |
 |------|-------------|
 | **Compress PDF** | Reduce file size while maintaining quality |
@@ -197,7 +211,8 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **Rasterize PDF** | Convert vector elements to images for compatibility |
 | **Font to Outline** | Convert text fonts to vector outlines |
 
-### 🔒 Secure PDF (9 tools)
+### Secure PDF
+
 | Tool | Description |
 |------|-------------|
 | **Encrypt PDF** | Add password protection and encryption |
@@ -210,7 +225,7 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
 | **Find and Redact** | Review exact text matches and permanently remove selected occurrences |
 | **Smart Data Redactor** | Permanently remove text matching email, phone, SSN/ID patterns or custom keywords |
 
-## 💻 Tech Stack
+## Tech stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
@@ -222,52 +237,46 @@ Redaction summaries and titles are localized in all 15 languages. Updated detail
   - [PyMuPDF (WASM)](https://pymupdf.readthedocs.io/)
 - **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 
-## 🚀 Getting Started
-
-To run this project locally, follow these steps:
+## Getting started
 
 ### Prerequisites
 
-- Node.js 18.17 or later
-- npm, yarn, or pnpm
+- Node.js 22, matching CI and Docker
+- npm
 
 ### Installation
 
 1.  **Clone the repository**
+
     ```bash
-    git clone https://github.com/SkillsetSquad/awesomepdf.git
-    cd awesomepdf
+    git clone https://github.com/SkillsetSquad/awsomepdf.git
+    cd awsomepdf
     ```
 
 2.  **Install dependencies**
+
     ```bash
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
+    npm ci
     ```
 
 3.  **Start the development server**
+
     ```bash
     npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
     ```
 
 4.  **Open your browser**
-    Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
-### 🐳 Docker
+    Open [http://localhost:3000](http://localhost:3000).
 
-> ℹ️ The pre-built image published by upstream (`ghcr.io/pdfcrafttool/pdfcraft`) is the original PDFCraft and does **not** include the shadcn/ui rework. To run AwesomePDF, build from source as below.
+### Docker
+
+Build the AwsomePDF image from this repository:
 
 ```bash
 # Clone the repository
-git clone https://github.com/SkillsetSquad/awesomepdf.git
-cd awesomepdf
+git clone https://github.com/SkillsetSquad/awsomepdf.git
+cd awsomepdf
 
 # Development mode (with hot reload; only start the development service)
 docker compose --profile dev up web-dev
@@ -285,55 +294,47 @@ To stop containers:
 docker compose -f docker-compose.yml -f docker-compose.local.yml down
 ```
 
-For **Coolify**, use the Docker Compose build pack with `docker-compose.yml`, reload the Compose definition, and assign the domain to service **`web`**, internal port **80**. Production is enabled by default; remove the earlier `COMPOSE_PROFILES=prod` workaround and leave custom build/start commands empty. The base Compose file publishes no host ports and needs no repository preservation or static-output volume. See [DEPLOYMENT.md](DEPLOYMENT.md#coolify) for build variables and troubleshooting. Image builds can still take several minutes on a cold cache or a small server; progress appears in the build logs before Nginx starts.
+For **Coolify**, select the Docker Compose build pack with `docker-compose.yml` and assign the domain to service **`web`**, internal port **80**. Leave custom build and start commands empty. See the [Coolify guide](DEPLOYMENT.md#coolify) for build variables and troubleshooting.
 
-#### 🌐 Site URL and Subpath Deployment
+#### Site URL and subpath hosting
 
-Sitemap, `robots.txt`, canonical and structured-data URLs are built from the site origin, which is fixed at build time because the app is statically exported. Set `NEXT_PUBLIC_SITE_URL` (for Docker, the build argument of the same name) to your production origin. See [DEPLOYMENT.md](DEPLOYMENT.md) for how it is resolved when unset.
+The default production origin is `https://awsomepdf.com`. Set `NEXT_PUBLIC_SITE_URL` at build time to use a different origin for the sitemap, canonical links and structured data. Keep the path separate in `BASE_PATH`.
 
-The default production origin is `https://awsomepdf.com`. Use `npm run audit:seo` after a build to verify every public page and language. Local SEO reports and image sources are saved in the ignored `docs/seo/` directory.
-
-To deploy under a subpath (e.g., `https://your-domain.com/awesomepdf/`), specify the base path during the build:
+For example, to host at `https://your-domain.com/awsomepdf/`:
 
 ```bash
 docker build \
-  --build-arg BASE_PATH=/awesomepdf \
+  --build-arg BASE_PATH=/awsomepdf \
   --build-arg NEXT_PUBLIC_SITE_URL=https://your-domain.com \
-  -t awesomepdf .
+  -t awsomepdf .
 ```
 
-*Note: Since the app is statically exported, `BASE_PATH` and `NEXT_PUBLIC_SITE_URL` must be provided during the build stage.*
+Rebuild the site after changing either value; runtime variables cannot change an existing static export.
 
-## 📜 Scripts
+## Development commands
 
-- `npm run dev`: Starts the development server with Turbopack. Automatically runs `predev` to decompress LibreOffice WASM files.
-- `npm run build`: Builds the application for production. Automatically runs `postbuild` to decompress WASM files in `out/`.
-- `npm run start`: Starts the production server.
-- `npm run lint`: Lints the code using ESLint.
-- `npm run test`: Runs tests using Vitest.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Prepare source downloads and runtime assets, then start the development server |
+| `npm run build` | Generate source downloads, build the static export in `out/`, and prepare runtime assets |
+| `npm run lint` | Run ESLint |
+| `npx tsc --noEmit` | Check TypeScript |
+| `npm test` | Run the Vitest suite |
+| `npm run audit:seo` | Audit the exported site's metadata and locale routes after a build |
+| `npm run generate:social-images` | Regenerate social previews from the SVG sources in `public/images/social/` |
+| `node scripts/verify-redaction.mjs` | Check synthetic redaction outputs with the bundled PyMuPDF WASM engine |
 
-## 🚀 Production Deployment Guide
+## Deployment
 
-AwesomePDF is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
+Build the site with:
 
-> 📖 **For comprehensive deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
+```bash
+npm run build
+```
 
-### Quick Start
+Serve the generated `out/` directory with a static host. The `start` script calls `next start`; use a static server for this export. Hosting instructions are in [DEPLOYMENT.md](DEPLOYMENT.md).
 
-1. **Build the project:**
-   ```bash
-   npm run build
-   ```
-   All static files will be generated in the `out` directory.
-
-2. **Deploy to your preferred platform:**
-   - **Vercel** (Recommended): `vercel --prod`
-   - **Netlify**: `netlify deploy --prod --dir=out`
-   - **GitHub Pages**: Push to `main` branch (uses GitHub Actions)
-   - **Cloudflare Pages**: `wrangler pages deploy out`
-   - **Docker + Nginx**: `docker compose -f docker-compose.yml -f docker-compose.local.yml up --build -d` for local preview; use the base Compose file for Coolify
-
-### Deployment Files Included
+### Hosting configuration
 
 | File | Platform |
 |------|----------|
@@ -345,39 +346,25 @@ AwesomePDF is configured for static export (`output: 'export'`), which means it 
 | `docker-compose.local.yml` | Local Docker production preview on port 8080 |
 | `.htaccess` | Apache |
 
-### Important Notes
-- **Headers Configuration**: Security and caching headers are pre-configured in all deployment files.
-- **Image Optimization**: Static export uses `images: { unoptimized: true }`.
-- **WASM Support**: All deployment configs include proper MIME types for WebAssembly.
-- **Subpath Support**: Set `BASE_PATH` environment variable during build to deploy under a subdirectory.
+Office conversion requires a host that supports the cross-origin isolation headers used by the WASM engine. GitHub Pages cannot set those headers; see [its deployment limits](DEPLOYMENT.md#3-github-pages).
 
-### Verify Deployment
-After deployment, please check the following features to ensure everything is working correctly:
-- Multi-language routing (e.g., `/en`, `/zh`)
-- Tool page loading
-- WebAssembly (PDF processing) functionality
+After deployment, check localized routes such as `/en/` and `/zh/`, open a tool, and process a sample document to confirm that its engine assets load.
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Open a pull request with a description of the change and the checks you ran. Use synthetic or public documents for tests, and keep document processing on the device.
 
-1.  Fork the project
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+Check lint, TypeScript and the relevant tests before submitting. Build the static export when changing routes, configuration, assets or shared UI.
 
-Because this is a fork, changes to the core PDF tools that are not specific to the shadcn/ui rework may also be worth contributing back to [PDFCraft](https://github.com/PDFCraftTool/pdfcraft).
+Changes useful to the original project may also be contributed to [PDFCraft](https://github.com/PDFCraftTool/pdfcraft).
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
-AwesomePDF is a fork of **[PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/)). We are grateful to the PDFCraft team for the tools, processing engine and architecture this project is built on.
+Thank you to the [PDFCraft team](https://github.com/PDFCraftTool/pdfcraft) for the original application, and to [BentoPDF](https://github.com/alam00000/bentopdf), which inspired and informed PDFCraft's browser-based processing.
 
-PDFCraft itself stands on the shoulders of giants. It gratefully acknowledges [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools, which served as a significant inspiration and reference for its core logic. We share that respect for the foundation laid by the BentoPDF team.
+Original licenses and copyright notices are preserved. Each deployed build includes third-party notices on the site's open-source page.
 
-Third-party components keep their original notices. They are generated at build time and published with each deployed build on the site's open-source page.
-
-## 📄 License
+## License
 
 This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details. As a modified version of PDFCraft, the complete corresponding source of each deployed build is available from the site's open-source page.
 

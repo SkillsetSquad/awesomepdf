@@ -306,7 +306,7 @@ export function SignatureExtractorModal({
   };
 
   /**
-   * Action 1: Save to PDFCraft Signature Library (and inject into Viewer if active)
+   * Action 1: Save to AwsomePDF Signature Library (and inject into Viewer if active)
    */
   const handleSaveToLibrary = async () => {
     if (!extractedResult) return;
@@ -322,8 +322,8 @@ export function SignatureExtractorModal({
       });
 
       // If active viewer window is available, inject signature
-      if (viewerWindow?.pdfcraftImportSignature) {
-        await viewerWindow.pdfcraftImportSignature(extractedResult.blob, name);
+      if (viewerWindow?.awsomepdfImportSignature) {
+        await viewerWindow.awsomepdfImportSignature(extractedResult.blob, name);
       }
 
       if (onSignatureExtracted) {

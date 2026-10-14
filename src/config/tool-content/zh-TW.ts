@@ -3441,7 +3441,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
   },
   {
     "question": "我可以訂製印章設計嗎？",
-    "answer": "是的。我們提供多種設計，例如 PDFCraft 浮水印或皇家徽章，您可以在面板中調整蠟熔化半徑和法線貼圖壓痕深度。"
+    "answer": "是的。我們提供多種設計，例如 AwsomePDF 浮水印或皇家徽章，您可以在面板中調整蠟熔化半徑和法線貼圖壓痕深度。"
   }
 ],
   },

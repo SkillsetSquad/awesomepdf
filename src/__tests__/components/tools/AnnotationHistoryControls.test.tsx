@@ -46,7 +46,7 @@ describe('Native annotation history controls', () => {
     await user.click(await within(doc.body).findByRole('button', { name: 'تراجع' }));
     expect(onError).toHaveBeenCalledOnce();
     cleanup();
-    expect(doc.querySelector('[data-awesomepdf-control]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-control]')).toBeNull();
     // update was wrapped by the mounted controller, then restored on disposal.
     expect(painter.update).not.toBe(native);
   });

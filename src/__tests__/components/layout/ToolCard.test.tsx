@@ -19,7 +19,7 @@ describe('Tool cards', () => {
     favorite.focus();
     await userEvent.keyboard(' ');
     expect(favorite).toHaveAttribute('aria-pressed', 'true');
-    expect(JSON.parse(localStorage.getItem('pdfcraft-favorite-tools')!)).toEqual(['merge-pdf']);
+    expect(JSON.parse(localStorage.getItem('awsomepdf-favorite-tools')!)).toEqual(['merge-pdf']);
     await userEvent.tab();
     expect(link).toHaveFocus();
   });

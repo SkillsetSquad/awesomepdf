@@ -52,10 +52,10 @@ const files = [...new Set(await sourceFiles())].sort();
 const lock = JSON.parse(await readFile(path.join(root, 'package-lock.json'), 'utf8'));
 const license = await readFile(path.join(root, 'LICENSE'), 'utf8');
 const notices = [
-  'AwesomePDF — A brand of Skillset Squad Private Limited.',
+  'AwsomePDF — A brand of Skillset Squad Private Limited.',
   'Modified from PDFCraft: https://github.com/PDFCraftTool/pdfcraft',
   'Original application notice: © 2025 PDFCraft. All rights reserved.',
-  'AwesomePDF source: https://github.com/SkillsetSquad/awesomepdf',
+  'AwsomePDF source: https://github.com/SkillsetSquad/awsomepdf',
   'Application license: GNU Affero General Public License, version 3 (see LICENSE.txt).',
   'Original licenses and copyright notices below are reproduced without alteration.\n',
 ];
@@ -79,15 +79,15 @@ await writeFile(path.join(output, 'LICENSE.txt'), license);
 await writeFile(path.join(output, 'THIRD_PARTY_NOTICES.txt'), notices.join('\n'));
 
 const zip = new JSZip();
-const manifest = { application: 'AwesomePDF', revision, generatedAt: new Date().toISOString(), files: {} };
+const manifest = { application: 'AwsomePDF', revision, generatedAt: new Date().toISOString(), files: {} };
 for (const file of files) {
   let data;
   try { data = await readFile(path.join(root, file)); } catch (error) { if (error.code === 'ENOENT') continue; throw error; }
   manifest.files[file] = createHash('sha256').update(data).digest('hex');
-  zip.file(`awesomepdf/${file}`, data, { unixPermissions: (await stat(path.join(root, file))).mode });
+  zip.file(`awsomepdf/${file}`, data, { unixPermissions: (await stat(path.join(root, file))).mode });
 }
-zip.file('awesomepdf/THIRD_PARTY_NOTICES.txt', notices.join('\n'));
-zip.file('awesomepdf/source-manifest.json', JSON.stringify(manifest, null, 2));
+zip.file('awsomepdf/THIRD_PARTY_NOTICES.txt', notices.join('\n'));
+zip.file('awsomepdf/source-manifest.json', JSON.stringify(manifest, null, 2));
 const temporaryArchive = path.join(output, 'source-code.zip.tmp');
 try {
   await pipeline(zip.generateNodeStream({ streamFiles: true, platform: 'UNIX', compression: 'DEFLATE', compressionOptions: { level: 6 } }), createWriteStream(temporaryArchive));

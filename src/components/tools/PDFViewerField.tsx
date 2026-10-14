@@ -18,7 +18,7 @@ export function PDFViewerField({ input }: { input: HTMLInputElement }) {
     sync();
     input.addEventListener('input', sync);
     input.addEventListener('change', sync);
-    input.addEventListener('awesomepdf:sync-field', sync);
+    input.addEventListener('awsomepdf:sync-field', sync);
     // Selecting a native radio also unchecks its sibling without firing on that sibling.
     if (input.type === 'radio') input.ownerDocument.addEventListener('change', sync);
     const observer = new MutationObserver(sync);
@@ -27,7 +27,7 @@ export function PDFViewerField({ input }: { input: HTMLInputElement }) {
       observer.disconnect();
       input.removeEventListener('input', sync);
       input.removeEventListener('change', sync);
-      input.removeEventListener('awesomepdf:sync-field', sync);
+      input.removeEventListener('awsomepdf:sync-field', sync);
       if (input.type === 'radio') input.ownerDocument.removeEventListener('change', sync);
     };
   }, [input]);

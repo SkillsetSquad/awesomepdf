@@ -77,7 +77,7 @@ async function setup(locale: 'en' | 'ar' = 'en') {
   act(() => root.render(<Stamp annotation={{ name: 'stamp', icon: <svg /> }} onAdd={onAdd} userName="Author" />));
   const trigger = await within(doc.body).findByRole('button', { name: t.annStamp });
   const open = async () => { trigger.focus(); await userEvent.setup({ document: doc }).keyboard('{Enter}'); await screen.findByRole('dialog'); };
-  const metadata = () => (doc.querySelector('[data-stamp-control]') as HTMLElement & { awesomepdfStamp: AnnotationStampOptions }).awesomepdfStamp;
+  const metadata = () => (doc.querySelector('[data-stamp-control]') as HTMLElement & { awsomepdfStamp: AnnotationStampOptions }).awsomepdfStamp;
   await open();
   return { doc, labels, trigger, onAdd, nativeModal, nativePopover, stages, formatDate, fonts, metadata, open,
     failPreview: () => { failNextStage = true; },

@@ -9,9 +9,9 @@ function setup() {
   const iframe = document.createElement('iframe');
   document.body.appendChild(iframe);
   const doc = iframe.contentDocument!;
-  doc.body.innerHTML = '<div class="CustomToolbar"><ul class="buttons"><li class="pdfcraft-undo-btn"><button disabled>Undo</button></li><li class="pdfcraft-redo-btn"><button disabled>Redo</button></li><li id="pdfcraft-edit-existing-text" title="Edit text"></li></ul></div>';
-  const undo = doc.querySelector<HTMLButtonElement>('.pdfcraft-undo-btn button')!;
-  const edit = doc.getElementById('pdfcraft-edit-existing-text')!;
+  doc.body.innerHTML = '<div class="CustomToolbar"><ul class="buttons"><li class="awsomepdf-undo-btn"><button disabled>Undo</button></li><li class="awsomepdf-redo-btn"><button disabled>Redo</button></li><li id="awsomepdf-edit-existing-text" title="Edit text"></li></ul></div>';
+  const undo = doc.querySelector<HTMLButtonElement>('.awsomepdf-undo-btn button')!;
+  const edit = doc.getElementById('awsomepdf-edit-existing-text')!;
   const editAction = vi.fn();
   const undoAction = vi.fn();
   edit.addEventListener('click', editAction);
@@ -35,7 +35,7 @@ describe('Annotation editor controls', () => {
       expect(editButton).toHaveFocus();
       await user.keyboard('{Enter}');
       expect(editAction).toHaveBeenCalledOnce();
-      act(() => { edit.classList.add('pdfcraft-active'); undo.disabled = false; });
+      act(() => { edit.classList.add('awsomepdf-active'); undo.disabled = false; });
       await waitFor(() => expect(editButton).toHaveAttribute('aria-pressed', 'true'));
       expect(undoButton).toBeEnabled();
       undoButton.focus();
@@ -50,7 +50,7 @@ describe('Annotation editor controls', () => {
       act(() => {
         document.documentElement.classList.add('dark');
         const hint = doc.createElement('div');
-        hint.id = 'pdfcraft-text-edit-hint';
+        hint.id = 'awsomepdf-text-edit-hint';
         hint.dataset.message = 'Select a text block';
         doc.body.appendChild(hint);
       });
@@ -58,7 +58,7 @@ describe('Annotation editor controls', () => {
       expect(within(doc.body).getByRole('status')).toHaveTextContent('Select a text block');
       expect(iframe).toBeInTheDocument();
     } finally { cleanup(); }
-    expect(doc.querySelector('[data-awesomepdf-mount]')).toBeNull();
-    expect(doc.querySelector('[data-awesomepdf-control]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-mount]')).toBeNull();
+    expect(doc.querySelector('[data-awsomepdf-control]')).toBeNull();
   });
 });

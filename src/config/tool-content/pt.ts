@@ -3642,7 +3642,7 @@ export const toolContentPt: Record<string, ToolContent> = {
       },
       {
         "question": "Posso personalizar o design do carimbo?",
-        "answer": "Sim. Fornecemos vários designs, como a marca d'água PDFCraft ou o brasão Royal, e você pode ajustar o raio de fusão da cera e a profundidade de recuo do mapa normal no painel."
+        "answer": "Sim. Fornecemos vários designs, como a marca d'água AwsomePDF ou o brasão Royal, e você pode ajustar o raio de fusão da cera e a profundidade de recuo do mapa normal no painel."
       }
     ]
   },

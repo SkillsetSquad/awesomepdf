@@ -1,56 +1,24 @@
-# PDFCraft Chrome Extension
+# AwsomePDF Chrome extension
 
-A simple Chrome extension for quick access to PDFCraft's 72+ PDF tools.
+Quick links to AwsomePDF tools from the browser toolbar and right-click menu. Document processing happens on the website, not in the extension.
 
-## Features
+## Install from source
 
-- 🚀 **Quick Access Popup**: Click the extension icon to see popular tools
-- 📋 **Right-Click Menu**: Access PDFCraft tools from any webpage
-- 🎨 **Modern UI**: Beautiful dark theme with gradient effects
-- ⚡ **Fast**: Lightweight extension with no background processing
+1. Open `chrome://extensions/` and enable **Developer mode**.
+2. Select **Load unpacked** and choose this repository's `extension/` folder.
+3. Click the toolbar icon or use **Open with AwsomePDF** in the right-click menu.
 
-## Installation
+## Tools
 
-### From Source (Developer Mode)
-
-1. Download or clone this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable **Developer mode** (toggle in top-right corner)
-4. Click **Load unpacked**
-5. Select the `extension` folder from this repository
-6. The PDFCraft icon should appear in your toolbar!
-
-### Usage
-
-- **Click the icon** in your toolbar to see quick links to popular PDF tools
-- **Right-click** on any webpage and select "Open with PDFCraft" to access tools
-
-## Tools Included
-
-The popup provides quick access to:
-- Merge PDF
-- Split PDF
-- Compress PDF
-- Edit PDF
-- JPG to PDF
-- PDF to JPG
-- Sign PDF
-- Encrypt PDF
-
-And 64+ more tools via the "Open PDFCraft" button!
+The popup links to Merge PDF, Split PDF, Compress PDF, Edit PDF, JPG to PDF, PDF to JPG, Sign PDF and Encrypt PDF. **Open AwsomePDF** opens the website.
 
 ## Privacy
 
-This extension:
-- ✅ Does NOT collect any data
-- ✅ Does NOT track browsing activity
-- ✅ Only opens PDFCraft website when you click
+The extension opens AwsomePDF when you click a link or menu item. It does not read page contents or track browsing activity. Its only requested permission is `contextMenus`.
 
-## Links
+## Source and license
 
-- Website: [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com)
-- GitHub: [github.com/PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft)
+- Website: [awsomepdf.com](https://awsomepdf.com/en/)
+- Repository: [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf)
 
-## License
-
-MIT License - see the main project for details.
+Based on the original [PDFCraft extension](https://github.com/PDFCraftTool/pdfcraft/tree/main/extension). The repository's [AGPL-3.0 license](../LICENSE) and original third-party notices apply.

@@ -152,7 +152,7 @@ export class CertCryptorProcessor extends BasePDFProcessor {
           color: baseColor,
         });
 
-        // Draw Central Stamp Symbol (e.g. Shield + Key / PDFCraft Logo)
+        // Draw Central Stamp Symbol (e.g. Shield + Key / AwsomePDF Logo)
         // We will draw a crest with lines
         // Draw a crown/crest in the center
         const iconSize = radius * 0.35;
@@ -193,10 +193,10 @@ export class CertCryptorProcessor extends BasePDFProcessor {
 
         if (this.checkCancelled()) return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
         this.updateProgress(65, 'Preparing the signing certificate...');
-        const password = certFile ? cryptorOptions.pfxPassword ?? '' : cryptorOptions.pfxPassword || 'pdfcraft';
+        const password = certFile ? cryptorOptions.pfxPassword ?? '' : cryptorOptions.pfxPassword || 'awsomepdf';
         const certificateBytes = certFile ? new Uint8Array(await certFile.arrayBuffer()) : await createLocalSigningCertificate(password);
         if (this.checkCancelled()) return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
-        const signer = new PdfSigner({ p12cert: certificateBytes, pwd: password, reason: 'Wax seal applied with AwesomePDF.' });
+        const signer = new PdfSigner({ p12cert: certificateBytes, pwd: password, reason: 'Wax seal applied with AwsomePDF.' });
         this.updateProgress(80, cryptorOptions.encryptWithCert ? 'Signing and encrypting for the certificate...' : 'Signing the PDF...');
         const pdfBytes = await signer.sign(pdfDoc, cryptorOptions.encryptWithCert ? {
           mode: Crypto.Mode.AES_256, pubkeys: [],

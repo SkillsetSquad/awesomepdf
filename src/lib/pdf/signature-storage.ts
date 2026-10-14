@@ -1,9 +1,10 @@
 /**
- * PDFCraft Local Signature Storage
+ * AwsomePDF Local Signature Storage
  * Manages extracted and custom signatures stored in localStorage.
  */
 
-export interface PDFCraftSignature {
+import { readStorageItem } from '@/lib/storage/brand-migration';
+export interface SavedSignature {
   id: string;
   name: string;
   dataUrl: string; // Transparent PNG data URL
@@ -13,16 +14,16 @@ export interface PDFCraftSignature {
   sourceDoc?: string;
 }
 
-const STORAGE_KEY = 'pdfcraft.signatures';
+const STORAGE_KEY = 'awsomepdf.signatures';
 const MAX_SAVED_SIGNATURES = 20;
 
 /**
  * Retrieve all saved signatures from local storage
  */
-export function getSavedSignatures(): PDFCraftSignature[] {
+export function getSavedSignatures(): SavedSignature[] {
   if (typeof window === 'undefined') return [];
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = readStorageItem(localStorage, STORAGE_KEY);
     if (!raw) return [];
     const list = JSON.parse(raw);
     return Array.isArray(list) ? list : [];
@@ -35,9 +36,9 @@ export function getSavedSignatures(): PDFCraftSignature[] {
 /**
  * Save a new signature to local storage
  */
-export function saveSignature(sig: Omit<PDFCraftSignature, 'id' | 'createdAt'>): PDFCraftSignature {
+export function saveSignature(sig: Omit<SavedSignature, 'id' | 'createdAt'>): SavedSignature {
   const signatures = getSavedSignatures();
-  const newSig: PDFCraftSignature = {
+  const newSig: SavedSignature = {
     ...sig,
     id: `sig_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
     createdAt: Date.now(),

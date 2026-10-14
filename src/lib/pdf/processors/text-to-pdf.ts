@@ -7,6 +7,7 @@
  * Supports direct text input, custom colors, page orientation, and custom page sizes.
  */
 
+import { openBrandedDatabase } from '@/lib/storage/brand-migration';
 import type {
   ProcessInput,
   ProcessOutput,
@@ -129,21 +130,12 @@ const fontCache: Map<string, ArrayBuffer> = new Map();
 /**
  * IndexedDB font cache
  */
-const DB_NAME = 'pdfcraft-fonts';
-const DB_VERSION = 1;
+const DB_NAME = 'awsomepdf-fonts';
 const STORE_NAME = 'fonts';
 
 async function openFontDB(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, DB_VERSION);
-    request.onerror = () => reject(request.error);
-    request.onsuccess = () => resolve(request.result);
-    request.onupgradeneeded = (event) => {
-      const db = (event.target as IDBOpenDBRequest).result;
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME);
-      }
-    };
+  return openBrandedDatabase(DB_NAME, STORE_NAME, (db) => {
+    db.createObjectStore(STORE_NAME);
   });
 }
 

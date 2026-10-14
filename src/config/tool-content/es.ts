@@ -5437,7 +5437,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       },
       {
         "question": "¿Puedo personalizar el diseño del sello?",
-        "answer": "Sí. Proporcionamos múltiples diseños, como la marca de agua PDFCraft o un escudo real, y usted puede ajustar el radio de fusión de la cera y la profundidad de sangría del mapa normal en el panel."
+        "answer": "Sí. Proporcionamos múltiples diseños, como la marca de agua AwsomePDF o un escudo real, y usted puede ajustar el radio de fusión de la cera y la profundidad de sangría del mapa normal en el panel."
       }
     ]
   },

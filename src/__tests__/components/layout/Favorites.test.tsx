@@ -20,14 +20,14 @@ describe('Shared favorites', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Add to Favorites: Merge Pdf' }));
     await userEvent.click(screen.getByRole('button', { name: 'Add to Favorites: Split Pdf' }));
     expect(screen.getByRole('status')).toHaveTextContent('Favorites: 2');
-    expect(JSON.parse(localStorage.getItem('pdfcraft-favorite-tools')!)).toEqual(['merge-pdf', 'split-pdf']);
+    expect(JSON.parse(localStorage.getItem('awsomepdf-favorite-tools')!)).toEqual(['merge-pdf', 'split-pdf']);
     await userEvent.click(screen.getByRole('button', { name: 'Remove from Favorites: Merge Pdf' }));
     expect(screen.getByRole('status')).toHaveTextContent('Favorites: 1');
     expect(screen.getByRole('button', { name: 'Remove from Favorites: Split Pdf' })).toHaveAttribute('aria-pressed', 'true');
   });
 
   it('recovers from a corrupted saved list without restoring stale session choices', () => {
-    localStorage.setItem('pdfcraft-favorite-tools', 'invalid JSON');
+    localStorage.setItem('awsomepdf-favorite-tools', 'invalid JSON');
     render(<DirectoryFilter />);
     expect(screen.getByRole('status')).toHaveTextContent('Favorites: 0');
   });
@@ -35,8 +35,8 @@ describe('Shared favorites', () => {
   it('reflects changes made by another tab', () => {
     render(<DirectoryFilter />);
     act(() => {
-      localStorage.setItem('pdfcraft-favorite-tools', '["merge-pdf"]');
-      window.dispatchEvent(new StorageEvent('storage', { key: 'pdfcraft-favorite-tools', newValue: '["merge-pdf"]' }));
+      localStorage.setItem('awsomepdf-favorite-tools', '["merge-pdf"]');
+      window.dispatchEvent(new StorageEvent('storage', { key: 'awsomepdf-favorite-tools', newValue: '["merge-pdf"]' }));
     });
     expect(screen.getByRole('status')).toHaveTextContent('Favorites: 1');
   });

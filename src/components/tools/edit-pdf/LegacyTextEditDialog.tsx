@@ -36,18 +36,18 @@ export function LegacyTextEditDialog({ iframe, locale, cancelLabel, applyLabel }
     const receive = (event: MessageEvent) => {
       if (event.origin !== window.location.origin || event.source !== iframe?.contentWindow) return;
       const { type, payload } = event.data ?? {};
-      if (type === 'pdfcraft:select-existing-text' && payload && typeof payload.text === 'string' && Number.isFinite(payload.requestId)) {
+      if (type === 'awsomepdf:select-existing-text' && payload && typeof payload.text === 'string' && Number.isFinite(payload.requestId)) {
         currentSelection.current = payload;
         setSelection(payload);
         setText(payload.text);
         setFitMode('preserve');
         setOverflow(false);
-      } else if (type === 'pdfcraft:cancel-existing-text') {
+      } else if (type === 'awsomepdf:cancel-existing-text') {
         if (currentSelection.current?.requestId === payload?.requestId) {
           currentSelection.current = null;
           setSelection(null);
         }
-      } else if (type === 'pdfcraft:text-overflow') {
+      } else if (type === 'awsomepdf:text-overflow') {
         if (currentSelection.current?.requestId === payload?.requestId) setOverflow(Boolean(payload.overflow));
       }
     };
@@ -56,7 +56,7 @@ export function LegacyTextEditDialog({ iframe, locale, cancelLabel, applyLabel }
   }, [iframe]);
 
   const close = () => {
-    if (selection) send('pdfcraft:close-existing-text', { requestId: selection.requestId });
+    if (selection) send('awsomepdf:close-existing-text', { requestId: selection.requestId });
     currentSelection.current = null;
     setSelection(null);
   };
@@ -69,14 +69,14 @@ export function LegacyTextEditDialog({ iframe, locale, cancelLabel, applyLabel }
       <form className="space-y-4" onSubmit={event => {
         event.preventDefault();
         if (!selection || text === selection.text) { close(); return; }
-        send('pdfcraft:apply-existing-text', { requestId: selection.requestId, replacementText: text, fitMode });
+        send('awsomepdf:apply-existing-text', { requestId: selection.requestId, replacementText: text, fitMode });
         currentSelection.current = null;
         setSelection(null);
       }}>
         <div className="space-y-2"><p className="text-sm font-medium">{labels.original ?? 'Original text'}</p><p className="max-h-24 overflow-auto rounded-md border bg-muted p-3 text-sm">{selection?.text}</p></div>
         <div className="space-y-2"><Label htmlFor="legacy-replacement-text">{labels.replacement ?? 'New text'}</Label><Textarea ref={input} id="legacy-replacement-text" value={text} onChange={event => {
           setText(event.target.value);
-          if (selection) send('pdfcraft:preview-existing-text', { requestId: selection.requestId, text: event.target.value });
+          if (selection) send('awsomepdf:preview-existing-text', { requestId: selection.requestId, text: event.target.value });
         }} /></div>
         {overflow && <Alert role="status"><Info aria-hidden="true" /><AlertDescription>{labels.overflow}</AlertDescription></Alert>}
         <div className="space-y-2"><Label htmlFor="legacy-text-fit">{labels.fit ?? 'If it does not fit'}</Label><NativeSelect id="legacy-text-fit" value={fitMode} onChange={event => setFitMode(event.target.value as TextFitMode)}>

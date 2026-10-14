@@ -1,16 +1,17 @@
 'use client';
 
+import { readStorageItem } from '@/lib/storage/brand-migration';
 import { useState, useEffect, useCallback } from 'react';
 
-const FAVORITES_STORAGE_KEY = 'pdfcraft-favorite-tools';
-const FAVORITES_CHANGED_EVENT = 'pdfcraft-favorites-changed';
+const FAVORITES_STORAGE_KEY = 'awsomepdf-favorite-tools';
+const FAVORITES_CHANGED_EVENT = 'awsomepdf-favorites-changed';
 let memoryFavorites: string[] = [];
 
 function readFavorites(): string[] {
   if (typeof window === 'undefined') return [];
   let stored: string | null;
   try {
-    stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+    stored = readStorageItem(localStorage, FAVORITES_STORAGE_KEY);
   } catch {
     return memoryFavorites;
   }
@@ -22,7 +23,7 @@ function readFavorites(): string[] {
   }
 }
 
-/** Keep cards and directory filters synchronized without changing the existing storage key. */
+/** Keep cards and directory filters synchronized while preserving saved choices across the package rename. */
 export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);

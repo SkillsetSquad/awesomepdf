@@ -39,7 +39,7 @@ export function DirectEditorControls({ labels, locale }: DirectEditorControlsPro
     const script = document.createElement('script');
     script.id = 'direct-editor-engine';
     script.type = 'module';
-    script.src = withBasePath('/direct-pdf-editor/main.js');
+    script.src = withBasePath('/direct-pdf-editor/main.js?v=awsomepdf');
     document.body.appendChild(script);
   }, [locale]);
   return (

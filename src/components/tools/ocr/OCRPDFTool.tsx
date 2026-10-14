@@ -122,13 +122,13 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
     if (!result || !file) return;
     const fileName = `${file.name.replace(/\.[^.]+$/, '')}_ocr.pdf`;
     const targetFile = new File([result], fileName, { type: 'application/pdf' });
-    const transfer = window as Window & { __PDFCRAFT_PENDING_EDIT_FILE__?: File | null };
-    transfer.__PDFCRAFT_PENDING_EDIT_FILE__ = targetFile;
+    const transfer = window as Window & { __AWSOMEPDF_PENDING_EDIT_FILE__?: File | null };
+    transfer.__AWSOMEPDF_PENDING_EDIT_FILE__ = targetFile;
     try {
       const reader = new FileReader();
       reader.onloadend = () => {
-        if (transfer.__PDFCRAFT_PENDING_EDIT_FILE__ !== targetFile) return;
-        try { window.sessionStorage.setItem('pdfcraft_pending_edit_file', JSON.stringify({ name: fileName, type: 'application/pdf', data: reader.result })); }
+        if (transfer.__AWSOMEPDF_PENDING_EDIT_FILE__ !== targetFile) return;
+        try { window.sessionStorage.setItem('awsomepdf_pending_edit_file', JSON.stringify({ name: fileName, type: 'application/pdf', data: reader.result })); }
         catch { /* The in-memory file still supports transfer if storage is full. */ }
       };
       reader.readAsDataURL(result);

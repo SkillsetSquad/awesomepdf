@@ -1,5 +1,5 @@
 // Direct PDF Editor Controller
-import * as appModule from './app.js';
+import * as appModule from './app.js?v=awsomepdf';
 window.appModule = appModule;
 
 // URL params and locale setup
@@ -157,7 +157,7 @@ function setupExitAndFileInput() {
   if (exitBtn) {
     exitBtn.addEventListener('click', () => {
       if (window.parent && window.parent !== window) {
-        window.parent.postMessage({ type: 'PDFCRAFT_EXIT_EDITOR' }, '*');
+        window.parent.postMessage({ type: 'AWSOMEPDF_EXIT_EDITOR' }, '*');
       }
     });
   }
@@ -199,11 +199,11 @@ function setupHostBridge() {
   window.addEventListener('message', async (event) => {
     if (event.source !== window.parent || event.origin !== window.location.origin) return;
     const { type, payload } = event.data || {};
-    if (type === 'PDFCRAFT_THEME_CHANGE') {
+    if (type === 'AWSOMEPDF_THEME_CHANGE') {
       applyTheme(Boolean(payload?.isDark));
       return;
     }
-    if (type === 'PDFCRAFT_LOAD_PDF' && payload) {
+    if (type === 'AWSOMEPDF_LOAD_PDF' && payload) {
       try {
         let fileObj = null;
         const fileName = payload.name || 'document.pdf';
@@ -223,7 +223,7 @@ function setupHostBridge() {
           console.log('[DirectEditor] Engine ready status:', ready, 'opening file:', fileObj.name, fileObj.size);
           await appModule.openFile(fileObj);
           if (window.parent && window.parent !== window) {
-            window.parent.postMessage({ type: 'PDFCRAFT_LOADED_SUCCESS', name: fileObj.name }, '*');
+            window.parent.postMessage({ type: 'AWSOMEPDF_LOADED_SUCCESS', name: fileObj.name }, '*');
           }
         }
       } catch (err) {
@@ -234,7 +234,7 @@ function setupHostBridge() {
 
   // Notify parent we are ready
   if (window.parent && window.parent !== window) {
-    window.parent.postMessage({ type: 'PDFCRAFT_EDITOR_READY' }, '*');
+    window.parent.postMessage({ type: 'AWSOMEPDF_EDITOR_READY' }, '*');
   }
 }
 
@@ -245,7 +245,7 @@ function setupSaveCallback() {
       console.log('[DirectEditor] File saved:', fileName, kb, 'KB');
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({
-          type: 'PDFCRAFT_SAVE_SUCCESS',
+          type: 'AWSOMEPDF_SAVE_SUCCESS',
           fileName: fileName || 'edited-document.pdf',
           sizeKb: kb
         }, '*');

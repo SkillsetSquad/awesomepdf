@@ -52,7 +52,7 @@ describe('Remaining document workspaces', () => {
       await user.click(screen.getByRole('button', { name: t.processButton }));
       await screen.findByRole('button', { name: 'Download engine-result.pdf' });
       expect(processors[index]).toHaveBeenCalledWith([file], expect.any(Object), expect.any(Function));
-      if (key === 'annotationExporter') expect(await screen.findByLabelText(messages.common.documentPreview.result)).toHaveTextContent('current output');
+      if (key === 'annotationExporter') await waitFor(() => expect(screen.getByLabelText(messages.common.documentPreview.result)).toHaveTextContent('current output'));
       else { const output: ProcessOutput = await processors[index].mock.results[0].value; expect(preview).toHaveBeenCalledWith(expect.objectContaining({ file: output.result })); }
       await user.click(screen.getByRole('button', { name: 'clearButton' in t ? t.clearButton : messages.common.buttons.reset }));
       expect(screen.getByRole('button', { name: t.uploadLabel }).parentElement).toHaveFocus();

@@ -14,7 +14,7 @@ window.addEventListener('unhandledrejection', (e) => {
     ((e.reason && (e.reason.stack || e.reason.message)) || e.reason);
 });
 import { PdfEngine, OBJ } from './core.js';
-import { requestEditorInput } from './ui.js';
+import { requestEditorInput } from './ui.js?v=awsomepdf';
 import { applyTagSurgery } from './tagsurgery.js';
 import { pageHasPatternFill, protectPatternArtwork } from './shadingsurgery.js';
 import {
@@ -96,7 +96,7 @@ const rgbaToHex = (n) => {
 };
 
 function toast(msg) {
-  window.dispatchEvent(new CustomEvent('PDFCRAFT_EDITOR_NOTICE', { detail: { message: msg } }));
+  window.dispatchEvent(new CustomEvent('AWSOMEPDF_EDITOR_NOTICE', { detail: { message: msg } }));
 }
 
 const P = () => state.engine;

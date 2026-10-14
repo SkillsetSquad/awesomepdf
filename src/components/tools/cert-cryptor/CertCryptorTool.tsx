@@ -97,7 +97,7 @@ export function CertCryptorTool() {
     setStatus('processing'); setProgress(0); setProgressMessage(t('status.processing')); setError(null); setResult(null); setCertificate(null);
     try {
       const output = await encryptAndSignCert(file, { waxColor, sealPage: 0, sealX: point[0], sealY: point[1],
-        pfxPassword: certificateFile ? pfxPassword : pfxPassword || 'pdfcraft', encryptWithCert, certificateFile: certificateFile || undefined }, (value, message) => {
+        pfxPassword: certificateFile ? pfxPassword : pfxPassword || 'awsomepdf', encryptWithCert, certificateFile: certificateFile || undefined }, (value, message) => {
         if (run === processingRun.current) { setProgress(value); setProgressMessage(message || t('status.processing')); }
       });
       if (run !== processingRun.current) return;

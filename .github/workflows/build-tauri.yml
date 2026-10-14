@@ -134,7 +134,7 @@ jobs:
               ln -s /Applications "$STAGING_DIR/Applications"
               xattr -cr "$STAGING_DIR" || true
               rm -f "$DMG_FILE"
-              hdiutil create -volname "PDFCraft" -srcfolder "$STAGING_DIR" -ov -format UDZO "$DMG_FILE"
+              hdiutil create -volname "AwsomePDF" -srcfolder "$STAGING_DIR" -ov -format UDZO "$DMG_FILE"
               codesign --force --sign - "$DMG_FILE" || true
               rm -rf "$STAGING_DIR"
             fi
@@ -142,7 +142,7 @@ jobs:
             # Also create a signed .app.zip archive
             cd src-tauri/target/release/bundle/macos
             APP_NAME=$(basename "$APP_PATH")
-            ditto -c -k --keepParent "$APP_NAME" "../PDFCraft_macos_aarch64.app.zip"
+            ditto -c -k --keepParent "$APP_NAME" "../AwsomePDF_macos_aarch64.app.zip"
           fi
 
       - name: Package Portable Windows Build
@@ -151,22 +151,22 @@ jobs:
         run: |
           echo "Packaging Windows portable version..."
           mkdir -p src-tauri/target/release/bundle/portable
-          if [ -f "src-tauri/target/release/pdfcraft.exe" ]; then
-            cp "src-tauri/target/release/pdfcraft.exe" "src-tauri/target/release/bundle/portable/PDFCraft-Portable.exe"
-          elif [ -f "src-tauri/target/release/PDFCraft.exe" ]; then
-            cp "src-tauri/target/release/PDFCraft.exe" "src-tauri/target/release/bundle/portable/PDFCraft-Portable.exe"
+          if [ -f "src-tauri/target/release/awsomepdf.exe" ]; then
+            cp "src-tauri/target/release/awsomepdf.exe" "src-tauri/target/release/bundle/portable/AwsomePDF-Portable.exe"
+          elif [ -f "src-tauri/target/release/AwsomePDF.exe" ]; then
+            cp "src-tauri/target/release/AwsomePDF.exe" "src-tauri/target/release/bundle/portable/AwsomePDF-Portable.exe"
           fi
-          echo "PDFCraft Portable Mode" > "src-tauri/target/release/bundle/portable/portable.txt"
+          echo "AwsomePDF Portable Mode" > "src-tauri/target/release/bundle/portable/portable.txt"
           echo "All application data and cache will be stored in the 'data' folder alongside this file." >> "src-tauri/target/release/bundle/portable/portable.txt"
           cd src-tauri/target/release/bundle/portable
           if command -v 7z >/dev/null 2>&1; then
-            7z a ../PDFCraft-Windows-x64-Portable.zip PDFCraft-Portable.exe portable.txt
+            7z a ../AwsomePDF-Windows-x64-Portable.zip AwsomePDF-Portable.exe portable.txt
           elif command -v zip >/dev/null 2>&1; then
-            zip -r ../PDFCraft-Windows-x64-Portable.zip PDFCraft-Portable.exe portable.txt
+            zip -r ../AwsomePDF-Windows-x64-Portable.zip AwsomePDF-Portable.exe portable.txt
           else
-            tar -a -c -f ../PDFCraft-Windows-x64-Portable.zip PDFCraft-Portable.exe portable.txt
+            tar -a -c -f ../AwsomePDF-Windows-x64-Portable.zip AwsomePDF-Portable.exe portable.txt
           fi
-          echo "Portable zip created at src-tauri/target/release/bundle/PDFCraft-Windows-x64-Portable.zip"
+          echo "Portable zip created at src-tauri/target/release/bundle/AwsomePDF-Windows-x64-Portable.zip"
 
       - name: Upload Tauri bundles
         uses: actions/upload-artifact@v4

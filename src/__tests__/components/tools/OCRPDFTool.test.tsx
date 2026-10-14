@@ -37,7 +37,7 @@ beforeEach(() => {
   sessionStorage.clear();
 });
 afterEach(() => {
-  delete (window as Window & { __PDFCRAFT_PENDING_EDIT_FILE__?: File | null }).__PDFCRAFT_PENDING_EDIT_FILE__;
+  delete (window as Window & { __AWSOMEPDF_PENDING_EDIT_FILE__?: File | null }).__AWSOMEPDF_PENDING_EDIT_FILE__;
   Reflect.deleteProperty(document, 'execCommand');
 });
 
@@ -98,9 +98,9 @@ describe('OCR settings and output workspace', () => {
       if (format === 'searchable-pdf') {
         await user.click(screen.getByRole('button', { name: t.openInEditor }));
         expect(push).toHaveBeenCalledWith(`/${locale}/tools/edit-pdf`);
-        const pending = (window as Window & { __PDFCRAFT_PENDING_EDIT_FILE__?: File }).__PDFCRAFT_PENDING_EDIT_FILE__!;
+        const pending = (window as Window & { __AWSOMEPDF_PENDING_EDIT_FILE__?: File }).__AWSOMEPDF_PENDING_EDIT_FILE__!;
         expect(pending.name).toBe('scan_ocr.pdf'); expect(pending.type).toBe('application/pdf'); expect(pending.size).toBe(result.size);
-        await waitFor(() => expect(sessionStorage.getItem('pdfcraft_pending_edit_file')).toContain('scan_ocr.pdf'));
+        await waitFor(() => expect(sessionStorage.getItem('awsomepdf_pending_edit_file')).toContain('scan_ocr.pdf'));
       } else expect(screen.queryByRole('button', { name: t.openInEditor })).toBeNull();
       expect(intlError).not.toHaveBeenCalled();
       await user.click(screen.getByRole('button', { name: messages.common.buttons.remove }));

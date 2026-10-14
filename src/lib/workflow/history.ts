@@ -3,11 +3,12 @@
  * Tracks and stores workflow execution history
  */
 
+import { readStorageItem, removeStorageItem } from '@/lib/storage/brand-migration';
 import type { WorkflowExecutionRecord, WorkflowHistoryStorage } from '@/types/workflow-history';
 import type { WorkflowNode, WorkflowEdge } from '@/types/workflow';
 import { logger } from '@/lib/utils/logger';
 
-const STORAGE_KEY = 'pdfcraft_workflow_history';
+const STORAGE_KEY = 'awsomepdf_workflow_history';
 const MAX_RECORDS = 50; // Keep last 50 executions
 
 /**
@@ -15,7 +16,7 @@ const MAX_RECORDS = 50; // Keep last 50 executions
  */
 export function loadExecutionHistory(): WorkflowExecutionRecord[] {
     try {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = readStorageItem(localStorage, STORAGE_KEY);
         if (!stored) return [];
 
         const storage: WorkflowHistoryStorage = JSON.parse(stored);
@@ -156,7 +157,7 @@ export function deleteExecutionRecord(id: string): void {
  */
 export function clearExecutionHistory(): void {
     try {
-        localStorage.removeItem(STORAGE_KEY);
+        removeStorageItem(localStorage, STORAGE_KEY);
     } catch (error) {
         logger.error('[Workflow History] Failed to clear history:', error);
     }

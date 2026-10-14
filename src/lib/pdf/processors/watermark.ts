@@ -5,6 +5,7 @@
  * Supports text and image watermarks with CJK character support via fontkit.
  */
 
+import { openBrandedDatabase } from '@/lib/storage/brand-migration';
 import type { ProcessInput, ProcessOutput, ProgressCallback } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
@@ -46,21 +47,12 @@ const CJK_FONT_URL = 'https://raw.githack.com/googlefonts/noto-cjk/main/Sans/OTF
 
 // Font cache
 const fontCache: Map<string, ArrayBuffer> = new Map();
-const DB_NAME = 'pdfcraft-fonts';
-const DB_VERSION = 1;
+const DB_NAME = 'awsomepdf-fonts';
 const STORE_NAME = 'fonts';
 
 async function openFontDB(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, DB_VERSION);
-    request.onerror = () => reject(request.error);
-    request.onsuccess = () => resolve(request.result);
-    request.onupgradeneeded = (event) => {
-      const db = (event.target as IDBOpenDBRequest).result;
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME);
-      }
-    };
+  return openBrandedDatabase(DB_NAME, STORE_NAME, (db) => {
+    db.createObjectStore(STORE_NAME);
   });
 }
 

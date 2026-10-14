@@ -5030,7 +5030,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       },
       {
         "question": "Kann ich das Stempeldesign anpassen?",
-        "answer": "Ja. Wir bieten mehrere Designs wie das PDFCraft-Wasserzeichen oder ein königliches Wappen, und Sie können den Wachsschmelzradius und die Einkerbungstiefe der Normalkarte im Bedienfeld anpassen."
+        "answer": "Ja. Wir bieten mehrere Designs wie das AwsomePDF-Wasserzeichen oder ein königliches Wappen, und Sie können den Wachsschmelzradius und die Einkerbungstiefe der Normalkarte im Bedienfeld anpassen."
       }
     ]
   },

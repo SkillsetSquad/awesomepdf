@@ -25,7 +25,7 @@ describe('Direct editor engine controls', () => {
     expect(document.getElementById('file')).toHaveAttribute('type', 'file');
     expect(document.getElementById('save')).toBeDisabled();
     expect(document.getElementById('direct-editor-engine')).toHaveAttribute('type', 'module');
-    expect(document.getElementById('direct-editor-engine')).toHaveAttribute('src', '/direct-pdf-editor/main.js');
+    expect(document.getElementById('direct-editor-engine')).toHaveAttribute('src', '/direct-pdf-editor/main.js?v=awsomepdf');
   });
 
   it('bridges standard checkbox interaction into the engine native input without resetting other values', async () => {

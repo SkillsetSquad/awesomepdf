@@ -111,10 +111,10 @@ describe('command palette file search', () => {
     const { user, input } = await open();
     await user.type(input, 'another-window.pdf');
     await act(async () => {
-      localStorage.setItem('pdfcraft_recent_files', JSON.stringify([
+      localStorage.setItem('awsomepdf_recent_files', JSON.stringify([
         { id: 'external', name: 'another-window.pdf', size: 123, toolUsed: 'split-pdf' },
       ]));
-      window.dispatchEvent(new StorageEvent('storage', { key: 'pdfcraft_recent_files' }));
+      window.dispatchEvent(new StorageEvent('storage', { key: 'awsomepdf_recent_files' }));
     });
     await screen.findByRole('option', { name: /another-window.pdf/ });
   });

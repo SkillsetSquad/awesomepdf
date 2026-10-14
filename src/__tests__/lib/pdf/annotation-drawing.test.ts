@@ -49,7 +49,7 @@ describe('Drawing helpers connected to native painter pages', () => {
     f.fire('dragmove', active);
     expect(active.getClientRect).toHaveBeenCalledWith({ relativeTo: f.stage });
     expect(active.absolutePosition()).toEqual({ x: 24, y: 30 });
-    expect(f.container.querySelectorAll('svg[data-awesomepdf-alignment-guides] line')).toHaveLength(1);
+    expect(f.container.querySelectorAll('svg[data-awsomepdf-alignment-guides] line')).toHaveLength(1);
     expect(f.container.querySelector('line')).toHaveAttribute('x1', '200');
     f.fire('dragend', active); expect(nativeDragEnd).toHaveBeenCalledTimes(1);
     expect(nativeDragEnd).toHaveReturnedWith({ x: 24, y: 30 }); expect(f.container.querySelector('svg')).toBeNull();
@@ -65,9 +65,9 @@ describe('Drawing helpers connected to native painter pages', () => {
     expect(f.container.querySelector('svg')).toBeNull();
     f.engine.painter.getData = () => [{ id: 'other' }]; f.fire('dragmove', active); expect(active.absolutePosition).not.toHaveBeenCalled();
     f.engine.painter.getData = () => [{ id: 'active' }, { id: 'other' }]; f.fire('dragmove', active); expect(f.container.querySelector('svg')).not.toBeNull();
-    f.engine.painter.konvaCanvasStore.clear(); controller.refresh(); expect(f.stage.off).toHaveBeenCalledWith('.awesomepdfSnapping'); expect(f.container.querySelector('svg')).toBeNull();
-    f.engine.painter.konvaCanvasStore.set(1, { konvaStage: f.stage }); controller.refresh(); expect(f.handlers.has('dragmove.awesomepdfSnapping')).toBe(true);
-    controller.refresh(); expect(f.stage.on.mock.calls.filter(call => call[0] === 'dragmove.awesomepdfSnapping')).toHaveLength(2);
+    f.engine.painter.konvaCanvasStore.clear(); controller.refresh(); expect(f.stage.off).toHaveBeenCalledWith('.awsomepdfSnapping'); expect(f.container.querySelector('svg')).toBeNull();
+    f.engine.painter.konvaCanvasStore.set(1, { konvaStage: f.stage }); controller.refresh(); expect(f.handlers.has('dragmove.awsomepdfSnapping')).toBe(true);
+    controller.refresh(); expect(f.stage.on.mock.calls.filter(call => call[0] === 'dragmove.awsomepdfSnapping')).toHaveLength(2);
     controller.dispose(); controller.dispose(); expect(f.handlers.size).toBe(0); f.cleanup();
   });
 

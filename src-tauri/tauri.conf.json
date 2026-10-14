@@ -1,7 +1,8 @@
 {
-  "productName": "PDFCraft",
+  "productName": "AwsomePDF",
+  "mainBinaryName": "awsomepdf",
   "version": "0.1.0",
-  "identifier": "com.pdfcraft.app",
+  "identifier": "com.skillsetsquad.awsomepdf",
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
@@ -13,7 +14,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "PDFCraft",
+        "title": "AwsomePDF",
         "width": 1200,
         "height": 800,
         "minWidth": 800,
@@ -31,6 +32,7 @@
     }
   },
   "bundle": {
+    "publisher": "Skillset Squad Private Limited",
     "active": true,
     "targets": ["dmg", "msi", "nsis", "deb", "appimage"],
     "windows": {

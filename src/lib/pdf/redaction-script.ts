@@ -1,6 +1,6 @@
 /** Shared by the browser engine and the real WASM output verification script. */
 export const REDACTION_SCRIPT = String.raw`
-def _awesomepdf_redaction(input_path, request_path):
+def _awsomepdf_redaction(input_path, request_path):
     import base64
     import json
     import math

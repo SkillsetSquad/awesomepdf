@@ -122,7 +122,7 @@ describe('Wax seal and certificate workspace', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent('Certificate processing failed');
     expect(process).toBeEnabled();
     await user.click(process); await screen.findByRole('button', { name: 'Download signed PDF' });
-    expect(vi.mocked(encryptAndSignCert).mock.calls[1][1]?.pfxPassword).toBe('pdfcraft');
+    expect(vi.mocked(encryptAndSignCert).mock.calls[1][1]?.pfxPassword).toBe('awsomepdf');
     expect(screen.queryByRole('alert')).toBeNull();
   });
 
@@ -143,7 +143,7 @@ describe('Wax seal and certificate workspace', () => {
     expect(screen.getByRole('note')).toHaveTextContent(en.common.certCryptor.localCertificateHelp);
     await user.click(screen.getByRole('button', { name: en.tools.certCryptor.processButton }));
     await screen.findByRole('button', { name: 'Download signed PDF' });
-    expect(vi.mocked(encryptAndSignCert).mock.calls[1][1]).toEqual(expect.objectContaining({ certificateFile: undefined, pfxPassword: 'pdfcraft' }));
+    expect(vi.mocked(encryptAndSignCert).mock.calls[1][1]).toEqual(expect.objectContaining({ certificateFile: undefined, pfxPassword: 'awsomepdf' }));
   });
 
   it.each(['result', 'error'] as const)('ignores cancelled progress and a late %s after a newer run starts', async outcome => {

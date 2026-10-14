@@ -4116,7 +4116,7 @@ export const toolContentKo: Record<string, ToolContent> = {
       },
       {
         "question": "스탬프 디자인을 맞춤 설정할 수 있나요?",
-        "answer": "네. 우리는 PDFCraft 워터마크나 왕실 문장과 같은 다양한 디자인을 제공하며 패널에서 왁스 녹는 반경과 일반 맵 들여쓰기 깊이를 조정할 수 있습니다."
+        "answer": "네. 우리는 AwsomePDF 워터마크나 왕실 문장과 같은 다양한 디자인을 제공하며 패널에서 왁스 녹는 반경과 일반 맵 들여쓰기 깊이를 조정할 수 있습니다."
       }
     ]
   },

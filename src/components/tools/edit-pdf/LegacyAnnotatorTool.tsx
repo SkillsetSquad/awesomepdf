@@ -176,23 +176,23 @@ export function LegacyAnnotatorTool({
                 (btn as HTMLElement).style.display = 'none';
               }
             });
-          }          // 3. Inject PDFCraft Enrichment Script
+          }          // 3. Inject AwsomePDF Enrichment Script
           const patchScript = doc.createElement('script');
           patchScript.textContent = `
             (function() {
-              console.log('[PDFCraft Patch] Initializing annotation patches...');
+              console.log('[AwsomePDF Patch] Initializing annotation patches...');
 
               const initInterval = setInterval(() => {
                 const ext = window.pdfjsAnnotationExtensionInstance;
                 if (ext) {
                   clearInterval(initInterval);
-                  console.log('[PDFCraft Patch] pdfjsAnnotationExtensionInstance found! Setting up patches...');
+                  console.log('[AwsomePDF Patch] pdfjsAnnotationExtensionInstance found! Setting up patches...');
                   setupExistingTextEditing();
                 }
               }, 200);
 
               function setupExistingTextEditing() {
-                if (document.getElementById('pdfcraft-edit-existing-text')) return;
+                if (document.getElementById('awsomepdf-edit-existing-text')) return;
                 const toolbar = document.querySelector('.CustomToolbar ul.buttons');
                 if (!toolbar) return;
 
@@ -234,7 +234,7 @@ export function LegacyAnnotatorTool({
                     };
 
                 const item = document.createElement('li');
-                item.id = 'pdfcraft-edit-existing-text';
+                item.id = 'awsomepdf-edit-existing-text';
                 item.title = labels.tool;
                 const selectItem = toolbar.querySelector('li[title="Select"]');
                 if (selectItem?.nextSibling) {
@@ -244,20 +244,20 @@ export function LegacyAnnotatorTool({
                 }
 
                 const style = document.createElement('style');
-                style.id = 'pdfcraft-existing-text-styles';
+                style.id = 'awsomepdf-existing-text-styles';
                 style.textContent = \`
-                  body.pdfcraft-text-edit-mode .textLayer { pointer-events: auto !important; }
-                  body.pdfcraft-text-edit-mode .textLayer span {
+                  body.awsomepdf-text-edit-mode .textLayer { pointer-events: auto !important; }
+                  body.awsomepdf-text-edit-mode .textLayer span {
                     cursor: text !important;
                     pointer-events: auto !important;
                     border-radius: 2px;
                     transition: outline-color .12s, background .12s;
                   }
-                  body.pdfcraft-text-edit-mode .textLayer span:hover {
+                  body.awsomepdf-text-edit-mode .textLayer span:hover {
                     outline: 2px solid #2563eb !important;
                     background: rgba(37, 99, 235, .14) !important;
                   }
-                  .pdfcraft-live-text-preview {
+                  .awsomepdf-live-text-preview {
                     outline: 2px dashed #16a34a !important;
                     background: rgba(22, 163, 74, .10) !important;
                   }
@@ -276,7 +276,7 @@ export function LegacyAnnotatorTool({
                 function restorePreview() {
                   if (previewSpan) {
                     previewSpan.textContent = previewOriginalText;
-                    previewSpan.classList.remove('pdfcraft-live-text-preview');
+                    previewSpan.classList.remove('awsomepdf-live-text-preview');
                   }
                   previewSpan = null;
                   previewOriginalText = '';
@@ -284,20 +284,20 @@ export function LegacyAnnotatorTool({
 
                 function closeTextEditor() {
                   restorePreview();
-                  if (editingText) window.parent.postMessage({ type: 'pdfcraft:cancel-existing-text', payload: { requestId } }, window.location.origin);
+                  if (editingText) window.parent.postMessage({ type: 'awsomepdf:cancel-existing-text', payload: { requestId } }, window.location.origin);
                   editingText = false;
                 }
 
                 function setActive(nextActive) {
                   active = nextActive;
-                  document.body.classList.toggle('pdfcraft-text-edit-mode', active);
-                  item.classList.toggle('pdfcraft-active', active);
+                  document.body.classList.toggle('awsomepdf-text-edit-mode', active);
+                  item.classList.toggle('awsomepdf-active', active);
                   closeTextEditor();
 
-                  document.getElementById('pdfcraft-text-edit-hint')?.remove();
+                  document.getElementById('awsomepdf-text-edit-hint')?.remove();
                   if (active) {
                     const hint = document.createElement('div');
-                    hint.id = 'pdfcraft-text-edit-hint';
+                    hint.id = 'awsomepdf-text-edit-hint';
                     hint.dataset.message = labels.hint;
                     document.body.appendChild(hint);
                   }
@@ -351,7 +351,7 @@ export function LegacyAnnotatorTool({
                   editingText = true;
                   selectionGeometry = { page: pageNumber, text: previewOriginalText, x, y, width, height };
                   window.parent.postMessage({
-                    type: 'pdfcraft:select-existing-text',
+                    type: 'awsomepdf:select-existing-text',
                     payload: { requestId, text: previewOriginalText, labels }
                   }, window.location.origin);
                 }, true);
@@ -360,18 +360,18 @@ export function LegacyAnnotatorTool({
                   if (event.source !== window.parent || event.origin !== window.location.origin) return;
                   const { type, payload } = event.data || {};
                   if (!editingText || payload?.requestId !== requestId) return;
-                  if (type === 'pdfcraft:preview-existing-text' && typeof payload.text === 'string') {
+                  if (type === 'awsomepdf:preview-existing-text' && typeof payload.text === 'string') {
                     previewSpan.textContent = payload.text;
-                    previewSpan.classList.add('pdfcraft-live-text-preview');
+                    previewSpan.classList.add('awsomepdf-live-text-preview');
                     const previewRect = previewSpan.getBoundingClientRect();
                     const lineCount = Math.max(1, payload.text.split(/\\r?\\n/).length);
                     const overflow = previewRect.width > originalWidth + 1 || lineCount * originalHeight > originalHeight + 1;
-                    window.parent.postMessage({ type: 'pdfcraft:text-overflow', payload: { requestId, overflow } }, window.location.origin);
-                  } else if (type === 'pdfcraft:close-existing-text') {
+                    window.parent.postMessage({ type: 'awsomepdf:text-overflow', payload: { requestId, overflow } }, window.location.origin);
+                  } else if (type === 'awsomepdf:close-existing-text') {
                     closeTextEditor();
-                  } else if (type === 'pdfcraft:apply-existing-text' && typeof payload.replacementText === 'string') {
+                  } else if (type === 'awsomepdf:apply-existing-text' && typeof payload.replacementText === 'string') {
                     window.parent.postMessage({
-                      type: 'pdfcraft:replace-existing-text',
+                      type: 'awsomepdf:replace-existing-text',
                       payload: { ...selectionGeometry, replacementText: payload.replacementText, fitMode: payload.fitMode }
                     }, window.location.origin);
                     closeTextEditor();
@@ -384,7 +384,7 @@ export function LegacyAnnotatorTool({
             })();
           `;
           doc.body.appendChild(patchScript);
-          console.log('[PDFCraft Patch] Enrichment script successfully injected into iframe!');
+          console.log('[AwsomePDF Patch] Enrichment script successfully injected into iframe!');
         }
       } catch (e) {
         console.warn('Could not access iframe content to inject patches', e);
@@ -459,7 +459,7 @@ export function LegacyAnnotatorTool({
       if (
         event.origin !== window.location.origin ||
         event.source !== iframeRef.current?.contentWindow ||
-        event.data?.type !== 'pdfcraft:replace-existing-text' ||
+        event.data?.type !== 'awsomepdf:replace-existing-text' ||
         !file ||
         isTextReplacing
       ) {

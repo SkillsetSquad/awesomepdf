@@ -3,7 +3,7 @@
 export function requestEditorInput(options) {
   return new Promise(resolve => {
     const detail = { ...options, respond: resolve, handled: false };
-    window.dispatchEvent(new CustomEvent('PDFCRAFT_EDITOR_INPUT', { detail }));
+    window.dispatchEvent(new CustomEvent('AWSOMEPDF_EDITOR_INPUT', { detail }));
     if (!detail.handled) resolve(null);
   });
 }

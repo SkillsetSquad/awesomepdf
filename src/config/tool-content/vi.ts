@@ -6552,7 +6552,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       },
       {
         "question": "Tôi có thể tùy chỉnh thiết kế tem không?",
-        "answer": "Vâng. Chúng tôi cung cấp nhiều thiết kế như hình mờ PDFCraft hoặc huy hiệu Hoàng gia và bạn có thể điều chỉnh bán kính tan chảy sáp và độ sâu thụt bản đồ thông thường trong bảng điều khiển."
+        "answer": "Vâng. Chúng tôi cung cấp nhiều thiết kế như hình mờ AwsomePDF hoặc huy hiệu Hoàng gia và bạn có thể điều chỉnh bán kính tan chảy sáp và độ sâu thụt bản đồ thông thường trong bảng điều khiển."
       }
     ]
   },

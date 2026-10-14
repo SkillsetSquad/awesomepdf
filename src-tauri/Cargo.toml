@@ -1,8 +1,8 @@
 [package]
-name = "pdfcraft"
+name = "awsomepdf"
 version = "0.1.0"
-description = "PDFCraft Desktop Application"
-authors = ["PDFCraft"]
+description = "AwsomePDF desktop application"
+authors = ["Skillset Squad Private Limited", "PDFCraft contributors"]
 edition = "2021"
 
 [build-dependencies]

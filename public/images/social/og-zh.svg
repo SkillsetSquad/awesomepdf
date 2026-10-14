@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+ <rect width="1200" height="630" fill="#f7f9fe"/>
+ <rect x="32" y="32" width="1136" height="566" rx="28" fill="white" stroke="#dbe3f4" stroke-width="2"/>
+ <rect x="80" y="88" width="88" height="88" rx="20" fill="#2458f5"/>
+ <g transform="translate(80 88) scale(2.75)"><path d="M8 8h10a4 4 0 010 8H8V8z M8 16h6v8H8v-8z" fill="white"/></g>
+ <g font-family="Arial, Noto Sans, Hiragino Sans, Apple SD Gothic Neo, sans-serif">
+ <text x="196" y="151" font-size="62" font-weight="700" fill="#101828">AwsomePDF</text>
+ <text x="80" y="296" text-anchor="start" direction="ltr" font-size="52" font-weight="700" fill="#101828">免费 PDF 工具</text>
+ <text x="80" y="366" text-anchor="start" direction="ltr" font-size="30" fill="#475467">合并 PDF · 拆分 PDF · 压缩 PDF</text>
+ <rect x="80" y="444" width="1040" height="2" fill="#e4e9f2"/>
+ <text x="80" y="530" font-size="30" font-weight="700" fill="#2458f5">awsomepdf.com</text>
+ </g></svg>
