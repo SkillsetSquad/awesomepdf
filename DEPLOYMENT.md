@@ -139,9 +139,9 @@ docker compose -f docker-compose.yml -f docker-compose.local.yml down
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://awsomepdf.com`; canonical origin without a path |
 | `BASE_PATH` | Empty for root hosting; a prefix such as `/awsomepdf` for subpath hosting |
-| `APP_VERSION` | Optional visible build version; Git-less images otherwise use the package version |
-| `DISABLE_UPDATE_CHECK` | `false`; set to `true` to disable automatic update checks |
 | `SOURCE_REVISION` | Optional Git revision recorded in the source manifest |
+
+The inherited PDFCraft release checker, update popup and update-related build variables have been removed. Rebuild and deploy the current source to remove the popup from an older deployment; restarting an existing image does not replace its bundled JavaScript. Remove obsolete `APP_VERSION` and `DISABLE_UPDATE_CHECK` overrides from your hosting configuration.
 
 The Dockerfile declares these arguments and Compose forwards them. Runtime environment changes cannot change exported URLs. If assigning Coolify's `SOURCE_COMMIT` to `SOURCE_REVISION`, enable the Coolify setting that makes the source commit available during builds.
 

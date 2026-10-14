@@ -67,7 +67,6 @@ jobs:
         run: npm run build
         env:
           TAURI_ENV: "true"
-          APP_VERSION: ${{ steps.version.outputs.version }}
 
       - name: Build Tauri app
         uses: nick-fields/retry@v3

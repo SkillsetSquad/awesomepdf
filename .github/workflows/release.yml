@@ -61,8 +61,6 @@ jobs:
       # Build the project (generates static export in 'out' directory)
       - name: Build project
         run: npm run build
-        env:
-          APP_VERSION: ${{ steps.version.outputs.version }}
 
       # Create release package from static export
       - name: Create release package

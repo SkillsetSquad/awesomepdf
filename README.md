@@ -24,13 +24,13 @@
 
 > **AwsomePDF is a fork of [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by [Skillset Squad](https://github.com/SkillsetSquad). All credit for the original tools and processing engine goes to the PDFCraft team.
 >
-> We have reworked the interface to use **[shadcn/ui](https://ui.shadcn.com/)** instead of PDFCraft's custom theme and component set. **Bigger changes are underway**, so expect this project to keep diverging from upstream.
+> AwsomePDF builds on that foundation with a **[shadcn/ui](https://ui.shadcn.com/)** interface, searchable local file history, document-processing fixes, permanent redaction, and deployment changes. The commit-backed differences are listed below.
 
 ## 📖 About
 
 **AwsomePDF** is a comprehensive suite of PDF tools designed for privacy and performance. Unlike many online converters, it processes your files entirely within your browser using WebAssembly technology. Your documents **never** leave your device, ensuring maximum security for your sensitive data.
 
-The processing engine and tool set come from PDFCraft. What differs in this fork is the interface layer and where the project is headed (see below).
+The original processing engine and tool set come from PDFCraft. This fork changes both the interface and selected processing paths while retaining the browser-based architecture and upstream attribution.
 
 ## 🔀 Relationship to PDFCraft
 
@@ -39,22 +39,34 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 | Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf) |
 | Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
 | UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
-| Status | Upstream project | Actively diverging |
+| Maintenance | Original project | Separately maintained fork; changes below refer to this repository's history |
 
-### What has changed so far
+### What makes AwsomePDF different
 
-- Replaced PDFCraft's custom Button, Card, Modal, Tabs, form-field and theme-toggle components with standard shadcn/ui primitives.
-- Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer. Cmd+K / Ctrl+K now searches tool names and locally saved file records from recent-file history and saved projects.
-- Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
-- Added a real open-source page with source, license and notice downloads for each deployed build.
-- Reworked Docker deployment in this fork for Coolify: production builds the static site into a self-contained Nginx image before startup, with a health check and no production source mounts or required Compose profile. Local preview ports use a separate Compose override.
-- Changed Redact PDF, Find and Redact, and Smart Data Redactor in this fork to use local PDF content removal with a full rewrite, rather than overlays or text-stream replacement. Selected glyphs, overlapping image pixels and touched graphics are removed; other text stays selectable. Secure export uses solid fills and strips ancillary content that can retain copies.
+These are changes recorded in this fork's commit history, not a claim that today's PDFCraft lacks every feature below. PDFCraft remains the foundation for the original tools and processing engines.
 
-### Work in progress
+| Area | Changes made in this fork | Commit evidence |
+| --- | --- | --- |
+| Interface and navigation | Standard shadcn/ui controls across the shared shell and audited document workspaces, keyboard-accessible settings and dialogs, localized navigation, and previews of actual source and output documents. | [Homepage and navigation](https://github.com/SkillsetSquad/awsomepdf/commit/5352c59), [document workspace migration](https://github.com/SkillsetSquad/awsomepdf/commit/b5ae4cb), [UI audit completion](https://github.com/SkillsetSquad/awsomepdf/commit/12536e2) |
+| Local file discovery | Cmd+K / Ctrl+K searches tools plus filenames and saved project records stored in this browser. File results open the relevant tool; the original document must still be selected from the device. | [Local file search](https://github.com/SkillsetSquad/awsomepdf/commit/2a9a6d8) |
+| Permanent redaction | Redact PDF, Find and Redact, and Smart Data Redactor remove selected PDF content and rewrite the document instead of relying on cover-up overlays or text-stream replacement. Secure export uses solid fills and removes ancillary content that can retain copies. Review the output and the limitations below before sharing. | [Content-removal implementation](https://github.com/SkillsetSquad/awsomepdf/commit/8134fe2) |
+| Annotation editing | Standard signature, stamp, comment and history controls stay connected to the native drawing engine and local annotation store. This includes undo/redo restoration, comment replies and filters, and native signature/stamp geometry. | [History](https://github.com/SkillsetSquad/awsomepdf/commit/6c6d98f), [signatures](https://github.com/SkillsetSquad/awsomepdf/commit/028b338), [stamps](https://github.com/SkillsetSquad/awsomepdf/commit/23b1ca5), [comments](https://github.com/SkillsetSquad/awsomepdf/commit/723f5b8) |
+| Document processing and truthful results | Replaced simulated panels with document workspaces, preserved actual engine output streams, corrected visible-page geometry in booklet and column splitting, added local scan tilt detection, and report OCR confidence only when recognition measures it. | [Engine boundaries](https://github.com/SkillsetSquad/awsomepdf/commit/10143ef), [booklet geometry](https://github.com/SkillsetSquad/awsomepdf/commit/8c06ddb), [column splitting](https://github.com/SkillsetSquad/awsomepdf/commit/284c2d2), [scan alignment](https://github.com/SkillsetSquad/awsomepdf/commit/ea616f3), [OCR confidence](https://github.com/SkillsetSquad/awsomepdf/commit/5e7ec36) |
+| Tool loading | Each tool interface loads through its own dynamic import rather than eagerly importing all tool interfaces. | [Selected-tool loading](https://github.com/SkillsetSquad/awsomepdf/commit/9bc7f44) |
+| Multilingual discovery and source access | Added localized SEO metadata, canonical and alternate URLs, locale-specific social images, and deployed source, license and notice downloads. | [Multilingual SEO and source packaging](https://github.com/SkillsetSquad/awsomepdf/commit/f7d9394) |
+| Deployment and update behavior | Coolify production uses a self-contained Nginx image with health checks and separate local preview configuration. The root redirects to English while language switching remains available in navigation. The inherited PDFCraft release checker and update popup have been removed. | [Docker deployment](https://github.com/SkillsetSquad/awsomepdf/commit/1049db2), [root redirect and updater removal](https://github.com/SkillsetSquad/awsomepdf/commit/be4b5f9) |
 
-- The UI migration is not finished. Many individual tool workspaces (settings panels, previews and editors) are still being moved to shadcn/ui one at a time.
-- Larger changes beyond the UI are underway. This README will be updated as they land.
-- Some existing ESLint warnings remain. Production builds enforce lint and TypeScript checks.
+### Current scope and limitations
+
+- The document UI audit and migration landed in the history above. That does not mean every tool or processing path has been verified against every PDF.
+- **AwsomePDF Share is coming soon**; direct browser-to-browser file sharing is not available yet.
+- Files are processed on the device. Some tools download fonts, language data or engine assets; saved file search reads names and metadata, not document contents.
+- Tool-specific limits still apply, including the redaction restrictions documented below. No speed benchmark or blanket superiority claim is implied by these changes.
+- Some ESLint warnings remain. Production builds enforce lint and TypeScript checks.
+
+### Updates and deployment
+
+AwsomePDF does not check GitHub releases, offer in-app software updates, or show an update popup. The removed inherited checker queried `PDFCraftTool/pdfcraft` releases, which do not represent releases of this fork. Website updates are delivered by rebuilding and deploying this repository. An older deployment can still show the removed popup until the new build is served; see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 Development notes are kept locally in the ignored `docs/` directory.
 
