@@ -7,7 +7,7 @@ import { TOOL_CATEGORIES } from '@/types/tool';
 import { getFaqValues } from '@/config/faq';
 import { generateToolMetadata, generateHomeMetadata, generateToolsListMetadata, generateAboutMetadata, generateFaqMetadata, generatePrivacyMetadata, generateContactMetadata } from '@/lib/seo/metadata';
 import { generateToolPageStructuredData, serializeStructuredData } from '@/lib/seo/structured-data';
-import sitemap from '@/app/sitemap';
+import sitemap, { getSitemapUrlCount } from '@/app/sitemap';
 import robots from '@/app/robots';
 
 describe('every public page and language', () => {
@@ -59,8 +59,10 @@ describe('every public page and language', () => {
     const paths = ['', '/tools', '/about', '/faq', '/privacy', '/contact', '/open-source',
       ...TOOL_CATEGORIES.map(category => `/tools/category/${category}`),
       ...getAllTools().map(tool => `/tools/${tool.slug}`)];
-    const expected = ['https://awsomepdf.com/', ...locales.flatMap(locale => paths.map(path => `https://awsomepdf.com/${locale}${path}/`))];
+    const expected = locales.flatMap(locale => paths.map(path => `https://awsomepdf.com/${locale}${path}/`));
     expect(entries.map(entry => entry.url).sort()).toEqual(expected.sort());
+    expect(entries).toHaveLength(getSitemapUrlCount());
+    expect(entries.some(entry => entry.url === 'https://awsomepdf.com/')).toBe(false);
     expect(new Set(entries.map(entry => entry.url)).size).toBe(entries.length);
     for (const entry of entries) {
       expect(Object.keys(entry.alternates?.languages || {})).toHaveLength(locales.length + 1);
@@ -71,6 +73,21 @@ describe('every public page and language', () => {
     expect(rules).not.toContain('/_next/');
     expect(rules).not.toContain('/static/');
     expect(robots().sitemap).toBe('https://awsomepdf.com/sitemap.xml');
+  });
+
+  it('redirects the entry to English with canonical homepage language alternates', async () => {
+    const { default: RootPage, metadata } = await import('@/app/(entry)/page');
+    expect(() => RootPage()).toThrow('NEXT_REDIRECT');
+    try {
+      RootPage();
+    } catch (error) {
+      expect(error).toMatchObject({ digest: 'NEXT_REDIRECT;replace;/en/;307;' });
+    }
+    expect(metadata.alternates?.canonical).toBe('https://awsomepdf.com/en/');
+    expect(metadata.alternates?.languages?.['x-default']).toBe('https://awsomepdf.com/en/');
+    for (const locale of locales) {
+      expect(metadata.alternates?.languages?.[locale]).toBe(`https://awsomepdf.com/${locale}/`);
+    }
   });
 
   it('serializes JSON-LD without letting content close its script tag', () => {
@@ -101,6 +118,7 @@ describe('subpath deployments', () => {
     const { default: subpathRobots } = await import('@/app/robots');
     expect(getCanonicalUrl('zh-TW', '/tools/merge-pdf/')).toBe('https://awsomepdf.com/awsomepdf/zh-TW/tools/merge-pdf/');
     expect(getAlternateUrls('/about')['ro']).toBe('https://awsomepdf.com/awsomepdf/ro/about/');
+    expect(getAlternateUrls()['x-default']).toBe('https://awsomepdf.com/awsomepdf/en/');
     expect(getAbsoluteUrl('/images/og-ar.png')).toBe('https://awsomepdf.com/awsomepdf/images/og-ar.png');
     expect(subpathSitemap().every(entry => entry.url.startsWith('https://awsomepdf.com/awsomepdf/'))).toBe(true);
     expect(subpathRobots().sitemap).toBe('https://awsomepdf.com/awsomepdf/sitemap.xml');

@@ -17,6 +17,6 @@ export function getCanonicalUrl(locale: Locale, path = ''): string {
 export function getAlternateUrls(path = ''): Record<string, string> {
   return {
     ...Object.fromEntries(locales.map(locale => [locale, getCanonicalUrl(locale, path)])),
-    'x-default': path.replace(/\//g, '') ? getCanonicalUrl(defaultLocale, path) : getAbsoluteUrl('/', true),
+    'x-default': getCanonicalUrl(defaultLocale, path),
   };
 }

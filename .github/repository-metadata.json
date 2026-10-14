@@ -1,0 +1,18 @@
+{
+  "name": "awsomepdf",
+  "description": "Open-source, browser-based PDF toolkit for editing, conversion, compression, merging, splitting, and document management.",
+  "homepage": "https://awsomepdf.com",
+  "topics": [
+    "pdf",
+    "pdf-editor",
+    "pdf-tools",
+    "pdf-converter",
+    "pdf-compressor",
+    "open-source",
+    "document-tools",
+    "self-hosted",
+    "nextjs",
+    "react"
+  ],
+  "has_issues": true
+}

@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem using synthetic or public files.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Do not attach private documents, credentials or personal data. For vulnerabilities, use GitHub private vulnerability reporting."
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and expected behavior
+      description: Name the tool or page and describe what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include settings and a minimal synthetic or public fixture when possible.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, operating system, app URL or commit, and self-hosting method.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Screenshots or error messages without filenames, document contents or secrets.

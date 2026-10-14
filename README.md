@@ -21,9 +21,11 @@
 
 </div>
 
-AwsomePDF is based on [PDFCraft](https://github.com/PDFCraftTool/pdfcraft) and maintained by [Skillset Squad](https://github.com/SkillsetSquad). Credit for the original tools, processing engines and architecture belongs to the PDFCraft team.
+AwsomePDF is based on and modified from [PDFCraft](https://github.com/PDFCraftTool/pdfcraft), maintained by [Skillset Squad Private Limited](https://github.com/SkillsetSquad). Credit for the original tools, processing engines and architecture belongs to the PDFCraft team.
 
-[Try AwsomePDF](https://awsomepdf.com/en/) · [Self-hosting guide](DEPLOYMENT.md)
+The GitHub repository is standalone, with no fork-network relationship to PDFCraft. Its provenance and AGPLv3 obligations remain unchanged.
+
+[Try AwsomePDF](https://awsomepdf.com/en/) · [Self-hosting guide](DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security reporting](#security-reporting) · [Changelog](CHANGELOG.md)
 
 ## About
 
@@ -37,27 +39,36 @@ Some tools download processing engines, fonts or language data when first used. 
 |---|---|---|
 | Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf) |
 | Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
-
-PDFCraft provides the original tool set and processing engines. The changes below were made in this repository.
+| Maintenance | Original project | Independent repository; reviewed upstream patches remain welcome |
 
 ### What has changed so far
 
-- **Product identity:** Packages, desktop installers, extension links and generated document labels use AwsomePDF. Original PDFCraft attribution and license notices are preserved.
-- **Interface:** Reworked navigation, pages, dialogs and document workspaces with shadcn/ui controls, light and dark themes, and keyboard navigation.
-- **File search:** Cmd+K / Ctrl+K searches tools, recent filenames and saved project records in this browser.
-- **Annotation editing:** Connected signature, stamp, comment and undo/redo controls to the document editor.
-- **Bookmark editing:** New entries appear after the active bookmark and link to the previewed page. Reposition complete bookmark subtrees by dragging or choosing a destination in the keyboard/mobile Move dialog. Select entries by range, Ctrl/Cmd-click, or checkboxes and confirm their removal, or remove every bookmark at once. Empty bookmark lists can be exported too.
-- **Processing fixes:** Corrected page geometry in booklet and column splitting, added scan tilt detection, and tied OCR confidence to recognition results.
-- **Permanent redaction:** Redact PDF, Find and Redact, and Smart Data Redactor remove selected content and rewrite the PDF. See [Redacting sensitive content](#redacting-sensitive-content) for usage and limits.
-- **Tool loading:** Tool interfaces load individually when selected.
-- **Source access and discovery:** Added source, license and notice downloads for deployed builds, along with localized search metadata and social images.
-- **Self-hosting:** Docker builds the site into an Nginx image with a health check. Coolify uses the base Compose file; local preview uses a separate override.
-- **Application updates:** Removed the inherited release checker and update controls from browser and desktop builds.
+These changes are recorded in this repository’s history; they do not imply that current PDFCraft lacks each capability. PDFCraft provides the original tool set and processing engines.
+
+| Area | Changes made in this fork | Commit evidence |
+| --- | --- | --- |
+| Product identity and existing browser data | Packages, desktop installers, extension links and generated document labels use AwsomePDF. Browser storage moves to the new names on the same origin while preserving legacy IndexedDB backups. Original PDFCraft attribution and license notices are retained. | [Product identity and data migration](https://github.com/SkillsetSquad/awesomepdf/commit/ade1e69) |
+| Bookmark editing | Insert after the active entry at the previewed page. Move complete subtrees by dragging or with the keyboard/mobile Move dialog. Select visible ranges or individual entries using Ctrl/Cmd-click or checkboxes, confirm removal with descendant counts, and export even an empty bookmark list. | [Remove all](https://github.com/SkillsetSquad/awesomepdf/commit/3fc9a57), [insertion and movement](https://github.com/SkillsetSquad/awesomepdf/commit/a714f28), [selective removal](https://github.com/SkillsetSquad/awesomepdf/commit/291d65e) |
+| Interface and navigation | Standard shadcn/ui controls across the shared shell and audited document workspaces, keyboard-accessible settings and dialogs, localized navigation, and previews of actual source and output documents. | [Homepage and navigation](https://github.com/SkillsetSquad/awsomepdf/commit/5352c59), [document workspace migration](https://github.com/SkillsetSquad/awsomepdf/commit/b5ae4cb), [UI audit completion](https://github.com/SkillsetSquad/awsomepdf/commit/12536e2) |
+| Local file discovery | Cmd+K / Ctrl+K searches tools plus filenames and saved project records stored in this browser. File results open the relevant tool; the original document must still be selected from the device. | [Local file search](https://github.com/SkillsetSquad/awsomepdf/commit/2a9a6d8) |
+| Permanent redaction | Redact PDF, Find and Redact, and Smart Data Redactor remove selected PDF content and rewrite the document instead of relying on cover-up overlays or text-stream replacement. Secure export uses solid fills and removes ancillary content that can retain copies. Review the output and the limitations below before sharing. | [Content-removal implementation](https://github.com/SkillsetSquad/awsomepdf/commit/8134fe2) |
+| Annotation editing | Standard signature, stamp, comment and history controls stay connected to the native drawing engine and local annotation store. This includes undo/redo restoration, comment replies and filters, and native signature/stamp geometry. | [History](https://github.com/SkillsetSquad/awsomepdf/commit/6c6d98f), [signatures](https://github.com/SkillsetSquad/awsomepdf/commit/028b338), [stamps](https://github.com/SkillsetSquad/awsomepdf/commit/23b1ca5), [comments](https://github.com/SkillsetSquad/awsomepdf/commit/723f5b8) |
+| Document processing and truthful results | Replaced simulated panels with document workspaces, preserved actual engine output streams, corrected visible-page geometry in booklet and column splitting, added local scan tilt detection, and report OCR confidence only when recognition measures it. | [Engine boundaries](https://github.com/SkillsetSquad/awsomepdf/commit/10143ef), [booklet geometry](https://github.com/SkillsetSquad/awsomepdf/commit/8c06ddb), [column splitting](https://github.com/SkillsetSquad/awsomepdf/commit/284c2d2), [scan alignment](https://github.com/SkillsetSquad/awsomepdf/commit/ea616f3), [OCR confidence](https://github.com/SkillsetSquad/awsomepdf/commit/5e7ec36) |
+| Tool loading | Each tool interface loads through its own dynamic import rather than eagerly importing all tool interfaces. | [Selected-tool loading](https://github.com/SkillsetSquad/awsomepdf/commit/9bc7f44) |
+| Multilingual discovery and source access | Added localized SEO metadata, canonical and alternate URLs, locale-specific social images, and deployed source, license and notice downloads. | [Multilingual SEO and source packaging](https://github.com/SkillsetSquad/awsomepdf/commit/f7d9394) |
+| Deployment and update behavior | Coolify production uses a self-contained Nginx image with health checks and separate local preview configuration. The root redirects to English while language switching remains available in navigation. The inherited PDFCraft release checker and update popup have been removed. | [Docker deployment](https://github.com/SkillsetSquad/awsomepdf/commit/1049db2), [root redirect and updater removal](https://github.com/SkillsetSquad/awsomepdf/commit/be4b5f9) |
 
 ### Work in progress
 
 - **AwsomePDF Share:** Browser-to-browser file sharing is planned. The sharing section shows a preview.
 - **Redaction translations:** Some detailed instructions, FAQs and controls still use English in other language versions.
+
+### Current scope and limitations
+
+- The document UI audit and migration landed in the history above. That does not mean every tool or processing path has been verified against every PDF.
+- Files are processed on the device. Some tools download fonts, language data or engine assets; saved file search reads names and metadata, not document contents.
+- Tool-specific limits still apply, including the redaction restrictions documented below. No speed benchmark or blanket superiority claim is implied by these changes.
+- Some ESLint warnings remain. Production builds enforce lint and TypeScript checks.
 
 ## Features
 
@@ -75,7 +86,7 @@ Choosing a file result opens its tool. Select the original file from your device
 
 ### Application updates
 
-Website updates are delivered by rebuilding and deploying the application. Desktop users install newer builds manually. AwsomePDF has no in-app update checker or update popup. Rebuild older deployments to remove the former checker.
+Website updates are delivered by rebuilding and deploying the application. Desktop users install newer builds manually. AwsomePDF has no in-app update checker or update popup. The removed inherited checker queried PDFCraft releases, which do not represent releases of this project. Rebuild older deployments to remove the former checker; see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 The desktop app uses the bundle ID `com.skillsetsquad.awsomepdf` and installs separately from PDFCraft. Existing desktop app data stays with the old installation. On the same website origin, browser preferences, signatures, file history, projects, workflows and cached fonts migrate to the new storage names.
 
@@ -359,21 +370,25 @@ Serve the generated `out/` directory with a static host. The `start` script call
 
 Office conversion requires a host that supports the cross-origin isolation headers used by the WASM engine. GitHub Pages cannot set those headers; see [its deployment limits](DEPLOYMENT.md#3-github-pages).
 
+The root redirects to the English homepage; the sitemap and default language links use canonical localized pages. The SEO audit checks the root redirect separately. GitHub Pages deployment is opt-in with `AWSOMEPDF_ENABLE_GITHUB_PAGES=true`; leave it unset when using Coolify or another host.
+
 After deployment, check localized routes such as `/en/` and `/zh/`, open a tool, and process a sample document to confirm that its engine assets load.
 
 ## Contributing
 
-Open a pull request with a description of the change and the checks you ran. Use synthetic or public documents for tests, and keep document processing on the device.
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a change. Use synthetic or public PDF fixtures and keep document data on the device. CI checks lint, types, tests and the production static export.
 
-Check lint, TypeScript and the relevant tests before submitting. Build the static export when changing routes, configuration, assets or shared UI.
+Because this project is derived from PDFCraft, generally useful changes may also be worth contributing upstream. Import upstream changes through reviewed patches; automatic full-fork synchronization is not part of the maintenance workflow.
 
-Changes useful to the original project may also be contributed to [PDFCraft](https://github.com/PDFCraftTool/pdfcraft).
+### Security reporting
+
+Report vulnerabilities privately through [GitHub private vulnerability reporting](https://github.com/SkillsetSquad/awsomepdf/security/advisories/new). Include the affected commit, browser/OS, reproduction steps and a minimal synthetic or public fixture. Do not post exploit details, customer documents, passwords, private keys or personal information in public issues. No response-time guarantee or supported release series has been declared.
 
 ## Acknowledgements
 
 Thank you to the [PDFCraft team](https://github.com/PDFCraftTool/pdfcraft) for the original application, and to [BentoPDF](https://github.com/alam00000/bentopdf), which inspired and informed PDFCraft's browser-based processing.
 
-Original licenses and copyright notices are preserved. Each deployed build includes third-party notices on the site's open-source page.
+The root AGPLv3 license and original copyright notices remain unchanged. Removing the GitHub fork relationship does not change provenance or licensing obligations. Third-party components keep their original notices, generated at build time and published on the site's open-source page.
 
 ## License
 
@@ -382,5 +397,5 @@ This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE)
 ---
 
 <div align="center">
-  Maintained by <a href="https://github.com/SkillsetSquad">Skillset Squad</a> · Forked from <a href="https://github.com/PDFCraftTool/pdfcraft">PDFCraft</a> by the PDFCraft Team
+  Maintained by <a href="https://github.com/SkillsetSquad">Skillset Squad</a> · Based on and modified from <a href="https://github.com/PDFCraftTool/pdfcraft">PDFCraft</a> by the PDFCraft Team
 </div>

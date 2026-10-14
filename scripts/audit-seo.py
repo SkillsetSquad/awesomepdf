@@ -21,6 +21,7 @@ class Page(HTMLParser):
         self.title_text = None
         self.script_text = None
         self.in_script = self.in_style = False
+        self.redirects = re.findall(r'NEXT_REDIRECT;(?:replace|push);([^;]+);(?:307|308);', source)
         self.feed(source)
 
     def handle_starttag(self, tag, attributes):
@@ -30,6 +31,10 @@ class Page(HTMLParser):
         if tag == 'title':
             self.title_text = []
         if tag == 'meta':
+            if attrs.get('http-equiv', '').lower() == 'refresh':
+                target = re.search(r'url=(.*)', attrs.get('content', ''), re.I)
+                if target:
+                    self.redirects.append(target.group(1).strip())
             key = attrs.get('name') or attrs.get('property')
             self.meta.setdefault(key, []).append(attrs.get('content', ''))
         if tag == 'link':
@@ -87,7 +92,7 @@ def main():
     if set(re.findall(r"'([^']+)'", registry)) != set(locales):
         raise ValueError('SEO copy does not cover the supported locale registry')
     manifest = json.loads((root / '.next/prerender-manifest.json').read_text())
-    routes = {route for route in manifest['routes'] if route == '/' or any(route == '/' + loc or route.startswith('/' + loc + '/') for loc in locales)}
+    routes = {route for route in manifest['routes'] if any(route == '/' + loc or route.startswith('/' + loc + '/') for loc in locales)}
     url_for = lambda route: site + (route.rstrip('/') + '/' if route != '/' else '/')
     expected = {url_for(route) for route in routes}
     ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9', 'x': 'http://www.w3.org/1999/xhtml'}
@@ -98,6 +103,13 @@ def main():
     check = lambda ok, message: errors.append(message) if not ok else None
     check(set(actual) == expected, 'Sitemap differs from exported public routes')
     check(len(set(actual)) == len(actual), 'Sitemap contains duplicate URLs')
+    entry_file = output / 'index.html'
+    check(entry_file.is_file(), 'Root redirect is absent from the export')
+    if entry_file.is_file():
+        entry = Page(entry_file.read_text())
+        target = '/' + options.base_path.strip('/') + '/en/' if options.base_path.strip('/') else '/en/'
+        check(any(url in {'/en/', target, url_for('/en')} for url in entry.redirects), 'Root does not redirect to the English homepage')
+        check(entry.canonicals == [url_for('/en')], 'Root redirect canonical does not match the English homepage')
     suffixes = {}
     for locale in locales:
         prefix = '/' + locale
@@ -116,7 +128,7 @@ def main():
         locale = relative.split('/')[0] if relative else 'en'
         path = '/' + '/'.join(relative.split('/')[1:]) if '/' in relative else ''
         languages = {loc: url_for('/' + loc + path) for loc in locales}
-        languages['x-default'] = url_for('/') if not path else url_for('/en' + path)
+        languages['x-default'] = url_for('/en' + path)
         prefix = url + ': '
         check(page.lang == locale, prefix + 'wrong HTML language')
         check(page.direction == ('rtl' if locale == 'ar' else 'ltr'), prefix + 'wrong text direction')

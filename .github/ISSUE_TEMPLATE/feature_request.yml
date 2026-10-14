@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose a focused improvement to AwsomePDF.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Explain the task you need to complete and the current limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Include privacy, accessibility or self-hosting implications where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and context
+      description: Describe existing tools or workarounds, without sharing private files.

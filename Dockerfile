@@ -48,7 +48,7 @@ ENV BASE_PATH=$BASE_PATH
 
 # Add labels for GitHub Container Registry
 LABEL org.opencontainers.image.source="https://github.com/SkillsetSquad/awsomepdf"
-LABEL org.opencontainers.image.description="AwsomePDF - Professional PDF Tools, Free, Private & Browser-Based"
+LABEL org.opencontainers.image.description="AwsomePDF - Browser-based PDF tools, based on and modified from PDFCraft"
 LABEL org.opencontainers.image.licenses="AGPL-3.0"
 LABEL org.opencontainers.image.title="AwsomePDF"
 LABEL org.opencontainers.image.vendor="Skillset Squad Private Limited"

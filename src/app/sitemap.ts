@@ -6,7 +6,7 @@
  */
 
 import { MetadataRoute } from 'next';
-import { getAbsoluteUrl, getCanonicalUrl, getAlternateUrls } from '@/lib/seo/urls';
+import { getCanonicalUrl, getAlternateUrls } from '@/lib/seo/urls';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { getAllTools } from '@/config/tools';
 import { TOOL_CATEGORIES } from '@/types/tool';
@@ -86,11 +86,8 @@ function generateLocaleEntries(locale: Locale): MetadataRoute.Sitemap {
  * Generate the complete sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const allEntries: MetadataRoute.Sitemap = [{
-    url: getAbsoluteUrl('/', true),
-    alternates: { languages: getAlternateUrls() },
-    priority: PRIORITY.home,
-  }];
+  // The root redirects to English; list only canonical content pages.
+  const allEntries: MetadataRoute.Sitemap = [];
   
   // Generate entries for each locale
   for (const locale of locales) {
@@ -111,5 +108,5 @@ export function getSitemapUrlCount(): number {
   const toolPagesCount = tools.length;
   const localesCount = locales.length;
   
-  return (staticPagesCount + toolPagesCount) * localesCount + 1;
+  return (staticPagesCount + toolPagesCount) * localesCount;
 }

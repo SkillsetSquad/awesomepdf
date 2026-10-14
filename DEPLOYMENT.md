@@ -75,7 +75,8 @@ netlify deploy --prod --dir=out
 **Automatic Deployment:**
 1. Enable GitHub Pages in repository settings
 2. Set source to "GitHub Actions"
-3. Push to `main` branch - workflow deploys automatically
+3. Set the repository Actions variable `AWSOMEPDF_ENABLE_GITHUB_PAGES` to `true`. Leave it unset for Coolify or other hosting so the Pages workflow is skipped.
+4. Push to `main` branch - workflow deploys automatically
 
 **Manual Deployment:**
 ```bash
@@ -719,6 +720,8 @@ After deploying, test:
 The production domain is **https://awsomepdf.com** (without the second “e”). Sitemap, robots, canonical URLs, language alternates, structured data and social images use this origin by default. `NEXT_PUBLIC_SITE_URL` can override it for another deployment; pass an origin without a path and use `BASE_PATH` separately for subpaths. Automatic host preview URLs do not override the production origin. The GitHub Pages workflow also defaults to `https://awsomepdf.com`, and `public/CNAME` records the custom domain. DNS must point this domain to the selected host before live crawling can work.
 
 Run `npm run audit:seo` after `npm run build` to check every exported public page, all language alternates, sitemap coverage, social image files, structured data, readable FAQs and the HTML language/direction. For a subpath export, run `python3 scripts/audit-seo.py --base-path /your-path`. For an origin override, also pass `--site-url https://your-domain.com`. The audit writes local evidence to the ignored `docs/seo/` directory. Keep the existing WASM/security-header configuration for your host.
+
+The root redirects to `/en/`. Only canonical localized content pages appear in the sitemap; homepage `x-default` links point to English. The audit verifies the exported root redirect and its English canonical separately from content-page metadata.
 
 The `prebuild` hook generates `public/source-code.zip`, `LICENSE.txt`, `THIRD_PARTY_NOTICES.txt` and a SHA-256 source manifest from the actual build inputs. They are exported alongside the site, so users can download the source for that deployed version even when its Git commit has not been pushed. The archive includes the lockfile, build scripts, original license and bundled assets. It excludes dependencies, Git history, local environment files, the local `docs/` directory and generated build output. These generated distributions are intentionally not committed. Docker builds without `.git` use the source and build inputs copied into the builder instead.
 

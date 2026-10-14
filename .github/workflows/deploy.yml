@@ -29,6 +29,8 @@ env:
 jobs:
   # Build job
   build:
+    # Production uses Coolify; run Pages only after it is explicitly configured.
+    if: ${{ vars.AWSOMEPDF_ENABLE_GITHUB_PAGES == 'true' }}
     runs-on: ubuntu-latest
     steps:
       # Checkout the repository
