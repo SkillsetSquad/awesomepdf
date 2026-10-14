@@ -8,7 +8,7 @@ Changes are recorded against repository commits. Release entries must describe s
 - Read-only CI for lint, types, tests, production export and source-distribution verification.
 - Wait for asynchronous annotation text-preview content in its existing regression test instead of asserting as soon as the container mounts.
 - Independent product/container metadata and removal of the manual full-fork-sync workflow. Upstream changes remain eligible for reviewed patches.
-- GitHub repository description, homepage, topics, issues and private vulnerability reporting updated. Fork detachment awaits GitHub account reauthentication.
+- GitHub repository description, homepage, topics, issues and private vulnerability reporting updated. Completed GitHub’s official fork detachment; the repository is standalone at the same URL and retains its repository ID and complete Git history.
 - GitHub Pages deployment is opt-in with `AWSOMEPDF_ENABLE_GITHUB_PAGES=true`; other hosting does not trigger unconfigured Pages jobs.
 
 ## Recent recorded changes

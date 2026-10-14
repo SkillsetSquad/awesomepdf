@@ -24,6 +24,8 @@
 
 > **AwsomePDF is based on and modified from [PDFCraft](https://github.com/PDFCraftTool/pdfcraft)** ([live site](https://pdfcraft.devtoolcafe.com/en/)), maintained by **Skillset Squad Private Limited** ([GitHub](https://github.com/SkillsetSquad)). All credit for the original tools and processing engine goes to the PDFCraft team.
 >
+> The GitHub repository is standalone, with no fork-network relationship to PDFCraft. Its provenance and AGPLv3 obligations remain unchanged.
+>
 > AwsomePDF builds on that foundation with a **[shadcn/ui](https://ui.shadcn.com/)** interface, searchable local file history, document-processing fixes, permanent redaction, and deployment changes. The commit-backed differences are listed below.
 
 Try [AwsomePDF](https://awsomepdf.com/en/) · [Self-hosting](DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security reporting](#security-reporting) · [Changelog](CHANGELOG.md)
@@ -41,7 +43,7 @@ The original processing engine and tool set come from PDFCraft. This fork change
 | Repository | [PDFCraftTool/pdfcraft](https://github.com/PDFCraftTool/pdfcraft) | [SkillsetSquad/awsomepdf](https://github.com/SkillsetSquad/awsomepdf) |
 | Website | [pdfcraft.devtoolcafe.com](https://pdfcraft.devtoolcafe.com/en/) | [awsomepdf.com](https://awsomepdf.com/) |
 | UI | Custom theme and components | Standard shadcn/ui (Radix, Tailwind 4 design tokens, light/dark) |
-| Maintenance | Original project | Separately maintained fork; changes below refer to this repository's history |
+| Maintenance | Original project | Independent GitHub repository; changes below refer to this repository's history |
 
 ### What makes AwsomePDF different
 
