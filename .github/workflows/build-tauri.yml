@@ -56,18 +56,10 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Generate version info
-        id: version
-        shell: bash
-        run: |
-          VERSION="v$(date +'%Y.%m.%d')-$(git rev-parse --short HEAD)"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Build frontend
         run: npm run build
         env:
           TAURI_ENV: "true"
-          APP_VERSION: ${{ steps.version.outputs.version }}
 
       - name: Build Tauri app
         uses: nick-fields/retry@v3

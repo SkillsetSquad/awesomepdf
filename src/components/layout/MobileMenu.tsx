@@ -11,7 +11,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import { UpdateCheckButton } from '@/components/common/UpdateCheckButton';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetClose } from '@/components/ui/sheet';
 import { LanguageSelector } from './LanguageSelector';
@@ -121,7 +120,6 @@ export function MobileMenu({ locale, navigation }: MobileMenuProps) {
               <span className="text-sm">{tCommon('theme.toggle')}</span>
               <ThemeToggle />
             </div>
-            <div className="px-3 pt-1"><UpdateCheckButton /></div>
           </div>
         </nav>
       </SheetContent>

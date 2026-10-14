@@ -45,6 +45,7 @@ The processing engine and tool set come from PDFCraft. What differs in this fork
 
 - Replaced PDFCraft's custom Button, Card, Modal, Tabs, form-field and theme-toggle components with standard shadcn/ui primitives.
 - Rebuilt the shared shell on shadcn/ui: header, navigation, search, mobile menu, language menu and footer. Cmd+K / Ctrl+K now searches tool names and locally saved file records from recent-file history and saved projects.
+- Removed the inherited in-app update checker in this fork. Browser and desktop builds no longer query release servers or show update popups, badges, dialogs or manual update buttons, keeping document work free of update interruptions.
 - Migrated the homepage, tool directory, category pages and the about, FAQ, privacy, contact, error and not-found pages.
 - Added a real open-source page with source, license and notice downloads for each deployed build.
 - Reworked Docker deployment in this fork for Coolify: production builds the static site into a self-contained Nginx image before startup, with a health check and no production source mounts or required Compose profile. Local preview ports use a separate Compose override.
@@ -72,6 +73,10 @@ Development notes are kept locally in the ignored `docs/` directory.
 Press **Cmd+K** (Mac) or **Ctrl+K**, or use the header search button, to find tools and file records saved in this browser. Search matches filenames, saved project names and related tool names. Filename matches appear before tool results; otherwise tools come first. The palette reads recent-file history from localStorage and project file lists from IndexedDB when opened, and refreshes when file records change, when reopened or when the window regains focus.
 
 File results show their source and open the corresponding tool. These stores contain names and metadata, not document bytes; choose the original file from your device to continue. Search does not inspect document contents, send filenames to a server or read unrelated browser storage. Results are limited to eight tools and eight files per query. Browser storage can be cleared or unavailable.
+
+### Application updates
+
+AwesomePDF does not check for application updates or display update controls. Website updates are managed by the deployment operator; desktop users install a newer build manually. Previously saved update preferences have no effect. PDF engines can still load assets over the network when a tool needs them.
 
 ### Redacting sensitive content
 
