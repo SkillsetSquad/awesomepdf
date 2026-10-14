@@ -1,4 +1,4 @@
-# PDFCraft Static Export Deployment Guide
+# AwsomePDF Static Export Deployment Guide
 
 This project is configured for static export, making it deployable to any static hosting provider.
 
@@ -75,7 +75,8 @@ netlify deploy --prod --dir=out
 **Automatic Deployment:**
 1. Enable GitHub Pages in repository settings
 2. Set source to "GitHub Actions"
-3. Push to `main` branch - workflow deploys automatically
+3. Set the repository Actions variable `AWSOMEPDF_ENABLE_GITHUB_PAGES` to `true`. Leave it unset for Coolify or other hosting so the Pages workflow is skipped.
+4. Push to `main` branch - workflow deploys automatically
 
 **Manual Deployment:**
 ```bash
