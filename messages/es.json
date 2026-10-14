@@ -2840,6 +2840,9 @@
       "successMessage": "¡Los tamaños de página se arreglaron exitosamente!"
     },
     "bookmark": {
+      "removeAll": "Eliminar todos los marcadores",
+      "removeAllConfirm": "¿Eliminar todos los marcadores, incluidos los anidados? Guarda y descarga para aplicar este cambio. El archivo original no se modifica.",
+      "removedAllNotice": "Se han eliminado todos los marcadores. Guarda y descarga para aplicar este cambio.",
       "uploadLabel": "Subir archivo PDF",
       "uploadDescription": "Arrastre y suelte un archivo PDF para editar los marcadores.",
       "pdfPreview": "Vista previa del PDF",

@@ -46,6 +46,7 @@ PDFCraft provides the original tool set and processing engines. The changes belo
 - **Interface:** Reworked navigation, pages, dialogs and document workspaces with shadcn/ui controls, light and dark themes, and keyboard navigation.
 - **File search:** Cmd+K / Ctrl+K searches tools, recent filenames and saved project records in this browser.
 - **Annotation editing:** Connected signature, stamp, comment and undo/redo controls to the document editor.
+- **Bookmark editing:** Added a confirmed action to remove every bookmark, including nested entries, and enabled exporting PDFs with an empty bookmark list.
 - **Processing fixes:** Corrected page geometry in booklet and column splitting, added scan tilt detection, and tied OCR confidence to recognition results.
 - **Permanent redaction:** Redact PDF, Find and Redact, and Smart Data Redactor remove selected content and rewrite the PDF. See [Redacting sensitive content](#redacting-sensitive-content) for usage and limits.
 - **Tool loading:** Tool interfaces load individually when selected.
@@ -137,7 +138,7 @@ Common tools are listed below. Browse the [tool directory](https://awsomepdf.com
 | **Edit PDF** | Add text, images, annotations, highlights, and shapes |
 | **Sign PDF** | Draw, type, upload, or scan a photo of your handwritten signature |
 | **Crop PDF** | Trim margins and remove unwanted areas |
-| **Edit Bookmarks** | Add, edit, and manage PDF navigation bookmarks |
+| **Edit Bookmarks** | Add, edit, organize, or remove all PDF navigation bookmarks |
 | **Table of Contents** | Generate clickable table of contents from bookmarks |
 | **Page Numbers** | Add customizable page numbering |
 | **Add Watermark** | Apply text or image watermarks |
@@ -152,6 +153,8 @@ Common tools are listed below. Browse the [tool directory](https://awsomepdf.com
 | **Remove Blank Pages** | Auto-detect and remove empty pages |
 | **Deskew PDF** | Automatically straighten skewed scanned pages |
 | **OCG Manager** | Manage Optional Content Groups (layers) in PDFs |
+
+To remove every bookmark, open **Edit Bookmarks**, upload a PDF, click **Remove all bookmarks**, and confirm. Then click **Save Bookmarks** and download the result. This clears nested bookmarks too; the original file remains unchanged. You can also save after deleting the final bookmark individually.
 
 ### Convert to PDF
 

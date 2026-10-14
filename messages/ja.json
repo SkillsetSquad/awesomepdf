@@ -2831,6 +2831,9 @@
       "successMessage": "ページサイズが正常に修正されました！"
     },
     "bookmark": {
+      "removeAll": "すべてのブックマークを削除",
+      "removeAllConfirm": "子ブックマークを含むすべてのブックマークを削除しますか？保存してダウンロードすると変更が適用されます。元のファイルは変更されません。",
+      "removedAllNotice": "すべてのブックマークを削除しました。保存してダウンロードすると変更が適用されます。",
       "uploadLabel": "PDFファイルをアップロード",
       "uploadDescription": "PDF ファイルをドラッグ アンド ドロップしてブックマークを編集します。",
       "pdfPreview": "PDF プレビュー",

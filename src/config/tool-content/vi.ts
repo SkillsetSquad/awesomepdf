@@ -828,15 +828,16 @@ export const toolContentVn: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Chỉnh sửa đánh dấu trang",
-    "metaDescription": "Thêm, chỉnh sửa và quản lý đánh dấu trang PDF. Tạo cấu trúc điều hướng cho tài liệu của bạn.",
+    "metaDescription": "Thêm, chỉnh sửa, sắp xếp hoặc xóa tất cả dấu trang PDF. Quản lý điều hướng tài liệu ngay trong trình duyệt.",
     "keywords": [
       "đánh dấu trang pdf",
       "chỉnh sửa đánh dấu trang",
       "thêm đánh dấu trang",
       "điều hướng pdf",
-      "mục lục"
+      "mục lục",
+      "xóa tất cả dấu trang pdf"
     ],
-    "description": "\n      <p>Chỉnh sửa đánh dấu trang cho phép bạn tạo, sửa đổi và tổ chức đánh dấu trang trong tài liệu PDF của mình. Đánh dấu trang cung cấp điều hướng nhanh đến các phần cụ thể, giúp tài liệu dài dễ sử dụng hơn.</p>\n      <p>Bạn có thể thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có, tổ chức lại cấu trúc phân cấp đánh dấu trang hoặc nhập đánh dấu trang từ nguồn bên ngoài. Công cụ này thiết yếu để tạo tài liệu chuyên nghiệp, có thể điều hướng.</p>\n      <p>Tất cả chỉnh sửa diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n    ",
+    "description": "\n      <p>Chỉnh sửa đánh dấu trang cho phép bạn tạo, sửa đổi và tổ chức đánh dấu trang trong tài liệu PDF của mình. Đánh dấu trang cung cấp điều hướng nhanh đến các phần cụ thể, giúp tài liệu dài dễ sử dụng hơn.</p>\n      <p>Bạn có thể thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có, tổ chức lại cấu trúc phân cấp đánh dấu trang hoặc nhập đánh dấu trang từ nguồn bên ngoài. Công cụ này thiết yếu để tạo tài liệu chuyên nghiệp, có thể điều hướng.</p>\n      <p>Tất cả chỉnh sửa diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu của bạn vẫn riêng tư.</p>\n      <p>Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -846,7 +847,7 @@ export const toolContentVn: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Quản lý đánh dấu trang",
-        "description": "Thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có hoặc kéo để tổ chức lại cấu trúc phân cấp."
+        "description": "Thêm đánh dấu trang mới, chỉnh sửa đánh dấu trang hiện có hoặc kéo để tổ chức lại cấu trúc phân cấp. Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang."
       },
       {
         "step": 3,
@@ -883,7 +884,8 @@ export const toolContentVn: Record<string, ToolContent> = {
       {
         "question": "Đánh dấu trang có hoạt động trong tất cả trình đọc PDF không?",
         "answer": "Có, đánh dấu trang là tính năng PDF tiêu chuẩn được hỗ trợ bởi tất cả trình đọc PDF chính."
-      }
+      },
+      { "question": "Tôi có thể xóa tất cả dấu trang cùng lúc không?", "answer": "Để xóa tất cả, nhấp vào Xóa tất cả dấu trang và xác nhận. Lưu và tải xuống để xuất PDF không có dấu trang." }
     ]
   },
   "table-of-contents": {

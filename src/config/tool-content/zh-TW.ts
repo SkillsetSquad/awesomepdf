@@ -358,16 +358,17 @@ export const toolContentZhTW: Record<string, ToolContent> = {
   // ==================== 編輯與注釋 ====================
   'bookmark': {
     title: '編輯書籤',
-    metaDescription: '新增、編輯和管理PDF書籤。為您的PDF檔案創建導航結構。',
-    keywords: ['pdf書籤', '編輯書籤', '新增書籤', 'pdf導航', '目錄'],
+    metaDescription: '新增、編輯、整理或刪除所有PDF書籤。在瀏覽器本機管理文件導覽。',
+    keywords: ['pdf書籤', '編輯書籤', '新增書籤', 'pdf導航', '目錄', '刪除所有pdf書籤'],
     description: `
       <p>編輯書籤允許您在PDF檔案中創建、修改和整理書籤。書籤提供快速導航到特定部分的功能，使長文件更易於使用。</p>
       <p>您可以新增新書籤、編輯現有書籤、重新整理書籤層次結構或從外部來源導入書籤。這個工具對於創建專業、可導航的文件至關重要。</p>
       <p>所有編輯都在您的瀏覽器本地進行，確保您的檔案保持隱私.</p>
+      <p>要全部刪除，請點擊「刪除所有書籤」並確認。儲存並下載即可匯出不含書籤的PDF。</p>
     `,
     howToUse: [
       { step: 1, title: '上傳PDF檔案', description: '拖放您的PDF檔案或點擊選擇要編輯的檔案。' },
-      { step: 2, title: '管理書籤', description: '新增新書籤、編輯現有書籤或拖動重新整理層次結構。' },
+      { step: 2, title: '管理書籤', description: '新增新書籤、編輯現有書籤或拖動重新整理層次結構。 要全部刪除，請點擊「刪除所有書籤」並確認。儲存並下載即可匯出不含書籤的PDF。' },
       { step: 3, title: '保存並下載', description: '點擊保存應用更改並下載帶有更新書籤的PDF。' },
     ],
     useCases: [
@@ -379,6 +380,7 @@ export const toolContentZhTW: Record<string, ToolContent> = {
       { question: '可以創建嵌套書籤嗎？', answer: '是的，您可以創建具有父書籤和子書籤的層次結構。' },
       { question: '可以從文件匯入書籤嗎？', answer: '是的，您可以從JSON或文字檔案匯入書籤結構。' },
       { question: '書籤在所有PDF閱讀器中都能工作嗎？', answer: '是的，書籤是所有主要PDF閱讀器都支援的標準PDF功能。' },
+      { question: "可以一次刪除所有書籤嗎？", answer: "要全部刪除，請點擊「刪除所有書籤」並確認。儲存並下載即可匯出不含書籤的PDF。" },
     ],
   },
 

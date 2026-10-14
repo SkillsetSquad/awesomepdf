@@ -1,5 +1,5 @@
 'use client';
-import { Check as UIEmojiCheck, Download as UIEmojiDownload, MapPin as UIEmojiMapPin, Pencil as UIEmojiPencil, X as UIEmojiX } from 'lucide-react';
+import { Check as UIEmojiCheck, Download as UIEmojiDownload, MapPin as UIEmojiMapPin, Pencil as UIEmojiPencil, Trash2, X as UIEmojiX } from 'lucide-react';
 
 import { CheckCircle2 as UICheckCircle2 } from 'lucide-react';
 
@@ -145,6 +145,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   // File state
   const [file, setFile] = useState<File | null>(null);
   const [pdfDoc, setPdfDoc] = useState<PDFDocumentProxy | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -164,15 +165,23 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   const [confirmExtraction, setConfirmExtraction] = useState(false);
   const [extractionNotice, setExtractionNotice] = useState<string | null>(null);
   const extractButtonRef = useRef<HTMLButtonElement>(null);
+  const [confirmRemoval, setConfirmRemoval] = useState(false);
+  const [removedAll, setRemovedAll] = useState(false);
+  const removeAllButtonRef = useRef<HTMLButtonElement>(null);
+  const saveButtonRef = useRef<HTMLButtonElement>(null);
+  const removalConfirmedRef = useRef(false);
   const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null);
   const [dragOverNodeId, setDragOverNodeId] = useState<string | null>(null);
   const [dropPosition, setDropPosition] = useState<'before' | 'after' | 'inside' | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const cancelledRef = useRef(false);
+  const processingRunRef = useRef(0);
+  const isProcessing = status === 'processing';
+  const isBusy = isLoading || isExtractingBookmarks || isProcessing;
 
   // Load PDF and extract existing bookmarks
   const loadPdf = useCallback(async (pdfFile: File) => {
+    setIsLoading(true);
     try {
       const pdfjsLib = await loadPdfjsLib();
       const arrayBuffer = await pdfFile.arrayBuffer();
@@ -199,12 +208,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     } catch (err) {
       setError('Failed to load PDF file.');
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
   // Manually extract bookmarks from the current PDF
   const extractExistingBookmarks = async () => {
-    if (!pdfDoc || isExtractingBookmarks) return;
+    if (!pdfDoc || isBusy) return;
     setError(null);
     setExtractionNotice(null);
     setIsExtractingBookmarks(true);
@@ -214,6 +225,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         const extracted = await parseOutline(outline, pdfDoc);
         setBookmarks(extracted);
         setResult(null);
+        setRemovedAll(false);
       } else {
         setExtractionNotice(tTools('bookmark.noBookmarksFound'));
       }
@@ -273,10 +285,17 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   const handleFilesSelected = useCallback((files: File[]) => {
     if (files.length > 0) {
+      processingRunRef.current += 1;
       setFile(files[0]);
+      setPdfDoc(null);
+      setStatus('idle');
       setError(null);
       setExtractionNotice(null);
       setConfirmExtraction(false);
+      setConfirmRemoval(false);
+      setRemovedAll(false);
+      setSelectedBookmarkId(null);
+      setEditingBookmark(null);
       setResult(null);
       setBookmarks([]);
       loadPdf(files[0]);
@@ -284,6 +303,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   }, [loadPdf]);
 
   const handleClearFile = useCallback(() => {
+    processingRunRef.current += 1;
     setFile(null);
     setPdfDoc(null);
     setBookmarks([]);
@@ -291,10 +311,31 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setError(null);
     setExtractionNotice(null);
     setConfirmExtraction(false);
+    setConfirmRemoval(false);
+    setRemovedAll(false);
+    setSelectedBookmarkId(null);
+    setEditingBookmark(null);
     setStatus('idle');
     setCurrentPage(1);
     setTotalPages(0);
   }, []);
+
+  const handleRemoveAllBookmarks = () => {
+    if (isBusy || bookmarks.length === 0) return;
+    removalConfirmedRef.current = true;
+    setBookmarks([]);
+    setSelectedBookmarkId(null);
+    setEditingBookmark(null);
+    setDraggedNodeId(null);
+    setDragOverNodeId(null);
+    setDropPosition(null);
+    setResult(null);
+    setError(null);
+    setExtractionNotice(null);
+    setStatus('idle');
+    setRemovedAll(true);
+    setConfirmRemoval(false);
+  };
 
   // Navigate to page when bookmark is clicked
   const handleBookmarkClick = useCallback((bookmark: BookmarkNode) => {
@@ -314,6 +355,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setBookmarks(prev => [...prev, newBookmark]);
     setEditingBookmark(newBookmark);
     setResult(null);
+    setRemovedAll(false);
   }, [currentPage]);
 
   // Add child bookmark
@@ -338,6 +380,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setBookmarks(prev => addChildTo(prev));
     setEditingBookmark(newChild);
     setResult(null);
+    setRemovedAll(false);
   }, [currentPage]);
 
   // Delete bookmark
@@ -512,9 +555,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // Process and save bookmarks
   const handleProcess = useCallback(async () => {
-    if (!file || bookmarks.length === 0) return;
+    if (!file || !pdfDoc || isBusy) return;
 
-    cancelledRef.current = false;
+    const run = ++processingRunRef.current;
     setStatus('processing');
     setProgress(0);
     setError(null);
@@ -530,12 +573,13 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         file,
         options,
         (prog) => {
-          if (!cancelledRef.current) {
+          if (processingRunRef.current === run) {
             setProgress(prog);
           }
         }
       );
 
+      if (processingRunRef.current !== run) return;
       if (output.success && output.result) {
         setResult(output.result as Blob);
         setStatus('complete');
@@ -544,12 +588,11 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         setStatus('error');
       }
     } catch (err) {
+      if (processingRunRef.current !== run) return;
       setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
       setStatus('error');
     }
-  }, [file, bookmarks]);
-
-  const isProcessing = status === 'processing';
+  }, [file, pdfDoc, bookmarks, isBusy]);
 
   // Render bookmark tree item
   const renderBookmarkItem = (bookmark: BookmarkNode, depth: number = 0) => {
@@ -559,7 +602,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     return (
       <div key={bookmark.id} style={{ marginLeft: depth * 16 }}>
         <div
-          draggable={true}
+          draggable={!isBusy}
           onDragStart={(e) => handleDragStart(e, bookmark.id)}
           onDragOver={(e) => handleDragOver(e, bookmark.id)}
           onDrop={(e) => handleDrop(e, bookmark.id)}
@@ -595,7 +638,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
           {/* Bookmark content */}
           {isEditing ? (
-            <div className="flex-1 flex flex-col gap-2 p-2 bg-muted rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
+            <fieldset disabled={isBusy} className="flex-1 min-w-0 flex flex-col gap-2 p-2 bg-muted rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
               <div className="flex gap-2">
                 <div className="flex-1">
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-1">{tTools('bookmark.title') || 'Title'}</Label>
@@ -667,7 +710,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   <Button size="sm" variant="ghost" onClick={() => setEditingBookmark(null)} title={t('buttons.cancel') || 'Cancel'} aria-label={t('buttons.cancel')}><UIEmojiX className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /></Button>
                 </div>
               </div>
-            </div>
+            </fieldset>
           ) : (
             <>
               <span
@@ -685,6 +728,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               {/* Actions */}
               <div className="flex gap-1 opacity-0 group-hover:opacity-100 hover:opacity-100" style={{ opacity: isSelected ? 1 : undefined }}>
                 <Button variant="ghost" size="icon-sm" aria-label="Edit"
+                  disabled={isBusy}
                   onClick={(e) => { e.stopPropagation(); setEditingBookmark(bookmark); }}
 
                   title="Edit"
@@ -692,6 +736,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   <UIEmojiPencil className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                 </Button>
                 <Button variant="ghost" size="icon-sm" aria-label="Add child"
+                  disabled={isBusy}
                   onClick={(e) => { e.stopPropagation(); handleAddChild(bookmark.id); }}
 
                   title="Add child"
@@ -699,6 +744,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   +
                 </Button>
                 <Button variant="ghost" size="icon-sm" aria-label="Delete"
+                  disabled={isBusy}
                   onClick={(e) => { e.stopPropagation(); handleDeleteBookmark(bookmark.id); }}
 
                   title="Delete"
@@ -742,6 +788,27 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       )}
 
       {extractionNotice && <Alert role="status"><AlertDescription>{extractionNotice}</AlertDescription></Alert>}
+      {removedAll && bookmarks.length === 0 && !result && !isProcessing && (
+        <Alert role="status"><AlertDescription>{tTools('bookmark.removedAllNotice')}</AlertDescription></Alert>
+      )}
+
+      <AlertDialog open={confirmRemoval} onOpenChange={setConfirmRemoval}>
+        <AlertDialogContent onCloseAutoFocus={(event) => {
+          event.preventDefault();
+          if (removalConfirmedRef.current) saveButtonRef.current?.focus();
+          else removeAllButtonRef.current?.focus();
+          removalConfirmedRef.current = false;
+        }}>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{tTools('bookmark.removeAll')}</AlertDialogTitle>
+            <AlertDialogDescription>{tTools('bookmark.removeAllConfirm')}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t('buttons.cancel')}</AlertDialogCancel>
+            <Button variant="destructive" onClick={handleRemoveAllBookmarks}>{tTools('bookmark.removeAll')}</Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <AlertDialog open={confirmExtraction} onOpenChange={(open) => { if (!isExtractingBookmarks) setConfirmExtraction(open); }}>
         <AlertDialogContent onCloseAutoFocus={(event) => { event.preventDefault(); extractButtonRef.current?.focus(); }}>
@@ -764,7 +831,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           <Card className="p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.pdfPreview') || 'PDF Preview'}</h3>
-              <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isExtractingBookmarks || isProcessing}>
+              <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isBusy}>
                 {t('buttons.close') || 'Close'}
               </Button>
             </div>
@@ -799,16 +866,16 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           </Card>
 
           {/* Bookmark Editor Panel */}
-          <Card className="p-6"  >
-            <div className="flex items-center justify-between mb-4">
+          <Card className="min-w-0 p-6"  >
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
               <h3 className="font-medium">{tTools('bookmark.bookmarksTitle') || 'Bookmarks'}</h3>
-              <div className="flex gap-1">
+              <div className="flex flex-wrap gap-1">
                 <Button
                   ref={extractButtonRef}
                   variant="secondary"
                   size="sm"
                   onClick={handleExtractBookmarks}
-                  disabled={isExtractingBookmarks || isProcessing}
+                  disabled={isBusy}
                   title={tTools('bookmark.extractExisting') || 'Extract Existing Bookmarks'}
                 >
                   <UIEmojiDownload className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" /> {tTools('bookmark.extractExisting') || 'Extract'}
@@ -818,11 +885,17 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   size="sm"
                   onClick={handleSortBookmarks}
                   title={tTools('bookmark.sortByPage') || 'Sort by page number'}
-                  disabled={bookmarks.length === 0}
+                  disabled={bookmarks.length === 0 || isBusy}
                 >
                   ↑↓ {tTools('bookmark.sort') || 'Sort'}
                 </Button>
-                <Button variant="default" size="sm" onClick={handleAddBookmark}>
+                <Button variant="destructive" size="sm" ref={removeAllButtonRef}
+                  onClick={() => { removalConfirmedRef.current = false; setConfirmRemoval(true); }}
+                  disabled={bookmarks.length === 0 || isBusy}
+                >
+                  <Trash2 aria-hidden="true" /> {tTools('bookmark.removeAll')}
+                </Button>
+                <Button variant="default" size="sm" onClick={handleAddBookmark} disabled={isBusy}>
                   + {tTools('bookmark.addBookmark') || 'Add Bookmark'}
                 </Button>
               </div>
@@ -862,18 +935,19 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         <ProcessingProgress
           progress={progress}
           status={status}
-          onCancel={() => { cancelledRef.current = true; setStatus('idle'); }}
+          onCancel={() => { processingRunRef.current += 1; setStatus('idle'); }}
           showPercentage
         />
       )}
 
-      {file && bookmarks.length > 0 && (
+      {file && pdfDoc && (
         <div className="flex flex-wrap items-center gap-4">
           <Button
+            ref={saveButtonRef}
             variant="default"
             size="lg"
             onClick={handleProcess}
-            disabled={isProcessing}
+            disabled={isBusy}
             loading={isProcessing}
           >
             {isProcessing

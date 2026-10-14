@@ -2844,6 +2844,9 @@
       "successMessage": "Page sizes fixed successfully!"
     },
     "bookmark": {
+      "removeAll": "Remove all bookmarks",
+      "removeAllConfirm": "Remove all bookmarks, including nested bookmarks? Save and download to apply this change. The original file stays unchanged.",
+      "removedAllNotice": "All bookmarks removed. Save and download to apply this change.",
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file to edit bookmarks.",
       "pdfPreview": "PDF Preview",

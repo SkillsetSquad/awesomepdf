@@ -310,12 +310,12 @@ export const toolContentPl: Record<string, ToolContent> = {
   // ==================== EDIT & ANNOTATE ====================
   'bookmark': {
     title: "Edytuj zakładki",
-    metaDescription: "Dodawaj, edytuj i zarządzaj zakładkami PDF. Utwórz strukturę nawigacji dla swoich dokumentów.",
-    keywords: ["zakładki pdf", "edytować zakładki", "dodaj zakładki", "nawigacja w pliku PDF", "spis treści"],
-    description: "<p>Edytuj zakładki umożliwia tworzenie, modyfikowanie i porządkowanie zakładek w dokumentach PDF. Zakładki umożliwiają szybką nawigację do określonych sekcji, ułatwiając korzystanie z długich dokumentów.</p>\n      <p>Możesz dodawać nowe zakładki, edytować istniejące, reorganizować hierarchię zakładek lub importować zakładki ze źródeł zewnętrznych. To narzędzie jest niezbędne do tworzenia profesjonalnych dokumentów, po których można łatwo nawigować.</p>\n      <p>Cała edycja odbywa się lokalnie w przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne.</p>\n    ",
+    metaDescription: "Dodawaj, edytuj, porządkuj lub usuwaj wszystkie zakładki PDF. Zarządzaj nawigacją dokumentu lokalnie w przeglądarce.",
+    keywords: ["zakładki pdf", "edytować zakładki", "dodaj zakładki", "nawigacja w pliku PDF", "spis treści", "usuń wszystkie zakładki pdf"],
+    description: "<p>Edytuj zakładki umożliwia tworzenie, modyfikowanie i porządkowanie zakładek w dokumentach PDF. Zakładki umożliwiają szybką nawigację do określonych sekcji, ułatwiając korzystanie z długich dokumentów.</p>\n      <p>Możesz dodawać nowe zakładki, edytować istniejące, reorganizować hierarchię zakładek lub importować zakładki ze źródeł zewnętrznych. To narzędzie jest niezbędne do tworzenia profesjonalnych dokumentów, po których można łatwo nawigować.</p>\n      <p>Cała edycja odbywa się lokalnie w przeglądarce, dzięki czemu Twoje dokumenty pozostają prywatne.</p>\n      <p>Aby usunąć wszystkie, kliknij Usuń wszystkie zakładki i potwierdź. Zapisz i pobierz, aby wyeksportować PDF bez zakładek.</p>\n    ",
     howToUse: [
       { step: 1, title: "Prześlij swój plik PDF", description: "Przeciągnij i upuść plik PDF lub kliknij, aby wybrać dokument, który chcesz edytować." },
-      { step: 2, title: "Zarządzaj zakładkami", description: "Dodaj nowe zakładki, edytuj istniejące lub przeciągnij, aby zreorganizować hierarchię." },
+      { step: 2, title: "Zarządzaj zakładkami", description: "Dodaj nowe zakładki, edytuj istniejące lub przeciągnij, aby zreorganizować hierarchię. Aby usunąć wszystkie, kliknij Usuń wszystkie zakładki i potwierdź. Zapisz i pobierz, aby wyeksportować PDF bez zakładek." },
       { step: 3, title: "Zapisz i pobierz", description: "Kliknij Zapisz, aby zastosować zmiany i pobrać plik PDF ze zaktualizowanymi zakładkami." },
     ],
     useCases: [
@@ -327,6 +327,7 @@ export const toolContentPl: Record<string, ToolContent> = {
       { question: "Czy mogę tworzyć zagnieżdżone zakładki?", answer: "Tak, możesz utworzyć strukturę hierarchiczną z zakładkami nadrzędnymi i podrzędnymi." },
       { question: "Czy mogę zaimportować zakładki z pliku?", answer: "Tak, możesz importować struktury zakładek z plików JSON lub tekstowych." },
       { question: "Czy zakładki będą działać we wszystkich czytnikach plików PDF?", answer: "Tak, zakładki to standardowa funkcja PDF obsługiwana przez wszystkie główne czytniki plików PDF." },
+      { question: "Czy mogę usunąć wszystkie zakładki naraz?", answer: "Aby usunąć wszystkie, kliknij Usuń wszystkie zakładki i potwierdź. Zapisz i pobierz, aby wyeksportować PDF bez zakładek." },
     ],
   },
 

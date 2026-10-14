@@ -2836,6 +2836,9 @@
       "successMessage": "页面尺寸修复成功！"
     },
     "bookmark": {
+      "removeAll": "删除所有书签",
+      "removeAllConfirm": "删除所有书签，包括嵌套书签？保存并下载以应用此更改。原始文件保持不变。",
+      "removedAllNotice": "已删除所有书签。保存并下载以应用此更改。",
       "uploadLabel": "上传 PDF 文件",
       "uploadDescription": "拖放 PDF 文件到此处以编辑书签。",
       "pdfPreview": "PDF 预览",

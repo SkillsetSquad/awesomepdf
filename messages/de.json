@@ -2831,6 +2831,9 @@
       "successMessage": "Seitengrößen erfolgreich angepasst!"
     },
     "bookmark": {
+      "removeAll": "Alle Lesezeichen entfernen",
+      "removeAllConfirm": "Alle Lesezeichen einschließlich verschachtelter Lesezeichen entfernen? Speichern und herunterladen, um diese Änderung anzuwenden. Die Originaldatei bleibt unverändert.",
+      "removedAllNotice": "Alle Lesezeichen wurden entfernt. Speichern und herunterladen, um diese Änderung anzuwenden.",
       "uploadLabel": "PDF-Datei hochladen",
       "uploadDescription": "Ziehen Sie eine PDF-Datei per Drag-and-Drop, um Lesezeichen zu bearbeiten.",
       "pdfPreview": "PDF-Vorschau",

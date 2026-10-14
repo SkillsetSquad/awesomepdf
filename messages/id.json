@@ -2831,6 +2831,9 @@
       "successMessage": "Ukuran halaman berhasil diperbaiki!"
     },
     "bookmark": {
+      "removeAll": "Hapus semua markah",
+      "removeAllConfirm": "Hapus semua markah, termasuk markah bertingkat? Simpan dan unduh untuk menerapkan perubahan ini. File asli tetap tidak berubah.",
+      "removedAllNotice": "Semua markah telah dihapus. Simpan dan unduh untuk menerapkan perubahan ini.",
       "uploadLabel": "Unggah File PDF",
       "uploadDescription": "Seret dan lepas file PDF untuk mengedit bookmark.",
       "pdfPreview": "Pratinjau PDF",

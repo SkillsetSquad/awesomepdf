@@ -360,16 +360,17 @@ export const toolContentId: Record<string, ToolContent> = {
   // ==================== EDIT & ANNOTATE ====================
   'bookmark': {
     title: 'Edit Markah (Bookmark)',
-    metaDescription: 'Tambah, edit, dan kelola markah PDF. Buat struktur navigasi untuk dokumen Anda.',
-    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi'],
+    metaDescription: 'Tambah, edit, atur, atau hapus semua markah PDF. Kelola navigasi dokumen secara lokal di browser Anda.',
+    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi', 'hapus semua markah pdf'],
     description: `
       <p>Edit Markah memungkinkan Anda membuat, memodifikasi, dan mengatur markah di dokumen PDF Anda. Markah memberikan navigasi cepat ke bagian tertentu, sehingga dokumen panjang lebih mudah digunakan.</p>
       <p>Anda dapat menambahkan markah baru, mengedit yang sudah ada, mengatur ulang hierarki markah, atau mengimpor markah dari sumber eksternal. Alat ini penting untuk membuat dokumen yang profesional dan mudah dinavigasi.</p>
       <p>Semua pengeditan terjadi secara lokal di browser Anda, memastikan dokumen Anda tetap privat.</p>
+      <p>Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah.</p>
     `,
     howToUse: [
       { step: 1, title: 'Unggah PDF Anda', description: 'Tarik dan lepas file PDF Anda atau klik untuk memilih dokumen yang ingin Anda edit.' },
-      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya.' },
+      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya. Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah.' },
       { step: 3, title: 'Simpan dan Unduh', description: 'Klik Simpan untuk menerapkan perubahan Anda dan mengunduh PDF dengan markah yang telah diperbarui.' },
     ],
     useCases: [
@@ -381,6 +382,7 @@ export const toolContentId: Record<string, ToolContent> = {
       { question: 'Bisakah saya membuat markah bersarang (nested)?', answer: 'Ya, Anda dapat membuat struktur hierarkis dengan markah induk (parent) dan turunan (child).' },
       { question: 'Bisakah saya mengimpor markah dari sebuah file?', answer: 'Ya, Anda dapat mengimpor struktur markah dari file JSON atau teks.' },
       { question: 'Apakah markah akan berfungsi di semua pembaca PDF?', answer: 'Ya, markah adalah fitur PDF standar yang didukung oleh semua pembaca PDF utama.' },
+      { question: "Bisakah saya menghapus semua markah sekaligus?", answer: "Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah." },
     ],
   },
 

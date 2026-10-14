@@ -687,14 +687,15 @@ export const toolContentKo: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "북마크 편집",
-    "metaDescription": "PDF 북마크 추가, 편집, 관리. 문서 탐색 구조 생성.",
+    "metaDescription": "PDF 북마크를 추가, 편집, 정리하거나 모두 삭제하세요. 브라우저에서 문서 탐색 구조를 관리합니다.",
     "keywords": [
       "pdf 북마크",
       "북마크 편집",
       "북마크 추가",
-      "pdf 탐색"
+      "pdf 탐색",
+      "pdf 북마크 모두 삭제"
     ],
-    "description": "<p>PDF 문서의 북마크를 생성, 수정, 정리할 수 있습니다.</p>",
+    "description": "<p>PDF 문서의 북마크를 생성, 수정, 정리할 수 있습니다.</p>\n      <p>모두 삭제하려면 모든 북마크 삭제를 클릭하고 확인하세요. 저장하고 다운로드하면 북마크가 없는 PDF를 내보냅니다.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -704,7 +705,7 @@ export const toolContentKo: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "북마크 관리",
-        "description": "새 북마크를 추가하거나 기존 북마크를 편집합니다."
+        "description": "새 북마크를 추가하거나 기존 북마크를 편집합니다. 모두 삭제하려면 모든 북마크 삭제를 클릭하고 확인하세요. 저장하고 다운로드하면 북마크가 없는 PDF를 내보냅니다."
       },
       {
         "step": 3,
@@ -741,7 +742,8 @@ export const toolContentKo: Record<string, ToolContent> = {
       {
         "question": "북마크가 모든 PDF 리더에서 작동하나요?",
         "answer": "예, 표준 PDF 기능입니다."
-      }
+      },
+      { "question": "모든 북마크를 한 번에 삭제할 수 있나요?", "answer": "모두 삭제하려면 모든 북마크 삭제를 클릭하고 확인하세요. 저장하고 다운로드하면 북마크가 없는 PDF를 내보냅니다." }
     ]
   },
   "table-of-contents": {

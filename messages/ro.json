@@ -2831,6 +2831,9 @@
       "successMessage": "Dimensiunile paginilor au fost remediate cu succes!"
     },
     "bookmark": {
+      "removeAll": "Elimină toate marcajele",
+      "removeAllConfirm": "Elimini toate marcajele, inclusiv cele imbricate? Salvează și descarcă pentru a aplica această modificare. Fișierul original rămâne neschimbat.",
+      "removedAllNotice": "Toate marcajele au fost eliminate. Salvează și descarcă pentru a aplica această modificare.",
       "uploadLabel": "Încărcați fișierul PDF",
       "uploadDescription": "Trageți și plasați un fișier PDF pentru a edita marcajele.",
       "pdfPreview": "Previzualizare PDF",

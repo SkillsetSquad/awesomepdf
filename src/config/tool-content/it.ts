@@ -827,15 +827,16 @@ export const toolContentIt: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Modifica segnalibri",
-    "metaDescription": "Aggiungi, modifica e gestisci i segnalibri PDF. Crea una struttura di navigazione per i tuoi documenti.",
+    "metaDescription": "Aggiungi, modifica, organizza o rimuovi tutti i segnalibri PDF. Gestisci la navigazione del documento localmente nel browser.",
     "keywords": [
       "segnalibri pdf",
       "modifica segnalibri",
       "aggiungi segnalibri",
       "navigazione pdf",
-      "sommario"
+      "sommario",
+      "rimuovi tutti i segnalibri pdf"
     ],
-    "description": "\n      <p>Modifica segnalibri consente di creare, modificare e organizzare i segnalibri nei tuoi documenti PDF. I segnalibri offrono una navigazione rapida verso sezioni specifiche, rendendo più semplici i documenti lunghi.</p>\n      <p>Puoi aggiungere nuovi segnalibri, modificare quelli esistenti, riorganizzare la gerarchia o importare segnalibri da fonti esterne. Questo strumento è essenziale per creare documenti professionali e ben navigabili.</p>\n      <p>Tutte le modifiche avvengono localmente nel tuo browser, garantendo che i documenti restino privati.</p>\n    ",
+    "description": "\n      <p>Modifica segnalibri consente di creare, modificare e organizzare i segnalibri nei tuoi documenti PDF. I segnalibri offrono una navigazione rapida verso sezioni specifiche, rendendo più semplici i documenti lunghi.</p>\n      <p>Puoi aggiungere nuovi segnalibri, modificare quelli esistenti, riorganizzare la gerarchia o importare segnalibri da fonti esterne. Questo strumento è essenziale per creare documenti professionali e ben navigabili.</p>\n      <p>Tutte le modifiche avvengono localmente nel tuo browser, garantendo che i documenti restino privati.</p>\n      <p>Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -845,7 +846,7 @@ export const toolContentIt: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestisci i segnalibri",
-        "description": "Aggiungi nuovi segnalibri, modifica quelli esistenti o trascina per riorganizzare la gerarchia."
+        "description": "Aggiungi nuovi segnalibri, modifica quelli esistenti o trascina per riorganizzare la gerarchia. Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri."
       },
       {
         "step": 3,
@@ -882,7 +883,8 @@ export const toolContentIt: Record<string, ToolContent> = {
       {
         "question": "I segnalibri funzionano in tutti i lettori PDF?",
         "answer": "Sì, i segnalibri sono una funzione standard supportata da tutti i principali lettori PDF."
-      }
+      },
+      { "question": "Posso rimuovere tutti i segnalibri in una volta?", "answer": "Per rimuoverli tutti, fai clic su Rimuovi tutti i segnalibri e conferma. Salva e scarica per esportare un PDF senza segnalibri." }
     ]
   },
   "table-of-contents": {

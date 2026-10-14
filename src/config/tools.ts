@@ -165,7 +165,7 @@ export const tools: Tool[] = [
     outputFormat: 'pdf',
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
-    features: ['add-bookmarks', 'edit-bookmarks', 'import-bookmarks', 'delete-bookmarks', 'extract-bookmarks'],
+    features: ['add-bookmarks', 'edit-bookmarks', 'import-bookmarks', 'delete-bookmarks', 'remove-all-bookmarks', 'extract-bookmarks'],
     relatedTools: ['table-of-contents', 'edit-pdf', 'edit-metadata'],
   },
   {

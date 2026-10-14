@@ -77,4 +77,15 @@ describe('message catalog integrity', () => {
 
     expect(missing).toEqual([]);
   });
+
+  it('defines bookmark removal messages for every locale', () => {
+    const keys = ['removeAll', 'removeAllConfirm', 'removedAllNotice'];
+    for (const file of readdirSync(messagesDir).filter((file) => file.endsWith('.json'))) {
+      const messages = JSON.parse(readFileSync(join(messagesDir, file), 'utf8'));
+      for (const key of keys) {
+        expect(getNestedValue(messages, `tools.bookmark.${key}`), `${file}:${key}`)
+          .toEqual(expect.any(String));
+      }
+    }
+  });
 });

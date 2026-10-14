@@ -792,14 +792,15 @@ export const toolContentEs: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Editar Marcadores",
-    "metaDescription": "Añade, edita y organiza marcadores en archivos PDF para navegación fácil.",
+    "metaDescription": "Añade, edita, organiza o elimina todos los marcadores PDF. Gestiona la navegación del documento localmente en tu navegador.",
     "keywords": [
       "marcadores pdf",
       "editar marcadores",
       "índice pdf",
-      "navegación pdf"
+      "navegación pdf",
+      "eliminar todos los marcadores pdf"
     ],
-    "description": "<p>Editar Marcadores te permite crear y gestionar marcadores en tus documentos PDF para facilitar la navegación.</p><p>Procesamiento local.</p>",
+    "description": "<p>Editar Marcadores te permite crear y gestionar marcadores en tus documentos PDF para facilitar la navegación.</p><p>Procesamiento local.</p>\n      <p>Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -809,7 +810,7 @@ export const toolContentEs: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestiona Marcadores",
-        "description": "Añade, edita, elimina o reorganiza marcadores."
+        "description": "Añade, edita, elimina o reorganiza marcadores. Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores."
       },
       {
         "step": 3,
@@ -846,7 +847,8 @@ export const toolContentEs: Record<string, ToolContent> = {
       {
         "question": "¿Puedo importar marcadores?",
         "answer": "Puedes crear marcadores manualmente o desde el índice existente."
-      }
+      },
+      { "question": "¿Puedo eliminar todos los marcadores a la vez?", "answer": "Para eliminarlos todos, haz clic en Eliminar todos los marcadores y confirma. Guarda y descarga para exportar un PDF sin marcadores." }
     ]
   },
   "table-of-contents": {

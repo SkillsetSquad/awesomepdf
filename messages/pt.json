@@ -2831,6 +2831,9 @@
       "successMessage": "Tamanhos de página corrigidos com sucesso!"
     },
     "bookmark": {
+      "removeAll": "Remover todos os marcadores",
+      "removeAllConfirm": "Remover todos os marcadores, incluindo os aninhados? Salve e baixe para aplicar esta alteração. O arquivo original permanece inalterado.",
+      "removedAllNotice": "Todos os marcadores foram removidos. Salve e baixe para aplicar esta alteração.",
       "uploadLabel": "Carregar arquivo PDF",
       "uploadDescription": "Arraste e solte um arquivo PDF para editar os favoritos.",
       "pdfPreview": "Pré-visualização do PDF",

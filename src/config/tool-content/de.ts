@@ -914,14 +914,15 @@ export const toolContentDe: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Lesezeichen bearbeiten",
-    "metaDescription": "PDF-Lesezeichen hinzufügen, bearbeiten und verwalten. Erstellen Sie eine Navigationsstruktur für Ihre Dokumente.",
+    "metaDescription": "PDF-Lesezeichen hinzufügen, bearbeiten, ordnen oder vollständig entfernen. Verwalten Sie die Dokumentnavigation lokal im Browser.",
     "keywords": [
       "pdf lesezeichen",
       "lesezeichen bearbeiten",
       "PDF-Navigation",
-      "inhaltsverzeichnis erstellen"
+      "inhaltsverzeichnis erstellen",
+      "alle pdf lesezeichen entfernen"
     ],
-    "description": "\n      <p>Mit \"Lesezeichen bearbeiten\" können Sie Lesezeichen in Ihren PDF-Dokumenten erstellen, ändern und organisieren. Lesezeichen ermöglichen eine schnelle Navigation zu bestimmten Abschnitten, was die Nutzung langer Dokumente erheblich erleichtert.</p>\n      <p>Sie können neue Lesezeichen hinzufügen, die Hierarchie neu organisieren oder Lesezeichen aus externen Quellen importieren. Dieses Tool ist unerlässlich für die Erstellung professioneller, navigierbarer Dokumente.</p>\n    ",
+    "description": "\n      <p>Mit \"Lesezeichen bearbeiten\" können Sie Lesezeichen in Ihren PDF-Dokumenten erstellen, ändern und organisieren. Lesezeichen ermöglichen eine schnelle Navigation zu bestimmten Abschnitten, was die Nutzung langer Dokumente erheblich erleichtert.</p>\n      <p>Sie können neue Lesezeichen hinzufügen, die Hierarchie neu organisieren oder Lesezeichen aus externen Quellen importieren. Dieses Tool ist unerlässlich für die Erstellung professioneller, navigierbarer Dokumente.</p>\n      <p>Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -931,7 +932,7 @@ export const toolContentDe: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Lesezeichen verwalten",
-        "description": "Fügen Sie neue Punkte hinzu, benennen Sie bestehende um oder ziehen Sie diese per Drag & Drop in eine hierarchische Ordnung."
+        "description": "Fügen Sie neue Punkte hinzu, benennen Sie bestehende um oder ziehen Sie diese per Drag & Drop in eine hierarchische Ordnung. Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren."
       },
       {
         "step": 3,
@@ -968,7 +969,8 @@ export const toolContentDe: Record<string, ToolContent> = {
       {
         "question": "Kann ich Lesezeichen importieren?",
         "answer": "Ja, das Tool unterstützt den Import von Strukturen aus JSON- oder Textdateien."
-      }
+      },
+      { "question": "Kann ich alle Lesezeichen auf einmal entfernen?", "answer": "Klicken Sie auf Alle Lesezeichen entfernen und bestätigen Sie. Speichern und herunterladen, um ein PDF ohne Lesezeichen zu exportieren." }
     ]
   },
   "table-of-contents": {

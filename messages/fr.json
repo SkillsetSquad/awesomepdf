@@ -2831,6 +2831,9 @@
       "successMessage": "Tailles de page corrigées avec succès !"
     },
     "bookmark": {
+      "removeAll": "Supprimer tous les signets",
+      "removeAllConfirm": "Supprimer tous les signets, y compris les signets imbriqués ? Enregistrez et téléchargez pour appliquer cette modification. Le fichier original reste inchangé.",
+      "removedAllNotice": "Tous les signets ont été supprimés. Enregistrez et téléchargez pour appliquer cette modification.",
       "uploadLabel": "Téléverser le fichier PDF",
       "uploadDescription": "Glissez-déposez un fichier PDF pour modifier les signets.",
       "pdfPreview": "Aperçu du PDF",

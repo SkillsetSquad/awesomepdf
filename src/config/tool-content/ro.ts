@@ -819,15 +819,16 @@ export const toolContentRo: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Editați marcajele",
-    "metaDescription": "Adăugați, editați și gestionați marcajele PDF. Creați o structură de navigare pentru documentele dvs.",
+    "metaDescription": "Adaugă, editează, organizează sau elimină toate marcajele PDF. Gestionează navigarea documentului local în browser.",
     "keywords": [
       "marcaje pdf",
       "editați marcajele",
       "adăugați marcaje",
       "navigare pdf",
-      "cuprins"
+      "cuprins",
+      "elimină toate marcajele pdf"
     ],
-    "description": "<p>Editați marcaje vă permite să creați, să modificați și să organizați marcaje în documentele dvs. PDF. Marcajele oferă navigare rapidă către anumite secțiuni, făcând documentele lungi mai ușor de utilizat.</p>\n      <p>Puteți să adăugați marcaje noi, să le editați pe cele existente, să reorganizați ierarhia marcajelor sau să importați marcaje din surse externe. Acest instrument este esențial pentru crearea de documente profesionale, navigabile.</p>\n      <p>Toate editările au loc local în browserul dvs., asigurându-vă că documentele dvs. rămân private.</p>",
+    "description": "<p>Editați marcaje vă permite să creați, să modificați și să organizați marcaje în documentele dvs. PDF. Marcajele oferă navigare rapidă către anumite secțiuni, făcând documentele lungi mai ușor de utilizat.</p>\n      <p>Puteți să adăugați marcaje noi, să le editați pe cele existente, să reorganizați ierarhia marcajelor sau să importați marcaje din surse externe. Acest instrument este esențial pentru crearea de documente profesionale, navigabile.</p>\n      <p>Toate editările au loc local în browserul dvs., asigurându-vă că documentele dvs. rămân private.</p>\n      <p>Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -837,7 +838,7 @@ export const toolContentRo: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestionați marcajele",
-        "description": "Adăugați marcaje noi, editați-le pe cele existente sau trageți pentru a reorganiza ierarhia."
+        "description": "Adăugați marcaje noi, editați-le pe cele existente sau trageți pentru a reorganiza ierarhia. Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje."
       },
       {
         "step": 3,
@@ -874,7 +875,8 @@ export const toolContentRo: Record<string, ToolContent> = {
       {
         "question": "Marcajele vor funcționa în toate cititoarele PDF?",
         "answer": "Da, marcajele sunt o caracteristică standard PDF acceptată de toate cititoarele PDF majore."
-      }
+      },
+      { "question": "Pot elimina toate marcajele dintr-o dată?", "answer": "Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje." }
     ]
   },
   "table-of-contents": {

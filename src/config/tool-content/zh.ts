@@ -358,16 +358,17 @@ export const toolContentZh: Record<string, ToolContent> = {
   // ==================== 编辑与注释 ====================
   'bookmark': {
     title: '编辑书签',
-    metaDescription: '添加、编辑和管理PDF书签。为您的文档创建导航结构。',
-    keywords: ['pdf书签', '编辑书签', '添加书签', 'pdf导航', '目录'],
+    metaDescription: '添加、编辑、整理或删除所有PDF书签。在浏览器本地管理文档导航。',
+    keywords: ['pdf书签', '编辑书签', '添加书签', 'pdf导航', '目录', '删除所有pdf书签'],
     description: `
       <p>编辑书签允许您在PDF文档中创建、修改和整理书签。书签提供快速导航到特定部分的功能，使长文档更易于使用。</p>
       <p>您可以添加新书签、编辑现有书签、重新整理书签层次结构或从外部来源导入书签。这个工具对于创建专业、可导航的文档至关重要。</p>
       <p>所有编辑都在您的浏览器本地进行，确保您的文档保持私密。</p>
+      <p>要全部删除，请点击“删除所有书签”并确认。保存并下载即可导出不含书签的PDF。</p>
     `,
     howToUse: [
       { step: 1, title: '上传PDF文件', description: '拖放您的PDF文件或点击选择要编辑的文档。' },
-      { step: 2, title: '管理书签', description: '添加新书签、编辑现有书签或拖动重新整理层次结构。' },
+      { step: 2, title: '管理书签', description: '添加新书签、编辑现有书签或拖动重新整理层次结构。 要全部删除，请点击“删除所有书签”并确认。保存并下载即可导出不含书签的PDF。' },
       { step: 3, title: '保存并下载', description: '点击保存应用更改并下载带有更新书签的PDF。' },
     ],
     useCases: [
@@ -379,6 +380,7 @@ export const toolContentZh: Record<string, ToolContent> = {
       { question: '可以创建嵌套书签吗？', answer: '是的，您可以创建具有父书签和子书签的层次结构。' },
       { question: '可以从文件导入书签吗？', answer: '是的，您可以从JSON或文本文件导入书签结构。' },
       { question: '书签在所有PDF阅读器中都能工作吗？', answer: '是的，书签是所有主要PDF阅读器都支持的标准PDF功能。' },
+      { question: "可以一次删除所有书签吗？", answer: "要全部删除，请点击“删除所有书签”并确认。保存并下载即可导出不含书签的PDF。" },
     ],
   },
 

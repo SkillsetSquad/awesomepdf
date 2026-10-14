@@ -2831,6 +2831,9 @@
       "successMessage": "Đã sửa kích thước trang thành công!"
     },
     "bookmark": {
+      "removeAll": "Xóa tất cả dấu trang",
+      "removeAllConfirm": "Xóa tất cả dấu trang, bao gồm dấu trang lồng nhau? Lưu và tải xuống để áp dụng thay đổi này. Tệp gốc không bị thay đổi.",
+      "removedAllNotice": "Đã xóa tất cả dấu trang. Lưu và tải xuống để áp dụng thay đổi này.",
       "uploadLabel": "Tải lên tệp PDF",
       "uploadDescription": "Kéo và thả tệp PDF để chỉnh sửa dấu trang.",
       "pdfPreview": "Xem trước PDF",

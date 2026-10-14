@@ -2832,6 +2832,9 @@
       "successMessage": "頁面尺寸修復成功！"
     },
     "bookmark": {
+      "removeAll": "刪除所有書籤",
+      "removeAllConfirm": "刪除所有書籤，包括巢狀書籤？儲存並下載以套用此變更。原始檔案保持不變。",
+      "removedAllNotice": "已刪除所有書籤。儲存並下載以套用此變更。",
       "uploadLabel": "上傳 PDF 文件",
       "uploadDescription": "將 PDF 檔案拖放到此處以編輯書籤。",
       "pdfPreview": "PDF 預覽",

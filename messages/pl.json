@@ -2844,6 +2844,9 @@
       "successMessage": "Rozmiary stron zostały pomyślnie naprawione!"
     },
     "bookmark": {
+      "removeAll": "Usuń wszystkie zakładki",
+      "removeAllConfirm": "Usunąć wszystkie zakładki, w tym zagnieżdżone? Zapisz i pobierz, aby zastosować tę zmianę. Oryginalny plik pozostanie bez zmian.",
+      "removedAllNotice": "Wszystkie zakładki zostały usunięte. Zapisz i pobierz, aby zastosować tę zmianę.",
       "uploadLabel": "Prześlij plik PDF",
       "uploadDescription": "Przeciągnij i upuść plik PDF, aby edytować zakładki.",
       "pdfPreview": "PDF Podgląd",

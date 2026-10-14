@@ -763,15 +763,16 @@ export const toolContentFr: Record<string, ToolContent> = {
   },
   "bookmark": {
     "title": "Éditer les signets",
-    "metaDescription": "Ajoutez, éditez et gérez les signets PDF. Créez une structure de navigation pour vos documents.",
+    "metaDescription": "Ajoutez, modifiez, organisez ou supprimez tous les signets PDF. Gérez la navigation du document localement dans votre navigateur.",
     "keywords": [
       "signets pdf",
       "éditer signets",
       "ajouter signets",
       "navigation pdf",
-      "table des matières pdf"
+      "table des matières pdf",
+      "supprimer tous les signets pdf"
     ],
-    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n    ",
+    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n      <p>Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -781,7 +782,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gérez les signets",
-        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie."
+        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie. Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets."
       },
       {
         "step": 3,
@@ -818,7 +819,8 @@ export const toolContentFr: Record<string, ToolContent> = {
       {
         "question": "Les signets fonctionneront-ils dans tous les lecteurs PDF ?",
         "answer": "Oui, les signets sont une fonctionnalité standard PDF prise en charge par tous les principaux lecteurs PDF."
-      }
+      },
+      { "question": "Puis-je supprimer tous les signets en une fois ?", "answer": "Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets." }
     ]
   },
   "table-of-contents": {

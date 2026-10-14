@@ -2831,6 +2831,9 @@
       "successMessage": "Dimensioni della pagina corrette con successo!"
     },
     "bookmark": {
+      "removeAll": "Rimuovi tutti i segnalibri",
+      "removeAllConfirm": "Rimuovere tutti i segnalibri, inclusi quelli annidati? Salva e scarica per applicare questa modifica. Il file originale rimane invariato.",
+      "removedAllNotice": "Tutti i segnalibri sono stati rimossi. Salva e scarica per applicare questa modifica.",
       "uploadLabel": "Carica file PDF",
       "uploadDescription": "Trascina e rilascia un file PDF per modificare i segnalibri.",
       "pdfPreview": "Anteprima PDF",
