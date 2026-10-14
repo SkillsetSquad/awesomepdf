@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -24,7 +24,7 @@ vi.mock('@/components/tools/DownloadButton', () => ({
 }));
 
 const tree = [{ title: 'Chapter', items: [{ title: 'Section', items: [{ title: 'Subsection', items: [] }] }] }];
-const doc = { numPages: 1, getOutline, getPage: async () => ({}) };
+const doc = { numPages: 3, getOutline, getPage: async () => ({}), getPageIndex: async (ref: { num: number }) => ref.num - 1 };
 const success: ProcessOutput = { success: true, result: new Blob(['output'], { type: 'application/pdf' }) };
 
 beforeEach(() => {
@@ -56,7 +56,7 @@ describe('Remove all bookmarks', () => {
   it.each([['en', en], ['ar', ar]] as const)('confirms nested removal, preserves drafts on cancellation, and restores focus (%s)', async (locale, messages) => {
     const user = userEvent.setup(), intlError = renderTool(locale, messages);
     await upload(user, messages);
-    await user.click(screen.getAllByRole('button', { name: 'Edit' })[0]);
+    await user.click(screen.getAllByRole('button', { name: messages.common.buttons.edit })[0]);
     const title = screen.getByRole('textbox', { name: messages.tools.bookmark.title });
     await user.clear(title); await user.type(title, 'Unsaved chapter');
     const remove = screen.getByRole('button', { name: messages.tools.bookmark.removeAll });
@@ -184,5 +184,174 @@ describe('Remove all bookmarks', () => {
     await user.click(screen.getByRole('button', { name: en.tools.bookmark.extractExisting }));
     await screen.findByText('Subsection');
     expect(screen.queryByText(en.tools.bookmark.removedAllNotice)).toBeNull();
+  });
+});
+
+const positionTree = [
+  { title: 'Chapter', dest: [{ num: 1 }], bold: true, color: [18, 52, 86], items: [
+    { title: 'Section', dest: [{ num: 2 }], items: [{ title: 'Subsection', dest: [{ num: 2 }], items: [] }] },
+    { title: 'Another section', dest: [{ num: 3 }], items: [] },
+  ] },
+  { title: 'Tail', dest: [{ num: 3 }], items: [] },
+];
+
+function bookmarkRow(title: string) {
+  const row = screen.getByRole('button', { name: title }).closest('[data-bookmark-row]');
+  if (!(row instanceof HTMLDivElement)) throw new Error('Expected a bookmark row');
+  return row;
+}
+
+function nativeDrag(target: HTMLElement, type: 'dragstart' | 'dragover' | 'drop' | 'dragend', y = 120) {
+  const event = new MouseEvent(type, { bubbles: true, cancelable: true, clientX: 100, clientY: y });
+  Object.defineProperty(event, 'dataTransfer', { value: { setData: vi.fn(), effectAllowed: 'none', dropEffect: 'none' } });
+  fireEvent(target, event);
+}
+
+async function nameNewBookmark(user: ReturnType<typeof userEvent.setup>, title: string, messages: typeof en | typeof ar = en) {
+  const field = screen.getByRole('textbox', { name: messages.tools.bookmark.title });
+  expect(field).toHaveFocus();
+  await user.clear(field); await user.type(field, title);
+  await user.click(screen.getByRole('button', { name: messages.common.buttons.save }));
+}
+
+describe('Bookmark insertion and repositioning', () => {
+  it.each([['en', en], ['ar', ar]] as const)('inserts repeatedly after a keyboard-selected nested entry at the previewed page (%s)', async (locale, messages) => {
+    getOutline.mockResolvedValueOnce(positionTree);
+    const user = userEvent.setup(), intlError = renderTool(locale, messages); await upload(user, messages);
+    const section = screen.getByRole('button', { name: 'Section' });
+    section.focus(); await user.keyboard('{Enter}'); expect(section).toHaveAttribute('aria-pressed', 'true');
+    await user.click(screen.getByRole('button', { name: new RegExp(messages.common.buttons.next) }));
+    await user.click(screen.getByRole('button', { name: new RegExp(messages.tools.bookmark.addBookmark) }));
+    expect(screen.getByRole('textbox', { name: messages.tools.bookmark.title })).toHaveValue(messages.tools.bookmark.newBookmarkTitle.replace('{page}', '3'));
+    await nameNewBookmark(user, 'Inserted', messages);
+    await user.click(screen.getByRole('button', { name: new RegExp(messages.tools.bookmark.addBookmark) }));
+    await nameNewBookmark(user, 'Next inserted', messages);
+    await user.click(screen.getByRole('button', { name: messages.tools.bookmark.saveButton }));
+    await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [
+      expect.objectContaining({ title: 'Chapter', children: [
+        expect.objectContaining({ title: 'Section', children: [expect.objectContaining({ title: 'Subsection' })] }),
+        expect.objectContaining({ title: 'Inserted', pageNumber: 3, children: undefined }),
+        expect.objectContaining({ title: 'Next inserted', pageNumber: 3, children: undefined }),
+        expect.objectContaining({ title: 'Another section' }),
+      ] }), expect.objectContaining({ title: 'Tail' }),
+    ] }, expect.any(Function));
+    expect(intlError).not.toHaveBeenCalled();
+  });
+
+  it('inserts after a root selection and appends at the root without selection', async () => {
+    getOutline.mockResolvedValueOnce(positionTree);
+    const user = userEvent.setup(); renderTool(); await upload(user);
+    await user.click(screen.getByRole('button', { name: /Add Bookmark/ })); await nameNewBookmark(user, 'At end');
+    await user.click(screen.getByRole('button', { name: 'Chapter' }));
+    await user.click(screen.getByRole('button', { name: /Add Bookmark/ })); await nameNewBookmark(user, 'After chapter');
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [
+      expect.objectContaining({ title: 'Chapter' }), expect.objectContaining({ title: 'After chapter' }),
+      expect.objectContaining({ title: 'Tail' }), expect.objectContaining({ title: 'At end' }),
+    ] }, expect.any(Function));
+  });
+
+  it.each([['en', en], ['ar', ar]] as const)('moves a subtree with the keyboard dialog, preserves drafts, and restores focus (%s)', async (locale, messages) => {
+    getOutline.mockResolvedValueOnce(positionTree);
+    const user = userEvent.setup(), intlError = renderTool(locale, messages); await upload(user, messages);
+    const subsection = bookmarkRow('Subsection');
+    await user.click(within(subsection).getByRole('button', { name: messages.common.buttons.edit }));
+    const title = screen.getByRole('textbox', { name: messages.tools.bookmark.title });
+    await user.clear(title); await user.type(title, 'Unsaved subsection');
+    const grip = screen.getByRole('button', { name: messages.tools.bookmark.moveBookmarkNamed.replace('{title}', 'Chapter') });
+    grip.focus(); await user.keyboard('{Enter}');
+    let dialog = screen.getByRole('dialog', { name: messages.tools.bookmark.moveBookmark });
+    const destination = within(dialog).getByRole('combobox', { name: messages.tools.bookmark.moveTarget });
+    expect(within(destination).getAllByRole('option')).toHaveLength(1);
+    expect(destination).toHaveFocus();
+    await user.keyboard('{Escape}'); await waitFor(() => expect(grip).toHaveFocus());
+    expect(title).toHaveValue('Unsaved subsection');
+    await user.keyboard('{Enter}'); dialog = screen.getByRole('dialog');
+    await user.selectOptions(within(dialog).getByRole('combobox', { name: messages.tools.bookmark.movePosition }), 'inside');
+    await user.click(within(dialog).getByRole('button', { name: messages.tools.bookmark.moveButton }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    const movedGrip = screen.getByRole('button', { name: messages.tools.bookmark.moveBookmarkNamed.replace('{title}', 'Chapter') });
+    await waitFor(() => expect(movedGrip).toHaveFocus());
+    expect(screen.getByRole('textbox', { name: messages.tools.bookmark.title })).toHaveValue('Unsaved subsection');
+    expect(screen.getByRole('status')).toHaveTextContent(messages.tools.bookmark.movedNotice.replace('{title}', 'Chapter'));
+    expect(processBookmarks).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: messages.common.buttons.save }));
+    expect(screen.getByRole('button', { name: 'Unsaved subsection' })).toHaveAttribute('aria-pressed', 'true');
+    await user.click(screen.getByRole('button', { name: messages.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [
+      expect.objectContaining({ title: 'Tail', children: [expect.objectContaining({ title: 'Chapter', style: 'bold', color: '#123456', children: [
+        expect.objectContaining({ title: 'Section', children: [expect.objectContaining({ title: 'Unsaved subsection' })] }), expect.objectContaining({ title: 'Another section' }),
+      ] })] }),
+    ] }, expect.any(Function));
+    expect(intlError).not.toHaveBeenCalled();
+  });
+
+  it('uses the drop position instead of stale hover state and expands collapsed destinations', async () => {
+    getOutline.mockResolvedValueOnce(positionTree);
+    const user = userEvent.setup(); renderTool(); await upload(user);
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    const target = bookmarkRow('Tail');
+    vi.spyOn(target, 'getBoundingClientRect').mockReturnValue({ top: 100, bottom: 140, left: 0, right: 200, width: 200, height: 40, x: 0, y: 100, toJSON: () => ({}) });
+    const grip = screen.getByRole('button', { name: 'Move bookmark: Chapter' });
+    expect(bookmarkRow('Chapter').draggable).toBe(false); expect(grip.draggable).toBe(true);
+    nativeDrag(grip, 'dragstart'); nativeDrag(target, 'dragover', 120); nativeDrag(target, 'drop', 138);
+    await waitFor(() => expect(screen.queryByRole('button', { name: /Download/ })).toBeNull());
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [expect.objectContaining({ title: 'Tail', children: undefined }), expect.objectContaining({ title: 'Chapter', children: expect.any(Array) })] }, expect.any(Function));
+    await user.click(screen.getByRole('button', { name: 'Collapse Chapter' }));
+    const collapsed = bookmarkRow('Chapter');
+    vi.spyOn(collapsed, 'getBoundingClientRect').mockReturnValue({ top: 100, bottom: 140, left: 0, right: 200, width: 200, height: 40, x: 0, y: 100, toJSON: () => ({}) });
+    nativeDrag(screen.getByRole('button', { name: 'Move bookmark: Tail' }), 'dragstart'); nativeDrag(collapsed, 'drop', 120);
+    expect(await screen.findByRole('button', { name: 'Subsection' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [expect.objectContaining({ title: 'Chapter', expanded: true, children: [expect.objectContaining({ title: 'Section' }), expect.objectContaining({ title: 'Another section' }), expect.objectContaining({ title: 'Tail' })] })] }, expect.any(Function));
+  });
+
+  it('rejects self and descendant drops without losing bookmarks or invalidating the existing download', async () => {
+    const user = userEvent.setup(); renderTool(); await upload(user);
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    for (const target of [bookmarkRow('Subsection'), bookmarkRow('Chapter')]) {
+      nativeDrag(screen.getByRole('button', { name: 'Move bookmark: Chapter' }), 'dragstart');
+      nativeDrag(target, 'dragover'); nativeDrag(target, 'drop');
+      expect(screen.getByRole('button', { name: 'Download 6' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Subsection' })).toBeInTheDocument();
+    }
+  });
+
+  it('clears selection and drafts after deleting an ancestor or extracting a new tree', async () => {
+    getOutline.mockResolvedValue(positionTree);
+    const user = userEvent.setup(); renderTool(); await upload(user);
+    const child = bookmarkRow('Subsection'); await user.click(within(child).getByRole('button', { name: 'Edit' }));
+    await user.click(within(bookmarkRow('Chapter')).getByRole('button', { name: 'Delete' }));
+    expect(screen.queryByRole('textbox', { name: en.tools.bookmark.title })).toBeNull();
+    await user.click(screen.getByRole('button', { name: /Add Bookmark/ })); await nameNewBookmark(user, 'At root');
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.extractExisting }));
+    await user.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: en.common.buttons.confirm }));
+    await screen.findByText('Subsection');
+    await user.click(screen.getByRole('button', { name: /Add Bookmark/ })); await nameNewBookmark(user, 'After reset');
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton })); await screen.findByRole('button', { name: 'Download 6' });
+    expect(processBookmarks).toHaveBeenLastCalledWith(sourceFile, { action: 'add', bookmarks: [expect.objectContaining({ title: 'Chapter' }), expect.objectContaining({ title: 'Tail' }), expect.objectContaining({ title: 'After reset' })] }, expect.any(Function));
+  });
+
+  it('disables movement during extraction/export and explains when no destination exists', async () => {
+    const user = userEvent.setup(); renderTool(); await upload(user);
+    await user.click(screen.getByRole('button', { name: 'Move bookmark: Chapter' }));
+    const dialog = screen.getByRole('dialog'); expect(dialog).toHaveTextContent(en.tools.bookmark.noMoveTargets);
+    expect(within(dialog).getByRole('button', { name: en.tools.bookmark.moveButton })).toBeDisabled();
+    await user.click(within(dialog).getByRole('button', { name: en.common.buttons.cancel }));
+    let finish!: (value: ProcessOutput) => void;
+    processBookmarks.mockImplementationOnce(() => new Promise(resolve => { finish = resolve; }));
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.saveButton }));
+    expect(screen.getByRole('button', { name: 'Move bookmark: Chapter' })).toBeDisabled();
+    await act(async () => finish(success));
+    let finishOutline!: (value: typeof tree) => void;
+    getOutline.mockImplementationOnce(() => new Promise(resolve => { finishOutline = resolve; }));
+    const grip = screen.getByRole('button', { name: 'Move bookmark: Chapter' });
+    await user.click(screen.getByRole('button', { name: en.tools.bookmark.extractExisting }));
+    await user.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: en.common.buttons.confirm }));
+    expect(grip).toBeDisabled();
+    await act(async () => finishOutline(tree));
+    await waitFor(() => expect(screen.queryByRole('alertdialog')).toBeNull());
   });
 });

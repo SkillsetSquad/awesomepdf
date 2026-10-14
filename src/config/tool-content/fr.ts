@@ -770,9 +770,10 @@ export const toolContentFr: Record<string, ToolContent> = {
       "ajouter signets",
       "navigation pdf",
       "table des matières pdf",
-      "supprimer tous les signets pdf"
+      "supprimer tous les signets pdf",
+      "déplacer le signet"
     ],
-    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n      <p>Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets.</p>\n    ",
+    "description": "\n      <p>Éditer les signets vous permet de créer, modifier et organiser des signets dans vos documents PDF. Les signets offrent une navigation rapide vers des sections spécifiques, rendant les longs documents plus faciles à utiliser.</p>\n      <p>Vous pouvez ajouter de nouveaux signets, modifier ceux existants, réorganiser la hiérarchie des signets ou importer des signets depuis des sources externes. Cet outil est essentiel pour créer des documents professionnels et navigables.</p>\n      <p>Toute l'édition se fait localement dans votre navigateur, garantissant que vos documents restent privés.</p>\n      <p>Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets.</p>\n      <p>Ajouter un signet insère après l’entrée sélectionnée au même niveau et cible la page affichée. Sans sélection, le signet est ajouté à la fin. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -782,7 +783,7 @@ export const toolContentFr: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gérez les signets",
-        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie. Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets."
+        "description": "Ajoutez de nouveaux signets, éditez ceux existants ou faites glisser pour réorganiser la hiérarchie. Pour tout supprimer, cliquez sur Supprimer tous les signets et confirmez. Enregistrez et téléchargez pour exporter un PDF sans signets. Ajouter un signet insère après l’entrée sélectionnée au même niveau et cible la page affichée. Sans sélection, le signet est ajouté à la fin. Faites glisser la poignée avant, après ou à l’intérieur d’un autre signet. Cliquez ou appuyez dessus pour choisir une destination."
       },
       {
         "step": 3,

@@ -22,6 +22,9 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { appendChildBookmark, canMoveBookmark, findBookmark, getBookmarkMoveTargets, getBookmarkPlacement, insertBookmarkAfter, moveBookmark, removeBookmark, type BookmarkNode, type BookmarkPlacement } from '@/lib/pdf/bookmark-tree';
+import { useBookmarkDragScroll } from './useBookmarkDragScroll';
 import { processBookmarks, BookmarkItem, BookmarkOptions } from '@/lib/pdf/processors/bookmark';
 import type { ProcessOutput } from '@/types/pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
@@ -46,16 +49,6 @@ const loadPdfjsLib = async () => {
 
 export interface BookmarkToolProps {
   className?: string;
-}
-
-interface BookmarkNode {
-  id: string;
-  title: string;
-  pageNumber: number;
-  children: BookmarkNode[];
-  color?: string;
-  style?: 'bold' | 'italic' | 'bold-italic';
-  isExpanded?: boolean;
 }
 
 type BookmarkDraft = Omit<BookmarkNode, 'pageNumber'> & { pageNumber: number | '' };
@@ -130,6 +123,7 @@ const convertToBookmarkItems = (nodes: BookmarkNode[]): BookmarkItem[] => {
     pageNumber: node.pageNumber,
     color: node.color,
     style: node.style,
+    expanded: node.isExpanded,
     children: node.children.length > 0 ? convertToBookmarkItems(node.children) : undefined,
   }));
 };
@@ -172,12 +166,30 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   const removalConfirmedRef = useRef(false);
   const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null);
   const [dragOverNodeId, setDragOverNodeId] = useState<string | null>(null);
-  const [dropPosition, setDropPosition] = useState<'before' | 'after' | 'inside' | null>(null);
+  const [dropPosition, setDropPosition] = useState<BookmarkPlacement | null>(null);
+  const [movingBookmarkId, setMovingBookmarkId] = useState<string | null>(null);
+  const [moveTargetId, setMoveTargetId] = useState('');
+  const [movePlacement, setMovePlacement] = useState<BookmarkPlacement>('after');
+  const [moveNotice, setMoveNotice] = useState<string | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const moveButtonRefs = useRef(new Map<string, HTMLButtonElement>());
+  const moveFocusIdRef = useRef<string | null>(null);
+  const draggedIdRef = useRef<string | null>(null);
+  const dragEndedAtRef = useRef(0);
+  const pendingRevealIdRef = useRef<string | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const processingRunRef = useRef(0);
   const isProcessing = status === 'processing';
   const isBusy = isLoading || isExtractingBookmarks || isProcessing;
+  useBookmarkDragScroll(listRef, Boolean(draggedNodeId) && !isBusy);
+
+  // New entries and moves can be outside the current scroll position.
+  useEffect(() => {
+    const id = pendingRevealIdRef.current;
+    if (id) moveButtonRefs.current.get(id)?.scrollIntoView?.({ block: 'nearest' });
+    pendingRevealIdRef.current = null;
+  }, [bookmarks]);
 
   // Load PDF and extract existing bookmarks
   const loadPdf = useCallback(async (pdfFile: File) => {
@@ -226,6 +238,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         setBookmarks(extracted);
         setResult(null);
         setRemovedAll(false);
+        setSelectedBookmarkId(null);
+        setEditingBookmark(null);
+        setMoveNotice(null);
       } else {
         setExtractionNotice(tTools('bookmark.noBookmarksFound'));
       }
@@ -296,6 +311,12 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       setRemovedAll(false);
       setSelectedBookmarkId(null);
       setEditingBookmark(null);
+      setMovingBookmarkId(null);
+      setMoveNotice(null);
+      draggedIdRef.current = null;
+      setDraggedNodeId(null);
+      setDragOverNodeId(null);
+      setDropPosition(null);
       setResult(null);
       setBookmarks([]);
       loadPdf(files[0]);
@@ -315,6 +336,12 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setRemovedAll(false);
     setSelectedBookmarkId(null);
     setEditingBookmark(null);
+    setMovingBookmarkId(null);
+    setMoveNotice(null);
+    draggedIdRef.current = null;
+    setDraggedNodeId(null);
+    setDragOverNodeId(null);
+    setDropPosition(null);
     setStatus('idle');
     setCurrentPage(1);
     setTotalPages(0);
@@ -326,6 +353,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setBookmarks([]);
     setSelectedBookmarkId(null);
     setEditingBookmark(null);
+    setMovingBookmarkId(null);
+    setMoveNotice(null);
+    draggedIdRef.current = null;
     setDraggedNodeId(null);
     setDragOverNodeId(null);
     setDropPosition(null);
@@ -347,56 +377,48 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   const handleAddBookmark = useCallback(() => {
     const newBookmark: BookmarkNode = {
       id: `bm-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      title: `New Bookmark (Page ${currentPage})`,
+      title: tTools('bookmark.newBookmarkTitle', { page: currentPage }),
       pageNumber: currentPage,
       children: [],
       isExpanded: true,
     };
-    setBookmarks(prev => [...prev, newBookmark]);
+    setBookmarks(prev => insertBookmarkAfter(prev, newBookmark, selectedBookmarkId));
+    setSelectedBookmarkId(newBookmark.id);
+    pendingRevealIdRef.current = newBookmark.id;
     setEditingBookmark(newBookmark);
     setResult(null);
     setRemovedAll(false);
-  }, [currentPage]);
+    setMoveNotice(null);
+  }, [currentPage, selectedBookmarkId, tTools]);
 
   // Add child bookmark
   const handleAddChild = useCallback((parentId: string) => {
     const newChild: BookmarkNode = {
       id: `bm-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      title: `New Bookmark (Page ${currentPage})`,
+      title: tTools('bookmark.newBookmarkTitle', { page: currentPage }),
       pageNumber: currentPage,
       children: [],
       isExpanded: true,
     };
 
-    const addChildTo = (nodes: BookmarkNode[]): BookmarkNode[] => {
-      return nodes.map(node => {
-        if (node.id === parentId) {
-          return { ...node, children: [...node.children, newChild], isExpanded: true };
-        }
-        return { ...node, children: addChildTo(node.children) };
-      });
-    };
-
-    setBookmarks(prev => addChildTo(prev));
+    setBookmarks(prev => appendChildBookmark(prev, newChild, parentId));
+    setSelectedBookmarkId(newChild.id);
+    pendingRevealIdRef.current = newChild.id;
     setEditingBookmark(newChild);
     setResult(null);
     setRemovedAll(false);
-  }, [currentPage]);
+    setMoveNotice(null);
+  }, [currentPage, tTools]);
 
   // Delete bookmark
   const handleDeleteBookmark = useCallback((id: string) => {
-    const removeFrom = (nodes: BookmarkNode[]): BookmarkNode[] => {
-      return nodes
-        .filter(node => node.id !== id)
-        .map(node => ({ ...node, children: removeFrom(node.children) }));
-    };
-
-    setBookmarks(prev => removeFrom(prev));
-    if (selectedBookmarkId === id) {
-      setSelectedBookmarkId(null);
-    }
+    const updated = removeBookmark(bookmarks, id);
+    setBookmarks(updated);
+    if (!findBookmark(updated, selectedBookmarkId)) setSelectedBookmarkId(null);
+    if (editingBookmark && !findBookmark(updated, editingBookmark.id)) setEditingBookmark(null);
     setResult(null);
-  }, [selectedBookmarkId]);
+    setMoveNotice(null);
+  }, [bookmarks, selectedBookmarkId, editingBookmark]);
 
   // Update bookmark
   const handleUpdateBookmark = useCallback((updated: BookmarkDraft) => {
@@ -452,106 +474,73 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setResult(null);
   }, []);
 
-  // Drag and Drop handlers
-  const handleDragStart = (e: React.DragEvent, id: string) => {
+  const handleMoveNode = (sourceId: string, targetId: string, placement: BookmarkPlacement, focus = true) => {
+    if (isBusy) return false;
+    const updated = moveBookmark(bookmarks, sourceId, targetId, placement);
+    if (updated === bookmarks) return false;
+    const source = findBookmark(bookmarks, sourceId);
+    setBookmarks(updated);
+    setResult(null);
+    setMoveNotice(tTools('bookmark.movedNotice', { title: source?.title || '' }));
+    pendingRevealIdRef.current = sourceId;
+    if (focus) requestAnimationFrame(() => moveButtonRefs.current.get(sourceId)?.focus());
+    return true;
+  };
+
+  const handleOpenMove = (id: string) => {
+    if (isBusy || draggedIdRef.current || Date.now() - dragEndedAtRef.current < 250) return;
+    moveFocusIdRef.current = id;
+    setMovingBookmarkId(id);
+    setMoveTargetId(getBookmarkMoveTargets(bookmarks, id)[0]?.node.id || '');
+    setMovePlacement('after');
+  };
+
+  const handleDragEnd = () => {
+    draggedIdRef.current = null;
+    dragEndedAtRef.current = Date.now();
+    setDraggedNodeId(null);
+    setDragOverNodeId(null);
+    setDropPosition(null);
+  };
+
+  const handleDragStart = (event: React.DragEvent, id: string) => {
+    event.stopPropagation();
+    if (isBusy) { event.preventDefault(); return; }
+    draggedIdRef.current = id;
     setDraggedNodeId(id);
-    e.dataTransfer.setData('text/plain', id);
-    e.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('application/x-awesomepdf-bookmark', id);
+    event.dataTransfer.effectAllowed = 'move';
   };
 
-  const handleDragOver = (e: React.DragEvent, targetId: string) => {
-    e.preventDefault();
-    if (!draggedNodeId || draggedNodeId === targetId) return;
-
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mouseY = e.clientY - rect.top;
-    const height = rect.height;
-
-    // Logic to determine drop position
-    if (mouseY < height * 0.25) {
-      setDropPosition('before');
-    } else if (mouseY > height * 0.75) {
-      setDropPosition('after');
-    } else {
-      setDropPosition('inside');
-    }
-    setDragOverNodeId(targetId);
-  };
-
-  const handleDrop = (e: React.DragEvent, targetId: string) => {
-    e.preventDefault();
-    if (!draggedNodeId || !dropPosition || draggedNodeId === targetId) {
-      setDraggedNodeId(null);
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
+    const sourceId = draggedIdRef.current;
+    if (!sourceId) return;
+    event.preventDefault();
+    event.stopPropagation();
+    if (isBusy || !canMoveBookmark(bookmarks, sourceId, targetId)) {
+      event.dataTransfer.dropEffect = 'none';
       setDragOverNodeId(null);
       setDropPosition(null);
       return;
     }
-
-    handleMoveNode(draggedNodeId, targetId, dropPosition);
-    setDraggedNodeId(null);
-    setDragOverNodeId(null);
-    setDropPosition(null);
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.dataTransfer.dropEffect = 'move';
+    setDropPosition(getBookmarkPlacement(event.clientY, rect.top, rect.height));
+    setDragOverNodeId(targetId);
   };
 
-  const handleDragEnd = () => {
-    setDraggedNodeId(null);
-    setDragOverNodeId(null);
-    setDropPosition(null);
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
+    const sourceId = draggedIdRef.current;
+    if (!sourceId) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const rect = event.currentTarget.getBoundingClientRect();
+    handleMoveNode(sourceId, targetId, getBookmarkPlacement(event.clientY, rect.top, rect.height));
+    handleDragEnd();
   };
 
-  const handleMoveNode = useCallback((sourceId: string, targetId: string, position: 'before' | 'after' | 'inside') => {
-    setBookmarks(prev => {
-      let sourceNode: BookmarkNode | null = null;
-
-      // 1. Recursive removal of source node
-      const removeNode = (nodes: BookmarkNode[]): BookmarkNode[] => {
-        return nodes.filter(node => {
-          if (node.id === sourceId) {
-            sourceNode = { ...node };
-            return false;
-          }
-          if (node.children && node.children.length > 0) {
-            node.children = removeNode(node.children);
-          }
-          return true;
-        });
-      };
-
-      // Create a deep copy to avoid mutations
-      const nodesWithoutSource = removeNode(JSON.parse(JSON.stringify(prev)));
-      if (!sourceNode) return prev;
-
-      // 2. Recursive insertion at target
-      const insertNode = (nodes: BookmarkNode[]): BookmarkNode[] => {
-        const targetIndex = nodes.findIndex(node => node.id === targetId);
-        if (targetIndex !== -1) {
-          const result = [...nodes];
-          if (position === 'before') {
-            result.splice(targetIndex, 0, sourceNode!);
-          } else if (position === 'after') {
-            result.splice(targetIndex + 1, 0, sourceNode!);
-          } else if (position === 'inside') {
-            result[targetIndex] = {
-              ...result[targetIndex],
-              children: [...result[targetIndex].children, sourceNode!],
-              isExpanded: true
-            };
-          }
-          return result;
-        }
-
-        return nodes.map(node => {
-          if (node.children && node.children.length > 0) {
-            return { ...node, children: insertNode(node.children) };
-          }
-          return node;
-        });
-      };
-
-      return insertNode(nodesWithoutSource);
-    });
-    setResult(null);
-  }, []);
+  const movingBookmark = findBookmark(bookmarks, movingBookmarkId);
+  const moveTargets = movingBookmarkId ? getBookmarkMoveTargets(bookmarks, movingBookmarkId) : [];
 
   // Process and save bookmarks
   const handleProcess = useCallback(async () => {
@@ -600,34 +589,43 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     const isEditing = editingBookmark?.id === bookmark.id;
 
     return (
-      <div key={bookmark.id} style={{ marginLeft: depth * 16 }}>
+      <div key={bookmark.id} data-bookmark-node={bookmark.id} role="listitem" style={{ marginInlineStart: depth > 0 ? 8 : 0 }}>
         <div
-          draggable={!isBusy}
-          onDragStart={(e) => handleDragStart(e, bookmark.id)}
+          data-bookmark-row={bookmark.id}
           onDragOver={(e) => handleDragOver(e, bookmark.id)}
           onDrop={(e) => handleDrop(e, bookmark.id)}
-          onDragEnd={handleDragEnd}
-          className={`group flex items-center gap-2 p-2 rounded cursor-pointer transition-all border ${
-            isSelected ? 'bg-blue-100 border-blue-300' : 'border-transparent hover:bg-muted'
+          onDragLeave={(event) => {
+            if (event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget)) return;
+            if (dragOverNodeId === bookmark.id) { setDragOverNodeId(null); setDropPosition(null); }
+          }}
+          className={`group relative flex flex-wrap items-center gap-2 p-2 rounded cursor-pointer transition-colors border ${
+            isSelected ? 'bg-accent text-accent-foreground border-primary' : 'border-transparent hover:bg-muted'
           }  ${
-            dragOverNodeId === bookmark.id && dropPosition === 'inside' ? 'bg-blue-50 border-blue-300 border-dashed' : ''
-          }  ${
-            dragOverNodeId === bookmark.id && dropPosition === 'before' ? 'border-t-blue-500' : ''
-          }  ${
-            dragOverNodeId === bookmark.id && dropPosition === 'after' ? 'border-b-blue-500' : ''
+            dragOverNodeId === bookmark.id && dropPosition === 'inside' ? 'bg-primary/10 border-primary border-dashed' : ''
           }  ${
             draggedNodeId === bookmark.id ? 'opacity-30' : ''
           }`}
           onClick={() => handleBookmarkClick(bookmark)}
         >
+          {dragOverNodeId === bookmark.id && dropPosition !== 'inside' && (
+            <span aria-hidden="true" className={`pointer-events-none absolute inset-x-0 h-0.5 bg-primary ${dropPosition === 'before' ? 'top-0' : 'bottom-0'}`} />
+          )}
           {/* Drag Handle */}
-          <div className="flex-shrink-0 text-muted-foreground cursor-grab active:cursor-grabbing">
+          <Button variant="ghost" size="icon-sm" className="text-muted-foreground cursor-grab active:cursor-grabbing"
+            ref={element => { if (element) moveButtonRefs.current.set(bookmark.id, element); else moveButtonRefs.current.delete(bookmark.id); }}
+            aria-label={tTools('bookmark.moveBookmarkNamed', { title: bookmark.title })}
+            aria-describedby="bookmark-move-hint" disabled={isBusy} draggable={!isBusy}
+            onDragStart={event => handleDragStart(event, bookmark.id)} onDragEnd={handleDragEnd}
+            onClick={event => { event.stopPropagation(); handleOpenMove(bookmark.id); }}
+          >
             <UIGripVertical className="w-4 h-4" aria-hidden="true" />
-          </div>
+          </Button>
 
           {/* Expand/collapse toggle */}
           {bookmark.children.length > 0 && (
             <Button variant="ghost" size="sm"
+              aria-label={tTools(bookmark.isExpanded ? 'bookmark.collapseBookmark' : 'bookmark.expandBookmark', { title: bookmark.title })}
+              aria-expanded={Boolean(bookmark.isExpanded)}
               onClick={(e) => { e.stopPropagation(); handleToggleExpand(bookmark.id); }}
               className="w-5 h-5 flex items-center justify-center"
             >
@@ -638,9 +636,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
           {/* Bookmark content */}
           {isEditing ? (
-            <fieldset disabled={isBusy} className="flex-1 min-w-0 flex flex-col gap-2 p-2 bg-muted rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
+            <fieldset disabled={isBusy} className="basis-full sm:basis-0 flex-1 min-w-0 flex flex-col gap-2 p-2 bg-muted rounded border border-border" onClick={(e) => e.stopPropagation()}>
               <div className="flex gap-2">
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-1">{tTools('bookmark.title') || 'Title'}</Label>
                   <Input
                     type="text"
@@ -681,7 +679,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <div className="flex-shrink-0">
                   <Label className="block text-[10px] uppercase mb-1" htmlFor="bookmarktool-field-3">{tTools('bookmark.color') || 'Color'}</Label>
                   <Input
@@ -713,41 +711,46 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             </fieldset>
           ) : (
             <>
+              <Button variant="ghost" disabled={isBusy} aria-pressed={isSelected}
+                className="h-auto min-w-0 flex-1 justify-start px-0 py-1 text-start"
+                onClick={event => { event.stopPropagation(); handleBookmarkClick(bookmark); }}
+              >
               <span
-                className={`flex-1 text-sm truncate ${
+                className={`truncate text-sm ${
                   bookmark.style === 'bold' ? 'font-bold' :
                   bookmark.style === 'italic' ? 'italic' :
                   bookmark.style === 'bold-italic' ? 'font-bold italic' : ''
                 }`}
-                style={{ color: bookmark.color }}
+                style={{ color: bookmark.color === '#000000' ? undefined : bookmark.color }}
               >
                 {bookmark.title}
               </span>
+              </Button>
               <span className="text-xs text-muted-foreground">p.{bookmark.pageNumber}</span>
 
               {/* Actions */}
-              <div className="flex gap-1 opacity-0 group-hover:opacity-100 hover:opacity-100" style={{ opacity: isSelected ? 1 : undefined }}>
-                <Button variant="ghost" size="icon-sm" aria-label="Edit"
+              <div className="flex w-full justify-end gap-1 opacity-100 sm:w-auto sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100" style={{ opacity: isSelected ? 1 : undefined }}>
+                <Button variant="ghost" size="icon-sm" aria-label={t('buttons.edit')}
                   disabled={isBusy}
-                  onClick={(e) => { e.stopPropagation(); setEditingBookmark(bookmark); }}
+                  onClick={(e) => { e.stopPropagation(); setSelectedBookmarkId(bookmark.id); setEditingBookmark(bookmark); }}
 
-                  title="Edit"
+                  title={t('buttons.edit')}
                 >
                   <UIEmojiPencil className="inline-block size-4 shrink-0 align-middle" aria-hidden="true" />
                 </Button>
-                <Button variant="ghost" size="icon-sm" aria-label="Add child"
+                <Button variant="ghost" size="icon-sm" aria-label={tTools('bookmark.addChild')}
                   disabled={isBusy}
                   onClick={(e) => { e.stopPropagation(); handleAddChild(bookmark.id); }}
 
-                  title="Add child"
+                  title={tTools('bookmark.addChild')}
                 >
                   +
                 </Button>
-                <Button variant="ghost" size="icon-sm" aria-label="Delete"
+                <Button variant="ghost" size="icon-sm" aria-label={t('buttons.delete')}
                   disabled={isBusy}
                   onClick={(e) => { e.stopPropagation(); handleDeleteBookmark(bookmark.id); }}
 
-                  title="Delete"
+                  title={t('buttons.delete')}
                 >
                   ×
                 </Button>
@@ -758,7 +761,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
         {/* Render children */}
         {bookmark.isExpanded && bookmark.children.length > 0 && (
-          <div className="border-l border-border ml-2">
+          <div role="list" className="border-s border-border ms-2">
             {bookmark.children.map(child => renderBookmarkItem(child, depth + 1))}
           </div>
         )}
@@ -788,9 +791,54 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       )}
 
       {extractionNotice && <Alert role="status"><AlertDescription>{extractionNotice}</AlertDescription></Alert>}
+      {moveNotice && !result && !isProcessing && <Alert role="status"><AlertDescription>{moveNotice}</AlertDescription></Alert>}
       {removedAll && bookmarks.length === 0 && !result && !isProcessing && (
         <Alert role="status"><AlertDescription>{tTools('bookmark.removedAllNotice')}</AlertDescription></Alert>
       )}
+
+      <Dialog open={movingBookmarkId !== null} onOpenChange={open => { if (!open) setMovingBookmarkId(null); }}>
+        <DialogContent showCloseButton={false} onCloseAutoFocus={event => {
+          event.preventDefault();
+          const button = moveButtonRefs.current.get(moveFocusIdRef.current || '');
+          if (button) button.focus();
+          else saveButtonRef.current?.focus();
+        }}>
+          <DialogHeader className="sm:text-start">
+            <DialogTitle>{tTools('bookmark.moveBookmark')}</DialogTitle>
+            <DialogDescription>{tTools('bookmark.moveDescription', { title: movingBookmark?.title || '' })}</DialogDescription>
+          </DialogHeader>
+          {moveTargets.length === 0 ? <p className="text-sm text-muted-foreground">{tTools('bookmark.noMoveTargets')}</p> : (
+            <div className="space-y-4 [&_[data-slot=native-select-wrapper]]:w-full">
+              <div className="space-y-2">
+                <Label htmlFor="bookmark-move-target">{tTools('bookmark.moveTarget')}</Label>
+                <NativeSelect id="bookmark-move-target" value={moveTargetId} disabled={isBusy} onChange={event => setMoveTargetId(event.target.value)}>
+                  {moveTargets.map(({ node, depth }) => (
+                    <NativeSelectOption key={node.id} value={node.id}>{'— '.repeat(depth)}{node.title} ({tTools('bookmark.page')} {node.pageNumber})</NativeSelectOption>
+                  ))}
+                </NativeSelect>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="bookmark-move-position">{tTools('bookmark.movePosition')}</Label>
+                <NativeSelect id="bookmark-move-position" value={movePlacement} disabled={isBusy} onChange={event => {
+                  const value = event.target.value;
+                  if (value === 'before' || value === 'after' || value === 'inside') setMovePlacement(value);
+                }}>
+                  <NativeSelectOption value="before">{tTools('bookmark.before')}</NativeSelectOption>
+                  <NativeSelectOption value="after">{tTools('bookmark.after')}</NativeSelectOption>
+                  <NativeSelectOption value="inside">{tTools('bookmark.inside')}</NativeSelectOption>
+                </NativeSelect>
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setMovingBookmarkId(null)}>{t('buttons.cancel')}</Button>
+            <Button disabled={isBusy || !movingBookmarkId || !canMoveBookmark(bookmarks, movingBookmarkId, moveTargetId)} onClick={() => {
+              if (movingBookmarkId) handleMoveNode(movingBookmarkId, moveTargetId, movePlacement, false);
+              setMovingBookmarkId(null);
+            }}>{tTools('bookmark.moveButton')}</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <AlertDialog open={confirmRemoval} onOpenChange={setConfirmRemoval}>
         <AlertDialogContent onCloseAutoFocus={(event) => {
@@ -826,9 +874,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       </AlertDialog>
 
       {file && pdfDoc && (
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* PDF Preview Panel */}
-          <Card className="p-6"  >
+          <Card className="min-w-0 p-6"  >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.pdfPreview') || 'PDF Preview'}</h3>
               <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isBusy}>
@@ -906,13 +954,13 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             )}
 
             {/* Bookmark list */}
-            <div className="border rounded max-h-[500px] overflow-y-auto">
+            <div ref={listRef} className="border rounded max-h-[500px] overflow-y-auto">
               {bookmarks.length === 0 ? (
                 <div className="p-8 text-center text-muted-foreground">
                   <p>{tTools('bookmark.noBookmarks') || 'No bookmarks yet. Click "Add Bookmark" to create one.'}</p>
                 </div>
               ) : (
-                <div className="p-2 space-y-1">
+                <div role="list" aria-label={tTools('bookmark.bookmarksTitle')} className="p-2 space-y-1">
                   {bookmarks.map(bookmark => renderBookmarkItem(bookmark))}
                 </div>
               )}
@@ -923,7 +971,8 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
               <p className="text-xs text-muted-foreground">
                 {tTools('bookmark.hint') || 'Click a bookmark to preview its page. Use +/✎/× to add child, edit, or delete.'}
               </p>
-              <p className="text-xs text-blue-500 font-medium">
+              <p className="text-xs text-muted-foreground">{tTools('bookmark.insertHint')}</p>
+              <p id="bookmark-move-hint" className="text-xs text-primary font-medium">
                 {tTools('bookmark.dragHint') || 'Drag and drop to reorder bookmarks.'}
               </p>
             </div>

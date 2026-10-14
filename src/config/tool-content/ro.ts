@@ -826,9 +826,10 @@ export const toolContentRo: Record<string, ToolContent> = {
       "adăugați marcaje",
       "navigare pdf",
       "cuprins",
-      "elimină toate marcajele pdf"
+      "elimină toate marcajele pdf",
+      "mută marcajul"
     ],
-    "description": "<p>Editați marcaje vă permite să creați, să modificați și să organizați marcaje în documentele dvs. PDF. Marcajele oferă navigare rapidă către anumite secțiuni, făcând documentele lungi mai ușor de utilizat.</p>\n      <p>Puteți să adăugați marcaje noi, să le editați pe cele existente, să reorganizați ierarhia marcajelor sau să importați marcaje din surse externe. Acest instrument este esențial pentru crearea de documente profesionale, navigabile.</p>\n      <p>Toate editările au loc local în browserul dvs., asigurându-vă că documentele dvs. rămân private.</p>\n      <p>Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje.</p>\n    ",
+    "description": "<p>Editați marcaje vă permite să creați, să modificați și să organizați marcaje în documentele dvs. PDF. Marcajele oferă navigare rapidă către anumite secțiuni, făcând documentele lungi mai ușor de utilizat.</p>\n      <p>Puteți să adăugați marcaje noi, să le editați pe cele existente, să reorganizați ierarhia marcajelor sau să importați marcaje din surse externe. Acest instrument este esențial pentru crearea de documente profesionale, navigabile.</p>\n      <p>Toate editările au loc local în browserul dvs., asigurându-vă că documentele dvs. rămân private.</p>\n      <p>Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje.</p>\n      <p>Adaugă marcaj inserează după intrarea selectată la același nivel și trimite la pagina previzualizată. Fără selecție, adaugă la sfârșit. Trage mânerul înainte, după sau în interiorul altui marcaj. Apasă sau atinge mânerul pentru a alege o destinație.</p>\n    ",
     "howToUse": [
       {
         "step": 1,
@@ -838,7 +839,7 @@ export const toolContentRo: Record<string, ToolContent> = {
       {
         "step": 2,
         "title": "Gestionați marcajele",
-        "description": "Adăugați marcaje noi, editați-le pe cele existente sau trageți pentru a reorganiza ierarhia. Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje."
+        "description": "Adăugați marcaje noi, editați-le pe cele existente sau trageți pentru a reorganiza ierarhia. Pentru a elimina totul, apasă Elimină toate marcajele și confirmă. Salvează și descarcă pentru a exporta un PDF fără marcaje. Adaugă marcaj inserează după intrarea selectată la același nivel și trimite la pagina previzualizată. Fără selecție, adaugă la sfârșit. Trage mânerul înainte, după sau în interiorul altui marcaj. Apasă sau atinge mânerul pentru a alege o destinație."
       },
       {
         "step": 3,

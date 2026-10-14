@@ -361,16 +361,17 @@ export const toolContentId: Record<string, ToolContent> = {
   'bookmark': {
     title: 'Edit Markah (Bookmark)',
     metaDescription: 'Tambah, edit, atur, atau hapus semua markah PDF. Kelola navigasi dokumen secara lokal di browser Anda.',
-    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi', 'hapus semua markah pdf'],
+    keywords: ['markah pdf', 'edit markah', 'tambah markah', 'navigasi pdf', 'daftar isi', 'hapus semua markah pdf', 'pindahkan markah'],
     description: `
       <p>Edit Markah memungkinkan Anda membuat, memodifikasi, dan mengatur markah di dokumen PDF Anda. Markah memberikan navigasi cepat ke bagian tertentu, sehingga dokumen panjang lebih mudah digunakan.</p>
       <p>Anda dapat menambahkan markah baru, mengedit yang sudah ada, mengatur ulang hierarki markah, atau mengimpor markah dari sumber eksternal. Alat ini penting untuk membuat dokumen yang profesional dan mudah dinavigasi.</p>
       <p>Semua pengeditan terjadi secara lokal di browser Anda, memastikan dokumen Anda tetap privat.</p>
       <p>Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah.</p>
+      <p>Tambah Markah menyisipkan setelah entri yang dipilih pada tingkat yang sama dan menautkan halaman pratinjau. Tanpa pilihan, markah ditambahkan di akhir. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan.</p>
     `,
     howToUse: [
       { step: 1, title: 'Unggah PDF Anda', description: 'Tarik dan lepas file PDF Anda atau klik untuk memilih dokumen yang ingin Anda edit.' },
-      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya. Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah.' },
+      { step: 2, title: 'Kelola Markah', description: 'Tambahkan markah baru, edit yang sudah ada, atau tarik untuk mengatur ulang hierarkinya. Untuk menghapus semuanya, klik Hapus semua markah dan konfirmasikan. Simpan dan unduh untuk mengekspor PDF tanpa markah. Tambah Markah menyisipkan setelah entri yang dipilih pada tingkat yang sama dan menautkan halaman pratinjau. Tanpa pilihan, markah ditambahkan di akhir. Seret pegangan sebelum, sesudah, atau di dalam markah lain. Klik atau ketuk untuk memilih tujuan.' },
       { step: 3, title: 'Simpan dan Unduh', description: 'Klik Simpan untuk menerapkan perubahan Anda dan mengunduh PDF dengan markah yang telah diperbarui.' },
     ],
     useCases: [

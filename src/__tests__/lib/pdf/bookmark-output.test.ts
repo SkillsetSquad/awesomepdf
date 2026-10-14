@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { PDFArray, PDFDict, PDFDocument, PDFHexString, PDFName, PDFRawStream, PDFString, decodePDFRawStream, degrees } from 'pdf-lib';
+import { PDFArray, PDFDict, PDFDocument, PDFHexString, PDFName, PDFNumber, PDFRawStream, PDFRef, PDFString, decodePDFRawStream, degrees } from 'pdf-lib';
 import { createFileFixture, readBlobBytes } from '@/__tests__/helpers/file-fixture';
 import { processBookmarks } from '@/lib/pdf/processors/bookmark';
+import { insertBookmarkAfter, moveBookmark, type BookmarkNode } from '@/lib/pdf/bookmark-tree';
 
 async function createBookmarkedPDF() {
   const pdf = await PDFDocument.create();
@@ -93,5 +94,44 @@ describe('Bookmark removal PDF output', () => {
     const saved = await PDFDocument.load(await readBlobBytes(added.result));
     const outline = saved.catalog.lookup(PDFName.of('Outlines'), PDFDict);
     expect(outline.lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('Title'), PDFHexString).decodeText()).toBe('New chapter');
+  });
+
+  it('exports inserted and moved bookmarks in tree order with correct destinations and styles', async () => {
+    const { file, bytes } = await createBookmarkedPDF();
+    const original = await PDFDocument.load(bytes);
+    const chapter: BookmarkNode = { id: 'chapter', title: 'Chapter', pageNumber: 1, children: [
+      { id: 'section', title: 'Section', pageNumber: 2, color: '#123456', style: 'bold-italic', children: [] },
+    ], isExpanded: true };
+    let tree = [chapter, { id: 'tail', title: 'Tail', pageNumber: 2, children: [], isExpanded: true }];
+    tree = insertBookmarkAfter(tree, { id: 'inserted', title: 'Inserted', pageNumber: 2, children: [] }, 'section');
+    tree = moveBookmark(tree, 'chapter', 'tail', 'inside');
+    const convert = (nodes: BookmarkNode[]): import('@/lib/pdf/processors/bookmark').BookmarkItem[] => nodes.map(({ isExpanded, children, ...item }) => ({ ...item, expanded: isExpanded, children: convert(children) }));
+    const output = await processBookmarks(file, { action: 'add', bookmarks: convert(tree) });
+    expect(output.success, output.error?.details).toBe(true);
+    if (!(output.result instanceof Blob)) throw new Error('Expected a PDF blob');
+    const saved = await PDFDocument.load(await readBlobBytes(output.result));
+    function readOutline(parent: PDFDict): Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> {
+      const result: Array<{ title: string; page: number; children: ReturnType<typeof readOutline> }> = [];
+      let next = parent.get(PDFName.of('First'));
+      while (next) {
+        const item = saved.context.lookup(next, PDFDict);
+        const destination = item.lookup(PDFName.of('Dest'), PDFArray).get(0);
+        if (!(destination instanceof PDFRef)) throw new Error('Expected a bookmark page reference');
+        result.push({ title: item.lookup(PDFName.of('Title'), PDFHexString).decodeText(), page: saved.getPages().findIndex(page => page.ref.toString() === destination.toString()) + 1, children: readOutline(item) });
+        next = item.get(PDFName.of('Next'));
+      }
+      return result;
+    }
+    const root = saved.catalog.lookup(PDFName.of('Outlines'), PDFDict);
+    expect(readOutline(root)).toEqual([{ title: 'Tail', page: 2, children: [{ title: 'Chapter', page: 1, children: [
+      { title: 'Section', page: 2, children: [] }, { title: 'Inserted', page: 2, children: [] },
+    ] }] }]);
+    const section = root.lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('First'), PDFDict).lookup(PDFName.of('First'), PDFDict);
+    expect(section.lookup(PDFName.of('F'), PDFNumber).asNumber()).toBe(3);
+    const color = section.lookup(PDFName.of('C'), PDFArray);
+    expect(color.asArray().map(value => saved.context.lookup(value, PDFNumber).asNumber())).toEqual([18 / 255, 52 / 255, 86 / 255]);
+    expect(saved.getPageCount()).toBe(original.getPageCount());
+    expect(pageStreams(saved)).toEqual(pageStreams(original));
+    expect(saved.getForm().getTextField('example').getText()).toBe('Preserved form value');
   });
 });
